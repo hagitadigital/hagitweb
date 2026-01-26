@@ -106,7 +106,7 @@
         .hero__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 50%, rgba(255,255,255,0.3) 100%);
+            background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.5) 100%);
         }
         
         .hero__content {
@@ -116,6 +116,7 @@
             margin: 0 auto;
             padding: 0 clamp(24px, 5vw, 80px);
             color: var(--color-chocolate);
+            text-shadow: 0 1px 10px rgba(255,255,255,0.8);
         }
         
         .hero__category {
@@ -453,22 +454,17 @@
     <section class="gallery">
         <div class="gallery__inner">
             <div class="gallery__grid">
+                <div class="gallery__item gallery__item--wide">
+                    <img src="frost-website.png" alt="FROST Website">
+                </div>
                 <div class="gallery__item">
                     <img src="frost-beach.png" alt="FROST Beach">
                 </div>
                 <div class="gallery__item">
                     <img src="frost-tower.png" alt="FROST Products">
                 </div>
-                <div class="gallery__item">
-                    <img src="frost-paris.png" alt="FROST Paris">
-                </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="frost-website.png" alt="FROST Website">
-                </div>
-                <div class="gallery__item gallery__item--video">
-                    <video autoplay loop muted playsinline>
-                        <source src="frost-video.mp4" type="video/mp4">
-                    </video>
+                    <img src="frost-paris.png" alt="FROST Paris">
                 </div>
             </div>
         </div>

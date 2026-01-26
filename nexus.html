@@ -105,7 +105,7 @@
         .hero__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.7) 100%);
         }
         
         .hero__content {
@@ -115,6 +115,7 @@
             margin: 0 auto;
             padding: 0 clamp(24px, 5vw, 80px);
             color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
         }
         
         .hero__category {
@@ -483,7 +484,7 @@
     <section class="gallery">
         <div class="gallery__inner">
             <div class="gallery__grid">
-                <div class="gallery__item">
+                <div class="gallery__item gallery__item--wide">
                     <img src="nexus-store.png" alt="NEXUS Store">
                 </div>
                 <div class="gallery__item">
@@ -491,11 +492,6 @@
                 </div>
                 <div class="gallery__item">
                     <img src="nexus-gear.png" alt="NEXUS Gear">
-                </div>
-                <div class="gallery__item gallery__item--video">
-                    <video autoplay loop muted playsinline>
-                        <source src="nexus-video.mp4" type="video/mp4">
-                    </video>
                 </div>
                 <div class="gallery__item gallery__item--wide">
                     <img src="nexus-website.png" alt="NEXUS Website">
