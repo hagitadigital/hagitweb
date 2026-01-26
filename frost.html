@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FROST | Brand World Case Study | Hagit Antebi</title>
+    <meta name="description" content="FROST - מיתוג שאפשר כמעט לטעום. יצירת שפה ויזואלית שמפעילה את כל החושים">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #4F372C;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --color-pink: #FFB5C5;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background-color: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #f8f8f8;
+            margin-top: 80px;
+        }
+        
+        .hero__image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+        
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 50%, rgba(255,255,255,0.3) 100%);
+        }
+        
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            color: var(--color-chocolate);
+        }
+        
+        .hero__category {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-pink);
+            margin-bottom: 16px;
+        }
+        
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+        
+        .hero__meta {
+            display: flex;
+            gap: 48px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        .hero__meta span { display: block; }
+        .hero__meta strong { 
+            display: block;
+            font-weight: 400;
+            opacity: 0.6;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        /* Content */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+        }
+        
+        .content__section {
+            margin-bottom: 64px;
+        }
+        
+        .content__number {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: var(--color-copper);
+            margin-bottom: 8px;
+        }
+        
+        .content__heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+        
+        .content__text {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content__text:last-child { margin-bottom: 0; }
+        
+        .content__highlight {
+            background: var(--color-warm-beige);
+            padding: 32px;
+            margin: 32px 0;
+            border-right: 3px solid var(--color-pink);
+        }
+        
+        .content__highlight-title {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .content__list {
+            list-style: none;
+            margin: 24px 0;
+        }
+        
+        .content__list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-light-taupe);
+            display: flex;
+            gap: 16px;
+        }
+        
+        .content__list li:last-child { border-bottom: none; }
+        
+        .content__list strong {
+            font-family: var(--font-body-en);
+            min-width: 140px;
+            color: var(--color-copper);
+        }
+        
+        /* CTA */
+        .cta {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            text-align: center;
+            padding: clamp(80px, 12vw, 160px) clamp(24px, 5vw, 80px);
+        }
+        
+        .cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .cta__text {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+        
+        .cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-chocolate);
+            background: var(--color-cream);
+            text-decoration: none;
+            padding: 20px 48px;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        
+        .cta__btn:hover {
+            background: var(--color-copper);
+            color: var(--color-cream);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+        
+        /* Gallery */
+        .gallery {
+            background: #FFF5F5;
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+        
+        .gallery__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .gallery__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .gallery__item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .gallery__item--wide {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+        
+        .gallery__item--video {
+            aspect-ratio: 9/16;
+        }
+        
+        .gallery__item img,
+        .gallery__item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        
+        .gallery__item:hover img,
+        .gallery__item:hover video {
+            transform: scale(1.03);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery__grid { grid-template-columns: 1fr; }
+            .gallery__item--wide { grid-column: span 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero__meta { flex-direction: column; gap: 16px; }
+            .content__list li { flex-direction: column; gap: 4px; }
+            .content__list strong { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html#worlds" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="frost.png" alt="FROST Brand World" class="hero__image">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__category">Beauty & Lifestyle</p>
+            <h1 class="hero__title">FROST</h1>
+            <p class="hero__subtitle">מיתוג שאפשר כמעט לטעום<br>עולם מותג שמדבר בשפה של פינוק</p>
+            <div class="hero__meta">
+                <div>
+                    <strong>Role</strong>
+                    <span>Creative Direction & Brand Strategy</span>
+                </div>
+                <div>
+                    <strong>Concept</strong>
+                    <span>Sensory Branding & Bakery-Inspired Beauty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <article class="content">
+        <section class="content__section">
+            <p class="content__number">01</p>
+            <h2 class="content__heading">הרעיון</h2>
+            <p class="content__text">FROST נולד מתוך תובנה פשוטה: טיפוח שיער מתולתל צריך להרגיש כמו פינוק, לא כמו עבודה.</p>
+            <p class="content__text">השוק מלא במותגים שמדברים על "בעיות" ו"פתרונות". אנחנו רצינו לבנות מותג שמדבר על הנאה, על חוויה, על רגע של אושר קטן בבוקר.</p>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">02</p>
+            <h2 class="content__heading">הקונספט: Bakery Meets Beauty</h2>
+            <div class="content__highlight">
+                <p class="content__highlight-title">The Insight</p>
+                <p>מה אם מוצרי טיפוח היו מרגישים כמו קינוחים? מה אם הציזינג, הריח והצבע היו גורמים לך לרצות "לאכול" את המוצר?</p>
+            </div>
+            <p class="content__text">בנינו עולם מותג שלם סביב האסתטיקה של מאפייה: צבעי פסטל מתוקים, טקסטורות קרמיות, ושמות מוצרים שנשמעים כמו תפריט קינוחים.</p>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">03</p>
+            <h2 class="content__heading">השפה הויזואלית</h2>
+            <ul class="content__list">
+                <li><strong>צבעוניות:</strong> פסטלים רכים - ורוד תות, צהוב וניל, תכלת קרם. צבעים שגורמים לך לחייך.</li>
+                <li><strong>טקסטורות:</strong> קרמי, מבריק, "טפטופי" - כמו ציפוי על עוגה.</li>
+                <li><strong>טיפוגרפיה:</strong> עגולה וידידותית, כמו כתב יד על לוח קונדיטוריה.</li>
+                <li><strong>צילום:</strong> בהיר, שמח, אנרגטי. תנועה וחיים.</li>
+            </ul>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">04</p>
+            <h2 class="content__heading">קו המוצרים</h2>
+            <p class="content__text">כל מוצר קיבל שם שמרגיש כמו קינוח:</p>
+            <ul class="content__list">
+                <li><strong>Strawberry Jam Mask:</strong> מסכה מזינה בצבע ורוד תות.</li>
+                <li><strong>Vanilla Cream Leave-In:</strong> קרם ללא שטיפה בריח וניל.</li>
+                <li><strong>Blueberry Boost Serum:</strong> סרום בצבע סגול-כחול.</li>
+                <li><strong>Honey Glaze Oil:</strong> שמן מבריק בגוון זהב דבש.</li>
+            </ul>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">05</p>
+            <h2 class="content__heading">החוויה</h2>
+            <p class="content__text">FROST לא מוכר רק מוצרים - הוא מוכר רגע של שמחה. כל אינטראקציה עם המותג צריכה להרגיש כמו ביס בעוגה טובה: מפתיעה, מספקת, וגורמת לך לרצות עוד.</p>
+            <p class="content__text">מהאריזה הצבעונית, דרך הריח המתוק ועד לתחושה על השיער - הכל מתוכנן לייצר חיבור רגשי מיידי.</p>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">06</p>
+            <h2 class="content__heading">קהל היעד</h2>
+            <p class="content__text">נשים צעירות (18-35) עם שיער מתולתל או גלי, שמחפשות מותג שמדבר אליהן בגובה העיניים. הן אוהבות אסתטיקה, פעילות ברשתות חברתיות, ומעריכות מותגים עם אישיות.</p>
+            <div class="content__highlight">
+                <p class="content__highlight-title">Brand Personality</p>
+                <p>אם FROST היה אדם, היא הייתה החברה הכי כיפית שלך - זו שתמיד יודעת על הטרנדים החדשים, מביאה עוגיות למסיבות, ותמיד משאירה אותך עם חיוך.</p>
+            </div>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">07</p>
+            <h2 class="content__heading">סיכום</h2>
+            <p class="content__text">FROST מדגים איך אפשר לקחת קטגוריה "משעממת" (טיפוח שיער) ולהפוך אותה לחוויה רגשית. על ידי שאילת השאלה "מה אם?" ובניית עולם מותג שלם סביב התשובה, יצרנו מותג שאי אפשר להתעלם ממנו.</p>
+        </section>
+    </article>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="gallery__inner">
+            <div class="gallery__grid">
+                <div class="gallery__item">
+                    <img src="frost-beach.png" alt="FROST Beach">
+                </div>
+                <div class="gallery__item">
+                    <img src="frost-tower.png" alt="FROST Products">
+                </div>
+                <div class="gallery__item">
+                    <img src="frost-paris.png" alt="FROST Paris">
+                </div>
+                <div class="gallery__item gallery__item--wide">
+                    <img src="frost-website.png" alt="FROST Website">
+                </div>
+                <div class="gallery__item gallery__item--video">
+                    <video autoplay loop muted playsinline>
+                        <source src="frost-video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2 class="cta__title">Ready to Build Your Brand World?</h2>
+        <p class="cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.</p>
+        <a href="index.html#contact" class="cta__btn">
+            Let's Talk
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

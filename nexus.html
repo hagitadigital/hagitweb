@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | Brand World Case Study | Hagit Antebi</title>
+    <meta name="description" content="NEXUS - Designing the Fluid Future. בניית מותג סייבר-פאנק לדור המטאוורס">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #4F372C;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background-color: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #0a0a0a;
+            margin-top: 80px;
+        }
+        
+        .hero__image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+        }
+        
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            color: white;
+        }
+        
+        .hero__category {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #7fff00;
+            margin-bottom: 16px;
+        }
+        
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+        
+        .hero__meta {
+            display: flex;
+            gap: 48px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        .hero__meta span { display: block; }
+        .hero__meta strong { 
+            display: block;
+            font-weight: 400;
+            opacity: 0.6;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        /* Content */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+        }
+        
+        .content__section {
+            margin-bottom: 64px;
+        }
+        
+        .content__number {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: var(--color-copper);
+            margin-bottom: 8px;
+        }
+        
+        .content__heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+        
+        .content__text {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .content__text:last-child { margin-bottom: 0; }
+        
+        .content__highlight {
+            background: var(--color-warm-beige);
+            padding: 32px;
+            margin: 32px 0;
+            border-right: 3px solid var(--color-copper);
+        }
+        
+        .content__highlight-title {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .content__list {
+            list-style: none;
+            margin: 24px 0;
+        }
+        
+        .content__list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-light-taupe);
+            display: flex;
+            gap: 16px;
+        }
+        
+        .content__list li:last-child { border-bottom: none; }
+        
+        .content__list strong {
+            font-family: var(--font-body-en);
+            min-width: 140px;
+            color: var(--color-copper);
+        }
+        
+        /* Gallery */
+        .gallery {
+            background: var(--color-warm-beige);
+            padding: clamp(60px, 10vw, 120px) 0;
+        }
+        
+        .gallery__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .gallery__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .gallery__item {
+            aspect-ratio: 4/3;
+            background: var(--color-taupe);
+            overflow: hidden;
+        }
+        
+        .gallery__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        
+        .gallery__item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* CTA */
+        .cta {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            text-align: center;
+            padding: clamp(80px, 12vw, 160px) clamp(24px, 5vw, 80px);
+        }
+        
+        .cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .cta__text {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+        
+        .cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-chocolate);
+            background: var(--color-cream);
+            text-decoration: none;
+            padding: 20px 48px;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        
+        .cta__btn:hover {
+            background: var(--color-copper);
+            color: var(--color-cream);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+        
+        /* Gallery */
+        .gallery {
+            background: #0a0a0a;
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+        
+        .gallery__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .gallery__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .gallery__item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #1a1a1a;
+            border: 1px solid #7fff0033;
+        }
+        
+        .gallery__item--wide {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+        
+        .gallery__item--video {
+            aspect-ratio: 9/16;
+        }
+        
+        .gallery__item img,
+        .gallery__item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        
+        .gallery__item:hover img,
+        .gallery__item:hover video {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery__grid { grid-template-columns: 1fr; }
+            .gallery__item--wide { grid-column: span 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero__meta { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html#worlds" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="nexus.png" alt="NEXUS Brand World" class="hero__image">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__category">Gaming & Technology</p>
+            <h1 class="hero__title">NEXUS</h1>
+            <p class="hero__subtitle">Designing the Fluid Future<br>בניית מותג סייבר-פאנק לדור המטאוורס</p>
+            <div class="hero__meta">
+                <div>
+                    <strong>Role</strong>
+                    <span>Creative Direction, Branding & 3D Visualization Strategy</span>
+                </div>
+                <div>
+                    <strong>Year</strong>
+                    <span>2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <article class="content">
+        <section class="content__section">
+            <p class="content__number">01</p>
+            <h2 class="content__heading">התובנה והאתגר</h2>
+            <p class="content__text">הגבולות בין העולם הפיזי לדיגיטלי מיטשטשים. דור ה-Z והאלפא כבר לא מחפשים רק "בגדים" או "גאדג'טים"; הם מחפשים "סקינים" (Skins) למציאות. הם רוצים מוצרים שגורמים להם להיראות כאילו הם יצאו הרגע ממשחק וידאו עתידני.</p>
+            <p class="content__text">האתגר היה ליצור מותג לייף-סטייל (אופנה וטכנולוגיה) שמרגיש דיגיטלי לחלוטין, גם כשהוא פיזי. מותג שמשדר מהירות, חדשנות וקצת סכנה. המטרה: לא ליצור נוסטלגיה לעבר, אלא נוסטלגיה לעתיד שעדיין לא קרה (Y2K Futurism).</p>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">02</p>
+            <h2 class="content__heading">האסטרטגיה</h2>
+            <div class="content__highlight">
+                <p class="content__highlight-title">The Concept</p>
+                <p>Upgrade Your Reality – NEXUS נבנה כמותג ל"משדרגים" (Upgraders) – אנשים שרוצים להיות גרסה מתקדמת יותר של עצמם.</p>
+            </div>
+            <ul class="content__list">
+                <li><strong>קהל היעד:</strong> גיימרים, טרנדסטרים, מאמצים מוקדמים (Early Adopters), חיים ברשתות חברתיות, נמשכים לאסתטיקה אפלה וניאונית.</li>
+                <li><strong>הצעת הערך:</strong> ציוד (Gear) שהופך אותך למוכן לעתיד.</li>
+                <li><strong>הוייב:</strong> אגרסיבי, מבריק, מהיר, בתנועה מתמדת.</li>
+            </ul>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">03</p>
+            <h2 class="content__heading">השפה הויזואלית</h2>
+            <p class="content__text">הפיצוח הויזואלי נשען על הקונספט של "נזילות" (Fluidity). בעתיד, שום דבר לא קבוע. הכל משתנה, זז ומשקף את הסביבה.</p>
+            <ul class="content__list">
+                <li><strong>חומריות:</strong> כרום נוזלי (Liquid Chrome) הוא החומר המרכזי. הוא משדר יוקרה עתידנית ומסתורין. שילבנו אותו עם טקסטורות "סליים" (Slime) שנותנות תחושה אורגנית-חייזרית.</li>
+                <li><strong>Void Black:</strong> שחור עמוק כרקע שנותן קונטרסט.</li>
+                <li><strong>Cyber Lime:</strong> ירוק ניאון "רעיל" כצבע מבטא אנרגטי.</li>
+                <li><strong>Ultra Violet:</strong> סגול עתידני שמוסיף עומק.</li>
+                <li><strong>תאורה:</strong> דרמטית, מבוססת על השתקפויות ניאון, כאילו המוצרים נמצאים במועדון לילה עתידני בטוקיו.</li>
+            </ul>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">04</p>
+            <h2 class="content__heading">בניית העולם</h2>
+            <p class="content__text">כדי ש-NEXUS ירגיש אמיתי, היינו צריכים לבנות את העולם שבו הוא מתקיים. עולם שבו הטכנולוגיה היא חלק בלתי נפרד מהגוף והמרחב.</p>
+            <p class="content__text"><strong>הפרסונה (The Avatar):</strong> הלקוח של NEXUS הוא לא סתם "דוגמן", הוא "אווטאר". בנינו דמות שמייצגת את הלקוח האידיאלי – לבוש בסט המלא, מחובר לטכנולוגיה, עומד בביטחון בתוך סביבה דיגיטלית.</p>
+            <p class="content__text"><strong>המרחב הדיגיטלי:</strong> אתר האינטרנט עוצב במצב כהה (Dark Mode) תמידי, עם אלמנטים שלקוחים מממשקי משתמש (UI) של משחקי מחשב. הכפתורים זוהרים, הרקעים זזים, והחוויה היא של כניסה ל"מערכת" ולא סתם לחנות.</p>
+            <p class="content__text"><strong>המרחב הפיזי:</strong> חנות הדגל תוכננה כהיכל של השתקפויות. קירות מתכת מעוגלים, תאורת ניאון שמשתנה, ומדפים שגורמים למוצרים להיראות כאילו הם מרחפים בחלל.</p>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">05</p>
+            <h2 class="content__heading">הזהות המילולית</h2>
+            <p class="content__text">השפה של NEXUS היא קצרה, טכנית וציווית (Imperative). המותג לא "מבקש" מהלקוח לקנות, הוא נותן לו "פקודות מערכת".</p>
+            <div class="content__highlight">
+                <p class="content__highlight-title">Slogan</p>
+                <p style="font-family: var(--font-body-en); font-size: 1.5rem; font-weight: 600;">THE FUTURE IS FLUID.</p>
+            </div>
+            <ul class="content__list">
+                <li><strong>Copywriting:</strong> "SYSTEM UPGRADE AVAILABLE" | "EQUIP YOURSELF" | "LIQUID VISION ACTIVATED" | "FUTURE READY"</li>
+            </ul>
+        </section>
+
+        <section class="content__section">
+            <p class="content__number">06</p>
+            <h2 class="content__heading">סיכום</h2>
+            <p class="content__text">NEXUS הוא יותר ממותג אופנה; הוא הצהרת זהות עבור דור שחי בין מסכים. הפרויקט מדגים כיצד אסטרטגיה חדה, בשילוב עם שפה ויזואלית קיצונית ועקבית (Liquid Cyberpunk), יכולה ליצור עולם מותג שלם, נחשק ורלוונטי לקהל יעד שקשה מאוד להרשים.</p>
+        </section>
+    </article>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="gallery__inner">
+            <div class="gallery__grid">
+                <div class="gallery__item">
+                    <img src="nexus-store.png" alt="NEXUS Store">
+                </div>
+                <div class="gallery__item">
+                    <img src="nexus-avatar.png" alt="NEXUS Avatar">
+                </div>
+                <div class="gallery__item">
+                    <img src="nexus-gear.png" alt="NEXUS Gear">
+                </div>
+                <div class="gallery__item gallery__item--video">
+                    <video autoplay loop muted playsinline>
+                        <source src="nexus-video.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery__item gallery__item--wide">
+                    <img src="nexus-website.png" alt="NEXUS Website">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2 class="cta__title">Ready to Build Your Brand World?</h2>
+        <p class="cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.</p>
+        <a href="index.html#contact" class="cta__btn">
+            Let's Talk
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>
