@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method | Hagit Antebi</title>
+    <meta name="description" content="The Method - Brands are not designed. They are built, structured, and lived.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #6B5344;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background-color: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Hero */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-warm-beige) 100%);
+        }
+        
+        .hero__content {
+            max-width: 800px;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        
+        .hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        /* Method Phases */
+        .phase {
+            padding: clamp(80px, 12vw, 140px) 0;
+            position: relative;
+        }
+        
+        .phase--alt {
+            background: var(--color-warm-beige);
+        }
+        
+        .phase__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 8vw, 100px);
+            align-items: center;
+        }
+        
+        .phase--reverse .phase__inner {
+            direction: ltr;
+        }
+        
+        .phase__visual {
+            position: relative;
+        }
+        
+        .phase__image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .phase__number {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-family: var(--font-display);
+            font-size: 8rem;
+            font-weight: 400;
+            color: var(--color-copper);
+            opacity: 0.15;
+            line-height: 1;
+        }
+        
+        .phase__content {
+            direction: rtl;
+        }
+        
+        .phase__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .phase__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .phase__title span {
+            display: block;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 8px;
+        }
+        
+        .phase__text {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+        
+        .phase__list {
+            list-style: none;
+            margin-top: 24px;
+        }
+        
+        .phase__list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-light-taupe);
+            font-size: 1rem;
+        }
+        
+        .phase__list li:last-child {
+            border-bottom: none;
+        }
+        
+        .phase__highlight {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-copper);
+            margin-top: 32px;
+            padding-right: 24px;
+            border-right: 3px solid var(--color-copper);
+        }
+        
+        /* CTA */
+        .cta {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            text-align: center;
+            padding: clamp(80px, 12vw, 160px) clamp(24px, 5vw, 80px);
+        }
+        
+        .cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .cta__text {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+        
+        .cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-chocolate);
+            background: var(--color-cream);
+            text-decoration: none;
+            padding: 20px 48px;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        
+        .cta__btn:hover {
+            background: var(--color-copper);
+            color: var(--color-cream);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .phase__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .phase--reverse .phase__inner {
+                direction: rtl;
+            }
+            
+            .phase__visual {
+                order: -1;
+            }
+            
+            .phase__image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .phase__number {
+                font-size: 5rem;
+                top: -10px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .phase__highlight {
+                border-right: none;
+                border-top: 3px solid var(--color-copper);
+                padding-right: 0;
+                padding-top: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back Home
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Method</h1>
+            <p class="hero__subtitle">Brands are not designed.<br>They are built, structured, and lived.</p>
+        </div>
+    </section>
+
+    <!-- Phase 1: The Core -->
+    <section class="phase">
+        <div class="phase__inner">
+            <div class="phase__visual">
+                <span class="phase__number">01</span>
+                <img src="cube1.jpg" alt="The Core" class="phase__image">
+            </div>
+            <div class="phase__content">
+                <p class="phase__icon">🧱</p>
+                <h2 class="phase__title">
+                    <span>Phase One</span>
+                    The Core
+                </h2>
+                <p class="phase__text">הליבה היא לא הלוגו. לא הפונט. לא הפוסט.</p>
+                <p class="phase__text">הליבה היא:</p>
+                <ul class="phase__list">
+                    <li>למה המותג קיים</li>
+                    <li>מה הוא באמת רוצה לשנות</li>
+                    <li>איזה אמת רגשית עומדת מאחוריו</li>
+                </ul>
+                <p class="phase__highlight">זה המקום שבו מותג מפסיק להיות "עוד עסק" ומתחיל להיות זהות.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2: The Structure -->
+    <section class="phase phase--alt phase--reverse">
+        <div class="phase__inner">
+            <div class="phase__content">
+                <p class="phase__icon">🧩</p>
+                <h2 class="phase__title">
+                    <span>Phase Two</span>
+                    The Structure
+                </h2>
+                <p class="phase__text">המבנה הוא המקום שבו הליבה מקבלת צורה.</p>
+                <p class="phase__text">כאן אני מחברת בין:</p>
+                <ul class="phase__list">
+                    <li>משמעות ← אסטרטגיה</li>
+                    <li>רעיון ← סיפור</li>
+                    <li>זהות ← מערכת</li>
+                </ul>
+                <p class="phase__highlight">זה הרגע שבו מותג מפסיק להיות רעיון יפה והופך למערכת חכמה שאפשר לבנות עליה עולם.</p>
+            </div>
+            <div class="phase__visual">
+                <span class="phase__number">02</span>
+                <img src="cube2.jpg" alt="The Structure" class="phase__image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: The World -->
+    <section class="phase">
+        <div class="phase__inner">
+            <div class="phase__visual">
+                <span class="phase__number">03</span>
+                <img src="cube3.jpg" alt="The World" class="phase__image">
+            </div>
+            <div class="phase__content">
+                <p class="phase__icon">🌍</p>
+                <h2 class="phase__title">
+                    <span>Phase Three</span>
+                    The World
+                </h2>
+                <p class="phase__text">העולם הוא לא אתר. לא אינסטגרם. לא קמפיין.</p>
+                <p class="phase__text">העולם הוא:</p>
+                <ul class="phase__list">
+                    <li>החוויה שהמותג יוצר</li>
+                    <li>המרחב שבו אנשים מרגישים שייכות</li>
+                    <li>המקום שבו אסטרטגיה הופכת לחוויה</li>
+                </ul>
+                <p class="phase__highlight">כאן מותג מפסיק להיות "מותג" והופך לעולם שאנשים רוצים להיות חלק ממנו.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2 class="cta__title">Ready to Build Your Brand World?</h2>
+        <p class="cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.</p>
+        <a href="index.html#contact" class="cta__btn">
+            Let's Talk
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

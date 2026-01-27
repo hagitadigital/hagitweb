@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Hagit Antebi - Brand Architect</title>
+    <meta name="description" content="חגית אנטבי - Brand Architect. בונה עולמות מותג מלאים למותגים וטכנולוגיות חזוניים.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #6B5344;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background-color: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 24px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: clamp(40px, 8vw, 100px);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px clamp(24px, 5vw, 80px) 80px;
+        }
+        
+        .hero__image-wrapper {
+            position: relative;
+        }
+        
+        .hero__image-frame {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+        }
+        
+        .hero__image-frame::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--color-copper);
+            z-index: -1;
+        }
+        
+        .hero__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero__content {
+            max-width: 550px;
+        }
+        
+        .hero__label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 24px;
+        }
+        
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 32px;
+        }
+        
+        .hero__text {
+            font-size: 1.125rem;
+            line-height: 1.9;
+        }
+        
+        .hero__text p {
+            margin-bottom: 24px;
+        }
+        
+        .hero__highlight {
+            color: var(--color-copper);
+            font-weight: 500;
+        }
+        
+        /* Story Section */
+        .story {
+            background: var(--color-warm-beige);
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+        
+        .story__inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .story__label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 24px;
+        }
+        
+        .story__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 40px;
+        }
+        
+        .story__text {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+        }
+        
+        .story__text p {
+            margin-bottom: 24px;
+        }
+        
+        .story__quote {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-copper);
+            padding: 40px;
+            margin: 48px 0;
+            border-right: 3px solid var(--color-copper);
+            background: rgba(196, 118, 90, 0.05);
+        }
+        
+        /* Values Section */
+        .values {
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+        
+        .values__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+        
+        .values__header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .values__label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .values__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 400;
+        }
+        
+        .values__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .values__card {
+            padding: 40px;
+            background: var(--color-warm-beige);
+            text-align: center;
+        }
+        
+        .values__icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        
+        .values__card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        
+        .values__card-text {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+        
+        /* Background Section */
+        .background {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+        
+        .background__inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .background__col h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--color-copper);
+        }
+        
+        .background__list {
+            list-style: none;
+        }
+        
+        .background__list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9375rem;
+        }
+        
+        .background__list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* CTA */
+        .cta {
+            background: var(--color-warm-beige);
+            text-align: center;
+            padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px);
+        }
+        
+        .cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .cta__text {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            font-size: 1.0625rem;
+        }
+        
+        .cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-cream);
+            background: var(--color-chocolate);
+            text-decoration: none;
+            padding: 20px 48px;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        
+        .cta__btn:hover {
+            background: var(--color-copper);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 140px;
+            }
+            
+            .hero__image-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .hero__content {
+                max-width: 100%;
+            }
+            
+            .values__grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .background__inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back Home
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero__image-wrapper">
+            <div class="hero__image-frame">
+                <img src="hagit.png" alt="Hagit Antebi" class="hero__image">
+            </div>
+        </div>
+        <div class="hero__content">
+            <p class="hero__label">The Brand Architect</p>
+            <h1 class="hero__title">אני חגית אנטבי,<br>והתשוקה שלי היא לחבר בין ניגודים</h1>
+            <div class="hero__text">
+                <p>בין דאטה לרגש. בין טכנולוגיה לאומנות. בין אסטרטגיה לחלום.</p>
+                <p>עם רקע של למעלה מ-10 שנים בניהול שיווק ואסטרטגיה דיגיטלית (MA), הבנתי שהכלים השתנו, אבל המהות נשארה: <span class="hero__highlight">אנשים מחפשים משמעות.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story">
+        <div class="story__inner">
+            <p class="story__label">The Journey</p>
+            <h2 class="story__title">מ-Marketing Manager ל-Brand Architect</h2>
+            <div class="story__text">
+                <p>התחלתי את הדרך שלי בעולם השיווק הדיגיטלי לפני למעלה מעשור. עברתי דרך כל התחנות – ניהול קמפיינים, אסטרטגיה דיגיטלית, פיתוח תוכן, וניהול מותגים.</p>
+                <p>אבל משהו תמיד הרגיש חסר. ראיתי מותגים שמשקיעים הון בפרסום, אבל נשארים "עוד עסק". חסר להם העולם. חסר להם הסיפור שגורם לאנשים להרגיש משהו.</p>
+                
+                <blockquote class="story__quote">
+                    "היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים, אלא כדי להרחיב את גבולות הדמיון."
+                </blockquote>
+                
+                <p>אני בונה עבור הלקוחות שלי 'עולמות מותג' מלאים – החל מהסיפור האסטרטגי, דרך השפה הויזואלית ועד לחוויית הלקוח בקצה.</p>
+                <p><strong>המטרה שלי היא אחת:</strong> לגרום ללקוחות שלכם לא רק 'לראות' את המותג, אלא להרגיש אותו.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="values__inner">
+            <div class="values__header">
+                <p class="values__label">Core Values</p>
+                <h2 class="values__title">העקרונות שמנחים אותי</h2>
+            </div>
+            <div class="values__grid">
+                <div class="values__card">
+                    <p class="values__icon">🎯</p>
+                    <h3 class="values__card-title">משמעות לפני נראות</h3>
+                    <p class="values__card-text">מותג חזק מתחיל מליבה ברורה. קודם מבינים את ה"למה", ורק אז בונים את ה"איך".</p>
+                </div>
+                <div class="values__card">
+                    <p class="values__icon">🔮</p>
+                    <h3 class="values__card-title">טכנולוגיה בשירות הדמיון</h3>
+                    <p class="values__card-text">AI הוא כלי להרחיב גבולות, לא לקצר פינות. אני משתמשת בטכנולוגיה כדי ליצור דברים שלא היו אפשריים קודם.</p>
+                </div>
+                <div class="values__card">
+                    <p class="values__icon">🌍</p>
+                    <h3 class="values__card-title">עולם, לא לוגו</h3>
+                    <p class="values__card-text">מותג אמיתי הוא מערכת שלמה – לא רק עיצוב, אלא חוויה שאנשים רוצים להיות חלק ממנה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="background">
+        <div class="background__inner">
+            <div class="background__col">
+                <h3>השכלה</h3>
+                <ul class="background__list">
+                    <li>MA בשיווק ואסטרטגיה דיגיטלית</li>
+                    <li>התמחות ב-Brand Strategy</li>
+                    <li>הסמכות AI & Visual Creation</li>
+                </ul>
+            </div>
+            <div class="background__col">
+                <h3>התמחויות</h3>
+                <ul class="background__list">
+                    <li>Brand Architecture & Strategy</li>
+                    <li>AI-Powered Visual Creation</li>
+                    <li>World Building & Storytelling</li>
+                    <li>Digital Experience Design</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2 class="cta__title">בואו נבנה יחד</h2>
+        <p class="cta__text">מוכנים להפוך את המותג שלכם לעולם שאנשים רוצים להיות חלק ממנו?</p>
+        <a href="index.html#contact" class="cta__btn">
+            Let's Talk
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

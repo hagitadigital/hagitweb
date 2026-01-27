@@ -19,7 +19,7 @@
             /* Colors */
             --color-cream: #FAF8F3;
             --color-warm-beige: #F5F1E8;
-            --color-chocolate: #4F372C;
+            --color-chocolate: #6B5344;
             --color-copper: #C4765A;
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
@@ -136,6 +136,67 @@
         
         .nav__link:hover::after {
             width: 100%;
+        }
+        
+        /* Dropdown */
+        .nav__dropdown {
+            position: relative;
+        }
+        
+        .nav__dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .nav__dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .nav__dropdown:hover .nav__dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+        
+        .nav__dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            padding: 16px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s var(--transition-smooth);
+            box-shadow: 0 10px 40px rgba(79, 55, 44, 0.1);
+            list-style: none;
+        }
+        
+        .nav__dropdown:hover .nav__dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .nav__dropdown-item {
+            padding: 10px 24px;
+        }
+        
+        .nav__dropdown-link {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .nav__dropdown-link:hover {
+            color: var(--color-copper);
         }
         
         .nav__menu-btn {
@@ -406,6 +467,23 @@
         .intro__highlight {
             color: var(--color-copper);
             font-weight: 500;
+        }
+        
+        .intro__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-copper);
+            text-decoration: none;
+            margin-top: 24px;
+            transition: gap 0.3s var(--transition-smooth);
+        }
+        
+        .intro__link:hover {
+            gap: 12px;
         }
         
         /* ========================================
@@ -1012,13 +1090,36 @@
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="container nav__inner">
-            <a href="/" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
             <ul class="nav__links">
-                <li><a href="#method" class="nav__link">Method</a></li>
-                <li><a href="#worlds" class="nav__link">Worlds</a></li>
-                <li><a href="/studio" class="nav__link">Studio</a></li>
-                <li><a href="/about" class="nav__link">About</a></li>
-                <li><a href="/insights" class="nav__link">Insights</a></li>
+                <li><a href="method.html" class="nav__link">Method</a></li>
+                <li class="nav__dropdown">
+                    <a href="#worlds" class="nav__link nav__dropdown-toggle">
+                        Worlds
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </a>
+                    <ul class="nav__dropdown-menu">
+                        <li class="nav__dropdown-item"><a href="mora.html" class="nav__dropdown-link">MORA Sanctuary</a></li>
+                        <li class="nav__dropdown-item"><a href="nexus.html" class="nav__dropdown-link">NEXUS</a></li>
+                        <li class="nav__dropdown-item"><a href="frost.html" class="nav__dropdown-link">FROST</a></li>
+                    </ul>
+                </li>
+                <li class="nav__dropdown">
+                    <a href="studio.html" class="nav__link nav__dropdown-toggle">
+                        Studio
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </a>
+                    <ul class="nav__dropdown-menu">
+                        <li class="nav__dropdown-item"><a href="studio.html#ai" class="nav__dropdown-link">AI & Visual Creation</a></li>
+                        <li class="nav__dropdown-item"><a href="studio.html#workshops" class="nav__dropdown-link">Workshops</a></li>
+                        <li class="nav__dropdown-item"><a href="studio.html#projects" class="nav__dropdown-link">Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="nav__link">About</a></li>
                 <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
             <button class="nav__menu-btn" aria-label="Menu">
@@ -1054,28 +1155,6 @@
         <div class="hero__scroll">
             <span>Scroll</span>
             <div class="hero__scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- Intro Section -->
-    <section class="intro section">
-        <div class="container intro__inner">
-            <div class="intro__visual reveal">
-                <div class="intro__image-frame">
-                    <img src="hagit.png" alt="Hagit Antebi" class="intro__image">
-                </div>
-            </div>
-            <div class="intro__content reveal">
-                <p class="intro__label">About</p>
-                <h2 class="intro__title">אני חגית אנטבי,<br>והתשוקה שלי היא לחבר בין ניגודים</h2>
-                <div class="intro__text">
-                    <p>בין דאטה לרגש. בין טכנולוגיה לאומנות. בין אסטרטגיה לחלום.</p>
-                    <p>עם רקע של למעלה מ-10 שנים בניהול שיווק ואסטרטגיה דיגיטלית (MA), הבנתי שהכלים השתנו, אבל המהות נשארה: <span class="intro__highlight">אנשים מחפשים משמעות.</span></p>
-                    <p>היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים, אלא כדי להרחיב את גבולות הדמיון.</p>
-                    <p>אני בונה עבור הלקוחות שלי 'עולמות מותג' מלאים – החל מהסיפור האסטרטגי, דרך השפה הויזואלית ועד לחוויית הלקוח בקצה.</p>
-                    <p><span class="intro__highlight">המטרה שלי היא אחת:</span> לגרום ללקוחות שלכם לא רק 'לראות' את המותג, אלא להרגיש אותו.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1221,6 +1300,31 @@
                         </div>
                     </a>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="intro section" id="about">
+        <div class="container intro__inner">
+            <div class="intro__visual reveal">
+                <div class="intro__image-frame">
+                    <img src="hagit.png" alt="Hagit Antebi" class="intro__image">
+                </div>
+            </div>
+            <div class="intro__content reveal">
+                <p class="intro__label">The Brand Architect</p>
+                <h2 class="intro__title">אני חגית אנטבי</h2>
+                <div class="intro__text">
+                    <p>התשוקה שלי היא לחבר בין ניגודים: בין דאטה לרגש. בין טכנולוגיה לאומנות. בין אסטרטגיה לחלום.</p>
+                    <p>היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים, אלא כדי <span class="intro__highlight">להרחיב את גבולות הדמיון.</span></p>
+                </div>
+                <a href="about.html" class="intro__link">
+                    Read More
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
