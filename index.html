@@ -19,7 +19,7 @@
             /* Colors */
             --color-cream: #FAF8F3;
             --color-warm-beige: #F5F1E8;
-            --color-chocolate: #6B5344;
+            --color-chocolate: #8B7355;
             --color-copper: #C4765A;
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
@@ -636,6 +636,9 @@
             position: relative;
             overflow: hidden;
             transition: background 0.4s var(--transition-smooth);
+            text-decoration: none;
+            color: var(--color-cream);
+            display: block;
         }
         
         .capabilities__item:hover {
@@ -1107,16 +1110,28 @@
                     </ul>
                 </li>
                 <li class="nav__dropdown">
-                    <a href="studio.html" class="nav__link nav__dropdown-toggle">
+                    <a href="#capabilities" class="nav__link nav__dropdown-toggle">
+                        Capabilities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </a>
+                    <ul class="nav__dropdown-menu">
+                        <li class="nav__dropdown-item"><a href="brand-architecture.html" class="nav__dropdown-link">Brand Architecture</a></li>
+                        <li class="nav__dropdown-item"><a href="digital-ecosystems.html" class="nav__dropdown-link">Digital Ecosystems</a></li>
+                        <li class="nav__dropdown-item"><a href="ai-visuals.html" class="nav__dropdown-link">AI Visuals & Content</a></li>
+                    </ul>
+                </li>
+                <li class="nav__dropdown">
+                    <a href="#studio" class="nav__link nav__dropdown-toggle">
                         Studio
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </a>
                     <ul class="nav__dropdown-menu">
-                        <li class="nav__dropdown-item"><a href="studio.html#ai" class="nav__dropdown-link">AI & Visual Creation</a></li>
-                        <li class="nav__dropdown-item"><a href="studio.html#workshops" class="nav__dropdown-link">Workshops</a></li>
-                        <li class="nav__dropdown-item"><a href="studio.html#projects" class="nav__dropdown-link">Projects</a></li>
+                        <li class="nav__dropdown-item"><a href="workshop.html" class="nav__dropdown-link">World Builder Workshop</a></li>
+                        <li class="nav__dropdown-item"><a href="avatarbook.html" class="nav__dropdown-link">AvatarBook</a></li>
                     </ul>
                 </li>
                 <li><a href="about.html" class="nav__link">About</a></li>
@@ -1195,7 +1210,7 @@
     </section>
 
     <!-- Capabilities Section -->
-    <section class="capabilities section">
+    <section class="capabilities section" id="capabilities">
         <div class="container">
             <div class="capabilities__header reveal">
                 <p class="capabilities__label">Capabilities</p>
@@ -1204,44 +1219,44 @@
         </div>
         
         <div class="capabilities__grid">
-            <div class="capabilities__item reveal">
-                <img src="cube_ai1.jpg" alt="AI Visuals & Content" class="capabilities__item-image">
+            <a href="brand-architecture.html" class="capabilities__item reveal">
+                <img src="cubestarg.jpg" alt="Brand Architecture" class="capabilities__item-image">
                 <p class="capabilities__item-number">01</p>
-                <h3 class="capabilities__item-title">AI Visuals & Content</h3>
+                <h3 class="capabilities__item-title">Brand Architecture</h3>
                 <ul class="capabilities__item-list">
-                    <li>AI-Generated Photography</li>
-                    <li>Visual Brand Systems</li>
-                    <li>Product Visualization</li>
-                    <li>Campaign Imagery</li>
-                    <li>Motion & Video Content</li>
+                    <li>Brand Strategy & Positioning</li>
+                    <li>Logo & Visual Identity</li>
+                    <li>Verbal Identity & Messaging</li>
+                    <li>Brand Guidelines</li>
+                    <li>Competitive Analysis</li>
                 </ul>
-            </div>
+            </a>
             
-            <div class="capabilities__item reveal">
+            <a href="digital-ecosystems.html" class="capabilities__item reveal">
                 <img src="cubedigital1.jpg" alt="Digital Ecosystems" class="capabilities__item-image">
                 <p class="capabilities__item-number">02</p>
                 <h3 class="capabilities__item-title">Digital Ecosystems</h3>
                 <ul class="capabilities__item-list">
                     <li>Website Design & Development</li>
-                    <li>Social Media Strategy</li>
-                    <li>Content Systems</li>
+                    <li>Landing Pages</li>
+                    <li>UX/UI Design</li>
                     <li>Digital Experience Design</li>
                     <li>Platform Integration</li>
                 </ul>
-            </div>
+            </a>
             
-            <div class="capabilities__item reveal">
-                <img src="cubestarg.jpg" alt="Strategic Branding" class="capabilities__item-image">
+            <a href="ai-visuals.html" class="capabilities__item reveal">
+                <img src="cube_ai1.jpg" alt="AI Visuals & Content" class="capabilities__item-image">
                 <p class="capabilities__item-number">03</p>
-                <h3 class="capabilities__item-title">Strategic Branding</h3>
+                <h3 class="capabilities__item-title">AI Visuals & Content</h3>
                 <ul class="capabilities__item-list">
-                    <li>Brand Strategy & Positioning</li>
-                    <li>Verbal Identity & Messaging</li>
-                    <li>Brand Architecture</li>
-                    <li>Competitive Analysis</li>
-                    <li>Brand Guidelines</li>
+                    <li>AI-Generated Photography</li>
+                    <li>Visual Brand Systems</li>
+                    <li>Product Visualization</li>
+                    <li>Instagram & Social Content</li>
+                    <li>Motion & Video Content</li>
                 </ul>
-            </div>
+            </a>
         </div>
     </section>
 
