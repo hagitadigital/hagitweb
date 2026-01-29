@@ -888,6 +888,127 @@
         }
         
         /* ========================================
+           BRAND OS SECTION
+        ======================================== */
+        .brand-os {
+            background: #0a0a0a;
+            color: #E8E8E8;
+        }
+        
+        .brand-os__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 40px 0;
+        }
+        
+        .brand-os__label {
+            display: inline-block;
+            font-family: var(--font-body-en);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            background: #C9A962;
+            padding: 6px 14px;
+            margin-bottom: 20px;
+        }
+        
+        .brand-os__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        
+        .brand-os__subtitle {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #C9A962;
+            margin-bottom: 32px;
+        }
+        
+        .brand-os__text {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+        }
+        
+        .brand-os__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            background: #C9A962;
+            text-decoration: none;
+            padding: 18px 40px;
+            transition: all 0.4s ease;
+        }
+        
+        .brand-os__btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
+        }
+        
+        .brand-os__visual {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .brand-os__flow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .brand-os__flow-item {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 24px;
+            font-size: 0.9375rem;
+            transition: border-color 0.3s;
+        }
+        
+        .brand-os__flow-item:hover {
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+        
+        .brand-os__flow-arrow {
+            color: #C9A962;
+            font-size: 1.25rem;
+        }
+        
+        @media (max-width: 900px) {
+            .brand-os__inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+            
+            .brand-os__flow {
+                flex-direction: column;
+            }
+            
+            .brand-os__flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        
+        /* ========================================
            FOOTER
         ======================================== */
         .footer {
@@ -1344,15 +1465,50 @@
         </div>
     </section>
 
+    <!-- Brand OS Section -->
+    <section class="brand-os section">
+        <div class="container">
+            <div class="brand-os__inner reveal">
+                <div class="brand-os__content">
+                    <p class="brand-os__label">New</p>
+                    <h2 class="brand-os__title">Brand OS</h2>
+                    <p class="brand-os__subtitle">מערכת הפעלה למיתוג</p>
+                    <p class="brand-os__text">
+                        לפני שאני בונה - אני צריכה להבין.<br>
+                        המערכת מפענחת את ה-DNA של המותג שלך,<br>
+                        ואז אני נכנסת כאדריכלית ויודעת בדיוק מה לבנות.
+                    </p>
+                    <a href="brand-os.html" class="brand-os__btn">
+                        Discover Brand OS
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="brand-os__visual">
+                    <div class="brand-os__flow">
+                        <div class="brand-os__flow-item">📥 Input</div>
+                        <div class="brand-os__flow-arrow">→</div>
+                        <div class="brand-os__flow-item">🧠 Analysis</div>
+                        <div class="brand-os__flow-arrow">→</div>
+                        <div class="brand-os__flow-item">💎 Extract</div>
+                        <div class="brand-os__flow-arrow">→</div>
+                        <div class="brand-os__flow-item">📊 Reveal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact CTA Section -->
     <section class="contact-cta section" id="contact">
         <div class="contact-cta__bg"></div>
         <div class="container contact-cta__content reveal">
             <p class="contact-cta__label">Let's Create Together</p>
             <h2 class="contact-cta__title">Ready to Build<br>Your Brand World?</h2>
-            <p class="contact-cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.<br>הצעד הראשון מתחיל בשיחה.</p>
-            <a href="mailto:hello@hagitantebi.co.il" class="contact-cta__btn">
-                Get in Touch
+            <p class="contact-cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.<br>הצעד הראשון מתחיל בשאלון קצר.</p>
+            <a href="brand-discovery.html" class="contact-cta__btn">
+                Start Brand Discovery
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
