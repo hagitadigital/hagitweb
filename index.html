@@ -891,16 +891,39 @@
            BRAND OS SECTION
         ======================================== */
         .brand-os {
-            background: #0a0a0a;
+            background: var(--color-cream);
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+        
+        .brand-os__card {
+            background: linear-gradient(145deg, #1A1A1D 0%, #0F0F11 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: clamp(40px, 6vw, 64px);
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
             color: #E8E8E8;
+        }
+        
+        /* Glow effect on top */
+        .brand-os__card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C9A962, transparent);
+            opacity: 0.6;
         }
         
         .brand-os__inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
-            padding: 40px 0;
         }
         
         .brand-os__label {
@@ -910,7 +933,7 @@
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: #0a0a0a;
+            color: #0F0F11;
             background: #C9A962;
             padding: 6px 14px;
             margin-bottom: 20px;
@@ -918,27 +941,28 @@
         
         .brand-os__title {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 400;
             letter-spacing: 0.05em;
             margin-bottom: 8px;
+            color: #FFFFFF;
         }
         
         .brand-os__subtitle {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
+            font-family: 'Space Mono', var(--font-body-en), monospace;
+            font-size: 0.8125rem;
             font-weight: 400;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: #C9A962;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
         
         .brand-os__text {
-            font-size: 1.0625rem;
+            font-size: 1rem;
             line-height: 1.9;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .brand-os__btn {
@@ -946,20 +970,21 @@
             align-items: center;
             gap: 12px;
             font-family: var(--font-body-en);
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: #0a0a0a;
+            color: #0F0F11;
             background: #C9A962;
             text-decoration: none;
-            padding: 18px 40px;
+            padding: 16px 32px;
+            border-radius: 2px;
             transition: all 0.4s ease;
         }
         
         .brand-os__btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.25);
         }
         
         .brand-os__visual {
@@ -969,38 +994,70 @@
         
         .brand-os__flow {
             display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .brand-os__flow-row {
+            display: flex;
             align-items: center;
             gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
         
         .brand-os__flow-item {
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 24px;
-            font-size: 0.9375rem;
-            transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 20px;
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            border-radius: 4px;
         }
         
         .brand-os__flow-item:hover {
-            border-color: rgba(201, 169, 98, 0.3);
+            border-color: rgba(201, 169, 98, 0.4);
+            background: rgba(201, 169, 98, 0.05);
         }
         
         .brand-os__flow-arrow {
             color: #C9A962;
-            font-size: 1.25rem;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+        
+        .brand-os__demo-link {
+            display: block;
+            margin-top: 20px;
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .brand-os__demo-link a {
+            color: #C9A962;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .brand-os__demo-link a:hover {
+            opacity: 0.7;
         }
         
         @media (max-width: 900px) {
             .brand-os__inner {
                 grid-template-columns: 1fr;
-                gap: 48px;
+                gap: 40px;
                 text-align: center;
             }
             
             .brand-os__flow {
+                align-items: center;
+            }
+            
+            .brand-os__flow-row {
                 flex-direction: column;
+                gap: 8px;
             }
             
             .brand-os__flow-arrow {
@@ -1468,32 +1525,40 @@
     <!-- Brand OS Section -->
     <section class="brand-os section">
         <div class="container">
-            <div class="brand-os__inner reveal">
-                <div class="brand-os__content">
-                    <p class="brand-os__label">New</p>
-                    <h2 class="brand-os__title">Brand OS</h2>
-                    <p class="brand-os__subtitle">מערכת הפעלה למיתוג</p>
-                    <p class="brand-os__text">
-                        לפני שאני בונה - אני צריכה להבין.<br>
-                        המערכת מפענחת את ה-DNA של המותג שלך,<br>
-                        ואז אני נכנסת כאדריכלית ויודעת בדיוק מה לבנות.
-                    </p>
-                    <a href="brand-os.html" class="brand-os__btn">
-                        Discover Brand OS
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="brand-os__visual">
-                    <div class="brand-os__flow">
-                        <div class="brand-os__flow-item">📥 Input</div>
-                        <div class="brand-os__flow-arrow">→</div>
-                        <div class="brand-os__flow-item">🧠 Analysis</div>
-                        <div class="brand-os__flow-arrow">→</div>
-                        <div class="brand-os__flow-item">💎 Extract</div>
-                        <div class="brand-os__flow-arrow">→</div>
-                        <div class="brand-os__flow-item">📊 Reveal</div>
+            <div class="brand-os__card reveal">
+                <div class="brand-os__inner">
+                    <div class="brand-os__content">
+                        <p class="brand-os__label">New</p>
+                        <h2 class="brand-os__title">Brand OS</h2>
+                        <p class="brand-os__subtitle">// מערכת הפעלה למיתוג</p>
+                        <p class="brand-os__text">
+                            לפני שאני בונה - אני צריכה להבין.<br>
+                            המערכת מפענחת את ה-DNA של המותג שלך,<br>
+                            ואז אני נכנסת כאדריכלית ויודעת בדיוק מה לבנות.
+                        </p>
+                        <a href="brand-os.html" class="brand-os__btn">
+                            Discover Brand OS
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <p class="brand-os__demo-link">
+                            <a href="brand-os-demo.html">View MORA Dashboard Demo →</a>
+                        </p>
+                    </div>
+                    <div class="brand-os__visual">
+                        <div class="brand-os__flow">
+                            <div class="brand-os__flow-row">
+                                <div class="brand-os__flow-item">📥 Input</div>
+                                <span class="brand-os__flow-arrow">→</span>
+                                <div class="brand-os__flow-item">🧠 Analysis</div>
+                            </div>
+                            <div class="brand-os__flow-row">
+                                <div class="brand-os__flow-item">💎 Extract</div>
+                                <span class="brand-os__flow-arrow">→</span>
+                                <div class="brand-os__flow-item">📊 Reveal</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
