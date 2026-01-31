@@ -609,17 +609,18 @@
             text-align: center;
         }
         
-        .sphere__image-container {
+        .sphere__video-container {
             position: relative;
             margin-bottom: 48px;
         }
         
-        .sphere__image {
+        .sphere__video {
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             height: auto;
             margin: 0 auto;
             display: block;
+            border-radius: 8px;
         }
         
         .sphere__text {
@@ -1430,8 +1431,10 @@
     <!-- Sphere / Living Systems Section -->
     <section class="sphere section">
         <div class="sphere__inner">
-            <div class="sphere__image-container reveal">
-                <img src="sphere.png" alt="Where structure evolves into living systems" class="sphere__image">
+            <div class="sphere__video-container reveal">
+                <video class="sphere__video" autoplay muted loop playsinline>
+                    <source src="sphere-video.mp4" type="video/mp4">
+                </video>
             </div>
             <p class="sphere__text reveal">Where structure evolves into living systems.</p>
         </div>
