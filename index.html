@@ -594,6 +594,45 @@
         }
         
         /* ========================================
+           SPHERE / LIVING SYSTEMS SECTION
+        ======================================== */
+        .sphere {
+            background: var(--color-cream);
+            padding: clamp(80px, 15vw, 160px) 0;
+            overflow: hidden;
+        }
+        
+        .sphere__inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        
+        .sphere__image-container {
+            position: relative;
+            margin-bottom: 48px;
+        }
+        
+        .sphere__image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .sphere__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--color-chocolate);
+            letter-spacing: 0.02em;
+            opacity: 0.9;
+        }
+        
+        /* ========================================
            CAPABILITIES SECTION
         ======================================== */
         .capabilities {
@@ -1384,6 +1423,16 @@
                     <p class="method__card-text">פיתוח שפה ויזואלית מבוססת AI שמביאה את הסיפור לחיים בסטנדרט בינלאומי.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Sphere / Living Systems Section -->
+    <section class="sphere section">
+        <div class="sphere__inner">
+            <div class="sphere__image-container reveal">
+                <img src="sphere.png" alt="Where structure evolves into living systems" class="sphere__image">
+            </div>
+            <p class="sphere__text reveal">Where structure evolves into living systems.</p>
         </div>
     </section>
 
