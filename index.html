@@ -487,6 +487,34 @@
         }
         
         /* ========================================
+           WHO THIS IS FOR SECTION
+        ======================================== */
+        .who-for {
+            background: var(--color-chocolate);
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+        
+        .who-for__content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .who-for__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            line-height: 1.9;
+            color: var(--color-cream);
+            opacity: 0.9;
+        }
+        
+        .who-for__text em {
+            font-style: italic;
+            color: var(--color-copper);
+        }
+        
+        /* ========================================
            METHOD SECTION
         ======================================== */
         .method {
@@ -732,6 +760,104 @@
         }
         
         /* ========================================
+           OUTCOMES SECTION
+        ======================================== */
+        .outcomes {
+            background: var(--color-cream);
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+        
+        .outcomes__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .outcomes__label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .outcomes__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+        
+        .outcomes__list {
+            list-style: none;
+        }
+        
+        .outcomes__list li {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--color-chocolate);
+            padding: 16px 0;
+            padding-right: 24px;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+        
+        .outcomes__list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--color-copper);
+            font-style: normal;
+        }
+        
+        .outcomes__list li:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .outcomes__inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            .outcomes__list li {
+                padding-right: 0;
+            }
+            .outcomes__list li::before {
+                display: none;
+            }
+        }
+        
+        /* ========================================
+           AI APPROACH SECTION
+        ======================================== */
+        .ai-approach {
+            background: var(--color-chocolate);
+            padding: clamp(60px, 10vw, 80px) 0;
+        }
+        
+        .ai-approach__content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .ai-approach__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.9;
+            color: var(--color-cream);
+            opacity: 0.9;
+        }
+        
+        /* ========================================
            WORLDS (PORTFOLIO) SECTION
         ======================================== */
         .worlds {
@@ -844,6 +970,15 @@
             font-family: var(--font-display);
             font-size: 1.75rem;
             font-weight: 400;
+        }
+        
+        .worlds__card-subtitle {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--color-copper);
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
         
         .worlds__card-desc {
@@ -1377,7 +1512,7 @@
                 <span>I Build</span>
                 <span class="hero__title-highlight">Brand Worlds</span>
             </h1>
-            <p class="hero__subtitle">For visionary brands and technologies</p>
+            <p class="hero__subtitle">Most brands stop at design. I build the world behind it.</p>
             <a href="#contact" class="hero__cta">
                 Start Your Journey
                 <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1392,12 +1527,25 @@
         </div>
     </section>
 
+    <!-- Who This Is For Section -->
+    <section class="who-for section">
+        <div class="container">
+            <div class="who-for__content reveal">
+                <p class="who-for__text">
+                    This is for brands that want more than visibility.<br>
+                    For founders who care about identity, continuity and meaning.<br>
+                    For businesses that want a space people <em>stay in</em> — not just notice.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Method Section -->
     <section class="method section" id="method">
         <div class="container">
             <div class="method__header reveal">
                 <p class="method__label">The Method</p>
-                <h2 class="method__title">How We Build Brand Worlds</h2>
+                <h2 class="method__title">How I Build Brand Worlds</h2>
             </div>
             
             <div class="method__grid">
@@ -1405,24 +1553,24 @@
                     <img src="cube1.jpg" alt="The Core" class="method__card-image">
                     <div class="method__number">01</div>
                     <h3 class="method__card-title">The Core</h3>
-                    <p class="method__card-subtitle">זיקוק ה-DNA</p>
-                    <p class="method__card-text">אנחנו חופרים לעומק כדי למצוא את ה'למה' של המותג ואת הבידול האסטרטגי שלו.</p>
+                    <p class="method__card-subtitle">The inner logic that holds every decision.</p>
+                    <p class="method__card-text">זיקוק ה-DNA האמיתי של המותג — לא מה שצריך להיראות, אלא מי אתם באמת.</p>
                 </div>
                 
                 <div class="method__card reveal">
                     <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
                     <div class="method__number">02</div>
                     <h3 class="method__card-title">The Narrative</h3>
-                    <p class="method__card-subtitle">הפיכת אסטרטגיה למילים</p>
-                    <p class="method__card-text">בניית סיפור מותג שמהדהד רגשית ויוצר הזדהות מיידית.</p>
+                    <p class="method__card-subtitle">The story that gives meaning and continuity.</p>
+                    <p class="method__card-text">בניית הסיפור שמחבר את כל החלקים — שפה שאנשים מרגישים בה מובנים.</p>
                 </div>
                 
                 <div class="method__card reveal">
                     <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
                     <div class="method__number">03</div>
                     <h3 class="method__card-title">The Visual World</h3>
-                    <p class="method__card-subtitle">יצירת המציאות</p>
-                    <p class="method__card-text">פיתוח שפה ויזואלית מבוססת AI שמביאה את הסיפור לחיים בסטנדרט בינלאומי.</p>
+                    <p class="method__card-subtitle">The space people can actually enter and feel.</p>
+                    <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
                 </div>
             </div>
         </div>
@@ -1445,7 +1593,7 @@
         <div class="container">
             <div class="capabilities__header reveal">
                 <p class="capabilities__label">Capabilities</p>
-                <h2 class="capabilities__title">How We Bring Brand Worlds to Life</h2>
+                <h2 class="capabilities__title">How I Bring Brand Worlds to Life</h2>
             </div>
         </div>
         
@@ -1491,6 +1639,35 @@
         </div>
     </section>
 
+    <!-- What A World Gives You Section -->
+    <section class="outcomes section">
+        <div class="container">
+            <div class="outcomes__inner reveal">
+                <div class="outcomes__header">
+                    <p class="outcomes__label">The Outcome</p>
+                    <h2 class="outcomes__title">What a world gives you</h2>
+                </div>
+                <ul class="outcomes__list">
+                    <li>Clarity in every decision</li>
+                    <li>Content that flows naturally</li>
+                    <li>A brand people recognize without explanation</li>
+                    <li>A system you can grow inside</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Section -->
+    <section class="ai-approach section">
+        <div class="container">
+            <div class="ai-approach__content reveal">
+                <p class="ai-approach__text">
+                    AI is part of my process — not as a shortcut, but as a way to explore deeper, faster, and more accurately.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Worlds (Portfolio) Section -->
     <section class="worlds section" id="worlds">
         <div class="container">
@@ -1516,7 +1693,8 @@
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Beauty & Wellness</p>
                             <h3 class="worlds__card-title">MORA</h3>
-                            <p class="worlds__card-desc">יצירת אקו-סיסטם חושי מלא: מעיצוב המוצר ועד לחוויית המשתמש. שפה ויזואלית שעוטפת את הלקוח בטקסטורה, עומק וריח.</p>
+                            <p class="worlds__card-subtitle">A world built for a brand that needed authority without losing warmth.</p>
+                            <p class="worlds__card-desc">יצירת אקו-סיסטם חושי מלא: מעיצוב המוצר ועד לחוויית המשתמש.</p>
                         </div>
                     </a>
                 </article>
@@ -1529,7 +1707,8 @@
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Gaming & Technology</p>
                             <h3 class="worlds__card-title">NEXUS</h3>
-                            <p class="worlds__card-desc">עיצוב המחר. בניית אקו-סיסטם מותגי שמשדר קידמה וחדשנות, וממצב את החברה כמובילת קטגוריה בזירה הבינלאומית.</p>
+                            <p class="worlds__card-subtitle">A world built for a brand that needed to feel like tomorrow — today.</p>
+                            <p class="worlds__card-desc">בניית אקו-סיסטם מותגי שמשדר קידמה וחדשנות בזירה הבינלאומית.</p>
                         </div>
                     </a>
                 </article>
@@ -1542,7 +1721,8 @@
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Beauty & Lifestyle</p>
                             <h3 class="worlds__card-title">FROST</h3>
-                            <p class="worlds__card-desc">מיתוג שאפשר כמעט לטעום. יצירת שפה ויזואלית שמפעילה את כל החושים: מהמרקם, דרך הצבעוניות ועד לאריזה.</p>
+                            <p class="worlds__card-subtitle">A world built for a brand you could almost taste.</p>
+                            <p class="worlds__card-desc">שפה ויזואלית שמפעילה את כל החושים: מהמרקם, דרך הצבעוניות ועד לאריזה.</p>
                         </div>
                     </a>
                 </article>
@@ -1622,9 +1802,9 @@
     <section class="contact-cta section" id="contact">
         <div class="contact-cta__bg"></div>
         <div class="container contact-cta__content reveal">
-            <p class="contact-cta__label">Let's Create Together</p>
-            <h2 class="contact-cta__title">Ready to Build<br>Your Brand World?</h2>
-            <p class="contact-cta__text">בואו נבנה יחד את העולם שהמותג שלכם ראוי לו.<br>הצעד הראשון מתחיל בשאלון קצר.</p>
+            <p class="contact-cta__label">Let's Explore</p>
+            <h2 class="contact-cta__title">Not sure if your brand<br>has a world yet?</h2>
+            <p class="contact-cta__text">If this resonates — you're probably ready.<br>Let's explore it together.</p>
             <a href="brand-discovery.html" class="contact-cta__btn">
                 Start Brand Discovery
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
