@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Hagit Antebi</title>
+    <meta name="description" content="תובנות על בניית עולמות מותג, אסטרטגיה, AI ויצירה. מחשבות מהשטח.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #FDFBF7;
+            --color-text: #2C2420;
+            --color-text-light: #6B5344;
+            --color-accent: #C9A962;
+            --color-accent-dim: rgba(201, 169, 98, 0.15);
+            --color-border: rgba(107, 83, 68, 0.15);
+            --color-dark: #1A1A1D;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            color: var(--color-text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover {
+            color: var(--color-accent);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 160px 24px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+        
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+        
+        .hero__subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Articles Grid */
+        .articles {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px 120px;
+        }
+        
+        .articles__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        /* Article Card */
+        .article-card {
+            background: #FFFFFF;
+            border: 1px solid var(--color-border);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(44, 36, 32, 0.08);
+            border-color: var(--color-accent);
+        }
+        
+        .article-card__image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .article-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .article-card:hover .article-card__image img {
+            transform: scale(1.05);
+        }
+        
+        .article-card__placeholder {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+        }
+        
+        .article-card__content {
+            padding: 32px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card__category {
+            font-family: var(--font-body-en);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+        
+        .article-card__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        
+        .article-card__excerpt {
+            font-size: 0.9375rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+            flex: 1;
+        }
+        
+        .article-card__meta {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .article-card__date {
+            font-size: 0.8125rem;
+            color: var(--color-text-light);
+        }
+        
+        .article-card__read {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Featured Article */
+        .featured {
+            margin-bottom: 64px;
+        }
+        
+        .featured__card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(135deg, var(--color-dark) 0%, #0F0F11 100%);
+            text-decoration: none;
+            color: #E8E8E8;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .featured__card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+        
+        .featured__card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .featured__image {
+            aspect-ratio: 1;
+            overflow: hidden;
+        }
+        
+        .featured__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .featured__card:hover .featured__image img {
+            transform: scale(1.05);
+        }
+        
+        .featured__content {
+            padding: 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured__badge {
+            display: inline-block;
+            font-family: var(--font-body-en);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-dark);
+            background: var(--color-accent);
+            padding: 6px 14px;
+            margin-bottom: 24px;
+            align-self: flex-start;
+        }
+        
+        .featured__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+        
+        .featured__excerpt {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        
+        .featured__cta {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav { padding: 16px 24px; }
+            .hero { padding: 120px 24px 60px; }
+            .featured__card { grid-template-columns: 1fr; }
+            .featured__content { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav__logo">Hagit Antebi</a>
+        <a href="index.html" class="nav__back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+    </nav>
+
+    <section class="hero">
+        <p class="hero__label">Insights</p>
+        <h1 class="hero__title">מחשבות על עולמות</h1>
+        <p class="hero__subtitle">על בניית מותגים, אסטרטגיה, AI, ויצירה שמחזיקה לאורך זמן.</p>
+    </section>
+
+    <section class="articles">
+        
+        <!-- Featured Article -->
+        <div class="featured">
+            <a href="insights/why-i-build-worlds.html" class="featured__card">
+                <div class="featured__image">
+                    <img src="sphere.png" alt="למה אני בונה עולמות">
+                </div>
+                <div class="featured__content">
+                    <span class="featured__badge">Featured</span>
+                    <h2 class="featured__title">למה אני בונה עולמות ולא מותגים</h2>
+                    <p class="featured__excerpt">מיתוג עוסק בנראות. עולם עוסק בתחושה. על ההבדל בין מותג שנראה טוב לבין עולם שאפשר לגדול בו.</p>
+                    <span class="featured__cta">
+                        Read Article
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <!-- More Articles Grid -->
+        <div class="articles__grid">
+            
+            <a href="insights/end-of-services-era.html" class="article-card">
+                <div class="article-card__image">
+                    <span class="article-card__placeholder">✦</span>
+                </div>
+                <div class="article-card__content">
+                    <span class="article-card__category">Manifesto</span>
+                    <h3 class="article-card__title">סוף עידן השירותים. ברוכים הבאים לעידן העולמות.</h3>
+                    <p class="article-card__excerpt">אנשים הפסיקו לקנות עיצוב. הם קונים כרטיס כניסה למציאות שהם חולמים להיות חלק ממנה.</p>
+                    <div class="article-card__meta">
+                        <span class="article-card__date">ינואר 2025</span>
+                        <span class="article-card__read">
+                            Read
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>
