@@ -932,8 +932,14 @@
         
         .worlds__grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(24px, 3vw, 40px);
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(24px, 4vw, 48px);
+        }
+        
+        @media (max-width: 768px) {
+            .worlds__grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .worlds__card {
@@ -1724,6 +1730,20 @@
                 </article>
                 
                 <article class="worlds__card reveal">
+                    <a href="https://hagitadigital.github.io/SHIRO/" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="worlds__card-image">
+                            <img src="shiro.png" alt="SHIRO" class="worlds__card-img">
+                        </div>
+                        <div class="worlds__card-content">
+                            <p class="worlds__card-category">Smart Home & Technology</p>
+                            <h3 class="worlds__card-title">SHIRO</h3>
+                            <p class="worlds__card-subtitle">A world built for calm intelligence that organizes life quietly.</p>
+                            <p class="worlds__card-desc">אינטליגנציה שקטה שמסדרת את החיים בלי לדרוש תשומת לב.</p>
+                        </div>
+                    </a>
+                </article>
+                
+                <article class="worlds__card reveal">
                     <a href="nexus.html" style="text-decoration: none; color: inherit;">
                         <div class="worlds__card-image">
                             <img src="nexus.png" alt="NEXUS" class="worlds__card-img">
@@ -1869,9 +1889,9 @@
                 <div class="footer__col">
                     <h4 class="footer__col-title">Connect</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Behance</a></li>
+                        <li><a href="https://www.instagram.com/hagit.antebi/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/in/hagit-antebi-rasuli" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://wa.me/972528351676" target="_blank">WhatsApp</a></li>
                     </ul>
                 </div>
             </div>
@@ -1879,8 +1899,8 @@
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 Hagit Antebi. All rights reserved.</p>
                 <div class="footer__social">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
+                    <a href="privacy.html">מדיניות פרטיות</a>
+                    <a href="accessibility.html">הצהרת נגישות</a>
                 </div>
             </div>
         </div>

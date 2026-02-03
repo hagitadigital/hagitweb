@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצהרת נגישות | Hagit Antebi</title>
+    <meta name="description" content="הצהרת הנגישות של אתר חגית אנטבי - Brand Architect & Visual Strategist">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #2C2420;
+            --color-chocolate-mid: #6B5344;
+            --color-copper: #C9A962;
+            --color-border: rgba(107, 83, 68, 0.15);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.8;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .nav__inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            color: var(--color-chocolate-mid);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 24px 80px;
+        }
+        
+        .content__header {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .content__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .content__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        
+        .content__updated {
+            font-size: 0.875rem;
+            color: var(--color-chocolate-mid);
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--color-chocolate);
+        }
+        
+        .section h3 {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--color-chocolate);
+        }
+        
+        .section p {
+            margin-bottom: 16px;
+            color: var(--color-chocolate-mid);
+        }
+        
+        .section ul {
+            margin: 16px 0;
+            padding-right: 24px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            color: var(--color-chocolate-mid);
+        }
+        
+        .section a {
+            color: var(--color-copper);
+            text-decoration: none;
+        }
+        
+        .section a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Intro */
+        .intro-text {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            color: var(--color-chocolate);
+            margin-bottom: 48px;
+            padding: 24px 32px;
+            background: var(--color-warm-beige);
+            border-radius: 8px;
+        }
+        
+        /* Contact Box */
+        .contact-box {
+            background: var(--color-warm-beige);
+            padding: 24px 32px;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        
+        .contact-box p {
+            margin: 0;
+            color: var(--color-chocolate);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            color: var(--color-chocolate-mid);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header class="content__header">
+            <p class="content__label">Accessibility</p>
+            <h1 class="content__title">הצהרת נגישות</h1>
+            <p class="content__updated">עודכן לאחרונה: פברואר 2025</p>
+        </header>
+
+        <p class="intro-text">אני, חגית אנטבי, רואה חשיבות רבה בהנגשת האתר לכלל הגולשים, לרבות אנשים עם מוגבלויות. מטרתי היא לאפשר חוויית גלישה נוחה, ברורה ונגישה ככל האפשר לכל אדם.</p>
+
+        <div class="section">
+            <p>האתר נבנה מתוך כוונה לעמוד בהנחיות הנגישות המקובלות, ולהתאים את התוכן והשימוש בו לצרכים מגוונים.</p>
+        </div>
+
+        <div class="section">
+            <h2>התאמות נגישות שבוצעו באתר</h2>
+            
+            <h3>עיצוב ותצוגה</h3>
+            <ul>
+                <li>שימוש בצבעים, ניגודיות וגופנים קריאים וברורים</li>
+                <li>מבנה עמודים מסודר והיררכיית כותרות עקבית לצורך ניווט נוח</li>
+            </ul>
+            
+            <h3>תמונות ותוכן חזותי</h3>
+            <ul>
+                <li>לכל התמונות באתר הוגדרו טקסטים חלופיים (Alt Text), המאפשרים הבנה של התוכן באמצעות טכנולוגיות מסייעות</li>
+            </ul>
+            
+            <h3>קישורים</h3>
+            <ul>
+                <li>הקישורים באתר מנוסחים בצורה ברורה וכוללים טקסט תיאורי המסביר לאן הם מובילים</li>
+            </ul>
+            
+            <h3>טפסים</h3>
+            <ul>
+                <li>טפסי יצירת הקשר וההרשמה באתר מתוכננים להיות פשוטים, ברורים ונגישים לשימוש</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>שיפור מתמיד</h2>
+            <p>אני פועלת לשיפור מתמיד של נגישות האתר, ומתעדכנת ככל הניתן בהנחיות ובתקנים הרלוונטיים. ייתכן כי חלק מהתכנים או הרכיבים באתר עדיין אינם נגישים באופן מלא, ואני עושה מאמץ מתמשך לשפרם.</p>
+        </div>
+
+        <div class="section">
+            <h2>יצירת קשר בנושא נגישות</h2>
+            <p>אם נתקלתם בבעיה כלשהי בנגישות האתר, או אם יש לכם שאלות, הערות או הצעות לשיפור – אשמח שתפנו אליי ואעשה כל מאמץ לתת מענה בהקדם.</p>
+            
+            <div class="contact-box">
+                <p><strong>חגית אנטבי</strong><br>
+                📧 דוא"ל: <a href="mailto:hagitadigital@gmail.com">hagitadigital@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+</body>
+</html>
