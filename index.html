@@ -949,9 +949,13 @@
         
         .worlds__card-image {
             aspect-ratio: 16/10;
-            background: var(--color-warm-beige);
+            background: linear-gradient(135deg, var(--color-warm-beige) 0%, var(--color-light-taupe) 100%);
             overflow: hidden;
             position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .worlds__card-image::before {
@@ -1718,7 +1722,8 @@
                 <article class="worlds__card reveal">
                     <a href="mora.html" style="text-decoration: none; color: inherit;">
                         <div class="worlds__card-image">
-                            <img src="mora.png" alt="MORA" class="worlds__card-img">
+                            <img src="mora.png" alt="MORA" class="worlds__card-img" onerror="this.style.display='none'">
+                            <span style="position:absolute;font-family:var(--font-display);font-size:2rem;color:var(--color-chocolate);opacity:0.3;">MORA</span>
                         </div>
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Beauty & Wellness</p>
@@ -1732,7 +1737,8 @@
                 <article class="worlds__card reveal">
                     <a href="https://hagitadigital.github.io/SHIRO/" target="_blank" style="text-decoration: none; color: inherit;">
                         <div class="worlds__card-image">
-                            <img src="shiro.png" alt="SHIRO" class="worlds__card-img">
+                            <img src="shiro.png" alt="SHIRO" class="worlds__card-img" onerror="this.style.display='none'">
+                            <span style="position:absolute;font-family:var(--font-display);font-size:2rem;color:var(--color-chocolate);opacity:0.3;">SHIRO</span>
                         </div>
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Smart Home & Technology</p>
@@ -1746,7 +1752,8 @@
                 <article class="worlds__card reveal">
                     <a href="nexus.html" style="text-decoration: none; color: inherit;">
                         <div class="worlds__card-image">
-                            <img src="nexus.png" alt="NEXUS" class="worlds__card-img">
+                            <img src="nexus.png" alt="NEXUS" class="worlds__card-img" onerror="this.style.display='none'">
+                            <span style="position:absolute;font-family:var(--font-display);font-size:2rem;color:var(--color-chocolate);opacity:0.3;">NEXUS</span>
                         </div>
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Gaming & Technology</p>
@@ -1760,7 +1767,8 @@
                 <article class="worlds__card reveal">
                     <a href="frost.html" style="text-decoration: none; color: inherit;">
                         <div class="worlds__card-image">
-                            <img src="frost.png" alt="FROST" class="worlds__card-img">
+                            <img src="frost.png" alt="FROST" class="worlds__card-img" onerror="this.style.display='none'">
+                            <span style="position:absolute;font-family:var(--font-display);font-size:2rem;color:var(--color-chocolate);opacity:0.3;">FROST</span>
                         </div>
                         <div class="worlds__card-content">
                             <p class="worlds__card-category">Beauty & Lifestyle</p>
