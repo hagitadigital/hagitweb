@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צור קשר | Hagit Antebi</title>
+    <meta name="description" content="צרו קשר לשיחה על בניית עולם מותג, סדנאות או פרויקטים ויזואליים">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #2C2420;
+            --color-chocolate-mid: #6B5344;
+            --color-copper: #C9A962;
+            --color-taupe: #B8A89A;
+            --color-border: rgba(107, 83, 68, 0.15);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .nav__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+        
+        .nav__back {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            color: var(--color-chocolate-mid);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .nav__back:hover { color: var(--color-copper); }
+        
+        /* Main */
+        .main {
+            padding: 140px 24px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .page__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .page__subtitle {
+            font-size: 1.0625rem;
+            color: var(--color-chocolate-mid);
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Contact Options */
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        
+        .contact-option {
+            padding: 32px;
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--color-chocolate);
+            transition: all 0.3s;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(44, 36, 32, 0.08);
+            border-color: var(--color-copper);
+        }
+        
+        .contact-option__icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        
+        .contact-option__title {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        
+        .contact-option__desc {
+            font-size: 0.875rem;
+            color: var(--color-chocolate-mid);
+        }
+        
+        /* Form */
+        .form-section {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 48px;
+        }
+        
+        .form-section__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .form-section__desc {
+            font-size: 0.9375rem;
+            color: var(--color-chocolate-mid);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .form__group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form__label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-chocolate);
+        }
+        
+        .form__input,
+        .form__textarea,
+        .form__select {
+            padding: 16px;
+            font-family: var(--font-body-he);
+            font-size: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form__input:focus,
+        .form__textarea:focus,
+        .form__select:focus {
+            outline: none;
+            border-color: var(--color-copper);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+        }
+        
+        .form__textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form__row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .form__submit {
+            padding: 18px 40px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-chocolate);
+            background: var(--color-copper);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: center;
+        }
+        
+        .form__submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+        
+        .form__note {
+            font-size: 0.8125rem;
+            color: var(--color-taupe);
+            text-align: center;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 48px;
+        }
+        
+        .success-message__icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        .success-message__title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+        
+        .success-message__text {
+            color: var(--color-chocolate-mid);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .footer__text {
+            font-size: 0.875rem;
+            color: var(--color-chocolate-mid);
+        }
+        
+        @media (max-width: 600px) {
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .form__row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="index.html" class="nav__back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <p class="page__label">Contact</p>
+        <h1 class="page__title">בואי נדבר</h1>
+        <p class="page__subtitle">יש לך רעיון למותג? שאלה על התהליך? או סתם רוצה להגיד שלום? אני כאן.</p>
+        
+        <!-- Quick Contact Options -->
+        <div class="contact-options">
+            <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20הגעתי%20מהאתר%20החדש" class="contact-option">
+                <div class="contact-option__icon">💬</div>
+                <div class="contact-option__title">WhatsApp</div>
+                <div class="contact-option__desc">לשיחה מהירה</div>
+            </a>
+            <a href="mailto:hagitadigital@gmail.com" class="contact-option">
+                <div class="contact-option__icon">✉️</div>
+                <div class="contact-option__title">Email</div>
+                <div class="contact-option__desc">hagitadigital@gmail.com</div>
+            </a>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="form-section">
+            <h2 class="form-section__title">או השאירי פרטים</h2>
+            <p class="form-section__desc">ואחזור אלייך תוך 24 שעות</p>
+            
+            <!-- IMPORTANT: Replace YOUR_FORM_ID with your actual Formspree form ID -->
+            <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="name">שם מלא *</label>
+                        <input type="text" id="name" name="name" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="email">אימייל *</label>
+                        <input type="email" id="email" name="email" class="form__input" required>
+                    </div>
+                </div>
+                
+                <div class="form__group">
+                    <label class="form__label" for="phone">טלפון</label>
+                    <input type="tel" id="phone" name="phone" class="form__input">
+                </div>
+                
+                <div class="form__group">
+                    <label class="form__label" for="subject">במה אני יכולה לעזור? *</label>
+                    <select id="subject" name="subject" class="form__select" required>
+                        <option value="">בחרי נושא...</option>
+                        <option value="brand-world">בניית Brand World</option>
+                        <option value="workshop">סדנת World Builder</option>
+                        <option value="visual-lab">AI Visual Lab</option>
+                        <option value="consultation">שיחת ייעוץ</option>
+                        <option value="other">משהו אחר</option>
+                    </select>
+                </div>
+                
+                <div class="form__group">
+                    <label class="form__label" for="message">ספרי לי קצת על הפרויקט שלך *</label>
+                    <textarea id="message" name="message" class="form__textarea" required placeholder="מה המותג? מה האתגר? מה החלום?"></textarea>
+                </div>
+                
+                <!-- Honeypot for spam protection -->
+                <input type="text" name="_gotcha" style="display:none">
+                
+                <button type="submit" class="form__submit">שליחה</button>
+                
+                <p class="form__note">* שדות חובה. המידע שלך לא יועבר לצד שלישי.</p>
+            </form>
+            
+            <!-- Success Message (shown after submission) -->
+            <div class="success-message" id="success-message">
+                <div class="success-message__icon">✨</div>
+                <h3 class="success-message__title">ההודעה נשלחה!</h3>
+                <p class="success-message__text">תודה שפנית. אחזור אלייך בהקדם.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    alert('משהו השתבש. נסי שוב או פני אליי בוואטסאפ.');
+                }
+            } catch (error) {
+                alert('משהו השתבש. נסי שוב או פני אליי בוואטסאפ.');
+            }
+        });
+    </script>
+</body>
+</html>
