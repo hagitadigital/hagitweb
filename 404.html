@@ -6,6 +6,44 @@
   <title>404 — Lost in Space | Hagit Antebi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <script>
+    // ============================================
+    // REDIRECT MAP: Old Wix URLs → New pages
+    // GitHub Pages sends ALL 404s to this file,
+    // so this script catches and redirects them.
+    // ============================================
+    const redirects = {
+      // --- English old Wix pages ---
+      '/personaldigitalaccompaniment': '/',
+      '/postpackage': '/',
+      '/ministudioai': '/ai-visual-lab.html',
+      '/ai': '/ai-visuals.html',
+      '/planningtool': '/',
+      '/aiprojects': '/ai-visuals.html',
+      '/digitalplanner': '/',
+      '/visualfit': '/',
+      // --- Hebrew pages (URL-encoded as Google indexes them) ---
+      '/%D7%99%D7%A6%D7%99%D7%A8%D7%AA-%D7%AA%D7%95%D7%9B%D7%9F-%D7%A8%D7%90%D7%A9%D7%99': '/',
+      '/%D7%94%D7%9E%D7%A1%D7%A2-%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99': '/method.html',
+      '/ai-%D7%9E%D7%A6%D7%92%D7%95%D7%AA': '/',
+      '/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%D7%99%D7%9D-%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%D7%99%D7%9D': '/',
+      '/%D7%94%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%D7%9D-%D7%A9%D7%9C%D7%A0%D7%95': '/',
+    };
+
+    // Try matching current path
+    const raw = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    const decoded = decodeURIComponent(raw);
+    const target = redirects[raw] || redirects[decoded] || redirects[encodeURI(decoded)];
+
+    if (target) {
+      window.location.replace(target);
+    }
+
+    // Catch all old /post/ blog URLs
+    if (raw.startsWith('/post/') || decoded.startsWith('/post/')) {
+      window.location.replace('/insights.html');
+    }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -22,12 +60,7 @@
       position: relative;
     }
 
-    /* Animated background particles */
-    .bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
+    .bg-canvas { position: fixed; inset: 0; z-index: 0; }
 
     .orb {
       position: absolute;
@@ -41,7 +74,6 @@
       width: 400px; height: 400px;
       background: radial-gradient(circle, #c9a96e, transparent 70%);
       top: 10%; left: 20%;
-      animation-delay: 0s;
     }
 
     .orb-2 {
@@ -158,12 +190,8 @@
       transform: translateY(-2px);
     }
 
-    .btn svg {
-      width: 16px;
-      height: 16px;
-    }
+    .btn svg { width: 16px; height: 16px; }
 
-    /* Decorative line */
     .divider {
       width: 40px;
       height: 1px;
@@ -171,7 +199,6 @@
       margin: 0 auto 1.5rem;
     }
 
-    /* Quick links */
     .quick-links {
       margin-top: 3.5rem;
       padding-top: 2rem;
@@ -201,11 +228,8 @@
       letter-spacing: 0.02em;
     }
 
-    .quick-links-list a:hover {
-      color: #c9a96e;
-    }
+    .quick-links-list a:hover { color: #c9a96e; }
 
-    /* Entry animations */
     .content > * {
       opacity: 0;
       transform: translateY(20px);
