@@ -1,605 +1,492 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand OS | מערכת הפעלה למיתוג</title>
-    <meta name="description" content="מערכת הפעלה למיתוג - המערכת שמפענחת את ה-DNA של המותג שלך לפני שנבנה אותו.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --color-bg: #0a0a0a;
-            --color-bg-card: #121212;
-            --color-bg-elevated: #1a1a1a;
-            --color-gold: #C9A962;
-            --color-gold-dim: rgba(201, 169, 98, 0.2);
-            --color-gold-glow: rgba(201, 169, 98, 0.1);
-            --color-text: #E8E8E8;
-            --color-text-dim: #666666;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
-            --font-body-he: 'Heebo', sans-serif;
-        }
-        
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: var(--font-body-he);
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.7;
-        }
-        
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 24px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
-        }
-        
-        .nav__logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--color-text);
-            text-decoration: none;
-            letter-spacing: 0.05em;
-        }
-        
-        .nav__back {
-            font-family: var(--font-body-en);
-            font-size: 0.8125rem;
-            color: var(--color-text-dim);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
-        }
-        
-        .nav__back:hover {
-            color: var(--color-gold);
-        }
-        
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 120px 48px 80px;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(201, 169, 98, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(201, 169, 98, 0.02) 0%, transparent 50%);
-        }
-        
-        .hero__badge {
-            font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--color-gold);
-            border: 1px solid var(--color-gold-dim);
-            padding: 12px 28px;
-            margin-bottom: 48px;
-        }
-        
-        .hero__title {
-            font-family: var(--font-display);
-            font-size: clamp(4rem, 10vw, 8rem);
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
-            background: linear-gradient(to bottom, var(--color-text), var(--color-text-dim));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero__subtitle {
-            font-family: var(--font-body-en);
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-gold);
-            margin-bottom: 48px;
-        }
-        
-        .hero__desc {
-            font-size: 1.25rem;
-            color: var(--color-text);
-            opacity: 0.8;
-            max-width: 600px;
-            line-height: 1.9;
-            margin-bottom: 56px;
-        }
-        
-        .hero__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            font-family: var(--font-body-en);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-bg);
-            background: var(--color-gold);
-            text-decoration: none;
-            padding: 20px 48px;
-            transition: all 0.4s ease;
-        }
-        
-        .hero__cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
-        }
-        
-        .hero__demo {
-            margin-top: 24px;
-            font-size: 0.875rem;
-            color: var(--color-text-dim);
-        }
-        
-        .hero__demo a {
-            color: var(--color-gold);
-            text-decoration: none;
-        }
-        
-        .hero__demo a:hover {
-            text-decoration: underline;
-        }
-        
-        /* What is Section */
-        .section {
-            padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px);
-        }
-        
-        .section--dark {
-            background: var(--color-bg-card);
-        }
-        
-        .section__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section__header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-        
-        .section__label {
-            font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-gold);
-            margin-bottom: 16px;
-        }
-        
-        .section__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-        }
-        
-        /* How it Works */
-        .flow {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            background: var(--color-bg-elevated);
-        }
-        
-        .flow__step {
-            background: var(--color-bg-card);
-            padding: 48px 32px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-        
-        .flow__step:hover {
-            background: var(--color-bg-elevated);
-        }
-        
-        .flow__icon {
-            font-size: 2rem;
-            margin-bottom: 24px;
-        }
-        
-        .flow__number {
-            font-family: var(--font-body-en);
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            color: var(--color-gold);
-            margin-bottom: 12px;
-        }
-        
-        .flow__title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-        
-        .flow__desc {
-            font-size: 0.875rem;
-            color: var(--color-text-dim);
-            line-height: 1.7;
-        }
-        
-        /* Engine Section */
-        .engine-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 32px;
-        }
-        
-        .engine-card {
-            background: var(--color-bg-elevated);
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: border-color 0.3s;
-        }
-        
-        .engine-card:hover {
-            border-color: var(--color-gold-dim);
-        }
-        
-        .engine-card__icon {
-            font-size: 2rem;
-            margin-bottom: 24px;
-        }
-        
-        .engine-card__title {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-gold);
-            margin-bottom: 16px;
-        }
-        
-        .engine-card__list {
-            list-style: none;
-        }
-        
-        .engine-card__list li {
-            font-size: 0.9375rem;
-            color: var(--color-text);
-            opacity: 0.8;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .engine-card__list li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Output Section */
-        .output-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-        
-        .output-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            background: var(--color-bg-card);
-            padding: 32px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .output-card__number {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 400;
-            color: var(--color-gold);
-            opacity: 0.5;
-            line-height: 1;
-        }
-        
-        .output-card__content h3 {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        
-        .output-card__content p {
-            font-size: 0.9375rem;
-            color: var(--color-text-dim);
-            line-height: 1.6;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: clamp(100px, 15vw, 180px) clamp(24px, 5vw, 80px);
-            background: 
-                radial-gradient(ellipse at center, rgba(201, 169, 98, 0.05) 0%, transparent 60%);
-        }
-        
-        .cta-section__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            margin-bottom: 24px;
-        }
-        
-        .cta-section__text {
-            font-size: 1.125rem;
-            color: var(--color-text-dim);
-            max-width: 500px;
-            margin: 0 auto 48px;
-        }
-        
-        .cta-section__btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            font-family: var(--font-body-en);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-bg);
-            background: var(--color-gold);
-            text-decoration: none;
-            padding: 20px 48px;
-            transition: all 0.4s ease;
-        }
-        
-        .cta-section__btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
-        }
-        
-        /* Footer */
-        .footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid var(--color-bg-elevated);
-        }
-        
-        .footer__text {
-            font-size: 0.75rem;
-            color: var(--color-text-dim);
-        }
-        
-        .footer__brand {
-            color: var(--color-gold);
-        }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            .nav {
-                padding: 16px 24px;
-            }
-            
-            .flow {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .engine-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .output-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .flow {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand OS | מערכת תוכן ממותגת — Hagit Antebi</title>
+  <meta name="description" content="BrandOS הופך את הזהות של המותג שלך למערכת יצירת תוכן חכמה. כל מילה שיוצאת — נשמעת כמוך.">
+  <meta property="og:title" content="Brand OS — מערכת תוכן ממותגת">
+  <meta property="og:description" content="הופכים את ה-DNA של המותג שלך למערכת יצירת תוכן חכמה.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a03c;
+      --gold-dim: rgba(201,160,60,0.08);
+      --gold-glow: rgba(201,160,60,0.15);
+      --bg: #080808;
+      --bg-card: #0f0f0f;
+      --bg-elevated: #161616;
+      --border: #1f1f1f;
+      --text: #f0ece4;
+      --text-2: #8a8578;
+      --text-3: #5a564d;
+      --red: #e85d5d;
+      --green: #5ec96a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── Nav ─────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-2); letter-spacing: 0.08em; text-decoration: none; }
+    .nav-logo b { color: var(--text); font-weight: 500; }
+    .nav-back { font-size: 0.72rem; color: var(--text-3); text-decoration: none; letter-spacing: 0.06em; transition: color 0.3s; }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ─── Hero ────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 70% 40%, rgba(201,160,60,0.04), transparent),
+        radial-gradient(ellipse 400px 600px at 30% 60%, rgba(201,160,60,0.02), transparent);
+    }
+
+    .hero-inner {
+      max-width: 800px; text-align: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); padding: 6px 16px;
+      border: 1px solid rgba(201,160,60,0.15); border-radius: 100px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.8s ease-out;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease-out 0.1s both;
+    }
+    .hero h1 span { color: var(--gold); font-weight: 400; }
+
+    .hero-sub {
+      font-size: 1.1rem; line-height: 1.8; color: var(--text-2);
+      max-width: 560px; margin: 0 auto 48px;
+      font-weight: 300;
+      animation: fadeUp 0.8s ease-out 0.2s both;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-ctas {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s ease-out 0.3s both;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 500; text-decoration: none;
+      transition: all 0.3s ease; cursor: pointer; border: none;
+      letter-spacing: 0.04em;
+    }
+    .btn-gold { background: var(--gold); color: #0a0a0a; }
+    .btn-gold:hover { background: #d4aa42; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(201,160,60,0.2); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text-2); background: transparent; }
+    .btn-ghost:hover { border-color: rgba(201,160,60,0.3); color: var(--gold); }
+
+    /* ─── Pain Section ────────────────── */
+    .section { padding: 100px 24px; max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 300; line-height: 1.2;
+      margin-bottom: 48px;
+    }
+    .section-title span { color: var(--gold); }
+
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .pain-card {
+      padding: 28px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.4s ease;
+    }
+    .pain-card:hover { border-color: rgba(201,160,60,0.15); transform: translateY(-2px); }
+    .pain-icon { font-size: 1.3rem; margin-bottom: 14px; }
+    .pain-card h3 { font-size: 0.88rem; font-weight: 500; margin-bottom: 8px; color: var(--text); }
+    .pain-card p { font-size: 0.78rem; line-height: 1.7; color: var(--text-2); font-weight: 300; }
+
+    /* ─── How It Works ────────────────── */
+    .steps { counter-reset: step; }
+    .step {
+      display: grid; grid-template-columns: 60px 1fr; gap: 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      counter-increment: step;
+      opacity: 0; animation: fadeUp 0.6s ease-out forwards;
+    }
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.3s; }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 300;
+      color: var(--gold); line-height: 1;
+    }
+    .step-num::before { content: counter(step, decimal-leading-zero); }
+    .step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
+    .step p { font-size: 0.82rem; line-height: 1.7; color: var(--text-2); font-weight: 300; }
+    .step .tag {
+      display: inline-block; font-size: 0.6rem; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
+      margin-top: 10px;
+    }
+    .tag-you { background: var(--gold-dim); color: var(--gold); }
+    .tag-system { background: rgba(94,201,106,0.08); color: var(--green); }
+
+    /* ─── Before/After ────────────────── */
+    .compare {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; margin: 48px 0;
+    }
+    .compare-side { padding: 32px 28px; }
+    .compare-before { background: var(--bg-card); }
+    .compare-after { background: rgba(201,160,60,0.03); border-right: 1px solid var(--border); }
+    .compare-label {
+      font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase;
+      margin-bottom: 20px; font-weight: 600;
+    }
+    .compare-before .compare-label { color: var(--red); }
+    .compare-after .compare-label { color: var(--green); }
+    .compare-item {
+      font-size: 0.78rem; line-height: 1.7; color: var(--text-2);
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-weight: 300;
+    }
+    .compare-item:last-child { border: none; }
+
+    /* ─── Demo CTA ────────────────────── */
+    .demo-cta {
+      text-align: center; padding: 80px 24px;
+      background: linear-gradient(180deg, transparent, rgba(201,160,60,0.03), transparent);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 300; margin-bottom: 16px;
+    }
+    .demo-cta p { color: var(--text-2); font-size: 0.88rem; margin-bottom: 32px; font-weight: 300; }
+    .demo-brands {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .demo-brand {
+      font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-3);
+      padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px;
+    }
+
+    /* ─── Pricing Preview ─────────────── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px; margin-top: 48px;
+    }
+    .price-card {
+      padding: 32px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+    .price-card.featured {
+      border-color: rgba(201,160,60,0.25);
+      background: rgba(201,160,60,0.03);
+    }
+    .price-card:hover { transform: translateY(-3px); }
+    .price-tier { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+    .price-card.featured .price-tier { color: var(--gold); }
+    .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 4px; }
+    .price-card.featured .price-amount { color: var(--gold); }
+    .price-period { font-size: 0.7rem; color: var(--text-3); margin-bottom: 20px; }
+    .price-features { list-style: none; text-align: right; }
+    .price-features li {
+      font-size: 0.75rem; color: var(--text-2); padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+    }
+    .price-features li::before { content: '✓ '; color: var(--gold); }
+
+    /* ─── Final CTA ───────────────────── */
+    .final-cta {
+      text-align: center; padding: 100px 24px;
+    }
+    .final-cta blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--gold); max-width: 640px; margin: 0 auto 16px;
+      line-height: 1.5;
+    }
+    .final-cta .attr { font-size: 0.72rem; color: var(--text-3); margin-bottom: 48px; }
+
+    /* ─── Footer ──────────────────────── */
+    .footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.06em;
+    }
+
+    /* ─── Animations ──────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ─── Responsive ──────────────────── */
+    @media (max-width: 640px) {
+      .compare { grid-template-columns: 1fr; }
+      .compare-after { border-right: none; border-top: 1px solid var(--border); }
+      .step { grid-template-columns: 40px 1fr; gap: 16px; }
+      .nav { padding: 14px 18px; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="index.html" class="nav__logo">Hagit Antebi</a>
-        <a href="index.html" class="nav__back">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back to Studio
-        </a>
-    </nav>
 
-    <section class="hero">
-        <span class="hero__badge">Introducing</span>
-        <h1 class="hero__title">Brand OS</h1>
-        <p class="hero__subtitle">מערכת הפעלה למיתוג</p>
-        <p class="hero__desc">
-            המערכת שעושה את העבודה השחורה של ההבנה -<br>
-            מזקקת את הליבה, הסיפור, הצבעים והאישיות.<br>
-            ואז אני נכנסת כאדריכלית, ויודעת בדיוק מה לבנות.
-        </p>
-        <a href="brand-discovery.html" class="hero__cta">
-            Start Brand Discovery
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
-        <p class="hero__demo">רוצה לראות דוגמה? <a href="brand-os-demo.html">צפה ב-MORA Dashboard</a></p>
-    </section>
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><b>Hagit</b> Antebi</a>
+    <a href="index.html" class="nav-back">← Back to Studio</a>
+  </nav>
 
-    <section class="section section--dark">
-        <div class="section__inner">
-            <div class="section__header">
-                <p class="section__label">How It Works</p>
-                <h2 class="section__title">התהליך</h2>
-            </div>
-            
-            <div class="flow">
-                <div class="flow__step">
-                    <p class="flow__icon">📥</p>
-                    <p class="flow__number">01</p>
-                    <h3 class="flow__title">Input</h3>
-                    <p class="flow__desc">אתר, טקסטים, פוסטים, מצגות, PDF - כל החומרים הקיימים</p>
-                </div>
-                <div class="flow__step">
-                    <p class="flow__icon">🧠</p>
-                    <p class="flow__number">02</p>
-                    <h3 class="flow__title">Analysis</h3>
-                    <p class="flow__desc">המערכת מנתחת, מזהה דפוסים, סתירות, ערכים וכיוונים</p>
-                </div>
-                <div class="flow__step">
-                    <p class="flow__icon">💎</p>
-                    <p class="flow__number">03</p>
-                    <h3 class="flow__title">Extract</h3>
-                    <p class="flow__desc">זיקוק הליבה - Core Idea, Story, Personality, Visual DNA</p>
-                </div>
-                <div class="flow__step">
-                    <p class="flow__icon">📊</p>
-                    <p class="flow__number">04</p>
-                    <h3 class="flow__title">Reveal</h3>
-                    <p class="flow__desc">Dashboard מלא עם אבחון, כיוון ותוכנית פעולה</p>
-                </div>
-            </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">מערכת תוכן ממותגת</div>
+      <h1 class="font-display">Brand <span>OS</span></h1>
+      <p class="hero-sub">
+        המותג שלך הוא לא לוגו — הוא <strong>עולם שלם</strong>.<br>
+        אני כותבת את ה-DNA, והמערכת הופכת אותו ל<strong>מנוע יצירת תוכן</strong><br>
+        שכל מילה שיוצאת ממנו — נשמעת כמוך.
+      </p>
+      <div class="hero-ctas">
+        <a href="brand-discovery.html" class="btn btn-gold">→ רוצה BrandOS למותג שלי</a>
+        <a href="https://brandos-fresh.vercel.app/" target="_blank" class="btn btn-ghost">נסו את הדמו החי ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain -->
+  <section class="section">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">למה תוכן <span>לא עובד</span> היום</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">🪞</div>
+        <h3>"המותג לא נשמע כמוני"</h3>
+        <p>כל פוסט נשמע אחרת. אין קול אחד. המותג נראה כמו 5 מותגים שונים.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤖</div>
+        <h3>"כתבתי עם ChatGPT — יצא גנרי"</h3>
+        <p>AI בלי DNA = מנוע בלי תכנון. התוצאה שטוחה, לא נשמעת כמוך, דורשת תיקונים אינסופיים.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏰</div>
+        <h3>"מבזבזת שעות על תוכן"</h3>
+        <p>במקום לנהל את העסק, את יושבת על פוסט. התוכן נדחק לסוף הרשימה — ומדלדל את המותג.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <h3>"אין תקציב לקופירייטר"</h3>
+        <p>קופירייטר טוב עולה 2,000-8,000₪ לחודש. וגם אז — הקול משתנה עם כל החלפה.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">שלושה שלבים <span>לעולם מותג שלם</span></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h3>שיחה + כתיבת DNA</h3>
+          <p>אני יושבת איתך לשיחה של 30-45 דקות. מבינה את המותג לעומק — המהות, הקול, האישיות, מה כן ומה לא. אחר כך אני כותבת את ה-Brand DNA — המסמך שהופך את הזהות שלך לקוד שהמערכת מבינה.</p>
+          <span class="tag tag-you">את + אני</span>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="section__inner">
-            <div class="section__header">
-                <p class="section__label">The Engine</p>
-                <h2 class="section__title">מה המערכת מנתחת</h2>
-            </div>
-            
-            <div class="engine-grid">
-                <div class="engine-card">
-                    <p class="engine-card__icon">🧩</p>
-                    <h3 class="engine-card__title">Input Layer</h3>
-                    <ul class="engine-card__list">
-                        <li>אתר קיים</li>
-                        <li>טקסטים ופוסטים</li>
-                        <li>מצגות ו-PDF</li>
-                        <li>תשובות לשאלון חכם</li>
-                        <li>תוצרים קיימים</li>
-                    </ul>
-                </div>
-                
-                <div class="engine-card">
-                    <p class="engine-card__icon">🧬</p>
-                    <h3 class="engine-card__title">Core Engine</h3>
-                    <ul class="engine-card__list">
-                        <li>מילים חוזרות</li>
-                        <li>טון ורגשות</li>
-                        <li>ערכים ודפוסים</li>
-                        <li>סתירות</li>
-                        <li>כיוונים חבויים</li>
-                    </ul>
-                </div>
-                
-                <div class="engine-card">
-                    <p class="engine-card__icon">🎨</p>
-                    <h3 class="engine-card__title">Visual DNA</h3>
-                    <ul class="engine-card__list">
-                        <li>צבעים וסגנון</li>
-                        <li>טיפוגרפיה</li>
-                        <li>רמת מינימליזם</li>
-                        <li>רמת יוקרה</li>
-                        <li>רמת רגש</li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h3>המערכת נבנית</h3>
+          <p>ה-DNA נטען למערכת BrandOS. נוצר לך דאשבורד ממותג — בצבעים שלך, בקול שלך, עם כל הזהות בפנים. מערכת שמכירה אותך.</p>
+          <span class="tag tag-system">BrandOS</span>
         </div>
-    </section>
-
-    <section class="section section--dark">
-        <div class="section__inner">
-            <div class="section__header">
-                <p class="section__label">What You Get</p>
-                <h2 class="section__title">התוצרים</h2>
-            </div>
-            
-            <div class="output-grid">
-                <div class="output-card">
-                    <span class="output-card__number">01</span>
-                    <div class="output-card__content">
-                        <h3>Core Idea</h3>
-                        <p>הרעיון המרכזי של המותג - מזוקק למשפט אחד</p>
-                    </div>
-                </div>
-                <div class="output-card">
-                    <span class="output-card__number">02</span>
-                    <div class="output-card__content">
-                        <h3>Brand Story</h3>
-                        <p>הסיפור האמיתי - לא מה שאתם חושבים, מה שהלקוחות שומעים</p>
-                    </div>
-                </div>
-                <div class="output-card">
-                    <span class="output-card__number">03</span>
-                    <div class="output-card__content">
-                        <h3>Brand Personality</h3>
-                        <p>אם המותג היה אדם - מי הוא? איך הוא מדבר?</p>
-                    </div>
-                </div>
-                <div class="output-card">
-                    <span class="output-card__number">04</span>
-                    <div class="output-card__content">
-                        <h3>Emotional Axis</h3>
-                        <p>על איזה רגש המותג יושב? מה מניע את הלקוחות?</p>
-                    </div>
-                </div>
-                <div class="output-card">
-                    <span class="output-card__number">05</span>
-                    <div class="output-card__content">
-                        <h3>Visual DNA</h3>
-                        <p>צבעים, סגנון, רמת יוקרה - הכיוון הויזואלי המדויק</p>
-                    </div>
-                </div>
-                <div class="output-card">
-                    <span class="output-card__number">06</span>
-                    <div class="output-card__content">
-                        <h3>Brand Score</h3>
-                        <p>ציון שלמות מותגית - היכן אתם עומדים, מה צריך לשפר</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h3>יוצרים תוכן בדקות</h3>
+          <p>בוחרים סוג תוכן — מודעה, פוסט, מאמר, אימייל, טאגליין, סטוריבורד. כותבים בריף קצר. לוחצים. מקבלים תוכן שנשמע כמוך — בדקות, לא בימים.</p>
+          <span class="tag tag-you">את</span>
+          <span class="tag tag-system" style="margin-right: 6px;">BrandOS</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="cta-section">
-        <h2 class="cta-section__title">מוכנים לגלות את ה-DNA של המותג?</h2>
-        <p class="cta-section__text">התהליך מתחיל בשאלון קצר. ממלאים, מעלים חומרים, ומקבלים את ה-Revelation המלא.</p>
-        <a href="brand-discovery.html" class="cta-section__btn">
-            Start Brand Discovery
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
-    </section>
+  <!-- Before / After -->
+  <section class="section">
+    <div class="section-label">The Difference</div>
+    <h2 class="section-title">לפני ואחרי <span>BrandOS</span></h2>
+    <div class="compare">
+      <div class="compare-side compare-before">
+        <div class="compare-label">✕ בלי BrandOS</div>
+        <div class="compare-item">כל פוסט = התחלה מאפס</div>
+        <div class="compare-item">AI גנרי → תיקונים אינסופיים</div>
+        <div class="compare-item">קופירייטר יקר, לא עקבי</div>
+        <div class="compare-item">שעות על תוכן במקום על העסק</div>
+        <div class="compare-item">המותג מידלדל עם כל יצירה</div>
+      </div>
+      <div class="compare-side compare-after">
+        <div class="compare-label">✓ עם BrandOS</div>
+        <div class="compare-item">DNA נכתב פעם אחת → תוכן אינסוף</div>
+        <div class="compare-item">AI + DNA = תוכן שנשמע כמוך</div>
+        <div class="compare-item">1,490₪/חודש, עקבי לנצח</div>
+        <div class="compare-item">דקות — והתוצאה ממותגת</div>
+        <div class="compare-item">המותג מתחזק עם כל יצירה</div>
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-        <p class="footer__text">Powered by <span class="footer__brand">Brand OS</span> — Hagit Antebi Studio © 2025</p>
-    </footer>
+  <!-- Demo CTA -->
+  <section class="demo-cta">
+    <h2 class="font-display">ראו את זה <span style="color:var(--gold)">בפעולה</span></h2>
+    <p>4 מותגים, 4 עולמות שונים — כולם נוצרו עם אותה מערכת. כל אחד בקול שלו.</p>
+    <div class="demo-brands">
+      <span class="demo-brand">🏠 SHIRO — Smart Home</span>
+      <span class="demo-brand">💻 NEXUS — Tech</span>
+      <span class="demo-brand">❄️ FROST — Skincare</span>
+      <span class="demo-brand">🌿 MORA — Wellness</span>
+    </div>
+    <a href="https://brandos-fresh.vercel.app/" target="_blank" class="btn btn-gold">→ כנסו לדמו החי</a>
+  </section>
+
+  <!-- Pricing Preview -->
+  <section class="section">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">כמה זה <span>עולה</span></h2>
+    <p style="color: var(--text-2); font-size: 0.88rem; font-weight: 300; margin-top: -32px; margin-bottom: 16px;">
+      Setup חד-פעמי (שיחה + כתיבת DNA) + מנוי חודשי
+    </p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">₪790</div>
+        <div class="price-period">לחודש + ₪1,500 Setup</div>
+        <ul class="price-features">
+          <li>30 יצירות לחודש</li>
+          <li>3 סוגי תוכן</li>
+          <li>Brand DNA בסיסי</li>
+          <li>תמיכה במייל</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">⭐ Pro — הכי פופולרי</div>
+        <div class="price-amount">₪1,490</div>
+        <div class="price-period">לחודש + ₪2,500 Setup</div>
+        <ul class="price-features">
+          <li>100 יצירות לחודש</li>
+          <li>6 סוגי תוכן + סטוריבורד</li>
+          <li>שיחת DNA מעמיקה (45 דק׳)</li>
+          <li>Brand DNA מקיף</li>
+          <li>תמיכה במייל + WhatsApp</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Brand World</div>
+        <div class="price-amount">₪2,990</div>
+        <div class="price-period">לחודש + ₪4,500 Setup</div>
+        <ul class="price-features">
+          <li>ללא הגבלת יצירות</li>
+          <li>כל סוגי התוכן</li>
+          <li>שיחה מעמיקה (60 דק׳)</li>
+          <li>עדכון DNA רבעוני</li>
+          <li>תמיכה מלאה + דוח חודשי</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <blockquote class="font-display">"אני לא מעצבת מותגים — אני בונה עולמות.<br>BrandOS הוא העולם שממשיך ליצור."</blockquote>
+    <div class="attr">— חגית אנטבי, Brand Worlds Studio</div>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a href="brand-discovery.html" class="btn btn-gold">→ בואו נתחיל</a>
+      <a href="https://brandos-fresh.vercel.app/" target="_blank" class="btn btn-ghost">נסו את הדמו ←</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    Powered by Brand OS — Hagit Antebi Studio © 2025
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.pain-card, .step, .price-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+
+    document.head.insertAdjacentHTML('beforeend', `<style>.visible { opacity: 1 !important; transform: translateY(0) !important; }</style>`);
+  </script>
 </body>
 </html>
