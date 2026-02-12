@@ -3,48 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Builder Workshop | סדנת בניית עולמות מותג | Hagit Antebi</title>
-    <meta name="description" content="מפרומפטים אקראיים למערכת ויזואלית מותגית. שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית.">
-    <meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>World Builder Workshop — סדנת AI ליצירת תוכן מותגי | Hagit Antebi</title>
-<meta name='description' content='סדנת AI מעשית ליצירת תוכן מותגי. לומדים לעבוד עם Midjourney, Runway וכלי AI מתקדמים. בנו תוכן ויזואלי מקצועי למותג שלכם.'>
-<meta name='keywords' content='סדנת AI, קורס Midjourney, סדנת תוכן, AI workshop, יצירת תוכן, חגית אנטבי'>
-<meta name='author' content='Hagit Antebi'>
-<meta name='robots' content='index, follow'>
-<link rel='canonical' href='https://hagitantebi.co.il/workshop.html'>
-
-<meta property='og:type' content='website'>
-<meta property='og:url' content='https://hagitantebi.co.il/workshop.html'>
-<meta property='og:title' content='World Builder Workshop — סדנת AI ליצירת תוכן מותגי'>
-<meta property='og:description' content='סדנת AI מעשית. Midjourney, Runway וכלי AI מתקדמים. בנו תוכן ויזואלי מקצועי.'>
-<meta property='og:image' content='https://hagitantebi.co.il/sphere-outcome.png'>
-<meta property='og:locale' content='he_IL'>
-
-<meta name='twitter:card' content='summary_large_image'>
-<meta name='twitter:title' content='World Builder Workshop — סדנת AI ליצירת תוכן'>
-<meta name='twitter:description' content='סדנת AI מעשית. Midjourney, Runway וכלי AI מתקדמים.'>
-<meta name='twitter:image' content='https://hagitantebi.co.il/sphere-outcome.png'>
-
-<link rel='icon' type='image/png' href='favicon.png'>
-
+    <title>World Builder Workshop — סדנת AI ליצירת תוכן מותגי | Hagit Antebi</title>
+    <meta name="description" content="סדנת AI מעשית ליצירת תוכן מותגי. שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית. מפרומפטים אקראיים למערכת ויזואלית מותגית.">
+    <meta name="keywords" content="סדנת AI, קורס Midjourney, סדנת תוכן מותגי, AI workshop, יצירת תוכן, חגית אנטבי">
+    <meta name="author" content="Hagit Antebi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hagitantebi.co.il/workshop.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hagitantebi.co.il/workshop.html">
+    <meta property="og:title" content="World Builder Workshop — סדנת AI ליצירת תוכן מותגי">
+    <meta property="og:description" content="שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית ובלתי ניתנת להעתקה.">
+    <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta property="og:locale" content="he_IL">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="World Builder Workshop — סדנת AI ליצירת תוכן מותגי">
+    <meta name="twitter:description" content="שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית.">
+    <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ========================================
+           VARIABLES & RESET
+        ======================================== */
         :root {
             --color-cream: #FAF8F3;
             --color-warm-beige: #F5F1E8;
-            --color-chocolate: #2C2420;
-            --color-chocolate-mid: #6B5344;
-            --color-copper: #C9A962;
-            --color-copper-dark: #B8894A;
+            --color-chocolate: #8B7355;
+            --color-copper: #C4765A;
             --color-taupe: #B8A89A;
-            --color-border: rgba(107, 83, 68, 0.15);
+            --color-light-taupe: #D4C9BC;
+            --color-dark: #1A1A1D;
+            --color-gold: #C9A962;
             --font-display: 'Cormorant Garamond', serif;
             --font-body-en: 'Plus Jakarta Sans', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --container-max: 1200px;
+            --container-padding: clamp(24px, 5vw, 80px);
         }
         
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -54,32 +56,34 @@
             font-family: var(--font-body-he);
             background: var(--color-cream);
             color: var(--color-chocolate);
-            line-height: 1.7;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--container-padding);
         }
         
-        /* Navigation */
+        /* ========================================
+           NAVIGATION
+        ======================================== */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
             padding: 20px 0;
             background: rgba(250, 248, 243, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+            transition: padding 0.3s var(--transition-smooth);
         }
         
         .nav__inner {
-            max-width: 1200px;
+            max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--container-padding);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -87,120 +91,218 @@
         
         .nav__logo {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: var(--color-chocolate);
             text-decoration: none;
         }
         
         .nav__back {
             font-family: var(--font-body-en);
-            font-size: 0.8125rem;
-            color: var(--color-chocolate-mid);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-copper);
             text-decoration: none;
+            letter-spacing: 0.05em;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
+            gap: 6px;
+            transition: gap 0.3s;
         }
         
-        .nav__back:hover { color: var(--color-copper); }
+        .nav__back:hover { gap: 10px; }
         
-        /* Hero Section */
+        /* ========================================
+           HERO — No price, just hook
+        ======================================== */
         .hero {
-            padding: 160px 24px 100px;
-            background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-warm-beige) 100%);
+            padding: 160px 0 100px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(170deg, var(--color-cream) 0%, var(--color-warm-beige) 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            border: 1px solid var(--color-light-taupe);
+            border-radius: 50%;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .hero__label {
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
+            font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--color-copper);
             margin-bottom: 24px;
+            position: relative;
         }
         
         .hero__title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2.5rem, 7vw, 5rem);
             font-weight: 400;
-            line-height: 1.3;
-            max-width: 800px;
-            margin: 0 auto 24px;
+            line-height: 1.1;
+            color: var(--color-chocolate);
+            margin-bottom: 12px;
+            position: relative;
         }
         
-        .hero__subtitle {
-            font-family: var(--font-body-he);
-            font-size: 1.125rem;
-            color: var(--color-chocolate-mid);
-            max-width: 650px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-        
-        /* Early Bird Banner */
-        .early-bird {
-            display: inline-block;
-            background: var(--color-chocolate);
-            color: var(--color-cream);
-            padding: 12px 32px;
-            border-radius: 4px;
-            font-size: 0.9375rem;
-        }
-        
-        .early-bird__price {
-            text-decoration: line-through;
-            opacity: 0.6;
-            margin-left: 8px;
-        }
-        
-        .early-bird__new {
-            font-weight: 600;
+        .hero__title em {
+            font-style: italic;
             color: var(--color-copper);
         }
         
-        .early-bird__deadline {
-            display: block;
-            font-size: 0.8125rem;
-            opacity: 0.8;
+        .hero__subtitle-en {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--color-taupe);
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .hero__desc {
+            max-width: 580px;
+            margin: 0 auto 40px;
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--color-chocolate);
+            opacity: 0.85;
+            position: relative;
+        }
+        
+        .hero__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-cream);
+            background: var(--color-chocolate);
+            text-decoration: none;
+            padding: 18px 42px;
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+        }
+        
+        .hero__cta:hover {
+            background: var(--color-copper);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(139, 115, 85, 0.2);
+        }
+        
+        .hero__details {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 56px;
+            position: relative;
+        }
+        
+        .hero__detail {
+            text-align: center;
+        }
+        
+        .hero__detail-value {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--color-chocolate);
+        }
+        
+        .hero__detail-label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-taupe);
             margin-top: 4px;
         }
         
-        /* Section Base */
-        .section {
+        /* ========================================
+           PROBLEM SECTION
+        ======================================== */
+        .problem {
             padding: clamp(60px, 10vw, 100px) 0;
+            background: var(--color-cream);
         }
         
-        .section--alt {
+        .problem__inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .problem__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 32px;
+        }
+        
+        .problem__text {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            color: var(--color-chocolate);
+            opacity: 0.85;
+            margin-bottom: 20px;
+        }
+        
+        .problem__highlight {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-style: italic;
+            color: var(--color-copper);
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+        
+        /* ========================================
+           WHO FOR SECTION
+        ======================================== */
+        .who-for {
+            padding: clamp(60px, 10vw, 100px) 0;
             background: var(--color-warm-beige);
         }
         
-        .section--dark {
-            background: var(--color-chocolate);
-            color: var(--color-cream);
+        .who-for__header {
+            text-align: center;
+            margin-bottom: 56px;
         }
         
-        .section__label {
+        .who-for__label {
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.25em;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--color-copper);
             margin-bottom: 16px;
         }
         
-        .section__title {
+        .who-for__title {
             font-family: var(--font-display);
             font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 400;
-            margin-bottom: 40px;
         }
         
-        /* Not For / For Section */
-        .filter {
+        .who-for__grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
@@ -208,187 +310,740 @@
             margin: 0 auto;
         }
         
-        .filter__block {
+        .who-for__card {
+            background: var(--color-cream);
             padding: 40px;
-            border-radius: 8px;
+            position: relative;
         }
         
-        .filter__block--not {
-            background: rgba(107, 83, 68, 0.05);
-            border: 1px solid var(--color-border);
+        .who-for__card--no::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--color-light-taupe);
         }
         
-        .filter__block--yes {
-            background: rgba(201, 169, 98, 0.1);
-            border: 1px solid var(--color-copper);
+        .who-for__card--yes::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--color-copper);
         }
         
-        .filter__title {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
+        .who-for__card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .who-for__card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+        
+        .who-for__card-text {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--color-chocolate);
+            opacity: 0.8;
+        }
+        
+        /* ========================================
+           METHOD — 4 Steps
+        ======================================== */
+        .method {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: var(--color-cream);
+        }
+        
+        .method__header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+        
+        .method__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        
-        .filter__block--not .filter__title {
-            color: var(--color-chocolate-mid);
-        }
-        
-        .filter__block--yes .filter__title {
             color: var(--color-copper);
+            margin-bottom: 16px;
         }
         
-        .filter__text {
-            font-size: 1rem;
-            line-height: 1.8;
+        .method__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
         }
         
-        /* Curriculum */
-        .curriculum {
+        .method__steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             max-width: 900px;
             margin: 0 auto;
         }
         
-        .curriculum__session {
+        .step {
             display: grid;
             grid-template-columns: 80px 1fr;
-            gap: 32px;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--color-border);
+            gap: 40px;
+            padding: 48px 0;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+            position: relative;
         }
         
-        .curriculum__session:last-child {
-            border-bottom: none;
+        .step:last-child { border-bottom: none; }
+        
+        .step__number-col {
+            text-align: center;
         }
         
-        .curriculum__number {
+        .step__number {
             font-family: var(--font-display);
             font-size: 3rem;
             font-weight: 400;
-            color: var(--color-copper);
-            opacity: 0.5;
+            color: var(--color-light-taupe);
             line-height: 1;
         }
         
-        .curriculum__content h3 {
+        .step__icon {
+            font-size: 1.25rem;
+            margin-top: 8px;
+            display: block;
+        }
+        
+        .step__content {}
+        
+        .step__en-title {
             font-family: var(--font-body-en);
-            font-size: 1rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 8px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 6px;
         }
         
-        .curriculum__content h3 span {
-            font-family: var(--font-body-he);
-            font-weight: 400;
-            color: var(--color-chocolate-mid);
-            margin-right: 8px;
-        }
-        
-        .curriculum__desc {
-            font-size: 1rem;
-            color: var(--color-chocolate-mid);
+        .step__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 500;
             margin-bottom: 16px;
+        }
+        
+        .step__desc {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-chocolate);
+            opacity: 0.85;
+            margin-bottom: 16px;
+        }
+        
+        .step__outcome {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--color-copper);
+            padding: 8px 16px;
+            background: rgba(196, 118, 90, 0.08);
+        }
+        
+        /* ========================================
+           QUOTE BREAK
+        ======================================== */
+        .quote-break {
+            padding: clamp(50px, 8vw, 80px) 0;
+            background: var(--color-warm-beige);
+            text-align: center;
+        }
+        
+        .quote-break__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--color-chocolate);
+            max-width: 600px;
+            margin: 0 auto;
             line-height: 1.7;
         }
         
-        .curriculum__result {
-            display: inline-block;
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .quote-break__text strong {
             color: var(--color-copper);
-            background: rgba(201, 169, 98, 0.1);
-            padding: 8px 16px;
-            border-radius: 4px;
+            font-weight: 500;
         }
         
-        /* Differentiation */
-        .diff {
+        .quote-break__sub {
+            font-family: var(--font-body-he);
+            font-size: 0.9rem;
+            color: var(--color-taupe);
+            margin-top: 20px;
+        }
+        
+        /* ========================================
+           PROOF — Case Study
+        ======================================== */
+        .proof {
+            padding: clamp(80px, 12vw, 120px) 0;
+            background: var(--color-cream);
+        }
+        
+        .proof__header {
             text-align: center;
+            margin-bottom: 56px;
+        }
+        
+        .proof__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .proof__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+        
+        .proof__images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        
+        .proof__img {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-warm-beige), var(--color-light-taupe));
+            overflow: hidden;
+        }
+        
+        .proof__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        
+        .proof__img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .proof__story {
             max-width: 700px;
             margin: 0 auto;
         }
         
-        .diff__quote {
+        .proof__story-title {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
-            font-style: italic;
-            line-height: 1.6;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-align: center;
             margin-bottom: 32px;
-            color: var(--color-cream);
         }
         
-        .diff__text {
-            font-size: 1.0625rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.8;
-        }
-        
-        /* Process Visual */
-        .process-visual {
+        .proof__timeline {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            margin: 60px 0;
         }
         
-        .process-visual__item {
+        .proof__timeline-item {
             text-align: center;
             position: relative;
         }
         
-        .process-visual__item::after {
+        .proof__timeline-item::after {
             content: '→';
             position: absolute;
             left: -14px;
-            top: 30px;
-            color: var(--color-copper);
-            font-size: 1.25rem;
+            top: 12px;
+            color: var(--color-light-taupe);
+            font-size: 1rem;
         }
         
-        .process-visual__item:first-child::after {
-            display: none;
+        .proof__timeline-item:first-child::after { display: none; }
+        
+        .proof__timeline-num {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-light-taupe);
+            margin-bottom: 8px;
         }
         
-        .process-visual__icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 16px;
+        .proof__timeline-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--color-chocolate);
+            opacity: 0.8;
+        }
+        
+        /* ========================================
+           ABOUT INSTRUCTOR
+        ======================================== */
+        .instructor {
+            padding: clamp(80px, 12vw, 120px) 0;
             background: var(--color-warm-beige);
+        }
+        
+        .instructor__inner {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 64px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .instructor__image-wrap {
+            position: relative;
+        }
+        
+        .instructor__image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--color-cream), var(--color-light-taupe));
+            overflow: hidden;
+        }
+        
+        .instructor__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .instructor__image-accent {
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--color-copper);
+            opacity: 0.3;
+        }
+        
+        .instructor__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .instructor__name {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        
+        .instructor__role {
+            font-family: var(--font-body-en);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--color-copper);
+            margin-bottom: 24px;
+        }
+        
+        .instructor__bio {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--color-chocolate);
+            opacity: 0.85;
+            margin-bottom: 16px;
+        }
+        
+        .instructor__stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(139, 115, 85, 0.12);
+        }
+        
+        .instructor__stat-value {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--color-chocolate);
+            line-height: 1;
+        }
+        
+        .instructor__stat-label {
+            font-family: var(--font-body-he);
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+            margin-top: 4px;
+        }
+        
+        /* ========================================
+           TESTIMONIALS
+        ======================================== */
+        .testimonials {
+            padding: clamp(80px, 12vw, 120px) 0;
+            background: var(--color-dark);
+            color: var(--color-cream);
+        }
+        
+        .testimonials__header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .testimonials__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 16px;
+        }
+        
+        .testimonials__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 36px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--color-gold);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        
+        .testimonial__text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .testimonial__author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .testimonial__avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-copper));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-        }
-        
-        .process-visual__label {
-            font-family: var(--font-body-en);
-            font-size: 0.6875rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-dark);
             font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-chocolate-mid);
         }
         
-        /* Pricing */
-        .pricing {
-            max-width: 600px;
+        .testimonial__name {
+            font-family: var(--font-body-he);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #fff;
+        }
+        
+        .testimonial__role {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.05em;
+        }
+        
+        /* ========================================
+           WHAT YOU GET
+        ======================================== */
+        .includes {
+            padding: clamp(60px, 10vw, 100px) 0;
+            background: var(--color-warm-beige);
+        }
+        
+        .includes__header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        
+        .includes__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .includes__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+        
+        .includes__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
             margin: 0 auto;
+        }
+        
+        .includes__item {
+            background: var(--color-cream);
+            padding: 32px;
             text-align: center;
         }
         
+        .includes__item-icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .includes__item-title {
+            font-family: var(--font-body-he);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .includes__item-desc {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--color-taupe);
+        }
+        
+        /* ========================================
+           LEAD FORM
+        ======================================== */
+        .lead-form {
+            padding: clamp(80px, 12vw, 120px) 0;
+            background: var(--color-cream);
+        }
+        
+        .lead-form__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .lead-form__content {}
+        
+        .lead-form__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .lead-form__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        
+        .lead-form__text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-chocolate);
+            opacity: 0.8;
+        }
+        
+        .lead-form__form {
+            background: var(--color-warm-beige);
+            padding: 40px;
+        }
+        
+        .lead-form__form-title {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--color-chocolate);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: var(--font-body-he);
+            font-size: 0.9rem;
+            border: 1px solid var(--color-light-taupe);
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            outline: none;
+            transition: border-color 0.3s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-copper);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B7355' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 16px center;
+            padding-left: 40px;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            font-family: var(--font-body-en);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-cream);
+            background: var(--color-chocolate);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 8px;
+        }
+        
+        .form-submit:hover {
+            background: var(--color-copper);
+        }
+        
+        .form-note {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+        }
+        
+        /* Success state */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .form-success.show { display: block; }
+        
+        .form-success__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .form-success__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .form-success__text {
+            font-size: 0.9rem;
+            color: var(--color-taupe);
+        }
+        
+        /* ========================================
+           PRICING — at the end
+        ======================================== */
+        .pricing {
+            padding: clamp(80px, 12vw, 120px) 0;
+            background: var(--color-warm-beige);
+        }
+        
+        .pricing__header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .pricing__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        
+        .pricing__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+        
         .pricing__card {
-            background: #FFFFFF;
-            border: 2px solid var(--color-copper);
-            border-radius: 12px;
+            max-width: 520px;
+            margin: 0 auto;
+            background: var(--color-cream);
             padding: 48px;
+            text-align: center;
             position: relative;
+            border: 1px solid rgba(139, 115, 85, 0.1);
         }
         
         .pricing__badge {
@@ -396,108 +1051,91 @@
             top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--color-copper);
-            color: var(--color-chocolate);
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
+            font-size: 0.65rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 8px 20px;
-            border-radius: 4px;
+            color: var(--color-cream);
+            background: var(--color-copper);
+            padding: 6px 20px;
         }
         
-        .pricing__original {
-            font-size: 1.25rem;
-            color: var(--color-chocolate-mid);
+        .pricing__old-price {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-taupe);
             text-decoration: line-through;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .pricing__price {
             font-family: var(--font-display);
             font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--color-chocolate);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        
-        .pricing__vat {
-            font-size: 0.875rem;
-            color: var(--color-chocolate-mid);
-            margin-bottom: 32px;
-        }
-        
-        .pricing__includes {
-            text-align: right;
-            margin-bottom: 32px;
-            padding: 24px;
-            background: var(--color-warm-beige);
-            border-radius: 8px;
-        }
-        
-        .pricing__includes h4 {
-            font-family: var(--font-body-en);
-            font-size: 0.6875rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
+            color: var(--color-chocolate);
+            margin-bottom: 4px;
         }
         
-        .pricing__includes ul {
+        .pricing__price-note {
+            font-size: 0.85rem;
+            color: var(--color-taupe);
+            margin-bottom: 32px;
+        }
+        
+        .pricing__divider {
+            width: 50px;
+            height: 1px;
+            background: var(--color-light-taupe);
+            margin: 0 auto 32px;
+        }
+        
+        .pricing__features {
             list-style: none;
+            text-align: right;
+            margin-bottom: 36px;
         }
         
-        .pricing__includes li {
-            padding: 8px 0;
-            padding-right: 24px;
-            position: relative;
-            font-size: 0.9375rem;
-            border-bottom: 1px solid var(--color-border);
+        .pricing__features li {
+            font-size: 0.95rem;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.07);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
-        .pricing__includes li:last-child {
-            border-bottom: none;
-        }
+        .pricing__features li:last-child { border-bottom: none; }
         
-        .pricing__includes li::before {
+        .pricing__features li::before {
             content: '✓';
-            position: absolute;
-            right: 0;
             color: var(--color-copper);
+            font-weight: 600;
+            flex-shrink: 0;
         }
         
         .pricing__cta {
             display: block;
-            width: 100%;
-            padding: 18px 32px;
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+            color: var(--color-cream);
+            background: var(--color-chocolate);
             text-decoration: none;
+            padding: 18px;
+            transition: background 0.3s;
             text-align: center;
-            color: var(--color-chocolate);
-            background: var(--color-copper);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 16px;
         }
         
-        .pricing__cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
-        }
+        .pricing__cta:hover { background: var(--color-copper); }
         
         .pricing__alt {
-            font-size: 0.875rem;
-            color: var(--color-chocolate-mid);
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--color-taupe);
         }
         
         .pricing__alt a {
@@ -505,381 +1143,589 @@
             text-decoration: none;
         }
         
-        .pricing__deadline {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid var(--color-border);
-            font-size: 0.9375rem;
-            color: var(--color-chocolate-mid);
-        }
-        
-        /* Details Grid */
-        .details {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+        .pricing__urgency {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-        
-        .details__item h4 {
+            margin-top: 28px;
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            font-size: 0.8rem;
             color: var(--color-copper);
-            margin-bottom: 8px;
+            font-weight: 500;
         }
         
-        .details__item p {
-            font-size: 1.125rem;
-            color: var(--color-chocolate);
-        }
-        
-        /* Case Study Preview */
-        .case-preview {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .case-preview__visual {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        
-        .case-preview__image {
-            width: 100%;
-            border-radius: 8px;
-        }
-        
-        .case-preview__image:first-child {
-            grid-column: span 2;
-        }
-        
-        .case-preview__content h3 {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            margin-bottom: 16px;
-        }
-        
-        .case-preview__content p {
-            font-size: 1rem;
-            color: var(--color-chocolate-mid);
-            margin-bottom: 24px;
-            line-height: 1.8;
-        }
-        
-        .case-preview__steps {
-            list-style: none;
-        }
-        
-        .case-preview__steps li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            font-size: 0.9375rem;
-        }
-        
-        .case-preview__steps li span {
-            color: var(--color-copper);
-            font-weight: 600;
-        }
-        
-        /* Footer CTA */
-        .footer-cta {
+        /* ========================================
+           FINAL CTA
+        ======================================== */
+        .final-cta {
+            padding: clamp(60px, 10vw, 100px) 0;
+            background: var(--color-cream);
             text-align: center;
-            padding: 80px 24px;
-            background: var(--color-chocolate);
-            color: var(--color-cream);
         }
         
-        .footer-cta__title {
+        .final-cta__title {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
             margin-bottom: 16px;
         }
         
-        .footer-cta__text {
+        .final-cta__text {
             font-size: 1rem;
-            opacity: 0.75;
+            color: var(--color-taupe);
             margin-bottom: 32px;
         }
         
-        .footer-cta__btn {
+        .final-cta__btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 40px;
+            gap: 8px;
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
             letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-decoration: none;
             color: var(--color-chocolate);
-            background: var(--color-copper);
-            border-radius: 4px;
+            text-decoration: none;
+            padding: 16px 36px;
+            border: 1px solid var(--color-chocolate);
             transition: all 0.3s;
         }
         
-        .footer-cta__btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        .final-cta__btn:hover {
+            background: var(--color-chocolate);
+            color: var(--color-cream);
         }
         
-        /* Footer */
+        /* ========================================
+           FOOTER
+        ======================================== */
         .footer {
+            background: var(--color-chocolate);
             padding: 40px 24px;
             text-align: center;
-            border-top: 1px solid var(--color-border);
         }
         
-        .footer__text {
-            font-size: 0.875rem;
-            color: var(--color-chocolate-mid);
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--color-taupe);
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .filter { grid-template-columns: 1fr; }
-            .curriculum__session { grid-template-columns: 1fr; gap: 16px; }
-            .curriculum__number { font-size: 2rem; }
-            .process-visual { grid-template-columns: repeat(2, 1fr); }
-            .process-visual__item::after { display: none; }
-            .details { grid-template-columns: 1fr; gap: 24px; }
-            .case-preview { grid-template-columns: 1fr; }
+        .footer a {
+            color: var(--color-copper);
+            text-decoration: none;
+        }
+        
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 900px) {
+            .who-for__grid { grid-template-columns: 1fr; }
+            .proof__images { grid-template-columns: 1fr; gap: 12px; }
+            .proof__timeline { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .proof__timeline-item::after { display: none; }
+            .instructor__inner { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; text-align: center; }
+            .instructor__image { max-width: 260px; margin: 0 auto; }
+            .instructor__image-accent { display: none; }
+            .instructor__stats { justify-content: center; }
+            .testimonials__grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .includes__grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .lead-form__inner { grid-template-columns: 1fr; gap: 40px; }
+        }
+        
+        @media (max-width: 600px) {
+            .hero__details { flex-direction: column; gap: 24px; }
+            .step { grid-template-columns: 60px 1fr; gap: 20px; }
+            .proof__timeline { grid-template-columns: 1fr; }
+            .pricing__card { padding: 32px 24px; }
+        }
+        
+        /* ========================================
+           ANIMATIONS
+        ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s var(--transition-smooth), transform 0.7s var(--transition-smooth);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
         <div class="nav__inner">
             <a href="index.html" class="nav__logo">Hagit Antebi</a>
-            <a href="index.html" class="nav__back">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Home
-            </a>
+            <a href="index.html" class="nav__back">← Back to Home</a>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ==================== 1. HERO — Hook, no price ==================== -->
     <section class="hero">
-        <p class="hero__label">World Builder Workshop</p>
-        <h1 class="hero__title">מפרומפטים אקראיים למערכת ויזואלית מותגית</h1>
-        <p class="hero__subtitle">שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית ובלתי ניתנת להעתקה.</p>
-        
-        <div class="early-bird">
-            <span class="early-bird__new">₪2,470</span>
-            <span class="early-bird__price">₪2,970</span>
-            + מע"מ
-            <span class="early-bird__deadline">⏰ הנחת Early Bird עד 15 במרץ</span>
-        </div>
-    </section>
-
-    <!-- Who Is This For -->
-    <section class="section">
         <div class="container">
-            <p class="section__label">Who Is This For</p>
-            <h2 class="section__title">למי הסדנה הזו מתאימה (ולמי לא)</h2>
+            <p class="hero__label">World Builder Workshop</p>
+            <h1 class="hero__title">מפרומפטים אקראיים<br>ל<em>מערכת ויזואלית</em> מותגית</h1>
+            <p class="hero__subtitle-en">From random prompts to a branded visual system</p>
+            <p class="hero__desc">שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית ובלתי ניתנת להעתקה. בסדנה הזו תלמדו לבנות עולם מותג שלם — לא רק "תמונות יפות".</p>
+            <a href="#lead-form" class="hero__cta">רוצה לשמוע עוד →</a>
             
-            <div class="filter">
-                <div class="filter__block filter__block--not">
-                    <h3 class="filter__title">❌ לא מתאים למי ש...</h3>
-                    <p class="filter__text">
-                        מחפש "טריקים" מהירים ב-AI או רק רוצה ללמוד איך לעשות "תמונות יפות".<br><br>
-                        הסדנה הזו היא לא קורס כלים. היא לא תלמד אותך איך לכתוב פרומפטים טובים יותר. היא תלמד אותך לחשוב אחרת.
-                    </p>
+            <div class="hero__details">
+                <div class="hero__detail">
+                    <div class="hero__detail-value">4</div>
+                    <div class="hero__detail-label">Sessions</div>
                 </div>
-                <div class="filter__block filter__block--yes">
-                    <h3 class="filter__title">✓ כן מתאים למי ש...</h3>
-                    <p class="filter__text">
-                        מעצבים, מנהלי קריאייטיב ובעלי מותגים שכבר מכירים את כלי ה-AI, אך מרגישים שהתוצרים שלהם <strong>גנריים, חסרי עמוד שדרה מותגי או לא עקביים</strong>.<br><br>
-                        למי שרוצה לבנות מערכת, לא רק ליצור תמונות.
-                    </p>
+                <div class="hero__detail">
+                    <div class="hero__detail-value">8</div>
+                    <div class="hero__detail-label">Hours</div>
+                </div>
+                <div class="hero__detail">
+                    <div class="hero__detail-value">12</div>
+                    <div class="hero__detail-label">Max Participants</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Method -->
-    <section class="section section--alt">
+    <!-- ==================== 2. PROBLEM — Pain point ==================== -->
+    <section class="problem">
         <div class="container">
-            <p class="section__label">The Method</p>
-            <h2 class="section__title">איך נבנה עולם מותג ב-4 מפגשים</h2>
-            
-            <div class="process-visual">
-                <div class="process-visual__item">
-                    <div class="process-visual__icon">📝</div>
-                    <p class="process-visual__label">DNA</p>
-                </div>
-                <div class="process-visual__item">
-                    <div class="process-visual__icon">🎨</div>
-                    <p class="process-visual__label">Concept</p>
-                </div>
-                <div class="process-visual__item">
-                    <div class="process-visual__icon">⚡</div>
-                    <p class="process-visual__label">Creation</p>
-                </div>
-                <div class="process-visual__item">
-                    <div class="process-visual__icon">🔄</div>
-                    <p class="process-visual__label">System</p>
-                </div>
+            <div class="problem__inner reveal">
+                <h2 class="problem__title">אתם מכירים את הרגע הזה?</h2>
+                <p class="problem__text">יצרתם עשרות תמונות עם AI. חלקן אפילו מרשימות. אבל כשמסתכלים על הפיד, על האתר, על החומרים — משהו לא מתחבר. חסרה עקביות. חסר הקו. חסר ה"זה אנחנו".</p>
+                <p class="problem__text">הבעיה היא לא הכלי. הבעיה היא שאין מתודולוגיה.</p>
+                <p class="problem__highlight">"הכלים משתנים כל חודש.<br>השיטה — היא נכס קבוע."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. WHO FOR ==================== -->
+    <section class="who-for">
+        <div class="container">
+            <div class="who-for__header reveal">
+                <p class="who-for__label">Who Is This For</p>
+                <h2 class="who-for__title">למי הסדנה מתאימה (ולמי לא)</h2>
             </div>
             
-            <div class="curriculum">
-                <div class="curriculum__session">
-                    <div class="curriculum__number">01</div>
-                    <div class="curriculum__content">
-                        <h3>The DNA <span>// פיצוח אסטרטגי</span></h3>
-                        <p class="curriculum__desc">חילוץ ערכי הליבה והפיכתם למסמך עבודה. לא מעצבים כלום עד שהסיפור לא סגור. נבנה את הבסיס שעליו כל החלטה ויזואלית תישען.</p>
-                        <span class="curriculum__result">תוצאה: מסמך אסטרטגיה מותגית מזוקק</span>
+            <div class="who-for__grid">
+                <div class="who-for__card who-for__card--no reveal">
+                    <div class="who-for__card-icon">✕</div>
+                    <h3 class="who-for__card-title">לא מתאים למי ש...</h3>
+                    <p class="who-for__card-text">מחפש "טריקים" מהירים ב-AI או רק רוצה ללמוד איך לעשות "תמונות יפות". הסדנה הזו היא לא קורס כלים. היא תלמד אותך <strong>לחשוב אחרת</strong> על הדרך שבה מותג נבנה ויזואלית.</p>
+                </div>
+                
+                <div class="who-for__card who-for__card--yes reveal">
+                    <div class="who-for__card-icon">✓</div>
+                    <h3 class="who-for__card-title">כן מתאים למי ש...</h3>
+                    <p class="who-for__card-text">מעצבים, מנהלי קריאייטיב ובעלי מותגים שכבר מכירים את כלי ה-AI, אך מרגישים שהתוצרים שלהם <strong>גנריים, חסרי עמוד שדרה מותגי או לא עקביים</strong>. למי שרוצה לבנות מערכת, לא רק ליצור תמונות.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. METHOD — 4 Steps ==================== -->
+    <section class="method" id="method">
+        <div class="container">
+            <div class="method__header reveal">
+                <p class="method__label">The Method</p>
+                <h2 class="method__title">איך נבנה עולם מותג ב-4 מפגשים</h2>
+            </div>
+            
+            <div class="method__steps">
+                <div class="step reveal">
+                    <div class="step__number-col">
+                        <div class="step__number">01</div>
+                        <span class="step__icon">📝</span>
+                    </div>
+                    <div class="step__content">
+                        <p class="step__en-title">The DNA // פיצוח אסטרטגי</p>
+                        <h3 class="step__title">חילוץ ערכי הליבה</h3>
+                        <p class="step__desc">לא מעצבים כלום עד שהסיפור לא סגור. נחלץ את ערכי הליבה של המותג ונהפוך אותם למסמך עבודה. נבנה את הבסיס שעליו כל החלטה ויזואלית תישען.</p>
+                        <span class="step__outcome">→ תוצאה: מסמך אסטרטגיה מותגית מזוקק</span>
                     </div>
                 </div>
                 
-                <div class="curriculum__session">
-                    <div class="curriculum__number">02</div>
-                    <div class="curriculum__content">
-                        <h3>The Concept <span>// גישור ויזואלי</span></h3>
-                        <p class="curriculum__desc">תרגום מושגים מופשטים לשפה חזותית — צבע, טקסטורה, קומפוזיציה, אווירה. כאן הסיפור מתחיל להפוך למשהו שאפשר לראות.</p>
-                        <span class="curriculum__result">תוצאה: לוח השראה קונספטואלי (Moodboard) מחייב</span>
+                <div class="step reveal">
+                    <div class="step__number-col">
+                        <div class="step__number">02</div>
+                        <span class="step__icon">🎨</span>
+                    </div>
+                    <div class="step__content">
+                        <p class="step__en-title">The Concept // גישור ויזואלי</p>
+                        <h3 class="step__title">תרגום מושגים לשפה חזותית</h3>
+                        <p class="step__desc">תרגום מושגים מופשטים לשפה חזותית — צבע, טקסטורה, קומפוזיציה, אווירה. כאן הסיפור מתחיל להפוך למשהו שאפשר לראות.</p>
+                        <span class="step__outcome">→ תוצאה: לוח השראה קונספטואלי (Moodboard) מחייב</span>
                     </div>
                 </div>
                 
-                <div class="curriculum__session">
-                    <div class="curriculum__number">03</div>
-                    <div class="curriculum__content">
-                        <h3>The Creation <span>// ייצור מערכתי</span></h3>
-                        <p class="curriculum__desc">שימוש ב-AI (Midjourney, Runway) ככלי ביצוע תחת השיטה. בניית פרומפטים מורכבים לשמירה על עקביות. יצירת הנכסים הראשונים של העולם.</p>
-                        <span class="curriculum__result">תוצאה: ספריית נכסים (Assets) ראשונה</span>
+                <div class="step reveal">
+                    <div class="step__number-col">
+                        <div class="step__number">03</div>
+                        <span class="step__icon">⚡</span>
+                    </div>
+                    <div class="step__content">
+                        <p class="step__en-title">The Creation // ייצור מערכתי</p>
+                        <h3 class="step__title">בניית נכסים ויזואליים עם AI</h3>
+                        <p class="step__desc">שימוש ב-AI (Midjourney, Runway) ככלי ביצוע תחת השיטה. בניית פרומפטים מורכבים לשמירה על עקביות. יצירת הנכסים הראשונים של העולם.</p>
+                        <span class="step__outcome">→ תוצאה: ספריית נכסים (Assets) ראשונה</span>
                     </div>
                 </div>
                 
-                <div class="curriculum__session">
-                    <div class="curriculum__number">04</div>
-                    <div class="curriculum__content">
-                        <h3>The System <span>// הטמעה וניהול</span></h3>
-                        <p class="curriculum__desc">איך הופכים את העולם למערכת תוכן שעובדת ביומיום מבלי לאבד את הקו העיצובי. כלים, תהליכים, ושגרות עבודה.</p>
-                        <span class="curriculum__result">תוצאה: תוכנית עבודה ויזואלית ל-3 חודשים קדימה</span>
+                <div class="step reveal">
+                    <div class="step__number-col">
+                        <div class="step__number">04</div>
+                        <span class="step__icon">🔄</span>
+                    </div>
+                    <div class="step__content">
+                        <p class="step__en-title">The System // הטמעה וניהול</p>
+                        <h3 class="step__title">הפיכת העולם למערכת עובדת</h3>
+                        <p class="step__desc">איך הופכים את העולם למערכת תוכן שעובדת ביומיום מבלי לאבד את הקו העיצובי. כלים, תהליכים, ושגרות עבודה.</p>
+                        <span class="step__outcome">→ תוצאה: תוכנית עבודה ויזואלית ל-3 חודשים קדימה</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Differentiation -->
-    <section class="section section--dark">
+    <!-- ==================== Quote Break ==================== -->
+    <section class="quote-break">
         <div class="container">
-            <div class="diff">
-                <p class="diff__quote">"אני לא מלמדת כלים.<br>אני מלמדת מתודולוגיה."</p>
-                <p class="diff__text">
-                    הכלים משתנים — Midjourney V6, V7, וכו'. השיטה (World Building) היא נכס קבוע לכל קריירה של מעצב או מנהל מותג. זו היכולת להפוך אסטרטגיה למציאות ויזואלית עקבית.
-                </p>
-            </div>
+            <p class="quote-break__text reveal">"אני לא מלמדת כלים.<br>אני מלמדת <strong>מתודולוגיה</strong>."</p>
+            <p class="quote-break__sub reveal">הכלים משתנים — Midjourney V6, V7, וכו'. השיטה (World Building) היא נכס קבוע לכל קריירה של מעצב או מנהל מותג.</p>
         </div>
     </section>
 
-    <!-- Case Study Preview -->
-    <section class="section">
+    <!-- ==================== 5. PROOF — Case Study ==================== -->
+    <section class="proof">
         <div class="container">
-            <p class="section__label">The Proof</p>
-            <h2 class="section__title">איך זה נראה בפועל</h2>
-            
-            <div class="case-preview">
-                <div class="case-preview__visual">
-                    <img src="mora-website.png" alt="MORA Brand World" class="case-preview__image">
-                    <img src="mora-products.png" alt="MORA Products" class="case-preview__image">
-                    <img src="mora-store.png" alt="MORA Store" class="case-preview__image">
-                </div>
-                <div class="case-preview__content">
-                    <h3>MORA — מרעיון לעולם</h3>
-                    <p>איך מותג קוסמטיקה הפך מקונספט מופשט למערכת ויזואלית שלמה תוך שבועיים.</p>
-                    <ul class="case-preview__steps">
-                        <li><span>01</span> התחלנו מהמילים: "אלכימיה של טיפוח עצמי"</li>
-                        <li><span>02</span> תרגמנו לשפה חזותית: זהב, טקסטורות אורגניות, אור רך</li>
-                        <li><span>03</span> יצרנו מערכת: מוצרים, אריזות, חנות, אתר — כולם מאותו DNA</li>
-                        <li><span>04</span> התוצאה: עולם שלם שאפשר להמשיך להרחיב אותו בלי לאבד את הקו</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section class="section section--alt">
-        <div class="container">
-            <p class="section__label">Join</p>
-            <h2 class="section__title">הצטרפות למחזור הקרוב</h2>
-            
-            <div class="details">
-                <div class="details__item">
-                    <h4>Format</h4>
-                    <p>4 מפגשי LIVE בזום</p>
-                </div>
-                <div class="details__item">
-                    <h4>Duration</h4>
-                    <p>120 דקות כל מפגש</p>
-                </div>
-                <div class="details__item">
-                    <h4>Group Size</h4>
-                    <p>מוגבל ל-12 משתתפים</p>
-                </div>
+            <div class="proof__header reveal">
+                <p class="proof__label">The Proof</p>
+                <h2 class="proof__title">איך זה נראה בפועל</h2>
             </div>
             
-            <div class="pricing">
-                <div class="pricing__card">
-                    <span class="pricing__badge">Early Bird</span>
-                    <p class="pricing__original">₪2,970</p>
-                    <p class="pricing__price">₪2,470</p>
-                    <p class="pricing__vat">+ מע"מ | עד 3 תשלומים</p>
-                    
-                    <div class="pricing__includes">
-                        <h4>מה מקבלים</h4>
-                        <ul>
-                            <li>4 מפגשי LIVE (8 שעות הדרכה)</li>
-                            <li>הקלטות של כל המפגשים</li>
-                            <li>חוברת עבודה דיגיטלית</li>
-                            <li>ליווי בוואטסאפ בין המפגשים</li>
-                            <li>תבניות פרומפטים מותאמות</li>
-                        </ul>
+            <div class="proof__images reveal">
+                <div class="proof__img"><img src="mora-website.png" alt="MORA Brand World — Website"></div>
+                <div class="proof__img"><img src="mora-products.png" alt="MORA Brand World — Products"></div>
+                <div class="proof__img"><img src="mora-store.png" alt="MORA Brand World — Store"></div>
+            </div>
+            
+            <div class="proof__story reveal">
+                <h3 class="proof__story-title">MORA — מרעיון לעולם</h3>
+                <div class="proof__timeline">
+                    <div class="proof__timeline-item">
+                        <div class="proof__timeline-num">01</div>
+                        <p class="proof__timeline-text">התחלנו מהמילים: "אלכימיה של טיפוח עצמי"</p>
                     </div>
-                    
-                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אני%20מתעניינ%2Fת%20בסדנת%20World%20Builder" class="pricing__cta">
-                        שיחה לבדיקת התאמה
-                    </a>
-                    <p class="pricing__alt">או <a href="mailto:hagit@hagitantebi.co.il">שלחו מייל</a></p>
-                    
-                    <p class="pricing__deadline">⏰ הנחת Early Bird בתוקף עד 15 במרץ</p>
+                    <div class="proof__timeline-item">
+                        <div class="proof__timeline-num">02</div>
+                        <p class="proof__timeline-text">תרגמנו לשפה ויזואלית: זהב, טקסטורות אורגניות, אור רך</p>
+                    </div>
+                    <div class="proof__timeline-item">
+                        <div class="proof__timeline-num">03</div>
+                        <p class="proof__timeline-text">יצרנו מערכת: מוצרים, אריזות, חנות, אתר — כולם מאותו DNA</p>
+                    </div>
+                    <div class="proof__timeline-item">
+                        <div class="proof__timeline-num">04</div>
+                        <p class="proof__timeline-text">התוצאה: עולם שלם שאפשר להמשיך להרחיב בלי לאבד את הקו</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <h2 class="footer-cta__title">לא בטוחים אם זה מתאים לכם?</h2>
-        <p class="footer-cta__text">השיחה היא בדיוק בשביל זה. נבדוק יחד אם הגישה הזו מתאימה לשלב שבו אתם נמצאים.</p>
-        <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אני%20מתעניינ%2Fת%20בסדנת%20World%20Builder" class="footer-cta__btn">
-            בואו נדבר
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
+    <!-- ==================== 6. ABOUT THE INSTRUCTOR ==================== -->
+    <section class="instructor">
+        <div class="container">
+            <div class="instructor__inner">
+                <div class="instructor__image-wrap reveal">
+                    <div class="instructor__image">
+                        <img src="hagit.png" alt="חגית אנטבי — Brand Worlds Architect">
+                    </div>
+                    <div class="instructor__image-accent"></div>
+                </div>
+                
+                <div class="instructor__content reveal">
+                    <p class="instructor__label">Meet the Instructor</p>
+                    <h2 class="instructor__name">חגית אנטבי</h2>
+                    <p class="instructor__role">Brand Worlds Architect</p>
+                    
+                    <p class="instructor__bio">למעלה מעשר שנים אני עובדת בעולם השיווק הדיגיטלי והמיתוג. בתחילת הדרך עשיתי את מה שכולם עושים — לוגואים, קמפיינים, פוסטים. אבל תמיד הרגשתי שמשהו חסר.</p>
+                    
+                    <p class="instructor__bio">כשנכנסתי לעולם ה-AI, הבנתי שזה לא רק כלי חדש — זו הזדמנות לבנות מותגים בצורה אחרת לגמרי. פיתחתי את שיטת ה-World Building: תהליך שמתחיל מ-DNA אסטרטגי, עובר דרך נרטיב, ומגיע לעולם ויזואלי מלא — כזה שאי אפשר להעתיק כי הוא נולד מתוך המהות.</p>
+                    
+                    <p class="instructor__bio">היום אני בונה עולמות מותג עם AI למותגי יוקרה, קוסמטיקה, טכנולוגיה ועיצוב — ובסדנה הזו אני מלמדת את השיטה שפיתחתי, צעד אחרי צעד.</p>
+                    
+                    <div class="instructor__stats">
+                        <div>
+                            <div class="instructor__stat-value">10+</div>
+                            <div class="instructor__stat-label">שנות ניסיון</div>
+                        </div>
+                        <div>
+                            <div class="instructor__stat-value">50+</div>
+                            <div class="instructor__stat-label">עולמות שנבנו</div>
+                        </div>
+                        <div>
+                            <div class="instructor__stat-value">MA</div>
+                            <div class="instructor__stat-label">שיווק</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. TESTIMONIALS ==================== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials__header reveal">
+                <p class="testimonials__label">What They Say</p>
+                <h2 class="testimonials__title">מה אומרים על השיטה</h2>
+            </div>
+            
+            <div class="testimonials__grid">
+                <div class="testimonial reveal">
+                    <p class="testimonial__text">הגעתי עם פיד מבולגן ותחושה שכל פוסט הוא בעולם אחר. אחרי ארבעה מפגשים הבנתי שהבעיה לא הייתה הכלי — הייתה חסרה לי שיטה. היום יש לי מערכת שמייצרת תוכן עקבי כל שבוע.</p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">ש</div>
+                        <div>
+                            <div class="testimonial__name">שירה כ.</div>
+                            <div class="testimonial__role">Brand Designer, Tel Aviv</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial reveal">
+                    <p class="testimonial__text">חגית לימדה אותי לחשוב על מותג כעולם שלם — לא כאוסף של תמונות יפות. זה שינה לי את הדרך שבה אני עובד עם לקוחות. עכשיו אני מוכר Brand Worlds, לא "עיצוב גרפי".</p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">ד</div>
+                        <div>
+                            <div class="testimonial__name">דניאל מ.</div>
+                            <div class="testimonial__role">Creative Director, Startup</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial reveal">
+                    <p class="testimonial__text">יש הרבה קורסי AI בשוק. הסדנה הזו שונה — היא לא על "איך לכתוב פרומפט" אלא על "למה לכתוב אותו". קיבלתי כלי חשיבה שאני משתמשת בו כל יום.</p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">מ</div>
+                        <div>
+                            <div class="testimonial__name">מיכל ר.</div>
+                            <div class="testimonial__role">Marketing Manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 8. WHAT YOU GET ==================== -->
+    <section class="includes">
+        <div class="container">
+            <div class="includes__header reveal">
+                <p class="includes__label">What's Included</p>
+                <h2 class="includes__title">מה מקבלים</h2>
+            </div>
+            
+            <div class="includes__grid">
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">🎥</div>
+                    <h3 class="includes__item-title">4 מפגשי LIVE</h3>
+                    <p class="includes__item-desc">8 שעות הדרכה בזום + הקלטות מלאות</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">📖</div>
+                    <h3 class="includes__item-title">חוברת עבודה</h3>
+                    <p class="includes__item-desc">מדריך דיגיטלי עם תרגילים ותבניות</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">💬</div>
+                    <h3 class="includes__item-title">ליווי בוואטסאפ</h3>
+                    <p class="includes__item-desc">תמיכה בין מפגשים + משוב אישי</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">📐</div>
+                    <h3 class="includes__item-title">תבניות פרומפטים</h3>
+                    <p class="includes__item-desc">ספריית פרומפטים מותאמים למיתוג</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">🎯</div>
+                    <h3 class="includes__item-title">מסמך אסטרטגיה</h3>
+                    <p class="includes__item-desc">תוצר אישי שמייצרים במהלך הסדנה</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">📋</div>
+                    <h3 class="includes__item-title">תוכנית עבודה</h3>
+                    <p class="includes__item-desc">תוכנית ויזואלית ל-3 חודשים קדימה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 9. LEAD FORM ==================== -->
+    <section class="lead-form" id="lead-form">
+        <div class="container">
+            <div class="lead-form__inner">
+                <div class="lead-form__content reveal">
+                    <p class="lead-form__label">Get In Touch</p>
+                    <h2 class="lead-form__title">לא בטוחים?<br>השאירו פרטים ונדבר.</h2>
+                    <p class="lead-form__text">אין התחייבות. מספיק שיחה קצרה כדי לבדוק אם הסדנה מתאימה לשלב שבו אתם נמצאים. אחזור אליכם תוך 24 שעות.</p>
+                </div>
+                
+                <div class="lead-form__form reveal" id="contactForm">
+                    <h3 class="lead-form__form-title">טופס מתעניינים</h3>
+                    <form id="workshopForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">שם מלא *</label>
+                            <input type="text" id="name" name="name" required placeholder="השם שלכם">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">טלפון *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="050-0000000" dir="ltr">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">אימייל</label>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" dir="ltr">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">מה התפקיד שלכם?</label>
+                            <select id="role" name="role">
+                                <option value="" disabled selected>בחרו תפקיד</option>
+                                <option value="designer">מעצב/ת גרפי/ת</option>
+                                <option value="brand-owner">בעל/ת מותג</option>
+                                <option value="creative-director">מנהל/ת קריאייטיב</option>
+                                <option value="marketing">מנהל/ת שיווק</option>
+                                <option value="freelancer">פרילנסר</option>
+                                <option value="other">אחר</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">משהו שחשוב לכם שנדע?</label>
+                            <textarea id="message" name="message" placeholder="ספרו בקצרה על העסק שלכם ומה אתם מחפשים..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">שלחו ונחזור אליכם →</button>
+                        <p class="form-note">* ללא התחייבות. נחזור אליכם תוך 24 שעות.</p>
+                    </form>
+                    
+                    <div class="form-success" id="formSuccess">
+                        <div class="form-success__icon">✓</div>
+                        <h3 class="form-success__title">תודה!</h3>
+                        <p class="form-success__text">קיבלנו את הפרטים שלכם. נחזור אליכם בהקדם.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 10. PRICING — at the end ==================== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing__header reveal">
+                <p class="pricing__label">Investment</p>
+                <h2 class="pricing__title">הצטרפות למחזור הקרוב</h2>
+            </div>
+            
+            <div class="pricing__card reveal">
+                <div class="pricing__badge">Early Bird</div>
+                <div class="pricing__old-price">₪2,970</div>
+                <div class="pricing__price">₪2,470</div>
+                <div class="pricing__price-note">+ מע"מ | עד 3 תשלומים</div>
+                
+                <div class="pricing__divider"></div>
+                
+                <ul class="pricing__features">
+                    <li>4 מפגשי LIVE בזום (8 שעות)</li>
+                    <li>הקלטות מלאות של כל המפגשים</li>
+                    <li>חוברת עבודה דיגיטלית + תרגילים</li>
+                    <li>ליווי בוואטסאפ בין המפגשים</li>
+                    <li>ספריית תבניות פרומפטים מותאמות</li>
+                    <li>תוכנית עבודה ויזואלית ל-3 חודשים</li>
+                </ul>
+                
+                <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אני%20מתעניינ%2Fת%20בסדנת%20World%20Builder" class="pricing__cta" target="_blank">שיחה לבדיקת התאמה →</a>
+                
+                <p class="pricing__alt">או <a href="mailto:hagit@hagitantebi.co.il">שלחו מייל</a></p>
+                
+                <p class="pricing__urgency">⏰ הנחת Early Bird בתוקף עד 15 במרץ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section class="final-cta">
+        <div class="container reveal">
+            <h2 class="final-cta__title">לא בטוחים אם זה מתאים לכם?</h2>
+            <p class="final-cta__text">השיחה היא בדיוק בשביל זה. נבדוק יחד אם הגישה הזו מתאימה לשלב שבו אתם נמצאים.</p>
+            <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אני%20מתעניינ%2Fת%20בסדנת%20World%20Builder" class="final-cta__btn" target="_blank">בואו נדבר →</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
+        <p>© 2025 <a href="index.html">Hagit Antebi</a>. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Scroll reveal
+        (function() {
+            var reveals = document.querySelectorAll('.reveal');
+            function checkReveal() {
+                for (var i = 0; i < reveals.length; i++) {
+                    var el = reveals[i];
+                    var top = el.getBoundingClientRect().top;
+                    if (top < window.innerHeight - 80) {
+                        el.classList.add('active');
+                    }
+                }
+            }
+            window.addEventListener('scroll', checkReveal);
+            window.addEventListener('load', checkReveal);
+            
+            // Smooth scroll
+            var anchors = document.querySelectorAll('a[href^="#"]');
+            for (var j = 0; j < anchors.length; j++) {
+                anchors[j].addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href === '#') return;
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        })();
+        
+        // Form handling
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            var form = document.getElementById('workshopForm');
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var role = document.getElementById('role').value;
+            var message = document.getElementById('message').value;
+            
+            // Build WhatsApp message
+            var waText = 'היי חגית, אני מתעניינ/ת בסדנת World Builder.\n';
+            waText += 'שם: ' + name + '\n';
+            waText += 'טלפון: ' + phone + '\n';
+            if (email) waText += 'מייל: ' + email + '\n';
+            if (role) waText += 'תפקיד: ' + role + '\n';
+            if (message) waText += 'הערה: ' + message;
+            
+            var waUrl = 'https://wa.me/972528351676?text=' + encodeURIComponent(waText);
+            
+            // Show success state
+            form.style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+            
+            // Open WhatsApp
+            window.open(waUrl, '_blank');
+            
+            return false;
+        }
+    </script>
 </body>
 </html>
