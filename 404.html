@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Lost in Space | Hagit Antebi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background particles */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #c9a96e, transparent 70%);
+      top: 10%; left: 20%;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #8b7355, transparent 70%);
+      bottom: 20%; right: 15%;
+      animation-delay: -7s;
+    }
+
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, #d4b896, transparent 70%);
+      top: 50%; left: 60%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -50px) scale(1.1); }
+      50% { transform: translate(-20px, 20px) scale(0.9); }
+      75% { transform: translate(40px, 30px) scale(1.05); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      max-width: 680px;
+    }
+
+    .error-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 20vw, 14rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #c9a96e 0%, #f5e6c8 40%, #c9a96e 60%, #8b7355 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+      background-size: 200% 100%;
+      margin-bottom: 0.2em;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .message {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c9a96e, #b08d4c);
+      color: #0a0a0a;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+      border-color: rgba(201, 169, 110, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Decorative line */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Quick links */
+    .quick-links {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .quick-links-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.25);
+      margin-bottom: 1rem;
+    }
+
+    .quick-links-list {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .quick-links-list a {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+      letter-spacing: 0.02em;
+    }
+
+    .quick-links-list a:hover {
+      color: #c9a96e;
+    }
+
+    /* Entry animations */
+    .content > * {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .error-number { animation-delay: 0.1s; }
+    .subtitle { animation-delay: 0.25s; }
+    .divider { animation-delay: 0.35s; }
+    .message { animation-delay: 0.45s; }
+    .actions { animation-delay: 0.55s; }
+    .quick-links { animation-delay: 0.7s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .actions { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 260px; justify-content: center; }
+      .quick-links-list { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="content">
+    <div class="error-number">404</div>
+    
+    <h1 class="subtitle">This world doesn't exist — yet</h1>
+    
+    <div class="divider"></div>
+    
+    <p class="message">
+      העמוד שחיפשת לא נמצא. ייתכן שהוא עבר מיקום,<br>
+      או שהוא שייך לעולם שעדיין לא נבנה.
+    </p>
+
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+        חזרה לעמוד הראשי
+      </a>
+      <a href="/brand-discovery.html" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        Brand Discovery
+      </a>
+    </div>
+
+    <div class="quick-links">
+      <div class="quick-links-title">או אולי חיפשת את —</div>
+      <div class="quick-links-list">
+        <a href="/method.html">Method</a>
+        <a href="/brand-os.html">Brand OS</a>
+        <a href="/mora.html">MORA</a>
+        <a href="/ai-visuals.html">AI Visuals</a>
+        <a href="/about.html">About</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
