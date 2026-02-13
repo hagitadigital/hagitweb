@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Worlds | Hagit Antebi</title>
+    <meta name="description" content="עולמות מותג מלאים שנבנו מאפס — MORA, SHIRO, NEXUS, FROST. כל עולם הוא אקו-סיסטם שלם של DNA, נרטיב ושפה ויזואלית.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://hagitantebi.co.il/worlds.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hagitantebi.co.il/worlds.html">
+    <meta property="og:title" content="Brand Worlds | Hagit Antebi">
+    <meta property="og:description" content="עולמות מותג מלאים שנבנו מאפס — MORA, SHIRO, NEXUS, FROST. כל עולם הוא אקו-סיסטם שלם של DNA, נרטיב ושפה ויזואלית.">
+    <meta property="og:image" content="https://hagitantebi.co.il/mora.png">
+    <meta property="og:locale" content="he_IL">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #8B7355;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --container-max: 1400px;
+            --container-padding: clamp(24px, 5vw, 80px);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+
+        /* ---- Minimal Nav ---- */
+        .nav-minimal {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 24px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .nav-minimal__inner {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-minimal__logo {
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+            color: var(--color-chocolate); text-decoration: none;
+        }
+        .nav-minimal__back {
+            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-chocolate); text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+            transition: color 0.3s;
+        }
+        .nav-minimal__back:hover { color: var(--color-copper); }
+
+        /* ---- Page Hero ---- */
+        .page-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(160deg, #1A1612 0%, #0F0D0B 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 80%, rgba(196, 118, 90, 0.08) 0%, transparent 60%);
+        }
+        .page-hero__icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .page-hero__label {
+            font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 16px;
+        }
+        .page-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 400; color: #FAF8F3;
+            margin-bottom: 20px;
+        }
+        .page-hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-style: italic; color: var(--color-taupe);
+            max-width: 600px; margin: 0 auto;
+        }
+
+        /* ---- Worlds Grid ---- */
+        .worlds-section {
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+        .worlds-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(32px, 5vw, 60px);
+        }
+        .world-card {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.5s var(--transition-smooth);
+        }
+        .world-card:hover {
+            transform: translateY(-8px);
+        }
+        .world-card__image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--color-warm-beige) 0%, var(--color-light-taupe) 100%);
+            overflow: hidden;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .world-card__image::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(79, 55, 44, 0.5) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s var(--transition-smooth);
+            z-index: 1;
+        }
+        .world-card:hover .world-card__image::before { opacity: 1; }
+        .world-card__img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        .world-card:hover .world-card__img { transform: scale(1.05); }
+        .world-card__fallback {
+            position: absolute;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-chocolate);
+            opacity: 0.25;
+        }
+        .world-card__content { padding: 24px 0; }
+        .world-card__category {
+            font-family: var(--font-body-en); font-size: 0.6875rem; font-weight: 500;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 8px;
+        }
+        .world-card__title {
+            font-family: var(--font-display);
+            font-size: 1.75rem; font-weight: 400;
+        }
+        .world-card__subtitle {
+            font-family: var(--font-display);
+            font-size: 1rem; font-style: italic;
+            color: var(--color-copper);
+            margin-top: 8px;
+        }
+        .world-card__desc {
+            font-size: 0.9375rem;
+            color: var(--color-taupe);
+            margin-top: 8px;
+        }
+
+        /* ---- Footer Minimal ---- */
+        .footer-minimal {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-light-taupe);
+            text-align: center;
+        }
+        .footer-minimal__text {
+            font-size: 0.875rem; color: var(--color-taupe);
+        }
+        .footer-minimal__text a {
+            color: var(--color-copper); text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .worlds-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-minimal">
+        <div class="container nav-minimal__inner">
+            <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
+            <a href="/" class="nav-minimal__back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <span class="page-hero__icon">🌐</span>
+            <p class="page-hero__label">Brand Worlds</p>
+            <h1 class="page-hero__title">Built From Zero</h1>
+            <p class="page-hero__subtitle">כל עולם נבנה מאפס — DNA, נרטיב, שפה ויזואלית ואקו-סיסטם שלם שאפשר לגדול בתוכו.</p>
+        </div>
+    </section>
+
+    <section class="worlds-section">
+        <div class="container">
+            <div class="worlds-grid">
+                <a href="mora.html" class="world-card">
+                    <div class="world-card__image">
+                        <img src="mora.png" alt="MORA" class="world-card__img" onerror="this.style.display='none'">
+                        <span class="world-card__fallback">MORA</span>
+                    </div>
+                    <div class="world-card__content">
+                        <p class="world-card__category">Beauty & Wellness</p>
+                        <h3 class="world-card__title">MORA</h3>
+                        <p class="world-card__subtitle">A world built for a brand that needed authority without losing warmth.</p>
+                        <p class="world-card__desc">יצירת אקו-סיסטם חושי מלא: מעיצוב המוצר ועד לחוויית המשתמש.</p>
+                    </div>
+                </a>
+
+                <a href="https://hagitadigital.github.io/SHIRO/" target="_blank" class="world-card">
+                    <div class="world-card__image">
+                        <img src="https://hagitadigital.github.io/SHIRO/sphere-glow.png" alt="SHIRO" class="world-card__img" onerror="this.style.display='none'">
+                        <span class="world-card__fallback">SHIRO</span>
+                    </div>
+                    <div class="world-card__content">
+                        <p class="world-card__category">Smart Home & Technology</p>
+                        <h3 class="world-card__title">SHIRO</h3>
+                        <p class="world-card__subtitle">A world built for calm intelligence that organizes life quietly.</p>
+                        <p class="world-card__desc">אינטליגנציה שקטה שמסדרת את החיים בלי לדרוש תשומת לב.</p>
+                    </div>
+                </a>
+
+                <a href="nexus.html" class="world-card">
+                    <div class="world-card__image">
+                        <img src="nexus.png" alt="NEXUS" class="world-card__img" onerror="this.style.display='none'">
+                        <span class="world-card__fallback">NEXUS</span>
+                    </div>
+                    <div class="world-card__content">
+                        <p class="world-card__category">Gaming & Technology</p>
+                        <h3 class="world-card__title">NEXUS</h3>
+                        <p class="world-card__subtitle">A world built for a brand that needed to feel like tomorrow — today.</p>
+                        <p class="world-card__desc">בניית אקו-סיסטם מותגי שמשדר קידמה וחדשנות בזירה הבינלאומית.</p>
+                    </div>
+                </a>
+
+                <a href="frost.html" class="world-card">
+                    <div class="world-card__image">
+                        <img src="frost.png" alt="FROST" class="world-card__img" onerror="this.style.display='none'">
+                        <span class="world-card__fallback">FROST</span>
+                    </div>
+                    <div class="world-card__content">
+                        <p class="world-card__category">Beauty & Lifestyle</p>
+                        <h3 class="world-card__title">FROST</h3>
+                        <p class="world-card__subtitle">A world built for a brand you could almost taste.</p>
+                        <p class="world-card__desc">שפה ויזואלית שמפעילה את כל החושים: מהמרקם, דרך הצבעוניות ועד לאריזה.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Gate → Brand OS -->
+    <a href="brand-os.html" style="display:block;text-decoration:none;padding:clamp(60px,10vw,100px) 0;text-align:center;border-top:1px solid #D4C9BC;background:#FAF8F3;transition:background 0.5s;cursor:pointer;" onmouseover="this.style.background='#F5F1E8'" onmouseout="this.style.background='#FAF8F3'">
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.6875rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:#B8A89A;margin-bottom:12px;">Continue Exploring</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#8B7355;">Discover Brand OS</h3>
+        <div style="margin-top:20px;color:#B8A89A;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </a>
+
+    <div class="footer-minimal">
+        <p class="footer-minimal__text">
+            <a href="/">Hagit Antebi</a> — Brand Worlds Architect
+        </p>
+    </div>
+</body>
+</html>

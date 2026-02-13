@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Builder Workshop | Hagit Antebi Studio</title>
-    <meta name="description" content="סדנת פרימיום לבניית עולמות מותג - מרעיון אחד קטן לעולם שלם. לומדים את השיטה של פיצוח DNA ובניית Brand World.">
+    <title>Studio AI | Hagit Antebi</title>
+    <meta name="description" content="הסטודיו — סדנאות, מעבדת AI ותהליכי עבודה יצירתיים. למד לבנות עולמות מותג עם כלים מתקדמים.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://hagitantebi.co.il/studio.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hagitantebi.co.il/studio.html">
+    <meta property="og:title" content="Studio AI | Hagit Antebi">
+    <meta property="og:description" content="הסטודיו — סדנאות, מעבדת AI ותהליכי עבודה יצירתיים. למד לבנות עולמות מותג עם כלים מתקדמים.">
+    <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta property="og:locale" content="he_IL">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,912 +23,309 @@
         :root {
             --color-cream: #FAF8F3;
             --color-warm-beige: #F5F1E8;
-            --color-chocolate: #6B5344;
+            --color-chocolate: #8B7355;
             --color-copper: #C4765A;
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
-            --color-dark: #2C2420;
             --font-display: 'Cormorant Garamond', serif;
             --font-body-en: 'Plus Jakarta Sans', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
+            --container-max: 1400px;
+            --container-padding: clamp(24px, 5vw, 80px);
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
         body {
             font-family: var(--font-body-he);
-            background-color: var(--color-cream);
+            background: var(--color-cream);
             color: var(--color-chocolate);
-            line-height: 1.7;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+
+        .nav-minimal {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 24px 0;
             background: rgba(250, 248, 243, 0.95);
             backdrop-filter: blur(10px);
         }
-        
-        .nav__inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .nav-minimal__inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-minimal__logo {
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+            color: var(--color-chocolate); text-decoration: none;
         }
-        
-        .nav__logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--color-chocolate);
-            text-decoration: none;
-        }
-        
-        .nav__back {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            color: var(--color-chocolate);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .nav-minimal__back {
+            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-chocolate); text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
             transition: color 0.3s;
         }
-        
-        .nav__back:hover { color: var(--color-copper); }
-        
-        /* Hero - Dark & Premium */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .nav-minimal__back:hover { color: var(--color-copper); }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(160deg, #1A1612 0%, #0F0D0B 100%);
             text-align: center;
             position: relative;
-            background: var(--color-dark);
-            color: var(--color-cream);
-            margin-top: 0;
-            padding-top: 80px;
             overflow: hidden;
         }
-        
-        .hero::before {
+        .page-hero::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 50% 50%, rgba(196, 118, 90, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 80%, rgba(184, 137, 74, 0.06) 0%, transparent 60%);
         }
-        
-        .hero__content {
-            max-width: 900px;
-            padding: 0 clamp(24px, 5vw, 80px);
-            position: relative;
-            z-index: 1;
+        .page-hero__icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
         }
-        
-        .hero__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 32px;
+        .page-hero__label {
+            font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 16px;
         }
-        
-        .hero__title {
+        .page-hero__title {
             font-family: var(--font-display);
             font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 32px;
-        }
-        
-        .hero__title span {
-            display: block;
-            font-style: italic;
-            color: var(--color-copper);
-        }
-        
-        .hero__subtitle {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            opacity: 0.85;
-            max-width: 650px;
-            margin: 0 auto 48px;
-        }
-        
-        .hero__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-dark);
-            background: var(--color-copper);
-            text-decoration: none;
-            padding: 20px 48px;
-            transition: all 0.4s var(--transition-smooth);
-        }
-        
-        .hero__cta:hover {
-            background: var(--color-cream);
-            transform: translateY(-2px);
-        }
-        
-        /* Intro Statement */
-        .statement {
-            padding: clamp(100px, 15vw, 180px) 0;
-            text-align: center;
-        }
-        
-        .statement__inner {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-        }
-        
-        .statement__text {
-            font-family: var(--font-display);
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 400;
-            line-height: 1.5;
-        }
-        
-        .statement__highlight {
-            color: var(--color-copper);
-            font-style: italic;
-        }
-        
-        /* The Difference */
-        .difference {
-            background: var(--color-warm-beige);
-            padding: clamp(80px, 12vw, 140px) 0;
-        }
-        
-        .difference__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-        }
-        
-        .difference__header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .difference__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .difference__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-        }
-        
-        .difference__grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-        
-        .difference__col {
-            padding: 48px;
-            background: var(--color-cream);
-        }
-        
-        .difference__col--old {
-            opacity: 0.7;
-        }
-        
-        .difference__col-label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-        
-        .difference__col--old .difference__col-label {
-            color: var(--color-taupe);
-        }
-        
-        .difference__col--new .difference__col-label {
-            color: var(--color-copper);
-        }
-        
-        .difference__col h3 {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin-bottom: 24px;
-        }
-        
-        .difference__list {
-            list-style: none;
-        }
-        
-        .difference__list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--color-light-taupe);
-            font-size: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .difference__list li:last-child {
-            border-bottom: none;
-        }
-        
-        .difference__list li::before {
-            content: '✗';
-            color: var(--color-taupe);
-        }
-        
-        .difference__col--new .difference__list li::before {
-            content: '✓';
-            color: var(--color-copper);
-        }
-        
-        /* The Journey */
-        .journey {
-            padding: clamp(100px, 15vw, 180px) 0;
-        }
-        
-        .journey__inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-        }
-        
-        .journey__header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .journey__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .journey__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-        }
-        
-        .journey__phase {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid var(--color-light-taupe);
-        }
-        
-        .journey__phase:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .journey__number {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 400;
-            color: var(--color-copper);
-            opacity: 0.4;
-            line-height: 1;
-        }
-        
-        .journey__phase-content h3 {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-        
-        .journey__phase-content h3 span {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-copper);
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .journey__phase-content p {
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        
-        .journey__outcome {
-            background: var(--color-warm-beige);
-            padding: 20px 24px;
-            font-size: 0.9375rem;
-            margin-top: 24px;
-        }
-        
-        .journey__outcome strong {
-            color: var(--color-copper);
-        }
-        
-        /* Results */
-        .results {
-            background: var(--color-dark);
-            color: var(--color-cream);
-            padding: clamp(80px, 12vw, 140px) 0;
-        }
-        
-        .results__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-        }
-        
-        .results__header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .results__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .results__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-        }
-        
-        .results__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        
-        .results__card {
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-        
-        .results__icon {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
-        }
-        
-        .results__card h3 {
-            font-family: var(--font-display);
-            font-size: 1.375rem;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-        
-        .results__card p {
-            font-size: 0.9375rem;
-            opacity: 0.8;
-            line-height: 1.7;
-        }
-        
-        /* For Who */
-        .forwho {
-            padding: clamp(80px, 12vw, 140px) 0;
-        }
-        
-        .forwho__inner {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-        }
-        
-        .forwho__header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .forwho__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .forwho__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-        }
-        
-        .forwho__list {
-            list-style: none;
-        }
-        
-        .forwho__list li {
-            padding: 24px 0;
-            border-bottom: 1px solid var(--color-light-taupe);
-            font-size: 1.125rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-        
-        .forwho__list li::before {
-            content: '→';
-            color: var(--color-copper);
-            font-weight: 600;
-        }
-        
-        /* Pricing */
-        .pricing {
-            background: var(--color-warm-beige);
-            padding: clamp(80px, 12vw, 140px) 0;
-        }
-        
-        .pricing__inner {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 clamp(24px, 5vw, 80px);
-            text-align: center;
-        }
-        
-        .pricing__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .pricing__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-        
-        .pricing__subtitle {
-            font-size: 1.125rem;
-            margin-bottom: 48px;
-            opacity: 0.8;
-        }
-        
-        .pricing__card {
-            background: var(--color-cream);
-            padding: 60px 48px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-        }
-        
-        .pricing__includes {
-            text-align: right;
-            margin-bottom: 40px;
-        }
-        
-        .pricing__includes h4 {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-weight: 400; color: #FAF8F3;
             margin-bottom: 20px;
         }
-        
-        .pricing__includes ul {
-            list-style: none;
-        }
-        
-        .pricing__includes li {
-            padding: 10px 0;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .pricing__includes li::before {
-            content: '✓';
-            color: var(--color-copper);
-            font-weight: 600;
-        }
-        
-        .pricing__price {
-            border-top: 1px solid var(--color-light-taupe);
-            padding-top: 40px;
-            margin-bottom: 32px;
-        }
-        
-        .pricing__amount {
+        .page-hero__subtitle {
             font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 400;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-style: italic; color: var(--color-taupe);
+            max-width: 600px; margin: 0 auto;
         }
-        
-        .pricing__amount span {
-            font-size: 1.25rem;
-            opacity: 0.6;
+
+        /* Studio Gates */
+        .studio-gates {
+            padding: clamp(80px, 12vw, 140px) 0;
         }
-        
-        .pricing__note {
-            font-size: 0.875rem;
-            opacity: 0.7;
-            margin-top: 8px;
+
+        .studio-gates__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(32px, 5vw, 60px);
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        
-        .pricing__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+
+        .studio-gate {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--color-warm-beige);
+            border: 1px solid var(--color-light-taupe);
+            padding: clamp(40px, 5vw, 64px);
+            position: relative;
+            transition: transform 0.5s var(--transition-smooth), 
+                        box-shadow 0.5s var(--transition-smooth),
+                        border-color 0.4s;
+        }
+
+        .studio-gate:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(79, 55, 44, 0.12);
+            border-color: var(--color-copper);
+        }
+
+        .studio-gate::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--color-copper);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--transition-smooth);
+        }
+
+        .studio-gate:hover::before {
+            transform: scaleX(1);
+        }
+
+        .studio-gate__icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .studio-gate__name {
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
+            font-size: 0.8125rem;
+            font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--color-cream);
-            background: var(--color-chocolate);
-            text-decoration: none;
-            padding: 20px 48px;
-            width: 100%;
-            justify-content: center;
-            transition: all 0.4s var(--transition-smooth);
+            color: var(--color-chocolate);
+            margin-bottom: 12px;
         }
-        
-        .pricing__cta:hover {
-            background: var(--color-copper);
-        }
-        
-        /* CTA */
-        .cta {
-            background: var(--color-chocolate);
-            color: var(--color-cream);
-            text-align: center;
-            padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px);
-        }
-        
-        .cta__title {
+
+        .studio-gate__title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
             font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .studio-gate__desc {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-chocolate);
+            opacity: 0.8;
             margin-bottom: 24px;
         }
-        
-        .cta__text {
-            max-width: 550px;
-            margin: 0 auto 40px;
-            font-size: 1.125rem;
-            opacity: 0.85;
+
+        .studio-gate__desc-he {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--color-taupe);
+            margin-bottom: 32px;
         }
-        
-        .cta__btn {
+
+        .studio-gate__enter {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+            color: var(--color-copper);
+            transition: gap 0.3s var(--transition-smooth);
+        }
+
+        .studio-gate:hover .studio-gate__enter {
+            gap: 12px;
+        }
+
+        /* Extras Section */
+        .studio-extras {
+            padding: 0 0 clamp(80px, 12vw, 140px);
+        }
+        .studio-extras__inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: clamp(40px, 6vw, 64px);
+            background: var(--color-warm-beige);
+            border: 1px solid var(--color-light-taupe);
+        }
+        .studio-extras__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .studio-extras__text {
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--color-chocolate);
-            background: var(--color-cream);
-            text-decoration: none;
-            padding: 20px 48px;
+            opacity: 0.8;
+            margin-bottom: 24px;
+        }
+        .studio-extras__cta {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-cream); text-decoration: none;
+            padding: 16px 36px;
+            background: var(--color-chocolate);
             transition: all 0.4s var(--transition-smooth);
         }
-        
-        .cta__btn:hover {
-            background: var(--color-copper);
-            color: var(--color-cream);
-        }
-        
+        .studio-extras__cta:hover { background: var(--color-copper); }
+
         /* Footer */
-        .footer {
-            background: var(--color-dark);
-            color: var(--color-cream);
-            padding: 40px;
+        .footer-minimal {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-light-taupe);
             text-align: center;
         }
-        
-        .footer__text {
-            font-size: 0.875rem;
-            opacity: 0.6;
+        .footer-minimal__text {
+            font-size: 0.875rem; color: var(--color-taupe);
         }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            .difference__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .results__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .journey__phase {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            
-            .journey__number {
-                font-size: 2.5rem;
-            }
+        .footer-minimal__text a {
+            color: var(--color-copper); text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .studio-gates__grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav__inner">
-            <a href="index.html" class="nav__logo">Hagit Antebi</a>
-            <a href="index.html" class="nav__back">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <nav class="nav-minimal">
+        <div class="container nav-minimal__inner">
+            <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
+            <a href="/" class="nav-minimal__back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
-                Back Home
+                Back to Home
             </a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero__content">
-            <p class="hero__label">The Studio Workshop</p>
-            <h1 class="hero__title">
-                World Builder
-                <span>Workshop</span>
-            </h1>
-            <p class="hero__subtitle">
-                סדנה אינטנסיבית שבה תלמדו את השיטה המלאה לבניית עולמות מותג.<br>
-                מרעיון אחד קטן – דרך פיצוח ה-DNA – ועד לעולם ויזואלי שלם.
-            </p>
-            <a href="#pricing" class="hero__cta">
-                Reserve Your Spot
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+    <section class="page-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <span class="page-hero__icon">🧠</span>
+            <p class="page-hero__label">Studio AI</p>
+            <h1 class="page-hero__title">The Studio</h1>
+            <p class="page-hero__subtitle">הסטודיו שבו הכלים, הידע והיצירתיות נפגשים — סדנאות, מעבדות AI ותהליכים שמרחיבים גבולות.</p>
         </div>
     </section>
 
-    <section class="statement">
-        <div class="statement__inner">
-            <p class="statement__text">
-                רוב האנשים לומדים <span class="statement__highlight">כלים</span>.<br>
-                בסדנה הזו תלמדו <span class="statement__highlight">שיטה</span>.<br><br>
-                הכלים משתנים כל שבוע. השיטה נשארת לנצח.
-            </p>
-        </div>
-    </section>
+    <section class="studio-gates">
+        <div class="container">
+            <div class="studio-gates__grid">
+                <!-- Gate 1: World Builder Workshop -->
+                <a href="workshop.html" class="studio-gate">
+                    <span class="studio-gate__icon">🏗️</span>
+                    <p class="studio-gate__name">Workshop</p>
+                    <h2 class="studio-gate__title">World Builder Workshop</h2>
+                    <p class="studio-gate__desc">A hands-on workshop for building your own brand world from scratch, using the complete Brand Worlds methodology.</p>
+                    <p class="studio-gate__desc-he">סדנה מעשית לבניית עולם מותג מלא — מה-DNA דרך הנרטיב ועד לשפה הויזואלית. מושלם למותגים שרוצים לעשות את זה בעצמם.</p>
+                    <span class="studio-gate__enter">
+                        Explore Workshop
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
 
-    <section class="difference">
-        <div class="difference__inner">
-            <div class="difference__header">
-                <p class="difference__label">The Difference</p>
-                <h2 class="difference__title">לא עוד סדנת AI</h2>
-            </div>
-            <div class="difference__grid">
-                <div class="difference__col difference__col--old">
-                    <p class="difference__col-label">סדנאות רגילות</p>
-                    <h3>לומדים לייצר תמונות</h3>
-                    <ul class="difference__list">
-                        <li>איך לכתוב פרומפט</li>
-                        <li>איזה כפתור ללחוץ</li>
-                        <li>איך לייצר עוד ועוד תוכן</li>
-                        <li>כלים שמתיישנים תוך חודש</li>
-                        <li>תוצאות שנראות כמו כולם</li>
-                    </ul>
-                </div>
-                <div class="difference__col difference__col--new">
-                    <p class="difference__col-label">World Builder Workshop</p>
-                    <h3>לומדים לבנות עולמות</h3>
-                    <ul class="difference__list">
-                        <li>איך לחשוף את ה-DNA של מותג</li>
-                        <li>איך להפוך רעיון לקונספט</li>
-                        <li>איך לבנות מערכת ויזואלית שלמה</li>
-                        <li>שיטה שעובדת עם כל כלי</li>
-                        <li>תוצאות שאי אפשר לחקות</li>
-                    </ul>
-                </div>
+                <!-- Gate 2: AI Visual Lab -->
+                <a href="ai-visual-lab.html" class="studio-gate">
+                    <span class="studio-gate__icon">🔬</span>
+                    <p class="studio-gate__name">AI Lab</p>
+                    <h2 class="studio-gate__title">AI Visual Lab</h2>
+                    <p class="studio-gate__desc">Advanced AI tools for creating stunning visual content — from Midjourney mastery to video generation with Runway and Sora.</p>
+                    <p class="studio-gate__desc-he">מעבדה ליצירת תוכן ויזואלי עם כלי AI מתקדמים — Midjourney, Runway, Sora ועוד. למד ליצור תוכן ברמה מקצועית.</p>
+                    <span class="studio-gate__enter">
+                        Explore AI Lab
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="journey">
-        <div class="journey__inner">
-            <div class="journey__header">
-                <p class="journey__label">The Journey</p>
-                <h2 class="journey__title">4 מפגשים. עולם שלם.</h2>
-            </div>
-            
-            <div class="journey__phase">
-                <div class="journey__number">01</div>
-                <div class="journey__phase-content">
-                    <h3>
-                        <span>Session One</span>
-                        The DNA — פיצוח הליבה
-                    </h3>
-                    <p>לפני שנוגעים בכלי כלשהו, אנחנו חופרים. מה באמת עומד מאחורי העסק? מה הסיפור שאף אחד עוד לא סיפר? מה ה-DNA שיהפוך את המותג לבלתי ניתן להעתקה?</p>
-                    <p>נעבוד עם מתודולוגיה מובנית לחשיפת הליבה - אותה שיטה שאני משתמשת בה עם לקוחות פרימיום.</p>
-                    <div class="journey__outcome">
-                        <strong>יוצאים עם:</strong> מסמך DNA מותגי מלא - הערכים, הקול, הבידול האמיתי.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="journey__phase">
-                <div class="journey__number">02</div>
-                <div class="journey__phase-content">
-                    <h3>
-                        <span>Session Two</span>
-                        The Concept — מרעיון לקונספט
-                    </h3>
-                    <p>עכשיו שיש לנו את ה-DNA, הגיע הזמן להפוך אותו לקונספט ויזואלי. איך לוקחים ערך מופשט ("אותנטיות", "חדשנות", "חום") ומתרגמים אותו לעולם שאפשר לראות ולהרגיש?</p>
-                    <p>נלמד את שיטת הגשרים - איך לחבר בין משמעות לוויז'ואל בצורה שמרגישה אורגנית ולא מאולצת.</p>
-                    <div class="journey__outcome">
-                        <strong>יוצאים עם:</strong> קונספט ויזואלי מוגדר - צבעוניות, אווירה, מטאפורות מרכזיות.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="journey__phase">
-                <div class="journey__number">03</div>
-                <div class="journey__phase-content">
-                    <h3>
-                        <span>Session Three</span>
-                        The Creation — בניית העולם
-                    </h3>
-                    <p>רק עכשיו נכנסים לכלים. ולא כדי ללחוץ כפתורים - אלא כדי לבנות מערכת. איך יוצרים סדרה של תמונות שמרגישות כמו עולם אחד? איך שומרים על עקביות בין מאות תוצרים?</p>
-                    <p>נעבוד עם Midjourney, DALL·E, Runway ועוד - אבל הפוקוס הוא על השיטה, לא על הכלי.</p>
-                    <div class="journey__outcome">
-                        <strong>יוצאים עם:</strong> ספריית נכסים ויזואליים + תבניות פרומפטים מותאמות אישית.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="journey__phase">
-                <div class="journey__number">04</div>
-                <div class="journey__phase-content">
-                    <h3>
-                        <span>Session Four</span>
-                        The System — מעולם למערכת
-                    </h3>
-                    <p>עולם יפה זה לא מספיק. צריך מערכת שאפשר לעבוד איתה. איך מתכננים תוכן לחודשים קדימה? איך שומרים על עקביות גם כש"אין זמן"? איך הופכים את מה שלמדנו לשגרה?</p>
-                    <p>נבנה יחד את ה-Brand World System - המערכת שתלווה אתכם הלאה.</p>
-                    <div class="journey__outcome">
-                        <strong>יוצאים עם:</strong> מערכת תוכן מלאה + תכנית עבודה ל-3 חודשים.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="results">
-        <div class="results__inner">
-            <div class="results__header">
-                <p class="results__label">What You'll Walk Away With</p>
-                <h2 class="results__title">לא רק ידע. תוצאות.</h2>
-            </div>
-            <div class="results__grid">
-                <div class="results__card">
-                    <p class="results__icon">📄</p>
-                    <h3>מסמך DNA מותגי</h3>
-                    <p>הליבה של המותג שלך מנוסחת ומוכנה - הבסיס לכל יצירה עתידית.</p>
-                </div>
-                <div class="results__card">
-                    <p class="results__icon">🎨</p>
-                    <h3>קונספט ויזואלי מלא</h3>
-                    <p>צבעוניות, אווירה, סגנון - כל מה שמגדיר איך העולם שלך נראה.</p>
-                </div>
-                <div class="results__card">
-                    <p class="results__icon">🖼️</p>
-                    <h3>ספריית נכסים</h3>
-                    <p>לפחות 20 תמונות מקצועיות מוכנות לשימוש מיידי.</p>
-                </div>
-                <div class="results__card">
-                    <p class="results__icon">📝</p>
-                    <h3>תבניות פרומפטים</h3>
-                    <p>מערכת פרומפטים מותאמת אישית למותג שלך.</p>
-                </div>
-                <div class="results__card">
-                    <p class="results__icon">📅</p>
-                    <h3>תכנית תוכן ל-3 חודשים</h3>
-                    <p>לא רק רעיונות - תכנית עבודה מפורטת עם לוחות זמנים.</p>
-                </div>
-                <div class="results__card">
-                    <p class="results__icon">🧠</p>
-                    <h3>השיטה המלאה</h3>
-                    <p>הידע לשחזר את התהליך שוב ושוב, עם כל מותג, עם כל כלי.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="forwho">
-        <div class="forwho__inner">
-            <div class="forwho__header">
-                <p class="forwho__label">Is This For You?</p>
-                <h2 class="forwho__title">הסדנה מתאימה לך אם...</h2>
-            </div>
-            <ul class="forwho__list">
-                <li>את/ה בעל/ת עסק שרוצה ליצור נוכחות ויזואלית שאי אפשר להתעלם ממנה</li>
-                <li>למדת כבר להשתמש בכלי AI אבל התוצאות מרגישות "כמו כולם"</li>
-                <li>את/ה יוצר/ת תוכן שמחפש/ת לשדרג את הרמה לליגה אחרת</li>
-                <li>את/ה מאמינ/ה שמותג זה יותר מלוגו - זה עולם שלם</li>
-                <li>את/ה מוכנ/ה להשקיע 4 מפגשים אינטנסיביים כדי לבנות משהו אמיתי</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="pricing" id="pricing">
-        <div class="pricing__inner">
-            <p class="pricing__label">Investment</p>
-            <h2 class="pricing__title">World Builder Workshop</h2>
-            <p class="pricing__subtitle">4 מפגשי זום חיים | קבוצה קטנה ואינטימית</p>
-            
-            <div class="pricing__card">
-                <div class="pricing__includes">
-                    <h4>מה כלול</h4>
-                    <ul>
-                        <li>4 מפגשי זום חיים (120 דקות כל מפגש)</li>
-                        <li>גישה להקלטות ללא הגבלת זמן</li>
-                        <li>חוברת עבודה + תבניות מותאמות</li>
-                        <li>תמיכה בוואטסאפ לאורך הסדנה</li>
-                        <li>פידבק אישי על כל התוצרים</li>
-                        <li>גישה לקהילת הבוגרים</li>
-                    </ul>
-                </div>
-                
-                <div class="pricing__price">
-                    <p class="pricing__amount">₪2,970 <span>+ מע"מ</span></p>
-                    <p class="pricing__note">ניתן לחלק ל-3 תשלומים</p>
-                </div>
-                
-                <a href="https://api.whatsapp.com/send?phone=972528351676" class="pricing__cta">
-                    שריינו מקום עכשיו
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <section class="studio-extras">
+        <div class="container">
+            <div class="studio-extras__inner">
+                <h3 class="studio-extras__title">Want a custom experience?</h3>
+                <p class="studio-extras__text">
+                    מחפשים משהו ספציפי? אני בונה גם חוויות למידה מותאמות אישית<br>
+                    לצוותים, סטארטאפים ומותגים שרוצים לשלב AI בתהליך היצירתי.
+                </p>
+                <a href="/#contact" class="studio-extras__cta">
+                    Let's Talk
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
@@ -927,21 +333,19 @@
         </div>
     </section>
 
-    <section class="cta">
-        <h2 class="cta__title">מוכנים לבנות עולם?</h2>
-        <p class="cta__text">
-            המקומות מוגבלים. הסדנה מתקיימת בקבוצות קטנות כדי לאפשר ליווי אישי ועבודה מעמיקה.
-        </p>
-        <a href="https://api.whatsapp.com/send?phone=972528351676" class="cta__btn">
-            Let's Talk
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-        </a>
-    </section>
+    <!-- Next Gate → Brand OS -->
+    <a href="brand-os.html" style="display:block;text-decoration:none;padding:clamp(60px,10vw,100px) 0;text-align:center;border-top:1px solid #D4C9BC;background:#FAF8F3;transition:background 0.5s;cursor:pointer;" onmouseover="this.style.background='#F5F1E8'" onmouseout="this.style.background='#FAF8F3'">
+        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.6875rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:#B8A89A;margin-bottom:12px;">Continue Exploring</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#8B7355;">Discover Brand OS</h3>
+        <div style="margin-top:20px;color:#B8A89A;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </a>
 
-    <footer class="footer">
-        <p class="footer__text">© 2025 Hagit Antebi. All rights reserved.</p>
-    </footer>
+    <div class="footer-minimal">
+        <p class="footer-minimal__text">
+            <a href="/">Hagit Antebi</a> — Brand Worlds Architect
+        </p>
+    </div>
 </body>
 </html>
