@@ -981,6 +981,52 @@
             font-size: 0.75rem;
             color: var(--color-taupe);
         }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 16px;
+            margin-bottom: 4px;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border: 1px solid var(--color-light-taupe);
+            background: var(--color-cream);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 2px;
+        }
+
+        .form-checkbox input[type="checkbox"]:checked {
+            background: var(--color-chocolate);
+            border-color: var(--color-chocolate);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FAF8F3' stroke-width='3'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .form-checkbox label {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: var(--color-taupe);
+            cursor: pointer;
+        }
+
+        .form-checkbox label a {
+            color: var(--color-chocolate);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .form-checkbox label a:hover {
+            color: var(--color-copper);
+        }
         
         /* Success state */
         .form-success {
@@ -1608,6 +1654,10 @@
                             <label for="message">משהו שחשוב לכם שנדע?</label>
                             <textarea id="message" name="message" placeholder="ספרו בקצרה על העסק שלכם ומה אתם מחפשים..."></textarea>
                         </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">קראתי ואני מסכים/ה ל<a href="terms.html" target="_blank">תקנון ותנאי השימוש</a>, כולל שמירת הפרטים שמסרתי לצורך יצירת קשר.</label>
+                        </div>
                         <button type="submit" class="form-submit">שלחו ונחזור אליכם →</button>
                         <p class="form-note">* ללא התחייבות. נחזור אליכם תוך 24 שעות.</p>
                     </form>
@@ -1667,7 +1717,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 <a href="index.html">Hagit Antebi</a>. All rights reserved.</p>
+        <p>© 2025 <a href="index.html">Hagit Antebi</a>. All rights reserved. | <a href="terms.html" style="color: var(--color-taupe); text-decoration: underline; text-underline-offset: 2px;">תקנון ותנאי שימוש</a></p>
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>

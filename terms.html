@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תקנון ותנאי שימוש | Hagit Antebi</title>
+    <meta name="description" content="תקנון ותנאי שימוש — סדנת World Builder Workshop מאת חגית אנטבי.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #8B7355;
+            --color-copper: #C4765A;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --color-dark: #1A1A1D;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --container-max: 800px;
+            --container-padding: clamp(24px, 5vw, 80px);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-cream);
+            color: var(--color-chocolate);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        /* Navigation */
+        .nav {
+            padding: 20px 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+        }
+
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .nav__logo {
+            font-family: var(--font-body-en);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--color-chocolate);
+            text-decoration: none;
+        }
+
+        .nav__back {
+            font-size: 0.8rem;
+            color: var(--color-taupe);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav__back:hover {
+            color: var(--color-copper);
+        }
+
+        /* Header */
+        .terms-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .terms-header__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+
+        .terms-header__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--color-dark);
+            margin-bottom: 12px;
+        }
+
+        .terms-header__date {
+            font-size: 0.82rem;
+            color: var(--color-taupe);
+        }
+
+        /* Content */
+        .terms-content {
+            padding: 20px 0 100px;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--color-dark);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-light-taupe);
+        }
+
+        .terms-section h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .terms-section p {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            color: var(--color-chocolate);
+        }
+
+        .terms-section ul {
+            padding-right: 24px;
+            margin-bottom: 12px;
+        }
+
+        .terms-section li {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--color-chocolate);
+        }
+
+        .terms-section a {
+            color: var(--color-copper);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* Divider */
+        .terms-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-light-taupe);
+            margin: 50px auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+            border-top: 1px solid rgba(139, 115, 85, 0.08);
+        }
+
+        .footer a {
+            color: var(--color-taupe);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--color-copper);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html" class="nav__logo">Hagit Antebi</a>
+            <a href="workshop.html" class="nav__back">→ חזרה לסדנה</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="terms-header">
+        <div class="container">
+            <p class="terms-header__label">Terms & Conditions</p>
+            <h1 class="terms-header__title">תקנון ותנאי שימוש</h1>
+            <p class="terms-header__date">עדכון אחרון: פברואר 2026</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="terms-content">
+        <div class="container">
+
+            <section class="terms-section">
+                <h2>1. כללי</h2>
+                <p>תקנון זה מהווה הסכם מחייב בין המשתתף/ת (להלן: "המשתתף") לבין חגית אנטבי — Brand Worlds Studio (להלן: "החברה" או "המפעילה"), בכל הנוגע להשתתפות בסדנת World Builder Workshop (להלן: "הסדנה") ולשימוש באתר hagitantebi.co.il (להלן: "האתר").</p>
+                <p>הרשמה לסדנה או שליחת טופס באתר מהווים הסכמה מלאה לתנאים המפורטים בתקנון זה.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>2. תיאור הסדנה</h2>
+                <p>הסדנה כוללת 4 מפגשי LIVE בזום, בהיקף כולל של כ-8 שעות הדרכה, ומלווה בחומרי עבודה דיגיטליים, ליווי בוואטסאפ בין המפגשים, ותבניות פרומפטים.</p>
+                <p>המפעילה שומרת לעצמה את הזכות לעדכן את תכני הסדנה, מועדיה וכליה בהתאם להתפתחויות בתחום, תוך שמירה על היקף ואיכות דומים למתואר.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>3. הרשמה ותשלום</h2>
+                <p>ההרשמה לסדנה מתבצעת באמצעות שיחת התאמה ו/או העברת תשלום. מקום בסדנה מובטח רק לאחר ביצוע תשלום מלא או הסדרת תשלומים.</p>
+                <p>מחיר הסדנה כפי שמפורסם באתר אינו כולל מע"מ, אלא אם צוין אחרת. ניתן לשלם עד 3 תשלומים.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>4. מדיניות ביטולים והחזרים</h2>
+                <p>ביטול עד 14 יום לפני תחילת הסדנה — החזר מלא.</p>
+                <p>ביטול בין 14 ל-7 ימים לפני תחילת הסדנה — החזר של 50% מסכום התשלום.</p>
+                <p>ביטול פחות מ-7 ימים לפני תחילת הסדנה או לאחר שהחלה — לא יינתן החזר כספי. במקרה זה, המשתתף/ת יקבל/תקבל גישה להקלטות המפגשים.</p>
+                <p>הבקשה לביטול תתבצע בכתב בלבד, באימייל <a href="mailto:hagit@hagitantebi.co.il">hagit@hagitantebi.co.il</a>.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>5. קניין רוחני</h2>
+                <p>כל החומרים, המתודולוגיות, התבניות, המצגות וההקלטות הנמסרים במסגרת הסדנה הם קניינה הרוחני הבלעדי של המפעילה.</p>
+                <p>השימוש בחומרים הוא אישי בלבד. אין להעתיק, להפיץ, למכור, לשכפל או להעביר את החומרים לצד שלישי, בכל צורה שהיא, ללא אישור מראש ובכתב.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>6. אחריות</h2>
+                <p>הסדנה מציעה כלים, שיטות עבודה והשראה. אין המפעילה מתחייבת לתוצאות עסקיות ספציפיות כתוצאה מההשתתפות.</p>
+                <p>השימוש בכלי AI (כגון Midjourney, Runway ואחרים) כפוף לתנאי השימוש של אותם כלים. המפעילה אינה אחראית לשינויים בתנאי השימוש או בזמינות של כלים חיצוניים.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>7. שמירת פרטים ופרטיות</h2>
+                <p>בעת שליחת טופס המתעניינים באתר או בעת ההרשמה לסדנה, הפרטים הבאים נשמרים:</p>
+                <ul>
+                    <li>שם מלא</li>
+                    <li>מספר טלפון</li>
+                    <li>כתובת אימייל (אם נמסרה)</li>
+                    <li>תפקיד (אם נמסר)</li>
+                    <li>הערות חופשיות (אם נמסרו)</li>
+                </ul>
+
+                <h3>מטרת שמירת הפרטים</h3>
+                <p>הפרטים נשמרים לצורך יצירת קשר, בדיקת התאמה לסדנה, ניהול ההרשמה, ושליחת עדכונים הקשורים לסדנה בלבד.</p>
+
+                <h3>אחסון ואבטחה</h3>
+                <p>הפרטים נשמרים באמצעות שירות Formspree, בהתאם ל<a href="https://formspree.io/legal/privacy-policy/" target="_blank">מדיניות הפרטיות של Formspree</a>. המפעילה נוקטת באמצעים סבירים לשמירה על אבטחת המידע.</p>
+
+                <h3>שיתוף עם צדדים שלישיים</h3>
+                <p>הפרטים לא יימסרו, יימכרו או יועברו לצד שלישי כלשהו, למעט כנדרש על פי חוק.</p>
+
+                <h3>מחיקת פרטים</h3>
+                <p>כל משתתף/ת רשאי/ת לבקש את מחיקת הפרטים בכל עת, באמצעות פנייה ל-<a href="mailto:hagit@hagitantebi.co.il">hagit@hagitantebi.co.il</a>. המחיקה תתבצע תוך 14 ימי עסקים.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>8. הקלטות ותיעוד</h2>
+                <p>מפגשי הסדנה מוקלטים ומועברים למשתתפים לצפייה חוזרת. ההקלטות הן לשימוש אישי בלבד ואין להפיצן.</p>
+                <p>ההשתתפות במפגשים מהווה הסכמה לכך שהמשתתף/ת עשוי/ה להופיע בהקלטה. משתתפים שאינם מעוניינים להיות מצולמים מוזמנים לכבות את המצלמה.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>9. כללי התנהגות</h2>
+                <p>המפעילה שומרת לעצמה את הזכות להרחיק משתתף/ת שמפר/ה את כללי ההתנהגות, פוגע/ת במשתתפים אחרים, או עושה שימוש לא ראוי בחומרים. במקרה כזה, לא יינתן החזר כספי.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>10. שינויים בתקנון</h2>
+                <p>המפעילה רשאית לעדכן תקנון זה מעת לעת. התקנון המחייב הוא זה המפורסם באתר במועד ההרשמה.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>11. יצירת קשר</h2>
+                <p>לכל שאלה, בירור או בקשה בנושא התקנון ותנאי השימוש:</p>
+                <p>חגית אנטבי — Brand Worlds Studio</p>
+                <p>אימייל: <a href="mailto:hagit@hagitantebi.co.il">hagit@hagitantebi.co.il</a></p>
+            </section>
+
+            <div class="terms-divider"></div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 <a href="index.html">Hagit Antebi</a>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
