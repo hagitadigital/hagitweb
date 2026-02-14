@@ -1574,7 +1574,12 @@
                 
                 <div class="lead-form__form reveal" id="contactForm">
                     <h3 class="lead-form__form-title">טופס מתעניינים</h3>
-                    <form id="workshopForm" onsubmit="return handleSubmit(event)">
+                    <form 
+  id="workshopForm" 
+  action="https://formspree.io/f/mpqjdzwd" 
+  method="POST"
+  onsubmit="return handleSubmit(event)">
+
                         <div class="form-group">
                             <label for="name">שם מלא *</label>
                             <input type="text" id="name" name="name" required placeholder="השם שלכם">
