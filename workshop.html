@@ -1701,36 +1701,32 @@
             }
         })();
         
-        // Form handling
-        function handleSubmit(e) {
-            e.preventDefault();
-            
-            var form = document.getElementById('workshopForm');
-            var name = document.getElementById('name').value;
-            var phone = document.getElementById('phone').value;
-            var email = document.getElementById('email').value;
-            var role = document.getElementById('role').value;
-            var message = document.getElementById('message').value;
-            
-            // Build WhatsApp message
-            var waText = 'היי חגית, אני מתעניינ/ת בסדנת World Builder.\n';
-            waText += 'שם: ' + name + '\n';
-            waText += 'טלפון: ' + phone + '\n';
-            if (email) waText += 'מייל: ' + email + '\n';
-            if (role) waText += 'תפקיד: ' + role + '\n';
-            if (message) waText += 'הערה: ' + message;
-            
-            var waUrl = 'https://wa.me/972528351676?text=' + encodeURIComponent(waText);
-            
-            // Show success state
-            form.style.display = 'none';
-            document.getElementById('formSuccess').classList.add('show');
-            
-            // Open WhatsApp
-            window.open(waUrl, '_blank');
-            
-            return false;
+      // Form handling
+function handleSubmit(e) {
+    e.preventDefault();
+    
+    var form = document.getElementById('workshopForm');
+    var formData = new FormData(form);
+    
+    // Send to Formspree
+    fetch('https://formspree.io/f/mpqjdzwd', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+        if (response.ok) {
+            console.log('Formspree: submitted successfully');
+        } else {
+            console.error('Formspree: submission failed', response.status);
         }
+    }).catch(function(error) {
+        console.error('Formspree: network error', error);
+    });
+    
+    // Show success state immediately
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+}
     </script>
 </body>
 </html>
