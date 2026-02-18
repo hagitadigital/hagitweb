@@ -18,6 +18,7 @@
        Reset & Base
        ═══════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
 
     :root {
       --bg: #0a0a0a;
@@ -37,7 +38,10 @@
       --font-hebrew: 'Assistant', 'Inter', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
     body {
       font-family: var(--font-body);
       background: var(--bg);
@@ -45,6 +49,7 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      max-width: 100vw;
     }
 
     /* ═══════════════════════════════════════
@@ -54,6 +59,8 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
 
     .section {
@@ -71,11 +78,12 @@
 
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
       font-weight: 300;
       line-height: 1.3;
       margin-bottom: 20px;
       color: var(--text-1);
+      max-width: 100%;
     }
 
     .section-subtitle {
@@ -151,9 +159,9 @@
       content: '';
       position: absolute;
       top: -50%;
-      right: -30%;
-      width: 600px;
-      height: 600px;
+      right: -10%;
+      width: 400px;
+      height: 400px;
       background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -191,11 +199,11 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2rem, 5.5vw, 4rem);
       font-weight: 300;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: 24px;
-      max-width: 700px;
+      max-width: 100%;
     }
 
     .hero-subtitle {
@@ -241,6 +249,7 @@
       background: var(--bg-elevated);
       border-top: 1px solid var(--border-light);
       border-bottom: 1px solid var(--border-light);
+      overflow: hidden;
     }
 
     .problems-grid {
@@ -364,6 +373,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-top: 48px;
+      max-width: 100%;
     }
 
     @media (max-width: 768px) {
@@ -384,6 +394,8 @@
 
     .showcase-item img {
       width: 100%;
+      max-width: 100%;
+      height: auto;
       display: block;
     }
 
@@ -442,6 +454,7 @@
        ═══════════════════════════════════════ */
     .pilot {
       position: relative;
+      overflow: hidden;
     }
 
     .pilot::before {
@@ -471,10 +484,11 @@
 
     .pilot-info h2 {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
       font-weight: 300;
       line-height: 1.3;
       margin-bottom: 16px;
+      max-width: 100%;
     }
 
     .pilot-desc {
@@ -712,10 +726,23 @@
        Responsive
        ═══════════════════════════════════════ */
     @media (max-width: 768px) {
-      .section { padding: 70px 0; }
-      .hero { padding: 120px 0 70px; }
-      .hero-title { font-size: 2rem; }
+      .section { padding: 60px 0; }
+      .hero { padding: 110px 0 60px; }
+      .hero-title { font-size: 1.8rem; line-height: 1.25; }
+      .hero-subtitle { font-size: 0.92rem; }
+      .hero-cta { width: 100%; justify-content: center; }
       .pilot-form-wrapper { padding: 28px 20px; }
+      .pilot-content { gap: 32px; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .features-row { gap: 8px; justify-content: flex-start; }
+      .feature-tag { font-size: 0.65rem; padding: 6px 12px; }
+      .nav-inner { padding: 0 16px; }
+      .container { padding: 0 18px; }
+      .section-label { font-size: 0.55rem; }
+      .step h3 { font-size: 1.1rem; }
+      .quote-text { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -931,14 +958,7 @@
           <h3 class="form-title">✦ הצטרפו לפיילוט</h3>
           <p class="form-subtitle">3 שדות קצרים — ואני חוזרת אליכם תוך 24 שעות</p>
 
-          <form action="https://formsubmit.co/hagit@hagitantebi.co.il" method="POST">
-            <!-- FormSubmit config -->
-            <input type="hidden" name="_subject" value="BrandOS Pilot — פנייה חדשה" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="box" />
-            <input type="hidden" name="_next" value="https://hagitantebi.co.il/brand-os.html#pilot" />
-            <!-- Honeypot -->
-            <input type="text" name="_honey" style="display:none" />
+          <form action="https://formspree.io/f/xpqjldew" method="POST">
 
             <div class="form-field">
               <label for="name">שם מלא</label>
