@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>שאלון Brand DNA — מותג קיים | BrandOS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #111111;
+      --gold: #d4af37;
+      --gold-dim: rgba(212,175,55,0.25);
+      --gold-glow: rgba(212,175,55,0.08);
+      --white: #ffffff;
+      --silver: #a3a3a3;
+      --border: #222;
+      --input-bg: #161616;
+      --input-border: #2a2a2a;
+      --input-focus: rgba(212,175,55,0.4);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .nav {
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-back {
+      font-size: 13px;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    .form-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .form-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .form-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .form-header p {
+      font-size: 14px;
+      color: var(--silver);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .form-section {
+      margin-bottom: 40px;
+    }
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: var(--silver);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 24px;
+    }
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .field label .req { color: var(--gold); }
+    .field .hint {
+      font-size: 12px;
+      color: var(--silver);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="url"],
+    .field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Heebo', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--input-focus);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .color-field {
+      text-align: center;
+    }
+    .color-field label {
+      font-size: 12px;
+      color: var(--silver);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .color-field input {
+      width: 100%;
+      padding: 10px 8px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      text-align: center;
+      outline: none;
+    }
+    .color-field input:focus {
+      border-color: var(--input-focus);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 13px;
+      color: var(--silver);
+    }
+    .checkbox-item:hover {
+      border-color: var(--gold-dim);
+      color: var(--white);
+    }
+    .checkbox-item input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 16px;
+      height: 16px;
+    }
+
+    .submit-area {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 40px;
+      background: linear-gradient(135deg, var(--gold), #b08d4c);
+      color: var(--bg);
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: 0.5px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212,175,55,0.3);
+    }
+    .submit-note {
+      font-size: 12px;
+      color: var(--silver);
+      margin-top: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--gold);
+      color: var(--bg);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 32px;
+    }
+
+    @media (max-width: 640px) {
+      .color-row { grid-template-columns: repeat(3, 1fr); }
+      .form-container { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../" class="nav-logo">BRAND<span>OS</span></a>
+  <a href="../" class="nav-back">← חזרה לעמוד הראשי</a>
+</nav>
+
+<div class="form-container">
+  <div class="form-header">
+    <div class="form-badge">Brand DNA Questionnaire</div>
+    <h1>שאלון Brand DNA — מותג קיים</h1>
+    <p>השאלון הזה ממפה את ה-DNA של המותג שלך ישירות למערכת BrandOS. ככל שהתשובות מדויקות יותר, כך התוכן שהמערכת תייצר יהיה קרוב יותר לשפה ולעולם שלך.</p>
+  </div>
+
+  <form id="brand-form">
+
+    <!-- 01 -->
+    <div class="form-section">
+      <div class="section-num">01</div>
+      <div class="section-heading">פרטים בסיסיים</div>
+      <div class="section-desc"></div>
+
+      <div class="field">
+        <label>שם המותג <span class="req">*</span></label>
+        <input type="text" name="brand_name" required>
+      </div>
+      <div class="field">
+        <label>שם איש/אשת קשר <span class="req">*</span></label>
+        <input type="text" name="contact_name" required>
+      </div>
+      <div class="field">
+        <label>אימייל <span class="req">*</span></label>
+        <div class="hint">האימייל הזה ישמש לכניסה למערכת BrandOS</div>
+        <input type="email" name="email" required>
+      </div>
+      <div class="field">
+        <label>תחום פעילות <span class="req">*</span></label>
+        <input type="text" name="industry">
+      </div>
+      <div class="field">
+        <label>אתר / רשתות חברתיות</label>
+        <input type="url" name="website" placeholder="https://...">
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="form-section">
+      <div class="section-num">02</div>
+      <div class="section-heading">מהות המותג — Essence</div>
+      <div class="section-desc">מה המותג שלך בתמצית? לא מה הוא מוכר — מה הוא *מייצג*. המשפט שמסביר למה המותג קיים.</div>
+
+      <div class="field">
+        <label>מהות המותג (2-3 משפטים) <span class="req">*</span></label>
+        <textarea name="essence" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>הבטחת המותג — Brand Promise <span class="req">*</span></label>
+        <div class="hint">מה המותג מבטיח ללקוח? לא בפרסום, אלא באמת.</div>
+        <textarea name="promise" rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="form-section">
+      <div class="section-num">03</div>
+      <div class="section-heading">קול המותג — Voice</div>
+      <div class="section-desc">איך המותג מדבר? הטון, הסגנון, והאופי של השפה.</div>
+
+      <div class="field">
+        <label>תיאור קול המותג <span class="req">*</span></label>
+        <div class="hint">דוגמה: "מקצועי אבל חם, מדבר בגובה העיניים, משתמש בהומור עדין"</div>
+        <textarea name="voice" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>מצב רוח — Mood <span class="req">*</span></label>
+        <div class="hint">איזו אווירה המותג משדר? מה הוא גורם לאנשים להרגיש?</div>
+        <textarea name="mood" rows="2"></textarea>
+      </div>
+      <div class="field">
+        <label>אישיות המותג — Personality <span class="req">*</span></label>
+        <div class="hint">אם המותג היה אדם — מי הוא? איך הוא מתנהג?</div>
+        <textarea name="personality" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="form-section">
+      <div class="section-num">04</div>
+      <div class="section-heading">ציר רגשי — Emotional Axis</div>
+      <div class="section-desc">איזה מסע רגשי עובר הלקוח? מאיפה הוא מתחיל ולאן הוא מגיע?</div>
+
+      <div class="field">
+        <label>הציר הרגשי של המותג <span class="req">*</span></label>
+        <div class="hint">דוגמה: "בלבול ← בהירות ← ביטחון" או "סקרנות ← גילוי ← שייכות"</div>
+        <textarea name="emotional_axis" rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="form-section">
+      <div class="section-num">05</div>
+      <div class="section-heading">עולם ויזואלי</div>
+
+      <div class="field">
+        <label>צבעי מותג <span class="req">*</span></label>
+        <div class="hint">הזינו קודי HEX (לדוגמה: #D4AF37). אם אין — תארו את הצבעים במילים.</div>
+        <div class="color-row">
+          <div class="color-field"><label>צבע 1</label><input type="text" name="color1" placeholder="#"></div>
+          <div class="color-field"><label>צבע 2</label><input type="text" name="color2" placeholder="#"></div>
+          <div class="color-field"><label>צבע 3</label><input type="text" name="color3" placeholder="#"></div>
+          <div class="color-field"><label>צבע 4</label><input type="text" name="color4" placeholder="#"></div>
+          <div class="color-field"><label>צבע 5</label><input type="text" name="color5" placeholder="#"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>טיפוגרפיה — גופנים</label>
+        <div class="hint">שמות הפונטים שבשימוש (כותרות + גוף טקסט). אם אין — ציינו סגנון מועדף.</div>
+        <input type="text" name="typography">
+      </div>
+      <div class="field">
+        <label>סגנון ויזואלי כללי</label>
+        <div class="hint">מינימליסטי? שופע? ארכיטקטוני? אורגני?</div>
+        <textarea name="visual_style" rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="form-section">
+      <div class="section-num">06</div>
+      <div class="section-heading">מה כן ומה לא</div>
+
+      <div class="field">
+        <label>כללי "מה כן" — Do's <span class="req">*</span></label>
+        <div class="hint">מה המותג תמיד עושה? ערכים, גישות, עקרונות שמנחים את התקשורת.</div>
+        <textarea name="dos" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>כללי "מה לא" — Don'ts <span class="req">*</span></label>
+        <div class="hint">מה המותג לעולם לא עושה? קווים אדומים.</div>
+        <textarea name="donts" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="form-section">
+      <div class="section-num">07</div>
+      <div class="section-heading">צרכי תוכן</div>
+
+      <div class="field">
+        <label>באיזה פלטפורמות המותג פעיל? <span class="req">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="instagram"> אינסטגרם</label>
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="facebook"> פייסבוק</label>
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="linkedin"> לינקדאין</label>
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="tiktok"> TikTok</label>
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="website"> אתר / בלוג</label>
+          <label class="checkbox-item"><input type="checkbox" name="platforms" value="email"> ניוזלטר / אימייל</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>אילו סוגי תוכן הכי חשובים לכם? <span class="req">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="content_types" value="posts"> פוסטים לרשתות</label>
+          <label class="checkbox-item"><input type="checkbox" name="content_types" value="articles"> מאמרים / כתבות</label>
+          <label class="checkbox-item"><input type="checkbox" name="content_types" value="ads"> מודעות פרסום</label>
+          <label class="checkbox-item"><input type="checkbox" name="content_types" value="visuals"> תמונות / ויז'ואלים</label>
+          <label class="checkbox-item"><input type="checkbox" name="content_types" value="storyboard"> סטוריבורד / וידאו</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="form-section">
+      <div class="section-num">08</div>
+      <div class="section-heading">הערות נוספות</div>
+
+      <div class="field">
+        <label>משהו שחשוב לך שנדע?</label>
+        <div class="hint">לינקים לחומרים קיימים, מצגות מותג, מדריך סגנון — הכל עוזר.</div>
+        <textarea name="notes" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="submit-area">
+      <button type="submit" class="submit-btn">שליחת השאלון →</button>
+      <p class="submit-note">הנתונים נשלחים למייל. מכאן אנחנו בונים את ה-DNA ומפעילים את המערכת.</p>
+    </div>
+
+  </form>
+</div>
+
+<div class="toast" id="toast">✓ השאלון הועתק — שלחו לנו במייל</div>
+
+<script>
+document.getElementById('brand-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = new FormData(form);
+  let text = '=== שאלון Brand DNA — מותג קיים ===\n\n';
+
+  const labels = {
+    brand_name: 'שם המותג', contact_name: 'שם איש קשר', email: 'אימייל',
+    industry: 'תחום פעילות', website: 'אתר', essence: 'מהות המותג',
+    promise: 'הבטחת המותג', voice: 'קול המותג', mood: 'מצב רוח',
+    personality: 'אישיות', emotional_axis: 'ציר רגשי',
+    color1: 'צבע 1', color2: 'צבע 2', color3: 'צבע 3', color4: 'צבע 4', color5: 'צבע 5',
+    typography: 'טיפוגרפיה', visual_style: 'סגנון ויזואלי',
+    dos: 'מה כן', donts: 'מה לא', notes: 'הערות'
+  };
+
+  for (const [key, label] of Object.entries(labels)) {
+    const val = data.get(key);
+    if (val) text += `${label}: ${val}\n`;
+  }
+
+  const platforms = data.getAll('platforms');
+  if (platforms.length) text += `\nפלטפורמות: ${platforms.join(', ')}\n`;
+
+  const types = data.getAll('content_types');
+  if (types.length) text += `סוגי תוכן: ${types.join(', ')}\n`;
+
+  // Copy to clipboard
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  });
+
+  // Also open mailto
+  const email = 'hagit@brandworlds.studio';
+  const subject = encodeURIComponent(`שאלון Brand DNA — ${data.get('brand_name') || 'מותג חדש'}`);
+  const body = encodeURIComponent(text);
+  window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+});
+</script>
+
+</body>
+</html>
