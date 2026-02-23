@@ -179,6 +179,36 @@
       z-index: 1;
     }
 
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-text {
+      /* text side */
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-visual img {
+      max-width: 420px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 60px rgba(201, 168, 76, 0.12));
+      animation: heroFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
     .hero-label {
       display: inline-flex;
       align-items: center;
@@ -239,7 +269,6 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(201, 168, 76, 0.2);
     }
-
     /* ═══════════════════════════════════════
        Problems Section
        ═══════════════════════════════════════ */
@@ -848,6 +877,9 @@
       .animation-showcase { grid-template-columns: 1fr; gap: 24px; }
       .paths-grid { grid-template-columns: 1fr; }
       .path-card { padding: 36px 24px; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+      .hero-visual img { max-width: 280px; }
     }
   </style>
 </head>
@@ -865,22 +897,30 @@
   <!-- ═══════ Hero ═══════ -->
   <section class="hero">
     <div class="container">
-      <div class="hero-label">
-        <span class="dot"></span>
-        פיילוט פתוח — 3 מקומות
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="hero-label">
+            <span class="dot"></span>
+            פיילוט פתוח — 3 מקומות
+          </div>
+
+          <h1 class="hero-title">
+            המותג שלכם הוא לא לוגו —<br>
+            הוא <span class="gold">עולם שלם</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            אני כותבת את ה-DNA של המותג שלכם, והמערכת הופכת אותו למנוע יצירת תוכן.
+            כל מילה שיוצאת ממנו — נשמעת כמוכם. כל תמונה — נראית כמוכם.
+          </p>
+
+          <a href="#pilot" class="hero-cta">→ רוצים BrandOS למותג שלכם</a>
+        </div>
+
+        <div class="hero-visual">
+          <img src="images/kintsugi.png" alt="BrandOS — Brand DNA Core" />
+        </div>
       </div>
-
-      <h1 class="hero-title">
-        המותג שלך הוא לא לוגו —<br>
-        הוא <span class="gold">עולם שלם</span>.
-      </h1>
-
-      <p class="hero-subtitle">
-        אני כותבת את ה-DNA של המותג שלכם, והמערכת הופכת אותו למנוע יצירת תוכן.
-        כל מילה שיוצאת ממנו — נשמעת כמוכם. כל תמונה — נראית כמוכם.
-      </p>
-
-      <a href="#pilot" class="hero-cta">→ רוצים BrandOS למותג שלכם</a>
     </div>
   </section>
 
