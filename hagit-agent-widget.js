@@ -361,7 +361,10 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
     const container = document.getElementById("ha-messages");
     const div = document.createElement("div");
     div.className = `ha-msg ${role}`;
-    div.textContent = text;
+    div.innerHTML = text
+  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  .replace(/\n/g, '<br>');
+
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
   }
