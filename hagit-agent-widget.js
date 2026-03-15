@@ -1,8 +1,7 @@
 (function () {
   "use strict";
 
-  const AGENT_URL = "https://brandos.hagitantebi.co.il/api/agent";
-
+const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
   const STYLES = `
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap');
 
