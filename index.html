@@ -613,8 +613,7 @@
         }
 
         /* ========================================
-           CHOOSE YOUR WORLD — PORTALS SECTION
-           Cube → Sphere transformation on hover
+           CHOOSE YOUR WORLD — PORTALS SECTION v2
         ======================================== */
         .portals {
             background: var(--color-warm-beige);
@@ -622,32 +621,26 @@
             position: relative;
             overflow: hidden;
         }
-
         .portals::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
+            top: 0; left: 10%; right: 10%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--color-light-taupe), transparent);
         }
-
         .portals__header {
             text-align: center;
-            margin-bottom: clamp(48px, 8vw, 80px);
+            margin-bottom: clamp(48px, 8vw, 72px);
         }
-
         .portals__label {
             font-family: var(--font-body-en);
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--color-copper);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
-
         .portals__title {
             font-family: var(--font-display);
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -655,215 +648,150 @@
             color: var(--color-chocolate);
             letter-spacing: -0.01em;
         }
-
         .portals__subtitle {
             font-family: var(--font-display);
             font-size: clamp(1rem, 2vw, 1.25rem);
             font-style: italic;
             color: var(--color-taupe);
-            margin-top: 16px;
+            margin-top: 14px;
         }
-
         .portals__grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: clamp(24px, 3vw, 40px);
-            max-width: 1300px;
+            gap: 18px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--container-padding);
+            direction: ltr;
         }
 
-        /* ---- Portal Card ---- */
+        /* ---- Portal Card v2 ---- */
         .portal {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--color-chocolate);
-            cursor: pointer;
-        }
-
-        /* ---- The Shape: Cube → Sphere ---- */
-        .portal__shape-wrap {
-            width: 100%;
-            aspect-ratio: 1/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 28px;
-            /* Perspective for 3D feel */
-            perspective: 600px;
-        }
-
-        .portal__shape {
-            width: 82%;
-            aspect-ratio: 1/1;
             position: relative;
+            border-radius: 4px;
             overflow: hidden;
-            /* Cube state */
-            border-radius: 8px;
-            background: linear-gradient(145deg, var(--color-cream) 0%, var(--color-light-taupe) 100%);
-            box-shadow: 
-                8px 8px 0 rgba(139, 115, 85, 0.08),
-                16px 16px 0 rgba(139, 115, 85, 0.04),
-                0 4px 20px rgba(139, 115, 85, 0.1);
-            /* Transition to sphere */
-            transition: 
-                border-radius 0.7s var(--transition-smooth),
-                box-shadow 0.7s var(--transition-smooth),
-                transform 0.7s var(--transition-smooth);
-            transform: rotateX(2deg) rotateY(-2deg);
-        }
-
-        .portal:hover .portal__shape {
-            /* Sphere state */
-            border-radius: 50%;
-            box-shadow: 
-                0 0 0 rgba(139, 115, 85, 0),
-                0 0 0 rgba(139, 115, 85, 0),
-                0 8px 40px rgba(196, 118, 90, 0.2),
-                0 0 60px rgba(196, 118, 90, 0.08),
-                inset 0 -20px 40px rgba(196, 118, 90, 0.1);
-            transform: rotateX(0deg) rotateY(0deg) scale(1.04);
-        }
-
-        /* Image inside the shape */
-        .portal__shape-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s var(--transition-smooth), opacity 0.5s;
-            opacity: 0.8;
-        }
-
-        .portal:hover .portal__shape-img {
-            transform: scale(1.08);
-            opacity: 1;
-        }
-
-        /* Warm glow overlay — appears on sphere state */
-        .portal__shape::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: radial-gradient(
-                circle at 35% 35%, 
-                rgba(255, 255, 255, 0.25) 0%, 
-                transparent 50%
-            );
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            aspect-ratio: 3/4.2;
             opacity: 0;
-            transition: opacity 0.7s var(--transition-smooth);
-            z-index: 2;
-            pointer-events: none;
+            transform: translateY(32px);
+            transition: opacity 0.7s var(--transition-smooth), transform 0.7s var(--transition-smooth);
         }
+        .portal.portal--visible { opacity: 1; transform: translateY(0); }
+        .portal:nth-child(1) { transition-delay: 0s; }
+        .portal:nth-child(2) { transition-delay: 0.12s; }
+        .portal:nth-child(3) { transition-delay: 0.24s; }
+        .portal:nth-child(4) { transition-delay: 0.36s; }
 
-        .portal:hover .portal__shape::before {
-            opacity: 1;
+        .portal__img-layer {
+            position: absolute;
+            inset: -8%; width: 116%; height: 116%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s var(--transition-smooth);
+            will-change: transform;
         }
-
-        /* Copper rim glow on sphere */
-        .portal__shape::after {
+        .portal:hover .portal__img-layer { transform: scale(1.06) translateY(-2%); }
+        .portal__img-layer::after {
             content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: inherit;
-            border: 2px solid transparent;
-            transition: border-color 0.7s var(--transition-smooth), inset 0.7s var(--transition-smooth);
-            z-index: 3;
-            pointer-events: none;
+            position: absolute; inset: 0;
+            background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: portalShimmer 4s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
+        .portal:hover .portal__img-layer::after { opacity: 1; }
+        @keyframes portalShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-        .portal:hover .portal__shape::after {
-            border-color: rgba(196, 118, 90, 0.35);
+        .portal__particles {
+            position: absolute; inset: 0;
+            pointer-events: none; z-index: 2; overflow: hidden;
         }
-
-        /* Fallback icon when no image */
-        .portal__icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            z-index: 1;
-            opacity: 0.5;
-            transition: opacity 0.5s var(--transition-smooth), transform 0.5s var(--transition-smooth);
+        .portal__p {
+            position: absolute; width: 2px; height: 2px;
+            border-radius: 50%; background: rgba(196,118,90,0.7);
+            opacity: 0; animation: portalFloat 0s ease-in-out infinite;
         }
+        .portal:hover .portal__p { opacity: 1; }
+        @keyframes portalFloat { 0%{transform:translateY(0) scale(1);opacity:0} 20%{opacity:1} 80%{opacity:.5} 100%{transform:translateY(-80px) scale(0.4);opacity:0} }
+        .portal__p:nth-child(1){left:20%;bottom:15%;animation-duration:2.8s;animation-delay:.0s;width:3px;height:3px}
+        .portal__p:nth-child(2){left:50%;bottom:20%;animation-duration:3.2s;animation-delay:.4s}
+        .portal__p:nth-child(3){left:70%;bottom:10%;animation-duration:2.5s;animation-delay:.8s}
+        .portal__p:nth-child(4){left:35%;bottom:25%;animation-duration:3.6s;animation-delay:.2s}
+        .portal__p:nth-child(5){left:80%;bottom:18%;animation-duration:2.9s;animation-delay:1.2s;width:3px;height:3px}
 
-        .portal:hover .portal__icon {
-            opacity: 0.7;
-            transform: translate(-50%, -50%) scale(1.05);
+        .portal__overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(12,8,4,.9) 0%, rgba(12,8,4,.32) 55%, rgba(12,8,4,.04) 100%);
+            transition: background 0.6s var(--transition-smooth);
         }
-
-        /* ---- Content below shape ---- */
-        .portal__content {
-            text-align: center;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .portal:hover .portal__overlay {
+            background: linear-gradient(to top, rgba(12,8,4,.94) 0%, rgba(12,8,4,.5) 55%, rgba(12,8,4,.08) 100%);
         }
-
-        .portal__name {
-            font-family: var(--font-body-en);
-            font-size: clamp(0.75rem, 1.2vw, 0.875rem);
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--color-chocolate);
-            margin-bottom: 8px;
-            transition: color 0.4s;
+        .portal__glow {
+            position: absolute; inset: 0; border-radius: 4px;
+            box-shadow: inset 0 0 0 0 rgba(196,118,90,0);
+            transition: box-shadow 0.6s var(--transition-smooth);
+            pointer-events: none; z-index: 5;
         }
+        .portal:hover .portal__glow { box-shadow: inset 0 0 0 1.5px rgba(196,118,90,.5); }
 
-        .portal:hover .portal__name {
-            color: var(--color-copper);
+        .portal__top {
+            position: absolute; top: 0; left: 0; right: 0;
+            padding: 18px 18px 0; z-index: 3;
+            display: flex; justify-content: space-between; align-items: flex-start;
         }
-
-        .portal__desc-en {
+        .portal__num {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
-            font-style: italic;
-            color: var(--color-copper);
-            line-height: 1.4;
-            margin-bottom: 8px;
+            font-size: 2.6rem; font-weight: 400;
+            color: rgba(196,118,90,.3); line-height: 1;
+            transition: color 0.4s var(--transition-smooth);
         }
-
-        .portal__desc-he {
-            font-family: var(--font-body-he);
-            font-size: clamp(0.8rem, 1vw, 0.9rem);
-            color: var(--color-taupe);
-            line-height: 1.6;
-            flex: 1;
+        .portal:hover .portal__num { color: rgba(196,118,90,.65); }
+        .portal__tag {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: .15em; text-transform: uppercase;
+            color: rgba(255,255,255,.4);
+            border: 1px solid rgba(255,255,255,.12);
+            padding: 4px 8px; border-radius: 2px;
+            opacity: 0; transform: translateY(-4px);
+            transition: opacity 0.4s var(--transition-smooth), transform 0.4s var(--transition-smooth);
         }
+        .portal:hover .portal__tag { opacity: 1; transform: translateY(0); }
 
-        .portal__enter {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .portal__bottom {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 20px 18px 18px; z-index: 3;
+        }
+        .portal__name {
+            font-size: 11px; font-weight: 500;
+            letter-spacing: .18em; text-transform: uppercase;
+            color: rgba(255,255,255,.95); margin-bottom: 7px;
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        }
+        .portal__desc {
+            font-family: var(--font-display);
+            font-style: italic; font-size: .98rem;
+            color: rgba(255,255,255,.6); line-height: 1.5;
+            max-height: 0; overflow: hidden; opacity: 0;
+            transform: translateY(5px);
+            transition: max-height .5s var(--transition-smooth), opacity .5s var(--transition-smooth), transform .5s var(--transition-smooth);
+        }
+        .portal:hover .portal__desc { max-height: 70px; opacity: 1; transform: translateY(0); }
+        .portal__enter {
+            display: flex; align-items: center; gap: 7px;
+            font-size: 10px; font-weight: 500;
+            letter-spacing: .15em; text-transform: uppercase;
             color: var(--color-copper);
-            margin-top: 16px;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.4s 0.15s, transform 0.4s 0.15s;
+            opacity: 0; transform: translateY(5px); margin-top: 12px;
+            font-family: var(--font-body-en);
+            transition: opacity .4s var(--transition-smooth) .08s, transform .4s var(--transition-smooth) .08s;
         }
-
-        .portal:hover .portal__enter {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portal__enter svg {
-            transition: transform 0.3s;
-        }
-
-        .portal:hover .portal__enter svg {
-            transform: translateX(4px);
-        }
+        .portal:hover .portal__enter { opacity: 1; transform: translateY(0); }
+        .portal__enter-arrow { transition: transform .3s; }
+        .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
         /* ========================================
            NEXT WORLD GATE — Bottom CTA
@@ -923,260 +851,286 @@
         }
 
         /* ========================================
-           ABOUT SECTION
+           ABOUT SECTION v2
         ======================================== */
-        .intro {
-            background: var(--color-warm-beige);
-        }
-        
+        .intro { background: var(--color-cream); }
         .intro__inner {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: clamp(40px, 8vw, 120px);
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(48px, 8vw, 96px);
             align-items: center;
         }
-        
-        .intro__visual {
-            position: relative;
-        }
-        
-        .intro__image-frame {
-            position: relative;
-            aspect-ratio: 1/1;
-            background: var(--color-cream);
-            overflow: hidden;
-        }
-        
-        .intro__image-frame::before {
-            content: '';
+        .intro__visual { position: relative; }
+        .intro__bg-shape {
             position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid var(--color-copper);
-            z-index: -1;
+            bottom: -20px; right: -20px;
+            width: 80%; height: 80%;
+            background: var(--color-warm-beige);
+            z-index: 0; border-radius: 2px;
         }
-        
+        .intro__image-frame {
+            position: relative; z-index: 1;
+            border-radius: 2px; overflow: hidden;
+            aspect-ratio: 4/5;
+            opacity: 0; transform: translateX(24px);
+            transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth);
+        }
+        .intro__image-frame.active { opacity: 1; transform: translateX(0); }
         .intro__image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top center;
+            display: block;
+            filter: brightness(.96) saturate(.95);
         }
-        
+        .intro__image-frame::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(139,115,85,.1) 100%);
+        }
+        .intro__float-tag {
+            position: absolute; bottom: 28px; left: -20px; z-index: 3;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            padding: 12px 18px;
+            opacity: 0; transform: translateY(10px);
+            transition: opacity 0.6s 0.85s var(--transition-smooth), transform 0.6s 0.85s var(--transition-smooth);
+        }
+        .intro__image-frame.active ~ .intro__float-tag,
+        .intro__float-tag.active { opacity: 1; transform: translateY(0); }
+        .intro__float-label {
+            font-size: 9px; font-weight: 500;
+            letter-spacing: .2em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 4px;
+            font-family: var(--font-body-en);
+        }
+        .intro__float-text {
+            font-family: var(--font-display);
+            font-size: 1rem; color: var(--color-chocolate); font-style: italic;
+        }
         .intro__content {
-            max-width: 600px;
+            direction: rtl; text-align: right;
         }
-        
         .intro__label {
             font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 24px;
+            font-size: 10px; font-weight: 500;
+            letter-spacing: .25em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 20px;
+            display: block;
         }
-        
         .intro__title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 32px;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 400; color: var(--color-chocolate);
+            line-height: 1.05; margin-bottom: 24px;
         }
-        
+        .intro__divider {
+            width: 40px; height: 1px;
+            background: var(--color-copper);
+            margin: 0 0 24px auto; opacity: .5; display: block;
+        }
         .intro__text {
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            color: var(--color-chocolate);
-        }
-        
-        .intro__text p {
-            margin-bottom: 24px;
-        }
-        
-        .intro__text p:last-child {
+            font-size: .95rem; line-height: 1.9;
+            color: var(--color-chocolate); opacity: .82;
             margin-bottom: 0;
         }
-        
-        .intro__highlight {
-            color: var(--color-copper);
-            font-weight: 500;
+        .intro__text p { margin-bottom: 20px; }
+        .intro__text p:last-child { margin-bottom: 0; }
+        .intro__highlight { color: var(--color-copper); font-weight: 500; }
+        .intro__pairs {
+            display: flex; flex-direction: column;
+            gap: 14px; margin: 24px 0;
         }
-        
+        .intro__pair {
+            display: flex; align-items: flex-start;
+            gap: 12px; direction: rtl;
+        }
+        .intro__pair-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--color-copper);
+            margin-top: 8px; flex-shrink: 0; opacity: .7;
+        }
+        .intro__pair-text {
+            font-size: .9rem; color: var(--color-chocolate);
+            opacity: .75; line-height: 1.6;
+        }
         .intro__link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-flex; align-items: center; gap: 10px;
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-copper);
-            text-decoration: none;
-            margin-top: 24px;
-            transition: gap 0.3s var(--transition-smooth);
+            font-size: .8rem; font-weight: 500;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--color-chocolate); text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--color-light-taupe);
+            transition: border-color .3s, color .3s;
+            direction: rtl; margin-top: 4px;
         }
-        
-        .intro__link:hover {
-            gap: 12px;
-        }
+        .intro__link:hover { color: var(--color-copper); border-color: var(--color-copper); }
+        .intro__link svg { transition: transform .3s; }
+        .intro__link:hover svg { transform: translateX(-4px); }
 
         /* ========================================
-           BRAND OS SECTION
+           BRAND OS SECTION v2
         ======================================== */
-        .brand-os {
-            background: var(--color-cream);
-            padding: clamp(60px, 10vw, 100px) 0;
+        .brand-os { background: var(--color-cream); padding: clamp(60px,10vw,100px) 0; }
+        .brand-os__wrap {
+            background: #0d0d0f;
+            max-width: 1060px; margin: 0 auto;
+            padding: 64px clamp(28px,5vw,72px) 72px;
+            position: relative; overflow: hidden;
         }
-        
-        .brand-os__card {
-            background: linear-gradient(145deg, #1A1A1D 0%, #0F0F11 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: clamp(40px, 6vw, 64px);
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            color: #E8E8E8;
+        .brand-os__grid-bg {
+            position: absolute; inset: 0; pointer-events: none;
+            background-image: linear-gradient(rgba(196,118,90,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(196,118,90,.025) 1px,transparent 1px);
+            background-size: 60px 60px;
         }
-        
-        .brand-os__card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #C9A962, transparent);
-            opacity: 0.6;
+        .brand-os__glow {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 260px;
+            background: radial-gradient(ellipse,rgba(196,118,90,.05) 0%,transparent 70%);
+            pointer-events: none;
         }
-        
-        .brand-os__inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .brand-os__header {
+            text-align: center; margin-bottom: 48px;
+            position: relative; z-index: 2;
         }
-        
-        .brand-os__label {
-            display: inline-block;
+        .brand-os__badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 500;
+            letter-spacing: .2em; text-transform: uppercase;
+            color: #C4765A;
+            border: 1px solid rgba(196,118,90,.3);
+            padding: 5px 14px; margin-bottom: 22px;
             font-family: var(--font-body-en);
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: #0F0F11;
-            background: #C9A962;
-            padding: 6px 14px;
-            margin-bottom: 20px;
         }
-        
+        .brand-os__badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #C4765A;
+            animation: bosDot 1.5s ease-in-out infinite;
+        }
+        @keyframes bosDot{0%,100%{opacity:1}50%{opacity:.15}}
         .brand-os__title {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 400;
-            letter-spacing: 0.05em;
+            font-size: clamp(3rem,8vw,5.5rem);
+            font-weight: 400; color: #f0ebe4; line-height: 1;
             margin-bottom: 8px;
-            color: #FFFFFF;
         }
-        
-        .brand-os__subtitle {
-            font-family: 'Space Mono', var(--font-body-en), monospace;
-            font-size: 0.8125rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #C9A962;
-            margin-bottom: 28px;
+        .brand-os__mono {
+            font-family: 'Courier New', monospace;
+            font-size: .76rem; color: rgba(196,118,90,.6);
+            letter-spacing: .08em; margin-bottom: 12px;
         }
-        
+        .brand-os__tagline {
+            font-size: .93rem; color: rgba(240,235,228,.48);
+            max-width: 460px; margin: 0 auto;
+            line-height: 1.7; direction: rtl;
+            font-family: var(--font-body-he);
+        }
+        .brand-os__divider {
+            width: 1px; height: 36px;
+            background: linear-gradient(to bottom,transparent,rgba(196,118,90,.35),transparent);
+            margin: 28px auto;
+        }
+        .brand-os__inner {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 48px; align-items: start;
+            position: relative; z-index: 2;
+        }
+        .brand-os__img-wrap { position: relative; }
+        .brand-os__img-frame { position: relative; overflow: hidden; border-radius: 2px; }
+        .brand-os__img-frame img { width: 100%; display: block; filter: brightness(.9) contrast(1.05); }
+        .brand-os__img-frame::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom,transparent 55%,rgba(13,13,15,.45) 100%);
+        }
+        .brand-os__corner {
+            position: absolute; width: 18px; height: 18px;
+            border-color: #C4765A; border-style: solid; opacity: .5;
+        }
+        .brand-os__corner--tl{top:0;left:0;border-width:2px 0 0 2px}
+        .brand-os__corner--tr{top:0;right:0;border-width:2px 2px 0 0}
+        .brand-os__corner--bl{bottom:0;left:0;border-width:0 0 2px 2px}
+        .brand-os__corner--br{bottom:0;right:0;border-width:0 2px 2px 0}
+        .brand-os__stats {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1px; background: rgba(196,118,90,.12); margin-top: 1px;
+        }
+        .brand-os__stat { background: #0d0d0f; padding: 11px 8px; text-align: center; }
+        .brand-os__stat-n {
+            font-family: var(--font-display);
+            font-size: 1.4rem; color: #f0ebe4; line-height: 1;
+        }
+        .brand-os__stat-l {
+            font-size: 10px; color: rgba(196,118,90,.5);
+            letter-spacing: .1em; text-transform: uppercase; margin-top: 3px;
+            font-family: var(--font-body-en);
+        }
+        .brand-os__content { direction: rtl; text-align: right; }
+        .brand-os__section-lbl {
+            font-size: 10px; font-weight: 500;
+            letter-spacing: .2em; text-transform: uppercase;
+            color: #C4765A; margin-bottom: 14px; opacity: .8;
+            font-family: var(--font-body-en);
+        }
         .brand-os__text {
-            font-size: 1rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 32px;
+            font-size: .93rem; color: rgba(240,235,228,.68);
+            line-height: 1.9; margin-bottom: 24px;
+            font-family: var(--font-body-he);
         }
-        
+        .brand-os__text b { color: rgba(240,235,228,.92); font-weight: 500; }
+        .brand-os__pipe-tag {
+            font-size: 10px; color: rgba(196,118,90,.4);
+            letter-spacing: .12em; text-transform: uppercase;
+            margin-bottom: 6px; font-family: 'Courier New',monospace;
+            direction: ltr; text-align: left;
+        }
+        .brand-os__pipeline { margin-bottom: 28px; }
+        .brand-os__pipe-row {
+            display: flex; align-items: center; gap: 0;
+            margin-bottom: 7px; direction: ltr;
+            opacity: 0; transform: translateY(8px);
+            transition: opacity .5s var(--transition-smooth), transform .5s var(--transition-smooth);
+        }
+        .brand-os__pipe-row.active { opacity: 1; transform: translateY(0); }
+        .brand-os__pipe-box {
+            background: rgba(196,118,90,.07);
+            border: 1px solid rgba(196,118,90,.17);
+            padding: 8px 12px;
+            font-family: 'Courier New',monospace;
+            font-size: .7rem; color: rgba(240,235,228,.78);
+            position: relative; overflow: hidden; flex: 1; text-align: center;
+        }
+        .brand-os__pipe-box::after {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 80%; height: 100%;
+            background: linear-gradient(90deg,transparent,rgba(196,118,90,.12),transparent);
+            animation: bosWipe 2.5s ease-in-out infinite;
+        }
+        @keyframes bosWipe{0%{left:-100%}100%{left:200%}}
+        .brand-os__pipe-row:nth-child(2) .brand-os__pipe-box:first-child::after{animation-delay:0s}
+        .brand-os__pipe-row:nth-child(2) .brand-os__pipe-box:last-child::after{animation-delay:.8s}
+        .brand-os__pipe-row:nth-child(3) .brand-os__pipe-box:first-child::after{animation-delay:1.5s}
+        .brand-os__pipe-row:nth-child(3) .brand-os__pipe-box:last-child::after{animation-delay:2.2s}
+        .brand-os__pipe-arr {
+            padding: 0 9px; color: rgba(196,118,90,.35);
+            font-family: 'Courier New',monospace; font-size: .9rem;
+        }
+        .brand-os__btns {
+            display: flex; gap: 10px;
+            justify-content: flex-end; flex-wrap: wrap; margin-top: 4px;
+        }
         .brand-os__btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            font-size: .76rem; font-weight: 500;
+            letter-spacing: .08em; text-transform: uppercase;
+            color: #0d0d0f; background: #f0ebe4;
+            padding: 12px 24px; text-decoration: none;
+            transition: background .3s; border: none;
             font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #0F0F11;
-            background: #C9A962;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 2px;
-            transition: all 0.4s ease;
         }
-        
-        .brand-os__btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.25);
+        .brand-os__btn:hover { background: #C4765A; color: #fff; }
+        .brand-os__btn--ghost {
+            color: rgba(240,235,228,.5); background: transparent;
+            border: 1px solid rgba(240,235,228,.15);
         }
-        
-        .brand-os__visual {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .brand-os__flow {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            font-family: 'Space Mono', monospace;
-        }
-        
-        .brand-os__flow-row {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .brand-os__flow-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 20px;
-            font-size: 0.8125rem;
-            color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        
-        .brand-os__flow-item:hover {
-            border-color: rgba(201, 169, 98, 0.4);
-            background: rgba(201, 169, 98, 0.05);
-        }
-        
-        .brand-os__flow-arrow {
-            color: #C9A962;
-            font-size: 1rem;
-            opacity: 0.6;
-        }
-        
-        .brand-os__demo-link {
-            display: block;
-            margin-top: 20px;
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .brand-os__demo-link a {
-            color: #C9A962;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        .brand-os__demo-link a:hover {
-            opacity: 0.7;
-        }
+        .brand-os__btn--ghost:hover { border-color: rgba(196,118,90,.45); color: #C4765A; background: transparent; }
 
         /* ========================================
            CONTACT CTA SECTION
@@ -1528,29 +1482,17 @@
 
             .portals__grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-                max-width: 500px;
-                margin: 0 auto;
+                gap: 12px;
             }
-
-            .brand-os__inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-            
-            .brand-os__flow {
-                align-items: center;
-            }
-            
-            .brand-os__flow-row {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .brand-os__flow-arrow {
-                transform: rotate(90deg);
-            }
+            .portal { aspect-ratio: 3/4.5; }
+            .brand-os__inner { grid-template-columns: 1fr; gap: 32px; }
+            .brand-os__img-wrap { order: -1; }
+            .brand-os__btns { justify-content: center; }
+            .brand-os__content { align-items: center; }
+            .intro__inner { grid-template-columns: 1fr; gap: 40px; }
+            .intro__visual { order: -1; }
+            .intro__bg-shape { right: -12px; bottom: -12px; }
+            .intro__float-tag { left: -8px; }
             
             .footer__inner {
                 grid-template-columns: 1fr;
@@ -1689,7 +1631,7 @@
         </div>
     </section>
 
-    <!-- ★ Choose Your World — Cube → Sphere Portals ★ -->
+    <!-- ★ Choose Your World — Portals v2 ★ -->
     <section class="portals" id="portals">
         <div class="container portals__header reveal">
             <p class="portals__label">Explore</p>
@@ -1697,158 +1639,155 @@
             <p class="portals__subtitle">Every structure holds a universe inside. Hover to reveal it.</p>
         </div>
 
-        <div class="portals__grid">
-            <!-- Portal 1: Brand Worlds -->
-            <a href="worlds.html" class="portal reveal">
-                <div class="portal__shape-wrap">
-                    <div class="portal__shape">
-                        <img src="mora.png" alt="Brand Worlds" class="portal__shape-img" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-                        <span class="portal__icon">🌐</span>
-                    </div>
-                </div>
-                <div class="portal__content">
-                    <h3 class="portal__name">Brand Worlds</h3>
-                    <p class="portal__desc-en">Complete brand universes for visionary businesses.</p>
-                    <p class="portal__desc-he">עולמות מותג מלאים — MORA, SHIRO, NEXUS, FROST</p>
-                    <span class="portal__enter">
-                        Enter World
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
+        <div class="portals__grid" id="portalsGrid">
+            <a href="worlds.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('mora.png')"></div>
+                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top"><span class="portal__num">01</span><span class="portal__tag">Worlds</span></div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Brand Worlds</p>
+                    <p class="portal__desc">עולמות מותג מלאים — MORA, SHIRO, NEXUS, FROST</p>
+                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
-            <!-- Portal 2: Brand Experiences -->
-            <a href="experiences.html" class="portal reveal">
-                <div class="portal__shape-wrap">
-                    <div class="portal__shape">
-                        <!-- portal-experiences.jpg — replace with your image -->
-                        <img src="portal-transform1.png" alt="Brand Experiences" class="portal__shape-img" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-                        <span class="portal__icon">🎬</span>
-                    </div>
-                </div>
-                <div class="portal__content">
-                    <h3 class="portal__name">Brand Experiences</h3>
-                    <p class="portal__desc-en">Animated presentations, video, and productions.</p>
-                    <p class="portal__desc-he">מצגות מונפשות, וידאו קמפיינים והפקות ויזואליות</p>
-                    <span class="portal__enter">
-                        Enter World
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
+            <a href="experiences.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('portal-transform1.png')"></div>
+                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top"><span class="portal__num">02</span><span class="portal__tag">Production</span></div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Brand Experiences</p>
+                    <p class="portal__desc">מצגות מונפשות, וידאו קמפיינים והפקות ויזואליות</p>
+                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
-            <!-- Portal 3: Vision & Story -->
-            <a href="vision-story.html" class="portal reveal">
-                <div class="portal__shape-wrap">
-                    <div class="portal__shape">
-                        <!-- portal-vision.jpg — replace with your image -->
-                        <img src="portal-transform2.png" alt="Vision & Story" class="portal__shape-img" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-                        <span class="portal__icon">💫</span>
-                    </div>
-                </div>
-                <div class="portal__content">
-                    <h3 class="portal__name">Vision & Story</h3>
-                    <p class="portal__desc-en">Artists, storytelling, and transformative narratives.</p>
-                    <p class="portal__desc-he">חזון, סטוריטלינג וסרטוני השראה לאמנים ויוצרים</p>
-                    <span class="portal__enter">
-                        Enter World
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
+            <a href="vision-story.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('portal-transform2.png')"></div>
+                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top"><span class="portal__num">03</span><span class="portal__tag">Story</span></div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Vision & Story</p>
+                    <p class="portal__desc">חזון, סטוריטלינג וסרטוני השראה לאמנים ויוצרים</p>
+                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
 
-            <!-- Portal 4: Studio AI -->
-            <a href="studio.html" class="portal reveal">
-                <div class="portal__shape-wrap">
-                    <div class="portal__shape">
-                        <!-- portal-studio image -->
-                        <img src="portal-transform3.png" alt="Studio AI" class="portal__shape-img" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-                        <span class="portal__icon">🧠</span>
-                    </div>
-                </div>
-                <div class="portal__content">
-                    <h3 class="portal__name">Studio AI</h3>
-                    <p class="portal__desc-en">Workshop, AI Lab, and creative processes.</p>
-                    <p class="portal__desc-he">סדנאות, מעבדת AI ותהליכי עבודה יצירתיים</p>
-                    <span class="portal__enter">
-                        Enter World
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </span>
+            <a href="studio.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('portal-transform3.png')"></div>
+                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top"><span class="portal__num">04</span><span class="portal__tag">Workshop</span></div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Studio AI</p>
+                    <p class="portal__desc">סדנאות, מעבדת AI ותהליכי עבודה יצירתיים</p>
+                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- About Preview Section -->
+    <!-- About Preview Section v2 -->
     <section class="intro section" id="about">
         <div class="container intro__inner">
-            <div class="intro__visual reveal">
-                <div class="intro__image-frame">
-                    <img src="hagit.png" alt="Hagit Antebi" class="intro__image">
-                </div>
-            </div>
             <div class="intro__content reveal">
-                <p class="intro__label">The Brand Architect</p>
+                <span class="intro__label">The Brand Architect</span>
                 <h2 class="intro__title">אני חגית אנטבי</h2>
-                <div class="intro__text">
-                    <p>התשוקה שלי היא לחבר בין ניגודים: בין דאטה לרגש. בין טכנולוגיה לאומנות. בין אסטרטגיה לחלום.</p>
-                    <p>היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים, אלא כדי <span class="intro__highlight">להרחיב את גבולות הדמיון.</span></p>
+                <span class="intro__divider"></span>
+                <p class="intro__text">
+                    התשוקה שלי היא לחבר בין ניגודים —<br>
+                    בין דאטה לרגש. בין טכנולוגיה לאומנות.<br>
+                    בין אסטרטגיה לחלום.
+                </p>
+                <div class="intro__pairs">
+                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">10+ שנות ניסיון באסטרטגיית מותג ושיווק דיגיטלי</span></div>
+                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">בונה עולמות מותג מלאים — לא רק עיצוב, אלא מערכת שלמה</span></div>
+                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">מפתחת BrandOS — <span class="intro__highlight">מערכת ה-AI הראשונה שעובדת בקול של המותג שלכם</span></span></div>
                 </div>
+                <p class="intro__text" style="margin-bottom:28px;">
+                    היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים —
+                    אלא כדי <span class="intro__highlight">להרחיב את גבולות הדמיון.</span>
+                </p>
                 <a href="about.html" class="intro__link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     Read More
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
                 </a>
+            </div>
+            <div class="intro__visual reveal">
+                <div class="intro__bg-shape"></div>
+                <div class="intro__image-frame" id="introImg">
+                    <img src="hagit-editorial.jpg" alt="חגית אנטבי — Brand Worlds Architect" class="intro__image">
+                </div>
+                <div class="intro__float-tag" id="introTag">
+                    <p class="intro__float-label">Brand Worlds Studio</p>
+                    <p class="intro__float-text">Building worlds, not just brands</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Brand OS Section -->
+    <!-- Brand OS Section v2 -->
     <section class="brand-os section" id="brandos">
-        <div class="container">
-            <div class="brand-os__card reveal">
-                <div class="brand-os__inner">
-                    <div class="brand-os__content">
-                        <p class="brand-os__label">New</p>
-                        <h2 class="brand-os__title">BrandOS</h2>
-                        <p class="brand-os__subtitle">// מערכת הפעלה למותגים</p>
-                        <p class="brand-os__text">
-                            BrandOS היא מערכת AI ליצירת תוכן ממותג — הפלטפורמה היחידה שלוקחת את ה-DNA של המותג שלכם 
-                            והופכת אותו למנוע תוכן אוטומטי.<br>
-                            תמונות, טקסטים, הנפשות ולוח תוכן — הכל במקום אחד, הכל בקול שלכם.
-                        </p>
-                        <a href="https://hagitantebi.co.il/brand-os" class="brand-os__btn">
-                            גלו את BrandOS
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                        <p class="brand-os__demo-link">
-                            <a href="https://https://wa.me/972528351676">רוצים לשמוע עוד? לחצו כאן →</a>
-                        </p>
+        <div class="brand-os__wrap reveal">
+            <div class="brand-os__grid-bg"></div>
+            <div class="brand-os__glow"></div>
+
+            <div class="brand-os__header">
+                <div class="brand-os__badge"><span class="brand-os__badge-dot"></span> Live Platform</div>
+                <h2 class="brand-os__title">BrandOS</h2>
+                <p class="brand-os__mono">// מערכת הפעלה למותגים</p>
+                <p class="brand-os__tagline">הפלטפורמה היחידה שלוקחת את ה-DNA של המותג שלכם ומפעילה אותו</p>
+            </div>
+
+            <div class="brand-os__divider"></div>
+
+            <div class="brand-os__inner">
+                <div class="brand-os__img-wrap">
+                    <div class="brand-os__img-frame">
+                        <img src="hagit-brandos.jpg" alt="Hagit Antebi — BrandOS">
+                        <div class="brand-os__corner brand-os__corner--tl"></div>
+                        <div class="brand-os__corner brand-os__corner--tr"></div>
+                        <div class="brand-os__corner brand-os__corner--bl"></div>
+                        <div class="brand-os__corner brand-os__corner--br"></div>
                     </div>
-                    <div class="brand-os__visual">
-                        <div class="brand-os__flow">
-                            <div class="brand-os__flow-row">
-                                <div class="brand-os__flow-item">📥 Brand DNA</div>
-                                <span class="brand-os__flow-arrow">→</span>
-                                <div class="brand-os__flow-item">🧠 AI Engine</div>
-                            </div>
-                            <div class="brand-os__flow-row">
-                                <div class="brand-os__flow-item">✍️ תוכן ממותג</div>
-                                <span class="brand-os__flow-arrow">→</span>
-                                <div class="brand-os__flow-item">🎬 תמונות + וידאו</div>
-                            </div>
+                    <div class="brand-os__stats">
+                        <div class="brand-os__stat"><div class="brand-os__stat-n">100%</div><div class="brand-os__stat-l">ממותג</div></div>
+                        <div class="brand-os__stat"><div class="brand-os__stat-n">4 in 1</div><div class="brand-os__stat-l">כלים</div></div>
+                        <div class="brand-os__stat"><div class="brand-os__stat-n">AI</div><div class="brand-os__stat-l">Native</div></div>
+                    </div>
+                </div>
+
+                <div class="brand-os__content">
+                    <p class="brand-os__section-lbl">מה זה BrandOS</p>
+                    <p class="brand-os__text">
+                        תמונות, טקסטים, הנפשות ולוח תוכן —<br>
+                        <b>הכל במקום אחד, הכל בקול שלכם.</b><br><br>
+                        BrandOS לא מייצרת תוכן גנרי.<br>
+                        היא מייצרת <b>תוכן שמרגיש כמוכם</b>.
+                    </p>
+                    <div class="brand-os__pipeline" id="bosPipeline">
+                        <p class="brand-os__pipe-tag">// how it works</p>
+                        <div class="brand-os__pipe-row">
+                            <div class="brand-os__pipe-box">Brand DNA</div>
+                            <span class="brand-os__pipe-arr">→</span>
+                            <div class="brand-os__pipe-box">AI Engine</div>
                         </div>
+                        <div class="brand-os__pipe-row">
+                            <div class="brand-os__pipe-box">תוכן ממותג</div>
+                            <span class="brand-os__pipe-arr">→</span>
+                            <div class="brand-os__pipe-box">תמונות + וידאו</div>
+                        </div>
+                    </div>
+                    <div class="brand-os__btns">
+                        <a href="https://wa.me/972528351676" class="brand-os__btn brand-os__btn--ghost">שאלה? דברו איתי</a>
+                        <a href="https://hagitantebi.co.il/brand-os" class="brand-os__btn">גלו את BrandOS</a>
                     </div>
                 </div>
             </div>
@@ -1980,6 +1919,37 @@
                     });
                 })(dropdowns[d]);
             }
+
+            // ── Portals scroll reveal ──
+            var portalObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var cards = entry.target.querySelectorAll('.portal');
+                        cards.forEach(function(c) { c.classList.add('portal--visible'); });
+                        portalObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            var pg = document.getElementById('portalsGrid');
+            if (pg) portalObserver.observe(pg);
+
+            // ── BrandOS pipeline reveal ──
+            var bosObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var rows = entry.target.querySelectorAll('.brand-os__pipe-row');
+                        setTimeout(function(){ if(rows[0]) rows[0].classList.add('active'); }, 400);
+                        setTimeout(function(){ if(rows[1]) rows[1].classList.add('active'); }, 900);
+                        var img = document.getElementById('introImg');
+                        var tag = document.getElementById('introTag');
+                        if(img) img.classList.add('active');
+                        if(tag) tag.classList.add('active');
+                        bosObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            var bp = document.getElementById('bosPipeline');
+            if (bp) bosObserver.observe(bp);
 
             var allNavLinks = navLinks.querySelectorAll('a:not(.nav__dropdown-toggle)');
             for (var n = 0; n < allNavLinks.length; n++) {
