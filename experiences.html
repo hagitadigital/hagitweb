@@ -5,277 +5,695 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brand Experiences | Hagit Antebi</title>
     <meta name="description" content="חוויות מותג — מצגות מונפשות, הפקות וידאו וקמפיינים ויזואליים שמרגישים כמו עולם.">
-    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://hagitantebi.co.il/experiences.html">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hagitantebi.co.il/experiences.html">
-    <meta property="og:title" content="Brand Experiences | Hagit Antebi">
-    <meta property="og:description" content="חוויות מותג — מצגות מונפשות, הפקות וידאו וקמפיינים ויזואליים שמרגישים כמו עולם.">
-    <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
-    <meta property="og:locale" content="he_IL">
-    
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Heebo:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --color-cream: #FAF8F3;
-            --color-warm-beige: #F5F1E8;
-            --color-chocolate: #8B7355;
-            --color-copper: #C4765A;
-            --color-taupe: #B8A89A;
-            --color-light-taupe: #D4C9BC;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
-            --font-body-he: 'Heebo', sans-serif;
-            --container-max: 1400px;
-            --container-padding: clamp(24px, 5vw, 80px);
-            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --cream: #FAF8F3;
+            --warm-beige: #F5F1E8;
+            --chocolate: #8B7355;
+            --copper: #C4765A;
+            --taupe: #B8A89A;
+            --lt: #D4C9BC;
+            --dark: #0d0d0f;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: var(--font-body-he);
-            background: #0F0D0B;
-            color: #FAF8F3;
-            line-height: 1.6;
+            font-family: 'Heebo', sans-serif;
+            background: var(--cream);
+            color: var(--chocolate);
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
 
-        /* Nav */
-        .nav-minimal {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            padding: 24px 0;
-            background: rgba(15, 13, 11, 0.9);
+        /* ── NAV ── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 24px clamp(24px,5vw,80px);
+            display: flex; justify-content: space-between; align-items: center;
+            background: transparent;
+            transition: background .4s var(--ease), padding .4s var(--ease);
+        }
+        .nav.scrolled {
+            background: rgba(250,248,243,.95);
             backdrop-filter: blur(10px);
+            padding: 16px clamp(24px,5vw,80px);
         }
-        .nav-minimal__inner { display: flex; justify-content: space-between; align-items: center; }
-        .nav-minimal__logo {
-            font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-            color: #FAF8F3; text-decoration: none;
+        .nav__logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; font-weight: 600;
+            color: var(--chocolate); text-decoration: none;
         }
-        .nav-minimal__back {
-            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--color-taupe); text-decoration: none;
+        .nav__back {
+            font-size: .75rem; font-weight: 500;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--chocolate); text-decoration: none;
             display: flex; align-items: center; gap: 8px;
-            transition: color 0.3s;
+            transition: color .3s;
         }
-        .nav-minimal__back:hover { color: var(--color-copper); }
+        .nav__back:hover { color: var(--copper); }
+        .nav__back svg { transition: transform .3s; }
+        .nav__back:hover svg { transform: translateX(-3px); }
 
-        /* Coming Soon Hero */
-        .coming-soon {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 160px 0 100px;
-            position: relative;
-            text-align: center;
+        /* ── HERO ── */
+        .hero {
+            min-height: 60vh;
+            background: var(--dark);
+            display: flex; align-items: flex-end;
+            padding: 120px clamp(24px,5vw,80px) 72px;
+            position: relative; overflow: hidden;
         }
-
-        .coming-soon::before {
-            content: '';
+        .hero__grid {
             position: absolute; inset: 0;
-            background: 
-                radial-gradient(ellipse at 30% 40%, rgba(196, 118, 90, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 60%, rgba(184, 137, 74, 0.04) 0%, transparent 50%);
+            background-image: linear-gradient(rgba(196,118,90,.025) 1px,transparent 1px),
+                              linear-gradient(90deg,rgba(196,118,90,.025) 1px,transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero__glow {
+            position: absolute; bottom: 0; left: 30%;
+            width: 500px; height: 300px;
+            background: radial-gradient(ellipse, rgba(196,118,90,.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero__content { position: relative; z-index: 2; max-width: 900px; }
+        .hero__label {
+            font-size: .7rem; font-weight: 500;
+            letter-spacing: .3em; text-transform: uppercase;
+            color: var(--copper); margin-bottom: 20px;
+            opacity: 0; animation: fadeUp .8s var(--ease) .2s forwards;
+        }
+        .hero__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem,8vw,6.5rem);
+            font-weight: 400; color: #f0ebe4; line-height: 1;
+            margin-bottom: 24px;
+            opacity: 0; animation: fadeUp .9s var(--ease) .4s forwards;
+        }
+        .hero__title em { color: var(--copper); font-style: italic; }
+        .hero__subtitle {
+            font-size: clamp(.9rem,1.8vw,1.1rem);
+            color: rgba(240,235,228,.55);
+            line-height: 1.8; max-width: 560px;
+            direction: rtl; text-align: right;
+            opacity: 0; animation: fadeUp .9s var(--ease) .6s forwards;
+        }
+        .hero__line {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196,118,90,.3), transparent);
         }
 
-        /* Animated ring */
-        .coming-soon__ring {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 500px; height: 500px;
-            transform: translate(-50%, -50%);
-            border: 1px solid rgba(196, 118, 90, 0.08);
-            border-radius: 50%;
-            animation: ringPulse 4s ease-in-out infinite;
-        }
-        .coming-soon__ring:nth-child(2) {
-            width: 350px; height: 350px;
-            animation-delay: 1s;
-        }
-        .coming-soon__ring:nth-child(3) {
-            width: 200px; height: 200px;
-            animation-delay: 2s;
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes ringPulse {
-            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.05); }
+        /* ── SECTION WRAPPER ── */
+        .section { padding: clamp(72px,10vw,120px) clamp(24px,5vw,80px); }
+        .section--dark { background: var(--dark); }
+        .section--beige { background: var(--warm-beige); }
+
+        .section__label {
+            font-size: .7rem; font-weight: 500;
+            letter-spacing: .3em; text-transform: uppercase;
+            color: var(--copper); margin-bottom: 16px;
+        }
+        .section__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem,4vw,3.2rem);
+            font-weight: 400; color: var(--chocolate);
+            line-height: 1.1; margin-bottom: 48px;
+        }
+        .section--dark .section__title { color: #f0ebe4; }
+        .section--dark .section__label { color: var(--copper); }
+
+        /* ── FEATURED VIDEO — SPECTRA ── */
+        .featured { max-width: 1200px; margin: 0 auto; }
+
+        .featured__meta {
+            display: flex; justify-content: space-between;
+            align-items: flex-end; margin-bottom: 28px;
+            flex-wrap: wrap; gap: 16px;
+        }
+        .featured__info {}
+        .featured__client {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .72rem; color: var(--copper);
+            letter-spacing: .15em; text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .featured__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem,3.5vw,2.8rem);
+            font-weight: 400; color: #f0ebe4; line-height: 1.1;
+        }
+        .featured__tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .tag {
+            font-size: .68rem; font-weight: 500;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(196,118,90,.8);
+            border: 1px solid rgba(196,118,90,.25);
+            padding: 5px 12px; border-radius: 2px;
         }
 
-        .coming-soon__content {
-            position: relative; z-index: 1;
-            max-width: 650px;
+        .video-frame {
+            position: relative; width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #0a0a0c;
+            border-radius: 2px; overflow: hidden;
         }
-
-        .coming-soon__icon {
-            font-size: 4rem;
-            margin-bottom: 32px;
-            display: block;
-            filter: grayscale(20%);
+        .video-frame iframe {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            border: none;
         }
-
-        .coming-soon__label {
-            font-family: var(--font-body-en); font-size: 0.6875rem; font-weight: 500;
-            letter-spacing: 0.3em; text-transform: uppercase;
-            color: var(--color-copper); margin-bottom: 20px;
+        .video-frame--placeholder {
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 16px;
         }
-
-        .coming-soon__title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400; color: #FAF8F3;
-            margin-bottom: 20px;
+        .video-frame--placeholder .ph-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            border: 1px solid rgba(196,118,90,.3);
+            display: flex; align-items: center; justify-content: center;
         }
-
-        .coming-soon__subtitle {
-            font-family: var(--font-display);
-            font-size: clamp(1.125rem, 2vw, 1.375rem);
-            font-style: italic; color: var(--color-taupe);
-            line-height: 1.7;
-            margin-bottom: 40px;
+        .video-frame--placeholder .ph-icon svg { color: var(--copper); }
+        .video-frame--placeholder p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .72rem; color: rgba(196,118,90,.5);
+            letter-spacing: .1em;
         }
+        .video-corner {
+            position: absolute; width: 16px; height: 16px;
+            border-color: var(--copper); border-style: solid; opacity: .4;
+            z-index: 2;
+        }
+        .vc-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+        .vc-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+        .vc-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+        .vc-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 
-        .coming-soon__desc {
-            font-family: var(--font-body-he);
-            font-size: 1rem;
+        .featured__desc {
+            margin-top: 28px; direction: rtl; text-align: right;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 40px; align-items: start;
+        }
+        .featured__desc-text {
+            font-size: .93rem; color: rgba(240,235,228,.65);
             line-height: 1.9;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 48px;
+        }
+        .featured__desc-text b { color: rgba(240,235,228,.9); font-weight: 500; }
+        .featured__link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: .72rem; font-weight: 500;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--copper); text-decoration: none;
+            border-bottom: 1px solid rgba(196,118,90,.3);
+            padding-bottom: 3px; margin-top: 16px;
+            transition: border-color .3s;
+        }
+        .featured__link:hover { border-color: var(--copper); }
+
+        .featured__specs {
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .spec-row {
+            display: flex; justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(196,118,90,.1);
+            font-size: .82rem;
+        }
+        .spec-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem; letter-spacing: .1em;
+            text-transform: uppercase; color: rgba(196,118,90,.5);
+        }
+        .spec-value { color: rgba(240,235,228,.8); font-weight: 500; }
+
+        /* ── SEEDANCE GRID ── */
+        .videos-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .video-card { }
+        .video-card__meta { margin-bottom: 16px; direction: rtl; }
+        .video-card__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem; color: rgba(196,118,90,.25);
+            line-height: 1; margin-bottom: 6px;
+        }
+        .video-card__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem; font-weight: 400;
+            color: var(--chocolate); margin-bottom: 6px;
+        }
+        .video-card__sub {
+            font-size: .82rem; color: var(--taupe);
+            display: flex; gap: 8px; align-items: center;
+            flex-wrap: wrap;
+        }
+        .video-card__sep { color: var(--lt); }
+        .video-card__desc {
+            margin-top: 16px; font-size: .88rem;
+            color: var(--taupe); line-height: 1.7;
+            direction: rtl; text-align: right;
         }
 
-        .coming-soon__cta {
-            display: inline-flex; align-items: center; gap: 12px;
-            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--color-copper); text-decoration: none;
-            padding: 16px 36px;
-            border: 1px solid rgba(196, 118, 90, 0.4);
-            transition: all 0.4s var(--transition-smooth);
+        /* ── PRESENTATION TEASER ── */
+        .presentation-card {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center;
         }
-        .coming-soon__cta:hover {
-            background: rgba(196, 118, 90, 0.1);
-            border-color: var(--color-copper);
+        .pres-preview {
+            position: relative; border-radius: 2px; overflow: hidden;
+            aspect-ratio: 16/9; background: #06060e;
+            cursor: pointer; text-decoration: none; display: block;
+        }
+        .pres-preview__inner {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 12px;
+        }
+        .pres-preview__bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #06060e 0%, #0d0d1a 100%);
+        }
+        .pres-preview__grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),
+                              linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);
+            background-size: 40px 40px;
+        }
+        .pres-preview__title {
+            position: relative; z-index: 2;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem,3vw,2.8rem);
+            font-weight: 400; color: #e8eaf6; text-align: center;
+            letter-spacing: .05em;
+        }
+        .pres-preview__title span { color: #00e5ff; }
+        .pres-preview__sub {
+            position: relative; z-index: 2;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem; color: rgba(0,229,255,.5);
+            letter-spacing: .15em; text-transform: uppercase;
+        }
+        .pres-preview__btn {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; gap: 8px;
+            font-size: .7rem; font-weight: 500;
+            letter-spacing: .15em; text-transform: uppercase;
+            color: #06060e; background: #00e5ff;
+            padding: 10px 20px; margin-top: 8px;
+            transition: background .3s;
+        }
+        .pres-preview:hover .pres-preview__btn { background: #fff; }
+        .pres-preview__corner {
+            position: absolute; width: 14px; height: 14px;
+            border-color: rgba(0,229,255,.4); border-style: solid; z-index: 3;
+        }
+        .pp-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+        .pp-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+        .pp-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+        .pp-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+        .pres-content { direction: rtl; text-align: right; }
+        .pres-content .section__label { margin-bottom: 12px; }
+        .pres-content .section__title { margin-bottom: 20px; }
+        .pres-desc {
+            font-size: .93rem; color: var(--taupe);
+            line-height: 1.9; margin-bottom: 28px;
+        }
+        .pres-desc b { color: var(--chocolate); font-weight: 500; }
+        .pres-specs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+        .pres-spec {
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .pres-spec-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--copper); margin-top: 7px; flex-shrink: 0; opacity: .7;
+        }
+        .pres-spec-text { font-size: .88rem; color: var(--taupe); line-height: 1.6; }
+        .pres-link {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: .75rem; font-weight: 500;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: var(--chocolate); text-decoration: none;
+            border-bottom: 1px solid var(--lt);
+            padding-bottom: 4px;
+            transition: color .3s, border-color .3s;
+        }
+        .pres-link:hover { color: var(--copper); border-color: var(--copper); }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center; padding: clamp(72px,10vw,120px) 24px;
+            background: var(--dark); position: relative;
+        }
+        .cta-section::before {
+            content: ''; position: absolute;
+            top: 0; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196,118,90,.2), transparent);
+        }
+        .cta-label {
+            font-size: .7rem; font-weight: 500;
+            letter-spacing: .3em; text-transform: uppercase;
+            color: var(--copper); margin-bottom: 20px;
+        }
+        .cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem,5vw,3.8rem);
+            font-weight: 400; color: #f0ebe4;
+            margin-bottom: 16px; line-height: 1.1;
+        }
+        .cta-sub {
+            font-size: .93rem; color: rgba(240,235,228,.5);
+            line-height: 1.8; margin-bottom: 40px;
+            max-width: 480px; margin-left: auto; margin-right: auto;
+            direction: rtl;
+        }
+        .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-light {
+            font-size: .76rem; font-weight: 500;
+            letter-spacing: .08em; text-transform: uppercase;
+            color: #0d0d0f; background: #f0ebe4;
+            padding: 14px 28px; text-decoration: none;
+            transition: background .3s;
+        }
+        .btn-light:hover { background: var(--copper); color: #fff; }
+        .btn-outline {
+            font-size: .76rem; font-weight: 500;
+            letter-spacing: .08em; text-transform: uppercase;
+            color: rgba(240,235,228,.55); background: transparent;
+            padding: 14px 28px;
+            border: 1px solid rgba(240,235,228,.15);
+            text-decoration: none; transition: all .3s;
+        }
+        .btn-outline:hover { border-color: rgba(196,118,90,.45); color: var(--copper); }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--lt), transparent);
+            margin: 0 clamp(24px,5vw,80px);
         }
 
-        /* Placeholder grid for future content */
-        .preview-slots {
-            padding: 0 0 clamp(80px, 12vw, 140px);
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: .1s; }
+        .reveal-d2 { transition-delay: .2s; }
+        .reveal-d3 { transition-delay: .3s; }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--dark);
+            padding: 40px clamp(24px,5vw,80px);
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 20px;
+            border-top: 1px solid rgba(196,118,90,.1);
         }
-        .preview-slots__title {
-            font-family: var(--font-body-en); font-size: 0.6875rem; font-weight: 500;
-            letter-spacing: 0.3em; text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.3);
-            text-align: center; margin-bottom: 40px;
+        .footer__logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; color: rgba(240,235,228,.7);
+            text-decoration: none;
         }
-        .preview-slots__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-        }
-        .preview-slot {
-            aspect-ratio: 16/9;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px dashed rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.15);
+        .footer__copy {
+            font-size: .78rem; color: rgba(196,118,90,.4);
+            letter-spacing: .05em;
         }
 
-        /* Footer */
-        .footer-minimal {
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            text-align: center;
-        }
-        .footer-minimal__text {
-            font-size: 0.875rem; color: rgba(255, 255, 255, 0.3);
-        }
-        .footer-minimal__text a {
-            color: var(--color-copper); text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .preview-slots__grid { grid-template-columns: 1fr; max-width: 400px; }
+        /* ── MOBILE ── */
+        @media (max-width: 700px) {
+            .featured__desc { grid-template-columns: 1fr; gap: 24px; }
+            .videos-grid { grid-template-columns: 1fr; gap: 40px; }
+            .presentation-card { grid-template-columns: 1fr; gap: 40px; }
+            .hero { min-height: 50vh; padding: 100px 24px 56px; }
         }
     </style>
 </head>
 <body>
-    <nav class="nav-minimal">
-        <div class="container nav-minimal__inner">
-            <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
-            <a href="/" class="nav-minimal__back">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Home
-            </a>
-        </div>
+
+    <!-- Nav -->
+    <nav class="nav" id="nav">
+        <a href="/" class="nav__logo">Hagit Antebi</a>
+        <a href="/" class="nav__back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Home
+        </a>
     </nav>
 
-    <section class="coming-soon">
-        <div class="coming-soon__ring"></div>
-        <div class="coming-soon__ring"></div>
-        <div class="coming-soon__ring"></div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__grid"></div>
+        <div class="hero__glow"></div>
+        <div class="hero__content">
+            <p class="hero__label">Brand Experiences</p>
+            <h1 class="hero__title">חוויות שמרגישות<br>כמו <em>עולם</em></h1>
+            <p class="hero__subtitle">מצגות מונפשות, הפקות וידאו AI וקמפיינים ויזואליים — כל פרויקט נבנה כיקום שלם</p>
+        </div>
+        <div class="hero__line"></div>
+    </section>
 
-        <div class="coming-soon__content">
-            <span class="coming-soon__icon">🎬</span>
-            <p class="coming-soon__label">Brand Experiences</p>
-            <h1 class="coming-soon__title">Coming Soon</h1>
-            <p class="coming-soon__subtitle">Animated presentations, cinematic video campaigns, and immersive brand productions.</p>
-            <p class="coming-soon__desc">
-                חוויות מותג שמרגישות כמו עולם — מצגות שמספרות סיפור,<br>
-                וידאו קמפייני שנשארים בזיכרון, והפקות שמרחיבות את גבולות הדמיון.
-            </p>
-            <a href="/#contact" class="coming-soon__cta">
-                Get Notified
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+    <!-- Featured: Spectra -->
+    <section class="section section--dark">
+        <div class="featured">
+            <div class="featured__meta reveal">
+                <div class="featured__info">
+                    <p class="featured__client">// Featured Project</p>
+                    <h2 class="featured__title">Spectra AI — סרטון הדגמה</h2>
+                </div>
+                <div class="featured__tags">
+                    <span class="tag">AI Video</span>
+                    <span class="tag">B2B Tech</span>
+                    <span class="tag">Seedance</span>
+                </div>
+            </div>
+
+            <div class="video-frame reveal reveal-d1" id="spectraVideo">
+                <div class="video-corner vc-tl"></div>
+                <div class="video-corner vc-tr"></div>
+                <div class="video-corner vc-bl"></div>
+                <div class="video-corner vc-br"></div>
+                <!-- REPLACE: החלף את YOUTUBE_ID_HERE במזהה הסרטון מיוטיוב -->
+                <iframe
+                    src="https://www.youtube.com/embed/2m5qIlAHlms?rel=0&modestbranding=1&color=white"
+                    title="Spectra AI Demo Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="featured__desc reveal reveal-d2">
+                <div>
+                    <p class="featured__desc-text">
+                        ספקטרה היא חברת <b>Industrial AI</b> פיקטיבית המתמחה בניתוח חזותי בזמן אמת על קווי ייצור.
+                        הסרטון הוזמן כדוגמה ל<b>יכולות הפקת וידאו AI</b> — מ-DNA ויזואלי לסרטון מוגמר.
+                    </p>
+                    <a href="spectra-ai-ceo-presentation-2025.html" class="featured__link" target="_blank">
+                        צפה במצגת הCEO המלאה
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="featured__specs">
+                    <div class="spec-row">
+                        <span class="spec-label">Tool</span>
+                        <span class="spec-value">Seedance + Suno</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Style</span>
+                        <span class="spec-value">Cinematic / Tech</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Client</span>
+                        <span class="spec-value">Spectra AI (פיקטיבי)</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Format</span>
+                        <span class="spec-value">16:9 / Demo Reel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seedance Videos -->
+    <div class="section-divider"></div>
+
+    <section class="section section--dark">
+        <div style="max-width:1200px; margin: 0 auto;">
+            <p class="section__label reveal">Seedance AI</p>
+            <h2 class="section__title reveal reveal-d1">עוד דוגמאות מהמעבדה</h2>
+
+            <div class="videos-grid">
+                <!-- Video 2 -->
+                <div class="video-card reveal">
+                    <div class="video-card__meta">
+                        <div class="video-card__num">01</div>
+                        <h3 class="video-card__title" style="color:#f0ebe4;">עוגת תותים — Pixar Style</h3>
+                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
+                            <span>Seedance 2</span>
+                            <span class="video-card__sep">·</span>
+                            <span>Character Animation</span>
+                        </div>
+                    </div>
+                    <div class="video-frame">
+                        <div class="video-corner vc-tl"></div>
+                        <div class="video-corner vc-tr"></div>
+                        <div class="video-corner vc-bl"></div>
+                        <div class="video-corner vc-br"></div>
+                        <!-- REPLACE: החלף את YOUTUBE_ID_HERE במזהה הסרטון מיוטיוב -->
+                        <iframe
+                            src="https://www.youtube.com/embed/b6OY9a3w9Ic?rel=0&modestbranding=1"
+                            title="Seedance Demo — עוגת תותים"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
+                        שף קונדיטור מביט בעוגת שוקולד ענקית עם תותים — מתמונת reference אחת לסרטון חי ב-Seedance 2
+                    </p>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card reveal reveal-d2">
+                    <div class="video-card__meta">
+                        <div class="video-card__num">02</div>
+                        <h3 class="video-card__title" style="color:#f0ebe4;">השפית והמקרון</h3>
+                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
+                            <span>Seedance 2</span>
+                            <span class="video-card__sep">·</span>
+                            <span>Character Animation</span>
+                        </div>
+                    </div>
+                    <div class="video-frame">
+                        <div class="video-corner vc-tl"></div>
+                        <div class="video-corner vc-tr"></div>
+                        <div class="video-corner vc-bl"></div>
+                        <div class="video-corner vc-br"></div>
+                        <!-- REPLACE: החלף את YOUTUBE_ID_HERE במזהה הסרטון מיוטיוב -->
+                        <iframe
+                            src="https://www.youtube.com/embed/go30DYO_0PI?rel=0&modestbranding=1"
+                            title="Seedance — שפית והמקרון"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
+                        קונדיטורית טועמת מקרון — והטעם כל כך טוב שהיא לא יכולה להפסיק. כל מה שעל השולחן נעלם
+                    </p>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card reveal reveal-d3" style="grid-column: span 1;">
+                    <div class="video-card__meta">
+                        <div class="video-card__num">03</div>
+                        <h3 class="video-card__title" style="color:#f0ebe4;">טרנספורמציית האודם</h3>
+                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
+                            <span>Seedance 2</span>
+                            <span class="video-card__sep">·</span>
+                            <span>Color Transformation</span>
+                        </div>
+                    </div>
+                    <div class="video-frame">
+                        <div class="video-corner vc-tl"></div>
+                        <div class="video-corner vc-tr"></div>
+                        <div class="video-corner vc-bl"></div>
+                        <div class="video-corner vc-br"></div>
+                        <iframe
+                            src="https://www.youtube.com/embed/RkaPW9wLF2I?rel=0&modestbranding=1"
+                            title="Seedance — טרנספורמציית האודם"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
+                        אישה מורחת אודם אדום — וברגע אחד כל הסצנה משתנה. טרנספורמציה ויזואלית מושלמת
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section--beige">
+        <div class="presentation-card">
+            <a href="spectra-ai-ceo-presentation-2025.html" class="pres-preview" target="_blank">
+                <div class="pres-preview__bg"></div>
+                <div class="pres-preview__grid"></div>
+                <div class="pres-preview__corner pp-tl"></div>
+                <div class="pres-preview__corner pp-tr"></div>
+                <div class="pres-preview__corner pp-bl"></div>
+                <div class="pres-preview__corner pp-br"></div>
+                <div class="pres-preview__inner">
+                    <h3 class="pres-preview__title">SPECTRA <span>AI</span></h3>
+                    <p class="pres-preview__sub">// CEO Annual Keynote 2025</p>
+                    <span class="pres-preview__btn">
+                        פתח מצגת
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </div>
             </a>
+
+            <div class="pres-content reveal">
+                <p class="section__label">Case Study</p>
+                <h2 class="section__title">מצגת CEO — Spectra AI</h2>
+                <p class="pres-desc">
+                    מצגת כנס שנתי לחברת B2B Tech פיקטיבית — בנויה כ<b>עולם מותג שלם</b>
+                    עם אנימציות, מדדים חיים, ארכיטקטורת מוצר ומפת תחרות.
+                </p>
+                <div class="pres-specs">
+                    <div class="pres-spec"><div class="pres-spec-dot"></div><span class="pres-spec-text">10+ סלאידים אינטראקטיביים עם אנימציות</span></div>
+                    <div class="pres-spec"><div class="pres-spec-dot"></div><span class="pres-spec-text">DNA ויזואלי מלא — צבעים, פונטים, שפה</span></div>
+                    <div class="pres-spec"><div class="pres-spec-dot"></div><span class="pres-spec-text">בנוי ב-HTML/CSS/JS — ניתן להתאים לכל מותג</span></div>
+                </div>
+                <a href="spectra-ai-ceo-presentation-2025.html" class="pres-link" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    לצפייה במצגת המלאה
+                </a>
+            </div>
         </div>
     </section>
 
-    <section class="preview-slots">
-        <p class="preview-slots__title">Preview Slots</p>
-        <div class="preview-slots__grid">
-            <div class="preview-slot">Slot 01</div>
-            <div class="preview-slot">Slot 02</div>
-            <div class="preview-slot">Slot 03</div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <p class="cta-label reveal">Let's Create</p>
+        <h2 class="cta-title reveal reveal-d1">רוצים חוויה כזו<br>למותג שלכם?</h2>
+        <p class="cta-sub reveal reveal-d2">כל פרויקט מתחיל ב-DNA — ומסתיים בעולם שלם שאי אפשר לשכוח</p>
+        <div class="cta-btns reveal reveal-d3">
+            <a href="https://wa.me/972528351676" class="btn-light">דברו איתי</a>
+            <a href="brand-os" class="btn-outline">גלו את BrandOS</a>
         </div>
     </section>
 
-    <!-- Next Gate → Brand OS -->
-    <a href="brand-os.html" style="display:block;text-decoration:none;padding:clamp(60px,10vw,100px) 0;text-align:center;border-top:1px solid rgba(255,255,255,0.06);background:transparent;transition:background 0.5s;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.02)'" onmouseout="this.style.background='transparent'">
-        <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:0.6875rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:#888;margin-bottom:12px;">Continue Exploring</p>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#FAF8F3;">Discover Brand OS</h3>
-        <div style="margin-top:20px;color:#888;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </div>
-    </a>
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="/" class="footer__logo">Hagit Antebi</a>
+        <p class="footer__copy">© 2026 Brand Worlds Studio</p>
+    </footer>
 
-    <div class="footer-minimal">
-        <p class="footer-minimal__text">
-            <a href="/">Hagit Antebi</a> — Brand Worlds Architect
-        </p>
-    </div>
+    <script>
+        // Nav scroll
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Reveal on scroll
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('active');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+    </script>
 </body>
 </html>
