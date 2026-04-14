@@ -1486,13 +1486,16 @@
             }
             .portal { aspect-ratio: 3/4.5; }
             .brand-os__inner { grid-template-columns: 1fr; gap: 32px; }
-            .brand-os__img-wrap { order: -1; }
+            .brand-os__img-wrap { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
             .brand-os__btns { justify-content: center; }
             .brand-os__content { align-items: center; }
-            .intro__inner { grid-template-columns: 1fr; gap: 40px; }
-            .intro__visual { order: -1; }
-            .intro__bg-shape { right: -12px; bottom: -12px; }
-            .intro__float-tag { left: -8px; }
+            .brand-os__wrap { padding: 40px 20px 48px; }
+            .intro__inner { grid-template-columns: 1fr; gap: 32px; }
+            .intro__visual { order: -1; max-width: 340px; margin: 0 auto; width: 100%; }
+            .intro__image-frame { aspect-ratio: 3/4; max-height: 420px; }
+            .intro__bg-shape { right: -10px; bottom: -10px; width: 70%; height: 70%; }
+            .intro__float-tag { left: -8px; bottom: 16px; padding: 10px 14px; }
+            .intro__content { text-align: right; }
             
             .footer__inner {
                 grid-template-columns: 1fr;
@@ -1641,7 +1644,7 @@
 
         <div class="portals__grid" id="portalsGrid">
             <a href="worlds.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('mora.png')"></div>
+                <div class="portal__img-layer" style="background-image:url('portal-worlds.png')"></div>
                 <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
                 <div class="portal__overlay"></div>
                 <div class="portal__glow"></div>
@@ -1654,7 +1657,7 @@
             </a>
 
             <a href="experiences.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-transform1.png')"></div>
+                <div class="portal__img-layer" style="background-image:url('portal-experiences.png')"></div>
                 <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
                 <div class="portal__overlay"></div>
                 <div class="portal__glow"></div>
@@ -1667,7 +1670,7 @@
             </a>
 
             <a href="vision-story.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-transform2.png')"></div>
+                <div class="portal__img-layer" style="background-image:url('portal-vision.png')"></div>
                 <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
                 <div class="portal__overlay"></div>
                 <div class="portal__glow"></div>
@@ -1680,7 +1683,7 @@
             </a>
 
             <a href="studio.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-transform3.png')"></div>
+                <div class="portal__img-layer" style="background-image:url('portal-studio.png')"></div>
                 <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
                 <div class="portal__overlay"></div>
                 <div class="portal__glow"></div>
