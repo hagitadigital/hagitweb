@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectra AI — כנס שנתי 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06060e;
+  --surface: #0d0d1a;
+  --card: rgba(255,255,255,0.03);
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.15);
+  --cyan-glow: rgba(0,229,255,0.4);
+  --purple: #7c4dff;
+  --purple-dim: rgba(124,77,255,0.15);
+  --magenta: #e040fb;
+  --gold: #ffd740;
+  --green: #69f0ae;
+  --red: #ff5252;
+  --text: #e8eaf6;
+  --text-dim: rgba(232,234,246,0.5);
+  --font-he: 'Heebo', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:var(--font-he); overflow:hidden; height:100vh; width:100vw; }
+
+/* ── PROGRESS BAR ── */
+.progress-bar { position:fixed; top:0; left:0; right:0; height:3px; z-index:1000; background:rgba(255,255,255,0.05); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--cyan),var(--purple),var(--magenta)); transition:width 0.6s cubic-bezier(0.4,0,0.2,1); border-radius:0 2px 2px 0; }
+
+/* ── SLIDE NAV ── */
+.slide-nav { position:fixed; left:24px; top:50%; transform:translateY(-50%); z-index:100; display:flex; flex-direction:column; gap:10px; }
+.slide-nav .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); cursor:pointer; transition:all 0.4s; border:none; padding:0; }
+.slide-nav .dot.active { background:var(--cyan); box-shadow:0 0 12px var(--cyan-glow); transform:scale(1.4); }
+.slide-nav .dot:hover { background:rgba(255,255,255,0.4); }
+
+/* ── ARROWS ── */
+.nav-arrows { position:fixed; bottom:32px; left:50%; transform:translateX(-50%); z-index:100; display:flex; gap:16px; }
+.nav-arrows button { width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03); color:var(--text); font-size:18px; cursor:pointer; transition:all 0.3s; backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; }
+.nav-arrows button:hover { background:var(--cyan-dim); border-color:var(--cyan); }
+.slide-counter { position:fixed; bottom:40px; right:32px; z-index:100; font-family:var(--font-mono); font-size:13px; color:var(--text-dim); }
+
+/* ── SLIDES CONTAINER ── */
+.slides { position:relative; width:100%; height:100vh; }
+.slide { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.8s ease, transform 0.8s ease; transform:scale(0.96); padding:60px 80px; }
+.slide.active { opacity:1; pointer-events:auto; transform:scale(1); }
+
+/* ── GLOBAL BACKGROUND ── */
+.bg-orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:-1; }
+.bg-orb-1 { width:600px; height:600px; background:radial-gradient(circle,rgba(0,229,255,0.08),transparent 70%); top:-200px; right:-100px; animation:float-orb 20s ease-in-out infinite; }
+.bg-orb-2 { width:500px; height:500px; background:radial-gradient(circle,rgba(124,77,255,0.06),transparent 70%); bottom:-200px; left:-100px; animation:float-orb 25s ease-in-out infinite reverse; }
+@keyframes float-orb { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,30px)} }
+
+/* ── TYPOGRAPHY ── */
+.slide-tag { font-family:var(--font-mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); margin-bottom:16px; opacity:0.8; }
+.slide-title { font-size:clamp(36px,5vw,64px); font-weight:900; line-height:1.15; margin-bottom:24px; }
+.slide-title .accent { color:var(--cyan); }
+.slide-title .accent-purple { color:var(--purple); }
+.slide-title .accent-gold { color:var(--gold); }
+.slide-subtitle { font-size:clamp(16px,2vw,22px); font-weight:300; line-height:1.7; color:var(--text-dim); max-width:700px; }
+.slide-subtitle strong { color:var(--text); font-weight:500; }
+
+/* ── GRID LAYOUTS ── */
+.split { display:grid; grid-template-columns:1fr 1fr; gap:60px; width:100%; max-width:1200px; align-items:center; }
+.split-wide { display:grid; grid-template-columns:1.2fr 0.8fr; gap:60px; width:100%; max-width:1200px; align-items:center; }
+.full-center { text-align:center; max-width:900px; }
+
+/* ── METRIC CARDS ── */
+.metrics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.metric-card { background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:28px 24px; text-align:center; transition:all 0.4s; position:relative; overflow:hidden; }
+.metric-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--cyan),transparent); opacity:0; transition:opacity 0.4s; }
+.metric-card:hover::before { opacity:1; }
+.metric-card:hover { border-color:rgba(0,229,255,0.2); transform:translateY(-4px); }
+.metric-value { font-family:var(--font-mono); font-size:clamp(28px,3.5vw,44px); font-weight:700; color:var(--cyan); margin-bottom:4px; }
+.metric-value.purple { color:var(--purple); }
+.metric-value.gold { color:var(--gold); }
+.metric-value.green { color:var(--green); }
+.metric-label { font-size:14px; color:var(--text-dim); font-weight:300; }
+.metric-delta { font-family:var(--font-mono); font-size:12px; color:var(--green); margin-top:8px; }
+.metric-delta.neg { color:var(--red); }
+
+/* ── CHARTS ── */
+.chart-container { background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:32px; }
+.chart-title { font-size:14px; color:var(--text-dim); margin-bottom:20px; font-weight:300; }
+.bar-chart { display:flex; align-items:flex-end; gap:12px; height:200px; padding-top:20px; }
+.bar-group { flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.bar { width:100%; border-radius:6px 6px 0 0; transition:height 1.5s cubic-bezier(0.4,0,0.2,1); position:relative; }
+.bar-label { font-family:var(--font-mono); font-size:11px; color:var(--text-dim); }
+.bar-value { font-family:var(--font-mono); font-size:11px; color:var(--text); position:absolute; top:-20px; left:50%; transform:translateX(-50%); white-space:nowrap; }
+
+/* ── PRODUCT DECOMPOSITION ── */
+.product-explode { position:relative; width:100%; height:400px; }
+.product-layer { position:absolute; border-radius:12px; border:1px solid; padding:16px 20px; transition:all 1.2s cubic-bezier(0.4,0,0.2,1); cursor:default; backdrop-filter:blur(8px); }
+.product-layer .layer-icon { font-size:24px; margin-bottom:8px; }
+.product-layer .layer-name { font-size:14px; font-weight:700; margin-bottom:4px; }
+.product-layer .layer-desc { font-size:11px; opacity:0.7; line-height:1.5; }
+.layer-core { background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.3); left:50%; top:50%; transform:translate(-50%,-50%); width:180px; z-index:5; }
+.layer-vision { background:rgba(124,77,255,0.08); border-color:rgba(124,77,255,0.3); z-index:4; }
+.layer-edge { background:rgba(224,64,251,0.08); border-color:rgba(224,64,251,0.3); z-index:3; }
+.layer-insight { background:rgba(255,215,64,0.08); border-color:rgba(255,215,64,0.3); z-index:2; }
+.layer-shield { background:rgba(105,240,174,0.08); border-color:rgba(105,240,174,0.3); z-index:1; }
+
+.exploded .layer-core { transform:translate(-50%,-50%) scale(1.05); box-shadow:0 0 40px rgba(0,229,255,0.2); }
+.exploded .layer-vision { left:5%; top:10%; transform:translate(0,0) rotate(-2deg); }
+.exploded .layer-edge { right:5%; top:8%; left:auto; transform:translate(0,0) rotate(2deg); }
+.exploded .layer-insight { left:8%; bottom:10%; top:auto; transform:translate(0,0) rotate(1deg); }
+.exploded .layer-shield { right:8%; bottom:8%; left:auto; top:auto; transform:translate(0,0) rotate(-1deg); }
+
+.collapsed .product-layer:not(.layer-core) { left:50%; top:50%; transform:translate(-50%,-50%); opacity:0.3; }
+
+/* ── STRATEGY SPHERES ── */
+.spheres { display:flex; align-items:center; justify-content:center; gap:0; position:relative; height:350px; width:100%; }
+.sphere { border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:all 0.6s; cursor:default; position:absolute; }
+.sphere-core { width:180px; height:180px; background:radial-gradient(circle at 30% 30%,rgba(0,229,255,0.25),rgba(0,229,255,0.05)); border:2px solid rgba(0,229,255,0.4); z-index:3; }
+.sphere-scale { width:260px; height:260px; background:radial-gradient(circle at 30% 30%,rgba(124,77,255,0.15),rgba(124,77,255,0.03)); border:2px solid rgba(124,77,255,0.3); z-index:2; }
+.sphere-frontier { width:340px; height:340px; background:radial-gradient(circle at 30% 30%,rgba(224,64,251,0.1),rgba(224,64,251,0.02)); border:2px solid rgba(224,64,251,0.2); z-index:1; }
+.sphere-label { font-family:var(--font-mono); font-size:13px; font-weight:700; letter-spacing:2px; }
+.sphere-desc { font-size:11px; color:var(--text-dim); margin-top:4px; max-width:120px; }
+
+/* ── TIMELINE ── */
+.timeline { position:relative; padding-right:40px; }
+.timeline::before { content:''; position:absolute; right:12px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--cyan),var(--purple),var(--magenta)); opacity:0.3; }
+.timeline-item { position:relative; margin-bottom:28px; padding-right:40px; }
+.timeline-item::before { content:''; position:absolute; right:-34px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan-glow); }
+.timeline-item:nth-child(2)::before { background:var(--purple); box-shadow:0 0 12px rgba(124,77,255,0.4); }
+.timeline-item:nth-child(3)::before { background:var(--magenta); box-shadow:0 0 12px rgba(224,64,251,0.4); }
+.timeline-year { font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-bottom:4px; }
+.timeline-text { font-size:14px; line-height:1.6; color:var(--text-dim); }
+.timeline-text strong { color:var(--text); }
+
+/* ── DNA GRID ── */
+.dna-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.dna-item { background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px; transition:all 0.4s; }
+.dna-item:hover { border-color:var(--cyan); transform:translateY(-2px); }
+.dna-icon { font-size:28px; margin-bottom:8px; }
+.dna-name { font-size:15px; font-weight:700; margin-bottom:4px; }
+.dna-desc { font-size:12px; color:var(--text-dim); line-height:1.6; }
+
+/* ── PARTNER LOGOS ── */
+.partners-row { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.partner-card { background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px 28px; text-align:center; min-width:140px; transition:all 0.4s; }
+.partner-card:hover { border-color:var(--purple); transform:translateY(-3px); }
+.partner-name { font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--purple); }
+.partner-type { font-size:11px; color:var(--text-dim); margin-top:4px; }
+
+/* ── CLOSING SLIDE ── */
+.closing-logo { font-family:var(--font-mono); font-size:clamp(48px,8vw,96px); font-weight:700; background:linear-gradient(135deg,var(--cyan),var(--purple),var(--magenta)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:16px; }
+.closing-tagline { font-size:clamp(18px,2.5vw,28px); font-weight:300; color:var(--text-dim); }
+
+/* ── COMPETITION RADAR ── */
+.competition-map { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.comp-cell { background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:16px; text-align:center; font-size:12px; color:var(--text-dim); transition:all 0.4s; }
+.comp-cell.us { background:rgba(0,229,255,0.08); border-color:rgba(0,229,255,0.3); color:var(--cyan); font-weight:700; }
+.comp-cell .comp-name { font-weight:500; color:var(--text); margin-bottom:4px; font-size:13px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes countUp { from { opacity:0; } to { opacity:1; } }
+@keyframes pulse-glow { 0%,100% { box-shadow:0 0 20px rgba(0,229,255,0.1); } 50% { box-shadow:0 0 40px rgba(0,229,255,0.3); } }
+.slide.active .animate-in { animation:fadeInUp 0.8s ease forwards; }
+.slide.active .delay-1 { animation-delay:0.15s; opacity:0; }
+.slide.active .delay-2 { animation-delay:0.3s; opacity:0; }
+.slide.active .delay-3 { animation-delay:0.45s; opacity:0; }
+.slide.active .delay-4 { animation-delay:0.6s; opacity:0; }
+.slide.active .delay-5 { animation-delay:0.75s; opacity:0; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  .slide { padding:40px 24px; }
+  .split, .split-wide { grid-template-columns:1fr; gap:32px; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); }
+  .slide-nav { display:none; }
+  .nav-arrows { bottom:16px; }
+  .competition-map { grid-template-columns:repeat(2,1fr); }
+}
+
+/* ── WATERMARK ── */
+.watermark { position:fixed; bottom:12px; left:50%; transform:translateX(-50%); z-index:50; font-size:10px; color:rgba(255,255,255,0.15); font-family:var(--font-mono); letter-spacing:1px; pointer-events:none; }
+</style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<nav class="slide-nav" id="slideNav"></nav>
+
+<div class="nav-arrows">
+  <button onclick="prevSlide()" aria-label="Previous">→</button>
+  <button onclick="nextSlide()" aria-label="Next">←</button>
+</div>
+<div class="slide-counter"><span id="currentNum">01</span> / <span id="totalNum">16</span></div>
+
+<div class="watermark">BRAND WORLDS STUDIO — CREATIVE PRESENTATION</div>
+
+<div class="slides" id="slidesContainer">
+
+  <!-- ═══ SLIDE 1 — OPENING ═══ -->
+  <div class="slide active" data-slide="0">
+    <div class="full-center">
+      <div class="slide-tag animate-in">כנס שנתי 2025 — תל אביב</div>
+      <div class="closing-logo animate-in delay-1">SPECTRA</div>
+      <h1 class="slide-title animate-in delay-2" style="font-size:clamp(24px,3.5vw,42px);">
+        הראייה שמובילה את <span class="accent">התעשייה</span> קדימה
+      </h1>
+      <p class="slide-subtitle animate-in delay-3" style="margin:0 auto;">
+        פלטפורמת AI לניתוח חזותי בתעשייה — מ-340 לקוחות ארגוניים ב-28 מדינות,<br>עד לחזון של תעשייה אוטונומית ב-2030.
+      </p>
+      <div style="margin-top:40px; font-family:var(--font-mono); font-size:13px; color:var(--text-dim);" class="animate-in delay-4">
+        דניאל כהן — מייסד ומנכ"ל
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 2 — THE YEAR ═══ -->
+  <div class="slide" data-slide="1">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">2024 — סיכום שנה</div>
+        <h1 class="slide-title animate-in delay-1">השנה שלא <span class="accent">נתנו</span> לאתגרים לעצור אותנו</h1>
+        <p class="slide-subtitle animate-in delay-2">
+          2024 הייתה שנה של סערות — גלובליות ומקומיות. המלחמה המתמשכת, חוסר וודאות בשרשראות אספקה עולמיות, ותחרות הולכת וגוברת בתחום ה-AI Industrial.
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          <strong>אבל דווקא בתנאים האלה, ספקטרה פרצה קדימה.</strong><br>
+          סגרנו את השנה עם צמיחה של 67% בהכנסות, נכנסנו ל-8 שווקים חדשים, והגענו לרווחיות תפעולית לראשונה.
+        </p>
+      </div>
+      <div class="animate-in delay-3">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">Q1 2024</div>
+            <div class="timeline-text"><strong>סבב C — $85M</strong> בהובלת Insight Partners. הערכת שווי $620M.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Q2 2024</div>
+            <div class="timeline-text"><strong>השקת Spectra Edge</strong> — ניתוח בזמן אמת על קו ייצור, ללא ענן. Latency של 12ms.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Q3 2024</div>
+            <div class="timeline-text"><strong>כניסה לשוק היפני</strong> — שותפות עם Mitsubishi Electric. 23 מפעלים ב-90 יום.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Q4 2024</div>
+            <div class="timeline-text"><strong>רווחיות תפעולית</strong> — EBITDA חיובי לראשונה. מקדימים את התחזית ב-2 רבעונים.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 3 — BREAKING RECORDS ═══ -->
+  <div class="slide" data-slide="2">
+    <div style="width:100%; max-width:1100px;">
+      <div class="slide-tag animate-in">שבירת שיאים</div>
+      <h1 class="slide-title animate-in delay-1" style="margin-bottom:40px;">
+        למרות הכל, <span class="accent">שברנו שיאים</span>
+      </h1>
+      <div class="metrics-grid animate-in delay-2">
+        <div class="metric-card">
+          <div class="metric-value" data-count="58">$0M</div>
+          <div class="metric-label">הכנסות שנתיות חוזרות (ARR)</div>
+          <div class="metric-delta">▲ 67% YoY</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value purple" data-count="340">0</div>
+          <div class="metric-label">לקוחות ארגוניים</div>
+          <div class="metric-delta">▲ 42% YoY</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value gold" data-count="28">0</div>
+          <div class="metric-label">מדינות פעילות</div>
+          <div class="metric-delta">▲ 8 שווקים חדשים</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value green">99.7%</div>
+          <div class="metric-label">דיוק זיהוי פגמים</div>
+          <div class="metric-delta">▲ 0.4pp מ-2023</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">680</div>
+          <div class="metric-label">עובדים ועובדות</div>
+          <div class="metric-delta">▲ 185 גיוסים ב-2024</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value purple">138%</div>
+          <div class="metric-label">Net Revenue Retention</div>
+          <div class="metric-delta">▲ 12pp YoY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 4 — FINANCIALS DEEP DIVE ═══ -->
+  <div class="slide" data-slide="3">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">צלילה לנתונים</div>
+        <h1 class="slide-title animate-in delay-1">
+          <span class="accent">₪215M</span> הכנסות<br>
+          <span class="accent-purple">₪18M</span> EBITDA
+        </h1>
+        <p class="slide-subtitle animate-in delay-2">
+          לראשונה בתולדות ספקטרה — <strong>רווחיות תפעולית חיובית</strong>. צמיחה של 67% בהכנסות תוך שיפור שולי הרווח ב-14 נקודות אחוז.
+        </p>
+        <div style="margin-top:24px;" class="animate-in delay-3">
+          <div style="display:flex; gap:24px; flex-wrap:wrap;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:28px; color:var(--gold);">$142K</div>
+              <div style="font-size:12px; color:var(--text-dim);">ACV ממוצע</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:28px; color:var(--green);">14 חודש</div>
+              <div style="font-size:12px; color:var(--text-dim);">Payback Period</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:28px; color:var(--magenta);">0.3%</div>
+              <div style="font-size:12px; color:var(--text-dim);">Churn שנתי</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-in delay-2">
+        <div class="chart-container">
+          <div class="chart-title">הכנסות שנתיות (₪M)</div>
+          <div class="bar-chart" id="revenueChart">
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(0,229,255,0.3),rgba(0,229,255,0.6));" data-height="25%"><div class="bar-value">32</div></div>
+              <div class="bar-label">2020</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(0,229,255,0.35),rgba(0,229,255,0.65));" data-height="38%"><div class="bar-value">48</div></div>
+              <div class="bar-label">2021</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(124,77,255,0.35),rgba(124,77,255,0.65));" data-height="52%"><div class="bar-value">76</div></div>
+              <div class="bar-label">2022</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(124,77,255,0.4),rgba(124,77,255,0.7));" data-height="70%"><div class="bar-value">129</div></div>
+              <div class="bar-label">2023</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(224,64,251,0.4),rgba(224,64,251,0.7));" data-height="100%"><div class="bar-value">215</div></div>
+              <div class="bar-label">2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-container" style="margin-top:16px;">
+          <div class="chart-title">EBITDA Margin</div>
+          <div class="bar-chart" id="ebitdaChart" style="height:100px;">
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(255,82,82,0.4),rgba(255,82,82,0.6));" data-height="80%"><div class="bar-value" style="color:var(--red);">-22%</div></div>
+              <div class="bar-label">2022</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(255,215,64,0.4),rgba(255,215,64,0.6));" data-height="40%"><div class="bar-value" style="color:var(--gold);">-6%</div></div>
+              <div class="bar-label">2023</div>
+            </div>
+            <div class="bar-group">
+              <div class="bar" style="height:0; background:linear-gradient(to top,rgba(105,240,174,0.4),rgba(105,240,174,0.7));" data-height="35%"><div class="bar-value" style="color:var(--green);">+8.4%</div></div>
+              <div class="bar-label">2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 5 — PRODUCT DECOMPOSITION (WOW) ═══ -->
+  <div class="slide" data-slide="4">
+    <div style="width:100%; max-width:1100px;">
+      <div class="slide-tag animate-in">המוצר — פירוק טכנולוגי</div>
+      <h1 class="slide-title animate-in delay-1" style="font-size:clamp(28px,3.5vw,42px);">
+        מתחת למכסה של <span class="accent">Spectra Vision</span>
+      </h1>
+      <p class="slide-subtitle animate-in delay-2" style="margin-bottom:32px;">לחצו על המרכז לפירוק ← חזרה</p>
+      <div class="product-explode collapsed" id="productExplode" onclick="toggleExplode()">
+        <div class="product-layer layer-core">
+          <div class="layer-icon">⚡</div>
+          <div class="layer-name" style="color:var(--cyan);">Neural Core</div>
+          <div class="layer-desc">מנוע ה-AI המרכזי — 47 שכבות, אימון על 2.3B תמונות</div>
+        </div>
+        <div class="product-layer layer-vision" style="width:200px;">
+          <div class="layer-icon">👁️</div>
+          <div class="layer-name" style="color:var(--purple);">Vision Pipeline</div>
+          <div class="layer-desc">עיבוד תמונה בזמן אמת — 120fps, רזולוציית 8K, multi-spectrum</div>
+        </div>
+        <div class="product-layer layer-edge" style="width:200px;">
+          <div class="layer-icon">🔲</div>
+          <div class="layer-name" style="color:var(--magenta);">Edge Runtime</div>
+          <div class="layer-desc">הרצה על חומרה מקומית — 12ms latency, ללא תלות בענן</div>
+        </div>
+        <div class="product-layer layer-insight" style="width:200px;">
+          <div class="layer-icon">📊</div>
+          <div class="layer-name" style="color:var(--gold);">Insight Engine</div>
+          <div class="layer-desc">אנליטיקס predictive — חיזוי תקלות 72 שעות מראש</div>
+        </div>
+        <div class="product-layer layer-shield" style="width:200px;">
+          <div class="layer-icon">🛡️</div>
+          <div class="layer-name" style="color:var(--green);">Compliance Shield</div>
+          <div class="layer-desc">עמידה ב-ISO, FDA, CE — דוחות אוטומטיים ל-regulators</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 6 — NEW LAUNCHES ═══ -->
+  <div class="slide" data-slide="5">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">השקות 2024</div>
+        <h1 class="slide-title animate-in delay-1">חדשנות ש<span class="accent-purple">שינתה</span> את הזירה</h1>
+        <div style="margin-top:28px;">
+          <div class="animate-in delay-2" style="margin-bottom:24px; padding:20px; background:var(--card); border-radius:12px; border-right:3px solid var(--cyan);">
+            <div style="font-weight:700; font-size:18px; margin-bottom:6px;">Spectra Edge <span style="font-family:var(--font-mono); font-size:12px; color:var(--cyan);">NEW</span></div>
+            <div style="font-size:14px; color:var(--text-dim); line-height:1.7;">ניתוח חזותי על קו הייצור — ללא ענן, ללא latency. פריסה בתוך 4 שעות. כבר ב-89 מפעלים.</div>
+          </div>
+          <div class="animate-in delay-3" style="margin-bottom:24px; padding:20px; background:var(--card); border-radius:12px; border-right:3px solid var(--purple);">
+            <div style="font-weight:700; font-size:18px; margin-bottom:6px;">Spectra Insights <span style="font-family:var(--font-mono); font-size:12px; color:var(--purple);">BETA</span></div>
+            <div style="font-size:14px; color:var(--text-dim); line-height:1.7;">דשבורד BI עם חיזוי תקלות. מזהה בעיות 72 שעות לפני שהן קורות. ROI ממוצע: 340%.</div>
+          </div>
+          <div class="animate-in delay-4" style="padding:20px; background:var(--card); border-radius:12px; border-right:3px solid var(--magenta);">
+            <div style="font-weight:700; font-size:18px; margin-bottom:6px;">Spectra Connect <span style="font-family:var(--font-mono); font-size:12px; color:var(--magenta);">Q1 2025</span></div>
+            <div style="font-size:14px; color:var(--text-dim); line-height:1.7;">API פתוח לאינטגרציה עם ERP, MES, SCADA. כבר 14 שותפי אינטגרציה מוכנים להשקה.</div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-in delay-3" style="display:flex; flex-direction:column; gap:16px; align-items:center;">
+        <div class="metric-card" style="width:100%; animation:pulse-glow 3s infinite;">
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--cyan); margin-bottom:8px;">IMPACT SNAPSHOT</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; text-align:center;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:32px; color:var(--cyan);">89</div>
+              <div style="font-size:11px; color:var(--text-dim);">מפעלים עם Edge</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:32px; color:var(--purple);">340%</div>
+              <div style="font-size:11px; color:var(--text-dim);">ROI ממוצע</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:32px; color:var(--gold);">72h</div>
+              <div style="font-size:11px; color:var(--text-dim);">חיזוי מראש</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-mono); font-size:32px; color:var(--green);">4h</div>
+              <div style="font-size:11px; color:var(--text-dim);">זמן פריסה</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 7 — CUSTOMER FIRST ═══ -->
+  <div class="slide" data-slide="6">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">הלקוחות במרכז</div>
+        <h1 class="slide-title animate-in delay-1">הבחירה <span class="accent">הראשונה</span> של התעשייה</h1>
+        <p class="slide-subtitle animate-in delay-2">
+          NPS של <strong>82</strong> — הגבוה ביותר בקטגוריה. שנה שלישית ברציפות מובילים בדירוג Gartner Magic Quadrant ל-Industrial AI.
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          <strong>0.3% churn שנתי</strong> — כמעט אפס לקוחות עוזבים. הם לא רק נשארים, הם מרחיבים: <strong>138% Net Revenue Retention</strong>.
+        </p>
+      </div>
+      <div class="animate-in delay-2">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:24px; position:relative;">
+            <div style="font-size:48px; position:absolute; top:-8px; right:16px; opacity:0.15;">״</div>
+            <p style="font-size:14px; line-height:1.8; color:var(--text-dim); font-style:italic;">ספקטרה חסכה לנו $4.2M בשנה בפגמים שלא הגיעו ללקוחות. זה לא כלי — זה חלק מה-DNA של קו הייצור שלנו.</p>
+            <div style="margin-top:12px; font-family:var(--font-mono); font-size:12px; color:var(--cyan);">VP Operations — Bosch Semiconductor</div>
+          </div>
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:24px; position:relative;">
+            <div style="font-size:48px; position:absolute; top:-8px; right:16px; opacity:0.15;">״</div>
+            <p style="font-size:14px; line-height:1.8; color:var(--text-dim); font-style:italic;">ה-latency של 12ms שינה את הגישה שלנו ל-QA לחלוטין. מ-sampling ל-100% inspection.</p>
+            <div style="margin-top:12px; font-family:var(--font-mono); font-size:12px; color:var(--purple);">Head of Manufacturing — Samsung SDI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 8 — PARTNERSHIPS ═══ -->
+  <div class="slide" data-slide="7">
+    <div style="width:100%; max-width:1000px; text-align:center;">
+      <div class="slide-tag animate-in">שותפויות אסטרטגיות</div>
+      <h1 class="slide-title animate-in delay-1">הסכמים שמשנים את <span class="accent-purple">גודל המגרש</span></h1>
+      <p class="slide-subtitle animate-in delay-2" style="margin:0 auto 40px;">
+        2024 הייתה שנה של שותפויות משמעותיות שפתחו שווקים, הגדילו הפצה, ובנו תשתית לצמיחה.
+      </p>
+      <div class="partners-row animate-in delay-3" style="margin-bottom:24px;">
+        <div class="partner-card">
+          <div class="partner-name">SIEMENS</div>
+          <div class="partner-type">שותף הפצה — אירופה</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">MITSUBISHI</div>
+          <div class="partner-type">שותף הפצה — אסיה</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">AWS</div>
+          <div class="partner-type">ISV Partner — Global</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">NVIDIA</div>
+          <div class="partner-type">Inception Program</div>
+        </div>
+      </div>
+      <div class="partners-row animate-in delay-4">
+        <div class="partner-card">
+          <div class="partner-name">ROCKWELL</div>
+          <div class="partner-type">אינטגרציה — OT</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">SAP</div>
+          <div class="partner-type">Marketplace Partner</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">AZURE</div>
+          <div class="partner-type">Co-Sell Partnership</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 9 — CHALLENGER ═══ -->
+  <div class="slide" data-slide="8">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">המיצוב שלנו</div>
+        <h1 class="slide-title animate-in delay-1">SPECTRA<br>is a <span class="accent">Challenger</span></h1>
+        <p class="slide-subtitle animate-in delay-2">
+          אנחנו לא רק עוד vendor — אנחנו מאתגרים את כל הקטגוריה. ראשונים ב-Edge AI, ראשונים ב-real-time compliance, ראשונים ב-predictive quality.
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          <strong>האסטרטגיה שהובילה אותנו עד כאן — עבדה.</strong><br>עכשיו מגדילים את המהלך.
+        </p>
+      </div>
+      <div class="animate-in delay-3">
+        <div class="competition-map">
+          <div class="comp-cell us" style="grid-column:span 3; padding:20px;">
+            <div class="comp-name" style="font-size:16px;">SPECTRA AI</div>
+            Edge + Cloud + Predictive — Full Stack
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Cognex</div>
+            חומרה בלבד
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Landing AI</div>
+            Cloud only
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Instrumental</div>
+            Electronics only
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Sight Machine</div>
+            Analytics only
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Keyence</div>
+            חומרה + SW בסיסי
+          </div>
+          <div class="comp-cell">
+            <div class="comp-name">Neurala</div>
+            Edge only
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 10 — COMPASS / VALUES ═══ -->
+  <div class="slide" data-slide="9">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">המצפן שלנו</div>
+        <h1 class="slide-title animate-in delay-1">הערכים שמנווטים <span class="accent-gold">את הדרך</span></h1>
+        <p class="slide-subtitle animate-in delay-2">
+          בעולם שמשתנה כל 6 חודשים — צריך מצפן. לא רק אסטרטגיה, אלא ערכים שמחזיקים אותנו ביחד גם כשהשטח רועד.
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          <strong>שלושה עקרונות מנחים:</strong><br>
+          האנשים שלנו → חדשנות בלתי מתפשרת → אימפקט מדיד ללקוח.
+        </p>
+      </div>
+      <div class="dna-grid animate-in delay-3">
+        <div class="dna-item">
+          <div class="dna-icon">🧬</div>
+          <div class="dna-name">People First</div>
+          <div class="dna-desc">680 אנשים שמגיעים כל בוקר כדי לשנות את התעשייה. כל שורה בקוד, כל פגישה עם לקוח.</div>
+        </div>
+        <div class="dna-item">
+          <div class="dna-icon">🔬</div>
+          <div class="dna-name">Relentless Innovation</div>
+          <div class="dna-desc">22% מההכנסות ב-R&D. 34 פטנטים. מעבדת מחקר בתל אביב, טוקיו ומינכן.</div>
+        </div>
+        <div class="dna-item">
+          <div class="dna-icon">🎯</div>
+          <div class="dna-name">Customer Impact</div>
+          <div class="dna-desc">כל החלטת מוצר מתחילה בשאלה: מה הלקוח ירוויח? ROI מדיד, לא הבטחות.</div>
+        </div>
+        <div class="dna-item">
+          <div class="dna-icon">🌍</div>
+          <div class="dna-name">Global, Local DNA</div>
+          <div class="dna-desc">ישראליות בלב — חוצפה, מהירות, אנטי-שבלונות. אבל בכל שוק — מותאמים מקומית.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 11 — MULTI-PRODUCT ARENA ═══ -->
+  <div class="slide" data-slide="10">
+    <div style="width:100%; max-width:1100px;">
+      <div class="slide-tag animate-in">זירה תחרותית רב-מוצרית</div>
+      <h1 class="slide-title animate-in delay-1" style="margin-bottom:12px;">
+        מחברת מוצר אחד ל<span class="accent">פלטפורמה שלמה</span>
+      </h1>
+      <p class="slide-subtitle animate-in delay-2" style="margin-bottom:32px;">התחרות לא רק ב-inspection. היא על כל שכבה של ה-manufacturing intelligence stack.</p>
+      <div class="animate-in delay-3" style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+        <div style="background:rgba(0,229,255,0.06); border:1px solid rgba(0,229,255,0.2); border-radius:12px; padding:20px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:8px;">👁️</div>
+          <div style="font-weight:700; font-size:15px; color:var(--cyan); margin-bottom:4px;">Vision</div>
+          <div style="font-size:12px; color:var(--text-dim);">ניתוח חזותי + זיהוי פגמים</div>
+          <div style="font-family:var(--font-mono); font-size:18px; color:var(--cyan); margin-top:12px;">$34M ARR</div>
+        </div>
+        <div style="background:rgba(124,77,255,0.06); border:1px solid rgba(124,77,255,0.2); border-radius:12px; padding:20px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:8px;">⚡</div>
+          <div style="font-weight:700; font-size:15px; color:var(--purple); margin-bottom:4px;">Edge</div>
+          <div style="font-size:12px; color:var(--text-dim);">ניתוח מקומי בזמן אמת</div>
+          <div style="font-family:var(--font-mono); font-size:18px; color:var(--purple); margin-top:12px;">$16M ARR</div>
+        </div>
+        <div style="background:rgba(255,215,64,0.06); border:1px solid rgba(255,215,64,0.2); border-radius:12px; padding:20px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:8px;">📊</div>
+          <div style="font-weight:700; font-size:15px; color:var(--gold); margin-bottom:4px;">Insights</div>
+          <div style="font-size:12px; color:var(--text-dim);">אנליטיקס + חיזוי תקלות</div>
+          <div style="font-family:var(--font-mono); font-size:18px; color:var(--gold); margin-top:12px;">$6M ARR</div>
+        </div>
+        <div style="background:rgba(224,64,251,0.06); border:1px solid rgba(224,64,251,0.2); border-radius:12px; padding:20px; text-align:center;">
+          <div style="font-size:28px; margin-bottom:8px;">🔗</div>
+          <div style="font-weight:700; font-size:15px; color:var(--magenta); margin-bottom:4px;">Connect</div>
+          <div style="font-size:12px; color:var(--text-dim);">API + אינטגרציות</div>
+          <div style="font-family:var(--font-mono); font-size:18px; color:var(--magenta); margin-top:12px;">$2M ARR</div>
+        </div>
+      </div>
+      <div class="animate-in delay-4" style="margin-top:20px; text-align:center; padding:16px; background:var(--card); border-radius:12px;">
+        <span style="font-family:var(--font-mono); font-size:13px; color:var(--text-dim);">TOTAL PLATFORM ARR</span>
+        <span style="font-family:var(--font-mono); font-size:24px; color:var(--cyan); margin-right:16px;">$58M</span>
+        <span style="font-family:var(--font-mono); font-size:13px; color:var(--green);">▲ 67% YoY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 12 — VISION 2030 ═══ -->
+  <div class="slide" data-slide="11">
+    <div class="full-center">
+      <div class="slide-tag animate-in">מסתכלים קדימה</div>
+      <h1 class="slide-title animate-in delay-1" style="font-size:clamp(36px,5vw,72px);">
+        SPECTRA <span class="accent">2030</span>
+      </h1>
+      <p class="slide-subtitle animate-in delay-2" style="margin:0 auto 40px;">
+        העולם משתנה. הזירה התחרותית מתעצמת. אנחנו לא רק חברת computer vision — אנחנו בונים את <strong>מערכת העצבים של התעשייה</strong>.
+      </p>
+      <div class="metrics-grid animate-in delay-3" style="max-width:800px; margin:0 auto; grid-template-columns:repeat(3,1fr);">
+        <div class="metric-card">
+          <div class="metric-value">$500M</div>
+          <div class="metric-label">יעד ARR — 2030</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value purple">2,000+</div>
+          <div class="metric-label">לקוחות ארגוניים</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value gold">25%+</div>
+          <div class="metric-label">EBITDA Margin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 13 — STRATEGY 3 LAYERS ═══ -->
+  <div class="slide" data-slide="12">
+    <div class="split-wide">
+      <div>
+        <div class="slide-tag animate-in">האסטרטגיה — 3 שכבות</div>
+        <h1 class="slide-title animate-in delay-1" style="font-size:clamp(28px,3.5vw,38px);">
+          <span class="accent">Core</span> · <span class="accent-purple">Scale</span> · <span style="color:var(--magenta);">Frontier</span>
+        </h1>
+        <div class="animate-in delay-2" style="margin-top:24px;">
+          <div style="margin-bottom:20px; padding:16px; border-right:3px solid var(--cyan); background:var(--card); border-radius:0 12px 12px 0;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--cyan); margin-bottom:4px;">CORE — הבית שלנו</div>
+            <div style="font-size:13px; color:var(--text-dim); line-height:1.7;">צמיחה מואצת ב-Visual Inspection + Edge. מ-$58M ל-$150M ARR. 60+ מדינות, 1,000+ לקוחות.</div>
+          </div>
+          <div style="margin-bottom:20px; padding:16px; border-right:3px solid var(--purple); background:var(--card); border-radius:0 12px 12px 0;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--purple); margin-bottom:4px;">SCALE — הרחבת הפלטפורמה</div>
+            <div style="font-size:13px; color:var(--text-dim); line-height:1.7;">מ-inspection ל-Manufacturing Intelligence. Insights, Connect, Digital Twin. ACV ממוצע $250K+.</div>
+          </div>
+          <div style="padding:16px; border-right:3px solid var(--magenta); background:var(--card); border-radius:0 12px 12px 0;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--magenta); margin-bottom:4px;">FRONTIER — עולמות חדשים</div>
+            <div style="font-size:13px; color:var(--text-dim); line-height:1.7;">Autonomous Quality — קווי ייצור שמתקנים את עצמם. Generative manufacturing. R&D lab בטוקיו.</div>
+          </div>
+        </div>
+      </div>
+      <div class="animate-in delay-3" style="display:flex; align-items:center; justify-content:center;">
+        <div class="spheres">
+          <div class="sphere sphere-frontier">
+            <div class="sphere-label" style="color:var(--magenta);">FRONTIER</div>
+            <div class="sphere-desc">Autonomous Quality</div>
+          </div>
+          <div class="sphere sphere-scale">
+            <div class="sphere-label" style="color:var(--purple);">SCALE</div>
+            <div class="sphere-desc">Mfg Intelligence</div>
+          </div>
+          <div class="sphere sphere-core">
+            <div class="sphere-label" style="color:var(--cyan);">CORE</div>
+            <div class="sphere-desc">Vision + Edge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 14 — AI META ═══ -->
+  <div class="slide" data-slide="13">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">AI שמייצר AI</div>
+        <h1 class="slide-title animate-in delay-1">בינה מלאכותית — <span class="accent">לא רק במוצר</span></h1>
+        <p class="slide-subtitle animate-in delay-2">
+          ב-2024 הטמענו AI בכל שכבה של הארגון. לא רק במוצר שאנחנו מוכרים — אלא באופן שבו אנחנו בונים, מוכרים, ותומכים.
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          <strong>34% מהקוד ב-2024 נכתב עם AI Copilot.</strong><br>
+          זמן onboarding ללקוח ירד ב-40%. זמן תגובה לתמיכה — מ-4 שעות ל-22 דקות.
+        </p>
+      </div>
+      <div class="animate-in delay-3">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px;">
+            <div style="font-size:32px;">🧑‍💻</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Engineering</div>
+              <div style="font-size:12px; color:var(--text-dim);">AI Copilot → 34% מהקוד, 28% שיפור ב-velocity</div>
+            </div>
+          </div>
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px;">
+            <div style="font-size:32px;">📞</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Customer Success</div>
+              <div style="font-size:12px; color:var(--text-dim);">AI Triage → מ-4h ל-22 דקות זמן תגובה</div>
+            </div>
+          </div>
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px;">
+            <div style="font-size:32px;">📈</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">Sales</div>
+              <div style="font-size:12px; color:var(--text-dim);">AI Lead Scoring → 23% שיפור ב-win rate</div>
+            </div>
+          </div>
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px;">
+            <div style="font-size:32px;">🔬</div>
+            <div>
+              <div style="font-weight:700; font-size:14px;">R&D</div>
+              <div style="font-size:12px; color:var(--text-dim);">Auto-labeling → 60% חיסכון בזמן אימון מודלים</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 15 — THE DNA ═══ -->
+  <div class="slide" data-slide="14">
+    <div class="split">
+      <div>
+        <div class="slide-tag animate-in">THE SPECTRA DNA</div>
+        <h1 class="slide-title animate-in delay-1">ה-<span class="accent-gold">DNA</span> שלנו<br>הוא היתרון האמיתי</h1>
+        <p class="slide-subtitle animate-in delay-2">
+          אי אפשר לדבר על הנכסים של ספקטרה בלי לדבר על <strong>האנשים</strong>. ה-DNA הייחודי שלנו — השילוב בין חוצפה ישראלית, מצוינות הנדסית, ותרבות של "אנחנו ביחד".
+        </p>
+        <p class="slide-subtitle animate-in delay-3" style="margin-top:16px;">
+          סטארטאפ שחושב כמו enterprise. Enterprise שפועל במהירות של סטארטאפ. <strong>זה ה-DNA המקסי — סליחה, הספקטרי.</strong>
+        </p>
+      </div>
+      <div class="dna-grid animate-in delay-3">
+        <div class="dna-item" style="border-right:3px solid var(--cyan);">
+          <div class="dna-name">🗡️ חוצפה מדעית</div>
+          <div class="dna-desc">34 פטנטים. Papers ב-CVPR, NeurIPS. אנחנו לא רק משתמשים ב-AI — אנחנו כותבים אותו.</div>
+        </div>
+        <div class="dna-item" style="border-right:3px solid var(--purple);">
+          <div class="dna-name">🤝 ביחד, באמת</div>
+          <div class="dna-desc">Hackathons רבעוניים. 92% שביעות רצון עובדים. ממגיעים ל-3 משרדים ומרגישים בית אחד.</div>
+        </div>
+        <div class="dna-item" style="border-right:3px solid var(--gold);">
+          <div class="dna-name">🏃 מהירות בלתי סבירה</div>
+          <div class="dna-desc">מרעיון ל-POC תוך שבועיים. מ-POC ל-production תוך 90 יום. לקוחות קוראים לזה "Israeli speed".</div>
+        </div>
+        <div class="dna-item" style="border-right:3px solid var(--magenta);">
+          <div class="dna-name">🌱 צמיחה אישית</div>
+          <div class="dna-desc">$5K תקציב למידה שנתי לכל עובד. תוכנית mentorship עם founders. 40% קידומים פנימיים.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 16 — CLOSING ═══ -->
+  <div class="slide" data-slide="15">
+    <div class="full-center">
+      <div class="slide-tag animate-in">לסיום</div>
+      <h1 class="slide-title animate-in delay-1" style="font-size:clamp(28px,3.5vw,42px);">
+        אחרי שנה מורכבת, מלאה באתגרים —<br>
+        אנחנו יוצאים <span class="accent">חזקים</span>, <span class="accent-purple">מדויקים</span>, ו<span style="color:var(--magenta);">רעבים</span>
+      </h1>
+      <p class="slide-subtitle animate-in delay-2" style="margin:24px auto 40px;">
+        השנה הבאה תהיה שנה של הגדלה — של המוצר, של הצוות, של ההשפעה.<br>
+        <strong>אנחנו לא רק רואים את העתיד — אנחנו בונים אותו. פיקסל אחרי פיקסל.</strong>
+      </p>
+      <div class="closing-logo animate-in delay-3">SPECTRA</div>
+      <div class="closing-tagline animate-in delay-4">The Vision That Drives Industry Forward</div>
+      <div style="margin-top:48px; font-family:var(--font-mono); font-size:12px; color:var(--text-dim);" class="animate-in delay-5">
+        spectra.ai &nbsp;|&nbsp; תל אביב · מינכן · טוקיו · סן חוזה
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let current = 0;
+const totalSlides = 16;
+
+// Build nav dots
+const nav = document.getElementById('slideNav');
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goTo(i);
+  nav.appendChild(dot);
+}
+
+function goTo(n) {
+  if (n < 0 || n >= totalSlides) return;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  document.getElementById('progressFill').style.width = ((current + 1) / totalSlides * 100) + '%';
+  document.getElementById('currentNum').textContent = String(current + 1).padStart(2, '0');
+  
+  // Trigger chart animations on financial slide
+  if (current === 3) animateCharts();
+  // Trigger product explode reset
+  if (current === 4) {
+    document.getElementById('productExplode').classList.add('collapsed');
+    document.getElementById('productExplode').classList.remove('exploded');
+  }
+}
+
+function nextSlide() { goTo(current + 1); }
+function prevSlide() { goTo(current - 1); }
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+});
+
+// Touch/swipe
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+});
+
+// Chart animation
+function animateCharts() {
+  document.querySelectorAll('.bar').forEach(bar => {
+    const h = bar.dataset.height;
+    if (h) setTimeout(() => { bar.style.height = h; }, 300);
+  });
+}
+
+// Product explode toggle
+function toggleExplode() {
+  const el = document.getElementById('productExplode');
+  el.classList.toggle('collapsed');
+  el.classList.toggle('exploded');
+}
+
+// Init
+document.getElementById('totalNum').textContent = String(totalSlides).padStart(2, '0');
+document.getElementById('progressFill').style.width = (1 / totalSlides * 100) + '%';
+</script>
+</body>
+</html>
