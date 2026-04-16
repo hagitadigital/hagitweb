@@ -108,9 +108,9 @@
 
         .studio-gates__grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(32px, 5vw, 60px);
-            max-width: 1000px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(24px, 4vw, 48px);
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -252,7 +252,10 @@
             color: var(--color-copper); text-decoration: none;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .studio-gates__grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
             .studio-gates__grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -311,22 +314,20 @@
                         </svg>
                     </span>
                 </a>
-<a href="ai-video-lab.html" class="studio-card">
-  <div class="studio-card-icon">🎬</div>
-  <div class="studio-card-label">Video Lab</div>
-  <h3>AI Video Lab</h3>
-  <p class="studio-card-desc-en">
-    Real case studies from the studio — how an AI video gets built,
-    from first sketch to final cut. Tools, prompts, and the honest
-    process behind cinematic AI video.
-  </p>
-  <p class="studio-card-desc-he">
-    מעבדת וידאו AI — מקרי בוחן אמיתיים מהסטודיו. איך נבנה סרטון
-    AI קולנועי למותג, עם הכלים, הפרומפטים, והתהליך האמיתי מאחורי
-    הקלעים.
-  </p>
-  <span class="studio-card-cta">Explore Video Lab →</span>
-</a>
+                <!-- Gate 3: AI Video Lab -->
+                <a href="ai-video-lab.html" class="studio-gate">
+                    <span class="studio-gate__icon">🎬</span>
+                    <p class="studio-gate__name">Video Lab</p>
+                    <h2 class="studio-gate__title">AI Video Lab</h2>
+                    <p class="studio-gate__desc">Real case studies from the studio — how an AI video gets built, from first sketch to final cut. Tools, prompts, and the honest process behind cinematic AI video.</p>
+                    <p class="studio-gate__desc-he">מעבדת וידאו AI — מקרי בוחן אמיתיים מהסטודיו. איך נבנה סרטון AI קולנועי למותג, עם הכלים, הפרומפטים, והתהליך האמיתי מאחורי הקלעים.</p>
+                    <span class="studio-gate__enter">
+                        Explore Video Lab
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
