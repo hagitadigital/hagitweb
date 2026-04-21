@@ -48,6 +48,23 @@ body { background:var(--bg); color:var(--text); font-family:var(--font-he); over
 .slide { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.8s ease, transform 0.8s ease; transform:scale(0.96); padding:60px 80px; }
 .slide.active { opacity:1; pointer-events:auto; transform:scale(1); }
 
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .slide { padding: 70px 20px 110px; overflow-y: auto; align-items: flex-start; }
+  .slide-nav { display: none; }
+  .slide-counter { bottom: 20px; right: 16px; font-size: 11px; }
+  .nav-arrows { bottom: 16px; gap: 12px; }
+  .nav-arrows button { width: 40px; height: 40px; font-size: 15px; }
+  .split { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .split-wide { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .metrics-grid { grid-template-columns: 1fr 1fr !important; gap: 12px; }
+  .slide-title { font-size: clamp(24px, 7vw, 36px) !important; }
+  .slide-subtitle { font-size: clamp(14px, 4vw, 17px) !important; }
+  .partners-row { flex-wrap: wrap; gap: 10px; }
+  .partner-card { min-width: 130px; }
+  .full-center { text-align: right; }
+}
+
 /* ── GLOBAL BACKGROUND ── */
 .bg-orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:-1; }
 .bg-orb-1 { width:600px; height:600px; background:radial-gradient(circle,rgba(0,229,255,0.08),transparent 70%); top:-200px; right:-100px; animation:float-orb 20s ease-in-out infinite; }
