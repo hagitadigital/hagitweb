@@ -894,7 +894,6 @@
             opacity: 0; transform: translateY(10px);
             transition: opacity 0.6s 0.85s var(--transition-smooth), transform 0.6s 0.85s var(--transition-smooth);
         }
-        .intro__image-frame.active ~ .intro__float-tag,
         .intro__float-tag.active { opacity: 1; transform: translateY(0); }
         .intro__float-label {
             font-size: 9px; font-weight: 500;
@@ -1954,6 +1953,22 @@
             var bp = document.getElementById('bosPipeline');
             if (bp) bosObserver.observe(bp);
 
+            // ── About image — observer משלו ──
+            var introImg = document.getElementById('introImg');
+            var introTag = document.getElementById('introTag');
+            if (introImg) {
+                var introObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            introImg.classList.add('active');
+                            if (introTag) introTag.classList.add('active');
+                            introObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                introObserver.observe(introImg);
+            }
+
             var allNavLinks = navLinks.querySelectorAll('a:not(.nav__dropdown-toggle)');
             for (var n = 0; n < allNavLinks.length; n++) {
                 allNavLinks[n].addEventListener('click', function() {
@@ -1968,17 +1983,19 @@
             function revealOnScroll() {
                 for (var i = 0; i < revealElements.length; i++) {
                     var el = revealElements[i];
-                    var elementTop = el.getBoundingClientRect().top;
-                    var windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight - 100) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 60) {
                         el.classList.add('active');
                     }
                 }
             }
             
             window.addEventListener('scroll', revealOnScroll);
+            // הרץ מיד + אחרי טעינה מלאה
+            revealOnScroll();
             window.addEventListener('load', revealOnScroll);
+            setTimeout(revealOnScroll, 300);
+            setTimeout(revealOnScroll, 800);
 
             var anchors = document.querySelectorAll('a[href^="#"]');
             for (var j = 0; j < anchors.length; j++) {
