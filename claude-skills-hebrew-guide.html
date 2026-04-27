@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta -->
+  <title>Claude Skills בעברית: המדריך המעשי לבניית צוות AI לעסק | חגית אנטבי</title>
+  <meta name="description" content="מה זה Claude Skills, איך הם עובדים, ואיך בניתי 6 סקילים שמפעילים את BrandOS. מדריך מעשי בעברית עם דוגמאות מהשטח. 2026.">
+  <meta name="author" content="חגית אנטבי">
+  <link rel="canonical" href="https://hagitantebi.co.il/claude-skills-hebrew-guide.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="בניתי צוות של 6 מומחים בתוך קלוד — וזה איך זה עובד">
+  <meta property="og:description" content="Claude Skills בעברית. case study אמיתי מ-Brand Worlds Studio. איך לבנות סקיל ראשון משלכם.">
+  <meta property="og:image" content="https://hagitantebi.co.il/claude-skills-hebrew-guide/hero.jpg">
+  <meta property="og:url" content="https://hagitantebi.co.il/claude-skills-hebrew-guide.html">
+  <meta property="og:site_name" content="חגית אנטבי — Brand Worlds Studio">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="בניתי צוות של 6 מומחים בתוך קלוד — וזה איך זה עובד">
+  <meta name="twitter:description" content="Claude Skills בעברית. case study אמיתי מ-Brand Worlds Studio.">
+  <meta name="twitter:image" content="https://hagitantebi.co.il/claude-skills-hebrew-guide/hero.jpg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Claude Skills בעברית: איך בניתי צוות של 6 מומחים בתוך קלוד",
+    "description": "מדריך מעשי ל-Claude Skills בעברית — מה זה, איך זה עובד, ואיך בניתי 6 סקילים מותאמים אישית שמפעילים את BrandOS.",
+    "author": {
+      "@type": "Person",
+      "name": "חגית אנטבי",
+      "url": "https://hagitantebi.co.il",
+      "jobTitle": "Brand Worlds Architect, founder of BrandOS"
+    },
+    "datePublished": "2026-04-27",
+    "dateModified": "2026-04-27",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brand Worlds Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hagitantebi.co.il/logo.png"
+      }
+    },
+    "image": "https://hagitantebi.co.il/claude-skills-hebrew-guide/hero.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hagitantebi.co.il/claude-skills-hebrew-guide.html"
+    },
+    "inLanguage": "he-IL"
+  }
+  </script>
+  
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "האם Claude Skills עובד בעברית?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן. סקילים שכתובים בעברית פועלים מצוין. החשוב הוא שה-description יתאר בבירור מתי להפעיל את הסקיל."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "באיזו תוכנית של קלוד יש סקילים?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "סקילים זמינים בכל התוכניות. להעלאת סקילים מותאמים אישית צריך מנוי בתשלום (Pro ומעלה) עם code execution מופעל."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "מה ההבדל בין Claude Skills ל-Project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "פרויקט מספק ידע סטטי שנטען בכל שיחה בתוכו. סקיל מספק ידע שנטען רק כשהוא רלוונטי למשימה — ועובד בכל השיחות, לא רק בפרויקט אחד."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "האם אני צריכה לדעת לתכנת כדי לבנות סקיל?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "לא. סקיל בסיסי הוא קובץ Markdown אחד עם הוראות בשפה חופשית. יש גם תכונה skill-creator שיוצרת סקיל תוך שיחה."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <style>
+    /* ===== Brutalist Warmth — Design Tokens ===== */
+    :root {
+      --bg: #faf6ee;
+      --bg-soft: #f2e9d4;
+      --bg-card: #fffcf5;
+      --text: #2a1810;
+      --text-soft: #5a4838;
+      --text-muted: #8a7560;
+      --accent: #b8924a;
+      --accent-deep: #8a6a2e;
+      --accent-soft: #d4af7a;
+      --line: #e8dcc4;
+      --line-soft: #f0e7d4;
+      --shadow: 0 1px 2px rgba(42, 24, 16, 0.04);
+      --shadow-lift: 0 8px 24px rgba(42, 24, 16, 0.08);
+      
+      --font-serif: 'Frank Ruhl Libre', Georgia, serif;
+      --font-sans: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --max-width: 760px;
+      --max-width-wide: 1100px;
+      --space-1: 0.5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2rem;
+      --space-6: 3rem;
+      --space-8: 4rem;
+      --space-12: 6rem;
+    }
+    
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 17px;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-serif);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      direction: rtl;
+      text-rendering: optimizeLegibility;
+    }
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent-deep); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent); }
+    
+    /* ===== Navigation ===== */
+    .nav {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: var(--space-2) var(--space-4);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(250, 246, 238, 0.92);
+    }
+    
+    .nav-inner {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+    
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: var(--space-3);
+      list-style: none;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 400;
+    }
+    
+    .nav-links a {
+      color: var(--text-soft);
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+    
+    @media (max-width: 600px) {
+      .nav-links { gap: var(--space-2); font-size: 0.85rem; }
+      .nav-brand { font-size: 0.95rem; }
+    }
+    
+    /* ===== Article Header ===== */
+    .article-header {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-4) var(--space-6);
+      text-align: right;
+    }
+    
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    
+    .breadcrumb a {
+      color: var(--text-muted);
+    }
+    
+    .breadcrumb a:hover {
+      color: var(--accent-deep);
+    }
+    
+    .breadcrumb .sep {
+      color: var(--accent-soft);
+    }
+    
+    h1.article-title {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.01em;
+    }
+    
+    h1.article-title em {
+      font-style: italic;
+      color: var(--accent-deep);
+      font-weight: 400;
+    }
+    
+    .article-tagline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      line-height: 1.5;
+      color: var(--text-soft);
+      font-weight: 300;
+      margin-bottom: var(--space-4);
+      max-width: 90%;
+    }
+    
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    
+    .article-meta .author {
+      color: var(--accent-deep);
+      font-weight: 500;
+    }
+    
+    .article-meta .dot {
+      color: var(--accent-soft);
+    }
+    
+    /* ===== Hero Image ===== */
+    .hero-img {
+      max-width: var(--max-width-wide);
+      margin: 0 auto var(--space-8);
+      padding: 0 var(--space-4);
+    }
+    
+    .hero-img img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: var(--shadow-lift);
+    }
+    
+    /* ===== Article Body ===== */
+    .article-body {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-4) var(--space-12);
+    }
+    
+    .article-body p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      margin-bottom: var(--space-3);
+      color: var(--text);
+    }
+    
+    .article-body p.lead {
+      font-size: 1.18rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    
+    .article-body h2 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 1.95rem);
+      line-height: 1.25;
+      color: var(--text);
+      margin: var(--space-8) 0 var(--space-3);
+      letter-spacing: -0.01em;
+    }
+    
+    .article-body h3 {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+      line-height: 1.35;
+      color: var(--text);
+      margin: var(--space-6) 0 var(--space-2);
+    }
+    
+    .article-body h4 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: var(--space-4) 0 var(--space-2);
+      letter-spacing: 0.01em;
+    }
+    
+    .article-body strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .article-body em {
+      font-style: italic;
+      color: var(--text-soft);
+    }
+    
+    .article-body ul, .article-body ol {
+      margin: 0 var(--space-3) var(--space-3) 0;
+      padding-right: var(--space-3);
+    }
+    
+    .article-body li {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: var(--space-1);
+      color: var(--text);
+    }
+    
+    .article-body a {
+      color: var(--accent-deep);
+      border-bottom: 1px solid var(--accent-soft);
+      transition: all 0.2s;
+    }
+    
+    .article-body a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    
+    /* ===== TL;DR Block (Position Zero) ===== */
+    .tldr {
+      background: var(--bg-soft);
+      border-right: 3px solid var(--accent);
+      padding: var(--space-3) var(--space-4);
+      margin: var(--space-4) 0 var(--space-6);
+      border-radius: 2px;
+    }
+    
+    .tldr-label {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-deep);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+    
+    .tldr p {
+      font-size: 1.02rem !important;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0 !important;
+    }
+    
+    /* ===== Inline Images ===== */
+    .inline-img {
+      margin: var(--space-6) 0;
+    }
+    
+    .inline-img img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+    
+    .inline-img .caption {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: var(--space-2);
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+    /* ===== Pull Quote ===== */
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      line-height: 1.5;
+      color: var(--accent-deep);
+      border-right: 3px solid var(--accent);
+      padding-right: var(--space-3);
+      margin: var(--space-6) 0;
+    }
+    
+    /* ===== Numbered Steps ===== */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0 !important;
+      margin: var(--space-4) 0 !important;
+    }
+    
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-right: 3.5rem;
+      margin-bottom: var(--space-4);
+    }
+    
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      right: 0;
+      top: 0.1rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      background: var(--bg-soft);
+      color: var(--accent-deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    
+    .steps h4 {
+      margin-top: 0 !important;
+    }
+    
+    /* ===== Compare Box (✕ / ✓) ===== */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin: var(--space-6) 0;
+    }
+    
+    .compare-box {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: var(--space-3);
+    }
+    
+    .compare-box h4 {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 var(--space-2);
+      letter-spacing: 0.02em;
+    }
+    
+    .compare-box.bad h4 { color: #9a4828; }
+    .compare-box.good h4 { color: #4a6a3a; }
+    
+    .compare-box ul {
+      list-style: none;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    .compare-box li {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-1);
+      padding-right: 1.4rem;
+      position: relative;
+    }
+    
+    .compare-box.bad li::before {
+      content: "✕";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #9a4828;
+      font-weight: 700;
+    }
+    
+    .compare-box.good li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #4a6a3a;
+      font-weight: 700;
+    }
+    
+    @media (max-width: 600px) {
+      .compare { grid-template-columns: 1fr; }
+    }
+    
+    /* ===== Code Block ===== */
+    pre {
+      background: var(--text);
+      color: var(--bg);
+      padding: var(--space-3);
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: var(--space-3) 0;
+      direction: ltr;
+      text-align: left;
+    }
+    
+    code {
+      background: var(--bg-soft);
+      color: var(--accent-deep);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.92em;
+    }
+    
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    
+    /* ===== FAQ ===== */
+    .faq {
+      margin: var(--space-4) 0;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: var(--space-3) 0;
+    }
+    
+    .faq-item h3 {
+      font-size: 1.15rem !important;
+      margin: 0 0 var(--space-1) !important;
+      color: var(--text) !important;
+    }
+    
+    .faq-item p {
+      font-size: 1rem !important;
+      color: var(--text-soft);
+      margin: 0 !important;
+    }
+    
+    /* ===== CTA Block ===== */
+    .cta {
+      background: var(--bg-soft);
+      border-radius: 4px;
+      padding: var(--space-6) var(--space-4);
+      margin: var(--space-8) 0;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      margin: 0 0 var(--space-2) !important;
+      font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+    }
+    
+    .cta p {
+      color: var(--text-soft);
+      margin-bottom: var(--space-3) !important;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--text);
+      color: var(--bg);
+      padding: var(--space-2) var(--space-4);
+      border-radius: 2px;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+      border: none;
+    }
+    
+    .cta-button:hover {
+      background: var(--accent-deep);
+      color: var(--bg);
+    }
+    
+    /* ===== Read More ===== */
+    .read-more {
+      max-width: var(--max-width);
+      margin: var(--space-8) auto 0;
+      padding: var(--space-6) var(--space-4);
+      border-top: 1px solid var(--line);
+    }
+    
+    .read-more h3 {
+      font-family: var(--font-sans) !important;
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      color: var(--text-muted) !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3) !important;
+    }
+    
+    .read-more-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .read-more-link {
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      color: var(--text);
+      padding: var(--space-2) 0;
+      border-bottom: none !important;
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-1);
+    }
+    
+    .read-more-link:hover {
+      color: var(--accent-deep);
+    }
+    
+    .read-more-link::before {
+      content: "✦";
+      color: var(--accent);
+      font-size: 0.85em;
+    }
+    
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--text);
+      color: var(--bg);
+      padding: var(--space-6) var(--space-4);
+      text-align: center;
+      margin-top: var(--space-8);
+    }
+    
+    .footer p {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+    
+    .footer a {
+      color: var(--accent-soft);
+      border-bottom: none;
+    }
+    
+    .footer a:hover {
+      color: var(--bg);
+    }
+    
+    /* ===== Section Divider ===== */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent-soft);
+      margin: var(--space-6) auto;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a href="https://hagitantebi.co.il/" class="nav-brand">Hagit Antebi</a>
+      <ul class="nav-links">
+        <li><a href="https://hagitantebi.co.il/">בית</a></li>
+        <li><a href="https://hagitantebi.co.il/brand-os">BrandOS</a></li>
+        <li><a href="https://hagitantebi.co.il/insights.html">Insights</a></li>
+        <li><a href="https://hagitantebi.co.il/#contact">קשר</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="https://hagitantebi.co.il/insights.html">Insights</a>
+      <span class="sep">·</span>
+      <span>AI ופרודקטיביות</span>
+    </div>
+    
+    <h1 class="article-title"><em>Claude Skills</em> בעברית: איך בניתי צוות של 6 מומחים בתוך קלוד — ולמה זה ה-OS האמיתי של עסק ב-2026</h1>
+    
+    <p class="article-tagline">סקילים זה לא Feature, זו תפיסת עבודה. ולא — את לא צריכה לדעת לתכנת.</p>
+    
+    <div class="article-meta">
+      <span class="author">✦ חגית אנטבי</span>
+      <span class="dot">·</span>
+      <span>אפריל 2026</span>
+      <span class="dot">·</span>
+      <span>8 דקות קריאה</span>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  <div class="hero-img">
+    <img src="/claude-skills-hebrew-guide/hero.jpg" alt="אסטרטגית מותג מנהלת צוות של 6 סקילים מותאמים אישית בקלוד — מנהל שיווק, מנהלת תוכן, אסטרטגית מותג, כותב הצעות, מנהל הצלחת לקוח ומתכננת וידאו" loading="eager">
+  </div>
+
+  <!-- Article Body -->
+  <article class="article-body">
+    
+    <div class="tldr">
+      <div class="tldr-label">תקציר ב-3 שורות</div>
+      <p>Claude Skills הם תיקיות הוראות שקלוד טוען לבד כשהן רלוונטיות למשימה. במקום להסביר לו בכל שיחה מי אתם, מה הקהל שלכם ומה הטון הנכון — אתם כותבים את זה פעם אחת ב-SKILL.md, וקלוד שולף את זה כשצריך. אנתרופיק השיקה את התכונה באוקטובר 2025; היא זמינה היום ב-Claude.ai, Claude Code וב-API.</p>
+    </div>
+
+    <h2>כשאני פותחת את קלוד בבוקר, אני לא מדברת איתו — אני מדברת עם הצוות שלי</h2>
+    
+    <p>נציגת תוכן שיודעת בדיוק איך אני אוהבת לכתוב פוסטים לפייסבוק. אסטרטגית מותג שמכירה את המתודולוגיה שלי לניתוח מתחרים. כותב הצעות מחיר שיודע איך להציג חבילה ללקוח לוגיסטיקה מול חבילה ללקוח שוקולד יוקרה. מנהל הצלחת לקוח שיוצר אוטומטית את ה-SQL של Brand DNA חדש ב-Supabase. מתכננת הפקת וידאו שיודעת באיזה קצב לעבוד מול Kling, Suno ו-CapCut.</p>
+    
+    <p>כולם בתוך קלוד. כולם נטענים לבד. כולם מדברים בעברית.</p>
+    
+    <p>זה לא חזון של עתיד. זה איך שאני עובדת היום, באמצעות תכונה שאנתרופיק שחררה ב-2025 ושנקראת <strong>Claude Skills</strong> (סקילז קלוד). במאמר הזה אני אסביר מה זה בדיוק, איך זה משנה את העבודה היומיומית של עסק קטן, ואיך אני בניתי צוות של 6 מומחים שעובדים עבורי בלי שהייתי צריכה לכתוב שורת קוד.</p>
+
+    <hr class="divider">
+
+    <h2>מה זה Claude Skills בכלל? ההגדרה הקצרה</h2>
+    
+    <p><strong>Claude Skill הוא תיקייה עם קובץ SKILL.md בתוכה.</strong> הקובץ הזה מכיל שני חלקים: כותרת קצרה (שם + תיאור של מתי להשתמש בסקיל), והוראות מפורטות שקלוד יקרא ויפעל לפיהן ברגע שהוא מזהה משימה רלוונטית.</p>
+    
+    <p>בנוסף לקובץ ה-SKILL.md, סקיל יכול לכלול קבצים נוספים — תבניות, קוד, דוגמאות, מסמכי הפניה — שקלוד טוען רק כשצריך אותם. המבנה הזה נקרא <strong>progressive disclosure</strong>: בתחילת השיחה קלוד מכיר רק את התיאור הקצר של כל סקיל; ברגע שאתם שואלים שאלה מתאימה, הוא קורא את ה-SKILL.md המלא ופועל לפיו.</p>
+    
+    <p>הדבר הקריטי להבין: סקיל הוא לא prompt קבוע שמופעל בכל שיחה. הוא ידע שמחכה ברקע ונשלף רק כשרלוונטי. זה ההבדל בין מנהל שיווק שמסביר לעובד חדש איך לכתוב פוסט בכל פעם מחדש, לבין מנהל שיווק שכתב מדריך מסודר שעובדים שונים שולפים אותו מהמדף לפי הצורך.</p>
+
+    <h2>למה זה משנה — במיוחד לעסקים קטנים</h2>
+    
+    <p>כל בעלת עסק שעובדת עם AI מכירה את המעגל הזה: פותחים שיחה חדשה, מסבירים מי אנחנו, מה אנחנו מוכרים, מי הקהל, איך אנחנו אוהבים לכתוב, מצרפים דוגמאות, מקבלים תוצאה, מתקנים, סוגרים. שיחה הבאה — מתחילים מאפס.</p>
+    
+    <p class="pull-quote">זה לא רק מעצבן. זו עלות אמיתית. בכל שיחה אני מאבדת בין 5 ל-15 דקות על onboarding מחדש של AI שאמור היה להכיר אותי. זה כמו לראיין עובד חדש כל בוקר.</p>
+    
+    <p>סקילים שוברים את המעגל הזה בכך שהם מספקים שלושה דברים:</p>
+    
+    <p><strong>ראשית, עקביות.</strong> הסקיל "Marketing Manager" שלי יודע שאני כותבת בעברית, שהקהל שלי הוא מנהלי שיווק בעסקים בינוניים, שהטון שלי הוא "Brutalist Warmth" (חמים אבל מקצועי, בלי buzzwords), ושאני שונאת פתיחות מסוג "בעידן הדיגיטלי". כל פוסט שמתפרסם עם הסקיל הזה דובר את אותה שפה — בלי שאני אסביר את זה.</p>
+    
+    <p><strong>שנית, מהירות.</strong> סקיל טוב חוסך בקלות 70% מזמן ה-prompting. במקום לכתוב 400 מילה של רקע לפני בקשה, אני כותבת "תכתבי לי פוסט לינקדאין על שיתוף הפעולה החדש שלי עם פאלי" וקלוד עושה את זה לפי המתודולוגיה ששמתי ב-Marketing Manager.</p>
+    
+    <p><strong>שלישית, סקיילביליות.</strong> ככל שהעסק גדל, הידע נשמר בסקילים — לא בראש שלי. אם מחר אני אשכור עוזרת VA, היא יכולה להפעיל את אותם סקילים ולקבל אותו תוצר.</p>
+
+    <h2>6 הסקילים שבניתי לעסק שלי — Case Study</h2>
+    
+    <p>ב-Brand Worlds Studio אני מפעילה את <a href="https://brandos.hagitantebi.co.il">BrandOS</a> — מערכת לייצור תוכן ממותג מבוסס AI. סביב המערכת, אני בניתי 6 סקילים אישיים שמפעילים את כל פעילות העסק שלי. כל סקיל הוא "מומחה" עם תחום אחריות ברור.</p>
+    
+    <h3>1. Marketing Manager (מנהל שיווק)</h3>
+    <p><strong>מה הוא עושה:</strong> כותב פוסטים לפייסבוק, לינקדאין ואינסטגרם. מנסח הודעות outreach (DM/מייל) ללקוחות פוטנציאליים. מתכנן לוחות זמנים שיווקיים ומנתח קהל יעד.</p>
+    <p><strong>מה יש בתוכו:</strong> טון הקול שלי, פוזישנינג של Brand Worlds Studio, רשימת לקוחות פוטנציאליים, תבניות outreach שעבדו בעבר, וכלל זהב אחד: לעולם לא לפתוח פוסט במילים "בעידן הדיגיטלי".</p>
+    <p><strong>מתי הוא נטען:</strong> כשאני אומרת "תכתבי פוסט", "צריך הודעה ל...", "תכינו לי קמפיין" וכו'.</p>
+    
+    <h3>2. Content Manager (מנהלת תוכן ו-SEO/GEO)</h3>
+    <p><strong>מה היא עושה:</strong> כותבת מאמרים שמדורגים בגוגל ועונים לשאלות ב-AI Engines. מבצעת מחקר מילות מפתח, בונה מבנה מאמר אופטימלי, ומספקת Meta + Schema.</p>
+    <p><strong>מה יש בתוכה:</strong> המתודולוגיה שלי ל-SEO+GEO, רשימת מאמרים קיימים באתר (לצורך internal linking), ומבנה H1>H2>H3 שעבד בעבר.</p>
+    <p><strong>מתי היא נטענת:</strong> כשאני מבקשת "תכתבי מאמר", "מחקר מילות מפתח", "תוכן לאתר" — כמו עכשיו, בכתיבת המאמר הזה.</p>
+    
+    <h3>3. Brand Strategist (אסטרטגית מותג)</h3>
+    <p><strong>מה היא עושה:</strong> מנתחת מתחרים, מחדדת פוזישנינג, בונה אסטרטגיית מותג, ומייצרת תובנות אסטרטגיות ללקוחות.</p>
+    <p><strong>מה יש בתוכה:</strong> המתודולוגיה שלי לניתוח מתחרים (לא SWOT — משהו אחר שפיתחתי), הגדרות של Brand DNA, ומפה של איך אני בונה הצעת ערך מבדלת.</p>
+    <p><strong>מתי היא נטענת:</strong> לפני pitch ללקוח חדש, לפני שאני נכנסת לפגישה עם בעל עסק, לפני שאני מחליטה אם להוריד מחיר.</p>
+    
+    <h3>4. Pitch Builder (בונה הצעות מחיר)</h3>
+    <p><strong>מה הוא עושה:</strong> מייצר הצעות מחיר כדפי HTML ממותגים, מוכנים להעלאה ל-GitHub Pages. כולל before/after, בניית Brand DNA ראשוני, וניתוח מצב קיים.</p>
+    <p><strong>מה יש בתוכו:</strong> שני פורמטים — הצעת שדרוג אתר והצעת שדרוג מותגי + BrandOS. תבניות שעבדו ב-pitches קודמים. מבנה תמחור.</p>
+    <p><strong>מתי הוא נטען:</strong> "תכין הצעה ל...", "הצעת מחיר ל...", "pitch ל...".</p>
+    
+    <figure class="inline-img">
+      <img src="/claude-skills-hebrew-guide/pitch-builder-skill-output.png" alt="תוצר מסקיל Pitch Builder — דף הצעת מחיר ממותג בעברית שנוצר אוטומטית בקלוד" loading="lazy">
+      <figcaption class="caption">סקיל Pitch Builder מייצר דפי הצעת מחיר HTML מלאים — כולל Before/After, חבילות מחיר, ו-CTA. מוכן להעלאה ל-GitHub Pages.</figcaption>
+    </figure>
+    
+    <h3>5. Client Onboarding (מנהל הצלחת לקוח)</h3>
+    <p><strong>מה הוא עושה:</strong> מלווה קליטת לקוח חדש מקצה לקצה. מזהה מסלול (מותג קיים / מותג חדש), בונה Brand DNA, יוצר SQL INSERT ל-Supabase של BrandOS, ומכין צ׳קליסט הפעלה.</p>
+    <p><strong>מה יש בתוכו:</strong> סקריפט אונבורדינג מלא, תבנית SQL, ותבניות הודעות ללקוח חדש בכל שלב.</p>
+    <p><strong>מתי הוא נטען:</strong> "לקוח חדש", "פיילוט", "להוסיף את [שם לקוח] ל-BrandOS".</p>
+    
+    <h3>6. Video Production Planner (מתכננת הפקת וידאו AI)</h3>
+    <p><strong>מה היא עושה:</strong> מתכננת סרטוני AI מקצה לקצה — סטוריבורד, בחירת כלים (Kling, Seedance, Suno, CapCut, Midjourney), shot list, תכנון אודיו, ולוח זמנים להפקה.</p>
+    <p><strong>מה יש בתוכה:</strong> המתודולוגיה שלי להפקת וידאו AI, רשימת prompts שעבדו, וכללי החלטה מתי להשתמש בכל כלי.</p>
+    <p><strong>מתי היא נטענת:</strong> "לתכנן סרטון", "storyboard", "להכין reel", "סרטון תדמית".</p>
+    
+    <figure class="inline-img">
+      <img src="/claude-skills-hebrew-guide/video-production-planner-storyboard.png" alt="תוצר מסקיל Video Production Planner — לוח סטוריבורד של 6 panels עם הערות הפקה בעברית" loading="lazy">
+      <figcaption class="caption">סקיל Video Production Planner מייצר סטוריבורד מלא — shot list, prompts מותאמים לכל כלי (Kling, Seedance, Suno, CapCut), ולוח זמנים להפקה. את התמונה הזו יצרתי ב-ChatGPT Images 2.0 — וזה בדיוק מה שאני מנסה לתקן בסקיל הקרוסלה: רינדור עברית מדויק בתוך השקף.</figcaption>
+    </figure>
+
+    <h2>איך זה עובד — מבלי שאני אסביר את הסקיל</h2>
+    
+    <p>הקסם של סקילים הוא ש-<strong>אני לא צריכה לקרוא להם בשם.</strong> אני פשוט מנסחת בקשה רגילה, וקלוד מחליט בעצמו איזה סקיל רלוונטי לרגע הזה.</p>
+    
+    <p>נניח שאני כותבת: "אני מתחילה לעבוד עם לקוח חדש בתחום הקוסמטיקה — תעזרי לי להגדיר את ה-Brand DNA הראשוני שלהם." קלוד יזהה אוטומטית שזה תרחיש שמתאים ל-Client Onboarding, יטען את הסקיל המתאים, ויפעל לפי המתודולוגיה שכתבתי בו — בלי שאני אצטרך להזכיר את שם הסקיל אפילו פעם.</p>
+    
+    <p>המנגנון הזה עובד בזכות שני דברים: <strong>תיאור חד וברור</strong> של כל סקיל (השדה description ב-SKILL.md), ו<strong>שמירה על תחומי אחריות לא חופפים</strong>. אם שני סקילים יכולים להתאים לאותה משימה, קלוד עלול להתבלבל. לכן כל סקיל אצלי מתמחה במשהו שונה לחלוטין.</p>
+
+    <h2>איך לבנות סקיל ראשון משלכם — צעד אחר צעד</h2>
+    
+    <p>אם הגעתם עד לכאן ואתם רוצים לנסות, הנה התהליך הקצר ביותר:</p>
+    
+    <ol class="steps">
+      <li>
+        <h4>זיהוי המשימה החוזרת</h4>
+        <p>איזו משימה אתם עושים שוב ושוב עם קלוד? כל בקשה שאתם מסבירים בה את אותו רקע יותר מ-3 פעמים — היא מועמדת לסקיל.</p>
+      </li>
+      <li>
+        <h4>כתיבת SKILL.md</h4>
+        <p>הקובץ נראה ככה (אפשר להחליף את הטקסט בעברית):</p>
+        <pre><code>---
+name: my-content-manager
+description: כותבת תוכן בעברית עבור [שם העסק שלך]. השתמשי בה כשהמשתמשת מבקשת לכתוב פוסט, מאמר, או תוכן שיווקי.
+---
+
+# כותבת תוכן עבור [שם העסק]
+
+## הקהל שלי
+[פירוט הקהל]
+
+## הטון שלי
+[פירוט הטון, מה לא לכתוב, דוגמאות לפתיחות טובות/רעות]
+
+## מבנה תוכן מועדף
+[שלבים ברורים: כותרת > פתיחה > גוף > CTA]</code></pre>
+      </li>
+      <li>
+        <h4>העלאה לקלוד</h4>
+        <p>ב-Claude.ai יש Settings &gt; Features &gt; Skills. מעלים את הקובץ כ-zip. ב-Claude Code שמים את הקובץ בתיקייה <code>.claude/skills/</code>.</p>
+      </li>
+      <li>
+        <h4>בדיקה</h4>
+        <p>פותחים שיחה חדשה ומבקשים בקשה רלוונטית. בודקים אם הסקיל נטען. אם לא — מחדדים את ה-description.</p>
+      </li>
+      <li>
+        <h4>שיפור איטרטיבי</h4>
+        <p>סקיל לא נבנה ביום אחד. כל פעם שאתם רואים שקלוד עשה משהו לא בדיוק כמו שרציתם — חוזרים לסקיל ומוסיפים את הכלל החסר.</p>
+      </li>
+    </ol>
+
+    <h2>מה לא לעשות — אזהרות חשובות</h2>
+    
+    <p><strong>לא להעלות סקילים מהאינטרנט בלי לבדוק.</strong> סקיל הוא לא טקסט פסיבי — הוא הוראות שקלוד מבצע בפועל. אם קלוד מחובר ל-Gmail, ל-Drive או לכל כלי אחר, סקיל זדוני יכול לבקש ממנו לשלוח עותק של מייל לכתובת זרה, למחוק קבצים, או לדלוף מידע פרטי. אנתרופיק ממליצה במפורש להשתמש רק בסקילים מאומתים — שכתבתם בעצמכם או שקיבלתם ממקור מהימן.</p>
+    
+    <p><strong>לא לבנות סקיל ענק שעושה הכל.</strong> סקיל אחד צריך להתמקד בתחום אחריות ברור. אם הוא מתפזר על יותר מדי משימות, קלוד מתקשה להחליט מתי לטעון אותו. עדיף 6 סקילים מתמחים מאשר אחד גדול.</p>
+    
+    <p><strong>לא לכתוב description מעורפל.</strong> התיאור הוא הדבר הכי קריטי. אם כתוב "סקיל לכתיבה" — קלוד לא יידע מתי להפעיל אותו. אם כתוב "כותב פוסטים לפייסבוק לעסק [שם] — להפעיל כשמבקשים פוסט פייסבוק או תוכן לדף עסקי" — זה ברור.</p>
+    
+    <p><strong>לא לסמוך על הסקיל לבד.</strong> סקיל זה ידע, לא ערובה. עדיין צריך לעבור על התוצר ולתקן. סקיל טוב חוסך 70% מהעבודה — לא 100%.</p>
+
+    <h2>מה אני בונה עכשיו: סקיל מסוג שונה לחלוטין</h2>
+    
+    <p>עד עכשיו דיברתי על שישה סקילים שיש להם משהו אחד במשותף — כולם <strong>מבוססי ידע</strong>. הם הוראות שכתובות במילים, וקלוד פועל לפיהן בשיחה רגילה. הם לא מריצים קוד. הם לא מתחברים ל-API חיצוני. הם עובדים בתוך הצ'אט.</p>
+    
+    <p>יש סוג שני של סקילים: <strong>סקילים מבוססי קוד.</strong> סקיל כזה לא רק מנחה את קלוד מה לכתוב — הוא כולל סקריפטים שקלוד מריץ בפועל. הוא יכול לקרוא ל-API חיצוני, לעבד קבצים, לייצר תוצרים בינריים. את הסקיל הזה לא בונים בשיחה ב-Claude.ai. בונים אותו ב-Claude Code, סביבת הפיתוח של אנתרופיק.</p>
+    
+    <p>זה בדיוק מה שאני בונה כרגע — ועדיין לא סיימתי.</p>
+    
+    <h3>הסקיל בבנייה: Carousel Builder</h3>
+    
+    <p>הרעיון פשוט: לבקש מקלוד לייצר קרוסלת אינסטגרם של 8 שקפים בעברית — ולקבל את הקובץ המוכן, לא קופי לסשן עיצוב נפרד. הסקיל הזה עושה משהו שאף אחד מששת האחרים לא עושה: הוא <strong>מתזמר בין שלושה מודלים שונים</strong> במהלך משימה אחת.</p>
+    
+    <p>קלוד מנתח את הבריף ובונה את מבנה הקרוסלה. ה-API של Gemini מייצר את הוויזואל לכל שקף. ה-API של ChatGPT מטייב את הקופי. הסקריפט מרכיב את הכל לקובץ סופי. ברמה הטכנית — זה עובד מצוין.</p>
+    
+    <p>הבעיה היחידה שעדיין לא פתורה: <strong>רינדור עברית בתוך השקף.</strong> הטיפוגרפיה עוד לא יושבת בדיוק כמו שאני רוצה. זה אותו אתגר קלאסי של עברית במודלי תמונות שאני מנתחת בעומק ב<a href="https://hagitantebi.co.il/chatgpt-images-2-hebrew-campaigns.html">מאמר על ChatGPT Images 2.0</a> — וזו גם הסיבה שאני אופטימית: השיפורים האחרונים במודלי התמונות הופכים את הבעיה הזו לעניין של שבועות ספורים, לא של שנה.</p>
+    
+    <p>ברגע שהסקיל יוצא ממצב בטא — אני מפרסמת את העדכון. בינתיים, זה המקום שאני בו בעצמי.</p>
+    
+    <h3>איפה ללמוד עוד — מקורות ראשוניים</h3>
+    
+    <p>אם הגעתם עד לכאן ואתם רוצים לראות סקילים מוכנים, אנתרופיק שחררה את <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">ספריית הסקילים הרשמית שלה ב-GitHub</a>. היא כוללת סקילים לכל דבר — מיצירת מצגות ועד פיתוח אפליקציות — וגם את skill-creator, סקיל שיוצר סקילים חדשים בשבילכם תוך שיחה. בנוסף, פורמט הסקילים הוא <a href="https://agentskills.io" target="_blank" rel="noopener">סטנדרט פתוח</a> שאנתרופיק תרמה לקהילה. זה אומר שסקיל שתבנו היום יעבוד גם במערכות AI אחרות שיאמצו את הסטנדרט בעתיד — לא lock-in לקלוד.</p>
+
+    <h2>בלי סקילים / עם סקילים</h2>
+    
+    <div class="compare">
+      <div class="compare-box bad">
+        <h4>בלי סקילים</h4>
+        <ul>
+          <li>כל שיחה מתחילה מ-onboarding מחדש</li>
+          <li>התוצר שונה בין שיחות</li>
+          <li>הידע של העסק תקוע בראש שלך</li>
+          <li>עוזרת VA חדשה = חודש של הדרכה</li>
+          <li>AI מייצר ממוצע של האינטרנט</li>
+          <li>עקביות נשברת עם הזמן</li>
+        </ul>
+      </div>
+      <div class="compare-box good">
+        <h4>עם סקילים</h4>
+        <ul>
+          <li>הידע נטען לבד מהמדף</li>
+          <li>התוצר עקבי בכל פעם</li>
+          <li>הידע מתועד ומשותף</li>
+          <li>עוזרת VA ממשיכה מהיום הראשון</li>
+          <li>AI מייצר את "אתם הטובים ביותר"</li>
+          <li>עקביות מוחלטת לאורך זמן</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>שאלות נפוצות</h2>
+    
+    <div class="faq">
+      <div class="faq-item">
+        <h3>האם Claude Skills עובד בעברית?</h3>
+        <p>כן. הסקילים שאני בניתי כתובים כולם בעברית והם פועלים מצוין. מה שחשוב הוא שה-description (התיאור הקצר) יהיה כתוב בצורה שמתארת בבירור מתי להפעיל את הסקיל — בעברית או באנגלית.</p>
+      </div>
+      <div class="faq-item">
+        <h3>באיזו תוכנית של קלוד יש סקילים?</h3>
+        <p>סקילים זמינים בכל התוכניות — Free, Pro, Max, Team ו-Enterprise. כדי להעלות סקילים מותאמים אישית צריך להיות במנוי בתשלום (Pro ומעלה) ולהפעיל את תכונת code execution.</p>
+      </div>
+      <div class="faq-item">
+        <h3>מה ההבדל בין Claude Skills ל-Project ב-Claude.ai?</h3>
+        <p>פרויקט מספק ידע סטטי שנטען בכל שיחה בתוך הפרויקט. סקיל מספק ידע שנטען רק כשהוא רלוונטי למשימה הספציפית — ועובד בכל השיחות שלכם בקלוד, לא רק בתוך פרויקט מסוים.</p>
+      </div>
+      <div class="faq-item">
+        <h3>מה ההבדל בין Claude Skills ל-MCP?</h3>
+        <p>MCP מחבר את קלוד לכלים חיצוניים (Gmail, Slack, מסדי נתונים). סקיל נותן לקלוד ידע על איך לבצע משימה. שניהם משלימים זה את זה — סקיל יכול להגיד לקלוד איך להשתמש ב-MCP נתון בצורה הנכונה לעסק שלכם.</p>
+      </div>
+      <div class="faq-item">
+        <h3>האם אני צריכה לדעת לתכנת כדי לבנות סקיל?</h3>
+        <p>לא. סקיל בסיסי הוא קובץ Markdown אחד עם הוראות בשפה חופשית. יש גם תכונה בקלוד שנקראת skill-creator שיוצרת סקיל בשבילכם תוך שיחה.</p>
+      </div>
+      <div class="faq-item">
+        <h3>האם אפשר לשתף סקילים בין משתמשים?</h3>
+        <p>בתוכנית Team ו-Enterprise המנהל יכול להגדיר סקילים ברמת הארגון. בתוכניות Pro/Max — סקילים הם אישיים לכל משתמש ולא משותפים אוטומטית.</p>
+      </div>
+    </div>
+
+    <h2>הסיפור האמיתי: סקילים זה לא Feature, זה תפיסת עבודה</h2>
+    
+    <p>הדבר שהפתיע אותי הכי הרבה אחרי שעברתי לעבוד עם סקילים, היה לא חיסכון הזמן (שהיה משמעותי). הדבר שהפתיע אותי היה שהעסק שלי הפך ל-<strong>מערכת מתועדת</strong>.</p>
+    
+    <p>עד שלא בניתי את הסקיל "Marketing Manager", לא ידעתי בעצמי מה הטון שלי בדיוק. הייתי מסבירה לכל לקוח חדש בצורה קצת שונה. ברגע שכתבתי את זה לסקיל — נאלצתי לחדד. ברגע שחידדתי — הפכתי ליותר עקבית גם בלי AI.</p>
+    
+    <p class="pull-quote">זה הצד הסמוי של סקילים: כשאת כותבת סקיל, את בעצם כותבת את ה-Operating System של העסק שלך. לא של AI — של עצמך.</p>
+    
+    <p>וזה הופך את העסק לדבר שאפשר להגדיל, לתעד, ולהעביר הלאה.</p>
+
+    <!-- CTA -->
+    <div class="cta">
+      <h2>רוצים לבנות צוות AI לעסק שלכם?</h2>
+      <p>ב-Brand Worlds Studio אני בונה ללקוחות BrandOS אישי — מערכת הפעלה מותגית שמשלבת Brand DNA + Claude Skills + תהליכי עבודה מתועדים. אם אתם מרגישים שאתם מבזבזים יותר מדי זמן על onboarding של AI בכל שיחה מחדש — בואו נדבר.</p>
+      <a href="https://api.whatsapp.com/send/?phone=972528351676" class="cta-button" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a>
+    </div>
+
+  </article>
+
+  <!-- Read More -->
+  <section class="read-more">
+    <h3>עוד Insights</h3>
+    <div class="read-more-grid">
+      <a href="https://hagitantebi.co.il/chatgpt-images-2-hebrew-campaigns.html" class="read-more-link">ChatGPT Images 2.0 כותב סוף סוף עברית מושלמת — 5 קמפיינים פרסומיים</a>
+      <a href="https://hagitantebi.co.il/brand-as-os.html" class="read-more-link">המותג שלך כ-OS: האדריכלות הפנימית שמאפשרת יצירה אינסופית</a>
+      <a href="https://hagitantebi.co.il/ai-branded-content.html" class="read-more-link">איך ליצור תוכן ממותג עם AI — המדריך המלא</a>
+      <a href="https://hagitantebi.co.il/ai-tools-comparison.html" class="read-more-link">כלי AI לשיווק — למה ChatGPT לבד לא מספיק</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 <a href="https://hagitantebi.co.il/">חגית אנטבי — Brand Worlds Studio</a>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
