@@ -794,6 +794,280 @@
         .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
         /* ========================================
+           WHAT'S INSIDE — DELIVERABLES SECTION
+        ======================================== */
+        .inside-section {
+            background: var(--color-cream);
+            padding: clamp(80px, 12vw, 140px) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .inside-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-light-taupe), transparent);
+        }
+        .inside-section__header {
+            text-align: center;
+            margin-bottom: clamp(48px, 8vw, 72px);
+        }
+        .inside-section__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 14px;
+        }
+        .inside-section__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--color-chocolate);
+            letter-spacing: -0.01em;
+        }
+        .inside-section__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-style: italic;
+            color: var(--color-taupe);
+            margin-top: 14px;
+        }
+        .inside-section__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            direction: ltr;
+        }
+
+        /* ---- Inside Card — Distinct Aesthetic (Reveal-from-Blur) ---- */
+        .inside {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            display: block;
+            aspect-ratio: 4/4.6;
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s var(--transition-smooth), transform 0.7s var(--transition-smooth);
+            cursor: default;
+            background: var(--color-warm-beige);
+        }
+        .inside.inside--visible { opacity: 1; transform: translateY(0); }
+        .inside:nth-child(1) { transition-delay: 0s; }
+        .inside:nth-child(2) { transition-delay: 0.08s; }
+        .inside:nth-child(3) { transition-delay: 0.16s; }
+        .inside:nth-child(4) { transition-delay: 0.24s; }
+        .inside:nth-child(5) { transition-delay: 0.32s; }
+        .inside:nth-child(6) { transition-delay: 0.40s; }
+
+        /* Image: starts softly blurred & dimmed, sharpens on hover */
+        .inside__img-layer {
+            position: absolute;
+            inset: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px) brightness(0.88) saturate(0.92);
+            transform: scale(1.04);
+            transition: filter 0.9s var(--transition-smooth), transform 1s var(--transition-smooth);
+            will-change: filter, transform;
+        }
+        .inside:hover .inside__img-layer {
+            filter: blur(0) brightness(1) saturate(1);
+            transform: scale(1);
+        }
+
+        /* Subtle warm overlay — gentle gradient, no heavy darkness */
+        .inside__overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(43,31,24,0.78) 0%, rgba(43,31,24,0.20) 50%, rgba(43,31,24,0) 100%);
+            transition: background 0.7s var(--transition-smooth);
+            pointer-events: none;
+        }
+        .inside:hover .inside__overlay {
+            background: linear-gradient(to top, rgba(43,31,24,0.85) 0%, rgba(43,31,24,0.32) 55%, rgba(43,31,24,0.04) 100%);
+        }
+
+        /* Thin gold frame — gallery-style, appears on hover */
+        .inside__frame {
+            position: absolute; inset: 0;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.8s var(--transition-smooth);
+            pointer-events: none;
+            z-index: 5;
+        }
+        .inside:hover .inside__frame {
+            border-color: rgba(184,115,51,0.55);
+        }
+
+        /* Inner gold thread — appears as second light line for depth */
+        .inside__frame::after {
+            content: '';
+            position: absolute; inset: 6px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            transition: border-color 0.8s var(--transition-smooth) 0.1s;
+        }
+        .inside:hover .inside__frame::after {
+            border-color: rgba(184,115,51,0.18);
+        }
+
+        .inside__top {
+            position: absolute; top: 0; left: 0; right: 0;
+            padding: 20px 20px 0; z-index: 3;
+            display: flex; justify-content: space-between; align-items: flex-start;
+        }
+        .inside__num {
+            font-family: var(--font-display);
+            font-size: 1.625rem; font-weight: 400;
+            color: rgba(244,239,228,.45); line-height: 1;
+            letter-spacing: 0.05em;
+            transition: color 0.5s var(--transition-smooth);
+        }
+        .inside:hover .inside__num { color: rgba(244,239,228,.85); }
+        .inside__tag {
+            font-family: var(--font-body-en);
+            font-size: 9px; font-weight: 500;
+            letter-spacing: .25em; text-transform: uppercase;
+            color: rgba(184,115,51,.85);
+            padding: 5px 10px;
+            border: 1px solid rgba(184,115,51,.35);
+            border-radius: 1px;
+            background: rgba(43,31,24,0.25);
+            backdrop-filter: blur(2px);
+            opacity: 0; transform: translateY(-4px);
+            transition: opacity 0.6s var(--transition-smooth) 0.1s, transform 0.6s var(--transition-smooth) 0.1s;
+        }
+        .inside:hover .inside__tag { opacity: 1; transform: translateY(0); }
+
+        .inside__bottom {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 22px 20px 22px; z-index: 3;
+        }
+        .inside__name {
+            font-family: var(--font-display);
+            font-size: 1.375rem; font-weight: 400;
+            color: rgba(244,239,228,1);
+            letter-spacing: 0;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            transition: transform 0.5s var(--transition-smooth);
+        }
+        .inside:hover .inside__name { transform: translateY(-2px); }
+        .inside__desc {
+            font-family: var(--font-body-he);
+            font-style: normal;
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: rgba(244,239,228,.78);
+            line-height: 1.55;
+            max-height: 0; overflow: hidden; opacity: 0;
+            transform: translateY(5px);
+            transition: max-height .6s var(--transition-smooth), opacity .6s var(--transition-smooth), transform .6s var(--transition-smooth);
+            direction: rtl;
+            margin-top: 0;
+        }
+        .inside:hover .inside__desc {
+            max-height: 120px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 10px;
+        }
+        .inside__spec {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 9px; font-weight: 500;
+            letter-spacing: .22em; text-transform: uppercase;
+            color: rgba(184,115,51,.95);
+            opacity: 0; transform: translateY(5px);
+            margin-top: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity .5s var(--transition-smooth) .15s, transform .5s var(--transition-smooth) .15s, max-height .5s var(--transition-smooth) .15s, margin-top .5s var(--transition-smooth) .15s;
+        }
+        .inside__spec::before {
+            content: '';
+            width: 16px; height: 1px;
+            background: rgba(184,115,51,.6);
+        }
+        .inside:hover .inside__spec {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 20px;
+            margin-top: 14px;
+        }
+
+        /* Footer meta line: timeline + investment */
+        .inside-section__footer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 36px;
+            margin-top: clamp(48px, 6vw, 64px);
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+            padding: 0 var(--container-padding);
+        }
+        .inside-section__meta-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .inside-section__meta-label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-taupe);
+        }
+        .inside-section__meta-value {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            color: var(--color-chocolate);
+        }
+        .inside-section__meta-divider {
+            color: var(--color-light-taupe);
+            font-size: 1.25rem;
+            align-self: flex-end;
+            padding-bottom: 4px;
+        }
+
+        /* CTA */
+        .inside-section__cta {
+            text-align: center;
+            padding: 0 var(--container-padding);
+        }
+        .inside-section__cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border: 1px solid var(--color-copper);
+            color: var(--color-chocolate);
+            text-decoration: none;
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        .inside-section__cta-btn:hover {
+            background: var(--color-copper);
+            color: var(--color-cream);
+        }
+        .inside-section__cta-btn svg { transition: transform 0.3s; }
+        .inside-section__cta-btn:hover svg { transform: translateX(4px); }
+
+        /* ========================================
            NEXT WORLD GATE — Bottom CTA
         ======================================== */
         .next-gate {
@@ -1361,6 +1635,11 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 40px;
             }
+
+            .inside-section__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
             
             .footer__inner {
                 grid-template-columns: repeat(2, 1fr);
@@ -1484,6 +1763,14 @@
                 gap: 12px;
             }
             .portal { aspect-ratio: 3/4.5; }
+
+            .inside-section__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .inside { aspect-ratio: 4/5; }
+            .inside-section__footer { gap: 24px; }
+            .inside-section__meta-divider { display: none; }
             .brand-os__inner { grid-template-columns: 1fr; gap: 32px; }
             .brand-os__img-wrap { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
             .brand-os__btns { justify-content: center; }
@@ -1618,6 +1905,110 @@
                     <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- What's Inside a Brand World — Deliverables Section -->
+    <section class="inside-section" id="whats-inside">
+        <div class="container inside-section__header reveal">
+            <p class="inside-section__label">What You Actually Get</p>
+            <h2 class="inside-section__title">What's Inside a Brand World</h2>
+            <p class="inside-section__subtitle">לא חבילה. עולם שלם — בנוי, מתועד, ומוכן להפעלה.</p>
+        </div>
+
+        <div class="inside-section__grid" id="insideGrid">
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-01.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">01</span><span class="inside__tag">Strategy</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">Brand DNA Document</p>
+                    <p class="inside__desc">מסמך אסטרטגי מלא — ערכים, טון, קהל, פוזישנינג ובידול. הקבצים שמכל החלטה עתידה לצאת מהם.</p>
+                    <span class="inside__spec">PDF · 25+ Pages</span>
+                </div>
+            </div>
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-02.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">02</span><span class="inside__tag">Identity</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">Visual Identity System</p>
+                    <p class="inside__desc">לוגו, פלטת צבעים, טיפוגרפיה, גריד ואיקונוגרפיה — מערכת שמחזיקה כל נקודת מגע.</p>
+                    <span class="inside__spec">AI · SVG · PNG</span>
+                </div>
+            </div>
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-03.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">03</span><span class="inside__tag">Guidelines</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">Brand Book</p>
+                    <p class="inside__desc">ספר מותג מלא — שימור הזהות לאורך זמן, גם כשעובדים איתו צוות פנימי או ספקים חיצוניים.</p>
+                    <span class="inside__spec">PDF · 40+ Pages</span>
+                </div>
+            </div>
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-04.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">04</span><span class="inside__tag">Digital</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">Website &amp; Landing Pages</p>
+                    <p class="inside__desc">אתר תדמית או דפי נחיתה ממותגים — בנויים לפי ה-DNA, מותאמים למובייל ולמהירות טעינה.</p>
+                    <span class="inside__spec">Live · Responsive</span>
+                </div>
+            </div>
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-05.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">05</span><span class="inside__tag">Sales</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">Sales &amp; Pitch Materials</p>
+                    <p class="inside__desc">הצעות מחיר ממותגות, מצגות ופיצ'ים — כל מסמך שיוצא מהמותג נראה ומרגיש כמוכם.</p>
+                    <span class="inside__spec">Editable Templates</span>
+                </div>
+            </div>
+
+            <div class="inside">
+                <div class="inside__img-layer" style="background-image:url('inside-06.jpg')"></div>
+                <div class="inside__overlay"></div>
+                <div class="inside__frame"></div>
+                <div class="inside__top"><span class="inside__num">06</span><span class="inside__tag">Activation</span></div>
+                <div class="inside__bottom">
+                    <p class="inside__name">BrandOS Activation</p>
+                    <p class="inside__desc">הטמעת ה-DNA ב-BrandOS — מערכת ה-AI שמייצרת תוכן, תמונות ווידאו בקול של המותג, יום-יום.</p>
+                    <span class="inside__spec">AI · Live Platform</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="inside-section__footer reveal">
+            <div class="inside-section__meta-line">
+                <span class="inside-section__meta-label">Project Timeline</span>
+                <span class="inside-section__meta-value">6–8 שבועות</span>
+            </div>
+            <span class="inside-section__meta-divider">·</span>
+            <div class="inside-section__meta-line">
+                <span class="inside-section__meta-label">Investment</span>
+                <span class="inside-section__meta-value">לפי פרויקט</span>
+            </div>
+        </div>
+
+        <div class="inside-section__cta reveal">
+            <a href="https://wa.me/972528351676" class="inside-section__cta-btn">
+                Talk to Hagit
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </section>
 
@@ -1934,6 +2325,19 @@
             }, { threshold: 0.15 });
             var pg = document.getElementById('portalsGrid');
             if (pg) portalObserver.observe(pg);
+
+            // ── What's Inside scroll reveal ──
+            var insideObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var cards = entry.target.querySelectorAll('.inside');
+                        cards.forEach(function(c) { c.classList.add('inside--visible'); });
+                        insideObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            var ig = document.getElementById('insideGrid');
+            if (ig) insideObserver.observe(ig);
 
             // ── BrandOS pipeline reveal ──
             var bosObserver = new IntersectionObserver(function(entries) {
