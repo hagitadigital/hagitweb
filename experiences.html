@@ -352,6 +352,126 @@
         }
         .pres-link:hover { color: var(--copper); border-color: var(--copper); }
 
+        /* ── LIVE EXPERIENCE ── */
+        .live-experience { max-width: 1200px; margin: 0 auto; }
+
+        .live-experience__header {
+            margin-bottom: 48px;
+            direction: rtl; text-align: right;
+        }
+        .live-experience__header .section__title { margin-bottom: 14px; }
+        .live-experience__sub {
+            font-size: clamp(.95rem, 1.6vw, 1.05rem);
+            color: var(--taupe);
+            line-height: 1.8;
+            max-width: 580px;
+        }
+
+        .screen-wrapper {
+            position: relative;
+            margin-bottom: 36px;
+        }
+        .screen-glow {
+            position: absolute; inset: -40px;
+            background: radial-gradient(ellipse at center,
+                                        rgba(0,229,255,.18) 0%,
+                                        rgba(124,77,255,.08) 35%,
+                                        transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .screen {
+            position: relative; z-index: 1;
+            padding: 1.5px;
+            background: linear-gradient(135deg, #00e5ff 0%, #7c4dff 50%, #e040fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            border-radius: 4px;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .screen__bezel {
+            position: relative;
+            background: #06060e;
+            padding: 8px;
+            border-radius: 3px;
+        }
+        .screen__iframe {
+            display: block;
+            width: 100%; height: 75vh;
+            border: none;
+            border-radius: 1px;
+            background: #06060e;
+        }
+
+        .screen__corner {
+            position: absolute;
+            width: 18px; height: 18px;
+            border-color: #00e5ff;
+            border-style: solid;
+            z-index: 2;
+            opacity: .55;
+            pointer-events: none;
+        }
+        .sc-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+        .sc-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+        .sc-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+        .sc-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+        .screen__live {
+            position: absolute;
+            top: 18px; right: 18px;
+            z-index: 3;
+            display: flex; align-items: center; gap: 7px;
+            padding: 6px 11px;
+            background: rgba(6,6,14,.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .screen__live-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #ff3366;
+            box-shadow: 0 0 8px rgba(255,51,102,.6);
+            animation: livePulse 1.6s ease-in-out infinite;
+        }
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .35; transform: scale(.85); }
+        }
+        .screen__live-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .65rem; font-weight: 500;
+            color: #f0ebe4;
+            letter-spacing: .2em;
+        }
+
+        .live-experience__cta {
+            direction: rtl;
+            text-align: right;
+        }
+        .live-experience__link {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: .76rem; font-weight: 500;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: var(--chocolate); text-decoration: none;
+            border-bottom: 1px solid rgba(196,118,90,.3);
+            padding-bottom: 4px;
+            transition: color .3s, border-color .3s;
+        }
+        .live-experience__link:hover {
+            color: var(--copper);
+            border-color: var(--copper);
+        }
+        .live-experience__link svg { transition: transform .3s; }
+        .live-experience__link:hover svg { transform: translateX(-3px); }
+
         /* ── CTA ── */
         .cta-section {
             text-align: center; padding: clamp(72px,10vw,120px) 24px;
@@ -436,6 +556,10 @@
             .videos-grid { grid-template-columns: 1fr; gap: 40px; }
             .presentation-card { grid-template-columns: 1fr; gap: 40px; }
             .hero { min-height: 50vh; padding: 100px 24px 56px; }
+            .screen__iframe { height: 60vh; }
+            .screen-glow { inset: -20px; }
+            .screen__live { top: 12px; right: 12px; padding: 5px 9px; }
+            .screen__corner { width: 14px; height: 14px; }
         }
     </style>
 </head>
@@ -524,99 +648,42 @@
         </div>
     </section>
 
-    <!-- Seedance Videos -->
-    <div class="section-divider"></div>
+    <!-- Live Experience: Spectra Landing Embed -->
+    <section class="section">
+        <div class="live-experience">
+            <header class="live-experience__header reveal">
+                <p class="section__label">// Live Experience</p>
+                <h2 class="section__title">האתר עצמו, כעולם חי</h2>
+                <p class="live-experience__sub">גלילה, אנימציה, אינטראקציה — דף הנחיתה של Spectra AI כפי שהוא</p>
+            </header>
 
-    <section class="section section--dark">
-        <div style="max-width:1200px; margin: 0 auto;">
-            <p class="section__label reveal">Seedance AI</p>
-            <h2 class="section__title reveal reveal-d1">עוד דוגמאות מהמעבדה</h2>
-
-            <div class="videos-grid">
-                <!-- Video 2 -->
-                <div class="video-card reveal">
-                    <div class="video-card__meta">
-                        <div class="video-card__num">01</div>
-                        <h3 class="video-card__title" style="color:#f0ebe4;">עוגת תותים — Pixar Style</h3>
-                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
-                            <span>Seedance 2</span>
-                            <span class="video-card__sep">·</span>
-                            <span>Character Animation</span>
+            <div class="screen-wrapper reveal reveal-d1">
+                <div class="screen-glow"></div>
+                <div class="screen">
+                    <div class="screen__bezel">
+                        <div class="screen__corner sc-tl"></div>
+                        <div class="screen__corner sc-tr"></div>
+                        <div class="screen__corner sc-bl"></div>
+                        <div class="screen__corner sc-br"></div>
+                        <div class="screen__live" aria-hidden="true">
+                            <span class="screen__live-dot"></span>
+                            <span class="screen__live-text">LIVE</span>
                         </div>
-                    </div>
-                    <div class="video-frame">
-                        <div class="video-corner vc-tl"></div>
-                        <div class="video-corner vc-tr"></div>
-                        <div class="video-corner vc-bl"></div>
-                        <div class="video-corner vc-br"></div>
-                        <!-- REPLACE: החלף את YOUTUBE_ID_HERE במזהה הסרטון מיוטיוב -->
                         <iframe
-                            src="https://www.youtube.com/embed/b6OY9a3w9Ic?rel=0&modestbranding=1"
-                            title="Seedance Demo — עוגת תותים"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
+                            src="spectra-landing.html"
+                            loading="lazy"
+                            title="Spectra AI Landing Page"
+                            class="screen__iframe">
                         </iframe>
                     </div>
-                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
-                        שף קונדיטור מביט בעוגת שוקולד ענקית עם תותים — מתמונת reference אחת לסרטון חי ב-Seedance 2
-                    </p>
                 </div>
+            </div>
 
-                <!-- Video 3 -->
-                <div class="video-card reveal reveal-d2">
-                    <div class="video-card__meta">
-                        <div class="video-card__num">02</div>
-                        <h3 class="video-card__title" style="color:#f0ebe4;">השפית והמקרון</h3>
-                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
-                            <span>Seedance 2</span>
-                            <span class="video-card__sep">·</span>
-                            <span>Character Animation</span>
-                        </div>
-                    </div>
-                    <div class="video-frame">
-                        <div class="video-corner vc-tl"></div>
-                        <div class="video-corner vc-tr"></div>
-                        <div class="video-corner vc-bl"></div>
-                        <div class="video-corner vc-br"></div>
-                        <!-- REPLACE: החלף את YOUTUBE_ID_HERE במזהה הסרטון מיוטיוב -->
-                        <iframe
-                            src="https://www.youtube.com/embed/go30DYO_0PI?rel=0&modestbranding=1"
-                            title="Seedance — שפית והמקרון"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
-                        קונדיטורית טועמת מקרון — והטעם כל כך טוב שהיא לא יכולה להפסיק. כל מה שעל השולחן נעלם
-                    </p>
-                </div>
-                <!-- Video 3 -->
-                <div class="video-card reveal reveal-d3" style="grid-column: span 1;">
-                    <div class="video-card__meta">
-                        <div class="video-card__num">03</div>
-                        <h3 class="video-card__title" style="color:#f0ebe4;">טרנספורמציית האודם</h3>
-                        <div class="video-card__sub" style="color:rgba(196,118,90,.6);">
-                            <span>Seedance 2</span>
-                            <span class="video-card__sep">·</span>
-                            <span>Color Transformation</span>
-                        </div>
-                    </div>
-                    <div class="video-frame">
-                        <div class="video-corner vc-tl"></div>
-                        <div class="video-corner vc-tr"></div>
-                        <div class="video-corner vc-bl"></div>
-                        <div class="video-corner vc-br"></div>
-                        <iframe
-                            src="https://www.youtube.com/embed/RkaPW9wLF2I?rel=0&modestbranding=1"
-                            title="Seedance — טרנספורמציית האודם"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="video-card__desc" style="color:rgba(240,235,228,.5);">
-                        אישה מורחת אודם אדום — וברגע אחד כל הסצנה משתנה. טרנספורמציה ויזואלית מושלמת
-                    </p>
-                </div>
+            <div class="live-experience__cta reveal reveal-d2">
+                <a href="spectra-landing.html" target="_blank" rel="noopener" class="live-experience__link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    <span>פתח חוויה מלאה</span>
+                </a>
             </div>
         </div>
     </section>
