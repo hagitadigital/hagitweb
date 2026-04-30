@@ -472,6 +472,33 @@
         .live-experience__link svg { transition: transform .3s; }
         .live-experience__link:hover svg { transform: translateX(-3px); }
 
+        /* ── LAB LINK BRIDGE ── */
+        .lab-link-section {
+            text-align: center;
+            padding: clamp(56px, 7vw, 80px) clamp(20px, 5vw, 80px);
+            background: var(--cream);
+        }
+        .lab-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(.76rem, 1.3vw, .82rem);
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--chocolate);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(196,118,90,.3);
+            padding-bottom: 4px;
+            transition: color .3s, border-color .3s;
+        }
+        .lab-link:hover {
+            color: var(--copper);
+            border-color: var(--copper);
+        }
+        .lab-link svg { transition: transform .3s; }
+        .lab-link:hover svg { transform: translateX(-3px); }
+
         /* ── CTA ── */
         .cta-section {
             text-align: center; padding: clamp(72px,10vw,120px) 24px;
@@ -687,6 +714,17 @@
             </div>
         </div>
     </section>
+
+    <!-- Inline bridge: more from the lab -->
+    <section class="lab-link-section">
+        <a href="ai-video-lab.html" class="lab-link reveal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>רוצים לראות עוד מהמעבדה?</span>
+        </a>
+    </section>
+
     <section class="section section--beige">
         <div class="presentation-card">
             <a href="spectra-ai-ceo-presentation-2025.html" class="pres-preview" target="_blank">
