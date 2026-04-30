@@ -1160,6 +1160,248 @@
     line-height: 1.6;
   }
 
+  /* ============ LANDSCAPE VIDEO ============ */
+  .video-container--landscape {
+    max-width: 880px;
+  }
+
+  .video-frame--landscape {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* ============ YOUTUBE FACADE ============ */
+  .yt-thumb {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .yt-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+  }
+
+  .yt-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.35) 100%);
+    pointer-events: none;
+  }
+
+  .yt-thumb:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.92);
+  }
+
+  .yt-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.96);
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+    z-index: 2;
+  }
+
+  .yt-play-btn::after {
+    content: '';
+    display: block;
+    border-left: 22px solid var(--ink);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 6px;
+    transition: border-left-color 0.3s;
+  }
+
+  .yt-thumb:hover .yt-play-btn,
+  .yt-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--gold);
+  }
+
+  .yt-thumb:hover .yt-play-btn::after,
+  .yt-play-btn:hover::after {
+    border-left-color: #fff;
+  }
+
+  .yt-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 20px;
+    z-index: 3;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  /* ============ PRODUCTION CREDITS ============ */
+  .case-credits {
+    max-width: 540px;
+    margin: 64px auto 56px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .case-credits-heading {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    direction: ltr;
+  }
+
+  .case-credits-heading::before,
+  .case-credits-heading::after {
+    content: '';
+    flex: 0 0 auto;
+    width: 32px;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .case-credits-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 11px 6px;
+    direction: ltr;
+  }
+
+  .case-credits-row + .case-credits-row {
+    border-top: 1px solid rgba(229, 221, 209, 0.6);
+  }
+
+  .case-credits-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    flex: 0 0 auto;
+  }
+
+  .case-credits-value {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .case-credits-dim {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .case-credits-value--accent {
+    color: var(--gold);
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .case-credits-value--accent::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: var(--gold);
+  }
+
+  /* ============ CASE LESSON ARC ============ */
+  .case-lesson {
+    margin-top: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    direction: ltr;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .case-lesson::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  /* ============ MOBILE — credits + facade adjustments ============ */
+  @media (max-width: 600px) {
+    .case-credits {
+      margin: 48px auto;
+      padding: 24px 0;
+    }
+    .case-credits-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 12px 4px;
+    }
+    .case-credits-value {
+      text-align: left;
+      font-size: 15px;
+    }
+    .case-credits-heading::before,
+    .case-credits-heading::after {
+      width: 22px;
+    }
+    .yt-play-btn {
+      width: 64px;
+      height: 64px;
+    }
+    .yt-play-btn::after {
+      border-left: 17px solid var(--ink);
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      margin-left: 4px;
+    }
+    .video-container--landscape {
+      max-width: 100%;
+    }
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
     .intro-grid {
@@ -1703,6 +1945,299 @@ Professional Pixar movie cinematography.</div>
   </div>
 </section>
 
+<!-- CASE STUDY: STRAWBERRY SYMPHONY -->
+<section class="case-section">
+  <div class="case-header">
+    <div class="case-meta">
+      <span class="case-meta-item">May 2026</span>
+      <span class="case-meta-item">12 seconds</span>
+      <span class="case-meta-item">Seedance 2</span>
+      <span class="case-meta-item">Choreography</span>
+    </div>
+  </div>
+
+  <div class="case-title-block">
+    <div class="case-number">Case Study / 002</div>
+    <h2 class="case-title">Strawberry <em>Symphony</em></h2>
+    <div class="case-title-he">שפית פיקסר מנצחת על תזמורת של תותים</div>
+    <div class="case-lesson">Lesson 02 — Choreography</div>
+  </div>
+
+  <!-- Video — YouTube facade, 16:9 -->
+  <div class="video-container video-container--landscape">
+    <div class="video-frame video-frame--landscape" data-yt-id="b6OY9a3w9Ic">
+      <div class="yt-thumb">
+        <img
+          src="https://i.ytimg.com/vi/b6OY9a3w9Ic/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/b6OY9a3w9Ic/hqdefault.jpg';"
+          alt="Strawberry Symphony — Pixar-style pastry animation thumbnail"
+        >
+        <button class="yt-play-btn" type="button" aria-label="Play Strawberry Symphony">
+          <span class="visually-hidden">Play</span>
+        </button>
+      </div>
+    </div>
+    <div class="video-caption">
+      תזמורת של קישוטים — ספירלת תותים, זהב ושוקולד מעל עוגה אחת.
+      <div class="video-caption-en">A choreography of decorations — strawberries, gold, and chocolate orbiting one cake.</div>
+    </div>
+  </div>
+
+  <!-- 01 · The Concept -->
+  <div class="story-block">
+    <div class="story-label">01 · The Concept</div>
+    <h3 class="story-heading">
+      ספירלה של תותים — והשפית כ<em>מנצחת</em>.
+      <div class="story-heading-en">A spiral of strawberries — and the chef as conductor.</div>
+    </h3>
+    <p class="story-text">
+      רציתי לבדוק כמה Seedance מצליחה להחזיק <strong>קומפוזיציה רב-שכבתית</strong> בסצנה אחת קצרה. שפית פיקסר זעירה מנצחת על קישוטים — תותים, עלי זהב, סוכר טווה, קרמל — שעולים באוויר בתנועה הפוכה לכוח-הכבידה, נעים בספירלה מעל עוגת שוקולד שלוש קומות, ונוחתים כל אחד במקומו.
+    </p>
+    <p class="story-text">
+      ואז היא מרימה את העוגה ומציבה אותה בחלון ראווה. בחוץ — קהל פיקסרי שלם רואה את העוגה ומגיב. <strong>שש שניות פנים, שש שניות חוץ.</strong>
+    </p>
+  </div>
+
+  <!-- 02 · The Challenge -->
+  <div class="story-block">
+    <div class="story-label">02 · The Challenge</div>
+    <h3 class="story-heading">
+      ה-AI לא אוהב <em>קאטים</em>.
+      <div class="story-heading-en">AI doesn't love cuts.</div>
+    </h3>
+    <p class="story-text">
+      כשמבקשים מסצנה אחת לעבור בין wide → medium → overhead → side-tracking, המודל לעיתים קרובות <strong>בורא תנועה אחת רציפה במקום שישה shots נפרדים</strong>. הוא רוצה flow. אני רציתי קצב מקוטע.
+    </p>
+    <p class="story-text">
+      ויש את ה-physics. <em>"reverse gravity"</em> + <em>"swirling tornado"</em> + <em>"each element finds its orbit"</em> + <em>"lands precisely on cake"</em> — הרבה גזירות פיזיקליות במשפט אחד. בלי הוראות מדויקות, הקישוטים נעים בכאוס, לא בכוריאוגרפיה.
+    </p>
+  </div>
+
+  <!-- 03 · The Breakthrough -->
+  <div class="story-block">
+    <div class="story-label">03 · The Breakthrough</div>
+    <h3 class="story-heading">
+      פרומפט בנוי כ-<em>screenplay</em>, לא כפיסקה.
+      <div class="story-heading-en">Prompting like a screenplay, not a paragraph.</div>
+    </h3>
+    <p class="story-text">
+      פירקתי את הפרומפט ל-<strong>שש שורות במבנה זהה</strong>: <em>[timestamp] — [shot type]: [action]</em>. כל פריים מסומן בזמן ובסוג shot מפורש. כשהמבנה גרפי כל כך, המודל "רואה" את ה-cuts, לא רק את האקשן.
+    </p>
+    <p class="story-text">
+      וב-shots עם physics, המילה <em>"tornado"</em> עשתה הבדל מבני: המודל הבין מיידית שזו <strong>מערבולת עם מרכז ופריפריה</strong>, לא סתם תנועה סיבובית. <em>"spiral"</em> יצא רכרוכי. <em>"tornado"</em> יצא מובנה.
+    </p>
+  </div>
+
+  <!-- 04 · The Insight -->
+  <div class="story-block">
+    <div class="story-label">04 · The Insight</div>
+    <h3 class="story-heading">
+      קולנוע <em>מדויק</em> שווה יותר מתיאור עשיר.
+      <div class="story-heading-en">Cinematic precision beats vivid description.</div>
+    </h3>
+    <p class="story-text">
+      <em>"overhead bird's-eye shot"</em> = המצלמה במקום אחד מדויק. <em>"a beautiful aerial view"</em> = 50 פירושים אפשריים. <strong>ככל שהשפה קולנועית יותר, ה-AI מדויק יותר.</strong> זה שיעור שחזר על עצמו אצלי בכל ניסוי שבא אחר כך.
+    </p>
+    <p class="story-text">
+      ועוד שיעור — זה הסרטון הראשון שיצא לי <strong>ללא post-production</strong>. בלי CapCut, בלי trimming, בלי color correction. רק הפלט הגולמי של Seedance. זה הופך את הפרומפט עצמו ל-deliverable: חייבים לדייק את ה-12 שניות בכתיבה, לא בעריכה.
+    </p>
+  </div>
+
+  <!-- Production credits -->
+  <div class="case-credits">
+    <div class="case-credits-heading">Production Credits</div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Generated</span>
+      <span class="case-credits-value">Seedance 2 <span class="case-credits-dim">(via fal.ai)</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Audio</span>
+      <span class="case-credits-value">Native Seedance <span class="case-credits-dim">— no external sound design</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Post-production</span>
+      <span class="case-credits-value case-credits-value--accent">None</span>
+    </div>
+  </div>
+
+  <!-- The Prompt -->
+  <div class="prompt-reveal">
+    <div class="prompt-intro" style="text-align:center; margin-bottom:32px;">
+      <div class="story-label" style="text-align:center;">05 · The Prompt</div>
+      <h3 class="story-heading" style="text-align:center;">
+        הפרומפט המלא.
+        <div class="story-heading-en">The full prompt.</div>
+      </h3>
+    </div>
+    <div class="prompt-container">
+      <div class="prompt-toolbar">
+        <div class="prompt-tag">Seedance 2 · Prompt-to-Video</div>
+        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
+      </div>
+      <div class="prompt-text"><span class="hl-time">0:00–0:02</span> — Wide shot of a cozy Pixar-style pastry kitchen. A small round chef with huge brown eyes and an oversized hat stands before a massive chocolate cake, three tiers, dark and glossy. She cracks her knuckles. Takes a deep breath. Camera slowly dollies in toward her face — pure focus.
+
+<span class="hl-time">0:02–0:04</span> — Medium shot from the side: she claps her hands once. From every corner of the kitchen — shelves, drawers, jars — decorations launch into the air: strawberries, gold leaves, chocolate curls, sugar flowers, caramel drizzle, edible pearls. Everything floating upward in slow motion like reverse gravity. Her eyes track them with excitement.
+
+<span class="hl-time">0:04–0:06</span> — Overhead bird's-eye shot looking straight down at the cake: the decorations swirl above it in a perfect spiral, forming a colorful tornado. Each element finds its orbit — berries on the outside, gold leaves in the middle, chocolate curls at the center. The chef conducts with her tiny hands like an orchestra maestro.
+
+<span class="hl-time">0:06–0:08</span> — Side tracking shot, slow motion: one by one, each decoration drops into its perfect place on the cake. Strawberries land in a crown on top. Caramel drizzles itself in elegant ribbons down the sides. Gold leaves flutter and stick. Every placement impossibly precise. The chef's eyes follow each one, nodding with satisfaction.
+
+<span class="hl-time">0:08–0:10</span> — Close-up on the finished cake: it's a masterpiece. Camera slow push-in. The chef appears behind it, gently lifts it with both hands, turns toward a glowing shop window. Tracking shot follows her waddling walk from behind.
+
+<span class="hl-time">0:10–0:12</span> — Cut to outside the shop: through the glass window, she places the cake on display. Camera pulls back to reveal a crowd of Pixar-style characters on the sidewalk — a tall thin man drops his coffee, a little girl tugs her mother's sleeve, an old man adjusts his glasses and leans in. Their reflections glow in the warm window light. The chef gives a shy little wave from inside. Final frame.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY: THE CRIMSON REVEAL -->
+<section class="case-section">
+  <div class="case-header">
+    <div class="case-meta">
+      <span class="case-meta-item">May 2026</span>
+      <span class="case-meta-item">12 seconds</span>
+      <span class="case-meta-item">Seedance 2</span>
+      <span class="case-meta-item">Transformation</span>
+    </div>
+  </div>
+
+  <div class="case-title-block">
+    <div class="case-number">Case Study / 003</div>
+    <h2 class="case-title">The Crimson <em>Reveal</em></h2>
+    <div class="case-title-he">מחווה אחת. כל החדר משתנה.</div>
+    <div class="case-lesson">Lesson 03 — Transformation</div>
+  </div>
+
+  <!-- Video — YouTube facade, 16:9 -->
+  <div class="video-container video-container--landscape">
+    <div class="video-frame video-frame--landscape" data-yt-id="RkaPW9wLF2I">
+      <div class="yt-thumb">
+        <img
+          src="https://i.ytimg.com/vi/RkaPW9wLF2I/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/RkaPW9wLF2I/hqdefault.jpg';"
+          alt="The Crimson Reveal — Lipstick transformation thumbnail"
+        >
+        <button class="yt-play-btn" type="button" aria-label="Play The Crimson Reveal">
+          <span class="visually-hidden">Play</span>
+        </button>
+      </div>
+    </div>
+    <div class="video-caption">
+      קליק אחד — וצבע אחד משתלט על כל הסצנה.
+      <div class="video-caption-en">One snap — and a single color takes over the room.</div>
+    </div>
+  </div>
+
+  <!-- 01 · The Concept -->
+  <div class="story-block">
+    <div class="story-label">01 · The Concept</div>
+    <h3 class="story-heading">
+      קסם <em>נטול-VFX-מובהק</em>.
+      <div class="story-heading-en">Magic without the obvious VFX.</div>
+    </h3>
+    <p class="story-text">
+      אישה אלגנטית, שולחן איפור עגול, מאות אודמים בטבעת. סיבוב של השולחן, קליק של אצבע, אודם נבחר. רגע של זמן עוצר. ואז — לחיצת שפתיים, וכל החדר משתנה לצבע של האודם. <strong>קיר, שמלה, פרחים, אור — ביט אחד.</strong>
+    </p>
+    <p class="story-text">
+      אין פיצוץ. אין transition מובהק. רק שינוי טוטאלי שמתרחש בין פריים לפריים. אם זה עובד — זה מרגיש כמו פרסומת couture אמיתית. אם לא — זה זול.
+    </p>
+  </div>
+
+  <!-- 02 · The Challenge -->
+  <div class="story-block">
+    <div class="story-label">02 · The Challenge</div>
+    <h3 class="story-heading">
+      Color shift מיידי, לא <em>fade</em>.
+      <div class="story-heading-en">An instant color shift, not a fade.</div>
+    </h3>
+    <p class="story-text">
+      אתגר ראשון: <strong>color continuity</strong>. המודל יודע לעשות color shift, אבל נוטה לעשות אותו מדורג — צבע X נהיה Y נהיה Z על פני שניות. לי הייתה צריכה את הקפיצה הטוטאלית. ביט אחד.
+    </p>
+    <p class="story-text">
+      אתגר שני, שהפתיע אותי: <strong>luxury aesthetics</strong>. Seedance טובה באנימציה ובאקשן, אבל סצנות "luxury atelier" יוצאות בקלות תיירותיות במקום קולנועיות. <em>shallow depth of field</em>, <em>golden light</em>, <em>cinematic</em> — צריך הוראות מאוד ספציפיות כדי לכוון את המודל לסטנדרט קולנועי.
+    </p>
+  </div>
+
+  <!-- 03 · The Breakthrough -->
+  <div class="story-block">
+    <div class="story-label">03 · The Breakthrough</div>
+    <h3 class="story-heading">
+      Snap cut + רשימה <em>מפורשת</em>.
+      <div class="story-heading-en">Snap cut plus an explicit list.</div>
+    </h3>
+    <p class="story-text">
+      הקאט החד — <em>"snap cut"</em> — היה המפתח. במקום לבקש שינוי מדורג של 3 שניות, פיצלתי ל-snap cut של שנייה. <strong>הקאט החד מאלץ את המודל להבין שני states נפרדים</strong> — לפני ואחרי. לא מעבר ביניהם.
+    </p>
+    <p class="story-text">
+      ולקפיצת הצבע: המילה <em>"shifts"</em> ולא <em>"changes"</em> או <em>"fades"</em>. shifts = מיידי. ורשימה <strong>מפורשת</strong> של מה שצריך לעבור: <em>walls, dress, flowers, lighting</em>. שלא יחסר אחד. כשהרשימה ספציפית, המודל לא מחליק עליה.
+    </p>
+  </div>
+
+  <!-- 04 · The Insight -->
+  <div class="story-block">
+    <div class="story-label">04 · The Insight</div>
+    <h3 class="story-heading">
+      פחות פריימים מספרים <em>יותר</em>.
+      <div class="story-heading-en">Fewer frames tell a richer story.</div>
+    </h3>
+    <p class="story-text">
+      הסרטון הזה הוא <strong>שישה shots</strong> — פחות מהאחרים. כל shot עושה עבודה של שניים. ודווקא זה מה שיוצר את ה-impact של הסיום: <em>pull-back reveal</em> שמראה לקהל את הסצנה השלמה אחרי שכל המבט היה סגור על השפתיים.
+    </p>
+    <p class="story-text">
+      <strong>pull-back reveal</strong> עובד פלא ב-AI video. כשהמצלמה מתרחקת, המודל "מציג" לקהל את הסביבה כמו במאי שמראה מה הם פספסו. זה מהלך אופטימלי לרגעי "aha" של טרנספורמציה.
+    </p>
+    <p class="story-text">
+      והכי חשוב: לפעמים הכוח הוא <strong>בלא לגעת אחרי</strong>. 12 שניות, פלטפורמה אחת, ללא עריכה — דורש prompt מדויק יותר מ-"נתקן ב-CapCut". <em>זה לא הגבלה. זה סטנדרט מקצועי.</em>
+    </p>
+  </div>
+
+  <!-- Production credits -->
+  <div class="case-credits">
+    <div class="case-credits-heading">Production Credits</div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Generated</span>
+      <span class="case-credits-value">Seedance 2 <span class="case-credits-dim">(via fal.ai)</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Audio</span>
+      <span class="case-credits-value">Native Seedance <span class="case-credits-dim">— no external sound design</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Post-production</span>
+      <span class="case-credits-value case-credits-value--accent">None</span>
+    </div>
+  </div>
+
+  <!-- The Prompt -->
+  <div class="prompt-reveal">
+    <div class="prompt-intro" style="text-align:center; margin-bottom:32px;">
+      <div class="story-label" style="text-align:center;">05 · The Prompt</div>
+      <h3 class="story-heading" style="text-align:center;">
+        הפרומפט המלא.
+        <div class="story-heading-en">The full prompt.</div>
+      </h3>
+    </div>
+    <div class="prompt-container">
+      <div class="prompt-toolbar">
+        <div class="prompt-tag">Seedance 2 · Prompt-to-Video</div>
+        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
+      </div>
+      <div class="prompt-text">A cinematic Seedance video. Elegant woman, early 30s, sitting at a round vanity table in a soft-lit luxury atelier. Dozens of lipsticks arranged in a perfect circle around the table edge.
+
+<span class="hl-time">0:00–0:02</span> — Wide establishing shot, slow dolly forward. Warm golden light, shallow depth of field on the lipsticks.
+
+<span class="hl-time">0:02–0:04</span> — Cut to low-angle close-up of her hand hovering above the lipstick circle. She spins the rotating table surface. Lipsticks blur into a stream of color.
+
+<span class="hl-time">0:04–0:06</span> — Overhead bird's-eye shot looking straight down. The spinning lipsticks create concentric color rings, like a color wheel in motion.
+
+<span class="hl-time">0:06–0:07</span> — Snap cut to extreme close-up of her hand slamming down, stopping the spin. One lipstick between her fingers. Time seems to freeze.
+
+<span class="hl-time">0:07–0:09</span> — Tracking shot following the lipstick from her hand to her lips. Macro close-up as the deep crimson touches her lips. Slow motion.
+
+<span class="hl-time">0:09–0:12</span> — Dramatic pull-back reveal: as she presses her lips together, the entire room transforms — walls, dress, flowers, lighting — everything shifts to match the crimson shade. Final wide shot, she smiles directly at camera.</div>
+    </div>
+  </div>
+</section>
+
 <!-- MORE CASES TEASER -->
 <section class="more-teaser">
   <div class="more-teaser-inner">
@@ -1742,7 +2277,11 @@ Professional Pixar movie cinematography.</div>
 
 <script>
   function copyPrompt(btn) {
-    const promptEl = document.getElementById('prompt-text');
+    const container = btn.closest('.prompt-container');
+    const promptEl = container
+      ? container.querySelector('.prompt-text')
+      : document.getElementById('prompt-text');
+    if (!promptEl) return;
     const text = promptEl.innerText;
     navigator.clipboard.writeText(text).then(() => {
       const original = btn.textContent;
@@ -1767,6 +2306,26 @@ Professional Pixar movie cinematography.</div>
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   reveals.forEach((el) => observer.observe(el));
+
+  // YouTube facade — click-to-load with nocookie domain
+  document.querySelectorAll('.video-frame[data-yt-id]').forEach((frame) => {
+    const playBtn = frame.querySelector('.yt-play-btn');
+    if (!playBtn) return;
+    playBtn.addEventListener('click', () => {
+      if (frame.querySelector('iframe')) return;
+      const id = frame.dataset.ytId;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.setAttribute('title', 'YouTube video player');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('frameborder', '0');
+      iframe.classList.add('yt-iframe');
+      const thumb = frame.querySelector('.yt-thumb');
+      if (thumb) thumb.style.display = 'none';
+      frame.appendChild(iframe);
+    });
+  });
 </script>
 
 </body>
