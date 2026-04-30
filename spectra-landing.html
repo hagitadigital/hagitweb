@@ -1280,6 +1280,153 @@ a { color: inherit; }
   .film-bracket--bl { top: auto; right: auto; }
   .film-bracket--br { top: auto; left: auto; }
 }
+
+/* ============================================================
+   PHONE BREAKPOINT (≤600px)
+   All mobile-specific fixes live here. Desktop CSS is untouched.
+   ============================================================ */
+@media (max-width: 600px) {
+
+  /* ---------- 1. Title sizing — prevent overflow ---------- */
+  .hero-title {
+    font-size: clamp(40px, 11vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 40px;
+  }
+  .film-title {
+    font-size: clamp(44px, 13vw, 80px);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    margin: 0 0 56px;
+  }
+  .trans-title {
+    font-size: clamp(40px, 12vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-size: clamp(34px, 8.5vw, 56px);
+  }
+  .network-line {
+    font-size: clamp(22px, 5.5vw, 32px);
+    margin-bottom: 56px;
+  }
+  .manifesto-text {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+  .trans-line {
+    font-size: clamp(14px, 3.6vw, 17px);
+    margin-bottom: 40px;
+  }
+  .foot-mark {
+    font-size: clamp(36px, 11vw, 64px);
+  }
+
+  /* ---------- 2. Hero aurora — keep image, fix mobile blur ---------- */
+  .hero-aurora {
+    inset: -10%;
+    background-size: cover;
+    background-position: top center;
+    animation: none;
+    opacity: 0.32;
+    will-change: auto;
+  }
+
+  /* ---------- 3. Section vertical padding — kill the big gaps ---------- */
+  .hero {
+    min-height: auto;
+    padding: 110px 18px 70px;
+  }
+  .manifesto { padding: 90px 18px; }
+  .film { padding: 80px 18px 100px; }
+  .capability { padding: 100px 18px; }
+  .network { padding: 90px 18px; }
+  .transmission { padding: 110px 18px 90px; }
+  .footer { padding: 56px 18px 28px; }
+
+  /* ---------- 4. Anchor scroll-margin + module-specs overflow + bg dominance ---------- */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+  .module {
+    padding: 28px 22px 26px;
+  }
+  .module-text {
+    font-size: 13.5px;
+    margin-bottom: 22px;
+  }
+  .module-specs {
+    gap: 14px;
+    padding-top: 18px;
+  }
+  .module-specs > div { gap: 4px; }
+  .module-specs dt {
+    font-size: 8px;
+    letter-spacing: 1.6px;
+  }
+  .module-specs dd {
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+  .module-bg {
+    opacity: 0.18;
+  }
+
+  /* ---------- 5. Transmission form — stack vertically ---------- */
+  .trans-form { flex-direction: column; }
+  .trans-form input {
+    width: 100%;
+    padding: 18px 20px;
+  }
+  .trans-form button {
+    width: 100%;
+    padding: 18px 20px;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    justify-content: center;
+  }
+
+  /* ---------- 6. Capability readability + reveal failsafe ---------- */
+  .bg-orb-1 {
+    width: 320px; height: 320px;
+    filter: blur(80px);
+  }
+  .bg-orb-2 {
+    width: 280px; height: 280px;
+    filter: blur(70px);
+  }
+  .bg-orb-3 {
+    width: 240px; height: 240px;
+    filter: blur(60px);
+  }
+  /* Failsafe: force all reveal-staged content visible immediately on phones */
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-title .word,
+  .hero-meta,
+  .hero-foot,
+  .hero-stats {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* ---------- Bonus polish for phones ---------- */
+  .header { padding: 14px 18px; }
+  .header.scrolled { padding: 12px 18px; }
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 48px;
+  }
+  .stat-card { padding: 16px 18px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
 </style>
 </head>
 <body>
