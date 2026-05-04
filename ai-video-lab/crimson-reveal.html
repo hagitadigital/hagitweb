@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crimson Reveal — Case Study 003 | AI Video Lab | Hagit Antebi</title>
+<meta name="description" content="מחווה אחת. כל החדר משתנה. Case study של color-shift קולנועי ב-Seedance 2 — איך לקבל קפיצת צבע מיידית במקום fade.">
+<meta name="keywords" content="Seedance, AI video, color shift, snap cut, luxury, פרומפט וידאו, סרטון AI, transformation">
+<link rel="canonical" href="https://hagitantebi.co.il/ai-video-lab/crimson-reveal.html">
+<meta property="og:title" content="The Crimson Reveal — מחווה אחת. כל החדר משתנה.">
+<meta property="og:description" content="Case Study 003 — איך מקבלים קפיצת צבע מיידית בסרטון AI">
+<meta property="og:url" content="https://hagitantebi.co.il/ai-video-lab/crimson-reveal.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Assistant:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-warm: #F4EFE6;
+    --ink: #1A1614;
+    --ink-soft: #4A4340;
+    --muted: #8A817A;
+    --line: #E5DDD1;
+    --gold: #B08D57;
+    --gold-soft: #D4B896;
+    --gold-bg: rgba(176, 141, 87, 0.06);
+    --freeze: #7A9BAE;
+    --surface: #FFFFFF;
+    --shadow-md: 0 4px 24px rgba(26, 22, 20, 0.06);
+    --shadow-lg: 0 20px 60px rgba(26, 22, 20, 0.08);
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Assistant', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: var(--bg); }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 20px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    direction: ltr;
+  }
+  .site-logo {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.3px;
+  }
+  .site-logo em { font-style: italic; color: var(--gold); }
+  .header-nav { display: flex; gap: 28px; align-items: center; }
+  .header-nav a {
+    font-size: 13px; color: var(--ink-soft); text-decoration: none;
+    letter-spacing: 0.3px; transition: color 0.2s;
+  }
+  .header-nav a:hover { color: var(--gold); }
+
+  .breadcrumb {
+    max-width: 1000px; margin: 0 auto;
+    padding: 28px 32px 0;
+    direction: ltr;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .breadcrumb a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb .sep { margin: 0 10px; color: var(--line); }
+
+  .case-hero {
+    padding: 60px 32px 40px;
+    position: relative; overflow: hidden;
+  }
+  .case-hero::before {
+    content: ''; position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(176, 141, 87, 0.08) 0%, transparent 65%);
+    pointer-events: none; z-index: 1;
+  }
+  .case-hero-inner {
+    max-width: 1000px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .case-meta {
+    display: flex; gap: 12px; align-items: center;
+    flex-wrap: wrap; direction: ltr;
+    justify-content: center;
+    margin-bottom: 36px;
+  }
+  .case-meta-item {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border: 1px solid var(--line); border-radius: 100px;
+    background: var(--surface);
+  }
+  .case-title-block { text-align: center; }
+  .case-number {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gold); letter-spacing: 3px;
+    margin-bottom: 16px; direction: ltr;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 8vw, 88px);
+    font-weight: 400; line-height: 1;
+    letter-spacing: -1.5px;
+    color: var(--ink); margin-bottom: 14px;
+    direction: ltr;
+  }
+  .case-title em { font-style: italic; color: var(--gold); }
+  .case-title-he {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 30px);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .case-lesson {
+    margin-top: 18px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); direction: ltr;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .case-lesson::before {
+    content: '◆'; color: var(--gold);
+    font-size: 9px; letter-spacing: 0;
+  }
+
+  .video-section {
+    padding: 0 32px 60px;
+    background: var(--bg-warm);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .video-container {
+    max-width: 880px;
+    margin: -40px auto 0;
+    position: relative;
+    padding-top: 60px;
+  }
+  .video-frame {
+    aspect-ratio: 16 / 9;
+    background: #1a1614;
+    border-radius: 20px;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .video-caption {
+    text-align: center; margin-top: 24px;
+    font-family: var(--serif); font-style: italic;
+    font-size: 18px; color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .video-caption-en {
+    font-size: 13px; color: var(--muted);
+    margin-top: 4px; direction: ltr;
+  }
+
+  .yt-thumb {
+    position: absolute; inset: 0;
+    cursor: pointer; border-radius: 20px;
+    overflow: hidden; z-index: 1;
+  }
+  .yt-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+  }
+  .yt-thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.35) 100%);
+    pointer-events: none;
+  }
+  .yt-thumb:hover img { transform: scale(1.03); filter: brightness(0.92); }
+  .yt-play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.96);
+    border: 0; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+    z-index: 2;
+  }
+  .yt-play-btn::after {
+    content: ''; display: block;
+    border-left: 22px solid var(--ink);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 6px;
+    transition: border-left-color 0.3s;
+  }
+  .yt-thumb:hover .yt-play-btn,
+  .yt-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--gold);
+  }
+  .yt-thumb:hover .yt-play-btn::after,
+  .yt-play-btn:hover::after { border-left-color: #fff; }
+  .yt-iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0; border-radius: 20px;
+    z-index: 3;
+  }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  .story-section { padding: 80px 32px; }
+  .story-block { max-width: 720px; margin: 0 auto 60px; }
+  .story-block:last-child { margin-bottom: 0; }
+  .story-label {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px; direction: ltr;
+  }
+  .story-heading {
+    font-family: var(--serif);
+    font-size: 32px; font-weight: 400;
+    line-height: 1.2; letter-spacing: -0.5px;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .story-heading em { font-style: italic; color: var(--gold); }
+  .story-heading-en {
+    font-family: var(--serif);
+    font-size: 16px; font-style: italic;
+    color: var(--muted);
+    margin-top: 6px; direction: ltr; font-weight: 300;
+  }
+  .story-text {
+    font-size: 16.5px; line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .story-text:last-child { margin-bottom: 0; }
+  .story-text strong { color: var(--ink); font-weight: 600; }
+  .story-text em { font-style: italic; color: var(--gold); }
+
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 12px;
+    direction: ltr;
+  }
+  .section-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400; line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-subtitle {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft); max-width: 640px;
+  }
+
+  .case-credits {
+    max-width: 540px; margin: 64px auto 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .case-credits-heading {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 22px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; direction: ltr;
+  }
+  .case-credits-heading::before,
+  .case-credits-heading::after {
+    content: ''; flex: 0 0 auto;
+    width: 32px; height: 1px; background: var(--line);
+  }
+  .case-credits-row {
+    display: flex; justify-content: space-between;
+    align-items: baseline; gap: 16px;
+    padding: 11px 6px; direction: ltr;
+  }
+  .case-credits-row + .case-credits-row {
+    border-top: 1px solid rgba(229, 221, 209, 0.6);
+  }
+  .case-credits-label {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    flex: 0 0 auto;
+  }
+  .case-credits-value {
+    font-family: var(--serif); font-style: italic;
+    font-size: 16px; color: var(--ink);
+    text-align: right; line-height: 1.4;
+  }
+  .case-credits-dim { color: var(--muted); font-style: italic; }
+  .case-credits-value--accent {
+    color: var(--gold);
+    position: relative; padding-left: 16px;
+  }
+  .case-credits-value--accent::before {
+    content: '◆';
+    position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px; color: var(--gold);
+  }
+
+  .prompt-section {
+    padding: 80px 32px;
+    background: var(--bg-warm);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .prompt-reveal { max-width: 840px; margin: 0 auto; }
+  .prompt-intro { text-align: center; margin-bottom: 32px; }
+  .prompt-container {
+    background: #1a1614; color: #e8e0d6;
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: var(--shadow-lg);
+  }
+  .prompt-toolbar {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px; padding-bottom: 20px;
+    border-bottom: 1px solid rgba(232, 224, 214, 0.12);
+  }
+  .prompt-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-soft);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .prompt-tag::before {
+    content: ''; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+  }
+  .copy-btn {
+    background: transparent;
+    border: 1px solid rgba(212, 184, 150, 0.3);
+    color: var(--gold-soft);
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px;
+    cursor: pointer; transition: all 0.25s;
+  }
+  .copy-btn:hover {
+    background: var(--gold-bg);
+    border-color: var(--gold); color: #fff;
+  }
+  .copy-btn.copied {
+    background: rgba(122, 155, 174, 0.15);
+    border-color: var(--freeze); color: #aac4d4;
+  }
+  .prompt-text {
+    font-family: var(--mono); font-size: 13px;
+    line-height: 1.85; color: #c9c1b5;
+    white-space: pre-wrap;
+    max-height: 420px; overflow-y: auto;
+    padding-right: 8px;
+  }
+  .prompt-text::-webkit-scrollbar { width: 6px; }
+  .prompt-text::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04); border-radius: 3px;
+  }
+  .prompt-text::-webkit-scrollbar-thumb {
+    background: rgba(176, 141, 87, 0.3); border-radius: 3px;
+  }
+  .prompt-text .hl-section { color: var(--gold); font-weight: 600; }
+  .prompt-text .hl-time { color: #aac4d4; }
+
+  .case-nav {
+    padding: 60px 32px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .case-nav-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .case-nav-link {
+    display: block; padding: 28px 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+    direction: ltr;
+  }
+  .case-nav-link:hover {
+    border-color: var(--gold-soft);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .case-nav-direction {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .case-nav-title {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--ink); line-height: 1.2;
+  }
+  .case-nav-title em { font-style: italic; color: var(--gold); }
+  .case-nav-link.next { text-align: right; }
+  .case-nav-link.prev { text-align: left; }
+
+  .cta-section {
+    padding: 100px 32px;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .cta-inner { max-width: 720px; margin: 0 auto; }
+  .cta-label {
+    font-family: var(--serif); font-style: italic;
+    font-size: 18px; color: var(--gold);
+    margin-bottom: 20px; direction: ltr;
+  }
+  .cta-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 400; line-height: 1.15;
+    letter-spacing: -1px; color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .cta-title em { font-style: italic; color: var(--gold); }
+  .cta-text {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft); margin-bottom: 40px;
+  }
+  .cta-buttons {
+    display: flex; gap: 16px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 32px;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.5px; text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.25s;
+    cursor: pointer; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(176, 141, 87, 0.3);
+  }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--bg); }
+
+  .site-footer {
+    padding: 48px 32px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .site-footer-text {
+    font-size: 13px; color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .site-footer-text a {
+    color: var(--ink); text-decoration: none;
+    font-family: var(--serif); font-style: italic;
+  }
+  .site-footer-text a:hover { color: var(--gold); }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { animation: fade-up 0.8s ease-out both; }
+
+  @media (max-width: 900px) {
+    .case-nav-inner { grid-template-columns: 1fr; }
+    .site-header-inner { padding: 16px 20px; }
+    .case-hero { padding: 40px 24px 32px; }
+    .video-section, .story-section, .prompt-section,
+    .cta-section, .case-nav { padding-left: 24px; padding-right: 24px; }
+  }
+  @media (max-width: 600px) {
+    .case-credits { margin: 48px auto; padding: 24px 0; }
+    .case-credits-row {
+      flex-direction: column; align-items: flex-start;
+      gap: 4px; padding: 12px 4px;
+    }
+    .case-credits-value { text-align: left; font-size: 15px; }
+    .case-credits-heading::before,
+    .case-credits-heading::after { width: 22px; }
+    .yt-play-btn { width: 64px; height: 64px; }
+    .yt-play-btn::after {
+      border-left: 17px solid var(--ink);
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      margin-left: 4px;
+    }
+    .prompt-container { padding: 24px 20px; }
+    .prompt-text { font-size: 11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="site-logo">Hagit <em>Antebi</em></a>
+    <nav class="header-nav">
+      <a href="../ai-video-lab.html">← Video Lab</a>
+      <a href="../studio.html">Studio</a>
+      <a href="../index.html">Home</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="sep">/</span>
+  <a href="../ai-video-lab.html">AI Video Lab</a>
+  <span class="sep">/</span>
+  <span>Case 003 — The Crimson Reveal</span>
+</nav>
+
+<!-- CASE HERO -->
+<section class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-meta">
+      <span class="case-meta-item">May 2026</span>
+      <span class="case-meta-item">12 seconds</span>
+      <span class="case-meta-item">Seedance 2</span>
+      <span class="case-meta-item">Transformation</span>
+    </div>
+    <div class="case-title-block">
+      <div class="case-number">Case Study / 003</div>
+      <h1 class="case-title">The Crimson <em>Reveal</em></h1>
+      <div class="case-title-he">מחווה אחת. כל החדר משתנה.</div>
+      <div class="case-lesson">Lesson 03 — Transformation</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN VIDEO -->
+<section class="video-section">
+  <div class="video-container">
+    <div class="video-frame" data-yt-id="RkaPW9wLF2I">
+      <div class="yt-thumb">
+        <img
+          src="https://i.ytimg.com/vi/RkaPW9wLF2I/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/RkaPW9wLF2I/hqdefault.jpg';"
+          alt="The Crimson Reveal — Lipstick transformation thumbnail"
+        >
+        <button class="yt-play-btn" type="button" aria-label="Play The Crimson Reveal">
+          <span class="visually-hidden">Play</span>
+        </button>
+      </div>
+    </div>
+    <div class="video-caption">
+      קליק אחד — וצבע אחד משתלט על כל הסצנה.
+      <div class="video-caption-en">One snap — and a single color takes over the room.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY BLOCKS -->
+<section class="story-section">
+  <div class="story-block">
+    <div class="story-label">01 · The Concept</div>
+    <h2 class="story-heading">
+      קסם <em>נטול-VFX-מובהק</em>.
+      <div class="story-heading-en">Magic without the obvious VFX.</div>
+    </h2>
+    <p class="story-text">
+      אישה אלגנטית, שולחן איפור עגול, מאות אודמים בטבעת. סיבוב של השולחן, קליק של אצבע, אודם נבחר. רגע של זמן עוצר. ואז — לחיצת שפתיים, וכל החדר משתנה לצבע של האודם. <strong>קיר, שמלה, פרחים, אור — ביט אחד.</strong>
+    </p>
+    <p class="story-text">
+      אין פיצוץ. אין transition מובהק. רק שינוי טוטאלי שמתרחש בין פריים לפריים. אם זה עובד — זה מרגיש כמו פרסומת couture אמיתית. אם לא — זה זול.
+    </p>
+  </div>
+
+  <div class="story-block">
+    <div class="story-label">02 · The Challenge</div>
+    <h2 class="story-heading">
+      Color shift מיידי, לא <em>fade</em>.
+      <div class="story-heading-en">An instant color shift, not a fade.</div>
+    </h2>
+    <p class="story-text">
+      אתגר ראשון: <strong>color continuity</strong>. המודל יודע לעשות color shift, אבל נוטה לעשות אותו מדורג — צבע X נהיה Y נהיה Z על פני שניות. לי הייתה צריכה את הקפיצה הטוטאלית. ביט אחד.
+    </p>
+    <p class="story-text">
+      אתגר שני, שהפתיע אותי: <strong>luxury aesthetics</strong>. Seedance טובה באנימציה ובאקשן, אבל סצנות "luxury atelier" יוצאות בקלות תיירותיות במקום קולנועיות. <em>shallow depth of field</em>, <em>golden light</em>, <em>cinematic</em> — צריך הוראות מאוד ספציפיות כדי לכוון את המודל לסטנדרט קולנועי.
+    </p>
+  </div>
+
+  <div class="story-block">
+    <div class="story-label">03 · The Breakthrough</div>
+    <h2 class="story-heading">
+      Snap cut + רשימה <em>מפורשת</em>.
+      <div class="story-heading-en">Snap cut plus an explicit list.</div>
+    </h2>
+    <p class="story-text">
+      הקאט החד — <em>"snap cut"</em> — היה המפתח. במקום לבקש שינוי מדורג של 3 שניות, פיצלתי ל-snap cut של שנייה. <strong>הקאט החד מאלץ את המודל להבין שני states נפרדים</strong> — לפני ואחרי. לא מעבר ביניהם.
+    </p>
+    <p class="story-text">
+      ולקפיצת הצבע: המילה <em>"shifts"</em> ולא <em>"changes"</em> או <em>"fades"</em>. shifts = מיידי. ורשימה <strong>מפורשת</strong> של מה שצריך לעבור: <em>walls, dress, flowers, lighting</em>. שלא יחסר אחד. כשהרשימה ספציפית, המודל לא מחליק עליה.
+    </p>
+  </div>
+
+  <div class="story-block">
+    <div class="story-label">04 · The Insight</div>
+    <h2 class="story-heading">
+      פחות פריימים מספרים <em>יותר</em>.
+      <div class="story-heading-en">Fewer frames tell a richer story.</div>
+    </h2>
+    <p class="story-text">
+      הסרטון הזה הוא <strong>שישה shots</strong> — פחות מהאחרים. כל shot עושה עבודה של שניים. ודווקא זה מה שיוצר את ה-impact של הסיום: <em>pull-back reveal</em> שמראה לקהל את הסצנה השלמה אחרי שכל המבט היה סגור על השפתיים.
+    </p>
+    <p class="story-text">
+      <strong>pull-back reveal</strong> עובד פלא ב-AI video. כשהמצלמה מתרחקת, המודל "מציג" לקהל את הסביבה כמו במאי שמראה מה הם פספסו. זה מהלך אופטימלי לרגעי "aha" של טרנספורמציה.
+    </p>
+    <p class="story-text">
+      והכי חשוב: לפעמים הכוח הוא <strong>בלא לגעת אחרי</strong>. 12 שניות, פלטפורמה אחת, ללא עריכה — דורש prompt מדויק יותר מ-"נתקן ב-CapCut". <em>זה לא הגבלה. זה סטנדרט מקצועי.</em>
+    </p>
+  </div>
+
+  <!-- Production credits -->
+  <div class="case-credits">
+    <div class="case-credits-heading">Production Credits</div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Generated</span>
+      <span class="case-credits-value">Seedance 2 <span class="case-credits-dim">(via fal.ai)</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Audio</span>
+      <span class="case-credits-value">Native Seedance <span class="case-credits-dim">— no external sound design</span></span>
+    </div>
+    <div class="case-credits-row">
+      <span class="case-credits-label">Post-production</span>
+      <span class="case-credits-value case-credits-value--accent">None</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROMPT -->
+<section class="prompt-section">
+  <div class="prompt-reveal">
+    <div class="prompt-intro">
+      <div class="section-label" style="justify-content:center;"><span class="dot"></span> The Prompt</div>
+      <h2 class="section-title">הפרומפט המלא.</h2>
+      <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">The full prompt.</p>
+    </div>
+    <div class="prompt-container">
+      <div class="prompt-toolbar">
+        <div class="prompt-tag">Seedance 2 · Prompt-to-Video</div>
+        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
+      </div>
+      <div class="prompt-text">A cinematic Seedance video. Elegant woman, early 30s, sitting at a round vanity table in a soft-lit luxury atelier. Dozens of lipsticks arranged in a perfect circle around the table edge.
+
+<span class="hl-time">0:00–0:02</span> — Wide establishing shot, slow dolly forward. Warm golden light, shallow depth of field on the lipsticks.
+
+<span class="hl-time">0:02–0:04</span> — Cut to low-angle close-up of her hand hovering above the lipstick circle. She spins the rotating table surface. Lipsticks blur into a stream of color.
+
+<span class="hl-time">0:04–0:06</span> — Overhead bird's-eye shot looking straight down. The spinning lipsticks create concentric color rings, like a color wheel in motion.
+
+<span class="hl-time">0:06–0:07</span> — Snap cut to extreme close-up of her hand slamming down, stopping the spin. One lipstick between her fingers. Time seems to freeze.
+
+<span class="hl-time">0:07–0:09</span> — Tracking shot following the lipstick from her hand to her lips. Macro close-up as the deep crimson touches her lips. Slow motion.
+
+<span class="hl-time">0:09–0:12</span> — Dramatic pull-back reveal: as she presses her lips together, the entire room transforms — walls, dress, flowers, lighting — everything shifts to match the crimson shade. Final wide shot, she smiles directly at camera.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE NAVIGATION -->
+<section class="case-nav">
+  <div class="case-nav-inner">
+    <a href="strawberry-symphony.html" class="case-nav-link prev">
+      <div class="case-nav-direction">← Previous</div>
+      <div class="case-nav-title">Strawberry <em>Symphony</em></div>
+    </a>
+    <a href="pink-trail.html" class="case-nav-link next">
+      <div class="case-nav-direction">Next case →</div>
+      <div class="case-nav-title">The Pink <em>Trail</em></div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-label">Ready to create?</div>
+    <h2 class="cta-title">רוצה סרטון <em>כזה</em> למותג שלך?</h2>
+    <p class="cta-text">
+      בואי נדבר על הסיפור שאת רוצה לספר — ונבנה את הסרטון שיזכרו.<br>
+      <em style="font-family: var(--serif); color: var(--muted);">Let's talk about the story you want to tell — and build the video they'll remember.</em>
+    </p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20ראיתי%20את%20The%20Crimson%20Reveal%20ואני%20מעוניינ%2Fת%20לדבר" class="btn btn-primary">
+        WhatsApp →
+      </a>
+      <a href="../ai-video-lab.html" class="btn btn-secondary">
+        ← Back to Video Lab
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p class="site-footer-text">
+    © 2026 <a href="../index.html">Hagit Antebi</a> — Brand Worlds Architect
+  </p>
+</footer>
+
+<script>
+  function copyPrompt(btn) {
+    const container = btn.closest('.prompt-container');
+    const promptEl = container ? container.querySelector('.prompt-text') : null;
+    if (!promptEl) return;
+    const text = promptEl.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 2400);
+    });
+  }
+
+  const reveals = document.querySelectorAll('.story-block, .case-title-block, .case-credits');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach((el) => observer.observe(el));
+
+  document.querySelectorAll('.video-frame[data-yt-id]').forEach((frame) => {
+    const playBtn = frame.querySelector('.yt-play-btn');
+    if (!playBtn) return;
+    playBtn.addEventListener('click', () => {
+      if (frame.querySelector('iframe')) return;
+      const id = frame.dataset.ytId;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      iframe.setAttribute('title', 'YouTube video player');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('frameborder', '0');
+      iframe.classList.add('yt-iframe');
+      const thumb = frame.querySelector('.yt-thumb');
+      if (thumb) thumb.style.display = 'none';
+      frame.appendChild(iframe);
+    });
+  });
+</script>
+
+</body>
+</html>

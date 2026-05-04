@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Video Lab — סרטונים שמותגים יזכרו | Hagit Antebi</title>
-<meta name="description" content="מעבדת וידאו AI — מקרי בוחן אמיתיים מהסטודיו. איך נבנה סרטון AI קולנועי למותג, מהרעיון הראשוני ועד לתוצאה הסופית.">
+<meta name="description" content="מעבדת וידאו AI — ארבעה case studies מלאים מהסטודיו. איך נבנה סרטון AI קולנועי למותג, מהרעיון הראשוני ועד לתוצאה הסופית.">
+<meta name="keywords" content="AI video, case studies, פרומפט וידאו, סרטון AI, Higgsfield, Seedance, Pixar style, מותג, branding video">
+<link rel="canonical" href="https://hagitantebi.co.il/ai-video-lab.html">
 <meta property="og:title" content="AI Video Lab — Hagit Antebi">
-<meta property="og:description" content="איך נבנה סרטון AI למותג — case studies מהסטודיו">
+<meta property="og:description" content="ארבעה case studies של סרטוני AI — איך נבנה סרטון מהרעיון ועד הקאט הסופי">
+<meta property="og:url" content="https://hagitantebi.co.il/ai-video-lab.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Assistant:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -21,7 +26,6 @@
     --gold: #B08D57;
     --gold-soft: #D4B896;
     --gold-bg: rgba(176, 141, 87, 0.06);
-    --freeze: #7A9BAE;
     --surface: #FFFFFF;
     --shadow-sm: 0 1px 3px rgba(26, 22, 20, 0.04);
     --shadow-md: 0 4px 24px rgba(26, 22, 20, 0.06);
@@ -31,1121 +35,500 @@
     --mono: 'JetBrains Mono', monospace;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
-    font-weight: 400;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+  ::selection { background: var(--gold); color: var(--bg); }
 
-  ::selection {
-    background: var(--gold);
-    color: var(--bg);
-  }
-
-  /* ============ HEADER ============ */
+  /* HEADER */
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: rgba(250, 247, 242, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--line);
   }
-
   .site-header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; margin: 0 auto;
     padding: 20px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     direction: ltr;
   }
-
   .site-logo {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -0.3px;
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.3px;
   }
-
-  .site-logo em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .header-nav {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-  }
-
+  .site-logo em { font-style: italic; color: var(--gold); }
+  .header-nav { display: flex; gap: 28px; align-items: center; }
   .header-nav a {
-    font-size: 13px;
-    color: var(--ink-soft);
-    text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: color 0.2s;
+    font-size: 13px; color: var(--ink-soft); text-decoration: none;
+    letter-spacing: 0.3px; transition: color 0.2s;
   }
+  .header-nav a:hover { color: var(--gold); }
 
-  .header-nav a:hover {
-    color: var(--gold);
-  }
-
-  /* ============ HERO ============ */
+  /* HERO */
   .hero {
-    padding: 100px 32px 80px;
+    padding: 80px 32px 60px;
     position: relative;
     overflow: hidden;
   }
-
-  .hero-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-  }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    content: ''; position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
+    width: 800px; height: 800px;
     background: radial-gradient(circle, rgba(176, 141, 87, 0.08) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: none; z-index: 1;
   }
-
+  .hero-inner {
+    max-width: 1000px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
   .eyebrow {
     font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3.5px; text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 28px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-flex; align-items: center; gap: 10px;
     direction: ltr;
   }
-
   .eyebrow::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--gold);
+    content: ''; width: 24px; height: 1px; background: var(--gold);
   }
-
   .hero h1 {
     font-family: var(--serif);
     font-size: clamp(48px, 8vw, 88px);
-    font-weight: 400;
-    line-height: 1.02;
+    font-weight: 400; line-height: 1.02;
     letter-spacing: -1.5px;
-    color: var(--ink);
-    margin-bottom: 24px;
-    direction: ltr;
-    text-align: left;
+    color: var(--ink); margin-bottom: 24px;
+    direction: ltr; text-align: left;
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 400;
-  }
-
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
   .hero-he {
     font-family: var(--serif);
     font-size: clamp(28px, 4.5vw, 44px);
-    font-weight: 400;
-    line-height: 1.25;
+    font-weight: 400; line-height: 1.25;
     color: var(--ink-soft);
-    margin-bottom: 32px;
-    max-width: 720px;
+    margin-bottom: 32px; max-width: 720px;
   }
-
-  .hero-lede {
-    font-size: 17px;
-    line-height: 1.75;
-    color: var(--ink-soft);
-    max-width: 620px;
-    margin-bottom: 48px;
-  }
-
   .hero-lede-en {
-    direction: ltr;
-    text-align: left;
-    font-size: 16px;
-    color: var(--muted);
+    direction: ltr; text-align: left;
+    font-size: 16px; color: var(--muted);
     margin-bottom: 12px;
-    font-style: italic;
-    font-family: var(--serif);
+    font-style: italic; font-family: var(--serif);
+  }
+  .hero-lede {
+    font-size: 17px; line-height: 1.75;
+    color: var(--ink-soft); max-width: 620px;
   }
 
-  /* ============ SECTION STRUCTURE ============ */
-  .section {
-    padding: 80px 32px;
-    position: relative;
+  /* INDEX BAR */
+  .index-bar {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
   }
-
-  .section-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-    display: inline-flex;
+  .index-bar-inner {
+    max-width: 1000px; margin: 0 auto;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 56px;
+    flex-wrap: wrap;
     direction: ltr;
   }
-
-  .section-label .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
+  .index-stat {
+    display: flex; align-items: baseline; gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
   }
-
-  .section-title {
+  .index-stat-num {
     font-family: var(--serif);
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
-
-  .section-title em {
+    font-size: 32px;
     font-style: italic;
     color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
   }
-
-  .section-subtitle {
-    font-size: 17px;
-    line-height: 1.7;
+  .index-stat-label {
     color: var(--ink-soft);
-    max-width: 640px;
-    margin-bottom: 48px;
   }
 
-  /* ============ INTRO SECTION ============ */
+  /* INTRO */
   .intro-section {
-    padding: 40px 32px 80px;
-    border-top: 1px solid var(--line);
+    padding: 60px 32px;
   }
-
   .intro-grid {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px; margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 80px;
     align-items: start;
   }
-
   .intro-heading {
     font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 32px; font-weight: 400;
     line-height: 1.2;
     color: var(--ink);
     letter-spacing: -0.5px;
   }
-
-  .intro-heading em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
+  .intro-heading em { font-style: italic; color: var(--gold); }
   .intro-body p {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 16px; line-height: 1.8;
     color: var(--ink-soft);
     margin-bottom: 18px;
   }
+  .intro-body p:last-child { margin-bottom: 0; }
 
-  .intro-body p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* ============ CASE STUDY CARD ============ */
-  .case-section {
-    padding: 80px 32px;
-    background: var(--bg-warm);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .case-section::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(176, 141, 87, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .case-header {
-    max-width: 1000px;
-    margin: 0 auto 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-
-  .case-meta {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-    direction: ltr;
-  }
-
-  .case-meta-item {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-    padding: 5px 12px;
-    border: 1px solid var(--line);
-    border-radius: 100px;
-    background: var(--surface);
-  }
-
-  .case-meta-item.featured {
+  /* SECTION TITLE */
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
     color: var(--gold);
-    border-color: rgba(176, 141, 87, 0.3);
-    background: var(--gold-bg);
-  }
-
-  /* ============ VIDEO PLAYER ============ */
-  .video-container {
-    max-width: 560px;
-    margin: 0 auto 60px;
-    position: relative;
-  }
-
-  .video-frame {
-    aspect-ratio: 9 / 16;
-    background: linear-gradient(135deg, #2a2520 0%, #4a3d32 50%, #6b5943 100%);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .video-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--bg);
-    padding: 40px;
-    text-align: center;
-  }
-
-  .video-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(255, 220, 180, 0.15), transparent 40%),
-      radial-gradient(circle at 70% 80%, rgba(176, 141, 87, 0.2), transparent 50%);
-    pointer-events: none;
-  }
-
-  .video-play-btn {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 28px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  .video-play-btn:hover {
-    transform: scale(1.08);
-  }
-
-  .video-play-btn::after {
-    content: '';
-    border-left: 22px solid var(--ink);
-    border-top: 14px solid transparent;
-    border-bottom: 14px solid transparent;
-    margin-left: 6px;
-  }
-
-  .video-label {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 8px;
-    position: relative;
-    z-index: 2;
-    letter-spacing: 0.5px;
-  }
-
-  .video-sublabel {
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-    position: relative;
-    z-index: 2;
-  }
-
-  .video-caption {
-    text-align: center;
-    margin-top: 24px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 18px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-
-  .video-caption-en {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 4px;
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 12px;
     direction: ltr;
-    letter-spacing: 0.3px;
+  }
+  .section-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400; line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-subtitle {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 640px;
   }
 
-  .case-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-    background: #000;
-  }
-
-  /* ============ TWO TAKES COMPARISON ============ */
-  .takes-section {
-    padding: 100px 32px;
+  /* CASES SECTION */
+  .cases-section {
+    padding: 80px 32px 100px;
     background: var(--bg-warm);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     position: relative;
   }
-
-  .takes-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .takes-header {
+  .cases-header {
+    max-width: 1000px; margin: 0 auto 56px;
     text-align: center;
-    margin-bottom: 56px;
   }
 
-  .takes-grid {
+  /* FEATURED CARD */
+  .featured-card {
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 48px;
+    transition: all 0.4s;
   }
-
-  .take-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 24px;
-    transition: all 0.3s;
-  }
-
-  .take-card:hover {
+  .featured-card:hover {
     box-shadow: var(--shadow-lg);
     border-color: var(--gold-soft);
-    transform: translateY(-4px);
   }
-
-  .take-video-frame {
-    aspect-ratio: 9 / 16;
-    background: #1a1614;
-    border-radius: 14px;
-    overflow: hidden;
+  .featured-thumb {
     position: relative;
+    background: linear-gradient(135deg, #2a2520 0%, #4a3d32 50%, #6b5943 100%);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .featured-thumb video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .featured-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 100%);
+    pointer-events: none;
+  }
+  .featured-thumb-badge {
+    position: absolute;
+    top: 24px; left: 24px;
+    z-index: 2;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: rgba(176, 141, 87, 0.95);
+    padding: 6px 12px;
+    border-radius: 100px;
+    direction: ltr;
+  }
+  .featured-content {
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .case-card-meta {
+    display: flex; gap: 8px;
+    flex-wrap: wrap;
+    direction: ltr;
     margin-bottom: 20px;
   }
-
-  .take-video-frame video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: #000;
+  .case-card-meta-item {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
   }
-
-  .take-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  .case-card-number {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gold); letter-spacing: 3px;
+    margin-bottom: 12px; direction: ltr;
+  }
+  .case-card-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 400; line-height: 1;
+    letter-spacing: -1.2px;
+    color: var(--ink);
     margin-bottom: 10px;
     direction: ltr;
   }
-
-  .take-platform {
+  .case-card-title em { font-style: italic; color: var(--gold); }
+  .case-card-he {
     font-family: var(--serif);
-    font-size: 22px;
-    font-style: italic;
-    color: var(--ink);
-  }
-
-  .take-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .take-note {
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 19px;
     color: var(--ink-soft);
-  }
-
-  .takes-footnote {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 32px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    text-align: center;
-  }
-
-  .takes-footnote-text {
-    font-size: 15.5px;
-    line-height: 1.75;
-    color: var(--ink-soft);
-  }
-
-  .takes-footnote-text em {
     font-style: italic;
-    color: var(--gold);
-  }
-
-  /* ============ CASE TITLE ============ */
-  .case-title-block {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .case-number {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 3px;
-    margin-bottom: 16px;
-    direction: ltr;
-  }
-
-  .case-title {
-    font-family: var(--serif);
-    font-size: clamp(40px, 6vw, 68px);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -1.5px;
-    color: var(--ink);
-    margin-bottom: 12px;
-    direction: ltr;
-  }
-
-  .case-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .case-title-he {
-    font-family: var(--serif);
-    font-size: clamp(22px, 3vw, 30px);
-    color: var(--ink-soft);
-    font-weight: 400;
-    font-style: italic;
-  }
-
-  /* ============ STORY BLOCKS ============ */
-  .story-block {
-    max-width: 720px;
-    margin: 0 auto 60px;
-  }
-
-  .story-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--gold);
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    direction: ltr;
-  }
-
-  .story-heading {
-    font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    color: var(--ink);
     margin-bottom: 20px;
   }
-
-  .story-heading em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .story-heading-en {
-    font-family: var(--serif);
-    font-size: 16px;
-    font-style: italic;
-    color: var(--muted);
-    margin-top: 6px;
-    direction: ltr;
-    font-weight: 300;
-  }
-
-  .story-text {
-    font-size: 16.5px;
-    line-height: 1.85;
+  .case-card-teaser {
+    font-size: 15.5px;
+    line-height: 1.7;
     color: var(--ink-soft);
-    margin-bottom: 18px;
+    margin-bottom: 28px;
   }
-
-  .story-text:last-child {
-    margin-bottom: 0;
-  }
-
-  .story-text strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* ============ PROCESS TIMELINE ============ */
-  .process-section {
-    padding: 80px 32px;
-  }
-
-  .process-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .process-step {
-    background: var(--surface);
-    padding: 36px 28px;
-    position: relative;
-    transition: background 0.3s;
-  }
-
-  .process-step:hover {
-    background: var(--bg-warm);
-  }
-
-  .step-number {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-    direction: ltr;
-  }
-
-  .step-title {
-    font-family: var(--serif);
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--ink);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-
-  .step-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .step-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-  /* ============ PROMPT REVEAL ============ */
-  .prompt-reveal {
-    max-width: 840px;
-    margin: 0 auto;
-  }
-
-  .prompt-intro {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .prompt-container {
-    background: #1a1614;
-    color: #e8e0d6;
-    border-radius: 16px;
-    padding: 32px 36px;
-    position: relative;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .prompt-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .case-card-teaser strong { color: var(--ink); font-weight: 600; }
+  .case-card-extra {
     margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(232, 224, 214, 0.12);
-  }
-
-  .prompt-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold-soft);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .prompt-tag::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 12px var(--gold);
-  }
-
-  .copy-btn {
-    background: transparent;
-    border: 1px solid rgba(212, 184, 150, 0.3);
-    color: var(--gold-soft);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .copy-btn:hover {
-    background: var(--gold-bg);
-    border-color: var(--gold);
-    color: #fff;
-  }
-
-  .copy-btn.copied {
-    background: rgba(122, 155, 174, 0.15);
-    border-color: var(--freeze);
-    color: #aac4d4;
-  }
-
-  .prompt-text {
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 1.85;
-    color: #c9c1b5;
-    white-space: pre-wrap;
-    max-height: 420px;
-    overflow-y: auto;
-    padding-right: 8px;
-  }
-
-  .prompt-text::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .prompt-text::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 3px;
-  }
-
-  .prompt-text::-webkit-scrollbar-thumb {
-    background: rgba(176, 141, 87, 0.3);
-    border-radius: 3px;
-  }
-
-  .prompt-text .hl-section {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--gold);
-    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+    direction: ltr;
+  }
+  .case-card-extra::before {
+    content: '+';
+    font-size: 14px;
+  }
+  .case-card-link {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 14px;
+    font-weight: 600; letter-spacing: 0.5px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 14px 28px;
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    border-radius: 100px;
+    transition: all 0.25s;
+    direction: ltr;
+  }
+  .case-card-link:hover {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translateX(-4px);
+  }
+  .case-card-link::after {
+    content: '→';
+    font-size: 16px;
+    transition: transform 0.25s;
+  }
+  .case-card-link:hover::after { transform: translateX(-3px); }
+
+  /* Whole featured card clickable */
+  .featured-card-wrap {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    max-width: 1000px;
+    margin: 0 auto 32px;
   }
 
-  .prompt-text .hl-time {
-    color: #aac4d4;
-  }
-
-  /* ============ LEARNINGS ============ */
-  .learnings-grid {
+  /* SMALL CARDS GRID */
+  .cards-grid {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 24px;
   }
-
-  .learning-card {
+  .case-card {
+    display: block;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 40px 32px;
-    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
     transition: all 0.3s;
   }
-
-  .learning-card:hover {
+  .case-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--gold-soft);
   }
-
-  .learning-number {
-    font-family: var(--serif);
-    font-size: 64px;
-    font-style: italic;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 20px;
-    opacity: 0.7;
+  .case-card-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #2a2520 0%, #4a3d32 50%, #6b5943 100%);
+    overflow: hidden;
   }
-
-  .learning-title {
-    font-family: var(--serif);
-    font-size: 24px;
-    line-height: 1.25;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-weight: 500;
+  .case-card-thumb img,
+  .case-card-thumb video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    pointer-events: none;
   }
-
-  .learning-title em {
-    font-style: italic;
-    color: var(--gold);
+  .case-card-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
   }
-
-  .learning-text {
-    font-size: 14.5px;
-    line-height: 1.7;
-    color: var(--ink-soft);
+  .case-card-body {
+    padding: 28px 24px 32px;
   }
-
-  /* ============ TOOLS ============ */
-  .tools-section {
-    padding: 60px 32px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--bg-warm);
-  }
-
-  .tools-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .tools-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 28px;
-    direction: ltr;
-  }
-
-  .tools-list {
+  .case-card-eyebrow {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 48px;
-    flex-wrap: wrap;
+    margin-bottom: 14px;
     direction: ltr;
   }
-
-  .tool-item {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-style: italic;
-    color: var(--ink);
-    position: relative;
+  .case-card-num-small {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 2.5px;
   }
-
-  .tool-item:not(:last-child)::after {
-    content: '•';
-    position: absolute;
-    right: -28px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gold);
-    font-style: normal;
-    font-size: 14px;
-  }
-
-  /* ============ BRAND VALUE ============ */
-  .value-section {
-    padding: 100px 32px;
-  }
-
-  .value-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .value-quote {
-    font-family: var(--serif);
-    font-size: clamp(28px, 4vw, 44px);
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 48px;
-    letter-spacing: -0.5px;
-    position: relative;
-    padding: 0 20px;
-  }
-
-  .value-quote::before,
-  .value-quote::after {
-    content: '"';
-    font-size: 80px;
-    color: var(--gold);
-    opacity: 0.4;
-    position: absolute;
-    line-height: 1;
-  }
-
-  .value-quote::before {
-    top: -20px;
-    right: -10px;
-  }
-
-  .value-quote::after {
-    bottom: -40px;
-    left: -10px;
-  }
-
-  .value-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 56px;
-    text-align: right;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .value-item-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
+  .case-card-lesson {
+    font-family: var(--mono); font-size: 9.5px;
+    color: var(--muted); letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+  }
+  .case-card-h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+    color: var(--ink);
+    margin-bottom: 6px;
     direction: ltr;
   }
-
-  .value-item.not .value-item-label {
-    color: #A85D5D;
+  .case-card-h3 em { font-style: italic; color: var(--gold); }
+  .case-card-he-small {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.4;
   }
-
-  .value-item.this .value-item-label {
+  .case-card-mini-meta {
+    display: flex;
+    gap: 14px;
+    direction: ltr;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .case-card-mini-meta .dot {
     color: var(--gold);
   }
 
-  .value-item-text {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-  }
-
-  /* ============ CTA ============ */
+  /* CTA */
   .cta-section {
     padding: 100px 32px;
     background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
-    border-top: 1px solid var(--line);
     text-align: center;
   }
-
-  .cta-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
+  .cta-inner { max-width: 720px; margin: 0 auto; }
   .cta-label {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 18px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    direction: ltr;
+    font-family: var(--serif); font-style: italic;
+    font-size: 18px; color: var(--gold);
+    margin-bottom: 20px; direction: ltr;
   }
-
   .cta-title {
     font-family: var(--serif);
     font-size: clamp(36px, 5vw, 54px);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    color: var(--ink);
+    font-weight: 400; line-height: 1.15;
+    letter-spacing: -1px; color: var(--ink);
     margin-bottom: 20px;
   }
-
-  .cta-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
+  .cta-title em { font-style: italic; color: var(--gold); }
   .cta-text {
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin-bottom: 40px;
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft); margin-bottom: 40px;
   }
-
   .cta-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex; gap: 16px;
+    justify-content: center; flex-wrap: wrap;
   }
-
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-flex; align-items: center; gap: 10px;
     padding: 16px 32px;
     font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 14px; font-weight: 500;
     letter-spacing: 0.5px;
     text-decoration: none;
     border-radius: 100px;
     transition: all 0.25s;
-    cursor: pointer;
-    border: 1px solid transparent;
+    cursor: pointer; border: 1px solid transparent;
   }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--bg);
-  }
-
+  .btn-primary { background: var(--ink); color: var(--bg); }
   .btn-primary:hover {
     background: var(--gold);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(176, 141, 87, 0.3);
   }
-
   .btn-secondary {
-    background: transparent;
-    color: var(--ink);
+    background: transparent; color: var(--ink);
     border-color: var(--ink);
   }
+  .btn-secondary:hover { background: var(--ink); color: var(--bg); }
 
-  .btn-secondary:hover {
-    background: var(--ink);
-    color: var(--bg);
-  }
-
-  /* ============ FOOTER ============ */
-  .site-footer {
-    padding: 48px 32px;
-    background: var(--bg);
-    border-top: 1px solid var(--line);
-    text-align: center;
-  }
-
-  .site-footer-text {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-
-  .site-footer-text a {
-    color: var(--ink);
-    text-decoration: none;
-    font-family: var(--serif);
-    font-style: italic;
-  }
-
-  .site-footer-text a:hover {
-    color: var(--gold);
-  }
-
-  /* ============ MORE CASES TEASER ============ */
+  /* MORE TEASER */
   .more-teaser {
-    padding: 80px 32px;
+    padding: 60px 32px;
     text-align: center;
     border-top: 1px solid var(--line);
+    background: var(--bg);
   }
-
-  .more-teaser-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
+  .more-teaser-inner { max-width: 720px; margin: 0 auto; }
   .more-teaser-title {
     font-family: var(--serif);
     font-size: 28px;
@@ -1153,358 +536,53 @@
     color: var(--ink-soft);
     margin-bottom: 12px;
   }
-
   .more-teaser-text {
-    font-size: 14px;
-    color: var(--muted);
+    font-size: 14px; color: var(--muted);
     line-height: 1.6;
   }
 
-  /* ============ LANDSCAPE VIDEO ============ */
-  .video-container--landscape {
-    max-width: 880px;
-  }
-
-  .video-frame--landscape {
-    aspect-ratio: 16 / 9;
-  }
-
-  /* ============ YOUTUBE FACADE ============ */
-  .yt-thumb {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-    border-radius: 20px;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .yt-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease, filter 0.4s ease;
-  }
-
-  .yt-thumb::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.35) 100%);
-    pointer-events: none;
-  }
-
-  .yt-thumb:hover img {
-    transform: scale(1.03);
-    filter: brightness(0.92);
-  }
-
-  .yt-play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.96);
-    border: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, background 0.3s;
-    z-index: 2;
-  }
-
-  .yt-play-btn::after {
-    content: '';
-    display: block;
-    border-left: 22px solid var(--ink);
-    border-top: 14px solid transparent;
-    border-bottom: 14px solid transparent;
-    margin-left: 6px;
-    transition: border-left-color 0.3s;
-  }
-
-  .yt-thumb:hover .yt-play-btn,
-  .yt-play-btn:hover {
-    transform: translate(-50%, -50%) scale(1.08);
-    background: var(--gold);
-  }
-
-  .yt-thumb:hover .yt-play-btn::after,
-  .yt-play-btn:hover::after {
-    border-left-color: #fff;
-  }
-
-  .yt-iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 20px;
-    z-index: 3;
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-
-  /* ============ PRODUCTION CREDITS ============ */
-  .case-credits {
-    max-width: 540px;
-    margin: 64px auto 56px;
-    padding: 28px 0;
+  /* FOOTER */
+  .site-footer {
+    padding: 48px 32px;
+    background: var(--bg);
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    text-align: center;
   }
-
-  .case-credits-heading {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    direction: ltr;
+  .site-footer-text {
+    font-size: 13px; color: var(--muted);
+    letter-spacing: 0.5px;
   }
-
-  .case-credits-heading::before,
-  .case-credits-heading::after {
-    content: '';
-    flex: 0 0 auto;
-    width: 32px;
-    height: 1px;
-    background: var(--line);
+  .site-footer-text a {
+    color: var(--ink); text-decoration: none;
+    font-family: var(--serif); font-style: italic;
   }
+  .site-footer-text a:hover { color: var(--gold); }
 
-  .case-credits-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    padding: 11px 6px;
-    direction: ltr;
-  }
-
-  .case-credits-row + .case-credits-row {
-    border-top: 1px solid rgba(229, 221, 209, 0.6);
-  }
-
-  .case-credits-label {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    flex: 0 0 auto;
-  }
-
-  .case-credits-value {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 16px;
-    color: var(--ink);
-    text-align: right;
-    line-height: 1.4;
-  }
-
-  .case-credits-dim {
-    color: var(--muted);
-    font-style: italic;
-  }
-
-  .case-credits-value--accent {
-    color: var(--gold);
-    position: relative;
-    padding-left: 16px;
-  }
-
-  .case-credits-value--accent::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 9px;
-    color: var(--gold);
-  }
-
-  /* ============ CASE LESSON ARC ============ */
-  .case-lesson {
-    margin-top: 18px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    direction: ltr;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .case-lesson::before {
-    content: '◆';
-    color: var(--gold);
-    font-size: 9px;
-    letter-spacing: 0;
-  }
-
-  /* ============ MOBILE — credits + facade adjustments ============ */
-  @media (max-width: 600px) {
-    .case-credits {
-      margin: 48px auto;
-      padding: 24px 0;
-    }
-    .case-credits-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      padding: 12px 4px;
-    }
-    .case-credits-value {
-      text-align: left;
-      font-size: 15px;
-    }
-    .case-credits-heading::before,
-    .case-credits-heading::after {
-      width: 22px;
-    }
-    .yt-play-btn {
-      width: 64px;
-      height: 64px;
-    }
-    .yt-play-btn::after {
-      border-left: 17px solid var(--ink);
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      margin-left: 4px;
-    }
-    .video-container--landscape {
-      max-width: 100%;
-    }
-  }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 900px) {
-    .intro-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .process-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .learnings-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .takes-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    .value-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .tools-list {
-      gap: 32px 48px;
-    }
-
-    .site-header-inner {
-      padding: 16px 20px;
-    }
-
-    .hero {
-      padding: 60px 24px 48px;
-    }
-
-    .section,
-    .case-section,
-    .process-section,
-    .value-section,
-    .cta-section,
-    .tools-section,
-    .more-teaser,
-    .intro-section {
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .process-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .case-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .prompt-container {
-      padding: 24px 20px;
-    }
-
-    .prompt-text {
-      font-size: 11.5px;
-    }
-
-    .tool-item:not(:last-child)::after {
-      display: none;
-    }
-  }
-
-  /* ============ ANIMATIONS ============ */
+  /* ANIMATIONS */
   @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { animation: fade-up 0.8s ease-out both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-thumb { aspect-ratio: 16 / 10; }
+    .featured-content { padding: 36px 28px; }
+    .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .index-bar-inner { gap: 32px; padding: 20px 24px; }
+    .site-header-inner { padding: 16px 20px; }
+    .hero { padding: 60px 24px 48px; }
+    .intro-section, .cases-section, .cta-section, .more-teaser {
+      padding-left: 24px; padding-right: 24px;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
-
-  .reveal {
-    animation: fade-up 0.8s ease-out both;
-  }
-
-  @keyframes sparkle {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
-  }
-
-  .sparkle {
-    animation: sparkle 2s ease-in-out infinite;
-  }
-
-  @keyframes click-snap {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-8deg); }
-    75% { transform: rotate(8deg); }
+  @media (max-width: 600px) {
+    .index-bar-inner { gap: 24px 32px; }
+    .index-stat-num { font-size: 26px; }
+    .featured-content { padding: 28px 24px; }
   }
 </style>
 </head>
@@ -1534,6 +612,28 @@
   </div>
 </section>
 
+<!-- INDEX BAR -->
+<div class="index-bar">
+  <div class="index-bar-inner">
+    <div class="index-stat">
+      <span class="index-stat-num">4</span>
+      <span class="index-stat-label">Case Studies</span>
+    </div>
+    <div class="index-stat">
+      <span class="index-stat-num">51</span>
+      <span class="index-stat-label">Seconds Total</span>
+    </div>
+    <div class="index-stat">
+      <span class="index-stat-num">3</span>
+      <span class="index-stat-label">Platforms Tested</span>
+    </div>
+    <div class="index-stat">
+      <span class="index-stat-num">8</span>
+      <span class="index-stat-label">Tools Orchestrated</span>
+    </div>
+  </div>
+</div>
+
 <!-- INTRO -->
 <section class="intro-section">
   <div class="intro-grid">
@@ -1551,871 +651,135 @@
   </div>
 </section>
 
-<!-- CASE STUDY: THE CLICK -->
-<section class="case-section">
-  <div class="case-header">
-    <div class="case-meta">
-      <span class="case-meta-item featured">● Featured Case</span>
-      <span class="case-meta-item">April 2026</span>
-      <span class="case-meta-item">12 seconds</span>
-      <span class="case-meta-item">Pixar 3D</span>
-    </div>
-  </div>
-
-  <div class="case-title-block">
-    <div class="case-number">Case Study / 001</div>
-    <h2 class="case-title">The <em>Click</em></h2>
-    <div class="case-title-he">איך לעצור את הזמן ב-12 שניות</div>
-  </div>
-
-  <!-- Video -->
-  <div class="video-container">
-    <div class="video-frame">
-      <video
-        class="case-video"
-        src="videos/the-click-final.mp4"
-        controls
-        playsinline
-        preload="metadata"
-      ></video>
-    </div>
-    <div class="video-caption">
-      הקאט הסופי — 12 שניות, אחרי תיקון ב-CapCut
-      <div class="video-caption-en">The final cut — 12 seconds, after CapCut post-production</div>
-    </div>
-  </div>
-
-  <!-- The Concept -->
-  <div class="story-block">
-    <div class="story-label">01 · The Concept</div>
-    <h3 class="story-heading">
-      הרעיון: קליק אחד, והזמן <em>עוצר</em>.
-      <div class="story-heading-en">The idea: one snap, and time stops.</div>
-    </h3>
-    <p class="story-text">
-      רציתי סרטון AI של 12 שניות שמרגיש כמו סצנה מסרט פיקסר: אני הולכת בלונה פארק שוקק חיים, עושה <strong>קליק עם האצבעות</strong> — והכל קופא. הבלונים תלויים באוויר, הקרוסלה עוצרת, המוכר קופא עם גלידה מושטת ביד.
-    </p>
-    <p class="story-text">
-      אני לוקחת את הגלידה, ממשיכה ללכת, עושה קליק נוסף — והעולם חוזר לנוע. המוכר מסתכל על היד הריקה שלו, ואני הולכת עם הגלידה לעבר הלונה פארק.
+<!-- CASES SECTION -->
+<section class="cases-section">
+  <div class="cases-header">
+    <div class="section-label" style="justify-content:center;"><span class="dot"></span> The Cases</div>
+    <h2 class="section-title">ארבעה סיפורים. <em>שיעור אחד בכל אחד</em>.</h2>
+    <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
+      Four stories. One lesson each. Every case unlocks a different aspect of building AI video that brands actually remember.
     </p>
   </div>
 
-  <!-- The Challenge -->
-  <div class="story-block">
-    <div class="story-label">02 · The Challenge</div>
-    <h3 class="story-heading">
-      האתגר הטכני שלא ציפיתי לו.
-      <div class="story-heading-en">The technical challenge I didn't see coming.</div>
-    </h3>
-    <p class="story-text">
-      בהתחלה חשבתי שזה פשוט — פרומפט אחד, 12 שניות, תוצאה מושלמת. אבל מודלי ה-AI של יצירת וידאו מתקשים מאוד במשימה הזאת: הם <strong>"רוצים"</strong> שהכל יזוז. לבקש מהמודל "רק אחת זזה, כולם קפואים" — זה מלחמה.
-    </p>
-    <p class="story-text">
-      הפרומפט הראשון שלי (ארוך, מפורט, עם הרבה כללים) — נכשל. הדמות הוזזה, אבל גם הרקע המשיך לזוז. זוג הלך ברקע, הקרוסלה המשיכה להסתובב. <strong>כל מה שהרקע עשה שבר את האשליה</strong>.
-    </p>
-    <p class="story-text">
-      גיליתי שהפרומפטים הויראליים שאנשים מצליחים איתם בנויים בצורה מאוד ספציפית — כמו storyboard מקצועי, לא כמו בקשה זורמת. זה שינה הכל.
-    </p>
-  </div>
-
-  <!-- The Process -->
-  <div class="story-block">
-    <div class="story-label">03 · The Breakthrough</div>
-    <h3 class="story-heading">
-      הפריצה: פרומפט שנראה כמו <em>בריף הפקה</em>.
-      <div class="story-heading-en">The breakthrough: prompting like a film director.</div>
-    </h3>
-    <p class="story-text">
-      במקום פיסקה ארוכה וזורמת, פירקתי את הפרומפט לחלקים — בדיוק כמו שבמאי סרטים כותב לצוות: <strong>SUBJECTS</strong> (מי בסצנה), <strong>ENVIRONMENT</strong> (איפה), <strong>BEHAVIOR</strong> (איך הם מתנהגים), <strong>TIMELINE</strong> (מה קורה בכל שנייה), ו-<strong>IMPORTANT NOTES</strong> (כללים מפורשים).
-    </p>
-    <p class="story-text">
-      את הפרומפטים האלה חידדתי ושיפרתי <strong>יחד עם Claude</strong> — כל ניסיון שלא הסתדר, חזרתי וביקשתי עזרה לנסח מחדש את הכללים שבעייתיים, להוסיף רולים שחסרים. זה תהליך של דיאלוג: לכתוב, לראות מה יצא, לחזור ולדייק.
-    </p>
-    <p class="story-text">
-      המילה שעשתה את ההבדל הגדול ביותר: <em>"wax figures"</em> — פסלי שעווה. זה קונספט שהמודל מבין הרבה יותר טוב מ-"frozen" או "still". בנוסף, הגדרתי מפורשות שהשיער והבגדים של הדמויות הקפואות <strong>לא זזים</strong> — כי זו הטעות הכי נפוצה שה-AI עושה.
-    </p>
-  </div>
-
-  <!-- The Fix -->
-  <div class="story-block">
-    <div class="story-label">04 · The Save</div>
-    <h3 class="story-heading">
-      כשה-AI מסרב — <em>CapCut</em> נכנס לתמונה.
-      <div class="story-heading-en">When the AI refuses — CapCut steps in.</div>
-    </h3>
-    <p class="story-text">
-      גם אחרי הפרומפט המחודד, המודל עדיין "המציא" פרט אחד שלא ביקשתי: בפריים שבו אני לוקחת את הגלידה, במקום לקחת אותה מהמוכר — <strong>הדמות שלי לקחה אותה מאישה</strong> שעמדה ברקע עם גלידה ביד. ובפריים שאחרי, המוכר הוצג עם פנים מאוכזבות, כאילו הגלידה נלקחה ממנו. מצחיק, אבל שובר את הנרטיב.
-    </p>
-    <p class="story-text">
-      במקום לייצר את הסצנה שוב (עוד כמה שקלים לרוח) — פתרתי את זה ב-<strong>CapCut</strong>: הגדלתי את הפריים הבעייתי, חתכתי את האישה מהקאדר, והשארתי רק את הדמות שלי עם הגלידה. הקהל שצופה ב-12 השניות האלה לא יודע שהאישה הייתה שם אי פעם.
-    </p>
-    <p class="story-text">
-      זה הלקח הכי חשוב בהפקת וידאו AI: <strong>ה-AI הוא 80% מהעבודה — ה-20% הנותרים הם עריכה</strong>. כמעט אף סרטון AI לא יוצא מושלם מהמודל. עריכה חכמה היא לא פשרה, היא חלק בלתי נפרד מהתהליך.
-    </p>
-  </div>
-</section>
-
-<!-- TWO TAKES COMPARISON -->
-<section class="takes-section">
-  <div class="takes-inner">
-    <div class="takes-header">
-      <div class="section-label" style="justify-content:center;"><span class="dot"></span> Two Takes</div>
-      <h2 class="section-title">אותו פרומפט, <em>שתי פלטפורמות</em>.</h2>
-      <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
-        Same prompt, two different platforms — each interprets the scene with its own character.
-      </p>
-    </div>
-
-    <div class="takes-grid">
-      <div class="take-card">
-        <div class="take-video-frame">
-          <video
-            src="videos/the-click-higgsfield.mp4"
-            controls
-            playsinline
-            preload="metadata"
-          ></video>
+  <!-- FEATURED CARD: THE CLICK -->
+  <a href="ai-video-lab/the-click.html" class="featured-card-wrap">
+    <article class="featured-card">
+      <div class="featured-thumb">
+        <span class="featured-thumb-badge">● Featured</span>
+        <video
+          src="videos/the-click-final.mp4"
+          muted
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        ></video>
+      </div>
+      <div class="featured-content">
+        <div class="case-card-meta">
+          <span class="case-card-meta-item">April 2026</span>
+          <span class="case-card-meta-item">12 sec</span>
+          <span class="case-card-meta-item">Pixar 3D</span>
+          <span class="case-card-meta-item">Higgsfield · FAL</span>
         </div>
-        <div class="take-label">
-          <div class="take-platform">Higgsfield</div>
-          <div class="take-tag">Seedance 2.0</div>
-        </div>
-        <p class="take-note">
-          הגרסה שבסוף בחרתי לעבוד איתה ב-CapCut. תנועה חלקה, אווירה חמה, דמות עקבית — אבל עם הבאג של הגלידה שתיקנתי בעריכה.
+        <div class="case-card-number">Case Study / 001 · Lesson 01 — Storytelling</div>
+        <h3 class="case-card-title">The <em>Click</em></h3>
+        <p class="case-card-he">איך לעצור את הזמן ב-12 שניות</p>
+        <p class="case-card-teaser">
+          סצנת פיקסר שבה אני מקפיאה לונה פארק שלם בלחיצת אצבעות. <strong>הפרומפט שעבד נראה כמו בריף הפקה</strong> — לא כמו פיסקה זורמת. ה-case המורכב ביותר במעבדה.
         </p>
+        <div class="case-card-extra">2 alternate takes inside</div>
+        <span class="case-card-link">Read the full case</span>
       </div>
+    </article>
+  </a>
 
-      <div class="take-card">
-        <div class="take-video-frame">
-          <video
-            src="videos/the-click-fal.mp4"
-            controls
-            playsinline
-            preload="metadata"
-          ></video>
-        </div>
-        <div class="take-label">
-          <div class="take-platform">FAL</div>
-          <div class="take-tag">Alternative Take</div>
-        </div>
-        <p class="take-note">
-          גרסה מקבילה שיצאה טובה גם היא — סגנון מעט שונה, בחירות קומפוזיציה שונות. הוכחה שאין כלי אחד "נכון" — יש בחירה מתוך כמה אופציות טובות.
-        </p>
-      </div>
-    </div>
-
-    <div class="takes-footnote">
-      <p class="takes-footnote-text">
-        הסוד הוא לא <em>כלי אחד מושלם</em> — אלא להכיר כמה כלים מספיק טוב כדי לדעת לאיזה משימה מתאים כל אחד. ולפעמים, כמו כאן, להריץ את אותו פרומפט בשתי פלטפורמות ולבחור את הגרסה שעובדת טוב יותר.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS TIMELINE -->
-<section class="process-section">
-  <div class="section-inner">
-    <div style="text-align:center; margin-bottom:60px;">
-      <div class="section-label"><span class="dot"></span> The Process</div>
-      <h2 class="section-title">4 שלבים מרעיון ל<em>תוצאה</em></h2>
-      <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
-        Every case follows the same path. The details change, the structure stays.
-      </p>
-    </div>
-
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="step-number">STEP 01</div>
-        <h3 class="step-title">Brief &amp; <em>Storyboard</em></h3>
-        <p class="step-text">
-          מגדירים את הרעיון, הקהל, הסגנון, והמבנה של הסרטון — שנייה אחר שנייה.
-        </p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">STEP 02</div>
-        <h3 class="step-title">Reference <em>Images</em></h3>
-        <p class="step-text">
-          יוצרים את הדמות, הסביבה, והפרטים ב-Midjourney ו-Gemini — בסיס ויזואלי אחיד.
-        </p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">STEP 03</div>
-        <h3 class="step-title">Structured <em>Prompt</em></h3>
-        <p class="step-text">
-          כותבים פרומפט בפורמט בריף הפקה — SUBJECTS, TIMELINE, RULES. מחדדים יחד עם Claude עד שכל כלל מפורש.
-        </p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">STEP 04</div>
-        <h3 class="step-title">Generate &amp; <em>Rescue</em></h3>
-        <p class="step-text">
-          מייצרים ב-Higgsfield או FAL, בוחרים את הגרסה הכי קרובה ליעד, ומשלימים פערים ב-CapCut.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE PROMPT -->
-<section class="section" style="background: var(--bg-warm); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-  <div class="section-inner">
-    <div style="text-align:center; margin-bottom:40px;">
-      <div class="section-label"><span class="dot"></span> The Prompt</div>
-      <h2 class="section-title">הפרומפט ש<em>עבד</em></h2>
-      <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
-        The structured prompt I refined with Claude — the version that produced the cleanest output.
-      </p>
-    </div>
-
-    <div class="prompt-reveal">
-      <div class="prompt-container">
-        <div class="prompt-toolbar">
-          <div class="prompt-tag">Refined with Claude · Image-to-Video</div>
-          <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
-        </div>
-        <div class="prompt-text" id="prompt-text"><span class="hl-section">SUBJECTS:</span>
-Subject 1 (Main Character): Woman with brown wavy shoulder-length hair,
-beige linen button-up shirt, gray tailored pants, silver hoop earrings.
-Expression playful and confident. Movements fluid, natural, graceful.
-She is always in motion.
-
-Subject 2 (Ice Cream Vendor — THE ONLY character holding ice cream):
-Chubby friendly male with bushy gray mustache, white apron with
-"Bert's Ice Cream" text, standing behind his ice cream cart with
-"BERT'S ICE CREAM" sign. He holds a colorful triple-scoop gelato
-cone (pink, green, yellow) in his right outstretched hand.
-Expression: warm gentle smile. Movements: none — completely still
-like a wax figure.
-
-Subject 3 (Background Crowd): Diverse park visitors — families, children,
-couples walking in background. None of them hold ice cream or interact
-with the main character. Movements: none — all like wax figures.
-
-<span class="hl-section">ENVIRONMENT:</span>
-Pixar 3D animated colorful amusement park. Carousel, ferris wheel,
-string lights, food carts, flags, and Bert's Ice Cream cart.
-Golden hour sunset lighting, warm tones. Clean cinematic composition.
-
-<span class="hl-section">BEHAVIOR:</span>
-Main character moves with fluid continuous motion throughout. Her hair
-sways, clothes flow, steps are natural. Everyone else — after 0:03 —
-behaves like wax museum figures: completely still, no blinks, no breath,
-no hair movement, no clothing flutter. Beautiful contrast between
-her liveliness and their stillness.
-
-<span class="hl-section">TIMELINE:</span>
-<span class="hl-time">0:00–0:02:</span> Wide tracking shot. Main character walks through the lively
-park. Everything moves naturally — carousel spinning, crowds walking,
-balloons floating. Camera tracks alongside her.
-
-<span class="hl-time">0:02–0:03:</span> Medium close-up. She stops, raises right hand, snaps fingers.
-Golden sparkle particles appear from fingertips. A gentle magical wave
-spreads outward.
-
-<span class="hl-time">0:03–0:05:</span> Slow zoom-out wide reveal. Everything is still. She looks
-around with amazement. Camera orbits slightly. Only she moves.
-
-<span class="hl-time">0:05–0:07:</span> Tracking shot, side profile. She walks directly toward the
-Bert's Ice Cream vendor cart — not toward any other character. She
-weaves past still people who do not hold anything. Camera follows smoothly.
-
-<span class="hl-time">0:07–0:09:</span> Over-the-shoulder into medium 3/4 front. She arrives at
-Bert's Ice Cream cart and takes the colorful gelato cone from the
-vendor's frozen outstretched hand — he is the ONLY one holding ice
-cream. The vendor does not react. She looks at the cone with a satisfied
-expression.
-
-<span class="hl-time">0:09–0:10:</span> Medium front. She snaps fingers with left hand (right holds
-cone). Golden magical wave spreads again. Everything returns to motion
-instantly.
-
-<span class="hl-time">0:10–0:12:</span> Wide cinematic pull-back. She walks away from camera eating
-ice cream. The vendor (Bert) looks surprised at his empty hand. At 0:11
-she glances back with a playful smile. Park fully lively around her.
-
-<span class="hl-section">IMPORTANT NOTES:</span>
-- Main character is the only moving element from 0:03 to 0:09
-- All background people stay perfectly still — like wax figures
-- The ice cream cone is ONLY in the vendor's hand — no background
-  character holds ice cream
-- The vendor (Bert) is the ONLY person she interacts with during the
-  frozen sequence
-- No other character extends a hand or offers anything to her
-- Carousel and ferris wheel stay completely stopped from 0:03 to 0:09
-- Balloons rest motionless in air from 0:03 to 0:09
-- Vendor stays still even when ice cream is taken from his hand
-- Character stays consistent throughout — same outfit, same hair
-- Closed-mouth smile throughout
-- No hair or clothing movement on still subjects
-
-<span class="hl-section">TONE:</span>
-Playful, magical, cinematic, Pixar family-friendly, golden hour warmth,
-playful confident energy.
-
-<span class="hl-section">CAMERA:</span>
-Smooth cinematic movements — tracking, pull-back, orbit. Shallow depth
-of field on close-ups. Wide establishing shots for the still reveals.
-Professional Pixar movie cinematography.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LEARNINGS -->
-<section class="section">
-  <div class="section-inner">
-    <div style="text-align:center; margin-bottom:60px;">
-      <div class="section-label"><span class="dot"></span> Takeaways</div>
-      <h2 class="section-title">3 תובנות <em>לכל סרטון AI</em></h2>
-      <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
-        What this case taught me — applicable to any AI video project.
-      </p>
-    </div>
-
-    <div class="learnings-grid">
-      <div class="learning-card">
-        <div class="learning-number">01</div>
-        <h3 class="learning-title">מבנה <em>מנצח</em> זרימה</h3>
-        <p class="learning-text">
-          פרומפט בפורמט של בריף הפקה (SUBJECTS, TIMELINE, RULES) נותן תוצאות הרבה יותר מדויקות מפיסקה ארוכה וזורמת. המודל "קורא" את זה כמו storyboard. ומטאפורות קונקרטיות כמו "wax figures" עובדות הרבה יותר טוב מ"frozen".
-        </p>
-      </div>
-      <div class="learning-card">
-        <div class="learning-number">02</div>
-        <h3 class="learning-title">כלים <em>מתזמרים</em> יחד</h3>
-        <p class="learning-text">
-          אין כלי אחד "נכון". Claude מחדד את הפרומפט, Higgsfield ו-FAL מייצרים וריאציות, CapCut מתקן. המומחיות היא לא לשלוט בכלי אחד — אלא לדעת מתי להעביר מכלי לכלי.
-        </p>
-      </div>
-      <div class="learning-card">
-        <div class="learning-number">03</div>
-        <h3 class="learning-title">עריכה היא <em>חלק מהאמנות</em></h3>
-        <p class="learning-text">
-          כמעט אף סרטון AI לא יוצא מושלם מהמודל. במקום לייצר שוב ושוב (ולשלם שוב ושוב), לפעמים הפתרון הוא זום-אין ב-CapCut, חיתוך קאדר, או תזמון מחדש. זה לא פשרה — זה הפקה אמיתית.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section class="tools-section">
-  <div class="tools-inner">
-    <div class="tools-label">Tools used in this case</div>
-    <div class="tools-list">
-      <span class="tool-item">Claude</span>
-      <span class="tool-item">Midjourney</span>
-      <span class="tool-item">Gemini</span>
-      <span class="tool-item">Higgsfield</span>
-      <span class="tool-item">FAL</span>
-      <span class="tool-item">CapCut</span>
-      <span class="tool-item">Suno</span>
-    </div>
-  </div>
-</section>
-
-<!-- BRAND VALUE -->
-<section class="value-section">
-  <div class="value-inner">
-    <div class="section-label" style="justify-content:center;"><span class="dot"></span> Why This Matters</div>
-    <p class="value-quote">
-      למותגים היום לא חסרים "סרטונים". חסרים <em>סרטונים שנזכרים</em>.
-    </p>
-
-    <div class="value-grid">
-      <div class="value-item not">
-        <div class="value-item-label">✕ NOT THIS</div>
-        <p class="value-item-text">
-          סרטון AI גנרי. אפקט מרשים לשנייה. נשכח בסקרול הבא.
-        </p>
-      </div>
-      <div class="value-item this">
-        <div class="value-item-label">✓ BUT THIS</div>
-        <p class="value-item-text">
-          רגע קולנועי שמדבר בשפת המותג. רעיון ש<strong>מספר סיפור</strong> על הערכים שלו.
-        </p>
-      </div>
-    </div>
-
-    <div style="margin-top: 64px; max-width: 640px; margin-left: auto; margin-right: auto;">
-      <p style="font-size:17px; line-height:1.8; color: var(--ink-soft);">
-        כל סרטון כזה — אם הוא נולד מתוך <strong>Brand DNA</strong> ברור — הופך לנכס שיווקי שעובד שוב ושוב. לא just content, but a memorable moment.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDY: STRAWBERRY SYMPHONY -->
-<section class="case-section">
-  <div class="case-header">
-    <div class="case-meta">
-      <span class="case-meta-item">May 2026</span>
-      <span class="case-meta-item">12 seconds</span>
-      <span class="case-meta-item">Seedance 2</span>
-      <span class="case-meta-item">Choreography</span>
-    </div>
-  </div>
-
-  <div class="case-title-block">
-    <div class="case-number">Case Study / 002</div>
-    <h2 class="case-title">Strawberry <em>Symphony</em></h2>
-    <div class="case-title-he">שפית פיקסר מנצחת על תזמורת של תותים</div>
-    <div class="case-lesson">Lesson 02 — Choreography</div>
-  </div>
-
-  <!-- Video — YouTube facade, 16:9 -->
-  <div class="video-container video-container--landscape">
-    <div class="video-frame video-frame--landscape" data-yt-id="b6OY9a3w9Ic">
-      <div class="yt-thumb">
+  <!-- 3-CARD GRID -->
+  <div class="cards-grid">
+    <!-- 002 STRAWBERRY -->
+    <a href="ai-video-lab/strawberry-symphony.html" class="case-card">
+      <div class="case-card-thumb">
         <img
           src="https://i.ytimg.com/vi/b6OY9a3w9Ic/maxresdefault.jpg"
           onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/b6OY9a3w9Ic/hqdefault.jpg';"
-          alt="Strawberry Symphony — Pixar-style pastry animation thumbnail"
+          alt="Strawberry Symphony — Pixar pastry chef thumbnail"
+          loading="lazy"
         >
-        <button class="yt-play-btn" type="button" aria-label="Play Strawberry Symphony">
-          <span class="visually-hidden">Play</span>
-        </button>
       </div>
-    </div>
-    <div class="video-caption">
-      תזמורת של קישוטים — ספירלת תותים, זהב ושוקולד מעל עוגה אחת.
-      <div class="video-caption-en">A choreography of decorations — strawberries, gold, and chocolate orbiting one cake.</div>
-    </div>
-  </div>
-
-  <!-- 01 · The Concept -->
-  <div class="story-block">
-    <div class="story-label">01 · The Concept</div>
-    <h3 class="story-heading">
-      ספירלה של תותים — והשפית כ<em>מנצחת</em>.
-      <div class="story-heading-en">A spiral of strawberries — and the chef as conductor.</div>
-    </h3>
-    <p class="story-text">
-      רציתי לבדוק כמה Seedance מצליחה להחזיק <strong>קומפוזיציה רב-שכבתית</strong> בסצנה אחת קצרה. שפית פיקסר זעירה מנצחת על קישוטים — תותים, עלי זהב, סוכר טווה, קרמל — שעולים באוויר בתנועה הפוכה לכוח-הכבידה, נעים בספירלה מעל עוגת שוקולד שלוש קומות, ונוחתים כל אחד במקומו.
-    </p>
-    <p class="story-text">
-      ואז היא מרימה את העוגה ומציבה אותה בחלון ראווה. בחוץ — קהל פיקסרי שלם רואה את העוגה ומגיב. <strong>שש שניות פנים, שש שניות חוץ.</strong>
-    </p>
-  </div>
-
-  <!-- 02 · The Challenge -->
-  <div class="story-block">
-    <div class="story-label">02 · The Challenge</div>
-    <h3 class="story-heading">
-      ה-AI לא אוהב <em>קאטים</em>.
-      <div class="story-heading-en">AI doesn't love cuts.</div>
-    </h3>
-    <p class="story-text">
-      כשמבקשים מסצנה אחת לעבור בין wide → medium → overhead → side-tracking, המודל לעיתים קרובות <strong>בורא תנועה אחת רציפה במקום שישה shots נפרדים</strong>. הוא רוצה flow. אני רציתי קצב מקוטע.
-    </p>
-    <p class="story-text">
-      ויש את ה-physics. <em>"reverse gravity"</em> + <em>"swirling tornado"</em> + <em>"each element finds its orbit"</em> + <em>"lands precisely on cake"</em> — הרבה גזירות פיזיקליות במשפט אחד. בלי הוראות מדויקות, הקישוטים נעים בכאוס, לא בכוריאוגרפיה.
-    </p>
-  </div>
-
-  <!-- 03 · The Breakthrough -->
-  <div class="story-block">
-    <div class="story-label">03 · The Breakthrough</div>
-    <h3 class="story-heading">
-      פרומפט בנוי כ-<em>screenplay</em>, לא כפיסקה.
-      <div class="story-heading-en">Prompting like a screenplay, not a paragraph.</div>
-    </h3>
-    <p class="story-text">
-      פירקתי את הפרומפט ל-<strong>שש שורות במבנה זהה</strong>: <em>[timestamp] — [shot type]: [action]</em>. כל פריים מסומן בזמן ובסוג shot מפורש. כשהמבנה גרפי כל כך, המודל "רואה" את ה-cuts, לא רק את האקשן.
-    </p>
-    <p class="story-text">
-      וב-shots עם physics, המילה <em>"tornado"</em> עשתה הבדל מבני: המודל הבין מיידית שזו <strong>מערבולת עם מרכז ופריפריה</strong>, לא סתם תנועה סיבובית. <em>"spiral"</em> יצא רכרוכי. <em>"tornado"</em> יצא מובנה.
-    </p>
-  </div>
-
-  <!-- 04 · The Insight -->
-  <div class="story-block">
-    <div class="story-label">04 · The Insight</div>
-    <h3 class="story-heading">
-      קולנוע <em>מדויק</em> שווה יותר מתיאור עשיר.
-      <div class="story-heading-en">Cinematic precision beats vivid description.</div>
-    </h3>
-    <p class="story-text">
-      <em>"overhead bird's-eye shot"</em> = המצלמה במקום אחד מדויק. <em>"a beautiful aerial view"</em> = 50 פירושים אפשריים. <strong>ככל שהשפה קולנועית יותר, ה-AI מדויק יותר.</strong> זה שיעור שחזר על עצמו אצלי בכל ניסוי שבא אחר כך.
-    </p>
-    <p class="story-text">
-      ועוד שיעור — זה הסרטון הראשון שיצא לי <strong>ללא post-production</strong>. בלי CapCut, בלי trimming, בלי color correction. רק הפלט הגולמי של Seedance. זה הופך את הפרומפט עצמו ל-deliverable: חייבים לדייק את ה-12 שניות בכתיבה, לא בעריכה.
-    </p>
-  </div>
-
-  <!-- Production credits -->
-  <div class="case-credits">
-    <div class="case-credits-heading">Production Credits</div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Generated</span>
-      <span class="case-credits-value">Seedance 2 <span class="case-credits-dim">(via fal.ai)</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Audio</span>
-      <span class="case-credits-value">Native Seedance <span class="case-credits-dim">— no external sound design</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Post-production</span>
-      <span class="case-credits-value case-credits-value--accent">None</span>
-    </div>
-  </div>
-
-  <!-- The Prompt -->
-  <div class="prompt-reveal">
-    <div class="prompt-intro" style="text-align:center; margin-bottom:32px;">
-      <div class="story-label" style="text-align:center;">05 · The Prompt</div>
-      <h3 class="story-heading" style="text-align:center;">
-        הפרומפט המלא.
-        <div class="story-heading-en">The full prompt.</div>
-      </h3>
-    </div>
-    <div class="prompt-container">
-      <div class="prompt-toolbar">
-        <div class="prompt-tag">Seedance 2 · Prompt-to-Video</div>
-        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
+      <div class="case-card-body">
+        <div class="case-card-eyebrow">
+          <span class="case-card-num-small">CASE / 002</span>
+          <span class="case-card-lesson">Lesson 02 · Choreography</span>
+        </div>
+        <h3 class="case-card-h3">Strawberry <em>Symphony</em></h3>
+        <p class="case-card-he-small">שפית פיקסר מנצחת על תזמורת של תותים</p>
+        <div class="case-card-mini-meta">
+          <span>Seedance 2</span>
+          <span class="dot">·</span>
+          <span>12 sec</span>
+          <span class="dot">·</span>
+          <span>No post-prod</span>
+        </div>
       </div>
-      <div class="prompt-text"><span class="hl-time">0:00–0:02</span> — Wide shot of a cozy Pixar-style pastry kitchen. A small round chef with huge brown eyes and an oversized hat stands before a massive chocolate cake, three tiers, dark and glossy. She cracks her knuckles. Takes a deep breath. Camera slowly dollies in toward her face — pure focus.
+    </a>
 
-<span class="hl-time">0:02–0:04</span> — Medium shot from the side: she claps her hands once. From every corner of the kitchen — shelves, drawers, jars — decorations launch into the air: strawberries, gold leaves, chocolate curls, sugar flowers, caramel drizzle, edible pearls. Everything floating upward in slow motion like reverse gravity. Her eyes track them with excitement.
-
-<span class="hl-time">0:04–0:06</span> — Overhead bird's-eye shot looking straight down at the cake: the decorations swirl above it in a perfect spiral, forming a colorful tornado. Each element finds its orbit — berries on the outside, gold leaves in the middle, chocolate curls at the center. The chef conducts with her tiny hands like an orchestra maestro.
-
-<span class="hl-time">0:06–0:08</span> — Side tracking shot, slow motion: one by one, each decoration drops into its perfect place on the cake. Strawberries land in a crown on top. Caramel drizzles itself in elegant ribbons down the sides. Gold leaves flutter and stick. Every placement impossibly precise. The chef's eyes follow each one, nodding with satisfaction.
-
-<span class="hl-time">0:08–0:10</span> — Close-up on the finished cake: it's a masterpiece. Camera slow push-in. The chef appears behind it, gently lifts it with both hands, turns toward a glowing shop window. Tracking shot follows her waddling walk from behind.
-
-<span class="hl-time">0:10–0:12</span> — Cut to outside the shop: through the glass window, she places the cake on display. Camera pulls back to reveal a crowd of Pixar-style characters on the sidewalk — a tall thin man drops his coffee, a little girl tugs her mother's sleeve, an old man adjusts his glasses and leans in. Their reflections glow in the warm window light. The chef gives a shy little wave from inside. Final frame.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDY: THE CRIMSON REVEAL -->
-<section class="case-section">
-  <div class="case-header">
-    <div class="case-meta">
-      <span class="case-meta-item">May 2026</span>
-      <span class="case-meta-item">12 seconds</span>
-      <span class="case-meta-item">Seedance 2</span>
-      <span class="case-meta-item">Transformation</span>
-    </div>
-  </div>
-
-  <div class="case-title-block">
-    <div class="case-number">Case Study / 003</div>
-    <h2 class="case-title">The Crimson <em>Reveal</em></h2>
-    <div class="case-title-he">מחווה אחת. כל החדר משתנה.</div>
-    <div class="case-lesson">Lesson 03 — Transformation</div>
-  </div>
-
-  <!-- Video — YouTube facade, 16:9 -->
-  <div class="video-container video-container--landscape">
-    <div class="video-frame video-frame--landscape" data-yt-id="RkaPW9wLF2I">
-      <div class="yt-thumb">
+    <!-- 003 CRIMSON -->
+    <a href="ai-video-lab/crimson-reveal.html" class="case-card">
+      <div class="case-card-thumb">
         <img
           src="https://i.ytimg.com/vi/RkaPW9wLF2I/maxresdefault.jpg"
           onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/RkaPW9wLF2I/hqdefault.jpg';"
           alt="The Crimson Reveal — Lipstick transformation thumbnail"
+          loading="lazy"
         >
-        <button class="yt-play-btn" type="button" aria-label="Play The Crimson Reveal">
-          <span class="visually-hidden">Play</span>
-        </button>
       </div>
-    </div>
-    <div class="video-caption">
-      קליק אחד — וצבע אחד משתלט על כל הסצנה.
-      <div class="video-caption-en">One snap — and a single color takes over the room.</div>
-    </div>
-  </div>
-
-  <!-- 01 · The Concept -->
-  <div class="story-block">
-    <div class="story-label">01 · The Concept</div>
-    <h3 class="story-heading">
-      קסם <em>נטול-VFX-מובהק</em>.
-      <div class="story-heading-en">Magic without the obvious VFX.</div>
-    </h3>
-    <p class="story-text">
-      אישה אלגנטית, שולחן איפור עגול, מאות אודמים בטבעת. סיבוב של השולחן, קליק של אצבע, אודם נבחר. רגע של זמן עוצר. ואז — לחיצת שפתיים, וכל החדר משתנה לצבע של האודם. <strong>קיר, שמלה, פרחים, אור — ביט אחד.</strong>
-    </p>
-    <p class="story-text">
-      אין פיצוץ. אין transition מובהק. רק שינוי טוטאלי שמתרחש בין פריים לפריים. אם זה עובד — זה מרגיש כמו פרסומת couture אמיתית. אם לא — זה זול.
-    </p>
-  </div>
-
-  <!-- 02 · The Challenge -->
-  <div class="story-block">
-    <div class="story-label">02 · The Challenge</div>
-    <h3 class="story-heading">
-      Color shift מיידי, לא <em>fade</em>.
-      <div class="story-heading-en">An instant color shift, not a fade.</div>
-    </h3>
-    <p class="story-text">
-      אתגר ראשון: <strong>color continuity</strong>. המודל יודע לעשות color shift, אבל נוטה לעשות אותו מדורג — צבע X נהיה Y נהיה Z על פני שניות. לי הייתה צריכה את הקפיצה הטוטאלית. ביט אחד.
-    </p>
-    <p class="story-text">
-      אתגר שני, שהפתיע אותי: <strong>luxury aesthetics</strong>. Seedance טובה באנימציה ובאקשן, אבל סצנות "luxury atelier" יוצאות בקלות תיירותיות במקום קולנועיות. <em>shallow depth of field</em>, <em>golden light</em>, <em>cinematic</em> — צריך הוראות מאוד ספציפיות כדי לכוון את המודל לסטנדרט קולנועי.
-    </p>
-  </div>
-
-  <!-- 03 · The Breakthrough -->
-  <div class="story-block">
-    <div class="story-label">03 · The Breakthrough</div>
-    <h3 class="story-heading">
-      Snap cut + רשימה <em>מפורשת</em>.
-      <div class="story-heading-en">Snap cut plus an explicit list.</div>
-    </h3>
-    <p class="story-text">
-      הקאט החד — <em>"snap cut"</em> — היה המפתח. במקום לבקש שינוי מדורג של 3 שניות, פיצלתי ל-snap cut של שנייה. <strong>הקאט החד מאלץ את המודל להבין שני states נפרדים</strong> — לפני ואחרי. לא מעבר ביניהם.
-    </p>
-    <p class="story-text">
-      ולקפיצת הצבע: המילה <em>"shifts"</em> ולא <em>"changes"</em> או <em>"fades"</em>. shifts = מיידי. ורשימה <strong>מפורשת</strong> של מה שצריך לעבור: <em>walls, dress, flowers, lighting</em>. שלא יחסר אחד. כשהרשימה ספציפית, המודל לא מחליק עליה.
-    </p>
-  </div>
-
-  <!-- 04 · The Insight -->
-  <div class="story-block">
-    <div class="story-label">04 · The Insight</div>
-    <h3 class="story-heading">
-      פחות פריימים מספרים <em>יותר</em>.
-      <div class="story-heading-en">Fewer frames tell a richer story.</div>
-    </h3>
-    <p class="story-text">
-      הסרטון הזה הוא <strong>שישה shots</strong> — פחות מהאחרים. כל shot עושה עבודה של שניים. ודווקא זה מה שיוצר את ה-impact של הסיום: <em>pull-back reveal</em> שמראה לקהל את הסצנה השלמה אחרי שכל המבט היה סגור על השפתיים.
-    </p>
-    <p class="story-text">
-      <strong>pull-back reveal</strong> עובד פלא ב-AI video. כשהמצלמה מתרחקת, המודל "מציג" לקהל את הסביבה כמו במאי שמראה מה הם פספסו. זה מהלך אופטימלי לרגעי "aha" של טרנספורמציה.
-    </p>
-    <p class="story-text">
-      והכי חשוב: לפעמים הכוח הוא <strong>בלא לגעת אחרי</strong>. 12 שניות, פלטפורמה אחת, ללא עריכה — דורש prompt מדויק יותר מ-"נתקן ב-CapCut". <em>זה לא הגבלה. זה סטנדרט מקצועי.</em>
-    </p>
-  </div>
-
-  <!-- Production credits -->
-  <div class="case-credits">
-    <div class="case-credits-heading">Production Credits</div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Generated</span>
-      <span class="case-credits-value">Seedance 2 <span class="case-credits-dim">(via fal.ai)</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Audio</span>
-      <span class="case-credits-value">Native Seedance <span class="case-credits-dim">— no external sound design</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Post-production</span>
-      <span class="case-credits-value case-credits-value--accent">None</span>
-    </div>
-  </div>
-
-  <!-- The Prompt -->
-  <div class="prompt-reveal">
-    <div class="prompt-intro" style="text-align:center; margin-bottom:32px;">
-      <div class="story-label" style="text-align:center;">05 · The Prompt</div>
-      <h3 class="story-heading" style="text-align:center;">
-        הפרומפט המלא.
-        <div class="story-heading-en">The full prompt.</div>
-      </h3>
-    </div>
-    <div class="prompt-container">
-      <div class="prompt-toolbar">
-        <div class="prompt-tag">Seedance 2 · Prompt-to-Video</div>
-        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
+      <div class="case-card-body">
+        <div class="case-card-eyebrow">
+          <span class="case-card-num-small">CASE / 003</span>
+          <span class="case-card-lesson">Lesson 03 · Transformation</span>
+        </div>
+        <h3 class="case-card-h3">The Crimson <em>Reveal</em></h3>
+        <p class="case-card-he-small">מחווה אחת. כל החדר משתנה.</p>
+        <div class="case-card-mini-meta">
+          <span>Seedance 2</span>
+          <span class="dot">·</span>
+          <span>12 sec</span>
+          <span class="dot">·</span>
+          <span>Snap cut</span>
+        </div>
       </div>
-      <div class="prompt-text">A cinematic Seedance video. Elegant woman, early 30s, sitting at a round vanity table in a soft-lit luxury atelier. Dozens of lipsticks arranged in a perfect circle around the table edge.
+    </a>
 
-<span class="hl-time">0:00–0:02</span> — Wide establishing shot, slow dolly forward. Warm golden light, shallow depth of field on the lipsticks.
-
-<span class="hl-time">0:02–0:04</span> — Cut to low-angle close-up of her hand hovering above the lipstick circle. She spins the rotating table surface. Lipsticks blur into a stream of color.
-
-<span class="hl-time">0:04–0:06</span> — Overhead bird's-eye shot looking straight down. The spinning lipsticks create concentric color rings, like a color wheel in motion.
-
-<span class="hl-time">0:06–0:07</span> — Snap cut to extreme close-up of her hand slamming down, stopping the spin. One lipstick between her fingers. Time seems to freeze.
-
-<span class="hl-time">0:07–0:09</span> — Tracking shot following the lipstick from her hand to her lips. Macro close-up as the deep crimson touches her lips. Slow motion.
-
-<span class="hl-time">0:09–0:12</span> — Dramatic pull-back reveal: as she presses her lips together, the entire room transforms — walls, dress, flowers, lighting — everything shifts to match the crimson shade. Final wide shot, she smiles directly at camera.</div>
-    </div>
+    <!-- 004 PINK TRAIL -->
+    <a href="ai-video-lab/pink-trail.html" class="case-card">
+      <div class="case-card-thumb">
+        <video
+          src="the-pink-trail.mp4"
+          muted
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        ></video>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-eyebrow">
+          <span class="case-card-num-small">CASE / 004</span>
+          <span class="case-card-lesson">Lesson 04 · Signature</span>
+        </div>
+        <h3 class="case-card-h3">The Pink <em>Trail</em></h3>
+        <p class="case-card-he-small">חמישה עולמות. סימן אחד שלא נמחק.</p>
+        <div class="case-card-mini-meta">
+          <span>Higgsfield</span>
+          <span class="dot">·</span>
+          <span>15 sec</span>
+          <span class="dot">·</span>
+          <span>5 worlds</span>
+        </div>
+      </div>
+    </a>
   </div>
 </section>
 
-<!-- CASE STUDY: THE PINK TRAIL -->
-<section class="case-section">
-  <div class="case-header">
-    <div class="case-meta">
-      <span class="case-meta-item">May 2026</span>
-      <span class="case-meta-item">15 seconds</span>
-      <span class="case-meta-item">Higgsfield</span>
-      <span class="case-meta-item">Signature</span>
-    </div>
-  </div>
-
-  <div class="case-title-block">
-    <div class="case-number">Case Study / 004</div>
-    <h2 class="case-title">The Pink <em>Trail</em></h2>
-    <div class="case-title-he">חמישה עולמות. סימן אחד שלא נמחק.</div>
-    <div class="case-lesson">Lesson 04 — Signature</div>
-  </div>
-
-  <!-- Video — portrait MP4 -->
-  <div class="video-container">
-    <div class="video-frame">
-      <video
-        class="case-video"
-        src="the-pink-trail.mp4"
-        controls
-        playsinline
-        preload="metadata"
-      ></video>
-    </div>
-    <div class="video-caption">
-      חמש סביבות, קפיצות מיד-אוויר, וסימן אחד שלא נשבר.
-      <div class="video-caption-en">Five environments, mid-air world jumps, and one signature that doesn't break.</div>
-    </div>
-  </div>
-
-  <!-- 01 · The Concept -->
-  <div class="story-block">
-    <div class="story-label">01 · The Concept</div>
-    <h3 class="story-heading">
-      חמישה עולמות. <em>סימן אחד</em>.
-      <div class="story-heading-en">Five worlds. One signature.</div>
-    </h3>
-    <p class="story-text">
-      רציתי לבדוק רעיון ש-3 ה-cases הקודמים לא נגעו בו: <strong>continuity על פני סביבות</strong>. סקייטרית עם שיער ורוד עוברת בין חמישה עולמות שונים לחלוטין — שביל ליד אגם בזריחה, כביש בשקיעה, רחוב מושלג, סקייטפארק נאון לילי, וסמטת גרפיטי בדמדומים — בקפיצה אחת רציפה. כל מעבר קורה כשהיא באוויר: הסביבה נמסה סביבה, והיא נוחתת בעולם הבא בלי קאט.
-    </p>
-    <p class="story-text">
-      הקו האור הוורוד שיוצא מהסקייטבורד הוא <strong>הדבר היחיד שעובר בין כל חמשת העולמות</strong>. הכובע, השיער, החולצה, האוזניות — כולם עוגנים ויזואליים. אבל הקו הוורוד הוא ה-<em>signature mark</em>. הסיגנייצ'ר.
-    </p>
-  </div>
-
-  <!-- 02 · The Challenge -->
-  <div class="story-block">
-    <div class="story-label">02 · The Challenge</div>
-    <h3 class="story-heading">
-      Continuity היא עקב אכילס של <em>AI</em>.
-      <div class="story-heading-en">Continuity is AI's Achilles heel.</div>
-    </h3>
-    <p class="story-text">
-      מודלי AI לוידאו מאומנים על clips בודדים. הם <strong>לא יודעים לזכור</strong> דמות בין סצנה לסצנה. כשהסביבה משתנה מ-golden hour לשלג לנאון, גוון השיער זז, רוויית הכתום של החולצה מתחלפת, הנעליים נהיות חומות במקום שחורות. ה-AI לא "מבין" שזו אותה דמות — הוא רואה את הקונטקסט החדש ומנסה להתאים אותה אליו.
-    </p>
-    <p class="story-text">
-      ויש את הקו הוורוד עצמו. כל פעם שהסביבה בהירה (שלג, שקיעה), המודל ניסה להבליע אותו. כל פעם שהסביבה כהה (נאון, סמטה), הוא ניסה להפוך אותו ל-laser beam דרמטי. ה-signature mark צריך להישאר <em>זהה בעוצמה ובצבע</em> בכל החמש — אחרת הוא לא signature.
-    </p>
-  </div>
-
-  <!-- 03 · The Breakthrough -->
-  <div class="story-block">
-    <div class="story-label">03 · The Breakthrough</div>
-    <h3 class="story-heading">
-      Hallucination Blocks — הכוח של רשימת <em>"אסור"</em>.
-      <div class="story-heading-en">Hallucination Blocks — the power of an explicit "do not" list.</div>
-    </h3>
-    <p class="story-text">
-      הפיצוח היה לא להוסיף עוד הוראות חיוביות — אלא ליצור <strong>סקציה ייעודית של "אסור"</strong>. רשימה של 11 כללים מפורשים: בלי kickflips, בלי 360 spins, בלי גלגלים שעפים מהבורד, בלי פיצוצים, בלי טקסט בגרפיטי, בלי דמויות נוספות בקאדר. הרשימה הזו עצרה הזיות הרבה יותר טוב מתיאור חיובי מפורט.
-    </p>
-    <p class="story-text">
-      ובמקביל, יצרתי <strong>שני סקצנים נפרדים</strong> בפרומפט למה שמחבר את העולמות: <em>Signature Visual</em> (פסקה ייעודית רק לקו הוורוד — איך הוא נראה, איפה הוא מופיע, מה הוא עושה) ו-<em>Mid-air Transition Rules</em> (כללים מפורשים: הדמות קופאת ב-apex, הסביבה נמסה <strong>סביבה ולא דרכה</strong>, הקו עובר את ה-dissolve שלם). הפרדת הקונספטים שיפרה את ה-consistency באופן דרמטי.
-    </p>
-  </div>
-
-  <!-- 04 · The Insight -->
-  <div class="story-block">
-    <div class="story-label">04 · The Insight</div>
-    <h3 class="story-heading">
-      מה שלא <em>משתנה</em> — זה מה שזוכרים.
-      <div class="story-heading-en">What doesn't change — that's what's remembered.</div>
-    </h3>
-    <p class="story-text">
-      זה ה-case שחיבר לי הכי ישר את AI Video Lab ל-BrandOS. בסוף, מותג זוכר זה לא פיצ'ר, מוצר, או slogan. זה ה-<strong>signature mark שעובר בכל סביבה</strong>. הקו הוורוד עובד כי הוא היחיד שלא משתנה. הסקייטרית יכלה להיות בכל החמש בלי הקו, והסרטון היה זוכר אותה. אבל הוא לא היה זוכר <em>אותה כמותג</em>.
-    </p>
-    <p class="story-text">
-      והלקח הטכני: <strong>mid-air transitions</strong> עוקפות את בעיית ה-jump cut של AI. במקום לבקש שני clips ולחבר אותם בעריכה, מבקשים clip אחד עם dissolve מובנה — והמודל מחזיק continuity של תנועה ופוזה בתוך התרחשות אחת רציפה. ה-CapCut כאן עשה רק color grading קל לחיבור הסביבות, לא חיבור clips.
-    </p>
-  </div>
-
-  <!-- Production credits -->
-  <div class="case-credits">
-    <div class="case-credits-heading">Production Credits</div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Generated</span>
-      <span class="case-credits-value">Higgsfield <span class="case-credits-dim">(image-to-video)</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Audio</span>
-      <span class="case-credits-value">Silent <span class="case-credits-dim">— signature mark carries the rhythm</span></span>
-    </div>
-    <div class="case-credits-row">
-      <span class="case-credits-label">Post-production</span>
-      <span class="case-credits-value">CapCut <span class="case-credits-dim">— color matching across environments</span></span>
-    </div>
-  </div>
-
-  <!-- The Prompt -->
-  <div class="prompt-reveal">
-    <div class="prompt-intro" style="text-align:center; margin-bottom:32px;">
-      <div class="story-label" style="text-align:center;">05 · The Prompt</div>
-      <h3 class="story-heading" style="text-align:center;">
-        הפרומפט המלא.
-        <div class="story-heading-en">The full prompt.</div>
-      </h3>
-    </div>
-    <div class="prompt-container">
-      <div class="prompt-toolbar">
-        <div class="prompt-tag">Higgsfield · Image-to-Video</div>
-        <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy Prompt</button>
-      </div>
-      <div class="prompt-text">SUBJECTS:
-
-Subject 1 (THE ONLY rider): Young woman, late 20s, shoulder-length vivid magenta-pink hair. Pink backwards baseball cap. Black over-ear studio headphones remaining ON throughout. Orange v-neck t-shirt with "BORN TO ROLL / FREE RIDER" print. Slim-fit blue denim jeans. Black low-top canvas sneakers. Beaded choker necklace. Closed-mouth, focused, confident. Skilled skater performing realistic street/park tricks: kickpush, manual, ollie, powerslide, drop-in, wall ride. NO kickflips, NO 360 spins, NO impossible physics.
-
-Subject 2 (THE ONLY board): Wooden longboard, light deck, black wheels. Emits a soft glowing magenta-pink light trail behind the wheels — a continuous signature trail matching her hair color, ~1m long, subtle and cinematic. Present in EVERY segment.
-
-<span class="hl-time">SIGNATURE VISUAL:</span> The pink light trail is her signature mark. It stretches behind her through every environment — the ONLY visual element that travels across all 5 worlds with her. It fades gently but never disappears.
-
-ENVIRONMENT:
-
-Five environments connected by MID-AIR WORLD TRANSITIONS. Each empty except for her. Transitions happen while airborne — the world dissolves and reforms before she lands. No hard cuts.
-
-1. <span class="hl-time">LAKESIDE PATH (0:00–0:03):</span> Paved path between still lake waters, distant mountains, golden-hour light.
-2. <span class="hl-time">HIGHWAY SUNSET (0:03–0:06):</span> Empty highway, pink-orange sky, warm lens flare, motion-blurred guardrails.
-3. <span class="hl-time">SNOWY DOWNTOWN (0:06–0:09):</span> Snow-covered street between modern buildings, falling snowflakes, cool blue-grey palette with warm streetlamp glow.
-4. <span class="hl-time">NEON SKATEPARK BOWL (0:09–0:12):</span> Polished concrete bowl at night, magenta and cyan neon strips reflecting on concrete, urban skyline silhouette.
-5. <span class="hl-time">GRAFFITI ALLEY (0:12–0:15):</span> Narrow alley at dusk, abstract colorful graffiti (NO readable text, NO logos), warm string lights, wet asphalt.
-
-BEHAVIOR:
-
-Constantly moving, constantly tricking. No idle moments. Each segment packs two tricks — one to warm up, one to exit via a jump. The exit jump is always the portal into the next world.
-
-TIMELINE:
-
-<span class="hl-time">0:00–0:03</span> — LAKESIDE — Manual → Ollie Portal: Hard kickpush, pink trail ignites. Pops into a manual on back wheels. Pops a clean ollie (~40cm). At apex she FREEZES mid-air; the lakeside dissolves around her — water turns to asphalt, mountains fade into sunset — and she lands in the highway.
-
-<span class="hl-time">0:03–0:06</span> — HIGHWAY — Powerslide → Half-Spin Portal: Lands on hot asphalt, pink trail unbroken. Carves hard, then a dramatic powerslide with curved skid mark and small realistic sparks. Pops a 180 half-spin jump. At apex the highway dissolves — asphalt turns to snow, sky cools — she lands in the snowy city.
-
-<span class="hl-time">0:06–0:09</span> — SNOW CITY — Snow Slide → Launch Portal: Lands with ice crystal spray. Pink trail glows against white snow — high contrast. Carves a long S-curve, then pops a nose-grab ollie at a curb edge. At apex the city dissolves — snow melts away, buildings shift into neon strips, sky deepens — she lands on the lip of the neon bowl.
-
-<span class="hl-time">0:09–0:12</span> — NEON BOWL — Drop-In → Air Out [HERO BEAT]: Clean tap on the bowl lip. Drop-in down the curved wall. Pumps the opposite wall, launches an air out (~60cm above lip). At apex she FREEZES for almost a full second — camera ORBITS 180° around her suspended body. The neon world dissolves during the orbit — neon fades, walls soften into brick and graffiti, lighting shifts to warm dusk string lights — and as the orbit completes, she falls toward the alley.
-
-<span class="hl-time">0:12–0:15</span> — GRAFFITI ALLEY — Wall Ride Finale: Lands softly on wet asphalt. Cruises forward, turns sharply to the wall and performs a wall ride for ~1m, body parallel to the ground. Drops back, carves one final S-turn toward camera. Comes at camera in confident hero stance, glances up with a subtle closed-mouth smile — the only camera-look in the video — pops one final small ollie that FREEZE-FRAMES at the apex. The pink trail behind her forms a glowing curve through all five worlds. End on the freeze.
-
-IMPORTANT NOTES:
-
-Character consistency (critical across all 5 environments): Hair stays vivid magenta-pink — never red, never purple, never color-shifted by lighting. Orange shirt identical across all segments. Black sneakers every segment — never changing color. Pink cap stays backwards throughout. Headphones stay ON her head — never falling off even during jumps. Same face, same body, same proportions across all 5 segments.
-
-Signature pink light trail (must appear in EVERY segment): Soft glowing magenta-pink trail emitting from behind the wheels, ~1m long, fading gently. Always present — daylight, sunset, snow, neon, dusk. High contrast against snow, blends with neon. This is HER brand mark — do not skip it in any shot.
-
-Mid-air world transition rules: Every scene exits via a jump where she becomes airborne. At the apex of each jump she freezes for 0.2–0.5 seconds. While frozen, the environment DISSOLVES around her — soft dissolve / particle dispersion, NOT a hard cut. She herself does NOT dissolve — body, clothes, board, and pink trail remain solid and continuous across the transition. Pink trail passes THROUGH the dissolve unbroken — it is the visual thread connecting all 5 worlds.
-
-Hallucination blocks (absolute): THE ONLY rider in frame at any moment. THE ONLY skateboard. No other people anywhere. No cars, no cyclists, no pedestrians. No duplicated limbs, no doubled wheels, no extra shadows. No wheels flying off the board. Board stays attached to feet through every trick. No fire, no explosions — powerslide sparks are small and realistic. No text in frame except the "BORN TO ROLL / FREE RIDER" shirt print. Graffiti is abstract colorful shapes only — NO readable text, NO brand logos, NO cartoon characters. Camera does not shake or glitch — transitions are SMOOTH dissolves. She does NOT fall, does NOT stumble.
-
-TONE: Cinematic, confident, skate-culture authentic, editorial-meets-street, with surreal magical realism from the world-jumps. Spider-Verse visual energy meets Thrasher magazine grit. Her pink trail and calm focus are the anchors; the worlds around her are the spectacle.
-
-CAMERA: Smooth cinematic movement throughout. Low angles dominate — she is always the hero of the frame. Tracking shots match board speed. The ONE special move is the 180° orbit around her at the neon bowl apex (0:11.3–0:12) — the signature shot.</div>
-    </div>
-  </div>
-</section>
-
-<!-- MORE CASES TEASER -->
+<!-- MORE TEASER -->
 <section class="more-teaser">
   <div class="more-teaser-inner">
     <div class="more-teaser-title">More case studies coming soon</div>
@@ -2453,26 +817,8 @@ CAMERA: Smooth cinematic movement throughout. Low angles dominate — she is alw
 </footer>
 
 <script>
-  function copyPrompt(btn) {
-    const container = btn.closest('.prompt-container');
-    const promptEl = container
-      ? container.querySelector('.prompt-text')
-      : document.getElementById('prompt-text');
-    if (!promptEl) return;
-    const text = promptEl.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      const original = btn.textContent;
-      btn.textContent = 'Copied ✓';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.classList.remove('copied');
-      }, 2400);
-    });
-  }
-
-  // Simple scroll reveal
-  const reveals = document.querySelectorAll('.story-block, .learning-card, .process-step, .case-title-block, .take-card');
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.featured-card, .case-card, .intro-grid');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -2481,28 +827,7 @@ CAMERA: Smooth cinematic movement throughout. Low angles dominate — she is alw
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
   reveals.forEach((el) => observer.observe(el));
-
-  // YouTube facade — click-to-load with nocookie domain
-  document.querySelectorAll('.video-frame[data-yt-id]').forEach((frame) => {
-    const playBtn = frame.querySelector('.yt-play-btn');
-    if (!playBtn) return;
-    playBtn.addEventListener('click', () => {
-      if (frame.querySelector('iframe')) return;
-      const id = frame.dataset.ytId;
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-      iframe.setAttribute('title', 'YouTube video player');
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('frameborder', '0');
-      iframe.classList.add('yt-iframe');
-      const thumb = frame.querySelector('.yt-thumb');
-      if (thumb) thumb.style.display = 'none';
-      frame.appendChild(iframe);
-    });
-  });
 </script>
 
 </body>
