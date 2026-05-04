@@ -249,10 +249,11 @@
   }
   .featured-thumb {
     position: relative;
-    background: linear-gradient(135deg, #2a2520 0%, #4a3d32 50%, #6b5943 100%);
+    background: var(--ink);
     aspect-ratio: 4 / 5;
     overflow: hidden;
   }
+  .featured-thumb img,
   .featured-thumb video {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
@@ -401,7 +402,7 @@
   .case-card-thumb {
     position: relative;
     aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, #2a2520 0%, #4a3d32 50%, #6b5943 100%);
+    background: var(--ink);
     overflow: hidden;
   }
   .case-card-thumb img,
@@ -629,7 +630,7 @@
     </div>
     <div class="index-stat">
       <span class="index-stat-num">8</span>
-      <span class="index-stat-label">Tools Orchestrated</span>
+      <span class="index-stat-label">Tools in Rotation</span>
     </div>
   </div>
 </div>
@@ -668,6 +669,7 @@
         <span class="featured-thumb-badge">● Featured</span>
         <video
           src="videos/the-click-final.mp4"
+          poster="images/case-thumbnails/the-click.jpg"
           muted
           playsinline
           preload="metadata"
@@ -699,8 +701,8 @@
     <a href="ai-video-lab/strawberry-symphony.html" class="case-card">
       <div class="case-card-thumb">
         <img
-          src="https://i.ytimg.com/vi/b6OY9a3w9Ic/maxresdefault.jpg"
-          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/b6OY9a3w9Ic/hqdefault.jpg';"
+          src="images/case-thumbnails/strawberry-symphony.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/b6OY9a3w9Ic/maxresdefault.jpg';"
           alt="Strawberry Symphony — Pixar pastry chef thumbnail"
           loading="lazy"
         >
@@ -726,8 +728,8 @@
     <a href="ai-video-lab/crimson-reveal.html" class="case-card">
       <div class="case-card-thumb">
         <img
-          src="https://i.ytimg.com/vi/RkaPW9wLF2I/maxresdefault.jpg"
-          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/RkaPW9wLF2I/hqdefault.jpg';"
+          src="images/case-thumbnails/the-crimson-reveal.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/RkaPW9wLF2I/maxresdefault.jpg';"
           alt="The Crimson Reveal — Lipstick transformation thumbnail"
           loading="lazy"
         >
@@ -753,7 +755,8 @@
     <a href="ai-video-lab/pink-trail.html" class="case-card">
       <div class="case-card-thumb">
         <video
-          src="the-pink-trail.mp4"
+          src="videos/the-pink-trail.mp4"
+          poster="images/case-thumbnails/the-pink-trail.jpg"
           muted
           playsinline
           preload="metadata"
