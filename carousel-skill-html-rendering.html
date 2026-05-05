@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta -->
+  <title>בניית Claude Skill לקרוסלות בעברית: למה עברתי מ-AI image ל-HTML/CSS | חגית אנטבי</title>
+  <meta name="description" content="הסקיל הראשון שלי לקרוסלות עבד עם API של AI image וייצר עברית עם שגיאות. הסקיל החדש מפריד תפקידים: AI לרקע, HTML/CSS לטיפוגרפיה. רנדור 100% מדויק. 2026.">
+  <meta name="author" content="חגית אנטבי">
+  <link rel="canonical" href="https://hagitantebi.co.il/carousel-skill-html-rendering.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="he_IL">
+
+  <meta property="og:title" content="הפסקתי לבקש מ-AI לכתוב עברית — וככה פתרתי את זה">
+  <meta property="og:description" content="הסקיל החדש שלי לקרוסלות מפריד תפקידים: AI מייצר רקע, HTML/CSS מרכיב טיפוגרפיה. רנדור עברית 100% מדויק עם Brand DNA פר-לקוח.">
+  <meta property="og:image" content="https://hagitantebi.co.il/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png">
+  <meta property="og:url" content="https://hagitantebi.co.il/carousel-skill-html-rendering.html">
+  <meta property="og:site_name" content="חגית אנטבי — Brand Worlds Studio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="הפסקתי לבקש מ-AI לכתוב עברית — וככה פתרתי את זה">
+  <meta name="twitter:description" content="Claude Skill לקרוסלות עם רנדור HTML/CSS. case study אמיתי מ-Brand Worlds Studio.">
+  <meta name="twitter:image" content="https://hagitantebi.co.il/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "בניית Claude Skill לקרוסלות בעברית: למה עברתי מ-AI image ל-HTML/CSS",
+    "description": "הסקיל הראשון שלי לקרוסלות עבד עם API של AI image וייצר עברית עם שגיאות. הסקיל החדש מפריד תפקידים: AI לרקע, HTML/CSS לטיפוגרפיה.",
+    "author": {
+      "@type": "Person",
+      "name": "חגית אנטבי",
+      "url": "https://hagitantebi.co.il",
+      "jobTitle": "Brand Worlds Architect, founder of BrandOS"
+    },
+    "datePublished": "2026-05-05",
+    "dateModified": "2026-05-05",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brand Worlds Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hagitantebi.co.il/logo.png"
+      }
+    },
+    "image": "https://hagitantebi.co.il/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hagitantebi.co.il/carousel-skill-html-rendering.html"
+    },
+    "inLanguage": "he-IL"
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "למה לא להשתמש ב-AI image לקרוסלות בעברית?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "מודלים של AI יודעים לייצר רקעים יפים ואובייקטים פיסוליים, אבל הם עדיין מייצרים טקסט עברית עם שגיאות אותיות, ניקוד שגוי, וכיוון מעורבב. בקרוסלה כל שגיאה כזו פוסלת את כל השקף."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "איך הסקיל מבטיח 100% דיוק טיפוגרפי?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "הטקסט נכתב ב-HTML עם פונטים אמיתיים (Cormorant Garamond, Heebo), והרינדור נעשה דרך Playwright שמצלם את ה-HTML ל-PNG בדיוק 1080×1350. אין מודל AI שנוגע בטקסט — אז אין מקום לשגיאה."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "האם אפשר לשלב תמונות אמיתיות בקרוסלה?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן. כל טיפוס שקף תומך באופן אופציונלי בתמונה אמיתית במקום אובייקט CSS פיסולי — צילום לקוח, מוצר, או כל ויזואל אחר. הטיפוגרפיה ממשיכה להיכתב ב-HTML על גבי התמונה."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "איך הסקיל שומר על שפת המותג של כל לקוח?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כל פרויקט מחזיק קובץ brand.json עם 6 צבעי טוקן ו-3 פונטים. הסקיל טוען את הקובץ הזה ל-CSS variables בכל קרוסלה — כך שלקוח שיש לו Brand DNA מקבל קרוסלה בצבעים ובפונטים שלו, לא של הסטודיו."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "מה ההבדל בין הסקיל הזה לסקילים אחרים שבניתי?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ששת הסקילים הקודמים הם מבוססי-ידע — הוראות במילים שקלוד פועל לפיהן בשיחה. הסקיל הזה מבוסס-קוד — הוא כולל סקריפטים שקלוד מריץ בפועל (Playwright, Node) ומפיק קובץ PNG מוכן לפרסום."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== Brand Worlds Studio — Design Tokens (matching insights.html) ===== */
+    :root {
+      --color-cream: #FAF8F3;
+      --color-warm-beige: #F5F1E8;
+      --color-chocolate: #8B7355;
+      --color-copper: #C4765A;
+      --color-taupe: #B8A89A;
+      --color-light-taupe: #D4C9BC;
+      --color-text-deep: #4F372C;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body-en: 'Plus Jakarta Sans', sans-serif;
+      --font-body-he: 'Heebo', sans-serif;
+      --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-width: 760px;
+      --max-width-wide: 1100px;
+    }
+
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body-he);
+      background: var(--color-cream);
+      color: var(--color-chocolate);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      direction: rtl;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-copper); text-decoration: none; transition: color 0.3s var(--transition-smooth); }
+    a:hover { color: var(--color-chocolate); }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+    }
+
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-chocolate);
+      text-decoration: none;
+    }
+
+    .nav__back {
+      font-family: var(--font-body-en);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-copper);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: gap 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav__back:hover { gap: 10px; }
+
+    /* ===== Article Header ===== */
+    .article-header {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px clamp(24px, 5vw, 48px) 48px;
+      text-align: right;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-body-en);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a { color: var(--color-copper); }
+    .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+
+    h1.article-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      color: var(--color-text-deep);
+      margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+
+    h1.article-title em {
+      font-style: italic;
+      color: var(--color-copper);
+      font-weight: 400;
+    }
+
+    .article-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--color-taupe);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body-en);
+      font-size: 0.78rem;
+      color: var(--color-light-taupe);
+      flex-wrap: wrap;
+      letter-spacing: 0.05em;
+      padding-top: 20px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .article-meta .author { color: var(--color-copper); font-weight: 500; }
+    .article-meta .dot { opacity: 0.5; }
+
+    /* ===== Hero Image ===== */
+    .hero-img {
+      max-width: var(--max-width-wide);
+      margin: 0 auto 64px;
+      padding: 0 clamp(24px, 5vw, 48px);
+    }
+
+    .hero-img img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ===== Article Body ===== */
+    .article-body {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 48px) 96px;
+    }
+
+    .article-body p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      color: var(--color-chocolate);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      line-height: 1.25;
+      color: var(--color-text-deep);
+      margin: 64px 0 24px;
+      letter-spacing: -0.005em;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.3rem, 2.4vw, 1.55rem);
+      line-height: 1.35;
+      color: var(--color-text-deep);
+      margin: 40px 0 16px;
+    }
+
+    .article-body h4 {
+      font-family: var(--font-body-en);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin: 32px 0 12px;
+    }
+
+    .article-body strong {
+      font-weight: 600;
+      color: var(--color-text-deep);
+    }
+
+    .article-body em {
+      font-style: italic;
+      color: var(--color-taupe);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 24px 24px 0;
+      padding-right: 24px;
+    }
+
+    .article-body li {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: 8px;
+      color: var(--color-chocolate);
+    }
+
+    .article-body a {
+      color: var(--color-copper);
+      border-bottom: 1px solid rgba(196, 118, 90, 0.3);
+      transition: all 0.3s var(--transition-smooth);
+    }
+
+    .article-body a:hover {
+      color: var(--color-chocolate);
+      border-bottom-color: var(--color-chocolate);
+    }
+
+    /* ===== TL;DR Block ===== */
+    .tldr {
+      background: var(--color-warm-beige);
+      border-right: 3px solid var(--color-copper);
+      padding: 24px 32px;
+      margin: 32px 0 48px;
+    }
+
+    .tldr-label {
+      font-family: var(--font-body-en);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--color-copper);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tldr p {
+      font-size: 1rem !important;
+      line-height: 1.7 !important;
+      color: var(--color-text-deep);
+      margin: 0 !important;
+    }
+
+    /* ===== Inline Images ===== */
+    .inline-img { margin: 48px 0; }
+    .inline-img img { width: 100%; }
+    .inline-img .caption {
+      font-family: var(--font-body-he);
+      font-size: 0.85rem;
+      color: var(--color-taupe);
+      font-style: italic;
+      margin-top: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ===== Before/After Pair ===== */
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 48px 0 12px;
+    }
+
+    .pair figure { margin: 0; }
+
+    .pair figcaption {
+      font-family: var(--font-body-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .pair-note {
+      font-family: var(--font-body-he);
+      font-size: 0.85rem;
+      color: var(--color-taupe);
+      font-style: italic;
+      margin: 0 0 48px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .pair { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Pull Quote ===== */
+    .pull-quote {
+      font-family: var(--font-display) !important;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem) !important;
+      line-height: 1.45 !important;
+      color: var(--color-copper) !important;
+      border-right: 3px solid var(--color-copper);
+      padding-right: 24px;
+      margin: 48px 0 !important;
+    }
+
+    /* ===== Code Block ===== */
+    pre {
+      background: var(--color-text-deep);
+      color: var(--color-cream);
+      padding: 24px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin: 24px 0;
+      direction: ltr;
+      text-align: left;
+    }
+
+    code {
+      background: var(--color-warm-beige);
+      color: var(--color-copper);
+      padding: 0.1em 0.4em;
+      border-radius: 2px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.92em;
+    }
+
+    pre code { background: transparent; color: inherit; padding: 0; }
+
+    /* ===== Slide Type Grid ===== */
+    .types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 32px 0 48px;
+    }
+
+    .type-card {
+      background: var(--color-warm-beige);
+      padding: 20px;
+      border-right: 2px solid var(--color-copper);
+    }
+
+    .type-card h4 {
+      font-family: var(--font-body-en) !important;
+      font-size: 0.78rem !important;
+      margin: 0 0 8px !important;
+      color: var(--color-copper) !important;
+    }
+
+    .type-card p {
+      font-size: 0.92rem !important;
+      line-height: 1.55 !important;
+      color: var(--color-chocolate) !important;
+      margin: 0 !important;
+    }
+
+    /* ===== Gallery ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin: 32px 0 48px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .gallery-item h4 {
+      font-family: var(--font-display) !important;
+      font-weight: 500 !important;
+      font-size: 1.05rem !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      color: var(--color-text-deep) !important;
+      margin: 12px 0 4px !important;
+    }
+
+    .gallery-item p {
+      font-size: 0.88rem !important;
+      line-height: 1.6 !important;
+      color: var(--color-taupe) !important;
+      margin: 0 !important;
+    }
+
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+
+    /* ===== FAQ ===== */
+    .faq { margin: 32px 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+      padding: 24px 0;
+    }
+    .faq-item h3 {
+      font-size: 1.2rem !important;
+      margin: 0 0 8px !important;
+      color: var(--color-text-deep) !important;
+    }
+    .faq-item p {
+      font-size: 1rem !important;
+      color: var(--color-taupe);
+      margin: 0 !important;
+    }
+
+    /* ===== CTA Block ===== */
+    .cta {
+      background: var(--color-warm-beige);
+      padding: 48px 32px;
+      margin: 64px 0;
+      text-align: center;
+    }
+    .cta h2 {
+      margin: 0 0 16px !important;
+      font-size: clamp(1.6rem, 3vw, 2rem) !important;
+    }
+    .cta p {
+      color: var(--color-taupe);
+      margin-bottom: 24px !important;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--color-copper);
+      color: var(--color-cream) !important;
+      padding: 14px 32px;
+      font-family: var(--font-body-en);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-bottom: none !important;
+      transition: background 0.3s var(--transition-smooth);
+    }
+    .cta-button:hover {
+      background: var(--color-chocolate);
+      color: var(--color-cream) !important;
+      border-bottom: none !important;
+    }
+
+    /* ===== Read More ===== */
+    .read-more {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 64px clamp(24px, 5vw, 48px);
+      border-top: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .read-more h3 {
+      font-family: var(--font-body-en) !important;
+      font-size: 0.7rem !important;
+      font-weight: 500 !important;
+      color: var(--color-copper) !important;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 24px !important;
+    }
+    .read-more-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .read-more-link {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--color-text-deep);
+      padding: 12px 0;
+      border-bottom: none !important;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      transition: color 0.3s var(--transition-smooth);
+    }
+    .read-more-link:hover { color: var(--color-copper); }
+    .read-more-link::before {
+      content: "✦";
+      color: var(--color-copper);
+      font-size: 0.85em;
+      flex-shrink: 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-chocolate);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer p {
+      font-family: var(--font-body-he);
+      font-size: 0.85rem;
+      color: var(--color-taupe);
+      margin: 0;
+    }
+    .footer a {
+      color: var(--color-copper);
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .footer a:hover { color: var(--color-cream); }
+
+    /* ===== Section Divider ===== */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--color-copper);
+      opacity: 0.4;
+      margin: 48px auto;
+      border: none;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .article-header { padding-top: 110px; }
+      .article-body p, .article-body li { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hagit Antebi</a>
+      <a href="insights.html" class="nav__back">← Back to Insights</a>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="https://hagitantebi.co.il/insights.html">Insights</a>
+      <span class="sep">·</span>
+      <span>AI ופרודקטיביות</span>
+    </div>
+
+    <h1 class="article-title">בניית <em>Claude Skill</em> לקרוסלות בעברית: למה עברתי מ-AI image ל-HTML/CSS</h1>
+
+    <p class="article-tagline">קרוסלה היא לא תמונה עם טקסט מודבק. היא 7 דפי נחיתה במידות 1080×1350.</p>
+
+    <div class="article-meta">
+      <span class="author">✦ חגית אנטבי</span>
+      <span class="dot">·</span>
+      <span>מאי 2026</span>
+      <span class="dot">·</span>
+      <span>9 דקות קריאה</span>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  <div class="hero-img">
+    <img src="/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png" alt="קומפוזיציית 7 קלפים אנכיים בגווני קרם ונחושת — מטאפורה לקרוסלה כסדרת דפי נחיתה במידות 1080×1350" loading="eager">
+  </div>
+
+  <!-- Article Body -->
+  <article class="article-body">
+
+    <div class="tldr">
+      <div class="tldr-label">תקציר ב-3 שורות</div>
+      <p>הסקיל הראשון שלי לקרוסלות עבד עם API של AI image — Gemini לרקעים, ChatGPT לקופי. הוא הפיק רקעים יפים וטיפוגרפיה עברית עם שגיאות שאי אפשר היה לפרסם. הסקיל החדש מפריד תפקידים: AI מייצר רקע בלי טקסט, HTML/CSS מרכיב את הטיפוגרפיה למעלה, Playwright מצלם PNG בדיוק 1080×1350. רנדור עברית 100% מדויק, Brand DNA פר-לקוח, אפשרות לשלב תמונות אמיתיות.</p>
+    </div>
+
+    <h2>הסקיל הראשון: API של AI image</h2>
+
+    <p>במאמר הקודם <a href="https://hagitantebi.co.il/claude-skills-hebrew-guide.html">על Claude Skills בעברית</a> סיפרתי שאני בונה סקיל קרוסלות חדש — ושיש בו בעיה אחת לא פתורה: רינדור עברית. הגרסה שעבדתי עליה אז הייתה אלגנטית בתיאוריה: קלוד מנתח את הבריף ובונה את מבנה הקרוסלה, ה-API של Gemini מייצר את הוויזואל לכל שקף, ה-API של ChatGPT מטייב את הקופי, וסקריפט מרכיב את הכל לקובץ סופי.</p>
+
+    <p>ברמת התזמור — זה עבד. שלושה מודלים שונים שעובדים יחד במשימה אחת. ברמת התוצר — זה לא עבד.</p>
+
+    <div class="pair">
+      <figure>
+        <img src="/carousel-skill-html-rendering/old-approach-bg.png" alt="רקע מ-AI image — אובייקט פיסולי, רקע נקי, בלי טקסט">
+        <figcaption>הרקע מ-AI</figcaption>
+      </figure>
+      <figure>
+        <img src="/carousel-skill-html-rendering/old-approach-final.png" alt="תוצר סופי מהסקיל הישן — רקע יפה אבל טקסט עברית עם שגיאות אותיות">
+        <figcaption>התוצר הסופי</figcaption>
+      </figure>
+    </div>
+    <p class="pair-note">דוגמה מהסקיל הישן. הרקע נקי ויפה — אבל הטקסט שהמודל מצייר על גביו הוא לא הטקסט שביקשתי.</p>
+
+    <p>בכל קרוסלה שייצרתי, לפחות שקף אחד היה פסול. אות חסרה במילה. ניקוד שגוי שהפך משמעות. אותיות סופיות במקום הלא-נכון. המודלים של AI הולכים ומשתפרים בעברית, אבל הם עדיין לא ברמה שאפשר לפרסם בלי לעבור על כל אות.</p>
+
+    <p><strong>וקרוסלה זה לא בלוג פוסט.</strong> בבלוג, אם יש שגיאה — תיקנת ופרסמת מחדש. בקרוסלה לאינסטגרם, השגיאה היא חלק מהתמונה. אי אפשר לתקן בלי לייצר את כל השקף מחדש.</p>
+
+    <h2>התובנה שהפכה את הכל</h2>
+
+    <p>הניסיון לרנדר עברית באמצעות AI image היה <em>פתרון של דרך הפעולה הלא-נכונה.</em> ניסיתי לעקוף את הבעיה (להגיד למודל לרשום עברית טוב יותר) במקום להגדיר אותה מחדש (למה אני בכלל מבקשת ממודל תמונות לכתוב טקסט).</p>
+
+    <p class="pull-quote">קרוסלה היא לא תמונה עם טקסט מודבק. קרוסלה היא 7 דפי נחיתה במידות 1080×1350.</p>
+
+    <p>ברגע שראיתי את זה ככה — הכל התהפך. דפי נחיתה לא מציירים ב-AI. בונים אותם ב-HTML/CSS, עם פונטים אמיתיים, גריד אמיתי, היררכיית כותרות אמיתית. למה קרוסלה תהיה אחרת?</p>
+
+    <p>הסקיל החדש בנוי על העיקרון הזה: <strong>טקסט עברית — תמיד ב-HTML, אף פעם לא דרך AI image.</strong> מודלים של AI עדיין עושים את מה שהם הכי טובים בו — רקעים, אובייקטים פיסוליים, אווירה. אבל בלי אות אחת של טקסט.</p>
+
+    <h2>הארכיטקטורה החדשה</h2>
+
+    <p>הסקיל לא נשאר ב-Claude.ai. הוא עבר ל-<strong>Claude Code</strong>, סביבת הפיתוח של אנתרופיק — בדיוק בגלל שעכשיו צריך להריץ קוד ולא רק לשוחח. כל קרוסלה היא תיקייה עם 4 רכיבים:</p>
+
+    <pre><code>projects/
+  └── strawberry-symphony/
+        ├── brand.json       ← צבעים ופונטים של המותג
+        ├── content.json     ← הטקסטים והמבנה של 7 השקפים
+        ├── images/          ← תמונות אמיתיות (אופציונלי)
+        └── output.html      ← הקובץ שמרכיב את הכל</code></pre>
+
+    <p>התהליך של קלוד עם הסקיל מורכב מ-4 שלבים:</p>
+
+    <ol>
+      <li><strong>בריף קצר.</strong> שם הפרויקט, מטרת הקרוסלה (educational / sales / case study / personal brand), כמה שקפים, האם זה לקוח עם Brand DNA קיים או עבודה ב-signature של Brand Worlds Studio.</li>
+      <li><strong>בניית <code>brand.json</code> ו-<code>content.json</code>.</strong> קלוד כותב את שני הקבצים על בסיס הבריף. ה-tokens מ-<code>brand.json</code> נטענים אוטומטית ל-CSS variables ב-<code>:root</code>; הטקסטים מ-<code>content.json</code> נכתבים ישירות ב-HTML.</li>
+      <li><strong>בניית <code>output.html</code>.</strong> 7 שקפים, כל אחד הוא <code>&lt;section&gt;</code> במידות 1080×1350, עם הטיפוגרפיה, הצבעים, והאלמנטים הפיסוליים מ-CSS טהור.</li>
+      <li><strong>רינדור ל-PNG.</strong> סקריפט Node שמשתמש ב-Playwright פותח את ה-HTML, מצלם כל <code>&lt;section&gt;</code>, ושומר אותו כ-<code>slide-1.png</code> עד <code>slide-7.png</code> בתיקיית <code>exports/</code>. דיוק פיקסל מול דפדפן Chromium אמיתי.</li>
+    </ol>
+
+    <p>זה לא מורכב מבחוץ ולא מורכב מבפנים. השקף הוא HTML רגיל. הצילום הוא Playwright רגיל. הקסם היחיד הוא בכלל שאין AI שנוגע בטקסט.</p>
+
+    <h2>שמירה על שפת המותג: brand.json</h2>
+
+    <p>כל פרויקט מחזיק קובץ <code>brand.json</code> משלו. הוא קצר — בערך 30 שורות — ומגדיר את כל מה שמייחד ויזואלית את המותג מקרוסלה לקרוסלה:</p>
+
+    <pre><code>{
+  "brand_name": "Strawberry Symphony",
+  "owner": "Hagit Antebi",
+  "tokens": {
+    "cream": "#FFF4F0",
+    "cream_deep": "#F8E8E0",
+    "ink": "#8B2E3C",
+    "ink_soft": "#A85060",
+    "gold": "#D4A574",
+    "gold_soft": "#E8C9A8"
+  },
+  "fonts": {
+    "hebrew_serif": "Frank Ruhl Libre",
+    "english_italic": "Cormorant Garamond Italic",
+    "hebrew_sans": "Heebo"
+  }
+}</code></pre>
+
+    <p>הסקיל טוען את הקובץ הזה ל-CSS variables בכל קרוסלה. <strong>לקוח עם Brand DNA מקבל קרוסלה בצבעים ובפונטים שלו, לא של הסטודיו שלי.</strong> זאת ההבדלה העיקרית בין הסקיל הזה לכלי קרוסלה גנרי באינטרנט: כאן מותג שיש לו ספירה כרומטית מלאה ושלוש משפחות פונטים מקבל קרוסלה שמרגישה שלו, לא כזו שמרגישה שלי.</p>
+
+    <h2>7 טיפוסי שקפים</h2>
+
+    <p>הטמפלייט תומך ב-7 טיפוסי שקפים. כל אחד נועד לתפקיד נרטיבי שונה. אפשר לערבב אותם, להחליף סדר, או להשתמש באותו טיפוס יותר מפעם אחת בקרוסלה.</p>
+
+    <div class="types">
+      <div class="type-card">
+        <h4>opening</h4>
+        <p>שקף פתיחה. ליבה זוהרת + כותרת בסריף + אקסנט אנגלית באיטלי.</p>
+      </div>
+      <div class="type-card">
+        <h4>statement</h4>
+        <p>שקף טיפוגרפי טהור. הטיפוגרפיה היא ה-hero. בלי תמונות, בלי פיסולים.</p>
+      </div>
+      <div class="type-card">
+        <h4>concept-with-visual</h4>
+        <p>פיסול CSS למעלה, טקסט למטה. רעיון מרכזי במתודולוגיה.</p>
+      </div>
+      <div class="type-card">
+        <h4>two-column</h4>
+        <p>טקסט מצד אחד, פיסול או תמונה מצד שני. לסיפור שצריך שני צדדים.</p>
+      </div>
+      <div class="type-card">
+        <h4>pillars</h4>
+        <p>3-4 עמודים פיסוליים בגריד. ל-DNA, ערכים, או מרכיבי המתודולוגיה.</p>
+      </div>
+      <div class="type-card">
+        <h4>orbit</h4>
+        <p>ליבה מוארת במרכז עם מסלול ונקודות עוגן. ויזואליזציה של מערכת.</p>
+      </div>
+      <div class="type-card">
+        <h4>closing</h4>
+        <p>תמונה גדולה למעלה (פורטרט / לקוח / מוצר) + חתימה + CTA למטה.</p>
+      </div>
+    </div>
+
+    <p>הטיפוסים האלו לא נולדו מתאוריה. הם נולדו מתשע קרוסלות שהפקתי ידנית לפני שכתבתי את הסקיל, וזיהיתי שכל קרוסלה מורכבת מקבוצה קטנה של תפקידים נרטיביים שחוזרים. הסקיל הוא בעצם הקוד שמעלה את הזיהוי הזה לכוח הפעלה.</p>
+
+    <h2>שילוב תמונות אמיתיות</h2>
+
+    <p>לא כל קרוסלה מסתפקת באובייקטים פיסוליים מ-CSS. לפעמים צריך תמונה אמיתית — צילום מוצר, פורטרט לקוח, screenshot של עבודה, mockup. הסקיל תומך בזה בכל טיפוס שקף שמאפשר ויזואל: התמונה נשמרת ב-<code>images/slide-N-description.jpg</code>, מצויינת ב-<code>content.json</code> תחת השדה <code>image</code>, וה-HTML מציג אותה במקום האלמנט הפיסולי.</p>
+
+    <div class="inline-img">
+      <img src="/carousel-skill-html-rendering/spectra-slide-4.png" alt="שקף מקרוסלת Spectra AI שמשלב 3 תמונות אמיתיות של עבודות — film, keynote, landing — בתוך גריד מעוצב">
+      <p class="caption">שקף מקרוסלת Spectra AI עם שילוב של 3 תמונות אמיתיות בגריד. הטיפוגרפיה ממשיכה להיכתב ב-HTML על גבי הגריד.</p>
+    </div>
+
+    <p>הכלל הוא פשוט: <strong>ויזואל = AI או צילום אמיתי. טקסט = HTML.</strong> שני הצירים מנותקים, ואפשר לערבב כל שילוב.</p>
+
+    <h2>גלריית קרוסלות מהשבועיים האחרונים</h2>
+
+    <p>אלו 4 הקרוסלות שהפקתי עם הסקיל החדש מאז שיצא מבטא — כל אחת בסיגנייצ'ר אחר, כל אחת מספרת סיפור אחר.</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="/carousel-skill-html-rendering/manifesto-slide-3.png" alt="שקף 3 מקרוסלת Brand Worlds Manifesto — concept-with-visual עם פיסול CSS וטיפוגרפיה בעברית" loading="lazy">
+        <h4>Brand Worlds Manifesto</h4>
+        <p>המניפסט של הסטודיו ב-7 שקפים. סיגנייצ'ר Brand Worlds — קרם, נחושת, פיסולי CSS.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/carousel-skill-html-rendering/spectra-slide-1.png" alt="שקף פתיחה מקרוסלת Spectra AI — opening עם ליבה זוהרת וטיפוגרפיה בכחול עמוק" loading="lazy">
+        <h4>Spectra AI</h4>
+        <p>קרוסלה ל-case study של Spectra. פלטה כחולה-זהובה, שילוב של 3 תמונות עבודה אמיתיות.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/carousel-skill-html-rendering/strawberry-slide-1.png" alt="שקף פתיחה מקרוסלת Strawberry Symphony — opening עם פלטת ורוד-בורגונדי" loading="lazy">
+        <h4>Strawberry Symphony</h4>
+        <p>קרוסלה לפרויקט קונספט שוקולד. Brand DNA נפרד — ורוד-בורגונדי, פונטים אחרים, תחושה אחרת.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/carousel-skill-html-rendering/aivideolab-slide-1.png" alt="שקף פתיחה מקרוסלת AI Video Lab — opening עם פלטת אינדיגו וזהב" loading="lazy">
+        <h4>AI Video Lab</h4>
+        <p>קרוסלה ל-hub של מעבדת הווידאו. פלטה כהה, אווירה קולנועית, שילוב כותרים באנגלית.</p>
+      </div>
+    </div>
+
+    <p>אותו סקיל. ארבע פלטות. ארבעה מותגים. אותה איכות רינדור עברית.</p>
+
+    <h2>תהליך הפרסום</h2>
+
+    <p>אחרי שהסקיל מסיים, יש לי תיקייה עם 7 קבצי PNG מוכנים. משם הפרסום פשוט:</p>
+
+    <ol>
+      <li><strong>בדיקה ב-Finder/Explorer.</strong> אני רואה את כל 7 השקפים בבת אחת ב-grid view. אם משהו לא יושב — חוזרת לסקיל ומבקשת תיקון נקודתי.</li>
+      <li><strong>העברה לטלפון.</strong> AirDrop / Telegram / Drive — מה שמתאים.</li>
+      <li><strong>העלאה לאינסטגרם.</strong> Carousel post רגיל. בוחרת את 7 השקפים, מעלה, מוסיפה caption.</li>
+    </ol>
+
+    <p>זה הכל. אין שלב עיצוב נפרד. אין export מ-Canva. אין תיקון שגיאות אחרי AI. ה-PNG שיוצא מהסקריפט הוא ה-PNG שעולה לאינסטגרם.</p>
+
+    <h2>הסיפור האמיתי: הפרדת תפקידים</h2>
+
+    <p>אם הייתי צריכה לסכם את כל המעבר במשפט אחד, זה לא היה "עברתי מ-API ל-HTML". זה היה <strong>"הפסקתי לתת לכלי אחד לעשות שני דברים שונים".</strong></p>
+
+    <p>מודלי AI image מצויינים בייצור רקעים, מרקמים, אווירות, אובייקטים פיסוליים. הם פחות טובים בכתיבת טקסט עברית — לא בגלל שהם רעים, אלא בגלל שזו פעולה אחרת לחלוטין. רנדור טקסט בפונט מסויים בגודל מסויים על מיקום מסויים בלוח שלם — זה תפקיד של דפדפן, לא של מודל AI.</p>
+
+    <p class="pull-quote">הסקיל הטוב הוא לא כזה שמשתמש ב-AI לכל דבר. הוא כזה שיודע לאיזה תפקיד AI מתאים, ולאיזה תפקיד הוא לא.</p>
+
+    <p>זה גם הסיפור של ששת הסקילים האחרים שלי. <strong>Marketing Manager</strong> כותב פוסטים — לא מעצב. <strong>Brand Strategist</strong> מנתח מתחרים — לא מייצר תמונות. <strong>Pitch Builder</strong> מייצר HTML — לא PDF. כל אחד יודע מה הוא ומה הוא לא.</p>
+
+    <p>הסקיל החדש הוא הראשון שלי שעושה את ההפרדה הזאת בתוך משימה אחת — וזה מה שהופך אותו למקרה מבחן. הוא כולל גם AI (לרקע) וגם קוד טהור (לטקסט), ויודע מתי להשתמש בכל אחד.</p>
+
+    <hr class="divider">
+
+    <h2>שאלות נפוצות</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>למה לא להשתמש ב-AI image לקרוסלות בעברית?</h3>
+        <p>מודלים של AI יודעים לייצר רקעים יפים ואובייקטים פיסוליים, אבל הם עדיין מייצרים טקסט עברית עם שגיאות אותיות, ניקוד שגוי, וכיוון מעורבב. בקרוסלה כל שגיאה כזו פוסלת את כל השקף.</p>
+      </div>
+      <div class="faq-item">
+        <h3>איך הסקיל מבטיח 100% דיוק טיפוגרפי?</h3>
+        <p>הטקסט נכתב ב-HTML עם פונטים אמיתיים (Cormorant Garamond, Heebo, Frank Ruhl Libre), והרינדור נעשה דרך Playwright שמצלם את ה-HTML ל-PNG בדיוק 1080×1350. אין מודל AI שנוגע בטקסט — אז אין מקום לשגיאה.</p>
+      </div>
+      <div class="faq-item">
+        <h3>האם אפשר לשלב תמונות אמיתיות בקרוסלה?</h3>
+        <p>כן. כל טיפוס שקף תומך באופן אופציונלי בתמונה אמיתית במקום אובייקט CSS פיסולי — צילום לקוח, מוצר, או כל ויזואל אחר. הטיפוגרפיה ממשיכה להיכתב ב-HTML על גבי התמונה.</p>
+      </div>
+      <div class="faq-item">
+        <h3>איך הסקיל שומר על שפת המותג של כל לקוח?</h3>
+        <p>כל פרויקט מחזיק קובץ <code>brand.json</code> עם 6 צבעי טוקן ו-3 פונטים. הסקיל טוען את הקובץ הזה ל-CSS variables בכל קרוסלה — כך שלקוח שיש לו Brand DNA מקבל קרוסלה בצבעים ובפונטים שלו, לא של הסטודיו.</p>
+      </div>
+      <div class="faq-item">
+        <h3>מה ההבדל בין הסקיל הזה לסקילים האחרים שבניתי?</h3>
+        <p>ששת הסקילים הקודמים הם מבוססי-ידע — הוראות במילים שקלוד פועל לפיהן בשיחה. הסקיל הזה מבוסס-קוד — הוא כולל סקריפטים שקלוד מריץ בפועל (Playwright, Node) ומפיק קובץ PNG מוכן לפרסום.</p>
+      </div>
+      <div class="faq-item">
+        <h3>איך מתחילים לבנות סקיל מבוסס-קוד משלכם?</h3>
+        <p>צריך מנוי Claude Pro ומעלה ו-Claude Code (סביבת הפיתוח של אנתרופיק). אחרי זה — אותו פורמט כמו סקיל רגיל (תיקייה עם <code>SKILL.md</code>), רק שמותר לכלול בה גם סקריפטים. אנתרופיק תרמה את הפורמט הזה כסטנדרט פתוח.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <h2>רוצים קרוסלות בעברית עם רנדור מדויק לעסק שלכם?</h2>
+      <p>ב-Brand Worlds Studio אני בונה ללקוחות BrandOS אישי — מערכת הפעלה מותגית שמשלבת Brand DNA, Claude Skills מותאמים, ותהליכי עבודה מתועדים. הסקיל הזה הוא רק רכיב אחד מתוך מערכת שלמה.</p>
+      <a href="https://api.whatsapp.com/send/?phone=972528351676" class="cta-button" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a>
+    </div>
+
+  </article>
+
+  <!-- Read More -->
+  <section class="read-more">
+    <h3>עוד Insights</h3>
+    <div class="read-more-grid">
+      <a href="https://hagitantebi.co.il/claude-skills-hebrew-guide.html" class="read-more-link">Claude Skills בעברית — איך בניתי צוות של 6 מומחים בתוך קלוד</a>
+      <a href="https://hagitantebi.co.il/chatgpt-images-2-hebrew-campaigns.html" class="read-more-link">ChatGPT Images 2.0 כותב סוף סוף עברית מושלמת — 5 קמפיינים פרסומיים</a>
+      <a href="https://hagitantebi.co.il/brand-as-os.html" class="read-more-link">המותג שלך כ-OS: האדריכלות הפנימית שמאפשרת יצירה אינסופית</a>
+      <a href="https://hagitantebi.co.il/ai-tools-comparison.html" class="read-more-link">כלי AI לשיווק — למה ChatGPT לבד לא מספיק</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 <a href="index.html">חגית אנטבי — Brand Worlds Studio</a>. All rights reserved.</p>
+  </footer>
+
+  <script src="/hagit-agent-widget.js" defer></script>
+</body>
+</html>
