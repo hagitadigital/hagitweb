@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hagit Antebi | Brand Worlds Architect — מפתחת BrandOS, מערכת הפעלה למותגים</title>
@@ -10,7 +9,7 @@
     <meta name="author" content="Hagit Antebi">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hagitantebi.co.il/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hagitantebi.co.il/">
@@ -24,7 +23,7 @@
         window.location.replace('/');
       }
     </script>
-     <!-- Google Analytics -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -38,10 +37,9 @@
     <meta name="twitter:title" content="Hagit Antebi | Brand Worlds Architect">
     <meta name="twitter:description" content="בונה עולמות מותג מלאים - Brand Architect שמשלבת אסטרטגיה, נרטיב ויצירה ויזואלית עם AI.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
-    <!-- Twitter -->
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-    
+
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
@@ -65,16 +63,16 @@
         }
     }
     </script>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* ========================================
-           CSS VARIABLES & RESET
-        ======================================== */
+        /* ============================================================
+           TOKENS — IDENTICAL TO LIVE SITE
+           ============================================================ */
         :root {
             --color-cream: #FAF8F3;
             --color-warm-beige: #F5F1E8;
@@ -82,28 +80,20 @@
             --color-copper: #C4765A;
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
-            
+
             --font-display: 'Cormorant Garamond', serif;
             --font-body-en: 'Plus Jakarta Sans', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
-            
+
             --section-padding: clamp(80px, 12vw, 160px);
             --container-max: 1400px;
             --container-padding: clamp(24px, 5vw, 80px);
-            
+
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body-he);
             background-color: var(--color-cream);
@@ -112,46 +102,22 @@
             font-weight: 400;
             overflow-x: hidden;
         }
-        
-        /* ========================================
-           UTILITY CLASSES
-        ======================================== */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-        }
-        
-        .section {
-            padding: var(--section-padding) 0;
-        }
-        
-        /* ========================================
-           NAVIGATION
-        ======================================== */
+
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+        .section { padding: var(--section-padding) 0; }
+
+        /* ============================================================
+           NAV
+           ============================================================ */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 24px 0;
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000; padding: 24px 0;
             background: transparent;
             transition: background 0.4s var(--transition-smooth), padding 0.4s var(--transition-smooth);
         }
-        
-        .nav.scrolled {
-            background: rgba(250, 248, 243, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 16px 0;
-        }
-        
-        .nav__inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
+        .nav.scrolled { background: rgba(250, 248, 243, 0.95); backdrop-filter: blur(10px); padding: 16px 0; }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; }
+
         .nav__logo {
             font-family: var(--font-display);
             font-size: 1.5rem;
@@ -159,14 +125,38 @@
             color: var(--color-chocolate);
             text-decoration: none;
             letter-spacing: 0.02em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1;
+            transition: opacity 0.3s var(--transition-smooth);
         }
-        
+        .nav__logo:hover { opacity: 0.78; }
+
+        .nav__logo-icon {
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+            display: block;
+            color: inherit;
+            transition: width 0.4s var(--transition-smooth), height 0.4s var(--transition-smooth);
+        }
+        .nav__logo-icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .nav.scrolled .nav__logo-icon {
+            width: 24px;
+            height: 24px;
+        }
+
         .nav__links {
             display: flex;
             gap: 40px;
             list-style: none;
         }
-        
+
         .nav__link {
             font-family: var(--font-body-en);
             font-size: 0.875rem;
@@ -178,7 +168,7 @@
             position: relative;
             transition: color 0.3s var(--transition-smooth);
         }
-        
+
         .nav__link::after {
             content: '';
             position: absolute;
@@ -189,32 +179,26 @@
             background: var(--color-copper);
             transition: width 0.3s var(--transition-smooth);
         }
-        
-        .nav__link:hover::after {
-            width: 100%;
-        }
-        
-        .nav__dropdown {
-            position: relative;
-        }
-        
+
+        .nav__link:hover::after { width: 100%; }
+
+        .nav__dropdown { position: relative; }
+
         .nav__dropdown-toggle {
             display: flex;
             align-items: center;
             gap: 4px;
             cursor: pointer;
         }
-        
+
         .nav__dropdown-toggle svg {
             width: 12px;
             height: 12px;
             transition: transform 0.3s;
         }
-        
-        .nav__dropdown:hover .nav__dropdown-toggle svg {
-            transform: rotate(180deg);
-        }
-        
+
+        .nav__dropdown:hover .nav__dropdown-toggle svg { transform: rotate(180deg); }
+
         .nav__dropdown-menu {
             position: absolute;
             top: 100%;
@@ -230,17 +214,15 @@
             box-shadow: 0 10px 40px rgba(79, 55, 44, 0.1);
             list-style: none;
         }
-        
+
         .nav__dropdown:hover .nav__dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
-        .nav__dropdown-item {
-            padding: 10px 24px;
-        }
-        
+
+        .nav__dropdown-item { padding: 10px 24px; }
+
         .nav__dropdown-link {
             font-family: var(--font-body-en);
             font-size: 0.8125rem;
@@ -249,11 +231,9 @@
             display: block;
             transition: color 0.3s;
         }
-        
-        .nav__dropdown-link:hover {
-            color: var(--color-copper);
-        }
-        
+
+        .nav__dropdown-link:hover { color: var(--color-copper); }
+
         .nav__menu-btn {
             display: none;
             flex-direction: column;
@@ -263,7 +243,7 @@
             cursor: pointer;
             padding: 8px;
         }
-        
+
         .nav__menu-btn span {
             display: block;
             width: 24px;
@@ -271,10 +251,10 @@
             background: var(--color-chocolate);
             transition: transform 0.3s var(--transition-smooth);
         }
-        
-        /* ========================================
-           HERO SECTION
-        ======================================== */
+
+        /* ============================================================
+           HERO — title + new he sub-title (kept from mockup v1)
+           ============================================================ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -282,339 +262,134 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding-top: clamp(140px, 18vh, 200px);
+            padding-bottom: clamp(80px, 12vh, 120px);
             background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-warm-beige) 50%, var(--color-cream) 100%);
         }
-        
         .hero__bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.35;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.35;
             pointer-events: none;
         }
-        
-        .hero__bg-element {
-            position: absolute;
-            border: 1px solid var(--color-light-taupe);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        
-        .hero__bg-element--1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            border-radius: 50%;
-        }
-        
-        .hero__bg-element--2 {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -100px;
-            transform: rotate(45deg);
-        }
-        
-        .hero__bg-element--3 {
-            width: 1px;
-            height: 40vh;
-            top: 0;
-            left: 50%;
-            border: none;
-            background: linear-gradient(to bottom, transparent, var(--color-taupe), transparent);
-        }
-        
-        .hero__content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            padding: 0 var(--container-padding);
-        }
-        
+        .hero__bg-element { position: absolute; border: 1px solid var(--color-light-taupe); opacity: 0.4; pointer-events: none; }
+        .hero__bg-element--1 { width: 600px; height: 600px; top: -200px; right: -200px; border-radius: 50%; }
+        .hero__bg-element--2 { width: 400px; height: 400px; bottom: -100px; left: -100px; transform: rotate(45deg); }
+        .hero__bg-element--3 { width: 1px; height: 40vh; top: 0; left: 50%; border: none; background: linear-gradient(to bottom, transparent, var(--color-taupe), transparent); }
+
+        .hero__content { text-align: center; position: relative; z-index: 1; max-width: 1000px; padding: 0 var(--container-padding); }
+
         .hero__eyebrow {
             font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
+            font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
             color: var(--color-copper);
             margin-bottom: 32px;
             opacity: 0;
             animation: fadeInUp 0.8s var(--transition-smooth) 0.2s forwards;
         }
-        
         .hero__title {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 400;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            margin-bottom: 32px;
+            font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+            font-weight: 400; line-height: 1.05;
+            letter-spacing: -0.015em;
+            margin-bottom: 28px;
             color: var(--color-chocolate);
             opacity: 0;
             animation: fadeInUp 0.8s var(--transition-smooth) 0.4s forwards;
         }
-        
-        .hero__title span {
+        .hero__title span { display: block; }
+        .hero__title-highlight { color: #B8894A; font-style: italic; }
+
+        .hero__divider {
             display: block;
-        }
-        
-        .hero__title-highlight {
-            color: #B8894A;
-            font-style: italic;
-        }
-        
-        .hero__subtitle {
-            font-family: var(--font-body-en);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            color: var(--color-chocolate);
-            margin-bottom: 48px;
+            width: 64px;
+            height: 1px;
+            background: var(--color-light-taupe);
+            margin: 22px auto 26px;
+            transform-origin: center;
+            transform: scaleX(0);
             opacity: 0;
-            animation: fadeInUp 0.8s var(--transition-smooth) 0.6s forwards;
+            animation: dividerExpand 0.8s var(--transition-smooth) 0.55s forwards;
         }
-        
-        .hero__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        @keyframes dividerExpand {
+            to { transform: scaleX(1); opacity: 1; }
+        }
+
+        .hero__tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+            line-height: 1.25;
             color: var(--color-chocolate);
-            text-decoration: none;
+            margin-bottom: 36px;
+            direction: ltr;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.65s forwards;
+        }
+        .hero__tagline em {
+            font-style: italic;
+            color: #B8894A;
+            display: block;
+            font-weight: 400;
+        }
+        .hero__tagline-dot {
+            display: block;
+            color: var(--color-copper);
+            font-size: 0.5em;
+            line-height: 1;
+            margin: 6px 0;
+            opacity: 0.85;
+        }
+
+        .hero__subtitle--he {
+            font-family: var(--font-body-he);
+            font-size: clamp(0.95rem, 1.6vw, 1.125rem);
+            font-weight: 300;
+            line-height: 1.85;
+            letter-spacing: 0;
+            max-width: 620px;
+            margin: 0 auto 44px;
+            color: rgba(139, 115, 85, 0.78);
+            direction: rtl;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.8s forwards;
+        }
+
+        .hero__cta-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 1s forwards;
+        }
+        .hero__scroll-label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-taupe);
+        }
+        .hero__cta {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--font-body-en);
+            font-size: 0.875rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-chocolate); text-decoration: none;
             padding: 20px 40px;
             border: 1px solid var(--color-chocolate);
             background: transparent;
             transition: all 0.4s var(--transition-smooth);
-            opacity: 0;
-            animation: fadeInUp 0.8s var(--transition-smooth) 0.8s forwards;
         }
-        
-        .hero__cta:hover {
-            background: var(--color-chocolate);
-            color: var(--color-cream);
-        }
-        
-        .hero__cta-arrow {
-            transition: transform 0.3s var(--transition-smooth);
-        }
-        
-        .hero__cta:hover .hero__cta-arrow {
-            transform: translateX(6px);
-        }
-        
-        .hero__scroll {
-            position: absolute;
-            bottom: 48px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            color: var(--color-taupe);
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeIn 1s var(--transition-smooth) 1.2s forwards;
-        }
-        
-        .hero__scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--color-taupe), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-        
-        /* ========================================
-           INTRO / WHO-FOR SECTION
-        ======================================== */
-        .who-for {
-            background: var(--color-warm-beige);
-            padding: clamp(50px, 8vw, 80px) 0;
-        }
-        
-        .who-for__content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .who-for__text {
-            font-family: var(--font-display);
-            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
-            font-weight: 400;
-            line-height: 2;
-            color: var(--color-chocolate);
-            opacity: 0.85;
-        }
-        
-        .who-for__text em {
-            font-style: italic;
-            color: var(--color-copper);
-        }
-        
-        /* ========================================
-           METHOD SECTION
-        ======================================== */
-        .method {
-            background: var(--color-cream);
-            position: relative;
-        }
-        
-        .method__header {
-            text-align: center;
-            margin-bottom: clamp(60px, 10vw, 120px);
-        }
-        
-        .method__label {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-copper);
-            margin-bottom: 16px;
-        }
-        
-        .method__title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: -0.01em;
-        }
-        
-        .method__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(24px, 4vw, 48px);
-        }
-        
-        .method__card {
-            background: var(--color-warm-beige);
-            padding: clamp(32px, 5vw, 56px);
-            position: relative;
-            transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
-        }
-        
-        .method__card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(79, 55, 44, 0.1);
-        }
-        
-        .method__card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--color-copper);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s var(--transition-smooth);
-        }
-        
-        .method__card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .method__card-image {
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto 24px;
-            display: block;
-            border-radius: 4px;
-        }
-        
-        .method__number {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 400;
-            color: var(--color-light-taupe);
-            line-height: 1;
-            margin-bottom: 24px;
-        }
-        
-        .method__card-title {
-            font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-chocolate);
-            margin-bottom: 8px;
-        }
-        
-        .method__card-subtitle {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--color-copper);
-            margin-bottom: 24px;
-        }
-        
-        .method__card-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--color-chocolate);
-            opacity: 0.85;
-        }
-        
-        /* ========================================
-           SPHERE / LIVING SYSTEMS SECTION
-        ======================================== */
-        .sphere {
-            background: var(--color-cream);
-            padding: clamp(40px, 8vw, 80px) 0;
-            overflow: hidden;
-        }
-        
-        .sphere__inner {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-        
-        .sphere__video-container {
-            position: relative;
-            margin-bottom: 32px;
-        }
-        
-        .sphere__video {
-            width: 100%;
-            max-width: 750px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-            border-radius: 8px;
-        }
-        
-        .sphere__text {
-            font-family: var(--font-display);
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            font-weight: 400;
-            font-style: italic;
-            color: var(--color-chocolate);
-            letter-spacing: 0.02em;
-            opacity: 0.85;
-        }
+        .hero__cta:hover { background: var(--color-chocolate); color: var(--color-cream); }
+        .hero__cta-arrow { transition: transform 0.3s var(--transition-smooth); }
+        .hero__cta:hover .hero__cta-arrow { transform: translateX(6px); }
 
-        /* ========================================
-           CHOOSE YOUR WORLD — PORTALS SECTION v2
-        ======================================== */
+        /* ============================================================
+           PORTALS — 3 cards (Video Lab, Brand Experiences, Brand Worlds)
+           Reuses .portal hover system from live site
+           ============================================================ */
         .portals {
             background: var(--color-warm-beige);
             padding: clamp(80px, 12vw, 140px) 0;
@@ -623,21 +398,15 @@
         }
         .portals::before {
             content: '';
-            position: absolute;
-            top: 0; left: 10%; right: 10%;
+            position: absolute; top: 0; left: 10%; right: 10%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--color-light-taupe), transparent);
         }
-        .portals__header {
-            text-align: center;
-            margin-bottom: clamp(48px, 8vw, 72px);
-        }
+        .portals__header { text-align: center; margin-bottom: clamp(48px, 8vw, 72px); }
         .portals__label {
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
+            font-size: 0.6875rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
             color: var(--color-copper);
             margin-bottom: 14px;
         }
@@ -655,17 +424,20 @@
             color: var(--color-taupe);
             margin-top: 14px;
         }
+
         .portals__grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 18px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--container-padding);
             direction: ltr;
         }
+        @media (max-width: 1024px) { .portals__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px)  { .portals__grid { grid-template-columns: 1fr; } }
 
-        /* ---- Portal Card v2 ---- */
+        /* ---- Portal Card (1:1 from live) ---- */
         .portal {
             position: relative;
             border-radius: 4px;
@@ -682,7 +454,6 @@
         .portal:nth-child(1) { transition-delay: 0s; }
         .portal:nth-child(2) { transition-delay: 0.12s; }
         .portal:nth-child(3) { transition-delay: 0.24s; }
-        .portal:nth-child(4) { transition-delay: 0.36s; }
 
         .portal__img-layer {
             position: absolute;
@@ -693,6 +464,34 @@
             will-change: transform;
         }
         .portal:hover .portal__img-layer { transform: scale(1.06) translateY(-2%); }
+
+        /* Rotating image variant — for video-feel cards */
+        .portal__img-layer--rotate {
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-image: none !important;
+            overflow: hidden;
+        }
+        .portal__img-spin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 175%;
+            aspect-ratio: 1;
+            background-size: cover;
+            background-position: center;
+            animation: portalSpin 60s linear infinite;
+            will-change: transform;
+        }
+        @keyframes portalSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to   { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .portal__img-spin { animation: none; }
+        }
+
         .portal__img-layer::after {
             content: '';
             position: absolute; inset: 0;
@@ -705,15 +504,8 @@
         .portal:hover .portal__img-layer::after { opacity: 1; }
         @keyframes portalShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-        .portal__particles {
-            position: absolute; inset: 0;
-            pointer-events: none; z-index: 2; overflow: hidden;
-        }
-        .portal__p {
-            position: absolute; width: 2px; height: 2px;
-            border-radius: 50%; background: rgba(196,118,90,0.7);
-            opacity: 0; animation: portalFloat 0s ease-in-out infinite;
-        }
+        .portal__particles { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+        .portal__p { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(196,118,90,0.7); opacity: 0; animation: portalFloat 0s ease-in-out infinite; }
         .portal:hover .portal__p { opacity: 1; }
         @keyframes portalFloat { 0%{transform:translateY(0) scale(1);opacity:0} 20%{opacity:1} 80%{opacity:.5} 100%{transform:translateY(-80px) scale(0.4);opacity:0} }
         .portal__p:nth-child(1){left:20%;bottom:15%;animation-duration:2.8s;animation-delay:.0s;width:3px;height:3px}
@@ -727,15 +519,8 @@
             background: linear-gradient(to top, rgba(12,8,4,.9) 0%, rgba(12,8,4,.32) 55%, rgba(12,8,4,.04) 100%);
             transition: background 0.6s var(--transition-smooth);
         }
-        .portal:hover .portal__overlay {
-            background: linear-gradient(to top, rgba(12,8,4,.94) 0%, rgba(12,8,4,.5) 55%, rgba(12,8,4,.08) 100%);
-        }
-        .portal__glow {
-            position: absolute; inset: 0; border-radius: 4px;
-            box-shadow: inset 0 0 0 0 rgba(196,118,90,0);
-            transition: box-shadow 0.6s var(--transition-smooth);
-            pointer-events: none; z-index: 5;
-        }
+        .portal:hover .portal__overlay { background: linear-gradient(to top, rgba(12,8,4,.94) 0%, rgba(12,8,4,.5) 55%, rgba(12,8,4,.08) 100%); }
+        .portal__glow { position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 0 rgba(196,118,90,0); transition: box-shadow 0.6s var(--transition-smooth); pointer-events: none; z-index: 5; }
         .portal:hover .portal__glow { box-shadow: inset 0 0 0 1.5px rgba(196,118,90,.5); }
 
         .portal__top {
@@ -753,18 +538,13 @@
         .portal__tag {
             font-size: 10px; font-weight: 500;
             letter-spacing: .15em; text-transform: uppercase;
-            color: rgba(255,255,255,.4);
-            border: 1px solid rgba(255,255,255,.12);
+            color: rgba(255,255,255,.55);
+            border: 1px solid rgba(255,255,255,.18);
             padding: 4px 8px; border-radius: 2px;
-            opacity: 0; transform: translateY(-4px);
-            transition: opacity 0.4s var(--transition-smooth), transform 0.4s var(--transition-smooth);
+            font-family: var(--font-body-en);
         }
-        .portal:hover .portal__tag { opacity: 1; transform: translateY(0); }
 
-        .portal__bottom {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 20px 18px 18px; z-index: 3;
-        }
+        .portal__bottom { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px 18px; z-index: 3; }
         .portal__name {
             font-size: 11px; font-weight: 500;
             letter-spacing: .18em; text-transform: uppercase;
@@ -793,9 +573,9 @@
         .portal__enter-arrow { transition: transform .3s; }
         .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
-        /* ========================================
-           WHAT'S INSIDE — DELIVERABLES SECTION
-        ======================================== */
+        /* ============================================================
+           INSIDE-SECTION — 6 cards, anchor to maison sections
+           ============================================================ */
         .inside-section {
             background: var(--color-cream);
             padding: clamp(80px, 12vw, 140px) 0;
@@ -845,8 +625,9 @@
             padding: 0 var(--container-padding);
             direction: ltr;
         }
+        @media (max-width: 1024px) { .inside-section__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px)  { .inside-section__grid { grid-template-columns: 1fr; } }
 
-        /* ---- Inside Card — Distinct Aesthetic (Reveal-from-Blur) ---- */
         .inside {
             position: relative;
             border-radius: 4px;
@@ -869,7 +650,6 @@
         .inside:nth-child(5) { transition-delay: 0.32s; }
         .inside:nth-child(6) { transition-delay: 0.40s; }
 
-        /* Image: always sharp, gentle zoom on hover */
         .inside__img-layer {
             position: absolute;
             inset: 0; width: 100%; height: 100%;
@@ -879,11 +659,8 @@
             transition: transform 1s var(--transition-smooth);
             will-change: transform;
         }
-        .inside:hover .inside__img-layer {
-            transform: scale(1.04);
-        }
+        .inside:hover .inside__img-layer { transform: scale(1.04); }
 
-        /* Soft warm overlay — bottom only, so name stays readable & image breathes */
         .inside__overlay {
             position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(43,31,24,0.72) 0%, rgba(43,31,24,0.20) 38%, rgba(43,31,24,0) 60%);
@@ -894,7 +671,6 @@
             background: linear-gradient(to top, rgba(43,31,24,0.85) 0%, rgba(43,31,24,0.42) 50%, rgba(43,31,24,0.08) 80%);
         }
 
-        /* Thin gold frame — gallery-style, appears on hover */
         .inside__frame {
             position: absolute; inset: 0;
             border: 1px solid transparent;
@@ -903,11 +679,7 @@
             pointer-events: none;
             z-index: 5;
         }
-        .inside:hover .inside__frame {
-            border-color: rgba(184,115,51,0.55);
-        }
-
-        /* Inner gold thread — appears as second light line for depth */
+        .inside:hover .inside__frame { border-color: rgba(184,115,51,0.55); }
         .inside__frame::after {
             content: '';
             position: absolute; inset: 6px;
@@ -915,9 +687,7 @@
             border-radius: 2px;
             transition: border-color 0.8s var(--transition-smooth) 0.1s;
         }
-        .inside:hover .inside__frame::after {
-            border-color: rgba(184,115,51,0.18);
-        }
+        .inside:hover .inside__frame::after { border-color: rgba(184,115,51,0.18); }
 
         .inside__top {
             position: absolute; top: 0; left: 0; right: 0;
@@ -963,7 +733,6 @@
         .inside:hover .inside__name { transform: translateY(-2px); }
         .inside__desc {
             font-family: var(--font-body-he);
-            font-style: normal;
             font-size: 0.8125rem;
             font-weight: 300;
             color: rgba(244,239,228,.78);
@@ -1004,7 +773,6 @@
             margin-top: 14px;
         }
 
-        /* Footer meta line: timeline + investment */
         .inside-section__footer {
             display: flex;
             justify-content: center;
@@ -1040,7 +808,6 @@
             padding-bottom: 4px;
         }
 
-        /* CTA */
         .inside-section__cta {
             text-align: center;
             padding: 0 var(--container-padding);
@@ -1067,66 +834,91 @@
         .inside-section__cta-btn svg { transition: transform 0.3s; }
         .inside-section__cta-btn:hover svg { transform: translateX(4px); }
 
-        /* ========================================
-           NEXT WORLD GATE — Bottom CTA
-        ======================================== */
-        .next-gate {
-            display: block;
-            text-decoration: none;
-            padding: clamp(60px, 10vw, 100px) 0;
-            text-align: center;
-            border-top: 1px solid var(--color-light-taupe);
-            background: var(--color-cream);
-            transition: background 0.5s var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .next-gate:hover {
-            background: var(--color-warm-beige);
-        }
-
-        .next-gate__label {
+        /* ============================================================
+           METHOD — 4 phases (BrandOS as 04)
+           ============================================================ */
+        .method { background: var(--color-warm-beige); position: relative; }
+        .method__header { text-align: center; margin-bottom: clamp(60px, 10vw, 120px); }
+        .method__label {
             font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--color-taupe);
-            margin-bottom: 12px;
-            transition: color 0.4s;
-        }
-
-        .next-gate:hover .next-gate__label {
+            font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
             color: var(--color-copper);
+            margin-bottom: 16px;
         }
-
-        .next-gate__title {
+        .method__title {
             font-family: var(--font-display);
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+        .method__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(20px, 3vw, 32px);
+        }
+        .method__card {
+            background: var(--color-cream);
+            padding: clamp(28px, 4vw, 44px);
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+        }
+        .method__card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(79, 55, 44, 0.1); }
+        .method__card::before {
+            content: '';
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--color-copper);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        .method__card:hover::before { transform: scaleX(1); }
+        .method__card-image {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin: 0 auto 28px;
+            display: block;
+            border-radius: 4px;
+        }
+        .method__number {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--color-light-taupe);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+        .method__card-title {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
             color: var(--color-chocolate);
-            transition: color 0.4s;
+            margin-bottom: 10px;
         }
-
-        .next-gate:hover .next-gate__title {
+        .method__card-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.35rem; font-style: italic;
             color: var(--color-copper);
+            margin-bottom: 18px;
+            min-height: 1.6em;
+        }
+        .method__card-text {
+            font-size: 0.95rem; line-height: 1.7;
+            color: var(--color-chocolate);
+            opacity: 0.85;
+            max-width: 28ch;
+            margin: 0 auto;
         }
 
-        .next-gate__arrow {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--color-taupe);
-            transition: transform 0.4s var(--transition-smooth), color 0.4s;
-        }
-
-        .next-gate:hover .next-gate__arrow {
-            transform: translateY(6px);
-            color: var(--color-copper);
-        }
-
-        /* ========================================
-           ABOUT SECTION v2
-        ======================================== */
+        /* ============================================================
+           ABOUT — shortened
+           ============================================================ */
         .intro { background: var(--color-cream); }
         .intro__inner {
             display: grid;
@@ -1134,7 +926,12 @@
             gap: clamp(48px, 8vw, 96px);
             align-items: center;
         }
-        .intro__visual { position: relative; }
+        .intro__visual {
+            position: relative;
+            max-width: 360px;
+            margin: 0 auto;
+            width: 100%;
+        }
         .intro__bg-shape {
             position: absolute;
             bottom: -20px; right: -20px;
@@ -1146,10 +943,7 @@
             position: relative; z-index: 1;
             border-radius: 2px; overflow: hidden;
             aspect-ratio: 4/5;
-            opacity: 0; transform: translateX(24px);
-            transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth);
         }
-        .intro__image-frame.active { opacity: 1; transform: translateX(0); }
         .intro__image {
             width: 100%; height: 100%;
             object-fit: cover; object-position: top center;
@@ -1165,10 +959,7 @@
             background: var(--color-cream);
             border: 1px solid var(--color-light-taupe);
             padding: 12px 18px;
-            opacity: 0; transform: translateY(10px);
-            transition: opacity 0.6s 0.85s var(--transition-smooth), transform 0.6s 0.85s var(--transition-smooth);
         }
-        .intro__float-tag.active { opacity: 1; transform: translateY(0); }
         .intro__float-label {
             font-size: 9px; font-weight: 500;
             letter-spacing: .2em; text-transform: uppercase;
@@ -1179,9 +970,7 @@
             font-family: var(--font-display);
             font-size: 1rem; color: var(--color-chocolate); font-style: italic;
         }
-        .intro__content {
-            direction: rtl; text-align: right;
-        }
+        .intro__content { direction: rtl; text-align: right; }
         .intro__label {
             font-family: var(--font-body-en);
             font-size: 10px; font-weight: 500;
@@ -1200,17 +989,9 @@
             background: var(--color-copper);
             margin: 0 0 24px auto; opacity: .5; display: block;
         }
-        .intro__text {
-            font-size: .95rem; line-height: 1.9;
-            color: var(--color-chocolate); opacity: .82;
-            margin-bottom: 0;
-        }
-        .intro__text p { margin-bottom: 20px; }
-        .intro__text p:last-child { margin-bottom: 0; }
-        .intro__highlight { color: var(--color-copper); font-weight: 500; }
         .intro__pairs {
             display: flex; flex-direction: column;
-            gap: 14px; margin: 24px 0;
+            gap: 14px; margin: 24px 0 36px;
         }
         .intro__pair {
             display: flex; align-items: flex-start;
@@ -1222,9 +1003,10 @@
             margin-top: 8px; flex-shrink: 0; opacity: .7;
         }
         .intro__pair-text {
-            font-size: .9rem; color: var(--color-chocolate);
-            opacity: .75; line-height: 1.6;
+            font-size: .95rem; color: var(--color-chocolate);
+            opacity: .82; line-height: 1.7;
         }
+        .intro__pair-text b { color: var(--color-copper); font-weight: 500; }
         .intro__link {
             display: inline-flex; align-items: center; gap: 10px;
             font-family: var(--font-body-en);
@@ -1234,419 +1016,236 @@
             padding-bottom: 4px;
             border-bottom: 1px solid var(--color-light-taupe);
             transition: border-color .3s, color .3s;
-            direction: rtl; margin-top: 4px;
+            direction: rtl;
         }
         .intro__link:hover { color: var(--color-copper); border-color: var(--color-copper); }
         .intro__link svg { transition: transform .3s; }
         .intro__link:hover svg { transform: translateX(-4px); }
 
-        /* ========================================
-           BRAND OS SECTION v2
-        ======================================== */
-        .brand-os { background: var(--color-cream); padding: clamp(60px,10vw,100px) 0; }
-        .brand-os__wrap {
-            background: #0d0d0f;
-            max-width: 1060px; margin: 0 auto;
-            padding: 64px clamp(28px,5vw,72px) 72px;
-            position: relative; overflow: hidden;
-        }
-        .brand-os__grid-bg {
-            position: absolute; inset: 0; pointer-events: none;
-            background-image: linear-gradient(rgba(196,118,90,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(196,118,90,.025) 1px,transparent 1px);
-            background-size: 60px 60px;
-        }
-        .brand-os__glow {
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 600px; height: 260px;
-            background: radial-gradient(ellipse,rgba(196,118,90,.05) 0%,transparent 70%);
-            pointer-events: none;
-        }
-        .brand-os__header {
-            text-align: center; margin-bottom: 48px;
-            position: relative; z-index: 2;
-        }
-        .brand-os__badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 10px; font-weight: 500;
-            letter-spacing: .2em; text-transform: uppercase;
-            color: #C4765A;
-            border: 1px solid rgba(196,118,90,.3);
-            padding: 5px 14px; margin-bottom: 22px;
-            font-family: var(--font-body-en);
-        }
-        .brand-os__badge-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #C4765A;
-            animation: bosDot 1.5s ease-in-out infinite;
-        }
-        @keyframes bosDot{0%,100%{opacity:1}50%{opacity:.15}}
-        .brand-os__title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem,8vw,5.5rem);
-            font-weight: 400; color: #f0ebe4; line-height: 1;
-            margin-bottom: 8px;
-        }
-        .brand-os__mono {
-            font-family: 'Courier New', monospace;
-            font-size: .76rem; color: rgba(196,118,90,.6);
-            letter-spacing: .08em; margin-bottom: 12px;
-        }
-        .brand-os__tagline {
-            font-size: .93rem; color: rgba(240,235,228,.48);
-            max-width: 460px; margin: 0 auto;
-            line-height: 1.7; direction: rtl;
-            font-family: var(--font-body-he);
-        }
-        .brand-os__divider {
-            width: 1px; height: 36px;
-            background: linear-gradient(to bottom,transparent,rgba(196,118,90,.35),transparent);
-            margin: 28px auto;
-        }
-        .brand-os__inner {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 48px; align-items: start;
-            position: relative; z-index: 2;
-        }
-        .brand-os__img-wrap { position: relative; }
-        .brand-os__img-frame { position: relative; overflow: hidden; border-radius: 2px; }
-        .brand-os__img-frame img { width: 100%; display: block; filter: brightness(.9) contrast(1.05); }
-        .brand-os__img-frame::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom,transparent 55%,rgba(13,13,15,.45) 100%);
-        }
-        .brand-os__corner {
-            position: absolute; width: 18px; height: 18px;
-            border-color: #C4765A; border-style: solid; opacity: .5;
-        }
-        .brand-os__corner--tl{top:0;left:0;border-width:2px 0 0 2px}
-        .brand-os__corner--tr{top:0;right:0;border-width:2px 2px 0 0}
-        .brand-os__corner--bl{bottom:0;left:0;border-width:0 0 2px 2px}
-        .brand-os__corner--br{bottom:0;right:0;border-width:0 2px 2px 0}
-        .brand-os__stats {
-            display: grid; grid-template-columns: repeat(3,1fr);
-            gap: 1px; background: rgba(196,118,90,.12); margin-top: 1px;
-        }
-        .brand-os__stat { background: #0d0d0f; padding: 11px 8px; text-align: center; }
-        .brand-os__stat-n {
-            font-family: var(--font-display);
-            font-size: 1.4rem; color: #f0ebe4; line-height: 1;
-        }
-        .brand-os__stat-l {
-            font-size: 10px; color: rgba(196,118,90,.5);
-            letter-spacing: .1em; text-transform: uppercase; margin-top: 3px;
-            font-family: var(--font-body-en);
-        }
-        .brand-os__content { direction: rtl; text-align: right; }
-        .brand-os__section-lbl {
-            font-size: 10px; font-weight: 500;
-            letter-spacing: .2em; text-transform: uppercase;
-            color: #C4765A; margin-bottom: 14px; opacity: .8;
-            font-family: var(--font-body-en);
-        }
-        .brand-os__text {
-            font-size: .93rem; color: rgba(240,235,228,.68);
-            line-height: 1.9; margin-bottom: 24px;
-            font-family: var(--font-body-he);
-        }
-        .brand-os__text b { color: rgba(240,235,228,.92); font-weight: 500; }
-        .brand-os__pipe-tag {
-            font-size: 10px; color: rgba(196,118,90,.4);
-            letter-spacing: .12em; text-transform: uppercase;
-            margin-bottom: 6px; font-family: 'Courier New',monospace;
-            direction: ltr; text-align: left;
-        }
-        .brand-os__pipeline { margin-bottom: 28px; }
-        .brand-os__pipe-row {
-            display: flex; align-items: center; gap: 0;
-            margin-bottom: 7px; direction: ltr;
-            opacity: 0; transform: translateY(8px);
-            transition: opacity .5s var(--transition-smooth), transform .5s var(--transition-smooth);
-        }
-        .brand-os__pipe-row.active { opacity: 1; transform: translateY(0); }
-        .brand-os__pipe-box {
-            background: rgba(196,118,90,.07);
-            border: 1px solid rgba(196,118,90,.17);
-            padding: 8px 12px;
-            font-family: 'Courier New',monospace;
-            font-size: .7rem; color: rgba(240,235,228,.78);
-            position: relative; overflow: hidden; flex: 1; text-align: center;
-        }
-        .brand-os__pipe-box::after {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 80%; height: 100%;
-            background: linear-gradient(90deg,transparent,rgba(196,118,90,.12),transparent);
-            animation: bosWipe 2.5s ease-in-out infinite;
-        }
-        @keyframes bosWipe{0%{left:-100%}100%{left:200%}}
-        .brand-os__pipe-row:nth-child(2) .brand-os__pipe-box:first-child::after{animation-delay:0s}
-        .brand-os__pipe-row:nth-child(2) .brand-os__pipe-box:last-child::after{animation-delay:.8s}
-        .brand-os__pipe-row:nth-child(3) .brand-os__pipe-box:first-child::after{animation-delay:1.5s}
-        .brand-os__pipe-row:nth-child(3) .brand-os__pipe-box:last-child::after{animation-delay:2.2s}
-        .brand-os__pipe-arr {
-            padding: 0 9px; color: rgba(196,118,90,.35);
-            font-family: 'Courier New',monospace; font-size: .9rem;
-        }
-        .brand-os__btns {
-            display: flex; gap: 10px;
-            justify-content: flex-end; flex-wrap: wrap; margin-top: 4px;
-        }
-        .brand-os__btn {
-            font-size: .76rem; font-weight: 500;
-            letter-spacing: .08em; text-transform: uppercase;
-            color: #0d0d0f; background: #f0ebe4;
-            padding: 12px 24px; text-decoration: none;
-            transition: background .3s; border: none;
-            font-family: var(--font-body-en);
-        }
-        .brand-os__btn:hover { background: #C4765A; color: #fff; }
-        .brand-os__btn--ghost {
-            color: rgba(240,235,228,.5); background: transparent;
-            border: 1px solid rgba(240,235,228,.15);
-        }
-        .brand-os__btn--ghost:hover { border-color: rgba(196,118,90,.45); color: #C4765A; background: transparent; }
-
-        /* ========================================
-           CONTACT CTA SECTION
-        ======================================== */
-        .contact-cta {
+        /* ============================================================
+           TESTIMONIALS — Google reviews, custom-styled
+           ============================================================ */
+        .testimonials {
             background: var(--color-warm-beige);
-            text-align: center;
             position: relative;
-            overflow: hidden;
         }
-        
-        .contact-cta__bg {
+        .testimonials::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            border: 1px solid var(--color-light-taupe);
-            border-radius: 50%;
-            opacity: 0.3;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-light-taupe), transparent);
         }
-        
-        .contact-cta__content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin: 0 auto;
+        .testimonials__header {
+            text-align: center;
+            margin-bottom: clamp(48px, 7vw, 72px);
         }
-        
-        .contact-cta__label {
+        .testimonials__rating {
             font-family: var(--font-body-en);
             font-size: 0.75rem;
             font-weight: 500;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
             color: var(--color-copper);
-            margin-bottom: 24px;
+            margin-bottom: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+        .testimonials__rating-stars {
+            color: var(--color-copper);
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+        }
+        .testimonials__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--color-chocolate);
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+        }
+        .testimonials__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            font-style: italic;
+            color: var(--color-taupe);
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(20px, 2.5vw, 28px);
+        }
+
+        .testimonial {
+            background: var(--color-cream);
+            padding: clamp(28px, 3.2vw, 40px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+        }
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: var(--color-copper);
+            opacity: 0.6;
+        }
+        .testimonial:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(79, 55, 44, 0.08);
+        }
+
+        .testimonial__stars {
+            display: flex;
+            gap: 3px;
+            color: var(--color-copper);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            direction: ltr;
+            line-height: 1;
+        }
+        .testimonial__quote {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            font-style: italic;
+            color: var(--color-chocolate);
+            line-height: 1.65;
+            margin-bottom: 28px;
+            direction: rtl;
+            flex-grow: 1;
+        }
+        .testimonial__author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            direction: ltr;
+            padding-top: 18px;
+            border-top: 1px solid rgba(184, 168, 154, 0.25);
+        }
+        .testimonial__avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--color-copper);
+            color: var(--color-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .testimonial__meta {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .testimonial__name {
+            font-family: var(--font-body-en);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-chocolate);
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+        .testimonial__date {
+            font-family: var(--font-body-he);
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+            direction: rtl;
+            line-height: 1.2;
+        }
+
+        /* ============================================================
+           CONTACT CTA — unchanged
+           ============================================================ */
+        .contact-cta { background: var(--color-warm-beige); text-align: center; position: relative; overflow: hidden; }
+        .contact-cta__bg {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            border: 1px solid var(--color-light-taupe);
+            border-radius: 50%; opacity: 0.3;
+        }
+        .contact-cta__content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+        .contact-cta__label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 24px;
+        }
         .contact-cta__title {
             font-family: var(--font-display);
             font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 400;
-            line-height: 1.15;
+            font-weight: 400; line-height: 1.15;
             margin-bottom: 24px;
         }
-        
         .contact-cta__text {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: var(--color-chocolate);
-            opacity: 0.8;
+            font-size: 1.125rem; line-height: 1.7;
+            color: var(--color-chocolate); opacity: 0.8;
             margin-bottom: 48px;
         }
-        
         .contact-cta__btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+            display: inline-flex; align-items: center; gap: 12px;
             font-family: var(--font-body-en);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-cream);
-            text-decoration: none;
+            font-size: 0.875rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-cream); text-decoration: none;
             padding: 20px 48px;
             background: var(--color-chocolate);
             transition: all 0.4s var(--transition-smooth);
         }
-        
-        .contact-cta__btn:hover {
-            background: var(--color-copper);
-        }
-        
-        /* ========================================
+        .contact-cta__btn:hover { background: var(--color-copper); }
+
+        /* ============================================================
            FOOTER
-        ======================================== */
-        .footer {
-            background: var(--color-chocolate);
-            color: var(--color-cream);
-            padding: 80px 0 40px;
-        }
-        
-        .footer__inner {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-        
-        .footer__brand {
-            max-width: 300px;
-        }
-        
-        .footer__logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .footer__tagline {
-            font-size: 0.9375rem;
-            line-height: 1.7;
-            color: var(--color-taupe);
-        }
-        
-        .footer__col-title {
-            font-family: var(--font-body-en);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-        
-        .footer__links {
-            list-style: none;
-        }
-        
-        .footer__links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer__links a {
-            font-size: 0.9375rem;
-            color: var(--color-taupe);
-            text-decoration: none;
-            transition: color 0.3s var(--transition-smooth);
-        }
-        
-        .footer__links a:hover {
-            color: var(--color-copper);
-        }
-        
-        .footer__bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer__copyright {
-            font-size: 0.875rem;
-            color: var(--color-taupe);
-        }
-        
-        .footer__social {
-            display: flex;
-            gap: 24px;
-        }
-        
-        .footer__social a {
-            color: var(--color-taupe);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.3s var(--transition-smooth);
-        }
-        
-        .footer__social a:hover {
-            color: var(--color-copper);
-        }
-        
-        /* ========================================
+           ============================================================ */
+        .footer { background: var(--color-chocolate); color: var(--color-cream); padding: 80px 0 40px; }
+        .footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+        .footer__brand { max-width: 300px; }
+        .footer__logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; }
+        .footer__tagline { font-size: 0.9375rem; line-height: 1.7; color: var(--color-taupe); }
+        .footer__col-title { font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; }
+        .footer__links { list-style: none; }
+        .footer__links li { margin-bottom: 12px; }
+        .footer__links a { font-size: 0.9375rem; color: var(--color-taupe); text-decoration: none; transition: color 0.3s var(--transition-smooth); }
+        .footer__links a:hover { color: var(--color-copper); }
+        .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer__copyright { font-size: 0.875rem; color: var(--color-taupe); }
+
+        /* ============================================================
            ANIMATIONS
-        ======================================== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes scrollPulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scaleY(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scaleY(0.8);
-            }
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* ========================================
+           ============================================================ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scrollPulse { 0%, 100% { opacity: 1; transform: scaleY(1); } 50% { opacity: 0.5; transform: scaleY(0.8); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ============================================================
            RESPONSIVE
-        ======================================== */
+           ============================================================ */
         @media (max-width: 1024px) {
-            .intro__inner {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-            
-            .intro__visual {
-                order: -1;
-                max-width: 400px;
+            .intro__inner { grid-template-columns: 1fr; gap: 60px; }
+            .intro__visual { order: -1; max-width: 400px; margin: 0 auto; }
+            .method__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials__grid .testimonial:nth-child(3) {
+                grid-column: 1 / -1;
+                max-width: 50%;
                 margin: 0 auto;
+                width: 100%;
             }
-            
-            .method__grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .portals__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-
-            .inside-section__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-            
-            .footer__inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
+            .footer__inner { grid-template-columns: repeat(2, 1fr); gap: 40px; }
         }
-        
+
         @media (max-width: 768px) {
             .nav__links {
                 display: flex;
@@ -1666,25 +1265,10 @@
                 box-shadow: -10px 0 40px rgba(79, 55, 44, 0.15);
                 z-index: 999;
             }
-            
-            .nav__links.open {
-                right: 0;
-            }
-            
-            .nav__links > li {
-                border-bottom: 1px solid rgba(139, 115, 85, 0.1);
-            }
-            
-            .nav__link {
-                display: block;
-                padding: 16px 0;
-                font-size: 1rem;
-            }
-            
-            .nav__link::after {
-                display: none;
-            }
-            
+            .nav__links.open { right: 0; }
+            .nav__links > li { border-bottom: 1px solid rgba(139, 115, 85, 0.1); }
+            .nav__link { display: block; padding: 16px 0; font-size: 1rem; }
+            .nav__link::after { display: none; }
             .nav__dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -1697,20 +1281,9 @@
                 display: none;
                 background: transparent;
             }
-            
-            .nav__dropdown.active .nav__dropdown-menu {
-                display: block;
-            }
-            
-            .nav__dropdown-item {
-                padding: 8px 0;
-            }
-            
-            .nav__dropdown-link {
-                font-size: 0.9rem;
-                color: var(--color-taupe);
-            }
-            
+            .nav__dropdown.active .nav__dropdown-menu { display: block; }
+            .nav__dropdown-item { padding: 8px 0; }
+            .nav__dropdown-link { font-size: 0.9rem; color: var(--color-taupe); }
             .nav__overlay {
                 display: none;
                 position: fixed;
@@ -1718,127 +1291,54 @@
                 background: rgba(0, 0, 0, 0.3);
                 z-index: 998;
             }
-            
-            .nav__overlay.active {
-                display: block;
-            }
-            
-            .nav__menu-btn {
-                display: flex;
-                z-index: 1001;
-            }
-            
-            .nav__menu-btn.open span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-            
-            .nav__menu-btn.open span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .nav__menu-btn.open span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-            
-            .hero {
-                min-height: 100svh;
-                padding: 100px 0 120px;
-            }
-            
-            .hero__title {
-                font-size: clamp(2.5rem, 12vw, 4rem);
-            }
-            
-            .hero__scroll {
-                bottom: 24px;
-            }
-            
-            .hero__cta {
-                padding: 16px 32px;
-                font-size: 0.8rem;
-            }
-
-            .portals__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            .nav__overlay.active { display: block; }
+            .nav__menu-btn { display: flex; z-index: 1001; }
+            .nav__menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+            .nav__menu-btn.open span:nth-child(2) { opacity: 0; }
+            .nav__menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .testimonials__grid { grid-template-columns: 1fr; }
+            .testimonials__grid .testimonial:nth-child(3) { max-width: 100%; }
+            .hero { min-height: 100svh; padding: 100px 0 120px; }
+            .hero__title { font-size: clamp(2rem, 9vw, 3rem); }
+            .hero__cta { padding: 16px 32px; font-size: 0.8rem; }
             .portal { aspect-ratio: 3/4.5; }
-
-            .inside-section__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .inside { aspect-ratio: 4/5; }
-
-            /* Mobile: smaller number, no top tag clutter */
-            .inside__top { padding: 12px 12px 0; }
-            .inside__num {
-                font-size: 1.125rem;
-                color: rgba(244,239,228,.85);
-            }
-            .inside__tag { display: none; }
-
-            /* Mobile: bottom layout — name + always-visible spec, no hover-reveal description */
-            .inside__bottom { padding: 14px 12px 14px; }
-            .inside__name {
-                font-size: 1rem;
-                line-height: 1.25;
-                margin-bottom: 6px;
-            }
-            .inside__desc { display: none; }
-            .inside__spec {
-                opacity: 1;
-                transform: none;
-                max-height: 20px;
-                margin-top: 4px;
-                font-size: 8px;
-                letter-spacing: .18em;
-            }
-            .inside__spec::before { width: 12px; }
-
-            /* Mobile: stronger overlay so text always reads cleanly */
-            .inside__overlay {
-                background: linear-gradient(to top, rgba(43,31,24,0.82) 0%, rgba(43,31,24,0.35) 45%, rgba(43,31,24,0) 70%);
-            }
-
-            /* Mobile: thin frame always slightly visible (no hover) */
-            .inside__frame {
-                border-color: rgba(184,115,51,0.18);
-            }
-            .inside__frame::after { display: none; }
-
-            .inside-section__footer { gap: 24px; }
-            .inside-section__meta-divider { display: none; }
-            .brand-os__inner { grid-template-columns: 1fr; gap: 32px; }
-            .brand-os__img-wrap { order: -1; max-width: 360px; margin: 0 auto; width: 100%; }
-            .brand-os__btns { justify-content: center; }
-            .brand-os__content { align-items: center; }
-            .brand-os__wrap { padding: 40px 20px 48px; }
+            .method__grid { grid-template-columns: 1fr; gap: 18px; }
             .intro__inner { grid-template-columns: 1fr; gap: 32px; }
             .intro__visual { order: -1; max-width: 340px; margin: 0 auto; width: 100%; }
             .intro__image-frame { aspect-ratio: 3/4; max-height: 420px; }
             .intro__bg-shape { right: -10px; bottom: -10px; width: 70%; height: 70%; }
             .intro__float-tag { left: -8px; bottom: 16px; padding: 10px 14px; }
-            .intro__content { text-align: right; }
-            
-            .footer__inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer__bottom {
-                flex-direction: column;
-                gap: 24px;
-                text-align: center;
-            }
+            .footer__inner { grid-template-columns: 1fr; gap: 40px; }
+            .footer__bottom { flex-direction: column; gap: 24px; text-align: center; }
+            .inside__top { padding: 12px 12px 0; }
+            .inside__num { font-size: 1.25rem; }
+            .inside__tag { display: none; }
+            .inside__bottom { padding: 14px 12px 14px; }
+            .inside__name { font-size: 1.125rem; }
+            .inside__desc { display: none; }
+            .inside__spec { font-size: 8.5px; }
+            .inside__spec::before { width: 12px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- ============================================================
+         NAVIGATION
+         ============================================================ -->
     <nav class="nav" id="nav">
         <div class="container nav__inner">
-            <a href="/" class="nav__logo">Hagit Antebi</a>
+            <a href="/" class="nav__logo">
+                <span class="nav__logo-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 701" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,701.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                            <path d="M3305 6604 c-182 -18 -259 -29 -388 -55 -1227 -248 -2210 -1310 -2401 -2596 -93 -617 19 -1286 311 -1868 84 -168 83 -167 83 -49 0 414 256 789 686 1003 287 142 508 197 1634 406 948 175 1140 223 1457 360 779 337 1131 985 906 1668 -181 550 -849 1002 -1643 1112 -109 16 -550 28 -645 19z m509 -349 c567 -66 1071 -309 1320 -635 269 -352 245 -836 -58 -1157 -146 -155 -390 -311 -573 -367 l-23 -7 -2 723 c-3 711 -3 724 -24 763 -66 126 -267 134 -350 13 l-29 -41 -5 -796 -5 -796 -110 -23 c-214 -45 -1050 -199 -1057 -195 -5 2 -8 408 -8 901 l0 897 -23 40 c-77 136 -279 133 -357 -5 l-25 -45 -3 -936 -2 -936 -88 -17 c-738 -145 -1178 -353 -1433 -676 l-64 -82 -17 84 c-94 453 -67 950 74 1388 406 1257 1600 2053 2862 1905z"/>
+                            <path d="M5830 5597 c0 -5 5 -18 11 -29 6 -11 20 -52 31 -92 267 -957 -313 -1826 -1453 -2176 -280 -86 -473 -128 -1236 -269 -700 -130 -818 -154 -998 -201 -546 -141 -835 -351 -967 -701 -47 -124 -49 -368 -4 -499 77 -228 229 -422 486 -621 1356 -1051 3332 -725 4287 706 108 162 224 366 266 470 9 22 30 74 47 115 176 422 246 810 237 1320 -12 689 -209 1291 -608 1850 -85 120 -98 137 -99 127z m304 -1362 c205 -982 -15 -1877 -641 -2606 -628 -732 -1659 -1050 -2633 -813 -326 80 -729 280 -990 491 -328 266 -431 521 -310 767 101 205 333 337 770 439 l145 34 5 -541 c5 -587 3 -559 64 -624 95 -102 262 -76 327 50 18 35 19 67 19 613 l0 575 23 9 c12 4 92 20 177 35 206 37 640 120 818 156 79 17 147 30 152 30 6 0 10 -259 10 -694 l0 -694 33 -48 c84 -127 263 -126 342 1 l30 48 5 749 5 749 140 48 c737 254 1237 693 1431 1256 20 58 40 103 45 98 4 -3 0 -12 -8 -22z"/>
+                        </g>
+                    </svg>
+                </span>
+                <span>Hagit Antebi</span>
+            </a>
             <ul class="nav__links">
                 <li><a href="method.html" class="nav__link">Method</a></li>
                 <li class="nav__dropdown">
@@ -1851,7 +1351,7 @@
                     <ul class="nav__dropdown-menu">
                         <li class="nav__dropdown-item"><a href="worlds.html" class="nav__dropdown-link">Brand Worlds</a></li>
                         <li class="nav__dropdown-item"><a href="experiences.html" class="nav__dropdown-link">Brand Experiences</a></li>
-                        <li class="nav__dropdown-item"><a href="vision-story.html" class="nav__dropdown-link">Vision & Story</a></li>
+                        <li class="nav__dropdown-item"><a href="vision-story.html" class="nav__dropdown-link">Vision &amp; Story</a></li>
                         <li class="nav__dropdown-item"><a href="studio.html" class="nav__dropdown-link">Studio AI</a></li>
                     </ul>
                 </li>
@@ -1869,94 +1369,140 @@
     </nav>
     <div class="nav__overlay" id="navOverlay"></div>
 
-    <!-- Hero Section -->
+    <!-- ============================================================
+         01 · HERO
+         ============================================================ -->
     <section class="hero">
         <img src="hero-bg.png" alt="" class="hero__bg-image">
         <div class="hero__bg-element hero__bg-element--1"></div>
         <div class="hero__bg-element hero__bg-element--2"></div>
         <div class="hero__bg-element hero__bg-element--3"></div>
-        
+
         <div class="hero__content">
-            <p class="hero__eyebrow">Brand Architect & Visual Strategist</p>
+            <p class="hero__eyebrow" dir="ltr">Brand Architect &middot; BrandOS Founder</p>
+
             <h1 class="hero__title">
-                <span>I Build</span>
-                <span class="hero__title-highlight">Brand Worlds</span>
+                <span dir="ltr">Brand Worlds</span>
             </h1>
-            <p class="hero__subtitle">Most brands stop at design. I build the world behind it.</p>
-            <a href="#contact" class="hero__cta">
-                Start Your Journey
-                <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+
+            <span class="hero__divider" aria-hidden="true"></span>
+
+            <p class="hero__tagline" dir="ltr">
+                <em>Built to Strategy.</em>
+                <span class="hero__tagline-dot">&middot;</span>
+                <em>Run by AI.</em>
+            </p>
+
+            <p class="hero__subtitle--he">
+                מותג שמוקם פעם אחת — ומופעל יום-יום<br>
+                על ידי המערכת שמכירה אותו לעומק.
+            </p>
+
+            <div class="hero__cta-block">
+                <span class="hero__scroll-label" dir="ltr">Scroll</span>
+                <a href="#portals" class="hero__cta" dir="ltr">
+                    See How It Works
+                    <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         02 · PORTALS — 3 cards: Video Lab, Brand Experiences, Brand Worlds
+         ============================================================ -->
+    <section class="portals" id="portals">
+        <div class="container portals__header reveal">
+            <p class="portals__label" dir="ltr">Explore</p>
+            <h2 class="portals__title" dir="ltr">Choose Your World</h2>
+            <p class="portals__subtitle">שלושה מקומות שאפשר להיכנס אליהם</p>
+        </div>
+
+        <div class="portals__grid">
+
+            <!-- 01 · AI Video Lab -->
+            <a href="ai-video-lab.html" class="portal">
+                <div class="portal__img-layer portal__img-layer--rotate">
+                    <div class="portal__img-spin" style="background-image:url('portal-vision.png')"></div>
+                </div>
+                <div class="portal__particles">
+                    <div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div>
+                </div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top">
+                    <span class="portal__num">01</span>
+                    <span class="portal__tag">AI Films</span>
+                </div>
+                <div class="portal__bottom">
+                    <p class="portal__name">AI Video Lab</p>
+                    <p class="portal__desc">סדרת סרטוני AI — קולנוע מותג בעידן של בינה יוצרת</p>
+                    <span class="portal__enter">Enter Lab
+                        <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </div>
             </a>
-        </div>
-        
-        <div class="hero__scroll">
-            <span>Scroll</span>
-            <div class="hero__scroll-line"></div>
+
+            <!-- 02 · Brand Experiences -->
+            <a href="experiences.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('portal-experiences.png')"></div>
+                <div class="portal__particles">
+                    <div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div>
+                </div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top">
+                    <span class="portal__num">02</span>
+                    <span class="portal__tag">Spaces</span>
+                </div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Brand Experiences</p>
+                    <p class="portal__desc">חוויות מותג ב-3D וב-AI — מרחבים שמרגישים את המותג</p>
+                    <span class="portal__enter">Enter
+                        <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- 03 · Brand Worlds -->
+            <a href="worlds.html" class="portal">
+                <div class="portal__img-layer" style="background-image:url('portal-worlds.png')"></div>
+                <div class="portal__particles">
+                    <div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div>
+                </div>
+                <div class="portal__overlay"></div>
+                <div class="portal__glow"></div>
+                <div class="portal__top">
+                    <span class="portal__num">03</span>
+                    <span class="portal__tag">Worlds</span>
+                </div>
+                <div class="portal__bottom">
+                    <p class="portal__name">Brand Worlds</p>
+                    <p class="portal__desc">עולמות מותג מלאים — אסטרטגיה, נרטיב וויזואל</p>
+                    <span class="portal__enter">Enter World
+                        <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </div>
+            </a>
+
         </div>
     </section>
 
-    <!-- Who This Is For Section -->
-    <section class="who-for section">
-        <div class="container">
-            <div class="who-for__content reveal">
-                <p class="who-for__text">
-                    This is for brands that want more than visibility.<br>
-                    For founders who care about identity, continuity and meaning.<br>
-                    For businesses that want a space people <em>stay in</em> — not just notice.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Method Section -->
-    <section class="method section" id="method">
-        <div class="container">
-            <div class="method__header reveal">
-                <p class="method__label">The Method</p>
-                <h2 class="method__title">How I Build Brand Worlds</h2>
-            </div>
-            
-            <div class="method__grid">
-                <div class="method__card reveal">
-                    <img src="cube1.jpg" alt="The Core" class="method__card-image">
-                    <div class="method__number">01</div>
-                    <h3 class="method__card-title">The Core</h3>
-                    <p class="method__card-subtitle">The inner logic that holds every decision.</p>
-                    <p class="method__card-text">זיקוק ה-DNA האמיתי של המותג — לא מה שצריך להיראות, אלא מי אתם באמת.</p>
-                </div>
-                
-                <div class="method__card reveal">
-                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
-                    <div class="method__number">02</div>
-                    <h3 class="method__card-title">The Narrative</h3>
-                    <p class="method__card-subtitle">The story that gives meaning and continuity.</p>
-                    <p class="method__card-text">בניית הסיפור שמחבר את כל החלקים — שפה שאנשים מרגישים בה מובנים.</p>
-                </div>
-                
-                <div class="method__card reveal">
-                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
-                    <div class="method__number">03</div>
-                    <h3 class="method__card-title">The Visual World</h3>
-                    <p class="method__card-subtitle">The space people can actually enter and feel.</p>
-                    <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What's Inside a Brand World — Deliverables Section -->
+    <!-- ============================================================
+         03 · WHAT'S INSIDE — anchor links into Maison case-study
+         ============================================================ -->
     <section class="inside-section" id="whats-inside">
         <div class="container inside-section__header reveal">
-            <p class="inside-section__label">What You Actually Get</p>
+            <p class="inside-section__label" dir="ltr">What You Actually Get</p>
             <h2 class="inside-section__title">What's Inside a Brand World</h2>
             <p class="inside-section__subtitle">לא חבילה. עולם שלם — בנוי, מתועד, ומוכן להפעלה.</p>
         </div>
 
         <div class="inside-section__grid" id="insideGrid">
 
-            <a href="maison/" class="inside">
+            <a href="maison/#brand-dna" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-01.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -1964,11 +1510,11 @@
                 <div class="inside__bottom">
                     <p class="inside__name">Brand DNA Document</p>
                     <p class="inside__desc">מסמך אסטרטגי מלא — ערכים, טון, קהל, פוזישנינג ובידול. הקבצים שמכל החלטה עתידה לצאת מהם.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
-            <a href="maison/" class="inside">
+            <a href="maison/#identity" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-02.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -1976,11 +1522,11 @@
                 <div class="inside__bottom">
                     <p class="inside__name">Visual Identity System</p>
                     <p class="inside__desc">לוגו, פלטת צבעים, טיפוגרפיה, גריד ואיקונוגרפיה — מערכת שמחזיקה כל נקודת מגע.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
-            <a href="maison/" class="inside">
+            <a href="maison/#brand-book" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-03.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -1988,11 +1534,11 @@
                 <div class="inside__bottom">
                     <p class="inside__name">Brand Book</p>
                     <p class="inside__desc">ספר מותג מלא — שימור הזהות לאורך זמן, גם כשעובדים איתו צוות פנימי או ספקים חיצוניים.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
-            <a href="maison/" class="inside">
+            <a href="maison/#tel-aviv" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-04.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -2000,11 +1546,11 @@
                 <div class="inside__bottom">
                     <p class="inside__name">Website &amp; Landing Pages</p>
                     <p class="inside__desc">אתר תדמית או דפי נחיתה ממותגים — בנויים לפי ה-DNA, מותאמים למובייל ולמהירות טעינה.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
-            <a href="maison/" class="inside">
+            <a href="maison/#cannele" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-05.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -2012,11 +1558,11 @@
                 <div class="inside__bottom">
                     <p class="inside__name">Sales &amp; Pitch Materials</p>
                     <p class="inside__desc">הצעות מחיר ממותגות, מצגות ופיצ'ים — כל מסמך שיוצא מהמותג נראה ומרגיש כמוכם.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
-            <a href="maison/" class="inside">
+            <a href="maison/#activation" class="inside">
                 <div class="inside__img-layer" style="background-image:url('inside-06.jpg')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
@@ -2024,7 +1570,7 @@
                 <div class="inside__bottom">
                     <p class="inside__name">BrandOS Activation</p>
                     <p class="inside__desc">הטמעת ה-DNA ב-BrandOS — מערכת ה-AI שמייצרת תוכן, תמונות ווידאו בקול של המותג, יום-יום.</p>
-                    <span class="inside__spec">View in Maison de l'Heure →</span>
+                    <span class="inside__spec">See in Maison →</span>
                 </div>
             </a>
 
@@ -2050,102 +1596,75 @@
         </div>
     </section>
 
-    <!-- Sphere / Living Systems Section -->
-    <section class="sphere section">
-        <div class="sphere__inner">
-            <div class="sphere__video-container reveal">
-                <video class="sphere__video" autoplay muted loop playsinline>
-                    <source src="sphere-video.mp4" type="video/mp4">
-                </video>
+    <!-- ============================================================
+         04 · METHOD — moved DOWN, 4 phases (BrandOS as 04)
+         ============================================================ -->
+    <section class="method section" id="method">
+        <div class="container">
+            <div class="method__header reveal">
+                <p class="method__label" dir="ltr">The Method</p>
+                <h2 class="method__title" dir="ltr">How I Build Brand Worlds</h2>
             </div>
-            <p class="sphere__text reveal">Where structure evolves into living systems.</p>
+
+            <div class="method__grid">
+                <div class="method__card reveal">
+                    <img src="cube1.jpg" alt="The Core" class="method__card-image">
+                    <div class="method__number">01</div>
+                    <h3 class="method__card-title" dir="ltr">The Core</h3>
+                    <p class="method__card-subtitle" dir="ltr">The inner logic.</p>
+                    <p class="method__card-text">זיקוק ה-DNA האמיתי של המותג — לא מה שצריך להיראות, אלא מי אתם באמת.</p>
+                </div>
+
+                <div class="method__card reveal">
+                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
+                    <div class="method__number">02</div>
+                    <h3 class="method__card-title" dir="ltr">The Narrative</h3>
+                    <p class="method__card-subtitle" dir="ltr">The story.</p>
+                    <p class="method__card-text">בניית הסיפור שמחבר את כל החלקים — שפה שאנשים מרגישים בה מובנים.</p>
+                </div>
+
+                <div class="method__card reveal">
+                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
+                    <div class="method__number">03</div>
+                    <h3 class="method__card-title" dir="ltr">The Visual World</h3>
+                    <p class="method__card-subtitle" dir="ltr">The space.</p>
+                    <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
+                </div>
+
+                <div class="method__card reveal">
+                    <img src="sphere-outcome.png" alt="BrandOS" class="method__card-image">
+                    <div class="method__number">04</div>
+                    <h3 class="method__card-title" dir="ltr">BrandOS</h3>
+                    <p class="method__card-subtitle">הפעלה</p>
+                    <p class="method__card-text">המותג עולה לאוויר — תוכן, קריאייטיב ודפים שמופעלים על ידי מערכת ה-AI שלכם, יום-יום.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ★ Choose Your World — Portals v2 ★ -->
-    <section class="portals" id="portals">
-        <div class="container portals__header reveal">
-            <p class="portals__label">Explore</p>
-            <h2 class="portals__title">Choose Your World</h2>
-            <p class="portals__subtitle">Every structure holds a universe inside. Hover to reveal it.</p>
-        </div>
-
-        <div class="portals__grid" id="portalsGrid">
-            <a href="worlds.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-worlds.png')"></div>
-                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
-                <div class="portal__overlay"></div>
-                <div class="portal__glow"></div>
-                <div class="portal__top"><span class="portal__num">01</span><span class="portal__tag">Worlds</span></div>
-                <div class="portal__bottom">
-                    <p class="portal__name">Brand Worlds</p>
-                    <p class="portal__desc">עולמות מותג מלאים — MORA, SHIRO, NEXUS, FROST</p>
-                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="experiences.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-experiences.png')"></div>
-                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
-                <div class="portal__overlay"></div>
-                <div class="portal__glow"></div>
-                <div class="portal__top"><span class="portal__num">02</span><span class="portal__tag">Production</span></div>
-                <div class="portal__bottom">
-                    <p class="portal__name">Brand Experiences</p>
-                    <p class="portal__desc">מצגות מונפשות, וידאו קמפיינים והפקות ויזואליות</p>
-                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="vision-story.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-vision.png')"></div>
-                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
-                <div class="portal__overlay"></div>
-                <div class="portal__glow"></div>
-                <div class="portal__top"><span class="portal__num">03</span><span class="portal__tag">Story</span></div>
-                <div class="portal__bottom">
-                    <p class="portal__name">Vision & Story</p>
-                    <p class="portal__desc">חזון, סטוריטלינג וסרטוני השראה לאמנים ויוצרים</p>
-                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-
-            <a href="studio.html" class="portal">
-                <div class="portal__img-layer" style="background-image:url('portal-studio.png')"></div>
-                <div class="portal__particles"><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div><div class="portal__p"></div></div>
-                <div class="portal__overlay"></div>
-                <div class="portal__glow"></div>
-                <div class="portal__top"><span class="portal__num">04</span><span class="portal__tag">Workshop</span></div>
-                <div class="portal__bottom">
-                    <p class="portal__name">Studio AI</p>
-                    <p class="portal__desc">סדנאות, מעבדת AI ותהליכי עבודה יצירתיים</p>
-                    <span class="portal__enter">Enter World <svg class="portal__enter-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- About Preview Section v2 -->
+    <!-- ============================================================
+         05 · ABOUT TEASER (shortened)
+         ============================================================ -->
     <section class="intro section" id="about">
         <div class="container intro__inner">
             <div class="intro__content reveal">
-                <span class="intro__label">The Brand Architect</span>
+                <span class="intro__label" dir="ltr">The Brand Architect</span>
                 <h2 class="intro__title">אני חגית אנטבי</h2>
                 <span class="intro__divider"></span>
-                <p class="intro__text">
-                    התשוקה שלי היא לחבר בין ניגודים —<br>
-                    בין דאטה לרגש. בין טכנולוגיה לאומנות.<br>
-                    בין אסטרטגיה לחלום.
-                </p>
                 <div class="intro__pairs">
-                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">10+ שנות ניסיון באסטרטגיית מותג ושיווק דיגיטלי</span></div>
-                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">בונה עולמות מותג מלאים — לא רק עיצוב, אלא מערכת שלמה</span></div>
-                    <div class="intro__pair"><div class="intro__pair-dot"></div><span class="intro__pair-text">מפתחת BrandOS — <span class="intro__highlight">מערכת ה-AI הראשונה שעובדת בקול של המותג שלכם</span></span></div>
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text">מהאסטרטגיה של המותג ועד הקוד שמפעיל אותו — אני מטפלת ב<b>כל השכבה</b>.</span>
+                    </div>
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text"><b>תואר שני באסטרטגיה דיגיטלית.</b> 10+ שנות ניסיון מ-Lifestyle ועד SaaS.</span>
+                    </div>
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text">מפתחת <b>BrandOS</b> — מערכת ה-AI שעובדת בקול שלכם, יום-יום.</span>
+                    </div>
                 </div>
-                <p class="intro__text" style="margin-bottom:28px;">
-                    היום, כ-Brand Architect, אני משתמשת בכוח של הבינה המלאכותית לא כדי לקצר תהליכים —
-                    אלא כדי <span class="intro__highlight">להרחיב את גבולות הדמיון.</span>
-                </p>
                 <a href="about.html" class="intro__link">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     Read More
@@ -2153,86 +1672,89 @@
             </div>
             <div class="intro__visual reveal">
                 <div class="intro__bg-shape"></div>
-                <div class="intro__image-frame" id="introImg">
+                <div class="intro__image-frame">
                     <img src="hagit-editorial.jpg" alt="חגית אנטבי — Brand Worlds Architect" class="intro__image">
                 </div>
-                <div class="intro__float-tag" id="introTag">
-                    <p class="intro__float-label">Brand Worlds Studio</p>
-                    <p class="intro__float-text">Building worlds, not just brands</p>
+                <div class="intro__float-tag">
+                    <p class="intro__float-label" dir="ltr">Brand Worlds Studio</p>
+                    <p class="intro__float-text" dir="ltr">Building worlds, not just brands</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brand OS Section v2 -->
-    <section class="brand-os section" id="brandos">
-        <div class="brand-os__wrap reveal">
-            <div class="brand-os__grid-bg"></div>
-            <div class="brand-os__glow"></div>
-
-            <div class="brand-os__header">
-                <div class="brand-os__badge"><span class="brand-os__badge-dot"></span> Live Platform</div>
-                <h2 class="brand-os__title">BrandOS</h2>
-                <p class="brand-os__mono">// מערכת הפעלה למותגים</p>
-                <p class="brand-os__tagline">הפלטפורמה היחידה שלוקחת את ה-DNA של המותג שלכם ומפעילה אותו</p>
+    <!-- ============================================================
+         06 · TESTIMONIALS — Words from clients (Google Reviews)
+         ============================================================ -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="testimonials__header reveal">
+                <p class="testimonials__rating" dir="ltr">
+                    <span class="testimonials__rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    5.0 on Google
+                </p>
+                <h2 class="testimonials__title" dir="ltr">In Their Own Words</h2>
+                <p class="testimonials__subtitle">מה לקוחות אומרים</p>
             </div>
 
-            <div class="brand-os__divider"></div>
+            <div class="testimonials__grid">
 
-            <div class="brand-os__inner">
-                <div class="brand-os__img-wrap">
-                    <div class="brand-os__img-frame">
-                        <img src="hagit-brandos.png" alt="Hagit Antebi — BrandOS">
-                        <div class="brand-os__corner brand-os__corner--tl"></div>
-                        <div class="brand-os__corner brand-os__corner--tr"></div>
-                        <div class="brand-os__corner brand-os__corner--bl"></div>
-                        <div class="brand-os__corner brand-os__corner--br"></div>
+                <article class="testimonial reveal">
+                    <div class="testimonial__stars" aria-label="5 stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                    <div class="brand-os__stats">
-                        <div class="brand-os__stat"><div class="brand-os__stat-n">100%</div><div class="brand-os__stat-l">ממותג</div></div>
-                        <div class="brand-os__stat"><div class="brand-os__stat-n">4 in 1</div><div class="brand-os__stat-l">כלים</div></div>
-                        <div class="brand-os__stat"><div class="brand-os__stat-n">AI</div><div class="brand-os__stat-l">Native</div></div>
-                    </div>
-                </div>
+                    <p class="testimonial__quote">"מקצועית ברמות. עושה לנו את השיווק הדיגיטלי ומיתגה לי את העסק עם לוגו משגע. תותחית!"</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__avatar" aria-hidden="true">S</span>
+                        <span class="testimonial__meta">
+                            <span class="testimonial__name">Sheri Matatof</span>
+                            <span class="testimonial__date">מרץ 2025</span>
+                        </span>
+                    </footer>
+                </article>
 
-                <div class="brand-os__content">
-                    <p class="brand-os__section-lbl">מה זה BrandOS</p>
-                    <p class="brand-os__text">
-                        תמונות, טקסטים, הנפשות ולוח תוכן —<br>
-                        <b>הכל במקום אחד, הכל בקול שלכם.</b><br><br>
-                        BrandOS לא מייצרת תוכן גנרי.<br>
-                        היא מייצרת <b>תוכן שמרגיש כמוכם</b>.
-                    </p>
-                    <div class="brand-os__pipeline" id="bosPipeline">
-                        <p class="brand-os__pipe-tag">// how it works</p>
-                        <div class="brand-os__pipe-row">
-                            <div class="brand-os__pipe-box">Brand DNA</div>
-                            <span class="brand-os__pipe-arr">→</span>
-                            <div class="brand-os__pipe-box">AI Engine</div>
-                        </div>
-                        <div class="brand-os__pipe-row">
-                            <div class="brand-os__pipe-box">תוכן ממותג</div>
-                            <span class="brand-os__pipe-arr">→</span>
-                            <div class="brand-os__pipe-box">תמונות + וידאו</div>
-                        </div>
+                <article class="testimonial reveal">
+                    <div class="testimonial__stars" aria-label="5 stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                    <div class="brand-os__btns">
-                        <a href="https://wa.me/972528351676" class="brand-os__btn brand-os__btn--ghost">שאלה? דברו איתי</a>
-                        <a href="https://hagitantebi.co.il/brand-os" class="brand-os__btn">גלו את BrandOS</a>
+                    <p class="testimonial__quote">"ההרגשה שהיא יודעת בדיוק מה שהיא עושה משרה ביטחון של ממש. והכי חשוב — יש תוצאות בהתאם!"</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__avatar" aria-hidden="true">R</span>
+                        <span class="testimonial__meta">
+                            <span class="testimonial__name">Roza Kagner</span>
+                            <span class="testimonial__date">יולי 2024</span>
+                        </span>
+                    </footer>
+                </article>
+
+                <article class="testimonial reveal">
+                    <div class="testimonial__stars" aria-label="5 stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                     </div>
-                </div>
+                    <p class="testimonial__quote">"אני עובדת עם חגית כבר מספר שנים. התשוקה והידע העצום שלה — מטורפים. ממליצה מאוד."</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__avatar" aria-hidden="true">K</span>
+                        <span class="testimonial__meta">
+                            <span class="testimonial__name">Karin Cohen</span>
+                            <span class="testimonial__date">יוני 2025</span>
+                        </span>
+                    </footer>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA Section -->
+    <!-- ============================================================
+         07 · CONTACT CTA
+         ============================================================ -->
     <section class="contact-cta section" id="contact">
         <div class="contact-cta__bg"></div>
         <div class="container contact-cta__content reveal">
-            <p class="contact-cta__label">Let's Explore</p>
-            <h2 class="contact-cta__title">Not sure if your brand<br>has a world yet?</h2>
-            <p class="contact-cta__text">If this resonates — you're probably ready.<br>Let's explore it together.</p>
-            <a href="brand-discovery.html" class="contact-cta__btn">
+            <p class="contact-cta__label" dir="ltr">Let's Explore</p>
+            <h2 class="contact-cta__title" dir="ltr">Not sure if your brand<br>has a world yet?</h2>
+            <p class="contact-cta__text" dir="ltr">If this resonates — you're probably ready.<br>Let's explore it together.</p>
+            <a href="brand-discovery.html" class="contact-cta__btn" dir="ltr">
                 Start Brand Discovery
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -2240,17 +1762,6 @@
             </a>
         </div>
     </section>
-
-    <!-- Next World Gate → Brand OS -->
-    <a href="https://hagitantebi.co.il/brand-os" class="next-gate">
-        <p class="next-gate__label">Continue Exploring</p>
-        <h3 class="next-gate__title">גלו את BrandOS →</h3>
-        <div class="next-gate__arrow">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
-    </a>
 
     <!-- Footer -->
     <footer class="footer">
@@ -2260,17 +1771,15 @@
                     <div class="footer__logo">Hagit Antebi</div>
                     <p class="footer__tagline">Brand Worlds Architect — בונה עולמות מותג ומפתחת BrandOS, מערכת AI ליצירת תוכן ממותג.</p>
                 </div>
-                
                 <div class="footer__col">
                     <h4 class="footer__col-title">Navigate</h4>
                     <ul class="footer__links">
+                        <li><a href="#portals">Work</a></li>
+                        <li><a href="#whats-inside">Inside</a></li>
                         <li><a href="#method">Method</a></li>
-                        <li><a href="worlds.html">Brand Worlds</a></li>
-                        <li><a href="studio.html">Studio</a></li>
                         <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer__col">
                     <h4 class="footer__col-title">Resources</h4>
                     <ul class="footer__links">
@@ -2279,24 +1788,17 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer__col">
                     <h4 class="footer__col-title">Connect</h4>
                     <ul class="footer__links">
                         <li><a href="https://www.instagram.com/hagita.digital/" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.facebook.com/hagit.antebirasuli" target="_blank">Facebook</a></li>
                         <li><a href="https://www.linkedin.com/in/hagit-antebi-rasuli" target="_blank">LinkedIn</a></li>
                         <li><a href="https://wa.me/972528351676" target="_blank">WhatsApp</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer__bottom">
-                <p class="footer__copyright">© 2026 Hagit Antebi — Brand Worlds Studio. All rights reserved.</p>
-                <div class="footer__social">
-                    <a href="privacy.html">מדיניות פרטיות</a>
-                    <a href="accessibility.html">הצהרת נגישות</a>
-                </div>
+                <p class="footer__copyright">© 2026 Hagit Antebi · Brand Worlds Studio</p>
             </div>
         </div>
     </footer>
@@ -2310,11 +1812,8 @@
             var dropdowns = document.querySelectorAll('.nav__dropdown');
 
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
+                if (window.scrollY > 60) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
             });
 
             function toggleMenu() {
@@ -2323,141 +1822,55 @@
                 overlay.classList.toggle('active');
                 document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
             }
-
             function closeMenu() {
                 menuBtn.classList.remove('open');
                 navLinks.classList.remove('open');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-
-            menuBtn.addEventListener('click', toggleMenu);
-            overlay.addEventListener('click', closeMenu);
+            if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
 
             for (var d = 0; d < dropdowns.length; d++) {
                 (function(dropdown) {
                     var toggle = dropdown.querySelector('.nav__dropdown-toggle');
+                    if (!toggle) return;
                     toggle.addEventListener('click', function(e) {
                         if (window.innerWidth <= 768) {
                             e.preventDefault();
                             for (var k = 0; k < dropdowns.length; k++) {
-                                if (dropdowns[k] !== dropdown) {
-                                    dropdowns[k].classList.remove('active');
-                                }
+                                if (dropdowns[k] !== dropdown) dropdowns[k].classList.remove('active');
                             }
                             dropdown.classList.toggle('active');
                         }
                     });
                 })(dropdowns[d]);
             }
-
-            // ── Portals scroll reveal ──
-            var portalObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var cards = entry.target.querySelectorAll('.portal');
-                        cards.forEach(function(c) { c.classList.add('portal--visible'); });
-                        portalObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            var pg = document.getElementById('portalsGrid');
-            if (pg) portalObserver.observe(pg);
-
-            // ── What's Inside scroll reveal ──
-            var insideObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var cards = entry.target.querySelectorAll('.inside');
-                        cards.forEach(function(c) { c.classList.add('inside--visible'); });
-                        insideObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            var ig = document.getElementById('insideGrid');
-            if (ig) insideObserver.observe(ig);
-
-            // ── BrandOS pipeline reveal ──
-            var bosObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var rows = entry.target.querySelectorAll('.brand-os__pipe-row');
-                        setTimeout(function(){ if(rows[0]) rows[0].classList.add('active'); }, 400);
-                        setTimeout(function(){ if(rows[1]) rows[1].classList.add('active'); }, 900);
-                        var img = document.getElementById('introImg');
-                        var tag = document.getElementById('introTag');
-                        if(img) img.classList.add('active');
-                        if(tag) tag.classList.add('active');
-                        bosObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-            var bp = document.getElementById('bosPipeline');
-            if (bp) bosObserver.observe(bp);
-
-            // ── About image — observer משלו ──
-            var introImg = document.getElementById('introImg');
-            var introTag = document.getElementById('introTag');
-            if (introImg) {
-                var introObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            introImg.classList.add('active');
-                            if (introTag) introTag.classList.add('active');
-                            introObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-                introObserver.observe(introImg);
-            }
-
-            var allNavLinks = navLinks.querySelectorAll('a:not(.nav__dropdown-toggle)');
-            for (var n = 0; n < allNavLinks.length; n++) {
-                allNavLinks[n].addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        closeMenu();
-                    }
-                });
-            }
-
-            var revealElements = document.querySelectorAll('.reveal');
-            
-            function revealOnScroll() {
-                for (var i = 0; i < revealElements.length; i++) {
-                    var el = revealElements[i];
-                    var rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 60) {
-                        el.classList.add('active');
-                    }
-                }
-            }
-            
-            window.addEventListener('scroll', revealOnScroll);
-            // הרץ מיד + אחרי טעינה מלאה
-            revealOnScroll();
-            window.addEventListener('load', revealOnScroll);
-            setTimeout(revealOnScroll, 300);
-            setTimeout(revealOnScroll, 800);
-
-            var anchors = document.querySelectorAll('a[href^="#"]');
-            for (var j = 0; j < anchors.length; j++) {
-                anchors[j].addEventListener('click', function(e) {
-                    var href = this.getAttribute('href');
-                    if (href === '#') return;
-                    if (this.classList.contains('nav__dropdown-toggle') && window.innerWidth <= 768) return;
-                    e.preventDefault();
-                    var target = document.querySelector(href);
-                    if (target) {
-                        closeMenu();
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            }
         })();
+
+        // Reveal observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Portal stagger reveal
+        const portalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('portal--visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.portal').forEach(el => portalObserver.observe(el));
+
+        // Inside stagger reveal
+        const insideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('inside--visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.inside').forEach(el => insideObserver.observe(el));
     </script>
-    <script src="/hagit-agent-widget.js" defer></script>
 </body>
 </html>

@@ -285,6 +285,93 @@
         }
 
         /* ========================================
+           STUDIO NOTE — Editorial concept-project framing
+           ======================================== */
+        .studio-note {
+            background: var(--color-cream);
+            padding: clamp(72px, 10vw, 112px) var(--container-padding);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .studio-note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: clamp(40px, 6vw, 64px);
+            background: linear-gradient(to bottom, var(--color-copper), transparent);
+            opacity: 0.55;
+        }
+        .studio-note__inner {
+            max-width: 620px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .studio-note__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-body-en);
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 36px;
+            direction: ltr;
+        }
+        .studio-note__label::before,
+        .studio-note__label::after {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--color-copper);
+            opacity: 0.6;
+        }
+        .studio-note__primary {
+            font-family: var(--font-display);
+            font-size: clamp(1.125rem, 2.1vw, 1.4rem);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--color-espresso);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            direction: ltr;
+            letter-spacing: 0.005em;
+        }
+        .studio-note__primary em {
+            font-style: normal;
+            color: var(--color-copper);
+            font-weight: 500;
+        }
+        .studio-note__divider {
+            display: block;
+            width: 1px;
+            height: 28px;
+            background: var(--color-copper);
+            margin: 0 auto 28px;
+            opacity: 0.4;
+        }
+        .studio-note__secondary {
+            font-family: var(--font-body-he);
+            font-size: clamp(0.9rem, 1.4vw, 1rem);
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--color-warm-oak);
+            direction: rtl;
+        }
+        .studio-note__secondary strong {
+            color: var(--color-espresso);
+            font-weight: 500;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .studio-note::before { animation: none; }
+        }
+
+        /* ========================================
            SECTION COMMON
         ======================================== */
         .section {
@@ -503,6 +590,45 @@
         .identity__visual img {
             width: 100%; height: 100%;
             object-fit: cover;
+        }
+
+        /* Logo presentation — replaces image-cover with centered logomark on butter ground */
+        .identity__visual--logo {
+            aspect-ratio: 1;
+            background: var(--color-butter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(40px, 8%, 72px);
+            border: 1px solid rgba(184, 115, 51, 0.18);
+            box-shadow: 0 24px 64px rgba(43, 31, 24, 0.06);
+        }
+        .identity__visual--logo::before {
+            content: '';
+            position: absolute;
+            inset: 16px;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            pointer-events: none;
+        }
+        .identity__visual--logo::after {
+            content: 'The Logomark';
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-body-en);
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(139, 111, 78, 0.65);
+            direction: ltr;
+        }
+        .identity__visual--logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: none;
         }
 
         .identity__palette {
@@ -824,13 +950,18 @@
         }
 
         .menu__intro-image {
-            aspect-ratio: 16/9;
+            aspect-ratio: 4/5;
             overflow: hidden;
-            margin: 56px 0;
+            margin: 56px auto;
+            max-width: 460px;
+            width: 100%;
+            border: 1px solid rgba(184, 115, 51, 0.18);
+            background: var(--color-butter);
+            box-shadow: 0 24px 64px rgba(43, 31, 24, 0.08);
         }
         .menu__intro-image img {
             width: 100%; height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .menu__list {
@@ -1193,6 +1324,27 @@
 </header>
 
 <!-- ============================================
+     STUDIO NOTE — Concept-project framing
+============================================ -->
+<section class="studio-note">
+    <div class="studio-note__inner reveal">
+        <p class="studio-note__label">A Note from the Studio</p>
+        <p class="studio-note__primary">
+            Maison de l'Heure is a <em>speculative brand world</em>.
+            The café doesn't exist as a physical place — what does exist
+            is a complete, working system for how a brand could feel.
+        </p>
+        <span class="studio-note__divider" aria-hidden="true"></span>
+        <p class="studio-note__secondary">
+            <strong>Maison de l'Heure הוא פרויקט קונספט.</strong>
+            בית הקפה לא קיים בעולם האמיתי — מה שקיים הוא עולם מותג שלם:
+            אסטרטגיה, נרטיב וזהות חזותית, שבניתי כדי להראות איך
+            <strong>Brand Worlds Studio</strong> חושב על מותגים.
+        </p>
+    </div>
+</section>
+
+<!-- ============================================
      01 · THE BRIEF
 ============================================ -->
 <section class="section brief" id="brief">
@@ -1300,8 +1452,8 @@
         </div>
 
         <div class="identity__split">
-            <div class="identity__visual reveal">
-                <img src="maison-pastry-flatlay.jpg" alt="Maison de l'Heure pastry flatlay with brand identity" loading="lazy">
+            <div class="identity__visual identity__visual--logo reveal">
+                <img src="LOGO.png" alt="Maison de l'Heure logomark — hourglass within a circular seal" loading="lazy">
             </div>
 
             <div class="reveal">
@@ -1544,7 +1696,7 @@
             </div>
 
             <div class="cannele__visual reveal">
-                <img src="maison-cannele-signature.jpg" alt="Cannelé de l'Heure — the signature pastry" loading="lazy">
+                <img src="maison-cannele-signature 2.png" alt="Cannelé de l'Heure — the signature pastry with brand seal" loading="lazy">
             </div>
         </div>
 
@@ -1569,7 +1721,7 @@
 
         <div class="cannele__package">
             <div class="cannele__package-visual reveal">
-                <img src="maison-cannele-package.jpg" alt="Cannelé de l'Heure takeaway packaging" loading="lazy">
+                <img src="maison-cannele-package.png" alt="Cannelé de l'Heure takeaway packaging with branded seal" loading="lazy">
             </div>
 
             <div class="reveal">
@@ -1602,7 +1754,7 @@
 
     <div class="container">
         <div class="menu__intro-image reveal">
-            <img src="maison-menu-detail.jpg" alt="Maison de l'Heure menu detail" loading="lazy">
+            <img src="maison-menu-detail 2.png" alt="Maison de l'Heure printed menu with brand identity" loading="lazy">
         </div>
     </div>
 
