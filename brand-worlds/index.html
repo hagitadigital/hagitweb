@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand Worlds Studio — Three Brands. Three Worlds. One Signature.</title>
+<meta name="description" content="The 2026 Capsule by Brand Worlds Studio · Hagit Antebi. AURELLE, VELA MOTION, SOLARA WILD — three branding concepts." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────
+   BRAND WORLDS STUDIO — The Hub
+   The 2026 Capsule, an exhibition by Hagit Antebi
+   ───────────────────────────────────────────── */
+
+:root {
+  /* Hagit Antebi brand system — matches hagitantebi.co.il */
+  --cream:        #FAF8F3;
+  --cream-light:  #FEFDFA;
+  --cream-soft:   #F5F1E8;
+  --ink:          #5A4A3E;            /* deep chocolate, not pure black */
+  --ink-soft:     #8B7355;            /* chocolate */
+  --mute:         #B8A89A;            /* taupe */
+  --gold:         #C4765A;            /* copper — primary accent */
+  --gold-soft:    #B8894A;            /* honey gold — italic highlight */
+
+  --hairline:     rgba(139, 115, 85, 0.20);
+  --hairline-soft: rgba(139, 115, 85, 0.10);
+
+  /* brand colors for the world cards */
+  --aurelle-bg:   #F6F1E8;
+  --aurelle-text: #2F241E;
+  --aurelle-accent: #BFA37A;
+
+  --vela-bg:      #F4EEE6;
+  --vela-text:    #1F252B;
+  --vela-accent:  #C98F8F;
+
+  --solara-bg:    #2A1712;
+  --solara-text:  #FAEFE0;
+  --solara-accent: #FF6B1A;
+
+  --display:  'Cormorant Garamond', serif;
+  --sans:     'Plus Jakarta Sans', system-ui, sans-serif;
+  --hebrew:   'Heebo', system-ui, sans-serif;
+
+  /* per-card display fonts (each brand's own) */
+  --aurelle-display: 'Italiana', serif;
+  --vela-display:    'Playfair Display', serif;
+  --solara-display:  'Playfair Display', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+  mix-blend-mode: multiply;
+}
+
+[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+}
+
+/* ─────────────────────────────────────────────
+   PAGE INDICATOR
+   ───────────────────────────────────────────── */
+.page-indicator {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 90;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.page-indicator em {
+  font-family: var(--display);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────
+   CONCEPT BAND + UTILITY BAR
+   ───────────────────────────────────────────── */
+.concept-band {
+  background: var(--ink);
+  color: var(--cream-light);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.55rem 2rem;
+  position: relative;
+  z-index: 11;
+  transform: translateY(-100%);
+  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.concept-band em {
+  font-family: var(--display);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gold-soft);
+  margin: 0 0.4rem;
+  font-weight: 500;
+}
+.concept-band .dot { color: var(--gold); margin: 0 0.6rem; }
+
+.utility-bar {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.85rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: relative;
+  z-index: 10;
+  transform: translateY(-100%);
+  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+.utility-bar > div { flex: 1; }
+.utility-bar > div:nth-child(2) { text-align: center; }
+.utility-bar > div:nth-child(3) { text-align: right; }
+.utility-bar em {
+  font-family: var(--display);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+@keyframes slideDown { to { transform: translateY(0); } }
+
+/* ─────────────────────────────────────────────
+   STUDIO MASTHEAD
+   ───────────────────────────────────────────── */
+.masthead {
+  min-height: calc(100vh - 60px);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.masthead__inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.masthead__top {
+  margin-bottom: 1.4rem;
+  opacity: 0;
+  animation: softUp 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.masthead__top .meta {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.masthead__top .meta::before,
+.masthead__top .meta::after {
+  content: "·";
+  color: var(--hairline);
+  margin: 0 0.8rem;
+  font-style: normal;
+}
+
+@keyframes softUp {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.studio-mark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: softUp 1.6s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.studio-mark em {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.studio-by {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--mute);
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: softUp 1.4s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.studio-by strong {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.studio-tag {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--ink);
+  margin-top: 2.5rem;
+  letter-spacing: 0.005em;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: softUp 1.4s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.studio-tag em { color: var(--gold); }
+
+.studio-tag-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--mute);
+  margin-top: 0.8rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: softUp 1.4s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.masthead__rule {
+  border: 0;
+  height: 1px;
+  background: var(--hairline);
+  margin: 4rem auto 0;
+  max-width: 1480px;
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: ruleDraw 1.6s 1.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+.masthead__rule::after {
+  content: "BWS";
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  padding: 0 1.5rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.4em;
+  opacity: 0;
+  animation: fadeIn 1s 2.6s forwards;
+}
+@keyframes ruleDraw { to { transform: scaleX(1); } }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.scroll-cue {
+  text-align: center;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: softUp 1.4s 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.scroll-cue::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 60px;
+  margin: 0 auto 0.8rem;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollPulse 2.6s 3s infinite ease-in-out;
+}
+.scroll-cue span {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─────────────────────────────────────────────
+   SECTION STRUCTURE
+   ───────────────────────────────────────────── */
+.section {
+  padding: 9rem 2rem;
+  position: relative;
+  z-index: 5;
+}
+.section__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.section-numeral {
+  font-family: var(--display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.85;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.section-title-block { text-align: left; }
+.section-eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.section-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.section-meta {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--mute);
+  text-align: right;
+  white-space: nowrap;
+  align-self: end;
+  padding-bottom: 0.5rem;
+}
+.section-meta-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-style: normal;
+}
+
+/* ─────────────────────────────────────────────
+   MANIFESTO
+   ───────────────────────────────────────────── */
+.manifesto {
+  background: var(--cream-light);
+}
+.manifesto-pull {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.1;
+  color: var(--ink);
+  text-align: center;
+  max-width: 22ch;
+  margin: 0 auto 3.5rem;
+  letter-spacing: -0.01em;
+}
+.manifesto-pull em {
+  font-style: italic;
+  color: var(--gold);
+}
+.manifesto-pull-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  text-align: center;
+  color: var(--mute);
+  max-width: 30ch;
+  margin: 0 auto 5rem;
+  letter-spacing: 0.02em;
+}
+
+.manifesto-prose {
+  max-width: 56ch;
+  margin: 0 auto;
+  text-align: center;
+}
+.manifesto-prose p {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 1.4rem;
+}
+.manifesto-prose p:last-child {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--mute);
+  margin-top: 2rem;
+}
+.manifesto-signature {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--mute);
+}
+.manifesto-signature .sig-mark {
+  display: block;
+  font-family: var(--display);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────
+   THE THREE WORLDS — brand cards
+   ───────────────────────────────────────────── */
+.worlds-intro {
+  text-align: center;
+  max-width: 56ch;
+  margin: 0 auto 6rem;
+}
+.worlds-intro p {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.worlds-intro p[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: var(--mute);
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 1rem;
+}
+
+.worlds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.world-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  overflow: hidden;
+}
+.world-card:hover { transform: translateY(-8px); }
+
+.world-card__media {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  position: relative;
+}
+.world-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.world-card:hover .world-card__media img { transform: scale(1.06); }
+.world-card__nº {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--cream-light);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+.world-card__cta-corner {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-light);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.4rem 0.8rem;
+  z-index: 2;
+}
+
+.world-card__copy {
+  padding: 2rem 1.6rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.world-card__issue {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+.world-card__name {
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+.world-card__category {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+.world-card__tag {
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+.world-card__tag-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+.world-card__cta {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid currentColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.world-card__cta .arr {
+  transition: transform 0.4s;
+  font-size: 1rem;
+}
+.world-card:hover .world-card__cta .arr { transform: translateX(6px); }
+
+/* AURELLE card */
+.world-card--aurelle {
+  background: var(--aurelle-bg);
+  color: var(--aurelle-text);
+}
+.world-card--aurelle .world-card__name {
+  font-family: var(--aurelle-display);
+  font-weight: 400;
+}
+.world-card--aurelle .world-card__category,
+.world-card--aurelle .world-card__issue {
+  color: var(--aurelle-accent);
+}
+.world-card--aurelle .world-card__tag {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* VELA card */
+.world-card--vela {
+  background: var(--vela-bg);
+  color: var(--vela-text);
+}
+.world-card--vela .world-card__name {
+  font-family: var(--vela-display);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+.world-card--vela .world-card__name-sub {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.32em;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  margin-top: 0.2em;
+}
+.world-card--vela .world-card__category,
+.world-card--vela .world-card__issue {
+  color: var(--vela-accent);
+}
+.world-card--vela .world-card__tag {
+  font-family: var(--vela-display);
+}
+
+/* SOLARA card */
+.world-card--solara {
+  background: var(--solara-bg);
+  color: var(--solara-text);
+}
+.world-card--solara .world-card__name {
+  font-family: var(--solara-display);
+  font-weight: 700;
+  color: var(--solara-accent);
+  text-shadow: 0 0 30px rgba(255, 107, 26, 0.25);
+}
+.world-card--solara .world-card__name em {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.55em;
+  color: #FF3F6C;
+  margin-top: -0.05em;
+}
+.world-card--solara .world-card__category,
+.world-card--solara .world-card__issue {
+  color: #FF9A5C;
+}
+.world-card--solara .world-card__tag {
+  font-family: var(--solara-display);
+}
+
+/* sun glow on solara card */
+.world-card--solara::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 80%;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 107, 26, 0.15) 0%,
+    rgba(255, 63, 108, 0.05) 30%,
+    transparent 60%);
+  filter: blur(40px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: solaraGlow 6s 2s ease-in-out infinite;
+}
+@keyframes solaraGlow {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+.world-card--solara > * { position: relative; z-index: 1; }
+
+/* ─────────────────────────────────────────────
+   THE METHOD
+   ───────────────────────────────────────────── */
+.method {
+  background: var(--ink);
+  color: var(--cream-light);
+  padding: 11rem 2rem;
+}
+.method .section-header { border-bottom-color: rgba(244, 239, 229, 0.18); }
+.method .section-numeral { color: var(--gold-soft); }
+.method .section-eyebrow { color: var(--cream-soft); }
+.method .section-title { color: var(--cream-light); }
+.method .section-title em { color: var(--gold-soft); }
+.method .section-meta { color: var(--cream-soft); }
+
+.method-intro {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 6rem;
+}
+.method-intro p {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--cream-soft);
+}
+.method-intro p[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: var(--cream-soft);
+  opacity: 0.9;
+  border-top: 1px solid rgba(244, 239, 229, 0.18);
+  padding-top: 1rem;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.method-step {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid rgba(244, 239, 229, 0.18);
+  position: relative;
+}
+.method-step:last-child { border-right: 0; }
+.method-step__nº {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--gold-soft);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.method-step__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--cream-light);
+  margin-bottom: 1rem;
+  letter-spacing: 0.005em;
+}
+.method-step__title em { font-style: italic; color: var(--gold-soft); }
+.method-step__body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--cream-soft);
+  margin-bottom: 1rem;
+}
+.method-step__body-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--cream-soft);
+  opacity: 0.9;
+  border-top: 1px solid rgba(244, 239, 229, 0.18);
+  padding-top: 0.9rem;
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────
+   THE STUDIO (about Hagit)
+   ───────────────────────────────────────────── */
+.studio {
+  background: var(--cream-light);
+}
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.studio-prose {
+  max-width: 50ch;
+}
+.studio-prose .lede {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+}
+.studio-prose .lede em { color: var(--gold); }
+.studio-prose p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+.studio-prose p[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  text-align: right;
+}
+
+.studio-portrait {
+  text-align: center;
+}
+.studio-portrait__name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.studio-portrait__name em { font-style: italic; color: var(--gold); }
+.studio-portrait__role {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 2.5rem;
+}
+.studio-portrait__list {
+  list-style: none;
+  text-align: left;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.5rem;
+}
+.studio-portrait__list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px dotted var(--hairline-soft);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+.studio-portrait__list li span:first-child {
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.studio-portrait__list li span:last-child {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+/* ─────────────────────────────────────────────
+   CTA — start your brand world
+   ───────────────────────────────────────────── */
+.cta {
+  padding: 12rem 2rem 9rem;
+  text-align: center;
+  background: var(--cream);
+  position: relative;
+}
+.cta__inner { max-width: 1200px; margin: 0 auto; }
+.cta__statement {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.cta__statement em { font-style: italic; color: var(--gold); }
+.cta__he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: var(--mute);
+  margin-bottom: 4rem;
+  letter-spacing: 0.02em;
+}
+.cta__buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 2.4rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+}
+.cta__button--primary {
+  background: var(--ink);
+  color: var(--cream-light);
+}
+.cta__button--primary:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+  letter-spacing: 0.36em;
+}
+.cta__button--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.cta__button--ghost:hover {
+  background: var(--ink);
+  color: var(--cream-light);
+  letter-spacing: 0.36em;
+}
+.cta__button .arr { transition: transform 0.4s; }
+.cta__button:hover .arr { transform: translateX(4px); }
+
+.cta__note {
+  margin-top: 3rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--mute);
+}
+.cta__note a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+}
+
+/* ─────────────────────────────────────────────
+   COLOPHON
+   ───────────────────────────────────────────── */
+.colophon {
+  background: var(--ink);
+  color: var(--cream-soft);
+  padding: 5rem 2rem 2.5rem;
+  position: relative;
+  z-index: 5;
+}
+.colophon__inner { max-width: 1280px; margin: 0 auto; }
+.colophon__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(244, 239, 229, 0.18);
+}
+.colophon__edge-l, .colophon__edge-r {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--cream-soft);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+.colophon__edge-r { text-align: right; }
+.colophon__center { text-align: center; }
+.colophon__center .mark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.6rem;
+  color: var(--cream-light);
+  letter-spacing: 0.005em;
+  line-height: 1;
+}
+.colophon__center .mark em { font-style: italic; color: var(--gold-soft); }
+.colophon__center .submark-mini {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-top: 0.6rem;
+}
+
+.colophon__details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+.colophon__details dt {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 0.5rem;
+}
+.colophon__details dd {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cream-soft);
+  font-size: 0.95rem;
+}
+.colophon__details dd a {
+  color: var(--cream-soft);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 142, 92, 0.4);
+  transition: border-color 0.3s, color 0.3s;
+}
+.colophon__details dd a:hover {
+  color: var(--gold-soft);
+  border-bottom-color: var(--gold-soft);
+}
+
+.colophon__bottom {
+  border-top: 1px solid rgba(244, 239, 229, 0.18);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+  opacity: 0.7;
+}
+.colophon__bottom-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--cream-soft);
+  opacity: 0.75;
+}
+
+/* ─────────────────────────────────────────────
+   REVEAL
+   ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.18s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.31s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.44s; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .worlds-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .world-card__media { aspect-ratio: 5/4; }
+  .method-grid { grid-template-columns: repeat(2, 1fr); }
+  .method-step { border-right: 0; border-bottom: 1px solid rgba(244, 239, 229, 0.18); }
+  .method-step:nth-child(odd) { border-right: 1px solid rgba(244, 239, 229, 0.18); }
+  .method-step:nth-last-child(-n+2) { border-bottom: 0; }
+  .studio-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 720px) {
+  .utility-bar { font-size: 0.6rem; padding: 0.7rem 1rem; gap: 0.5rem; }
+  .utility-bar > div:nth-child(2) { display: none; }
+  .masthead { padding: 3rem 1rem 4rem; min-height: auto; }
+  .section { padding: 6rem 1.25rem; }
+  .section-header { grid-template-columns: 1fr; gap: 1rem; }
+  .section-meta { text-align: left; }
+  .method-grid { grid-template-columns: 1fr; }
+  .method-step { border-right: 0; }
+  .method-step:nth-child(odd) { border-right: 0; }
+  .colophon__top { grid-template-columns: 1fr; text-align: center; }
+  .colophon__edge-l, .colophon__edge-r { text-align: center; }
+  .colophon__details { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .colophon__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .page-indicator { top: 0.7rem; right: 1rem; font-size: 0.6rem; }
+  .cta { padding: 6rem 1rem; }
+  .cta__buttons { flex-direction: column; align-items: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── PAGE INDICATOR ─────────── -->
+<div class="page-indicator">
+  <span id="pageNum">01</span> · <em>Brand Worlds Studio</em>
+</div>
+
+<!-- ─────────── CONCEPT BAND ─────────── -->
+<div class="concept-band">
+  Branding Concepts <span class="dot">·</span> Three fictional brand worlds built as portfolio pieces by <em>Brand Worlds Studio</em>
+</div>
+
+<!-- ─────────── UTILITY BAR ─────────── -->
+<div class="utility-bar">
+  <div>The <em>2026</em> Capsule</div>
+  <div>Brand Worlds Studio · <em>by Hagit Antebi</em></div>
+  <div>May · MMXXVI</div>
+</div>
+
+<!-- ─────────── STUDIO MASTHEAD ─────────── -->
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__top">
+      <div class="meta">A studio in <em>three voices</em></div>
+    </div>
+    <h1 class="studio-mark">Brand <em>Worlds</em>.</h1>
+    <p class="studio-by">by <strong>Hagit Antebi</strong> · Brand Architect · BrandOS Founder</p>
+    <p class="studio-tag">Three brands. Three worlds. <em>One signature.</em></p>
+    <p class="studio-tag-he" lang="he">שלושה מותגים. שלושה עולמות. חתימה אחת.</p>
+  </div>
+  <hr class="masthead__rule" />
+  <div class="scroll-cue"><span>Enter the gallery</span></div>
+</header>
+
+<!-- ─────────── SECTION I — MANIFESTO ─────────── -->
+<section class="section manifesto" id="manifesto">
+  <div class="section__inner">
+    <div class="section-header reveal">
+      <div class="section-numeral">I.</div>
+      <div class="section-title-block">
+        <span class="section-eyebrow">The Studio Note</span>
+        <h2 class="section-title">A studio of <em>brand worlds</em></h2>
+      </div>
+      <div class="section-meta">
+        — On building brands as worlds
+        <span class="section-meta-he" lang="he">פתח דבר</span>
+      </div>
+    </div>
+
+    <p class="manifesto-pull reveal">A brand is not a logo. <em>A brand is a world.</em></p>
+    <p class="manifesto-pull-he reveal" lang="he">מותג הוא לא לוגו. מותג הוא עולם.</p>
+
+    <div class="manifesto-prose reveal">
+      <p>Brand Worlds Studio designs brands the way a publisher designs a magazine, the way a curator designs an exhibition, and the way a perfumer composes a fragrance. Each brand is built as an entire universe — a palette, a language, a voice, a typography, a code. The work that follows is a study, not a campaign.</p>
+      <p>What you are about to see is the <em>2026 Capsule</em> — three concept brands, each conceived as its own world. AURELLE, a study in skin longevity. VELA MOTION, a lookbook for the woman in motion. SOLARA WILD, a resort in six acts.</p>
+      <p>Three brands. Three worlds. One signature.</p>
+    </div>
+
+    <div class="manifesto-signature reveal">
+      <span>—Hagit Antebi · Brand Worlds Studio</span>
+      <span class="sig-mark">H.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SECTION II — THE THREE WORLDS ─────────── -->
+<section class="section worlds" id="worlds">
+  <div class="section__inner">
+    <div class="section-header reveal">
+      <div class="section-numeral">II.</div>
+      <div class="section-title-block">
+        <span class="section-eyebrow">The 2026 Capsule</span>
+        <h2 class="section-title">Three <em>worlds</em></h2>
+      </div>
+      <div class="section-meta">
+        — Concept brands, fully composed
+        <span class="section-meta-he" lang="he">שלושה עולמות</span>
+      </div>
+    </div>
+
+    <div class="worlds-intro reveal">
+      <p>Each world below is a complete brand universe — manifesto, palette, products, brand book. Click into one to enter it.</p>
+      <p lang="he">כל עולם הוא עולם מותג שלם — מניפסט, פלטה, מוצרים, ספר מותג. הקליקי על אחד כדי להיכנס פנימה.</p>
+    </div>
+
+    <div class="worlds-grid reveal-stagger">
+      <!-- AURELLE -->
+      <a href="../aurelle/" class="world-card world-card--aurelle reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 01</div>
+          <div class="world-card__cta-corner">Volume I</div>
+          <img src="../aurelle/HERO.png" alt="AURELLE" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Volume I · Issue Nº 01</div>
+          <div class="world-card__name">Aurelle</div>
+          <div class="world-card__category">Premium Skincare · Skin Longevity</div>
+          <div class="world-card__tag">Quiet beauty. Visible confidence.</div>
+          <div class="world-card__tag-he" lang="he">יופי שקט. נוכחות שמרגישים.</div>
+          <div class="world-card__cta">
+            <span>Enter the world</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- VELA MOTION -->
+      <a href="../vela-motion/" class="world-card world-card--vela reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 02</div>
+          <div class="world-card__cta-corner">Lookbook 01</div>
+          <img src="../vela-motion/HERO.png" alt="VELA MOTION" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Lookbook 01 · Issue Nº 01</div>
+          <div class="world-card__name">VELA<span class="world-card__name-sub">— Motion —</span></div>
+          <div class="world-card__category">Urban Accessories · Lifestyle</div>
+          <div class="world-card__tag">Move beautifully. Stay unmistakable.</div>
+          <div class="world-card__tag-he" lang="he">לזוז יפה. להישאר בלתי נשכחת.</div>
+          <div class="world-card__cta">
+            <span>Enter the world</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- SOLARA WILD -->
+      <a href="../solara-wild/" class="world-card world-card--solara reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 03</div>
+          <div class="world-card__cta-corner">Capsule 01</div>
+          <img src="../solara-wild/HERO.png" alt="SOLARA WILD" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Capsule 01 · Issue Nº 01</div>
+          <div class="world-card__name">SOLARA<em>wild</em></div>
+          <div class="world-card__category">Resort Lifestyle · Boutique Capsule</div>
+          <div class="world-card__tag">Sun on your skin. Wild in your soul.</div>
+          <div class="world-card__tag-he" lang="he">שמש על העור. חופש בנשמה.</div>
+          <div class="world-card__cta">
+            <span>Enter the world</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SECTION III — THE METHOD (DARK) ─────────── -->
+<section class="section method" id="method">
+  <div class="section__inner">
+    <div class="section-header reveal">
+      <div class="section-numeral">III.</div>
+      <div class="section-title-block">
+        <span class="section-eyebrow">The Studio Method</span>
+        <h2 class="section-title">How a <em>world</em> is built</h2>
+      </div>
+      <div class="section-meta">
+        — Four steps, each non-negotiable
+        <span class="section-meta-he" lang="he">השיטה</span>
+      </div>
+    </div>
+
+    <div class="method-intro reveal">
+      <p>Every Brand World is composed in the same four movements — discovery, DNA, language, and codex. The <em>output</em> changes. The <em>method</em> doesn't.</p>
+      <p lang="he">כל Brand World נבנה בארבעה פרקים זהים — גילוי, DNA, שפה, וקודקס. התוצאה משתנה. השיטה — לא.</p>
+    </div>
+
+    <div class="method-grid reveal-stagger">
+      <div class="method-step reveal">
+        <div class="method-step__nº">i.</div>
+        <h3 class="method-step__title"><em>Discovery</em></h3>
+        <p class="method-step__body">Listening before designing. Who is the brand for, against, and with — and what does it refuse to become?</p>
+        <p class="method-step__body-he" lang="he">להקשיב לפני שמעצבים. למי המותג מדבר, נגד מי, ועם מי — ומה הוא מסרב להיות.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step__nº">ii.</div>
+        <h3 class="method-step__title"><em>DNA</em></h3>
+        <p class="method-step__body">The brand's irreducible essence — the few words it would still say if everything else were taken away.</p>
+        <p class="method-step__body-he" lang="he">המהות הבלתי-ניתנת-לצמצום של המותג — המילים הספורות שהוא היה אומר גם אם הכל היה נלקח ממנו.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step__nº">iii.</div>
+        <h3 class="method-step__title"><em>Language</em></h3>
+        <p class="method-step__body">Palette, typography, voice, photography. The world the brand walks into — and the world it builds around itself.</p>
+        <p class="method-step__body-he" lang="he">פלטה, טיפוגרפיה, קול, צילום. העולם שאליו המותג נכנס — והעולם שהוא בונה סביבו.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="method-step__nº">iv.</div>
+        <h3 class="method-step__title"><em>Codex</em></h3>
+        <p class="method-step__body">The written record — the rules that allow the brand to grow without losing itself. Every brand earns the right to a codex.</p>
+        <p class="method-step__body-he" lang="he">המסמך הכתוב — החוקים שמאפשרים למותג לגדול בלי לאבד את עצמו. כל מותג זוכה בקודקס משלו.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SECTION IV — THE STUDIO ─────────── -->
+<section class="section studio" id="studio">
+  <div class="section__inner">
+    <div class="section-header reveal">
+      <div class="section-numeral">IV.</div>
+      <div class="section-title-block">
+        <span class="section-eyebrow">About the Studio</span>
+        <h2 class="section-title">The <em>studio</em></h2>
+      </div>
+      <div class="section-meta">
+        — Hagit Antebi · solo founder
+        <span class="section-meta-he" lang="he">על הסטודיו</span>
+      </div>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio-prose reveal">
+        <p class="lede">Brand Worlds Studio is a <em>solo practice</em> — a single set of hands, a single point of view, and a method that has spent years arriving at itself.</p>
+        <p>Hagit Antebi has spent two decades building brands across cosmetics, fashion, hospitality, and consumer technology. The studio's method, refined through that time, treats every brand as a world to be built — not an asset to be churned out.</p>
+        <p lang="he">Brand Worlds Studio הוא פרקטיקה של אדם אחד — זוג ידיים אחד, נקודת מבט אחת, ושיטה שלקח לה שנים להגיע לעצמה. חגית אנטבי בנתה במשך שני עשורים מותגים בקוסמטיקה, אופנה, אירוח וטכנולוגיה. השיטה של הסטודיו מתייחסת לכל מותג כעולם שצריך להיבנות — לא כנכס שמייצרים בייצור המוני.</p>
+      </div>
+
+      <div class="studio-portrait reveal">
+        <div class="studio-portrait__name">Hagit <em>Antebi</em></div>
+        <div class="studio-portrait__role">Brand Architect · BrandOS Founder</div>
+        <ul class="studio-portrait__list">
+          <li><span>Practice</span><span>Brand Worlds Studio</span></li>
+          <li><span>Method</span><span>Built to Strategy. Run by AI.</span></li>
+          <li><span>Platform</span><span>BrandOS</span></li>
+          <li><span>Languages</span><span>EN · HE</span></li>
+          <li><span>Years</span><span>20+</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CTA ─────────── -->
+<section class="cta" id="cta">
+  <div class="cta__inner reveal">
+    <h2 class="cta__statement">Want a <em>world</em><br/>for your brand?</h2>
+    <p class="cta__he" lang="he">רוצה עולם משלך?</p>
+    <div class="cta__buttons">
+      <a href="https://hagitantebi.co.il" class="cta__button cta__button--primary">
+        <span>Visit the Studio</span>
+        <span class="arr">→</span>
+      </a>
+      <a href="https://hagitantebi.co.il#contact" class="cta__button cta__button--ghost">
+        <span>Start a Conversation</span>
+        <span class="arr">→</span>
+      </a>
+    </div>
+    <p class="cta__note">More worlds: <a href="https://hagitantebi.co.il/#worlds">Mora · Shiro · Nexus · Frost</a></p>
+  </div>
+</section>
+
+<!-- ─────────── COLOPHON ─────────── -->
+<footer class="colophon">
+  <div class="colophon__inner">
+    <div class="colophon__top">
+      <div class="colophon__edge-l">— A Studio</div>
+      <div class="colophon__center">
+        <div class="mark">Brand <em>Worlds</em></div>
+        <div class="submark-mini">— Studio —</div>
+      </div>
+      <div class="colophon__edge-r">2026 <em>Capsule</em> —</div>
+    </div>
+
+    <dl class="colophon__details">
+      <div>
+        <dt>Editor &amp; Designer</dt>
+        <dd>Hagit Antebi</dd>
+      </div>
+      <div>
+        <dt>Studio</dt>
+        <dd><a href="https://hagitantebi.co.il" target="_blank" rel="noopener">hagitantebi.co.il</a></dd>
+      </div>
+      <div>
+        <dt>Issue</dt>
+        <dd>The 2026 Capsule</dd>
+      </div>
+      <div>
+        <dt>Year</dt>
+        <dd>MMXXVI · 2026</dd>
+      </div>
+    </dl>
+
+    <div class="colophon__bottom">
+      <span>© Brand Worlds Studio · Three concept brands, built as portfolio pieces.</span>
+      <span class="colophon__bottom-he" lang="he">שלושה מותגים קונספטואליים, נבנו כעבודות פורטפוליו · Brand Worlds Studio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Page indicator
+  const sections = [
+    document.getElementById('masthead'),
+    document.getElementById('manifesto'),
+    document.getElementById('worlds'),
+    document.getElementById('method'),
+    document.getElementById('studio'),
+    document.getElementById('cta'),
+  ].filter(Boolean);
+  const pageEl = document.getElementById('pageNum');
+  let ticking = false;
+  function updatePage() {
+    const fold = window.scrollY + window.innerHeight * 0.4;
+    let current = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= fold) current = i;
+    }
+    const num = String(current + 1).padStart(2, '0');
+    if (pageEl.textContent !== num) pageEl.textContent = num;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updatePage); ticking = true; }
+  }, { passive: true });
+  updatePage();
+</script>
+
+</body>
+</html>

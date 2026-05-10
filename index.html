@@ -234,6 +234,31 @@
 
         .nav__dropdown-link:hover { color: var(--color-copper); }
 
+        .nav__dropdown-divider {
+            padding: 0 !important;
+            height: 1px;
+            background: rgba(139, 115, 85, 0.18);
+            margin: 8px 16px;
+        }
+        .nav__dropdown-link--feature {
+            color: var(--color-copper);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+        .nav__dropdown-link--feature em {
+            font-style: italic;
+            font-family: var(--font-display);
+            font-size: 0.95em;
+            color: #B8894A;
+        }
+        .nav__dropdown-sub {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 0.78em;
+            color: var(--color-taupe);
+            margin-left: 0.3em;
+        }
+
         .nav__menu-btn {
             display: none;
             flex-direction: column;
@@ -290,10 +315,10 @@
         }
         .hero__title {
             font-family: var(--font-display);
-            font-size: clamp(2.25rem, 5.5vw, 4.5rem);
-            font-weight: 400; line-height: 1.05;
-            letter-spacing: -0.015em;
-            margin-bottom: 28px;
+            font-size: clamp(3rem, 8.5vw, 7.5rem);
+            font-weight: 400; line-height: 0.98;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
             color: var(--color-chocolate);
             opacity: 0;
             animation: fadeInUp 0.8s var(--transition-smooth) 0.4s forwards;
@@ -318,8 +343,8 @@
 
         .hero__tagline {
             font-family: var(--font-display);
-            font-size: clamp(1.6rem, 3.6vw, 2.6rem);
-            line-height: 1.25;
+            font-size: clamp(1.8rem, 4vw, 3.4rem);
+            line-height: 1.2;
             color: var(--color-chocolate);
             margin-bottom: 36px;
             direction: ltr;
@@ -1299,7 +1324,7 @@
             .testimonials__grid { grid-template-columns: 1fr; }
             .testimonials__grid .testimonial:nth-child(3) { max-width: 100%; }
             .hero { min-height: 100svh; padding: 100px 0 120px; }
-            .hero__title { font-size: clamp(2rem, 9vw, 3rem); }
+            .hero__title { font-size: clamp(2.5rem, 11vw, 4.5rem); }
             .hero__cta { padding: 16px 32px; font-size: 0.8rem; }
             .portal { aspect-ratio: 3/4.5; }
             .method__grid { grid-template-columns: 1fr; gap: 18px; }
@@ -1353,6 +1378,11 @@
                         <li class="nav__dropdown-item"><a href="experiences.html" class="nav__dropdown-link">Brand Experiences</a></li>
                         <li class="nav__dropdown-item"><a href="vision-story.html" class="nav__dropdown-link">Vision &amp; Story</a></li>
                         <li class="nav__dropdown-item"><a href="studio.html" class="nav__dropdown-link">Studio AI</a></li>
+                        <li class="nav__dropdown-item nav__dropdown-divider" aria-hidden="true"></li>
+                        <li class="nav__dropdown-item"><a href="brand-worlds/" class="nav__dropdown-link nav__dropdown-link--feature">2026 Capsule &nbsp;<em>·&nbsp;Hub</em></a></li>
+                        <li class="nav__dropdown-item"><a href="aurelle/" class="nav__dropdown-link">Aurelle <span class="nav__dropdown-sub">— Volume I</span></a></li>
+                        <li class="nav__dropdown-item"><a href="vela-motion/" class="nav__dropdown-link">Vela Motion <span class="nav__dropdown-sub">— Lookbook 01</span></a></li>
+                        <li class="nav__dropdown-item"><a href="solara-wild/" class="nav__dropdown-link">Solara Wild <span class="nav__dropdown-sub">— Capsule 01</span></a></li>
                     </ul>
                 </li>
                 <li><a href="brand-os.html" class="nav__link">BrandOS</a></li>
