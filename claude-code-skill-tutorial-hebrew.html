@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta -->
+  <title>סקילים ל-Claude Code בעברית: מדריך מ-0 לסקיל הראשון | חגית אנטבי</title>
+  <meta name="description" content="איך בונים סקיל ל-Claude Code בעברית — מדריך צעד אחר צעד על כתיבת SKILL.md מלא, בניית תיקיית .claude/skills, ו-5 הטעויות שעוצרות סקילים מלהיטען.">
+  <meta name="author" content="חגית אנטבי">
+  <link rel="canonical" href="https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="בניתי סקיל ל-Claude Code בעברית — והנה איך עשיתי את זה">
+  <meta property="og:description" content="מדריך מעשי לבניית סקיל ל-Claude Code, עם דוגמת קוד מלאה ו-5 הטעויות הנפוצות.">
+  <meta property="og:url" content="https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew.html">
+  <meta property="og:site_name" content="חגית אנטבי — Brand Worlds Studio">
+  <meta property="og:image" content="https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew/HERO.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="בניתי סקיל ל-Claude Code בעברית — והנה איך עשיתי את זה">
+  <meta name="twitter:description" content="מדריך מעשי לבניית סקיל ל-Claude Code, עם דוגמת קוד מלאה.">
+  <meta name="twitter:image" content="https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew/HERO.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "סקילים ל-Claude Code בעברית: מדריך מעשי מ-0 לסקיל הראשון שלך",
+    "description": "איך בונים סקיל ל-Claude Code בעברית — מדריך צעד אחר צעד על כתיבת SKILL.md מלא, בניית תיקיית .claude/skills, ו-5 הטעויות שעוצרות סקילים מלהיטען.",
+    "author": {
+      "@type": "Person",
+      "name": "חגית אנטבי",
+      "url": "https://hagitantebi.co.il",
+      "jobTitle": "Brand Worlds Architect, founder of BrandOS"
+    },
+    "datePublished": "2026-05-11",
+    "dateModified": "2026-05-11",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brand Worlds Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hagitantebi.co.il/logo.png"
+      }
+    },
+    "image": "https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew/HERO.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew.html"
+    },
+    "inLanguage": "he-IL"
+  }
+  </script>
+
+  <!-- Schema: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "איך בונים סקיל ל-Claude Code בעברית",
+    "description": "מדריך צעד אחר צעד לבניית סקיל ראשון ל-Claude Code — מקובץ SKILL.md ועד אישור שהסקיל נטען.",
+    "totalTime": "PT30M",
+    "step": [
+      {"@type": "HowToStep", "position": 1, "name": "פותחים טרמינל בתיקיית הפרויקט", "text": "מנווטים בטרמינל לתיקיית הפרויקט באמצעות cd. אם אין פרויקט, יוצרים תיקייה חדשה."},
+      {"@type": "HowToStep", "position": 2, "name": "יוצרים את התיקייה .claude/skills", "text": "משתמשים בפקודה mkdir -p .claude/skills/my-skill-name כדי ליצור את כל מבנה התיקיות בבת אחת."},
+      {"@type": "HowToStep", "position": 3, "name": "יוצרים קובץ SKILL.md", "text": "בתוך תיקיית הסקיל, יוצרים קובץ בשם SKILL.md (אותיות גדולות) באמצעות עורך טקסט."},
+      {"@type": "HowToStep", "position": 4, "name": "כותבים את ה-Frontmatter", "text": "מוסיפים בראש הקובץ את שדות name ו-description בין שתי שורות של ---."},
+      {"@type": "HowToStep", "position": 5, "name": "כותבים את גוף הסקיל", "text": "מוסיפים הוראות בשפה חופשית — קהל, טון, מבנה, דוגמאות."},
+      {"@type": "HowToStep", "position": 6, "name": "מפעילים Claude Code", "text": "מריצים את הפקודה claude בטרמינל, בתוך תיקיית הפרויקט."},
+      {"@type": "HowToStep", "position": 7, "name": "מבקשים משימה רלוונטית", "text": "כותבים בקשה שתואמת ל-description של הסקיל ומחכים לתגובה."},
+      {"@type": "HowToStep", "position": 8, "name": "בודקים שהסקיל נטען", "text": "ב-output של Claude Code מופיעה שורה Skill: my-skill-name. אם לא מופיעה — מחדדים את ה-description."}
+    ]
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "האם סקיל ל-Claude Code עובד בעברית?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן, באופן מלא. אפשר לכתוב את ה-description ואת גוף הסקיל בעברית, וקלוד מזהה אותם וטוען אותם בדיוק כמו סקיל באנגלית. החשוב הוא שה-description יהיה כתוב בצורה ברורה בכל שפה שתבחרי."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "צריך לדעת לתכנת כדי לבנות סקיל ל-Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "לא. סקיל בסיסי הוא קובץ Markdown אחד עם הוראות בשפה חופשית. צריך לדעת לפתוח טרמינל ולנווט בין תיקיות, אבל לא צריך לכתוב קוד."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "איפה שמים את התיקייה — בפרויקט או גלובלית?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "שתי האפשרויות תקפות. תיקיית .claude/skills/ בתוך פרויקט הופכת את הסקיל לזמין רק באותו פרויקט. תיקיית ~/.claude/skills/ ברמת המשתמש הופכת אותו לזמין בכל פרויקט במחשב. למשימות כלליות — שמרי גלובלית. למשימות ספציפיות לפרויקט — שמרי בתוך הפרויקט."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "האם הסקיל שלי יעבוד גם ב-Claude.ai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "פורמט SKILL.md זהה, אבל אופן ההעלאה שונה. ב-Claude.ai מעלים את הסקיל כקובץ zip דרך Settings > Features > Skills. ב-Claude Code פשוט שומרים את התיקייה במקום הנכון. סקילים שמריצים סקריפטים מתאימים יותר ל-Claude Code, כי הוא הסביבה שמריצה אותם בפועל."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "כמה סקילים אפשר לבנות לפרויקט אחד?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "אין הגבלה רשמית, אבל בפועל עדיף להישאר בטווח של 10–15 סקילים. מעבר לזה, Claude עלול להתבלבל בין סקילים עם תיאורים דומים. אם יש לך הרבה סקילים — וודאי שלכל אחד יש description מובחן ויחודי."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== Brand Worlds Studio — Design Tokens ===== */
+    :root {
+      --color-cream: #FAF8F3;
+      --color-warm-beige: #F5F1E8;
+      --color-chocolate: #8B7355;
+      --color-copper: #C4765A;
+      --color-taupe: #B8A89A;
+      --color-light-taupe: #D4C9BC;
+      --color-text-deep: #4F372C;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body-en: 'Plus Jakarta Sans', sans-serif;
+      --font-body-he: 'Heebo', sans-serif;
+      --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-width: 760px;
+      --max-width-wide: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body-he);
+      background: var(--color-cream);
+      color: var(--color-chocolate);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      direction: rtl;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-copper); text-decoration: none; transition: color 0.3s var(--transition-smooth); }
+    a:hover { color: var(--color-chocolate); }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+    }
+
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-chocolate);
+      text-decoration: none;
+    }
+
+    .nav__back {
+      font-family: var(--font-body-en);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-copper);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: gap 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav__back:hover { gap: 10px; }
+
+    /* ===== Article Header ===== */
+    .article-header {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 140px clamp(24px, 5vw, 48px) 48px;
+      text-align: right;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-body-en);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a { color: var(--color-copper); }
+    .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+
+    h1.article-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      color: var(--color-text-deep);
+      margin-bottom: 24px;
+      letter-spacing: -0.005em;
+    }
+
+    h1.article-title em {
+      font-style: italic;
+      color: var(--color-copper);
+      font-weight: 400;
+    }
+
+    .article-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--color-taupe);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body-en);
+      font-size: 0.78rem;
+      color: var(--color-light-taupe);
+      flex-wrap: wrap;
+      letter-spacing: 0.05em;
+      padding-top: 20px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+
+    .article-meta .author { color: var(--color-copper); font-weight: 500; }
+    .article-meta .dot { opacity: 0.5; }
+
+    /* ===== Hero Image ===== */
+    .hero-img {
+      max-width: var(--max-width-wide);
+      margin: 0 auto 64px;
+      padding: 0 clamp(24px, 5vw, 48px);
+    }
+
+    .hero-img img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    /* ===== Article Body ===== */
+    .article-body {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 48px) 96px;
+    }
+
+    .article-body p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      color: var(--color-chocolate);
+    }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      line-height: 1.25;
+      color: var(--color-text-deep);
+      margin: 64px 0 24px;
+      letter-spacing: -0.005em;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.3rem, 2.4vw, 1.55rem);
+      line-height: 1.35;
+      color: var(--color-text-deep);
+      margin: 40px 0 16px;
+    }
+
+    .article-body h4 {
+      font-family: var(--font-body-en);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin: 32px 0 12px;
+    }
+
+    .article-body strong { font-weight: 600; color: var(--color-text-deep); }
+    .article-body em { font-style: italic; color: var(--color-taupe); }
+
+    .article-body ul, .article-body ol {
+      margin: 0 24px 24px 0;
+      padding-right: 24px;
+    }
+
+    .article-body li {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: 8px;
+      color: var(--color-chocolate);
+    }
+
+    .article-body a {
+      color: var(--color-copper);
+      border-bottom: 1px solid rgba(196, 118, 90, 0.3);
+      transition: all 0.3s var(--transition-smooth);
+    }
+
+    .article-body a:hover {
+      color: var(--color-chocolate);
+      border-bottom-color: var(--color-chocolate);
+    }
+
+    /* ===== TL;DR Block ===== */
+    .tldr {
+      background: var(--color-warm-beige);
+      border-right: 3px solid var(--color-copper);
+      padding: 24px 32px;
+      margin: 32px 0 48px;
+    }
+
+    .tldr-label {
+      font-family: var(--font-body-en);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--color-copper);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .tldr p {
+      font-size: 1rem !important;
+      line-height: 1.7 !important;
+      color: var(--color-text-deep);
+      margin: 0 !important;
+    }
+
+    /* ===== Pull Quote ===== */
+    .pull-quote {
+      font-family: var(--font-display) !important;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem) !important;
+      line-height: 1.45 !important;
+      color: var(--color-copper) !important;
+      border-right: 3px solid var(--color-copper);
+      padding-right: 24px;
+      margin: 48px 0 !important;
+    }
+
+    /* ===== Numbered Steps ===== */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0 !important;
+      margin: 32px 0 !important;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-right: 64px;
+      margin-bottom: 32px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      right: 0;
+      top: 0.1rem;
+      width: 44px;
+      height: 44px;
+      background: var(--color-warm-beige);
+      color: var(--color-copper);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.15rem;
+    }
+
+    .steps h4 { margin-top: 0 !important; margin-bottom: 8px !important; }
+    .steps p { margin-bottom: 8px !important; }
+
+    /* ===== Compare Box ===== */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .compare-box { background: var(--color-warm-beige); padding: 28px; }
+
+    .compare-box h4 {
+      font-family: var(--font-body-en);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 0 16px !important;
+    }
+
+    .compare-box.bad h4 { color: var(--color-copper); }
+    .compare-box.good h4 { color: var(--color-chocolate); }
+
+    .compare-box ul { list-style: none; padding: 0 !important; margin: 0 !important; }
+
+    .compare-box li {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 10px;
+      padding-right: 22px;
+      position: relative;
+      color: var(--color-chocolate);
+    }
+
+    .compare-box.bad li::before {
+      content: "✕";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--color-copper);
+      font-weight: 600;
+    }
+
+    .compare-box.good li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--color-chocolate);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .compare { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Code Block ===== */
+    pre {
+      background: var(--color-text-deep);
+      color: var(--color-cream);
+      padding: 24px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin: 24px 0;
+      direction: ltr;
+      text-align: left;
+    }
+
+    pre.has-hebrew {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Heebo', 'Courier New', monospace;
+    }
+
+    code {
+      background: var(--color-warm-beige);
+      color: var(--color-copper);
+      padding: 0.1em 0.4em;
+      border-radius: 2px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.92em;
+    }
+
+    pre code { background: transparent; color: inherit; padding: 0; }
+
+    /* ===== FAQ ===== */
+    .faq { margin: 32px 0; }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+      padding: 24px 0;
+    }
+
+    .faq-item h3 {
+      font-size: 1.2rem !important;
+      margin: 0 0 8px !important;
+      color: var(--color-text-deep) !important;
+    }
+
+    .faq-item p {
+      font-size: 1rem !important;
+      color: var(--color-taupe);
+      margin: 0 !important;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: var(--color-warm-beige);
+      padding: 48px 32px;
+      margin: 64px 0;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 16px !important;
+      font-size: clamp(1.6rem, 3vw, 2rem) !important;
+    }
+
+    .cta p {
+      color: var(--color-taupe);
+      margin-bottom: 24px !important;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--color-copper);
+      color: var(--color-cream) !important;
+      padding: 14px 32px;
+      font-family: var(--font-body-en);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-bottom: none !important;
+      transition: background 0.3s var(--transition-smooth);
+    }
+
+    .cta-button:hover {
+      background: var(--color-chocolate);
+      color: var(--color-cream) !important;
+      border-bottom: none !important;
+    }
+
+    /* ===== Read More ===== */
+    .read-more {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 64px clamp(24px, 5vw, 48px);
+      border-top: 1px solid rgba(139, 115, 85, 0.15);
+    }
+
+    .read-more h3 {
+      font-family: var(--font-body-en) !important;
+      font-size: 0.7rem !important;
+      font-weight: 500 !important;
+      color: var(--color-copper) !important;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 24px !important;
+    }
+
+    .read-more-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .read-more-link {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--color-text-deep);
+      padding: 12px 0;
+      border-bottom: none !important;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      transition: color 0.3s var(--transition-smooth);
+    }
+
+    .read-more-link:hover { color: var(--color-copper); }
+
+    .read-more-link::before {
+      content: "✦";
+      color: var(--color-copper);
+      font-size: 0.85em;
+      flex-shrink: 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-chocolate);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-family: var(--font-body-he);
+      font-size: 0.85rem;
+      color: var(--color-taupe);
+      margin: 0;
+    }
+
+    .footer a { color: var(--color-copper); text-decoration: none; border-bottom: none; }
+    .footer a:hover { color: var(--color-cream); }
+
+    /* ===== Section Divider ===== */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--color-copper);
+      opacity: 0.4;
+      margin: 48px auto;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      .article-header { padding-top: 110px; }
+      .article-body p, .article-body li { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hagit Antebi</a>
+      <a href="insights.html" class="nav__back">← Back to Insights</a>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="https://hagitantebi.co.il/insights.html">Insights</a>
+      <span class="sep">·</span>
+      <span>AI ופרודקטיביות</span>
+    </div>
+
+    <h1 class="article-title">איך לבנות סקיל ל-<em>Claude Code</em> בעברית — המדריך המעשי לסקיל הראשון שלך</h1>
+
+    <p class="article-tagline">סקיל ל-Claude Code = קובץ Markdown אחד. בלי NPM, בלי טרמינל מסובך, בלי קוד. הנה איך.</p>
+
+    <div class="article-meta">
+      <span class="author">✦ חגית אנטבי</span>
+      <span class="dot">·</span>
+      <span>מאי 2026</span>
+      <span class="dot">·</span>
+      <span>9 דקות קריאה</span>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  <div class="hero-img">
+    <img src="/claude-code-skill-tutorial-hebrew/HERO.png" alt="מדריך מעשי לבניית סקיל ל-Claude Code בעברית — תיקיית .claude/skills עם קובץ SKILL.md פתוח לעריכה" loading="eager">
+  </div>
+
+  <!-- Article Body -->
+  <article class="article-body">
+
+    <div class="tldr">
+      <div class="tldr-label">תקציר ב-3 שורות</div>
+      <p>סקיל ל-Claude Code הוא תיקייה בפרויקט שלך עם קובץ SKILL.md, שקלוד טוען אוטומטית כשהוא מזהה משימה רלוונטית. בניגוד לסקיל בצ'אט (Claude.ai), הסקיל הזה חי בתוך הסביבה שלך — בתיקיית <code>.claude/skills/</code> — ויכול להריץ קוד, לא רק להחזיר טקסט. במאמר הזה אני אראה לך איך לבנות את הסקיל הראשון שלך מ-0 על מחשב מקומי, על דוגמת SKILL.md מלאה בעברית, איך לבדוק שהסקיל באמת נטען, ו-5 הטעויות הנפוצות שעוצרות סקילים מלהיטען.</p>
+    </div>
+
+    <h2>מה זה סקיל ל-Claude Code, ובמה זה שונה מסקיל ל-Claude.ai</h2>
+
+    <p>סקיל הוא אותו מנגנון בשני המקרים: תיאור קצר + הוראות מפורטות שנטענות לפי הצורך. אבל ההבדל בין סקיל שחי בענן (Claude.ai) לסקיל שחי על המחשב שלך (Claude Code) משנה את כל מה שאפשר לעשות איתו.</p>
+
+    <p>3 הבדלים מרכזיים:</p>
+
+    <ul>
+      <li><strong>איפה הקובץ חי:</strong> ב-Claude.ai הוא יושב בענן של אנתרופיק. ב-Claude Code הוא יושב בתיקייה אצלך, בתוך פרויקט.</li>
+      <li><strong>מי קורא אותו:</strong> ב-Claude.ai — כל שיחה רלוונטית בחשבון שלך. ב-Claude Code — רק כשאת מריצה <code>claude</code> מתוך הפרויקט שמכיל את התיקייה.</li>
+      <li><strong>מה הוא יכול לעשות:</strong> ב-Claude.ai הסקיל מחזיר טקסט (להפעלת פעולות צריך MCP נפרד). ב-Claude Code הסקיל יכול גם להריץ סקריפטים, לקרוא קבצים, לכתוב קבצים — כי הוא חי בסביבה שיש לה גישה למערכת ההפעלה.</li>
+    </ul>
+
+    <p>מתי לבחור בכל אחד? אם את עובדת בעיקר בצ'אט וצריך עקביות בכתיבה — סקיל ב-Claude.ai. אם את מנהלת קוד או פרויקט עם הרבה קבצים, או רוצה אוטומציה אמיתית שעושה דברים בפועל — סקיל ל-Claude Code.</p>
+
+    <p>אם את חדשה לעולם הסקילים בכלל, <a href="claude-skills-hebrew-guide.html">המאמר על Claude Skills בעברית</a> הוא נקודת הפתיחה הנכונה — שם אני מסבירה את התפיסה ומראה case study של 6 סקילים שמפעילים את העסק שלי.</p>
+
+    <hr class="divider">
+
+    <h2>מתי כדאי לבנות סקיל (ומתי לא)</h2>
+
+    <p>לפני שאת קופצת לבנות, שווה לבדוק שהמשימה באמת בשלה לסקיל. סקיל גרוע גורם נזק יותר מאשר אין סקיל בכלל — הוא מטעה את קלוד.</p>
+
+    <h4>3 סימנים שהמשימה בשלה לסקיל</h4>
+
+    <p><strong>סימן 1 — את מסבירה את אותו רקע פעם שלישית.</strong> אם בכל שיחה את כותבת "אני בעלת עסק קטן בתחום X, הקהל שלי הוא Y, אני אוהבת ש..." — זו לא בקשה, זה onboarding. הוא צריך לחיות בסקיל.</p>
+
+    <p><strong>סימן 2 — התוצר משתנה בין פעם לפעם.</strong> סקיל מקבע את הפורמט. אם פעם אחת מקבלים פוסט של 100 מילה ופעם של 400, אם הפתיחה לפעמים שיווקית ולפעמים אישית — סקיל יסדר את זה.</p>
+
+    <p><strong>סימן 3 — יש לך כללים מפורשים שאף פעם לא לעבור עליהם.</strong> "אף פעם לא לפתוח פוסט במילים בעידן הדיגיטלי" — זו דוגמה. אם יש לך כלל ברזל — זה הזמן להוריד אותו לכתב, פעם אחת, ולשכוח ממנו.</p>
+
+    <h4>2 מקרים שעדיף להישאר עם פרומפט רגיל</h4>
+
+    <p><strong>משימה חד-פעמית.</strong> אם אני צריכה לבצע פעולה פעם אחת — אני כותבת פרומפט. סקיל הוא השקעה: 30 דקות עכשיו תמורת חיסכון לאורך זמן. בלי השימוש החוזר, ההשקעה לא משתלמת.</p>
+
+    <p><strong>משימה שעוד אין לה גבולות ברורים.</strong> אם את עוד לא יודעת איך את רוצה את התוצר — אל תקבעי אותו בסקיל. הסקיל בא <em>אחרי</em> שיש לך מתודולוגיה. נסי קודם את הפורמט בכמה שיחות, ראי מה עובד, רק אז תהפכי אותו לסקיל.</p>
+
+    <p class="pull-quote">סקיל הוא לא רעיון של "מה היה נחמד אם". סקיל הוא תיעוד של "מה עובד לי בפועל". בלי הצעד השני — אין אחר.</p>
+
+    <h2>אנטומיה של SKILL.md — שני החלקים שאסור לפספס</h2>
+
+    <p>קובץ SKILL.md הוא Markdown רגיל, אבל יש לו שני חלקים מובחנים שכל אחד עובד אחרת.</p>
+
+    <h3>חלק 1: Frontmatter (YAML)</h3>
+
+    <p>הוראות מטא לסקיל — מה שמו ומתי לטעון אותו. נכתב בין שתי שורות של <code>---</code> בראש הקובץ:</p>
+
+    <pre><code>---
+name: my-skill-name
+description: תיאור קצר של מה הסקיל עושה ומתי להפעיל אותו.
+---</code></pre>
+
+    <p>שני שדות חובה:</p>
+
+    <ul>
+      <li><strong>name</strong> — מזהה ייחודי, באנגלית, באותיות קטנות עם מקפים. לדוגמה: <code>facebook-post-writer-hebrew</code>. זה לא "שם תצוגה" — זה השם שקלוד משתמש בו פנימית ושמופיע בלוגים שלו.</li>
+      <li><strong>description</strong> — שורה קצרה (1-2 משפטים) שמתארת <strong>מתי</strong> להפעיל את הסקיל. זה השדה הכי קריטי בכל הסקיל.</li>
+    </ul>
+
+    <h3>חלק 2: גוף הסקיל (Markdown חופשי)</h3>
+
+    <p>כל מה שאחרי ה-frontmatter. אין מבנה קבוע, אבל פרקטיקה טובה כוללת:</p>
+
+    <ul>
+      <li>מטרה ומי הקהל</li>
+      <li>הטון, הסגנון, הפורמט המועדף</li>
+      <li>כללי זהב — מה לעשות / מה לא</li>
+      <li>דוגמאות לתוצר טוב (וגם לתוצר רע, אם רלוונטי)</li>
+    </ul>
+
+    <h3>למה ה-description עושה או שובר את הסקיל</h3>
+
+    <p>הסיפור פשוט: קלוד לא מחזיק את כל הסקילים שלך בזיכרון בכל שיחה. בתחילת השיחה הוא רואה רק את שמות הסקילים ואת ה-descriptions שלהם. בכל הודעה שאת שולחת, הוא בודק את ה-descriptions ושואל את עצמו: "האם משהו פה רלוונטי?". אם כן — הוא טוען את הסקיל המלא. אם לא — הוא מתעלם.</p>
+
+    <p><strong>Description טוב = סקיל שטעון בזמן הנכון.</strong> Description גרוע = סקיל שיושב על הדיסק שלך ואף פעם לא נטען.</p>
+
+    <p>דוגמה רעה: <em>"סקיל לכתיבת תוכן."</em></p>
+
+    <p>דוגמה טובה: <em>"כותב פוסטים לפייסבוק בעברית עבור עסק שיווק. השתמש כשמשתמש מבקש 'תכתוב פוסט פייסבוק', 'תכין פוסט', או דרישה דומה."</em></p>
+
+    <p>ההבדל: הדוגמה הטובה כוללת <strong>את השפה שהמשתמש באמת ישתמש בה</strong>. הדוגמה הרעה היא קטגוריה מופשטת מדי — קלוד לא יידע מתי בדיוק לטעון אותה.</p>
+
+    <h2>צעד אחר צעד — בונים את הסקיל הראשון</h2>
+
+    <p>הנה התהליך המלא, מהפעלת הטרמינל ועד אישור שהסקיל נטען. כולו לוקח כ-30 דקות אם זה הסקיל הראשון שלך.</p>
+
+    <ol class="steps">
+      <li>
+        <h4>פותחים טרמינל בתיקיית הפרויקט</h4>
+        <p>נווטי לתיקייה של הפרויקט שבו את רוצה את הסקיל:</p>
+        <pre><code>cd ~/my-project</code></pre>
+        <p>אם אין לך פרויקט — צרי תיקייה חדשה: <code>mkdir my-project &amp;&amp; cd my-project</code>.</p>
+      </li>
+      <li>
+        <h4>יוצרים את התיקייה לסקיל</h4>
+        <p>פקודה אחת שיוצרת את כל הנתיב:</p>
+        <pre><code>mkdir -p .claude/skills/facebook-post-writer-hebrew</code></pre>
+        <p>הדגל <code>-p</code> אומר "צור גם את התיקיות האב, אם הן חסרות". מקפים, לא קווים תחתונים.</p>
+      </li>
+      <li>
+        <h4>יוצרים קובץ SKILL.md</h4>
+        <p>בתוך תיקיית הסקיל החדשה, יוצרים קובץ בשם <code>SKILL.md</code> — באותיות גדולות בדיוק. אפשר ב-VS Code, נוטפד, או כל עורך טקסט שאת אוהבת.</p>
+      </li>
+      <li>
+        <h4>כותבים את ה-Frontmatter</h4>
+        <p>מוסיפים בראש הקובץ את שני השדות בין שורות של <code>---</code>:</p>
+        <pre class="has-hebrew"><code>---
+name: facebook-post-writer-hebrew
+description: כותב פוסטים לפייסבוק בעברית עבור עסק שיווק. השתמש כשמבקשים לכתוב פוסט פייסבוק, "תכתוב פוסט", או "צריך תוכן לפייסבוק".
+---</code></pre>
+      </li>
+      <li>
+        <h4>כותבים את גוף הסקיל</h4>
+        <p>הוראות בשפה חופשית — קהל, טון, מבנה, דוגמאות. דוגמה מלאה בסעיף הבא.</p>
+      </li>
+      <li>
+        <h4>שומרים את הקובץ</h4>
+        <p>וודאי שהקובץ נקרא בדיוק <code>SKILL.md</code>, ולא <code>skill.md</code> או <code>SKILL.MD</code>.</p>
+      </li>
+      <li>
+        <h4>מפעילים claude בתיקיית הפרויקט</h4>
+        <p>בטרמינל, בתוך תיקיית הפרויקט, פשוט מקלידים:</p>
+        <pre><code>claude</code></pre>
+        <p>אם Claude Code כבר היה רץ — צאי עם <code>/exit</code> והפעילי מחדש, כדי שיטען את הסקיל החדש.</p>
+      </li>
+      <li>
+        <h4>בודקים שהסקיל נטען</h4>
+        <p>בקשי בקשה רלוונטית — לדוגמה: <em>"תכתבי לי פוסט פייסבוק על ההשקה החדשה שלי"</em>. ב-output של Claude Code אמורה להופיע שורה כמו:</p>
+        <pre><code>Skill: facebook-post-writer-hebrew</code></pre>
+        <p>אם השורה לא מופיעה — הסקיל לא נטען. הסיבה הכי שכיחה: ה-description לא חד מספיק. חזרי לשלב 4 וחדדי אותו.</p>
+      </li>
+    </ol>
+
+    <h2>דוגמה מלאה: סקיל "כותב פוסטים לפייסבוק בעברית"</h2>
+
+    <p>הנה תוכן מלא של SKILL.md שאת יכולה להעתיק לעצמך. החלקים בין <code>[סוגריים מרובעים]</code> הם המקומות להחליף בפרטים שלך:</p>
+
+    <pre class="has-hebrew"><code>---
+name: facebook-post-writer-hebrew
+description: כותב פוסטים לפייסבוק בעברית עבור [שם העסק שלך]. השתמש כשמבקשים לכתוב פוסט פייסבוק, "תכתוב פוסט", או "צריך תוכן לפייסבוק".
+---
+
+# כותב פוסטים לפייסבוק בעברית
+
+את כותבת פוסטים לפייסבוק עבור [שם העסק] — [תיאור קצר של העסק].
+
+## הקהל שלי
+[תיאור הקהל: גיל, מגדר, תחום, מה הם מחפשים, מה הם לא מחפשים]
+
+## הטון שלי
+- ישיר, חם, בלי buzzwords
+- משפטים קצרים. פסקאות של 2-3 שורות.
+- שאלת פתיחה שמושכת — או הצהרה חזקה
+- ערך אחד ברור לכל פוסט (לא 5 דברים)
+
+## מבנה פוסט מועדף
+1. שאלה פתיחה או הצהרה (שורה אחת)
+2. פסקה קצרה (2-3 משפטים) על התופעה או הבעיה
+3. רשימה של 3-5 פעולות מעשיות
+4. CTA — שאלה לקוראים או הזמנה לפעולה
+
+## מה לא לכתוב
+- "בעידן הדיגיטלי" / "בעולם המודרני"
+- האשטגים מיותרים (מקסימום 2-3 לפוסט)
+- אימוג'ים מוגזמים (1-2 לכל היותר, ולא בכל פסקה)
+- הכרזות ענק בלי גיבוי בנתון או דוגמה
+
+## דוגמת פוסט מצוין
+איך הפסקתי לבזבז שעתיים בכל בוקר על מחקר מתחרים.
+
+לפני חודשיים שאלתי את עצמי שאלה אחת: "מה אני באמת לומדת מהמחקר הזה?"
+התשובה הייתה — כמעט כלום. רק רעיונות שאני מסתכלת עליהם בלי להפעיל.
+
+אז עשיתי 3 דברים:
+- צמצמתי את המחקר ל-15 דקות בשבוע, לא ביום
+- התחלתי לכתוב את הרעיונות שלי לפני שאני בודקת מתחרים
+- הפסקתי לעקוב אחרי 80% מהמתחרים שלא היו רלוונטיים בכלל
+
+עכשיו אני מייצרת פוסט תוכן ב-20 דקות במקום 90.
+
+ואת? כמה זמן את שורפת בכל בוקר על "מחקר" שהוא בעצם דחיינות?</code></pre>
+
+    <p><strong>הסבר על המבנה:</strong> ה-frontmatter מטרגט בקשות שיש בהן את המילים "פוסט", "פייסבוק", או "תכתוב". גוף הסקיל מתחיל בהגדרת הקהל, ממשיך לטון, נותן מבנה ברור של 4 רכיבים, מציין מה <em>לא</em> לכתוב — ומסיים בדוגמה מלאה. הדוגמה היא החלק שהכי משפיע על איכות התוצר. בלעדיה, קלוד יוצר ממוצע של האינטרנט. איתה — הוא יוצר משהו שדומה למה שאת באמת כותבת.</p>
+
+    <p>אם את רוצה לראות את הסקיל הזה במסגרת מערכת שלמה של 6 סקילים שמפעילים עסק, <a href="claude-skills-hebrew-guide.html">קראי על Marketing Manager והשאר במאמר ההוב</a>.</p>
+
+    <h2>5 הטעויות שעוצרות סקילים מלעבוד</h2>
+
+    <ol>
+      <li>
+        <h4>Description מעורפל</h4>
+        <p>"סקיל לכתיבה." קלוד לא יידע מתי. כתבי מפורש: "כותב פוסטים לפייסבוק בעברית עבור עסק X. השתמש כשמשתמש מבקש לכתוב פוסט." ככל שה-description קונקרטי יותר, כך הסקיל נטען בזמן הנכון יותר.</p>
+      </li>
+      <li>
+        <h4>סקיל ענק שעושה הכל</h4>
+        <p>אם הסקיל שלך מטפל גם בפוסטים, גם בהצעות מחיר, גם במיילים, גם בסיכומי פגישות — קלוד לא יידע מתי לטעון אותו. עדיף 5 סקילים מתמחים מאשר אחד שמתפזר.</p>
+      </li>
+      <li>
+        <h4>חוסר דוגמאות בגוף הסקיל</h4>
+        <p>קלוד לומד הכי טוב מדוגמאות. סקיל בלי דוגמת תוצר מצוין מייצר תוצר גנרי. הוסיפי לפחות דוגמה אחת מלאה — מהפתיחה ועד ה-CTA.</p>
+      </li>
+      <li>
+        <h4>סקיל בלי "מה לא לעשות"</h4>
+        <p>הוראות חיוביות בלבד פותחות פתח לכל מיני טעויות. הוסיפי רשימת איסורים מפורשת: "אל תפתחי במילים X", "אל תכתבי יותר מ-Y מילים", "אל תשתמשי באימוג'ים בכל פסקה".</p>
+      </li>
+      <li>
+        <h4>לא בודקים בפועל שהסקיל נטען</h4>
+        <p>אל תניחי שהוא עובד. בקשי משימה רלוונטית, ובדקי שב-output של Claude מופיעה שורה <code>Skill: ...</code>. אם לא מופיעה — הסקיל לא נטען, ואת מקבלת תשובה גנרית במקום תשובה ממוקדת.</p>
+      </li>
+    </ol>
+
+    <h2>בלי סקיל / עם סקיל</h2>
+
+    <div class="compare">
+      <div class="compare-box bad">
+        <h4>בלי סקיל</h4>
+        <ul>
+          <li>בכל שיחה את מסבירה הכל מחדש</li>
+          <li>הטון משתנה בין פוסטים</li>
+          <li>שוכחת מה הצלחת לעבד עם קלוד פעם שעברה</li>
+          <li>פוסט שלוקח 30 דקות</li>
+          <li>תוצר ממוצע של האינטרנט</li>
+        </ul>
+      </div>
+      <div class="compare-box good">
+        <h4>עם סקיל</h4>
+        <ul>
+          <li>קלוד יודע מי את ומה הקהל שלך</li>
+          <li>הטון עקבי</li>
+          <li>הידע יושב בקובץ אחד, לא בראש שלך</li>
+          <li>פוסט שלוקח 5-10 דקות</li>
+          <li>תוצר שדומה לאיך שאת כותבת</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>שאלות נפוצות</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>האם סקיל ל-Claude Code עובד בעברית?</h3>
+        <p>כן, באופן מלא. אפשר לכתוב את ה-description ואת גוף הסקיל בעברית, וקלוד מזהה אותם וטוען אותם בדיוק כמו סקיל באנגלית. החשוב הוא שה-description יהיה כתוב בצורה ברורה — בכל שפה שתבחרי.</p>
+      </div>
+      <div class="faq-item">
+        <h3>צריך לדעת לתכנת כדי לבנות סקיל ל-Claude Code?</h3>
+        <p>לא. סקיל בסיסי הוא קובץ Markdown אחד עם הוראות בשפה חופשית. צריך לדעת לפתוח טרמינל ולנווט בין תיקיות, אבל לא צריך לכתוב קוד. אם את יכולה לכתוב מסמך Word ברור — את יכולה לכתוב סקיל.</p>
+      </div>
+      <div class="faq-item">
+        <h3>איפה שמים את התיקייה — בפרויקט או גלובלית?</h3>
+        <p>שתי האפשרויות תקפות. תיקיית <code>.claude/skills/</code> בתוך פרויקט הופכת את הסקיל לזמין רק באותו פרויקט. תיקיית <code>~/.claude/skills/</code> ברמת המשתמש הופכת אותו לזמין בכל פרויקט במחשב. למשימות כלליות (כמו כתיבת פוסטים) — שמרי גלובלית. למשימות ספציפיות לפרויקט (כמו כללי קוד של אפליקציה מסוימת) — שמרי בתוך הפרויקט.</p>
+      </div>
+      <div class="faq-item">
+        <h3>האם הסקיל שלי יעבוד גם ב-Claude.ai?</h3>
+        <p>פורמט SKILL.md זהה, אבל אופן ההעלאה שונה. ב-Claude.ai מעלים את הסקיל כקובץ zip דרך Settings &gt; Features &gt; Skills. ב-Claude Code פשוט שומרים את התיקייה במקום הנכון. סקילים שמריצים סקריפטים מתאימים יותר ל-Claude Code, כי הוא הסביבה שמריצה אותם בפועל.</p>
+      </div>
+      <div class="faq-item">
+        <h3>כמה סקילים אפשר לבנות לפרויקט אחד?</h3>
+        <p>אין הגבלה רשמית, אבל בפועל עדיף להישאר בטווח של 10–15 סקילים. מעבר לזה, Claude עלול להתבלבל בין סקילים עם תיאורים דומים. אם יש לך הרבה סקילים — וודאי שלכל אחד יש description מובחן וייחודי, או שתפצלי אותם לפי קטגוריות.</p>
+      </div>
+    </div>
+
+    <h2>הסקיל הראשון לוקח 30 דקות. השני — 10</h2>
+
+    <p>סקילים ל-Claude Code הם לא עוד תשתית טכנית — הם תפיסת עבודה. הם הופכים את הקצב של "בכל שיחה אני מסבירה הכל מחדש" לקצב של "כל סקיל יודע מי אני ומה אני צריכה לעשות". והם נוצרים מקובץ אחד פשוט.</p>
+
+    <p>הסקיל הראשון לוקח כ-30 דקות. השני, 10. אחרי השלישי, את מתחילה לחשוב במונחים של מערכת הפעלה — לא של פרומפטים בודדים. וזו הנקודה שבה העסק שלך הופך למשהו שאפשר להגדיל, לתעד, ולהעביר הלאה.</p>
+
+    <p>רוצה לראות איך כל זה משתלב למערכת של 6 סקילים שמפעילים עסק שלם? <a href="claude-skills-hebrew-guide.html">קראי את המאמר על Claude Skills בעברית</a> — שם אני מראה את כל הסקילים שאני עצמי משתמשת בהם יום-יום.</p>
+
+    <!-- CTA -->
+    <div class="cta">
+      <h2>רוצה לבנות צוות AI לעסק שלך?</h2>
+      <p>ב-Brand Worlds Studio אני בונה ללקוחות BrandOS אישי — מערכת הפעלה מותגית שמשלבת Brand DNA, Claude Skills מותאמים, ותהליכי עבודה מתועדים. אם את מרגישה שאת מבזבזת יותר מדי זמן על onboarding של AI בכל שיחה מחדש — בואי נדבר.</p>
+      <a href="https://api.whatsapp.com/send/?phone=972528351676" class="cta-button" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a>
+    </div>
+
+  </article>
+
+  <!-- Read More -->
+  <section class="read-more">
+    <h3>עוד Insights</h3>
+    <div class="read-more-grid">
+      <a href="claude-skills-hebrew-guide.html" class="read-more-link">Claude Skills בעברית: איך בניתי צוות של 6 מומחים בתוך קלוד</a>
+      <a href="carousel-skill-html-rendering.html" class="read-more-link">בניית Claude Skill לקרוסלות בעברית — מ-AI image ל-HTML/CSS</a>
+      <a href="chatgpt-images-2-hebrew-campaigns.html" class="read-more-link">ChatGPT Images 2.0 כותב סוף סוף עברית — 5 קמפיינים</a>
+      <a href="brand-as-os.html" class="read-more-link">המותג שלך כ-OS: האדריכלות הפנימית שמאפשרת יצירה אינסופית</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 <a href="index.html">חגית אנטבי — Brand Worlds Studio</a>. All rights reserved.</p>
+  </footer>
+
+  <script src="/hagit-agent-widget.js" defer></script>
+</body>
+</html>
