@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta -->
+  <title>Claude Skills ו-Agents: למה צריך את שניהם ב-2026 | BrandOS</title>
+  <meta name="description" content="Claude Skills ו-Agents: Skill הוא הזיכרון, Agent הוא היד. למה כל עסק ב-2026 צריך את שניהם כדי לבנות AI שמדבר בקול שלו.">
+  <meta name="author" content="חגית אנטבי">
+  <link rel="canonical" href="https://hagitantebi.co.il/claude-skills-and-agents.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="Claude Skills ו-Agents: ההבדל ולמה ב-2026 העסק שלכם צריך את שניהם">
+  <meta property="og:description" content="Skills מול Agents — Skill הוא הזיכרון, Agent הוא היד. למה כל עסק ב-2026 צריך את שניהם.">
+  <meta property="og:image" content="https://hagitantebi.co.il/insight-skills-agents.jpeg">
+  <meta property="og:url" content="https://hagitantebi.co.il/claude-skills-and-agents.html">
+  <meta property="og:site_name" content="חגית אנטבי — Brand Worlds Studio">
+  <meta property="article:author" content="חגית אנטבי">
+  <meta property="article:section" content="AI Strategy">
+  <meta property="article:published_time" content="2026-05-15">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Skills ו-Agents: ההבדל ולמה ב-2026 העסק שלכם צריך את שניהם">
+  <meta name="twitter:description" content="Skills מול Agents — Skill הוא הזיכרון, Agent הוא היד. למה כל עסק ב-2026 צריך את שניהם.">
+  <meta name="twitter:image" content="https://hagitantebi.co.il/insight-skills-agents.jpeg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Claude Skills ו-Agents: ההבדל ולמה ב-2026 העסק שלכם צריך את שניהם",
+    "description": "Claude Skills ו-Agents: Skill הוא הזיכרון, Agent הוא היד. למה כל עסק ב-2026 צריך את שניהם כדי לבנות AI שמדבר בקול שלו.",
+    "author": {
+      "@type": "Person",
+      "@id": "https://hagitantebi.co.il/about.html#hagit",
+      "name": "חגית אנטבי",
+      "url": "https://hagitantebi.co.il",
+      "jobTitle": "Brand Worlds Architect, founder of BrandOS"
+    },
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Brand Worlds Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hagitantebi.co.il/sphere-outcome.png"
+      }
+    },
+    "image": "https://hagitantebi.co.il/insight-skills-agents.jpeg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hagitantebi.co.il/claude-skills-and-agents.html"
+    },
+    "inLanguage": "he-IL",
+    "articleSection": "AI Strategy",
+    "keywords": "Claude Skills, Claude Agents, Skills מול Agents, אוטומציה ממותגת, BrandOS, AI לעסקים",
+    "wordCount": 1850
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "אפשר להשתמש ב-Skill וב-Agent יחד?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "לא רק שאפשר — זו הדרך הנכונה לעבוד. Agent יכול לטעון סקילים בדיוק כמו שמשתמש אנושי יכול. למעשה זה השימוש הכי חזק: Agent מתזמן ומקבל החלטות, ו-Skills מבטיחים שכל מה שיוצא ממנו יישמע כמוכם."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "מה ההבדל בין Skill ל-Project ב-Claude.ai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Project הוא מיכל לשיחות עם הקשר משותף — קבצים, הוראות, שיחות קודמות. Skill הוא מודול ידע נטען-לפי-דרישה. Project עוסק ב'מה אנחנו זוכרים בשיחה הזו'. Skill עוסק ב'איזה ידע לטעון מתי'. אפשר להשתמש בשניהם יחד — Project עם Skills מקושרים."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ומה זה Subagents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ב-Claude Code יש קונספט שלישי: Subagents. אלה Agents מתמחים (כמו explore, plan, code-reviewer) שה-Agent הראשי יכול להאציל אליהם תת-משימות. דמיינו Agent ראשי כמו מנהלת פרויקט, ו-Subagents כצוות שלה. בעוד שסקיל = ידע, Agent = ביצוע, Subagent = עוזר ספציפי בתוך ביצוע גדול יותר."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "צריך לדעת לתכנת כדי לבנות סקיל?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "לא לבסיסי. SKILL.md הוא קובץ Markdown עם הוראות בעברית או באנגלית. אם אתם יודעים לכתוב הנחיות ברורות — אתם יודעים לבנות סקיל. אם אתם רוצים שהסקיל יריץ קוד (למשל לעבד תמונות או לקרוא מ-API), אז כן — צריך קצת."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Skills עובדים גם ב-Claude.ai וגם ב-Claude Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "כן בשניהם, עם הבדל אחד — ב-Claude.ai (הצ'אט) הסקילים נטענים אוטומטית מתוך תיקיית הסקילים הגלובלית של החשבון. ב-Claude Code (ה-CLI) הם נטענים מתיקיית הפרויקט או מתיקייה גלובלית. אותם קבצי SKILL.md, שני קונטקסטים."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"בית","item":"https://hagitantebi.co.il"},
+      {"@type":"ListItem","position":2,"name":"Insights","item":"https://hagitantebi.co.il/insights.html"},
+      {"@type":"ListItem","position":3,"name":"Claude Skills ו-Agents","item":"https://hagitantebi.co.il/claude-skills-and-agents.html"}
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <style>
+    /* ===== Brand Worlds Studio — Design Tokens ===== */
+    :root {
+      --color-cream: #FAF8F3;
+      --color-warm-beige: #F5F1E8;
+      --color-chocolate: #8B7355;
+      --color-copper: #C4765A;
+      --color-taupe: #B8A89A;
+      --color-light-taupe: #D4C9BC;
+      --color-text-deep: #4F372C;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body-en: 'Plus Jakarta Sans', sans-serif;
+      --font-body-he: 'Heebo', sans-serif;
+      --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+      --max-width: 760px;
+      --max-width-wide: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body-he);
+      background: var(--color-cream);
+      color: var(--color-chocolate);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      direction: rtl;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-copper); text-decoration: none; transition: color 0.3s var(--transition-smooth); }
+    a:hover { color: var(--color-chocolate); }
+
+    /* ===== Nav ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.08);
+    }
+    .nav__inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav__logo {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+      color: var(--color-chocolate); text-decoration: none;
+    }
+    .nav__back {
+      font-family: var(--font-body-en); font-size: 0.8rem; font-weight: 500;
+      color: var(--color-copper); text-decoration: none;
+      letter-spacing: 0.05em; transition: gap 0.3s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav__back:hover { gap: 10px; }
+
+    /* ===== Article Header ===== */
+    .article-header {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 140px clamp(24px, 5vw, 48px) 48px;
+      text-align: right;
+    }
+    .breadcrumb {
+      font-family: var(--font-body-en); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--color-copper); margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--color-copper); }
+    .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+    h1.article-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.15; color: var(--color-text-deep);
+      margin-bottom: 24px; letter-spacing: -0.005em;
+    }
+    h1.article-title em {
+      font-style: italic; color: var(--color-copper); font-weight: 400;
+    }
+    .article-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      line-height: 1.5; color: var(--color-taupe);
+      font-weight: 400; font-style: italic; margin-bottom: 32px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 12px;
+      font-family: var(--font-body-en); font-size: 0.78rem;
+      color: var(--color-light-taupe); flex-wrap: wrap;
+      letter-spacing: 0.05em; padding-top: 20px;
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+    }
+    .article-meta .author { color: var(--color-copper); font-weight: 500; }
+    .article-meta .dot { opacity: 0.5; }
+
+    /* ===== Hero ===== */
+    .hero-img {
+      max-width: var(--max-width-wide); margin: 0 auto 64px;
+      padding: 0 clamp(24px, 5vw, 48px);
+    }
+    .hero-img img {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+    }
+
+    /* ===== Body ===== */
+    .article-body {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 48px) 96px;
+    }
+    .article-body p {
+      font-size: 1.0625rem; line-height: 1.8;
+      margin-bottom: 24px; color: var(--color-chocolate);
+    }
+    .article-body h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      line-height: 1.25; color: var(--color-text-deep);
+      margin: 64px 0 24px; letter-spacing: -0.005em;
+    }
+    .article-body h3 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(1.3rem, 2.4vw, 1.55rem);
+      line-height: 1.35; color: var(--color-text-deep);
+      margin: 40px 0 16px;
+    }
+    .article-body h4 {
+      font-family: var(--font-body-en); font-weight: 600;
+      font-size: 0.78rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--color-copper);
+      margin: 32px 0 12px;
+    }
+    .article-body strong { font-weight: 600; color: var(--color-text-deep); }
+    .article-body em { font-style: italic; color: var(--color-taupe); }
+    .article-body ul, .article-body ol {
+      margin: 0 24px 24px 0; padding-right: 24px;
+    }
+    .article-body li {
+      font-size: 1.0625rem; line-height: 1.8;
+      margin-bottom: 8px; color: var(--color-chocolate);
+    }
+    .article-body a {
+      color: var(--color-copper);
+      border-bottom: 1px solid rgba(196, 118, 90, 0.3);
+      transition: all 0.3s var(--transition-smooth);
+    }
+    .article-body a:hover {
+      color: var(--color-chocolate);
+      border-bottom-color: var(--color-chocolate);
+    }
+    .article-body code {
+      background: var(--color-warm-beige);
+      color: var(--color-copper);
+      padding: 0.1em 0.4em;
+      border-radius: 2px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.92em;
+    }
+
+    /* ===== TL;DR ===== */
+    .tldr {
+      background: var(--color-warm-beige);
+      border-right: 3px solid var(--color-copper);
+      padding: 24px 32px;
+      margin: 32px 0 48px;
+    }
+    .tldr-label {
+      font-family: var(--font-body-en);
+      font-size: 0.65rem; font-weight: 600;
+      color: var(--color-copper);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .tldr p {
+      font-size: 1rem !important; line-height: 1.7 !important;
+      color: var(--color-text-deep); margin: 0 !important;
+    }
+
+    /* ===== Pull Quote ===== */
+    .pull-quote {
+      font-family: var(--font-display) !important;
+      font-style: italic; font-weight: 400;
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem) !important;
+      line-height: 1.45 !important;
+      color: var(--color-copper) !important;
+      border-right: 3px solid var(--color-copper);
+      padding-right: 24px;
+      margin: 48px 0 !important;
+    }
+
+    /* ===== Position Zero callout per H2 ===== */
+    .h2-answer {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--color-text-deep);
+      background: rgba(245, 241, 232, 0.5);
+      border-right: 2px solid var(--color-copper);
+      padding: 16px 24px;
+      margin: 0 0 32px;
+    }
+
+    /* ===== Comparison Table ===== */
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      margin: 32px 0; font-size: 0.95rem;
+      background: var(--color-warm-beige);
+    }
+    .compare-table thead th {
+      font-family: var(--font-body-en);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-copper);
+      padding: 18px 16px;
+      border-bottom: 2px solid rgba(196, 118, 90, 0.3);
+      text-align: right;
+    }
+    .compare-table tbody th {
+      font-family: var(--font-body-he);
+      font-weight: 600;
+      color: var(--color-text-deep);
+      padding: 14px 16px;
+      text-align: right;
+      width: 28%;
+      background: rgba(212, 201, 188, 0.2);
+    }
+    .compare-table tbody td {
+      padding: 14px 16px;
+      color: var(--color-chocolate);
+      border-top: 1px solid rgba(139, 115, 85, 0.1);
+      line-height: 1.6;
+    }
+    @media (max-width: 600px) {
+      .compare-table { font-size: 0.88rem; }
+      .compare-table thead th, .compare-table tbody th, .compare-table tbody td {
+        padding: 10px 8px;
+      }
+    }
+
+    /* ===== Mode Boxes (3 states in H2 #5) ===== */
+    .mode-box {
+      padding: 20px 24px;
+      margin: 20px 0;
+      background: var(--color-warm-beige);
+      border-right: 3px solid var(--color-light-taupe);
+    }
+    .mode-box.highlight {
+      border-right-color: var(--color-copper);
+      background: rgba(245, 241, 232, 0.95);
+    }
+    .mode-box .mode-label {
+      font-family: var(--font-body-en);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-copper);
+      margin-bottom: 10px;
+    }
+    .mode-box p { margin: 0 !important; font-size: 1rem !important; }
+
+    /* ===== Scenarios ===== */
+    .scenario {
+      padding: 18px 0;
+      border-top: 1px solid rgba(139, 115, 85, 0.12);
+    }
+    .scenario:first-of-type { border-top: none; }
+    .scenario h4 {
+      margin: 0 0 8px !important;
+      color: var(--color-text-deep);
+      font-size: 0.95rem !important;
+    }
+    .scenario p { margin-bottom: 6px !important; }
+    .scenario p strong { color: var(--color-copper); }
+
+    /* ===== Equation Block ===== */
+    .equation {
+      background: var(--color-text-deep);
+      color: var(--color-cream);
+      padding: 32px;
+      margin: 48px 0;
+      text-align: center;
+      font-family: var(--font-display);
+    }
+    .equation .formula {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-style: italic;
+      margin-bottom: 16px;
+      color: var(--color-cream);
+    }
+    .equation .formula em {
+      color: var(--color-copper);
+      font-style: italic;
+    }
+    .equation .breakdown {
+      font-family: var(--font-body-he);
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--color-light-taupe);
+    }
+
+    /* ===== FAQ ===== */
+    .faq { margin: 32px 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+      padding: 24px 0;
+    }
+    .faq-item h3 {
+      font-size: 1.2rem !important;
+      margin: 0 0 8px !important;
+      color: var(--color-text-deep) !important;
+    }
+    .faq-item p {
+      font-size: 1rem !important;
+      color: var(--color-taupe);
+      margin: 0 !important;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: var(--color-warm-beige);
+      padding: 48px 32px;
+      margin: 64px 0;
+      text-align: center;
+    }
+    .cta h2 { margin: 0 0 16px !important; font-size: clamp(1.6rem, 3vw, 2rem) !important; }
+    .cta p { color: var(--color-taupe); margin-bottom: 24px !important; }
+    .cta-button {
+      display: inline-block;
+      background: var(--color-copper);
+      color: var(--color-cream) !important;
+      padding: 14px 32px;
+      font-family: var(--font-body-en);
+      font-weight: 500; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border: none;
+      border-bottom: none !important;
+      transition: background 0.3s var(--transition-smooth);
+    }
+    .cta-button:hover {
+      background: var(--color-chocolate);
+      color: var(--color-cream) !important;
+      border-bottom: none !important;
+    }
+
+    /* ===== Read More ===== */
+    .read-more {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 64px clamp(24px, 5vw, 48px);
+      border-top: 1px solid rgba(139, 115, 85, 0.15);
+    }
+    .read-more h3 {
+      font-family: var(--font-body-en) !important;
+      font-size: 0.7rem !important; font-weight: 500 !important;
+      color: var(--color-copper) !important;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      margin-bottom: 24px !important;
+    }
+    .read-more-grid { display: flex; flex-direction: column; gap: 12px; }
+    .read-more-link {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--color-text-deep);
+      padding: 12px 0;
+      border-bottom: none !important;
+      display: flex; align-items: baseline; gap: 10px;
+      transition: color 0.3s var(--transition-smooth);
+    }
+    .read-more-link:hover { color: var(--color-copper); }
+    .read-more-link::before {
+      content: "✦"; color: var(--color-copper);
+      font-size: 0.85em; flex-shrink: 0;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--color-chocolate);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer p {
+      font-family: var(--font-body-he);
+      font-size: 0.85rem; color: var(--color-taupe); margin: 0;
+    }
+    .footer a { color: var(--color-copper); text-decoration: none; border-bottom: none; }
+    .footer a:hover { color: var(--color-cream); }
+
+    /* ===== Divider ===== */
+    .divider {
+      width: 40px; height: 1px;
+      background: var(--color-copper); opacity: 0.4;
+      margin: 48px auto; border: none;
+    }
+
+    @media (max-width: 600px) {
+      .article-header { padding-top: 110px; }
+      .article-body p, .article-body li { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">Hagit Antebi</a>
+      <a href="insights.html" class="nav__back">← Back to Insights</a>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="https://hagitantebi.co.il/insights.html">Insights</a>
+      <span class="sep">·</span>
+      <span>AI Strategy</span>
+    </div>
+
+    <h1 class="article-title">Claude Skills ו-<em>Agents</em>: ההבדל ולמה ב-2026 העסק שלכם צריך את שניהם</h1>
+
+    <p class="article-tagline">Skill הוא הזיכרון. Agent הוא היד. שתי שכבות יחד = AI שמדבר בקול שלכם.</p>
+
+    <div class="article-meta">
+      <span class="author">✦ חגית אנטבי</span>
+      <span class="dot">·</span>
+      <span>מאי 2026</span>
+      <span class="dot">·</span>
+      <span>9 דקות קריאה</span>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  <div class="hero-img">
+    <img src="/insight-skills-agents.jpeg" alt="Claude Agent — כדור זהב ארוג בלב הקומפוזיציה, מוקף ב-6 מסכים פנימיים (פוסט בעברית, דשבורד נתונים, יומן, מייל, מסמך מותג, גרף) שמייצגים Skills שונים שהסוכן מפעיל בו-זמנית. רקע navy עמוק, פלטה של Brand Worlds Studio." loading="eager">
+  </div>
+
+  <!-- Article Body -->
+  <article class="article-body">
+
+    <div class="tldr">
+      <div class="tldr-label">תשובה ישירה</div>
+      <p><strong>Claude Skill</strong> הוא ידע ארוז ש-Claude טוען אוטומטית כשהוא מזהה שזה רלוונטי — למשל מדריך הקול של המותג שלכם. <strong>Claude Agent</strong> הוא יחידת ביצוע אוטונומית שמתכננת, מפעילה כלים ומשלימה משימות מורכבות בעצמה. עסק שמשתמש רק באחד מהם מקבל אוטומציה חצי-עובדת. עסק שמשתמש בשניהם — <strong>Skill כזיכרון, Agent כיד</strong> — בונה מערכת AI שמדברת בקול שלו.</p>
+    </div>
+
+    <h2>מה קרה ב-2025 שהפך את השאלה הזו לקריטית</h2>
+    <p class="h2-answer">באוקטובר 2025 Anthropic השיקה את Skills כפיצ'ר רשמי. במקביל, Agents הפכו מהבטחה למשהו שאפשר באמת לבנות עליו ערך עסקי. השוק התחיל להשתמש בשני המונחים לסירוגין — וזו טעות יקרה.</p>
+
+    <p>עד 2024 הייתה רק דרך אחת לעבוד עם AI — שיחה. אתם כותבים פרומפט, Claude עונה. כל פעם מאפס. ב-2025 שני דברים השתנו בו-זמנית.</p>
+
+    <p><strong>Skills שוחררו כפיצ'ר רשמי</strong> — לא פרומפטים שמורים, ולא Custom GPTs. הם מודולים של ידע שנשענים על "Discovery הדרגתי": Claude רואה רק את השם והתיאור שלהם, וטוען אותם רק כשהוא מזהה רלוונטיות.</p>
+
+    <p><strong>Agents הפכו לאמיתיים</strong> — Claude Agent רץ ב-context נפרד, מפעיל כלים (Tools), עובד עם MCP servers, ומתכנן רצף פעולות שלם. הוא לא רק עונה — הוא מבצע.</p>
+
+    <p>הבעיה: השוק התחיל לחבר את שני המונחים בשגגה. כשמדברים על <strong>Skills מול Agents</strong> מתפתחת תחושה שצריך לבחור — ובחירה כזו עולה ביוקר. אם תבנו רק Skill — תקבלו תוצר עקבי אבל תפעילו אותו ידנית. אם תבנו רק Agent בלי Skill — תקבלו אוטומציה שמדברת כמו ChatGPT גנרי. השאלה האמיתית של 2026 איננה "איך לעשות AI" אלא "<strong>איך לעשות AI שמדבר בקול של העסק שלי</strong>".</p>
+
+    <hr class="divider">
+
+    <h2>Claude Skill: הזיכרון שלא נשכח</h2>
+    <p class="h2-answer">Skill הוא תיקייה עם הוראות שמלמדות את Claude לבצע משימה ספציפית באופן עקבי — לאורך זמן, על פני שיחות. Claude טוען אותו אוטומטית כשהוא מזהה רלוונטיות.</p>
+
+    <p>דמיינו שיש לכם עוזרת אישית שעובדת איתכם כבר שנים. אתם לא צריכים להסביר לה כל פעם איך אתם כותבים מיילים אצלכם — היא יודעת. אתם לא צריכים לחזור על מה הצבעים של המותג — היא זוכרת. <strong>זה Skill</strong>.</p>
+
+    <p>מבחינה טכנית: זו תיקייה שמכילה לפחות קובץ אחד בשם <code>SKILL.md</code>, שמתחיל ב-frontmatter עם שני שדות חיוניים — <code>name</code> (השם של הסקיל) ו-<code>description</code> (מתי להשתמש בו). הקובץ עצמו מכיל הוראות מפורטות, ויכול להפנות לקבצי משנה, סקריפטים, או דוגמאות.</p>
+
+    <p>הקסם הוא ב-<strong>Discovery הדרגתי</strong>: Claude לא טוען את כל הסקילים כל הזמן — זה היה ממלא את ה-context. הוא רק רואה את שמותיהם ותיאוריהם. כשמשהו רלוונטי עולה בשיחה — למשל אתם כותבים "תכין קרוסלה ל-Solara Wild" — Claude מזהה שיש לו סקיל בשם <code>brand-worlds-carousel</code> עם תיאור שמתאר בדיוק את המקרה הזה, וטוען אותו לתוך השיחה.</p>
+
+    <p><strong>דוגמה קונקרטית:</strong> סקיל בשם <code>brand-voice-linkedin</code> שמכיל את 8 העקרונות של הקול שלכם בלינקדאין, רשימת מילים שכן ולא להשתמש בהן, ומבנה פוסט מועדף. כל פעם שאתם מבקשים לכתוב פוסט לינקדאין, Claude טוען את הסקיל הזה — ואתם מקבלים פוסט שנשמע כמוכם, לא כמו ChatGPT גנרי.</p>
+
+    <h2>Claude Agent: היד שמבצעת</h2>
+    <p class="h2-answer">Agent הוא יחידה אוטונומית שמתכננת, מחליטה, מפעילה כלים ומשלימה משימה מרובת-שלבים בעצמה. בניגוד ל-Skill, Agent לא טוען ידע — הוא מבצע פעולות.</p>
+
+    <p>אם Skill הוא הזיכרון של העוזרת הוותיקה, <strong>Agent הוא היכולת שלה לבצע משימה שלמה מקצה לקצה</strong> — לאסוף נתונים, להחליט מה לעשות איתם, לכתוב, לשלוח, לעקוב — בלי שתפרטו לה כל צעד.</p>
+
+    <p>מבחינה טכנית: Agent ב-Claude יכול לרוץ דרך כמה מסגרות — Claude Code (לפיתוח), Claude Agent SDK (לבנייה מותאמת), או דרך Tools שאתם מגדירים. הוא רץ ב-context נפרד מהשיחה הראשית, יודע לקרוא ולכתוב קבצים, להתחבר ל-API חיצוניים דרך MCP servers, ולקבל החלטות בעצמו לגבי הצעד הבא.</p>
+
+    <p><strong>דוגמה קונקרטית:</strong> Agent שעובד כל שני בבוקר, מתחבר ל-Google Search Console ול-Google Analytics, מושך את הנתונים של השבוע, מזהה דפים שמאבדים טראפיק, כותב סיכום עם המלצות, ושולח לכם אותו במייל. הוא לא צריך שתפעילו אותו ידנית. הוא לא צריך שתסבירו לו כל פעם מה לעשות. <strong>הוא יודע לבד</strong>.</p>
+
+    <p>זה כוח גדול. אבל יש לו חולשה קריטית — והיא מה שמוביל אותנו ישר לחלק הבא.</p>
+
+    <h2>ההבדל ב-30 שניות</h2>
+    <p class="h2-answer">Skill = ידע סטטי שנטען לפי הקשר. Agent = ביצוע דינמי שמתכנן ופועל. הבחנה ברורה בין <strong>Skills מול Agents</strong> — אבל לא תחרות, השלמה.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Skill</th>
+          <th>Agent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>מטרה</th>
+          <td>מומחיות מקודדת</td>
+          <td>ביצוע אוטונומי</td>
+        </tr>
+        <tr>
+          <th>מי מפעיל</th>
+          <td>Claude (אוטומטית, לפי הקשר)</td>
+          <td>משתמש, scheduler, או agent אחר</td>
+        </tr>
+        <tr>
+          <th>Context</th>
+          <td>נטען לתוך השיחה הראשית</td>
+          <td>רץ ב-context נפרד</td>
+        </tr>
+        <tr>
+          <th>סוג משימה</th>
+          <td>חוזרת, מוגדרת</td>
+          <td>מורכבת, רב-שלבית</td>
+        </tr>
+        <tr>
+          <th>פלט</th>
+          <td>תוצר עקבי בכל פעם</td>
+          <td>תוצאה של תהליך שלם</td>
+        </tr>
+        <tr>
+          <th>דוגמה</th>
+          <td>"תכתוב פוסט לפי המותג שלי"</td>
+          <td>"תכין סיכום שבועי מ-A עד Z"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>זה לא או/או. <strong>זה איך הם עובדים יחד שמייצר את הערך האמיתי</strong> — נכנס לזה עכשיו.</p>
+
+    <h2>למה צריך את שניהם: המשוואה Skill × Agent = מערכת ממותגת</h2>
+    <p class="h2-answer">Agent בלי Skill נותן לכם אוטומציה גנרית. Skill בלי Agent נותן לכם עקביות אבל ידנית. ההכפלה ביניהם — Agent שמפעיל Skills בזמן הנכון — היא מה שהופך AI מ"כלי" ל"מערכת ממותגת".</p>
+
+    <p>נחזור לעוזרת הוותיקה. בלעדיה, אתם יכולים לעשות הכל בעצמכם — איטי, אבל אתם תמיד אתם. עם עוזרת חדשה שלא מכירה את הסטנדרטים שלכם, אתם תקבלו תוצרים מהר יותר — אבל הם יישמעו כאילו "מישהי אחרת" עשתה אותם. עם עוזרת ותיקה שיודעת בדיוק איך אתם עובדים — אתם מקבלים את שני הדברים יחד.</p>
+
+    <p>זו המקבילה ב-Claude. בואו נראה את שלושת המצבים:</p>
+
+    <div class="mode-box">
+      <div class="mode-label">מצב 1 — Skill בלי Agent</div>
+      <p>יש לכם סקיל <code>brand-voice-linkedin</code> עם כל ה-DNA של הקול שלכם בלינקדאין. כל פעם שאתם רוצים פוסט, אתם פותחים Claude, כותבים "תכין לי פוסט על הקולקציה החדשה", Claude טוען את הסקיל, ומחזיר לכם פוסט מעולה. עקבי, ממותג, נכון. אבל <strong>אתם הפעלתם אותו</strong>. אתם הקלדתם את הבקשה. אתם העתקתם את התוצאה. כל פעם.</p>
+    </div>
+
+    <div class="mode-box">
+      <div class="mode-label">מצב 2 — Agent בלי Skill</div>
+      <p>יש לכם Agent שרץ אוטומטית — נניח, אחרי כל השקה של מוצר חדש בחנות, הוא כותב פוסט לינקדאין ומפרסם אותו. נחמד. אבל בלי סקיל, ה-Agent הזה שולף את התוכן מהמוצר, מעבד אותו דרך ה-prompt הגנרי של Claude, ומפיק פוסט שנשמע <strong>כמו עוד עסק עם AI</strong>. נכון מבחינת הפקטים. גנרי מבחינת הקול. הוא יכול להיות של כל אחד.</p>
+    </div>
+
+    <div class="mode-box highlight">
+      <div class="mode-label">מצב 3 — Agent + Skill</div>
+      <p>אותו Agent — אבל הפעם הוא יודע שיש לו גישה לסקיל <code>brand-voice-linkedin</code>. כשהוא מתחיל לכתוב, הוא טוען את הסקיל, ופתאום הפוסט שלו נשמע כמוכם. בדיוק כמוכם. הניואנסים שמייחדים אתכם — הקצב, המילים שאתם אוהבים, הסיומות החוזרות, מבנה הפסקאות שלכם — הכל שם. הוא אוטומטי, <strong>והוא אתם</strong>.</p>
+    </div>
+
+    <div class="equation">
+      <div class="formula"><em>Skill</em> × <em>Agent</em> = מערכת ממותגת</div>
+      <div class="breakdown">
+        Skill בלעדי = עקביות עם מאמץ ידני<br>
+        Agent בלעדי = אוטומציה גנרית<br>
+        שניהם יחד = AI שמייצג אתכם
+      </div>
+    </div>
+
+    <p>זה בדיוק העיקרון שעליו בנויה <strong>BrandOS</strong>. כל לקוח של BrandOS מקבל בעצם שני דברים: Brand DNA שמתפקד כסקיל פנימי (זה הזיכרון של המערכת), וסוכן שמפעיל אותו (זו היד). הסיבה שתוכן יוצא עקבי בלי שהלקוח צריך להסביר את עצמו מחדש בכל שיחה — היא הארכיטקטורה הזו, לא מקרה. כשהמותג שלכם פועל כמערכת הפעלה (<a href="brand-as-os.html">המאמר המורחב על Brand as OS</a>), שתי השכבות האלה הן ה-stack הבסיסי שלכם.</p>
+
+    <p>המסקנה לא טכנית — היא אסטרטגית. השאלה האמיתית של בעלי עסקים ב-2026 איננה "האם להשתמש ב-AI" אלא "<strong>איך להבטיח שה-AI שלי מדבר בקול שלי</strong>". התשובה היחידה היא: שתי שכבות. Skill לזיכרון, Agent ליד.</p>
+
+    <h2>4 תרחישים: מה צריך, מתי</h2>
+    <p class="h2-answer">כשהמשימה חוזרת ומוגדרת, מספיק Skill. כשהיא רב-שלבית ואוטונומית, צריך Agent. אבל ברוב המקרים העסקיים — צריך את שניהם יחד.</p>
+
+    <div class="scenario">
+      <h4>תרחיש 1 — פוסט לינקדאין בקול המותג שלי</h4>
+      <p><strong>מה צריך:</strong> רק Skill. אתם פותחים Claude, מבקשים פוסט, מקבלים פוסט.</p>
+      <p><strong>מתי לשדרג ל-Agent:</strong> כשאתם רוצים שכל מוצר חדש בחנות יקבל פוסט אוטומטית בלי שתתערבו.</p>
+    </div>
+
+    <div class="scenario">
+      <h4>תרחיש 2 — דוח שבועי מנתוני SEO</h4>
+      <p><strong>מה צריך:</strong> Agent (לאסוף מ-Search Console, לעבד, לכתוב) + Skill (לכתוב את הסיכום בטון של הדוחות הפנימיים שלכם, לא ב-corporate voice גנרי).</p>
+      <p>זה הזוג הקלאסי. בלי Skill תקבלו דוח שנראה כמו אקסל. עם Skill תקבלו דוח שמדבר כמוכם.</p>
+    </div>
+
+    <div class="scenario">
+      <h4>תרחיש 3 — כל מייל יוצא בטון אחיד</h4>
+      <p><strong>מה צריך:</strong> Skill בלבד. מספיק.</p>
+      <p><strong>מתי לשדרג ל-Agent:</strong> כשאתם רוצים שמיילים פנימיים מסוימים — אישורים, סיכומי פגישות — יישלחו אוטומטית.</p>
+    </div>
+
+    <div class="scenario">
+      <h4>תרחיש 4 — קמפיין מקצה לקצה: מחקר → ניסוח → תזמון → ניתוח</h4>
+      <p><strong>מה צריך:</strong> Agent מתזמר + 3-4 Skills שונים — אחד למחקר שוק, אחד לכתיבה בקול המותג, אחד לתזמון פלטפורמות, אחד לניתוח ביצועים.</p>
+      <p>אי אפשר רק עם Skill. אי אפשר רק עם Agent. שתי שכבות בעבודה משותפת — זה ה-stack האמיתי.</p>
+    </div>
+
+    <h2>שאלות נפוצות</h2>
+    <p class="h2-answer">השאלות הכי נפוצות שעולות ב-2026 על ההבדל בין Skills, Agents, ו-Subagents.</p>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>אפשר להשתמש ב-Skill וב-Agent יחד?</h3>
+        <p>לא רק שאפשר — זו הדרך הנכונה לעבוד. Agent יכול לטעון סקילים בדיוק כמו שמשתמש אנושי יכול. למעשה זה השימוש הכי חזק: Agent מתזמן ומקבל החלטות, ו-Skills מבטיחים שכל מה שיוצא ממנו יישמע כמוכם.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>מה ההבדל בין Skill ל-Project ב-Claude.ai?</h3>
+        <p>Project הוא מיכל לשיחות עם הקשר משותף — קבצים, הוראות, שיחות קודמות. Skill הוא מודול ידע נטען-לפי-דרישה. Project עוסק ב"מה אנחנו זוכרים בשיחה הזו". Skill עוסק ב"איזה ידע לטעון מתי". אפשר להשתמש בשניהם יחד — Project עם Skills מקושרים.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>ומה זה Subagents?</h3>
+        <p>ב-Claude Code יש קונספט שלישי: <strong>Subagents</strong>. אלה Agents מתמחים (כמו <code>explore</code>, <code>plan</code>, <code>code-reviewer</code>) שה-Agent הראשי יכול להאציל אליהם תת-משימות. דמיינו Agent ראשי כמו מנהלת פרויקט, ו-Subagents כצוות שלה. בעוד שסקיל = ידע, Agent = ביצוע, Subagent = עוזר ספציפי בתוך ביצוע גדול יותר.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>צריך לדעת לתכנת כדי לבנות סקיל?</h3>
+        <p>לא לבסיסי. <code>SKILL.md</code> הוא קובץ Markdown עם הוראות בעברית או באנגלית. אם אתם יודעים לכתוב הנחיות ברורות — אתם יודעים לבנות סקיל. אם אתם רוצים שהסקיל יריץ קוד (למשל לעבד תמונות או לקרוא מ-API), אז כן — צריך קצת.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Skills עובדים גם ב-Claude.ai וגם ב-Claude Code?</h3>
+        <p>כן בשניהם, עם הבדל אחד — ב-Claude.ai (הצ'אט) הסקילים נטענים אוטומטית מתוך תיקיית הסקילים הגלובלית של החשבון. ב-Claude Code (ה-CLI) הם נטענים מתיקיית הפרויקט או מתיקייה גלובלית. אותם קבצי <code>SKILL.md</code>, שני קונטקסטים.</p>
+      </div>
+    </div>
+
+    <h2>סיכום</h2>
+    <p class="h2-answer">השאלה ב-2026 איננה <strong>Skills מול Agents</strong>. השאלה היא איך לבנות שתי שכבות שעובדות יחד — זיכרון ויד — כדי שה-AI שלכם לא רק יעבוד, אלא יעבוד בקול שלכם.</p>
+
+    <p>אם מסכמים את כל המאמר בשורה אחת:</p>
+
+    <p class="pull-quote">Skill הוא הזיכרון. Agent הוא היד. שתי השכבות יחד הופכות AI גנרי למערכת ממותגת.</p>
+
+    <p>עסק שמשקיע רק באחד מהם משאיר ערך גדול על השולחן. עסק שבונה את שניהם — בונה תשתית AI שמשרתת אותו לאורך שנים, לא רק עוד כלי ב-stack.</p>
+
+    <p>זו ארכיטקטורה. וזה בדיוק מה ש-<strong>BrandOS</strong> עושה: הופך את ה-DNA של המותג שלכם לסקיל פנימי, ומפעיל אותו דרך סוכן שמתזמן את הפצת התוכן — בלי שתסבירו את עצמכם מחדש בכל שיחה.</p>
+
+    <!-- CTA -->
+    <div class="cta">
+      <h2>רוצים לראות איך BrandOS בונה את ה-Skill הזה למותג שלכם?</h2>
+      <p>אם אתם מרגישים שאתם מבזבזים יותר מדי זמן על onboarding של AI בכל שיחה מחדש — בואו נדבר על Brand DNA שיהפוך לסקיל פנימי במערכת שלכם.</p>
+      <a href="brand-os.html" class="cta-button">לקרוא איך BrandOS עובד ←</a>
+    </div>
+
+  </article>
+
+  <!-- Read More -->
+  <section class="read-more">
+    <h3>עוד Insights</h3>
+    <div class="read-more-grid">
+      <a href="https://hagitantebi.co.il/claude-skills-hebrew-guide.html" class="read-more-link">Claude Skills בעברית: איך בניתי צוות של 6 מומחים בתוך קלוד</a>
+      <a href="https://hagitantebi.co.il/brand-as-os.html" class="read-more-link">המותג שלך כ-OS: האדריכלות הפנימית שמאפשרת יצירה אינסופית</a>
+      <a href="https://hagitantebi.co.il/claude-code-skill-tutorial-hebrew.html" class="read-more-link">סקילים ל-Claude Code: המדריך המעשי בעברית</a>
+      <a href="https://hagitantebi.co.il/ai-workflow-lab.html" class="read-more-link">AI Workflow Lab — Claude Code כ-OS, MCP, Higgsfield</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 <a href="/">חגית אנטבי — Brand Worlds Studio</a>. All rights reserved. | <a href="/glossary.html">Glossary</a></p>
+  </footer>
+
+  <script src="/hagit-agent-widget.js" defer></script>
+</body>
+</html>
