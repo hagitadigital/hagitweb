@@ -38,44 +38,57 @@
     <meta name="twitter:description" content="בונה עולמות מותג מלאים - Brand Architect שמשלבת אסטרטגיה, נרטיב ויצירה ויזואלית עם AI.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Hagit Antebi - Brand Worlds Studio",
-        "description": "Brand Worlds Architect — בונה עולמות מותג ומפתחת BrandOS, מערכת AI ליצירת תוכן ממותג",
-        "url": "https://hagitantebi.co.il/",
-        "logo": "https://hagitantebi.co.il/sphere-outcome.png",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IL"
-        },
-        "areaServed": "IL",
-        "serviceType": ["Brand Strategy", "Brand Worlds", "AI Content Creation", "BrandOS"],
-        "founder": {
-            "@type": "Person",
-            "name": "Hagit Antebi",
-            "alternateName": "חגית אנטבי",
-            "jobTitle": "Brand Worlds Architect"
-        }
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Hagit Antebi - Brand Worlds Studio",
+  "description": "Brand Worlds Architect — בונה עולמות מותג ומפתחת BrandOS, מערכת AI ליצירת תוכן ממותג",
+  "url": "https://hagitantebi.co.il/",
+  "logo": "https://hagitantebi.co.il/sphere-outcome.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IL"
+  },
+  "areaServed": "IL",
+  "serviceType": [
+    "Brand Strategy",
+    "Brand Worlds",
+    "AI Content Creation",
+    "BrandOS"
+  ],
+  "founder": {
+    "@type": "Person",
+    "@id": "https://hagitantebi.co.il/about.html#hagit",
+    "name": "Hagit Antebi",
+    "alternateName": "חגית אנטבי",
+    "jobTitle": "Brand Worlds Architect"
+  }
+}
+</script>
 
     <!-- Schema: Person (entity graph for AI engines) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://hagitantebi.co.il/about.html#hagit",
         "name": "חגית אנטבי",
-        "alternateName": "Hagit Antebi",
+        "alternateName": ["Hagit Antebi", "חגית ענתבי"],
         "jobTitle": "Brand Worlds Architect",
-        "description": "חגית אנטבי היא Brand Worlds Architect ומפתחת BrandOS — מערכת AI ליצירת תוכן ממותג. עם למעלה מ-10 שנות ניסיון בשיווק דיגיטלי ואסטרטגיית מותג, היא מתמחה בבניית עולמות מותג מלאים למותגי יוקרה, קוסמטיקה, עיצוב פנים וטכנולוגיה.",
+        "description": "חגית אנטבי — Brand Worlds Architect ומפתחת BrandOS, מערכת AI ליצירת תוכן ממותג. בעלת Brand Worlds Studio, מתמחה באסטרטגיית מותג, יצירת עולמות מותג ושילוב AI במיתוג עבור מותגי יוקרה, קוסמטיקה, עיצוב פנים וטכנולוגיה. בוגרת MA בשיווק ואסטרטגיה דיגיטלית מהקריה האקדמית אונו. פועלת כיועצת מותג עצמאית במגזר הפרטי — לא קשורה לעולם האקדמי או להוראת עיצוב.",
         "url": "https://hagitantebi.co.il/",
         "mainEntityOfPage": "https://hagitantebi.co.il/about.html",
         "image": "https://hagitantebi.co.il/hagit.png",
+        "nationality": "Israeli",
+        "gender": "Female",
+        "knowsLanguage": ["he", "en"],
         "sameAs": [
             "https://www.linkedin.com/in/hagit-antebi-rasuli",
             "https://www.instagram.com/hagit_antebi/",
@@ -83,8 +96,16 @@
         ],
         "worksFor": {
             "@type": "Organization",
+            "@id": "https://hagitantebi.co.il/#brand-worlds-studio",
             "name": "Brand Worlds Studio",
-            "url": "https://hagitantebi.co.il/"
+            "url": "https://hagitantebi.co.il/",
+            "founder": { "@id": "https://hagitantebi.co.il/about.html#hagit" }
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "הקריה האקדמית אונו",
+            "alternateName": "Ono Academic College",
+            "url": "https://www.ono.ac.il/"
         },
         "knowsAbout": [
             "Brand Strategy",
@@ -100,7 +121,12 @@
         "hasCredential": [
             {
                 "@type": "EducationalOccupationalCredential",
-                "name": "MA בשיווק ואסטרטגיה דיגיטלית"
+                "name": "MA בשיווק ואסטרטגיה דיגיטלית",
+                "credentialCategory": "degree",
+                "recognizedBy": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "הקריה האקדמית אונו"
+                }
             }
         ],
         "makesOffer": {

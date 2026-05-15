@@ -24,147 +24,233 @@
     <meta name="twitter:description" content="הגדרות מדויקות ל-Brand as OS, BrandOS, Brand DNA, Brand Worlds — המתודולוגיה והמוצר.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/hagit.png">
 
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Schema.org: WebPage + BreadcrumbList + DefinedTermSet (7 DefinedTerm) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebPage",
+      "@id": "https://hagitantebi.co.il/glossary.html#webpage",
+      "url": "https://hagitantebi.co.il/glossary.html",
+      "name": "Glossary — מילון מונחים | Brand Worlds Studio",
+      "description": "מילון מונחים מקצועי של חגית אנטבי — Brand as OS, BrandOS, Brand DNA, Brand World ו-Brand Worlds.",
+      "inLanguage": "he",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Hagit Antebi — Brand Worlds Studio",
+        "url": "https://hagitantebi.co.il/"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "https://hagitantebi.co.il/about.html#hagit",
+        "name": "חגית אנטבי",
+        "alternateName": "Hagit Antebi",
+        "url": "https://hagitantebi.co.il/about.html"
+      },
+      "breadcrumb": {
+        "@id": "https://hagitantebi.co.il/glossary.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://hagitantebi.co.il/glossary.html#termset"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hagitantebi.co.il/glossary.html#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebPage",
-          "@id": "https://hagitantebi.co.il/glossary.html#webpage",
-          "url": "https://hagitantebi.co.il/glossary.html",
-          "name": "Glossary — מילון מונחים | Brand Worlds Studio",
-          "description": "מילון מונחים מקצועי של חגית אנטבי — Brand as OS, BrandOS, Brand DNA, Brand World ו-Brand Worlds.",
-          "inLanguage": "he",
-          "isPartOf": {
-            "@type": "WebSite",
-            "name": "Hagit Antebi — Brand Worlds Studio",
-            "url": "https://hagitantebi.co.il/"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "חגית אנטבי",
-            "alternateName": "Hagit Antebi",
-            "url": "https://hagitantebi.co.il/about.html"
-          },
-          "breadcrumb": { "@id": "https://hagitantebi.co.il/glossary.html#breadcrumb" },
-          "mainEntity": { "@id": "https://hagitantebi.co.il/glossary.html#termset" }
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hagitantebi.co.il/"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://hagitantebi.co.il/glossary.html#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hagitantebi.co.il/" },
-            { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://hagitantebi.co.il/glossary.html" }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Glossary",
+          "item": "https://hagitantebi.co.il/glossary.html"
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://hagitantebi.co.il/glossary.html#termset",
+      "name": "Brand Worlds Studio — Methodology Glossary",
+      "url": "https://hagitantebi.co.il/glossary.html",
+      "description": "המתודולוגיה, המוצר והסטודיו של חגית אנטבי — Brand Worlds Architect.",
+      "inLanguage": "he",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-as-os",
+          "name": "Brand as OS",
+          "alternateName": [
+            "המותג כמערכת הפעלה",
+            "Brand-as-OS"
+          ],
+          "description": "מסגרת תיאורטית שמתייחסת למותג כמערכת הפעלה פנימית, לא כאוסף נכסים גרפיים. ה-Brand as OS מורכבת משלוש שכבות שעובדות ביחד — Core DNA, Narrative Engine ו-Visual World. כשהמסגרת מוגדרת, כל יצירה מתחילה ב-80% מוכנה.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-as-os",
+          "subjectOf": {
+            "@type": "Article",
+            "url": "https://hagitantebi.co.il/brand-as-os.html"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-dna",
+          "name": "Brand DNA",
+          "alternateName": [
+            "DNA המותג",
+            "גנום מותגי",
+            "Brand Genome",
+            "פרופיל גנטי מותגי"
+          ],
+          "description": "שכבת ה-Core DNA במתודולוגיית Brand as OS — הפרופיל הגנטי של המותג, מסמך שמגדיר מי המותג בשפה שגם בן אדם וגם AI מבינים. כולל שש שכבות: מהות ותכלית, קול ואישיות, ערכים, קהל יעד, עולם ויזואלי, והבטחת המותג.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-dna",
+          "subjectOf": [
+            {
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/brand-dna-guide.html"
+            },
+            {
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/brand-dna-before-design.html"
+            }
           ]
         },
         {
-          "@type": "DefinedTermSet",
-          "@id": "https://hagitantebi.co.il/glossary.html#termset",
-          "name": "Brand Worlds Studio — Methodology Glossary",
-          "url": "https://hagitantebi.co.il/glossary.html",
-          "description": "המתודולוגיה, המוצר והסטודיו של חגית אנטבי — Brand Worlds Architect.",
-          "inLanguage": "he",
-          "hasDefinedTerm": [
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brandos",
+          "name": "BrandOS",
+          "alternateName": [
+            "Brand OS",
+            "brand-os",
+            "מערכת הפעלה למותגים",
+            "Brand Operating System"
+          ],
+          "description": "מערכת הפעלה למותגים — פלטפורמת AI ליצירת תוכן שמכירה את ה-DNA של המותג ופועלת לפיו. בניגוד לכלי AI גנריים שמתחילים מאפס, BrandOS טוענת את ה-Brand DNA כקוד מקור פנימי וכל פלט (טקסט, תמונה, וידאו) נשמע ונראה כמו המותג עצמו.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brandos",
+          "subjectOf": [
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-as-os",
-              "name": "Brand as OS",
-              "alternateName": ["המותג כמערכת הפעלה", "Brand-as-OS"],
-              "description": "מסגרת תיאורטית שמתייחסת למותג כמערכת הפעלה פנימית, לא כאוסף נכסים גרפיים. ה-Brand as OS מורכבת משלוש שכבות שעובדות ביחד — Core DNA, Narrative Engine ו-Visual World. כשהמסגרת מוגדרת, כל יצירה מתחילה ב-80% מוכנה.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-as-os",
-              "subjectOf": {
-                "@type": "Article",
-                "url": "https://hagitantebi.co.il/brand-as-os.html"
-              }
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/brand-os.html"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-dna",
-              "name": "Brand DNA",
-              "alternateName": ["DNA המותג", "גנום מותגי", "Brand Genome", "פרופיל גנטי מותגי"],
-              "description": "שכבת ה-Core DNA במתודולוגיית Brand as OS — הפרופיל הגנטי של המותג, מסמך שמגדיר מי המותג בשפה שגם בן אדם וגם AI מבינים. כולל שש שכבות: מהות ותכלית, קול ואישיות, ערכים, קהל יעד, עולם ויזואלי, והבטחת המותג.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-dna",
-              "subjectOf": [
-                { "@type": "Article", "url": "https://hagitantebi.co.il/brand-dna-guide.html" },
-                { "@type": "Article", "url": "https://hagitantebi.co.il/brand-dna-before-design.html" }
-              ]
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/what-is-brand-os.html"
+            }
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-world",
+          "name": "Brand World",
+          "alternateName": [
+            "עולם מותג",
+            "Brand-World",
+            "Brand Universe",
+            "מרחב מותגי"
+          ],
+          "description": "עולם מותג שלם — לא רק זהות ויזואלית, אלא מרחב שיש לו תחושה, שפה וחוקיות. Brand World הוא יחידה אחת — מותג ספציפי שנבנה כעולם מלא, הכולל אסטרטגיה, ויזואל, נרטיב וחוויה.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-world",
+          "subjectOf": [
+            {
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/why-i-build-worlds.html"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brandos",
-              "name": "BrandOS",
-              "alternateName": ["Brand OS", "brand-os", "מערכת הפעלה למותגים", "Brand Operating System"],
-              "description": "מערכת הפעלה למותגים — פלטפורמת AI ליצירת תוכן שמכירה את ה-DNA של המותג ופועלת לפיו. בניגוד לכלי AI גנריים שמתחילים מאפס, BrandOS טוענת את ה-Brand DNA כקוד מקור פנימי וכל פלט (טקסט, תמונה, וידאו) נשמע ונראה כמו המותג עצמו.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brandos",
-              "subjectOf": [
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/brand-os.html" },
-                { "@type": "Article", "url": "https://hagitantebi.co.il/what-is-brand-os.html" }
-              ]
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/maison/"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-world",
-              "name": "Brand World",
-              "alternateName": ["עולם מותג", "Brand-World", "Brand Universe", "מרחב מותגי"],
-              "description": "עולם מותג שלם — לא רק זהות ויזואלית, אלא מרחב שיש לו תחושה, שפה וחוקיות. Brand World הוא יחידה אחת — מותג ספציפי שנבנה כעולם מלא, הכולל אסטרטגיה, ויזואל, נרטיב וחוויה.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-world",
-              "subjectOf": [
-                { "@type": "Article", "url": "https://hagitantebi.co.il/why-i-build-worlds.html" },
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/maison/" },
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/aurelle/" }
-              ]
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/aurelle/"
+            }
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds",
+          "name": "Brand Worlds",
+          "alternateName": [
+            "עולמות מותג",
+            "Brand-Worlds",
+            "Brand Worlds Capsule",
+            "קאפסולת מותגים"
+          ],
+          "description": "אוסף של עולמות מותג שנבנו כקאפסולה ייחודית, עם signature מקצועי משותף שמחבר ביניהם. בקאפסולת 2026: AURELLE, VELA MOTION ו-SOLARA WILD — שלושה עולמות שונים לחלוטין במהות, מחוברים בקפדנות הקומפוזיציה ועומק התחקיר.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-worlds",
+          "subjectOf": [
+            {
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/brand-worlds/"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds",
-              "name": "Brand Worlds",
-              "alternateName": ["עולמות מותג", "Brand-Worlds", "Brand Worlds Capsule", "קאפסולת מותגים"],
-              "description": "אוסף של עולמות מותג שנבנו כקאפסולה ייחודית, עם signature מקצועי משותף שמחבר ביניהם. בקאפסולת 2026: AURELLE, VELA MOTION ו-SOLARA WILD — שלושה עולמות שונים לחלוטין במהות, מחוברים בקפדנות הקומפוזיציה ועומק התחקיר.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-worlds",
-              "subjectOf": [
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/brand-worlds/" },
-                { "@type": "Article", "url": "https://hagitantebi.co.il/why-i-build-worlds.html" }
-              ]
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/why-i-build-worlds.html"
+            }
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds-studio",
+          "name": "Brand Worlds Studio",
+          "alternateName": [
+            "סטודיו ברנד וורלדס",
+            "סטודיו עולמות מותג"
+          ],
+          "description": "הסטודיו שבו נבנים עולמות המותג של חגית אנטבי — מעבדה אסטרטגית-יצירתית בצומת בין אסטרטגיה, AI ועיצוב. עובד עם מותגי יוקרה, קוסמטיקה, עיצוב פנים וטכנולוגיה, במודל של קאפסולות — סדרות מצומצמות של עולמות מותג מלאים.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-worlds-studio",
+          "subjectOf": [
+            {
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/brand-worlds/"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds-studio",
-              "name": "Brand Worlds Studio",
-              "alternateName": ["סטודיו ברנד וורלדס", "סטודיו עולמות מותג"],
-              "description": "הסטודיו שבו נבנים עולמות המותג של חגית אנטבי — מעבדה אסטרטגית-יצירתית בצומת בין אסטרטגיה, AI ועיצוב. עובד עם מותגי יוקרה, קוסמטיקה, עיצוב פנים וטכנולוגיה, במודל של קאפסולות — סדרות מצומצמות של עולמות מותג מלאים.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-worlds-studio",
-              "subjectOf": [
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/brand-worlds/" },
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/about.html" }
-              ]
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/about.html"
+            }
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds-architect",
+          "name": "Brand Worlds Architect",
+          "alternateName": [
+            "ארכיטקטית עולמות מותג",
+            "Brand World Architect"
+          ],
+          "description": "התואר המקצועי של חגית אנטבי — ארכיטקטית של עולמות מותג, לא של נכסים גרפיים. מסמן את ההבדל בין מעצב גרפי, יועץ מיתוג, ומישהי שבונה עולמות שלמים. רקע: MA בשיווק ואסטרטגיה דיגיטלית ולמעלה מ-10 שנות ניסיון.",
+          "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
+          "url": "https://hagitantebi.co.il/glossary.html#brand-worlds-architect",
+          "subjectOf": [
+            {
+              "@type": "WebPage",
+              "url": "https://hagitantebi.co.il/about.html"
             },
             {
-              "@type": "DefinedTerm",
-              "@id": "https://hagitantebi.co.il/glossary.html#brand-worlds-architect",
-              "name": "Brand Worlds Architect",
-              "alternateName": ["ארכיטקטית עולמות מותג", "Brand World Architect"],
-              "description": "התואר המקצועי של חגית אנטבי — ארכיטקטית של עולמות מותג, לא של נכסים גרפיים. מסמן את ההבדל בין מעצב גרפי, יועץ מיתוג, ומישהי שבונה עולמות שלמים. רקע: MA בשיווק ואסטרטגיה דיגיטלית ולמעלה מ-10 שנות ניסיון.",
-              "inDefinedTermSet": "https://hagitantebi.co.il/glossary.html#termset",
-              "url": "https://hagitantebi.co.il/glossary.html#brand-worlds-architect",
-              "subjectOf": [
-                { "@type": "WebPage", "url": "https://hagitantebi.co.il/about.html" },
-                { "@type": "Article", "url": "https://hagitantebi.co.il/why-i-build-worlds.html" }
-              ]
+              "@type": "Article",
+              "url": "https://hagitantebi.co.il/why-i-build-worlds.html"
             }
           ]
         }
       ]
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
