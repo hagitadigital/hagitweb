@@ -410,13 +410,20 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
   function formatMessage(text) {
     let html = escapeHtml(text);
 
-    // Markdown links — also tolerant to separators between ] and ( (e.g. "[label] 👉 (url)")
+    const stash = [];
+    const stashHtml = (rep) => {
+      const i = stash.length;
+      stash.push(rep);
+      return '__HLINK' + i + 'KNILH__';
+    };
+
+    // Markdown links — tolerate separators between ] and ( (e.g. "[label] 👉 (url)")
     html = html.replace(
       /\[([^\]]+)\]\s*[^\(]{0,4}\((https?:\/\/[^\s)]+)\)/g,
-      (_m, label, url) => renderLink(url, label.trim())
+      (_m, label, url) => stashHtml(renderLink(url, label.trim()))
     );
 
-    // Bare URLs not yet linkified
+    // Bare URLs (safe — markdown URLs are stashed, won't re-match)
     html = html.replace(/(https?:\/\/[^\s<"]+)/g, (m) => {
       let trail = "";
       let url = m;
@@ -424,12 +431,13 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
         trail = url.slice(-1) + trail;
         url = url.slice(0, -1);
       }
-      return renderLink(url, url) + trail;
+      return stashHtml(renderLink(url, url)) + trail;
     });
 
     html = html
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\n/g, "<br>");
+      .replace(/\n/g, "<br>")
+      .replace(/__HLINK(\d+)KNILH__/g, (_m, i) => stash[+i]);
 
     return html;
   }
