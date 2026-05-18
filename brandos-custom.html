@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandOS Custom — מערכת מותג חכמה בהתאמה אישית | Brand Worlds Studio</title>
+    <meta name="description" content="BrandOS Custom הוא ה־Operating System של המותג שלך. מערכת מותג חכמה בהתאמה אישית לעסק — סוכנים, תוכן, אוטומציות, אסטרטגיה. שירות הדגל של Brand Worlds Studio.">
+    <meta name="keywords" content="מערכת מותג, AI לעסקים, סוכן AI, BrandOS, אוטומציה מותגית, אסטרטגיה דיגיטלית, חגית אנטבי">
+    <meta name="author" content="Hagit Antebi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hagitantebi.co.il/brandos-custom.html">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hagitantebi.co.il/brandos-custom.html">
+    <meta property="og:title" content="BrandOS Custom — מערכת מותג חכמה בהתאמה אישית">
+    <meta property="og:description" content="ה־Operating System של המותג שלך. שירות הדגל של Brand Worlds Studio — סטודיו של אחת + מערך סוכני AI.">
+    <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta property="og:locale" content="he_IL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BrandOS Custom | Brand Worlds Studio">
+    <meta name="twitter:description" content="מערכת מותג חכמה בהתאמה אישית — שירות הדגל של Brand Worlds Studio.">
+    <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #8B7355;
+            --color-ink: #2A201A;
+            --color-copper: #C4765A;
+            --color-copper-deep: #A85F44;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --color-dark-bg: #1A1612;
+            --color-dark-bg-2: #0F0D0B;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --container-max: 1400px;
+            --container-padding: clamp(24px, 5vw, 80px);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body-he);
+            background: var(--color-cream);
+            color: var(--color-ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+
+        /* Reveal animation */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* Nav */
+        .nav-minimal {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 20px 0;
+            background: rgba(250, 248, 243, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 201, 188, 0.4);
+        }
+        .nav-minimal__inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-minimal__logo {
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+            color: var(--color-ink); text-decoration: none;
+        }
+        .nav-minimal__back {
+            font-family: var(--font-body-en); font-size: 0.8125rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-chocolate); text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+            transition: color 0.3s;
+        }
+        .nav-minimal__back:hover { color: var(--color-copper); }
+
+        /* Hero */
+        .page-hero {
+            padding: 180px 0 110px;
+            background: linear-gradient(160deg, var(--color-dark-bg) 0%, var(--color-dark-bg-2) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 75%, rgba(196, 118, 90, 0.10) 0%, transparent 60%);
+        }
+        .page-hero__eyebrow {
+            font-size: 0.8125rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative; z-index: 1;
+        }
+        .page-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 500;
+            color: #FAF8F3;
+            margin-bottom: 16px;
+            line-height: 1.05;
+            position: relative; z-index: 1;
+        }
+        .page-hero__deck {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-style: italic;
+            color: var(--color-copper);
+            margin-bottom: 32px;
+            position: relative; z-index: 1;
+        }
+        .page-hero__sub {
+            max-width: 720px;
+            margin: 0 auto 48px;
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.75;
+            color: rgba(250, 248, 243, 0.82);
+            position: relative; z-index: 1;
+        }
+        .hero-ctas {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+            position: relative; z-index: 1;
+        }
+        .btn-primary, .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 36px;
+            font-family: var(--font-body-he);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.4s var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: var(--color-copper);
+            color: var(--color-cream);
+            border-color: var(--color-copper);
+        }
+        .btn-primary:hover { background: var(--color-copper-deep); border-color: var(--color-copper-deep); transform: translateY(-2px); }
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-cream);
+            border-color: rgba(250, 248, 243, 0.4);
+        }
+        .btn-secondary:hover { border-color: var(--color-copper); color: var(--color-copper); }
+
+        /* Section base */
+        .section {
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+        .section--beige { background: var(--color-warm-beige); }
+        .section--dark {
+            background: linear-gradient(165deg, var(--color-dark-bg) 0%, var(--color-dark-bg-2) 100%);
+            color: var(--color-cream);
+        }
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto clamp(56px, 8vw, 88px);
+        }
+        .section-label {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--color-ink);
+        }
+        .section--dark .section-title { color: var(--color-cream); }
+        .section-lede {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.8;
+            color: var(--color-chocolate);
+        }
+        .section--dark .section-lede { color: rgba(250, 248, 243, 0.85); }
+
+        /* WhyNotAnotherAI */
+        .why-not__copy {
+            max-width: 820px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 1.4vw, 1.125rem);
+            line-height: 1.9;
+            color: rgba(250, 248, 243, 0.88);
+        }
+        .why-not__copy p { margin-bottom: 24px; }
+        .why-not__pull {
+            display: block;
+            margin: 40px auto 0;
+            padding: 24px 32px;
+            max-width: 720px;
+            border-right: 3px solid var(--color-copper);
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-style: italic;
+            color: var(--color-copper);
+            text-align: center;
+        }
+
+        /* 3-card grid (examples + modules) */
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .card {
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            padding: 40px 32px;
+            transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth), border-color 0.3s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(42, 32, 26, 0.08);
+            border-color: var(--color-copper);
+        }
+        .card__icon { font-size: 2rem; margin-bottom: 18px; display: block; }
+        .card__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 14px;
+            color: var(--color-ink);
+        }
+        .card__text {
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--color-chocolate);
+        }
+        .section--beige .card { background: var(--color-cream); }
+
+        /* Process timeline */
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+        }
+        .process__step {
+            position: relative;
+            padding: 36px 28px;
+            background: var(--color-cream);
+            border-top: 3px solid var(--color-copper);
+        }
+        .process__num {
+            font-family: var(--font-body-en);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--color-copper);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .process__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 14px;
+            color: var(--color-ink);
+        }
+        .process__text {
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--color-chocolate);
+            margin-bottom: 18px;
+        }
+        .process__meta {
+            font-size: 0.8125rem;
+            color: var(--color-copper-deep);
+            font-weight: 500;
+        }
+
+        /* Model section bullets */
+        .model__bullets {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 56px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bullet {
+            padding: 32px 28px;
+            background: rgba(250, 248, 243, 0.04);
+            border: 1px solid rgba(196, 118, 90, 0.2);
+        }
+        .bullet__icon { font-size: 1.75rem; margin-bottom: 14px; display: block; }
+        .bullet__title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-copper);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .bullet__text {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: rgba(250, 248, 243, 0.82);
+        }
+
+        /* Modules grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .module {
+            padding: 28px 22px;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            transition: border-color 0.3s, transform 0.3s var(--transition-smooth);
+        }
+        .module:hover {
+            border-color: var(--color-copper);
+            transform: translateY(-3px);
+        }
+        .module__icon { font-size: 1.75rem; margin-bottom: 14px; display: block; }
+        .module__title {
+            font-family: var(--font-body-he);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-ink);
+            margin-bottom: 8px;
+        }
+        .module__desc {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--color-chocolate);
+        }
+        .module--featured {
+            background: var(--color-ink);
+            color: var(--color-cream);
+            border-color: var(--color-copper);
+        }
+        .module--featured .module__title { color: var(--color-cream); }
+        .module--featured .module__desc { color: rgba(250, 248, 243, 0.78); }
+
+        /* Packages */
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+        .pack {
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            padding: 44px 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+        }
+        .pack:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(42, 32, 26, 0.1);
+        }
+        .pack--featured {
+            background: var(--color-ink);
+            color: var(--color-cream);
+            border: 2px solid var(--color-copper);
+            transform: translateY(-12px);
+        }
+        .pack--featured:hover { transform: translateY(-18px); }
+        .pack__badge {
+            position: absolute;
+            top: -14px;
+            right: 32px;
+            background: var(--color-copper);
+            color: var(--color-cream);
+            font-family: var(--font-body-he);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 6px 14px;
+        }
+        .pack__icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+        .pack__name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: var(--color-ink);
+        }
+        .pack--featured .pack__name { color: var(--color-cream); }
+        .pack__sub {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--color-copper);
+            margin-bottom: 24px;
+        }
+        .pack__lede {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--color-chocolate);
+            margin-bottom: 28px;
+        }
+        .pack--featured .pack__lede { color: rgba(250, 248, 243, 0.85); }
+        .pack__includes-label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 14px;
+        }
+        .pack__list {
+            list-style: none;
+            margin-bottom: 28px;
+            flex-grow: 1;
+        }
+        .pack__list li {
+            position: relative;
+            padding-right: 22px;
+            margin-bottom: 10px;
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            color: var(--color-ink);
+        }
+        .pack--featured .pack__list li { color: rgba(250, 248, 243, 0.92); }
+        .pack__list li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 9px;
+            width: 8px; height: 8px;
+            background: var(--color-copper);
+            transform: rotate(45deg);
+        }
+        .pack__fit {
+            font-size: 0.8125rem;
+            line-height: 1.6;
+            color: var(--color-chocolate);
+            font-style: italic;
+            margin-bottom: 24px;
+            padding-top: 18px;
+            border-top: 1px solid var(--color-light-taupe);
+        }
+        .pack--featured .pack__fit { color: rgba(250, 248, 243, 0.7); border-top-color: rgba(196, 118, 90, 0.3); }
+        .pack__price-label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 6px;
+        }
+        .pack__price {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-ink);
+            margin-bottom: 0;
+            line-height: 1.3;
+        }
+        .pack--featured .pack__price { color: var(--color-cream); }
+
+        .packages-note {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 1.0625rem;
+            font-weight: 500;
+            color: var(--color-ink);
+        }
+        .packages-note a {
+            color: var(--color-copper);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-copper);
+        }
+
+        .packages-alt {
+            max-width: 720px;
+            margin: 48px auto 0;
+            padding: 32px clamp(28px, 4vw, 44px);
+            background: var(--color-warm-beige);
+            border: 1px solid var(--color-light-taupe);
+            text-align: center;
+        }
+        .packages-alt__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 12px;
+        }
+        .packages-alt__text {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--color-ink);
+            margin-bottom: 20px;
+        }
+        .packages-alt__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            text-decoration: none;
+            transition: gap 0.3s var(--transition-smooth);
+        }
+        .packages-alt__cta:hover { gap: 14px; }
+
+        /* Fit / not fit columns */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .fit-col {
+            padding: 40px 36px;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+        }
+        .fit-col--no { background: var(--color-warm-beige); }
+        .fit-col__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--color-ink);
+        }
+        .fit-col__title-mark {
+            color: var(--color-copper);
+            margin-left: 8px;
+        }
+        .fit-col--no .fit-col__title-mark { color: var(--color-taupe); }
+        .fit-list {
+            list-style: none;
+        }
+        .fit-list li {
+            padding: 10px 0;
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--color-ink);
+            border-bottom: 1px solid rgba(212, 201, 188, 0.5);
+        }
+        .fit-list li:last-child { border-bottom: none; }
+
+        /* About */
+        .about__inner {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about__copy {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.85;
+            color: var(--color-chocolate);
+        }
+        .about__copy p { margin-bottom: 22px; }
+        .about__copy strong { color: var(--color-ink); font-weight: 600; }
+
+        /* CTA section */
+        .cta-section {
+            padding: clamp(80px, 14vw, 160px) 0;
+            background: linear-gradient(165deg, var(--color-dark-bg) 0%, var(--color-dark-bg-2) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 50%, rgba(196, 118, 90, 0.12) 0%, transparent 65%);
+        }
+        .cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
+            color: var(--color-cream);
+            margin-bottom: 20px;
+            position: relative; z-index: 1;
+        }
+        .cta__text {
+            max-width: 620px;
+            margin: 0 auto 44px;
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: rgba(250, 248, 243, 0.82);
+            position: relative; z-index: 1;
+        }
+
+        /* Footer */
+        .footer-minimal {
+            padding: 56px 0;
+            border-top: 1px solid var(--color-light-taupe);
+            text-align: center;
+            background: var(--color-cream);
+        }
+        .footer-minimal__text {
+            font-size: 0.875rem; color: var(--color-chocolate);
+        }
+        .footer-minimal__text a {
+            color: var(--color-copper); text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .three-grid { grid-template-columns: repeat(2, 1fr); }
+            .process { grid-template-columns: repeat(2, 1fr); }
+            .modules-grid { grid-template-columns: repeat(2, 1fr); }
+            .packages { grid-template-columns: 1fr; }
+            .pack--featured { transform: none; }
+            .pack--featured:hover { transform: translateY(-6px); }
+        }
+        @media (max-width: 680px) {
+            .three-grid { grid-template-columns: 1fr; }
+            .process { grid-template-columns: 1fr; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .model__bullets { grid-template-columns: 1fr; }
+            .fit-grid { grid-template-columns: 1fr; }
+            .hero-ctas { flex-direction: column; }
+            .hero-ctas a { width: 100%; justify-content: center; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://hagitantebi.co.il/brandos-custom.html#service",
+          "name": "BrandOS Custom",
+          "alternateName": "BrandOS Custom — מערכת מותג חכמה בהתאמה אישית",
+          "description": "שירות הדגל של Brand Worlds Studio: בנייה מלאה של תשתית מותג חכמה ללקוח — Brand DNA, סוכני AI, אוטומציות, תוכן ואסטרטגיה בהתאמה אישית.",
+          "url": "https://hagitantebi.co.il/brandos-custom.html",
+          "provider": {
+            "@id": "https://hagitantebi.co.il/about.html#hagit"
+          },
+          "areaServed": "IL",
+          "serviceType": "Brand Operating System Build",
+          "category": "Brand Strategy · AI Systems",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Foundation",
+              "description": "Brand DNA מלא, ערוץ פעיל אחד, סוכן AI בסיסי, אסטרטגיית תוכן בסיסית, 3 חודשי ליווי. השקעה לפי היקף הפרויקט.",
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Studio",
+              "description": "כל מה ש-Foundation כולל + 2-3 ערוצים, 2 סוכני AI, אוטומציות וואטסאפ ויומן, עמוד נחיתה, 6 חודשי ליווי. השקעה לפי היקף הפרויקט.",
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "name": "Full Stack",
+              "description": "כל המודולים האפשריים, סוכנים מרובים + סקילים מתמחים, אסטרטגיית תוכן + הפקה, מאגר ידע מלא, 12 חודשי ליווי שוטף. השקעה לפי היקף הפרויקט.",
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://hagitantebi.co.il/about.html#hagit",
+          "name": "Hagit Antebi",
+          "alternateName": "חגית אנטבי",
+          "jobTitle": "Brand Worlds Architect",
+          "url": "https://hagitantebi.co.il/",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Brand Worlds Studio",
+            "url": "https://hagitantebi.co.il/"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://hagitantebi.co.il/" },
+            { "@type": "ListItem", "position": 2, "name": "BrandOS Custom", "item": "https://hagitantebi.co.il/brandos-custom.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <nav class="nav-minimal" aria-label="ניווט ראשי">
+        <div class="container nav-minimal__inner">
+            <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
+            <a href="/" class="nav-minimal__back" aria-label="חזרה לדף הבית">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="page-hero__eyebrow">שירות הדגל · Brand Worlds Studio</p>
+            <h1 class="page-hero__title">BrandOS Custom</h1>
+            <p class="page-hero__deck">ה־Operating System של המותג שלך</p>
+            <p class="page-hero__sub">מערכת מותג חכמה בהתאמה אישית לעסק שלך, לשפה שלו, לקהל שלו, ולדרך שבה הוא באמת עובד. לא כלי AI גנרי. לא תבנית. מערכת שאני בונה לך מאפס.</p>
+            <div class="hero-ctas">
+                <a href="https://api.whatsapp.com/send/?phone=972528351676&text=%D7%94%D7%99%D7%99+%D7%97%D7%92%D7%99%D7%AA%2C+%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA+%D7%91-BrandOS+Custom" class="btn-primary" rel="noopener">
+                    בואו נדבר 30 דקות
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#how-it-works" class="btn-secondary">להבין איך זה עובד</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why not another AI tool -->
+    <section class="section section--dark" id="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">למה זה לא עוד כלי AI</p>
+                <h2 class="section-title">זה לא עוד כלי AI. זה ה־Operating System של המותג.</h2>
+            </div>
+            <div class="why-not__copy reveal">
+                <p>כל עסק היום מוצף בכלים. ChatGPT, Midjourney, Canva, אוטומציות. הבעיה היא לא הכלים — הבעיה היא שאף אחד מהם לא יודע מי אתם.</p>
+                <p>BrandOS Custom פותר את זה. אני בונה לעסק שלך מערכת מותג חכמה שמרכזת את הידע, השפה, המסרים, הקהל, השירותים והתהליכים — ואז מחברת את זה לנכסים ולכלים שאתם באמת צריכים. כל כלי AI שתשתמשו בו אחרי זה — יודע מי אתם, מה אתם אומרים, ואיך אתם נשמעים.</p>
+                <span class="why-not__pull">השם נשאר BrandOS. הביצוע משתנה לפי העסק.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 examples -->
+    <section class="section section--beige">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">איך זה נראה</p>
+                <h2 class="section-title">כל עסק מקבל מערכת אחרת</h2>
+                <p class="section-lede">אין שני BrandOS זהים. אני מאפיינת את העסק לעומק ובונה את המעטפת שמתאימה לו — מהמרכיבים שבאמת ישרתו אותו, לא ממה ש"בטרנד". הנה שלוש דוגמאות שונות לחלוטין:</p>
+            </div>
+            <div class="three-grid">
+                <article class="card reveal">
+                    <span class="card__icon" aria-hidden="true">🤖</span>
+                    <h3 class="card__title">סוכן + מאגר ידע</h3>
+                    <p class="card__text">עסק שירות שמקבל הרבה פניות. ה־BrandOS שלו: סוכן AI באתר שעונה בשפת המותג, מאגר ידע מסודר, פולואפים אוטומטיים, וניהול מרכזי של כל שיחה. הלקוחות מקבלים מענה מיידי. הצוות חוסך שעות.</p>
+                </article>
+                <article class="card reveal">
+                    <span class="card__icon" aria-hidden="true">📊</span>
+                    <h3 class="card__title">אסטרטגיה + תוכן + עמוד נחיתה</h3>
+                    <p class="card__text">עסק שמשיק שירות חדש. ה־BrandOS שלו: אסטרטגיית תוכן ל־6 חודשים, גאנט הפקה, עמוד נחיתה עם קופי שמדבר בשפת המותג, ופרומפטים קבועים שמייצרים תוכן עקבי בערוצים.</p>
+                </article>
+                <article class="card reveal">
+                    <span class="card__icon" aria-hidden="true">💬</span>
+                    <h3 class="card__title">שפת מותג + תסריטי מכירה + אוטומציות וואטסאפ</h3>
+                    <p class="card__text">עסק שכולו רץ על וואטסאפ. ה־BrandOS שלו: שפת מותג מתועדת, תסריטי מכירה לכל שלב במשפך, אוטומציות וואטסאפ שמשיבות בקולו של המותג, ולוח בקרה אחד שמרכז הכל.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process 4 steps -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">התהליך</p>
+                <h2 class="section-title">איך זה עובד — ארבעה שלבים</h2>
+            </div>
+            <div class="process">
+                <article class="process__step reveal">
+                    <span class="process__num">שלב 01</span>
+                    <h3 class="process__title">אפיון עומק</h3>
+                    <p class="process__text">שיחות עומק, איסוף חומרים, ניתוח שוק ומתחרים. אני לומדת את העסק שלך מבפנים — מה אתה עושה באמת, איך אתה מדבר עם לקוחות, מה הכאב הגדול שלהם, ואיפה הפער.</p>
+                    <span class="process__meta">משך: 1–2 שבועות</span>
+                </article>
+                <article class="process__step reveal">
+                    <span class="process__num">שלב 02</span>
+                    <h3 class="process__title">בניית Brand DNA</h3>
+                    <p class="process__text">המסמך המרכזי. כל מה שמגדיר את המותג שלך: Essence, Promise, קול, אישיות, ערכים, מסרים מרכזיים, פלטה ויזואלית, Do's & Don'ts. זה לא מסמך שיווקי. זה ה־source of truth של כל מה שבא אחריו.</p>
+                    <span class="process__meta">משך: 1–2 שבועות</span>
+                </article>
+                <article class="process__step reveal">
+                    <span class="process__num">שלב 03</span>
+                    <h3 class="process__title">הרכבת המעטפת</h3>
+                    <p class="process__text">כאן הקסם. אני בוחרת ובונה את המודולים שמשרתים את העסק שלך: סוכני AI, אסטרטגיית תוכן, עמודי נחיתה, אוטומציות, מאגרי ידע, תסריטי מכירה. כל מודול מחובר ל־Brand DNA.</p>
+                    <span class="process__meta">משך: 3–6 שבועות (תלוי בהיקף)</span>
+                </article>
+                <article class="process__step reveal">
+                    <span class="process__num">שלב 04</span>
+                    <h3 class="process__title">ליווי והפעלה</h3>
+                    <p class="process__text">המערכת חיה. אני מלווה את ההפעלה, מאמנת את הצוות שלך, מתקנת ומשפרת לפי הנתונים, ומוסיפה רכיבים לפי הצורך. ליווי חודשי שוטף.</p>
+                    <span class="process__meta">משך: מתמשך</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model -->
+    <section class="section section--dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">המודל · Method</p>
+                <h2 class="section-title">סטודיו של אחת + מערך סוכני AI</h2>
+                <p style="font-family: var(--font-display); font-size: clamp(1.125rem, 2vw, 1.5rem); font-style: italic; color: var(--color-copper); margin: 0 auto 28px; max-width: 640px;">זה מה שעומד מאחורי <strong style="font-weight: 600; font-style: normal; letter-spacing: 0.01em;">Built to Strategy. Run by AI.</strong></p>
+                <p class="section-lede">Brand Worlds Studio הוא לא סוכנות מסורתית עם מנהל בכיר, אקאונט, ועובדים זוטרים. הוא מודל חדש: <strong style="color: var(--color-copper);">אני</strong> — חגית אנטבי, <strong style="color: var(--color-copper);">Brand Worlds Architect</strong> עם 15+ שנות ניסיון בבניית מותגים דיגיטליים — בראש הסטודיו. מערך של סוכני AI מומחים שפיתחתי לאורך השנים האחרונות מבצע את העבודה התפעולית בליווי השיפוט המקצועי שלי.</p>
+                <p class="section-lede" style="margin-top: 24px;">זה אומר שאת/ה — בתור הלקוח — עובד <strong style="color: var(--color-copper);">ישירות איתי</strong>, האסטרטגית הראשית. לא מועבר לעובד זוטר אחרי החתימה. לא מגלה אחרי חודש שהמנהל שדיברת איתו כבר לא מעורב. אני מובילה, אני מלווה, אני אחראית.</p>
+            </div>
+            <div class="model__bullets">
+                <div class="bullet reveal">
+                    <span class="bullet__icon" aria-hidden="true">🎯</span>
+                    <h3 class="bullet__title">קשר ישיר</h3>
+                    <p class="bullet__text">עם האסטרטגית הראשית — בלי שכבות, בלי "אעביר לעמיתה שלי"</p>
+                </div>
+                <div class="bullet reveal">
+                    <span class="bullet__icon" aria-hidden="true">⚡</span>
+                    <h3 class="bullet__title">מהירות ביצוע גבוהה</h3>
+                    <p class="bullet__text">מערך הסוכנים מאפשר תפוקה של צוות שלם</p>
+                </div>
+                <div class="bullet reveal">
+                    <span class="bullet__icon" aria-hidden="true">🔒</span>
+                    <h3 class="bullet__title">המערכת שלך — אצלך</h3>
+                    <p class="bullet__text">Brand DNA, אוטומציות, נכסים. כולם מתועדים. גם אם הקשר נפסק, המערכת ממשיכה לעבוד</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules -->
+    <section class="section section--beige">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">מה אפשר לכלול</p>
+                <h2 class="section-title">מודולים אפשריים בתוך BrandOS Custom</h2>
+                <p class="section-lede">כל מערכת מורכבת מתת־קבוצה של המודולים הבאים. בשיחת האפיון אנחנו מחליטים יחד מה נכנס למערכת שלך.</p>
+            </div>
+            <div class="modules-grid">
+                <article class="module module--featured reveal">
+                    <span class="module__icon" aria-hidden="true">🧬</span>
+                    <h3 class="module__title">Brand DNA</h3>
+                    <p class="module__desc">מסמך המקור של המותג. כל הסקציות הליבה. (כלול בכל חבילה)</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">🤖</span>
+                    <h3 class="module__title">סוכן AI</h3>
+                    <p class="module__desc">סוכן באתר/וואטסאפ/פלטפורמה שעונה בשפת המותג</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">📚</span>
+                    <h3 class="module__title">מאגר ידע</h3>
+                    <p class="module__desc">מערכת ידע מותאמת לעסק, חיפוש פנימי, RAG</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">📝</span>
+                    <h3 class="module__title">אסטרטגיית תוכן + גאנט</h3>
+                    <p class="module__desc">תכנון תוכן ל־3–6 חודשים בכל הערוצים</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">🎨</span>
+                    <h3 class="module__title">עמודי נחיתה</h3>
+                    <p class="module__desc">עמודי המרה עם קופי בשפת המותג</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">💬</span>
+                    <h3 class="module__title">אוטומציות וואטסאפ</h3>
+                    <p class="module__desc">תסריטים, פולואפים, ניהול שיחות</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">📅</span>
+                    <h3 class="module__title">אוטומציות יומן ופניות</h3>
+                    <p class="module__desc">ניהול לידים אוטומטי בשפת המותג</p>
+                </article>
+                <article class="module reveal">
+                    <span class="module__icon" aria-hidden="true">🧠</span>
+                    <h3 class="module__title">סקילים מותאמים</h3>
+                    <p class="module__desc">סוכנים מתמחים (מנהל שיווק, אסטרטג, יוצר תוכן) שיודעים מי אתם</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section" id="packages">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">חבילות</p>
+                <h2 class="section-title">שלוש רמות. כל אחת מותאמת אישית.</h2>
+                <p class="section-lede">החבילות הן נקודת התחלה. ההיקף הסופי — מספר המודולים, עומק כל מודול, רוחב הליווי — מתואם בשיחת האפיון לפי גודל החברה, היקף התוכן, ומה שאתם באמת צריכים.</p>
+            </div>
+
+            <div class="packages">
+                <!-- Foundation -->
+                <article class="pack reveal">
+                    <span class="pack__icon" aria-hidden="true">🌱</span>
+                    <h3 class="pack__name">Foundation</h3>
+                    <p class="pack__sub">בסיס</p>
+                    <p class="pack__lede">נקודת הכניסה. עסק קטן עד בינוני עם מותג קיים שצריך מערכת מסודרת.</p>
+                    <p class="pack__includes-label">כלול בחבילה</p>
+                    <ul class="pack__list">
+                        <li>Brand DNA מלא</li>
+                        <li>1 ערוץ פעיל (וואטסאפ / אתר / סוציאל)</li>
+                        <li>סוכן AI בסיסי אחד</li>
+                        <li>אסטרטגיית תוכן בסיסית</li>
+                        <li>3 חודשי ליווי</li>
+                    </ul>
+                    <p class="pack__fit">מתאים ל: עוסק עצמאי, עסק קטן, סטודיו, פרילנסר מתקדם</p>
+                    <p class="pack__price-label">השקעה</p>
+                    <p class="pack__price">לפי היקף הפרויקט</p>
+                </article>
+
+                <!-- Studio (featured) -->
+                <article class="pack pack--featured reveal">
+                    <span class="pack__badge">חבילה מומלצת</span>
+                    <span class="pack__icon" aria-hidden="true">🌿</span>
+                    <h3 class="pack__name">Studio</h3>
+                    <p class="pack__sub">רחב</p>
+                    <p class="pack__lede">החבילה האופטימלית לרוב העסקים. שני סוכנים, אוטומציות, ליווי מתמשך.</p>
+                    <p class="pack__includes-label">כלול בחבילה</p>
+                    <ul class="pack__list">
+                        <li>כל מה ש־Foundation כולל</li>
+                        <li>2–3 ערוצים פעילים</li>
+                        <li>2 סוכני AI (כולל סקילים מותאמים)</li>
+                        <li>אוטומציות וואטסאפ + יומן</li>
+                        <li>עמוד נחיתה מותג</li>
+                        <li>6 חודשי ליווי</li>
+                    </ul>
+                    <p class="pack__fit">מתאים ל: עסק עם 5–15 עובדים, צמיחה אקטיבית, תוכן רב־ערוצי</p>
+                    <p class="pack__price-label">השקעה</p>
+                    <p class="pack__price">לפי היקף הפרויקט</p>
+                </article>
+
+                <!-- Full Stack -->
+                <article class="pack reveal">
+                    <span class="pack__icon" aria-hidden="true">🌳</span>
+                    <h3 class="pack__name">Full Stack</h3>
+                    <p class="pack__sub">מקיף</p>
+                    <p class="pack__lede">כל המודולים. ליווי שוטף לטווח ארוך. מערכת מותג מלאה.</p>
+                    <p class="pack__includes-label">כלול בחבילה</p>
+                    <ul class="pack__list">
+                        <li>כל המודולים האפשריים</li>
+                        <li>סוכנים מרובים + סקילים מתמחים</li>
+                        <li>אסטרטגיית תוכן + הפקה</li>
+                        <li>מאגר ידע מלא</li>
+                        <li>כל הערוצים מחוברים</li>
+                        <li>12 חודשי ליווי שוטף</li>
+                    </ul>
+                    <p class="pack__fit">מתאים ל: עסק בוגר, 15+ עובדים, מספר מותגים/שירותים, צורך באוטומציה רחבה</p>
+                    <p class="pack__price-label">השקעה</p>
+                    <p class="pack__price">לפי היקף הפרויקט</p>
+                </article>
+            </div>
+
+            <p class="packages-note reveal">🎯 לא בטוחים איזו חבילה? <a href="#cta">בואו נדבר 30 דקות ונבין יחד</a>.</p>
+
+            <div class="packages-alt reveal">
+                <p class="packages-alt__label">אופציה נוספת</p>
+                <p class="packages-alt__text">
+                    רוצים <strong>רק את הפלטפורמה</strong>? <strong>BrandOS</strong> זמינה גם כפלטפורמה עצמאית — עם ליווי שלי לבחירה, בלי בנייה מאפס של מערכת מלאה.
+                </p>
+                <a href="brand-os.html" class="packages-alt__cta">
+                    לראות את BrandOS
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fit / Not fit -->
+    <section class="section section--beige">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">למי זה מתאים</p>
+                <h2 class="section-title">זה לא לכולם. למי זה כן מתאים:</h2>
+            </div>
+            <div class="fit-grid">
+                <div class="fit-col reveal">
+                    <h3 class="fit-col__title">מתאים אם<span class="fit-col__title-mark">✓</span></h3>
+                    <ul class="fit-list">
+                        <li>יש לכם מותג, אבל הוא לא עובד מספיק חזק</li>
+                        <li>אתם עסק מבוסס (2+ שנים בשוק)</li>
+                        <li>מוכנים להשקיע בתשתית, לא רק בקמפיין</li>
+                        <li>מבינים ש־AI הוא תשתית, לא קוסם</li>
+                        <li>רוצים מערכת שתישאר אצלכם</li>
+                    </ul>
+                </div>
+                <div class="fit-col fit-col--no reveal">
+                    <h3 class="fit-col__title">לא מתאים אם<span class="fit-col__title-mark">✗</span></h3>
+                    <ul class="fit-list">
+                        <li>אתם בודקים אם בכלל שווה לכם עסק</li>
+                        <li>מחפשים פתרון של חודש לקמפיין נקודתי</li>
+                        <li>מצפים ל"כלי AI" עם כפתור קסם</li>
+                        <li>לא מוכנים לתהליך של 2–3 חודשים</li>
+                        <li>חיפושכם הוא מחיר נמוך, לא ערך גבוה</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">מי אני</p>
+                <h2 class="section-title">חגית אנטבי · Brand Worlds Architect</h2>
+            </div>
+            <div class="about__inner reveal">
+                <div class="about__copy">
+                    <p>אני <strong>Brand Worlds Architect</strong> — מייסדת <strong>Brand Worlds Studio</strong> ומפתחת <strong>BrandOS</strong>. בניתי את הסטודיו כדי לעזור לעסקים לבנות מותגים שעובדים בעידן ה־AI: מותגים שלא רק נראים טוב, אלא רצים — אוטומציות, סוכנים, תוכן וחוויות שמופעלים על תשתית אחת.</p>
+                    <p>יש לי תואר שני באסטרטגיה דיגיטלית, רקע של 15+ שנים בשיווק ובניית מותגים, וניסיון מעמיק עם כל כלי ה־AI המתקדמים — Midjourney, Runway, Kling, Seedance, Veo, CapCut, Suno, Claude, Gemini.</p>
+                    <p><strong>BrandOS</strong> היא הפלטפורמה שאני בניתי. <strong>Custom</strong> היא הדרך שבה אני עוזרת לעסקים מבוססים לקבל את ההתאמה המלאה — <em style="color: var(--color-copper); font-style: normal;">Built to Strategy. Run by AI.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="cta__title">מוכנים שנדבר?</h2>
+            <p class="cta__text">30 דקות. בלי התחייבות. ננתח את העסק שלך, אזהה את ההזדמנויות, ואסביר איך BrandOS Custom יכול להיראות אצלך.</p>
+            <div class="hero-ctas">
+                <a href="https://api.whatsapp.com/send/?phone=972528351676&text=%D7%94%D7%99%D7%99+%D7%97%D7%92%D7%99%D7%AA%2C+%D7%90%D7%A9%D7%9E%D7%97+%D7%9C%D7%A7%D7%91%D7%95%D7%A2+%D7%A9%D7%99%D7%97%D7%94+%D7%A2%D7%9C+BrandOS+Custom" class="btn-primary" rel="noopener">
+                    לקביעת שיחה
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="mailto:hagitadigital@gmail.com?subject=BrandOS%20Custom%20-%20%D7%9C%D7%A7%D7%91%D7%99%D7%A2%D7%AA%20%D7%A9%D7%99%D7%97%D7%94" class="btn-secondary">מייל ישיר</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-minimal">
+        <div class="container">
+            <p class="footer-minimal__text">
+                <a href="/">Brand Worlds Studio</a> · <a href="/brand-os.html">BrandOS</a> · <a href="/about.html">אודות</a> · © <span id="year"></span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
+
+</body>
+</html>

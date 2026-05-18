@@ -492,6 +492,140 @@
            PORTALS — 3 cards (Video Lab, Brand Experiences, Brand Worlds)
            Reuses .portal hover system from live site
            ============================================================ */
+        /* ============================================================
+           SERVICES STRIP — How to Work With Me (between Hero and Portals)
+           ============================================================ */
+        .work-with {
+            background: var(--color-cream);
+            padding: clamp(80px, 12vw, 120px) 0 clamp(60px, 10vw, 100px);
+            position: relative;
+        }
+        .work-with__header { text-align: center; margin-bottom: clamp(48px, 8vw, 72px); }
+        .work-with__label {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem; font-weight: 500;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 14px;
+        }
+        .work-with__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            font-weight: 400;
+            color: var(--color-chocolate);
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+        }
+        .work-with__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-style: italic;
+            color: var(--color-taupe);
+        }
+        .work-with__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .work-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--color-warm-beige);
+            border: 1px solid var(--color-light-taupe);
+            padding: clamp(32px, 4vw, 44px) clamp(28px, 3.5vw, 36px);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            transition: transform 0.5s var(--transition-smooth),
+                        box-shadow 0.5s var(--transition-smooth),
+                        border-color 0.4s;
+        }
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 100%; height: 3px;
+            background: var(--color-copper);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s var(--transition-smooth);
+        }
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(79, 55, 44, 0.12);
+            border-color: var(--color-copper);
+        }
+        .work-card:hover::before { transform: scaleX(1); }
+        .work-card--featured {
+            background: #1A1612;
+            border-color: var(--color-copper);
+            color: var(--color-cream);
+        }
+        .work-card--featured::before { transform: scaleX(1); height: 4px; }
+        .work-card__badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: var(--color-copper);
+            color: var(--color-cream);
+            font-family: var(--font-body-he);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            padding: 5px 12px;
+            text-transform: none;
+        }
+        .work-card__tier {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 14px;
+        }
+        .work-card__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 500;
+            margin-bottom: 14px;
+            line-height: 1.1;
+            color: var(--color-chocolate);
+        }
+        .work-card--featured .work-card__title { color: var(--color-cream); }
+        .work-card__sub {
+            font-family: var(--font-display);
+            font-size: 0.9375rem;
+            font-style: italic;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+        .work-card__desc {
+            font-size: 0.9375rem;
+            line-height: 1.75;
+            color: var(--color-chocolate);
+            margin-bottom: 28px;
+            flex-grow: 1;
+        }
+        .work-card--featured .work-card__desc { color: rgba(250, 248, 243, 0.82); }
+        .work-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            transition: gap 0.3s var(--transition-smooth);
+        }
+        .work-card:hover .work-card__cta { gap: 14px; }
+        @media (max-width: 1024px) { .work-with__grid { grid-template-columns: 1fr; max-width: 560px; } }
+        @media (max-width: 640px)  { .work-with__grid { grid-template-columns: 1fr; } }
+
         .portals {
             background: var(--color-warm-beige);
             padding: clamp(80px, 12vw, 140px) 0;
@@ -1513,6 +1647,58 @@
                     <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         01b · SERVICES STRIP — How to Work With Me
+         ============================================================ -->
+    <section class="work-with" id="services" aria-labelledby="work-with-title">
+        <div class="container">
+            <div class="work-with__header reveal">
+                <p class="work-with__label" dir="ltr">How to Work With Me</p>
+                <h2 class="work-with__title" id="work-with-title">שלוש דרכים לעבוד איתי</h2>
+                <p class="work-with__subtitle">Done-for-you · Do-with-me · Do-it-yourself</p>
+            </div>
+
+            <div class="work-with__grid">
+                <!-- Featured: BrandOS Custom -->
+                <a href="brandos-custom.html" class="work-card work-card--featured reveal" aria-label="BrandOS Custom — שירות הדגל">
+                    <span class="work-card__badge">שירות הדגל</span>
+                    <p class="work-card__tier">Done-for-you</p>
+                    <h3 class="work-card__title">BrandOS Custom</h3>
+                    <p class="work-card__sub">Built to Strategy. Run by AI.</p>
+                    <p class="work-card__desc">בנייה מלאה של תשתית מותג — Brand DNA, אתר מותאם עם סוכן AI, אוטומציות, אסטרטגיית תוכן ושפת מותג מתועדת. מותג שמוקם פעם אחת — ומופעל יום-יום על ידי המערכת שמכירה אותו לעומק.</p>
+                    <span class="work-card__cta">
+                        לפרטים
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+
+                <!-- Studio AI -->
+                <a href="studio.html" class="work-card reveal" aria-label="Studio AI — סדנאות ומעבדות AI">
+                    <p class="work-card__tier">Do-with-me</p>
+                    <h3 class="work-card__title">Studio AI</h3>
+                    <p class="work-card__sub">סדנאות, מעבדות AI ותהליכים</p>
+                    <p class="work-card__desc">הסטודיו שבו הכלים, הידע והיצירתיות נפגשים. סדנאות, מעבדות AI ותהליכי עבודה — לומדים יחד, בונים יחד.</p>
+                    <span class="work-card__cta">
+                        Explore Studio
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+
+                <!-- Workshop -->
+                <a href="workshop.html" class="work-card reveal" aria-label="World Builder Workshop — סדנה לבניית עולם מותג">
+                    <p class="work-card__tier">Do-it-yourself</p>
+                    <h3 class="work-card__title">Workshop</h3>
+                    <p class="work-card__sub">World Builder — סדנה מעשית</p>
+                    <p class="work-card__desc">סדנה מעשית לבניית עולם מותג מלא — מה־DNA דרך הנרטיב ועד לשפה הויזואלית. בעצמכם, עם המתודולוגיה המלאה.</p>
+                    <span class="work-card__cta">
+                        Join Workshop
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
                 </a>
             </div>
         </div>
