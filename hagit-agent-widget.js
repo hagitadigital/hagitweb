@@ -305,6 +305,26 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
 
   const QUICK_REPLIES = ["מה זה BrandOS?", "מה השירותים?", "כמה זה עולה?", "תיאום פגישה"];
 
+  // session_id יציב — מזהה מבקר חוזר לאורך שיחות
+  function getSessionId() {
+    const KEY = "ha_session_id";
+    try {
+      let id = localStorage.getItem(KEY);
+      if (!id) {
+        id =
+          (crypto && crypto.randomUUID && crypto.randomUUID()) ||
+          "s-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+        localStorage.setItem(KEY, id);
+      }
+      return id;
+    } catch (e) {
+      // localStorage חסום (גלישה פרטית) — מזהה זמני לכל טעינה
+      return "s-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+    }
+  }
+
+  const SESSION_ID = getSessionId();
+
   let messages = [];
   let isOpen = false;
   let isTyping = false;
@@ -480,7 +500,11 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
       const response = await fetch(AGENT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages }),
+        body: JSON.stringify({
+          messages,
+          session_id: SESSION_ID,
+          page_url: location.href,
+        }),
       });
 
       const data = await response.json();
