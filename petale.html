@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pétale° — A Macaron World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --rose:#ff7aa2;
+    --pistache:#8fd14f;
+    --lavande:#a87fe0;
+    --citron:#ffcf2e;
+    --framboise:#e84a8a;
+    --caramel:#e0964a;
+    --bleu:#5fb8e8;
+    --cream:#fdf6f0;
+    --cream2:#f7ece3;
+    --ink:#3a2438;
+    --muted:#8a7080;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);
+    overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(circle at center, rgba(168,127,224,.05) 1.5px, transparent 1.5px);
+    background-size:30px 30px;
+  }
+  .wrap{position:relative;z-index:1}
+  .sprinkle{position:fixed;border-radius:50%;z-index:0;opacity:.55}
+
+  /* TOP BAR — demo-concept label + link back to the site */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:70;direction:rtl;height:34px;
+      display:flex;justify-content:space-between;align-items:center;gap:14px;
+      padding:0 5vw;background:var(--ink);color:#fff;font-size:12px}
+  .topbar .label{opacity:.82;font-weight:500;letter-spacing:.3px}
+  .topbar .bws{opacity:.6}
+  .topbar a{color:#fff;text-decoration:none;font-weight:700;white-space:nowrap;
+      display:inline-flex;align-items:center;gap:6px;
+      border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:1px;transition:border-color .3s}
+  .topbar a:hover{border-color:#fff}
+
+  /* NAV */
+  nav{position:fixed;top:34px;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
+      align-items:center;padding:18px 5vw;mix-blend-mode:difference}
+  nav .logo{font-family:"Fraunces",serif;font-weight:600;font-size:26px;color:#fff;letter-spacing:-.5px}
+  nav .links{display:flex;gap:30px;font-size:15px;font-weight:500}
+  nav .links a{color:#fff;text-decoration:none;opacity:.85;transition:opacity .3s}
+  nav .links a:hover{opacity:1}
+  @media(max-width:680px){nav .links{display:none}}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+        text-align:center;padding:128px 5vw 64px;position:relative;
+        background:
+          radial-gradient(55% 45% at 18% 22%, rgba(255,122,162,.20), transparent 70%),
+          radial-gradient(50% 45% at 84% 28%, rgba(168,127,224,.20), transparent 70%),
+          radial-gradient(55% 50% at 50% 96%, rgba(143,209,79,.15), transparent 70%);}
+  .hero .eyebrow{font-size:13px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:var(--framboise);margin-bottom:24px}
+  .hero h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(58px,14vw,184px);line-height:.84;letter-spacing:-3px}
+  .hero h1 .it{font-style:italic;font-weight:300;color:var(--rose)}
+  .hero p.sub{margin-top:30px;max-width:500px;font-size:clamp(16px,2vw,20px);line-height:1.6;color:var(--muted)}
+  .hero-mac{position:absolute;width:min(30vw,260px);z-index:0;will-change:transform}
+  .hero-mac svg{display:block;width:100%;filter:drop-shadow(0 14px 14px rgba(58,36,56,.17))}
+  .hm1{top:12%;left:5%}
+  .hm2{bottom:9%;right:4%;width:min(24vw,200px)}
+  .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#c2a7b6}
+
+  /* TOWER */
+  .tower-section{position:relative;background:linear-gradient(180deg,var(--cream),var(--cream2))}
+  .tower-stage{height:100vh;display:flex;align-items:center;justify-content:center;gap:6vw;padding:0 6vw;overflow:hidden}
+  .tower-copy{max-width:380px}
+  .tower-copy .k{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--framboise);font-weight:700}
+  .tower-copy h2{font-family:"Fraunces",serif;font-size:clamp(38px,5vw,68px);font-weight:500;line-height:1.02;letter-spacing:-1.5px;margin:16px 0 18px}
+  .tower-copy h2 em{font-style:italic;font-weight:300;color:var(--rose)}
+  .tower-copy p{color:var(--muted);font-size:17px;line-height:1.6}
+  .tower-copy .count{margin-top:24px;font-family:"Fraunces",serif;font-size:64px;font-weight:600;color:var(--lavande);line-height:1}
+  .tower-copy .count span{font-size:18px;font-family:"DM Sans";color:var(--muted);font-weight:500}
+  .tower-container{position:relative;width:230px;height:480px;flex-shrink:0}
+  .tower-container .plate{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:250px;height:34px;background:radial-gradient(ellipse at 50% 30%,#fff,#ecdfd4);border-radius:50%;box-shadow:0 18px 30px -14px rgba(58,36,56,.4)}
+  .mac-stack{position:absolute;left:50%;transform:translateX(-50%);width:194px;will-change:transform}
+  .mac-stack svg{display:block;width:100%;filter:drop-shadow(0 9px 7px rgba(58,36,56,.18))}
+  @media(max-width:780px){
+    .tower-stage{flex-direction:column;gap:20px;justify-content:center}
+    .tower-copy{text-align:center;max-width:90vw}
+    .tower-container{transform:scale(.8)}
+  }
+
+  /* MENU */
+  .menu{padding:90px 5vw 50px;max-width:1240px;margin:0 auto}
+  .menu .head{text-align:center;margin-bottom:60px}
+  .menu .head h2{font-family:"Fraunces",serif;font-size:clamp(40px,7vw,82px);font-weight:500;line-height:1;letter-spacing:-2px}
+  .menu .head p{margin-top:14px;color:var(--muted);font-size:18px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border-radius:28px;padding:30px 22px 28px;text-align:center;position:relative;overflow:hidden;cursor:pointer;
+        box-shadow:0 16px 36px -22px rgba(58,36,56,.35);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+        border:1px solid rgba(255,255,255,.7)}
+  .card::before{content:"";position:absolute;top:-30%;left:-15%;width:130%;height:70%;background:var(--blob);filter:blur(36px);opacity:.4;z-index:0;transition:opacity .5s,transform .6s}
+  .card:hover{transform:translateY(-12px) rotate(-1.2deg);box-shadow:0 36px 56px -30px rgba(58,36,56,.5)}
+  .card:hover::before{opacity:.7;transform:scale(1.12)}
+  .card .ph{position:relative;z-index:1;height:150px;display:flex;align-items:center;justify-content:center}
+  .card .ph img{max-width:84%;max-height:100%;object-fit:contain;
+        filter:drop-shadow(0 16px 15px rgba(58,36,56,.22));
+        transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .card:hover .ph img{transform:translateY(-6px) rotate(-5deg) scale(1.07)}
+  .card .fr{position:relative;z-index:1;font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--muted);margin-top:14px}
+  .card .name{position:relative;z-index:1;font-family:"Fraunces",serif;font-size:24px;font-weight:600;margin-top:2px}
+  .card .price{position:relative;z-index:1;display:inline-block;margin-top:14px;font-weight:700;font-size:15px;color:#fff;background:var(--accent);padding:8px 18px;border-radius:30px}
+
+  /* WORLD */
+  .world{margin-top:90px;padding:90px 5vw;text-align:center;position:relative;overflow:hidden;
+         background:linear-gradient(120deg,var(--lavande),var(--rose));color:#fff}
+  .world h2{font-family:"Fraunces",serif;font-size:clamp(34px,6vw,64px);font-weight:500;line-height:1.06;max-width:880px;margin:0 auto;letter-spacing:-1.5px}
+  .world h2 em{font-weight:300}
+  .world .by{margin-top:28px;font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+  .world .float-emoji{position:absolute;font-size:54px;opacity:.9}
+
+  footer{padding:64px 5vw 60px;text-align:center;background:var(--cream)}
+  footer .big{font-family:"Fraunces",serif;font-size:clamp(40px,9vw,116px);font-weight:300;font-style:italic;color:var(--rose);line-height:1}
+  footer .meta{margin-top:22px;color:var(--muted);font-size:14px}
+  footer .back{display:inline-flex;align-items:center;gap:7px;margin-top:24px;direction:rtl;
+      font-weight:700;font-size:14px;color:#fff;background:var(--framboise);
+      padding:13px 28px;border-radius:30px;text-decoration:none;
+      box-shadow:0 14px 26px -12px rgba(232,74,138,.6);transition:transform .3s,box-shadow .3s}
+  footer .back:hover{transform:translateY(-3px);box-shadow:0 20px 32px -12px rgba(232,74,138,.75)}
+
+  /* MOBILE polish */
+  @media(max-width:680px){
+    .topbar{height:30px;font-size:10.5px}
+    .topbar .bws{display:none}
+    nav{top:30px;padding:14px 5vw}
+    .world{margin-top:60px;padding:74px 6vw}
+    .world .float-emoji{display:none}
+    footer{padding:54px 6vw 56px}
+  }
+
+  .reveal{opacity:0;transform:translateY(50px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="label">קונספט אנימציה לדוגמה<span class="bws"> · Brand Worlds Studio</span></span>
+    <a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <nav>
+    <div class="logo">Pétale°</div>
+    <div class="links">
+      <a href="#tower">The Tower</a>
+      <a href="#menu">Flavors</a>
+      <a href="#world">The World</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-mac hm1" data-mac="rose"></div>
+    <div class="hero-mac hm2" data-mac="pistache"></div>
+    <div class="eyebrow ln">Maison de Macarons · Paris</div>
+    <h1><span class="ln">Pétale</span><br><span class="ln it">in colour</span></h1>
+    <p class="sub ln">Featherlight Parisian macarons, stacked into towers of pure pastel. A dessert world built shell by shell.</p>
+    <div class="scroll-hint">scroll to build ↓</div>
+  </header>
+
+  <!-- TOWER -->
+  <section class="tower-section" id="tower">
+    <div class="tower-stage">
+      <div class="tower-copy">
+        <div class="k">The Signature</div>
+        <h2>One tower,<br><em>seven flavors.</em></h2>
+        <p>Keep scrolling — each macaron drops into place and the tower builds itself, one delicate layer at a time.</p>
+        <div class="count"><span id="c-num">0</span><span> / 7 stacked</span></div>
+      </div>
+      <div class="tower-container">
+        <div class="plate"></div>
+        <!-- macarons injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="head reveal">
+      <h2>The Flavor Box</h2>
+      <p>Seven shades of sweet. Build your own box.</p>
+    </div>
+    <div class="grid" id="flavor-grid"><!-- cards injected by JS --></div>
+  </section>
+
+  <!-- WORLD -->
+  <section class="world" id="world">
+    <span class="float-emoji" style="top:16%;left:9%">🍬</span>
+    <span class="float-emoji" style="top:64%;left:13%">🧁</span>
+    <span class="float-emoji" style="top:22%;right:11%">🍓</span>
+    <span class="float-emoji" style="top:66%;right:9%">🍰</span>
+    <h2 class="reveal">Every brand deserves its own <em>world.</em> This one is stacked in pastel.</h2>
+    <p class="by reveal">A Brand World — built with Brand Worlds Studio</p>
+  </section>
+
+  <footer>
+    <div class="big reveal">stay sweet.</div>
+    <p class="meta">Pétale° · קונספט אנימציה לדוגמה · Brand Worlds Studio</p>
+    <a class="back" href="https://hagitantebi.co.il/brand-worlds/">חזרה לכל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+  </footer>
+
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- color helpers ---------- */
+function shade(hex,amt){ // darken hex by amt (0-1)
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r*(1-amt));g=Math.round(g*(1-amt));b=Math.round(b*(1-amt));
+  return `rgb(${r},${g},${b})`;
+}
+function lighten(hex,amt){ // lighten hex toward white by amt (0-1)
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r+(255-r)*amt);g=Math.round(g+(255-g)*amt);b=Math.round(b+(255-b)*amt);
+  return `rgb(${r},${g},${b})`;
+}
+
+/* ---------- macaron factory (SVG — used for hero + animated tower) ---------- */
+let _mid=0;
+function pieds(cy,color){ // ruffled "pied" feet — a frilly ring of bumps
+  let s='';
+  for(let x=32;x<=168;x+=10){
+    const r=(3+Math.random()*2.6).toFixed(1);
+    const dy=((Math.random()-.5)*3).toFixed(1);
+    s+=`<circle cx="${x}" cy="${(Number(cy)+Number(dy)).toFixed(1)}" r="${r}"/>`;
+  }
+  return `<g fill="${color}" opacity=".58">${s}</g>`;
+}
+function macaron(shell,filling){
+  const id='m'+(_mid++);
+  const top=lighten(shell,.30), bot=shade(shell,.12), pd=shade(shell,.22);
+  const fTop=lighten(filling,.16), fBot=shade(filling,.14);
+  return `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="${id}t" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${shell}"/>
+      </linearGradient>
+      <linearGradient id="${id}b" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${shell}"/><stop offset="1" stop-color="${bot}"/>
+      </linearGradient>
+      <linearGradient id="${id}f" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${fTop}"/><stop offset="1" stop-color="${fBot}"/>
+      </linearGradient>
+    </defs>
+    <!-- filling (cream) -->
+    <path d="M18 64 C58 53 142 53 182 64 C188 74 188 80 182 90 C142 101 58 101 18 90 C12 80 12 74 18 64Z" fill="url(#${id}f)"/>
+    <!-- top shell -->
+    <path d="M22 62 C22 26 48 14 100 14 C152 14 178 26 178 62 Z" fill="url(#${id}t)"/>
+    <!-- bottom shell -->
+    <path d="M22 84 C22 120 48 132 100 132 C152 132 178 120 178 84 Z" fill="url(#${id}b)"/>
+    <!-- ruffled feet -->
+    ${pieds(64,pd)}
+    ${pieds(82,pd)}
+    <!-- gloss + sheen -->
+    <ellipse cx="72" cy="34" rx="32" ry="12" fill="#fff" opacity=".42"/>
+    <ellipse cx="134" cy="110" rx="24" ry="8" fill="#fff" opacity=".13"/>
+  </svg>`;
+}
+
+/* ---------- flavor data ---------- */
+const flavors=[
+  {name:"Rose",     fr:"Rose & Lychee",  shell:"#ffc2d4", fill:"#ff7aa2", c:"var(--rose)"},
+  {name:"Pistache", fr:"Pistachio",       shell:"#d4eeb0", fill:"#8fd14f", c:"var(--pistache)"},
+  {name:"Lavande",  fr:"Lavender Honey",  shell:"#ddccf5", fill:"#a87fe0", c:"var(--lavande)"},
+  {name:"Citron",   fr:"Lemon Curd",      shell:"#fff0a6", fill:"#ffcf2e", c:"var(--citron)"},
+  {name:"Framboise",fr:"Raspberry",       shell:"#ffabc9", fill:"#e84a8a", c:"var(--framboise)"},
+  {name:"Caramel",  fr:"Salted Caramel",  shell:"#ffd9ad", fill:"#e0964a", c:"var(--caramel)"},
+  {name:"Bleuet",   fr:"Blueberry",       shell:"#bfe3f7", fill:"#5fb8e8", c:"var(--bleu)"}
+];
+
+/* ---------- hero macarons (SVG) ---------- */
+document.querySelectorAll('.hero-mac').forEach(el=>{
+  const f = el.dataset.mac==='rose'?flavors[0]:flavors[1];
+  el.innerHTML=macaron(f.shell,f.fill);
+});
+
+/* ---------- build the TOWER (stack of SVG macarons) ---------- */
+const tc=document.querySelector('.tower-container');
+const macH=55; // vertical spacing between stacked macarons
+flavors.forEach((f,i)=>{
+  const d=document.createElement('div');
+  d.className='mac-stack';
+  d.style.bottom=(8+i*macH)+'px';
+  d.style.zIndex=(20-i);
+  d.innerHTML=macaron(f.shell,f.fill);
+  tc.appendChild(d);
+});
+const stacks=gsap.utils.toArray('.mac-stack');
+gsap.set(stacks,{y:-560,opacity:0,rotation:()=> (Math.random()-.5)*70});
+
+const numEl=document.getElementById('c-num');
+const tl=gsap.timeline({
+  scrollTrigger:{
+    trigger:'.tower-section',
+    start:'top top',
+    end:'+=2600',
+    scrub:.8,
+    pin:'.tower-stage'
+  }
+});
+stacks.forEach((m,i)=>{
+  tl.to(m,{
+    y:0,opacity:1,rotation:0,ease:'power2.out',duration:1,
+    onStart:()=>{numEl.textContent=i+1;},
+    onReverseComplete:()=>{numEl.textContent=i;}
+  }, i*0.9);
+});
+
+/* ---------- flavor cards (real macaron photos) ---------- */
+const grid=document.getElementById('flavor-grid');
+const prices=["₪14","₪13","₪15","₪13","₪14","₪15","₪14"];
+flavors.forEach((f,i)=>{
+  const card=document.createElement('div');
+  card.className='card reveal';
+  card.style.setProperty('--blob',f.c);
+  card.style.setProperty('--accent',f.c);
+  card.innerHTML=`<div class="ph"><img src="petale/${f.name.toLowerCase()}.webp" alt="${f.name} macaron" loading="lazy"></div>
+    <div class="fr">${f.fr}</div>
+    <div class="name">${f.name}</div>
+    <div class="price">${prices[i]}</div>`;
+  grid.appendChild(card);
+});
+
+/* ---------- floating sprinkles ---------- */
+const cols=['#ff7aa2','#8fd14f','#a87fe0','#ffcf2e','#5fb8e8','#e84a8a'];
+for(let i=0;i<20;i++){
+  const s=document.createElement('div');s.className='sprinkle';
+  const sz=6+Math.random()*8;
+  s.style.width=sz+'px';s.style.height=sz+'px';
+  s.style.background=cols[i%cols.length];
+  s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+  document.body.appendChild(s);
+  gsap.to(s,{y:-50-Math.random()*60,x:(Math.random()-.5)*60,duration:4+Math.random()*4,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*3});
+}
+
+/* ---------- hero load + idle motion ---------- */
+gsap.from('.hero .ln',{y:70,opacity:0,duration:1,stagger:.1,ease:'power4.out',delay:.15});
+gsap.to('.hm1',{y:-24,rotation:8,duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.hm2',{y:20,rotation:-10,duration:6,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.to('.hero-mac',{yPercent:50,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+
+/* ---------- reveals ---------- */
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{y:0,opacity:1,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+});
+ScrollTrigger.batch('.card',{start:'top 90%',onEnter:b=>gsap.to(b,{y:0,opacity:1,duration:.7,stagger:.1,ease:'back.out(1.4)'})});
+
+/* ---------- world emojis parallax ---------- */
+gsap.to('.float-emoji',{y:(i)=>(i%2?-46:54),ease:'none',scrollTrigger:{trigger:'.world',start:'top bottom',end:'bottom top',scrub:1.2}});
+</script>
+</body>
+</html>

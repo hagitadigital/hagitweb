@@ -772,6 +772,109 @@ body::before {
 .world-card--solara > * { position: relative; z-index: 1; }
 
 /* ─────────────────────────────────────────────
+   INTERLUDE — MOTION STUDY (Pétale°)
+   ───────────────────────────────────────────── */
+.motion-study {
+  background: var(--cream-light);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.motion-study__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+}
+.motion-study__eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 1.4rem;
+}
+.motion-study__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.95;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.motion-study__title span { color: var(--gold); font-style: italic; }
+.motion-study__lede {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--gold);
+  margin-bottom: 1.6rem;
+}
+.motion-study__body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 46ch;
+  margin-bottom: 1rem;
+}
+.motion-study__body-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  max-width: 44ch;
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 1rem;
+  margin-bottom: 2.2rem;
+}
+.motion-study__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 2.4rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--cream-light);
+  transition: all 0.4s ease;
+}
+.motion-study__cta:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  letter-spacing: 0.36em;
+}
+.motion-study__cta .arr { transition: transform 0.4s; }
+.motion-study__cta:hover .arr { transform: translateX(4px); }
+
+.motion-study__visual {
+  position: relative;
+  height: 360px;
+}
+.ms-mac {
+  position: absolute;
+  display: block;
+  filter: drop-shadow(0 18px 22px rgba(90, 74, 62, 0.22));
+}
+.ms-mac--1 { width: 185px; top: 2%;   left: 3%;   animation: msFloat1 5s ease-in-out infinite; }
+.ms-mac--2 { width: 215px; top: 32%;  right: 1%;  animation: msFloat2 6s ease-in-out 0.6s infinite; }
+.ms-mac--3 { width: 150px; bottom: 0; left: 34%;  animation: msFloat3 5.5s ease-in-out 1.1s infinite; }
+@keyframes msFloat1 { 0%,100% { transform: rotate(-9deg) translateY(0); } 50% { transform: rotate(-9deg) translateY(-14px); } }
+@keyframes msFloat2 { 0%,100% { transform: rotate(7deg) translateY(0); }  50% { transform: rotate(7deg) translateY(-16px); } }
+@keyframes msFloat3 { 0%,100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(-4deg) translateY(-11px); } }
+
+/* ─────────────────────────────────────────────
    THE METHOD
    ───────────────────────────────────────────── */
 .method {
@@ -1171,6 +1274,8 @@ body::before {
   .method-step:nth-child(odd) { border-right: 1px solid rgba(244, 239, 229, 0.18); }
   .method-step:nth-last-child(-n+2) { border-bottom: 0; }
   .studio-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .motion-study__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .motion-study__visual { height: 320px; }
 }
 
 @media (max-width: 720px) {
@@ -1193,6 +1298,10 @@ body::before {
   .page-indicator { top: 0.7rem; right: 1rem; font-size: 0.6rem; }
   .cta { padding: 6rem 1rem; }
   .cta__buttons { flex-direction: column; align-items: stretch; }
+  .motion-study__visual { height: 250px; }
+  .ms-mac--1 { width: 120px; }
+  .ms-mac--2 { width: 145px; }
+  .ms-mac--3 { width: 100px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1360,6 +1469,30 @@ body::before {
   </div>
 </section>
 
+<!-- ─────────── INTERLUDE — MOTION STUDY (Pétale°) ─────────── -->
+<section class="section motion-study" id="motion-study">
+  <div class="section__inner">
+    <div class="motion-study__inner reveal">
+      <div class="motion-study__text">
+        <span class="motion-study__eyebrow">An Interlude · Motion Study</span>
+        <h2 class="motion-study__title">Pétale<span>°</span></h2>
+        <p class="motion-study__lede">A macaron world, built in motion.</p>
+        <p class="motion-study__body">Beyond the capsule — an interaction concept. One continuous scroll builds a tower of macarons, shell by shell, where every frame is motion. A study in how a brand world can be felt, not only seen.</p>
+        <p class="motion-study__body-he" lang="he">קונספט אנימציה — מעֵבר לקפסולה. גלילה אחת רציפה בונה מגדל מקרונים, קליפה אחר קליפה. מחקר תנועה: איך אפשר גם להרגיש עולם מותג, לא רק לראות אותו.</p>
+        <a href="../petale.html" class="motion-study__cta">
+          <span>View the animation concept</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+      <div class="motion-study__visual" aria-hidden="true">
+        <img src="../petale/rose.webp" alt="" class="ms-mac ms-mac--1" />
+        <img src="../petale/citron.webp" alt="" class="ms-mac ms-mac--2" />
+        <img src="../petale/pistache.webp" alt="" class="ms-mac ms-mac--3" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────── SECTION III — THE METHOD (DARK) ─────────── -->
 <section class="section method" id="method">
   <div class="section__inner">
@@ -1520,6 +1653,7 @@ body::before {
     document.getElementById('masthead'),
     document.getElementById('manifesto'),
     document.getElementById('worlds'),
+    document.getElementById('motion-study'),
     document.getElementById('method'),
     document.getElementById('studio'),
     document.getElementById('cta'),
