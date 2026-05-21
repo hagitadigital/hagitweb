@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Builder Workshop — סדנת AI ליצירת תוכן מותגי | Hagit Antebi</title>
-    <meta name="description" content="סדנת AI מעשית ליצירת תוכן מותגי. שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית. מפרומפטים אקראיים למערכת ויזואלית מותגית.">
-    <meta name="keywords" content="סדנת AI, קורס Midjourney, סדנת תוכן מותגי, AI workshop, יצירת תוכן, חגית אנטבי">
+    <title>World Builder Workshop — סדנה לבניית מותג ש-AI יודע להריץ | Hagit Antebi</title>
+    <meta name="description" content="סדנת AI מעשית ב-4 מפגשים: מקודדים את ה-DNA של המותג לסקיל אחד ש-AI מריץ שוב ושוב ומוציא תוכן עקבי. לא לומדים כלים — בונים את המקור. כל מה שמלמדים כאן רץ חי בסטודיו.">
+    <meta name="keywords" content="סדנת AI, World Builder Workshop, סדנת מותג AI, Claude Skills, סוכני AI, קידוד DNA מותגי, סדנת תוכן מותגי, חגית אנטבי">
     <meta name="author" content="Hagit Antebi">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hagitantebi.co.il/workshop.html">
-    
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hagitantebi.co.il/workshop.html">
-    <meta property="og:title" content="World Builder Workshop — סדנת AI ליצירת תוכן מותגי">
-    <meta property="og:description" content="שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית ובלתי ניתנת להעתקה.">
+    <meta property="og:title" content="World Builder Workshop — לבנות מותג ש-AI יודע להריץ">
+    <meta property="og:description" content="4 מפגשים. מקודדים את ה-DNA של המותג לסקיל אחד ש-AI מריץ שוב ושוב. כל מה שמלמדים כאן — רץ חי בסטודיו.">
     <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
     <meta property="og:locale" content="he_IL">
-    
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="World Builder Workshop — סדנת AI ליצירת תוכן מותגי">
-    <meta name="twitter:description" content="שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית.">
+    <meta name="twitter:title" content="World Builder Workshop — לבנות מותג ש-AI יודע להריץ">
+    <meta name="twitter:description" content="4 מפגשים לקידוד ה-DNA של המותג לסקיל ש-AI מריץ. כל מה שמלמדים כאן רץ חי בסטודיו.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -174,6 +174,7 @@
             color: var(--color-taupe);
             margin-bottom: 32px;
             position: relative;
+            direction: ltr;
         }
         
         .hero__desc {
@@ -491,11 +492,93 @@
         }
         
         /* ========================================
+           RECEIPTS — What I Run
+        ======================================== */
+        .receipts {
+            padding: clamp(80px, 12vw, 120px) 0;
+            background: var(--color-cream);
+        }
+
+        .receipts__header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .receipts__label {
+            font-family: var(--font-body-en);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+        }
+
+        .receipts__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+
+        .receipts__intro {
+            max-width: 580px;
+            margin: 0 auto 56px;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-chocolate);
+            opacity: 0.8;
+        }
+
+        .receipts__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .receipts__item {
+            background: var(--color-warm-beige);
+            padding: 32px;
+            border-top: 3px solid var(--color-copper);
+        }
+
+        .receipts__item-tag {
+            font-family: var(--font-body-en);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 12px;
+        }
+
+        .receipts__item-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-chocolate);
+        }
+
+        .receipts__item-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-chocolate);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 900px) {
+            .receipts__grid { grid-template-columns: 1fr; max-width: 420px; }
+        }
+
+        /* ========================================
            PROOF — Case Study
         ======================================== */
         .proof {
             padding: clamp(80px, 12vw, 120px) 0;
-            background: var(--color-cream);
+            background: var(--color-warm-beige);
         }
         
         .proof__header {
@@ -597,7 +680,7 @@
         ======================================== */
         .instructor {
             padding: clamp(80px, 12vw, 120px) 0;
-            background: var(--color-warm-beige);
+            background: var(--color-cream);
         }
         
         .instructor__inner {
@@ -1116,6 +1199,9 @@
             color: var(--color-taupe);
             text-decoration: line-through;
             margin-bottom: 4px;
+            direction: ltr;
+            font-variant-numeric: lining-nums;
+            font-feature-settings: "lnum" 1;
         }
         
         .pricing__price {
@@ -1124,6 +1210,9 @@
             font-weight: 600;
             color: var(--color-chocolate);
             margin-bottom: 4px;
+            direction: ltr;
+            font-variant-numeric: lining-nums;
+            font-feature-settings: "lnum" 1;
         }
         
         .pricing__price-note {
@@ -1310,6 +1399,32 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "World Builder Workshop",
+  "description": "סדנת AI מעשית ב-4 מפגשים לבניית מותג ש-AI יודע להריץ: חילוץ ה-DNA של המותג, תרגומו לעולם, וקידודו לסקיל אחד שמוציא תוכן on-brand שוב ושוב.",
+  "inLanguage": "he",
+  "url": "https://hagitantebi.co.il/workshop.html",
+  "provider": {
+    "@type": "Person",
+    "name": "Hagit Antebi",
+    "url": "https://hagitantebi.co.il"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "890",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT10H"
+  }
+}
+</script>
 </head>
 <body>
     <!-- Navigation -->
@@ -1324,23 +1439,23 @@
     <section class="hero">
         <div class="container">
             <p class="hero__label">World Builder Workshop</p>
-            <h1 class="hero__title">מפרומפטים אקראיים<br>ל<em>מערכת ויזואלית</em> מותגית</h1>
-            <p class="hero__subtitle-en">From random prompts to a branded visual system</p>
-            <p class="hero__desc">שיטה מובנית של 4 שלבים להפיכת אסטרטגיה למערכת נכסים ויזואלית עקבית ובלתי ניתנת להעתקה. בסדנה הזו תלמדו לבנות עולם מותג שלם — לא רק "תמונות יפות".</p>
+            <h1 class="hero__title">מפרומפטים אקראיים<br>ל<em>מותג ש-AI יודע להריץ</em></h1>
+            <p class="hero__subtitle-en">Built to Strategy. Run by AI.</p>
+            <p class="hero__desc">ארבעה מפגשים שבהם תקודדו את ה-DNA של המותג שלכם לתוך סקיל אחד — נכס ש-AI מריץ שוב ושוב ומוציא תוכן עקבי, מדויק, שלכם. לא לומדים כלים. בונים את המקור. וכל מה שאני מלמדת — אני מריצה בעצמי.</p>
             <a href="#lead-form" class="hero__cta">רוצה לשמוע עוד →</a>
-            
+
             <div class="hero__details">
                 <div class="hero__detail">
                     <div class="hero__detail-value">4</div>
                     <div class="hero__detail-label">Sessions</div>
                 </div>
                 <div class="hero__detail">
-                    <div class="hero__detail-value">8</div>
+                    <div class="hero__detail-value">10</div>
                     <div class="hero__detail-label">Hours</div>
                 </div>
                 <div class="hero__detail">
-                    <div class="hero__detail-value">12</div>
-                    <div class="hero__detail-label">Max Participants</div>
+                    <div class="hero__detail-value">10</div>
+                    <div class="hero__detail-label">Seats</div>
                 </div>
             </div>
         </div>
@@ -1351,9 +1466,9 @@
         <div class="container">
             <div class="problem__inner reveal">
                 <h2 class="problem__title">אתם מכירים את הרגע הזה?</h2>
-                <p class="problem__text">יצרתם עשרות תמונות עם AI. חלקן אפילו מרשימות. אבל כשמסתכלים על הפיד, על האתר, על החומרים — משהו לא מתחבר. חסרה עקביות. חסר הקו. חסר ה"זה אנחנו".</p>
-                <p class="problem__text">הבעיה היא לא הכלי. הבעיה היא שאין מתודולוגיה.</p>
-                <p class="problem__highlight">"הכלים משתנים כל חודש.<br>השיטה — היא נכס קבוע."</p>
+                <p class="problem__text">אתם מייצרים עם AI כל יום — תמונות, טקסטים, פוסטים, בכמויות. חלקם אפילו טובים. אבל כשמסתכלים על הפיד, על האתר, על החומרים — הכול נראה כמו של כולם. כמו ברירת המחדל של ה-AI.</p>
+                <p class="problem__text">הבעיה היא לא הכלי. הבעיה היא שאין מקור. אתם מוציאים פלטים ישירות מהכלי — בלי שכבה מעליו שאומרת ל-AI "ככה המותג שלי נשמע, ככה הוא נראה, ככה הוא חושב".</p>
+                <p class="problem__highlight">"AI הפך ייצור לחינמי.<br>הוא לא הפך ייחוד לחינמי."</p>
             </div>
         </div>
     </section>
@@ -1365,18 +1480,18 @@
                 <p class="who-for__label">Who Is This For</p>
                 <h2 class="who-for__title">למי הסדנה מתאימה (ולמי לא)</h2>
             </div>
-            
+
             <div class="who-for__grid">
                 <div class="who-for__card who-for__card--no reveal">
                     <div class="who-for__card-icon">✕</div>
                     <h3 class="who-for__card-title">לא מתאים למי ש...</h3>
-                    <p class="who-for__card-text">מחפש "טריקים" מהירים ב-AI או רק רוצה ללמוד איך לעשות "תמונות יפות". הסדנה הזו היא לא קורס כלים. היא תלמד אותך <strong>לחשוב אחרת</strong> על הדרך שבה מותג נבנה ויזואלית.</p>
+                    <p class="who-for__card-text">מחפש טריקים מהירים, "איך כותבים פרומפט מנצח", או קורס כלים. כשהכלי הבא יחליף את הקודם — לא יישאר ממנו כלום. הסדנה הזו מלמדת <strong>לחשוב אחרת</strong> על הדרך שבה מותג נבנה בעידן ה-AI.</p>
                 </div>
-                
+
                 <div class="who-for__card who-for__card--yes reveal">
                     <div class="who-for__card-icon">✓</div>
                     <h3 class="who-for__card-title">כן מתאים למי ש...</h3>
-                    <p class="who-for__card-text">מעצבים, מנהלי קריאייטיב ובעלי מותגים שכבר מכירים את כלי ה-AI, אך מרגישים שהתוצרים שלהם <strong>גנריים, חסרי עמוד שדרה מותגי או לא עקביים</strong>. למי שרוצה לבנות מערכת, לא רק ליצור תמונות.</p>
+                    <p class="who-for__card-text">מעצבים, מנהלי קריאייטיב, בעלי מותג — וגם עצמאים, יועצים ובעלי עסקים קטנים. כל מי שכבר מייצר עם AI אבל מרגיש שהתוצרים <strong>גנריים, לא עקביים, או פשוט "לא זה אנחנו"</strong>. בלי צורך ברקע בעיצוב או בקוד — בונים את שכבת האסטרטגיה, לא מלאכת יד.</p>
                 </div>
             </div>
         </div>
@@ -1387,59 +1502,59 @@
         <div class="container">
             <div class="method__header reveal">
                 <p class="method__label">The Method</p>
-                <h2 class="method__title">איך נבנה עולם מותג ב-4 מפגשים</h2>
+                <h2 class="method__title">איך בונים מותג ש-AI מריץ — ב-4 מפגשים</h2>
             </div>
-            
+
             <div class="method__steps">
                 <div class="step reveal">
                     <div class="step__number-col">
                         <div class="step__number">01</div>
-                        <span class="step__icon">📝</span>
+                        <span class="step__icon">🧬</span>
                     </div>
                     <div class="step__content">
-                        <p class="step__en-title">The DNA // פיצוח אסטרטגי</p>
-                        <h3 class="step__title">חילוץ ערכי הליבה</h3>
-                        <p class="step__desc">לא מעצבים כלום עד שהסיפור לא סגור. נחלץ את ערכי הליבה של המותג ונהפוך אותם למסמך עבודה. נבנה את הבסיס שעליו כל החלטה ויזואלית תישען.</p>
-                        <span class="step__outcome">→ תוצאה: מסמך אסטרטגיה מותגית מזוקק</span>
+                        <p class="step__en-title">The DNA // חילוץ הליבה</p>
+                        <h3 class="step__title">חילוץ ה-DNA של המותג</h3>
+                        <p class="step__desc">לא מקודדים כלום עד שהליבה לא חדה. נחלץ את ה-DNA — ערכים, קהל, נימה, ומה שבאמת מבדל — ונזקק אותו לצורה שאפשר למסור ל-AI. זה הבסיס שכל החלטה תישען עליו.</p>
+                        <span class="step__outcome">→ תוצאה: מסמך DNA מזוקק</span>
                     </div>
                 </div>
-                
+
                 <div class="step reveal">
                     <div class="step__number-col">
                         <div class="step__number">02</div>
                         <span class="step__icon">🎨</span>
                     </div>
                     <div class="step__content">
-                        <p class="step__en-title">The Concept // גישור ויזואלי</p>
-                        <h3 class="step__title">תרגום מושגים לשפה חזותית</h3>
-                        <p class="step__desc">תרגום מושגים מופשטים לשפה חזותית — צבע, טקסטורה, קומפוזיציה, אווירה. כאן הסיפור מתחיל להפוך למשהו שאפשר לראות.</p>
-                        <span class="step__outcome">→ תוצאה: לוח השראה קונספטואלי (Moodboard) מחייב</span>
+                        <p class="step__en-title">The World // תרגום לעולם</p>
+                        <h3 class="step__title">תרגום ה-DNA לעולם</h3>
+                        <p class="step__desc">הופכים את ה-DNA לעולם שאפשר לראות ולשמוע — שפה מילולית, צבע, טקסטורה, טון, חתימה ויזואלית. כאן המופשט הופך למשהו מוחשי, מחייב, וניתן להרצה.</p>
+                        <span class="step__outcome">→ תוצאה: לוח עולם מחייב — מילולי וחזותי</span>
                     </div>
                 </div>
-                
+
                 <div class="step reveal">
                     <div class="step__number-col">
                         <div class="step__number">03</div>
                         <span class="step__icon">⚡</span>
                     </div>
                     <div class="step__content">
-                        <p class="step__en-title">The Creation // ייצור מערכתי</p>
-                        <h3 class="step__title">בניית נכסים ויזואליים עם AI</h3>
-                        <p class="step__desc">שימוש ב-AI (Midjourney, Runway) ככלי ביצוע תחת השיטה. בניית פרומפטים מורכבים לשמירה על עקביות. יצירת הנכסים הראשונים של העולם.</p>
-                        <span class="step__outcome">→ תוצאה: ספריית נכסים (Assets) ראשונה</span>
+                        <p class="step__en-title">The Skill // קידוד ה-DNA · לב הסדנה</p>
+                        <h3 class="step__title">קידוד המותג לסקיל</h3>
+                        <p class="step__desc">הלב של הסדנה. לוקחים את ה-DNA והעולם ומקודדים אותם לתוך סקיל — נכס אחד ש-AI מריץ שוב ושוב, ומוציא תוכן on-brand בלי שתסבירו את המותג מחדש בכל פעם. זה השורש שכל השאר יורד ממנו.</p>
+                        <span class="step__outcome">→ תוצאה: Brand Skill אישי עובד</span>
                     </div>
                 </div>
-                
+
                 <div class="step reveal">
                     <div class="step__number-col">
                         <div class="step__number">04</div>
                         <span class="step__icon">🔄</span>
                     </div>
                     <div class="step__content">
-                        <p class="step__en-title">The System // הטמעה וניהול</p>
-                        <h3 class="step__title">הפיכת העולם למערכת עובדת</h3>
-                        <p class="step__desc">איך הופכים את העולם למערכת תוכן שעובדת ביומיום מבלי לאבד את הקו העיצובי. כלים, תהליכים, ושגרות עבודה.</p>
-                        <span class="step__outcome">→ תוצאה: תוכנית עבודה ויזואלית ל-3 חודשים קדימה</span>
+                        <p class="step__en-title">The System // הרצה שוטפת</p>
+                        <h3 class="step__title">הפיכת הסקיל למערכת חיה</h3>
+                        <p class="step__desc">מחברים את הסקיל לשגרת העבודה: איך מייצרים תוכן שבועי בלי לאבד את הקו — ואיך אותו סקיל מזין גם סוכן AI וגם אתר. נראה את זה עובד חי, על דוגמאות אמיתיות.</p>
+                        <span class="step__outcome">→ תוצאה: שגרת הרצה + מפת הרחבה לסוכן ולאתר</span>
                     </div>
                 </div>
             </div>
@@ -1449,50 +1564,94 @@
     <!-- ==================== Quote Break ==================== -->
     <section class="quote-break">
         <div class="container">
-            <p class="quote-break__text reveal">"אני לא מלמדת כלים.<br>אני מלמדת <strong>מתודולוגיה</strong>."</p>
-            <p class="quote-break__sub reveal">הכלים משתנים — Midjourney V6, V7, וכו'. השיטה (World Building) היא נכס קבוע לכל קריירה של מעצב או מנהל מותג.</p>
+            <p class="quote-break__text reveal">"אני לא מלמדת תיאוריה.<br>אני מלמדת <strong>את מה שאני מריצה</strong>."</p>
+            <p class="quote-break__sub reveal">כל סקיל, כל סוכן, כל תהליך בסדנה — חי ועובד בסטודיו שלי עכשיו. אתם לא לומדים דמו. אתם לומדים מערכת שכבר רצה.</p>
         </div>
     </section>
 
-    <!-- ==================== 5. PROOF — Case Study ==================== -->
+    <!-- ==================== 5. RECEIPTS — What I Run ==================== -->
+    <section class="receipts">
+        <div class="container">
+            <div class="receipts__header reveal">
+                <p class="receipts__label">The Receipts</p>
+                <h2 class="receipts__title">כל מה שאני מלמדת — אני מריצה</h2>
+            </div>
+            <p class="receipts__intro reveal">הבידול שלי הוא לא הבטחה — הוא הוכחה. הנה המערכת שמריצה את הסטודיו: אותה שיטה בדיוק שתלמדו לבנות בסדנה.</p>
+
+            <div class="receipts__grid">
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">Skill</p>
+                    <h3 class="receipts__item-title">סקיל הקרוסלות</h3>
+                    <p class="receipts__item-desc">הסקיל שמייצר את כל הקרוסלות של הסטודיו — DNA מקודד שמוציא שקפים on-brand שוב ושוב.</p>
+                </div>
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">System</p>
+                    <h3 class="receipts__item-title">BrandOS</h3>
+                    <p class="receipts__item-desc">שכבת ההחלטה שעליה רץ כל מותג שאני בונה. האסטרטגיה מקודדת פעם אחת — ומריצה הכול.</p>
+                </div>
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">Agent</p>
+                    <h3 class="receipts__item-title">סוכן האתר</h3>
+                    <p class="receipts__item-desc">סוכן AI חי שיושב באתר שלי, מדבר בשפת המותג ועונה למתעניינים — לא צ'אט גנרי.</p>
+                </div>
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">Agent</p>
+                    <h3 class="receipts__item-title">סוכן טלגרם</h3>
+                    <p class="receipts__item-desc">סוכן שמנהל תוכן ומשימות מתוך אותו DNA — דוגמה חיה לאיך סקיל הופך לכוח עבודה.</p>
+                </div>
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">Labs</p>
+                    <h3 class="receipts__item-title">AI Labs</h3>
+                    <p class="receipts__item-desc">מעבדות וידאו, ויזואל ו-workflow באתר — שדה ניסוי פתוח שבו הכלים החדשים נבחנים.</p>
+                </div>
+                <div class="receipts__item reveal">
+                    <p class="receipts__item-tag">Worlds</p>
+                    <h3 class="receipts__item-title">עולמות מותג</h3>
+                    <p class="receipts__item-desc">MORA, AURELLE, SOLARA WILD, Pétale° — עולמות שלמים שנבנו מ-DNA אחד עד למערכת.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 6. PROOF — Case Study ==================== -->
     <section class="proof">
         <div class="container">
             <div class="proof__header reveal">
                 <p class="proof__label">The Proof</p>
-                <h2 class="proof__title">איך זה נראה בפועל</h2>
+                <h2 class="proof__title">איך זה נראה מקצה לקצה</h2>
             </div>
-            
+
             <div class="proof__images reveal">
                 <div class="proof__img"><img src="mora-website.png" alt="MORA Brand World — Website"></div>
                 <div class="proof__img"><img src="mora-products.png" alt="MORA Brand World — Products"></div>
                 <div class="proof__img"><img src="mora-store.png" alt="MORA Brand World — Store"></div>
             </div>
-            
+
             <div class="proof__story reveal">
-                <h3 class="proof__story-title">MORA — מרעיון לעולם</h3>
+                <h3 class="proof__story-title">MORA — מ-DNA לעולם למערכת</h3>
                 <div class="proof__timeline">
                     <div class="proof__timeline-item">
                         <div class="proof__timeline-num">01</div>
-                        <p class="proof__timeline-text">התחלנו מהמילים: "אלכימיה של טיפוח עצמי"</p>
+                        <p class="proof__timeline-text">התחלנו מה-DNA: "אלכימיה של טיפוח עצמי"</p>
                     </div>
                     <div class="proof__timeline-item">
                         <div class="proof__timeline-num">02</div>
-                        <p class="proof__timeline-text">תרגמנו לשפה ויזואלית: זהב, טקסטורות אורגניות, אור רך</p>
+                        <p class="proof__timeline-text">תרגמנו לעולם: זהב, טקסטורות אורגניות, אור רך</p>
                     </div>
                     <div class="proof__timeline-item">
                         <div class="proof__timeline-num">03</div>
-                        <p class="proof__timeline-text">יצרנו מערכת: מוצרים, אריזות, חנות, אתר — כולם מאותו DNA</p>
+                        <p class="proof__timeline-text">קידדנו למערכת: מוצרים, אריזות, חנות, אתר — כולם מאותו DNA</p>
                     </div>
                     <div class="proof__timeline-item">
                         <div class="proof__timeline-num">04</div>
-                        <p class="proof__timeline-text">התוצאה: עולם שלם שאפשר להמשיך להרחיב בלי לאבד את הקו</p>
+                        <p class="proof__timeline-text">התוצאה: עולם שממשיך להתרחב בלי לאבד את הקו</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 6. ABOUT THE INSTRUCTOR ==================== -->
+    <!-- ==================== 7. ABOUT THE INSTRUCTOR ==================== -->
     <section class="instructor">
         <div class="container">
             <div class="instructor__inner">
@@ -1508,11 +1667,11 @@
                     <h2 class="instructor__name">חגית אנטבי</h2>
                     <p class="instructor__role">Brand Worlds Architect</p>
                     
-                    <p class="instructor__bio">למעלה מעשר שנים אני עובדת בעולם השיווק הדיגיטלי והמיתוג. בתחילת הדרך עשיתי את מה שכולם עושים — לוגואים, קמפיינים, פוסטים. אבל תמיד הרגשתי שמשהו חסר.</p>
-                    
-                    <p class="instructor__bio">כשנכנסתי לעולם ה-AI, הבנתי שזה לא רק כלי חדש — זו הזדמנות לבנות מותגים בצורה אחרת לגמרי. פיתחתי את שיטת ה-World Building: תהליך שמתחיל מ-DNA אסטרטגי, עובר דרך נרטיב, ומגיע לעולם ויזואלי מלא — כזה שאי אפשר להעתיק כי הוא נולד מתוך המהות.</p>
-                    
-                    <p class="instructor__bio">היום אני בונה עולמות מותג עם AI למותגי יוקרה, קוסמטיקה, טכנולוגיה ועיצוב — ובסדנה הזו אני מלמדת את השיטה שפיתחתי, צעד אחרי צעד.</p>
+                    <p class="instructor__bio">למעלה מעשר שנים אני עובדת בעולם המיתוג והשיווק הדיגיטלי. בתחילת הדרך עשיתי את מה שכולם עשו — לוגואים, קמפיינים, פוסטים. אבל תמיד הרגשתי שמשהו חסר: שיטה.</p>
+
+                    <p class="instructor__bio">כשנכנסתי לעולם ה-AI הבנתי שזו לא עוד קופסת כלים — זו הזדמנות לבנות מותגים אחרת לגמרי. פיתחתי את BrandOS: גישה שבה האסטרטגיה מקודדת פעם אחת לשכבת החלטה, וכל מה שיורד ממנה — סקילים, סוכנים, אתרים, תוכן — מדבר באותה שפה.</p>
+
+                    <p class="instructor__bio">היום אני בונה עולמות מותג עם AI למותגי יוקרה, קוסמטיקה, טכנולוגיה ועיצוב — והסטודיו עצמו רץ על המערכת הזו. בסדנה הזו אני לא מלמדת תיאוריה. אני מלמדת בדיוק את מה שאני מריצה.</p>
                     
                     <div class="instructor__stats">
                         <div>
@@ -1533,7 +1692,7 @@
         </div>
     </section>
 
-    <!-- ==================== 7. TESTIMONIALS ==================== -->
+    <!-- ==================== 8. TESTIMONIALS ==================== -->
     <section class="testimonials">
         <div class="container">
             <div class="testimonials__header reveal">
@@ -1543,7 +1702,7 @@
             
             <div class="testimonials__grid">
                 <div class="testimonial reveal">
-                    <p class="testimonial__text">הגעתי עם פיד מבולגן ותחושה שכל פוסט הוא בעולם אחר. אחרי ארבעה מפגשים הבנתי שהבעיה לא הייתה הכלי — הייתה חסרה לי שיטה. היום יש לי מערכת שמייצרת תוכן עקבי כל שבוע.</p>
+                    <p class="testimonial__text">הגעתי עם פיד מבולגן ותחושה שכל פוסט הוא בעולם אחר. יצאתי עם סקיל אחד שמייצר לי תוכן עקבי כל שבוע. הבעיה אף פעם לא הייתה הכלי — הייתה חסרה לי שיטה.</p>
                     <div class="testimonial__author">
                         <div class="testimonial__avatar">ש</div>
                         <div>
@@ -1565,7 +1724,7 @@
                 </div>
                 
                 <div class="testimonial reveal">
-                    <p class="testimonial__text">יש הרבה קורסי AI בשוק. הסדנה הזו שונה — היא לא על "איך לכתוב פרומפט" אלא על "למה לכתוב אותו". קיבלתי כלי חשיבה שאני משתמשת בו כל יום.</p>
+                    <p class="testimonial__text">יש הרבה קורסי AI בשוק. הסדנה הזו שונה — היא לא על "איך לכתוב פרומפט" אלא על "איך לקודד מותג ש-AI יודע להריץ". קיבלתי מקור שאני עובדת ממנו כל יום.</p>
                     <div class="testimonial__author">
                         <div class="testimonial__avatar">מ</div>
                         <div>
@@ -1578,19 +1737,24 @@
         </div>
     </section>
 
-    <!-- ==================== 8. WHAT YOU GET ==================== -->
+    <!-- ==================== 9. WHAT YOU GET ==================== -->
     <section class="includes">
         <div class="container">
             <div class="includes__header reveal">
                 <p class="includes__label">What's Included</p>
                 <h2 class="includes__title">מה מקבלים</h2>
             </div>
-            
+
             <div class="includes__grid">
                 <div class="includes__item reveal">
                     <div class="includes__item-icon">🎥</div>
                     <h3 class="includes__item-title">4 מפגשי LIVE</h3>
-                    <p class="includes__item-desc">8 שעות הדרכה בזום + הקלטות מלאות</p>
+                    <p class="includes__item-desc">10 שעות הדרכה בזום + הקלטות מלאות</p>
+                </div>
+                <div class="includes__item reveal">
+                    <div class="includes__item-icon">⚡</div>
+                    <h3 class="includes__item-title">Brand Skill אישי</h3>
+                    <p class="includes__item-desc">התוצר המרכזי — המותג שלכם מקודד לסקיל</p>
                 </div>
                 <div class="includes__item reveal">
                     <div class="includes__item-icon">📖</div>
@@ -1598,30 +1762,25 @@
                     <p class="includes__item-desc">מדריך דיגיטלי עם תרגילים ותבניות</p>
                 </div>
                 <div class="includes__item reveal">
+                    <div class="includes__item-icon">🔍</div>
+                    <h3 class="includes__item-title">ביקורת אישית</h3>
+                    <p class="includes__item-desc">משוב פרטני על הסקיל שבניתם</p>
+                </div>
+                <div class="includes__item reveal">
                     <div class="includes__item-icon">💬</div>
                     <h3 class="includes__item-title">ליווי בוואטסאפ</h3>
-                    <p class="includes__item-desc">תמיכה בין מפגשים + משוב אישי</p>
+                    <p class="includes__item-desc">תמיכה ומשוב בין המפגשים</p>
                 </div>
                 <div class="includes__item reveal">
-                    <div class="includes__item-icon">📐</div>
-                    <h3 class="includes__item-title">תבניות פרומפטים</h3>
-                    <p class="includes__item-desc">ספריית פרומפטים מותאמים למיתוג</p>
-                </div>
-                <div class="includes__item reveal">
-                    <div class="includes__item-icon">🎯</div>
-                    <h3 class="includes__item-title">מסמך אסטרטגיה</h3>
-                    <p class="includes__item-desc">תוצר אישי שמייצרים במהלך הסדנה</p>
-                </div>
-                <div class="includes__item reveal">
-                    <div class="includes__item-icon">📋</div>
-                    <h3 class="includes__item-title">תוכנית עבודה</h3>
-                    <p class="includes__item-desc">תוכנית ויזואלית ל-3 חודשים קדימה</p>
+                    <div class="includes__item-icon">🗺️</div>
+                    <h3 class="includes__item-title">מפת הרחבה</h3>
+                    <p class="includes__item-desc">איך להזין מהסקיל סוכן ואתר</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 9. LEAD FORM ==================== -->
+    <!-- ==================== 10. LEAD FORM ==================== -->
     <section class="lead-form" id="lead-form">
         <div class="container">
             <div class="lead-form__inner">
@@ -1633,11 +1792,8 @@
                 
                 <div class="lead-form__form reveal" id="contactForm">
                     <h3 class="lead-form__form-title">טופס מתעניינים</h3>
-                    <form 
-  id="workshopForm" 
-  action="https://formspree.io/f/mpqjdzwd" 
-  method="POST"
-  onsubmit="return handleSubmit(event)">
+                    <form id="workshopForm" data-lead-source="workshop" data-lead-interest="סדנת World Builder">
+                        <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
 
                         <div class="form-group">
                             <label for="name">שם מלא *</label>
@@ -1659,7 +1815,9 @@
                                 <option value="brand-owner">בעל/ת מותג</option>
                                 <option value="creative-director">מנהל/ת קריאייטיב</option>
                                 <option value="marketing">מנהל/ת שיווק</option>
-                                <option value="freelancer">פרילנסר</option>
+                                <option value="business-owner">בעל/ת עסק קטן</option>
+                                <option value="consultant">יועץ/ת</option>
+                                <option value="freelancer">פרילנסר/ית עצמאי/ת</option>
                                 <option value="other">אחר</option>
                             </select>
                         </div>
@@ -1685,36 +1843,37 @@
         </div>
     </section>
 
-    <!-- ==================== 10. PRICING — at the end ==================== -->
+    <!-- ==================== 11. PRICING — at the end ==================== -->
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="pricing__header reveal">
                 <p class="pricing__label">Investment</p>
                 <h2 class="pricing__title">הצטרפות למחזור הקרוב</h2>
             </div>
-            
+
             <div class="pricing__card reveal">
-                <div class="pricing__badge">Early Bird</div>
-                <div class="pricing__old-price">₪2,970</div>
-                <div class="pricing__price">₪2,470</div>
-                <div class="pricing__price-note">+ מע"מ | עד 3 תשלומים</div>
-                
+                <div class="pricing__badge">מחיר מחזור השקה</div>
+                <div class="pricing__old-price">₪1,090</div>
+                <div class="pricing__price">₪890</div>
+                <div class="pricing__price-note">לארבעה מפגשים · ניתן לפצל לתשלומים</div>
+
                 <div class="pricing__divider"></div>
-                
+
                 <ul class="pricing__features">
-                    <li>4 מפגשי LIVE בזום (8 שעות)</li>
+                    <li>4 מפגשי LIVE בזום (10 שעות)</li>
                     <li>הקלטות מלאות של כל המפגשים</li>
-                    <li>חוברת עבודה דיגיטלית + תרגילים</li>
+                    <li>Brand Skill אישי — המותג שלכם מקודד</li>
+                    <li>חוברת עבודה דיגיטלית + תבניות</li>
+                    <li>ביקורת אישית על הסקיל שבניתם</li>
                     <li>ליווי בוואטסאפ בין המפגשים</li>
-                    <li>ספריית תבניות פרומפטים מותאמות</li>
-                    <li>תוכנית עבודה ויזואלית ל-3 חודשים</li>
+                    <li>מפת הרחבה — לסוכן ולאתר</li>
                 </ul>
-                
+
                 <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אני%20מתעניינ%2Fת%20בסדנת%20World%20Builder" class="pricing__cta" target="_blank">שיחה לבדיקת התאמה →</a>
-                
-                <p class="pricing__alt">או <a href="/cdn-cgi/l/email-protection#8fe7eee8e6fbcfe7eee8e6fbeee1fbeaede6a1ece0a1e6e3">שלחו מייל</a></p>
-                
-                <p class="pricing__urgency">⏰ הנחת Early Bird בתוקף עד 15 במרץ</p>
+
+                <p class="pricing__alt">או <a href="mailto:hagitadigital@gmail.com">שלחו מייל</a></p>
+
+                <p class="pricing__urgency">⏰ מחיר מחזור ההשקה — עולה במחזור הבא</p>
             </div>
         </div>
     </section>
@@ -1764,32 +1923,7 @@
             }
         })();
         
-      // Form handling
-function handleSubmit(e) {
-    e.preventDefault();
-    
-    var form = document.getElementById('workshopForm');
-    var formData = new FormData(form);
-    
-    // Send to Formspree
-    fetch('https://formspree.io/f/mpqjdzwd', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    }).then(function(response) {
-        if (response.ok) {
-            console.log('Formspree: submitted successfully');
-        } else {
-            console.error('Formspree: submission failed', response.status);
-        }
-    }).catch(function(error) {
-        console.error('Formspree: network error', error);
-    });
-    
-    // Show success state immediately
-    form.style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-}
     </script>
+    <script src="/lead-intake.js" defer></script>
 </body>
 </html>
