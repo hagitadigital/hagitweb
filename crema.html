@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crema° — קונספט אנימציית עולם מותג אינטראקטיבי | Hagit Antebi</title>
+<meta name="description" content="Crema° — קונספט אנימציה לעולם מותג קפה: מכונה שמחליפה צבעים, חליטה בגלילה וקפסולות צבעוניות שמסתובבות ושוברות את המסגרת. הדגמת עולם מותג אינטראקטיבי מבית Brand Worlds Studio.">
+<meta name="keywords" content="עולם מותג, אנימציית אתר, scroll animation, אתר אינטראקטיבי, קונספט מותג, חוויית מותג דיגיטלית, Brand Worlds Studio, חגית אנתבי">
+<meta name="author" content="Hagit Antebi">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hagitantebi.co.il/crema.html">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:url" content="https://hagitantebi.co.il/crema.html">
+<meta property="og:title" content="Crema° — קונספט אנימציית עולם מותג אינטראקטיבי">
+<meta property="og:description" content="עולם מותג קפה אינטראקטיבי: מכונה שמחליפה צבעים, חליטה בגלילה וקפסולות שמסתובבות. הדגמה מבית Brand Worlds Studio.">
+<meta property="og:image" content="https://hagitantebi.co.il/crema-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Crema° — קונספט אנימציית עולם מותג קפה">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crema° — קונספט אנימציית עולם מותג | Hagit Antebi">
+<meta name="twitter:description" content="עולם מותג קפה אינטראקטיבי — מכונה שמחליפה צבעים, חליטה בגלילה וקפסולות שמסתובבות.">
+<meta name="twitter:image" content="https://hagitantebi.co.il/crema-og.png">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"CreativeWork",
+      "@id":"https://hagitantebi.co.il/crema.html#work",
+      "name":"Crema° — קונספט אנימציית עולם מותג קפה",
+      "headline":"Crema° — עולם מותג קפה אינטראקטיבי",
+      "description":"קונספט אנימציה לעולם מותג קפה קפסולות: מכונה שמחליפה צבעים במעבר עכבר, חליטה שמתרחשת תוך כדי גלילה, וקפסולות צבעוניות שמסתובבות ושוברות את מסגרת הכרטיס.",
+      "inLanguage":"he",
+      "url":"https://hagitantebi.co.il/crema.html",
+      "image":"https://hagitantebi.co.il/crema-og.png",
+      "genre":"Interactive brand world demo",
+      "keywords":"עולם מותג, אנימציית אתר, scroll animation, חוויית מותג דיגיטלית",
+      "creator":{"@type":"Person","name":"Hagit Antebi","url":"https://hagitantebi.co.il/about.html"},
+      "author":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/brand-worlds/"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"בית","item":"https://hagitantebi.co.il"},
+        {"@type":"ListItem","position":2,"name":"Brand Worlds Studio","item":"https://hagitantebi.co.il/brand-worlds/"},
+        {"@type":"ListItem","position":3,"name":"Crema°","item":"https://hagitantebi.co.il/crema.html"}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --display:"Frank Ruhl Libre",serif;
+    --body:"Assistant",sans-serif;
+    --cream:#F4EBE0;
+    --cream2:#EADCC9;
+    --ink:#2E1E16;
+    --ink-soft:#4A3528;
+    --muted:#937F6C;
+    --copper:#C28A5A;
+    --line:rgba(46,30,22,.12);
+    --machine:#D2382B;            /* default = Ristretto — recolored on hover */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);background:var(--cream);color:var(--ink);
+    overflow-x:hidden;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(circle at center, rgba(194,138,90,.07) 1.5px, transparent 1.5px);
+    background-size:32px 32px;
+  }
+  .wrap{position:relative;z-index:1}
+  .speck{position:fixed;border-radius:50%;z-index:0;opacity:.4;pointer-events:none}
+  section[id]{scroll-margin-top:92px}
+
+  /* TOP BAR */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:70;height:34px;
+      display:flex;justify-content:space-between;align-items:center;gap:14px;
+      padding:0 5vw;background:var(--ink);color:#fff;font-size:12px}
+  .topbar .label{opacity:.82;font-weight:500}
+  .topbar .bws{opacity:.55}
+  .topbar a{color:#fff;text-decoration:none;font-weight:700;white-space:nowrap;
+      display:inline-flex;align-items:center;gap:6px;
+      border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:1px;transition:border-color .3s}
+  .topbar a:hover{border-color:#fff}
+
+  /* NAV */
+  nav{position:fixed;top:34px;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
+      align-items:center;padding:17px 5vw;mix-blend-mode:difference}
+  nav .logo{font-family:var(--display);font-weight:500;font-size:27px;color:#fff;letter-spacing:.5px}
+  nav .links{display:flex;gap:28px;font-size:14px;font-weight:600;letter-spacing:1px}
+  nav .links a{color:#fff;text-decoration:none;opacity:.85;transition:opacity .3s}
+  nav .links a:hover{opacity:1}
+  @media(max-width:680px){nav .links{display:none}}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+        text-align:center;padding:138px 5vw 70px;position:relative;
+        background:
+          radial-gradient(52% 42% at 20% 24%, rgba(210,56,43,.13), transparent 70%),
+          radial-gradient(48% 44% at 82% 30%, rgba(60,132,194,.13), transparent 70%),
+          radial-gradient(56% 48% at 50% 98%, rgba(194,138,90,.16), transparent 70%);}
+  .hero .eyebrow{margin-bottom:22px}
+  .kicker{font-size:12px;letter-spacing:3.4px;text-transform:uppercase;font-weight:700;color:var(--copper)}
+  .hero h1{font-family:var(--display);font-weight:500;font-size:clamp(46px,10.5vw,124px);
+        line-height:.96;letter-spacing:-.5px}
+  .hero h1 .soft{font-weight:300;color:var(--copper)}
+  .hero p.sub{margin-top:24px;max-width:480px;font-size:clamp(15px,2vw,18px);line-height:1.65;color:var(--muted)}
+  .hero-machine{width:min(54vw,228px);margin:34px auto 0;cursor:pointer;
+        filter:drop-shadow(0 22px 24px rgba(46,30,22,.24))}
+  .hero-machine svg{display:block;width:100%;height:auto}
+  .hero-cap{position:absolute;z-index:0;will-change:transform}
+  .hero-cap svg{display:block;width:100%;filter:drop-shadow(0 14px 14px rgba(46,30,22,.22))}
+  .scroll-hint{margin-top:36px;font-size:12px;letter-spacing:1.5px;color:#b9a48f}
+  @media(max-width:680px){.hero-cap.hide-m{display:none}}
+
+  /* BREW */
+  .brew-section{position:relative;background:linear-gradient(180deg,var(--cream),var(--cream2))}
+  .brew-stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+        justify-content:center;gap:20px;padding:60px 5vw 48px}
+  .brew-head{text-align:center}
+  .brew-head h2{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.6vw,44px);
+        line-height:1.04;letter-spacing:-.5px;margin-top:10px}
+  .brew-head h2 .soft{font-weight:300;color:var(--copper)}
+  .brew-row{display:grid;gap:24px;align-items:center;width:100%;max-width:1080px;
+        grid-template-columns:1fr auto 1fr;
+        grid-template-areas:"q1 rig q3" "q2 rig q4"}
+  .qcard{background:#fff;border-radius:20px;padding:22px 20px;max-width:300px;
+        box-shadow:0 16px 34px -24px rgba(46,30,22,.42);border:1px solid rgba(255,255,255,.8);
+        opacity:0}
+  .qcard.q1{grid-area:q1;justify-self:start}
+  .qcard.q2{grid-area:q2;justify-self:start}
+  .qcard.q3{grid-area:q3;justify-self:end}
+  .qcard.q4{grid-area:q4;justify-self:end}
+  .qicon{width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+        border-radius:11px;background:rgba(194,138,90,.15);margin-bottom:11px}
+  .qicon svg{width:21px;height:21px}
+  .qcard h4{font-family:var(--display);font-size:21px;font-weight:500;margin-bottom:4px}
+  .qcard p{font-size:14.5px;line-height:1.55;color:var(--muted)}
+
+  /* the rig — machine + cup + stream */
+  .rig{grid-area:rig;position:relative;width:min(264px,50vh);aspect-ratio:300/480;
+        margin:0 auto;align-self:center}
+  .rig-machine{position:absolute;inset:0;filter:drop-shadow(0 22px 22px rgba(46,30,22,.2));cursor:pointer}
+  .rig-machine svg{display:block;width:100%;height:100%}
+  .stream{position:absolute;left:50%;top:55%;width:9px;height:11%;border-radius:5px;z-index:2;
+        background:linear-gradient(180deg,#4A2E1A,#7A4E2C)}
+  .steam-wrap{position:absolute;left:50%;top:43%;transform:translateX(-50%);
+        width:64px;height:96px;opacity:0;z-index:2}
+  .steam{position:absolute;bottom:0;width:7px;height:48px;border-radius:50%;filter:blur(4px);
+        background:linear-gradient(0deg,transparent,rgba(255,255,255,.9))}
+  .cup{position:absolute;left:50%;top:57%;transform:translateX(-50%);
+        width:50%;aspect-ratio:150/130;z-index:4}
+  .cup-handle{position:absolute;z-index:1;right:-14%;top:21%;width:33%;aspect-ratio:1/1.08;
+        border:10px solid #F1E7D5;border-radius:50%;box-shadow:0 8px 14px -8px rgba(46,30,22,.4)}
+  .cup-body{position:absolute;inset:0;z-index:2;
+        background:linear-gradient(158deg,#FDFAF3,#F0E7D6 60%,#E4D7BF);
+        border-radius:16px 16px 47% 47%/14px 14px 62% 62%;
+        box-shadow:inset 0 -14px 26px rgba(46,30,22,.13),inset 0 6px 10px rgba(255,255,255,.7),
+                   0 16px 22px -12px rgba(46,30,22,.42)}
+  .cup-inner{position:absolute;z-index:3;left:11%;right:11%;top:13%;bottom:9%;overflow:hidden;
+        border-radius:8px 8px 44% 44%/10px 10px 64% 64%}
+  .liquid{position:absolute;left:-6%;right:-6%;bottom:0;height:0;
+        background:linear-gradient(180deg,#6E4528,#3E2817 62%,#28160C)}
+  .crema{position:absolute;left:-8%;right:-8%;top:-9px;height:17px;border-radius:50%;opacity:0;
+        background:linear-gradient(180deg,#E0B584,#C0894F);box-shadow:0 3px 5px rgba(46,30,22,.22)}
+
+  .extract{text-align:center}
+  .ex-lab{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:1px}
+  .ex-val{font-family:var(--display);font-size:clamp(34px,4vw,48px);font-weight:500;
+        color:var(--copper);line-height:1}
+  .ex-pct{font-size:.46em}
+
+  @media(max-width:880px){
+    .brew-stage{min-height:auto;gap:20px;padding:78px 5vw 64px}
+    .brew-row{grid-template-columns:1fr 1fr;gap:14px;
+        grid-template-areas:"rig rig" "q1 q2" "q3 q4"}
+    .qcard,.qcard.q1,.qcard.q2,.qcard.q3,.qcard.q4{justify-self:stretch;max-width:none;padding:16px 15px}
+    .qcard h4{font-size:18px}
+    .qcard p{font-size:13px}
+    .qicon{width:32px;height:32px;margin-bottom:7px}
+    .rig{width:min(72vw,250px)}
+  }
+
+  /* CAPSULES */
+  .capsules{max-width:1180px;margin:0 auto;padding:100px 5vw 72px}
+  .cap-head{text-align:center;margin-bottom:86px}
+  .cap-head h2{font-family:var(--display);font-size:clamp(38px,6.4vw,76px);font-weight:500;
+        line-height:1;letter-spacing:-1px;margin-top:10px}
+  .cap-head p{margin-top:14px;color:var(--muted);font-size:17px;max-width:440px;margin-inline:auto}
+  .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px;row-gap:80px}
+  @media(max-width:980px){.cap-grid{grid-template-columns:repeat(2,1fr);row-gap:84px}}
+  @media(max-width:560px){.cap-grid{grid-template-columns:1fr;row-gap:90px}}
+  .cap-card{position:relative;background:#fff;border-radius:24px;padding:96px 20px 30px;
+        text-align:center;overflow:visible;opacity:0;
+        box-shadow:0 18px 40px -26px rgba(46,30,22,.4);border:1px solid rgba(255,255,255,.8);
+        transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+  .cap-card::before{content:"";position:absolute;top:-8%;left:-12%;width:124%;height:58%;
+        background:var(--cap);filter:blur(42px);opacity:.24;z-index:0;border-radius:50%;
+        transition:opacity .5s}
+  .cap-card:hover{transform:translateY(-10px);box-shadow:0 42px 62px -34px rgba(46,30,22,.5);z-index:6}
+  .cap-card:hover::before{opacity:.4}
+  .cap-art{position:absolute;top:-58px;left:50%;width:112px;margin-left:-56px;z-index:2;
+        will-change:transform}
+  .cap-art svg{display:block;width:100%;filter:drop-shadow(0 16px 14px rgba(46,30,22,.24))}
+  .cap-it{position:relative;z-index:1;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+        font-weight:700;color:var(--copper)}
+  .cap-name{position:relative;z-index:1;font-family:var(--display);font-size:27px;font-weight:500;
+        margin-top:4px}
+  .cap-note{position:relative;z-index:1;font-size:14px;line-height:1.55;color:var(--muted);
+        margin-top:8px;min-height:44px}
+  .cap-meter{position:relative;z-index:1;margin-top:14px;display:flex;justify-content:center;gap:5px}
+  .bean{width:9px;height:12px;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;
+        background:rgba(46,30,22,.13);transform:rotate(-18deg)}
+  .bean.on{background:var(--cap)}
+
+  /* WORLD */
+  .world{position:relative;margin-top:96px;padding:104px 6vw;text-align:center;overflow:hidden;
+        background:linear-gradient(135deg,#3A2417,#5A3A22 55%,#2E1E16);color:#F4EBE0}
+  .world h2{font-family:var(--display);font-size:clamp(30px,5.4vw,60px);font-weight:500;
+        line-height:1.14;max-width:880px;margin:0 auto;position:relative;z-index:2}
+  .world h2 .soft{font-weight:300;color:var(--copper)}
+  .world .by{margin-top:26px;font-size:13px;letter-spacing:.5px;opacity:.8;position:relative;z-index:2}
+  .world-cap{position:absolute;z-index:1;opacity:.16;will-change:transform}
+  .world-cap svg{display:block;width:100%}
+
+  footer{padding:72px 6vw 64px;text-align:center;background:var(--cream)}
+  footer .big{font-family:var(--display);font-size:clamp(48px,10vw,118px);font-weight:300;
+        color:var(--copper);line-height:1}
+  footer .meta{margin-top:20px;color:var(--muted);font-size:13.5px}
+  footer .back{display:inline-flex;align-items:center;gap:7px;margin-top:24px;
+        font-weight:700;font-size:14px;color:#fff;background:var(--ink);
+        padding:13px 28px;border-radius:30px;text-decoration:none;
+        box-shadow:0 14px 26px -12px rgba(46,30,22,.5);transition:transform .3s,box-shadow .3s}
+  footer .back:hover{transform:translateY(-3px);box-shadow:0 20px 32px -12px rgba(46,30,22,.6)}
+
+  @media(max-width:680px){
+    .topbar{height:30px;font-size:10.5px}
+    .topbar .bws{display:none}
+    nav{top:30px;padding:13px 5vw}
+    .world{margin-top:66px;padding:78px 6vw}
+    footer{padding:56px 6vw 56px}
+  }
+
+  .mc-body{transition:fill .5s ease}
+  .reveal{opacity:0;transform:translateY(42px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="label">קונספט אנימציה לדוגמה<span class="bws"> · Brand Worlds Studio</span></span>
+    <a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <nav>
+    <div class="logo">Crema°</div>
+    <div class="links">
+      <a href="#brew">Estrazione</a>
+      <a href="#capsules">Le Capsule</a>
+      <a href="#world">Il Mondo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow kicker ln">Caffè in Capsule · Torino</div>
+    <h1><span class="ln">שבעה גוונים</span><br><span class="ln soft">של בוקר אחד</span></h1>
+    <p class="sub ln">מכונה אחת קטנה, שבע קליות איטלקיות, אינסוף בקרים.
+       געו במכונה כדי להחליף קלייה — וגללו למטה כדי לחלוט.</p>
+    <div class="hero-machine machine ln"></div>
+    <div class="scroll-hint ln">גללו כדי לחלוט ↓</div>
+  </header>
+
+  <!-- BREW -->
+  <section class="brew-section" id="brew">
+    <div class="brew-stage">
+      <div class="brew-head">
+        <div class="kicker">Estrazione</div>
+        <h2>גללו למטה<br><span class="soft">והקפה נמזג.</span></h2>
+      </div>
+      <div class="brew-row">
+        <div class="qcard q1">
+          <div class="qicon"><svg viewBox="0 0 32 32" fill="none" stroke="#C28A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="16" rx="11" ry="8" transform="rotate(-32 16 16)"/><path d="M9.5 21.5C13 17 19 15 22.5 10.5"/></svg></div>
+          <h4>100% ערביקה</h4>
+          <p>פולים נבחרים ממקור יחיד, בלי תערובת ממלאת.</p>
+        </div>
+        <div class="qcard q2">
+          <div class="qicon"><svg viewBox="0 0 32 32" fill="none" stroke="#C28A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c4 6 9 8 6 15-2 5-10 6-12 1-2-4 1-7 1-10 1 2 3 3 2-1 1 2 2-3 3-5Z"/></svg></div>
+          <h4>קלייה טרייה</h4>
+          <p>במנות קטנות — נטחנת ונאטמת באותו יום.</p>
+        </div>
+        <div class="rig">
+          <div class="rig-machine machine"></div>
+          <div class="stream"></div>
+          <div class="cup">
+            <div class="cup-handle"></div>
+            <div class="cup-body"></div>
+            <div class="cup-inner"><div class="liquid"><div class="crema"></div></div></div>
+          </div>
+          <div class="steam-wrap">
+            <div class="steam" style="left:11px"></div>
+            <div class="steam" style="left:29px"></div>
+            <div class="steam" style="left:47px"></div>
+          </div>
+        </div>
+        <div class="qcard q3">
+          <div class="qicon"><svg viewBox="0 0 32 32" fill="none" stroke="#C28A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 23a11 11 0 0 1 22 0"/><path d="M16 23l6-8"/><circle cx="16" cy="23" r="2.4" fill="#C28A5A" stroke="none"/></svg></div>
+          <h4>19 בר</h4>
+          <p>לחץ מדויק לחילוץ מלא של ארומה וקרמה.</p>
+        </div>
+        <div class="qcard q4">
+          <div class="qicon"><svg viewBox="0 0 32 32" fill="none" stroke="#C28A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 9h10c0 10-3 16-5 16s-5-6-5-16Z"/><path d="M9 9h14"/></svg></div>
+          <h4>אריזה אטומה</h4>
+          <p>הקפסולה נועלת את הניחוח עד רגע החליטה.</p>
+        </div>
+      </div>
+      <div class="extract">
+        <span class="ex-lab">חליטה</span>
+        <span class="ex-val"><span id="extract-num">0</span><span class="ex-pct">%</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPSULES -->
+  <section class="capsules" id="capsules">
+    <div class="cap-head reveal">
+      <div class="kicker">La Collezione</div>
+      <h2>אוסף הקפסולות</h2>
+      <p>שבע קליות, כל אחת בגוון משלה. בחרו את הבוקר שלכם — והקפסולה יוצאת מהמסגרת.</p>
+    </div>
+    <div class="cap-grid" id="cap-grid"><!-- cards injected by JS --></div>
+  </section>
+
+  <!-- WORLD -->
+  <section class="world" id="world">
+    <h2 class="reveal">לכל מותג מגיע עולם משלו.<br><span class="soft">את זה — חלטנו בכל הגוונים.</span></h2>
+    <p class="by reveal">עולם מותג · נבנה עם Brand Worlds Studio</p>
+  </section>
+
+  <footer>
+    <div class="big reveal">buongiorno.</div>
+    <p class="meta">Crema° · קונספט אנימציה לדוגמה · Brand Worlds Studio</p>
+    <a class="back" href="https://hagitantebi.co.il/brand-worlds/">חזרה לכל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+  </footer>
+
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- color helpers ---------- */
+function shade(hex,amt){
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r*(1-amt));g=Math.round(g*(1-amt));b=Math.round(b*(1-amt));
+  return `rgb(${r},${g},${b})`;
+}
+function lighten(hex,amt){
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r+(255-r)*amt);g=Math.round(g+(255-g)*amt);b=Math.round(b+(255-b)*amt);
+  return `rgb(${r},${g},${b})`;
+}
+
+/* ---------- capsule factory (SVG) ---------- */
+let _cid=0;
+function capsuleSVG(color){
+  const id='c'+(_cid++);
+  const top=lighten(color,.40), bot=shade(color,.34),
+        rim=lighten(color,.16), edge=shade(color,.26),
+        lidA=lighten(color,.62), lidB=lighten(color,.05);
+  return `<svg viewBox="0 0 120 156" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="${id}b" x1="0.15" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="${top}"/>
+        <stop offset=".46" stop-color="${color}"/>
+        <stop offset="1" stop-color="${bot}"/>
+      </linearGradient>
+      <radialGradient id="${id}l" cx=".38" cy=".32" r=".9">
+        <stop offset="0" stop-color="${lidA}"/>
+        <stop offset="1" stop-color="${lidB}"/>
+      </radialGradient>
+    </defs>
+    <!-- body -->
+    <path d="M14 30 C14 92 30 152 60 152 C90 152 106 92 106 30 Z" fill="url(#${id}b)"/>
+    <!-- side gloss -->
+    <path d="M25 38 C25 88 32 130 44 144 C35 120 31 78 34 42 Z" fill="#fff" opacity=".34"/>
+    <!-- flange rim -->
+    <ellipse cx="60" cy="30" rx="50" ry="13" fill="${rim}"/>
+    <ellipse cx="60" cy="30" rx="50" ry="13" fill="none" stroke="${edge}" stroke-width="1.3" opacity=".55"/>
+    <!-- foil lid -->
+    <ellipse cx="60" cy="27" rx="41" ry="9.5" fill="url(#${id}l)"/>
+    <ellipse cx="49" cy="23.5" rx="17" ry="3.4" fill="#fff" opacity=".62"/>
+  </svg>`;
+}
+
+/* ---------- machine (SVG) — body parts recolor via --machine ---------- */
+function machineSVG(){
+  return `<svg viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="mGloss" x1="0" y1="0" x2="0.55" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".30"/>
+        <stop offset=".44" stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="1" stop-color="#1f0e07" stop-opacity=".30"/>
+      </linearGradient>
+      <linearGradient id="mTray" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#DBCFBB"/>
+        <stop offset="1" stop-color="#A18E72"/>
+      </linearGradient>
+    </defs>
+    <!-- lever arm -->
+    <path d="M152 64 C152 34 178 24 202 36" fill="none" stroke="#2e1e16"
+          stroke-opacity=".22" stroke-width="11" stroke-linecap="round"/>
+    <!-- head -->
+    <rect class="mc-body" x="110" y="44" width="80" height="46" rx="17" style="fill:var(--machine)"/>
+    <rect x="110" y="44" width="80" height="46" rx="17" fill="url(#mGloss)"/>
+    <!-- body -->
+    <rect class="mc-body" x="66" y="82" width="168" height="152" rx="44" style="fill:var(--machine)"/>
+    <rect x="66" y="82" width="168" height="152" rx="44" fill="url(#mGloss)"/>
+    <ellipse cx="112" cy="120" rx="33" ry="19" fill="#ffffff" opacity=".17"/>
+    <!-- button -->
+    <rect x="182" y="150" width="26" height="9" rx="4.5" fill="#1f0e07" opacity=".34"/>
+    <!-- power light -->
+    <circle cx="94" cy="206" r="8.5" fill="#ffffff" opacity=".9"/>
+    <circle class="mc-body" cx="94" cy="206" r="4.2" style="fill:var(--machine)"/>
+    <!-- nook recess -->
+    <rect x="92" y="232" width="116" height="180" rx="16" fill="#1f0e07" opacity=".10"/>
+    <!-- spout -->
+    <path class="mc-body" d="M129 230 L171 230 L162 268 Q150 279 138 268 Z" style="fill:var(--machine)"/>
+    <path d="M129 230 L171 230 L162 268 Q150 279 138 268 Z" fill="url(#mGloss)"/>
+    <ellipse cx="150" cy="270" rx="7.6" ry="3.4" fill="#1a0c05"/>
+    <!-- drip tray -->
+    <rect x="42" y="404" width="216" height="32" rx="15" fill="url(#mTray)"/>
+    <rect x="50" y="406" width="200" height="6" rx="3" fill="#ffffff" opacity=".4"/>
+    <!-- feet -->
+    <rect x="64" y="434" width="28" height="13" rx="6" fill="#2e1e16" opacity=".55"/>
+    <rect x="208" y="434" width="28" height="13" rx="6" fill="#2e1e16" opacity=".55"/>
+  </svg>`;
+}
+
+/* ---------- coffee data ---------- */
+const roasts=[
+  {name:"Ristretto", it:"Espresso · Corto",     color:"#D2382B", intensity:5, note:"עז ונועז. גוף מלא וסיומת של קקאו מריר."},
+  {name:"Arancia",   it:"Espresso · Agrumi",    color:"#E07F2A", intensity:3, note:"קלייה חמה עם רמז בהיר של קליפת תפוז."},
+  {name:"Miele",     it:"Lungo · Dolce",        color:"#E3B23C", intensity:2, note:"רכה ומעוגלת, נגיעה של דבש וחמאה."},
+  {name:"Foresta",   it:"Espresso · Nocciola",  color:"#4F9D58", intensity:3, note:"צלולה ורעננה, ניחוח אגוזי לוז עדין."},
+  {name:"Onda",      it:"Espresso · Classico",  color:"#3C84C2", intensity:4, note:"מאוזנת וחלקה, גוף קטיפתי ויומיומי."},
+  {name:"Viola",     it:"Espresso · Floreale",  color:"#7C5BAF", intensity:4, note:"עמוקה ופרחונית עם סיומת ארוכה."},
+  {name:"Rosa",      it:"Lungo · Fruttato",     color:"#D24E86", intensity:2, note:"עדינה ופירותית, חמיצות קלילה ומרעננת."}
+];
+const palette=roasts.map(r=>r.color);
+
+/* ---------- inject machines ---------- */
+document.querySelector('.hero-machine').innerHTML=machineSVG();
+document.querySelector('.rig-machine').innerHTML=machineSVG();
+
+/* ---------- hero capsules ---------- */
+const heroSpots=[
+  {t:'15%',l:'7%',  w:116, c:0, m:false},
+  {t:'22%',r:'8%',  w:102, c:4, m:false},
+  {t:'46%',l:'3%',  w:74,  c:2, m:true },
+  {t:'53%',r:'4%',  w:86,  c:5, m:true },
+  {b:'13%',l:'13%', w:94,  c:1, m:false},
+  {b:'17%',r:'12%', w:70,  c:3, m:true }
+];
+const hero=document.querySelector('.hero');
+heroSpots.forEach(s=>{
+  const d=document.createElement('div');
+  d.className='hero-cap'+(s.m?' hide-m':'');
+  d.style.width=s.w+'px';
+  if(s.t)d.style.top=s.t; if(s.b)d.style.bottom=s.b;
+  if(s.l)d.style.left=s.l; if(s.r)d.style.right=s.r;
+  d.innerHTML=capsuleSVG(roasts[s.c].color);
+  hero.appendChild(d);
+});
+
+/* ---------- machine color cycling ---------- */
+let mci=0;
+function cycleMachine(){
+  mci=(mci+1)%palette.length;
+  document.documentElement.style.setProperty('--machine',palette[mci]);
+}
+document.querySelectorAll('.machine').forEach(m=>{
+  m.addEventListener('mouseenter',cycleMachine);
+  m.addEventListener('click',cycleMachine);
+});
+if(!window.matchMedia('(hover:hover)').matches){
+  setInterval(cycleMachine,2600);   /* touch devices: auto-cycle */
+}
+
+/* ---------- capsule cards (breaking the frame) ---------- */
+const grid=document.getElementById('cap-grid');
+roasts.forEach(r=>{
+  const dots=Array.from({length:5},(_,d)=>
+    `<span class="bean${d<r.intensity?' on':''}"></span>`).join('');
+  const card=document.createElement('article');
+  card.className='cap-card';
+  card.style.setProperty('--cap',r.color);
+  card.innerHTML=`
+    <div class="cap-art">${capsuleSVG(r.color)}</div>
+    <div class="cap-it">${r.it}</div>
+    <h3 class="cap-name">${r.name}</h3>
+    <p class="cap-note">${r.note}</p>
+    <div class="cap-meter" aria-label="עוצמה ${r.intensity} מתוך 5">${dots}</div>`;
+  grid.appendChild(card);
+});
+
+/* capsules spin continuously; hover speeds them up */
+gsap.utils.toArray('.cap-art').forEach((el,i)=>{
+  const dir=i%2?-1:1;
+  const tw=gsap.to(el,{rotation:360*dir,duration:18+(i%3)*6,repeat:-1,ease:'none'});
+  const card=el.closest('.cap-card');
+  card.addEventListener('mouseenter',()=>gsap.to(tw,{timeScale:3.2,duration:.4}));
+  card.addEventListener('mouseleave',()=>gsap.to(tw,{timeScale:1,duration:.6}));
+});
+
+/* ---------- world floating capsules ---------- */
+const world=document.getElementById('world');
+[{t:'14%',l:'6%',w:120,c:1},{b:'12%',r:'8%',w:150,c:5},{t:'52%',l:'84%',w:90,c:3}]
+.forEach((s,i)=>{
+  const d=document.createElement('div');
+  d.className='world-cap';d.style.width=s.w+'px';
+  if(s.t)d.style.top=s.t; if(s.b)d.style.bottom=s.b;
+  if(s.l)d.style.left=s.l; if(s.r)d.style.right=s.r;
+  d.innerHTML=capsuleSVG(roasts[s.c].color);
+  world.appendChild(d);
+  gsap.to(d,{rotation:i%2?-360:360,duration:34+i*8,repeat:-1,ease:'none'});
+});
+
+/* ---------- hero entrance + idle motion ---------- */
+gsap.from('.hero .ln',{y:60,opacity:0,duration:1,stagger:.1,ease:'power4.out',delay:.15});
+gsap.to('.hero-machine',{y:-13,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+gsap.utils.toArray('.hero-cap').forEach((el,i)=>{
+  gsap.to(el,{rotation:i%2?-360:360,duration:22+i*4,repeat:-1,ease:'none'});
+  gsap.to(el,{y:i%2?22:-22,duration:5+i,repeat:-1,yoyo:true,ease:'sine.inOut',delay:i*.3});
+});
+
+/* ---------- BREW scroll timeline ---------- */
+gsap.set('.stream',{xPercent:-50,scaleY:0,transformOrigin:'top center'});
+gsap.set('.qcard',{opacity:0,y:28});
+
+const extract={v:0};
+const exNum=document.getElementById('extract-num');
+
+function buildBrew(pinned){
+  const tl=gsap.timeline({
+    scrollTrigger:{
+      trigger:pinned?'.brew-section':'.brew-stage',
+      start:pinned?'top top':'top 78%',
+      end:pinned?'+=2300':'bottom 38%',
+      scrub:.8,
+      pin:pinned?'.brew-stage':false
+    }
+  });
+  tl.to('.stream',{scaleY:1,duration:.5,ease:'power1.out'},0)
+    .to('.qcard.q1',{opacity:1,y:0,duration:.5},.15)
+    .to('.qcard.q3',{opacity:1,y:0,duration:.5},.30)
+    .to('.liquid',{height:'84%',duration:3.4,ease:'none'},.20)
+    .to(extract,{v:100,duration:3.4,ease:'none',
+         onUpdate:()=>{exNum.textContent=Math.round(extract.v);}},.20)
+    .to('.qcard.q2',{opacity:1,y:0,duration:.5},1.0)
+    .to('.qcard.q4',{opacity:1,y:0,duration:.5},1.7)
+    .to('.crema',{opacity:1,duration:.7},2.6)
+    .to('.steam-wrap',{opacity:1,duration:.6},2.9)
+    .to('.stream',{opacity:0,duration:.4},3.4);
+}
+
+/* desktop pins the stage; mobile lets it flow (too tall to pin) */
+const mm=gsap.matchMedia();
+mm.add('(min-width:881px)',()=>buildBrew(true));
+mm.add('(max-width:880px)',()=>buildBrew(false));
+
+/* steam wisps rising loop */
+gsap.utils.toArray('.steam').forEach((s,i)=>{
+  gsap.timeline({repeat:-1,delay:i*.7})
+    .fromTo(s,{y:8,opacity:0},{y:-22,opacity:.6,duration:1.1,ease:'sine.out'})
+    .to(s,{y:-50,opacity:0,duration:1.4,ease:'sine.in'});
+});
+
+/* ---------- reveals ---------- */
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 86%'}});
+});
+ScrollTrigger.batch('.cap-card',{start:'top 88%',
+  onEnter:b=>gsap.to(b,{y:0,opacity:1,duration:.7,stagger:.09,ease:'back.out(1.4)'})});
+
+/* ---------- floating background specks ---------- */
+const speckCols=['#C28A5A','#6B4327','#A8762E'];
+for(let i=0;i<16;i++){
+  const s=document.createElement('div');s.className='speck';
+  const sz=5+Math.random()*7;
+  s.style.width=sz+'px';s.style.height=sz+'px';
+  s.style.background=speckCols[i%speckCols.length];
+  s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+  document.body.appendChild(s);
+  gsap.to(s,{y:-40-Math.random()*60,x:(Math.random()-.5)*60,
+    duration:5+Math.random()*5,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*4});
+}
+</script>
+</body>
+</html>

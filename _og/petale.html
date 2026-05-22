@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{font-family:"Assistant",sans-serif;background:#fdf6f0;position:relative}
+  .bg{position:absolute;inset:0;background:
+    radial-gradient(50% 44% at 20% 24%, rgba(255,122,162,.20), transparent 70%),
+    radial-gradient(46% 44% at 86% 30%, rgba(168,127,224,.18), transparent 70%),
+    radial-gradient(60% 52% at 58% 102%, rgba(143,209,79,.16), transparent 70%)}
+  .dots{position:absolute;inset:0;
+    background-image:radial-gradient(circle at center, rgba(168,127,224,.09) 2px, transparent 2px);
+    background-size:40px 40px}
+  .frame{position:absolute;inset:24px;border:1.5px solid rgba(232,74,138,.42);border-radius:12px}
+  .cover{position:relative;width:100%;height:100%;display:flex;align-items:center;z-index:2}
+  .text{width:632px;padding:0 96px}
+  .kicker{font-size:18px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:#e84a8a}
+  .brand{font-family:"Fraunces",serif;font-weight:500;font-size:146px;line-height:.92;
+    color:#3a2438;margin-top:16px;letter-spacing:-2px;direction:ltr;text-align:right}
+  .tag{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:39px;
+    color:#ff7aa2;margin-top:8px}
+  .rule{width:56px;height:3px;background:#e84a8a;margin-top:28px;border-radius:2px}
+  .sub{font-size:22px;color:#8a7080;margin-top:22px;font-weight:600}
+  .visual{flex:1;height:100%;position:relative}
+  .mac{position:absolute;filter:drop-shadow(0 22px 18px rgba(58,36,56,.22))}
+  .mac svg{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="dots"></div>
+<div class="frame"></div>
+<div class="cover">
+  <div class="text">
+    <div class="kicker">Maison de Macarons</div>
+    <div class="brand">Pétale°</div>
+    <div class="tag">עולם מותג מקרונים אינטראקטיבי</div>
+    <div class="rule"></div>
+    <div class="sub">קונספט אנימציה · Brand Worlds Studio</div>
+  </div>
+  <div class="visual" id="visual"></div>
+</div>
+<script>
+function shade(hex,a){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r*(1-a));g=Math.round(g*(1-a));b=Math.round(b*(1-a));return`rgb(${r},${g},${b})`}
+function lighten(hex,a){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r+(255-r)*a);g=Math.round(g+(255-g)*a);b=Math.round(b+(255-b)*a);return`rgb(${r},${g},${b})`}
+let _m=0;
+function pieds(cy,color){let s='';for(let x=32;x<=168;x+=10){
+  const r=(3+Math.random()*2.6).toFixed(1);const dy=((Math.random()-.5)*3).toFixed(1);
+  s+=`<circle cx="${x}" cy="${(Number(cy)+Number(dy)).toFixed(1)}" r="${r}"/>`}
+  return `<g fill="${color}" opacity=".58">${s}</g>`}
+function macaron(shell,filling){
+  const id='m'+(_m++);
+  const top=lighten(shell,.30),bot=shade(shell,.12),pd=shade(shell,.22);
+  const fTop=lighten(filling,.16),fBot=shade(filling,.14);
+  return `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="${id}t" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${shell}"/></linearGradient>
+      <linearGradient id="${id}b" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${shell}"/><stop offset="1" stop-color="${bot}"/></linearGradient>
+      <linearGradient id="${id}f" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${fTop}"/><stop offset="1" stop-color="${fBot}"/></linearGradient>
+    </defs>
+    <path d="M18 64 C58 53 142 53 182 64 C188 74 188 80 182 90 C142 101 58 101 18 90 C12 80 12 74 18 64Z" fill="url(#${id}f)"/>
+    <path d="M22 62 C22 26 48 14 100 14 C152 14 178 26 178 62 Z" fill="url(#${id}t)"/>
+    <path d="M22 84 C22 120 48 132 100 132 C152 132 178 120 178 84 Z" fill="url(#${id}b)"/>
+    ${pieds(64,pd)}${pieds(82,pd)}
+    <ellipse cx="72" cy="34" rx="32" ry="12" fill="#fff" opacity=".42"/>
+    <ellipse cx="134" cy="110" rx="24" ry="8" fill="#fff" opacity=".13"/>
+  </svg>`;
+}
+const macs=[
+  {shell:'#ffc2d4',fill:'#ff7aa2',w:268,l:118,t:228,r:-8},
+  {shell:'#d4eeb0',fill:'#8fd14f',w:212,l:286,t:96, r:13},
+  {shell:'#ddccf5',fill:'#a87fe0',w:198,l:300,t:374,r:-16},
+  {shell:'#fff0a6',fill:'#ffcf2e',w:164,l:78, t:118,r:20}
+];
+const vis=document.getElementById('visual');
+macs.forEach(m=>{
+  const d=document.createElement('div');
+  d.className='mac';
+  d.style.width=m.w+'px';
+  d.style.left=m.l+'px';
+  d.style.top=m.t+'px';
+  d.style.transform='rotate('+m.r+'deg)';
+  d.innerHTML=macaron(m.shell,m.fill);
+  vis.appendChild(d);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{font-family:"Assistant",sans-serif;background:#F4EBE0;position:relative}
+  .bg{position:absolute;inset:0;background:
+    radial-gradient(50% 44% at 20% 24%, rgba(210,56,43,.17), transparent 70%),
+    radial-gradient(46% 44% at 86% 30%, rgba(60,132,194,.16), transparent 70%),
+    radial-gradient(60% 52% at 58% 102%, rgba(194,138,90,.22), transparent 70%)}
+  .dots{position:absolute;inset:0;
+    background-image:radial-gradient(circle at center, rgba(194,138,90,.11) 2px, transparent 2px);
+    background-size:40px 40px}
+  .frame{position:absolute;inset:24px;border:1.5px solid rgba(194,138,90,.5);border-radius:12px}
+  .cover{position:relative;width:100%;height:100%;display:flex;align-items:center;z-index:2}
+  .text{width:632px;padding:0 96px}
+  .kicker{font-size:18px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:#C28A5A}
+  .brand{font-family:"Frank Ruhl Libre",serif;font-weight:500;font-size:142px;line-height:.92;
+    color:#2E1E16;margin-top:16px;letter-spacing:-1px;direction:ltr;text-align:right}
+  .tag{font-family:"Frank Ruhl Libre",serif;font-weight:300;font-size:39px;color:#C28A5A;margin-top:8px}
+  .rule{width:56px;height:3px;background:#C28A5A;margin-top:28px;border-radius:2px}
+  .sub{font-size:22px;color:#937F6C;margin-top:22px;font-weight:600}
+  .visual{flex:1;height:100%;position:relative}
+  .cap{position:absolute;filter:drop-shadow(0 24px 26px rgba(46,30,22,.28))}
+  .cap svg{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="dots"></div>
+<div class="frame"></div>
+<div class="cover">
+  <div class="text">
+    <div class="kicker">Caffè in Capsule</div>
+    <div class="brand">Crema°</div>
+    <div class="tag">עולם מותג קפה אינטראקטיבי</div>
+    <div class="rule"></div>
+    <div class="sub">קונספט אנימציה · Brand Worlds Studio</div>
+  </div>
+  <div class="visual" id="visual"></div>
+</div>
+<script>
+function shade(hex,a){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r*(1-a));g=Math.round(g*(1-a));b=Math.round(b*(1-a));return`rgb(${r},${g},${b})`}
+function lighten(hex,a){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  r=Math.round(r+(255-r)*a);g=Math.round(g+(255-g)*a);b=Math.round(b+(255-b)*a);return`rgb(${r},${g},${b})`}
+let _c=0;
+function capsule(color){
+  const id='c'+(_c++);
+  const top=lighten(color,.40),bot=shade(color,.34),rim=lighten(color,.16),
+        edge=shade(color,.26),lidA=lighten(color,.62),lidB=lighten(color,.05);
+  return `<svg viewBox="0 0 120 156" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="${id}b" x1="0.15" y1="0" x2="0.7" y2="1">
+        <stop offset="0" stop-color="${top}"/><stop offset=".46" stop-color="${color}"/>
+        <stop offset="1" stop-color="${bot}"/>
+      </linearGradient>
+      <radialGradient id="${id}l" cx=".38" cy=".32" r=".9">
+        <stop offset="0" stop-color="${lidA}"/><stop offset="1" stop-color="${lidB}"/>
+      </radialGradient>
+    </defs>
+    <path d="M14 30 C14 92 30 152 60 152 C90 152 106 92 106 30 Z" fill="url(#${id}b)"/>
+    <path d="M25 38 C25 88 32 130 44 144 C35 120 31 78 34 42 Z" fill="#fff" opacity=".34"/>
+    <ellipse cx="60" cy="30" rx="50" ry="13" fill="${rim}"/>
+    <ellipse cx="60" cy="30" rx="50" ry="13" fill="none" stroke="${edge}" stroke-width="1.3" opacity=".55"/>
+    <ellipse cx="60" cy="27" rx="41" ry="9.5" fill="url(#${id}l)"/>
+    <ellipse cx="49" cy="23.5" rx="17" ry="3.4" fill="#fff" opacity=".62"/>
+  </svg>`;
+}
+const caps=[
+  {color:'#D2382B',w:208,l:138,t:196,r:-10},
+  {color:'#E3B23C',w:158,l:300,t:64, r:15},
+  {color:'#3C84C2',w:152,l:286,t:372,r:-22},
+  {color:'#4F9D58',w:128,l:64, t:104,r:24},
+  {color:'#7C5BAF',w:138,l:62, t:392,r:-15}
+];
+const vis=document.getElementById('visual');
+caps.forEach(c=>{
+  const d=document.createElement('div');
+  d.className='cap';
+  d.style.width=c.w+'px';
+  d.style.left=c.l+'px';
+  d.style.top=c.t+'px';
+  d.style.transform='rotate('+c.r+'deg)';
+  d.innerHTML=capsule(c.color);
+  vis.appendChild(d);
+});
+</script>
+</body>
+</html>
