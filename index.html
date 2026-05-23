@@ -810,6 +810,109 @@
         .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
         /* ============================================================
+           MOTION STUDIES — 3 interactive concept demos
+           ============================================================ */
+        .motion-studies {
+            background: var(--color-warm-beige);
+            padding: clamp(80px, 11vw, 130px) 0;
+            position: relative;
+        }
+        .motion-studies__header {
+            text-align: center;
+            margin-bottom: clamp(48px, 6vw, 76px);
+        }
+        .motion-studies__label {
+            font-family: var(--font-body-en);
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .motion-studies__title {
+            font-family: var(--font-display);
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 500;
+            color: var(--color-chocolate);
+            line-height: 1.1;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+        .motion-studies__subtitle {
+            font-size: clamp(15px, 1.4vw, 17px);
+            color: var(--color-taupe);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .motion-studies__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(20px, 2.5vw, 30px);
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+        @media (max-width: 1024px) { .motion-studies__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .motion-studies__grid { grid-template-columns: 1fr; } }
+        .motion-card {
+            display: block;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--color-light-taupe);
+            box-shadow: 0 18px 40px -28px rgba(43, 26, 18, 0.35);
+            transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s;
+        }
+        .motion-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 32px 50px -28px rgba(43, 26, 18, 0.5);
+        }
+        .motion-card__img {
+            width: 100%;
+            aspect-ratio: 1200 / 630;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--color-warm-beige);
+        }
+        .motion-card__body {
+            padding: 24px 26px 28px;
+        }
+        .motion-card__name {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--color-chocolate);
+            margin-bottom: 6px;
+            line-height: 1.1;
+        }
+        .motion-card__tagline {
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--color-taupe);
+            margin-bottom: 16px;
+            min-height: 48px;
+        }
+        .motion-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-body-en);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-copper);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .motion-card__cta-arrow {
+            transition: transform 0.3s var(--transition-smooth);
+        }
+        .motion-card:hover .motion-card__cta-arrow { transform: translateX(5px); }
+
+        /* ============================================================
            INSIDE-SECTION — 6 cards, anchor to maison sections
            ============================================================ */
         .inside-section {
@@ -1781,6 +1884,46 @@
                 </div>
             </a>
 
+        </div>
+    </section>
+
+    <!-- ============================================================
+         02b · MOTION STUDIES — 3 interactive concept demos
+         ============================================================ -->
+    <section class="motion-studies" id="motion-studies" aria-labelledby="motion-studies-title">
+        <div class="container motion-studies__header reveal">
+            <p class="motion-studies__label" dir="ltr">Motion Studies · Interactive Demos</p>
+            <h2 class="motion-studies__title" id="motion-studies-title">עולמות מותג בתנועה</h2>
+            <p class="motion-studies__subtitle">קונספטים אינטראקטיביים — איך נראה DNA מותגי כשהוא נבנה מקוד תנועה, ולא ממראה בלבד</p>
+        </div>
+
+        <div class="motion-studies__grid">
+            <a href="petale.html" class="motion-card reveal" aria-label="Pétale° — קונספט אנימציה לעולם מותג מקרונים">
+                <div class="motion-card__img" style="background-image:url('petale-og.png')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">Pétale°</p>
+                    <p class="motion-card__tagline">מגדל מקרונים נבנה בגלילה — שבעה טעמי פסטל פריזאיים, שכבה אחר שכבה.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
+            <a href="crema.html" class="motion-card reveal" aria-label="Crema° — קונספט אנימציה לעולם מותג קפה">
+                <div class="motion-card__img" style="background-image:url('crema-og.png')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">Crema°</p>
+                    <p class="motion-card__tagline">מכונה שמחליפה צבע במגע, חליטה בגלילה — שבעה גוונים של בוקר איטלקי.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
+            <a href="melte.html" class="motion-card reveal" aria-label="MELTÉ° — קונספט אנימציה לעולם מותג שוקולד">
+                <div class="motion-card__img" style="background-image:url('melte-og.png')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">MELTÉ°</p>
+                    <p class="motion-card__tagline">חמש כוסות שוקולד נמסות אחת אחת — שפה אחת, חמש שפות טעם נפרדות.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
         </div>
     </section>
 

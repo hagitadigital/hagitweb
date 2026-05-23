@@ -885,6 +885,16 @@ body::before {
 .ms-cap--2 { width: 172px; top: 25%;  right: 5%;  animation: msFloat2 6s ease-in-out 0.6s infinite; }
 .ms-cap--3 { width: 116px; bottom: 2%; left: 33%; animation: msFloat3 5.5s ease-in-out 1.1s infinite; }
 
+/* Motion Study — MELTÉ° (chocolate cup visuals) */
+.ms-cup {
+  position: absolute;
+  display: block;
+  filter: drop-shadow(0 22px 26px rgba(43, 26, 18, 0.30));
+}
+.ms-cup--1 { width: 200px; top: 0;    left: 5%;   animation: msFloat1 5s ease-in-out infinite; }
+.ms-cup--2 { width: 230px; top: 28%;  right: 2%;  animation: msFloat2 6s ease-in-out 0.6s infinite; }
+.ms-cup--3 { width: 170px; bottom: 2%; left: 36%; animation: msFloat3 5.5s ease-in-out 1.1s infinite; }
+
 /* ─────────────────────────────────────────────
    THE METHOD
    ───────────────────────────────────────────── */
@@ -1585,6 +1595,30 @@ body::before {
   </div>
 </section>
 
+<!-- ─────────── INTERLUDE — MOTION STUDY (MELTÉ°) ─────────── -->
+<section class="section motion-study" id="motion-study-melte">
+  <div class="section__inner">
+    <div class="motion-study__inner reveal">
+      <div class="motion-study__text">
+        <span class="motion-study__eyebrow">A Third Interlude · Motion Study</span>
+        <h2 class="motion-study__title">MELTÉ<span>°</span></h2>
+        <p class="motion-study__lede">A chocolate world, melted in scroll.</p>
+        <p class="motion-study__body">Five cups, one language. As you scroll, each cup melts in turn — a chocolate stream pouring from above, a story unfolding alongside it. An interaction concept where flavour and form are taught one frame at a time.</p>
+        <p class="motion-study__body-he" lang="he">קונספט אנימציה — חמש כוסות שוקולד, שפה אחת. כל גלילה ממיסה את הכוס הבאה: זרימה צבעונית מלמעלה, וסיפור הטעם שנגלה לידה. עולם מותג שלומדים אותו פריים אחר פריים.</p>
+        <a href="../melte.html" class="motion-study__cta">
+          <span>View the animation concept</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+      <div class="motion-study__visual" aria-hidden="true">
+        <img src="../images/melte/cup-1.png" alt="" class="ms-cup ms-cup--1" />
+        <img src="../images/melte/cup-3.png" alt="" class="ms-cup ms-cup--2" />
+        <img src="../images/melte/cup-5.png" alt="" class="ms-cup ms-cup--3" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────── SECTION III — THE METHOD (DARK) ─────────── -->
 <section class="section method" id="method">
   <div class="section__inner">
@@ -1747,6 +1781,7 @@ body::before {
     document.getElementById('worlds'),
     document.getElementById('motion-study'),
     document.getElementById('motion-study-crema'),
+    document.getElementById('motion-study-melte'),
     document.getElementById('method'),
     document.getElementById('studio'),
     document.getElementById('cta'),
