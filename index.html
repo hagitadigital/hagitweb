@@ -810,7 +810,7 @@
         .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
         /* ============================================================
-           MOTION STUDIES — 4 interactive concept demos
+           MOTION STUDIES — 5 interactive concept demos
            ============================================================ */
         .motion-studies {
             background: var(--color-warm-beige);
@@ -848,14 +848,15 @@
         }
         .motion-studies__grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: clamp(18px, 2vw, 26px);
+            grid-template-columns: repeat(5, 1fr);
+            gap: clamp(16px, 1.8vw, 22px);
             max-width: var(--container-max);
             margin: 0 auto;
             padding: 0 var(--container-padding);
         }
-        @media (max-width: 1200px) { .motion-studies__grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .motion-studies__grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1280px) { .motion-studies__grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 820px) { .motion-studies__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .motion-studies__grid { grid-template-columns: 1fr; } }
         .motion-card {
             display: flex;
             flex-direction: column;
@@ -1893,7 +1894,7 @@
     </section>
 
     <!-- ============================================================
-         02b · MOTION STUDIES — 3 interactive concept demos
+         02b · MOTION STUDIES — 5 interactive concept demos
          ============================================================ -->
     <section class="motion-studies" id="motion-studies" aria-labelledby="motion-studies-title">
         <div class="container motion-studies__header reveal">
@@ -1903,6 +1904,15 @@
         </div>
 
         <div class="motion-studies__grid">
+            <a href="lusha.html" class="motion-card reveal" aria-label="LUSHA — קונספט אנימציה לעולם מותג ספריי שיער עם שני עולמות רינדור">
+                <div class="motion-card__img" style="background-image:url('lusha-og.png')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">LUSHA</p>
+                    <p class="motion-card__tagline">חמישה בקבוקי ספריי, שני עולמות רינדור — Toggle חי בין Claymation ל-Studio על אותו סטוריבורד.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
             <a href="aerea.html" class="motion-card reveal" aria-label="AERÉA — קונספט אנימציה לעולם מותג בושם">
                 <div class="motion-card__img" style="background-image:url('aerea-og.png')"></div>
                 <div class="motion-card__body">
