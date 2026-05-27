@@ -874,11 +874,20 @@
             box-shadow: 0 32px 50px -28px rgba(43, 26, 18, 0.5);
         }
         .motion-card__img {
+            position: relative;
             width: 100%;
             aspect-ratio: 1200 / 630;
             background-size: cover;
             background-position: center;
             background-color: var(--color-warm-beige);
+        }
+        /* LUSHA OG lacks the topbar band — recreate it in CSS for visual consistency with sibling cards */
+        a[href="lusha.html"] .motion-card__img::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6.5%;
+            background: #15202E;
         }
         .motion-card__body {
             padding: 24px 26px 28px;
