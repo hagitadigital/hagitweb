@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrandOS Custom — מערכת מותג חכמה בהתאמה אישית | Brand Worlds Studio</title>
-    <meta name="description" content="BrandOS Custom הוא ה־Operating System של המותג שלך. מערכת מותג חכמה בהתאמה אישית לעסק — סוכנים, תוכן, אוטומציות, אסטרטגיה. שירות הדגל של Brand Worlds Studio.">
-    <meta name="keywords" content="מערכת מותג, AI לעסקים, סוכן AI, BrandOS, אוטומציה מותגית, אסטרטגיה דיגיטלית, חגית אנטבי">
+    <meta name="description" content="BrandOS Custom — מערכת הפעלה למותג בהתאמה אישית. עמוד הבית של עולם BrandOS עם 6 מודולים: Brand DNA, Content Engine, סרטונים למאמרים אוטומטי, אתרי מותג מונפשים, אוטומציות וואטסאפ וסוכני AI, והפקת סרטוני AI. שם המערכת נשאר, הביצוע משתנה לפי הלקוח.">
+    <meta name="keywords" content="מערכת מותג חכמה, מערכת הפעלה למותג, BrandOS Custom, סוכן AI לעסק, אוטומציות וואטסאפ עסקי, סרטונים למאמרים אוטומטי, אתרי מותג מונפשים, הפקת סרטוני AI לעסקים, חגית אנטבי">
     <meta name="author" content="Hagit Antebi">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hagitantebi.co.il/brandos-custom.html">
@@ -325,42 +325,167 @@
             color: rgba(250, 248, 243, 0.82);
         }
 
-        /* Modules grid */
-        .modules-grid {
+        /* Expanded modules grid */
+        .mod-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
-        .module {
-            padding: 28px 22px;
+        .mod {
+            display: flex;
+            flex-direction: column;
+            padding: 38px 32px;
             background: var(--color-cream);
             border: 1px solid var(--color-light-taupe);
-            transition: border-color 0.3s, transform 0.3s var(--transition-smooth);
+            transition: border-color 0.3s, transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
         }
-        .module:hover {
+        .mod:hover {
             border-color: var(--color-copper);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(42, 32, 26, 0.08);
         }
-        .module__icon { font-size: 1.75rem; margin-bottom: 14px; display: block; }
-        .module__title {
-            font-family: var(--font-body-he);
-            font-size: 1rem;
-            font-weight: 600;
+        .mod__icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+        .mod__name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
             color: var(--color-ink);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+            line-height: 1.2;
         }
-        .module__desc {
-            font-size: 0.875rem;
-            line-height: 1.6;
+        .mod__name-en {
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            font-style: italic;
+            letter-spacing: 0.03em;
+            color: var(--color-copper);
+            margin-bottom: 18px;
+        }
+        .mod__desc {
+            font-size: 0.9375rem;
+            line-height: 1.75;
             color: var(--color-chocolate);
+            margin-bottom: 20px;
         }
-        .module--featured {
+        .mod__list {
+            list-style: none;
+            margin-bottom: 22px;
+            flex-grow: 1;
+        }
+        .mod__list li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 9px;
+            font-size: 0.875rem;
+            line-height: 1.55;
+            color: var(--color-ink);
+        }
+        .mod__list li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 8px;
+            width: 7px; height: 7px;
+            background: var(--color-copper);
+            transform: rotate(45deg);
+        }
+        .mod__tag {
+            display: inline-block;
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-top: auto;
+        }
+        .mod__links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .mod__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body-en);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            text-decoration: none;
+            transition: gap 0.3s var(--transition-smooth);
+        }
+        .mod__link:hover { gap: 13px; }
+        .mod__worlds {
+            font-size: 0.875rem;
+            line-height: 1.9;
+            color: var(--color-chocolate);
+            margin-top: auto;
+        }
+        .mod__worlds a {
+            color: var(--color-copper);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .mod__worlds a:hover { border-bottom-color: var(--color-copper); }
+        .mod--featured {
             background: var(--color-ink);
             color: var(--color-cream);
             border-color: var(--color-copper);
         }
-        .module--featured .module__title { color: var(--color-cream); }
-        .module--featured .module__desc { color: rgba(250, 248, 243, 0.78); }
+        .mod--featured .mod__name { color: var(--color-cream); }
+        .mod--featured .mod__desc { color: rgba(250, 248, 243, 0.82); }
+        .mod--featured .mod__list li { color: rgba(250, 248, 243, 0.92); }
+
+        /* Scenarios */
+        .scenarios {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .scenario {
+            padding: 38px 32px;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            border-top: 3px solid var(--color-copper);
+        }
+        .scenario__title {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-weight: 500;
+            color: var(--color-ink);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .scenario__row { margin-bottom: 16px; }
+        .scenario__label {
+            display: block;
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 6px;
+        }
+        .scenario__val {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--color-ink);
+        }
+        .scenario__val--flow { color: var(--color-chocolate); }
+        .scenario__eg {
+            font-size: 0.8125rem;
+            font-style: italic;
+            color: var(--color-taupe);
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-light-taupe);
+        }
 
         /* Packages */
         .packages {
@@ -636,7 +761,8 @@
         @media (max-width: 1024px) {
             .three-grid { grid-template-columns: repeat(2, 1fr); }
             .process { grid-template-columns: repeat(2, 1fr); }
-            .modules-grid { grid-template-columns: repeat(2, 1fr); }
+            .mod-grid { grid-template-columns: repeat(2, 1fr); }
+            .scenarios { grid-template-columns: 1fr; }
             .packages { grid-template-columns: 1fr; }
             .pack--featured { transform: none; }
             .pack--featured:hover { transform: translateY(-6px); }
@@ -644,7 +770,7 @@
         @media (max-width: 680px) {
             .three-grid { grid-template-columns: 1fr; }
             .process { grid-template-columns: 1fr; }
-            .modules-grid { grid-template-columns: 1fr; }
+            .mod-grid { grid-template-columns: 1fr; }
             .model__bullets { grid-template-columns: 1fr; }
             .fit-grid { grid-template-columns: 1fr; }
             .hero-ctas { flex-direction: column; }
@@ -691,8 +817,18 @@
               "priceCurrency": "ILS",
               "availability": "https://schema.org/InStock"
             }
-          ]
-        },
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "BrandOS Modules",
+            "itemListElement": [
+              { "@type": "Offer", "name": "Content Engine (BrandOS Platform)" },
+              { "@type": "Offer", "name": "Content Repurposing" },
+              { "@type": "Offer", "name": "Brand Worlds — Animated Sites" },
+              { "@type": "Offer", "name": "Automation Layer" },
+              { "@type": "Offer", "name": "Brand Production" }
+            ]
+          },
         {
           "@type": "Person",
           "@id": "https://hagitantebi.co.il/about.html#hagit",
@@ -858,60 +994,185 @@
     </section>
 
     <!-- Modules -->
-    <section class="section section--beige">
+    <section class="section section--beige" id="modules">
         <div class="container">
             <div class="section-header reveal">
                 <p class="section-label">מה אפשר לכלול</p>
                 <h2 class="section-title">מודולים אפשריים בתוך BrandOS Custom</h2>
-                <p class="section-lede">כל מערכת מורכבת מתת־קבוצה של המודולים הבאים. בשיחת האפיון אנחנו מחליטים יחד מה נכנס למערכת שלך.</p>
+                <p class="section-lede">שם המערכת נשאר. הביצוע משתנה לפי הלקוח. כל מערכת מורכבת מתת־קבוצה של ששת המודולים הבאים — ובשיחת האפיון אנחנו מחליטים יחד מה נכנס לשלך.</p>
             </div>
-            <div class="modules-grid">
-                <article class="module module--featured reveal">
-                    <span class="module__icon" aria-hidden="true">🧬</span>
-                    <h3 class="module__title">Brand DNA</h3>
-                    <p class="module__desc">מסמך המקור של המותג. כל הסקציות הליבה. (כלול בכל חבילה)</p>
+            <div class="mod-grid">
+
+                <!-- Module 1: Brand DNA -->
+                <article class="mod mod--featured reveal" id="module-dna">
+                    <span class="mod__icon" aria-hidden="true">🧬</span>
+                    <h3 class="mod__name">Brand DNA</h3>
+                    <p class="mod__name-en">Brand DNA Foundation</p>
+                    <p class="mod__desc">הליבה. המסמך שהכל בנוי עליו. בלי DNA אין מערכת — יש כלי AI גנרי. עם DNA, כל מודול מדבר באותה שפה.</p>
+                    <ul class="mod__list">
+                        <li>Essence, Promise, קול, אישיות, ערכים</li>
+                        <li>מסרים מרכזיים לפי קהל</li>
+                        <li>פלטה ויזואלית מלאה + Do's &amp; Don'ts</li>
+                        <li>מסמך source-of-truth שעובר לכל מודול אחר</li>
+                    </ul>
+                    <span class="mod__tag">כלול בכל חבילה — לא אופציה</span>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">🤖</span>
-                    <h3 class="module__title">סוכן AI</h3>
-                    <p class="module__desc">סוכן באתר/וואטסאפ/פלטפורמה שעונה בשפת המותג</p>
+
+                <!-- Module 2: Content Engine -->
+                <article class="mod reveal" id="module-content-engine">
+                    <span class="mod__icon" aria-hidden="true">⚙️</span>
+                    <h3 class="mod__name">Content Engine</h3>
+                    <p class="mod__name-en">BrandOS Platform · הפלטפורמה</p>
+                    <p class="mod__desc">הפלטפורמה שבניתי. סוכן AI מובנה, יצירת תוכן, תמונות, הנפשות, יומן תוכן ועמודים ממותגים — הכל במקום אחד, ממותג בצבעי הלקוח.</p>
+                    <ul class="mod__list">
+                        <li>סוכן AI שמכיר את ה-DNA — יוצר תוכן דרך שיחה</li>
+                        <li>4 מצבי יצירת תמונה + כיתוב עברי אוטומטי</li>
+                        <li>הנפשות וידאו (Veo 3.1)</li>
+                        <li>יומן תוכן חודשי + Page Builder ממותג</li>
+                    </ul>
+                    <div class="mod__links">
+                        <a href="brand-os.html" class="mod__link">ראו את הפלטפורמה במלואה
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">📚</span>
-                    <h3 class="module__title">מאגר ידע</h3>
-                    <p class="module__desc">מערכת ידע מותאמת לעסק, חיפוש פנימי, RAG</p>
+
+                <!-- Module 3: Content Repurposing -->
+                <article class="mod reveal" id="module-repurposing">
+                    <span class="mod__icon" aria-hidden="true">🔁</span>
+                    <h3 class="mod__name">Content Repurposing</h3>
+                    <p class="mod__name-en">סרטונים → מאמרים · נכסים שעובדים פי 10</p>
+                    <p class="mod__desc">עסקים שמייצרים סרטונים מאבדים את התוכן הזה אחרי שבוע. המערכת הזו לוקחת כל סרטון — מטלוויזיה, מיוטיוב, מהפקה פנימית — והופכת אותו למאמר SEO/GEO ממותג, אוטומטית.</p>
+                    <ul class="mod__list">
+                        <li>תמלול אוטומטי + ניתוח מבנה הסרטון</li>
+                        <li>כתיבה בקול המותג (לא ChatGPT גנרי)</li>
+                        <li>אישור שלך לפני פרסום — אתה השער</li>
+                        <li>שילוב ב־CMS של האתר שלך</li>
+                    </ul>
+                    <div class="mod__links">
+                        <a href="#cta" class="mod__link">דברו איתי על זה
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">📝</span>
-                    <h3 class="module__title">אסטרטגיית תוכן + גאנט</h3>
-                    <p class="module__desc">תכנון תוכן ל־3–6 חודשים בכל הערוצים</p>
+
+                <!-- Module 4: Brand Worlds -->
+                <article class="mod reveal" id="module-brand-worlds">
+                    <span class="mod__icon" aria-hidden="true">🌐</span>
+                    <h3 class="mod__name">Brand Worlds</h3>
+                    <p class="mod__name-en">אתרים מונפשים · דפי נחיתה חיים</p>
+                    <p class="mod__desc">לא דף נחיתה. עולם מותג מונפש. מה שלקוח מרגיש כשהוא נכנס לעמוד — זה הזיכרון של המותג שלו. בנוי על GSAP + ScrollTrigger, ב־HTML יחיד, ללא תלות בשרת.</p>
+                    <ul class="mod__list">
+                        <li>אנימציה שמלמדת, לא מקשטת</li>
+                        <li>HTML עצמאי — GitHub Pages ready</li>
+                        <li>דו־לשוני, RTL מובנה</li>
+                        <li>אינטראקציות מותאמות (scent switcher של AERÉA, מתג הוורלדס של LUSHA)</li>
+                    </ul>
+                    <p class="mod__worlds">ראו דמואים:
+                        <a href="aerea.html">AERÉA</a> ·
+                        <a href="lusha.html">LUSHA</a> ·
+                        <a href="crema.html">CREMA</a> ·
+                        <a href="petale.html">PETALE</a>
+                    </p>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">🎨</span>
-                    <h3 class="module__title">עמודי נחיתה</h3>
-                    <p class="module__desc">עמודי המרה עם קופי בשפת המותג</p>
+
+                <!-- Module 5: Automation Layer -->
+                <article class="mod reveal" id="module-automation">
+                    <span class="mod__icon" aria-hidden="true">🔗</span>
+                    <h3 class="mod__name">Automation Layer</h3>
+                    <p class="mod__name-en">סוכני AI, וואטסאפ, אוטומציות לידים</p>
+                    <p class="mod__desc">המוח שמטפל בלקוחות גם כשאת/ה ישנים. סוכן AI שיודע מי המותג, יודע לסנן ליד, יודע מתי להעביר לאדם — ועושה את זה בשפת המותג.</p>
+                    <ul class="mod__list">
+                        <li>סוכן ווידג'ט באתר (כמו זה שרץ בעמוד הזה)</li>
+                        <li>סוכן וואטסאפ עסקי — מענה ופולואפ</li>
+                        <li>חיבור ל־CRM קיים + תיעוד אוטומטי</li>
+                        <li>כללי תזמון, סינון, וניתוב</li>
+                    </ul>
+                    <div class="mod__links">
+                        <a href="#cta" class="mod__link">דברו איתי על סוכן ללקוח שלכם
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">💬</span>
-                    <h3 class="module__title">אוטומציות וואטסאפ</h3>
-                    <p class="module__desc">תסריטים, פולואפים, ניהול שיחות</p>
+
+                <!-- Module 6: Brand Production -->
+                <article class="mod reveal" id="module-production">
+                    <span class="mod__icon" aria-hidden="true">🎬</span>
+                    <h3 class="mod__name">Brand Production</h3>
+                    <p class="mod__name-en">סרטונים, מצגות, הפקות AI</p>
+                    <p class="mod__desc">הפקה ברמה של סוכנות, בקצב של סטודיו של אחת. סרטונים מבוססי AI (Seedance, Kling, Veo), מצגות לכנסים (כמו MAX BOOST), עולמות וידאו מותגיים — הכל בנוי על ה־DNA של המותג שלך.</p>
+                    <ul class="mod__list">
+                        <li>סרטונים מבוססי AI עם עקביות דמות (Soul / Reference Elements)</li>
+                        <li>מצגות לאירועים — כולל פורמטים גדולים (LED)</li>
+                        <li>וידאו אדס ל־Meta / LinkedIn</li>
+                        <li>AI Video Lab — תיק עבודות חי</li>
+                    </ul>
+                    <div class="mod__links">
+                        <a href="ai-video-lab.html" class="mod__link">ראו את AI Video Lab
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">📅</span>
-                    <h3 class="module__title">אוטומציות יומן ופניות</h3>
-                    <p class="module__desc">ניהול לידים אוטומטי בשפת המותג</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Scenarios -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">קונקרטית</p>
+                <h2 class="section-title">איך נראה BrandOS Custom אצלך?</h2>
+                <p class="section-lede">המודולים הם אבני הבניין. הנה שלוש דרכים שונות לחלוטין שבהן הם מתחברים — אצל שלושה סוגי לקוחות.</p>
+            </div>
+            <div class="scenarios">
+
+                <article class="scenario reveal">
+                    <h3 class="scenario__title">תרחיש 1 — עסק שירות שרץ על וואטסאפ</h3>
+                    <div class="scenario__row">
+                        <span class="scenario__label">מודולים</span>
+                        <p class="scenario__val">Brand DNA + Automation Layer + Content Engine (בסיסי)</p>
+                    </div>
+                    <div class="scenario__row">
+                        <span class="scenario__label">הביצוע</span>
+                        <p class="scenario__val scenario__val--flow">שפת מותג מתועדת → סוכן וואטסאפ מענה → תזכורות פולואפ → תוכן חודשי לסושיאל</p>
+                    </div>
+                    <p class="scenario__eg">לדוגמה: ייעוץ משכנתאות · חברת שילוח · קליניקה</p>
                 </article>
-                <article class="module reveal">
-                    <span class="module__icon" aria-hidden="true">🧠</span>
-                    <h3 class="module__title">סקילים מותאמים</h3>
-                    <p class="module__desc">סוכנים מתמחים (מנהל שיווק, אסטרטג, יוצר תוכן) שיודעים מי אתם</p>
+
+                <article class="scenario reveal">
+                    <h3 class="scenario__title">תרחיש 2 — מותג עם הרבה תוכן וידאו</h3>
+                    <div class="scenario__row">
+                        <span class="scenario__label">מודולים</span>
+                        <p class="scenario__val">Brand DNA + Content Repurposing + Brand Production + Content Engine</p>
+                    </div>
+                    <div class="scenario__row">
+                        <span class="scenario__label">הביצוע</span>
+                        <p class="scenario__val scenario__val--flow">סרטוני טלוויזיה הופכים למאמרים אוטומטית → המאמרים מזינים את הפלטפורמה → הפלטפורמה יוצרת סושיאל → הפקה חודשית של 2 סרטוני וידאו חדשים</p>
+                    </div>
+                    <p class="scenario__eg">לדוגמה: מומחה שמככב בטלוויזיה · יועץ עם פודקאסט · מותג מרצה</p>
                 </article>
+
+                <article class="scenario reveal">
+                    <h3 class="scenario__title">תרחיש 3 — מותג יוקרה / לייפסטייל / fashion</h3>
+                    <div class="scenario__row">
+                        <span class="scenario__label">מודולים</span>
+                        <p class="scenario__val">Brand DNA + Brand Worlds + Brand Production + Content Engine</p>
+                    </div>
+                    <div class="scenario__row">
+                        <span class="scenario__label">הביצוע</span>
+                        <p class="scenario__val scenario__val--flow">אתר מותג מונפש (AERÉA-style) → סרטוני קמפיין AI → תוכן ויזואלי לאינסטגרם → דפי נחיתה לקולקציות</p>
+                    </div>
+                    <p class="scenario__eg">לדוגמה: מותג בושם · קוסמטיקה · מעצב פנים</p>
+                </article>
+
             </div>
         </div>
     </section>
 
     <!-- Packages -->
-    <section class="section" id="packages">
+    <section class="section section--beige" id="packages">
         <div class="container">
             <div class="section-header reveal">
                 <p class="section-label">חבילות</p>
@@ -984,12 +1245,12 @@
             <p class="packages-note reveal">🎯 לא בטוחים איזו חבילה? <a href="#cta">בואו נדבר 30 דקות ונבין יחד</a>.</p>
 
             <div class="packages-alt reveal">
-                <p class="packages-alt__label">אופציה נוספת</p>
+                <p class="packages-alt__label">רוצים להתחיל מהפלטפורמה?</p>
                 <p class="packages-alt__text">
-                    רוצים <strong>רק את הפלטפורמה</strong>? <strong>BrandOS</strong> זמינה גם כפלטפורמה עצמאית — עם ליווי שלי לבחירה, בלי בנייה מאפס של מערכת מלאה.
+                    אפשר. ה־<strong>Content Engine</strong> זמין כפיילוט עצמאי, עם ליווי שלי — דרך מצוינת לטעום את BrandOS לפני שבונים מערכת מלאה. הרבה לקוחות מתחילים שם, ומגיעים ל־Custom אחרי 3-6 חודשים.
                 </p>
                 <a href="brand-os.html" class="packages-alt__cta">
-                    לראות את BrandOS
+                    להכיר את הפלטפורמה
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -997,7 +1258,7 @@
     </section>
 
     <!-- Fit / Not fit -->
-    <section class="section section--beige">
+    <section class="section">
         <div class="container">
             <div class="section-header reveal">
                 <p class="section-label">למי זה מתאים</p>
@@ -1029,7 +1290,7 @@
     </section>
 
     <!-- About -->
-    <section class="section">
+    <section class="section section--beige">
         <div class="container">
             <div class="section-header reveal">
                 <p class="section-label">מי אני</p>
@@ -1063,7 +1324,7 @@
     <footer class="footer-minimal">
         <div class="container">
             <p class="footer-minimal__text">
-                <a href="/">Brand Worlds Studio</a> · <a href="/brand-os.html">BrandOS</a> · <a href="/about.html">אודות</a> · © <span id="year"></span>
+                <a href="/">Brand Worlds Studio</a> · <a href="/brandos-custom.html">BrandOS</a> · <a href="/about.html">אודות</a> · © <span id="year"></span>
             </p>
         </div>
     </footer>
