@@ -163,6 +163,7 @@
     --gold-soft:#CFA978;
     --line:rgba(43,26,18,.12);
     --drip:#2B1A12;             /* default = Dark Velvet — recolored per stage */
+    --ease-out:cubic-bezier(.23,1,.32,1);   /* Emil Kowalski strong ease-out */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -287,7 +288,7 @@
   .pdot{display:inline-flex;align-items:center;justify-content:center;
         width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
         font-family:var(--italic);font-style:italic;font-size:14px;color:var(--muted);
-        transition:all .4s;background:transparent}
+        transition:transform .3s var(--ease-out),background .3s var(--ease-out),color .3s var(--ease-out),border-color .3s var(--ease-out);background:transparent}
   .pdot.active{background:var(--ink);color:#fff;border-color:var(--ink);transform:scale(1.1)}
 
   @media(max-width:880px){
@@ -309,7 +310,7 @@
   @media(max-width:880px){.coll-grid{grid-template-columns:repeat(3,1fr);row-gap:30px}}
   @media(max-width:520px){.coll-grid{grid-template-columns:repeat(2,1fr)}}
   .coll-item{position:relative;text-align:center;opacity:0;transform:translateY(28px);
-        transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+        transition:transform .28s var(--ease-out)}
   .coll-item:hover{transform:translateY(-12px)}
   .coll-art{position:relative;aspect-ratio:1/1.05;display:flex;align-items:flex-end;
         justify-content:center;padding:18% 6% 0}
@@ -379,6 +380,18 @@
   @media(max-width:680px){
     .concept-note{padding:52px 6vw 68px}
     .concept-note p{font-size:15.5px}
+  }
+
+  /* ===== REDUCED MOTION (Emil: keep content + gentle fade, drop travel + loops) ===== */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    /* never hide content behind motion that may be skipped */
+    .reveal,.coll-item{opacity:1!important;transform:none!important;transition:opacity .25s ease!important}
+    /* slot swaps fade only, no scale/slide */
+    .cup-slot,.card-slot{transition:opacity .3s ease!important;transform:none!important}
+    .cup-slot.active,.card-slot.active{transform:none!important}
+    /* freeze decorative ambient layers */
+    .hero-floater,.world-blob,.speck,.hero-cup-wrap{animation:none!important}
   }
 </style>
 </head>
@@ -617,6 +630,9 @@
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+/* Emil: respect prefers-reduced-motion — skip perpetual/ambient motion, keep content */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ---------- chocolate data ---------- */
 const cups = [
   {
@@ -730,6 +746,10 @@ function buildMelt(pinned){
     }
   });
 }
+/* The melt sequence DELIVERS content (the 5 flavors) — it is not decorative.
+   Per Emil's polish-dont-remove-all, keep it for everyone: scroll-driven motion
+   is user-controlled and acceptable under reduced-motion. Only autonomous loops
+   (floaters/blobs/specks) are gated above. */
 const mm = gsap.matchMedia();
 mm.add('(min-width:881px)', () => buildMelt(true));
 mm.add('(max-width:880px)', () => buildMelt(false));
@@ -785,19 +805,26 @@ heroFloaters.forEach((s,i)=>{
   if(s.l) d.style.left = s.l;
   if(s.r) d.style.right = s.r;
   heroEl.appendChild(d);
+  if(reduceMotion) return;
   gsap.to(d, {y: i%2 ? 22 : -22, duration: 5+i, repeat:-1, yoyo:true, ease:'sine.inOut', delay:i*.3});
   gsap.to(d, {rotation: i%2 ? -360 : 360, duration: 28+i*4, repeat:-1, ease:'none'});
 });
 
 /* ---------- HERO entrance ---------- */
-gsap.from('.hero .ln', {y:60, opacity:0, duration:1, stagger:.1, ease:'power4.out', delay:.15});
-gsap.to('.hero-cup-wrap', {y:-13, duration:4, repeat:-1, yoyo:true, ease:'sine.inOut'});
+if(!reduceMotion){
+  gsap.from('.hero .ln', {y:60, opacity:0, duration:1, stagger:.1, ease:'power4.out', delay:.15});
+  gsap.to('.hero-cup-wrap', {y:-13, duration:4, repeat:-1, yoyo:true, ease:'sine.inOut'});
+}
 
 /* ---------- COLLECTION — animation reveal (items are static HTML) ---------- */
-ScrollTrigger.batch('.coll-item', {
-  start:'top 88%',
-  onEnter:b => gsap.to(b, {y:0, opacity:1, duration:.7, stagger:.09, ease:'back.out(1.4)'})
-});
+if(reduceMotion){
+  gsap.set('.coll-item', {opacity:1, y:0});
+}else{
+  ScrollTrigger.batch('.coll-item', {
+    start:'top 88%',
+    onEnter:b => gsap.to(b, {y:0, opacity:1, duration:.7, stagger:.09, ease:'back.out(1.4)'})
+  });
+}
 
 /* ---------- WORLD floating blobs ---------- */
 const worldEl = document.getElementById('world');
@@ -812,6 +839,7 @@ const worldEl = document.getElementById('world');
   if(s.l) d.style.left = s.l;
   if(s.r) d.style.right = s.r;
   worldEl.appendChild(d);
+  if(reduceMotion) return;
   gsap.to(d, {rotation: i%2 ? -360 : 360, duration: 34+i*8, repeat:-1, ease:'none'});
   gsap.to(d, {y: i%2 ? 30 : -30, duration: 6+i*2, repeat:-1, yoyo:true, ease:'sine.inOut'});
 });
@@ -829,7 +857,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ---------- floating background specks ---------- */
 const speckCols = ['#B07C48','#5E4634','#CFA978'];
-for(let i=0; i<16; i++){
+for(let i=0; !reduceMotion && i<16; i++){
   const s = document.createElement('div');
   s.className = 'speck';
   const sz = 5 + Math.random()*7;
