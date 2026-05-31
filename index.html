@@ -443,6 +443,24 @@
             opacity: 0.85;
         }
 
+        .hero__what {
+            font-family: var(--font-body-he);
+            font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: 0;
+            max-width: 640px;
+            margin: 0 auto 14px;
+            color: var(--color-chocolate);
+            direction: rtl;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.78s forwards;
+        }
+        .hero__what strong {
+            color: var(--color-copper);
+            font-weight: 600;
+        }
+
         .hero__subtitle--he {
             font-family: var(--font-body-he);
             font-size: clamp(0.95rem, 1.6vw, 1.125rem);
@@ -454,7 +472,7 @@
             color: rgba(139, 115, 85, 0.78);
             direction: rtl;
             opacity: 0;
-            animation: fadeInUp 0.8s var(--transition-smooth) 0.8s forwards;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.92s forwards;
         }
 
         .hero__cta-block {
@@ -1739,7 +1757,7 @@
         <div class="hero__bg-element hero__bg-element--3"></div>
 
         <div class="hero__content">
-            <p class="hero__eyebrow" dir="ltr">Brand Architect &middot; BrandOS Founder</p>
+            <p class="hero__eyebrow" dir="ltr">Brand Worlds Architect &middot; BrandOS Founder</p>
 
             <h1 class="hero__title">
                 <span dir="ltr">Brand Worlds</span>
@@ -1751,6 +1769,10 @@
                 <em>Built to Strategy.</em>
                 <span class="hero__tagline-dot">&middot;</span>
                 <em>Run by AI.</em>
+            </p>
+
+            <p class="hero__what">
+                בונה עולמות מותג שלמים — ומפעילה אותם ב-AI עם <strong>BrandOS</strong>, מערכת ההפעלה למותגים.
             </p>
 
             <p class="hero__subtitle--he">
@@ -1765,58 +1787,6 @@
                     <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         01b · SERVICES STRIP — How to Work With Me
-         ============================================================ -->
-    <section class="work-with" id="services" aria-labelledby="work-with-title">
-        <div class="container">
-            <div class="work-with__header reveal">
-                <p class="work-with__label" dir="ltr">How to Work With Me</p>
-                <h2 class="work-with__title" id="work-with-title">שלוש דרכים לעבוד איתי</h2>
-                <p class="work-with__subtitle">Done-for-you · Do-with-me · Do-it-yourself</p>
-            </div>
-
-            <div class="work-with__grid">
-                <!-- Featured: BrandOS Custom -->
-                <a href="brandos-custom.html" class="work-card work-card--featured reveal" aria-label="BrandOS Custom — שירות הדגל">
-                    <span class="work-card__badge">שירות הדגל</span>
-                    <p class="work-card__tier">Done-for-you</p>
-                    <h3 class="work-card__title">BrandOS Custom</h3>
-                    <p class="work-card__sub">Built to Strategy. Run by AI.</p>
-                    <p class="work-card__desc">בנייה מלאה של תשתית מותג — Brand DNA, אתר מותאם עם סוכן AI, אוטומציות, אסטרטגיית תוכן ושפת מותג מתועדת. מותג שמוקם פעם אחת — ומופעל יום-יום על ידי המערכת שמכירה אותו לעומק.</p>
-                    <span class="work-card__cta">
-                        לפרטים
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
-
-                <!-- Studio AI -->
-                <a href="studio.html" class="work-card reveal" aria-label="Studio AI — סדנאות ומעבדות AI">
-                    <p class="work-card__tier">Do-with-me</p>
-                    <h3 class="work-card__title">Studio AI</h3>
-                    <p class="work-card__sub">סדנאות, מעבדות AI ותהליכים</p>
-                    <p class="work-card__desc">הסטודיו שבו הכלים, הידע והיצירתיות נפגשים. סדנאות, מעבדות AI ותהליכי עבודה — לומדים יחד, בונים יחד.</p>
-                    <span class="work-card__cta">
-                        Explore Studio
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
-
-                <!-- Workshop -->
-                <a href="workshop.html" class="work-card reveal" aria-label="World Builder Workshop — סדנה לבניית עולם מותג">
-                    <p class="work-card__tier">Do-it-yourself</p>
-                    <h3 class="work-card__title">Workshop</h3>
-                    <p class="work-card__sub">World Builder — סדנה מעשית</p>
-                    <p class="work-card__desc">סדנה מעשית לבניית עולם מותג מלא — מה־DNA דרך הנרטיב ועד לשפה הויזואלית. בעצמכם, עם המתודולוגיה המלאה.</p>
-                    <span class="work-card__cta">
-                        Join Workshop
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
                 </a>
             </div>
         </div>
@@ -1899,6 +1869,58 @@
                 </div>
             </a>
 
+        </div>
+    </section>
+
+    <!-- ============================================================
+         02c · SERVICES STRIP — How to Work With Me (proof-first: now below Worlds)
+         ============================================================ -->
+    <section class="work-with" id="services" aria-labelledby="work-with-title">
+        <div class="container">
+            <div class="work-with__header reveal">
+                <p class="work-with__label" dir="ltr">How to Work With Me</p>
+                <h2 class="work-with__title" id="work-with-title">שלוש דרכים לעבוד איתי</h2>
+                <p class="work-with__subtitle">Done-for-you · Do-with-me · Do-it-yourself</p>
+            </div>
+
+            <div class="work-with__grid">
+                <!-- Featured: BrandOS Custom -->
+                <a href="brandos-custom.html" class="work-card work-card--featured reveal" aria-label="BrandOS Custom — שירות הדגל">
+                    <span class="work-card__badge">שירות הדגל</span>
+                    <p class="work-card__tier">Done-for-you</p>
+                    <h3 class="work-card__title">BrandOS Custom</h3>
+                    <p class="work-card__sub">Built to Strategy. Run by AI.</p>
+                    <p class="work-card__desc">בנייה מלאה של תשתית מותג — Brand DNA, אתר מותאם עם סוכן AI, אוטומציות, אסטרטגיית תוכן ושפת מותג מתועדת. מותג שמוקם פעם אחת — ומופעל יום-יום על ידי המערכת שמכירה אותו לעומק.</p>
+                    <span class="work-card__cta">
+                        לפרטים
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+
+                <!-- Studio AI -->
+                <a href="studio.html" class="work-card reveal" aria-label="Studio AI — סדנאות ומעבדות AI">
+                    <p class="work-card__tier">Do-with-me</p>
+                    <h3 class="work-card__title">Studio AI</h3>
+                    <p class="work-card__sub">סדנאות, מעבדות AI ותהליכים</p>
+                    <p class="work-card__desc">הסטודיו שבו הכלים, הידע והיצירתיות נפגשים. סדנאות, מעבדות AI ותהליכי עבודה — לומדים יחד, בונים יחד.</p>
+                    <span class="work-card__cta">
+                        Explore Studio
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+
+                <!-- Workshop -->
+                <a href="workshop.html" class="work-card reveal" aria-label="World Builder Workshop — סדנה לבניית עולם מותג">
+                    <p class="work-card__tier">Do-it-yourself</p>
+                    <h3 class="work-card__title">Workshop</h3>
+                    <p class="work-card__sub">World Builder — סדנה מעשית</p>
+                    <p class="work-card__desc">סדנה מעשית לבניית עולם מותג מלא — מה־DNA דרך הנרטיב ועד לשפה הויזואלית. בעצמכם, עם המתודולוגיה המלאה.</p>
+                    <span class="work-card__cta">
+                        Join Workshop
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
         </div>
     </section>
 
