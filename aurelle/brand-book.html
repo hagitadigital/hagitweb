@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AURELLE — Volume I · Quiet beauty. Visible confidence.</title>
+<meta name="description" content="AURELLE — A study in skin longevity. Volume I, a brand world by Brand Worlds Studio." />
+<link rel="canonical" href="https://hagitantebi.co.il/aurelle/" />
+<meta property="og:url" content="https://hagitantebi.co.il/aurelle/" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────
+   AURELLE — Volume I
+   A magazine-issue framed as a brand world
+   ───────────────────────────────────────────── */
+
+:root {
+  --ivory:        #F6F1E8;
+  --ivory-light:  #FBF8F2;
+  --ivory-shadow: #E9DFD1;
+  --sand:         #D8C3A5;
+  --sand-blush:   #E3CDB8;
+  --champagne:    #BFA37A;
+  --champagne-glow: #D2B88E;
+  --espresso:     #2F241E;
+  --espresso-soft:#49372E;
+  --hairline:     rgba(47, 36, 30, 0.18);
+  --hairline-soft: rgba(47, 36, 30, 0.10);
+
+  --display:  'Italiana', 'Cormorant Garamond', serif;
+  --serif:    'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --hebrew:   'Frank Ruhl Libre', 'David Libre', 'Heebo', serif;
+
+  --measure: 38ch;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--espresso);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga' 1, 'kern' 1, 'onum' 1;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(191,163,122,0.025) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(47,36,30,0.025) 0, transparent 40%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.12 0 0 0 0.07 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: cover, cover, 220px 220px;
+  mix-blend-mode: multiply;
+}
+
+/* hebrew rule */
+[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+}
+
+/* ─────────────────────────────────────────────
+   BACK TO STUDIO — fixed top-left
+   ───────────────────────────────────────────── */
+.back-link {
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 95;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--espresso);
+  text-decoration: none;
+  background: rgba(251, 248, 242, 0.94);
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.back-link:hover {
+  color: var(--champagne);
+  border-color: var(--champagne);
+}
+.back-link__arr {
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.4s;
+}
+.back-link:hover .back-link__arr { transform: translateX(-3px); }
+
+/* ─────────────────────────────────────────────
+   PAGE INDICATOR (fixed, top-right magazine fold)
+   ───────────────────────────────────────────── */
+.page-indicator {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 90;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--espresso-soft);
+  letter-spacing: 0.04em;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.page-indicator span:first-child { font-style: normal; font-feature-settings: 'onum' 1; }
+
+/* ─────────────────────────────────────────────
+   UTILITY BAR (above masthead)
+   ───────────────────────────────────────────── */
+/* concept stamp — sits above utility bar */
+.concept-band {
+  background: var(--espresso);
+  color: var(--ivory-shadow);
+  font-family: var(--serif);
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.55rem 2rem;
+  position: relative;
+  z-index: 11;
+  transform: translateY(-100%);
+  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.concept-band em {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  color: var(--champagne-glow);
+  margin: 0 0.6rem;
+}
+.concept-band span.dot { color: var(--champagne); margin: 0 0.6rem; }
+
+.utility-bar {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.85rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+  position: relative;
+  z-index: 10;
+  transform: translateY(-100%);
+  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+@keyframes slideDown { to { transform: translateY(0); } }
+.utility-bar > div { flex: 1; }
+.utility-bar > div:nth-child(2) { text-align: center; }
+.utility-bar > div:nth-child(3) { text-align: right; }
+.utility-bar em {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--champagne);
+}
+
+/* ─────────────────────────────────────────────
+   MASTHEAD — magazine cover
+   ───────────────────────────────────────────── */
+.masthead {
+  min-height: calc(100vh - 60px);
+  padding: 6rem 2rem 5rem;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.masthead__inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.masthead__top {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: softUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.masthead__top .meta {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+}
+.masthead__top .meta::before,
+.masthead__top .meta::after {
+  content: "·";
+  color: var(--hairline);
+  margin: 0 0.8rem;
+  font-style: normal;
+}
+
+@keyframes softUp {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand logo — replaces typographic wordmark, inherits drop animation */
+.brand-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: clamp(260px, 36vw, 460px);
+  position: relative;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  filter: blur(14px);
+  transform: translateY(0.18em) scale(1.04);
+  animation: logoDrop 1.8s 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: clip-path, opacity, filter, transform;
+}
+.brand-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+@keyframes logoDrop {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    filter: blur(14px);
+    transform: translateY(0.18em) scale(1.04);
+  }
+  55% { opacity: 1; filter: blur(2px); }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(5.5rem, 18vw, 17rem);
+  line-height: 0.85;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--espresso);
+  position: relative;
+  display: block;
+  padding: 1rem 0;
+  text-indent: 0.08em; /* compensate letter-spacing right edge */
+}
+.wordmark::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--champagne);
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0;
+  font-style: italic;
+  letter-spacing: 0.5em;
+}
+.wordmark::after {
+  content: "—";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--champagne);
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0;
+  font-style: italic;
+  letter-spacing: 0.5em;
+}
+
+.wordmark .l {
+  display: inline-block;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  filter: blur(14px);
+  transform: translateY(0.18em) scale(1.04);
+  animation: letterDrop 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: clip-path, opacity, filter, transform;
+}
+.wordmark .l:nth-child(1) { animation-delay: 0.55s; }
+.wordmark .l:nth-child(2) { animation-delay: 0.66s; }
+.wordmark .l:nth-child(3) { animation-delay: 0.77s; }
+.wordmark .l:nth-child(4) { animation-delay: 0.88s; }
+.wordmark .l:nth-child(5) { animation-delay: 0.99s; }
+.wordmark .l:nth-child(6) { animation-delay: 1.10s; }
+.wordmark .l:nth-child(7) { animation-delay: 1.21s; }
+
+@keyframes letterDrop {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    filter: blur(14px);
+    transform: translateY(0.18em) scale(1.04);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* The decorative " — " bookends on the wordmark fade in last */
+.wordmark::before,
+.wordmark::after {
+  opacity: 0;
+  animation: fadeIn 1s 1.6s forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+.tagline-row {
+  text-align: center;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: softUp 1.4s 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  color: var(--espresso);
+  letter-spacing: 0.01em;
+  margin-bottom: 0.5rem;
+}
+.tagline em {
+  color: var(--champagne);
+  font-style: italic;
+}
+.tagline-he {
+  font-family: var(--hebrew);
+  font-weight: 300;
+  direction: rtl;
+  font-size: 1rem;
+  color: var(--espresso-soft);
+  letter-spacing: 0.02em;
+}
+
+.masthead__rule {
+  border: 0;
+  height: 1px;
+  background: var(--hairline);
+  margin: 4rem auto 0;
+  max-width: 1480px;
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: ruleDraw 1.6s 2.3s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+.masthead__rule::after {
+  content: "A";
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ivory);
+  padding: 0 1.5rem;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--champagne);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: fadeIn 1s 3.4s forwards;
+}
+
+@keyframes ruleDraw {
+  to { transform: scaleX(1); }
+}
+
+/* ─────────────────────────────────────────────
+   PLATE I — landscape hero photograph
+   the cinematic moment between masthead and cover
+   ───────────────────────────────────────────── */
+.plate {
+  padding: 6rem 2rem 2rem;
+  position: relative;
+  z-index: 5;
+}
+.plate__inner {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.plate__caption-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.plate__nº {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+}
+.plate__title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--espresso);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.plate__title em {
+  font-style: italic;
+  color: var(--champagne);
+}
+.plate__source {
+  text-align: right;
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+}
+
+/* The image frame — curtain reveal */
+.plate__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--ivory-shadow);
+}
+.plate__frame::before,
+.plate__frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--ivory);
+  z-index: 3;
+  animation: curtainSplit 1.8s 2.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+.plate__frame::before { left: 0;  transform-origin: left center; }
+.plate__frame::after  { right: 0; transform-origin: right center; }
+
+@keyframes curtainSplit {
+  0%   { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+.plate__image {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transform: scale(1.08);
+  filter: brightness(0.96) saturate(0.96);
+  animation: kenBurns 5s 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, filter;
+}
+@keyframes kenBurns {
+  0%   { transform: scale(1.08); filter: brightness(0.92) saturate(0.94); }
+  100% { transform: scale(1.00); filter: brightness(1.00) saturate(1.00); }
+}
+
+.plate__caption-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--espresso-soft);
+  opacity: 0;
+  animation: softUp 1s 4.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.plate__caption-bottom strong {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.4rem;
+}
+.plate__caption-bottom .he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-align: right;
+  color: var(--espresso-soft);
+}
+.plate__caption-bottom .he strong {
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────
+   COVER — full-bleed hero photograph
+   ───────────────────────────────────────────── */
+.cover {
+  position: relative;
+  padding: 5rem 2rem 0;
+  z-index: 5;
+}
+.cover__grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.cover__copy {
+  position: relative;
+  padding-right: 1rem;
+}
+.cover__nº {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--champagne);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.cover__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4.6rem);
+  line-height: 1.0;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+  margin-bottom: 2rem;
+}
+.cover__title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--champagne);
+}
+.cover__lede {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--espresso-soft);
+  max-width: 36ch;
+  margin-bottom: 2rem;
+}
+.cover__lede-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--espresso-soft);
+  max-width: 32ch;
+}
+.cover__index {
+  list-style: none;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 2rem;
+}
+.cover__index li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dotted var(--hairline-soft);
+  padding-bottom: 0.4rem;
+}
+.cover__index li::after {
+  content: "";
+  flex: 1;
+}
+.cover__index a {
+  color: var(--espresso);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  transition: color 0.4s;
+}
+.cover__index a:hover { color: var(--champagne); }
+.cover__index a span:last-child {
+  font-style: italic;
+  text-transform: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--champagne);
+  font-feature-settings: 'onum' 1;
+}
+
+.cover__photo {
+  position: relative;
+  margin-right: -2rem;
+}
+.cover__photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: contrast(1.02) brightness(0.99);
+}
+.cover__photo figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--espresso-soft);
+  margin-top: 0.85rem;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+.cover__photo figcaption::before {
+  content: "Photographed for AURELLE  ·  ";
+  color: var(--champagne);
+  font-style: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL CUE
+   ───────────────────────────────────────────── */
+.scroll-cue {
+  text-align: center;
+  margin-top: 5rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+.scroll-cue::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(to bottom, transparent, var(--champagne));
+  animation: scrollPulse 2.6s infinite ease-in-out;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+.scroll-cue span {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER STRUCTURE
+   ───────────────────────────────────────────── */
+.chapter {
+  padding: 9rem 2rem;
+  position: relative;
+  z-index: 5;
+}
+.chapter__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.chapter-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.chapter-numeral {
+  font-family: var(--display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.85;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+}
+.chapter-title-block {
+  text-align: left;
+}
+.chapter-eyebrow {
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.chapter-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  line-height: 1;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+}
+.chapter-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--champagne);
+}
+.chapter-meta {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--espresso-soft);
+  text-align: right;
+  white-space: nowrap;
+  align-self: end;
+  padding-bottom: 0.5rem;
+}
+.chapter-meta-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
+/* ─────────────────────────────────────────────
+   FOREWORD — Chapter I
+   ───────────────────────────────────────────── */
+.foreword-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.foreword-prose {
+  max-width: 52ch;
+  position: relative;
+  padding-top: 2rem;
+}
+.foreword-prose p {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--espresso);
+  margin-bottom: 1.4rem;
+  font-weight: 400;
+}
+.foreword-prose p.italic {
+  font-style: italic;
+  color: var(--espresso-soft);
+}
+.dropcap::first-letter {
+  font-family: var(--display);
+  float: left;
+  font-size: 5.4rem;
+  line-height: 0.78;
+  margin: 0.15rem 0.55rem 0 0;
+  color: var(--champagne);
+  font-weight: 400;
+}
+.foreword-signature {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--espresso-soft);
+}
+.foreword-signature .sig-mark {
+  font-family: var(--display);
+  color: var(--champagne);
+  font-size: 1.6rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+.foreword-aside {
+  position: relative;
+}
+.foreword-aside figure {
+  position: relative;
+  margin-top: 1rem;
+}
+.foreword-aside img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 5/6;
+  object-fit: cover;
+}
+.foreword-aside figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--espresso-soft);
+  margin-top: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.aside-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--espresso-soft);
+  border-left: 1px solid var(--champagne);
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+  max-width: 32ch;
+}
+.aside-note-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.9rem;
+  border-right: 1px solid var(--champagne);
+  border-left: 0;
+  padding-right: 1.2rem;
+  padding-left: 0;
+  margin-top: 1rem;
+  color: var(--espresso-soft);
+}
+
+/* ─────────────────────────────────────────────
+   PALETTE — Chapter II
+   ───────────────────────────────────────────── */
+.palette-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 3rem;
+}
+.palette-table tr {
+  border-bottom: 1px solid var(--hairline);
+}
+.palette-table tr:first-child { border-top: 1px solid var(--hairline); }
+.palette-table td {
+  padding: 1.6rem 1rem;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: var(--espresso);
+}
+.palette-table td:first-child { width: 80px; padding-left: 0; }
+.palette-swatch {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--hairline);
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.palette-table tr:hover .palette-swatch { transform: scale(1.15); }
+.palette-name {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+  color: var(--espresso);
+  width: 30%;
+}
+.palette-hex {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--champagne);
+  font-feature-settings: 'onum' 1;
+  width: 18%;
+}
+.palette-role {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--espresso-soft);
+  font-size: 0.95rem;
+}
+.palette-role-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.85rem;
+  font-style: normal;
+  text-align: right;
+  color: var(--espresso-soft);
+  width: 24%;
+}
+
+.palette-band {
+  display: grid;
+  grid-template-columns: 5fr 2fr 2fr 1fr;
+  height: 64px;
+  margin: 4rem 0 1rem;
+  border: 1px solid var(--hairline);
+}
+.palette-band > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+.palette-secondary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 1.5rem;
+  border: 1px solid var(--hairline);
+}
+.palette-secondary > div {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  font-feature-settings: 'onum' 1;
+  border-right: 1px solid var(--hairline-soft);
+}
+.palette-secondary > div:last-child { border-right: 0; }
+
+.palette-note {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--espresso-soft);
+  font-size: 1rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─────────────────────────────────────────────
+   PRODUCT MARQUEE — kinetic preview strip
+   ───────────────────────────────────────────── */
+.product-marquee {
+  overflow: hidden;
+  padding: 3.5rem 0;
+  margin: 0 -2rem 4rem;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.product-marquee__track {
+  display: flex;
+  gap: 2.5rem;
+  animation: productScroll 60s linear infinite;
+  width: max-content;
+}
+.product-marquee:hover .product-marquee__track { animation-play-state: paused; }
+.product-marquee__card {
+  flex: 0 0 220px;
+  text-align: center;
+  cursor: default;
+}
+.product-marquee__card .pic {
+  width: 220px;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: var(--ivory-shadow);
+}
+.product-marquee__card .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.product-marquee__card:hover .pic img { transform: scale(1.04); }
+
+/* type-only marquee cards (matching .formulation__media--type) */
+.product-marquee__card .pic--type {
+  background: linear-gradient(155deg, var(--sand-blush) 0%, var(--champagne-glow) 60%, var(--sand) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.product-marquee__card .pic--type::before {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  border: 1px solid rgba(47, 36, 30, 0.18);
+}
+.product-marquee__card .pic--type-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.product-marquee__card .pic--type-content .m {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--espresso);
+  letter-spacing: 0.05em;
+}
+.product-marquee__card .pic--type-content .pn {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: var(--espresso);
+}
+.product-marquee__card .pic--type.dark {
+  background: linear-gradient(155deg, var(--espresso-soft) 0%, var(--espresso) 60%, var(--champagne) 130%);
+}
+.product-marquee__card .pic--type.dark .m,
+.product-marquee__card .pic--type.dark .pn { color: var(--ivory-light); }
+
+.product-marquee__card .nº {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--champagne);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.04em;
+}
+.product-marquee__card .name {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+}
+@keyframes productScroll {
+  to { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────
+   FORMULATIONS — Chapter III
+   ───────────────────────────────────────────── */
+.formulations {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.formulation {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.formulation:first-child { padding-top: 1rem; }
+.formulation--reverse {
+  grid-template-columns: 6fr 5fr;
+}
+.formulation--reverse .formulation__media { order: 2; }
+.formulation--reverse .formulation__copy  { order: 1; }
+
+.formulation__media {
+  position: relative;
+  overflow: hidden;
+}
+.formulation__media img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.formulation:hover .formulation__media img { transform: scale(1.03); }
+
+.formulation__media--type {
+  aspect-ratio: 4/5;
+  background: linear-gradient(155deg, var(--sand-blush) 0%, var(--champagne-glow) 60%, var(--sand) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.formulation__media--type::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px solid rgba(47, 36, 30, 0.18);
+}
+.formulation__media--type-content {
+  text-align: center;
+  position: relative;
+}
+.formulation__media--type-content .mark {
+  font-family: var(--display);
+  font-size: clamp(5rem, 11vw, 9rem);
+  line-height: 1;
+  color: var(--espresso);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.formulation__media--type-content .label {
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+}
+.formulation__media--type-content .pname {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  margin-top: 1.2rem;
+  color: var(--espresso);
+}
+.formulation__media--type.dark {
+  background: linear-gradient(155deg, var(--espresso-soft) 0%, var(--espresso) 60%, var(--champagne) 130%);
+}
+.formulation__media--type.dark .mark,
+.formulation__media--type.dark .pname { color: var(--ivory-light); }
+.formulation__media--type.dark .label { color: var(--champagne-glow); }
+.formulation__media--type.dark::before { border-color: rgba(245, 240, 232, 0.25); }
+
+.formulation__copy {
+  padding: 0 1rem;
+}
+.formulation__nº {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--champagne);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  border-bottom: 1px solid var(--champagne);
+  padding-bottom: 0.2rem;
+  margin-bottom: 1.5rem;
+  font-feature-settings: 'onum' 1;
+}
+.formulation__name {
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+  margin-bottom: 1rem;
+}
+.formulation__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--champagne);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+.formulation__desc {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--espresso);
+  max-width: 44ch;
+  margin-bottom: 1rem;
+}
+.formulation__desc-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--espresso-soft);
+  max-width: 38ch;
+  margin-bottom: 2rem;
+}
+.formulation__specs {
+  display: flex;
+  gap: 2.5rem;
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--espresso-soft);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1rem;
+}
+.formulation__specs strong {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.3rem;
+}
+
+/* ─────────────────────────────────────────────
+   RITUAL — Chapter IV
+   ───────────────────────────────────────────── */
+.chapter--ritual { background: var(--ivory-light); }
+.ritual-spread {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+.ritual-prose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+}
+.ritual-pull {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--espresso);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-left: 1.6rem;
+}
+.ritual-pull::before {
+  content: "❝";
+  position: absolute;
+  left: 0;
+  top: -0.4rem;
+  font-family: var(--display);
+  color: var(--champagne);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.ritual-pull em { font-family: var(--serif); font-style: italic; color: var(--champagne); }
+
+.ritual-body {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--espresso);
+  margin-bottom: 1rem;
+}
+.ritual-body-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--espresso-soft);
+  line-height: 1.9;
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.2rem;
+  max-width: 38ch;
+  text-align: right;
+}
+
+.ritual-image {
+  position: relative;
+}
+.ritual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.02);
+}
+.ritual-image figcaption {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--ivory-light);
+  background: rgba(47, 36, 30, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.85rem 1.2rem;
+  letter-spacing: 0.02em;
+}
+.ritual-image figcaption strong {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--champagne-glow);
+  margin-right: 0.6rem;
+}
+
+/* ─────────────────────────────────────────────
+   CODEX — Chapter V (DARK)
+   ───────────────────────────────────────────── */
+.chapter--codex {
+  background: var(--espresso);
+  color: var(--ivory-light);
+  padding: 11rem 2rem;
+}
+.chapter--codex .chapter-numeral { color: var(--champagne-glow); }
+.chapter--codex .chapter-eyebrow { color: var(--ivory-shadow); }
+.chapter--codex .chapter-title { color: var(--ivory-light); }
+.chapter--codex .chapter-title em { color: var(--champagne-glow); }
+.chapter--codex .chapter-meta { color: var(--ivory-shadow); }
+.chapter--codex .chapter-header { border-bottom-color: rgba(245, 240, 232, 0.18); }
+
+.codex-prose {
+  max-width: 56ch;
+  margin: 0 auto 5rem;
+  text-align: center;
+}
+.codex-prose p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--ivory-shadow);
+  margin-bottom: 1rem;
+}
+.codex-prose p[lang="he"] {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--ivory-shadow);
+  opacity: 0.85;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(245, 240, 232, 0.15);
+  padding-top: 1.2rem;
+}
+
+.codex-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+.codex-page {
+  position: relative;
+}
+.codex-page__frame {
+  background: var(--ivory-light);
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.7s;
+  border: 1px solid rgba(245, 240, 232, 0.1);
+}
+.codex-page:hover .codex-page__frame {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+}
+.codex-page__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.codex-page__nº {
+  position: absolute;
+  top: -1.4rem;
+  left: 0;
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--champagne-glow);
+  letter-spacing: 0.04em;
+}
+.codex-page__label {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid rgba(245, 240, 232, 0.18);
+  padding-top: 0.8rem;
+}
+.codex-page__label em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--champagne-glow);
+  text-transform: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.codex-credit {
+  text-align: center;
+  margin-top: 5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ivory-shadow);
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+.codex-credit::before { content: "—  "; color: var(--champagne-glow); }
+.codex-credit::after { content: "  —"; color: var(--champagne-glow); }
+
+/* ─────────────────────────────────────────────
+   AUDIENCE — Chapter VI
+   ───────────────────────────────────────────── */
+.audience-pull {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.25;
+  text-align: center;
+  max-width: 28ch;
+  margin: 0 auto 4rem;
+  color: var(--espresso);
+}
+.audience-pull em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--champagne);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.audience-item {
+  padding: 3rem 2rem;
+  border-right: 1px solid var(--hairline);
+  position: relative;
+}
+.audience-item:last-child { border-right: 0; }
+.audience-item__nº {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--champagne);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 1.2rem;
+  font-feature-settings: 'onum' 1;
+}
+.audience-item__title {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+  margin-bottom: 1rem;
+}
+.audience-item__body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--espresso-soft);
+  margin-bottom: 1rem;
+}
+.audience-item__body-he {
+  font-family: var(--hebrew);
+  font-style: normal;
+  font-weight: 300;
+  direction: rtl;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--espresso-soft);
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 1rem;
+  text-align: right;
+}
+
+/* ─────────────────────────────────────────────
+   CLOSING SPREAD
+   ───────────────────────────────────────────── */
+.closing {
+  padding: 12rem 2rem 8rem;
+  text-align: center;
+  background: var(--ivory);
+  position: relative;
+  z-index: 5;
+}
+.closing__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.closing__statement {
+  font-family: var(--display);
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.95;
+  color: var(--espresso);
+  letter-spacing: 0.005em;
+  margin-bottom: 1rem;
+}
+.closing__statement em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--champagne);
+}
+.closing__statement .br { display: block; }
+
+.closing__he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: var(--espresso-soft);
+  margin-top: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.closing__end {
+  margin-top: 6rem;
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.closing__end::before, .closing__end::after {
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: var(--champagne);
+}
+
+.closing__mark {
+  margin-top: 2.5rem;
+  font-family: var(--display);
+  font-size: 4rem;
+  color: var(--champagne);
+  letter-spacing: 0.08em;
+}
+
+/* ─────────────────────────────────────────────
+   COLOPHON / FOOTER
+   ───────────────────────────────────────────── */
+.colophon {
+  background: var(--espresso);
+  color: var(--ivory-shadow);
+  padding: 5rem 2rem 2.5rem;
+  position: relative;
+  z-index: 5;
+}
+.colophon__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.colophon__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.18);
+}
+.colophon__edge-l, .colophon__edge-r {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ivory-shadow);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+.colophon__edge-r { text-align: right; }
+.colophon__center {
+  text-align: center;
+}
+.colophon__seal {
+  display: block;
+  width: clamp(110px, 12vw, 160px);
+  margin: 0 auto 1.4rem;
+  padding: 0.8rem;
+  background: var(--ivory-light);
+  border: 1px solid rgba(245, 240, 232, 0.18);
+}
+.colophon__seal img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
+.colophon__center .mark {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  color: var(--ivory-light);
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+.colophon__center .tag {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--champagne-glow);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.colophon__details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin: 3rem 0;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+}
+.colophon__details dt {
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--champagne-glow);
+  margin-bottom: 0.5rem;
+}
+.colophon__details dd {
+  font-style: italic;
+  color: var(--ivory-shadow);
+  font-size: 0.9rem;
+}
+.colophon__details dd a {
+  color: var(--ivory-shadow);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(191, 163, 122, 0.4);
+  transition: border-color 0.3s, color 0.3s;
+}
+.colophon__details dd a:hover {
+  color: var(--champagne-glow);
+  border-bottom-color: var(--champagne-glow);
+}
+
+.colophon__bottom {
+  border-top: 1px solid rgba(245, 240, 232, 0.18);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ivory-shadow);
+  opacity: 0.65;
+}
+.colophon__bottom-he {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ivory-shadow);
+  opacity: 0.7;
+}
+
+/* ─────────────────────────────────────────────
+   REVEAL ANIMATIONS
+   ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.45s; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .cover__grid,
+  .foreword-grid,
+  .ritual-spread { grid-template-columns: 1fr; gap: 3rem; }
+  .cover__photo { margin-right: 0; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .audience-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
+  .audience-item:last-child { border-bottom: 0; }
+  .codex-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+}
+
+@media (max-width: 720px) {
+  .concept-band { letter-spacing: 0.18em; font-size: 0.55rem; line-height: 1.55; padding: 0.55rem 0.8rem; }
+  .utility-bar { font-size: 0.6rem; padding: 0.7rem 1rem; gap: 0.5rem; }
+  .utility-bar > div:nth-child(2) { display: none; }
+  .masthead { padding: 3rem 1rem 4rem; min-height: auto; }
+  .wordmark { font-size: clamp(2.4rem, 11vw, 4.5rem); letter-spacing: 0.05em; line-height: 0.9; }
+  .back-link { top: 0.7rem; left: 0.7rem; font-size: 0.55rem; padding: 0.4rem 0.7rem; gap: 0.4rem; letter-spacing: 0.22em; }
+  .plate { padding: 4rem 1rem 1rem; }
+  .plate__caption-row { grid-template-columns: 1fr; gap: 0.5rem; text-align: center; }
+  .plate__source { text-align: center; }
+  .plate__caption-bottom { grid-template-columns: 1fr; gap: 1.2rem; }
+  .plate__image { aspect-ratio: 4/3; }
+  .cover { padding: 3rem 1rem 0; }
+  .chapter { padding: 6rem 1.25rem; }
+  .chapter-header { grid-template-columns: 1fr; gap: 1rem; }
+  .chapter-meta { text-align: left; }
+  .formulation,
+  .formulation--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3.5rem 0;
+  }
+  .formulation--reverse .formulation__media,
+  .formulation--reverse .formulation__copy { order: initial; }
+  .formulation__copy { padding: 0; }
+  .palette-table td { padding: 1rem 0.5rem; font-size: 0.85rem; }
+  .palette-name { font-size: 1.2rem; }
+  .palette-role-he { display: none; }
+  .palette-secondary { grid-template-columns: repeat(5, 1fr); font-size: 0.55rem; }
+  .palette-secondary > div { font-size: 0.55rem; padding: 0 0.3rem; }
+  .codex-grid { grid-template-columns: 1fr; }
+  .closing { padding: 6rem 1rem; }
+  .colophon__top { grid-template-columns: 1fr; text-align: center; }
+  .colophon__edge-l, .colophon__edge-r { text-align: center; }
+  .colophon__details { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .colophon__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .page-indicator { top: 0.7rem; right: 1rem; font-size: 0.65rem; }
+  .cover__index { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── BACK TO STUDIO ─────────── -->
+<a href="https://hagitantebi.co.il" class="back-link" title="Back to Hagit Antebi">
+  <span class="back-link__arr">←</span>
+  Hagit Antebi
+</a>
+
+<!-- ─────────── PAGE INDICATOR ─────────── -->
+<div class="page-indicator">
+  <span id="pageNum">01</span> · <em>Aurelle</em> · Vol.&nbsp;I
+</div>
+
+<!-- ─────────── CONCEPT BAND ─────────── -->
+<div class="concept-band">
+  Branding Concept <span class="dot">·</span> A fictional brand built as a portfolio piece by <em>Brand Worlds Studio</em>
+</div>
+
+<!-- ─────────── UTILITY BAR ─────────── -->
+<div class="utility-bar">
+  <div>Volume <em>I</em> · Issue Nº 01</div>
+  <div>A Brand World by <em>Brand Worlds Studio</em></div>
+  <div>May · MMXXVI</div>
+</div>
+
+<!-- ─────────── MASTHEAD ─────────── -->
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__top">
+      <div class="meta">A study in skin <em>longevity</em></div>
+    </div>
+    <h1 class="wordmark" aria-label="AURELLE">
+      <span class="l">A</span><span class="l">U</span><span class="l">R</span><span class="l">E</span><span class="l">L</span><span class="l">L</span><span class="l">E</span>
+    </h1>
+    <div class="tagline-row">
+      <p class="tagline">Quiet beauty.&nbsp; <em>Visible confidence.</em></p>
+      <p class="tagline-he" lang="he">יופי שקט. נוכחות שמרגישים.</p>
+    </div>
+  </div>
+  <hr class="masthead__rule" />
+</header>
+
+<!-- ─────────── PLATE I — cinematic hero ─────────── -->
+<section class="plate" id="plate-i">
+  <div class="plate__inner">
+    <div class="plate__caption-row">
+      <div class="plate__nº">Plate I</div>
+      <div class="plate__title"><em>The Hero Image</em>  ·  Eye Elixir, with the Clinic Kit</div>
+      <div class="plate__source">— Photographed for AURELLE</div>
+    </div>
+    <figure class="plate__frame">
+      <img class="plate__image" src="HERO.png" alt="AURELLE — The Hero Image" />
+    </figure>
+    <div class="plate__caption-bottom">
+      <div>
+        <strong>The Frame</strong>
+        Soft light. Soft surface. Soft skin. The brand entire — six pieces of restraint, photographed in a single frame.
+      </div>
+      <div class="he" lang="he">
+        <strong>הקדרה</strong>
+        אור רך. משטח רך. עור רך. המותג כולו — שש יצירות של איפוק, מצולמות בפריים אחד.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── COVER ─────────── -->
+<section class="cover" id="cover">
+  <div class="cover__grid">
+    <div class="cover__copy reveal">
+      <span class="cover__nº">Cover Story · Nº 01</span>
+      <h2 class="cover__title">A philosophy of <em>softness</em>, <br/>worn as a face.</h2>
+      <p class="cover__lede">
+        AURELLE was born from a quiet refusal — to chase visible perfection at the cost of natural beauty. In its place, a six-piece ritual of restraint: skincare that breathes, ages on its own terms, and lets confidence arrive without announcement.
+      </p>
+      <p class="cover__lede-he" lang="he">
+        AURELLE נולד מסירוב שקט — לרדוף אחרי שלמות שנראית, במחיר היופי הטבעי. במקום זה, טקס של שישה פרקים, של איפוק: טיפוח שנושם, מזדקן בתנאים שלו, ומאפשר לביטחון להגיע בלי להכריז על עצמו.
+      </p>
+      <ul class="cover__index">
+        <li><a href="#chapter-i"><span>I.&nbsp; Foreword</span><span>04</span></a></li>
+        <li><a href="#chapter-ii"><span>II.&nbsp; The Palette</span><span>05</span></a></li>
+        <li><a href="#chapter-iii"><span>III.&nbsp; Formulations</span><span>06</span></a></li>
+        <li><a href="#chapter-iv"><span>IV.&nbsp; The Ritual</span><span>07</span></a></li>
+        <li><a href="#chapter-v"><span>V.&nbsp; The Codex</span><span>08</span></a></li>
+        <li><a href="#chapter-vi"><span>VI.&nbsp; Audience</span><span>09</span></a></li>
+      </ul>
+    </div>
+    <figure class="cover__photo reveal">
+      <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_48_08%20PM%20(1).png" alt="Aurelle cover — model with the collection" />
+      <figcaption>Cover · The Collection · Photographed in Studio</figcaption>
+    </figure>
+  </div>
+  <div class="scroll-cue"><span>Scroll to read</span></div>
+</section>
+
+<!-- ─────────── CHAPTER I — FOREWORD ─────────── -->
+<section class="chapter chapter--foreword" id="chapter-i">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">I.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter One</span>
+        <h2 class="chapter-title"><em>Foreword</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — A note on AURELLE
+        <span class="chapter-meta-he" lang="he">פתח דבר</span>
+      </div>
+    </div>
+
+    <div class="foreword-grid">
+      <div class="foreword-prose reveal">
+        <p class="dropcap">There is a particular kind of beauty that doesn't announce itself. It moves into a room before the person does, and stays after they've left. AURELLE was built for that kind of beauty — not the kind that is performed, but the kind that simply <em>arrives</em>.</p>
+        <p class="italic">The brand was conceived as a study, not a campaign. Its formulations look unhurried because they are. Its language is small because softness, fully expressed, requires very few words.</p>
+        <p>What follows is the first issue. A palette. Six rituals. A photograph. A codex. And a single sentence — the kind that a brand earns the right to repeat.</p>
+        <div class="foreword-signature">
+          <span>—Hagit Antebi · Brand Worlds Studio</span>
+          <span class="sig-mark">A</span>
+        </div>
+      </div>
+
+      <aside class="foreword-aside reveal">
+        <div class="aside-note">
+          The most modern thing a face can do, in the year MMXXVI, is look like itself.
+        </div>
+        <div class="aside-note aside-note-he" lang="he">
+          הדבר הכי מודרני שפנים יכולים לעשות, בשנת 2026, הוא להיראות כמו עצמם.
+        </div>
+        <figure>
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2002_57_42%20PM.png" alt="Aurelle full collection" />
+          <figcaption>Plate I · The Collection — six pieces, one ritual.</figcaption>
+        </figure>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CHAPTER II — THE PALETTE ─────────── -->
+<section class="chapter chapter--palette" id="chapter-ii">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">II.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter Two</span>
+        <h2 class="chapter-title">The <em>Palette</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — Four notes &amp; their soft echoes
+        <span class="chapter-meta-he" lang="he">פלטת המותג</span>
+      </div>
+    </div>
+
+    <table class="palette-table reveal">
+      <tbody>
+        <tr>
+          <td><div class="palette-swatch" style="background:#F6F1E8;"></div></td>
+          <td class="palette-name">Soft Ivory</td>
+          <td class="palette-hex">#F6F1E8</td>
+          <td class="palette-role">Field — the quiet on which everything rests.</td>
+          <td class="palette-role-he" lang="he">בסיס · רקע · השקט של המותג</td>
+        </tr>
+        <tr>
+          <td><div class="palette-swatch" style="background:#D8C3A5;"></div></td>
+          <td class="palette-name">Warm Sand</td>
+          <td class="palette-hex">#D8C3A5</td>
+          <td class="palette-role">Skin — the body's own first colour.</td>
+          <td class="palette-role-he" lang="he">צבע העור · נוכחות גופנית</td>
+        </tr>
+        <tr>
+          <td><div class="palette-swatch" style="background:#BFA37A;"></div></td>
+          <td class="palette-name">Muted Champagne</td>
+          <td class="palette-hex">#BFA37A</td>
+          <td class="palette-role">Light — restrained, never decorative.</td>
+          <td class="palette-role-he" lang="he">אור פנימי · אקצנט מבוקר</td>
+        </tr>
+        <tr>
+          <td><div class="palette-swatch" style="background:#2F241E;"></div></td>
+          <td class="palette-name">Deep Espresso</td>
+          <td class="palette-hex">#2F241E</td>
+          <td class="palette-role">Voice — type, presence, the underline of every line.</td>
+          <td class="palette-role-he" lang="he">קול המותג · טיפוגרפיה</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="palette-band reveal" aria-hidden="true">
+      <div style="background:#F6F1E8; color:#49372E;">60</div>
+      <div style="background:#D8C3A5; color:#2F241E;">20</div>
+      <div style="background:#BFA37A; color:#FBF8F2;">15</div>
+      <div style="background:#2F241E; color:#D2B88E;">05</div>
+    </div>
+
+    <div class="palette-secondary reveal" aria-hidden="true">
+      <div style="background:#FBF8F2; color:#49372E;">#FBF8F2 · Light</div>
+      <div style="background:#E9DFD1; color:#49372E;">#E9DFD1 · Shadow</div>
+      <div style="background:#E3CDB8; color:#49372E;">#E3CDB8 · Blush</div>
+      <div style="background:#D2B88E; color:#FBF8F2;">#D2B88E · Glow</div>
+      <div style="background:#49372E; color:#FBF8F2;">#49372E · Soft</div>
+    </div>
+
+    <p class="palette-note reveal">— A palette built from the moments before light. Soft, warm, unhurried.</p>
+  </div>
+</section>
+
+<!-- ─────────── CHAPTER III — FORMULATIONS ─────────── -->
+<section class="chapter chapter--formulations" id="chapter-iii">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">III.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter Three</span>
+        <h2 class="chapter-title">The <em>Formulations</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — Six pieces, one ritual
+        <span class="chapter-meta-he" lang="he">קולקציית המוצרים</span>
+      </div>
+    </div>
+
+    <!-- Product marquee — kinetic preview of the full collection -->
+    <div class="product-marquee reveal" aria-hidden="true">
+      <div class="product-marquee__track">
+        <!-- Set 1 -->
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(1).png" alt="Serum No.1" /></div>
+          <div class="nº">Nº 01</div><div class="name">Serum No.1</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(2).png" alt="Night Cream" /></div>
+          <div class="nº">Nº 02</div><div class="name">Night Cream</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(3).png" alt="Skin Mist" /></div>
+          <div class="nº">Nº 03</div><div class="name">Skin Mist</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_01%20PM%20(4).png" alt="Renewal Mask" /></div>
+          <div class="nº">Nº 04</div><div class="name">Renewal Mask</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="Eye%20Elixir.png" alt="Eye Elixir" /></div>
+          <div class="nº">Nº 05</div><div class="name">Eye Elixir</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="Clinic%20Kit.png" alt="Clinic Kit" /></div>
+          <div class="nº">Signature</div><div class="name">Clinic Kit</div>
+        </div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(1).png" alt="" /></div>
+          <div class="nº">Nº 01</div><div class="name">Serum No.1</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(2).png" alt="" /></div>
+          <div class="nº">Nº 02</div><div class="name">Night Cream</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(3).png" alt="" /></div>
+          <div class="nº">Nº 03</div><div class="name">Skin Mist</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_01%20PM%20(4).png" alt="" /></div>
+          <div class="nº">Nº 04</div><div class="name">Renewal Mask</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="Eye%20Elixir.png" alt="" /></div>
+          <div class="nº">Nº 05</div><div class="name">Eye Elixir</div>
+        </div>
+        <div class="product-marquee__card">
+          <div class="pic"><img src="Clinic%20Kit.png" alt="" /></div>
+          <div class="nº">Signature</div><div class="name">Clinic Kit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formulations">
+      <article class="formulation reveal">
+        <figure class="formulation__media">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(1).png" alt="Serum No.1" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Nº 01</span>
+          <h3 class="formulation__name"><em>Serum No.1</em></h3>
+          <p class="formulation__sub">Radiance · Renewal · Rebalance</p>
+          <p class="formulation__desc">A foundational morning serum drawn from the first hour of light. Built to restore — not to impress.</p>
+          <p class="formulation__desc-he" lang="he">סרום פתיחה לבוקר. נבנה כדי להחזיר עור לעצמו — לא כדי להרשים.</p>
+          <div class="formulation__specs">
+            <div><strong>Volume</strong>30 mL · 1.0 fl. oz.</div>
+            <div><strong>Ritual</strong>Morning</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formulation formulation--reverse reveal">
+        <figure class="formulation__media">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(2).png" alt="Night Cream" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Nº 02</span>
+          <h3 class="formulation__name"><em>Night Cream</em></h3>
+          <p class="formulation__sub">Repair · Nourish</p>
+          <p class="formulation__desc">A rich, unhurried cream worn in the last quiet hour of the day. Skin recovers in the kind of silence it was built for.</p>
+          <p class="formulation__desc-he" lang="he">קרם לילה עשיר ועדין, ללבישה בשעה האחרונה והשקטה של היום. העור מתאושש בדממה שלשמה הוא נוצר.</p>
+          <div class="formulation__specs">
+            <div><strong>Volume</strong>50 mL · 1.7 fl. oz.</div>
+            <div><strong>Ritual</strong>Evening</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formulation reveal">
+        <figure class="formulation__media">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(3).png" alt="Skin Mist" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Nº 03</span>
+          <h3 class="formulation__name"><em>Skin Mist</em></h3>
+          <p class="formulation__sub">Hydrate · Refresh · Balance</p>
+          <p class="formulation__desc">A weightless mist that resets the day in a single breath. Worn before, between, and after — whenever skin asks.</p>
+          <p class="formulation__desc-he" lang="he">מיסט לחות יוקרתי שמאפס את היום בנשימה אחת. ללבישה לפני, בין, ואחרי — בכל פעם שהעור מבקש.</p>
+          <div class="formulation__specs">
+            <div><strong>Volume</strong>100 mL · 3.4 fl. oz.</div>
+            <div><strong>Ritual</strong>Anytime</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formulation formulation--reverse reveal">
+        <figure class="formulation__media">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_01%20PM%20(4).png" alt="Renewal Mask" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Nº 04</span>
+          <h3 class="formulation__name"><em>Renewal Mask</em></h3>
+          <p class="formulation__sub">Exfoliate · Renew · Illuminate</p>
+          <p class="formulation__desc">A weekly ceremony. Soft enough to wear without thinking, serious enough to be felt the morning after.</p>
+          <p class="formulation__desc-he" lang="he">טקס שבועי. רך מספיק כדי ללבוש בלי לחשוב, רציני מספיק כדי שתרגישי אותו בבוקר.</p>
+          <div class="formulation__specs">
+            <div><strong>Volume</strong>75 mL · 2.5 fl. oz.</div>
+            <div><strong>Ritual</strong>Weekly</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formulation reveal">
+        <figure class="formulation__media">
+          <img src="Eye%20Elixir.png" alt="Eye Elixir" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Nº 05</span>
+          <h3 class="formulation__name"><em>Eye Elixir</em></h3>
+          <p class="formulation__sub">Smooth · Lift · Awaken</p>
+          <p class="formulation__desc">A gentle, almost-invisible treatment for the most expressive corner of the face. Worn lightly; remembered slowly.</p>
+          <p class="formulation__desc-he" lang="he">טיפול עדין, כמעט בלתי נראה, לפינה הכי מבטאת של הפנים. נלבש בקלות, נזכר לאט.</p>
+          <div class="formulation__specs">
+            <div><strong>Volume</strong>15 mL · 0.5 fl. oz.</div>
+            <div><strong>Ritual</strong>AM &amp; PM</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="formulation formulation--reverse reveal">
+        <figure class="formulation__media">
+          <img src="Clinic%20Kit.png" alt="Clinic Kit" />
+        </figure>
+        <div class="formulation__copy">
+          <span class="formulation__nº">Signature</span>
+          <h3 class="formulation__name"><em>Clinic Kit</em></h3>
+          <p class="formulation__sub">The Full Ritual</p>
+          <p class="formulation__desc">The complete six-piece library, gathered. A first chapter for skin, written all the way through.</p>
+          <p class="formulation__desc-he" lang="he">המארז המלא — שישה כלים, פרק שלם של טיפוח, מסודר מראש.</p>
+          <div class="formulation__specs">
+            <div><strong>Includes</strong>Six pieces</div>
+            <div><strong>Edition</strong>Signature</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CHAPTER IV — THE RITUAL ─────────── -->
+<section class="chapter chapter--ritual" id="chapter-iv">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">IV.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter Four</span>
+        <h2 class="chapter-title">The <em>Ritual</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — A daily, almost private ceremony
+        <span class="chapter-meta-he" lang="he">הטקס היומי</span>
+      </div>
+    </div>
+
+    <div class="ritual-spread reveal">
+      <div class="ritual-prose">
+        <p class="ritual-pull">A face is a <em>ritual</em>, not a result. AURELLE was made for the part of the day that no one watches.</p>
+        <p class="ritual-body">The morning ritual begins with mist, settles into serum, and ends with the smallest pause — long enough for skin to remember itself. The evening ritual reverses the order, but not the intention. Both move slowly because softness, fully expressed, takes only as long as it needs.</p>
+        <p class="ritual-body-he" lang="he">טקס הבוקר נפתח במיסט, מתיישב לסרום, ומסתיים בעצירה הכי קטנה — מספיק כדי שהעור יזכר את עצמו. טקס הערב הופך את הסדר, אבל לא את הכוונה. שניהם נעים לאט, כי רכות — כשהיא מובעת במלואה — לוקחת בדיוק את הזמן שהיא צריכה.</p>
+      </div>
+      <figure class="ritual-image">
+        <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_48_08%20PM%20(2).png" alt="The ritual" />
+        <figcaption>
+          <strong>Plate II</strong>The Ritual, photographed in studio. Worn lightly. Remembered slowly.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CHAPTER V — THE CODEX (DARK) ─────────── -->
+<section class="chapter chapter--codex" id="chapter-v">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">V.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter Five</span>
+        <h2 class="chapter-title">The <em>Codex</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — Behind every visible decision
+        <span class="chapter-meta-he" lang="he">ספר המותג</span>
+      </div>
+    </div>
+
+    <div class="codex-prose reveal">
+      <p>Behind every visible decision sits a strategic one. The Codex is the document that holds AURELLE in place — the colour, the type, the language, the voice. A brand can only stay itself if its rules are written down.</p>
+      <p lang="he">מאחורי כל החלטה ויזואלית — עומדת החלטה אסטרטגית. הקודקס הוא המסמך שמחזיק את AURELLE במקום: הצבע, הטיפוגרפיה, השפה, הקול. מותג נשאר עצמו רק אם החוקים שלו כתובים.</p>
+    </div>
+
+    <div class="codex-grid reveal">
+      <div class="codex-page">
+        <div class="codex-page__nº">Nº 01</div>
+        <div class="codex-page__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_22%20PM%20(1).png" alt="Color System brand book page" />
+        </div>
+        <div class="codex-page__label"><span>Color System</span><em>Plate I</em></div>
+      </div>
+      <div class="codex-page">
+        <div class="codex-page__nº">Nº 02</div>
+        <div class="codex-page__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_22%20PM%20(2).png" alt="Logo and Typography brand book page" />
+        </div>
+        <div class="codex-page__label"><span>Logo &amp; Type</span><em>Plate II</em></div>
+      </div>
+      <div class="codex-page">
+        <div class="codex-page__nº">Nº 03</div>
+        <div class="codex-page__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_23%20PM%20(3).png" alt="Brand Language page" />
+        </div>
+        <div class="codex-page__label"><span>Language</span><em>Plate III</em></div>
+      </div>
+      <div class="codex-page">
+        <div class="codex-page__nº">Nº 04</div>
+        <div class="codex-page__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_23%20PM%20(4).png" alt="Brand Voice page" />
+        </div>
+        <div class="codex-page__label"><span>Voice</span><em>Plate IV</em></div>
+      </div>
+    </div>
+
+    <p class="codex-credit reveal">A brand is the sum of its quiet decisions, written down.</p>
+  </div>
+</section>
+
+<!-- ─────────── CHAPTER VI — AUDIENCE ─────────── -->
+<section class="chapter chapter--audience" id="chapter-vi">
+  <div class="chapter__inner">
+    <div class="chapter-header reveal">
+      <div class="chapter-numeral">VI.</div>
+      <div class="chapter-title-block">
+        <span class="chapter-eyebrow">Chapter Six</span>
+        <h2 class="chapter-title">The <em>Audience</em></h2>
+      </div>
+      <div class="chapter-meta">
+        — For those who choose not to perform
+        <span class="chapter-meta-he" lang="he">הקהל</span>
+      </div>
+    </div>
+
+    <p class="audience-pull reveal">For those who choose <em>not to perform</em> — and notice everyone who does.</p>
+
+    <div class="audience-grid">
+      <div class="audience-item reveal">
+        <span class="audience-item__nº">i.</span>
+        <h4 class="audience-item__title"><em>The age</em></h4>
+        <p class="audience-item__body">Women and men, 35 to 60. Fully formed. Quietly demanding. Not interested in correcting themselves into someone else.</p>
+        <p class="audience-item__body-he" lang="he">נשים וגברים, 35–60. מגובשים. שקטים בדרישות שלהם. לא מעוניינים לתקן את עצמם להיות מישהו אחר.</p>
+      </div>
+      <div class="audience-item reveal">
+        <span class="audience-item__nº">ii.</span>
+        <h4 class="audience-item__title"><em>The mindset</em></h4>
+        <p class="audience-item__body">Readers, not viewers. People who notice details — and refuse to be turned into a trend.</p>
+        <p class="audience-item__body-he" lang="he">קוראים, לא צופים. אנשים ששמים לב לפרטים — ומסרבים להפוך לטרנד.</p>
+      </div>
+      <div class="audience-item reveal">
+        <span class="audience-item__nº">iii.</span>
+        <h4 class="audience-item__title"><em>The desire</em></h4>
+        <p class="audience-item__body">Skincare that actually works — without making them look "done." A face that arrives in a room before they do.</p>
+        <p class="audience-item__body-he" lang="he">טיפוח שעובד באמת — בלי להיראות "עשויים מדי." פנים שנכנסים לחדר לפני האדם.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CLOSING SPREAD ─────────── -->
+<section class="closing" id="closing">
+  <div class="closing__inner reveal">
+    <h2 class="closing__statement">
+      Quiet beauty.<span class="br"></span><em>Visible confidence.</em>
+    </h2>
+    <p class="closing__he" lang="he">יופי שקט. נוכחות שמרגישים.</p>
+    <div class="closing__end"><span>End of Volume I</span></div>
+    <div class="closing__mark">A</div>
+  </div>
+</section>
+
+<!-- ─────────── COLOPHON ─────────── -->
+<footer class="colophon">
+  <div class="colophon__inner">
+    <div class="colophon__top">
+      <div class="colophon__edge-l">— A Brand World</div>
+      <div class="colophon__center">
+        <div class="colophon__seal"><img src="LOGO.png" alt="AURELLE seal" /></div>
+        <div class="mark">AURELLE</div>
+        <div class="tag">Quiet beauty. <em>Visible confidence.</em></div>
+      </div>
+      <div class="colophon__edge-r">Volume <em>I</em> · MMXXVI —</div>
+    </div>
+
+    <dl class="colophon__details">
+      <div>
+        <dt>Editor &amp; Designer</dt>
+        <dd>Hagit Antebi</dd>
+      </div>
+      <div>
+        <dt>Studio</dt>
+        <dd><a href="https://hagitantebi.co.il" target="_blank" rel="noopener">Brand Worlds Studio</a></dd>
+      </div>
+      <div>
+        <dt>Issue</dt>
+        <dd>Volume I, Nº 01</dd>
+      </div>
+      <div>
+        <dt>Year</dt>
+        <dd>MMXXVI · 2026</dd>
+      </div>
+    </dl>
+
+    <div class="colophon__bottom">
+      <span>© Brand Worlds Studio · A fictional brand built as a portfolio piece.</span>
+      <span class="colophon__bottom-he" lang="he">עולם מותג שנבנה ב-Brand Worlds Studio · חגית אנטבי</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Page indicator (magazine page numbering)
+  const sections = [
+    document.getElementById('masthead'),
+    document.getElementById('plate-i'),
+    document.getElementById('cover'),
+    document.getElementById('chapter-i'),
+    document.getElementById('chapter-ii'),
+    document.getElementById('chapter-iii'),
+    document.getElementById('chapter-iv'),
+    document.getElementById('chapter-v'),
+    document.getElementById('chapter-vi'),
+    document.getElementById('closing'),
+  ].filter(Boolean);
+
+  const pageEl = document.getElementById('pageNum');
+  let ticking = false;
+
+  function updatePage() {
+    const fold = window.scrollY + window.innerHeight * 0.4;
+    let current = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= fold) current = i;
+    }
+    const num = String(current + 1).padStart(2, '0');
+    if (pageEl.textContent !== num) pageEl.textContent = num;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updatePage); ticking = true; }
+  }, { passive: true });
+  updatePage();
+</script>
+
+<style>.studio-glossary-link{display:block;text-align:center;padding:24px 0 40px;font-family:inherit;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#2F241E;opacity:0.4;text-decoration:none;transition:opacity 0.3s ease}.studio-glossary-link:hover{opacity:1}</style>
+<a href="/glossary.html" class="studio-glossary-link">Studio Glossary</a>
+
+</body>
+</html>
