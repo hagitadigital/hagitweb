@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELLE — Quiet beauty. Visible confidence.</title>
+<meta name="description" content="AURELLE — A study in skin longevity. עולם מותג מבית Brand Worlds Studio · חגית אנטבי.">
+<meta property="og:title" content="AURELLE — Quiet beauty. Visible confidence.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hagitantebi.co.il/aurelle/site.html">
+<meta property="og:description" content="AURELLE — A study in skin longevity. עולם מותג מבית Brand Worlds Studio · חגית אנטבי.">
+<meta property="og:image" content="https://hagitantebi.co.il/aurelle/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://hagitantebi.co.il/aurelle/site.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root{
+  --ivory:#F6F1E8;
+  --light:#FBF8F2;
+  --shadow:#E9DFD1;
+  --blush:#E3CDB8;
+  --sand:#D8C3A5;
+  --glow:#D2B88E;
+  --champagne:#BFA37A;
+  --soft:#49372E;
+  --espresso:#2F241E;
+  --line:rgba(47,36,30,.16);
+  --serif-en:'Cormorant Garamond',serif;
+  --serif-en-body:'EB Garamond',serif;
+  --serif-he:'Frank Ruhl Libre',serif;
+  --sans-he:'Heebo',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ivory);
+  color:var(--espresso);
+  font-family:var(--sans-he);
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:var(--serif-en);
+  font-style:italic;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:.74rem;
+  color:var(--champagne);
+  letter-spacing:.24em;
+}
+.roman{
+  font-family:var(--serif-en);
+  font-size:.85rem;
+  letter-spacing:.3em;
+  color:var(--champagne);
+}
+h1,h2,h3{font-weight:400}
+.display{
+  font-family:var(--serif-en);
+  font-weight:400;
+  line-height:1.04;
+  letter-spacing:.02em;
+}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 2.6rem;
+  transition:background .5s ease, padding .5s ease;
+  mix-blend-mode:difference;
+}
+nav.scrolled{
+  background:rgba(246,241,232,.86);
+  backdrop-filter:blur(14px);
+  mix-blend-mode:normal;
+  padding:1rem 2.6rem;
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{
+  font-family:var(--serif-en);
+  font-size:1.5rem;letter-spacing:.42em;
+  color:#fff;padding-right:.42em;
+}
+nav.scrolled .nav-logo{color:var(--espresso)}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
+.nav-links a{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:1.02rem;color:#fff;letter-spacing:.04em;
+  opacity:.9;transition:opacity .3s;
+}
+nav.scrolled .nav-links a{color:var(--espresso)}
+.nav-links a:hover{opacity:.55}
+.nav-cta{
+  font-family:var(--sans-he)!important;font-style:normal!important;
+  font-size:.82rem!important;letter-spacing:.08em;
+  border:1px solid rgba(255,255,255,.55);
+  padding:.5rem 1.2rem;border-radius:2rem;
+}
+nav.scrolled .nav-cta{border-color:var(--line)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-burger span{width:24px;height:1.5px;background:#fff;transition:.3s}
+nav.scrolled .nav-burger span{background:var(--espresso)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;height:100svh;width:100%;
+  overflow:hidden;display:flex;align-items:flex-end;
+}
+.hero video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:0;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(47,36,30,.42) 0%,rgba(47,36,30,.05) 38%,rgba(47,36,30,.12) 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;width:100%;
+  padding:0 2.6rem 5rem;
+  text-align:center;
+}
+.hero .eyebrow{color:rgba(255,255,255,.82);display:block;margin-bottom:1.4rem}
+.hero h1{
+  font-family:var(--serif-en);
+  color:#fff;
+  font-size:clamp(3.4rem,11vw,9rem);
+  letter-spacing:.16em;
+  font-weight:400;
+  padding-right:.16em;
+  line-height:1;
+}
+.hero-sub{
+  color:rgba(255,255,255,.9);
+  font-family:var(--serif-en);font-style:italic;
+  font-size:clamp(1.05rem,2.2vw,1.5rem);
+  letter-spacing:.05em;margin-top:1rem;
+}
+.hero-sub .he{
+  display:block;font-family:var(--serif-he);font-style:normal;
+  font-size:.82em;opacity:.78;margin-top:.35rem;letter-spacing:.02em;
+}
+.scroll-cue{
+  position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem;
+}
+.scroll-cue span{
+  font-family:var(--serif-en);font-style:italic;font-size:.78rem;
+  color:rgba(255,255,255,.7);letter-spacing:.1em;
+}
+.scroll-line{width:1px;height:42px;background:rgba(255,255,255,.5);position:relative;overflow:hidden}
+.scroll-line::after{content:"";position:absolute;top:-42px;left:0;width:1px;height:42px;background:#fff;animation:scrolldrop 2.4s infinite ease-in-out}
+@keyframes scrolldrop{0%{top:-42px}60%,100%{top:42px}}
+
+/* ---------- philosophy ---------- */
+.philosophy{
+  padding:9rem 2.6rem;max-width:1100px;margin:0 auto;text-align:center;
+}
+.philosophy .roman{display:block;margin-bottom:2rem}
+.philosophy h2{
+  font-family:var(--serif-en);
+  font-size:clamp(1.8rem,4.4vw,3.4rem);
+  line-height:1.22;font-weight:400;letter-spacing:.01em;
+  color:var(--soft);
+}
+.philosophy h2 em{font-style:italic;color:var(--champagne)}
+.philosophy .he-line{
+  font-family:var(--serif-he);
+  font-size:clamp(1.05rem,2vw,1.4rem);
+  color:var(--soft);opacity:.8;margin-top:1.8rem;line-height:1.7;
+  font-weight:400;
+}
+
+/* ---------- section header ---------- */
+.sec-head{
+  text-align:center;padding:0 2.6rem;margin-bottom:4rem;
+}
+.sec-head .roman{display:block;margin-bottom:1.1rem}
+.sec-head h2{
+  font-family:var(--serif-en);
+  font-size:clamp(2.2rem,5.5vw,4rem);font-weight:400;letter-spacing:.02em;
+}
+.sec-head h2 em{font-style:italic;color:var(--champagne)}
+.sec-head p{
+  font-family:var(--serif-he);color:var(--soft);opacity:.7;
+  margin-top:.8rem;font-size:1rem;
+}
+
+/* ---------- collection ---------- */
+.collection{padding:7rem 0 8rem;background:var(--light)}
+.products{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);
+  max-width:1280px;margin:0 auto;border:1px solid var(--line);
+}
+.product{
+  background:var(--light);
+  padding:3rem 2rem 2.6rem;
+  text-align:center;
+  position:relative;
+  transition:background .6s ease;
+  cursor:default;
+}
+.product:hover{background:var(--ivory)}
+.product-num{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.8rem;letter-spacing:.2em;color:var(--champagne);
+  margin-bottom:1.4rem;
+}
+.product-img{
+  height:300px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.6rem;overflow:hidden;
+}
+.product-img img{
+  max-height:100%;width:auto;object-fit:contain;
+  transition:transform .9s cubic-bezier(.16,1,.3,1);
+  filter:drop-shadow(0 18px 30px rgba(47,36,30,.10));
+}
+.product:hover .product-img img{transform:scale(1.06) translateY(-6px)}
+.product-name{
+  font-family:var(--serif-en);font-size:1.7rem;letter-spacing:.04em;
+  margin-bottom:.5rem;
+}
+.product-tag{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.92rem;color:var(--champagne);letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:.9rem;
+}
+.product-desc{
+  font-family:var(--serif-he);font-size:.92rem;color:var(--soft);
+  opacity:.78;line-height:1.65;max-width:260px;margin:0 auto;
+}
+.product-vol{
+  margin-top:1.2rem;font-family:var(--serif-en);font-size:.8rem;
+  letter-spacing:.15em;color:var(--soft);opacity:.55;
+}
+.product.signature{grid-column:span 3;background:var(--blush)}
+.product.signature:hover{background:var(--shadow)}
+.product.signature .product-img{height:260px}
+
+/* ---------- ritual ---------- */
+.ritual{
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  min-height:90vh;
+}
+.ritual-img{height:100%;min-height:90vh;overflow:hidden}
+.ritual-img img{width:100%;height:100%;object-fit:cover}
+.ritual-text{padding:5rem 6vw}
+.ritual-text .roman{display:block;margin-bottom:1.6rem}
+.ritual-text h2{
+  font-family:var(--serif-en);font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:400;line-height:1.12;margin-bottom:1.8rem;
+}
+.ritual-text h2 em{font-style:italic;color:var(--champagne)}
+.ritual-text p{
+  font-family:var(--serif-he);color:var(--soft);
+  font-size:1.05rem;line-height:1.85;margin-bottom:1.2rem;max-width:40ch;
+}
+.ritual-text .en{
+  font-family:var(--serif-en-body);font-style:italic;
+  font-size:1.05rem;color:var(--soft);opacity:.65;
+}
+
+/* ---------- campaign ---------- */
+.campaign{position:relative;height:100vh;overflow:hidden;background:var(--shadow)}
+.campaign img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+}
+.campaign-quote{
+  position:absolute;z-index:2;bottom:8vh;right:6vw;left:6vw;text-align:center;
+}
+.campaign-quote h2{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:clamp(1.6rem,4vw,3rem);color:var(--espresso);
+  font-weight:400;line-height:1.25;text-shadow:0 2px 30px rgba(246,241,232,.6);
+}
+
+/* ---------- testimonials ---------- */
+.testimonials{padding:9rem 2.6rem;background:var(--ivory);text-align:center}
+.t-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3.5rem;
+  max-width:1200px;margin:0 auto;
+}
+.t-card{padding:0 1rem}
+.t-mark{font-family:var(--serif-en);font-size:3rem;color:var(--glow);line-height:.6;margin-bottom:1rem}
+.t-quote{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:1.3rem;line-height:1.5;color:var(--soft);margin-bottom:1.6rem;
+}
+.t-quote.he{font-family:var(--serif-he);font-style:normal;font-size:1.12rem;line-height:1.7}
+.t-name{font-family:var(--serif-en);letter-spacing:.12em;font-size:.92rem;color:var(--espresso)}
+.t-meta{font-family:var(--serif-he);font-size:.82rem;color:var(--champagne);margin-top:.2rem}
+
+/* ---------- studio / agent (dark) ---------- */
+.studio{
+  background:var(--espresso);color:var(--ivory);
+  padding:8rem 2.6rem;position:relative;overflow:hidden;
+}
+.studio::before{
+  content:"";position:absolute;top:-30%;left:-10%;width:60%;height:120%;
+  background:radial-gradient(circle,rgba(191,163,122,.16),transparent 70%);
+  pointer-events:none;
+}
+.studio-inner{max-width:1000px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.studio .eyebrow{color:var(--glow)}
+.studio h2{
+  font-family:var(--serif-en);font-size:clamp(2rem,5vw,3.6rem);
+  font-weight:400;line-height:1.15;margin:1.6rem 0 1rem;
+}
+.studio h2 em{font-style:italic;color:var(--glow)}
+.studio .he-sub{
+  font-family:var(--serif-he);font-size:1.1rem;line-height:1.8;
+  color:rgba(246,241,232,.78);max-width:60ch;margin:0 auto 2.6rem;
+}
+.studio-points{
+  display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
+  margin:3rem 0 3.4rem;
+}
+.studio-point{max-width:200px}
+.studio-point .n{font-family:var(--serif-en);font-style:italic;color:var(--glow);font-size:.9rem;letter-spacing:.2em;display:block;margin-bottom:.6rem}
+.studio-point p{font-family:var(--serif-he);font-size:.95rem;color:rgba(246,241,232,.8);line-height:1.6}
+
+/* agent box */
+.agent-box{
+  background:rgba(246,241,232,.05);
+  border:1px solid rgba(191,163,122,.3);
+  border-radius:14px;
+  max-width:620px;margin:0 auto;
+  padding:2.4rem;
+  text-align:right;
+}
+.agent-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem;justify-content:flex-start}
+.agent-dot{width:9px;height:9px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.agent-title{font-family:var(--serif-he);font-size:1rem;color:var(--ivory)}
+.agent-msg{
+  background:rgba(191,163,122,.14);border-radius:12px 12px 12px 3px;
+  padding:.9rem 1.1rem;font-family:var(--sans-he);font-size:.95rem;
+  color:rgba(246,241,232,.92);line-height:1.6;margin-bottom:1.6rem;max-width:90%;
+}
+.agent-cta{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--glow);color:var(--espresso);
+  font-family:var(--sans-he);font-size:.98rem;font-weight:500;
+  padding:.85rem 2rem;border-radius:2rem;border:none;cursor:pointer;
+  transition:transform .3s,background .3s;letter-spacing:.02em;
+}
+.agent-cta:hover{transform:translateY(-2px);background:#E0C896}
+.agent-note{
+  font-family:var(--serif-he);font-size:.8rem;color:rgba(246,241,232,.5);
+  margin-top:1rem;text-align:center;
+}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--espresso);color:rgba(246,241,232,.6);
+  padding:3rem 2.6rem;text-align:center;border-top:1px solid rgba(191,163,122,.2);
+}
+footer .f-logo{font-family:var(--serif-en);font-size:1.4rem;letter-spacing:.4em;color:var(--ivory);padding-right:.4em;margin-bottom:.6rem}
+footer .f-tag{font-family:var(--serif-en);font-style:italic;font-size:.9rem;color:var(--glow);margin-bottom:1.4rem}
+footer .f-meta{font-family:var(--serif-he);font-size:.78rem;line-height:1.8}
+footer a{color:var(--glow);border-bottom:1px solid transparent;transition:border .3s}
+footer a:hover{border-color:var(--glow)}
+
+/* ---------- reveal anim ---------- */
+.reveal{opacity:0;transform:translateY(32px)}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .products{grid-template-columns:1fr 1fr}
+  .product.signature{grid-column:span 2}
+  .ritual{grid-template-columns:1fr}
+  .ritual-img{min-height:60vh}
+  .t-grid{grid-template-columns:1fr;gap:2.5rem}
+  .nav-links{
+    position:fixed;top:0;right:0;height:100vh;width:74%;
+    background:var(--ivory);flex-direction:column;justify-content:center;
+    gap:2rem;transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1);
+    box-shadow:-20px 0 60px rgba(47,36,30,.15);
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{color:var(--espresso)!important;font-size:1.4rem}
+  .nav-cta{border-color:var(--line)!important}
+  .nav-burger{display:flex;z-index:60}
+  .studio-points{gap:1.6rem}
+}
+@media(max-width:560px){
+  nav{padding:1.1rem 1.4rem}
+  .products{grid-template-columns:1fr}
+  .product.signature{grid-column:span 1}
+  .philosophy,.testimonials{padding:6rem 1.6rem}
+  .agent-box{padding:1.6rem}
+  .ritual-text{padding:4rem 1.6rem}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["WebSite","CreativeWork"],
+      "@id":"https://hagitantebi.co.il/aurelle/site.html#site",
+      "name":"AURELLE — The Live Site",
+      "description":"האתר החי של AURELLE — נכס דיגיטלי שנגזר מעולם המותג Volume I, שנבנה ב-Brand Worlds Studio · חגית אנטבי.",
+      "inLanguage":["he","en"],
+      "url":"https://hagitantebi.co.il/aurelle/site.html",
+      "image":"https://hagitantebi.co.il/aurelle/og.jpg",
+      "isPartOf":{"@id":"https://hagitantebi.co.il/aurelle/#creativework"},
+      "creator":{"@type":"Person","name":"Hagit Antebi","jobTitle":"Brand Worlds Architect","url":"https://hagitantebi.co.il"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Brand Worlds Studio","item":"https://hagitantebi.co.il/"},
+        {"@type":"ListItem","position":2,"name":"AURELLE — Volume I","item":"https://hagitantebi.co.il/aurelle/"},
+        {"@type":"ListItem","position":3,"name":"The Live Site","item":"https://hagitantebi.co.il/aurelle/site.html"}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "name":"The AURELLE Collection",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Serum No.1","category":"Radiance · Renewal"}},
+        {"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Night Cream","category":"Repair · Nourish"}},
+        {"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Skin Mist","category":"Hydrate · Refresh"}},
+        {"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Renewal Mask","category":"Exfoliate · Illuminate"}},
+        {"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Eye Elixir","category":"Smooth · Lift · Awaken"}},
+        {"@type":"ListItem","position":6,"item":{"@type":"Product","name":"The Clinic Kit","category":"The Full Ritual · Six Pieces"}}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"מה זה האתר הזה?","acceptedAnswer":{"@type":"Answer","text":"זהו האתר החי של AURELLE — נכס דיגיטלי לדוגמה שנגזר מעולם המותג AURELLE Volume I. הוא מדגים איך נראה אתר מסחרי שנבנה ישירות מהשפה, מהפלטה ומהקוד של עולם המותג."}},
+        {"@type":"Question","name":"האם אפשר לקנות את המוצרים?","acceptedAnswer":{"@type":"Answer","text":"לא. AURELLE הוא מותג בדיוני שנבנה כ-portfolio piece. האתר נועד להדגים את התוצר של תהליך בניית עולם מותג ב-Brand Worlds Studio."}},
+        {"@type":"Question","name":"מי בנה את האתר?","acceptedAnswer":{"@type":"Answer","text":"חגית אנטבי — Brand Worlds Architect ומייסדת Brand Worlds Studio. האתר, הסרטון והצילומים נבנו עם AI כחלק מעולם המותג AURELLE."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="nav-logo">AURELLE</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="nav-back">← Brand Worlds Studio</a>
+    <a href="#collection">The Collection</a>
+    <a href="#ritual">The Ritual</a>
+    <a href="#studio">The Studio</a>
+    <a href="#studio" class="nav-cta">בואו נדבר</a>
+  </div>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
+    <source src="assets/hero.webm" type="video/webm">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
+    <span class="eyebrow">A Brand World · Vol. I</span>
+    <h1>AURELLE</h1>
+    <p class="hero-sub">Quiet beauty. Visible confidence.
+      <span class="he">יופי שקט. נוכחות שמרגישים.</span>
+    </p>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <span class="roman">— Cover Story · Nº 01 —</span>
+  <h2 class="reveal">A philosophy of <em>softness</em>, worn as a face. The most modern thing a face can do, in MMXXVI, is look like <em>itself</em>.</h2>
+  <p class="he-line reveal">הדבר הכי מודרני שפנים יכולים לעשות, בשנת 2026, הוא להיראות כמו עצמם. AURELLE נולד מסירוב שקט — טיפוח שנושם, מזדקן בתנאים שלו, ומאפשר לביטחון להגיע בלי להכריז על עצמו.</p>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="sec-head">
+    <span class="roman">III · The Formulations</span>
+    <h2>The <em>Collection</em></h2>
+    <p>שישה כלים, טקס אחד</p>
+  </div>
+  <div class="products">
+
+    <div class="product reveal">
+      <div class="product-num">Nº 01</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(1).png" alt="AURELLE Serum No.1"></div>
+      <div class="product-name">Serum No.1</div>
+      <div class="product-tag">Radiance · Renewal</div>
+      <p class="product-desc">סרום פתיחה לבוקר. נבנה כדי להחזיר עור לעצמו — לא כדי להרשים.</p>
+      <div class="product-vol">30 mL · 1.0 fl. oz.</div>
+    </div>
+
+    <div class="product reveal">
+      <div class="product-num">Nº 02</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(2).png" alt="AURELLE Night Cream"></div>
+      <div class="product-name">Night Cream</div>
+      <div class="product-tag">Repair · Nourish</div>
+      <p class="product-desc">קרם לילה עשיר ועדין. העור מתאושש בדממה שלשמה הוא נוצר.</p>
+      <div class="product-vol">50 mL · 1.7 fl. oz.</div>
+    </div>
+
+    <div class="product reveal">
+      <div class="product-num">Nº 03</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_00%20PM%20(3).png" alt="AURELLE Skin Mist"></div>
+      <div class="product-name">Skin Mist</div>
+      <div class="product-tag">Hydrate · Refresh</div>
+      <p class="product-desc">מיסט לחות שמאפס את היום בנשימה אחת. לפני, בין, ואחרי.</p>
+      <div class="product-vol">100 mL · 3.4 fl. oz.</div>
+    </div>
+
+    <div class="product reveal">
+      <div class="product-num">Nº 04</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2003_44_01%20PM%20(4).png" alt="AURELLE Renewal Mask"></div>
+      <div class="product-name">Renewal Mask</div>
+      <div class="product-tag">Exfoliate · Illuminate</div>
+      <p class="product-desc">טקס שבועי. רך מספיק ללבוש בלי לחשוב, רציני מספיק כדי שתרגישי אותו בבוקר.</p>
+      <div class="product-vol">75 mL · 2.5 fl. oz.</div>
+    </div>
+
+    <div class="product reveal">
+      <div class="product-num">Nº 05</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/Eye%20Elixir.png" alt="AURELLE Eye Elixir"></div>
+      <div class="product-name">Eye Elixir</div>
+      <div class="product-tag">Smooth · Lift · Awaken</div>
+      <p class="product-desc">טיפול עדין, כמעט בלתי נראה, לפינה הכי מבטאת של הפנים.</p>
+      <div class="product-vol">15 mL · 0.5 fl. oz.</div>
+    </div>
+
+    <div class="product signature reveal">
+      <div class="product-num">Signature</div>
+      <div class="product-img"><img src="https://hagitantebi.co.il/aurelle/Clinic%20Kit.png" alt="AURELLE Clinic Kit"></div>
+      <div class="product-name">The Clinic Kit</div>
+      <div class="product-tag">The Full Ritual · Six Pieces</div>
+      <p class="product-desc">המארז המלא — שישה כלים, פרק שלם של טיפוח, מסודר מראש. פרק ראשון לעור, כתוב עד הסוף.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="ritual" id="ritual">
+  <div class="ritual-img reveal">
+    <img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2003_48_08%20PM%20(2).png" alt="The AURELLE ritual">
+  </div>
+  <div class="ritual-text">
+    <span class="roman">IV · The Ritual</span>
+    <h2 class="reveal">A face is a <em>ritual</em>,<br>not a result.</h2>
+    <p class="reveal">טקס הבוקר נפתח במיסט, מתיישב לסרום, ומסתיים בעצירה הכי קטנה — מספיק כדי שהעור יזכר את עצמו. טקס הערב הופך את הסדר, אבל לא את הכוונה.</p>
+    <p class="en reveal">Both move slowly because softness, fully expressed, takes only as long as it needs.</p>
+  </div>
+</section>
+
+<!-- CAMPAIGN -->
+<section class="campaign">
+  <img src="https://hagitantebi.co.il/aurelle/ChatGPT%20Image%20May%2010%2C%202026%2C%2002_57_42%20PM.png" alt="AURELLE campaign">
+  <div class="campaign-quote">
+    <h2>For those who choose not to perform —<br>and notice everyone who does.</h2>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="sec-head">
+    <span class="roman">VI · The Audience</span>
+    <h2>In their <em>words</em></h2>
+  </div>
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="t-mark">“</div>
+      <p class="t-quote he">העור שלי נראה כמו עצמי — רק נח יותר. בפעם הראשונה לא מרגישים שעשיתי משהו.</p>
+      <div class="t-name">MICHAL R.</div>
+      <div class="t-meta">בת 41 · תל אביב</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="t-mark">“</div>
+      <p class="t-quote">The whole ritual takes four minutes. The calm it leaves lasts the entire day.</p>
+      <div class="t-name">DANA K.</div>
+      <div class="t-meta">בת 37 · הרצליה</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="t-mark">“</div>
+      <p class="t-quote he">לא חיפשתי שלמות. חיפשתי להיראות כמוני, רק בגרסה הכי טובה. זה בדיוק מה שקיבלתי.</p>
+      <div class="t-name">YAEL S.</div>
+      <div class="t-meta">בת 49 · רמת השרון</div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO / AGENT -->
+<section class="studio" id="studio">
+  <div class="studio-inner">
+    <span class="eyebrow">Brand Worlds Studio</span>
+    <h2>האתר הזה הוא <em>Demo</em>.<br>העולם הבא יכול להיות שלך.</h2>
+    <p class="he-sub">AURELLE הוא עולם מותג שנבנה כולו ב-Brand Worlds Studio — שם, שפה, מוצרים, סרטון וחנות. זה בדיוק מה שאני בונה לקליניקות ולמותגים: לא עוד תבנית, אלא עולם שלם שמרגישים בבטן.</p>
+
+    <div class="studio-points">
+      <div class="studio-point reveal"><span class="n">I.</span><p>זהות ושפה מותגית שנבנות פעם אחת — ונשמרות אוטומטית</p></div>
+      <div class="studio-point reveal"><span class="n">II.</span><p>נכסים ויזואליים וסרטוני AI מהמוצרים שלך</p></div>
+      <div class="studio-point reveal"><span class="n">III.</span><p>אתר וסוכן חכם שעובדים בשבילך מסביב לשעון</p></div>
+    </div>
+
+    <div class="agent-box reveal">
+      <div class="agent-head">
+        <span class="agent-dot"></span>
+        <span class="agent-title">הסוכן של Brand Worlds Studio</span>
+      </div>
+      <div class="agent-msg">היי 👋 אני יכול להראות לך איך עולם מותג כמו AURELLE נבנה בדיוק לקליניקה שלך — מהשם ועד הסרטון. רוצה שנדבר?</div>
+      <div style="text-align:center">
+        <a href="https://wa.me/972528351676?text=היי%20חגית,%20ראיתי%20את%20AURELLE%20ואשמח%20לשמוע%20על%20עולם%20מותג%20לקליניקה%20שלי" class="agent-cta" target="_blank">לשיחה עם חגית →</a>
+      </div>
+      <p class="agent-note">* כאן ייטמע הסוכן החכם · בינתיים הכפתור מפנה ל-WhatsApp</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">AURELLE</div>
+  <div class="f-tag">Quiet beauty. Visible confidence.</div>
+  <div class="f-meta">
+    A Brand World by <a href="https://hagitantebi.co.il" target="_blank">Brand Worlds Studio</a> · חגית אנטבי<br>
+    Volume I · MMXXVI · עולם מותג שנבנה כ-portfolio piece<br>
+    <a href="./">The Brand Book →</a>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>window.innerHeight*0.7);
+});
+/* burger */
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+/* GSAP reveals */
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach((el,i)=>{
+  gsap.to(el,{
+    opacity:1,y:0,duration:1.1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 86%'}
+  });
+});
+/* hero text intro */
+gsap.from('.hero .eyebrow',{opacity:0,y:20,duration:1.4,delay:.3,ease:'power3.out'});
+gsap.from('.hero h1',{opacity:0,y:34,duration:1.6,delay:.5,ease:'power3.out'});
+gsap.from('.hero-sub',{opacity:0,y:20,duration:1.4,delay:.9,ease:'power3.out'});
+/* subtle parallax on campaign */
+gsap.to('.campaign img',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.campaign',start:'top bottom',end:'bottom top',scrub:true}});
+</script>
+</body>
+</html>
