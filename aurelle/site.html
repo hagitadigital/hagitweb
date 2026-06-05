@@ -195,8 +195,14 @@ nav.scrolled .nav-burger span{background:var(--espresso)}
 }
 .sec-head h2 em{font-style:italic;color:var(--champagne)}
 .sec-head p{
-  font-family:var(--serif-he);color:var(--soft);opacity:.7;
-  margin-top:.8rem;font-size:1rem;
+  font-family:var(--serif-he);color:var(--soft);opacity:.78;
+  margin-top:1.1rem;font-size:1.05rem;line-height:1.8;font-weight:400;
+  max-width:54ch;margin-left:auto;margin-right:auto;
+}
+.sec-lead-en{
+  display:block;font-family:var(--serif-en);font-style:italic;
+  color:var(--champagne);font-size:1rem;letter-spacing:.05em;
+  margin-top:1rem;opacity:.92;direction:ltr;
 }
 
 /* ---------- collection ---------- */
@@ -212,9 +218,40 @@ nav.scrolled .nav-burger span{background:var(--espresso)}
   text-align:center;
   position:relative;
   transition:background .6s ease;
-  cursor:default;
+  cursor:pointer;
 }
 .product:hover{background:var(--ivory)}
+.product-cue{
+  position:absolute;top:1.1rem;right:1.4rem;
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.72rem;letter-spacing:.16em;color:var(--champagne);
+  text-transform:uppercase;opacity:0;transform:translateY(-4px);
+  transition:opacity .45s ease,transform .45s ease;pointer-events:none;
+}
+.product:hover .product-cue{opacity:.9;transform:translateY(0)}
+@media(hover:none){
+  .product-cue{opacity:.8;transform:none}
+}
+.sec-hint{
+  margin-top:1.8rem;display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.84rem;letter-spacing:.1em;color:var(--champagne);
+}
+.sec-hint-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--glow);
+  box-shadow:0 0 0 0 rgba(210,184,142,.6);
+  animation:hintpulse 2.6s infinite ease-out;
+}
+@keyframes hintpulse{
+  0%{box-shadow:0 0 0 0 rgba(210,184,142,.55)}
+  70%{box-shadow:0 0 0 9px rgba(210,184,142,0)}
+  100%{box-shadow:0 0 0 0 rgba(210,184,142,0)}
+}
+.sec-hint-en{
+  direction:ltr;padding-right:.6rem;margin-right:.2rem;
+  border-right:1px solid var(--line);opacity:.7;
+  font-size:.8rem;letter-spacing:.04em;
+}
 .product-num{
   font-family:var(--serif-en);font-style:italic;
   font-size:.8rem;letter-spacing:.2em;color:var(--champagne);
@@ -275,17 +312,75 @@ nav.scrolled .nav-burger span{background:var(--espresso)}
 }
 
 /* ---------- campaign ---------- */
-.campaign{position:relative;height:100vh;overflow:hidden;background:var(--shadow)}
-.campaign img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+.campaign{
+  position:relative;height:90vh;min-height:560px;overflow:hidden;background:var(--espresso);
+  display:flex;align-items:center;justify-content:center;
+}
+.campaign-bg{
+  position:absolute;inset:0;z-index:0;
+  background-position:center;background-size:cover;
+  filter:blur(34px) brightness(.82);transform:scale(1.2);
+}
+.campaign img,.campaign-video{
+  position:relative;z-index:1;height:100%;width:auto;max-width:100%;
+  object-fit:contain;display:block;margin:0 auto;
+}
+.campaign::after{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(to top,rgba(47,36,30,.42),rgba(47,36,30,0) 42%);
+}
+.campaign-quote{z-index:3}
+
+/* ---------- the film ---------- */
+.film{padding:7rem 2.6rem 8rem;background:var(--ivory)}
+.film-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,300px));
+  gap:2.2rem;justify-content:center;max-width:1080px;margin:0 auto;
+}
+.film-card{cursor:pointer;margin:0}
+.film-frame{
+  position:relative;border-radius:14px;overflow:hidden;
+  aspect-ratio:9/16;background:var(--shadow);
+  box-shadow:0 18px 46px rgba(47,36,30,.14);
+  transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s ease;
+}
+.film-card:hover .film-frame{transform:translateY(-6px);box-shadow:0 26px 60px rgba(47,36,30,.2)}
+.film-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.film-card.sound .film-frame{outline:2px solid var(--glow);outline-offset:3px}
+.film-badge{
+  position:absolute;top:.7rem;right:.7rem;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(47,36,30,.45);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1rem;line-height:1;
+}
+.film-badge .i-sound{display:none}
+.film-card.sound .film-badge{background:var(--glow);color:var(--espresso)}
+.film-card.sound .film-badge .i-mute{display:none}
+.film-card.sound .film-badge .i-sound{display:inline}
+.film-card figcaption{text-align:center;margin-top:1.2rem}
+.film-name{
+  display:block;font-family:var(--serif-en);font-size:1.3rem;
+  letter-spacing:.04em;color:var(--espresso);
+}
+.film-he{
+  display:block;font-family:var(--serif-he);font-size:.9rem;
+  color:var(--soft);opacity:.74;margin-top:.25rem;
+}
+@media(max-width:820px){
+  .film-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem}
+}
+@media(max-width:560px){
+  .film{padding:5rem 1.4rem 6rem}
+  .film-grid{grid-template-columns:minmax(0,320px);}
 }
 .campaign-quote{
   position:absolute;z-index:2;bottom:8vh;right:6vw;left:6vw;text-align:center;
 }
 .campaign-quote h2{
-  font-family:var(--serif-en);font-style:italic;
-  font-size:clamp(1.6rem,4vw,3rem);color:var(--espresso);
-  font-weight:400;line-height:1.25;text-shadow:0 2px 30px rgba(246,241,232,.6);
+  font-family:var(--serif-en);font-style:italic;direction:ltr;
+  font-size:clamp(1.6rem,4vw,3rem);color:var(--ivory);
+  font-weight:400;line-height:1.25;text-shadow:0 2px 30px rgba(47,36,30,.55);
 }
 
 /* ---------- testimonials ---------- */
@@ -404,6 +499,141 @@ footer a:hover{border-color:var(--glow)}
   .agent-box{padding:1.6rem}
   .ritual-text{padding:4rem 1.6rem}
 }
+
+/* ---------- formula stage (lift-out) ---------- */
+.stage{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .6s ease;
+}
+.stage.open{opacity:1;pointer-events:auto}
+.stage-backdrop{
+  position:absolute;inset:0;
+  background:radial-gradient(120% 120% at 50% 35%,rgba(251,248,242,.86),rgba(233,223,209,.94));
+  backdrop-filter:blur(22px) saturate(1.05);
+}
+.stage-close{
+  position:absolute;top:1.6rem;left:1.8rem;z-index:6;
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(251,248,242,.5);
+  color:var(--soft);font-family:var(--serif-en);font-size:1.6rem;line-height:1;
+  cursor:pointer;transition:transform .4s ease,background .4s ease;
+  display:flex;align-items:center;justify-content:center;
+}
+.stage-close:hover{transform:rotate(90deg);background:var(--ivory)}
+.stage-frame{
+  position:relative;z-index:3;width:100%;max-width:1180px;
+  padding:3rem 2.4rem;text-align:center;
+}
+.stage-eyebrow{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--champagne);margin-bottom:2.2rem;
+  opacity:0;transform:translateY(10px);
+}
+.stage-cols{
+  display:flex;align-items:center;justify-content:center;gap:clamp(1rem,4vw,3.2rem);
+}
+.ing-col{
+  list-style:none;display:flex;flex-direction:column;gap:1.6rem;
+  flex:1 1 0;max-width:280px;
+}
+.ing-col.left{align-items:flex-end;text-align:right}
+.ing-col.right{align-items:flex-start;text-align:left}
+.chip{
+  opacity:0;
+  display:flex;flex-direction:column;gap:.18rem;
+  position:relative;max-width:230px;
+}
+.ing-col.left .chip{transform:translateX(18px)}
+.ing-col.right .chip{transform:translateX(-18px)}
+.chip-en{
+  font-family:var(--serif-en);font-size:1.18rem;letter-spacing:.05em;
+  color:var(--espresso);position:relative;
+}
+.chip-he{
+  font-family:var(--serif-he);font-size:.86rem;color:var(--soft);
+  opacity:.72;line-height:1.5;
+}
+/* connector hairline + dot */
+.ing-col.left .chip::after,
+.ing-col.right .chip::after{
+  content:"";position:absolute;top:.66em;width:clamp(20px,3vw,46px);height:1px;
+  background:linear-gradient(to var(--dir,left),var(--glow),transparent);
+}
+.ing-col.left .chip::after{right:calc(100% + 14px);--dir:left}
+.ing-col.right .chip::after{left:calc(100% + 14px);--dir:right}
+.ing-col.left .chip::before,
+.ing-col.right .chip::before{
+  content:"";position:absolute;top:calc(.66em - 2.5px);
+  width:5px;height:5px;border-radius:50%;background:var(--glow);
+}
+.ing-col.left .chip::before{right:calc(100% + 12px)}
+.ing-col.right .chip::before{left:calc(100% + 12px)}
+
+.stage-slot{
+  flex:0 0 clamp(220px,30%,360px);
+  height:clamp(280px,46vh,460px);
+  position:relative;
+}
+.slot-glow{
+  position:absolute;inset:-12% -18%;
+  background:radial-gradient(circle at 50% 46%,rgba(210,184,142,.55),rgba(210,184,142,0) 62%);
+  filter:blur(8px);opacity:0;
+}
+.slot-shadow{
+  position:absolute;bottom:5%;left:50%;transform:translateX(-50%);
+  width:58%;height:26px;border-radius:50%;
+  background:radial-gradient(circle,rgba(47,36,30,.22),transparent 70%);
+  filter:blur(6px);opacity:0;
+}
+.stage-meta{margin-top:2.6rem;opacity:0;transform:translateY(12px)}
+.stage-meta h3{
+  font-family:var(--serif-en);font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:400;letter-spacing:.04em;
+}
+.stage-tag{
+  font-family:var(--serif-en);font-style:italic;
+  font-size:.92rem;color:var(--champagne);letter-spacing:.12em;
+  text-transform:uppercase;margin:.3rem 0 .9rem;
+}
+.stage-desc{
+  font-family:var(--serif-he);font-size:1rem;color:var(--soft);
+  opacity:.82;line-height:1.7;max-width:42ch;margin:0 auto;
+}
+.stage-vol{
+  margin-top:1rem;font-family:var(--serif-en);font-size:.8rem;
+  letter-spacing:.15em;color:var(--soft);opacity:.5;
+}
+.stage-note{
+  margin-top:2.4rem;font-family:var(--serif-he);font-size:.76rem;
+  color:var(--soft);opacity:.45;
+}
+/* the flying product clone */
+.flier{
+  position:fixed;z-index:205;pointer-events:none;
+  will-change:transform;transform-origin:center center;
+}
+.flier-float{width:100%;height:100%;will-change:transform}
+.flier img{
+  width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 30px 50px rgba(47,36,30,.22));
+}
+body.stage-locked{overflow:hidden}
+
+@media(max-width:820px){
+  .stage-frame{padding:2rem 1.2rem}
+  .stage-cols{flex-direction:column;gap:1.4rem}
+  .stage-slot{height:clamp(240px,40vh,360px);flex-basis:auto;width:74%}
+  .ing-col{flex-direction:row;flex-wrap:wrap;justify-content:center;max-width:100%;gap:.6rem 1.4rem}
+  .ing-col.left,.ing-col.right{align-items:center;text-align:center;order:3}
+  .ing-col .chip{transform:none!important;align-items:center;max-width:46%}
+  .ing-col .chip::after,.ing-col .chip::before{display:none}
+  .chip-en{font-size:1.02rem}
+  .stage-eyebrow{margin-bottom:1.2rem}
+  .stage-meta{margin-top:1.6rem}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -448,6 +678,36 @@ footer a:hover{border-color:var(--glow)}
         {"@type":"Question","name":"האם אפשר לקנות את המוצרים?","acceptedAnswer":{"@type":"Answer","text":"לא. AURELLE הוא מותג בדיוני שנבנה כ-portfolio piece. האתר נועד להדגים את התוצר של תהליך בניית עולם מותג ב-Brand Worlds Studio."}},
         {"@type":"Question","name":"מי בנה את האתר?","acceptedAnswer":{"@type":"Answer","text":"חגית אנטבי — Brand Worlds Architect ומייסדת Brand Worlds Studio. האתר, הסרטון והצילומים נבנו עם AI כחלק מעולם המותג AURELLE."}}
       ]
+    },
+    {
+      "@type":"VideoObject",
+      "name":"AURELLE — The Morning Glow",
+      "description":"רגע מתוך קמפיין AURELLE: טקס הבוקר — מריחת הקרם ועור רענן וזוהר. נוצר ב-AI כחלק מעולם המותג.",
+      "thumbnailUrl":"https://hagitantebi.co.il/aurelle/assets/film/glow-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/aurelle/assets/film/glow.mp4",
+      "uploadDate":"2026-06-05",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"AURELLE — The Serum",
+      "description":"רגע מתוך קמפיין AURELLE: סרטון UGC על סרום הבוקר — טיפה אחת והעור נראה כמו עצמו. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/aurelle/assets/film/serum-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/aurelle/assets/film/serum.mp4",
+      "uploadDate":"2026-06-05",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"AURELLE — The Collection",
+      "description":"רגע מתוך קמפיין AURELLE: תצוגת הקולקציה — סרום, קרם לילה ומיסט באור רך. נוצר ב-AI כחלק מעולם המותג.",
+      "thumbnailUrl":"https://hagitantebi.co.il/aurelle/assets/film/collection-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/aurelle/assets/film/collection.mp4",
+      "uploadDate":"2026-06-05",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
     }
   ]
 }
@@ -462,6 +722,7 @@ footer a:hover{border-color:var(--glow)}
     <a href="/" class="nav-back">← Brand Worlds Studio</a>
     <a href="#collection">The Collection</a>
     <a href="#ritual">The Ritual</a>
+    <a href="#film">The Film</a>
     <a href="#studio">The Studio</a>
     <a href="#studio" class="nav-cta">בואו נדבר</a>
   </div>
@@ -499,7 +760,9 @@ footer a:hover{border-color:var(--glow)}
   <div class="sec-head">
     <span class="roman">III · The Formulations</span>
     <h2>The <em>Collection</em></h2>
-    <p>שישה כלים, טקס אחד</p>
+    <p class="sec-lead">כל מה שהעור שלכן צריך לשגרה אחת, מדויקת — ולא טיפה יותר. כל המוצרים מיוצרים מחומרים טבעיים בלבד, ומחזירים לפנים מראה קליל, רענן וטבעי. בדיוק מה שהעור צריך — בלי להכריז על כלום.
+      <span class="sec-lead-en">Made entirely of nature. Worn entirely as yourself.</span></p>
+    <div class="sec-hint"><span class="sec-hint-dot"></span>לחצו על כל מוצר כדי לגלות את הנוסחה<span class="sec-hint-en">Tap any product to reveal its formula</span></div>
   </div>
   <div class="products">
 
@@ -574,9 +837,46 @@ footer a:hover{border-color:var(--glow)}
 
 <!-- CAMPAIGN -->
 <section class="campaign">
-  <img src="site-display.jpeg" alt="AURELLE at the counter — boutique campaign">
+  <div class="campaign-bg" style="background-image:url(assets/film/glow-poster.jpg)"></div>
+  <video class="campaign-video" autoplay muted loop playsinline preload="metadata" poster="assets/film/glow-poster.jpg">
+    <source src="assets/film/glow-bg.mp4" type="video/mp4">
+  </video>
   <div class="campaign-quote">
     <h2>For those who choose not to perform —<br>and notice everyone who does.</h2>
+  </div>
+</section>
+
+<!-- THE FILM -->
+<section class="film" id="film">
+  <div class="sec-head">
+    <span class="roman">V · The Film</span>
+    <h2>The <em>Campaign</em></h2>
+    <p class="sec-lead">שלושה רגעים מתוך עולם AURELLE — הטקס, הקולקציה, והסרום. כל פריים נוצר ב-AI כחלק מעולם המותג.
+      <span class="sec-lead-en">Three moments from the world of AURELLE.</span></p>
+    <div class="sec-hint"><span class="sec-hint-dot"></span>לחצו על סרטון כדי לשמוע<span class="sec-hint-en">Tap a film to hear it</span></div>
+  </div>
+  <div class="film-grid">
+    <figure class="film-card reveal">
+      <div class="film-frame">
+        <video src="assets/film/glow.mp4" muted loop playsinline preload="none" poster="assets/film/glow-poster.jpg"></video>
+        <span class="film-badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-name">The Morning Glow</span><span class="film-he">טקס הבוקר · רעננה בלי מאמץ</span></figcaption>
+    </figure>
+    <figure class="film-card reveal">
+      <div class="film-frame">
+        <video src="assets/film/serum.mp4" muted loop playsinline preload="none" poster="assets/film/serum-poster.jpg"></video>
+        <span class="film-badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-name">The Serum</span><span class="film-he">טיפה אחת — והעור נראה כמו עצמו</span></figcaption>
+    </figure>
+    <figure class="film-card reveal">
+      <div class="film-frame">
+        <video src="assets/film/collection.mp4" muted loop playsinline preload="none" poster="assets/film/collection-poster.jpg"></video>
+        <span class="film-badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-name">The Collection</span><span class="film-he">ששת הכלים, טקס אחד</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -646,6 +946,30 @@ footer a:hover{border-color:var(--glow)}
   </div>
 </footer>
 
+<!-- FORMULA STAGE (lift-out reveal) -->
+<div class="stage" id="stage" aria-hidden="true" role="dialog" aria-modal="true" aria-label="נוסחת המוצר">
+  <div class="stage-backdrop" id="stageBackdrop"></div>
+  <button class="stage-close" id="stageClose" aria-label="סגירה">&times;</button>
+  <div class="stage-frame">
+    <div class="stage-eyebrow" id="stageEyebrow"></div>
+    <div class="stage-cols">
+      <ul class="ing-col left" id="ingLeft"></ul>
+      <div class="stage-slot" id="stageSlot">
+        <div class="slot-glow"></div>
+        <div class="slot-shadow"></div>
+      </div>
+      <ul class="ing-col right" id="ingRight"></ul>
+    </div>
+    <div class="stage-meta">
+      <h3 id="stageName"></h3>
+      <div class="stage-tag" id="stageTag"></div>
+      <p class="stage-desc" id="stageDesc"></p>
+      <div class="stage-vol" id="stageVol"></div>
+    </div>
+    <p class="stage-note">הדגמת חוויה — AURELLE הוא עולם מותג שנבנה כ-portfolio piece</p>
+  </div>
+</div>
+
 <script>
 /* nav scroll state */
 const nav=document.getElementById('nav');
@@ -670,7 +994,197 @@ gsap.from('.hero .eyebrow',{opacity:0,y:20,duration:1.4,delay:.3,ease:'power3.ou
 gsap.from('.hero h1',{opacity:0,y:34,duration:1.6,delay:.5,ease:'power3.out'});
 gsap.from('.hero-sub',{opacity:0,y:20,duration:1.4,delay:.9,ease:'power3.out'});
 /* subtle parallax on campaign */
-gsap.to('.campaign img',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.campaign',start:'top bottom',end:'bottom top',scrub:true}});
+gsap.to('.campaign-bg',{yPercent:8,ease:'none',scrollTrigger:{trigger:'.campaign',start:'top bottom',end:'bottom top',scrub:true}});
+
+/* ---------- the film: autoplay-in-view + tap for sound ---------- */
+const filmCards=document.querySelectorAll('.film-card');
+const filmVideos=[...filmCards].map(c=>c.querySelector('video'));
+// lazy autoplay muted when in view
+const filmIO=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){ if(v.muted){ v.play().catch(()=>{}); } }
+    else{ v.pause(); }
+  });
+},{threshold:.4});
+filmVideos.forEach(v=>filmIO.observe(v));
+// tap a card → unmute it, mute & restart the others
+filmCards.forEach(card=>{
+  const v=card.querySelector('video');
+  card.addEventListener('click',()=>{
+    const willUnmute=v.muted;
+    filmCards.forEach(c=>{
+      const ov=c.querySelector('video');
+      ov.muted=true;c.classList.remove('sound');
+    });
+    if(willUnmute){
+      v.muted=false;v.currentTime=0;v.play().catch(()=>{});
+      card.classList.add('sound');
+    }
+  });
+});
+// pause sound video if it scrolls away, reset to muted
+const soundIO=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting){
+      const c=e.target;const v=c.querySelector('video');
+      if(c.classList.contains('sound')){v.muted=true;c.classList.remove('sound');}
+    }
+  });
+},{threshold:.25});
+filmCards.forEach(c=>soundIO.observe(c));
+
+/* ===================== FORMULA STAGE — lift-out reveal ===================== */
+const FORMULAS=[
+  {eyebrow:'Nº 01 · The Formula',ing:[
+    {en:'Bakuchiol',he:'רטינול צמחי — בלי הגירוי'},
+    {en:'Niacinamide',he:'מאזן ומבהיר את הטון'},
+    {en:'Vitamin C°',he:'זוהר שמתעורר עם הבוקר'},
+    {en:'Hyaluronic',he:'לחות שננעלת בעור'}
+  ]},
+  {eyebrow:'Nº 02 · The Formula',ing:[
+    {en:'Peptide Complex',he:'מאותת לעור להתחדש בלילה'},
+    {en:'Squalane',he:'חוסם לחות, נטול כובד'},
+    {en:'Ceramides',he:'משקם את מחסום העור'},
+    {en:'Shea Butter',he:'הזנה עמוקה, מרקם משיי'}
+  ]},
+  {eyebrow:'Nº 03 · The Formula',ing:[
+    {en:'Rose Water',he:'מרגיע ומאזן בנשימה אחת'},
+    {en:'Panthenol',he:'B5 — לחות שמנחמת'},
+    {en:'Aloe',he:'קרירות שמאפסת את היום'},
+    {en:'Glycerin',he:'מושך לחות אל העור'}
+  ]},
+  {eyebrow:'Nº 04 · The Formula',ing:[
+    {en:'PHA',he:'פילינג עדין, בלי שריטות'},
+    {en:'Kaolin',he:'מזקק נקבוביות בעדינות'},
+    {en:'Papaya Enzyme',he:'ממיס תאים עייפים'},
+    {en:'Raw Honey',he:'מרגיע ומלחלח בו-זמנית'}
+  ]},
+  {eyebrow:'Nº 05 · The Formula',ing:[
+    {en:'Caffeine',he:'מעיר ומפחית נפיחות'},
+    {en:'Peptides',he:'ממצק את הקו העדין'},
+    {en:'Vitamin K',he:'מבהיר צללים'},
+    {en:'Hyaluronic',he:'לחות לאזור היבש'}
+  ]},
+  {eyebrow:'Signature · The Ritual',ing:[
+    {en:'Serum No.1',he:'הזוהר של הבוקר'},
+    {en:'Night Cream',he:'השיקום של הלילה'},
+    {en:'Skin Mist',he:'הלחות שבאמצע'},
+    {en:'Renewal Mask',he:'הטקס השבועי'},
+    {en:'Eye Elixir',he:'הפינה העדינה'}
+  ]}
+];
+
+const stage=document.getElementById('stage');
+const stageBackdrop=document.getElementById('stageBackdrop');
+const stageClose=document.getElementById('stageClose');
+const stageSlot=document.getElementById('stageSlot');
+const slotGlow=stage.querySelector('.slot-glow');
+const slotShadow=stage.querySelector('.slot-shadow');
+const ingLeft=document.getElementById('ingLeft');
+const ingRight=document.getElementById('ingRight');
+const stageEyebrow=document.getElementById('stageEyebrow');
+const stageName=document.getElementById('stageName');
+const stageTag=document.getElementById('stageTag');
+const stageDesc=document.getElementById('stageDesc');
+const stageVol=document.getElementById('stageVol');
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let flier=null,floatTween=null,sourceImg=null,isOpen=false;
+
+const products=document.querySelectorAll('.product');
+products.forEach((p,i)=>{
+  const cue=document.createElement('span');
+  cue.className='product-cue';
+  cue.textContent='Formula ↗';
+  p.appendChild(cue);
+  p.addEventListener('click',()=>openStage(i,p));
+});
+
+function buildChips(list){
+  ingLeft.innerHTML='';ingRight.innerHTML='';
+  const half=Math.ceil(list.length/2);
+  list.forEach((ing,idx)=>{
+    const li=document.createElement('li');
+    li.className='chip';
+    li.innerHTML='<span class="chip-en">'+ing.en+'</span><span class="chip-he">'+ing.he+'</span>';
+    (idx<half?ingLeft:ingRight).appendChild(li);
+  });
+}
+
+function openStage(i,card){
+  if(isOpen)return;
+  isOpen=true;
+  const data=FORMULAS[i];
+  sourceImg=card.querySelector('.product-img img');
+  // meta pulled live from the card
+  stageEyebrow.textContent=data.eyebrow;
+  stageName.textContent=card.querySelector('.product-name').textContent;
+  stageTag.textContent=card.querySelector('.product-tag').textContent;
+  const d=card.querySelector('.product-desc');stageDesc.textContent=d?d.textContent:'';
+  const v=card.querySelector('.product-vol');stageVol.textContent=v?v.textContent:'';
+  buildChips(data.ing);
+
+  document.body.classList.add('stage-locked');
+  stage.classList.add('open');
+  stage.setAttribute('aria-hidden','false');
+
+  // build flier from the source image's exact on-screen rect
+  const sr=sourceImg.getBoundingClientRect();
+  flier=document.createElement('div');
+  flier.className='flier';
+  flier.style.cssText='top:'+sr.top+'px;left:'+sr.left+'px;width:'+sr.width+'px;height:'+sr.height+'px;';
+  const fw=document.createElement('div');fw.className='flier-float';
+  const im=document.createElement('img');im.src=sourceImg.currentSrc||sourceImg.src;im.alt='';
+  fw.appendChild(im);flier.appendChild(fw);document.body.appendChild(flier);
+  sourceImg.style.opacity='0';
+
+  // target = centre of the reserved slot, fit by height
+  const tr=stageSlot.getBoundingClientRect();
+  const targetH=tr.height*0.9;
+  const scale=targetH/sr.height;
+  const dx=(tr.left+tr.width/2)-(sr.left+sr.width/2);
+  const dy=(tr.top+tr.height/2)-(sr.top+sr.height/2);
+
+  gsap.to(flier,{x:dx,y:dy,scale:scale,duration:reduceMotion?0:1.05,ease:'power3.inOut',
+    onComplete:startFloat});
+  gsap.to(slotGlow,{opacity:1,duration:1.2,delay:.25,ease:'power2.out'});
+  gsap.to(slotShadow,{opacity:1,duration:1.2,delay:.4,ease:'power2.out'});
+  gsap.to([stageEyebrow,'.stage-meta'],{opacity:1,y:0,duration:1,delay:.35,ease:'power3.out'});
+  gsap.to('.chip',{opacity:1,x:0,duration:.9,delay:.55,stagger:.09,ease:'power3.out'});
+}
+
+function startFloat(){
+  if(reduceMotion)return;
+  const fw=flier.querySelector('.flier-float');
+  floatTween=gsap.timeline({repeat:-1,yoyo:true})
+    .to(fw,{y:-12,rotation:0.6,duration:3.2,ease:'sine.inOut'})
+    .to(fw,{y:0,rotation:-0.6,duration:3.2,ease:'sine.inOut'});
+  gsap.to(slotGlow,{opacity:.7,scale:1.06,duration:4,repeat:-1,yoyo:true,ease:'sine.inOut'});
+}
+
+function closeStage(){
+  if(!isOpen||!flier)return;
+  isOpen=false;
+  if(floatTween)floatTween.kill();
+  gsap.killTweensOf(slotGlow);
+  const fw=flier.querySelector('.flier-float');
+  gsap.to('.chip',{opacity:0,duration:.3});
+  gsap.to([stageEyebrow,'.stage-meta',slotGlow,slotShadow],{opacity:0,duration:.4});
+  gsap.set(fw,{y:0,rotation:0});
+  gsap.to(flier,{x:0,y:0,scale:1,duration:reduceMotion?0:.8,ease:'power3.inOut',
+    onComplete:()=>{
+      if(sourceImg)sourceImg.style.opacity='';
+      if(flier){flier.remove();flier=null;}
+      stage.classList.remove('open');
+      stage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('stage-locked');
+    }});
+}
+
+stageClose.addEventListener('click',closeStage);
+stageBackdrop.addEventListener('click',closeStage);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeStage();});
 </script>
 </body>
 </html>
