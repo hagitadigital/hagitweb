@@ -1,2556 +1,745 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SOLARA WILD — Capsule 01 · Sun on your skin. Wild in your soul.</title>
-<meta name="description" content="SOLARA WILD — A resort capsule. A brand world by Brand Worlds Studio." />
-<link rel="canonical" href="https://hagitantebi.co.il/solara-wild/" />
-<meta property="og:url" content="https://hagitantebi.co.il/solara-wild/" />
-<meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLARA WILD — Sun on your skin. Wild in your soul.</title>
+<meta name="description" content="SOLARA WILD — עולם מותג ריזורט בשישה אקטים. אתר חי שנבנה מקצה לקצה ב-Brand Worlds Studio · חגית אנטבי, עם Claude Code.">
+<meta property="og:title" content="SOLARA WILD — Sun on your skin. Wild in your soul.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hagitantebi.co.il/solara-wild/">
+<meta property="og:description" content="SOLARA WILD — עולם מותג ריזורט בשישה אקטים. אתר חי מבית Brand Worlds Studio · חגית אנטבי.">
+<meta property="og:image" content="https://hagitantebi.co.il/solara-wild/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://hagitantebi.co.il/solara-wild/">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Montserrat:wght@200;300;400;500;600;700&family=Assistant:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <style>
-/* ─────────────────────────────────────────────
-   SOLARA WILD — Capsule 01
-   A boutique resort, framed as a six-act brochure
-   ───────────────────────────────────────────── */
-
-:root {
-  --solar:        #FF6B1A;
-  --coral:        #FF3F6C;
-  --teal:         #00A6A6;
-  --cocoa:        #2A1712;
-
-  --peach:        #FF9A5C;
-  --coral-glow:   #FF6F8E;
-  --deep-lagoon:  #007C7C;
-  --warm-cocoa:   #4A2A21;
-  --sand:         #F4C28B;
-
-  --sand-light:   #FAEFE0;
-  --sand-warm:    #FDF6E8;
-  --sand-deep:    #EFD8B6;
-
-  --hairline:     rgba(42, 23, 18, 0.18);
-  --hairline-soft: rgba(42, 23, 18, 0.10);
-  --hairline-dark: rgba(250, 239, 224, 0.18);
-
-  --display:  'Playfair Display', 'Cormorant Garamond', serif;
-  --sans:     'Montserrat', system-ui, sans-serif;
-  --hebrew:   'Assistant', 'Heebo', system-ui, sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-
-body {
-  background: var(--sand-light);
-  color: var(--cocoa);
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  position: relative;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255, 107, 26, 0.04) 0, transparent 35%),
-    radial-gradient(circle at 80% 70%, rgba(0, 166, 166, 0.04) 0, transparent 35%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: cover, cover, 220px 220px;
-  mix-blend-mode: multiply;
-}
-
-[lang="he"] {
-  font-family: var(--hebrew);
-  direction: rtl;
-}
-
-/* ─────────────────────────────────────────────
-   BACK TO STUDIO — fixed top-left
-   ───────────────────────────────────────────── */
-.back-link {
-  position: fixed;
-  top: 1.5rem;
-  left: 2rem;
-  z-index: 95;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--sand-warm);
-  text-decoration: none;
-  background: rgba(42, 23, 18, 0.78);
-  padding: 0.55rem 1rem;
-  border: 1px solid rgba(255, 154, 92, 0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.back-link:hover {
-  color: var(--solar);
-  border-color: var(--solar);
-}
-.back-link__arr {
-  font-size: 1rem;
-  line-height: 1;
-  transition: transform 0.4s;
-}
-.back-link:hover .back-link__arr { transform: translateX(-3px); }
-
-/* ─────────────────────────────────────────────
-   PAGE INDICATOR
-   ───────────────────────────────────────────── */
-.page-indicator {
-  position: fixed;
-  top: 1.5rem;
-  right: 2rem;
-  z-index: 90;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--warm-cocoa);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-.page-indicator em {
-  font-family: var(--display);
-  font-style: italic;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--solar);
-  font-weight: 600;
-}
-
-/* ─────────────────────────────────────────────
-   CONCEPT BAND + UTILITY BAR
-   SOLAR ORANGE concept band — bold tropical pop
-   ───────────────────────────────────────────── */
-.concept-band {
-  background: var(--solar);
-  color: var(--cocoa);
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.62rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0.55rem 2rem;
-  position: relative;
-  z-index: 11;
-  transform: translateY(-100%);
-  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.concept-band em {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  color: var(--cocoa);
-  margin: 0 0.4rem;
-  font-weight: 700;
-}
-.concept-band .dot { color: var(--cocoa); margin: 0 0.6rem; opacity: 0.6; }
-
-.utility-bar {
-  background: var(--cocoa);
-  color: var(--sand-warm);
-  border-bottom: 1px solid var(--hairline-dark);
-  padding: 0.85rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 10;
-  transform: translateY(-100%);
-  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-}
-.utility-bar > div { flex: 1; }
-.utility-bar > div:nth-child(2) { text-align: center; }
-.utility-bar > div:nth-child(3) { text-align: right; }
-.utility-bar em {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  color: var(--solar);
-  font-weight: 500;
-}
-
-@keyframes slideDown { to { transform: translateY(0); } }
-
-/* ─────────────────────────────────────────────
-   MASTHEAD — DARK COCOA with SUN GLOW
-   ───────────────────────────────────────────── */
-.masthead {
-  background: var(--cocoa);
-  color: var(--sand-warm);
-  min-height: calc(100vh - 60px);
-  padding: 5rem 2rem 4rem;
-  position: relative;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* The sun — radial gradient, pulsing */
-.sun-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90vmin;
-  height: 90vmin;
-  max-width: 1100px;
-  max-height: 1100px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center,
-      rgba(255, 154, 92, 0.45) 0%,
-      rgba(255, 107, 26, 0.35) 18%,
-      rgba(255, 63, 108, 0.18) 38%,
-      transparent 65%);
-  filter: blur(40px);
-  z-index: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0);
-  animation: sunRise 2.4s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             sunPulse 7s 2.8s ease-in-out infinite;
-}
-@keyframes sunRise {
-  0%   { transform: translate(-50%, 30%) scale(0.4); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-@keyframes sunPulse {
-  0%, 100% { filter: blur(40px); opacity: 0.95; }
-  50%      { filter: blur(50px); opacity: 1; }
-}
-
-/* secondary sun — subtle teal lagoon glow at bottom */
-.lagoon-glow {
-  position: absolute;
-  bottom: -20%;
-  left: 50%;
-  width: 120vmin;
-  height: 50vmin;
-  background: radial-gradient(ellipse at center,
-    rgba(0, 166, 166, 0.18) 0%,
-    transparent 70%);
-  filter: blur(60px);
-  z-index: 0;
-  pointer-events: none;
-  transform: translateX(-50%);
-  opacity: 0;
-  animation: fadeIn 2s 1s forwards;
-}
-@keyframes fadeIn { to { opacity: 1; } }
-
-.masthead__inner {
-  max-width: 1480px;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.masthead__top {
-  margin-bottom: 1.2rem;
-  opacity: 0;
-  animation: softUp 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.masthead__top .meta {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--peach);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-.masthead__top .meta::before,
-.masthead__top .meta::after {
-  content: "·";
-  color: var(--hairline-dark);
-  margin: 0 0.8rem;
-  font-style: normal;
-}
-
-@keyframes softUp {
-  0%   { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* SOLARA wordmark — bold, hot, sun-glow */
-.wordmark {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(4.5rem, 16vw, 14rem);
-  line-height: 0.9;
-  letter-spacing: 0.06em;
-  color: var(--solar);
-  display: block;
-  padding: 0.5rem 0;
-  text-shadow: 0 0 60px rgba(255, 107, 26, 0.35);
-  text-indent: 0.06em;
-}
-.wordmark .l {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(14px) hue-rotate(-30deg) saturate(0.4);
-  transform: translateY(0.35em) scale(1.08);
-  animation: heatReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: filter, opacity, transform;
-}
-.wordmark .l:nth-child(1) { animation-delay: 0.85s; }
-.wordmark .l:nth-child(2) { animation-delay: 0.95s; }
-.wordmark .l:nth-child(3) { animation-delay: 1.05s; }
-.wordmark .l:nth-child(4) { animation-delay: 1.15s; }
-.wordmark .l:nth-child(5) { animation-delay: 1.25s; }
-.wordmark .l:nth-child(6) { animation-delay: 1.35s; }
-
-@keyframes heatReveal {
-  0% {
-    opacity: 0;
-    filter: blur(14px) hue-rotate(-30deg) saturate(0.4);
-    transform: translateY(0.35em) scale(1.08);
-  }
-  60% {
-    opacity: 1;
-    filter: blur(2px) hue-rotate(0deg) saturate(1);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0) hue-rotate(0deg) saturate(1);
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* "wild." — sensual italic in coral */
-.wildmark {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(2rem, 6vw, 5rem);
-  color: var(--coral);
-  letter-spacing: 0.005em;
-  margin-top: -0.4em;
-  display: inline-block;
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px) rotate(-1deg);
-  animation: softUp 1.4s 1.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  text-shadow: 0 0 40px rgba(255, 63, 108, 0.4);
-}
-.wildmark::after {
-  content: ".";
-  color: var(--peach);
-}
-
-/* Sun symbol as separator */
-.sun-symbol {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin: 0 1rem;
-  vertical-align: middle;
-  position: relative;
-  opacity: 0;
-  animation: softUp 1s 2.0s forwards;
-}
-.sun-symbol::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  background: var(--solar);
-  box-shadow: 0 0 12px rgba(255, 107, 26, 0.5);
-}
-.sun-symbol::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    conic-gradient(from 0deg,
-      var(--solar) 0deg, transparent 18deg,
-      var(--solar) 45deg, transparent 63deg,
-      var(--solar) 90deg, transparent 108deg,
-      var(--solar) 135deg, transparent 153deg,
-      var(--solar) 180deg, transparent 198deg,
-      var(--solar) 225deg, transparent 243deg,
-      var(--solar) 270deg, transparent 288deg,
-      var(--solar) 315deg, transparent 333deg);
-  -webkit-mask: radial-gradient(circle, transparent 6px, #000 6px, #000 11px, transparent 11px);
-          mask: radial-gradient(circle, transparent 6px, #000 6px, #000 11px, transparent 11px);
-  animation: sunSpin 24s linear infinite;
-}
-@keyframes sunSpin {
-  to { transform: rotate(360deg); }
-}
-
-.tagline-row {
-  text-align: center;
-  margin-top: 2.5rem;
-  opacity: 0;
-  animation: softUp 1.4s 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  position: relative;
-  z-index: 2;
-}
-
-.tagline {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
-  color: var(--sand-warm);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.005em;
-}
-.tagline em {
-  color: var(--coral);
-  font-style: italic;
-}
-.tagline-he {
-  font-family: var(--hebrew);
-  font-weight: 300;
-  direction: rtl;
-  font-size: 1.05rem;
-  color: var(--sand-deep);
-  letter-spacing: 0.02em;
-}
-
-.masthead__rule {
-  border: 0;
-  height: 1px;
-  background: var(--hairline-dark);
-  margin: 4rem auto 0;
-  max-width: 1480px;
-  position: relative;
-  z-index: 2;
-  transform: scaleX(0);
-  transform-origin: center;
-  animation: ruleDraw 1.6s 2.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-.masthead__rule::after {
-  content: "S";
-  position: absolute;
-  top: -0.7rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--cocoa);
-  padding: 0 1.5rem;
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.3rem;
-  font-style: italic;
-  color: var(--solar);
-  letter-spacing: 0.05em;
-  opacity: 0;
-  animation: fadeIn 1s 3.7s forwards;
-}
-@keyframes ruleDraw { to { transform: scaleX(1); } }
-
-/* ─────────────────────────────────────────────
-   SUNSET BAND — signature divider (the marquee replacement)
-   ───────────────────────────────────────────── */
-.sunset-band {
-  display: grid;
-  grid-template-columns: 4fr 2fr 3fr 1fr 2fr 1fr;
-  height: 14px;
-  position: relative;
-  z-index: 5;
-}
-.sunset-band > div { position: relative; }
-.sunset-band--top { margin-top: 0; }
-.sunset-band--gap { margin: 6rem 0 0; }
-
-/* ─────────────────────────────────────────────
-   PLATE I — landscape hero (heat-haze reveal)
-   ───────────────────────────────────────────── */
-.plate {
-  padding: 6rem 2rem 2rem;
-  position: relative;
-  z-index: 5;
-}
-.plate__inner {
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.plate__caption-row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: end;
-  margin-bottom: 1.8rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--hairline);
-}
-.plate__nº {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.4rem;
-  font-style: italic;
-  color: var(--solar);
-  letter-spacing: 0.02em;
-}
-.plate__title {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--cocoa);
-  letter-spacing: 0.02em;
-  text-align: center;
-}
-.plate__title em {
-  font-style: italic;
-  color: var(--solar);
-}
-.plate__source {
-  text-align: right;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--warm-cocoa);
-}
-
-.plate__frame {
-  position: relative;
-  overflow: hidden;
-  background: var(--sand-deep);
-}
-.plate__image {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  transform: scale(1.12);
-  filter: blur(20px) brightness(1.2) saturate(0.5);
-  animation: heatHaze 2.4s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             kenBurns 8s 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: filter, transform;
-}
-@keyframes heatHaze {
-  0%   { filter: blur(20px) brightness(1.2) saturate(0.5); transform: scale(1.12); }
-  60%  { filter: blur(4px) brightness(1.05) saturate(0.85); }
-  100% { filter: blur(0) brightness(1) saturate(1); transform: scale(1.05); }
-}
-@keyframes kenBurns {
-  to { transform: scale(1); }
-}
-
-/* sun flare across the image */
-.plate__frame::after {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -30%;
-  width: 60%;
-  height: 140%;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(255, 154, 92, 0.0) 30%,
-    rgba(255, 154, 92, 0.5) 50%,
-    rgba(255, 154, 92, 0.0) 70%,
-    transparent 100%);
-  filter: blur(20px);
-  z-index: 3;
-  pointer-events: none;
-  animation: sunFlare 2.8s 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-@keyframes sunFlare {
-  0%   { transform: translateX(0%); opacity: 0; }
-  20%  { opacity: 0.8; }
-  100% { transform: translateX(280%); opacity: 0; }
-}
-
-.plate__caption-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.95rem;
-  color: var(--warm-cocoa);
-  opacity: 0;
-  animation: softUp 1s 4.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.plate__caption-bottom strong {
-  display: block;
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--solar);
-  margin-bottom: 0.4rem;
-}
-.plate__caption-bottom .he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 0.95rem;
-  text-align: right;
-  color: var(--warm-cocoa);
-}
-
-/* ─────────────────────────────────────────────
-   COVER
-   ───────────────────────────────────────────── */
-.cover {
-  padding: 5rem 2rem 0;
-  position: relative;
-  z-index: 5;
-}
-.cover__grid {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 3rem;
-  align-items: center;
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.cover__copy { padding-right: 1rem; }
-.cover__nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--solar);
-  letter-spacing: 0.02em;
-  margin-bottom: 1.5rem;
-  display: block;
-  font-weight: 600;
-}
-.cover__title {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(2.5rem, 5vw, 4.6rem);
-  line-height: 1.0;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-  margin-bottom: 2rem;
-}
-.cover__title em {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--coral);
-}
-.cover__lede {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--warm-cocoa);
-  max-width: 38ch;
-  margin-bottom: 1.5rem;
-}
-.cover__lede-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--warm-cocoa);
-  max-width: 32ch;
-}
-.cover__index {
-  list-style: none;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--hairline);
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 2rem;
-}
-.cover__index li {
-  display: flex;
-  border-bottom: 1px dotted var(--hairline-soft);
-  padding-bottom: 0.4rem;
-}
-.cover__index a {
-  color: var(--cocoa);
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  transition: color 0.4s;
-}
-.cover__index a:hover { color: var(--solar); }
-.cover__index a span:last-child {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-  color: var(--solar);
-  font-weight: 600;
-}
-
-.cover__photo {
-  position: relative;
-  margin-right: -2rem;
-}
-.cover__photo img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  filter: contrast(1.04) brightness(1) saturate(1.05);
-}
-.cover__photo figcaption {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--warm-cocoa);
-  margin-top: 0.85rem;
-  text-align: right;
-  letter-spacing: 0.02em;
-}
-.cover__photo figcaption::before {
-  content: "Photographed for SOLARA  ·  ";
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--solar);
-  font-size: 0.65rem;
-}
-
-/* ─────────────────────────────────────────────
-   ACT (chapter) STRUCTURE
-   ───────────────────────────────────────────── */
-.act {
-  padding: 9rem 2rem;
-  position: relative;
-  z-index: 5;
-}
-.act__inner {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.act-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: end;
-  gap: 2rem;
-  margin-bottom: 5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--hairline);
-}
-.act-numeral {
-  font-family: var(--display);
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.85;
-  color: var(--solar);
-  letter-spacing: -0.02em;
-}
-.act-title-block { text-align: left; }
-.act-eyebrow {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--warm-cocoa);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.act-title {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  line-height: 1;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-}
-.act-title em {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--coral);
-}
-.act-meta {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--warm-cocoa);
-  text-align: right;
-  white-space: nowrap;
-  align-self: end;
-  padding-bottom: 0.5rem;
-}
-.act-meta-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  font-style: normal;
-}
-
-/* ─────────────────────────────────────────────
-   ACT I — MANIFESTO
-   ───────────────────────────────────────────── */
-.manifesto-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.manifesto-prose {
-  max-width: 52ch;
-  position: relative;
-  padding-top: 1.5rem;
-}
-.manifesto-prose p {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--cocoa);
-  margin-bottom: 1.4rem;
-}
-.manifesto-prose p.lede {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.55rem;
-  line-height: 1.4;
-  color: var(--cocoa);
-  border-left: 3px solid var(--solar);
-  padding-left: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.manifesto-prose p.lede em { color: var(--coral); }
-
-.dropcap::first-letter {
-  font-family: var(--display);
-  float: left;
-  font-size: 6rem;
-  line-height: 0.78;
-  margin: 0.15rem 0.55rem 0 0;
-  color: var(--solar);
-  font-weight: 700;
-}
-
-.manifesto-signature {
-  margin-top: 3rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--warm-cocoa);
-}
-.manifesto-signature .sig-mark {
-  font-family: var(--display);
-  color: var(--solar);
-  font-size: 1.8rem;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.manifesto-aside { position: relative; }
-.aside-pull {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: var(--cocoa);
-  border-left: 1px solid var(--coral);
-  padding-left: 1.2rem;
-  margin-bottom: 1.5rem;
-  max-width: 32ch;
-  line-height: 1.4;
-}
-.aside-pull em { color: var(--coral); }
-.aside-pull-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 1rem;
-  border-right: 1px solid var(--coral);
-  border-left: 0;
-  padding-right: 1.2rem;
-  padding-left: 0;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  color: var(--warm-cocoa);
-  max-width: 28ch;
-  text-align: right;
-  font-style: normal;
-}
-.manifesto-aside figure { position: relative; margin-top: 1rem; }
-.manifesto-aside img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-}
-.manifesto-aside figcaption {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--warm-cocoa);
-  margin-top: 0.85rem;
-  letter-spacing: 0.02em;
-}
-
-/* ─────────────────────────────────────────────
-   ACT II — THE PALETTE — bold tropical
-   ───────────────────────────────────────────── */
-.palette-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 3rem;
-}
-.palette-table tr { border-bottom: 1px solid var(--hairline); }
-.palette-table tr:first-child { border-top: 1px solid var(--hairline); }
-.palette-table td {
-  padding: 1.6rem 1rem;
-  vertical-align: middle;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  color: var(--cocoa);
-}
-.palette-table td:first-child { width: 80px; padding-left: 0; }
-.palette-swatch {
-  width: 60px;
-  height: 60px;
-  border: 1px solid var(--hairline);
-  position: relative;
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.palette-table tr:hover .palette-swatch { transform: scale(1.2); }
-.palette-name {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.7rem;
-  letter-spacing: 0.01em;
-  color: var(--cocoa);
-  width: 26%;
-}
-.palette-name em { font-style: italic; font-weight: 500; }
-.palette-hex {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--solar);
-  letter-spacing: 0.05em;
-  width: 16%;
-}
-.palette-role {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--warm-cocoa);
-}
-.palette-role-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.9rem;
-  text-align: right;
-  color: var(--warm-cocoa);
-  width: 24%;
-}
-
-/* the proportional band — bold */
-.palette-band {
-  display: grid;
-  grid-template-columns: 3fr 2fr 2fr 1fr 1fr;
-  height: 80px;
-  margin: 4rem 0 1rem;
-  border: 1px solid var(--hairline);
-  position: relative;
-}
-.palette-band > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-.palette-secondary {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  margin-top: 1.5rem;
-  border: 1px solid var(--hairline);
-}
-.palette-secondary > div {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding: 0 0.85rem;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  border-right: 1px solid var(--hairline-soft);
-}
-.palette-secondary > div:last-child { border-right: 0; }
-
-.palette-note {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--warm-cocoa);
-  margin-top: 2.5rem;
-  text-align: center;
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ─────────────────────────────────────────────
-   PRODUCT MARQUEE — kinetic capsule preview
-   ───────────────────────────────────────────── */
-.product-marquee {
-  overflow: hidden;
-  padding: 3.5rem 0;
-  margin: 0 -2rem 4rem;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  position: relative;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-}
-.product-marquee__track {
-  display: flex;
-  gap: 2.5rem;
-  animation: productScroll 55s linear infinite;
-  width: max-content;
-}
-.product-marquee:hover .product-marquee__track { animation-play-state: paused; }
-.product-marquee__card {
-  flex: 0 0 220px;
-  text-align: center;
-  cursor: default;
-}
-.product-marquee__card .pic {
-  width: 220px;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  background: var(--sand-deep);
-}
-.product-marquee__card .pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
-  filter: saturate(1.05);
-}
-.product-marquee__card:hover .pic img { transform: scale(1.04); }
-
-.product-marquee__card .nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--solar);
-  margin-bottom: 0.3rem;
-}
-.product-marquee__card .name {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-}
-@keyframes productScroll {
-  to { transform: translateX(-50%); }
-}
-
-/* ─────────────────────────────────────────────
-   ACT III — THE CAPSULE (products)
-   ───────────────────────────────────────────── */
-.capsule { display: flex; flex-direction: column; }
-.capsule-piece {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  gap: 4rem;
-  align-items: center;
-  padding: 5rem 0;
-  border-bottom: 1px solid var(--hairline);
-}
-.capsule-piece:first-child { padding-top: 1rem; }
-.capsule-piece--reverse { grid-template-columns: 6fr 5fr; }
-.capsule-piece--reverse .capsule-piece__media { order: 2; }
-.capsule-piece--reverse .capsule-piece__copy  { order: 1; }
-
-.capsule-piece__media { position: relative; overflow: hidden; }
-.capsule-piece__media img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  display: block;
-  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-  filter: saturate(1.05);
-}
-.capsule-piece:hover .capsule-piece__media img { transform: scale(1.04); }
-
-.capsule-piece__media--type {
-  aspect-ratio: 4/5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.capsule-piece__media--type::before {
-  content: "";
-  position: absolute;
-  inset: 1.5rem;
-  border: 1px solid currentColor;
-  opacity: 0.3;
-}
-
-/* Sunglasses mock — sunset gradient */
-.capsule-piece__media--shades {
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(255, 154, 92, 0.6) 0%, transparent 60%),
-    linear-gradient(165deg, var(--solar) 0%, var(--coral) 50%, var(--cocoa) 100%);
-  color: var(--sand-warm);
-}
-
-/* Resort Kit mock — bold tropical print */
-.capsule-piece__media--kit {
-  background:
-    conic-gradient(from 45deg at 50% 50%,
-      var(--solar) 0deg, var(--solar) 60deg,
-      var(--coral) 60deg, var(--coral) 120deg,
-      var(--cocoa) 120deg, var(--cocoa) 180deg,
-      var(--teal) 180deg, var(--teal) 240deg,
-      var(--peach) 240deg, var(--peach) 300deg,
-      var(--cocoa) 300deg, var(--cocoa) 360deg);
-  color: var(--sand-warm);
-  position: relative;
-}
-.capsule-piece__media--kit::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center,
-    rgba(42, 23, 18, 0.85) 0%,
-    rgba(42, 23, 18, 0.55) 40%,
-    rgba(42, 23, 18, 0.4) 80%);
-}
-
-.capsule-piece__media--type-content {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-.capsule-piece__media--type-content .mark {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(3.5rem, 8vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.3rem;
-}
-.capsule-piece__media--type-content .mark em {
-  display: block;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.55em;
-  color: var(--coral-glow);
-  margin-top: -0.1em;
-  letter-spacing: 0.005em;
-}
-.capsule-piece__media--type-content .label {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  margin-top: 1.5rem;
-  opacity: 0.85;
-}
-.capsule-piece__media--type-content .pname {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.capsule-piece__copy { padding: 0 1rem; }
-.capsule-piece__nº {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--solar);
-  padding-bottom: 0.3rem;
-}
-.capsule-piece__nº .actno {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--solar);
-}
-.capsule-piece__nº .code {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--warm-cocoa);
-}
-.capsule-piece__name {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
-  line-height: 1;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.capsule-piece__name em {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--coral);
-}
-.capsule-piece__sub {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--solar);
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
-}
-.capsule-piece__desc {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--cocoa);
-  max-width: 44ch;
-  margin-bottom: 1rem;
-}
-.capsule-piece__desc-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--warm-cocoa);
-  max-width: 38ch;
-  margin-bottom: 2rem;
-}
-.capsule-piece__specs {
-  display: flex;
-  gap: 2.5rem;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.78rem;
-  color: var(--warm-cocoa);
-  letter-spacing: 0.04em;
-  border-top: 1px solid var(--hairline);
-  padding-top: 1rem;
-}
-.capsule-piece__specs strong {
-  display: block;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.62rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--solar);
-  margin-bottom: 0.3rem;
-}
-
-/* ─────────────────────────────────────────────
-   ACT IV — THE RESORT (DARK lifestyle)
-   ───────────────────────────────────────────── */
-.act--resort {
-  background: var(--cocoa);
-  color: var(--sand-warm);
-  padding: 11rem 2rem;
-}
-.act--resort .act-numeral { color: var(--peach); }
-.act--resort .act-eyebrow { color: var(--sand-deep); }
-.act--resort .act-title { color: var(--sand-warm); }
-.act--resort .act-title em { color: var(--coral); }
-.act--resort .act-meta { color: var(--sand-deep); }
-.act--resort .act-header { border-bottom-color: var(--hairline-dark); }
-
-.resort-spread {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 4rem;
-  align-items: stretch;
-}
-.resort-prose {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-right: 2rem;
-}
-.resort-pull {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3vw, 2.7rem);
-  line-height: 1.2;
-  color: var(--sand-warm);
-  margin-bottom: 2.5rem;
-  position: relative;
-  padding-left: 1.6rem;
-}
-.resort-pull::before {
-  content: "❝";
-  position: absolute;
-  left: 0;
-  top: -0.4rem;
-  font-family: var(--display);
-  color: var(--solar);
-  font-size: 2.5rem;
-  line-height: 1;
-}
-.resort-pull em { font-style: italic; font-weight: 500; color: var(--coral); }
-
-.resort-body {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--sand-deep);
-  margin-bottom: 1rem;
-}
-.resort-body-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 1rem;
-  color: var(--sand-deep);
-  line-height: 1.9;
-  margin-top: 1.2rem;
-  border-top: 1px solid var(--hairline-dark);
-  padding-top: 1.2rem;
-  max-width: 38ch;
-  text-align: right;
-}
-
-.resort-image { position: relative; }
-.resort-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.04) saturate(1.05);
-}
-.resort-image figcaption {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--sand-warm);
-  background: rgba(42, 23, 18, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 0.85rem 1.2rem;
-  letter-spacing: 0.02em;
-}
-.resort-image figcaption strong {
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--peach);
-  margin-right: 0.6rem;
-}
-
-/* ─────────────────────────────────────────────
-   ACT V — THE CODEX (DARK)
-   ───────────────────────────────────────────── */
-.act--codex {
-  background: var(--warm-cocoa);
-  color: var(--sand-warm);
-  padding: 11rem 2rem;
-}
-.act--codex .act-numeral { color: var(--peach); }
-.act--codex .act-eyebrow { color: var(--sand-deep); }
-.act--codex .act-title { color: var(--sand-warm); }
-.act--codex .act-title em { color: var(--coral); }
-.act--codex .act-meta { color: var(--sand-deep); }
-.act--codex .act-header { border-bottom-color: var(--hairline-dark); }
-
-.codex-prose {
-  max-width: 56ch;
-  margin: 0 auto 5rem;
-  text-align: center;
-}
-.codex-prose p {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: var(--sand-deep);
-  margin-bottom: 1rem;
-}
-.codex-prose p[lang="he"] {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.05rem;
-  color: var(--sand-deep);
-  opacity: 0.95;
-  margin-top: 1rem;
-  border-top: 1px solid var(--hairline-dark);
-  padding-top: 1.2rem;
-}
-
-.codex-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-}
-.codex-page { position: relative; }
-.codex-page__frame {
-  background: var(--sand-warm);
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.7s;
-  border: 1px solid rgba(250, 239, 224, 0.1);
-}
-.codex-page:hover .codex-page__frame {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
-}
-.codex-page__frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.codex-page__nº {
-  position: absolute;
-  top: -1.4rem;
-  left: 0;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--peach);
-  letter-spacing: 0.02em;
-}
-.codex-page__label {
-  margin-top: 1rem;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--sand-warm);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-top: 1px solid var(--hairline-dark);
-  padding-top: 0.8rem;
-}
-.codex-page__label em {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--peach);
-  text-transform: none;
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-}
-
-.codex-credit {
-  text-align: center;
-  margin-top: 5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--sand-deep);
-  opacity: 0.9;
-  letter-spacing: 0.02em;
-}
-.codex-credit::before { content: "—  "; color: var(--peach); }
-.codex-credit::after { content: "  —"; color: var(--peach); }
-
-/* ─────────────────────────────────────────────
-   ACT VI — AUDIENCE
-   ───────────────────────────────────────────── */
-.audience-pull {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 1.2;
-  text-align: center;
-  max-width: 32ch;
-  margin: 0 auto 4rem;
-  color: var(--cocoa);
-}
-.audience-pull em {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--coral);
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-}
-.audience-item {
-  padding: 3rem 2rem;
-  border-right: 1px solid var(--hairline);
-  position: relative;
-}
-.audience-item:last-child { border-right: 0; }
-.audience-item__nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--solar);
-  display: block;
-  margin-bottom: 1rem;
-}
-.audience-item__title {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.9rem;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.audience-item__title em { font-style: italic; font-weight: 500; color: var(--coral); }
-.audience-item__body {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--warm-cocoa);
-  margin-bottom: 1rem;
-}
-.audience-item__body-he {
-  font-family: var(--hebrew);
-  font-weight: 300;
-  direction: rtl;
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--warm-cocoa);
-  border-top: 1px solid var(--hairline-soft);
-  padding-top: 1rem;
-  text-align: right;
-}
-
-/* ─────────────────────────────────────────────
-   CLOSING — sun gradient bg
-   ───────────────────────────────────────────── */
-.closing {
-  padding: 12rem 2rem 8rem;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center 60%,
-      rgba(255, 154, 92, 0.3) 0%,
-      rgba(255, 107, 26, 0.15) 30%,
-      transparent 70%),
-    var(--sand-light);
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-}
-.closing::before {
-  content: "";
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    rgba(255, 107, 26, 0.25) 0%,
-    rgba(255, 63, 108, 0.1) 30%,
-    transparent 60%);
-  filter: blur(50px);
-  transform: translateX(-50%);
-  z-index: 0;
-  pointer-events: none;
-}
-.closing__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
-.closing__statement {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(3rem, 9vw, 8.5rem);
-  line-height: 0.95;
-  color: var(--cocoa);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.closing__statement em {
-  font-style: italic;
-  font-weight: 600;
-  color: var(--solar);
-}
-.closing__statement .br { display: block; }
-.closing__he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 1.7rem;
-  color: var(--warm-cocoa);
-  margin-top: 2rem;
-  letter-spacing: 0.02em;
-}
-.closing__end {
-  margin-top: 6rem;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--solar);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-}
-.closing__end::before, .closing__end::after {
-  content: "";
-  width: 60px;
-  height: 1px;
-  background: var(--solar);
-}
-.closing__mark {
-  margin-top: 2.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 4.5rem;
-  color: var(--solar);
-  letter-spacing: 0.05em;
-  font-weight: 700;
-}
-
-/* ─────────────────────────────────────────────
-   COLOPHON
-   ───────────────────────────────────────────── */
-.colophon {
-  background: var(--cocoa);
-  color: var(--sand-deep);
-  padding: 5rem 2rem 2.5rem;
-  position: relative;
-  z-index: 5;
-}
-.colophon__inner { max-width: 1280px; margin: 0 auto; }
-.colophon__top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 3rem;
-  align-items: center;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid var(--hairline-dark);
-}
-.colophon__edge-l, .colophon__edge-r {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--sand-deep);
-  opacity: 0.75;
-  letter-spacing: 0.02em;
-}
-.colophon__edge-r { text-align: right; }
-.colophon__center { text-align: center; }
-.colophon__seal {
-  display: block;
-  width: clamp(120px, 14vw, 180px);
-  margin: 0 auto 1.4rem;
-  padding: 1rem;
-  background: var(--sand-warm);
-  border: 1px solid rgba(250, 239, 224, 0.15);
-  box-shadow: 0 0 30px rgba(255, 107, 26, 0.15);
-}
-.colophon__seal img { width: 100%; height: auto; display: block; }
-.colophon__center .mark {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 3.5rem;
-  color: var(--solar);
-  letter-spacing: 0.06em;
-  line-height: 1;
-}
-.colophon__center .mark em {
-  display: block;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.55em;
-  color: var(--coral);
-  margin-top: -0.1em;
-}
-.colophon__center .tag {
-  font-family: var(--display);
-  font-style: italic;
-  color: var(--peach);
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-  letter-spacing: 0.02em;
-}
-
-.colophon__details {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  margin: 3rem 0;
-}
-.colophon__details dt {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.62rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--peach);
-  margin-bottom: 0.5rem;
-}
-.colophon__details dd {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--sand-deep);
-  font-size: 0.95rem;
-}
-.colophon__details dd a {
-  color: var(--sand-deep);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 154, 92, 0.4);
-  transition: border-color 0.3s, color 0.3s;
-}
-.colophon__details dd a:hover {
-  color: var(--peach);
-  border-bottom-color: var(--peach);
-}
-
-.colophon__bottom {
-  border-top: 1px solid var(--hairline-dark);
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--sand-deep);
-  opacity: 0.7;
-}
-.colophon__bottom-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--sand-deep);
-  opacity: 0.75;
-}
-
-/* ─────────────────────────────────────────────
-   REVEAL
-   ───────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
-              transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-
-/* ─────────────────────────────────────────────
-   RESPONSIVE
-   ───────────────────────────────────────────── */
-@media (max-width: 1080px) {
-  .cover__grid,
-  .manifesto-grid,
-  .resort-spread { grid-template-columns: 1fr; gap: 3rem; }
-  .cover__photo { margin-right: 0; }
-  .audience-grid { grid-template-columns: 1fr; }
-  .audience-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
-  .audience-item:last-child { border-bottom: 0; }
-  .codex-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-}
-
-@media (max-width: 720px) {
-  .concept-band { letter-spacing: 0.18em; font-size: 0.55rem; line-height: 1.55; padding: 0.55rem 0.8rem; }
-  .utility-bar { font-size: 0.6rem; padding: 0.7rem 1rem; gap: 0.5rem; }
-  .utility-bar > div:nth-child(2) { display: none; }
-  .masthead { padding: 3rem 1rem 4rem; min-height: auto; }
-  .wordmark { font-size: clamp(2.8rem, 13vw, 5rem); letter-spacing: 0.05em; line-height: 0.9; }
-  .wildmark { font-size: clamp(1.8rem, 6vw, 3.4rem); }
-  .back-link { top: 0.7rem; left: 0.7rem; font-size: 0.55rem; padding: 0.4rem 0.7rem; gap: 0.4rem; letter-spacing: 0.22em; }
-  .plate { padding: 4rem 1rem 1rem; }
-  .plate__caption-row { grid-template-columns: 1fr; gap: 0.5rem; text-align: center; }
-  .plate__source { text-align: center; }
-  .plate__caption-bottom { grid-template-columns: 1fr; gap: 1.2rem; }
-  .plate__image { aspect-ratio: 4/3; }
-  .act { padding: 6rem 1.25rem; }
-  .act-header { grid-template-columns: 1fr; gap: 1rem; }
-  .act-meta { text-align: left; }
-  .capsule-piece,
-  .capsule-piece--reverse {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3.5rem 0;
-  }
-  .capsule-piece--reverse .capsule-piece__media,
-  .capsule-piece--reverse .capsule-piece__copy { order: initial; }
-  .capsule-piece__copy { padding: 0; }
-  .palette-table td { padding: 1rem 0.5rem; font-size: 0.85rem; }
-  .palette-name { font-size: 1.2rem; }
-  .palette-role-he { display: none; }
-  .palette-secondary { font-size: 0.55rem; }
-  .palette-secondary > div { font-size: 0.55rem; padding: 0 0.3rem; }
-  .codex-grid { grid-template-columns: 1fr; }
-  .closing { padding: 6rem 1rem; }
-  .colophon__top { grid-template-columns: 1fr; text-align: center; }
-  .colophon__edge-l, .colophon__edge-r { text-align: center; }
-  .colophon__details { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .colophon__bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .page-indicator { top: 0.7rem; right: 1rem; font-size: 0.6rem; }
-  .cover__index { grid-template-columns: 1fr; }
-  .sunset-band { height: 8px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-  .sun-glow, .lagoon-glow { animation: none; opacity: 1; transform: translate(-50%, -50%); }
+:root{
+  --cream:#FAEFE0;
+  --cream-2:#FDF6E8;
+  --sand:#F4C28B;
+  --sand-2:#EFD8B6;
+  --coral:#FF6B1A;
+  --coral-2:#FF9A5C;
+  --pink:#FF3F6C;
+  --pink-2:#FF6F8E;
+  --teal:#00A6A6;
+  --teal-2:#007C7C;
+  --teal-lt:#BFE6E4;
+  --cocoa:#2A1712;
+  --cocoa-2:#4A2A21;
+  --display:'Fraunces',serif;
+  --body:'Rubik',sans-serif;
+  --ease:cubic-bezier(0.23,1,0.32,1);
+  --ease-io:cubic-bezier(0.77,0,0.175,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);color:var(--cocoa);
+  font-family:var(--body);font-weight:400;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;
+}
+/* grain */
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--coral);color:var(--cream)}
+
+.display{font-family:var(--display)}
+.kicker{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;direction:ltr}
+
+/* rotating sun */
+.sun{display:inline-block;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:60;
+  width:calc(100% - 2rem);max-width:1280px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem .8rem .7rem 1.4rem;border-radius:60px;
+  background:rgba(250,239,224,.0);transition:background .5s var(--ease),box-shadow .5s var(--ease),padding .4s var(--ease);
+}
+nav.scrolled{background:rgba(253,246,232,.82);backdrop-filter:blur(16px);box-shadow:0 10px 40px rgba(42,23,18,.12)}
+.nav-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.01em;color:var(--cream);direction:ltr}
+nav.scrolled .nav-logo{color:var(--cocoa)}
+.nav-logo svg{width:26px;height:26px;flex:none}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-links a{font-family:var(--body);font-weight:600;font-size:.82rem;color:var(--cream);opacity:.92;transition:opacity .3s}
+nav.scrolled .nav-links a{color:var(--cocoa)}
+.nav-links a:hover{opacity:1}
+.nav-back{color:var(--cream)!important;opacity:.8!important}
+nav.scrolled .nav-back{color:var(--coral)!important}
+.nav-cta{background:var(--coral);color:var(--cream)!important;opacity:1!important;padding:.6rem 1.3rem;border-radius:40px;font-weight:700!important;transition:transform .14s var(--ease),background .3s}
+.nav-cta:hover{transform:scale(1.04);background:var(--pink)}
+.nav-cta:active{transform:scale(.97)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;z-index:70}
+.nav-burger span{width:24px;height:2.5px;border-radius:2px;background:var(--cream);transition:.3s}
+nav.scrolled .nav-burger span{background:var(--cocoa)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:620px;width:100%;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(42,23,18,.78) 0%,rgba(42,23,18,.18) 42%,rgba(0,124,124,.10) 70%,rgba(255,107,26,.12) 100%);}
+.hero-inner{position:relative;z-index:2;width:100%;padding:0 2.4rem 4.5rem;direction:ltr}
+.hero-badge{
+  position:absolute;top:6.5rem;right:2.4rem;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.2rem;
+  width:104px;height:104px;border-radius:50%;background:var(--coral);color:var(--cream);
+  font-family:var(--body);font-weight:800;text-transform:uppercase;text-align:center;
+  justify-content:center;transform:rotate(-12deg);box-shadow:0 12px 30px rgba(42,23,18,.3);
+}
+.hero-badge .big{font-family:var(--display);font-size:1.7rem;line-height:.9}
+.hero-badge .sm{font-size:.52rem;letter-spacing:.18em}
+.hero-eyebrow{display:flex;align-items:center;gap:.6rem;color:var(--cream);margin-bottom:1rem}
+.hero-eyebrow .sun{width:18px;height:18px}
+.hero h1{
+  font-family:var(--display);font-weight:600;color:var(--cream);
+  font-size:clamp(3.2rem,13vw,11rem);line-height:.84;letter-spacing:-.01em;
+}
+.hero h1 .wild{font-style:italic;font-weight:500;color:var(--sand)}
+.hero-tag{margin-top:1.6rem;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.hero-tag-en{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.4vw,1.7rem);color:var(--cream)}
+.hero-tag-he{font-family:var(--body);font-weight:400;font-size:clamp(.95rem,1.6vw,1.15rem);color:rgba(250,239,224,.82);direction:rtl}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.scroll-cue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;direction:ltr}
+.scroll-cue span{font-family:var(--body);font-weight:600;font-size:.64rem;letter-spacing:.26em;color:rgba(250,239,224,.72);text-transform:uppercase}
+.scroll-line{width:2px;height:38px;border-radius:2px;background:rgba(250,239,224,.3);position:relative;overflow:hidden}
+.scroll-line::after{content:"";position:absolute;top:-38px;left:0;width:2px;height:38px;background:var(--coral);animation:drop 2s infinite var(--ease)}
+@keyframes drop{0%{top:-38px}60%,100%{top:38px}}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;padding:1.1rem 0;white-space:nowrap;background:var(--coral)}
+.marquee--teal{background:var(--teal)}
+.marquee__track{display:inline-flex;align-items:center;animation:slide 30s linear infinite;will-change:transform}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__item{font-family:var(--display);font-weight:600;font-style:italic;font-size:1.5rem;color:var(--cream);padding:0 1.2rem;direction:ltr}
+.marquee__sun{width:22px;height:22px;flex:none;color:var(--cream)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- manifesto ---------- */
+.manifesto{position:relative;padding:7rem 2.4rem 7.5rem;max-width:1180px;margin:0 auto;text-align:center;overflow:hidden}
+.manifesto__sun{position:absolute;top:2rem;left:50%;transform:translateX(-50%);width:120px;height:120px;color:var(--coral);opacity:.9}
+.manifesto__eyebrow{display:inline-flex;align-items:center;gap:.5rem;margin:7rem 0 1.8rem;color:var(--teal-2);font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem}
+.manifesto h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,5vw,4rem);line-height:1.08;color:var(--cocoa);letter-spacing:-.01em}
+.manifesto h2 em{font-style:italic;color:var(--coral)}
+.manifesto__body{max-width:62ch;margin:2.4rem auto 0}
+.manifesto__body p{font-size:1.08rem;line-height:1.9;color:var(--cocoa-2);margin-bottom:1.1rem}
+.manifesto__callout{display:inline-block;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem;color:var(--teal-2);background:var(--teal-lt);padding:.5rem 1.4rem;border-radius:40px;margin:.6rem 0 1.4rem;direction:ltr}
+.manifesto__sign{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--coral);margin-top:1.6rem;direction:ltr}
+
+/* ---------- section head ---------- */
+.sec-head{text-align:center;padding:0 2.4rem;max-width:900px;margin:0 auto 1rem}
+.sec-head .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;margin-bottom:1rem}
+.sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;letter-spacing:-.01em}
+.sec-head h2 em{font-style:italic;font-weight:500}
+.sec-head p{margin-top:1rem;font-size:1.02rem;color:var(--cocoa-2);max-width:48ch;margin-left:auto;margin-right:auto}
+
+/* ---------- THE CAPSULE — colour-block acts ---------- */
+.capsule{padding:5.5rem 0 0}
+.act{position:relative;overflow:hidden}
+.act__inner{
+  max-width:1180px;margin:0 auto;padding:5rem 2.4rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
+}
+.act--reverse .act__media{order:2}
+.act--reverse .act__copy{order:1}
+.act__media{position:relative}
+.act__media-frame{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 70px rgba(42,23,18,.28);transition:transform .6s var(--ease)}
+.act:hover .act__media-frame{transform:translateY(-8px) rotate(-1.2deg)}
+.act__media-frame img{width:100%;height:100%;object-fit:cover}
+.act__num{position:absolute;font-family:var(--display);font-weight:600;font-size:clamp(6rem,15vw,13rem);line-height:.7;opacity:.16;top:-2.2rem;direction:ltr;z-index:0;pointer-events:none}
+.act--reverse .act__num{right:-1rem}
+.act:not(.act--reverse) .act__num{left:-1rem}
+.act__copy{position:relative;z-index:1}
+.act__tagrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;direction:ltr;flex-wrap:wrap}
+.act__chip{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.66rem;padding:.35rem .8rem;border-radius:30px;border:1.5px solid currentColor}
+.act__act{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;opacity:.7}
+.act__name{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1;letter-spacing:-.01em}
+.act__name em{font-style:italic;font-weight:500}
+.act__sub{font-family:var(--display);font-style:italic;font-size:1.2rem;margin-top:.5rem;opacity:.92;direction:ltr}
+.act__desc{font-size:1rem;line-height:1.8;margin-top:1.1rem;max-width:42ch;opacity:.92}
+.act__desc-he{margin-top:.8rem;direction:rtl}
+.act__specs{display:flex;gap:2rem;margin-top:1.6rem;flex-wrap:wrap}
+.act__specs div{font-size:.85rem;opacity:.85}
+.act__specs strong{display:block;font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;opacity:.7;margin-bottom:.15rem;direction:ltr}
+/* act colour themes */
+.act--coral{background:var(--coral);color:var(--cream)}
+.act--teal{background:var(--teal);color:var(--cream)}
+.act--cream{background:var(--cream-2);color:var(--cocoa)}
+.act--cocoa{background:var(--cocoa);color:var(--cream)}
+.act--pink{background:var(--pink);color:var(--cream)}
+.act--sunset{background:linear-gradient(120deg,var(--coral) 0%,var(--pink) 55%,var(--teal) 120%);color:var(--cream)}
+
+/* ---------- REELS ---------- */
+.reels{background:var(--teal);padding:6.5rem 2.4rem 7rem;position:relative;overflow:hidden}
+.reels .sec-head{color:var(--cream)}
+.reels .sec-head .eyebrow{color:var(--cream)}
+.reels .sec-head p{color:rgba(250,239,224,.88)}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;max-width:1080px;margin:3rem auto 0}
+.reel{cursor:pointer;margin:0}
+.reel__frame{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--teal-2);box-shadow:0 22px 54px rgba(42,23,18,.34);transition:transform .5s var(--ease)}
+.reel:hover .reel__frame{transform:translateY(-8px) rotate(1deg)}
+.reel__frame video{width:100%;height:100%;object-fit:cover;display:block}
+.reel.sound .reel__frame{outline:3px solid var(--coral);outline-offset:3px}
+.reel__badge{position:absolute;top:.8rem;right:.8rem;width:36px;height:36px;border-radius:50%;background:rgba(42,23,18,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:.9rem;transition:background .3s}
+.reel.sound .reel__badge{background:var(--coral)}
+.reel__badge .i-sound{display:none}
+.reel.sound .reel__badge .i-mute{display:none}
+.reel.sound .reel__badge .i-sound{display:inline}
+.reel figcaption{margin-top:1rem;text-align:center;color:var(--cream)}
+.reel__name{display:block;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem}
+.reel__he{display:block;font-family:var(--body);font-size:.85rem;opacity:.82;margin-top:.2rem}
+.reels-note{text-align:center;color:rgba(250,239,224,.7);font-family:var(--body);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;margin-top:2rem;direction:ltr}
+
+/* ---------- RESORT quote ---------- */
+.resort{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:6rem 2.4rem}
+.resort img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0}
+.resort::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(42,23,18,.6),rgba(42,23,18,.32))}
+.resort__quote{position:relative;z-index:2;max-width:20ch}
+.resort__quote .sun{width:54px;height:54px;color:var(--coral);margin-bottom:1.4rem}
+.resort__quote h2{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.8rem,4.6vw,3.4rem);line-height:1.2;color:var(--cream)}
+
+/* ---------- AUDIENCE ---------- */
+.audience{padding:7rem 2.4rem;max-width:1180px;margin:0 auto;text-align:center}
+.audience__pull{font-family:var(--display);font-weight:500;font-size:clamp(1.8rem,4.4vw,3.2rem);line-height:1.18;max-width:24ch;margin:0 auto 3.5rem;color:var(--cocoa)}
+.audience__pull em{font-style:italic;color:var(--coral)}
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem}
+.aud-item{background:var(--cream-2);border-radius:22px;padding:2.2rem 1.8rem;text-align:right;box-shadow:0 14px 40px rgba(42,23,18,.07)}
+.aud-item__n{display:inline-flex;width:38px;height:38px;border-radius:50%;background:var(--coral);color:var(--cream);align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.1rem;margin-bottom:1rem}
+.aud-item:nth-child(2) .aud-item__n{background:var(--teal)}
+.aud-item:nth-child(3) .aud-item__n{background:var(--pink)}
+.aud-item__t{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--cocoa);margin-bottom:.7rem;direction:ltr;text-align:right}
+.aud-item__b{font-size:.96rem;line-height:1.7;color:var(--cocoa-2)}
+
+/* ---------- STUDIO / CTA ---------- */
+.studio{background:var(--cocoa);color:var(--cream);padding:7.5rem 2.4rem;position:relative;overflow:hidden}
+.studio__sun{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:160px;height:160px;color:var(--coral);opacity:.85}
+.studio__inner{max-width:980px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.studio__eyebrow{font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--coral-2);margin-top:5rem;display:block}
+.studio h2{font-family:var(--display);font-weight:500;font-size:clamp(2.1rem,5.2vw,3.8rem);line-height:1.1;margin:1.2rem 0;color:var(--cream)}
+.studio h2 em{font-style:italic;color:var(--sand)}
+.studio__sub{font-size:1.08rem;line-height:1.85;color:rgba(250,239,224,.82);max-width:60ch;margin:0 auto 1.4rem}
+.studio__cc{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--body);font-weight:500;font-size:.95rem;background:rgba(250,239,224,.08);border:1px solid rgba(255,154,92,.4);padding:.6rem 1.2rem;border-radius:40px;margin-bottom:2.6rem}
+.studio__cc .dot{width:8px;height:8px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F;flex:none}
+.studio__cc b{font-weight:700;color:var(--coral-2)}
+.studio-points{display:flex;justify-content:center;gap:2.6rem;flex-wrap:wrap;margin-bottom:3rem}
+.studio-point{max-width:210px}
+.studio-point .n{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--coral-2);display:block;margin-bottom:.4rem}
+.studio-point p{font-size:.96rem;line-height:1.6;color:rgba(250,239,224,.82)}
+.studio-book{display:inline-block;font-family:var(--body);font-weight:700;font-size:1.02rem;color:var(--cocoa);background:var(--sand);padding:.85rem 2.2rem;border-radius:40px;transition:transform .14s var(--ease),background .3s;margin-bottom:.9rem}
+.studio-book:hover{transform:scale(1.04);background:var(--coral-2)}
+.studio-book:active{transform:scale(.97)}
+.studio-book-note{font-size:.84rem;color:rgba(250,239,224,.55);margin-bottom:3rem}
+.agent-box{background:rgba(250,239,224,.06);border:1px solid rgba(255,154,92,.3);border-radius:22px;max-width:600px;margin:0 auto;padding:2.2rem;text-align:right}
+.agent-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.agent-dot{width:9px;height:9px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.agent-title{font-weight:500}
+.agent-msg{background:rgba(0,166,166,.18);border-radius:16px 16px 16px 4px;padding:.9rem 1.1rem;font-size:.95rem;line-height:1.6;margin-bottom:1.4rem;max-width:92%}
+.agent-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--coral);color:var(--cream);font-family:var(--body);font-weight:700;font-size:.98rem;padding:.85rem 2rem;border-radius:40px;border:none;cursor:pointer;transition:transform .14s var(--ease),background .3s}
+.agent-cta:hover{transform:scale(1.04);background:var(--pink)}
+.agent-cta:active{transform:scale(.97)}
+.agent-note{font-size:.78rem;color:rgba(250,239,224,.5);margin-top:.9rem;text-align:center}
+
+/* ---------- studio note (geo) ---------- */
+.studio-note{background:var(--cream-2);padding:4.5rem 2.4rem}
+.studio-note__inner{max-width:760px;margin:0 auto;text-align:center}
+.studio-note .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--teal-2);margin-bottom:1.2rem}
+.studio-note p{font-size:.95rem;line-height:1.85;color:var(--cocoa-2);margin-bottom:1rem}
+.studio-note a{color:var(--coral);font-weight:600;border-bottom:1.5px solid transparent;transition:border .3s}
+.studio-note a:hover{border-color:var(--coral)}
+
+/* ---------- footer ---------- */
+footer{background:var(--cocoa);color:rgba(250,239,224,.6);padding:3.2rem 2.4rem;text-align:center}
+footer .f-logo{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--cream);direction:ltr}
+footer .f-logo svg{width:28px;height:28px}
+footer .f-tag{font-family:var(--display);font-style:italic;font-size:1rem;color:var(--coral-2);margin:.5rem 0 1.3rem}
+footer .f-meta{font-size:.8rem;line-height:1.9}
+footer a{color:var(--sand);border-bottom:1px solid transparent;transition:border .3s}
+footer a:hover{border-color:var(--sand)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(36px)}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .act__inner{grid-template-columns:1fr;gap:2rem}
+  .act--reverse .act__media,.act--reverse .act__copy{order:initial}
+  .act__media{max-width:440px;margin:0 auto}
+  .reels-grid{grid-template-columns:repeat(3,1fr);gap:1rem}
+  .aud-grid{grid-template-columns:1fr}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:80%;background:var(--cocoa);flex-direction:column;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .5s var(--ease);border-radius:0;box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{color:var(--cream)!important;font-size:1.1rem;opacity:1!important}
+  .nav-back{color:var(--coral-2)!important}
+  .nav-burger{display:flex}
+  nav.open .nav-burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  nav.open .nav-burger span:nth-child(2){opacity:0}
+  nav.open .nav-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+}
+@media(max-width:620px){
+  .hero-inner{padding:0 1.4rem 4rem}
+  .hero-badge{right:1.4rem;top:5.5rem;width:86px;height:86px}
+  .manifesto,.audience{padding-left:1.4rem;padding-right:1.4rem}
+  .act__inner{padding:3.5rem 1.4rem}
+  .reels{padding-left:1.4rem;padding-right:1.4rem}
+  .reels-grid{grid-template-columns:minmax(0,320px);justify-content:center;gap:1.4rem}
+  .studio,.studio-note{padding-left:1.4rem;padding-right:1.4rem}
+  .studio-points{gap:1.6rem}
+  .aud-item__t{text-align:right}
+}
+@media(prefers-reduced-motion:reduce){
+  .sun{animation:none}
+  .marquee__track,.scroll-line::after{animation:none}
+  .reveal{opacity:1;transform:none}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["WebSite","CreativeWork"],
+      "@id":"https://hagitantebi.co.il/solara-wild/#site",
+      "name":"SOLARA WILD — The Live Site",
+      "description":"האתר החי של SOLARA WILD — נכס דיגיטלי שנגזר מעולם המותג Capsule 01, שנבנה ב-Brand Worlds Studio · חגית אנטבי, עם Claude Code.",
+      "inLanguage":["he","en"],
+      "url":"https://hagitantebi.co.il/solara-wild/",
+      "image":"https://hagitantebi.co.il/solara-wild/og.jpg",
+      "isPartOf":{"@id":"https://hagitantebi.co.il/solara-wild/book.html#creativework"},
+      "creator":{"@type":"Person","name":"Hagit Antebi","jobTitle":"Brand Worlds Architect","url":"https://hagitantebi.co.il"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Brand Worlds Studio","item":"https://hagitantebi.co.il/"},
+        {"@type":"ListItem","position":2,"name":"SOLARA WILD — Capsule 01","item":"https://hagitantebi.co.il/solara-wild/"}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "name":"The SOLARA WILD Capsule — A Resort in Six Acts",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Body Mist","category":"Citrus · Salt · Floral · Hot Coral"}},
+        {"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Resort Candle","category":"Coconut · soy · Lagoon Teal"}},
+        {"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Beach Towel","category":"100% cotton · 180×100 cm"}},
+        {"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Sunglasses","category":"Italian acetate · Cocoa Night"}},
+        {"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Summer Drink","category":"Tropical Mango · Non-alcoholic"}},
+        {"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Resort Kit","category":"Signature · Set of Six"}}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"מה זה האתר הזה?","acceptedAnswer":{"@type":"Answer","text":"זהו האתר החי של SOLARA WILD — נכס דיגיטלי לדוגמה שנגזר מעולם המותג SOLARA WILD Capsule 01. הוא מדגים איך נראה אתר מסחרי שנבנה ישירות מהשפה, מהפלטה ומהקוד של עולם המותג, מקצה לקצה ב-Brand Worlds Studio עם Claude Code."}},
+        {"@type":"Question","name":"האם אפשר לקנות את המוצרים?","acceptedAnswer":{"@type":"Answer","text":"לא. SOLARA WILD הוא מותג בדיוני שנבנה כ-portfolio piece. האתר נועד להדגים את התוצר של תהליך בניית עולם מותג ב-Brand Worlds Studio."}},
+        {"@type":"Question","name":"מי בנה את האתר?","acceptedAnswer":{"@type":"Answer","text":"חגית אנטבי — Brand Worlds Architect ומייסדת Brand Worlds Studio. האתר, הסרטונים והצילומים נבנו עם AI ועם Claude Code, כחלק מעולם המותג SOLARA WILD."}}
+      ]
+    },
+    {
+      "@type":"VideoObject",
+      "name":"SOLARA WILD — The Resort Film",
+      "description":"סרטון מתוך עולם המותג SOLARA WILD: בריכת אינפיניטי ריזורט מול הים, דקלים ושמש. נוצר ב-AI כחלק מעולם המותג.",
+      "thumbnailUrl":"https://hagitantebi.co.il/solara-wild/hero-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/solara-wild/hero.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"SOLARA WILD — The Mist (Body Mist)",
+      "description":"רגע UGC מתוך עולם המותג SOLARA WILD: ה-Body Mist בגוון Hot Coral, רסס פולסייד עם השמש. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/solara-wild/ugc-1-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/solara-wild/ugc-1.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"SOLARA WILD — The Drink (Summer Drink)",
+      "description":"רגע UGC מתוך עולם המותג SOLARA WILD: ה-Summer Drink בקרח ליד הבריכה. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/solara-wild/ugc-2-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/solara-wild/ugc-2.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"SOLARA WILD — The Kit (Resort Kit)",
+      "description":"רגע UGC מתוך עולם המותג SOLARA WILD: פתיחת ה-Resort Kit על החול — כל הקיץ בקופסה אחת. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/solara-wild/ugc-3-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/solara-wild/ugc-3.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ─────────── BACK TO STUDIO ─────────── -->
-<a href="https://hagitantebi.co.il" class="back-link" title="Back to Hagit Antebi">
-  <span class="back-link__arr">←</span>
-  Hagit Antebi
-</a>
+<!-- SUN SVG (reused) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sunburst" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="17" fill="currentColor"/>
+  <g stroke="currentColor" stroke-width="4" stroke-linecap="round">
+    <line x1="50" y1="6" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="94"/>
+    <line x1="6" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="94" y2="50"/>
+    <line x1="18" y1="18" x2="28" y2="28"/><line x1="72" y1="72" x2="82" y2="82"/>
+    <line x1="82" y1="18" x2="72" y2="28"/><line x1="28" y1="72" x2="18" y2="82"/>
+  </g>
+</symbol></svg>
 
-<!-- ─────────── PAGE INDICATOR ─────────── -->
-<div class="page-indicator">
-  <span id="pageNum">01</span> · <em>Solara</em> · Capsule 01
-</div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="nav-logo"><svg class="sun"><use href="#sunburst"/></svg> SOLARA</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="nav-back">← Brand Worlds Studio</a>
+    <a href="#capsule">The Capsule</a>
+    <a href="#reels">The Reels</a>
+    <a href="#resort">The Resort</a>
+    <a href="#studio">The Studio</a>
+    <a href="#studio" class="nav-cta">בואו נדבר</a>
+  </div>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
 
-<!-- ─────────── CONCEPT BAND (orange) ─────────── -->
-<div class="concept-band">
-  Branding Concept <span class="dot">·</span> A fictional brand built as a portfolio piece by <em>Brand Worlds Studio</em>
-</div>
-
-<!-- ─────────── UTILITY BAR (dark) ─────────── -->
-<div class="utility-bar">
-  <div>Capsule <em>01</em> · Issue Nº 01</div>
-  <div>A Brand World by <em>Brand Worlds Studio</em></div>
-  <div>May · MMXXVI</div>
-</div>
-
-<!-- ─────────── MASTHEAD ─────────── -->
-<header class="masthead" id="masthead">
-  <div class="sun-glow"></div>
-  <div class="lagoon-glow"></div>
-  <div class="masthead__inner">
-    <div class="masthead__top">
-      <div class="meta">A <em>resort</em> in six acts</div>
-    </div>
-    <h1 class="wordmark" aria-label="SOLARA">
-      <span class="l">S</span><span class="l">O</span><span class="l">L</span><span class="l">A</span><span class="l">R</span><span class="l">A</span>
-    </h1>
-    <div class="wildmark">wild</div>
-    <div class="tagline-row">
-      <p class="tagline">Sun on your skin. <em>Wild in your soul.</em></p>
-      <p class="tagline-he" lang="he">שמש על העור. חופש בנשמה.</p>
+<!-- HERO -->
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-badge"><span class="big">∞</span><span class="sm">Endless<br>Summer</span></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><svg class="sun" style="color:var(--coral)"><use href="#sunburst"/></svg><span class="kicker">Capsule 01 · A Brand World</span></div>
+    <h1>SOLARA<br><span class="wild">Wild</span></h1>
+    <div class="hero-tag">
+      <span class="hero-tag-en">Sun on your skin. Wild in your soul.</span>
+      <span class="hero-dot"></span>
+      <span class="hero-tag-he">שמש על העור. חופש בנשמה.</span>
     </div>
   </div>
-  <hr class="masthead__rule" />
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
 </header>
 
-<!-- ─────────── SUNSET BAND ─────────── -->
-<div class="sunset-band" aria-hidden="true">
-  <div style="background:#FF6B1A"></div>
-  <div style="background:#FF9A5C"></div>
-  <div style="background:#FF3F6C"></div>
-  <div style="background:#FF6F8E"></div>
-  <div style="background:#00A6A6"></div>
-  <div style="background:#F4C28B"></div>
-</div>
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="marquee__track" id="mq1"></div></div>
 
-<!-- ─────────── PLATE I — heat-haze hero ─────────── -->
-<section class="plate" id="plate-i">
-  <div class="plate__inner">
-    <div class="plate__caption-row">
-      <div class="plate__nº">Plate I</div>
-      <div class="plate__title"><em>The Cover Image</em>  ·  Pool's edge, golden hour</div>
-      <div class="plate__source">— Photographed for SOLARA</div>
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <svg class="sun manifesto__sun"><use href="#sunburst"/></svg>
+  <span class="manifesto__eyebrow"><svg class="sun" style="width:16px;height:16px"><use href="#sunburst"/></svg> Act One · The Manifesto · פתח דבר</span>
+  <h2>There is a kind of woman the <em>sun follows</em>. She walks barefoot across hot stone, laughs at full volume, tans in the colour of her own choosing.</h2>
+  <div class="manifesto__body">
+    <span class="manifesto__callout">Not a summer brand. A resort brand.</span>
+    <p>SOLARA WILD נבנה עבורה — למותג ריזורט, לחלק של השנה שאישה נותנת לעצמה. ללבישה ליד המים, להרחה לאורך צהריים ארוך, להדלקה עם רדת הערב — ולזיכרון שנשאר שבועות אחר כך.</p>
+    <p>שישה פריטים, כולם רועשים בדרכם השקטה: מיסט לבוקר, נר לערב, מגבת לצהריים, משקפיים לכל מה שביניהם, משקה קיץ להרמת כוסית, ו-Resort Kit לרגעים שעוד לא הגיעו.</p>
+    <span class="manifesto__callout" style="background:var(--coral);color:var(--cream)">The sun's most generous act: letting us stay a little longer than we should.</span>
+    <div class="manifesto__sign">— Hagit Antebi · Brand Worlds Studio</div>
+  </div>
+</section>
+
+<!-- THE CAPSULE -->
+<section class="capsule" id="capsule">
+  <div class="sec-head">
+    <span class="eyebrow" style="color:var(--teal-2)"><svg class="sun" style="width:16px;height:16px"><use href="#sunburst"/></svg> Six Acts, One Sun</span>
+    <h2>The <em>Capsule</em></h2>
+    <p>רֵזוֹרט בשישה אקטים, לבוש על ידי השמש. גללו דרך הקולקציה.</p>
+  </div>
+
+  <!-- Act 01 -->
+  <article class="act act--coral reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num">01</span>
+        <div class="act__media-frame"><img src="NEW_MIST.png" alt="SOLARA WILD Body Mist in hot coral" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow"><span class="act__act">Act 01</span><span class="act__chip">SW·BM·01 · Hot Coral</span></div>
+        <h3 class="act__name"><em>Body Mist</em></h3>
+        <p class="act__sub">Sun, sea salt, and tropical fruit — bottled.</p>
+        <p class="act__desc">A weightless mist for shoulders, neck, and the inside of the wrist — bergamot, sea salt, hibiscus, and a soft trail of warm cocoa.</p>
+        <p class="act__desc act__desc-he">מיסט גוף קליל לכתפיים, צוואר ופנים פרק היד. נוטות של ברגמוט, מלח ים, היביסקוס, ושובל רך של קקאו חם.</p>
+        <div class="act__specs"><div><strong>Volume</strong>120 mL · 4 fl. oz.</div><div><strong>Notes</strong>Citrus · Salt · Floral</div></div>
+      </div>
     </div>
-    <figure class="plate__frame">
-      <img class="plate__image" src="HERO.png" alt="SOLARA WILD — The Cover Image" />
+  </article>
+
+  <!-- Act 02 -->
+  <article class="act act--teal act--reverse reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num">02</span>
+        <div class="act__media-frame"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(4).png" alt="SOLARA WILD Resort Candle in lagoon teal glass" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow"><span class="act__act">Act 02</span><span class="act__chip">SW·RC·02 · Lagoon Teal</span></div>
+        <h3 class="act__name"><em>Resort Candle</em></h3>
+        <p class="act__sub">A beach club, contained.</p>
+        <p class="act__desc">Hand-poured in lagoon-teal glass. Lit at dusk, the room becomes a small, well-dressed beach club within ten minutes.</p>
+        <p class="act__desc act__desc-he">נר יצוק ביד בכוס לגונה טורקיזית. נדלק עם רדת הערב; החדר הופך לבר חוף קטן ולבוש היטב — תוך עשר דקות.</p>
+        <div class="act__specs"><div><strong>Burn</strong>~ 60 hours</div><div><strong>Wax</strong>Coconut · soy</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Act 03 -->
+  <article class="act act--cream reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num" style="color:var(--coral)">03</span>
+        <div class="act__media-frame"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(5).png" alt="SOLARA WILD Beach Towel — tropical geometric print" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow" style="color:var(--coral)"><span class="act__act" style="color:var(--cocoa)">Act 03</span><span class="act__chip">SW·BT·03 · Multi</span></div>
+        <h3 class="act__name"><em>Beach Towel</em></h3>
+        <p class="act__sub">A geometric sun, woven in cotton.</p>
+        <p class="act__desc">Oversized, plush, printed in the brand's full palette — a tropical geometry that reads from across the pool. For sunset arrivals and slow afternoons.</p>
+        <p class="act__desc act__desc-he">מגבת חוף גדולה ורכה, בהדפס מלא של פלטת המותג — גיאומטריה טרופית שנקראת מעבר לבריכה. להגעות בשקיעה ולצהריים שלא ממהרים לשום מקום.</p>
+        <div class="act__specs"><div><strong>Size</strong>180 × 100 cm</div><div><strong>Material</strong>100% cotton</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Act 04 -->
+  <article class="act act--cocoa act--reverse reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num" style="color:var(--coral)">04</span>
+        <div class="act__media-frame"><img src="Sunglasses.png" alt="SOLARA WILD Sunglasses in cocoa night acetate" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow" style="color:var(--coral-2)"><span class="act__act" style="color:var(--cream)">Act 04</span><span class="act__chip">SW·SS·04 · Cocoa Night</span></div>
+        <h3 class="act__name"><em>Sunglasses</em></h3>
+        <p class="act__sub">Cocoa Night frame. Sunset lens.</p>
+        <p class="act__desc">A wide silhouette in deep Cocoa Night acetate, with warm lenses that turn the world the colour of late afternoon. For arrivals, departures, and everything photographed between.</p>
+        <p class="act__desc act__desc-he">מסגרת רחבה מאצטט Cocoa Night, עם עדשות חמות שהופכות את העולם לצבע אחר־צהריים מאוחר. להגעות, יציאות, וכל דבר שמצולם ביניהן.</p>
+        <div class="act__specs"><div><strong>Frame</strong>Italian acetate</div><div><strong>Lens</strong>Warm UV-blocked</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Act 05 -->
+  <article class="act act--pink reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num">05</span>
+        <div class="act__media-frame"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(6).png" alt="SOLARA WILD Summer Drink — tropical mango in a sunset bottle" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow"><span class="act__act">Act 05</span><span class="act__chip">SW·SD·05 · Tropical Mango</span></div>
+        <h3 class="act__name"><em>Summer Drink</em></h3>
+        <p class="act__sub">A non-alcoholic cocktail, in a sunset bottle.</p>
+        <p class="act__desc">Cold-pressed tropical mango, lime, and a whisper of sea salt. Naturally refreshing — the prettiest non-alcoholic thing on the menu, and the most photographed.</p>
+        <p class="act__desc act__desc-he">מנגו טרופי כבוש קר, ליים, ולחישה של מלח ים. מרענן באופן טבעי — הדבר היפה ביותר ב-Menu של הריזורט, והכי מצולם.</p>
+        <div class="act__specs"><div><strong>Volume</strong>330 mL</div><div><strong>Profile</strong>Non-alcoholic</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Act 06 -->
+  <article class="act act--sunset act--reverse reveal">
+    <div class="act__inner">
+      <div class="act__media">
+        <span class="act__num">06</span>
+        <div class="act__media-frame"><img src="Resort%20Kit.png" alt="SOLARA WILD Resort Kit — the full capsule in one box" loading="lazy"></div>
+      </div>
+      <div class="act__copy">
+        <div class="act__tagrow"><span class="act__act">Signature</span><span class="act__chip">SW·RK·06 · Set of Six</span></div>
+        <h3 class="act__name"><em>Resort Kit</em></h3>
+        <p class="act__sub">The full capsule, in one box.</p>
+        <p class="act__desc">Mist, candle, towel, sunglasses, drink, and a soft pouch — the entire SOLARA library, gathered into a box that already feels like a packed bag.</p>
+        <p class="act__desc act__desc-he">מיסט, נר, מגבת, משקפיים, משקה ופאוץ׳ רך — כל ספריית SOLARA בקופסה שכבר מרגישה כמו מזוודה ארוזה.</p>
+        <div class="act__specs"><div><strong>Includes</strong>Six pieces</div><div><strong>Edition</strong>Signature</div></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- MARQUEE TEAL -->
+<div class="marquee marquee--teal" aria-hidden="true"><div class="marquee__track" id="mq2"></div></div>
+
+<!-- REELS -->
+<section class="reels" id="reels">
+  <div class="sec-head">
+    <span class="eyebrow"><svg class="sun" style="width:16px;height:16px"><use href="#sunburst"/></svg> Caught on Camera</span>
+    <h2>The <em>Reels</em></h2>
+    <p>רגעי UGC מתוך עולם SOLARA — נוצרו ב-AI. לחצו על ריל כדי לשמוע.</p>
+  </div>
+  <div class="reels-grid">
+    <figure class="reel">
+      <div class="reel__frame">
+        <video src="ugc-1.mp4" muted loop playsinline preload="none" poster="ugc-1-poster.jpg"></video>
+        <span class="reel__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="reel__name">The Mist</span><span class="reel__he">רסס אחד וכל הים על העור · Body Mist</span></figcaption>
     </figure>
-    <div class="plate__caption-bottom">
-      <div>
-        <strong>The Frame</strong>
-        Body mist, candle, summer drink, beach towel — laid out at golden hour, the moment the resort decides to let the sun stay another minute.
+    <figure class="reel">
+      <div class="reel__frame">
+        <video src="ugc-2.mp4" muted loop playsinline preload="none" poster="ugc-2-poster.jpg"></video>
+        <span class="reel__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
       </div>
-      <div class="he" lang="he">
-        <strong>הקדרה</strong>
-        מיסט, נר, משקה קיץ, מגבת חוף — מוצגים בשעת השקיעה הזהובה, ברגע שבו הריזורט מחליט לתת לשמש להישאר עוד דקה.
+      <figcaption><span class="reel__name">The Drink</span><span class="reel__he">הכי מצולם בבריכה · Summer Drink</span></figcaption>
+    </figure>
+    <figure class="reel">
+      <div class="reel__frame">
+        <video src="ugc-3.mp4" muted loop playsinline preload="none" poster="ugc-3-poster.jpg"></video>
+        <span class="reel__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── COVER ─────────── -->
-<section class="cover" id="cover">
-  <div class="cover__grid">
-    <div class="cover__copy reveal">
-      <span class="cover__nº">Cover Story · Nº 01</span>
-      <h2 class="cover__title">A resort in <em>six acts</em>, <br/>worn by the sun.</h2>
-      <p class="cover__lede">
-        SOLARA WILD is a six-piece capsule for the woman — and the man — who travels with the sun. A body mist, a candle, a beach towel, a pair of soft shades, a summer drink, and the resort kit that gathers them. Every piece is a chapter; every chapter is a day at the water.
-      </p>
-      <p class="cover__lede-he" lang="he">
-        SOLARA WILD היא קולקציית קפסולה בשש יצירות — לנשים ולגברים שנוסעים עם השמש. מיסט גוף, נר, מגבת חוף, משקפי שמש, משקה קיץ, וערכת ריזורט שמחברת ביניהם. כל יצירה היא פרק. כל פרק — יום אחד ליד המים.
-      </p>
-      <ul class="cover__index">
-        <li><a href="#act-i"><span>I.&nbsp; Manifesto</span><span>04</span></a></li>
-        <li><a href="#act-ii"><span>II.&nbsp; The Palette</span><span>05</span></a></li>
-        <li><a href="#act-iii"><span>III.&nbsp; The Capsule</span><span>06</span></a></li>
-        <li><a href="#act-iv"><span>IV.&nbsp; The Resort</span><span>07</span></a></li>
-        <li><a href="#act-v"><span>V.&nbsp; The Codex</span><span>08</span></a></li>
-        <li><a href="#act-vi"><span>VI.&nbsp; Audience</span><span>09</span></a></li>
-      </ul>
-    </div>
-    <figure class="cover__photo reveal">
-      <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_57%20PM%20(1).png" alt="SOLARA WILD cover — model with the resort collection" />
-      <figcaption>Cover · The Resort · Photographed in Studio</figcaption>
+      <figcaption><span class="reel__name">The Kit</span><span class="reel__he">כל הקיץ בקופסה אחת · Resort Kit</span></figcaption>
     </figure>
   </div>
+  <p class="reels-note">Made with AI · part of the brand world</p>
 </section>
 
-<!-- ─────────── SUNSET BAND ─────────── -->
-<div class="sunset-band sunset-band--gap" aria-hidden="true">
-  <div style="background:#FF6B1A"></div>
-  <div style="background:#FF9A5C"></div>
-  <div style="background:#FF3F6C"></div>
-  <div style="background:#FF6F8E"></div>
-  <div style="background:#00A6A6"></div>
-  <div style="background:#F4C28B"></div>
-</div>
+<!-- RESORT QUOTE -->
+<section class="resort" id="resort">
+  <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_57%20PM%20(2).png" alt="SOLARA WILD — the resort, the model and the collection" loading="lazy">
+  <div class="resort__quote">
+    <svg class="sun"><use href="#sunburst"/></svg>
+    <h2>For those who go on vacation — and come back as themselves, only warmer.</h2>
+  </div>
+</section>
 
-<!-- ─────────── ACT I — MANIFESTO ─────────── -->
-<section class="act act--manifesto" id="act-i">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">I.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act One</span>
-        <h2 class="act-title">The <em>Manifesto</em></h2>
-      </div>
-      <div class="act-meta">
-        — On the woman who travels with the sun
-        <span class="act-meta-he" lang="he">פתח דבר</span>
-      </div>
+<!-- AUDIENCE -->
+<section class="audience" id="audience">
+  <div class="sec-head" style="margin-bottom:0">
+    <span class="eyebrow" style="color:var(--teal-2)"><svg class="sun" style="width:16px;height:16px"><use href="#sunburst"/></svg> The Audience</span>
+    <h2>Worn by the <em>Sun</em></h2>
+  </div>
+  <p class="audience__pull reveal" style="margin-top:2.4rem">The woman the sun <em>follows</em> — barefoot, full-volume, tanned in a colour of her own choosing.</p>
+  <div class="aud-grid">
+    <div class="aud-item reveal">
+      <span class="aud-item__n">i</span>
+      <h4 class="aud-item__t">The Age</h4>
+      <p class="aud-item__b">נשים, 25 עד 45. כאלה שלוקחות לעצמן חלק מהשנה — ליד המים, בצהריים ארוכים, ובערבים שנזכרים שבועות אחר כך.</p>
     </div>
-
-    <div class="manifesto-grid">
-      <div class="manifesto-prose reveal">
-        <p class="lede">There is a kind of woman the sun follows. She walks barefoot across hot stone, she laughs at full volume, she tans in the colour of <em>her own choosing</em>. SOLARA was made for her.</p>
-        <p class="dropcap">SOLARA WILD is not a summer brand. It is a resort brand — built for the part of the year a woman gives to herself. It is meant to be worn beside the water, smelled across a long lunch, lit at dusk and remembered for weeks afterwards.</p>
-        <p>Six pieces, all loud in their own quiet way. Body mist for the morning, candle for the evening, towel for the noon, sunglasses for everything in between. A summer drink to toast the moment. A resort kit for the moments that haven't arrived yet.</p>
-        <div class="manifesto-signature">
-          <span>—Hagit Antebi · Brand Worlds Studio</span>
-          <span class="sig-mark">S</span>
-        </div>
-      </div>
-
-      <aside class="manifesto-aside reveal">
-        <div class="aside-pull">
-          The most generous thing the sun does is let us <em>stay a little longer</em> than we should.
-        </div>
-        <div class="aside-pull-he" lang="he">
-          הדבר הכי נדיב שהשמש עושה הוא לתת לנו להישאר עוד קצת — קצת יותר ממה שתכננו.
-        </div>
-        <figure>
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_22_58%20PM.png" alt="SOLARA WILD full collection" />
-          <figcaption>Plate I · The Capsule — six pieces, one resort.</figcaption>
-        </figure>
-      </aside>
+    <div class="aud-item reveal">
+      <span class="aud-item__n">ii</span>
+      <h4 class="aud-item__t">The Spirit</h4>
+      <p class="aud-item__b">חמות, חופשיות, חיות בווליום מלא. מחפשות ריזורט שאפשר לקחת הביתה — ניחוח, צבע, ואור שנשאר על העור.</p>
+    </div>
+    <div class="aud-item reveal">
+      <span class="aud-item__n">iii</span>
+      <h4 class="aud-item__t">The Role</h4>
+      <p class="aud-item__b">ששת הפריטים הם הפסקול לחופשה — מהבוקר עד השקיעה. נישאים, מורחים, נדלקים — ונשארים זיכרון.</p>
     </div>
   </div>
 </section>
 
-<!-- ─────────── ACT II — THE PALETTE ─────────── -->
-<section class="act act--palette" id="act-ii">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">II.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act Two</span>
-        <h2 class="act-title">The <em>Palette</em></h2>
-      </div>
-      <div class="act-meta">
-        — Four heat notes &amp; their warm echoes
-        <span class="act-meta-he" lang="he">פלטת המותג</span>
-      </div>
+<!-- STUDIO / CTA -->
+<section class="studio" id="studio">
+  <svg class="sun studio__sun"><use href="#sunburst"/></svg>
+  <div class="studio__inner">
+    <span class="studio__eyebrow">Brand Worlds Studio</span>
+    <h2>האתר הזה הוא <em>Demo</em>.<br>העולם הבא יכול להיות שלך.</h2>
+    <p class="studio__sub">SOLARA WILD הוא עולם מותג שלם — שם, שפה, מוצרים, סרטונים ואתר חי — שנבנה מקצה לקצה ב-Brand Worlds Studio. לא עוד תבנית כמו של כולם: עולם שמרגישים כבר בשנייה הראשונה, ושעובד בשבילך.</p>
+    <div class="studio__cc"><span class="dot"></span>כל מה שראית — האתר, השפה והקוד — נבנה עם&nbsp;<b>Claude Code</b>. רוב האנשים לא יודעים שאפשר ככה. אפשר.</div>
+
+    <div class="studio-points">
+      <div class="studio-point reveal"><span class="n">I.</span><p>זהות ושפה מותגית שנבנות פעם אחת — ונשמרות אוטומטית</p></div>
+      <div class="studio-point reveal"><span class="n">II.</span><p>נכסים ויזואליים וסרטוני AI מהמוצרים שלך</p></div>
+      <div class="studio-point reveal"><span class="n">III.</span><p>אתר חי וסוכן חכם שעובדים בשבילך מסביב לשעון</p></div>
     </div>
 
-    <table class="palette-table reveal">
-      <tbody>
-        <tr>
-          <td><div class="palette-swatch" style="background:#FF6B1A;"></div></td>
-          <td class="palette-name">Solar <em>Orange</em></td>
-          <td class="palette-hex">#FF6B1A</td>
-          <td class="palette-role">Heat — the colour the sun signs its name in.</td>
-          <td class="palette-role-he" lang="he">חום · אנרגיית שמש</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#FF3F6C;"></div></td>
-          <td class="palette-name">Hot <em>Coral</em></td>
-          <td class="palette-hex">#FF3F6C</td>
-          <td class="palette-role">Pulse — the body's first colour, in summer.</td>
-          <td class="palette-role-he" lang="he">דופק · חושני · בולט</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#00A6A6;"></div></td>
-          <td class="palette-name">Lagoon <em>Teal</em></td>
-          <td class="palette-hex">#00A6A6</td>
-          <td class="palette-role">Water — the room a swimmer leaves behind her.</td>
-          <td class="palette-role-he" lang="he">מים · לגונה · רעננות</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#2A1712;"></div></td>
-          <td class="palette-name">Cocoa <em>Night</em></td>
-          <td class="palette-hex">#2A1712</td>
-          <td class="palette-role">Voice — type, ground, the deep evening shadow.</td>
-          <td class="palette-role-he" lang="he">קול · עומק · יוקרה</td>
-        </tr>
-      </tbody>
-    </table>
+    <a href="book.html" class="studio-book">איך זה נבנה — ספר המותג המלא →</a>
+    <p class="studio-book-note">ה-DNA, השפה והקוד שמהם נגזר כל מה שראית למעלה</p>
 
-    <div class="palette-band reveal" aria-hidden="true">
-      <div style="background:#2A1712; color:#FAEFE0;">35 · Cocoa</div>
-      <div style="background:#FF6B1A; color:#2A1712;">25 · Solar</div>
-      <div style="background:#FF3F6C; color:#FAEFE0;">20 · Coral</div>
-      <div style="background:#00A6A6; color:#FAEFE0;">15 · Teal</div>
-      <div style="background:#F4C28B; color:#2A1712;">5 · Sand</div>
-    </div>
-
-    <div class="palette-secondary reveal" aria-hidden="true">
-      <div style="background:#FF9A5C; color:#2A1712;">#FF9A5C · Sunset Peach</div>
-      <div style="background:#FF6F8E; color:#FAEFE0;">#FF6F8E · Coral Glow</div>
-      <div style="background:#007C7C; color:#FAEFE0;">#007C7C · Deep Lagoon</div>
-      <div style="background:#4A2A21; color:#FAEFE0;">#4A2A21 · Warm Cocoa</div>
-      <div style="background:#F4C28B; color:#2A1712;">#F4C28B · Sand Heat</div>
-    </div>
-
-    <p class="palette-note reveal">— Vibrant. Sensual. Sunlit. Distinctive. A palette built for endless summer.</p>
-  </div>
-</section>
-
-<!-- ─────────── ACT III — THE CAPSULE ─────────── -->
-<section class="act act--capsule" id="act-iii">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">III.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act Three</span>
-        <h2 class="act-title">The <em>Capsule</em></h2>
+    <div class="agent-box reveal">
+      <div class="agent-head"><span class="agent-dot"></span><span class="agent-title">הסוכן של Brand Worlds Studio</span></div>
+      <div class="agent-msg">היי 👋 אני יכול להראות לך איך עולם מותג כמו SOLARA WILD נבנה בדיוק למותג שלך — מהשם ועד הסרטונים והאתר. רוצה שנדבר?</div>
+      <div style="text-align:center">
+        <a href="https://wa.me/972528351676?text=היי%20חגית,%20ראיתי%20את%20SOLARA%20WILD%20ואשמח%20לשמוע%20על%20עולם%20מותג%20למותג%20שלי" class="agent-cta" target="_blank" rel="noopener">לשיחה עם חגית →</a>
       </div>
-      <div class="act-meta">
-        — Six pieces, one resort
-        <span class="act-meta-he" lang="he">קפסולת המוצרים</span>
-      </div>
-    </div>
-
-    <!-- Product marquee — kinetic preview of the capsule -->
-    <div class="product-marquee reveal" aria-hidden="true">
-      <div class="product-marquee__track">
-        <!-- Set 1 -->
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(3).png" alt="Body Mist" /></div>
-          <div class="nº">Act 01</div><div class="name">Body Mist</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(4).png" alt="Resort Candle" /></div>
-          <div class="nº">Act 02</div><div class="name">Resort Candle</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(5).png" alt="Beach Towel" /></div>
-          <div class="nº">Act 03</div><div class="name">Beach Towel</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="Sunglasses.png" alt="Sunglasses" /></div>
-          <div class="nº">Act 04</div><div class="name">Sunglasses</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(6).png" alt="Summer Drink" /></div>
-          <div class="nº">Act 05</div><div class="name">Summer Drink</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="Resort%20Kit.png" alt="Resort Kit" /></div>
-          <div class="nº">Signature</div><div class="name">Resort Kit</div>
-        </div>
-        <!-- Set 2 (duplicate for seamless loop) -->
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(3).png" alt="" /></div>
-          <div class="nº">Act 01</div><div class="name">Body Mist</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(4).png" alt="" /></div>
-          <div class="nº">Act 02</div><div class="name">Resort Candle</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(5).png" alt="" /></div>
-          <div class="nº">Act 03</div><div class="name">Beach Towel</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="Sunglasses.png" alt="" /></div>
-          <div class="nº">Act 04</div><div class="name">Sunglasses</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(6).png" alt="" /></div>
-          <div class="nº">Act 05</div><div class="name">Summer Drink</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="Resort%20Kit.png" alt="" /></div>
-          <div class="nº">Signature</div><div class="name">Resort Kit</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="capsule">
-      <article class="capsule-piece reveal">
-        <figure class="capsule-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(3).png" alt="Solara Wild Body Mist" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Act 01</span>
-            <span class="code">SW·BM·01 · Hot Coral</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Body Mist</em></h3>
-          <p class="capsule-piece__sub">Sun, sea salt, and tropical fruit — bottled.</p>
-          <p class="capsule-piece__desc">A weightless mist for shoulders, neck, and the inside of the wrist. Notes of bergamot, sea salt, hibiscus, and a soft trail of warm cocoa.</p>
-          <p class="capsule-piece__desc-he" lang="he">מיסט גוף קליל לכתפיים, צוואר, ופנים פרק היד. נוטות של ברגמוט, מלח ים, היביסקוס, ושובל רך של קקאו חם.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Volume</strong>120 mL · 4 fl. oz.</div>
-            <div><strong>Notes</strong>Citrus · Salt · Floral</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capsule-piece capsule-piece--reverse reveal">
-        <figure class="capsule-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_58%20PM%20(4).png" alt="Solara Wild Resort Candle" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Act 02</span>
-            <span class="code">SW·RC·02 · Lagoon Teal</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Resort Candle</em></h3>
-          <p class="capsule-piece__sub">A beach club, contained.</p>
-          <p class="capsule-piece__desc">A hand-poured candle in lagoon teal glass. Lit at dusk; the room becomes a small, well-dressed beach club within the first ten minutes.</p>
-          <p class="capsule-piece__desc-he" lang="he">נר יצוק ביד בכוס לגונה טורקיזית. נדלק עם רדת הערב; החדר הופך לבר חוף קטן ולבוש היטב — תוך עשר דקות.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Burn</strong>~ 60 hours</div>
-            <div><strong>Wax</strong>Coconut · soy</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capsule-piece reveal">
-        <figure class="capsule-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(5).png" alt="Solara Wild Beach Towel" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Act 03</span>
-            <span class="code">SW·BT·03 · Multi</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Beach Towel</em></h3>
-          <p class="capsule-piece__sub">A geometric sun, woven in cotton.</p>
-          <p class="capsule-piece__desc">Oversized, plush, and printed in the brand's full palette — a tropical geometry that reads from across the pool. Made for sunset arrivals and slow afternoons.</p>
-          <p class="capsule-piece__desc-he" lang="he">מגבת חוף גדולה, רכה, ובהדפס מלא של פלטת המותג — גיאומטריה טרופית שנקראת מעבר לבריכה. נבנתה להגעות בשקיעה ולצהריים שלא ממהרים לשום מקום.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Size</strong>180 × 100 cm</div>
-            <div><strong>Material</strong>100% cotton</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capsule-piece capsule-piece--reverse reveal">
-        <figure class="capsule-piece__media">
-          <img src="Sunglasses.png" alt="Solara Wild Sunglasses" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Act 04</span>
-            <span class="code">SW·SS·04 · Cocoa Night</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Sunglasses</em></h3>
-          <p class="capsule-piece__sub">Cocoa Night frame. Sunset lens.</p>
-          <p class="capsule-piece__desc">A wide silhouette in deep Cocoa Night acetate, with warm-toned lenses that turn the world the colour of late afternoon. Made for arrival, departure, and everything photographed in between.</p>
-          <p class="capsule-piece__desc-he" lang="he">מסגרת רחבה מאצטט Cocoa Night, עם עדשות בגוונים חמים שהופכות את העולם לצבע אחר הצהריים מאוחר. נבנו להגעות, יציאות, וכל דבר שמצולם ביניהן.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Frame</strong>Italian acetate</div>
-            <div><strong>Lens</strong>Warm UV-blocked</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capsule-piece reveal">
-        <figure class="capsule-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_59%20PM%20(6).png" alt="Solara Wild Summer Drink" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Act 05</span>
-            <span class="code">SW·SD·05 · Tropical Mango</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Summer Drink</em></h3>
-          <p class="capsule-piece__sub">A non-alcoholic cocktail, in a sunset bottle.</p>
-          <p class="capsule-piece__desc">Cold-pressed tropical mango, lime, and a whisper of sea salt. Naturally refreshing. The prettiest non-alcoholic thing on the menu — and the most photographed.</p>
-          <p class="capsule-piece__desc-he" lang="he">מנגו טרופי כבוש קר, ליים, ולחישה של מלח ים. מרענן באופן טבעי. הדבר היפה ביותר ב-Menu של הריזורט — והכי מצולם.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Volume</strong>330 mL</div>
-            <div><strong>Profile</strong>Non-alcoholic</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="capsule-piece capsule-piece--reverse reveal">
-        <figure class="capsule-piece__media">
-          <img src="Resort%20Kit.png" alt="Solara Wild Resort Kit" />
-        </figure>
-        <div class="capsule-piece__copy">
-          <div class="capsule-piece__nº">
-            <span class="actno">Signature</span>
-            <span class="code">SW·RK·06 · Set of Six</span>
-          </div>
-          <h3 class="capsule-piece__name"><em>Resort Kit</em></h3>
-          <p class="capsule-piece__sub">The full capsule, in one box.</p>
-          <p class="capsule-piece__desc">Mist, candle, towel, sunglasses, drink, and a soft pouch — the entire SOLARA library, gathered into a box that already feels like a packed bag.</p>
-          <p class="capsule-piece__desc-he" lang="he">מיסט, נר, מגבת, משקפיים, משקה, ופאוץ׳ רך — כל ספריית SOLARA מסודרת בקופסה שכבר מרגישה כמו מזוודה ארוזה.</p>
-          <div class="capsule-piece__specs">
-            <div><strong>Includes</strong>Six pieces</div>
-            <div><strong>Edition</strong>Signature</div>
-          </div>
-        </div>
-      </article>
+      <p class="agent-note">* כאן ייטמע הסוכן החכם · בינתיים הכפתור מפנה ל-WhatsApp</p>
     </div>
   </div>
 </section>
 
-<!-- ─────────── SUNSET BAND ─────────── -->
-<div class="sunset-band sunset-band--gap" aria-hidden="true">
-  <div style="background:#FF6B1A"></div>
-  <div style="background:#FF9A5C"></div>
-  <div style="background:#FF3F6C"></div>
-  <div style="background:#FF6F8E"></div>
-  <div style="background:#00A6A6"></div>
-  <div style="background:#F4C28B"></div>
-</div>
-
-<!-- ─────────── ACT IV — THE RESORT (DARK) ─────────── -->
-<section class="act act--resort" id="act-iv">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">IV.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act Four</span>
-        <h2 class="act-title">The <em>Resort</em></h2>
-      </div>
-      <div class="act-meta">
-        — A day, in golden hour
-        <span class="act-meta-he" lang="he">בחוף</span>
-      </div>
-    </div>
-
-    <div class="resort-spread reveal">
-      <div class="resort-prose">
-        <p class="resort-pull">Some women walk into the sun. Other women <em>are walked into</em> by it. SOLARA WILD was made for the second kind.</p>
-        <p class="resort-body">She arrives at the pool just as the light begins to take a side. The towel is already laid out. The candle is already lit. The drink is already cold. The mist is already in the small pocket of the bag. Nothing about her morning has been rushed; nothing about her afternoon will be either.</p>
-        <p class="resort-body-he" lang="he">היא מגיעה לבריכה בדיוק ברגע שהאור מתחיל לבחור צד. המגבת כבר פרושה. הנר כבר דולק. המשקה כבר קר. המיסט כבר בכיס הקטן של התיק. שום דבר בבוקר שלה לא היה דחוף; שום דבר בצהריים שלה לא יהיה.</p>
-      </div>
-      <figure class="resort-image">
-        <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_57_57%20PM%20(2).png" alt="The resort — model with the collection" />
-        <figcaption>
-          <strong>Plate II</strong>The Resort, photographed at golden hour. Sun on her skin. Wild in her soul.
-        </figcaption>
-      </figure>
-    </div>
+<!-- STUDIO NOTE (GEO) -->
+<section class="studio-note">
+  <div class="studio-note__inner">
+    <span class="eyebrow"><svg class="sun" style="width:15px;height:15px"><use href="#sunburst"/></svg> Studio Note</span>
+    <p>SOLARA WILD הוא עולם מותג בדיוני שנבנה כ-portfolio piece ב-<a href="https://hagitantebi.co.il">Brand Worlds Studio</a> מאת חגית אנטבי, Brand Worlds Architect. האתר החי הזה נגזר ישירות מ-<a href="book.html">ספר המותג</a> — אותו DNA, אותה פלטה (Hot Coral · Lagoon Teal · Sand · Cocoa Night), אותה שפה — ומדגים איך נראית התוצאה כשעולם מותג שלם הופך לנכס דיגיטלי חי. האתר, הסרטונים והצילומים נבנו עם AI ועם Claude Code. המוצרים אינם למכירה.</p>
+    <p>רוצה לראות איך זה נבנה צעד-אחר-צעד? <a href="book.html">ספר המותג המלא →</a> · או חזרה ל<a href="/">Brand Worlds Studio</a></p>
   </div>
 </section>
 
-<!-- ─────────── ACT V — THE CODEX ─────────── -->
-<section class="act act--codex" id="act-v">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">V.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act Five</span>
-        <h2 class="act-title">The <em>Codex</em></h2>
-      </div>
-      <div class="act-meta">
-        — Behind every visible decision
-        <span class="act-meta-he" lang="he">ספר המותג</span>
-      </div>
-    </div>
-
-    <div class="codex-prose reveal">
-      <p>Behind every visible decision sits a strategic one. The Codex holds SOLARA in place — the colour, the type, the language, the voice. A brand stays itself only when its rules are written down.</p>
-      <p lang="he">מאחורי כל החלטה ויזואלית — עומדת החלטה אסטרטגית. הקודקס מחזיק את SOLARA במקום: הצבע, הטיפוגרפיה, השפה, הקול. מותג נשאר עצמו רק אם החוקים שלו כתובים.</p>
-    </div>
-
-    <div class="codex-grid reveal">
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 01</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_11_18%20PM%20(1).png" alt="Color System brand book page" />
-        </div>
-        <div class="codex-page__label"><span>Color System</span><em>Plate I</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 02</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_11_19%20PM%20(2).png" alt="Logo and Typography brand book page" />
-        </div>
-        <div class="codex-page__label"><span>Logo &amp; Type</span><em>Plate II</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 03</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_11_20%20PM%20(3).png" alt="Brand Language page" />
-        </div>
-        <div class="codex-page__label"><span>Language</span><em>Plate III</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 04</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_11_20%20PM%20(4).png" alt="Brand Voice page" />
-        </div>
-        <div class="codex-page__label"><span>Voice</span><em>Plate IV</em></div>
-      </div>
-    </div>
-
-    <p class="codex-credit reveal">A brand is the sum of its quiet decisions, written down.</p>
-  </div>
-</section>
-
-<!-- ─────────── ACT VI — AUDIENCE ─────────── -->
-<section class="act act--audience" id="act-vi">
-  <div class="act__inner">
-    <div class="act-header reveal">
-      <div class="act-numeral">VI.</div>
-      <div class="act-title-block">
-        <span class="act-eyebrow">Act Six</span>
-        <h2 class="act-title">The <em>Audience</em></h2>
-      </div>
-      <div class="act-meta">
-        — For those who travel with the sun
-        <span class="act-meta-he" lang="he">הקהל</span>
-      </div>
-    </div>
-
-    <p class="audience-pull reveal">For those who go on vacation <em>and come back as themselves</em> — only warmer.</p>
-
-    <div class="audience-grid">
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">i.</span>
-        <h4 class="audience-item__title"><em>The age</em></h4>
-        <p class="audience-item__body">Women and men, 25 to 45. People for whom a vacation is a state of mind, not a calendar event. Resort-fluent. Sun-aware.</p>
-        <p class="audience-item__body-he" lang="he">נשים וגברים, 25–45. אנשים שעבורם חופשה היא מצב נפשי, לא אירוע ביומן. שולטים בריזורט. מודעים לשמש.</p>
-      </div>
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">ii.</span>
-        <h4 class="audience-item__title"><em>The mindset</em></h4>
-        <p class="audience-item__body">They love products that feel like an experience. They have opinions on perfume, on glassware, on the right shade of orange.</p>
-        <p class="audience-item__body-he" lang="he">הם אוהבים מוצרים שמרגישים כמו חוויה. יש להם דעות על בישום, על כוסות, ועל הגוון הנכון של כתום.</p>
-      </div>
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">iii.</span>
-        <h4 class="audience-item__title"><em>The desire</em></h4>
-        <p class="audience-item__body">A summer that doesn't end at the airport. A few small things to bring it home. A brand that already knows what they were going to ask for.</p>
-        <p class="audience-item__body-he" lang="he">קיץ שלא נגמר בנמל התעופה. כמה דברים קטנים שיביאו אותו הביתה. מותג שכבר יודע מה הם עומדים לבקש.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── CLOSING — sun glow ─────────── -->
-<section class="closing" id="closing">
-  <div class="closing__inner reveal">
-    <h2 class="closing__statement">
-      Sun on your skin.<span class="br"></span><em>Wild in your soul.</em>
-    </h2>
-    <p class="closing__he" lang="he">שמש על העור. חופש בנשמה.</p>
-    <div class="closing__end"><span>End of Capsule 01</span></div>
-    <div class="closing__mark">S</div>
-  </div>
-</section>
-
-<!-- ─────────── COLOPHON ─────────── -->
-<footer class="colophon">
-  <div class="colophon__inner">
-    <div class="colophon__top">
-      <div class="colophon__edge-l">— A Brand World</div>
-      <div class="colophon__center">
-        <div class="colophon__seal"><img src="LOGO.png" alt="SOLARA WILD seal" /></div>
-        <div class="mark">SOLARA<em>wild</em></div>
-        <div class="tag">Sun on your skin. <em>Wild in your soul.</em></div>
-      </div>
-      <div class="colophon__edge-r">Capsule <em>01</em> · MMXXVI —</div>
-    </div>
-
-    <dl class="colophon__details">
-      <div>
-        <dt>Editor &amp; Designer</dt>
-        <dd>Hagit Antebi</dd>
-      </div>
-      <div>
-        <dt>Studio</dt>
-        <dd><a href="https://hagitantebi.co.il" target="_blank" rel="noopener">Brand Worlds Studio</a></dd>
-      </div>
-      <div>
-        <dt>Issue</dt>
-        <dd>Capsule 01, Nº 01</dd>
-      </div>
-      <div>
-        <dt>Year</dt>
-        <dd>MMXXVI · 2026</dd>
-      </div>
-    </dl>
-
-    <div class="colophon__bottom">
-      <span>© Brand Worlds Studio · A fictional brand built as a portfolio piece.</span>
-      <span class="colophon__bottom-he" lang="he">עולם מותג שנבנה ב-Brand Worlds Studio · חגית אנטבי</span>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo"><svg class="sun"><use href="#sunburst"/></svg> SOLARA WILD</div>
+  <div class="f-tag">Sun on your skin. Wild in your soul.</div>
+  <div class="f-meta">
+    A Brand World by <a href="https://hagitantebi.co.il" target="_blank" rel="noopener">Brand Worlds Studio</a> · חגית אנטבי<br>
+    Capsule 01 · MMXXVI · עולם מותג שנבנה כ-portfolio piece עם Claude Code<br>
+    <a href="book.html">The Brand Book →</a>
   </div>
 </footer>
 
 <script>
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+/* marquees */
+function fill(el,items){
+  const g=()=>{const d=document.createElement('span');d.style.cssText='display:inline-flex;align-items:center';
+    items.forEach(t=>{const s=document.createElement('span');s.className='marquee__item';s.textContent=t;d.appendChild(s);
+      const sv=document.createElementNS('http://www.w3.org/2000/svg','svg');sv.setAttribute('class','sun marquee__sun');
+      const u=document.createElementNS('http://www.w3.org/2000/svg','use');u.setAttribute('href','#sunburst');sv.appendChild(u);d.appendChild(sv);});
+    return d;};
+  el.appendChild(g());el.appendChild(g());
+}
+fill(document.getElementById('mq1'),['Sun on your skin','Wild in your soul','A Resort in Six Acts','Endless Summer']);
+fill(document.getElementById('mq2'),['SOLARA WILD','Capsule 01','Built with Claude Code','MMXXVI']);
 
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+/* nav */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>innerHeight*0.7));
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{navLinks.classList.toggle('open');nav.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');nav.classList.remove('open');}));
 
-  // Page indicator
-  const sections = [
-    document.getElementById('masthead'),
-    document.getElementById('plate-i'),
-    document.getElementById('cover'),
-    document.getElementById('act-i'),
-    document.getElementById('act-ii'),
-    document.getElementById('act-iii'),
-    document.getElementById('act-iv'),
-    document.getElementById('act-v'),
-    document.getElementById('act-vi'),
-    document.getElementById('closing'),
-  ].filter(Boolean);
+/* reveals — ease-out, scroll-triggered (Emil: 100px-ish threshold, transform+opacity only) */
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+});
+/* hero staggered load */
+gsap.from('.hero-eyebrow',{opacity:0,y:18,duration:1,delay:.25,ease:'power3.out'});
+gsap.from('.hero h1',{opacity:0,y:36,duration:1.2,delay:.4,ease:'power3.out'});
+gsap.from('.hero-tag',{opacity:0,y:18,duration:1,delay:.75,ease:'power3.out'});
+gsap.from('.hero-badge',{opacity:0,scale:.7,rotate:-30,duration:1,delay:.9,ease:'back.out(1.6)'});
 
-  const pageEl = document.getElementById('pageNum');
-  let ticking = false;
-  function updatePage() {
-    const fold = window.scrollY + window.innerHeight * 0.4;
-    let current = 0;
-    for (let i = 0; i < sections.length; i++) {
-      if (sections[i].offsetTop <= fold) current = i;
-    }
-    const num = String(current + 1).padStart(2, '0');
-    if (pageEl.textContent !== num) pageEl.textContent = num;
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updatePage); ticking = true; }
-  }, { passive: true });
-  updatePage();
+/* REELS — autoplay in view + tap one for sound */
+const reels=document.querySelectorAll('.reel');
+const rIO=new IntersectionObserver(es=>es.forEach(e=>{
+  const v=e.target.querySelector('video');
+  if(e.isIntersecting){v.play().catch(()=>{});}
+  else{v.pause();if(e.target.classList.contains('sound')){v.muted=true;e.target.classList.remove('sound');}}
+}),{threshold:.35});
+reels.forEach(r=>rIO.observe(r));
+reels.forEach(reel=>{
+  const v=reel.querySelector('video');
+  reel.addEventListener('click',()=>{
+    const willUnmute=v.muted;
+    reels.forEach(r=>{r.querySelector('video').muted=true;r.classList.remove('sound');});
+    if(willUnmute){v.muted=false;v.currentTime=0;v.play().catch(()=>{});reel.classList.add('sound');}
+  });
+});
 </script>
-
-<style>.studio-glossary-link{display:block;text-align:center;padding:24px 0 40px;font-family:inherit;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#EFD8B6;background:#2A1712;opacity:0.4;text-decoration:none;transition:opacity 0.3s ease}.studio-glossary-link:hover{opacity:1}</style>
-<a href="/glossary.html" class="studio-glossary-link">Studio Glossary</a>
-
 </body>
 </html>

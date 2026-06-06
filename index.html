@@ -1722,16 +1722,17 @@
                         </svg>
                     </a>
                     <ul class="nav__dropdown-menu">
-                        <li class="nav__dropdown-item"><a href="worlds.html" class="nav__dropdown-link">Brand Worlds</a></li>
+                        <li class="nav__dropdown-item"><a href="brand-worlds/" class="nav__dropdown-link nav__dropdown-link--feature">Brand Worlds &nbsp;<em>·&nbsp;2026 Capsule</em></a></li>
                         <li class="nav__dropdown-item"><a href="experiences.html" class="nav__dropdown-link">Brand Experiences</a></li>
                         <li class="nav__dropdown-item"><a href="vision-story.html" class="nav__dropdown-link">Vision &amp; Story</a></li>
                         <li class="nav__dropdown-item"><a href="studio.html" class="nav__dropdown-link">Studio AI</a></li>
                         <li class="nav__dropdown-item nav__dropdown-divider" aria-hidden="true"></li>
-                        <li class="nav__dropdown-item"><a href="brand-worlds/" class="nav__dropdown-link nav__dropdown-link--feature">2026 Capsule &nbsp;<em>·&nbsp;Hub</em></a></li>
                         <li class="nav__dropdown-item"><a href="aurelle/" class="nav__dropdown-link">Aurelle <span class="nav__dropdown-sub">— The Live Site</span></a></li>
                         <li class="nav__dropdown-item"><a href="aurelle/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
-                        <li class="nav__dropdown-item"><a href="vela-motion/" class="nav__dropdown-link">Vela Motion <span class="nav__dropdown-sub">— Lookbook 01</span></a></li>
-                        <li class="nav__dropdown-item"><a href="solara-wild/" class="nav__dropdown-link">Solara Wild <span class="nav__dropdown-sub">— Capsule 01</span></a></li>
+                        <li class="nav__dropdown-item"><a href="vela-motion/" class="nav__dropdown-link">Vela Motion <span class="nav__dropdown-sub">— The Live Site</span></a></li>
+                        <li class="nav__dropdown-item"><a href="vela-motion/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
+                        <li class="nav__dropdown-item"><a href="solara-wild/" class="nav__dropdown-link">Solara Wild <span class="nav__dropdown-sub">— The Live Site</span></a></li>
+                        <li class="nav__dropdown-item"><a href="solara-wild/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
                     </ul>
                 </li>
                 <li><a href="brandos-custom.html" class="nav__link">BrandOS</a></li>
@@ -1872,6 +1873,116 @@
 
         </div>
     </section>
+
+    <!-- ============================================================
+         02b · LIVE BRAND WORLDS — the three sites, alive (proof-first)
+         ============================================================ -->
+    <style>
+    .live-worlds{background:var(--color-cream);padding:clamp(80px,11vw,130px) 0;position:relative}
+    .live-worlds__header{text-align:center;margin-bottom:clamp(46px,6vw,70px);padding:0 var(--container-padding)}
+    .live-worlds__label{font-family:var(--font-body-en);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--color-copper);font-weight:600;margin-bottom:16px}
+    .live-worlds__title{font-family:var(--font-display);font-size:clamp(38px,5vw,62px);font-weight:500;color:var(--color-chocolate);line-height:1.1;margin-bottom:14px;letter-spacing:-1px}
+    .live-worlds__subtitle{font-size:clamp(15px,1.4vw,17px);color:var(--color-taupe);max-width:660px;margin:0 auto;line-height:1.7}
+    .live-worlds__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,26px);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}
+    @media(max-width:900px){.live-worlds__grid{grid-template-columns:1fr;max-width:440px}}
+    .lw-card{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid var(--color-light-taupe);box-shadow:0 18px 40px -28px rgba(43,26,18,.35);transition:transform .5s var(--transition-smooth),box-shadow .5s}
+    .lw-card:hover{transform:translateY(-6px);box-shadow:0 32px 50px -28px rgba(43,26,18,.5)}
+    .lw-card__media{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--color-warm-beige)}
+    .lw-card__media video{width:100%;height:100%;object-fit:cover;display:block}
+    .lw-card__num{position:absolute;top:14px;left:16px;font-family:var(--font-display);font-size:20px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.45);letter-spacing:1px;z-index:2}
+    .lw-card__live{position:absolute;top:14px;right:16px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.42);backdrop-filter:blur(6px);color:#fff;font-family:var(--font-body-en);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:5px 10px;border-radius:30px}
+    .lw-card__live .dot{width:6px;height:6px;border-radius:50%;background:#5fd07a;box-shadow:0 0 8px #5fd07a;animation:lwpulse 2s infinite}
+    @keyframes lwpulse{0%,100%{opacity:1}50%{opacity:.35}}
+    .lw-card__grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(20,14,10,.32),transparent 42%);pointer-events:none}
+    .lw-card__body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;text-align:right}
+    .lw-card__name{font-family:var(--font-display);font-size:30px;font-weight:500;color:var(--color-chocolate);line-height:1;margin-bottom:5px;direction:ltr;letter-spacing:.5px}
+    .lw-card__cat{font-family:var(--font-body-en);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--color-copper);margin-bottom:12px;direction:ltr}
+    .lw-card__tag{font-family:var(--font-display);font-style:italic;font-size:18px;color:var(--color-chocolate);margin-bottom:5px;direction:ltr}
+    .lw-card__tag-he{font-size:14px;color:var(--color-taupe);line-height:1.5;margin-bottom:16px}
+    .lw-card__cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body-en);font-size:13px;font-weight:600;color:var(--color-copper);text-transform:uppercase;letter-spacing:1.5px;margin-top:auto;align-self:flex-start}
+    .lw-card:hover .lw-card__cta-arrow{transform:translateX(4px)}
+    .lw-card__cta-arrow{transition:transform .3s var(--transition-smooth)}
+    .live-worlds__foot{text-align:center;margin-top:clamp(32px,4vw,46px);padding:0 var(--container-padding)}
+    .live-worlds__foot a{font-family:var(--font-body-en);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-chocolate);border-bottom:1px solid var(--color-copper);padding-bottom:3px;transition:color .3s}
+    .live-worlds__foot a:hover{color:var(--color-copper)}
+    @media(prefers-reduced-motion:reduce){.lw-card__live .dot{animation:none}}
+    </style>
+    <section class="live-worlds" id="live-worlds" aria-labelledby="live-worlds-title">
+        <div class="live-worlds__header reveal">
+            <p class="live-worlds__label" dir="ltr">Live Brand Worlds · Built with AI + Claude Code</p>
+            <h2 class="live-worlds__title" id="live-worlds-title">עולמות מותג חיים</h2>
+            <p class="live-worlds__subtitle">שלושה עולמות שבניתי מקצה לקצה — שם, שפה, מוצרים, סרטונים ואתר חי. כל אחד עם רוח אחרת לגמרי. הקליקו והיכנסו.</p>
+        </div>
+        <div class="live-worlds__grid">
+
+            <a href="aurelle/" class="lw-card reveal" aria-label="AURELLE — האתר החי">
+                <div class="lw-card__media">
+                    <span class="lw-card__num">01</span>
+                    <span class="lw-card__live"><span class="dot"></span>Live</span>
+                    <span class="lw-card__grad"></span>
+                    <video data-lw muted loop playsinline preload="none" poster="aurelle/assets/hero-poster.jpg" src="aurelle/assets/hero.mp4"></video>
+                </div>
+                <div class="lw-card__body">
+                    <p class="lw-card__name">AURELLE</p>
+                    <p class="lw-card__cat">Premium Skincare · Skin Longevity</p>
+                    <p class="lw-card__tag">Quiet beauty. Visible confidence.</p>
+                    <p class="lw-card__tag-he">יופי שקט. נוכחות שמרגישים.</p>
+                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="vela-motion/" class="lw-card reveal" aria-label="VELA MOTION — האתר החי">
+                <div class="lw-card__media">
+                    <span class="lw-card__num">02</span>
+                    <span class="lw-card__live"><span class="dot"></span>Live</span>
+                    <span class="lw-card__grad"></span>
+                    <video data-lw muted loop playsinline preload="none" poster="vela-motion/hero-poster.jpg" src="vela-motion/hero.mp4"></video>
+                </div>
+                <div class="lw-card__body">
+                    <p class="lw-card__name">VELA MOTION</p>
+                    <p class="lw-card__cat">Urban Accessories · Lifestyle</p>
+                    <p class="lw-card__tag">Move beautifully. Stay unmistakable.</p>
+                    <p class="lw-card__tag-he">לזוז יפה. להישאר בלתי נשכחת.</p>
+                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+            <a href="solara-wild/" class="lw-card reveal" aria-label="SOLARA WILD — האתר החי">
+                <div class="lw-card__media">
+                    <span class="lw-card__num">03</span>
+                    <span class="lw-card__live"><span class="dot"></span>Live</span>
+                    <span class="lw-card__grad"></span>
+                    <video data-lw muted loop playsinline preload="none" poster="solara-wild/hero-poster.jpg" src="solara-wild/hero.mp4"></video>
+                </div>
+                <div class="lw-card__body">
+                    <p class="lw-card__name">SOLARA WILD</p>
+                    <p class="lw-card__cat">Resort Lifestyle · Capsule</p>
+                    <p class="lw-card__tag">Sun on your skin. Wild in your soul.</p>
+                    <p class="lw-card__tag-he">שמש על העור. חופש בנשמה.</p>
+                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </div>
+            </a>
+
+        </div>
+        <div class="live-worlds__foot reveal">
+            <a href="brand-worlds/">כל העולמות · 2026 Capsule Hub →</a>
+        </div>
+    </section>
+    <script>
+    (function(){
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      var vids = document.querySelectorAll('video[data-lw]');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var v = e.target;
+          if (e.isIntersecting) { v.play().catch(function(){}); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.4 });
+      vids.forEach(function(v){ io.observe(v); });
+    })();
+    </script>
 
     <!-- ============================================================
          02c · SERVICES STRIP — How to Work With Me (proof-first: now below Worlds)

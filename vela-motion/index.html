@@ -1,2544 +1,807 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VELA MOTION — Lookbook 01 · Move beautifully. Stay unmistakable.</title>
-<meta name="description" content="VELA MOTION — Urban accessories in motion. Lookbook 01, a brand world by Brand Worlds Studio." />
-<link rel="canonical" href="https://hagitantebi.co.il/vela-motion/" />
-<meta property="og:url" content="https://hagitantebi.co.il/vela-motion/" />
-<meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELA MOTION — Move beautifully. Stay unmistakable.</title>
+<meta name="description" content="VELA MOTION — עולם מותג של אקססוריז בתנועה. אתר חי שנבנה מקצה לקצה ב-Brand Worlds Studio · חגית אנטבי, עם Claude Code.">
+<meta property="og:title" content="VELA MOTION — Move beautifully. Stay unmistakable.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hagitantebi.co.il/vela-motion/">
+<meta property="og:description" content="VELA MOTION — עולם מותג של אקססוריז בתנועה. אתר חי מבית Brand Worlds Studio · חגית אנטבי.">
+<meta property="og:image" content="https://hagitantebi.co.il/vela-motion/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://hagitantebi.co.il/vela-motion/">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Heebo:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <style>
-/* ─────────────────────────────────────────────
-   VELA MOTION — Lookbook 01
-   Urban accessories, framed as a fashion lookbook
-   ───────────────────────────────────────────── */
-
-:root {
-  --cream:        #F4EEE6;
-  --cream-warm:   #FAF5EF;
-  --cream-soft:   #EDE5D9;
-  --rose:         #C98F8F;
-  --rose-light:   #E2B8B5;
-  --rose-deep:    #A86C6D;
-  --sky:          #BFD4D9;
-  --sky-mist:     #D8E6E8;
-  --ink:          #1F252B;
-  --ink-soft:     #394149;
-  --hairline:     rgba(31, 37, 43, 0.18);
-  --hairline-soft: rgba(31, 37, 43, 0.10);
-
-  --display:  'Playfair Display', 'Cormorant Garamond', serif;
-  --sans:     'Montserrat', system-ui, sans-serif;
-  --hebrew:   'Heebo', system-ui, sans-serif;
+:root{
+  --ink:#1F252B;
+  --ink-2:#171C21;
+  --ink-3:#10141890;
+  --slate:#394149;
+  --cream:#FAF5EF;
+  --cream-2:#F4EEE6;
+  --cream-d:#E7DECF;
+  --rose:#C98F8F;
+  --rose-deep:#A86C6D;
+  --rose-soft:#E2B8B5;
+  --sky:#BFD4D9;
+  --sky-2:#D8E6E8;
+  --hair:rgba(250,245,239,.15);
+  --hair-2:rgba(250,245,239,.28);
+  --serif:'Bodoni Moda',serif;
+  --grotesk:'Archivo',sans-serif;
+  --mono:'Space Mono',monospace;
+  --he:'Heebo',sans-serif;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--cream);
+  font-family:var(--he);
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--rose);color:var(--ink)}
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  position: relative;
+/* ---------- shared type ---------- */
+.kicker{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--sky);direction:ltr;
 }
-
-/* paper grain */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background-image:
-    radial-gradient(circle at 25% 30%, rgba(201, 143, 143, 0.04) 0, transparent 35%),
-    radial-gradient(circle at 78% 75%, rgba(191, 212, 217, 0.04) 0, transparent 35%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.14 0 0 0 0 0.16 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: cover, cover, 220px 220px;
-  mix-blend-mode: multiply;
+.kicker--rose{color:var(--rose-soft)}
+.wordmark-serif{font-family:var(--serif);font-weight:500;letter-spacing:.02em}
+.grotesk-caps{
+  font-family:var(--grotesk);font-weight:800;text-transform:uppercase;
+  letter-spacing:-.01em;line-height:.96;direction:ltr;
 }
 
-/* hebrew rule */
-[lang="he"] {
-  font-family: var(--hebrew);
-  direction: rtl;
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 2.6rem;transition:background .5s ease,padding .5s ease,border-color .5s ease;
+  border-bottom:1px solid transparent;
 }
+nav.scrolled{
+  background:rgba(23,28,33,.82);backdrop-filter:blur(16px);
+  padding:1rem 2.6rem;border-bottom:1px solid var(--hair);
+}
+.nav-logo{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:.16em;color:var(--cream);direction:ltr}
+.nav-logo small{font-family:var(--grotesk);font-weight:700;font-size:.5rem;letter-spacing:.5em;display:block;color:var(--rose-soft);margin-top:-.1rem}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-family:var(--grotesk);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);opacity:.82;transition:opacity .3s;direction:ltr}
+.nav-links a:hover{opacity:1;color:var(--sky-2)}
+.nav-back{color:var(--rose-soft)!important}
+.nav-cta{
+  font-family:var(--he)!important;text-transform:none!important;
+  font-size:.84rem!important;letter-spacing:.02em!important;font-weight:500!important;
+  border:1px solid var(--hair-2);padding:.5rem 1.2rem;border-radius:2rem;opacity:1!important;
+}
+.nav-cta:hover{background:var(--rose);border-color:var(--rose);color:var(--ink)!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:70}
+.nav-burger span{width:24px;height:2px;background:var(--cream);transition:.3s}
 
-/* ─────────────────────────────────────────────
-   BACK TO STUDIO — fixed top-left
-   ───────────────────────────────────────────── */
-.back-link {
-  position: fixed;
-  top: 1.5rem;
-  left: 2rem;
-  z-index: 95;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  background: rgba(250, 245, 239, 0.94);
-  padding: 0.55rem 1rem;
-  border: 1px solid var(--hairline);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:600px;width:100%;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(105deg,rgba(16,20,24,.78) 0%,rgba(16,20,24,.32) 42%,rgba(16,20,24,.12) 70%,rgba(16,20,24,.55) 100%);}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(16,20,24,.85),transparent 42%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding:0 2.6rem 4.5rem;direction:ltr}
+.hero-index{position:absolute;top:6.5rem;right:2.6rem;z-index:2;text-align:right;direction:ltr}
+.hero-index .kicker{display:block;line-height:2.1}
+.hero-wm{display:flex;align-items:baseline;gap:1.4rem;flex-wrap:wrap}
+.hero-wm h1{
+  font-family:var(--serif);font-weight:500;color:var(--cream);
+  font-size:clamp(4rem,17vw,15rem);letter-spacing:.01em;line-height:.86;
 }
-.back-link:hover {
-  color: var(--rose);
-  border-color: var(--rose);
+.hero-motion{
+  font-family:var(--grotesk);font-weight:800;text-transform:uppercase;
+  font-size:clamp(1rem,3.4vw,2.8rem);letter-spacing:.42em;color:var(--rose-soft);
+  align-self:center;padding-bottom:.6rem;
 }
-.back-link__arr {
-  font-size: 1rem;
-  line-height: 1;
-  transition: transform 0.4s;
-}
-.back-link:hover .back-link__arr { transform: translateX(-3px); }
+.hero-tag{margin-top:1.4rem;display:flex;align-items:flex-end;gap:1.6rem;flex-wrap:wrap}
+.hero-tag-en{font-family:var(--grotesk);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(.95rem,1.8vw,1.35rem);color:var(--cream)}
+.hero-tag-en em{font-style:normal;color:var(--sky-2)}
+.hero-tag-he{font-family:var(--he);font-weight:300;font-size:clamp(.92rem,1.5vw,1.1rem);color:rgba(250,245,239,.72);direction:rtl}
+.hero-rule{height:1px;flex:1;min-width:60px;background:linear-gradient(to right,var(--rose),transparent);margin-bottom:.6rem}
+.scroll-cue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;direction:ltr}
+.scroll-cue span{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:rgba(250,245,239,.6);text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:var(--hair-2);position:relative;overflow:hidden}
+.scroll-line::after{content:"";position:absolute;top:-40px;left:0;width:1px;height:40px;background:var(--sky);animation:drop 2.2s infinite ease-in-out}
+@keyframes drop{0%{top:-40px}60%,100%{top:40px}}
 
-/* ─────────────────────────────────────────────
-   PAGE INDICATOR
-   ───────────────────────────────────────────── */
-.page-indicator {
-  position: fixed;
-  top: 1.5rem;
-  right: 2rem;
-  z-index: 90;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-.page-indicator em {
-  font-family: var(--display);
-  font-style: italic;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--rose);
-  font-weight: 400;
-}
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--hair);padding:1.05rem 0;background:var(--ink-2);white-space:nowrap}
+.marquee--rose{background:var(--rose);border-color:transparent}
+.marquee__track{display:inline-flex;align-items:center;gap:0;animation:slide 34s linear infinite;will-change:transform}
+.marquee--rose .marquee__track{animation-duration:42s}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__item{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--cream);padding:0 1.6rem;direction:ltr}
+.marquee--rose .marquee__item{color:var(--ink);font-style:normal;font-family:var(--grotesk);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:1.15rem}
+.marquee__dot{width:7px;height:7px;border-radius:50%;background:var(--sky);flex:none}
+.marquee--rose .marquee__dot{background:var(--ink)}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─────────────────────────────────────────────
-   CONCEPT BAND + UTILITY BAR
-   ───────────────────────────────────────────── */
-.concept-band {
-  background: var(--ink);
-  color: var(--cream-warm);
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.62rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0.55rem 2rem;
-  position: relative;
-  z-index: 11;
-  transform: translateY(-100%);
-  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.concept-band em {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  color: var(--rose-light);
-  margin: 0 0.4rem;
-  font-weight: 500;
-}
-.concept-band .dot { color: var(--rose); margin: 0 0.6rem; }
+/* ---------- manifesto ---------- */
+.manifesto{position:relative;padding:8rem 2.6rem;max-width:1320px;margin:0 auto;overflow:hidden}
+.manifesto__ghost{position:absolute;top:-2rem;left:-1rem;font-family:var(--serif);font-weight:500;font-size:38vw;line-height:.7;color:rgba(250,245,239,.035);pointer-events:none;z-index:0;direction:ltr}
+.manifesto__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:start}
+.manifesto__lead{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.6vw,3.7rem);line-height:1.1;color:var(--cream)}
+.manifesto__lead em{font-style:italic;color:var(--rose-soft)}
+.manifesto__body{padding-top:.6rem}
+.manifesto__body .kicker{display:block;margin-bottom:1.6rem}
+.manifesto__body p{font-size:1.04rem;line-height:1.85;color:rgba(250,245,239,.8);margin-bottom:1.2rem;max-width:46ch}
+.manifesto__body p.en{font-family:var(--grotesk);font-weight:400;font-size:.96rem;color:rgba(250,245,239,.62);direction:ltr}
+.manifesto__sign{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--sky);text-transform:uppercase;margin-top:2rem;direction:ltr}
 
-.utility-bar {
-  border-bottom: 1px solid var(--hairline);
-  padding: 0.85rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  position: relative;
-  z-index: 10;
-  transform: translateY(-100%);
-  animation: slideDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-}
-.utility-bar > div { flex: 1; }
-.utility-bar > div:nth-child(2) { text-align: center; }
-.utility-bar > div:nth-child(3) { text-align: right; }
-.utility-bar em {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.02em;
-  color: var(--rose);
-}
+/* ---------- section header ---------- */
+.sec-head{padding:0 2.6rem;max-width:1320px;margin:0 auto 3rem}
+.sec-head__row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;border-bottom:1px solid var(--hair);padding-bottom:1.4rem}
+.sec-head__num{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;color:var(--rose-soft);direction:ltr}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;color:var(--cream);direction:ltr}
+.sec-head h2 em{font-style:italic;color:var(--sky-2)}
+.sec-head__meta{font-family:var(--he);font-size:.92rem;color:rgba(250,245,239,.6);text-align:left;max-width:30ch}
 
-@keyframes slideDown { to { transform: translateY(0); } }
+/* ---------- THE EDIT — horizontal rail ---------- */
+.edit{padding:6rem 0 7rem;position:relative}
+.rail-wrap{position:relative;direction:ltr}
+.rail{
+  display:flex;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 2.6rem 2rem;scrollbar-width:none;cursor:grab;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.look{flex:0 0 clamp(280px,32vw,420px);scroll-snap-align:center;position:relative}
+.look__frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink-2);border:1px solid var(--hair)}
+.look__frame img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1),filter .6s ease;filter:saturate(1.02)}
+.look:hover .look__frame img{transform:scale(1.05)}
+.look__num{position:absolute;top:1rem;left:1rem;font-family:var(--grotesk);font-weight:900;font-size:2.6rem;color:var(--cream);mix-blend-mode:difference;line-height:1;direction:ltr}
+.look__tag{position:absolute;bottom:1rem;left:1rem;right:1rem;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--cream);text-transform:uppercase;direction:ltr}
+.look__tag span{background:rgba(16,20,24,.55);backdrop-filter:blur(6px);padding:.3rem .55rem}
+/* silk type card */
+.look__frame--silk{display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--rose-soft) 0%,var(--cream) 38%,var(--sky-2) 72%,var(--rose) 100%);}
+.look__frame--silk::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%)}
+.silk-mark{position:relative;z-index:1;text-align:center;color:var(--ink)}
+.silk-mark .v{font-family:var(--serif);font-weight:500;font-size:4.6rem;line-height:1}
+.silk-mark .nm{font-family:var(--grotesk);font-weight:800;text-transform:uppercase;letter-spacing:.22em;font-size:.82rem;margin-top:.4rem;direction:ltr}
+.silk-mark .ed{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;margin-top:.5rem;opacity:.7;direction:ltr}
+.look__copy{padding:1.2rem .2rem 0}
+.look__name{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.7rem;color:var(--cream);direction:ltr}
+.look__sub{font-family:var(--grotesk);font-weight:500;font-size:.86rem;color:var(--sky-2);margin-top:.25rem;direction:ltr}
+.look__desc{font-family:var(--he);font-size:.9rem;line-height:1.6;color:rgba(250,245,239,.66);margin-top:.7rem;direction:rtl}
+/* rail controls */
+.rail-ctrl{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2.6rem 0;max-width:1320px;margin:0 auto}
+.rail-dots{display:flex;gap:.5rem}
+.rail-dot{width:26px;height:3px;background:var(--hair);border:none;padding:0;cursor:pointer;transition:background .3s}
+.rail-dot.active{background:var(--rose)}
+.rail-arrows{display:flex;gap:.7rem}
+.rail-arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--hair-2);background:transparent;color:var(--cream);font-size:1.1rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+.rail-arrow:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.rail-hint{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:rgba(250,245,239,.45);text-transform:uppercase;direction:ltr}
 
-/* ─────────────────────────────────────────────
-   MASTHEAD
-   ───────────────────────────────────────────── */
-.masthead {
-  min-height: calc(100vh - 60px);
-  padding: 5rem 2rem 4rem;
-  position: relative;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.masthead__inner {
-  max-width: 1480px;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-}
+/* ---------- IN MOTION ---------- */
+.motion{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:88vh;align-items:stretch}
+.motion__img{position:relative;overflow:hidden}
+.motion__img img{width:100%;height:100%;object-fit:cover;min-height:60vh}
+.motion__text{padding:6rem 5vw;display:flex;flex-direction:column;justify-content:center;background:var(--ink-2)}
+.motion__text .kicker{margin-bottom:1.8rem}
+.motion__pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:1.18;color:var(--cream);margin-bottom:1.8rem}
+.motion__pull em{font-style:italic;color:var(--rose-soft)}
+.motion__body{font-size:1rem;line-height:1.85;color:rgba(250,245,239,.78);margin-bottom:1.1rem;max-width:46ch}
+.motion__body.he{direction:rtl}
+.motion__body.en{font-family:var(--grotesk);font-weight:400;font-size:.92rem;color:rgba(250,245,239,.58);direction:ltr}
 
-.masthead__top {
-  margin-bottom: 1.2rem;
-  opacity: 0;
-  animation: softUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.masthead__top .meta {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--rose);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-.masthead__top .meta::before,
-.masthead__top .meta::after {
-  content: "·";
-  color: var(--hairline);
-  margin: 0 0.8rem;
-  font-style: normal;
-}
+/* ---------- THE FILM ---------- */
+.film{padding:7rem 2.6rem 8rem;max-width:1180px;margin:0 auto}
+.film-frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--ink-2);border:1px solid var(--hair);box-shadow:0 30px 80px rgba(0,0,0,.45);cursor:pointer}
+.film-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.film-frame__badge{position:absolute;bottom:1.1rem;right:1.1rem;display:flex;align-items:center;gap:.5rem;background:rgba(16,20,24,.6);backdrop-filter:blur(8px);padding:.5rem .9rem;border-radius:2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--cream);text-transform:uppercase;direction:ltr;transition:background .3s}
+.film-frame.sound .film-frame__badge{background:var(--rose);color:var(--ink)}
+.film-frame__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--sky)}
+.film-frame.sound .film-frame__badge .dot{background:var(--ink)}
+.film-note{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:rgba(250,245,239,.45);text-transform:uppercase;margin-top:1.4rem;text-align:center;direction:ltr}
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.film-card{cursor:pointer;margin:0}
+.film-card__frame{position:relative;aspect-ratio:9/16;border-radius:6px;overflow:hidden;background:var(--ink-2);border:1px solid var(--hair);box-shadow:0 20px 50px rgba(0,0,0,.4);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s ease}
+.film-card:hover .film-card__frame{transform:translateY(-6px);box-shadow:0 28px 64px rgba(0,0,0,.55)}
+.film-card__frame video{width:100%;height:100%;object-fit:cover;display:block}
+.film-card.sound .film-card__frame{outline:2px solid var(--rose);outline-offset:3px}
+.film-card__badge{position:absolute;top:.75rem;right:.75rem;width:34px;height:34px;border-radius:50%;background:rgba(16,20,24,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:.9rem;transition:background .3s,color .3s}
+.film-card.sound .film-card__badge{background:var(--rose);color:var(--ink)}
+.film-card__badge .i-sound{display:none}
+.film-card.sound .film-card__badge .i-mute{display:none}
+.film-card.sound .film-card__badge .i-sound{display:inline}
+.film-card figcaption{margin-top:1rem;text-align:center}
+.film-card__name{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.3rem;color:var(--cream);direction:ltr}
+.film-card__he{display:block;font-family:var(--he);font-size:.85rem;color:rgba(250,245,239,.66);margin-top:.25rem}
+@media(max-width:820px){.film-grid{grid-template-columns:repeat(2,1fr);gap:1.1rem}}
+@media(max-width:560px){.film-grid{grid-template-columns:minmax(0,330px);justify-content:center}}
 
-@keyframes softUp {
-  0%   { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+/* ---------- AUDIENCE ---------- */
+.audience{padding:7rem 2.6rem;max-width:1320px;margin:0 auto}
+.audience__pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;color:var(--cream);max-width:22ch;margin-bottom:3.5rem}
+.audience__pull em{font-style:italic;color:var(--sky-2)}
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--hair)}
+.aud-item{padding:2.2rem 2rem 2.2rem 0;border-right:1px solid var(--hair)}
+.aud-item:last-child{border-right:0}
+.aud-item__n{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--rose-soft);direction:ltr}
+.aud-item__t{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--cream);margin:.6rem 0 .9rem;direction:ltr}
+.aud-item__b{font-size:.94rem;line-height:1.7;color:rgba(250,245,239,.7)}
 
-/* Brand logo — replaces typographic VELA + MOTION wordmark */
-.brand-logo {
-  display: block;
-  margin: 0 auto;
-  max-width: clamp(240px, 32vw, 380px);
-  position: relative;
-  opacity: 0;
-  transform: translateX(-1.2em);
-  filter: blur(8px);
-  animation: logoSlideIn 1.6s 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, filter, transform;
-}
-.brand-logo img {
-  width: 100%;
-  height: auto;
-  display: block;
-  mix-blend-mode: multiply;
-}
-@keyframes logoSlideIn {
-  0%   { opacity: 0; transform: translateX(-1.2em); filter: blur(8px); }
-  60%  { opacity: 1; filter: blur(2px); }
-  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
+/* ---------- STUDIO / CTA (lights on) ---------- */
+.studio{background:var(--cream);color:var(--ink);padding:8rem 2.6rem;position:relative;overflow:hidden}
+.studio::before{content:"";position:absolute;top:-25%;left:50%;transform:translateX(-50%);width:120%;height:150%;background:radial-gradient(circle at 50% 38%,rgba(201,143,143,.16),transparent 60%);pointer-events:none}
+.studio__inner{max-width:1040px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.studio__eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-deep);direction:ltr}
+.studio h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.12;margin:1.4rem 0 1.2rem;color:var(--ink)}
+.studio h2 em{font-style:italic;color:var(--rose-deep)}
+.studio__sub{font-family:var(--he);font-size:1.08rem;line-height:1.85;color:#4a4138;max-width:62ch;margin:0 auto 1.4rem}
+.studio__cc{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--he);font-weight:500;font-size:.95rem;color:var(--ink);background:rgba(31,37,43,.06);border:1px solid rgba(31,37,43,.14);padding:.6rem 1.2rem;border-radius:2rem;margin-bottom:2.8rem}
+.studio__cc .dot{width:8px;height:8px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.studio__cc b{font-family:var(--grotesk);font-weight:700}
+.studio-points{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:0 0 3.2rem}
+.studio-point{max-width:210px;text-align:center}
+.studio-point .n{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--rose-deep);display:block;margin-bottom:.5rem}
+.studio-point p{font-family:var(--he);font-size:.96rem;line-height:1.65;color:#4a4138}
+.studio-book{display:inline-block;font-family:var(--he);font-weight:500;font-size:1.05rem;color:var(--ink);border:1px solid var(--ink);padding:.8rem 2.2rem;border-radius:2rem;transition:.3s;margin-bottom:.9rem}
+.studio-book:hover{background:var(--ink);color:var(--cream)}
+.studio-book-note{font-family:var(--he);font-size:.82rem;color:#8a7d6e;margin-bottom:3rem}
+.agent-box{background:var(--ink);color:var(--cream);border-radius:14px;max-width:600px;margin:0 auto;padding:2.2rem;text-align:right}
+.agent-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.agent-dot{width:9px;height:9px;border-radius:50%;background:#7BC47F;box-shadow:0 0 10px #7BC47F}
+.agent-title{font-family:var(--he);font-size:.98rem}
+.agent-msg{background:rgba(191,212,217,.14);border-radius:12px 12px 12px 3px;padding:.9rem 1.1rem;font-family:var(--he);font-size:.95rem;line-height:1.6;margin-bottom:1.4rem;max-width:92%}
+.agent-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--rose);color:var(--ink);font-family:var(--he);font-weight:500;font-size:.98rem;padding:.85rem 2rem;border-radius:2rem;border:none;cursor:pointer;transition:.3s}
+.agent-cta:hover{background:var(--rose-soft);transform:translateY(-2px)}
+.agent-note{font-family:var(--he);font-size:.78rem;color:rgba(250,245,239,.5);margin-top:.9rem;text-align:center}
 
-/* The big VELA wordmark */
-.wordmark {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(5.5rem, 18vw, 17rem);
-  line-height: 0.85;
-  letter-spacing: 0.12em;
-  color: var(--ink);
-  display: block;
-  padding: 0.5rem 0;
-  text-indent: 0.12em;
-}
-.wordmark .l {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(-1.2em);
-  filter: blur(8px);
-  animation: slideInLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.wordmark .l:nth-child(1) { animation-delay: 0.55s; }
-.wordmark .l:nth-child(2) { animation-delay: 0.66s; }
-.wordmark .l:nth-child(3) { animation-delay: 0.77s; }
-.wordmark .l:nth-child(4) { animation-delay: 0.88s; }
-@keyframes slideInLeft {
-  0%   { opacity: 0; transform: translateX(-1.2em); filter: blur(8px); }
-  60%  { opacity: 1; filter: blur(2px); }
-  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
+/* ---------- STUDIO NOTE (geo) ---------- */
+.studio-note{background:var(--ink-2);padding:4.5rem 2.6rem;border-top:1px solid var(--hair)}
+.studio-note__inner{max-width:760px;margin:0 auto;text-align:center}
+.studio-note .kicker{display:block;margin-bottom:1.2rem}
+.studio-note p{font-family:var(--he);font-size:.92rem;line-height:1.8;color:rgba(250,245,239,.55);margin-bottom:1rem}
+.studio-note a{color:var(--sky);border-bottom:1px solid transparent;transition:.3s}
+.studio-note a:hover{border-color:var(--sky)}
 
-/* MOTION sub-wordmark with hairlines */
-.submark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-  opacity: 0;
-  animation: softUp 1.4s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.submark__rule {
-  flex: 0 1 200px;
-  height: 1px;
-  background: var(--ink);
-}
-.submark__text {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: clamp(1.1rem, 2.4vw, 1.8rem);
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.submark__text .ml {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(1.2em);
-  filter: blur(6px);
-  animation: slideInRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.submark__text .ml:nth-child(1) { animation-delay: 1.0s; }
-.submark__text .ml:nth-child(2) { animation-delay: 1.08s; }
-.submark__text .ml:nth-child(3) { animation-delay: 1.16s; }
-.submark__text .ml:nth-child(4) { animation-delay: 1.24s; }
-.submark__text .ml:nth-child(5) { animation-delay: 1.32s; }
-.submark__text .ml:nth-child(6) { animation-delay: 1.40s; }
-@keyframes slideInRight {
-  0%   { opacity: 0; transform: translateX(1.2em); filter: blur(6px); }
-  60%  { opacity: 1; filter: blur(2px); }
-  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(250,245,239,.55);padding:3.2rem 2.6rem;text-align:center;border-top:1px solid var(--hair)}
+footer .f-logo{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:.14em;color:var(--cream);direction:ltr}
+footer .f-tag{font-family:var(--grotesk);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--rose-soft);margin:.5rem 0 1.4rem;direction:ltr}
+footer .f-meta{font-family:var(--he);font-size:.8rem;line-height:1.9}
+footer a{color:var(--sky);border-bottom:1px solid transparent;transition:.3s}
+footer a:hover{border-color:var(--sky)}
 
-.tagline-row {
-  text-align: center;
-  margin-top: 2rem;
-  opacity: 0;
-  animation: softUp 1.4s 2.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px)}
 
-.tagline {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-  color: var(--ink);
-  margin-bottom: 0.5rem;
-}
-.tagline em {
-  color: var(--rose);
-  font-style: italic;
-}
-.tagline-he {
-  font-family: var(--hebrew);
-  font-weight: 300;
-  direction: rtl;
-  font-size: 1rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.02em;
-}
-
-.masthead__rule {
-  border: 0;
-  height: 1px;
-  background: var(--hairline);
-  margin: 4rem auto 0;
-  max-width: 1480px;
-  position: relative;
-  transform: scaleX(0);
-  transform-origin: center;
-  animation: ruleDraw 1.6s 2.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-.masthead__rule::after {
-  content: "V";
-  position: absolute;
-  top: -0.7rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--cream);
-  padding: 0 1.5rem;
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 1.3rem;
-  font-style: italic;
-  color: var(--rose);
-  letter-spacing: 0.05em;
-  opacity: 0;
-  animation: fadeIn 1s 3.5s forwards;
-}
-@keyframes ruleDraw { to { transform: scaleX(1); } }
-@keyframes fadeIn { to { opacity: 1; } }
-
-/* ─────────────────────────────────────────────
-   PLATE I — landscape hero
-   ───────────────────────────────────────────── */
-.plate {
-  padding: 6rem 2rem 2rem;
-  position: relative;
-  z-index: 5;
-}
-.plate__inner {
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.plate__caption-row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: end;
-  margin-bottom: 1.8rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--hairline);
-}
-.plate__nº {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 1.4rem;
-  font-style: italic;
-  color: var(--rose);
-  letter-spacing: 0.02em;
-}
-.plate__title {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.05rem;
-  color: var(--ink);
-  letter-spacing: 0.02em;
-  text-align: center;
-}
-.plate__title em {
-  font-style: italic;
-  color: var(--rose);
-}
-.plate__source {
-  text-align: right;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.plate__frame {
-  position: relative;
-  overflow: hidden;
-  background: var(--cream-soft);
-}
-/* horizontal sweep reveal — left to right */
-.plate__frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--cream);
-  z-index: 3;
-  transform-origin: right center;
-  animation: sweepLeftToRight 1.8s 2.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-}
-@keyframes sweepLeftToRight {
-  0%   { transform: scaleX(1); }
-  100% { transform: scaleX(0); }
-}
-
-.plate__image {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  transform: scale(1.08);
-  filter: brightness(0.96) saturate(0.98);
-  animation: kenBurns 5s 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, filter;
-}
-@keyframes kenBurns {
-  0%   { transform: scale(1.08); filter: brightness(0.92) saturate(0.95); }
-  100% { transform: scale(1.00); filter: brightness(1.00) saturate(1.00); }
-}
-
-.plate__caption-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  opacity: 0;
-  animation: softUp 1s 4.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.plate__caption-bottom strong {
-  display: block;
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--rose);
-  margin-bottom: 0.4rem;
-}
-.plate__caption-bottom .he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 0.9rem;
-  text-align: right;
-  color: var(--ink-soft);
-}
-
-/* ─────────────────────────────────────────────
-   COVER
-   ───────────────────────────────────────────── */
-.cover {
-  padding: 5rem 2rem 0;
-  position: relative;
-  z-index: 5;
-}
-.cover__grid {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 3rem;
-  align-items: center;
-  max-width: 1480px;
-  margin: 0 auto;
-}
-.cover__copy { padding-right: 1rem; }
-.cover__nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--rose);
-  letter-spacing: 0.02em;
-  margin-bottom: 1.5rem;
-  display: block;
-  font-weight: 500;
-}
-.cover__title {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2.5rem, 5vw, 4.6rem);
-  line-height: 1.0;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-  margin-bottom: 2rem;
-}
-.cover__title em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--rose);
-}
-.cover__lede {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--ink-soft);
-  max-width: 38ch;
-  margin-bottom: 1.5rem;
-}
-.cover__lede-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.85;
-  color: var(--ink-soft);
-  max-width: 32ch;
-}
-.cover__index {
-  list-style: none;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--hairline);
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 2rem;
-}
-.cover__index li {
-  display: flex;
-  border-bottom: 1px dotted var(--hairline-soft);
-  padding-bottom: 0.4rem;
-}
-.cover__index a {
-  color: var(--ink);
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  transition: color 0.4s;
-}
-.cover__index a:hover { color: var(--rose); }
-.cover__index a span:last-child {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  color: var(--rose);
-  font-weight: 500;
-}
-
-.cover__photo {
-  position: relative;
-  margin-right: -2rem;
-}
-.cover__photo img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  filter: contrast(1.02) brightness(0.99);
-}
-.cover__photo figcaption {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin-top: 0.85rem;
-  text-align: right;
-  letter-spacing: 0.02em;
-}
-.cover__photo figcaption::before {
-  content: "Photographed for VELA  ·  ";
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--rose);
-  font-size: 0.65rem;
-}
-
-/* ─────────────────────────────────────────────
-   MARQUEE
-   ───────────────────────────────────────────── */
-.marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding: 1.5rem 0;
-  margin: 6rem 0 0;
-  white-space: nowrap;
-  background: var(--cream);
-  position: relative;
-  z-index: 5;
-}
-.marquee--ink {
-  background: var(--ink);
-  color: var(--cream);
-  border-color: var(--ink);
-}
-.marquee__track {
-  display: inline-flex;
-  animation: marqueeScroll 38s linear infinite;
-}
-.marquee__group {
-  display: inline-flex;
-  align-items: center;
-  padding-right: 0;
-}
-.marquee__item {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0 2.5rem;
-  color: var(--ink);
-  display: inline-flex;
-  align-items: center;
-}
-.marquee--ink .marquee__item { color: var(--cream); }
-.marquee__item em {
-  font-family: var(--display);
-  font-style: italic;
-  color: var(--rose);
-  font-weight: 500;
-  margin: 0 0.5rem;
-}
-.marquee__dot {
-  display: inline-block;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--rose);
-  margin: 0 1.5rem;
-  flex-shrink: 0;
-}
-.marquee__dot--sky { background: var(--sky); }
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ─────────────────────────────────────────────
-   LOOK / CHAPTER STRUCTURE
-   ───────────────────────────────────────────── */
-.look {
-  padding: 9rem 2rem;
-  position: relative;
-  z-index: 5;
-}
-.look__inner {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.look-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: end;
-  gap: 2rem;
-  margin-bottom: 5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--hairline);
-}
-.look-numeral {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: 0.85;
-  color: var(--rose);
-  letter-spacing: -0.02em;
-  font-style: italic;
-}
-.look-title-block { text-align: left; }
-.look-eyebrow {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.look-title {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  line-height: 1;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-}
-.look-title em {
-  font-style: italic;
-  color: var(--rose);
-}
-.look-meta {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  text-align: right;
-  white-space: nowrap;
-  align-self: end;
-  padding-bottom: 0.5rem;
-}
-.look-meta-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 0.78rem;
-  font-style: normal;
-}
-
-/* ─────────────────────────────────────────────
-   LOOK I — MANIFESTO
-   ───────────────────────────────────────────── */
-.manifesto-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.manifesto-prose {
-  max-width: 52ch;
-  position: relative;
-  padding-top: 1.5rem;
-}
-.manifesto-prose p {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--ink);
-  margin-bottom: 1.4rem;
-}
-.manifesto-prose p.lede {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.5rem;
-  line-height: 1.4;
-  color: var(--ink);
-  border-left: 2px solid var(--rose);
-  padding-left: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.manifesto-prose p.lede em { color: var(--rose); }
-.dropcap::first-letter {
-  font-family: var(--display);
-  float: left;
-  font-size: 5.4rem;
-  line-height: 0.78;
-  margin: 0.15rem 0.55rem 0 0;
-  color: var(--rose);
-  font-weight: 500;
-  font-style: italic;
-}
-.manifesto-signature {
-  margin-top: 3rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-.manifesto-signature .sig-mark {
-  font-family: var(--display);
-  color: var(--rose);
-  font-size: 1.6rem;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.manifesto-aside { position: relative; }
-.aside-pull {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.4rem;
-  color: var(--ink);
-  border-left: 1px solid var(--rose);
-  padding-left: 1.2rem;
-  margin-bottom: 1.5rem;
-  max-width: 32ch;
-  line-height: 1.4;
-}
-.aside-pull em { color: var(--rose); }
-.aside-pull-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 1rem;
-  border-right: 1px solid var(--rose);
-  border-left: 0;
-  padding-right: 1.2rem;
-  padding-left: 0;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  color: var(--ink-soft);
-  max-width: 28ch;
-  text-align: right;
-  font-style: normal;
-}
-.manifesto-aside figure { position: relative; margin-top: 1rem; }
-.manifesto-aside img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 5/6;
-  object-fit: cover;
-}
-.manifesto-aside figcaption {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin-top: 0.85rem;
-  letter-spacing: 0.02em;
-}
-
-/* ─────────────────────────────────────────────
-   LOOK II — THE PALETTE
-   ───────────────────────────────────────────── */
-.palette-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 3rem;
-}
-.palette-table tr { border-bottom: 1px solid var(--hairline); }
-.palette-table tr:first-child { border-top: 1px solid var(--hairline); }
-.palette-table td {
-  padding: 1.6rem 1rem;
-  vertical-align: middle;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  color: var(--ink);
-}
-.palette-table td:first-child { width: 80px; padding-left: 0; }
-.palette-swatch {
-  width: 60px;
-  height: 60px;
-  border: 1px solid var(--hairline);
-  position: relative;
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.palette-table tr:hover .palette-swatch { transform: scale(1.18); }
-.palette-name {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 1.6rem;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  width: 26%;
-}
-.palette-hex {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--rose);
-  letter-spacing: 0.05em;
-  width: 16%;
-}
-.palette-role {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-}
-.palette-role-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.85rem;
-  text-align: right;
-  color: var(--ink-soft);
-  width: 24%;
-}
-
-.palette-band {
-  display: grid;
-  grid-template-columns: 4fr 2fr 2fr 1fr;
-  height: 64px;
-  margin: 4rem 0 1rem;
-  border: 1px solid var(--hairline);
-}
-.palette-band > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-.palette-secondary {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  margin-top: 1.5rem;
-  border: 1px solid var(--hairline);
-}
-.palette-secondary > div {
-  height: 36px;
-  display: flex;
-  align-items: center;
-  padding: 0 0.85rem;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  border-right: 1px solid var(--hairline-soft);
-}
-.palette-secondary > div:last-child { border-right: 0; }
-
-.palette-note {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--ink-soft);
-  margin-top: 2.5rem;
-  text-align: center;
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ─────────────────────────────────────────────
-   PRODUCT MARQUEE — kinetic preview strip
-   ───────────────────────────────────────────── */
-.product-marquee {
-  overflow: hidden;
-  padding: 3.5rem 0;
-  margin: 0 -2rem 4rem;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  position: relative;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-}
-.product-marquee__track {
-  display: flex;
-  gap: 2.5rem;
-  animation: productScroll 55s linear infinite;
-  width: max-content;
-}
-.product-marquee:hover .product-marquee__track { animation-play-state: paused; }
-.product-marquee__card {
-  flex: 0 0 220px;
-  text-align: center;
-  cursor: default;
-}
-.product-marquee__card .pic {
-  width: 220px;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  background: var(--cream-soft);
-}
-.product-marquee__card .pic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.product-marquee__card:hover .pic img { transform: scale(1.04); }
-
-/* type-only marquee cards for Silk Scarf + Weekend Set */
-.product-marquee__card .pic--scarf {
-  background:
-    linear-gradient(115deg,
-      var(--rose) 0%, var(--rose) 18%,
-      var(--cream-warm) 18%, var(--cream-warm) 38%,
-      var(--sky) 38%, var(--sky) 56%,
-      var(--rose-light) 56%, var(--rose-light) 72%,
-      var(--ink) 72%, var(--ink) 100%);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.product-marquee__card .pic--scarf::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, rgba(31,37,43,0.25) 100%);
-}
-.product-marquee__card .pic--weekend {
-  background: linear-gradient(155deg, var(--ink-soft) 0%, var(--ink) 60%, var(--rose-deep) 130%);
-  display: flex; align-items: center; justify-content: center;
-}
-.product-marquee__card .pic--type-content {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  color: var(--cream-warm);
-}
-.product-marquee__card .pic--type-content .m {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 3rem;
-  line-height: 1;
-}
-.product-marquee__card .pic--type-content .pn {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-}
-
-.product-marquee__card .nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 0.85rem;
-  color: var(--rose);
-  margin-bottom: 0.3rem;
-}
-.product-marquee__card .name {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.15rem;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-}
-@keyframes productScroll {
-  to { transform: translateX(-50%); }
-}
-
-/* ─────────────────────────────────────────────
-   LOOK III — THE EDIT (products)
-   ───────────────────────────────────────────── */
-.edit {
-  display: flex;
-  flex-direction: column;
-}
-.edit-piece {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  gap: 4rem;
-  align-items: center;
-  padding: 5rem 0;
-  border-bottom: 1px solid var(--hairline);
-}
-.edit-piece:first-child { padding-top: 1rem; }
-.edit-piece--reverse { grid-template-columns: 6fr 5fr; }
-.edit-piece--reverse .edit-piece__media { order: 2; }
-.edit-piece--reverse .edit-piece__copy  { order: 1; }
-
-.edit-piece__media { position: relative; overflow: hidden; }
-.edit-piece__media img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  display: block;
-  transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.edit-piece:hover .edit-piece__media img { transform: scale(1.03); }
-
-/* type-only mock pieces */
-.edit-piece__media--type {
-  aspect-ratio: 4/5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.edit-piece__media--type::before {
-  content: "";
-  position: absolute;
-  inset: 1.5rem;
-  border: 1px solid currentColor;
-  opacity: 0.25;
-}
-
-/* Silk Scarf — flowing wave using CSS gradients */
-.edit-piece__media--scarf {
-  background:
-    linear-gradient(115deg,
-      var(--rose) 0%, var(--rose) 18%,
-      var(--cream-warm) 18%, var(--cream-warm) 38%,
-      var(--sky) 38%, var(--sky) 56%,
-      var(--rose-light) 56%, var(--rose-light) 72%,
-      var(--ink) 72%, var(--ink) 100%);
-  color: var(--cream-warm);
-}
-.edit-piece__media--scarf::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, rgba(31,37,43,0.25) 100%);
-}
-
-.edit-piece__media--weekend {
-  background: linear-gradient(155deg, var(--ink-soft) 0%, var(--ink) 60%, var(--rose-deep) 130%);
-  color: var(--cream-warm);
-}
-
-.edit-piece__media--type-content {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-.edit-piece__media--type-content .mark {
-  font-family: var(--display);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(5rem, 11vw, 9rem);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-}
-.edit-piece__media--type-content .mark span {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-style: normal;
-  font-size: 0.32em;
-  letter-spacing: 0.32em;
-  display: block;
-  margin-top: 0.2em;
-  text-transform: uppercase;
-}
-.edit-piece__media--type-content .label {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  margin-top: 1.2rem;
-  opacity: 0.8;
-}
-.edit-piece__media--type-content .pname {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
-  font-weight: 500;
-}
-
-.edit-piece__copy { padding: 0 1rem; }
-.edit-piece__nº {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--rose);
-  padding-bottom: 0.3rem;
-}
-.edit-piece__nº .lookno {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.4rem;
-  color: var(--rose);
-  font-weight: 500;
-}
-.edit-piece__nº .code {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.edit-piece__name {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
-  line-height: 1;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.edit-piece__name em {
-  font-style: italic;
-  color: var(--rose);
-}
-.edit-piece__sub {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--rose);
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
-  font-weight: 500;
-}
-.edit-piece__desc {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--ink);
-  max-width: 44ch;
-  margin-bottom: 1rem;
-}
-.edit-piece__desc-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.9rem;
-  line-height: 1.85;
-  color: var(--ink-soft);
-  max-width: 38ch;
-  margin-bottom: 2rem;
-}
-.edit-piece__specs {
-  display: flex;
-  gap: 2.5rem;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
-  border-top: 1px solid var(--hairline);
-  padding-top: 1rem;
-}
-.edit-piece__specs strong {
-  display: block;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 0.62rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--rose);
-  margin-bottom: 0.3rem;
-}
-
-/* ─────────────────────────────────────────────
-   LOOK IV — IN MOTION
-   ───────────────────────────────────────────── */
-.look--motion { background: var(--cream-warm); }
-.motion-spread {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 4rem;
-  align-items: stretch;
-}
-.motion-prose {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-right: 2rem;
-}
-.motion-pull {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 2.5rem;
-  position: relative;
-  padding-left: 1.6rem;
-}
-.motion-pull::before {
-  content: "❝";
-  position: absolute;
-  left: 0;
-  top: -0.4rem;
-  font-family: var(--display);
-  color: var(--rose);
-  font-size: 2.5rem;
-  line-height: 1;
-}
-.motion-pull em { font-style: italic; color: var(--rose); }
-
-.motion-body {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
-.motion-body-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  line-height: 1.9;
-  margin-top: 1.2rem;
-  border-top: 1px solid var(--hairline);
-  padding-top: 1.2rem;
-  max-width: 38ch;
-  text-align: right;
-}
-
-.motion-image { position: relative; }
-.motion-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.02);
-}
-.motion-image figcaption {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.85rem;
-  color: var(--cream-warm);
-  background: rgba(31, 37, 43, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 0.85rem 1.2rem;
-  letter-spacing: 0.02em;
-}
-.motion-image figcaption strong {
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--rose-light);
-  margin-right: 0.6rem;
-}
-
-/* ─────────────────────────────────────────────
-   LOOK V — THE CODEX (DARK)
-   ───────────────────────────────────────────── */
-.look--codex {
-  background: var(--ink);
-  color: var(--cream-warm);
-  padding: 11rem 2rem;
-}
-.look--codex .look-numeral { color: var(--rose-light); }
-.look--codex .look-eyebrow { color: var(--cream-soft); }
-.look--codex .look-title { color: var(--cream-warm); }
-.look--codex .look-title em { color: var(--rose-light); }
-.look--codex .look-meta { color: var(--cream-soft); }
-.look--codex .look-header { border-bottom-color: rgba(244, 238, 230, 0.18); }
-
-.codex-prose {
-  max-width: 56ch;
-  margin: 0 auto 5rem;
-  text-align: center;
-}
-.codex-prose p {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--cream-soft);
-  margin-bottom: 1rem;
-}
-.codex-prose p[lang="he"] {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1rem;
-  color: var(--cream-soft);
-  opacity: 0.9;
-  margin-top: 1rem;
-  border-top: 1px solid rgba(244, 238, 230, 0.15);
-  padding-top: 1.2rem;
-}
-
-.codex-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-}
-.codex-page { position: relative; }
-.codex-page__frame {
-  background: var(--cream-warm);
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.7s;
-  border: 1px solid rgba(244, 238, 230, 0.1);
-}
-.codex-page:hover .codex-page__frame {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
-}
-.codex-page__frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.codex-page__nº {
-  position: absolute;
-  top: -1.4rem;
-  left: 0;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--rose-light);
-  letter-spacing: 0.02em;
-}
-.codex-page__label {
-  margin-top: 1rem;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cream-warm);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-top: 1px solid rgba(244, 238, 230, 0.18);
-  padding-top: 0.8rem;
-}
-.codex-page__label em {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--rose-light);
-  text-transform: none;
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-}
-
-.codex-credit {
-  text-align: center;
-  margin-top: 5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--cream-soft);
-  opacity: 0.85;
-  letter-spacing: 0.02em;
-}
-.codex-credit::before { content: "—  "; color: var(--rose-light); }
-.codex-credit::after { content: "  —"; color: var(--rose-light); }
-
-/* ─────────────────────────────────────────────
-   LOOK VI — AUDIENCE
-   ───────────────────────────────────────────── */
-.audience-pull {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.25;
-  text-align: center;
-  max-width: 30ch;
-  margin: 0 auto 4rem;
-  color: var(--ink);
-}
-.audience-pull em {
-  font-style: italic;
-  color: var(--rose);
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-}
-.audience-item {
-  padding: 3rem 2rem;
-  border-right: 1px solid var(--hairline);
-  position: relative;
-}
-.audience-item:last-child { border-right: 0; }
-.audience-item__nº {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.4rem;
-  color: var(--rose);
-  display: block;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-.audience-item__title {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.8rem;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.audience-item__title em { font-style: italic; color: var(--rose); }
-.audience-item__body {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin-bottom: 1rem;
-}
-.audience-item__body-he {
-  font-family: var(--hebrew);
-  font-weight: 300;
-  direction: rtl;
-  font-size: 0.9rem;
-  line-height: 1.85;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--hairline-soft);
-  padding-top: 1rem;
-  text-align: right;
-}
-
-/* ─────────────────────────────────────────────
-   CLOSING
-   ───────────────────────────────────────────── */
-.closing {
-  padding: 12rem 2rem 8rem;
-  text-align: center;
-  background: var(--cream);
-  position: relative;
-  z-index: 5;
-}
-.closing__inner { max-width: 1280px; margin: 0 auto; }
-.closing__statement {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(3rem, 9vw, 8rem);
-  line-height: 0.95;
-  color: var(--ink);
-  letter-spacing: 0.005em;
-  margin-bottom: 1rem;
-}
-.closing__statement em {
-  font-style: italic;
-  color: var(--rose);
-}
-.closing__statement .br { display: block; }
-.closing__he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 1.6rem;
-  color: var(--ink-soft);
-  margin-top: 2rem;
-  letter-spacing: 0.02em;
-}
-.closing__end {
-  margin-top: 6rem;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--rose);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-}
-.closing__end::before, .closing__end::after {
-  content: "";
-  width: 60px;
-  height: 1px;
-  background: var(--rose);
-}
-.closing__mark {
-  margin-top: 2.5rem;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 4rem;
-  color: var(--rose);
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-/* ─────────────────────────────────────────────
-   COLOPHON
-   ───────────────────────────────────────────── */
-.colophon {
-  background: var(--ink);
-  color: var(--cream-soft);
-  padding: 5rem 2rem 2.5rem;
-  position: relative;
-  z-index: 5;
-}
-.colophon__inner { max-width: 1280px; margin: 0 auto; }
-.colophon__top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 3rem;
-  align-items: center;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(244, 238, 230, 0.18);
-}
-.colophon__edge-l, .colophon__edge-r {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--cream-soft);
-  opacity: 0.7;
-  letter-spacing: 0.02em;
-}
-.colophon__edge-r { text-align: right; }
-.colophon__center { text-align: center; }
-.colophon__seal {
-  display: block;
-  width: clamp(110px, 12vw, 160px);
-  margin: 0 auto 1.4rem;
-  padding: 0.8rem;
-  background: var(--cream-warm);
-  border: 1px solid rgba(244, 238, 230, 0.18);
-}
-.colophon__seal img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
-.colophon__center .mark {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 3.2rem;
-  color: var(--cream-warm);
-  letter-spacing: 0.18em;
-  line-height: 1;
-}
-.colophon__center .submark-mini {
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 0.75rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--rose-light);
-  margin-top: 0.4rem;
-}
-.colophon__center .tag {
-  font-family: var(--display);
-  font-style: italic;
-  color: var(--rose-light);
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-  letter-spacing: 0.02em;
-}
-
-.colophon__details {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  margin: 3rem 0;
-}
-.colophon__details dt {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.62rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--rose-light);
-  margin-bottom: 0.5rem;
-}
-.colophon__details dd {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--cream-soft);
-  font-size: 0.95rem;
-}
-.colophon__details dd a {
-  color: var(--cream-soft);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(201, 143, 143, 0.4);
-  transition: border-color 0.3s, color 0.3s;
-}
-.colophon__details dd a:hover {
-  color: var(--rose-light);
-  border-bottom-color: var(--rose-light);
-}
-
-.colophon__bottom {
-  border-top: 1px solid rgba(244, 238, 230, 0.18);
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--cream-soft);
-  opacity: 0.7;
-}
-.colophon__bottom-he {
-  font-family: var(--hebrew);
-  direction: rtl;
-  font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--cream-soft);
-  opacity: 0.7;
-}
-
-/* ─────────────────────────────────────────────
-   REVEAL
-   ───────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
-              transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-
-/* ─────────────────────────────────────────────
-   RESPONSIVE
-   ───────────────────────────────────────────── */
-@media (max-width: 1080px) {
-  .cover__grid,
-  .manifesto-grid,
-  .motion-spread { grid-template-columns: 1fr; gap: 3rem; }
-  .cover__photo { margin-right: 0; }
-  .audience-grid { grid-template-columns: 1fr; }
-  .audience-item { border-right: 0; border-bottom: 1px solid var(--hairline); }
-  .audience-item:last-child { border-bottom: 0; }
-  .codex-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-}
-
-@media (max-width: 720px) {
-  .concept-band { letter-spacing: 0.18em; font-size: 0.55rem; line-height: 1.55; padding: 0.55rem 0.8rem; }
-  .utility-bar { font-size: 0.6rem; padding: 0.7rem 1rem; gap: 0.5rem; }
-  .utility-bar > div:nth-child(2) { display: none; }
-  .masthead { padding: 3rem 1rem 4rem; min-height: auto; }
-  .wordmark { font-size: clamp(3rem, 14vw, 5.5rem); letter-spacing: 0.06em; line-height: 0.9; }
-  .submark__rule { flex: 0 1 60px; }
-  .submark__text { font-size: 1rem; letter-spacing: 0.32em; }
-  .back-link { top: 0.7rem; left: 0.7rem; font-size: 0.55rem; padding: 0.4rem 0.7rem; gap: 0.4rem; letter-spacing: 0.22em; }
-  .plate { padding: 4rem 1rem 1rem; }
-  .plate__caption-row { grid-template-columns: 1fr; gap: 0.5rem; text-align: center; }
-  .plate__source { text-align: center; }
-  .plate__caption-bottom { grid-template-columns: 1fr; gap: 1.2rem; }
-  .plate__image { aspect-ratio: 4/3; }
-  .look { padding: 6rem 1.25rem; }
-  .look-header { grid-template-columns: 1fr; gap: 1rem; }
-  .look-meta { text-align: left; }
-  .edit-piece,
-  .edit-piece--reverse {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3.5rem 0;
-  }
-  .edit-piece--reverse .edit-piece__media,
-  .edit-piece--reverse .edit-piece__copy { order: initial; }
-  .edit-piece__copy { padding: 0; }
-  .palette-table td { padding: 1rem 0.5rem; font-size: 0.85rem; }
-  .palette-name { font-size: 1.2rem; }
-  .palette-role-he { display: none; }
-  .palette-secondary { font-size: 0.55rem; }
-  .palette-secondary > div { font-size: 0.55rem; padding: 0 0.3rem; }
-  .codex-grid { grid-template-columns: 1fr; }
-  .closing { padding: 6rem 1rem; }
-  .colophon__top { grid-template-columns: 1fr; text-align: center; }
-  .colophon__edge-l, .colophon__edge-r { text-align: center; }
-  .colophon__details { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .colophon__bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .page-indicator { top: 0.7rem; right: 1rem; font-size: 0.6rem; }
-  .cover__index { grid-template-columns: 1fr; }
-  .marquee { padding: 1rem 0; margin-top: 4rem; }
-  .marquee__item { font-size: 1.4rem; padding: 0 1.2rem; }
-  .marquee__dot { width: 8px; height: 8px; margin: 0 0.6rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-  .marquee__track { animation: none; }
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .manifesto__grid{grid-template-columns:1fr;gap:2.5rem}
+  .motion{grid-template-columns:1fr}
+  .motion__img img{min-height:54vh}
+  .aud-grid{grid-template-columns:1fr}
+  .aud-item{border-right:0;border-bottom:1px solid var(--hair);padding:1.8rem 0}
+  .aud-item:last-child{border-bottom:0}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;background:var(--ink-2);flex-direction:column;justify-content:center;gap:2.2rem;transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1);box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.05rem}
+  .nav-burger{display:flex}
+  nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.open .nav-burger span:nth-child(2){opacity:0}
+  nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+@media(max-width:560px){
+  nav{padding:1.1rem 1.4rem}
+  .hero-inner{padding:0 1.4rem 4rem}
+  .hero-index{right:1.4rem;top:5.5rem}
+  .hero-wm{gap:.8rem}
+  .manifesto,.audience,.film{padding-left:1.4rem;padding-right:1.4rem}
+  .sec-head{padding-left:1.4rem;padding-right:1.4rem}
+  .sec-head__row{flex-direction:column;align-items:flex-start;gap:.8rem}
+  .sec-head__meta{text-align:right}
+  .rail{padding-left:1.4rem;padding-right:1.4rem}
+  .rail-ctrl{padding-left:1.4rem;padding-right:1.4rem;flex-wrap:wrap;gap:1rem}
+  .motion__text{padding:4rem 1.6rem}
+  .studio,.studio-note{padding-left:1.4rem;padding-right:1.4rem}
+  .studio-points{gap:1.6rem}
+  .marquee__item{font-size:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .marquee__track,.scroll-line::after{animation:none}
+  .reveal{opacity:1;transform:none}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["WebSite","CreativeWork"],
+      "@id":"https://hagitantebi.co.il/vela-motion/#site",
+      "name":"VELA MOTION — The Live Site",
+      "description":"האתר החי של VELA MOTION — נכס דיגיטלי שנגזר מעולם המותג Lookbook 01, שנבנה ב-Brand Worlds Studio · חגית אנטבי, עם Claude Code.",
+      "inLanguage":["he","en"],
+      "url":"https://hagitantebi.co.il/vela-motion/",
+      "image":"https://hagitantebi.co.il/vela-motion/og.jpg",
+      "isPartOf":{"@id":"https://hagitantebi.co.il/vela-motion/book.html#creativework"},
+      "creator":{"@type":"Person","name":"Hagit Antebi","jobTitle":"Brand Worlds Architect","url":"https://hagitantebi.co.il"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Brand Worlds Studio","item":"https://hagitantebi.co.il/"},
+        {"@type":"ListItem","position":2,"name":"VELA MOTION — Lookbook 01","item":"https://hagitantebi.co.il/vela-motion/"}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "name":"The VELA MOTION Edit",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"item":{"@type":"Product","name":"City Bag","category":"Saffiano leather top-handle · Dusty Rose"}},
+        {"@type":"ListItem","position":2,"item":{"@type":"Product","name":"Motion Sneakers","category":"Low-profile tri-colour · Cream / Sky"}},
+        {"@type":"ListItem","position":3,"item":{"@type":"Product","name":"Soft Shades","category":"Italian acetate sunglasses · Deep Ink"}},
+        {"@type":"ListItem","position":4,"item":{"@type":"Product","name":"Silk Scarf","category":"100% silk twill · 90×90 cm"}},
+        {"@type":"ListItem","position":5,"item":{"@type":"Product","name":"Travel Pouch","category":"Pebbled leather · Powder Sky"}},
+        {"@type":"ListItem","position":6,"item":{"@type":"Product","name":"Weekend Set","category":"Signature trio · Bag · Scarf · Shades"}}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"מה זה האתר הזה?","acceptedAnswer":{"@type":"Answer","text":"זהו האתר החי של VELA MOTION — נכס דיגיטלי לדוגמה שנגזר מעולם המותג VELA MOTION Lookbook 01. הוא מדגים איך נראה אתר מסחרי שנבנה ישירות מהשפה, מהפלטה ומהקוד של עולם המותג, מקצה לקצה ב-Brand Worlds Studio עם Claude Code."}},
+        {"@type":"Question","name":"האם אפשר לקנות את המוצרים?","acceptedAnswer":{"@type":"Answer","text":"לא. VELA MOTION הוא מותג בדיוני שנבנה כ-portfolio piece. האתר נועד להדגים את התוצר של תהליך בניית עולם מותג ב-Brand Worlds Studio."}},
+        {"@type":"Question","name":"מי בנה את האתר?","acceptedAnswer":{"@type":"Answer","text":"חגית אנטבי — Brand Worlds Architect ומייסדת Brand Worlds Studio. האתר, הסרטון והצילומים נבנו עם AI ועם Claude Code, כחלק מעולם המותג VELA MOTION."}}
+      ]
+    },
+    {
+      "@type":"VideoObject",
+      "name":"VELA MOTION — Brand Showcase",
+      "description":"סרטון מתוך עולם המותג VELA MOTION: תצוגת הקולקציה — תיק, סניקרס ומשקפיים בתנועה. נוצר ב-AI כחלק מעולם המותג.",
+      "thumbnailUrl":"https://hagitantebi.co.il/vela-motion/hero-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/vela-motion/hero.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"VELA MOTION — Café Light (Soft Shades)",
+      "description":"רגע UGC מתוך עולם המותג VELA MOTION: אישה במשקפי השמש Soft Shades באור של אחר־צהריים. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/vela-motion/ugc-1-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/vela-motion/ugc-1.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"VELA MOTION — The Scarf (Silk Scarf)",
+      "description":"רגע UGC מתוך עולם המותג VELA MOTION: צעיף המשי VELA — דרך אחת מתוך שלוש לקשור אותו. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/vela-motion/ugc-2-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/vela-motion/ugc-2.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    },
+    {
+      "@type":"VideoObject",
+      "name":"VELA MOTION — In the Bag (Travel Pouch)",
+      "description":"רגע UGC מתוך עולם המותג VELA MOTION: הפאוץ׳ Travel Pouch והדברים הקטנים שתמיד חוזרים אליו. נוצר ב-AI.",
+      "thumbnailUrl":"https://hagitantebi.co.il/vela-motion/ugc-3-poster.jpg",
+      "contentUrl":"https://hagitantebi.co.il/vela-motion/ugc-3.mp4",
+      "uploadDate":"2026-06-06",
+      "creator":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ─────────── BACK TO STUDIO ─────────── -->
-<a href="https://hagitantebi.co.il" class="back-link" title="Back to Hagit Antebi">
-  <span class="back-link__arr">←</span>
-  Hagit Antebi
-</a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="nav-logo">VELA<small>MOTION</small></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/" class="nav-back">← Brand Worlds Studio</a>
+    <a href="#edit">The Edit</a>
+    <a href="#motion">In Motion</a>
+    <a href="#film">The Film</a>
+    <a href="#studio">The Studio</a>
+    <a href="#studio" class="nav-cta">בואו נדבר</a>
+  </div>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
 
-<!-- ─────────── PAGE INDICATOR ─────────── -->
-<div class="page-indicator">
-  <span id="pageNum">01</span> · <em>Vela</em> · Lookbook 01
-</div>
-
-<!-- ─────────── CONCEPT BAND ─────────── -->
-<div class="concept-band">
-  Branding Concept <span class="dot">·</span> A fictional brand built as a portfolio piece by <em>Brand Worlds Studio</em>
-</div>
-
-<!-- ─────────── UTILITY BAR ─────────── -->
-<div class="utility-bar">
-  <div>Lookbook <em>01</em> · Issue Nº 01</div>
-  <div>A Brand World by <em>Brand Worlds Studio</em></div>
-  <div>May · MMXXVI</div>
-</div>
-
-<!-- ─────────── MASTHEAD ─────────── -->
-<header class="masthead" id="masthead">
-  <div class="masthead__inner">
-    <div class="masthead__top">
-      <div class="meta">An <em>edit</em> in motion</div>
+<!-- HERO -->
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-index">
+    <span class="kicker">Lookbook 01</span>
+    <span class="kicker kicker--rose">Est. MMXXVI</span>
+    <span class="kicker">A Brand World</span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-wm">
+      <h1>VELA</h1>
+      <span class="hero-motion">Motion</span>
     </div>
-    <h1 class="wordmark" aria-label="VELA">
-      <span class="l">V</span><span class="l">E</span><span class="l">L</span><span class="l">A</span>
-    </h1>
-    <div class="submark" aria-label="MOTION">
-      <span class="submark__rule"></span>
-      <span class="submark__text">
-        <span class="ml">M</span><span class="ml">O</span><span class="ml">T</span><span class="ml">I</span><span class="ml">O</span><span class="ml">N</span>
-      </span>
-      <span class="submark__rule"></span>
-    </div>
-    <div class="tagline-row">
-      <p class="tagline">Move beautifully.&nbsp; <em>Stay unmistakable.</em></p>
-      <p class="tagline-he" lang="he">לזוז יפה. להישאר בלתי נשכחת.</p>
+    <div class="hero-tag">
+      <p class="hero-tag-en">Move beautifully. <em>Stay unmistakable.</em></p>
+      <span class="hero-rule"></span>
+      <p class="hero-tag-he">לזוז יפה. להישאר בלתי נשכחת.</p>
     </div>
   </div>
-  <hr class="masthead__rule" />
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
 </header>
 
-<!-- ─────────── PLATE I — cinematic hero ─────────── -->
-<section class="plate" id="plate-i">
-  <div class="plate__inner">
-    <div class="plate__caption-row">
-      <div class="plate__nº">Plate I</div>
-      <div class="plate__title"><em>The Cover Image</em>  ·  The Edit, in still life</div>
-      <div class="plate__source">— Photographed for VELA</div>
+<!-- MARQUEE -->
+<div class="marquee marquee--rose" aria-hidden="true">
+  <div class="marquee__track" id="mq1"></div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <div class="manifesto__ghost" aria-hidden="true">V</div>
+  <div class="manifesto__grid">
+    <h2 class="manifesto__lead reveal">A woman in motion is not a woman in <em>transit</em>. She arrives everywhere she goes — fully composed, distinctly herself, never quite the same twice.</h2>
+    <div class="manifesto__body reveal">
+      <span class="kicker">I · The Manifesto · פתח דבר</span>
+      <p>VELA MOTION נולד עבור האישה הזו. לא זו שמחכה שיעצבו אותה, אלא זו שכבר בתנועה — בין ערים, בין שעות, בין זהויות שהיא עצמה יוצרת. האקססוריז הם הפסקול, לא השיר.</p>
+      <p>שש יצירות, עשויות לנסוע קל. תיק שמחזיק את היום, סניקרס שמחזיקות את הקצב, משקפיים שמחזיקות את הפנים. צעיף שתופס את הרוח, פאוץ׳ שתופס את הדברים הקטנים, וסט שמחזיק סוף שבוע שלם.</p>
+      <p class="en">The most modern thing a woman can do is move quickly while still looking like herself.</p>
+      <div class="manifesto__sign">— Hagit Antebi · Brand Worlds Studio</div>
     </div>
-    <figure class="plate__frame">
-      <img class="plate__image" src="HERO.png" alt="VELA MOTION — The Cover Image" />
-    </figure>
-    <div class="plate__caption-bottom">
+  </div>
+</section>
+
+<!-- THE EDIT -->
+<section class="edit" id="edit">
+  <div class="sec-head">
+    <div class="sec-head__row">
       <div>
-        <strong>The Frame</strong>
-        Six pieces in a single still life. Dusty rose, powder sky, deep ink — the brand's full vocabulary, moving slowly across one frame.
+        <span class="sec-head__num">II · Six Pieces, One Rhythm</span>
+        <h2>The <em>Edit</em></h2>
       </div>
-      <div class="he" lang="he">
-        <strong>הקדרה</strong>
-        שש יצירות בפריים אחד. ורוד עפר, שמיים שחומים, דיו עמוק — אוצר המילים המלא של המותג, נע לאט בתוך תמונה אחת.
+      <p class="sec-head__meta">אדישן בורד-אבק ושמיים אבקתיים — גררו לאורך הקולקציה.</p>
+    </div>
+  </div>
+
+  <div class="rail-wrap">
+    <div class="rail" id="rail">
+
+      <article class="look">
+        <div class="look__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="VELA City Bag in dusty rose saffiano leather" loading="lazy">
+          <span class="look__num">01</span>
+          <span class="look__tag"><span>City Bag</span><span>VM·CB·01</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">City Bag</h3>
+          <p class="look__sub">A day's worth of intention.</p>
+          <p class="look__desc">תיק עירוני מובנה בעור סאפיאנו, עם ידית עליונה. מחזיק לפטופ, ליפסטיק וצהריים שלמים.</p>
+        </div>
+      </article>
+
+      <article class="look">
+        <div class="look__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="VELA Motion Sneakers in cream and powder sky" loading="lazy">
+          <span class="look__num">02</span>
+          <span class="look__tag"><span>Motion Sneakers</span><span>VM·MS·02</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">Motion Sneakers</h3>
+          <p class="look__sub">The shoe that holds the rhythm.</p>
+          <p class="look__desc">סניקרס בקו מינימליסטי — קרם, ורוד עפר ושמיים אבקתיים. מהמרצפת בבוקר אל הפרקט בצהריים.</p>
+        </div>
+      </article>
+
+      <article class="look">
+        <div class="look__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="VELA Soft Shades — rounded acetate sunglasses in deep ink" loading="lazy">
+          <span class="look__num">03</span>
+          <span class="look__tag"><span>Soft Shades</span><span>VM·SS·03</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">Soft Shades</h3>
+          <p class="look__sub">A face in sunglasses is still a face.</p>
+          <p class="look__desc">משקפי שמש עגולים מאצטט איטלקי בגוון Deep Ink, עם V עדין על הקצה. לעיר, לסירה, ולפנים.</p>
+        </div>
+      </article>
+
+      <article class="look">
+        <div class="look__frame look__frame--silk">
+          <div class="silk-mark">
+            <div class="v">V</div>
+            <div class="nm">Silk Scarf</div>
+            <div class="ed">Limited Edition Print</div>
+          </div>
+          <span class="look__num">04</span>
+          <span class="look__tag"><span>Silk Scarf</span><span>VM·SK·04</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">Silk Scarf</h3>
+          <p class="look__sub">An abstract weather pattern in silk.</p>
+          <p class="look__desc">90×90 ס״מ של משי טהור, גלגול יד, בהדפס בכל פלטת המותג. בצוואר, בשיער, או קשור על התיק.</p>
+        </div>
+      </article>
+
+      <article class="look">
+        <div class="look__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="VELA Travel Pouch in powder sky pebbled leather" loading="lazy">
+          <span class="look__num">05</span>
+          <span class="look__tag"><span>Travel Pouch</span><span>VM·TP·05</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">Travel Pouch</h3>
+          <p class="look__sub">For everything small enough to lose.</p>
+          <p class="look__desc">פאוץ׳ קומפקטי ומובנה מעור Powder Sky. הדרכון, כרטיס העלייה למטוס, והליפסטיק שתמיד חוזר.</p>
+        </div>
+      </article>
+
+      <article class="look">
+        <div class="look__frame">
+          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(5).png" alt="VELA Weekend Set — the full styled look" loading="lazy">
+          <span class="look__num">06</span>
+          <span class="look__tag"><span>Weekend Set · Signature</span><span>VM·WS·06</span></span>
+        </div>
+        <div class="look__copy">
+          <h3 class="look__name">Weekend Set</h3>
+          <p class="look__sub">The bag, the scarf, and the shades — gathered.</p>
+          <p class="look__desc">שלישייה חתימה לטיול שלא ממש צריך מזוודה. שלוש יצירות, קופסה אחת, סוף שבוע שכבר חצי ארוז.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="rail-ctrl">
+      <div class="rail-dots" id="railDots"></div>
+      <span class="rail-hint">Drag · or use arrows →</span>
+      <div class="rail-arrows">
+        <button class="rail-arrow" id="railPrev" aria-label="הקודם">‹</button>
+        <button class="rail-arrow" id="railNext" aria-label="הבא">›</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── COVER ─────────── -->
-<section class="cover" id="cover">
-  <div class="cover__grid">
-    <div class="cover__copy reveal">
-      <span class="cover__nº">Cover Story · Nº 01</span>
-      <h2 class="cover__title">An <em>edit</em> in dusty rose <br/>and powder sky.</h2>
-      <p class="cover__lede">
-        VELA MOTION is a six-piece library of urban accessories — a city bag, a sneaker, a pair of soft shades, a silk scarf, a travel pouch, and the weekend set that holds them. Built for the woman in motion, in style, in herself.
-      </p>
-      <p class="cover__lede-he" lang="he">
-        VELA MOTION הוא ספריית אקססוריז עירונית בשש יצירות — תיק עיר, סניקרס, משקפי שמש, צעיף משי, פאוצ׳ נסיעות, וסט סוף השבוע שמחזיק את כולם. נבנה לאישה שזזה, בסטייל, בעצמה.
-      </p>
-      <ul class="cover__index">
-        <li><a href="#look-i"><span>I.&nbsp; Manifesto</span><span>04</span></a></li>
-        <li><a href="#look-ii"><span>II.&nbsp; The Palette</span><span>05</span></a></li>
-        <li><a href="#look-iii"><span>III.&nbsp; The Edit</span><span>06</span></a></li>
-        <li><a href="#look-iv"><span>IV.&nbsp; In Motion</span><span>07</span></a></li>
-        <li><a href="#look-v"><span>V.&nbsp; The Codex</span><span>08</span></a></li>
-        <li><a href="#look-vi"><span>VI.&nbsp; Audience</span><span>09</span></a></li>
-      </ul>
-    </div>
-    <figure class="cover__photo reveal">
-      <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(5).png" alt="VELA MOTION cover — model with the collection" />
-      <figcaption>Cover · The Look · Photographed in Studio</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ─────────── MARQUEE ─────────── -->
+<!-- MARQUEE INK -->
 <div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <div class="marquee__group">
-      <span class="marquee__item">Move <em>beautifully</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Stay <em>unmistakable</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-      <span class="marquee__item">VELA <em>MOTION</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Lookbook <em>01</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-    </div>
-    <div class="marquee__group" aria-hidden="true">
-      <span class="marquee__item">Move <em>beautifully</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Stay <em>unmistakable</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-      <span class="marquee__item">VELA <em>MOTION</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Lookbook <em>01</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-    </div>
-  </div>
+  <div class="marquee__track" id="mq2"></div>
 </div>
 
-<!-- ─────────── LOOK I — MANIFESTO ─────────── -->
-<section class="look look--manifesto" id="look-i">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">I.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look One</span>
-        <h2 class="look-title">The <em>Manifesto</em></h2>
-      </div>
-      <div class="look-meta">
-        — On moving beautifully
-        <span class="look-meta-he" lang="he">פתח דבר</span>
-      </div>
-    </div>
-
-    <div class="manifesto-grid">
-      <div class="manifesto-prose reveal">
-        <p class="lede">A woman in motion is not a woman in transit. She arrives <em>everywhere she goes</em> — fully composed, distinctly herself, never quite the same twice.</p>
-        <p class="dropcap">VELA MOTION was designed for that woman. Not the one waiting to be styled, but the one already moving — through cities, through hours, through identities of her own making. The accessories are the score, not the song.</p>
-        <p>Six pieces, made to travel light. A bag that holds the day, a sneaker that holds the rhythm, eyewear that holds the face. A scarf that catches the wind, a pouch that catches the small things, a set that holds the entire weekend.</p>
-        <div class="manifesto-signature">
-          <span>—Hagit Antebi · Brand Worlds Studio</span>
-          <span class="sig-mark">V</span>
-        </div>
-      </div>
-
-      <aside class="manifesto-aside reveal">
-        <div class="aside-pull">
-          The most modern thing a woman can do is move quickly while still <em>looking like herself</em>.
-        </div>
-        <div class="aside-pull-he" lang="he">
-          הדבר הכי מודרני שאישה יכולה לעשות הוא לזוז מהר — בלי להפסיק להיראות כמו עצמה.
-        </div>
-        <figure>
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_01_32%20PM.png" alt="VELA MOTION full collection" />
-          <figcaption>Plate I · The Edit — six pieces, one rhythm.</figcaption>
-        </figure>
-      </aside>
-    </div>
+<!-- IN MOTION -->
+<section class="motion" id="motion">
+  <figure class="motion__img reveal">
+    <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(6).png" alt="VELA MOTION — the woman in motion, wearing the collection" loading="lazy">
+  </figure>
+  <div class="motion__text">
+    <span class="kicker">III · In Motion · בתנועה</span>
+    <h2 class="motion__pull reveal">A face is a <em>signature</em>, not a uniform. VELA was made for the part of the day that moves.</h2>
+    <p class="motion__body he reveal">היא נושאת את התיק לפגישה אחת ואת הצעיף לפגישה הבאה. הסניקרס לוקחות אותה מהסטודיו לבית הקפה; המשקפיים מובילות אותה מהצהריים אל הדבר הבא. שום דבר שהיא לובשת לא מאיט אותה — וכל דבר שהיא לובשת נשאר בבירור שלה.</p>
+    <p class="motion__body en reveal">She wears the bag through one meeting and the scarf through another. Nothing she puts on slows her down. Everything she puts on stays distinctly hers.</p>
   </div>
 </section>
 
-<!-- ─────────── LOOK II — THE PALETTE ─────────── -->
-<section class="look look--palette" id="look-ii">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">II.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look Two</span>
-        <h2 class="look-title">The <em>Palette</em></h2>
-      </div>
-      <div class="look-meta">
-        — Four notes &amp; their soft echoes
-        <span class="look-meta-he" lang="he">פלטת המותג</span>
-      </div>
-    </div>
-
-    <table class="palette-table reveal">
-      <tbody>
-        <tr>
-          <td><div class="palette-swatch" style="background:#C98F8F;"></div></td>
-          <td class="palette-name">Dusty Rose</td>
-          <td class="palette-hex">#C98F8F</td>
-          <td class="palette-role">Heat — the warmth a brand earns by moving slowly.</td>
-          <td class="palette-role-he" lang="he">חום · צבע ראשי · נשיות עכשווית</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#BFD4D9;"></div></td>
-          <td class="palette-name">Powder Sky</td>
-          <td class="palette-hex">#BFD4D9</td>
-          <td class="palette-role">Air — the room a colour leaves around itself.</td>
-          <td class="palette-role-he" lang="he">אוויר · רוגע · מרחב</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#F4EEE6;"></div></td>
-          <td class="palette-name">Cream White</td>
-          <td class="palette-hex">#F4EEE6</td>
-          <td class="palette-role">Field — the quiet on which everything rests.</td>
-          <td class="palette-role-he" lang="he">בסיס · רקע · נייטרל חמים</td>
-        </tr>
-        <tr>
-          <td><div class="palette-swatch" style="background:#1F252B;"></div></td>
-          <td class="palette-name">Deep Ink</td>
-          <td class="palette-hex">#1F252B</td>
-          <td class="palette-role">Voice — type, presence, the underline of every line.</td>
-          <td class="palette-role-he" lang="he">קול המותג · נוכחות חדה</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="palette-band reveal" aria-hidden="true">
-      <div style="background:#F4EEE6; color:#1F252B;">55</div>
-      <div style="background:#1F252B; color:#F4EEE6;">25</div>
-      <div style="background:#C98F8F; color:#FAF5EF;">15</div>
-      <div style="background:#BFD4D9; color:#1F252B;">05</div>
-    </div>
-
-    <div class="palette-secondary reveal" aria-hidden="true">
-      <div style="background:#E2B8B5; color:#1F252B;">#E2B8B5 · Rose Light</div>
-      <div style="background:#A86C6D; color:#FAF5EF;">#A86C6D · Rose Deep</div>
-      <div style="background:#D8E6E8; color:#1F252B;">#D8E6E8 · Sky Mist</div>
-      <div style="background:#394149; color:#FAF5EF;">#394149 · Ink Soft</div>
-      <div style="background:#FAF5EF; color:#1F252B;">#FAF5EF · Cream Warm</div>
-    </div>
-
-    <p class="palette-note reveal">— A palette built for a woman who walks fast in soft things.</p>
-  </div>
-</section>
-
-<!-- ─────────── LOOK III — THE EDIT ─────────── -->
-<section class="look look--edit" id="look-iii">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">III.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look Three</span>
-        <h2 class="look-title">The <em>Edit</em></h2>
-      </div>
-      <div class="look-meta">
-        — Six pieces, one rhythm
-        <span class="look-meta-he" lang="he">קולקציית המוצרים</span>
-      </div>
-    </div>
-
-    <!-- Product marquee — kinetic preview of the full edit -->
-    <div class="product-marquee reveal" aria-hidden="true">
-      <div class="product-marquee__track">
-        <!-- Set 1 -->
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="City Bag" /></div>
-          <div class="nº">Look 01</div><div class="name">City Bag</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Motion Sneakers" /></div>
-          <div class="nº">Look 02</div><div class="name">Motion Sneakers</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Soft Shades" /></div>
-          <div class="nº">Look 03</div><div class="name">Soft Shades</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic pic--scarf">
-            <div class="pic--type-content"><div class="m">V</div><div class="pn">Silk Scarf</div></div>
-          </div>
-          <div class="nº">Look 04</div><div class="name">Silk Scarf</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Travel Pouch" /></div>
-          <div class="nº">Look 05</div><div class="name">Travel Pouch</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic pic--weekend">
-            <div class="pic--type-content"><div class="m">V</div><div class="pn">Weekend Set</div></div>
-          </div>
-          <div class="nº">Signature</div><div class="name">Weekend Set</div>
-        </div>
-        <!-- Set 2 (duplicate for seamless loop) -->
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="" /></div>
-          <div class="nº">Look 01</div><div class="name">City Bag</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="" /></div>
-          <div class="nº">Look 02</div><div class="name">Motion Sneakers</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="" /></div>
-          <div class="nº">Look 03</div><div class="name">Soft Shades</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic pic--scarf">
-            <div class="pic--type-content"><div class="m">V</div><div class="pn">Silk Scarf</div></div>
-          </div>
-          <div class="nº">Look 04</div><div class="name">Silk Scarf</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="" /></div>
-          <div class="nº">Look 05</div><div class="name">Travel Pouch</div>
-        </div>
-        <div class="product-marquee__card">
-          <div class="pic pic--weekend">
-            <div class="pic--type-content"><div class="m">V</div><div class="pn">Weekend Set</div></div>
-          </div>
-          <div class="nº">Signature</div><div class="name">Weekend Set</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="edit">
-      <article class="edit-piece reveal">
-        <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="Vela City Bag" />
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Look 01</span>
-            <span class="code">VM·CB·01 · Dusty Rose</span>
-          </div>
-          <h3 class="edit-piece__name"><em>City Bag</em></h3>
-          <p class="edit-piece__sub">A day's worth of intention, in saffiano leather.</p>
-          <p class="edit-piece__desc">A structured top-handle for the woman who owns her morning. Built to hold the laptop, the lipstick, and the entire afternoon.</p>
-          <p class="edit-piece__desc-he" lang="he">תיק עירוני יוקרתי, מובנה, עם ידית עליונה. נבנה כדי להחזיק לפטופ, ליפסטיק, וצהריים שלמים — לאישה שהבוקר שלה בשליטתה.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Material</strong>Saffiano leather</div>
-            <div><strong>Form</strong>Structured top-handle</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="edit-piece edit-piece--reverse reveal">
-        <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Vela Motion Sneakers" />
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Look 02</span>
-            <span class="code">VM·MS·02 · Cream / Sky</span>
-          </div>
-          <h3 class="edit-piece__name"><em>Motion Sneakers</em></h3>
-          <p class="edit-piece__sub">The shoe that holds the rhythm.</p>
-          <p class="edit-piece__desc">A low-profile silhouette in cream, dusty rose, and powder sky. Worn on cobblestones in the morning and on hardwood by the afternoon.</p>
-          <p class="edit-piece__desc-he" lang="he">סניקרס בקו מינימליסטי, בקרם, ורוד עפר ושמיים שחומים. ננעלות על אבני מרצפת בבוקר, ועל פרקט בצהריים.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Form</strong>Low-profile</div>
-            <div><strong>Tones</strong>Tri-colour</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="edit-piece reveal">
-        <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Vela Soft Shades" />
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Look 03</span>
-            <span class="code">VM·SS·03 · Deep Ink</span>
-          </div>
-          <h3 class="edit-piece__name"><em>Soft Shades</em></h3>
-          <p class="edit-piece__sub">A face in sunglasses is still a face.</p>
-          <p class="edit-piece__desc">Rounded acetate frames in Deep Ink, with a soft V at the temple. Made to be worn in the city, on the boat, indoors when the moment calls for it.</p>
-          <p class="edit-piece__desc-he" lang="he">משקפי שמש עגולים מאצטט בגוון Deep Ink, עם V עדין על הקצה. ננעלים בעיר, על הסירה, ובפנים — כשהרגע דורש זאת.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Material</strong>Italian acetate</div>
-            <div><strong>Lens</strong>UV-blocked</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="edit-piece edit-piece--reverse reveal">
-        <figure class="edit-piece__media edit-piece__media--type edit-piece__media--scarf">
-          <div class="edit-piece__media--type-content">
-            <div class="mark">V<span>VELA</span></div>
-            <div class="label">Limited Edition Print</div>
-            <div class="pname">Silk Scarf</div>
-          </div>
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Look 04</span>
-            <span class="code">VM·SK·04 · Multi</span>
-          </div>
-          <h3 class="edit-piece__name"><em>Silk Scarf</em></h3>
-          <p class="edit-piece__sub">An abstract weather pattern in silk twill.</p>
-          <p class="edit-piece__desc">90 × 90 cm of pure silk twill, hand-rolled, printed in the brand's full palette. Worn at the neck, in the hair, tied to the bag — a piece that finishes everything.</p>
-          <p class="edit-piece__desc-he" lang="he">90×90 ס״מ של משי טהור, גלגול יד, בהדפס אבסטרקטי בכל פלטת המותג. ללבישה בצוואר, בשיער, או קשור על התיק — חלק שמסיים הכל.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Material</strong>100% silk twill</div>
-            <div><strong>Size</strong>90 × 90 cm</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="edit-piece reveal">
-        <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Vela Travel Pouch" />
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Look 05</span>
-            <span class="code">VM·TP·05 · Powder Sky</span>
-          </div>
-          <h3 class="edit-piece__name"><em>Travel Pouch</em></h3>
-          <p class="edit-piece__sub">For everything small enough to lose.</p>
-          <p class="edit-piece__desc">A compact, structured pouch in powder sky leather. The passport. The boarding pass. The lipstick that always finds its way back.</p>
-          <p class="edit-piece__desc-he" lang="he">פאוצ׳ קומפקטי ומובנה, מעור Powder Sky. הדרכון. כרטיס העלייה למטוס. הליפסטיק שתמיד מוצא את הדרך חזרה.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Material</strong>Pebbled leather</div>
-            <div><strong>Closure</strong>Zip · two-way</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="edit-piece edit-piece--reverse reveal">
-        <figure class="edit-piece__media edit-piece__media--type edit-piece__media--weekend">
-          <div class="edit-piece__media--type-content">
-            <div class="mark">V<span>VELA</span></div>
-            <div class="label">Signature Edition</div>
-            <div class="pname">Weekend Set</div>
-          </div>
-        </figure>
-        <div class="edit-piece__copy">
-          <div class="edit-piece__nº">
-            <span class="lookno">Signature</span>
-            <span class="code">VM·WS·06 · Set of Three</span>
-          </div>
-          <h3 class="edit-piece__name"><em>Weekend Set</em></h3>
-          <p class="edit-piece__sub">The bag, the scarf, and the shades, gathered.</p>
-          <p class="edit-piece__desc">A signature trio for the trip that doesn't quite need a suitcase. Three pieces, one box, an entire weekend already half-packed.</p>
-          <p class="edit-piece__desc-he" lang="he">שלישייה חתימה לטיול שלא ממש צריך מזוודה. שלוש יצירות, קופסה אחת, סוף שבוע שלם שכבר חצי ארוז.</p>
-          <div class="edit-piece__specs">
-            <div><strong>Includes</strong>Bag · Scarf · Shades</div>
-            <div><strong>Edition</strong>Signature</div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── LOOK IV — IN MOTION ─────────── -->
-<section class="look look--motion" id="look-iv">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">IV.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look Four</span>
-        <h2 class="look-title">In <em>Motion</em></h2>
-      </div>
-      <div class="look-meta">
-        — A woman, the city, and what they wear together
-        <span class="look-meta-he" lang="he">בתנועה</span>
-      </div>
-    </div>
-
-    <div class="motion-spread reveal">
-      <div class="motion-prose">
-        <p class="motion-pull">A face is a <em>signature</em>, not a uniform. VELA was made for the part of the day that moves.</p>
-        <p class="motion-body">She wears the bag through one meeting and the scarf through another. The sneakers carry her from the studio to the café; the shades carry her from afternoon into the next thing. Nothing she puts on slows her down. Everything she puts on stays distinctly hers.</p>
-        <p class="motion-body-he" lang="he">היא נושאת את התיק לפגישה אחת ואת הצעיף לפגישה הבאה. הסניקרס לוקחות אותה מהסטודיו לבית הקפה; המשקפיים מובילות אותה מהצהריים אל הדבר הבא. שום דבר שהיא לובשת לא מאיט אותה. כל דבר שהיא לובשת — נשאר בבירור שלה.</p>
-      </div>
-      <figure class="motion-image">
-        <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(6).png" alt="In motion — model with the collection" />
-        <figcaption>
-          <strong>Plate II</strong>The Look, photographed in studio. Move beautifully. Stay unmistakable.
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── MARQUEE — INK ─────────── -->
-<div class="marquee marquee--ink" aria-hidden="true">
-  <div class="marquee__track">
-    <div class="marquee__group">
-      <span class="marquee__item">VELA <em>MOTION</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Lookbook <em>01</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-      <span class="marquee__item">May <em>MMXXVI</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">A <em>Brand World</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-    </div>
-    <div class="marquee__group" aria-hidden="true">
-      <span class="marquee__item">VELA <em>MOTION</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">Lookbook <em>01</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-      <span class="marquee__item">May <em>MMXXVI</em></span>
-      <span class="marquee__dot"></span>
-      <span class="marquee__item">A <em>Brand World</em></span>
-      <span class="marquee__dot marquee__dot--sky"></span>
-    </div>
-  </div>
-</div>
-
-<!-- ─────────── LOOK V — THE CODEX ─────────── -->
-<section class="look look--codex" id="look-v">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">V.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look Five</span>
-        <h2 class="look-title">The <em>Codex</em></h2>
-      </div>
-      <div class="look-meta">
-        — Behind every visible decision
-        <span class="look-meta-he" lang="he">ספר המותג</span>
-      </div>
-    </div>
-
-    <div class="codex-prose reveal">
-      <p>Behind every visible decision sits a strategic one. The Codex holds VELA in place — the colour, the type, the language, the voice. A brand stays itself only when its rules are written down.</p>
-      <p lang="he">מאחורי כל החלטה ויזואלית — עומדת החלטה אסטרטגית. הקודקס מחזיק את VELA במקום: הצבע, הטיפוגרפיה, השפה, הקול. מותג נשאר עצמו רק אם החוקים שלו כתובים.</p>
-    </div>
-
-    <div class="codex-grid reveal">
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 01</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_14%20PM%20(1).png" alt="Color System brand book page" />
-        </div>
-        <div class="codex-page__label"><span>Color System</span><em>Plate I</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 02</div>
-        <div class="codex-page__frame">
-          <img src="THE-BRAND-LOGO-NEW.png" alt="Logo and Typography brand book page" />
-        </div>
-        <div class="codex-page__label"><span>Logo &amp; Type</span><em>Plate II</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 03</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_15%20PM%20(3).png" alt="Brand Language page" />
-        </div>
-        <div class="codex-page__label"><span>Language</span><em>Plate III</em></div>
-      </div>
-      <div class="codex-page">
-        <div class="codex-page__nº">Nº 04</div>
-        <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_16%20PM%20(4).png" alt="Brand Voice page" />
-        </div>
-        <div class="codex-page__label"><span>Voice</span><em>Plate IV</em></div>
-      </div>
-    </div>
-
-    <p class="codex-credit reveal">A brand is the sum of its quiet decisions, written down.</p>
-  </div>
-</section>
-
-<!-- ─────────── LOOK VI — AUDIENCE ─────────── -->
-<section class="look look--audience" id="look-vi">
-  <div class="look__inner">
-    <div class="look-header reveal">
-      <div class="look-numeral">VI.</div>
-      <div class="look-title-block">
-        <span class="look-eyebrow">Look Six</span>
-        <h2 class="look-title">The <em>Audience</em></h2>
-      </div>
-      <div class="look-meta">
-        — For the woman moving on her own clock
-        <span class="look-meta-he" lang="he">הקהל</span>
-      </div>
-    </div>
-
-    <p class="audience-pull reveal">For the woman who arrives <em>fully composed</em> — and never quite the same twice.</p>
-
-    <div class="audience-grid">
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">i.</span>
-        <h4 class="audience-item__title"><em>The age</em></h4>
-        <p class="audience-item__body">Women, 25 to 45. Already in motion — through cities, careers, weekends abroad, and the kind of mornings that don't wait for permission.</p>
-        <p class="audience-item__body-he" lang="he">נשים, 25–45. כבר בתנועה — דרך ערים, קריירות, סופי שבוע בחו״ל, ובקרים שלא מחכים לאישור.</p>
-      </div>
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">ii.</span>
-        <h4 class="audience-item__title"><em>The mindset</em></h4>
-        <p class="audience-item__body">She likes things that are quietly distinctive. She's allergic to logos that scream and bored by trends that don't.</p>
-        <p class="audience-item__body-he" lang="he">היא אוהבת דברים שמובחנים בשקט. אלרגית ללוגואים שצועקים, ומשועממת מטרנדים שלא.</p>
-      </div>
-      <div class="audience-item reveal">
-        <span class="audience-item__nº">iii.</span>
-        <h4 class="audience-item__title"><em>The desire</em></h4>
-        <p class="audience-item__body">Pieces that work as hard as she does — and look soft while doing it. Independence, in saffiano leather and silk twill.</p>
-        <p class="audience-item__body-he" lang="he">חלקים שעובדים קשה כמו שהיא — ונראים רכים תוך כדי. עצמאות, בעור סאפיאנו ומשי טוויל.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── CLOSING ─────────── -->
-<section class="closing" id="closing">
-  <div class="closing__inner reveal">
-    <h2 class="closing__statement">
-      Move beautifully.<span class="br"></span><em>Stay unmistakable.</em>
-    </h2>
-    <p class="closing__he" lang="he">לזוז יפה. להישאר בלתי נשכחת.</p>
-    <div class="closing__end"><span>End of Lookbook 01</span></div>
-    <div class="closing__mark">V</div>
-  </div>
-</section>
-
-<!-- ─────────── COLOPHON ─────────── -->
-<footer class="colophon">
-  <div class="colophon__inner">
-    <div class="colophon__top">
-      <div class="colophon__edge-l">— A Brand World</div>
-      <div class="colophon__center">
-        <div class="colophon__seal"><img src="LOGO.png" alt="VELA MOTION seal" /></div>
-        <div class="mark">VELA</div>
-        <div class="submark-mini">— Motion —</div>
-        <div class="tag">Move beautifully. <em>Stay unmistakable.</em></div>
-      </div>
-      <div class="colophon__edge-r">Lookbook <em>01</em> · MMXXVI —</div>
-    </div>
-
-    <dl class="colophon__details">
+<!-- THE FILM -->
+<section class="film" id="film">
+  <div class="sec-head" style="padding-left:0;padding-right:0;margin-bottom:2.4rem">
+    <div class="sec-head__row">
       <div>
-        <dt>Editor &amp; Designer</dt>
-        <dd>Hagit Antebi</dd>
+        <span class="sec-head__num">IV · Moving Image</span>
+        <h2>The <em>Film</em></h2>
       </div>
-      <div>
-        <dt>Studio</dt>
-        <dd><a href="https://hagitantebi.co.il" target="_blank" rel="noopener">Brand Worlds Studio</a></dd>
-      </div>
-      <div>
-        <dt>Issue</dt>
-        <dd>Lookbook 01, Nº 01</dd>
-      </div>
-      <div>
-        <dt>Year</dt>
-        <dd>MMXXVI · 2026</dd>
-      </div>
-    </dl>
-
-    <div class="colophon__bottom">
-      <span>© Brand Worlds Studio · A fictional brand built as a portfolio piece.</span>
-      <span class="colophon__bottom-he" lang="he">עולם מותג שנבנה ב-Brand Worlds Studio · חגית אנטבי</span>
+      <p class="sec-head__meta">הקולקציה בתנועה — נוצר ב-AI כחלק מעולם המותג.</p>
     </div>
+  </div>
+  <div class="film-grid">
+    <figure class="film-card">
+      <div class="film-card__frame">
+        <video src="ugc-1.mp4" muted loop playsinline preload="none" poster="ugc-1-poster.jpg"></video>
+        <span class="film-card__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-card__name">Café Light</span><span class="film-card__he">אור של אחר־צהריים · Soft Shades</span></figcaption>
+    </figure>
+    <figure class="film-card">
+      <div class="film-card__frame">
+        <video src="ugc-2.mp4" muted loop playsinline preload="none" poster="ugc-2-poster.jpg"></video>
+        <span class="film-card__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-card__name">The Scarf</span><span class="film-card__he">צעיף אחד, שלוש דרכים · Silk Scarf</span></figcaption>
+    </figure>
+    <figure class="film-card">
+      <div class="film-card__frame">
+        <video src="ugc-3.mp4" muted loop playsinline preload="none" poster="ugc-3-poster.jpg"></video>
+        <span class="film-card__badge"><span class="i-mute">♪̸</span><span class="i-sound">♪</span></span>
+      </div>
+      <figcaption><span class="film-card__name">In the Bag</span><span class="film-card__he">הדברים הקטנים · Travel Pouch</span></figcaption>
+    </figure>
+  </div>
+  <p class="film-note">נוצר ב-AI · רגעי UGC מתוך עולם המותג · Tap a film to hear it</p>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience" id="audience">
+  <div class="sec-head" style="padding-left:0;padding-right:0;margin-bottom:2.4rem">
+    <div class="sec-head__row">
+      <div>
+        <span class="sec-head__num">V · The Audience</span>
+        <h2>In <em>Motion</em>, Together</h2>
+      </div>
+    </div>
+  </div>
+  <p class="audience__pull reveal">For the woman who arrives <em>fully composed</em> — and never quite the same twice.</p>
+  <div class="aud-grid">
+    <div class="aud-item reveal">
+      <span class="aud-item__n">i.</span>
+      <h4 class="aud-item__t">The Age</h4>
+      <p class="aud-item__b">נשים, 25 עד 45. כבר בתנועה — בין ערים, קריירות, סופי שבוע בחו״ל, והבקרים שלא מחכים לרשות.</p>
+    </div>
+    <div class="aud-item reveal">
+      <span class="aud-item__n">ii.</span>
+      <h4 class="aud-item__t">The Spirit</h4>
+      <p class="aud-item__b">חינניות, בטוחות, מודרניות. מחפשות אקססוריז שמרימים — בלי להצעוק. שפה של חומר, צבע ועומק.</p>
+    </div>
+    <div class="aud-item reveal">
+      <span class="aud-item__n">iii.</span>
+      <h4 class="aud-item__t">The Role</h4>
+      <p class="aud-item__b">האקססוריז הם הפסקול ליום שלהן. נישאים מפגישה לפגישה, מהסטודיו לבית הקפה — ונשארים שלהן.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO / CTA -->
+<section class="studio" id="studio">
+  <div class="studio__inner">
+    <span class="studio__eyebrow">Brand Worlds Studio</span>
+    <h2>האתר הזה הוא <em>Demo</em>.<br>העולם הבא יכול להיות שלך.</h2>
+    <p class="studio__sub">VELA MOTION הוא עולם מותג שלם — שם, שפה, מוצרים, סרטון ואתר חי — שנבנה מקצה לקצה ב-Brand Worlds Studio. לא עוד תבנית כמו של כולם: עולם שמרגישים כבר בשנייה הראשונה, ושעובד בשבילך.</p>
+    <div class="studio__cc"><span class="dot"></span>כל מה שראית — האתר, השפה והקוד — נבנה עם&nbsp;<b>Claude Code</b>. רוב האנשים לא יודעים שאפשר ככה. אפשר.</div>
+
+    <div class="studio-points">
+      <div class="studio-point reveal"><span class="n">I.</span><p>זהות ושפה מותגית שנבנות פעם אחת — ונשמרות אוטומטית</p></div>
+      <div class="studio-point reveal"><span class="n">II.</span><p>נכסים ויזואליים וסרטוני AI מהמוצרים שלך</p></div>
+      <div class="studio-point reveal"><span class="n">III.</span><p>אתר חי וסוכן חכם שעובדים בשבילך מסביב לשעון</p></div>
+    </div>
+
+    <a href="book.html" class="studio-book">איך זה נבנה — ספר המותג המלא →</a>
+    <p class="studio-book-note">ה-DNA, השפה והקוד שמהם נגזר כל מה שראית למעלה</p>
+
+    <div class="agent-box reveal">
+      <div class="agent-head"><span class="agent-dot"></span><span class="agent-title">הסוכן של Brand Worlds Studio</span></div>
+      <div class="agent-msg">היי 👋 אני יכול להראות לך איך עולם מותג כמו VELA MOTION נבנה בדיוק למותג שלך — מהשם ועד הסרטון והאתר. רוצה שנדבר?</div>
+      <div style="text-align:center">
+        <a href="https://wa.me/972528351676?text=היי%20חגית,%20ראיתי%20את%20VELA%20MOTION%20ואשמח%20לשמוע%20על%20עולם%20מותג%20למותג%20שלי" class="agent-cta" target="_blank" rel="noopener">לשיחה עם חגית →</a>
+      </div>
+      <p class="agent-note">* כאן ייטמע הסוכן החכם · בינתיים הכפתור מפנה ל-WhatsApp</p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO NOTE (GEO) -->
+<section class="studio-note">
+  <div class="studio-note__inner">
+    <span class="kicker">Studio Note</span>
+    <p>VELA MOTION הוא עולם מותג בדיוני שנבנה כ-portfolio piece ב-<a href="https://hagitantebi.co.il">Brand Worlds Studio</a> מאת חגית אנטבי, Brand Worlds Architect. האתר החי הזה נגזר ישירות מ-<a href="book.html">ספר המותג</a> — אותו DNA, אותה פלטה (Dusty Rose · Powder Sky · Cream · Deep Ink), אותה שפה — ומדגים איך נראית התוצאה כשעולם מותג שלם הופך לנכס דיגיטלי חי. האתר, הסרטון והצילומים נבנו עם AI ועם Claude Code. המוצרים אינם למכירה.</p>
+    <p>רוצה לראות איך זה נבנה צעד-אחר-צעד? <a href="book.html">ספר המותג המלא →</a> · או חזרה ל<a href="/">Brand Worlds Studio</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">VELA</div>
+  <div class="f-tag">Move beautifully. Stay unmistakable.</div>
+  <div class="f-meta">
+    A Brand World by <a href="https://hagitantebi.co.il" target="_blank" rel="noopener">Brand Worlds Studio</a> · חגית אנטבי<br>
+    Lookbook 01 · MMXXVI · עולם מותג שנבנה כ-portfolio piece עם Claude Code<br>
+    <a href="book.html">The Brand Book →</a>
   </div>
 </footer>
 
 <script>
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
+/* ---- marquees ---- */
+function fillMarquee(el,items,rose){
+  const group=()=>{
+    const g=document.createElement('div');g.style.cssText='display:inline-flex;align-items:center';
+    items.forEach((t,i)=>{
+      const s=document.createElement('span');s.className='marquee__item';s.innerHTML=t;g.appendChild(s);
+      const d=document.createElement('span');d.className='marquee__dot';g.appendChild(d);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    return g;
+  };
+  el.appendChild(group());el.appendChild(group());
+}
+fillMarquee(document.getElementById('mq1'),['Move Beautifully','Stay Unmistakable','Lookbook 01','In Motion'],true);
+fillMarquee(document.getElementById('mq2'),['VELA <em>MOTION</em>','A <em>Brand World</em>','MMXXVI','Built with <em>Claude Code</em>'],false);
 
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+/* ---- nav ---- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>innerHeight*0.7));
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{navLinks.classList.toggle('open');nav.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');nav.classList.remove('open');}));
 
-  // Page indicator
-  const sections = [
-    document.getElementById('masthead'),
-    document.getElementById('plate-i'),
-    document.getElementById('cover'),
-    document.getElementById('look-i'),
-    document.getElementById('look-ii'),
-    document.getElementById('look-iii'),
-    document.getElementById('look-iv'),
-    document.getElementById('look-v'),
-    document.getElementById('look-vi'),
-    document.getElementById('closing'),
-  ].filter(Boolean);
+/* ---- reveals ---- */
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:1.05,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+gsap.from('.hero-wm h1',{opacity:0,y:40,duration:1.4,delay:.3,ease:'power3.out'});
+gsap.from('.hero-motion',{opacity:0,x:-20,duration:1.2,delay:.7,ease:'power3.out'});
+gsap.from('.hero-tag',{opacity:0,y:20,duration:1.2,delay:.95,ease:'power3.out'});
+gsap.from('.hero-index',{opacity:0,duration:1.4,delay:1.1,ease:'power2.out'});
 
-  const pageEl = document.getElementById('pageNum');
-  let ticking = false;
-  function updatePage() {
-    const fold = window.scrollY + window.innerHeight * 0.4;
-    let current = 0;
-    for (let i = 0; i < sections.length; i++) {
-      if (sections[i].offsetTop <= fold) current = i;
-    }
-    const num = String(current + 1).padStart(2, '0');
-    if (pageEl.textContent !== num) pageEl.textContent = num;
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updatePage); ticking = true; }
-  }, { passive: true });
-  updatePage();
+/* ---- THE EDIT rail: drag + wheel + snap + dots ---- */
+const rail=document.getElementById('rail');
+const looks=[...rail.querySelectorAll('.look')];
+const dotsWrap=document.getElementById('railDots');
+looks.forEach((_,i)=>{
+  const b=document.createElement('button');b.className='rail-dot'+(i===0?' active':'');b.setAttribute('aria-label','לוק '+(i+1));
+  b.addEventListener('click',()=>scrollToLook(i));dotsWrap.appendChild(b);
+});
+const dots=[...dotsWrap.children];
+function scrollToLook(i){
+  const l=looks[i];
+  rail.scrollTo({left:l.offsetLeft-(rail.clientWidth-l.clientWidth)/2,behavior:'smooth'});
+}
+function activeIndex(){
+  const c=rail.scrollLeft+rail.clientWidth/2;
+  let best=0,bd=1e9;
+  looks.forEach((l,i)=>{const lc=l.offsetLeft+l.clientWidth/2;const d=Math.abs(lc-c);if(d<bd){bd=d;best=i;}});
+  return best;
+}
+let raf;
+rail.addEventListener('scroll',()=>{
+  cancelAnimationFrame(raf);
+  raf=requestAnimationFrame(()=>{const a=activeIndex();dots.forEach((d,i)=>d.classList.toggle('active',i===a));});
+});
+document.getElementById('railNext').addEventListener('click',()=>scrollToLook(Math.min(looks.length-1,activeIndex()+1)));
+document.getElementById('railPrev').addEventListener('click',()=>scrollToLook(Math.max(0,activeIndex()-1)));
+/* drag to scroll */
+let down=false,sx=0,sl=0,moved=0;
+rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=rail.scrollLeft;rail.classList.add('dragging');rail.setPointerCapture(e.pointerId);});
+rail.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;moved+=Math.abs(dx);rail.scrollLeft=sl-dx;});
+function endDrag(){if(!down)return;down=false;rail.classList.remove('dragging');}
+rail.addEventListener('pointerup',endDrag);rail.addEventListener('pointercancel',endDrag);
+rail.addEventListener('click',e=>{if(moved>6)e.preventDefault();},true);
+/* NOTE: no wheel hijack — vertical page scroll is always native. The rail is navigated
+   by drag (mouse), the arrows/dots, and native horizontal scroll (trackpad / shift+wheel). */
+
+/* ---- THE FILM: in-view autoplay + tap one for sound ---- */
+const filmCards=document.querySelectorAll('.film-card');
+const filmIO=new IntersectionObserver(es=>es.forEach(e=>{
+  const v=e.target.querySelector('video');
+  if(e.isIntersecting){v.play().catch(()=>{});}
+  else{v.pause();if(e.target.classList.contains('sound')){v.muted=true;e.target.classList.remove('sound');}}
+}),{threshold:.35});
+filmCards.forEach(c=>filmIO.observe(c));
+filmCards.forEach(card=>{
+  const v=card.querySelector('video');
+  card.addEventListener('click',()=>{
+    const willUnmute=v.muted;
+    filmCards.forEach(c=>{c.querySelector('video').muted=true;c.classList.remove('sound');});
+    if(willUnmute){v.muted=false;v.currentTime=0;v.play().catch(()=>{});card.classList.add('sound');}
+  });
+});
 </script>
-
-<style>.studio-glossary-link{display:block;text-align:center;padding:24px 0 40px;font-family:inherit;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#1F252B;opacity:0.4;text-decoration:none;transition:opacity 0.3s ease}.studio-glossary-link:hover{opacity:1}</style>
-<a href="/glossary.html" class="studio-glossary-link">Studio Glossary</a>
-
 </body>
 </html>
