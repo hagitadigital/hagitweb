@@ -227,6 +227,14 @@
         },
         {
           "@type":"Question",
+          "name":"איך עושים Style Swap — אותה דמות בכמה סגנונות (קליי, צילומי, מאוייר)?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"מתחילים בשרשרת אחת ב-Google Flow: מעלים תמונת רפרנס של הדמות ומפיקים סרטון בסיס אחד (במקרה של ניסוי SKATEGIRL — סקייטרית שרוכבת בין עולמות). משם, בעריכה שיחתית, מבקשים מהמודל (Google Omni) להחליף את סגנון הרנדור — קליי, צילומי, איור — והוא משכתב את אותו וידאו בדיוק בשפה חזותית אחרת, בלי לאבד את הפנים, התנועה או הקאדר. אותה שיטה מאפשרת גם להחליף אאוטפיט, צבע, מוצר או חפץ — מה שהופך דמות אחת לכלי מותגי שאפשר להלביש בעשרות וריאציות לקמפיין שלם, בלי הפקה חדשה לכל פריים."
+          }
+        },
+        {
+          "@type":"Question",
           "name":"באילו כלים את משתמשת ליצירת סרטוני AI מותגיים?",
           "acceptedAnswer":{
             "@type":"Answer",
@@ -816,6 +824,31 @@
     margin: 0 auto;
   }
   .notebook-pair-text strong { color: var(--ink); font-weight: 600; }
+  .notebook-process {
+    max-width: 720px;
+    margin: 28px auto 0;
+    padding: 28px 30px;
+    background: var(--gold-bg);
+    border-radius: 14px;
+    border-right: 2px solid var(--gold);
+  }
+  .notebook-process h4 {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.2px;
+  }
+  .notebook-process h4 em { font-style: italic; color: var(--gold); }
+  .notebook-process p {
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .notebook-process p:last-child { margin-bottom: 0; }
+  .notebook-process strong { color: var(--ink); font-weight: 600; }
   .notebook-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 240px));
@@ -1511,6 +1544,16 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="notebook-process">
+      <h4>איך זה נעשה · <em>השיטה</em></h4>
+      <p>
+        כל הסדרה הזו נולדה משרשרת אחת ב-<strong>Google Flow</strong>. הצעד הראשון: מעלים תמונת רפרנס של הדמות, ו-Flow מפיק את <strong>סרטון הבסיס</strong> — הסקייטרית רוכבת בין עולמות. משם נשארת רק עריכה שיחתית: מבקשים מהמודל להחליף את סגנון הרנדור — קליי, צילומי, איור — והוא משכתב את <strong>אותו וידאו בדיוק</strong> בשפה חזותית אחרת, בלי לאבד את הפנים, התנועה או הקאדר.
+      </p>
+      <p>
+        והמתודה לא עוצרת בסגנון. באותה דרך אפשר להחליף אאוטפיט, צבע, מוצר או חפץ ביד — וזה מה שהופך אותה לכלי מותגי אמיתי: <strong>דמות אחת שאפשר להלביש בעשרות וריאציות לקמפיין שלם</strong>, בלי הפקה חדשה לכל פריים. בדיוק ההבדל בין "עוד וידאו AI" לבין נכס מותגי עקבי.
+      </p>
     </div>
   </div>
 
