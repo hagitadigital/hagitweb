@@ -301,9 +301,12 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
   const ICON_CLOSE = `<svg class="icon-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
   const ICON_SEND = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>`;
 
-  const WELCOME = "שלום! אני הסוכן של חגית 👋\nאיך אוכל לעזור לך היום? אפשר לשאול על BrandOS, שירותים, תיק עבודות או לתאם פגישה.";
+  // Per-page override: a page can set window.HAGIT_AGENT_WELCOME / _QUICK_REPLIES before this loads.
+  const WELCOME = (typeof window !== "undefined" && window.HAGIT_AGENT_WELCOME) ||
+    "שלום! אני הסוכן של חגית 👋\nאיך אוכל לעזור לך היום? אפשר לשאול על BrandOS, שירותים, תיק עבודות או לתאם פגישה.";
 
-  const QUICK_REPLIES = ["מה זה BrandOS?", "מה השירותים?", "כמה זה עולה?", "תיאום פגישה"];
+  const QUICK_REPLIES = (typeof window !== "undefined" && window.HAGIT_AGENT_QUICK_REPLIES) ||
+    ["מה זה BrandOS?", "מה השירותים?", "כמה זה עולה?", "תיאום פגישה"];
 
   // session_id יציב — מזהה מבקר חוזר לאורך שיחות
   function getSessionId() {

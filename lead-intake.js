@@ -129,6 +129,14 @@
     try {
       box.scrollIntoView({ behavior: "smooth", block: "center" });
     } catch (e) {}
+    // Signal a confirmed lead so pages can fire conversion pixels (e.g. Meta "Lead").
+    try {
+      document.dispatchEvent(
+        new CustomEvent("lead:intake:success", {
+          detail: { source: form.dataset.leadSource || "website" },
+        })
+      );
+    } catch (e) {}
   }
 
   function showError(form, msg) {
