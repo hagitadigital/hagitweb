@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Brand World — Meta Ad (full-bleed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --cream:#FAF8F3; --ink:#15110D; --copper:#C4765A; --copper-deep:#A85F44;
+        --disp:'Cormorant Garamond',serif; --he:'Heebo',sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:var(--he);}
+    .stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;}
+
+    /* World footage (revealed) */
+    #clip{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+    .stage::after{ /* permanent cinematic vignette over world */
+        content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+        background:linear-gradient(180deg,rgba(10,8,6,0.45) 0%,rgba(10,8,6,0) 22%,rgba(10,8,6,0) 55%,rgba(10,8,6,0.72) 100%);
+    }
+
+    /* ---- Generic template mock (the "before") ---- */
+    .mock{position:absolute;inset:0;z-index:5;background:#e9e7e2;transition:transform 1.0s cubic-bezier(.7,0,.2,1);}
+    .mock.gone{transform:translateY(-102%);}
+    .mock__nav{display:flex;justify-content:space-between;align-items:center;padding:60px 60px 0;}
+    .mock__logo{width:200px;height:34px;background:#c9c6bf;}
+    .mock__links{display:flex;gap:34px;}
+    .mock__links span{width:90px;height:18px;background:#cfccc5;display:block;}
+    .mock__hero{margin:70px 60px 0;height:560px;background:#d8d5ce;display:flex;align-items:center;justify-content:center;}
+    .mock__hero span{width:340px;height:56px;background:#c4c1ba;}
+    .mock__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:46px 60px 0;}
+    .mock__cell{height:420px;background:#dcd9d2;}
+    .mock__cell i{display:block;height:70%;background:#d2cfc8;}
+    .mock__cell b{display:block;width:60%;height:20px;margin:22px auto 0;background:#cbc8c1;}
+    .mock__watermark{position:absolute;bottom:54px;left:0;right:0;text-align:center;font-size:30px;letter-spacing:.3em;color:#a8a49c;font-weight:300;}
+
+    /* ---- Text layers ---- */
+    .layer{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;padding:0 90px;opacity:0;transition:opacity .6s ease, transform .6s ease;pointer-events:none;}
+    .layer.show{opacity:1;}
+    /* legibility scrim for white text sitting over bright footage */
+    .layer.over-video{background:radial-gradient(ellipse 80% 44% at 50% 50%,rgba(12,10,7,.66) 0%,rgba(12,10,7,.34) 46%,rgba(12,10,7,0) 72%);}
+
+    .kicker{font-family:var(--he);font-weight:500;font-size:34px;letter-spacing:.18em;color:#7a756c;margin-bottom:26px;}
+    .hook-q{font-family:var(--disp);font-weight:600;font-size:118px;line-height:1.02;color:#2a241d;}
+
+    .reveal-word{font-family:var(--disp);font-style:italic;font-weight:500;font-size:150px;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.5);transform:translateY(20px);}
+    .layer.show .reveal-word{transform:translateY(0);}
+
+    .title-he{font-family:var(--disp);font-weight:600;font-size:130px;line-height:1.04;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.55);}
+    .sub-he{font-family:var(--he);font-weight:400;font-size:44px;line-height:1.5;color:rgba(250,248,243,.95);margin-top:30px;text-shadow:0 2px 18px rgba(0,0,0,.85);}
+    .sub-he b{font-weight:500;color:var(--copper);}
+
+    .value-line{font-family:var(--disp);font-style:italic;font-weight:500;font-size:96px;line-height:1.15;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.6);}
+    .value-line em{color:var(--copper);font-style:italic;}
+
+    /* ---- CTA scene ---- */
+    .cta{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;padding:0 90px;opacity:0;transition:opacity .7s ease;
+        background:linear-gradient(180deg,rgba(15,17,13,.55) 0%,rgba(15,17,13,.86) 55%,rgba(15,17,13,.95) 100%);}
+    .cta.show{opacity:1;}
+    .cta__eyebrow{font-family:var(--he);font-weight:500;font-size:34px;letter-spacing:.22em;color:var(--copper);margin-bottom:30px;}
+    .cta__title{font-family:var(--disp);font-weight:600;font-size:150px;line-height:1;color:var(--cream);}
+    .cta__free{font-family:var(--disp);font-style:italic;font-size:64px;color:var(--copper);margin-top:18px;}
+    .cta__chip{margin-top:60px;display:inline-flex;align-items:center;gap:16px;border:1px solid rgba(196,118,90,.7);
+        padding:26px 50px;border-radius:60px;font-family:var(--he);font-weight:500;font-size:42px;color:var(--cream);}
+    .cta__chip svg{width:34px;height:34px;}
+    .cta__url{margin-top:40px;font-family:'Cormorant Garamond',serif;font-size:46px;letter-spacing:.04em;color:rgba(250,248,243,.85);}
+    .cta__sig{position:absolute;bottom:70px;left:0;right:0;text-align:center;font-family:var(--he);font-weight:300;font-size:32px;letter-spacing:.12em;color:rgba(250,248,243,.6);}
+</style>
+</head>
+<body>
+<div class="stage">
+    <video id="clip" muted loop playsinline preload="auto">
+        <source src="solara-screen.mp4" type="video/mp4">
+    </video>
+
+    <!-- BEFORE: generic template mock -->
+    <div class="mock" id="mock">
+        <div class="mock__nav">
+            <div class="mock__logo"></div>
+            <div class="mock__links"><span></span><span></span><span></span></div>
+        </div>
+        <div class="mock__hero"><span></span></div>
+        <div class="mock__grid">
+            <div class="mock__cell"><i></i><b></b></div>
+            <div class="mock__cell"><i></i><b></b></div>
+            <div class="mock__cell"><i></i><b></b></div>
+        </div>
+        <div class="mock__watermark">G E N E R I C   T E M P L A T E</div>
+    </div>
+
+    <!-- Hook text (over mock) -->
+    <div class="layer" id="lHook">
+        <p class="kicker">מותג יוקרה · לייפסטייל · אופנה</p>
+        <h1 class="hook-q">המותג שלך<br>נראה ככה?</h1>
+    </div>
+
+    <!-- Reveal word -->
+    <div class="layer over-video" id="lReveal"><div class="reveal-word">או ככה.</div></div>
+
+    <!-- Title -->
+    <div class="layer over-video" id="lTitle">
+        <h2 class="title-he">עולם מותג חי</h2>
+        <p class="sub-he">אתר · חוויה · תוכן ש<b>רצים על AI</b><br>בלי לאבד את היוקרה</p>
+    </div>
+
+    <!-- Value -->
+    <div class="layer over-video" id="lValue"><p class="value-line">לא עוד אתר.<br><em>מערכת מותג שלמה.</em></p></div>
+
+    <!-- CTA -->
+    <div class="cta" id="lCta">
+        <p class="cta__eyebrow">B R A N D   W O R L D S   S T U D I O</p>
+        <h2 class="cta__title">אבחון מותג-AI</h2>
+        <p class="cta__free">חינם · 30 דקות</p>
+        <div class="cta__chip">
+            לאבחון
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <p class="cta__url">hagitantebi.co.il/brand-world</p>
+        <p class="cta__sig">Built to Strategy. Run by AI.</p>
+    </div>
+</div>
+
+<script>
+    const clip = document.getElementById('clip');
+    const show = (id) => document.getElementById(id).classList.add('show');
+    const hide = (id) => document.getElementById(id).classList.remove('show');
+
+    // Recorder calls this. Drives the whole ad on a wall-clock timeline.
+    window.__playReel = function () {
+        clip.currentTime = 0;
+        clip.play().catch(()=>{});
+        show('lHook');
+
+        // 2.8s — template slides away, world revealed
+        setTimeout(() => { document.getElementById('mock').classList.add('gone'); hide('lHook'); }, 2800);
+        setTimeout(() => show('lReveal'), 3050);
+        setTimeout(() => hide('lReveal'), 4300);
+
+        // 4.5s — title
+        setTimeout(() => show('lTitle'), 4500);
+        setTimeout(() => hide('lTitle'), 7000);
+
+        // 7.2s — value
+        setTimeout(() => show('lValue'), 7200);
+        setTimeout(() => hide('lValue'), 9300);
+
+        // 9.6s — CTA holds to the end
+        setTimeout(() => show('lCta'), 9600);
+
+        // 12.6s — signal end to the recorder
+        setTimeout(() => { clip.pause(); clip.dispatchEvent(new Event('ended')); }, 12600);
+    };
+</script>
+</body>
+</html>
