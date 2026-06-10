@@ -10,6 +10,7 @@
     :root{
         --cream:#FAF8F3; --ink:#15110D; --copper:#C4765A; --copper-deep:#A85F44;
         --disp:'Cormorant Garamond',serif; --he:'Heebo',sans-serif;
+        --ui:#e7e6e2;
     }
     *{margin:0;padding:0;box-sizing:border-box;}
     html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:var(--he);}
@@ -22,20 +23,68 @@
         background:linear-gradient(180deg,rgba(10,8,6,0.45) 0%,rgba(10,8,6,0) 22%,rgba(10,8,6,0) 55%,rgba(10,8,6,0.72) 100%);
     }
 
-    /* ---- Generic template mock (the "before") ---- */
-    .mock{position:absolute;inset:0;z-index:5;background:#e9e7e2;transition:transform 1.0s cubic-bezier(.7,0,.2,1);}
-    .mock.gone{transform:translateY(-102%);}
-    .mock__nav{display:flex;justify-content:space-between;align-items:center;padding:60px 60px 0;}
-    .mock__logo{width:200px;height:34px;background:#c9c6bf;}
-    .mock__links{display:flex;gap:34px;}
-    .mock__links span{width:90px;height:18px;background:#cfccc5;display:block;}
-    .mock__hero{margin:70px 60px 0;height:560px;background:#d8d5ce;display:flex;align-items:center;justify-content:center;}
-    .mock__hero span{width:340px;height:56px;background:#c4c1ba;}
-    .mock__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:46px 60px 0;}
-    .mock__cell{height:420px;background:#dcd9d2;}
-    .mock__cell i{display:block;height:70%;background:#d2cfc8;}
-    .mock__cell b{display:block;width:60%;height:20px;margin:22px auto 0;background:#cbc8c1;}
-    .mock__watermark{position:absolute;bottom:54px;left:0;right:0;text-align:center;font-size:30px;letter-spacing:.3em;color:#a8a49c;font-weight:300;}
+    /* ============================================================
+       BEFORE — a real drag-and-drop builder. "A template, like everyone's."
+       The whole builder slides up to reveal the living world.
+       ============================================================ */
+    .builder{position:absolute;inset:0;z-index:5;background:var(--ui);overflow:hidden;
+        transition:transform 1.0s cubic-bezier(.7,0,.2,1);}
+    .builder.gone{transform:translateY(-102%);}
+
+    /* faux app top bar */
+    .b-topbar{height:96px;background:#f3f2ef;border-bottom:1px solid #dcdad4;
+        display:flex;align-items:center;justify-content:space-between;padding:0 46px;}
+    .b-dots{display:flex;gap:14px;}
+    .b-dots i{width:20px;height:20px;border-radius:50%;background:#cfccc4;display:block;}
+    .b-title{font-family:var(--he);font-weight:500;font-size:30px;letter-spacing:.04em;color:#8a857c;}
+    .b-publish{font-family:var(--he);font-weight:500;font-size:28px;color:#b7b2a8;
+        border:1px solid #cdcabf;border-radius:40px;padding:12px 34px;}
+
+    /* the page being assembled */
+    .b-card{position:absolute;left:60px;right:60px;top:150px;height:1240px;background:#fff;
+        border:1px solid #e0ded7;border-radius:10px;box-shadow:0 30px 70px rgba(40,34,26,.10);overflow:hidden;}
+    .b-browser{height:74px;background:#f6f5f2;border-bottom:1px solid #e6e4dd;
+        display:flex;align-items:center;gap:16px;padding:0 28px;}
+    .b-browser i{width:16px;height:16px;border-radius:50%;background:#d8d5cd;display:block;}
+    .b-url{margin:0 auto;font-family:var(--he);font-weight:400;font-size:26px;color:#b3aea4;letter-spacing:.04em;}
+    .b-page{padding:46px;}
+    .b-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px;}
+    .b-nav .lg{width:170px;height:30px;background:#dedbd3;border-radius:4px;}
+    .b-nav .lk{display:flex;gap:24px;}
+    .b-nav .lk span{width:78px;height:16px;background:#e4e1da;border-radius:3px;display:block;}
+
+    /* drop zones — dashed when empty, solid when filled */
+    .dz{border:2px dashed #cfccc3;border-radius:8px;background:#f3f2ee;}
+    .dz.fill{border-style:solid;border-color:#dcd9d1;background:#dedbd3;animation:dzpop .45s cubic-bezier(.34,1.56,.64,1);}
+    @keyframes dzpop{0%{transform:scale(.93)}60%{transform:scale(1.025)}100%{transform:scale(1)}}
+    .dz-hero{height:430px;margin-bottom:32px;display:flex;align-items:center;justify-content:center;}
+    .dz-hero .ph{width:300px;height:46px;background:#cecabf;border-radius:5px;opacity:0;transition:opacity .3s ease .12s;}
+    .dz-hero.fill .ph{opacity:1;}
+    .dz-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+    .dz-cell{height:330px;}
+
+    /* template tray (the source of sameness) */
+    .b-tray{position:absolute;left:0;right:0;bottom:0;height:300px;background:#edece8;border-top:1px solid #dcdad3;
+        display:flex;flex-direction:column;justify-content:center;padding:0 50px;}
+    .b-tray .lbl{font-family:var(--he);font-weight:500;font-size:26px;letter-spacing:.16em;color:#a39e94;margin-bottom:18px;}
+    .b-thumbs{display:flex;gap:26px;justify-content:flex-start;}
+    .b-thumb{width:230px;height:150px;background:#fff;border:1px solid #dcd9d2;border-radius:8px;
+        box-shadow:0 8px 20px rgba(0,0,0,.05);position:relative;overflow:hidden;}
+    .b-thumb::before{content:'';position:absolute;left:14px;right:14px;top:14px;height:34px;background:#e6e3dc;border-radius:3px;}
+    .b-thumb::after{content:'';position:absolute;left:14px;right:14px;top:60px;bottom:14px;background:#eeece6;border-radius:3px;}
+
+    /* the tile being dragged (a clone lifted off the tray) */
+    .drag-tile{position:absolute;left:740px;top:1648px;width:230px;height:150px;background:#fff;
+        border:1px solid #d8d5cd;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.08);z-index:7;opacity:0;
+        transition:transform .8s cubic-bezier(.45,.05,.2,1),box-shadow .25s ease,opacity .25s ease;}
+    .drag-tile::before{content:'';position:absolute;left:14px;right:14px;top:14px;height:34px;background:#e6e3dc;border-radius:3px;}
+    .drag-tile::after{content:'';position:absolute;left:14px;right:14px;top:60px;bottom:14px;background:#eeece6;border-radius:3px;}
+    .drag-tile.lift{box-shadow:0 26px 50px rgba(0,0,0,.22);}
+
+    /* cursor */
+    .cursor{position:absolute;left:0;top:0;z-index:9;opacity:0;
+        transition:transform .7s cubic-bezier(.5,.02,.2,1),opacity .3s ease;
+        filter:drop-shadow(0 4px 8px rgba(0,0,0,.30));}
 
     /* ---- Text layers ---- */
     .layer{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -44,13 +93,21 @@
     /* legibility scrim for white text sitting over bright footage */
     .layer.over-video{background:radial-gradient(ellipse 80% 44% at 50% 50%,rgba(12,10,7,.66) 0%,rgba(12,10,7,.34) 46%,rgba(12,10,7,0) 72%);}
 
-    .kicker{font-family:var(--he);font-weight:500;font-size:34px;letter-spacing:.18em;color:#7a756c;margin-bottom:26px;}
+    /* hook sits low over the builder, with a scrim fading to the UI background */
+    .hook-builder{justify-content:flex-end;padding-bottom:415px;
+        background:linear-gradient(180deg,rgba(231,230,226,0) 46%,rgba(231,230,226,.80) 64%,rgba(231,230,226,.97) 100%);}
+    .kicker{font-family:var(--he);font-weight:500;font-size:34px;letter-spacing:.18em;color:#7a756c;margin-bottom:24px;}
     .hook-q{font-family:var(--disp);font-weight:600;font-size:118px;line-height:1.02;color:#2a241d;}
+    .hook-stamp{font-family:var(--disp);font-style:italic;font-weight:600;font-size:100px;line-height:1.05;
+        color:var(--copper-deep);margin-top:22px;opacity:0;transform:translateY(16px);
+        transition:opacity .55s ease,transform .55s cubic-bezier(.34,1.56,.64,1);}
+    .hook-builder.stamp .hook-stamp{opacity:1;transform:none;}
 
     .reveal-word{font-family:var(--disp);font-style:italic;font-weight:500;font-size:150px;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.5);transform:translateY(20px);}
     .layer.show .reveal-word{transform:translateY(0);}
 
     .title-he{font-family:var(--disp);font-weight:600;font-size:130px;line-height:1.04;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.55);}
+    .title-he .twist{font-style:italic;font-weight:500;color:var(--copper);}
     .sub-he{font-family:var(--he);font-weight:400;font-size:44px;line-height:1.5;color:rgba(250,248,243,.95);margin-top:30px;text-shadow:0 2px 18px rgba(0,0,0,.85);}
     .sub-he b{font-weight:500;color:var(--copper);}
 
@@ -74,38 +131,63 @@
 </head>
 <body>
 <div class="stage">
-    <video id="clip" muted playsinline preload="auto">
+    <video id="clip" muted loop playsinline preload="auto">
         <source src="aurelle-screen.mp4" type="video/mp4">
     </video>
 
-    <!-- BEFORE: generic template mock -->
-    <div class="mock" id="mock">
-        <div class="mock__nav">
-            <div class="mock__logo"></div>
-            <div class="mock__links"><span></span><span></span><span></span></div>
+    <!-- BEFORE: a drag-and-drop builder assembling a generic template -->
+    <div class="builder" id="builder">
+        <div class="b-topbar">
+            <div class="b-dots"><i></i><i></i><i></i></div>
+            <div class="b-title">Untitled — Template</div>
+            <div class="b-publish">Publish</div>
         </div>
-        <div class="mock__hero"><span></span></div>
-        <div class="mock__grid">
-            <div class="mock__cell"><i></i><b></b></div>
-            <div class="mock__cell"><i></i><b></b></div>
-            <div class="mock__cell"><i></i><b></b></div>
+
+        <div class="b-card">
+            <div class="b-browser"><i></i><i></i><i></i><span class="b-url">yourbrand.com</span></div>
+            <div class="b-page">
+                <div class="b-nav">
+                    <div class="lg"></div>
+                    <div class="lk"><span></span><span></span><span></span></div>
+                </div>
+                <div class="dz dz-hero" id="dzHero"><span class="ph"></span></div>
+                <div class="dz-grid">
+                    <div class="dz dz-cell" id="dzR"></div>
+                    <div class="dz dz-cell" id="dzL"></div>
+                </div>
+            </div>
         </div>
-        <div class="mock__watermark">G E N E R I C   T E M P L A T E</div>
+
+        <div class="b-tray">
+            <div class="lbl">T E M P L A T E S</div>
+            <div class="b-thumbs">
+                <div class="b-thumb"></div>
+                <div class="b-thumb"></div>
+                <div class="b-thumb"></div>
+            </div>
+        </div>
+
+        <!-- the lifted tile + cursor -->
+        <div class="drag-tile" id="dragTile"></div>
+        <svg class="cursor" id="cursor" viewBox="0 0 20 22" width="56" height="62">
+            <path d="M2 1 L2 17 L6 13.2 L8.7 19.3 L11.3 18.1 L8.6 12.2 L14 12.2 Z"
+                  fill="#241f19" stroke="#ffffff" stroke-width="0.9" stroke-linejoin="round"/>
+        </svg>
     </div>
 
-    <!-- Hook text (over mock) -->
-    <div class="layer" id="lHook">
-        <p class="kicker">מותג יוקרה · לייפסטייל · אופנה</p>
-        <h1 class="hook-q">המותג שלך<br>נראה ככה?</h1>
+    <!-- Hook text (over builder) -->
+    <div class="layer hook-builder" id="lHook">
+        <h1 class="hook-q">המותג שלך<br>נראה כך?</h1>
+        <p class="hook-stamp">תבנית. כמו של כולם?</p>
     </div>
 
     <!-- Reveal word -->
-    <div class="layer over-video" id="lReveal"><div class="reveal-word">או ככה.</div></div>
+    <div class="layer over-video" id="lReveal"><div class="reveal-word">או כך?</div></div>
 
     <!-- Title -->
     <div class="layer over-video" id="lTitle">
-        <h2 class="title-he">עולם מותג חי</h2>
-        <p class="sub-he">אתר · חוויה · תוכן ש<b>רצים על AI</b><br>בלי לאבד את היוקרה</p>
+        <h2 class="title-he"><span class="twist">לא תבנית.</span><br>עולם מותג חי</h2>
+        <p class="sub-he">אתר · חוויה · תוכן ש<b>רץ על AI</b><br>בלי לאבד את היוקרה</p>
     </div>
 
     <!-- Value -->
@@ -113,7 +195,7 @@
 
     <!-- CTA -->
     <div class="cta" id="lCta">
-        <p class="cta__eyebrow">B R A N D   W O R L D S   S T U D I O</p>
+        <p class="cta__eyebrow">BRAND · WORLDS · STUDIO</p>
         <h2 class="cta__title">אבחון מותג-AI</h2>
         <p class="cta__free">חינם · 30 דקות</p>
         <div class="cta__chip">
@@ -121,39 +203,59 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
         <p class="cta__url">hagitantebi.co.il/brand-world</p>
-        <p class="cta__sig">Built to Strategy. Run by AI.</p>
+        <p class="cta__sig" dir="ltr">Built to Strategy. Run by AI.</p>
     </div>
 </div>
 
 <script>
-    const clip = document.getElementById('clip');
-    const show = (id) => document.getElementById(id).classList.add('show');
-    const hide = (id) => document.getElementById(id).classList.remove('show');
+    const $ = (id) => document.getElementById(id);
+    const clip = $('clip');
+    const show = (id) => $(id).classList.add('show');
+    const hide = (id) => $(id).classList.remove('show');
 
     // Recorder calls this. Drives the whole ad on a wall-clock timeline.
+    window.__reelDone = false;
     window.__playReel = function () {
-        clip.currentTime = 0;
-        clip.play().catch(()=>{});
-        show('lHook');
+        const cur = $('cursor'), tile = $('dragTile'), hook = $('lHook');
+        const move = (x, y) => { cur.style.transform = `translate(${x}px,${y}px)`; };
 
-        // 2.8s — template slides away, world revealed
-        setTimeout(() => { document.getElementById('mock').classList.add('gone'); hide('lHook'); }, 2800);
-        setTimeout(() => show('lReveal'), 3050);
-        setTimeout(() => hide('lReveal'), 4300);
+        // --- Opening: drag-and-drop builder (a template, like everyone's) ---
+        show('lHook');                                   // line 1 + builder visible
+        cur.style.transform = 'translate(540px,1520px)';
+        setTimeout(() => { cur.style.opacity = '1'; }, 150);
 
-        // 4.5s — title
-        setTimeout(() => show('lTitle'), 4500);
-        setTimeout(() => hide('lTitle'), 7000);
+        setTimeout(() => move(862, 1690), 500);          // reach for a template tile
+        setTimeout(() => { tile.style.opacity = '1'; tile.classList.add('lift'); }, 1150); // grab
+        setTimeout(() => hook.classList.add('stamp'), 1350);                                // "תבנית. כמו של כולם?"
+        setTimeout(() => { move(556, 520); tile.style.transform = 'translate(-315px,-1170px)'; }, 1550); // drag up
+        setTimeout(() => tile.classList.remove('lift'), 2250);                              // about to drop
+        setTimeout(() => { $('dzHero').classList.add('fill'); tile.style.opacity = '0'; }, 2400); // snap into hero
+        setTimeout(() => $('dzR').classList.add('fill'), 2850);   // rest auto-fills from the template
+        setTimeout(() => $('dzL').classList.add('fill'), 3150);
+        setTimeout(() => { cur.style.opacity = '0'; }, 3550);     // cursor drifts off
 
-        // 7.2s — value
-        setTimeout(() => show('lValue'), 7200);
-        setTimeout(() => hide('lValue'), 9300);
+        // --- 4.6s: the template slides away, the living world is revealed ---
+        setTimeout(() => {
+            $('builder').classList.add('gone');
+            hide('lHook');
+            clip.currentTime = 0; clip.play().catch(() => {});
+        }, 4600);
+        setTimeout(() => show('lReveal'), 4850);
+        setTimeout(() => hide('lReveal'), 6100);
 
-        // 9.6s — CTA holds to the end
-        setTimeout(() => show('lCta'), 9600);
+        // 6.3s — title
+        setTimeout(() => show('lTitle'), 6300);
+        setTimeout(() => hide('lTitle'), 8800);
 
-        // 12.6s — signal end to the recorder
-        setTimeout(() => { clip.pause(); clip.dispatchEvent(new Event('ended')); }, 12600);
+        // 9.0s — value
+        setTimeout(() => show('lValue'), 9000);
+        setTimeout(() => hide('lValue'), 11100);
+
+        // 11.4s — CTA holds to the end
+        setTimeout(() => show('lCta'), 11400);
+
+        // 14.4s — signal end to the recorder
+        setTimeout(() => { clip.pause(); window.__reelDone = true; clip.dispatchEvent(new Event('ended')); }, 14400);
     };
 </script>
 </body>
