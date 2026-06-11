@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLUNA · פורמולה אחת לכל הקצב של היום</title>
+<meta name="description" content="SOLUNA — עולם מותג קונספטואלי מבית הגית אנטבי · Brand Worlds Studio. בית מרקחת של אור־יום: תוסף צירקדי שנושא את כל היממה. הדגמת תיק עבודות — אינו מוצר אמיתי ואינו מהווה ייעוץ רפואי." />
+<meta name="keywords" content="עולם מותג, קונספט, Brand Worlds Studio, הגית אנטבי, brand world, concept demo, SOLUNA" />
+<meta name="author" content="Hagit Antebi · Brand Worlds Studio" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://hagitantebi.co.il/soluna.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Brand Worlds Studio · Hagit Antebi" />
+<meta property="og:title" content="SOLUNA · עולם מותג קונספטואלי" />
+<meta property="og:description" content="בית מרקחת של אור־יום — עולם מותג קונספט מבית הגית אנטבי. הדגמה, לא מוצר אמיתי." />
+<meta property="og:image" content="https://hagitantebi.co.il/brand-worlds/card-soluna.jpg" />
+<meta property="og:url" content="https://hagitantebi.co.il/soluna.html" />
+<meta property="og:locale" content="he_IL" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "SOLUNA \u2014 Concept Brand World",
+  "creator": {"@type": "Person", "name": "Hagit Antebi", "url": "https://hagitantebi.co.il"},
+  "publisher": {"@type": "Organization", "name": "Brand Worlds Studio", "url": "https://hagitantebi.co.il"},
+  "about": "A fictional concept supplement brand, created as a portfolio demonstration of an AI-built brand world.",
+  "abstract": "Concept / demonstration brand world. Not a real product, not for sale, and not medical advice; ingredients and claims are illustrative.",
+  "creativeWorkStatus": "Concept demonstration",
+  "genre": "Brand design portfolio",
+  "isFamilyFriendly": true,
+  "inLanguage": ["he", "en"],
+  "keywords": "concept brand, brand world, demo, Hagit Antebi, Brand Worlds Studio"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Frank+Ruhl+Libre:wght@300..600&family=Heebo:wght@300;400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#160F22; --oxblood:#3B0E1E; --plum:#2A0F25;
+    --sol:#E6A23C; --sol-deep:#C97E22; --luna:#C5CEDA; --parchment:#F2E7CE;
+    --gild:#B98A2E; --ember:#C2566A; --teal:#143A45;
+    --line:rgba(242,231,206,.16); --frame:rgba(201,150,47,.40);
+    --maxw:1140px;
+    --he-serif:"Frank Ruhl Libre",serif;
+    --he-sans:"Heebo",sans-serif;
+    --mono:"Spline Sans Mono",monospace;
+    --latin:"Fraunces",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    color:var(--parchment);font-family:var(--he-sans);font-weight:300;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--ink);position:relative;
+  }
+
+  /* ---------- moving sky ---------- */
+  .sky{position:fixed;inset:0;z-index:-2}
+  .sky .layer{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+  .layer.twilight{opacity:1;background:
+      radial-gradient(120% 95% at 82% 8%, rgba(230,162,60,.16) 0, transparent 42%),
+      radial-gradient(120% 110% at 12% 100%, rgba(197,206,218,.12) 0, transparent 46%),
+      linear-gradient(168deg, var(--oxblood) 0%, var(--plum) 46%, var(--ink) 100%);}
+  .layer.dawn{background:
+      radial-gradient(120% 90% at 78% 6%, rgba(230,162,60,.34) 0, transparent 50%),
+      linear-gradient(170deg,#5a1f1c 0%, #3B0E1E 52%, #1d0f1f 100%);}
+  .layer.day{background:
+      radial-gradient(120% 80% at 30% 4%, rgba(230,162,60,.2) 0, transparent 46%),
+      linear-gradient(175deg,#10323d 0%, #16202f 55%, #160F22 100%);}
+  .layer.night{background:
+      radial-gradient(110% 90% at 18% 6%, rgba(197,206,218,.14) 0, transparent 44%),
+      linear-gradient(180deg,#1a1330 0%, #140b22 60%, #0c0716 100%);}
+  body[data-phase="dawn"]  .layer.twilight,body[data-phase="day"] .layer.twilight,body[data-phase="night"] .layer.twilight{opacity:0}
+  body[data-phase="dawn"]  .layer.dawn{opacity:1}
+  body[data-phase="day"]   .layer.day{opacity:1}
+  body[data-phase="night"] .layer.night{opacity:1}
+
+  .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.85;
+    background-image:
+      radial-gradient(1px 1px at 12% 24%, rgba(242,231,206,.7), transparent),
+      radial-gradient(1px 1px at 72% 14%, rgba(242,231,206,.5), transparent),
+      radial-gradient(1px 1px at 38% 62%, rgba(197,206,218,.6), transparent),
+      radial-gradient(1px 1px at 88% 48%, rgba(242,231,206,.45), transparent),
+      radial-gradient(1px 1px at 56% 84%, rgba(197,206,218,.5), transparent),
+      radial-gradient(1px 1px at 24% 88%, rgba(242,231,206,.4), transparent),
+      radial-gradient(1.4px 1.4px at 64% 34%, rgba(230,162,60,.5), transparent);}
+
+  .frame{position:fixed;inset:18px;border:1px solid var(--frame);pointer-events:none;z-index:40}
+  .frame::before,.frame::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--sol);opacity:.7}
+  .frame::before{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .frame::after{bottom:-1px;left:-1px;border-right:0;border-top:0}
+
+  .progress{position:fixed;top:0;right:0;height:2px;width:100%;z-index:45}
+  .progress i{display:block;height:100%;width:0%;margin-right:auto;
+    background:linear-gradient(270deg,var(--sol),var(--parchment) 60%,var(--luna));
+    box-shadow:0 0 10px rgba(230,162,60,.4)}
+
+  .clock{position:fixed;top:34px;left:38px;z-index:46;font-family:var(--mono);font-size:11px;
+    letter-spacing:.24em;color:rgba(242,231,206,.6);display:flex;align-items:center;gap:9px;direction:ltr}
+  .clock .pip{width:6px;height:6px;border-radius:50%;background:var(--sol);box-shadow:0 0 8px var(--sol);transition:background .8s,box-shadow .8s}
+  body[data-phase="night"] .clock .pip{background:var(--luna);box-shadow:0 0 8px var(--luna)}
+  @media(max-width:620px){.clock{display:none}}
+
+  /* ---------- shared ---------- */
+  section{position:relative;z-index:2;padding:118px clamp(26px,5vw,72px)}
+  .inner{max-width:var(--maxw);margin:0 auto}
+  .eyebrow{font-family:var(--he-sans);font-weight:500;font-size:12.5px;letter-spacing:.12em;
+    color:var(--sol);display:inline-flex;align-items:center;gap:13px;margin-bottom:24px}
+  .eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(270deg,transparent,var(--gild))}
+  .eyebrow.luna{color:var(--luna)}
+  h2{font-family:var(--he-serif);font-weight:500;font-size:clamp(34px,5.4vw,62px);line-height:1.12;color:var(--parchment)}
+  h2 em{font-style:normal;font-weight:400;color:var(--sol)}
+  h2 em.l{color:var(--luna)}
+  .lede{font-family:var(--he-sans);font-weight:300;font-size:clamp(16px,1.7vw,20px);line-height:1.7;
+    color:rgba(242,231,206,.84);max-width:48ch;margin-top:22px}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:96px;padding-bottom:48px}
+  .hero .inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero .eyebrow::after{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--gild))}
+  .emblem{width:min(33vh,205px);height:min(33vh,205px);margin:6px 0 4px}
+  .emblem svg{width:100%;height:100%;display:block;overflow:visible}
+  .wordmark{font-family:var(--latin);direction:ltr;font-weight:380;font-size:clamp(60px,15vw,168px);
+    line-height:.9;letter-spacing:.04em;color:var(--parchment)}
+  .wordmark .o{font-style:italic;font-weight:340;
+    background:linear-gradient(180deg,var(--sol) 0,var(--parchment) 52%,var(--luna) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .latin-stamp{font-family:var(--mono);direction:ltr;font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:rgba(242,231,206,.5);margin-top:12px}
+  .hero .tagline{font-family:var(--he-serif);font-weight:400;max-width:24ch;font-size:clamp(20px,2.6vw,30px);
+    line-height:1.5;color:rgba(242,231,206,.94);margin-top:22px}
+  .hero .tagline b{font-weight:500;color:var(--parchment)}
+  .cta{margin-top:30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .btn{font-family:var(--he-sans);font-weight:500;font-size:14px;letter-spacing:.04em;color:var(--ink);
+    background:var(--sol);border:1px solid var(--sol);padding:13px 28px;cursor:pointer;
+    transition:background .35s,color .35s,box-shadow .35s;text-decoration:none;display:inline-block}
+  .btn:hover{background:transparent;color:var(--sol);box-shadow:0 0 22px rgba(230,162,60,.25)}
+  .btn:focus-visible{outline:2px solid var(--parchment);outline-offset:3px}
+  .btn.ghost{background:transparent;color:rgba(242,231,206,.82);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--luna);color:var(--luna);box-shadow:none}
+  .scrollcue{margin-top:40px;font-family:var(--he-sans);font-weight:400;font-size:12px;letter-spacing:.1em;
+    color:rgba(242,231,206,.46);text-align:center}
+  .scrollcue span{display:block;margin-top:7px;font-size:13px;animation:bob 2.4s ease-in-out infinite}
+
+  .rays{transform-origin:120px 120px;animation:spin 90s linear infinite}
+  .tw{animation:twinkle 3.4s ease-in-out infinite}
+  .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 2s ease forwards .5s}
+
+  /* ---------- CLARITY ---------- */
+  .clarity .inner{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .clarity .lede{max-width:52ch}
+  .pill-row{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin-top:42px}
+  .pill-fact{font-family:var(--he-sans);font-weight:500;font-size:13px;letter-spacing:.06em;
+    color:rgba(242,231,206,.78);display:flex;align-items:center;gap:9px}
+  .pill-fact .b{color:var(--sol);font-size:15px}
+
+  /* ---------- PHASES ---------- */
+  .phase .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .phase .copy{order:1}.phase .art{order:2}
+  .phase.flip .copy{order:2}.phase.flip .art{order:1}
+  .phase .art{display:flex;justify-content:center;align-items:center}
+  .phase .art svg{width:min(100%,320px);height:auto;overflow:visible}
+  .big-hour{font-family:var(--mono);direction:ltr;font-size:clamp(40px,6vw,68px);
+    color:rgba(242,231,206,.12);letter-spacing:.04em;line-height:1;margin-bottom:2px;text-align:start}
+  @media(max-width:780px){
+    .phase .inner{grid-template-columns:1fr;gap:34px}
+    .phase .copy,.phase.flip .copy{order:1}
+    .phase .art,.phase.flip .art{order:2}
+  }
+
+  /* ---------- MECHANISM ---------- */
+  .mech .inner{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .mech h2{max-width:20ch}.mech .lede{max-width:58ch}
+  .threeclock{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:46px;width:100%}
+  .tc{flex:1;min-width:180px;border:1px solid var(--line);padding:26px 22px;text-align:start;background:rgba(22,15,34,.3)}
+  .tc .k{font-family:var(--he-sans);font-weight:500;font-size:11.5px;letter-spacing:.08em;color:var(--sol);margin-bottom:12px}
+  .tc.l .k{color:var(--luna)}
+  .tc h4{font-family:var(--he-serif);font-weight:500;font-size:21px;color:var(--parchment);margin-bottom:7px}
+  .tc p{font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(242,231,206,.68)}
+
+  /* ---------- FORMULA / CAPSULE ---------- */
+  .formula-sec{padding-top:104px;padding-bottom:104px}
+  .cap-stage{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .cap-stage .lede{max-width:40ch;margin-inline:auto}
+  .hint{font-family:var(--he-sans);font-weight:400;font-size:13px;letter-spacing:.06em;
+    color:rgba(242,231,206,.5);margin-top:14px;transition:opacity .4s}
+  .cap-stage.open .hint{opacity:0;pointer-events:none}
+
+  .capsule-zone{position:relative;height:300px;margin:30px auto 4px;display:flex;align-items:center;justify-content:center}
+  .capsule{position:relative;width:120px;height:240px;cursor:pointer;background:none;border:0;padding:0;
+    filter:drop-shadow(0 18px 40px rgba(0,0,0,.45));transition:transform .5s ease}
+  .capsule:focus-visible{outline:2px solid var(--parchment);outline-offset:8px;border-radius:60px}
+  .capsule .half{position:absolute;left:0;width:120px;height:130px;transition:transform .85s cubic-bezier(.6,-.2,.25,1.2)}
+  .capsule .top{top:-10px}.capsule .bottom{bottom:-10px}
+  .capsule svg{width:100%;height:100%;display:block;overflow:visible}
+  .glow{position:absolute;inset:-30px;border-radius:50%;opacity:0;transition:opacity .8s;
+    background:radial-gradient(circle, rgba(242,231,206,.5) 0%, rgba(230,162,60,.18) 35%, transparent 68%)}
+  .cap-stage.open .capsule{transform:scale(.92)}
+  .cap-stage.open .capsule .top{transform:translateY(-92px) rotate(-7deg)}
+  .cap-stage.open .capsule .bottom{transform:translateY(92px) rotate(7deg)}
+  .cap-stage.open .glow{opacity:1;animation:pulse 4s ease-in-out infinite}
+  .capsule:hover{transform:translateY(-4px)}
+  .cap-stage.open .capsule:hover{transform:scale(.92)}
+  .spark{position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;background:var(--parchment);opacity:0}
+  .cap-stage.open .spark{animation:fly 1s ease forwards}
+
+  .cap-formula{display:grid;grid-template-columns:1fr 1fr;gap:14px 34px;max-width:660px;margin:8px auto 0;
+    opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .7s ease .4s,transform .7s ease .4s}
+  .cap-stage.open .cap-formula{opacity:1;transform:none;pointer-events:auto}
+  .col-head{display:flex;align-items:center;gap:9px;justify-content:center;font-family:var(--mono);direction:ltr;
+    font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:2px}
+  .col-head.sol{color:var(--sol)}.col-head.luna{color:var(--luna)}
+  .col-head .ln{width:18px;height:1px;background:currentColor;opacity:.5}
+
+  .ing{text-align:start;border:1px solid var(--line);background:rgba(22,15,34,.34);padding:13px 14px;cursor:pointer;
+    display:flex;gap:12px;align-items:flex-start;transition:border-color .35s,background .35s,transform .35s;
+    opacity:0;transform:translateY(14px)}
+  .cap-stage.open .ing{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),border-color .35s,background .35s}
+  .cap-stage.open .ing:nth-child(3){transition-delay:0s}
+  .cap-stage.open .ing:nth-child(4){transition-delay:.08s}
+  .cap-stage.open .ing:nth-child(5){transition-delay:.14s}
+  .cap-stage.open .ing:nth-child(6){transition-delay:.20s}
+  .cap-stage.open .ing:nth-child(7){transition-delay:.26s}
+  .cap-stage.open .ing:nth-child(8){transition-delay:.32s}
+  .ing:hover{border-color:var(--frame);transform:translateY(-2px)}
+  .ing.active{border-color:var(--sol);background:rgba(230,162,60,.07)}
+  .ing.luna.active{border-color:var(--luna);background:rgba(197,206,218,.07)}
+  .ing .ico{flex:0 0 40px;width:40px;height:40px}
+  .ing .ico svg{width:100%;height:100%;overflow:visible}
+  .ing .body{flex:1;min-width:0}
+  .ing .nm{font-family:var(--he-serif);font-weight:500;font-size:17px;color:var(--parchment);line-height:1.15}
+  .ing .lt{font-family:var(--latin);direction:ltr;font-style:italic;font-size:12.5px;color:rgba(242,231,206,.55);margin-top:2px;display:block}
+  .ing .meta{font-family:var(--mono);direction:ltr;font-size:10px;letter-spacing:.1em;color:var(--sol);margin-top:7px;display:block}
+  .ing.luna .meta{color:var(--luna)}
+  .ing .role{font-weight:300;font-size:13.5px;line-height:1.55;color:rgba(242,231,206,.74);
+    max-height:0;overflow:hidden;transition:max-height .45s ease,margin-top .45s ease}
+  .ing.active .role{max-height:90px;margin-top:8px}
+
+  .reset{margin-top:26px;font-family:var(--he-sans);font-weight:500;font-size:13px;letter-spacing:.06em;
+    color:rgba(242,231,206,.5);background:none;border:0;cursor:pointer;
+    opacity:0;pointer-events:none;transition:opacity .5s ease .5s,color .3s}
+  .reset:hover{color:var(--sol)}
+  .cap-stage.open .reset{opacity:1;pointer-events:auto}
+  .reset:focus-visible{outline:1px solid var(--parchment);outline-offset:4px}
+  .card-foot{margin-top:28px;font-family:var(--he-sans);font-weight:400;font-size:12px;letter-spacing:.04em;
+    color:rgba(242,231,206,.46);text-align:center}
+
+  @media(max-width:560px){.cap-formula{grid-template-columns:1fr;max-width:360px}
+    .col-head{justify-content:flex-start}.col-head.luna{margin-top:14px}}
+
+  /* ---------- RITUAL ---------- */
+  .ritual .inner{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .ritual .steps{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:44px}
+  .step{max-width:210px}
+  .step .n{font-family:var(--mono);direction:ltr;font-size:12px;letter-spacing:.2em;color:var(--sol);margin-bottom:14px}
+  .step h4{font-family:var(--he-serif);font-weight:500;font-size:20px;margin-bottom:8px;color:var(--parchment)}
+  .step p{font-weight:300;font-size:13.5px;line-height:1.6;color:rgba(242,231,206,.68)}
+
+  /* ---------- ACQUIRE ---------- */
+  .acquire .inner{text-align:center}
+  .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:start}
+  .pack{border:1px solid var(--line);padding:30px 26px;background:rgba(22,15,34,.3);position:relative;transition:border-color .4s,transform .4s}
+  .pack:hover{border-color:var(--frame);transform:translateY(-4px)}
+  .pack.feature{border-color:var(--frame)}
+  .pack .tag{position:absolute;top:-1px;left:-1px;font-family:var(--he-sans);font-weight:600;font-size:10.5px;
+    letter-spacing:.04em;background:var(--sol);color:var(--ink);padding:5px 11px}
+  .pack .moon{font-family:var(--he-sans);font-weight:500;font-size:12px;letter-spacing:.06em;color:var(--luna);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+  .pack .name{font-family:var(--he-serif);font-weight:500;font-size:27px;color:var(--parchment);line-height:1}
+  .pack .days{font-weight:300;font-size:13px;color:rgba(242,231,206,.58);margin-top:6px;margin-bottom:22px}
+  .pack .price{font-family:var(--he-serif);font-size:30px;font-weight:500;color:var(--parchment);direction:rtl}
+  .pack .price s{font-size:16px;color:rgba(242,231,206,.4);margin-right:8px;font-weight:300}
+  .pack .per{font-family:var(--he-sans);font-weight:400;font-size:12.5px;color:rgba(242,231,206,.55);margin-top:5px}
+  .pack .btn{margin-top:22px;width:100%;text-align:center}
+  .pack.feature .btn{background:var(--sol);color:var(--ink)}
+  .acquire .fine{margin-top:26px;font-family:var(--he-sans);font-weight:400;font-size:12.5px;letter-spacing:.04em;color:rgba(242,231,206,.46)}
+  @media(max-width:760px){.packs{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+
+  /* ---------- FOOTER ---------- */
+  footer{position:relative;z-index:2;padding:70px clamp(26px,5vw,72px) 60px;border-top:1px solid var(--line);text-align:center}
+  footer .mk{font-family:var(--latin);direction:ltr;font-weight:360;font-size:30px;letter-spacing:.12em;color:var(--parchment)}
+  footer .mk .o{font-style:italic;color:var(--sol)}
+  footer .est{font-family:var(--mono);direction:ltr;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,231,206,.5);margin-top:14px}
+  footer nav{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-family:var(--he-sans);font-weight:500;font-size:13px}
+  footer nav a{color:rgba(242,231,206,.62);text-decoration:none;transition:color .3s}
+  footer nav a:hover{color:var(--sol)}
+  footer .studio{margin-top:30px;font-family:var(--he-sans);font-weight:400;font-size:12px;letter-spacing:.04em;color:rgba(242,231,206,.4)}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes twinkle{0%,100%{opacity:.25}50%{opacity:.9}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:.95}}
+  @keyframes fly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:opacity .3s ease!important}
+    html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.draw{stroke-dashoffset:0}
+  }
+
+  /* ---------- language toggle / bilingual ---------- */
+  .langtoggle{position:fixed;top:30px;right:38px;z-index:47;display:flex;align-items:center;gap:2px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;direction:ltr;
+    border:1px solid var(--line);border-radius:100px;padding:3px;background:rgba(22,15,34,.42);
+    -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+  .langtoggle button{font:inherit;color:rgba(242,231,206,.6);background:none;border:0;cursor:pointer;
+    padding:5px 12px;border-radius:100px;transition:color .3s,background .3s,box-shadow .3s;letter-spacing:.12em}
+  .langtoggle button.on{color:var(--ink);background:var(--sol);box-shadow:0 0 14px rgba(230,162,60,.3)}
+  .langtoggle button:hover:not(.on){color:var(--parchment)}
+  .langtoggle button:focus-visible{outline:1px solid var(--parchment);outline-offset:3px}
+  @media(max-width:620px){.langtoggle{top:auto;bottom:24px;right:50%;transform:translateX(50%)}}
+  /* English mode: serif headings -> Fraunces, keep Heebo for body */
+  body.lang-en{--he-serif:var(--latin);}
+  body.lang-en .tagline,body.lang-en .closer .he{font-family:var(--latin)}
+
+  /* ---------- studio back / concept flag + demo note ---------- */
+  .bw-flag{position:fixed;bottom:30px;left:38px;z-index:47;display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--he-sans);font-weight:500;font-size:11px;letter-spacing:.12em;direction:ltr;
+    color:var(--parchment);background:rgba(22,15,34,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border:1px solid var(--frame);border-radius:100px;padding:8px 15px;text-decoration:none;
+    transition:background .35s,transform .35s,box-shadow .35s}
+  .bw-flag:hover{background:rgba(22,15,34,.82);transform:translateY(-2px);box-shadow:0 0 20px rgba(230,162,60,.25)}
+  .bw-flag .bw-dot{width:7px;height:7px;border-radius:50%;background:var(--sol);box-shadow:0 0 8px var(--sol)}
+  .bw-flag .bw-arr{font-size:13px}
+  .studio-demo{margin-top:12px;font-family:var(--he-sans);font-weight:400;font-size:11.5px;letter-spacing:.04em;
+    color:var(--sol);opacity:.85}
+  @media(max-width:620px){.bw-flag{bottom:18px;left:18px;font-size:10px;padding:7px 12px}}
+</style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="layer twilight"></div><div class="layer dawn"></div><div class="layer day"></div><div class="layer night"></div>
+  </div>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <div class="clock" aria-hidden="true"><span class="pip"></span><span class="ct">SOL · 06:00</span></div>
+  <div class="langtoggle" role="group" aria-label="Language / שפה">
+    <button type="button" data-lang="he" class="on" aria-pressed="true">עב</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
+  <a class="bw-flag" href="https://hagitantebi.co.il" aria-label="קונספט מבית Brand Worlds Studio — חזרה לאתר של הגית אנטבי">
+    <span class="bw-arr">←</span><span class="bw-dot"></span>
+    <span data-en="Concept · Brand Worlds Studio">קונספט · Brand Worlds Studio</span>
+  </a>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="inner">
+      <p class="eyebrow reveal in" data-en="Sun · Moon — Formula No. 1">שמש · ירח — פורמולה מס׳ 1</p>
+      <div class="emblem reveal in" aria-hidden="true">
+        <svg viewBox="0 0 240 240" fill="none">
+          <circle class="draw" style="--len:691" cx="120" cy="120" r="110" stroke="var(--gild)" stroke-width="1" opacity=".5"/>
+          <circle class="draw" style="--len:534" cx="120" cy="120" r="85" stroke="var(--line)" stroke-width="1"/>
+          <g class="rays" opacity=".9"><g stroke="var(--sol)" stroke-width="1.1" stroke-linecap="round">
+            <line x1="120" y1="22" x2="120" y2="6"/><line x1="155" y1="30" x2="163" y2="16"/>
+            <line x1="183" y1="55" x2="197" y2="46"/><line x1="198" y1="92" x2="214" y2="88"/>
+            <line x1="120" y1="218" x2="120" y2="234"/><line x1="85" y1="210" x2="77" y2="224"/>
+            <line x1="57" y1="185" x2="43" y2="194"/><line x1="42" y1="148" x2="26" y2="152"/></g></g>
+          <g><circle cx="98" cy="118" r="38" stroke="var(--sol)" stroke-width="1.3"/>
+            <g stroke="var(--sol)" stroke-width="1" stroke-linecap="round" opacity=".95">
+              <line x1="98" y1="68" x2="98" y2="80"/><line x1="98" y1="156" x2="98" y2="168"/>
+              <line x1="48" y1="118" x2="60" y2="118"/><line x1="136" y1="118" x2="148" y2="118"/>
+              <line x1="63" y1="83" x2="71" y2="91"/><line x1="125" y1="145" x2="133" y2="153"/>
+              <line x1="63" y1="153" x2="71" y2="145"/><line x1="125" y1="91" x2="133" y2="83"/></g>
+            <g stroke="var(--gild)" stroke-width=".6" opacity=".55">
+              <line x1="80" y1="118" x2="116" y2="118"/><line x1="83" y1="108" x2="113" y2="108"/>
+              <line x1="83" y1="128" x2="113" y2="128"/><line x1="88" y1="99" x2="108" y2="99"/>
+              <line x1="88" y1="137" x2="108" y2="137"/></g></g>
+          <g><path d="M150 80 a44 44 0 1 0 0 80 a34 34 0 1 1 0 -80 Z" stroke="var(--luna)" stroke-width="1.3" fill="rgba(197,206,218,.05)"/>
+            <g stroke="var(--luna)" stroke-width=".6" opacity=".5">
+              <line x1="151" y1="98" x2="160" y2="98"/><line x1="149" y1="112" x2="162" y2="112"/>
+              <line x1="149" y1="126" x2="161" y2="126"/><line x1="151" y1="140" x2="159" y2="140"/></g></g>
+          <g fill="var(--parchment)">
+            <path class="tw" d="M198 150 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2 Z" opacity=".7"/>
+            <path class="tw" style="animation-delay:1.2s" d="M40 70 l1.6 5 5 1.6 -5 1.6 -1.6 5 -1.6 -5 -5 -1.6 5 -1.6 Z" opacity=".6"/></g>
+        </svg>
+      </div>
+      <h1 class="wordmark reveal in">S<span class="o">O</span>LUNA</h1>
+      <p class="latin-stamp reveal in">Apothecary of Daylight</p>
+      <p class="tagline reveal in" data-en="Clarity when you wake, calm when you rest — <b>one formula for the whole rhythm of the day.</b>">בהירוּת כשמתעוררים, רוגע כשנחים — <b>פורמולה אחת לכל הקצב של היום.</b></p>
+      <div class="cta reveal in">
+        <a class="btn" href="#formula" data-en="The Formula">לפורמולה</a>
+        <a class="btn ghost" href="#mechanism" data-en="How the rhythm works">איך הקצב עובד</a>
+      </div>
+      <div class="scrollcue reveal in" data-en="Scroll through a day<span>↓</span>">גללו דרך יממה<span>↓</span></div>
+    </div>
+  </section>
+
+  <!-- CLARITY -->
+  <section class="clarity" id="what">
+    <div class="inner">
+      <p class="eyebrow reveal" data-en="What it is">מה זה</p>
+      <h2 class="reveal" data-en="One capsule. <em>Once a day,</em> in the morning.">כמוסה אחת. <em>פעם ביום,</em> בבוקר.</h2>
+      <p class="lede reveal" data-en="SOLUNA is a single daily supplement that works with your biological clock. One capsule at sunrise carries the whole day — energy when you rise, balance through the day, and a soft landing into sleep. Not three products. One.">SOLUNA היא תוסף יומי אחד שעובד עם השעון הביולוגי שלך. כמוסה אחת עם הזריחה נושאת את כל היממה — אנרגיה כשקמים, איזון לאורך היום, ומסירה רכה אל תוך השינה. לא שלושה מוצרים. אחד.</p>
+      <div class="pill-row reveal">
+        <span class="pill-fact" data-en="<span class='b'>↑</span> Mood"><span class="b">↑</span> מצב רוח</span>
+        <span class="pill-fact" data-en="<span class='b'>↑</span> Energy"><span class="b">↑</span> אנרגיה</span>
+        <span class="pill-fact" data-en="<span class='b'>↑</span> Sleep"><span class="b">↑</span> שינה</span>
+        <span class="pill-fact" data-en="<span class='b'>·</span> One capsule a day"><span class="b">·</span> כמוסה אחת ביום</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAWN -->
+  <section class="phase" id="dawn" data-phase="dawn">
+    <div class="inner">
+      <div class="copy">
+        <div class="big-hour reveal">06:00</div>
+        <p class="eyebrow reveal" data-en="Sunrise · Energy">זריחה · אנרגיה</p>
+        <h2 class="reveal" data-en="Wake without <em>the spike.</em>">להתעורר בלי <em>הקפיצה.</em></h2>
+        <p class="lede reveal" data-en="No surge, no crash. SOLUNA lifts you into the morning the way light does — gradually, clean, with focus that holds well past eleven.">בלי זינוק ובלי נפילה. SOLUNA מעלה אותך אל הבוקר כמו שאור עושה — בהדרגה, נקי, עם פוקוס שמחזיק גם אחרי אחת־עשרה.</p>
+      </div>
+      <div class="art reveal" aria-hidden="true">
+        <svg viewBox="0 0 240 240" fill="none">
+          <g class="rays"><g stroke="var(--sol)" stroke-width="1.2" stroke-linecap="round" opacity=".9">
+            <line x1="120" y1="36" x2="120" y2="14"/><line x1="166" y1="50" x2="178" y2="33"/>
+            <line x1="200" y1="86" x2="220" y2="78"/><line x1="120" y1="204" x2="120" y2="226"/>
+            <line x1="74" y1="50" x2="62" y2="33"/><line x1="40" y1="86" x2="20" y2="78"/>
+            <line x1="206" y1="140" x2="226" y2="146"/><line x1="34" y1="140" x2="14" y2="146"/></g></g>
+          <circle cx="120" cy="120" r="52" stroke="var(--sol)" stroke-width="1.4"/>
+          <g stroke="var(--gild)" stroke-width=".6" opacity=".5">
+            <line x1="90" y1="120" x2="150" y2="120"/><line x1="94" y1="106" x2="146" y2="106"/>
+            <line x1="94" y1="134" x2="146" y2="134"/><line x1="102" y1="93" x2="138" y2="93"/>
+            <line x1="102" y1="147" x2="138" y2="147"/></g>
+          <path d="M70 178 H170" stroke="var(--sol)" stroke-width="1" opacity=".6"/>
+          <path d="M58 192 H182" stroke="var(--line)" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOON -->
+  <section class="phase flip" id="noon" data-phase="day">
+    <div class="inner">
+      <div class="copy">
+        <div class="big-hour reveal">13:00</div>
+        <p class="eyebrow reveal" data-en="Midday · Balance">צהריים · איזון</p>
+        <h2 class="reveal" data-en="Steady inside <em>the noise.</em>">יציבוּת בתוך <em>הרעש.</em></h2>
+        <p class="lede reveal" data-en="Midday is where most things unravel. SOLUNA keeps mood balanced and attention steady — so the afternoon doesn't break you, and the 3 p.m. crash simply never arrives.">אמצע היום הוא המקום שבו רוב הדברים מתפוגגים. SOLUNA שומרת על מצב רוח מאוזן וקשב יציב — כך שאחר הצהריים לא מפרק אותך, וצניחת השלוש פשוט לא מגיעה.</p>
+      </div>
+      <div class="art reveal" aria-hidden="true">
+        <svg viewBox="0 0 240 240" fill="none">
+          <circle cx="120" cy="120" r="92" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="120" cy="120" r="92" stroke="var(--sol)" stroke-width="1.4" stroke-dasharray="2 8" opacity=".7"/>
+          <circle cx="120" cy="120" r="46" stroke="var(--sol)" stroke-width="1.3"/>
+          <line x1="120" y1="74" x2="120" y2="120" stroke="var(--sol)" stroke-width="1.4"/>
+          <line x1="120" y1="120" x2="152" y2="120" stroke="var(--luna)" stroke-width="1.4"/>
+          <circle cx="120" cy="120" r="3.4" fill="var(--parchment)"/>
+          <circle cx="120" cy="28" r="3" fill="var(--sol)"/><circle cx="212" cy="120" r="3" fill="var(--luna)"/>
+          <circle cx="120" cy="212" r="3" fill="var(--parchment)" opacity=".6"/><circle cx="28" cy="120" r="3" fill="var(--parchment)" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- NIGHT -->
+  <section class="phase" id="nightsec" data-phase="night">
+    <div class="inner">
+      <div class="copy">
+        <div class="big-hour reveal">22:00</div>
+        <p class="eyebrow luna reveal" data-en="Night · Sleep">לילה · שינה</p>
+        <h2 class="reveal" data-en="Letting the day <em class='l'>set.</em>">לתת ליום <em class="l">לשקוע.</em></h2>
+        <p class="lede reveal" data-en="As the light fades, SOLUNA signals rest. You wind down on time and slip into deep sleep — no fog, no heaviness, and a morning that begins clear.">כשהאור הולך, SOLUNA מאותתת מנוחה. נרגעים בזמן ונכנסים לשינה עמוקה — בלי טשטוש, בלי כובד, ועם בוקר שמתחיל צלול.</p>
+      </div>
+      <div class="art reveal" aria-hidden="true">
+        <svg viewBox="0 0 240 240" fill="none">
+          <circle class="draw" style="--len:534" cx="120" cy="120" r="85" stroke="var(--line)" stroke-width="1"/>
+          <path d="M150 64 a58 58 0 1 0 0 112 a45 45 0 1 1 0 -112 Z" stroke="var(--luna)" stroke-width="1.4" fill="rgba(197,206,218,.05)"/>
+          <g stroke="var(--luna)" stroke-width=".6" opacity=".5">
+            <line x1="150" y1="86" x2="166" y2="86"/><line x1="146" y1="104" x2="170" y2="104"/>
+            <line x1="144" y1="122" x2="169" y2="122"/><line x1="146" y1="140" x2="166" y2="140"/>
+            <line x1="150" y1="158" x2="161" y2="158"/></g>
+          <g fill="var(--parchment)">
+            <path class="tw" d="M70 80 l1.8 5.5 5.5 1.8 -5.5 1.8 -1.8 5.5 -1.8 -5.5 -5.5 -1.8 5.5 -1.8 Z" opacity=".75"/>
+            <path class="tw" style="animation-delay:1s" d="M58 150 l1.4 4 4 1.4 -4 1.4 -1.4 4 -1.4 -4 -4 -1.4 4 -1.4 Z" opacity=".6"/>
+            <path class="tw" style="animation-delay:.5s" d="M96 196 l1.2 3.6 3.6 1.2 -3.6 1.2 -1.2 3.6 -1.2 -3.6 -3.6 -1.2 3.6 -1.2 Z" opacity=".55"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MECHANISM -->
+  <section class="mech" id="mechanism" data-phase="night">
+    <div class="inner">
+      <p class="eyebrow reveal" data-en="The mechanism">המנגנון</p>
+      <h2 class="reveal" data-en="Not nine ingredients. <em>One rhythm.</em>">לא תשעה רכיבים. <em>קצב אחד.</em></h2>
+      <p class="lede reveal" data-en="Mood, energy and sleep aren't three separate problems — they're one clock. SOLUNA is built around the circadian rhythm, the single system beneath all three. That's why one formula can hold a whole day, instead of chasing it with a cabinet full of pills.">מצב רוח, אנרגיה ושינה אינם שלוש בעיות נפרדות — הם שעון אחד. SOLUNA בנויה סביב המקצב הצירקדי, המערכת היחידה שמתחת לשלושתם. לכן פורמולה אחת מצליחה להחזיק יממה שלמה, במקום לרדוף אחריה עם ארון מלא כדורים.</p>
+      <div class="threeclock">
+        <div class="tc sol reveal"><div class="k" data-en="SOL · The active half">SOL · החצי הפעיל</div><h4 data-en="Daytime drive">דריכוּת היום</h4><p data-en="Botanicals that support alertness and steady mood, as long as the light is up.">בוטניקה שתומכת בערנות ובמצב רוח יציב, כל עוד האור למעלה.</p></div>
+        <div class="tc reveal"><div class="k" data-en="The crossover · Balance">נקודת המעבר · איזון</div><h4 data-en="One axis">ציר אחד</h4><p data-en="A single mechanism tunes the shift from activity to rest — with nothing competing.">מנגנון יחיד מכוון את המעבר מפעילות למנוחה — בלי שדבר מתחרה.</p></div>
+        <div class="tc l reveal"><div class="k" data-en="LUNA · The quiet half">LUNA · החצי השקט</div><h4 data-en="Night's rest">מנוחת הלילה</h4><p data-en="Components that turn down the volume and let deep sleep arrive on time.">רכיבים שמנמיכים את הווליום ומאפשרים לשינה העמוקה להגיע בזמן.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULA / CAPSULE -->
+  <section class="formula-sec" id="formula" data-phase="night">
+    <div class="inner cap-stage reveal" id="capStage">
+      <p class="eyebrow" data-en="Formula No. 1 · The capsule">פורמולה מס׳ 1 · הכמוסה</p>
+      <h2 data-en="One capsule, <em>two halves of the day.</em>">כמוסה אחת, <em>שני חצאי היום.</em></h2>
+      <p class="lede" data-en="Tap the capsule — it splits in two and reveals the whole formula.">לחצו על הכמוסה — היא נפתחת לשניים ומגלה את כל הפורמולה.</p>
+
+      <div class="capsule-zone">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="spark" style="--dx:-70px;--dy:-60px" aria-hidden="true"></span>
+        <span class="spark" style="--dx:80px;--dy:-40px" aria-hidden="true"></span>
+        <span class="spark" style="--dx:-50px;--dy:70px" aria-hidden="true"></span>
+        <span class="spark" style="--dx:60px;--dy:60px" aria-hidden="true"></span>
+        <button class="capsule" id="capsule" aria-expanded="false" aria-label="פתיחת הכמוסה לצפייה בפורמולה">
+          <span class="half top" aria-hidden="true">
+            <svg viewBox="0 0 120 130">
+              <path d="M16 130 V58 a44 44 0 0 1 88 0 V130 Z" fill="rgba(230,162,60,.12)" stroke="var(--sol)" stroke-width="1.6"/>
+              <g stroke="var(--gild)" stroke-width=".7" opacity=".6"><path d="M28 70 H92"/><path d="M24 84 H96"/><path d="M22 98 H98"/><path d="M22 112 H98"/></g>
+              <circle cx="60" cy="50" r="13" stroke="var(--sol)" stroke-width="1.4" fill="none"/>
+              <g stroke="var(--sol)" stroke-width="1.2" stroke-linecap="round">
+                <line x1="60" y1="26" x2="60" y2="32"/><line x1="60" y1="68" x2="60" y2="74"/>
+                <line x1="36" y1="50" x2="42" y2="50"/><line x1="78" y1="50" x2="84" y2="50"/>
+                <line x1="43" y1="33" x2="47" y2="37"/><line x1="73" y1="63" x2="77" y2="67"/>
+                <line x1="43" y1="67" x2="47" y2="63"/><line x1="73" y1="37" x2="77" y2="33"/></g>
+            </svg>
+          </span>
+          <span class="half bottom" aria-hidden="true">
+            <svg viewBox="0 0 120 130">
+              <path d="M16 0 V72 a44 44 0 0 0 88 0 V0 Z" fill="rgba(197,206,218,.1)" stroke="var(--luna)" stroke-width="1.6"/>
+              <g stroke="var(--luna)" stroke-width=".7" opacity=".5"><path d="M22 18 H98"/><path d="M22 32 H98"/><path d="M24 46 H96"/><path d="M28 60 H92"/></g>
+              <path d="M70 78 a15 15 0 1 1 0 -30 a11 11 0 1 0 0 30 Z" stroke="var(--luna)" stroke-width="1.4" fill="none"/>
+              <circle cx="44" cy="62" r="1.4" fill="var(--parchment)"/><circle cx="82" cy="88" r="1.2" fill="var(--parchment)"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <p class="hint" id="hint" data-en="↑ Tap the capsule to open">↑ לחצו על הכמוסה כדי לפתוח</p>
+
+      <div class="cap-formula" id="capFormula">
+        <div class="col-head sol" data-en="<span class='ln'></span>SOL · Day<span class='ln'></span>"><span class="ln"></span>SOL · יום<span class="ln"></span></div>
+        <div class="col-head luna" data-en="<span class='ln'></span>LUNA · Night<span class='ln'></span>"><span class="ln"></span>LUNA · לילה<span class="ln"></span></div>
+
+        <button class="ing sol">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--sol)" stroke-width="1.3"><path d="M24 44 V22"/>
+            <path d="M24 22 C16 18 12 8 14 2 C20 6 24 6 24 14 C24 6 28 6 34 2 C36 8 32 18 24 22 Z" fill="rgba(230,162,60,.08)"/></g>
+            <g stroke="var(--ember)" stroke-width="1.2" stroke-linecap="round"><path d="M24 18 C21 12 19 8 17 5"/><path d="M24 18 C24 11 24 8 24 5"/><path d="M24 18 C27 12 29 8 31 5"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="Saffron">זעפרן</span><span class="lt">Crocus sativus</span>
+            <span class="meta" data-en="30 MG · standardized">30 MG · סטנדרטי</span>
+            <span class="role" data-en="The golden thread. Clinically studied for lifting mood and a clean rise into the morning.">החוט הזהוב. נחקר קלינית להרמת מצב רוח ולעלייה נקייה אל הבוקר.</span></span>
+        </button>
+
+        <button class="ing luna">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--luna)" stroke-width="1.3"><path d="M24 6 L40 16 V32 L24 42 L8 32 V16 Z" fill="rgba(197,206,218,.07)"/>
+            <path d="M24 6 V42 M8 16 L40 32 M40 16 L8 32"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="Magnesium">מגנזיום</span><span class="lt">glycinate</span>
+            <span class="meta" data-en="150 MG · chelated">150 MG · כלאטי</span>
+            <span class="role" data-en="Relaxes muscle and nervous system, guiding the body toward rest.">מרגיע שריר ומערכת עצבים, ומוביל את הגוף אל מנוחה.</span></span>
+        </button>
+
+        <button class="ing sol">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--sol)" stroke-width="1.2" fill="rgba(230,162,60,.06)">
+              <path d="M24 44 V24"/><path d="M24 24 C16 24 10 18 10 10 C18 10 24 16 24 24 Z"/>
+              <path d="M24 24 C32 24 38 18 38 10 C30 10 24 16 24 24 Z"/><path d="M24 20 C20 16 18 10 20 4 C26 8 26 14 24 20 Z"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="Rhodiola">רודיולה</span><span class="lt">Rhodiola rosea</span>
+            <span class="meta" data-en="200 MG · 3% rosavins">200 MG · 3% רוזאבינים</span>
+            <span class="role" data-en="An adaptogen for steady energy and resilience — alertness without the jitter.">אדפטוגן לאנרגיה יציבה ולחוסן — דריכות בלי רעד.</span></span>
+        </button>
+
+        <button class="ing luna">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--luna)" stroke-width="1.2"><path d="M24 42 V26"/>
+            <ellipse cx="24" cy="16" rx="9" ry="13" fill="rgba(197,206,218,.06)"/>
+            <path d="M24 4 V28 M16 10 C20 14 24 16 24 16 M32 10 C28 14 24 16 24 16"/>
+            <circle cx="14" cy="30" r="2.4"/><circle cx="34" cy="30" r="2.4"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="Ashwagandha">אשווגנדה</span><span class="lt">KSM-66</span>
+            <span class="meta" data-en="300 MG · root">300 MG · שורש</span>
+            <span class="role" data-en="Lowers the intensity of stress so the evening can truly settle.">מנמיכה את עוצמת הלחץ כדי שהערב באמת יירגע.</span></span>
+        </button>
+
+        <button class="ing sol">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--sol)" stroke-width="1.3" fill="rgba(230,162,60,.06)">
+              <path d="M24 42 C12 38 8 26 10 12 C24 16 28 28 24 42 Z"/>
+              <path d="M16 16 C20 24 22 32 23 40" stroke-width=".7" fill="none" stroke="var(--gild)"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="L-Theanine">ל־תיאנין</span><span class="lt">Camellia sinensis</span>
+            <span class="meta" data-en="100 MG · pure">100 MG · טהור</span>
+            <span class="role" data-en="Softens focus into calm — the reason there's no edge to the energy.">מרכך את הפוקוס אל רוגע — הסיבה שאין קצה לאנרגיה.</span></span>
+        </button>
+
+        <button class="ing luna">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none">
+            <g stroke="var(--luna)" stroke-width="1.1" fill="none"><circle cx="24" cy="24" r="6"/>
+              <g stroke-width="1.2"><line x1="24" y1="8" x2="24" y2="18"/><line x1="24" y1="30" x2="24" y2="40"/>
+              <line x1="8" y1="24" x2="18" y2="24"/><line x1="30" y1="24" x2="40" y2="24"/>
+              <line x1="13" y1="13" x2="20" y2="20"/><line x1="28" y1="28" x2="35" y2="35"/>
+              <line x1="35" y1="13" x2="28" y2="20"/><line x1="20" y1="28" x2="13" y2="35"/></g>
+              <circle cx="24" cy="24" r="2.4" fill="var(--ember)" stroke="none"/></g></svg></span>
+          <span class="body"><span class="nm" data-en="Passionflower">פסיפלורה</span><span class="lt">Passiflora incarnata</span>
+            <span class="meta" data-en="100 MG · extract">100 MG · תמצית</span>
+            <span class="role" data-en="The apothecary's classic sleep botanical — easing you into deep sleep.">בוטניקת השינה הקלאסית של בית המרקחת — מחליקה אל שינה עמוקה.</span></span>
+        </button>
+      </div>
+
+      <button class="reset" id="capReset" data-en="✕ Close the capsule">✕ סגירת הכמוסה</button>
+      <p class="card-foot" data-en="Standardized extracts · Third-party tested · Made in small batches">תמציות סטנדרטיות · נבדק במעבדה חיצונית · מורכב במנות קטנות</p>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="ritual" id="ritual" data-phase="night">
+    <div class="inner">
+      <p class="eyebrow reveal" data-en="The ritual">הריטואל</p>
+      <h2 class="reveal" data-en="One capsule, <em>with your morning.</em>">כמוסה אחת, <em>עם הבוקר שלך.</em></h2>
+      <div class="steps">
+        <div class="step reveal"><div class="n">01</div><h4 data-en="Take it at sunrise">לוקחים עם הזריחה</h4><p data-en="One capsule with your first coffee or water. This is where the day begins.">כמוסה אחת עם הקפה או המים הראשונים. כאן היום מתחיל.</p></div>
+        <div class="step reveal"><div class="n">02</div><h4 data-en="Let it set the pace">נותנים לה לקבוע קצב</h4><p data-en="Energy in the morning, a balanced middle, a soft landing at night.">אנרגיה בבוקר, אמצע מאוזן, נחיתה רכה בלילה.</p></div>
+        <div class="step reveal"><div class="n">03</div><h4 data-en="Give it one moon">נותנים לזה ירח אחד</h4><p data-en="The rhythm settles within a few weeks. Most feel it within the first cycle.">הקצב מתבסס תוך כמה שבועות. רובם מרגישים את זה כבר במחזור הראשון.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACQUIRE -->
+  <section class="acquire" id="acquire" data-phase="twilight">
+    <div class="inner">
+      <p class="eyebrow reveal" data-en="Acquire">רכישה</p>
+      <h2 class="reveal" data-en="Open a <em>season.</em>">פותחים <em>עונה.</em></h2>
+      <div class="packs">
+        <div class="pack reveal">
+          <div class="moon" data-en="◐ One moon">◐ ירח אחד</div>
+          <div class="name" data-en="30 days">30 יום</div>
+          <div class="days" data-en="One cycle to feel it">מחזור אחד כדי להרגיש</div>
+          <div class="price">₪249</div>
+          <div class="per" data-en="₪8.30 / day">₪8.30 ליום</div>
+          <a class="btn ghost" href="#">מתחילים</a>
+        </div>
+        <div class="pack feature reveal">
+          <div class="tag" data-en="Most chosen">הכי נבחר</div>
+          <div class="moon" data-en="◑ Three moons">◑ שלושה ירחים</div>
+          <div class="name" data-en="90 days">90 יום</div>
+          <div class="days" data-en="The rhythm fully settles">הקצב מתבסס במלואו</div>
+          <div class="price">₪639 <s>₪747</s></div>
+          <div class="per" data-en="₪7.10 / day · save 15%">₪7.10 ליום · חיסכון 15%</div>
+          <a class="btn" href="#">מתחילים</a>
+        </div>
+        <div class="pack reveal">
+          <div class="moon" data-en="● Six moons">● שישה ירחים</div>
+          <div class="name" data-en="180 days">180 יום</div>
+          <div class="days" data-en="A full half-year, held">חצי שנה שלמה, מוחזקת</div>
+          <div class="price">₪1,149 <s>₪1,494</s></div>
+          <div class="per" data-en="₪6.40 / day · save 23%">₪6.40 ליום · חיסכון 23%</div>
+          <a class="btn ghost" href="#">מתחילים</a>
+        </div>
+      </div>
+      <p class="fine reveal" data-en="Free quiet shipping · Cancel anytime · A dietary supplement, not a medicine">משלוח שקט חינם · ביטול בכל עת · תוסף תזונה, לא תרופה</p>
+    </div>
+  </section>
+
+  <footer data-phase="twilight">
+    <div class="mk">S<span class="o">O</span>LUNA</div>
+    <div class="est">Apothecary of Daylight · Est. MMXXVI</div>
+    <nav>
+      <a href="#what" data-en="The Formula">הפורמולה</a><a href="#mechanism" data-en="The Rhythm">הקצב</a><a href="#ritual" data-en="The Ritual">הריטואל</a><a href="#acquire" data-en="Acquire">רכישה</a>
+    </nav>
+    <div class="studio" data-en="A brand world by Brand Worlds Studio">עולם מותג מבית Brand Worlds Studio</div>
+    <div class="studio-demo" data-en="Concept brand world · A Brand Worlds Studio demonstration · Not a real product or medical advice">עולם מותג קונספטואלי · הדגמה מבית Brand Worlds Studio · אינו מוצר אמיתי ואינו ייעוץ רפואי</div>
+  </footer>
+
+<script>
+  const body=document.body;
+  const phaseEls=document.querySelectorAll('[data-phase]');
+  const ct=document.querySelector('.clock .ct');
+  const map={twilight:'SOL · 06:00',dawn:'SOL · 06:00',day:'SOL · 13:00',night:'LUNA · 22:00'};
+  new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const p=e.target.getAttribute('data-phase');
+    body.setAttribute('data-phase',p);if(ct&&map[p])ct.textContent=map[p];}});},{threshold:.5})
+    .observe&&phaseEls.forEach(el=>{});
+  const po=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const p=e.target.getAttribute('data-phase');
+    body.setAttribute('data-phase',p);if(ct&&map[p])ct.textContent=map[p];}});},{threshold:.5});
+  phaseEls.forEach(el=>po.observe(el));
+
+  const ro=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>ro.observe(el));
+
+  const bar=document.querySelector('.progress i');let tick=false;
+  function upd(){const h=document.documentElement;const sc=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    bar.style.width=(sc*100).toFixed(2)+'%';tick=false;}
+  addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(upd);tick=true;}},{passive:true});upd();
+
+  // capsule
+  const stage=document.getElementById('capStage');
+  const cap=document.getElementById('capsule');
+  const cReset=document.getElementById('capReset');
+  const ings=document.querySelectorAll('.ing');
+  function openC(){stage.classList.add('open');cap.setAttribute('aria-expanded','true');}
+  function closeC(){stage.classList.remove('open');cap.setAttribute('aria-expanded','false');ings.forEach(i=>i.classList.remove('active'));}
+  cap.addEventListener('click',()=>stage.classList.contains('open')?closeC():openC());
+  cReset.addEventListener('click',closeC);
+  ings.forEach(ing=>ing.addEventListener('click',()=>{const was=ing.classList.contains('active');
+    ings.forEach(i=>i.classList.remove('active'));if(!was)ing.classList.add('active');}));
+</script>
+<script>
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+    var heStore = els.map(function(el){return el.innerHTML;});
+    var btns = document.querySelectorAll('.langtoggle button');
+    var htmlEl = document.documentElement, bodyEl = document.body;
+    function setLang(l){
+      var en = (l === 'en');
+      htmlEl.setAttribute('lang', en ? 'en' : 'he');
+      htmlEl.setAttribute('dir', en ? 'ltr' : 'rtl');
+      bodyEl.classList.toggle('lang-en', en);
+      els.forEach(function(el, i){ el.innerHTML = en ? el.getAttribute('data-en') : heStore[i]; });
+      btns.forEach(function(b){
+        var on = b.getAttribute('data-lang') === l;
+        b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true':'false');
+      });
+      try{ localStorage.setItem('soluna-lang', l); }catch(e){}
+    }
+    btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
+    var saved; try{ saved = localStorage.getItem('soluna-lang'); }catch(e){}
+    if(saved === 'en') setLang('en');
+  })();
+</script>
+</body>
+</html>
