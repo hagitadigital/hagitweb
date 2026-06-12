@@ -17,6 +17,11 @@
     <meta property="og:description" content="עולמות מותג מלאים שנבנו מאפס — MORA, SHIRO, NEXUS, FROST. כל עולם הוא אקו-סיסטם שלם של DNA, נרטיב ושפה ויזואלית.">
     <meta property="og:image" content="https://hagitantebi.co.il/mora.png">
     <meta property="og:locale" content="he_IL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brand Worlds | Hagit Antebi">
+    <meta name="twitter:description" content="עולמות מותג מלאים שנבנו מאפס — MORA, SHIRO, NEXUS, FROST. כל עולם הוא אקו-סיסטם שלם של DNA, נרטיב ושפה ויזואלית.">
+    <meta name="twitter:image" content="https://hagitantebi.co.il/mora.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,6 +202,46 @@
             .worlds-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://hagitantebi.co.il/#brand-worlds-studio",
+          "name": "Brand Worlds Studio",
+          "url": "https://hagitantebi.co.il/",
+          "logo": "https://hagitantebi.co.il/sphere-outcome.png",
+          "founder": { "@id": "https://hagitantebi.co.il/about.html#hagit" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://hagitantebi.co.il/about.html#hagit",
+          "name": "חגית אנטבי",
+          "alternateName": "Hagit Antebi",
+          "jobTitle": "Brand Worlds Architect",
+          "worksFor": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" }
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://hagitantebi.co.il/worlds.html",
+          "url": "https://hagitantebi.co.il/worlds.html",
+          "name": "Brand Worlds — עולמות מותג שנבנו מאפס",
+          "description": "עולמות מותג מלאים שנבנו מאפס — MORA, SHIRO, NEXUS, FROST. כל עולם הוא אקו-סיסטם שלם של DNA, נרטיב ושפה ויזואלית.",
+          "inLanguage": "he-IL",
+          "author": { "@id": "https://hagitantebi.co.il/about.html#hagit" },
+          "publisher": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://hagitantebi.co.il/" },
+            { "@type": "ListItem", "position": 2, "name": "Brand Worlds", "item": "https://hagitantebi.co.il/worlds.html" }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <nav class="nav-minimal">
