@@ -836,10 +836,66 @@
             });
         });
 
-        // Meta Pixel — fires "Lead" only on a confirmed lead-intake success (Pixel 1326960187891724).
+        // ---- Conversion & behaviour tracking (Pixel 1326960187891724) ----
+        // GA4: paste your Measurement ID below (looks like "G-XXXXXXXXXX") to also stream to GA4.
+        // Leave it empty until you have it — everything else still works without it.
+        var GA4_ID = ""; // e.g. "G-ABC1234XYZ"
+
+        if (GA4_ID) {
+            var gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+            document.head.appendChild(gaScript);
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { dataLayer.push(arguments); };
+            gtag('js', new Date());
+            gtag('config', GA4_ID);
+        }
+
+        function fbTrack(name, custom) {
+            if (typeof fbq === 'function') { custom ? fbq('trackCustom', name) : fbq('track', name); }
+        }
+        function gaEvent(name, params) { if (window.gtag) gtag('event', name, params || {}); }
+
+        // 1) Confirmed form lead (already wired) → Meta "Lead" + GA4 "generate_lead".
         document.addEventListener('lead:intake:success', function () {
-            if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+            fbTrack('Lead'); gaEvent('generate_lead', { method: 'form' });
         });
+
+        // 2) WhatsApp clicks → Meta "Contact" (the channel your only lead actually used).
+        document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(function (a) {
+            a.addEventListener('click', function () {
+                fbTrack('Contact'); gaEvent('contact', { method: 'whatsapp' });
+            });
+        });
+
+        // 3) Scroll depth + "reached form" → see WHERE visitors drop off (shows up in Events Manager).
+        var scrollMarks = { 25: false, 50: false, 75: false, 90: false };
+        window.addEventListener('scroll', function () {
+            var doc = document.documentElement;
+            var pct = (doc.scrollTop + window.innerHeight) / doc.scrollHeight * 100;
+            Object.keys(scrollMarks).forEach(function (m) {
+                if (!scrollMarks[m] && pct >= m) {
+                    scrollMarks[m] = true;
+                    fbTrack('Scroll_' + m, true);
+                    gaEvent('scroll', { percent_scrolled: Number(m) });
+                }
+            });
+        }, { passive: true });
+
+        var leadForm = document.getElementById('brand-world-form');
+        if (leadForm) {
+            var formSeen = false;
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting && !formSeen) {
+                        formSeen = true;
+                        fbTrack('ReachedForm', true);
+                        gaEvent('view_form');
+                    }
+                });
+            }, { threshold: 0.4 }).observe(leadForm);
+        }
     </script>
 
     <!-- Hagit's website agent — the live Automation Layer demo (floating bubble) -->
