@@ -94,7 +94,7 @@
         .nav-minimal__inner { display: flex; justify-content: space-between; align-items: center; }
         .nav-minimal__logo {
             font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-            color: var(--color-cream); text-decoration: none;
+            color: var(--color-cream); text-decoration: none; white-space: nowrap;
         }
         .nav-minimal__cta {
             font-family: var(--font-body-he); font-size: 0.875rem; font-weight: 500;
@@ -347,6 +347,9 @@
             .fit-grid { grid-template-columns: 1fr; }
             .hero-ctas { flex-direction: column; }
             .hero-ctas a { width: 100%; justify-content: center; }
+            .nav-minimal { padding: 13px 0; }
+            .nav-minimal__logo { font-size: 1.2rem; }
+            .nav-minimal__cta { padding: 8px 15px; font-size: 0.8125rem; white-space: nowrap; }
         }
     </style>
 
