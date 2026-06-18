@@ -590,7 +590,17 @@
         </div>
 
         <div class="stage" id="bw-stage">
-            <div class="track" id="bw-track"></div>
+            <div class="track" id="bw-track">
+                <!-- LCP seed: הכרטיס הראשון מרונדר סטטית כדי שהפוסטר (preloaded) ייצבע מיד. ה-JS מחליף אותו בקרוסלה החיה. -->
+                <div class="screen" data-seed>
+                    <div class="frame">
+                        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">aurelle.world</span></div>
+                        <span class="live">Live</span>
+                        <div class="viewport"><img src="aurelle/assets/hero-poster.jpg" alt="AURELLE — עולם מותג חי" fetchpriority="high" decoding="async" width="560" height="296" style="object-position:50% 50%"></div>
+                    </div>
+                    <div class="caption"><span class="name">AURELLE</span><span class="cat">Skincare · Beauty</span></div>
+                </div>
+            </div>
         </div>
 
         <div class="bottom">
@@ -1245,6 +1255,7 @@
           <div class="sol-labels"><span class="s">SOL · יום</span><span class="l">LUNA · לילה</span></div>
         </div>`;
 
+      track.innerHTML = '';   // מנקה את ה-LCP seed הסטטי לפני בניית הקרוסלה החיה
       const screens = WORLDS.map((w, i) => {
         const s = document.createElement('div');
         s.className = 'screen';
