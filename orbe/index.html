@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORBE · טיפה אחת. עולם שלם.</title>
+<meta name="description" content="ORBE — עולם מותג קונספטואלי מבית חגית אנטבי · Brand Worlds Studio. בושם שקיים כטיפה אחת — והאתר צולל לתוכה. הדגמת תיק עבודות, אינו מוצר אמיתי.">
+<meta name="author" content="Hagit Antebi · Brand Worlds Studio">
+<meta property="og:title" content="ORBE · A Concept Brand World">
+<meta property="og:description" content="Une goutte. Un monde. — מסע מצלמה אל תוך טיפה אחת של בושם. עולם מותג קונספטואלי מבית Brand Worlds Studio.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="Brand Worlds Studio · Hagit Antebi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0B1018;
+    --navy:#15202E;
+    --copper:#C28A5A;
+    --gold:#E0B26C;
+    --cream:#F2EBDC;
+    --cream-50:rgba(242,235,220,.55);
+    --cream-25:rgba(242,235,220,.28);
+    --serif:'Frank Ruhl Libre', serif;
+    --display:'Cormorant Garamond', serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{
+    background:var(--void);
+    color:var(--cream);
+    font-family:var(--serif);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--copper);color:var(--void)}
+
+  /* ===== canvas & scroll track ===== */
+  #scene{position:fixed;inset:0;z-index:0;display:block}
+  #track{height:700vh;position:relative;z-index:1;pointer-events:none}
+
+  /* ===== flash (the plunge) ===== */
+  #flash{
+    position:fixed;inset:0;z-index:6;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 50%, rgba(242,235,220,.95) 0%, rgba(224,178,108,.6) 35%, rgba(11,16,24,0) 72%);
+  }
+
+  /* ===== stratum tint (the air changes temperature) ===== */
+  #tint{
+    position:fixed;inset:0;z-index:4;pointer-events:none;opacity:0;
+    mix-blend-mode:soft-light;
+    background:radial-gradient(ellipse at 50% 46%, transparent 26%,
+      rgb(var(--tr,224) var(--tg,178) var(--tb,108) / .62) 100%);
+  }
+
+  /* ===== gold afterglow (the threshold lingers) ===== */
+  #after{
+    position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 50%, rgba(224,178,108,.5) 0%, rgba(224,178,108,.16) 42%, rgba(11,16,24,0) 72%);
+  }
+
+  /* ===== loader ===== */
+  #loader{
+    position:fixed;inset:0;z-index:50;background:var(--void);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    transition:opacity 1.1s ease, visibility 1.1s;
+  }
+  #loader.done{opacity:0;visibility:hidden}
+  #loader .mark{
+    font-family:var(--display);font-style:italic;font-size:clamp(34px,6vw,56px);
+    letter-spacing:.42em;margin-inline-start:.42em;color:var(--cream);
+    animation:breathe 2.6s ease-in-out infinite;
+  }
+  #loader .sub{font-size:12px;letter-spacing:.3em;color:var(--cream-25)}
+  @keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+
+  /* ===== top bar ===== */
+  header{
+    position:fixed;top:0;right:0;left:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,4vw,48px);
+    mix-blend-mode:screen;pointer-events:none;
+  }
+  header .wordmark{
+    font-family:var(--display);font-style:italic;font-size:21px;letter-spacing:.34em;color:var(--cream);
+  }
+  header a{
+    pointer-events:auto;color:var(--cream-50);text-decoration:none;font-size:12.5px;letter-spacing:.14em;
+    border-bottom:1px solid transparent;transition:color .4s,border-color .4s;
+  }
+  header a:hover, header a:focus-visible{color:var(--cream);border-color:var(--copper)}
+  a:focus-visible,button:focus-visible{outline:1.5px solid var(--copper);outline-offset:4px}
+
+  /* ===== depth rail ===== */
+  #rail{
+    position:fixed;left:clamp(16px,3vw,40px);top:50%;transform:translateY(-50%);
+    z-index:10;display:flex;flex-direction:column;gap:26px;align-items:center;
+  }
+  #rail .stop{position:relative;display:flex;align-items:center}
+  #rail .dot{
+    width:5px;height:5px;border-radius:50%;background:var(--cream-25);
+    transition:background .5s, box-shadow .5s, transform .5s;
+  }
+  #rail .lbl{
+    position:absolute;left:18px;top:50%;transform:translate(-6px,-50%);
+    font-size:10.5px;letter-spacing:.22em;color:var(--cream-25);
+    opacity:0;transition:opacity .5s,color .5s,transform .5s;
+    white-space:nowrap;text-shadow:0 0 14px rgba(0,0,0,.9);
+  }
+  #rail .stop.on .dot{background:var(--gold);box-shadow:0 0 12px rgba(224,178,108,.8);transform:scale(1.5)}
+  #rail .stop.on .lbl{opacity:1;color:var(--gold);transform:translate(0,-50%)}
+
+  /* ===== chapters (overlay text) ===== */
+  .chapter{
+    position:fixed;z-index:5;opacity:0;pointer-events:none;
+    width:min(620px, calc(100vw - 48px));
+    will-change:opacity,transform;
+  }
+  .chapter::before{
+    content:"";position:absolute;inset:-24% -28%;z-index:-1;
+    background:radial-gradient(ellipse at center, rgba(7,7,9,.82) 0%, rgba(7,7,9,.55) 44%, rgba(7,7,9,0) 80%);
+  }
+  .chapter h1, .chapter h2, .tagline, .body, .notes, .eyebrow{
+    text-shadow:0 0 26px rgba(0,0,0,.92), 0 2px 10px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9);
+  }
+  .center{right:50%;top:50%;transform:translate(50%,-50%);text-align:center}
+  .side-r{right:clamp(24px,9vw,140px);top:50%;transform:translateY(-50%);text-align:right}
+  .side-l{left:clamp(24px,9vw,140px);top:50%;transform:translateY(-50%);text-align:left;direction:rtl}
+
+  .eyebrow{
+    font-size:12px;letter-spacing:.34em;color:var(--copper);margin-bottom:20px;font-weight:400;
+  }
+  .chapter h1{
+    font-family:var(--display);font-style:italic;font-weight:500;
+    font-size:clamp(64px,13vw,150px);letter-spacing:.3em;margin-inline-start:.3em;
+    line-height:1;color:var(--cream);
+    text-shadow:0 0 60px rgba(224,178,108,.25);
+  }
+  .chapter h2{
+    font-weight:400;font-size:clamp(28px,4.4vw,46px);line-height:1.35;letter-spacing:.01em;
+  }
+  .chapter h2 em{font-family:var(--display);font-style:italic;letter-spacing:.05em;color:var(--gold);padding-inline:.08em}
+  .tagline{
+    margin-top:26px;font-size:clamp(16px,2.2vw,21px);color:var(--cream-50);letter-spacing:.04em;line-height:1.7;
+  }
+  .tagline .fr{font-family:var(--display);font-style:italic;letter-spacing:.16em;color:var(--cream-25);display:block;margin-top:8px;font-size:.82em}
+  .notes{
+    margin-top:22px;font-family:var(--display);font-style:italic;font-size:clamp(15px,1.8vw,18px);
+    letter-spacing:.22em;color:var(--gold);
+  }
+  .body{
+    margin-top:18px;font-size:clamp(15.5px,1.9vw,18.5px);font-weight:300;line-height:1.95;color:rgba(242,235,220,.84);max-width:46ch;
+  }
+  .side-r .body{margin-inline-start:auto}
+  .center .body{margin-inline:auto}
+
+  .hint{
+    position:absolute;top:calc(100% + clamp(34px,7vh,72px));right:50%;transform:translateX(50%);
+    font-size:12px;letter-spacing:.3em;color:var(--cream-25);white-space:nowrap;
+  }
+  .hint::after{
+    content:"";display:block;width:1px;height:42px;margin:14px auto 0;
+    background:linear-gradient(var(--copper),transparent);
+    animation:drip 2.2s ease-in-out infinite;
+  }
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ===== acquire ===== */
+  #acquire .card{
+    margin:34px auto 0;max-width:380px;padding:38px 34px 32px;
+    border:1px solid rgba(194,138,90,.35);background:rgba(11,16,24,.55);
+    backdrop-filter:blur(8px);
+  }
+  #acquire .pname{font-family:var(--display);font-style:italic;font-size:26px;letter-spacing:.28em;margin-inline-start:.28em}
+  #acquire .pmeta{margin-top:10px;font-size:13px;letter-spacing:.18em;color:var(--cream-50)}
+  #acquire .price{margin-top:24px;font-size:34px;font-weight:300;color:var(--gold)}
+  #acquire .per{font-size:12.5px;letter-spacing:.1em;color:var(--cream-25);margin-top:6px}
+  #acquire button{
+    margin-top:26px;width:100%;padding:15px 0;cursor:pointer;
+    background:none;border:1px solid var(--copper);color:var(--cream);
+    font-family:var(--serif);font-size:14px;letter-spacing:.26em;
+    transition:background .45s,color .45s;
+  }
+  #acquire button:hover{background:var(--copper);color:var(--void)}
+  #acquire .legal{margin-top:30px;font-size:11.5px;letter-spacing:.12em;color:var(--cream-25);line-height:2}
+  #acquire .legal a{color:var(--cream-50);text-decoration:none;border-bottom:1px solid rgba(194,138,90,.4)}
+
+  @media (max-width:760px){
+    #rail .lbl{display:none}
+    .side-r,.side-l{right:50%;left:auto;transform:translate(50%,-50%);text-align:center;width:calc(100vw - 44px)}
+    .side-r .body,.side-l .body{margin-inline:auto}
+    header .crumb-long{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hint::after,#loader .mark{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="mark">ORBE</div>
+  <div class="sub">PARFUM · CONCENTRÉ Nº 1</div>
+</div>
+
+<canvas id="scene"></canvas>
+<div id="flash"></div>
+<div id="tint" aria-hidden="true"></div>
+<div id="after" aria-hidden="true"></div>
+
+<header>
+  <span class="wordmark">ORBE</span>
+  <a href="../brand-worlds/"><span class="crumb-long">← קונספט · </span>Brand Worlds Studio</a>
+</header>
+
+<nav id="rail" aria-label="עומק">
+  <div class="stop" data-at="0.02"><span class="lbl">החלל</span><span class="dot"></span></div>
+  <div class="stop" data-at="0.27"><span class="lbl">פני הטיפה</span><span class="dot"></span></div>
+  <div class="stop" data-at="0.42"><span class="lbl">האור</span><span class="dot"></span></div>
+  <div class="stop" data-at="0.56"><span class="lbl">הלב</span><span class="dot"></span></div>
+  <div class="stop" data-at="0.70"><span class="lbl">העומק</span><span class="dot"></span></div>
+  <div class="stop" data-at="0.90"><span class="lbl">הבקבוק</span><span class="dot"></span></div>
+</nav>
+
+<!-- ===== chapters ===== -->
+<section class="chapter center" data-in="-0.10" data-hold="0.085" data-out="0.13">
+  <p class="eyebrow">PARFUM · CONCENTRÉ Nº 1</p>
+  <h1>ORBE</h1>
+  <p class="tagline">טיפה אחת. עולם שלם.<span class="fr">Une goutte. Un monde.</span></p>
+  <p class="hint">גללו אל תוך הטיפה</p>
+</section>
+
+<section class="chapter side-r" data-in="0.13" data-hold="0.20" data-out="0.245">
+  <p class="eyebrow">המניפסט</p>
+  <h2>אנחנו לא מוכרים <em>בקבוקים.</em></h2>
+  <p class="body">ORBE הוא לא או דה פרפיום מהול במים ובאלכוהול. הוא התמצית עצמה — קונסנטרה טהורה, שבעה מיליליטר. טיפה אחת על מפרק כף היד נושאת יום שלם.</p>
+</section>
+
+<section class="chapter side-l" data-in="0.245" data-hold="0.285" data-out="0.315">
+  <p class="eyebrow">פני הטיפה</p>
+  <h2>מקרוב, היא לא נוזל. היא עולם שמחזיק את <em>האור.</em></h2>
+  <p class="body">קרוב מספיק — ופני השטח נפתחים.</p>
+</section>
+
+<section class="chapter side-r" data-in="0.37" data-hold="0.46" data-out="0.50">
+  <p class="eyebrow">השכבה הראשונה · האור</p>
+  <h2>הפתיחה לא מכריזה. היא <em>מאירה.</em></h2>
+  <p class="notes">ברגמוט · נרולי · פלפל ורוד</p>
+  <p class="body">ציטרוס קר שנדלק ברגע המגע, בוער עשרים דקות בדיוק — ונעלם כדי לפנות מקום.</p>
+</section>
+
+<section class="chapter side-l" data-in="0.51" data-hold="0.60" data-out="0.64">
+  <p class="eyebrow">השכבה השנייה · הלב</p>
+  <h2>כאן הבושם <em>מאט.</em></h2>
+  <p class="notes">ורד מאי · איריס · תה לבן</p>
+  <p class="body">הלב נשאר על העור שעות. פרחוני שלא מתאמץ להיות יפה — הוא פשוט נמצא, כמו מישהי שיודעת שהיא בחדר.</p>
+</section>
+
+<section class="chapter side-r" data-in="0.65" data-hold="0.74" data-out="0.78">
+  <p class="eyebrow">השכבה השלישית · העומק</p>
+  <h2>מה שנשאר כשכולם <em>הלכו.</em></h2>
+  <p class="notes">ענבר · עץ ארז · מאסק</p>
+  <p class="body">העומק הוא החתימה. חם, איטי, פרטי — הריח שמישהו יזכור עלייך גם בעוד שנה.</p>
+</section>
+
+<section class="chapter center" data-in="0.80" data-hold="0.875" data-out="0.90">
+  <p class="eyebrow">הפלָקוֹן</p>
+  <h2>הטיפה, חתומה <em>בזכוכית.</em></h2>
+  <p class="body">כדור זכוכית מלא בתמצית. בלי תרסיס, בלי מים, בלי רעש — צורת הבושם היא צורת הטיפה.</p>
+</section>
+
+<section class="chapter center" id="acquire" data-in="0.915" data-hold="1.0" data-out="1.2">
+  <p class="eyebrow">להשיג</p>
+  <div class="card">
+    <div class="pname">ORBE Nº 1</div>
+    <div class="pmeta">CONCENTRÉ PUR · 7 ML</div>
+    <div class="price">₪690</div>
+    <div class="per">טיפה אחת ביום · שלושה ירחים של עולם</div>
+    <button type="button">להשיג את הטיפה</button>
+    <p class="legal">עולם מותג קונספטואלי · הדגמה מבית <a href="https://hagitantebi.co.il">Brand Worlds Studio</a> · אינו מוצר אמיתי</p>
+  </div>
+</section>
+
+<div id="track" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   ORBE · a camera journey into a single drop
+   Brand Worlds Studio · concept demo
+   ============================================================ */
+(function(){
+'use strict';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = Math.min(window.innerWidth, window.innerHeight) < 760;
+
+/* ---------- renderer / scene / camera ---------- */
+const canvas = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 400);
+
+const FOG = new THREE.FogExp2(0x0B1018, 0.016);
+scene.fog = FOG;
+
+/* ---------- shared fresnel "liquid glass" shader ---------- */
+function fresnelMaterial(opts){
+  return new THREE.ShaderMaterial({
+    uniforms:{
+      uTime:{value:0},
+      uColor:{value:new THREE.Color(opts.color)},
+      uRim:{value:new THREE.Color(opts.rim)},
+      uOpacity:{value:opts.opacity !== undefined ? opts.opacity : 1},
+      uWobble:{value:opts.wobble || 0},
+      uPower:{value:opts.power || 2.6}
+    },
+    vertexShader:`
+      uniform float uTime; uniform float uWobble;
+      varying vec3 vN; varying vec3 vV; varying vec3 vP;
+      void main(){
+        vec3 p = position;
+        if(uWobble > 0.0){
+          float w = sin(p.y*1.6 + uTime*0.9) * cos(p.x*1.4 - uTime*0.7) * sin(p.z*1.2 + uTime*0.5);
+          p += normal * w * uWobble;
+        }
+        vec4 mv = modelViewMatrix * vec4(p,1.0);
+        vN = normalize(normalMatrix * normal);
+        vV = normalize(-mv.xyz);
+        vP = p;
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader:`
+      uniform vec3 uColor; uniform vec3 uRim; uniform float uOpacity; uniform float uPower; uniform float uTime;
+      varying vec3 vN; varying vec3 vV; varying vec3 vP;
+      void main(){
+        float f = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), uPower);
+        float swirl = 0.5 + 0.5*sin(vP.y*0.9 + uTime*0.35) * sin(vP.x*0.7 - uTime*0.22);
+        vec3 col = mix(uColor, uRim, f) + uRim * swirl * 0.10;
+        float a = clamp(f*1.25 + 0.10 + swirl*0.06, 0.0, 1.0) * uOpacity;
+        gl_FragColor = vec4(col, a);
+      }`,
+    transparent:true, depthWrite:false, side:THREE.DoubleSide,
+    blending:THREE.AdditiveBlending
+  });
+}
+
+/* ---------- THE DROP ---------- */
+const dropMat = fresnelMaterial({color:0x1a2230, rim:0xE0B26C, wobble:reduceMotion?0:0.09, power:2.4});
+const drop = new THREE.Mesh(new THREE.SphereGeometry(5, 96, 96), dropMat);
+scene.add(drop);
+
+/* faint inner core glow */
+const coreMat = fresnelMaterial({color:0x7a4a1e, rim:0xC28A5A, opacity:0.5, power:1.4});
+const core = new THREE.Mesh(new THREE.SphereGeometry(2.1, 48, 48), coreMat);
+scene.add(core);
+
+/* ---------- particle helper ---------- */
+function makeParticles(count, color, size, center, spread, drift){
+  const g = new THREE.BufferGeometry();
+  const pos = new Float32Array(count*3);
+  const seed = new Float32Array(count);
+  for(let i=0;i<count;i++){
+    const r = Math.pow(Math.random(), 0.6) * spread.r;
+    const a = Math.random()*Math.PI*2;
+    pos[i*3]   = center.x + Math.cos(a)*r;
+    pos[i*3+1] = center.y + (Math.random()-0.5)*spread.y;
+    pos[i*3+2] = center.z + (Math.random()-0.5)*spread.z;
+    seed[i] = Math.random()*Math.PI*2;
+  }
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed,1));
+  const m = new THREE.ShaderMaterial({
+    uniforms:{
+      uTime:{value:0}, uSize:{value:size},
+      uColor:{value:new THREE.Color(color)},
+      uDrift:{value:drift}, uOpacity:{value:1}
+    },
+    vertexShader:`
+      uniform float uTime; uniform float uSize; uniform float uDrift;
+      attribute float aSeed; varying float vTw;
+      void main(){
+        vec3 p = position;
+        p.x += sin(uTime*0.25 + aSeed)*uDrift;
+        p.y += cos(uTime*0.18 + aSeed*1.7)*uDrift*0.8;
+        p.z += sin(uTime*0.21 + aSeed*0.6)*uDrift*0.5;
+        vTw = 0.55 + 0.45*sin(uTime*1.4 + aSeed*5.0);
+        vec4 mv = modelViewMatrix * vec4(p,1.0);
+        float ps = uSize * vTw * (90.0 / max(0.5, -mv.z));
+        gl_PointSize = min(ps, 110.0);
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader:`
+      uniform vec3 uColor; uniform float uOpacity; varying float vTw;
+      void main(){
+        float d = length(gl_PointCoord - 0.5);
+        float a = smoothstep(0.5, 0.05, d) * vTw * uOpacity;
+        gl_FragColor = vec4(uColor, a);
+      }`,
+    transparent:true, depthWrite:false, blending:THREE.AdditiveBlending
+  });
+  const pts = new THREE.Points(g, m);
+  scene.add(pts);
+  return pts;
+}
+
+const Q = isMobile ? 0.45 : 1;
+/* outer space dust + far stars */
+const stars  = makeParticles(Math.round(2400*Q), 0xF2EBDC, 1.6, {x:0,y:0,z:-20}, {r:130,y:170,z:220}, 0.4);
+const dust   = makeParticles(Math.round(900*Q),  0xC28A5A, 2.2, {x:0,y:0,z:18},  {r:30, y:34, z:60},  1.2);
+/* the three strata inside the drop */
+const strataLight = makeParticles(Math.round(5200*Q), 0xF0D9A0, 3.4, {x:0,y:0,z:-16}, {r:11,y:16,z:15}, 1.6);
+const strataHeart = makeParticles(Math.round(5200*Q), 0xD98A6A, 4.0, {x:0,y:0,z:-36}, {r:12,y:17,z:15}, 1.3);
+const strataDepth = makeParticles(Math.round(3400*Q), 0xB0622E, 6.2, {x:0,y:0,z:-56}, {r:13,y:18,z:15}, 0.8);
+/* slow rotation for life */
+const spinners = [
+  {o:strataLight, s: 0.030},
+  {o:strataHeart, s:-0.022},
+  {o:strataDepth, s: 0.014},
+  {o:dust, s:0.01}
+];
+
+/* ---------- THE FLACON (bottle) ---------- */
+const bottle = new THREE.Group();
+bottle.position.set(0, 0, -86);
+const glassMat = fresnelMaterial({color:0x141d2a, rim:0xF2EBDC, wobble:0, power:2.2});
+bottle.add(new THREE.Mesh(new THREE.SphereGeometry(4, 80, 80), glassMat));
+const liquidMat = fresnelMaterial({color:0x6e3c14, rim:0xE0B26C, power:1.6, opacity:0.95});
+const liquid = new THREE.Mesh(new THREE.SphereGeometry(3.45, 64, 64), liquidMat);
+liquid.scale.y = 0.96;
+bottle.add(liquid);
+/* stopper: stone cylinder + gold collar */
+const stopper = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.55, 0.72, 1.7, 40),
+  new THREE.MeshStandardMaterial({color:0x241f1a, roughness:0.55, metalness:0.25})
+);
+stopper.position.y = 4.55;
+bottle.add(stopper);
+const collar = new THREE.Mesh(
+  new THREE.TorusGeometry(0.72, 0.085, 18, 60),
+  new THREE.MeshStandardMaterial({color:0xC28A5A, roughness:0.25, metalness:0.9})
+);
+collar.rotation.x = Math.PI/2;
+collar.position.y = 3.86;
+bottle.add(collar);
+scene.add(bottle);
+
+/* lights (for the stopper + collar) */
+scene.add(new THREE.AmbientLight(0x3a2f22, 0.9));
+const keyLight = new THREE.PointLight(0xE0B26C, 1.4, 60);
+keyLight.position.set(9, 8, -78);
+scene.add(keyLight);
+const cursorLight = new THREE.PointLight(0xC28A5A, 0.0, 40);
+scene.add(cursorLight);
+
+/* ---------- camera path ---------- */
+const KEYS = [
+  {p:0.00, pos:[0,-5.6,  46]},
+  {p:0.12, pos:[0,-2.4,  27]},
+  {p:0.24, pos:[0, 0.2,  11]},
+  {p:0.30, pos:[0, 0.0,  6.4]},
+  {p:0.36, pos:[0, 0.0,  -2]},
+  {p:0.48, pos:[0, 0.6, -16]},
+  {p:0.62, pos:[0,-0.6, -36]},
+  {p:0.76, pos:[0, 0.4, -56]},
+  {p:0.86, pos:[3.5, 1.4, -70]},
+  {p:1.00, pos:[8.2, 0.6, -75.5]}
+];
+function smooth(t){ return t*t*(3-2*t); }
+function camAt(p){
+  p = Math.max(0, Math.min(1, p));
+  let i = 0;
+  while(i < KEYS.length-2 && p > KEYS[i+1].p) i++;
+  const a = KEYS[i], b = KEYS[i+1];
+  const t = smooth((p - a.p) / (b.p - a.p));
+  return new THREE.Vector3(
+    a.pos[0] + (b.pos[0]-a.pos[0])*t,
+    a.pos[1] + (b.pos[1]-a.pos[1])*t,
+    a.pos[2] + (b.pos[2]-a.pos[2])*t
+  );
+}
+
+/* ---------- fog / background color stops ---------- */
+const FOG_STOPS = [
+  {p:0.00, c:new THREE.Color(0x0B1018)},
+  {p:0.30, c:new THREE.Color(0x0B1018)},
+  {p:0.40, c:new THREE.Color(0x1d1408)},
+  {p:0.55, c:new THREE.Color(0x1c0e0c)},
+  {p:0.70, c:new THREE.Color(0x140b06)},
+  {p:0.82, c:new THREE.Color(0x0B1018)},
+  {p:1.00, c:new THREE.Color(0x0B1018)}
+];
+const fogColor = new THREE.Color();
+function fogAt(p){
+  let i = 0;
+  while(i < FOG_STOPS.length-2 && p > FOG_STOPS[i+1].p) i++;
+  const a = FOG_STOPS[i], b = FOG_STOPS[i+1];
+  const t = smooth(Math.max(0, Math.min(1, (p-a.p)/(b.p-a.p))));
+  fogColor.copy(a.c).lerp(b.c, t);
+  return fogColor;
+}
+
+/* ---------- scroll & cursor ---------- */
+let target = 0, prog = 0;
+function readScroll(){
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  target = max > 0 ? window.scrollY / max : 0;
+}
+window.addEventListener('scroll', readScroll, {passive:true});
+readScroll();
+
+const mouse = {x:0, y:0, sx:0, sy:0};
+window.addEventListener('pointermove', e=>{
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
+}, {passive:true});
+
+/* ---------- chapters & rail ---------- */
+const chapters = Array.from(document.querySelectorAll('.chapter')).map(el=>({
+  el,
+  a: parseFloat(el.dataset.in),
+  h: parseFloat(el.dataset.hold),
+  b: parseFloat(el.dataset.out),
+  interactive: el.id === 'acquire'
+}));
+const stops = Array.from(document.querySelectorAll('#rail .stop'))
+  .map(el=>({el, at:parseFloat(el.dataset.at)}));
+const flash = document.getElementById('flash');
+const after = document.getElementById('after');
+const tintEl = document.getElementById('tint');
+
+/* ---------- stratum tint: gold (light) → coral (heart) → amber (depth) ---------- */
+const TINT_STOPS = [
+  {p:0.36, c:new THREE.Color(0xE9C77F)},
+  {p:0.50, c:new THREE.Color(0xE0A36A)},
+  {p:0.58, c:new THREE.Color(0xD98A6A)},
+  {p:0.70, c:new THREE.Color(0xB66A38)},
+  {p:0.82, c:new THREE.Color(0x8A4A22)}
+];
+const tintCol = new THREE.Color();
+function tintAt(p){
+  let i = 0;
+  while(i < TINT_STOPS.length-2 && p > TINT_STOPS[i+1].p) i++;
+  const a = TINT_STOPS[i], b = TINT_STOPS[i+1];
+  const t = smooth(Math.max(0, Math.min(1, (p-a.p)/(b.p-a.p))));
+  tintCol.copy(a.c).lerp(b.c, t);
+  return tintCol;
+}
+const clampSmooth = x => smooth(Math.max(0, Math.min(1, x)));
+
+let dimTarget = 0;
+function updateOverlays(p){
+  let maxOp = 0;
+  chapters.forEach((c, idx)=>{
+    let o = 0;
+    if(p >= c.a && p <= c.b){
+      const fin = Math.min(1, (p - c.a) / Math.max(0.0001, (c.h - c.a) * 0.45));
+      const fout = c.b > c.h ? Math.min(1, (c.b - p) / Math.max(0.0001, (c.b - c.h))) : 1;
+      o = Math.min(fin, fout);
+    }
+    o = Math.max(0, Math.min(1, o));
+    c.el.style.opacity = o.toFixed(3);
+    if(c.interactive) c.el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+    if(idx > 0) maxOp = Math.max(maxOp, o);   /* hero doesn't dim the world */
+  });
+  dimTarget = maxOp;
+  /* rail */
+  let active = 0;
+  for(let i=0;i<stops.length;i++) if(p >= stops[i].at - 0.04) active = i;
+  stops.forEach((s,i)=>s.el.classList.toggle('on', i === active));
+  /* plunge flash — sharp ignite, lingering bloom on the way in */
+  const fc = 0.318;
+  const fs = p < fc ? 0.014 : 0.030;
+  const g = Math.exp(-Math.pow((p - fc) / fs, 2));
+  flash.style.opacity = (g * 0.92).toFixed(3);
+  /* gold afterglow trails the white, fading as we arrive in the light layer */
+  const ga = Math.exp(-Math.pow((p - 0.345) / 0.045, 2));
+  after.style.opacity = (ga * 0.60).toFixed(3);
+}
+
+/* ---------- resize ---------- */
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  readScroll();
+});
+
+/* ---------- main loop ---------- */
+const clock = new THREE.Clock();
+let dimSm = 0;
+let lastT = 0, bottleAngle = 0;
+const lookTmp = new THREE.Vector3();
+const bottleFocus = new THREE.Vector3(0, 0.4, -86);
+const ease = reduceMotion ? 1 : 0.07;
+
+function tick(){
+  const t = clock.getElapsedTime();
+  prog += (target - prog) * ease;
+  const p = prog;
+
+  /* camera */
+  const pos = camAt(p);
+  mouse.sx += (mouse.x - mouse.sx) * 0.05;
+  mouse.sy += (mouse.y - mouse.sy) * 0.05;
+  const sway = reduceMotion ? 0 : 1;
+  camera.position.set(
+    pos.x + mouse.sx * 0.9 * sway,
+    pos.y - mouse.sy * 0.6 * sway + Math.sin(t*0.4)*0.08*sway,
+    pos.z
+  );
+  const blend = smooth(Math.max(0, Math.min(1, (p - 0.78) / 0.12)));
+  lookTmp.set(pos.x*(1-blend), pos.y*(1-blend), pos.z - 12).lerp(bottleFocus, blend);
+  camera.lookAt(lookTmp);
+
+  /* fog + clear color */
+  FOG.color.copy(fogAt(p));
+  renderer.setClearColor(FOG.color);
+  FOG.density = 0.016 + 0.012 * smooth(Math.max(0, Math.min(1, (p-0.32)/0.1))) * (p < 0.8 ? 1 : Math.max(0, 1-(p-0.8)/0.1));
+
+  /* drop fades once we're deep inside */
+  const inside = smooth(Math.max(0, Math.min(1, (-camera.position.z - 4) / 8)));
+  dropMat.uniforms.uOpacity.value = 1 - inside;
+  coreMat.uniforms.uOpacity.value = 0.5 * (1 - inside);
+  drop.visible = dropMat.uniforms.uOpacity.value > 0.01;
+  core.visible = drop.visible;
+
+  /* world makes room for the words */
+  dimSm += (dimTarget - dimSm) * 0.08;
+  const keep = 1 - 0.55 * dimSm;
+  for(const s of [dust, strataLight, strataHeart, strataDepth]) s.material.uniforms.uOpacity.value = keep;
+  stars.material.uniforms.uOpacity.value = 1 - 0.3 * dimSm;
+
+  /* the flacon only exists once we arrive */
+  const reveal = smooth(Math.max(0, Math.min(1, (p - 0.74) / 0.10)));
+  bottle.visible = reveal > 0.001;
+  glassMat.uniforms.uOpacity.value = reveal;
+  liquidMat.uniforms.uOpacity.value = 0.95 * reveal;
+
+  /* time uniforms + spin */
+  dropMat.uniforms.uTime.value = t;
+  coreMat.uniforms.uTime.value = t;
+  glassMat.uniforms.uTime.value = t;
+  liquidMat.uniforms.uTime.value = t;
+  for(const s of [stars,dust,strataLight,strataHeart,strataDepth]) s.material.uniforms.uTime.value = t;
+  if(!reduceMotion) for(const s of spinners) s.o.rotation.z = t * s.s;
+  /* the flacon spins, then eases to rest as we arrive */
+  const dt = Math.min(0.05, t - lastT); lastT = t;
+  const spinEase = 1 - smooth(Math.max(0, Math.min(1, (p - 0.88) / 0.12)));
+  bottleAngle += (reduceMotion ? 0 : 0.12) * spinEase * dt;
+  bottle.rotation.y = bottleAngle;
+  /* a single glint catches the gold collar as the journey settles */
+  const glint = Math.exp(-Math.pow((p - 0.97) / 0.018, 2));
+  keyLight.intensity = 1.4 + 2.0 * glint;
+
+  /* cursor light rides just ahead of the camera */
+  cursorLight.position.set(camera.position.x + mouse.sx*6, camera.position.y - mouse.sy*4, camera.position.z - 8);
+  cursorLight.intensity = 0.9;
+
+  /* stratum tint — the air takes the temperature of the layer we're inside */
+  const tc = tintAt(p);
+  tintEl.style.setProperty('--tr', Math.round(tc.r*255));
+  tintEl.style.setProperty('--tg', Math.round(tc.g*255));
+  tintEl.style.setProperty('--tb', Math.round(tc.b*255));
+  const tEnvIn  = clampSmooth((p - 0.34) / 0.10);   /* fades in just after the plunge */
+  const tEnvOut = 1 - clampSmooth((p - 0.80) / 0.12); /* clears before the flacon reveal */
+  tintEl.style.opacity = (0.55 * Math.min(tEnvIn, tEnvOut)).toFixed(3);
+  cursorLight.color.copy(tc);
+
+  updateOverlays(p);
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+tick();
+
+/* loader off */
+window.addEventListener('load', ()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('done'), 600);
+});
+setTimeout(()=>document.getElementById('loader').classList.add('done'), 3200);
+})();
+</script>
+</body>
+</html>
