@@ -460,6 +460,19 @@
         }
         .hero__title span { display: block; }
         .hero__title-highlight { color: #B8894A; font-style: italic; }
+        .hero__title-he {
+            display: block;
+            font-family: var(--font-body-he);
+            font-size: clamp(1.05rem, 2.3vw, 1.6rem);
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0;
+            color: var(--color-chocolate);
+            direction: rtl;
+            margin: 26px auto 0;
+            max-width: 640px;
+        }
+        .hero__title-he strong { color: var(--color-copper); font-weight: 600; }
 
         .hero__divider {
             display: block;
@@ -563,6 +576,13 @@
         .hero__cta:hover { background: var(--color-chocolate); color: var(--color-cream); }
         .hero__cta-arrow { transition: transform 0.3s var(--transition-smooth); }
         .hero__cta:hover .hero__cta-arrow { transform: translateX(6px); }
+        .hero__cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+        .hero__cta--primary { background: var(--color-chocolate); color: var(--color-cream); }
+        .hero__cta--primary:hover { background: var(--color-copper); border-color: var(--color-copper); color: var(--color-cream); }
+        @media (max-width: 480px) {
+            .hero__cta-row { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
+            .hero__cta-row .hero__cta { width: 100%; justify-content: center; }
+        }
 
         /* ============================================================
            PORTALS — 3 cards (Video Lab, Brand Experiences, Brand Worlds)
@@ -1817,10 +1837,11 @@
         <div class="hero__bg-element hero__bg-element--3"></div>
 
         <div class="hero__content">
-            <p class="hero__eyebrow" dir="ltr">Brand Worlds Architect &middot; BrandOS Founder</p>
+            <p class="hero__eyebrow">חגית אנטבי &middot; <span dir="ltr">Brand Worlds Architect</span></p>
 
             <h1 class="hero__title">
                 <span dir="ltr">Brand Worlds</span>
+                <span class="hero__title-he">בונה עולמות מותג שלמים — ומפעילה אותם ב-AI עם <strong>BrandOS</strong>, מערכת ההפעלה למותגים.</span>
             </h1>
 
             <span class="hero__divider" aria-hidden="true"></span>
@@ -1831,23 +1852,22 @@
                 <em>Run by AI.</em>
             </p>
 
-            <p class="hero__what">
-                בונה עולמות מותג שלמים — ומפעילה אותם ב-AI עם <strong>BrandOS</strong>, מערכת ההפעלה למותגים.
-            </p>
-
             <p class="hero__subtitle--he">
                 מותג שמוקם פעם אחת — ומופעל יום-יום<br>
                 על ידי המערכת שמכירה אותו לעומק.
             </p>
 
             <div class="hero__cta-block">
-                <span class="hero__scroll-label" dir="ltr">Scroll</span>
-                <a href="#portals" class="hero__cta" dir="ltr">
-                    See How It Works
-                    <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
+                <div class="hero__cta-row">
+                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20מותג-AI" target="_blank" rel="noopener" class="hero__cta hero__cta--primary">בואו נדבר</a>
+                    <a href="#portals" class="hero__cta" dir="ltr">
+                        See How It Works
+                        <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <span class="hero__scroll-label" dir="ltr">Scroll &darr;</span>
             </div>
         </div>
     </section>
