@@ -76,6 +76,31 @@
         }
         .nav-minimal__back:hover { color: var(--color-copper); }
 
+        .nav__links {
+            display: flex; align-items: center;
+            gap: clamp(18px, 3vw, 36px);
+            list-style: none; margin: 0; padding: 0;
+        }
+        .nav__link {
+            font-family: var(--font-body-he, 'Heebo', sans-serif);
+            font-size: 0.95rem; font-weight: 500;
+            color: var(--color-chocolate); text-decoration: none;
+            transition: color 0.3s, background 0.3s; white-space: nowrap;
+        }
+        .nav__link:hover { color: var(--color-copper); }
+        .nav__link--cta {
+            border: 1px solid var(--color-chocolate);
+            border-radius: 999px; padding: 8px 18px;
+        }
+        .nav__link--cta:hover { background: var(--color-chocolate); color: var(--color-cream); }
+        @media (max-width: 600px) {
+            .nav-minimal__inner { flex-wrap: wrap; justify-content: center; gap: 8px 14px; }
+            .nav-minimal__logo { width: 100%; text-align: center; font-size: 1.15rem; }
+            .nav__links { gap: 14px; }
+            .nav__link { font-size: 0.85rem; }
+            .nav__link--cta { padding: 6px 12px; }
+        }
+
         .coming-soon {
             flex: 1;
             display: flex;
@@ -260,12 +285,11 @@
     <nav class="nav-minimal">
         <div class="container nav-minimal__inner">
             <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
-            <a href="/" class="nav-minimal__back">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Home
-            </a>
+            <ul class="nav__links">
+                <li><a href="/brand-worlds/" class="nav__link">עולמות מותג</a></li>
+                <li><a href="/brandos-custom.html" class="nav__link">BrandOS</a></li>
+                <li><a href="/contact.html" class="nav__link nav__link--cta">צור קשר</a></li>
+            </ul>
         </div>
     </nav>
 
