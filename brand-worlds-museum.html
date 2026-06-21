@@ -173,6 +173,19 @@
   }
   .dna__tag b{ font-weight:600; color:var(--copper); }
 
+  /* כפתור חזרה לדף הבית — קבוע, קריא על אולמות בהירים וכהים כאחד */
+  .home-link{
+    position:fixed; top:15px; left:16px; z-index:50;
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'Heebo',sans-serif; font-weight:300;
+    font-size:11px; letter-spacing:.14em;
+    color:var(--cream); text-decoration:none;
+    opacity:.62; mix-blend-mode:difference;
+    transition:opacity .3s var(--ease);
+  }
+  .home-link:hover{ opacity:1; }
+  .home-link svg{ width:13px; height:13px; flex:none; }
+
   /* ============================================================
      INTRO — פתיחת המוזיאון
      ============================================================ */
@@ -445,8 +458,12 @@
     transition:transform .35s var(--ease), box-shadow .35s var(--ease);
   }
   .outro__cta:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(193,118,74,.28); }
+  .outro__links{
+    display:flex; flex-wrap:wrap; gap:14px 28px;
+    justify-content:center; margin-top:26px;
+  }
   .outro__secondary{
-    display:inline-block; margin-top:22px;
+    display:inline-block;
     font-family:'Heebo',sans-serif; font-weight:300;
     font-size:12px; letter-spacing:.16em;
     color:rgba(241,236,225,.6); text-decoration:none;
@@ -481,6 +498,12 @@
   <!-- ה-DNA: החוט הרציף של המוזיאון -->
   <div class="dna" aria-hidden="true"><span class="dna__line"></span></div>
   <div class="dna__tag" aria-hidden="true">DNA · <b id="roomTag">00</b></div>
+
+  <!-- חזרה לדף הבית -->
+  <a class="home-link" href="/" aria-label="חזרה לדף הבית של חגית אנטבי">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11l9-8 9 8M5 9.5V20h14V9.5"/></svg>
+    חגית אנטבי
+  </a>
 
   <!-- ============ פתיחה ============ -->
   <section class="intro">
@@ -549,10 +572,10 @@
     <div class="stage">
       <div class="stage__bg"></div>
       <div class="artwork art--port art--tr" data-depth="0.6" aria-hidden="true">
-        <img src="images/aerea/ChatGPT%20Image%20May%2023%2C%202026%2C%2005_31_22%20PM%20(1).png" alt="" loading="lazy" decoding="async">
+        <img src="images/aerea/scene-a.png" alt="" loading="lazy" decoding="async">
       </div>
       <div class="artwork art--port art--ml art--2" data-depth="0.8" aria-hidden="true">
-        <img src="images/aerea/ChatGPT%20Image%20May%2023%2C%202026%2C%2005_31_22%20PM%20(2).png" alt="" loading="lazy" decoding="async">
+        <img src="images/aerea/scene-b.png" alt="" loading="lazy" decoding="async">
       </div>
       <div class="stage__inner">
         <p class="w-eyebrow">אולם 03 · בושם</p>
@@ -617,7 +640,10 @@
     <h2 class="outro__title">העולם הבא <em>הוא שלכם</em>.</h2>
     <p class="outro__sub">כל אולם כאן נולד מאותה אסטרטגיה — וכל אחד מרגיש אחרת לגמרי. בואו נבנה את העולם של המותג שלכם.</p>
     <a href="https://wa.me/972528351676" class="outro__cta" target="_blank" rel="noopener">בואו נבנה לכם עולם</a>
-    <a href="https://hagitantebi.co.il/" class="outro__secondary">חגית אנטבי · Brand Worlds Studio</a>
+    <div class="outro__links">
+      <a href="brand-worlds/" class="outro__secondary">לכל עולמות המותג <span aria-hidden="true">←</span></a>
+      <a href="/" class="outro__secondary">חזרה לדף הבית</a>
+    </div>
     <p class="outro__note">AURELLE · ORÉA · AERÉA° · SOLUNA — ארבעה מתוך הגלריה. מאחוריהם: ORBE° · LUMÉRA · SOLARA WILD · VELA MOTION.</p>
   </section>
 
