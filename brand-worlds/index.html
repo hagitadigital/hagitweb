@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Brand Worlds Studio — Three Brands. Three Worlds. One Signature.</title>
-<meta name="description" content="The 2026 Capsule by Brand Worlds Studio · Hagit Antebi. AURELLE, VELA MOTION, SOLARA WILD — three branding concepts." />
+<title>Brand Worlds Studio — A Gallery of Concept Brand Worlds | Hagit Antebi</title>
+<meta name="description" content="A gallery of concept brand worlds by Brand Worlds Studio · Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, POPPI and more, each built as a complete world, alongside interactive motion studies." />
 <link rel="canonical" href="https://hagitantebi.co.il/brand-worlds/" />
 <link rel="alternate" hreflang="en" href="https://hagitantebi.co.il/brand-worlds/" />
 <link rel="alternate" hreflang="x-default" href="https://hagitantebi.co.il/" />
@@ -12,6 +12,56 @@
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:locale:alternate" content="he_IL" />
+<meta property="og:site_name" content="Brand Worlds Studio · Hagit Antebi" />
+<meta property="og:title" content="Brand Worlds Studio — A Gallery of Concept Brand Worlds" />
+<meta property="og:description" content="A gallery of concept brand worlds by Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, POPPI and more, each built as a complete world, alongside interactive motion studies." />
+<meta property="og:image" content="https://hagitantebi.co.il/brand-worlds/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Brand Worlds Studio — A Gallery of Concept Brand Worlds" />
+<meta name="twitter:description" content="Concept brand worlds by Hagit Antebi — each built as a complete world, alongside interactive motion studies." />
+<meta name="twitter:image" content="https://hagitantebi.co.il/brand-worlds/og.jpg" />
+<script type="application/ld+json">{
+"@context":"https://schema.org",
+"@graph":[
+  {
+    "@type":"CollectionPage",
+    "@id":"https://hagitantebi.co.il/brand-worlds/#page",
+    "name":"Brand Worlds Studio — A Gallery of Concept Brand Worlds",
+    "description":"A gallery of concept brand worlds by Brand Worlds Studio · Hagit Antebi, each built as a complete world (name, language, palette, products), alongside interactive motion studies.",
+    "url":"https://hagitantebi.co.il/brand-worlds/",
+    "inLanguage":["en","he"],
+    "isPartOf":{"@type":"WebSite","name":"Hagit Antebi · Brand Worlds Studio","url":"https://hagitantebi.co.il/"},
+    "about":{"@type":"Person","name":"Hagit Antebi","url":"https://hagitantebi.co.il/about.html"},
+    "mainEntity":{"@id":"https://hagitantebi.co.il/brand-worlds/#worlds"}
+  },
+  {
+    "@type":"ItemList",
+    "@id":"https://hagitantebi.co.il/brand-worlds/#worlds",
+    "name":"Concept Brand Worlds",
+    "itemListOrder":"https://schema.org/ItemListOrderAscending",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"AURELLE — Premium Skincare","url":"https://hagitantebi.co.il/aurelle/"},
+      {"@type":"ListItem","position":2,"name":"VELA MOTION — Urban Accessories","url":"https://hagitantebi.co.il/vela-motion/"},
+      {"@type":"ListItem","position":3,"name":"SOLARA WILD — Resort Lifestyle","url":"https://hagitantebi.co.il/solara-wild/"},
+      {"@type":"ListItem","position":4,"name":"ORÉA","url":"https://hagitantebi.co.il/orea/"},
+      {"@type":"ListItem","position":5,"name":"SOLUNA — Circadian Daylight Supplement","url":"https://hagitantebi.co.il/soluna.html"},
+      {"@type":"ListItem","position":6,"name":"ÉCRU","url":"https://hagitantebi.co.il/ecru.html"},
+      {"@type":"ListItem","position":7,"name":"LUMÉRA — Jewelry of Light","url":"https://hagitantebi.co.il/lumera/"},
+      {"@type":"ListItem","position":8,"name":"ORBE — Haute Parfumerie","url":"https://hagitantebi.co.il/orbe/"},
+      {"@type":"ListItem","position":9,"name":"POPPI — Candy / Playful CPG","url":"https://hagitantebi.co.il/poppi.html"}
+    ]
+  },
+  {
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://hagitantebi.co.il/"},
+      {"@type":"ListItem","position":2,"name":"Brand Worlds","item":"https://hagitantebi.co.il/brand-worlds/"}
+    ]
+  }
+]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
@@ -218,8 +268,8 @@ body::before {
    STUDIO MASTHEAD
    ───────────────────────────────────────────── */
 .masthead {
-  min-height: calc(100vh - 60px);
-  padding: 5rem 2rem 4rem;
+  min-height: 66vh;
+  padding: 4rem 2rem 3rem;
   position: relative;
   z-index: 5;
   display: flex;
@@ -388,6 +438,8 @@ body::before {
   position: relative;
   z-index: 5;
 }
+/* first content section sits close under the hero — worlds are the prize, shown fast */
+.section.worlds { padding-top: 3rem; }
 .section__inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -1439,7 +1491,7 @@ body::before {
 
 <!-- ─────────── CONCEPT BAND ─────────── -->
 <div class="concept-band">
-  Branding Concepts <span class="dot">·</span> Three brand worlds and three motion studies, built as portfolio pieces by <em>Brand Worlds Studio</em>
+  Branding Concepts <span class="dot">·</span> A gallery of brand worlds and motion studies, built as portfolio pieces by <em>Brand Worlds Studio</em>
 </div>
 
 <!-- ─────────── UTILITY BAR ─────────── -->
@@ -1453,54 +1505,22 @@ body::before {
 <header class="masthead" id="masthead">
   <div class="masthead__inner">
     <div class="masthead__top">
-      <div class="meta">A studio in <em>three voices</em></div>
+      <div class="meta">A studio of <em>many voices</em></div>
     </div>
     <h1 class="studio-mark">Brand <em>Worlds</em> Studio</h1>
     <p class="studio-by">by <strong>Hagit Antebi</strong> · Brand Architect · BrandOS Founder</p>
-    <p class="studio-tag">Three brand worlds. Three motion studies. <em>One signature.</em></p>
-    <p class="studio-tag-he" lang="he">שלושה עולמות מותג. שלושה מחקרי תנועה. חתימה אחת.</p>
+    <p class="studio-tag">Brand worlds. Motion studies. <em>One signature.</em></p>
+    <p class="studio-tag-he" lang="he">עולמות מותג. מחקרי תנועה. חתימה אחת.</p>
   </div>
   <hr class="masthead__rule" />
   <div class="scroll-cue"><span>Enter the gallery</span></div>
 </header>
 
-<!-- ─────────── SECTION I — MANIFESTO ─────────── -->
-<section class="section manifesto" id="manifesto">
-  <div class="section__inner">
-    <div class="section-header reveal">
-      <div class="section-numeral">I.</div>
-      <div class="section-title-block">
-        <span class="section-eyebrow">The Studio Note</span>
-        <h2 class="section-title">A studio of <em>brand worlds</em></h2>
-      </div>
-      <div class="section-meta">
-        — On building brands as worlds
-        <span class="section-meta-he" lang="he">פתח דבר</span>
-      </div>
-    </div>
-
-    <p class="manifesto-pull reveal">A brand is not a logo. <em>A brand is a world.</em></p>
-    <p class="manifesto-pull-he reveal" lang="he">מותג הוא לא לוגו. מותג הוא עולם.</p>
-
-    <div class="manifesto-prose reveal">
-      <p>Brand Worlds Studio designs brands the way a publisher designs a magazine, the way a curator designs an exhibition, and the way a perfumer composes a fragrance. Each brand is built as an entire universe — a palette, a language, a voice, a typography, a code. The work that follows is a study, not a campaign.</p>
-      <p>What you are about to see is the <em>2026 Capsule</em> — three concept brands, each conceived as its own world. AURELLE, a study in skin longevity. VELA MOTION, a lookbook for the woman in motion. SOLARA WILD, a resort in six acts.</p>
-      <p>Alongside them: three <em>Motion Studies</em> — Pétale°, Crema°, and MELTÉ° — each a single scroll that rebuilds a brand world in pure interaction. Where the worlds above prove identity, the studies below prove movement.</p>
-      <p>Three brand worlds. Three motion studies. One signature.</p>
-    </div>
-
-    <div class="manifesto-signature reveal">
-      <span>—Hagit Antebi · Brand Worlds Studio</span>
-      <span class="sig-mark">H.</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── SECTION II — THE THREE WORLDS ─────────── -->
+<!-- ─────────── SECTION I — THE THREE WORLDS ─────────── -->
 <section class="section worlds" id="worlds">
   <div class="section__inner">
     <div class="section-header reveal">
-      <div class="section-numeral">II.</div>
+      <div class="section-numeral">I.</div>
       <div class="section-title-block">
         <span class="section-eyebrow">The 2026 Capsule</span>
         <h2 class="section-title">The <em>worlds</em></h2>
@@ -1682,7 +1702,7 @@ body::before {
         <div class="world-card__media">
           <div class="world-card__nº">No. 09</div>
           <div class="world-card__cta-corner">Concept</div>
-          <img src="../POPPI%20Case%20Study/pink-rush.jpg" alt="POPPI" />
+          <img src="../POPPI%20Case%20Study/flavor-pink.jpg" alt="POPPI Pink Rush" />
         </div>
         <div class="world-card__copy">
           <div class="world-card__issue">Concept · Live site</div>
@@ -1696,6 +1716,38 @@ body::before {
           </div>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SECTION II — STUDIO NOTE ─────────── -->
+<section class="section manifesto" id="manifesto">
+  <div class="section__inner">
+    <div class="section-header reveal">
+      <div class="section-numeral">II.</div>
+      <div class="section-title-block">
+        <span class="section-eyebrow">The Studio Note</span>
+        <h2 class="section-title">A studio of <em>brand worlds</em></h2>
+      </div>
+      <div class="section-meta">
+        — On building brands as worlds
+        <span class="section-meta-he" lang="he">הערת הסטודיו</span>
+      </div>
+    </div>
+
+    <p class="manifesto-pull reveal">A brand is not a logo. <em>A brand is a world.</em></p>
+    <p class="manifesto-pull-he reveal" lang="he">מותג הוא לא לוגו. מותג הוא עולם.</p>
+
+    <div class="manifesto-prose reveal">
+      <p>Brand Worlds Studio designs brands the way a publisher designs a magazine, the way a curator designs an exhibition, and the way a perfumer composes a fragrance. Each brand is built as an entire universe — a palette, a language, a voice, a typography, a code. The work above is a study, not a campaign.</p>
+      <p>What you have just seen is the <em>2026 Capsule</em> — concept brands, each conceived as its own world. AURELLE, a study in skin longevity. VELA MOTION, a lookbook for the woman in motion. SOLARA WILD, a resort in six acts.</p>
+      <p>Below them: three <em>Motion Studies</em> — Pétale°, Crema°, and MELTÉ° — each a single scroll that rebuilds a brand world in pure interaction. Where the worlds above prove identity, the studies below prove movement.</p>
+      <p>Brand worlds. Motion studies. One signature.</p>
+    </div>
+
+    <div class="manifesto-signature reveal">
+      <span>—Hagit Antebi · Brand Worlds Studio</span>
+      <span class="sig-mark">H.</span>
     </div>
   </div>
 </section>
@@ -1716,8 +1768,8 @@ body::before {
     </div>
 
     <div class="manifesto-prose reveal">
-      <p>Three brand worlds rebuilt as <em>interactive demos</em>. Each one is a single continuous scroll — macarons stack themselves into a tower, a coffee machine shifts colour at a touch, chocolate cups melt one by one — and every frame is part of the world it carries.</p>
-      <p lang="he">שלושה עולמות מותג שנבנו כדמואים אינטראקטיביים. בכל אחד — גלילה אחת רציפה: מקרונים שמסתדרים, מכונה שמחליפה צבע, כוסות שוקולד שנמסות. כל פריים הוא חלק מהעולם.</p>
+      <p>Three <em>Motion Studies</em> — each a brand world rebuilt as pure interaction. Each one is a single continuous scroll: macarons stack themselves into a tower, a coffee machine shifts colour at a touch, chocolate cups melt one by one — and every frame is part of the world it carries.</p>
+      <p lang="he">שלושה מחקרי תנועה — כל אחד עולם מותג שנבנה כאינטראקציה טהורה. בכל אחד גלילה אחת רציפה: מקרונים שמסתדרים, מכונה שמחליפה צבע, כוסות שוקולד שנמסות. כל פריים הוא חלק מהעולם.</p>
     </div>
   </div>
 </section>
@@ -1985,8 +2037,8 @@ body::before {
     </dl>
 
     <div class="colophon__bottom">
-      <span>© Brand Worlds Studio · Three brand worlds and three motion studies, built as portfolio pieces.</span>
-      <span class="colophon__bottom-he" lang="he">שלושה עולמות מותג ושלושה מחקרי תנועה — נבנו כעבודות פורטפוליו · Brand Worlds Studio</span>
+      <span>© Brand Worlds Studio · A gallery of brand worlds and motion studies, built as portfolio pieces.</span>
+      <span class="colophon__bottom-he" lang="he">גלריית עולמות מותג ומחקרי תנועה — נבנו כעבודות פורטפוליו · Brand Worlds Studio</span>
     </div>
   </div>
 </footer>
@@ -2006,8 +2058,8 @@ body::before {
   // Page indicator
   const sections = [
     document.getElementById('masthead'),
-    document.getElementById('manifesto'),
     document.getElementById('worlds'),
+    document.getElementById('manifesto'),
     document.getElementById('motion-studies'),
     document.getElementById('motion-study-petale'),
     document.getElementById('motion-study-crema'),
