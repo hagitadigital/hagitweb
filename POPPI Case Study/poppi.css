@@ -1,0 +1,561 @@
+/* ============================================================
+   POPPI — Tiny candy. Big pop.
+   A candy brand world by Hagit Antebi / Brand Worlds Studio
+   Aesthetic: glossy candy-pop maximalism, kept premium.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Heebo:wght@400;500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Tokens ---------- */
+#poppi{
+  /* flavor colors */
+  --pink:#ff2c88; --orange:#ff7a00; --blue:#0785ee; --green:#a8dc00; --purple:#8d45c4;
+  /* reactive accent — swapped by JS */
+  --flavor:#ff2c88;
+  --flavor2:#ff7a00;
+
+  /* surface */
+  --cream:#fdeee9;
+  --cream-2:#fbe3da;
+  --paper:#fff8f4;
+  --ink:#2a0d24;
+  --ink-soft:#6b4357;
+  --line:rgba(42,13,36,.12);
+
+  /* scroll-driven (set in JS) */
+  --fall:0;
+  --trail-opacity:0;
+  --catch-y:12px;
+
+  --maxw:1240px;
+  --r:30px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit','Heebo',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+
+#poppi{
+  position:relative;
+  background:
+    radial-gradient(120% 80% at 80% -10%, #ffe4f1 0%, transparent 55%),
+    radial-gradient(100% 60% at 0% 8%, #fff2e6 0%, transparent 50%),
+    linear-gradient(180deg, var(--paper), var(--cream) 40%, var(--cream-2));
+  overflow:hidden;
+}
+
+/* soft grain for premium tactility */
+#poppi::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+img{display:block;max-width:100%;height:auto}
+em,i{font-style:normal}
+
+/* ---------- Type scale ---------- */
+h1,h2,h3{font-family:'Fredoka',sans-serif;font-weight:600;line-height:.96;letter-spacing:-.01em}
+h1 em,h2 i{color:var(--flavor);transition:color .5s ease}
+
+.eyebrow,.sectionNo,.badge,.scrollCue span,.catchCopy span,
+.sectionHead p,.worldCopy p,.campaignIntro p,.finalCopy p{
+  font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;color:var(--ink-soft);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem clamp(1rem,4vw,2.4rem);
+  background:rgba(255,248,244,.62);
+  backdrop-filter:saturate(1.6) blur(14px);
+  -webkit-backdrop-filter:saturate(1.6) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.wordmark{display:flex;gap:.04em;text-decoration:none;font-family:'Fredoka';font-weight:700;font-size:1.55rem;letter-spacing:-.02em}
+.wordmark span:nth-child(1){color:var(--pink)}
+.wordmark span:nth-child(2){color:var(--orange)}
+.wordmark span:nth-child(3){color:var(--blue)}
+.wordmark span:nth-child(4){color:var(--green)}
+.wordmark span:nth-child(5){color:var(--purple)}
+.wordmark span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.8,.5,1)}
+.wordmark:hover span{transform:translateY(-3px) scale(1.12)}
+.wordmark:hover span:nth-child(2){transition-delay:.04s}
+.wordmark:hover span:nth-child(3){transition-delay:.08s}
+.wordmark:hover span:nth-child(4){transition-delay:.12s}
+.wordmark:hover span:nth-child(5){transition-delay:.16s}
+
+.navLinks{display:flex;gap:1.6rem}
+.navLinks a{text-decoration:none;color:var(--ink);font-weight:500;font-size:.95rem;position:relative}
+.navLinks a::after{content:"";position:absolute;left:0;bottom:-5px;height:3px;width:0;border-radius:3px;background:var(--flavor);transition:width .3s ease}
+.navLinks a:hover::after{width:100%}
+
+.navPill{
+  text-decoration:none;font-weight:600;font-size:.92rem;color:#fff;
+  padding:.62rem 1.3rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--pink),#ff5fa6);
+  box-shadow:0 8px 22px -8px rgba(255,44,136,.7),inset 0 1px 0 rgba(255,255,255,.4);
+  transition:transform .25s cubic-bezier(.34,1.7,.5,1),box-shadow .25s ease;
+}
+.navPill:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 30px -8px rgba(255,44,136,.8)}
+
+main{position:relative;z-index:2}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100svh;
+  display:grid;grid-template-columns:1.05fr 1.25fr;align-items:center;gap:2rem;
+  max-width:var(--maxw);margin:0 auto;
+  padding:8rem clamp(1rem,4vw,2.4rem) 3rem;
+  position:relative;
+}
+.heroCopy{position:relative;z-index:3}
+.eyebrow{display:inline-block;margin-bottom:1.3rem;
+  padding:.4rem .9rem;border-radius:999px;background:rgba(255,44,136,.1);color:var(--pink)}
+.hero h1{font-size:clamp(3.4rem,9vw,7rem);font-weight:700}
+.hero h1 em{
+  background:linear-gradient(120deg,var(--pink),var(--orange) 35%,var(--blue) 70%,var(--purple));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+.lede{font-size:clamp(1.1rem,2vw,1.45rem);color:var(--ink-soft);margin:1.4rem 0 2.2rem;max-width:32ch;font-weight:400}
+
+.actions{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center}
+.primary{
+  display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;font-weight:600;font-size:1.05rem;
+  padding:.95rem 1.7rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--flavor),var(--flavor2));
+  box-shadow:0 16px 34px -12px color-mix(in srgb,var(--flavor) 80%,transparent),inset 0 1px 0 rgba(255,255,255,.4);
+  transition:transform .3s cubic-bezier(.34,1.7,.5,1),box-shadow .3s ease;
+}
+.primary span{transition:transform .3s ease}
+.primary:hover{transform:translateY(-3px) scale(1.03)}
+.primary:hover span{transform:translateY(3px)}
+.textLink{text-decoration:none;color:var(--ink);font-weight:600;font-size:1rem;border-bottom:2px solid var(--line);padding-bottom:2px;transition:border-color .3s,color .3s}
+.textLink:hover{border-color:var(--flavor);color:var(--flavor)}
+
+.heroVisual{position:relative;z-index:2}
+.heroProduct{
+  width:100%;border-radius:var(--r);
+  box-shadow:0 50px 90px -40px rgba(255,44,136,.5),0 18px 40px -24px rgba(42,13,36,.3);
+  animation:floaty 7s ease-in-out infinite;
+}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-14px) rotate(.4deg)}}
+
+.scrollCue{
+  position:absolute;right:clamp(1rem,4vw,2.4rem);bottom:2rem;display:flex;align-items:center;gap:.7rem;z-index:4;
+}
+.scrollCue span{color:var(--ink-soft)}
+.scrollCue i{width:24px;height:38px;border:2px solid var(--ink-soft);border-radius:999px;position:relative;display:inline-block}
+.scrollCue i::after{content:"";position:absolute;left:50%;top:7px;width:5px;height:5px;border-radius:50%;background:var(--flavor);transform:translateX(-50%);animation:cue 1.5s ease-in-out infinite}
+@keyframes cue{0%{opacity:0;top:7px}40%{opacity:1}100%{opacity:0;top:20px}}
+
+/* ============================================================
+   SCROLL CANDY TRAIL  (the throw → catch connective tissue)
+   ============================================================ */
+.scrollCandyTrail{
+  position:relative;height:0;max-width:var(--maxw);margin:0 auto;
+  display:flex;justify-content:flex-end;padding-right:24%;gap:1.1rem;
+  opacity:var(--trail-opacity);
+}
+.scrollCandyTrail .candy{
+  width:26px;height:34px;border-radius:50% 50% 48% 48%/46% 46% 54% 54%;
+  background:radial-gradient(circle at 32% 28%,#fff 0 8%,var(--candy) 45%,color-mix(in srgb,var(--candy) 70%,#000) 100%);
+  box-shadow:0 6px 14px -6px var(--candy),inset 0 -3px 6px rgba(0,0,0,.2);
+  transform:translateY(calc(var(--fall) * 30vh));
+}
+.scrollCandyTrail .candy:nth-child(odd){transform:translateY(calc(var(--fall) * 38vh)) rotate(8deg)}
+.scrollCandyTrail .candy:nth-child(3n){transform:translateY(calc(var(--fall) * 24vh)) rotate(-10deg)}
+
+/* ============================================================
+   CATCH MOMENT
+   ============================================================ */
+.catchMoment{
+  position:relative;max-width:var(--maxw);margin:-6vh auto 0;
+  padding:0 clamp(1rem,4vw,2.4rem) 6rem;
+}
+.catchMoment > img{
+  width:100%;border-radius:var(--r);
+  box-shadow:0 50px 90px -45px rgba(255,44,136,.55);
+}
+.catchCopy{
+  position:absolute;left:clamp(2rem,8vw,7rem);top:clamp(2rem,10vw,5rem);z-index:3;max-width:24rem;
+}
+.catchCopy::before{
+  content:"";position:absolute;inset:-2rem -3rem -2rem -3rem;z-index:-1;border-radius:40px;
+  background:radial-gradient(120% 100% at 30% 35%,rgba(214,23,107,.42),rgba(214,23,107,0) 70%);
+}
+.catchCopy span{display:block;margin-bottom:.7rem;color:#fff;background:rgba(0,0,0,.18);backdrop-filter:blur(4px);padding:.35rem .8rem;border-radius:999px;width:max-content}
+.catchCopy h2{font-size:clamp(2.6rem,6vw,4.6rem);color:#fff;text-shadow:0 8px 30px rgba(143,20,80,.4)}
+.catchCopy h2 i{color:#fff}
+.catchCopy p{margin-top:1rem;color:#fff;font-size:1.05rem;max-width:24ch;text-shadow:0 2px 16px rgba(143,20,80,.5)}
+.catchTarget{
+  position:absolute;right:18%;bottom:24%;font-size:2.4rem;color:#fff;z-index:4;
+  transform:translateY(var(--catch-y));
+  filter:drop-shadow(0 6px 14px rgba(255,44,136,.7));
+  animation:spin 9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============================================================
+   POP MOMENT
+   ============================================================ */
+.popMoment{
+  max-width:var(--maxw);margin:0 auto;padding:5rem clamp(1rem,4vw,2.4rem);
+  display:grid;grid-template-columns:1.3fr .85fr;align-items:center;gap:clamp(2rem,5vw,4rem);
+}
+.sectionNo{margin-bottom:1rem;color:var(--flavor)}
+.popImageWrap{position:relative}
+.popImageWrap img{width:100%;border-radius:var(--r);box-shadow:0 40px 80px -42px rgba(255,44,136,.5)}
+.spark,.worldMedia .spark{position:absolute;top:6%;right:8%;font-size:2rem;color:var(--pink);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1) rotate(0);opacity:.7}50%{transform:scale(1.35) rotate(20deg);opacity:1}}
+.popCopy .badge{display:inline-block;margin-bottom:1.1rem;padding:.4rem .9rem;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:0 6px 16px -10px rgba(42,13,36,.4)}
+.popCopy h2{font-size:clamp(2.6rem,5.5vw,4.6rem)}
+.popCopy p{margin-top:1.2rem;color:var(--ink-soft);font-size:1.15rem;max-width:30ch}
+
+/* ============================================================
+   FLAVORS  (reactive flavor picker)
+   ============================================================ */
+.flavors{
+  position:relative;max-width:var(--maxw);margin:0 auto;
+  padding:6rem clamp(1rem,4vw,2.4rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;
+}
+.sectionHead{margin-bottom:0}
+.sectionHead p{color:var(--flavor)}
+.sectionHead h2{font-size:clamp(2.4rem,5vw,4rem);margin:.5rem 0}
+.sectionHead span{display:block;color:var(--ink-soft);font-size:1.1rem;margin-top:.4rem}
+
+.flavors .sectionHead{grid-column:1/-1;text-align:center;max-width:40rem;margin:0 auto 1rem}
+
+.flavorStage{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--r);padding:2.5rem;min-height:440px;
+  background:radial-gradient(70% 70% at 50% 35%,color-mix(in srgb,var(--flavor) 22%,#fff) 0%,transparent 70%),var(--paper);
+  box-shadow:inset 0 0 0 1px var(--line),0 30px 70px -45px color-mix(in srgb,var(--flavor) 70%,transparent);
+  transition:background .5s ease,box-shadow .5s ease;
+  overflow:hidden;
+}
+.flavorStage::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 40% at 50% 90%,color-mix(in srgb,var(--flavor) 30%,transparent),transparent 70%);opacity:.6}
+.flavorStage img{
+  position:relative;z-index:2;max-height:380px;width:auto;
+  filter:drop-shadow(0 30px 40px color-mix(in srgb,var(--flavor) 55%,transparent));
+  animation:floaty 6s ease-in-out infinite;
+}
+.flavorStage img.swapping{animation:popSwap .5s cubic-bezier(.34,1.7,.5,1)}
+@keyframes popSwap{0%{transform:scale(.7) translateY(20px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+
+.flavorCards{display:flex;flex-direction:column;gap:.7rem}
+.flavorCards button{
+  display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:1rem;align-items:center;
+  text-align:left;cursor:pointer;font-family:inherit;
+  padding:1rem 1.3rem;border-radius:20px;border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  transition:transform .3s cubic-bezier(.34,1.6,.5,1),box-shadow .3s ease,border-color .3s,background .3s;
+}
+.flavorCards button:hover{transform:translateX(6px)}
+.flavorCards button .flavorDot{grid-row:1/3;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 -3px 6px rgba(0,0,0,.25),0 4px 10px -4px currentColor}
+.flavorCards button b{font-family:'Fredoka';font-weight:600;font-size:1.25rem;line-height:1}
+.flavorCards button small{grid-column:2;color:var(--ink-soft);font-weight:500;font-size:.82rem}
+.flavorCards button p{grid-column:2;color:var(--ink-soft);font-size:.9rem;margin-top:.25rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .35s ease,margin .35s ease}
+.flavorCards button.activeFlavor{
+  background:#fff;border-color:transparent;transform:translateX(6px);
+  box-shadow:0 18px 40px -22px var(--flavor),inset 0 0 0 2px var(--flavor);
+}
+.flavorCards button.activeFlavor p{max-height:60px;opacity:1;margin-top:.35rem}
+
+/* ============================================================
+   PINK WORLD  (immersive)
+   ============================================================ */
+.pinkWorld{
+  position:relative;overflow:hidden;
+  margin:2rem 0;padding:6rem clamp(1rem,4vw,2.4rem);
+  background:linear-gradient(160deg,#ff7ab8,#ff2c88 55%,#d6176b);
+  color:#fff;
+}
+.pinkGlow{position:absolute;inset:0;background:radial-gradient(50% 60% at 80% 20%,rgba(255,255,255,.45),transparent 60%),radial-gradient(40% 50% at 10% 90%,rgba(255,255,255,.25),transparent 60%);pointer-events:none}
+.pinkWorld > *{position:relative;z-index:2}
+.pinkWorld{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:clamp(2rem,5vw,4rem);max-width:none}
+.worldCopy{max-width:var(--maxw);justify-self:end;padding-left:clamp(0px,8vw,8rem)}
+.worldCopy p{color:rgba(255,255,255,.85)}
+.worldCopy h2{font-size:clamp(3rem,7vw,6rem);margin:.5rem 0}
+.worldCopy h2 i{color:#fff}
+.worldCopy span{display:block;font-size:1.2rem;color:rgba(255,255,255,.9);max-width:26ch;margin-top:.6rem}
+.worldMedia{position:relative;padding-right:clamp(0px,4vw,3rem)}
+.worldMedia img{width:100%;border-radius:var(--r);box-shadow:0 50px 90px -40px rgba(120,0,55,.7)}
+.worldLabel{position:absolute;left:-6%;bottom:8%;background:#fff;color:var(--pink);font-family:'Fredoka';font-weight:600;font-size:1.3rem;padding:.8rem 1.2rem;border-radius:18px;box-shadow:0 16px 36px -14px rgba(120,0,55,.6);line-height:1.1}
+.worldLabel small{font-family:'Outfit';font-weight:500;color:var(--ink-soft);font-size:.7rem;letter-spacing:.15em}
+.pinkWorld .candy{position:absolute;width:30px;height:38px;border-radius:50% 50% 48% 48%/46% 46% 54% 54%;background:radial-gradient(circle at 32% 28%,#fff 0 10%,var(--candy) 50%,color-mix(in srgb,var(--candy) 70%,#000));box-shadow:0 8px 18px -6px rgba(0,0,0,.3);z-index:3}
+.pinkWorld .wc1{top:14%;left:46%;animation:floaty 5s ease-in-out infinite}
+.pinkWorld .wc2{top:62%;left:40%;animation:floaty 6.5s ease-in-out .5s infinite}
+.pinkWorld .wc3{top:30%;left:54%;width:22px;height:28px;animation:floaty 4.5s ease-in-out .2s infinite}
+
+/* ============================================================
+   THE POPPI EFFECT  (3 steps)
+   ============================================================ */
+.effect{max-width:var(--maxw);margin:0 auto;padding:6rem clamp(1rem,4vw,2.4rem)}
+.effect .sectionHead{text-align:center;max-width:40rem;margin:0 auto 3rem}
+.stepGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.stepCard{
+  position:relative;padding:2.4rem 2rem;border-radius:var(--r);
+  background:var(--paper);border:1px solid var(--line);overflow:hidden;
+  box-shadow:0 24px 50px -38px rgba(42,13,36,.4);
+  transition:transform .35s cubic-bezier(.34,1.5,.5,1),box-shadow .35s ease;
+}
+.stepCard:hover{transform:translateY(-8px);box-shadow:0 32px 60px -34px color-mix(in srgb,var(--flavor) 60%,transparent)}
+.stepCard:nth-child(1){--c:var(--pink)} .stepCard:nth-child(2){--c:var(--orange)} .stepCard:nth-child(3){--c:var(--blue)}
+.stepCard span{font-family:'Fredoka';font-weight:700;font-size:3.4rem;color:color-mix(in srgb,var(--c) 35%,transparent);line-height:1}
+.stepIcon{position:absolute;top:2.4rem;right:2rem;width:54px;height:54px;display:grid;place-items:center;border-radius:50%;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 60%,#fff));box-shadow:0 10px 24px -10px var(--c)}
+.stepCard h3{font-size:2rem;margin:.9rem 0 .4rem}
+.stepCard p{color:var(--ink-soft);font-size:1.05rem}
+
+/* ============================================================
+   CAMPAIGN  (video + storyboard)
+   ============================================================ */
+.campaign{max-width:var(--maxw);margin:0 auto;padding:5rem clamp(1rem,4vw,2.4rem)}
+.campaignIntro{text-align:center;max-width:44rem;margin:0 auto 3rem}
+.campaignIntro p{color:var(--flavor)}
+.campaignIntro h2{font-size:clamp(2.6rem,6vw,5rem);margin:.5rem 0}
+.campaignIntro span{display:block;color:var(--ink-soft);font-size:1.15rem;margin-top:.5rem}
+.campaign{display:grid}
+.campaignIntro{grid-column:1/-1}
+
+/* landscape 16:9 film, full width, storyboard below */
+.campaign{display:block}
+.videoFrame{
+  position:relative;border-radius:var(--r);overflow:hidden;background:#1a0612;
+  box-shadow:0 50px 90px -40px rgba(255,44,136,.5);
+  aspect-ratio:16/9;width:100%;max-width:1000px;margin:0 auto;
+}
+.videoFrame video{width:100%;height:100%;object-fit:cover;display:block}
+.storyCard{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:1.6rem;box-shadow:0 30px 60px -42px rgba(42,13,36,.4);
+  max-width:1100px;margin:2.5rem auto 0;
+  display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:center;
+}
+.storyCard img{width:100%;max-width:280px;border-radius:18px}
+.storySteps{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.storySteps span{display:flex;flex-direction:column;gap:.2rem;font-size:.78rem;color:var(--ink-soft);font-weight:500;padding:.6rem;border-radius:12px;background:rgba(255,44,136,.06)}
+.storySteps b{font-family:'Fredoka';font-weight:600;font-size:1.1rem;color:var(--flavor)}
+
+/* ============================================================
+   DESIGN SYSTEM
+   ============================================================ */
+.system{max-width:var(--maxw);margin:0 auto;padding:6rem clamp(1rem,4vw,2.4rem)}
+.system .sectionHead{text-align:center;max-width:42rem;margin:0 auto 3rem}
+.systemGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.systemCard{
+  position:relative;padding:1.6rem;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);
+  box-shadow:0 24px 50px -40px rgba(42,13,36,.4);
+  transition:transform .35s cubic-bezier(.34,1.5,.5,1);
+}
+.systemCard:hover{transform:translateY(-6px)}
+.systemCard > span{position:absolute;top:1.2rem;right:1.4rem;font-family:'Fredoka';font-weight:700;color:var(--line);font-size:1.4rem}
+.cardVisual{height:180px;border-radius:18px;overflow:hidden;display:grid;place-items:center;margin-bottom:1.2rem;background:var(--cream)}
+.cardVisual img{height:100%;width:100%;object-fit:cover}
+.systemCard h3{font-size:1.45rem;margin-bottom:.4rem}
+.systemCard p{color:var(--ink-soft);font-size:.95rem}
+.swatches{display:flex;gap:.5rem}
+.swatches i{width:34px;height:54px;border-radius:999px;box-shadow:inset 0 -4px 8px rgba(0,0,0,.25)}
+.candyCluster{display:flex;gap:.5rem}
+.candyCluster .candy{width:34px;height:44px;border-radius:50% 50% 48% 48%/46% 46% 54% 54%;background:radial-gradient(circle at 32% 28%,#fff 0 10%,var(--candy) 50%,color-mix(in srgb,var(--candy) 70%,#000));box-shadow:0 8px 16px -6px var(--candy)}
+.motionMark{font-family:'Fredoka';font-weight:700;font-size:2.4rem;text-align:center;color:var(--pink);line-height:1.1}
+
+/* ============================================================
+   FINAL / CONTACT
+   ============================================================ */
+.final{
+  position:relative;max-width:var(--maxw);margin:2rem auto 0;
+  padding:6rem clamp(1rem,4vw,2.4rem) 2rem;
+  display:grid;grid-template-columns:1.05fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center;
+}
+.finalCopy p{color:var(--flavor)}
+.finalCopy h2{font-size:clamp(2.6rem,6vw,4.8rem);margin:.6rem 0}
+.finalCopy span{display:block;color:var(--ink-soft);font-size:1.1rem;margin:1.2rem 0 2rem;max-width:46ch}
+.darkButton{
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:#fff;font-weight:600;font-size:1.05rem;
+  padding:.95rem 1.7rem;border-radius:999px;background:var(--ink);
+  box-shadow:0 18px 40px -16px rgba(42,13,36,.7);transition:transform .3s cubic-bezier(.34,1.7,.5,1)}
+.darkButton:hover{transform:translateY(-3px) scale(1.03)}
+.finalCollage{position:relative}
+.collageMain{width:100%;border-radius:var(--r);box-shadow:0 50px 90px -40px rgba(255,44,136,.55)}
+.collageSmall{position:absolute;right:-4%;bottom:-8%;width:34%;border-radius:18px;border:6px solid var(--paper);box-shadow:0 24px 50px -22px rgba(42,13,36,.5);transform:rotate(5deg)}
+
+/* nav back-to-studio link */
+.navStudio{color:var(--ink-soft)!important;font-weight:600}
+.navStudio::after{background:var(--purple)!important}
+
+/* ============================================================
+   BW-FLAG  (Brand Worlds Studio · concept — floating back-pill)
+   The studio's signature frame element, consistent across worlds.
+   ============================================================ */
+.bw-flag{
+  position:fixed;bottom:26px;left:26px;z-index:60;display:inline-flex;align-items:center;gap:10px;
+  font-family:Georgia,'Heebo',serif;font-weight:600;font-size:13px;letter-spacing:.1em;direction:ltr;
+  color:#F2EBDC;background:rgba(21,32,46,.62);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(242,235,220,.28);border-radius:100px;padding:9px 16px;text-decoration:none;
+  box-shadow:0 12px 32px -14px rgba(21,32,46,.7);
+  transition:background .35s,transform .35s,box-shadow .35s;
+}
+.bw-flag:hover{background:rgba(21,32,46,.88);transform:translateY(-2px);box-shadow:0 0 22px rgba(194,138,90,.32)}
+.bw-flag .bw-dot{width:7px;height:7px;border-radius:50%;background:#C28A5A;box-shadow:0 0 8px #C28A5A}
+.bw-flag .bw-arr{font-size:14px;transition:transform .3s ease}
+.bw-flag:hover .bw-arr{transform:translateX(-3px)}
+@media(max-width:620px){.bw-flag{bottom:16px;left:16px;font-size:11px;padding:8px 13px}}
+
+/* ============================================================
+   STUDIO NOTE  (Hebrew layer — Hagit's voice to her audience)
+   ============================================================ */
+.studioNote{
+  font-family:'Heebo','Outfit',sans-serif;
+  max-width:var(--maxw);margin:2rem auto 0;padding:5rem clamp(1.2rem,4vw,2.4rem);
+}
+.studioNoteInner{
+  position:relative;border-radius:var(--r);
+  padding:clamp(2rem,5vw,3.6rem);
+  background:linear-gradient(150deg,#fff,var(--paper));
+  border:1px solid var(--line);
+  box-shadow:0 40px 80px -50px rgba(42,13,36,.45);
+  overflow:hidden;
+}
+.studioNoteInner::before{
+  content:"";position:absolute;top:-30%;left:-10%;width:46%;height:160%;
+  background:radial-gradient(circle,rgba(255,44,136,.16),transparent 70%);pointer-events:none;
+}
+.studioKicker{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;color:var(--pink);margin-bottom:.9rem}
+.studioNote h2{font-family:'Fredoka','Heebo',sans-serif;font-size:clamp(1.9rem,4.4vw,3.1rem);line-height:1.12;color:var(--ink);position:relative}
+.studioLede{font-size:clamp(1.1rem,2vw,1.32rem);color:var(--ink-soft);max-width:50ch;margin:1.1rem 0 .5rem;line-height:1.6}
+.studioGrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);margin:2.4rem 0 1.6rem;position:relative}
+.studioGrid h3{font-family:'Fredoka','Heebo',sans-serif;font-size:1.4rem;color:var(--pink);margin-bottom:.5rem}
+.studioGrid p{color:var(--ink-soft);font-size:1.04rem;line-height:1.75}
+.studioBuilt{font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:.02em;font-size:clamp(1.2rem,2.4vw,1.7rem);
+  background:linear-gradient(120deg,var(--pink),var(--orange) 40%,var(--blue) 75%,var(--purple));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  margin:1.4rem 0 2rem;text-align:left}
+.studioLinks{display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;align-items:center}
+.studioLinks .darkButton{background:linear-gradient(135deg,var(--pink),#ff5fa6);box-shadow:0 16px 34px -14px rgba(255,44,136,.7)}
+
+/* ============================================================
+   SITE FOOTER  (internal links back to the studio)
+   ============================================================ */
+.siteFoot{
+  font-family:'Heebo','Outfit',sans-serif;
+  max-width:var(--maxw);margin:3rem auto 0;padding:2.4rem clamp(1.2rem,4vw,2.4rem) 3rem;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem;
+}
+.footLinks{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem}
+.footLinks a{text-decoration:none;color:var(--ink);font-weight:600;font-size:1rem;position:relative;transition:color .3s}
+.footLinks a:hover{color:var(--pink)}
+.footMeta{font-size:.82rem;color:var(--ink-soft);letter-spacing:.03em}
+.footMeta a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+.footMeta a:hover{color:var(--pink)}
+@media (max-width:760px){
+  .studioGrid{grid-template-columns:1fr}
+  .siteFoot{flex-direction:column;align-items:flex-start}
+}
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============================================================
+   DESKTOP — full-bleed, flush THROW → CATCH (like mobile)
+   Both scenes go edge-to-edge and stack, so the candy stream
+   pours straight from her throwing hand into her catching hands.
+   ============================================================ */
+@media (min-width:921px){
+  .hero{max-width:none;margin:0;padding:0;display:block;min-height:0}
+  .heroVisual{position:static;z-index:1}
+  .heroProduct{width:100%;border-radius:0;box-shadow:none;animation:none;display:block}
+  .heroCopy{
+    position:absolute;left:clamp(2.5rem,6vw,7rem);top:50%;transform:translateY(-50%);
+    z-index:5;max-width:38rem;
+  }
+  .heroCopy::before{
+    content:"";position:absolute;inset:-2.5rem -5rem -2.5rem -4rem;z-index:-1;
+    border-radius:50%;
+    background:radial-gradient(66% 64% at 38% 50%,rgba(255,247,242,.94),rgba(255,247,242,0) 72%);
+  }
+  .scrollCue{right:clamp(2.5rem,6vw,7rem);left:auto;bottom:1.6rem;z-index:5}
+
+  /* live candy bridge pouring over the hero→catch seam */
+  .scrollCandyTrail{
+    position:relative;z-index:6;height:0;max-width:none;margin:0;
+    display:block;padding:0;opacity:1;overflow:visible;
+  }
+  .scrollCandyTrail .candy{
+    position:absolute;top:-72px;width:22px;height:28px;
+    animation:bridgeFall 1.9s cubic-bezier(.4,.08,.7,1) infinite;
+  }
+  @keyframes bridgeFall{
+    0%{opacity:0;transform:translateY(-46px) scale(.5) rotate(0)}
+    16%{opacity:1}
+    84%{opacity:1}
+    100%{opacity:0;transform:translateY(168px) scale(1) rotate(34deg)}
+  }
+  .scrollCandyTrail .candy:nth-child(1){left:39.5%;animation-delay:0s}
+  .scrollCandyTrail .candy:nth-child(2){left:43%;animation-delay:.24s}
+  .scrollCandyTrail .candy:nth-child(3){left:41%;animation-delay:.48s}
+  .scrollCandyTrail .candy:nth-child(4){left:45%;animation-delay:.72s}
+  .scrollCandyTrail .candy:nth-child(5){left:40%;animation-delay:.96s}
+  .scrollCandyTrail .candy:nth-child(6){left:44%;animation-delay:1.2s}
+  .scrollCandyTrail .candy:nth-child(7){left:42%;animation-delay:1.44s}
+  .scrollCandyTrail .candy:nth-child(8){left:46%;animation-delay:1.68s}
+
+  .catchMoment{max-width:none;margin:0;padding:0}
+  .catchMoment > img{width:100%;border-radius:0;box-shadow:none;display:block}
+  .catchCopy{left:clamp(2.5rem,6vw,7rem);top:clamp(3rem,7vw,6rem)}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:920px){
+  .navLinks{display:none}
+  .hero{grid-template-columns:1fr;padding-top:7rem;text-align:center;min-height:auto}
+  .heroCopy .actions{justify-content:center}
+  .lede{margin-left:auto;margin-right:auto}
+  .scrollCandyTrail{padding-right:8%;justify-content:center}
+  .popMoment,.flavors,.pinkWorld,.final,.campaign{grid-template-columns:1fr}
+  .popMoment{text-align:center}
+  .pinkWorld{padding-bottom:7rem}
+  .worldCopy{justify-self:center;text-align:center;padding-left:0}
+  .worldCopy span{margin-left:auto;margin-right:auto}
+  .worldMedia{padding-right:0}
+  .worldLabel{left:4%}
+  .stepGrid{grid-template-columns:1fr}
+  .systemGrid{grid-template-columns:repeat(2,1fr)}
+  .flavorStage{min-height:360px}
+  .catchCopy{position:static;margin-bottom:1.5rem;max-width:none}
+  .catchCopy span,.catchCopy h2,.catchCopy p{color:var(--ink);text-shadow:none}
+  .catchCopy span{background:rgba(255,44,136,.12);color:var(--pink)}
+  .catchTarget{display:none}
+  .finalCollage{margin-bottom:2rem}
+  /* mobile: stack the storyboard cleanly BELOW the main image (no overlap) */
+  .collageSmall{position:static;right:auto;bottom:auto;width:58%;margin:1.1rem auto 0;display:block;transform:rotate(-2deg)}
+}
+@media (max-width:560px){
+  .systemGrid{grid-template-columns:1fr}
+  .storySteps{grid-template-columns:repeat(2,1fr)}
+  .collageSmall{width:42%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .heroProduct,.flavorStage img{animation:none}
+  html{scroll-behavior:auto}
+}
