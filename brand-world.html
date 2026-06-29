@@ -1175,9 +1175,10 @@
         }
         function gaEvent(name, params) { if (window.gtag) gtag('event', name, params || {}); }
 
-        // 1) Confirmed form lead (already wired) → Meta "Lead" + GA4 "generate_lead".
-        document.addEventListener('lead:intake:success', function () {
-            fbTrack('Lead'); gaEvent('generate_lead', { method: 'form' });
+        // 1) Confirmed lead (form OR agent chat) → Meta "Lead" + GA4 "generate_lead".
+        document.addEventListener('lead:intake:success', function (e) {
+            var src = (e && e.detail && e.detail.source) || 'form';
+            fbTrack('Lead'); gaEvent('generate_lead', { method: src });
         });
 
         // 2) WhatsApp clicks → Meta "Contact" (the channel your only lead actually used).

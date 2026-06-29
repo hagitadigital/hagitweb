@@ -517,6 +517,14 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
       appendMessage("bot", reply);
       messages.push({ role: "assistant", content: reply });
 
+      // Lead captured via the agent → fire the same conversion signal the form uses,
+      // so Meta "Lead" + GA4 "generate_lead" count chat leads too (tagged source: agent).
+      if (data.lead_captured) {
+        document.dispatchEvent(
+          new CustomEvent("lead:intake:success", { detail: { source: "agent" } })
+        );
+      }
+
     } catch (err) {
       removeTyping();
       appendMessage("bot", "נראה שיש בעיית חיבור. אפשר ליצור קשר ישירות עם חגית 💌");
