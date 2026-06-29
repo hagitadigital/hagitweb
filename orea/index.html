@@ -272,6 +272,35 @@
   .cta:hover{transform:translateY(-3px);background:var(--ink);color:var(--cream)}
   .cta .dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
 
+  /* ---------- closer film ---------- */
+  .film{position:relative;z-index:5;margin-top:46px;width:min(560px,86vw);aspect-ratio:16/9;
+    border-radius:14px;overflow:hidden;cursor:pointer;
+    box-shadow:0 28px 70px rgba(34,12,8,.45);outline:1px solid rgba(244,238,225,.22);
+    transition:transform .6s var(--ease),box-shadow .6s}
+  .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(34,12,8,.5));pointer-events:none}
+  .film:hover{transform:translateY(-4px);box-shadow:0 36px 90px rgba(34,12,8,.55)}
+  .film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
+    width:62px;height:62px;border-radius:50%;background:rgba(244,238,225,.92);
+    display:grid;place-items:center;transition:transform .5s var(--ease),background .5s}
+  .film-play::before{content:"";margin-left:4px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
+  .film:hover .film-play{transform:translate(-50%,-50%) scale(1.08);background:var(--cream)}
+  .film-cap{position:absolute;left:18px;bottom:14px;z-index:3;color:var(--cream);
+    font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.92}
+  body.lang-he .film-cap{left:auto;right:18px;direction:rtl}
+
+  /* ---------- film lightbox ---------- */
+  .film-lb{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(20,8,6,.92);backdrop-filter:blur(6px);padding:5vw;
+    opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+  .film-lb[aria-hidden="false"]{opacity:1;visibility:visible}
+  .film-lb video{width:min(1100px,94vw);max-height:88vh;border-radius:12px;
+    box-shadow:0 40px 120px rgba(0,0,0,.6);background:#000}
+  .film-lb-close{position:absolute;top:24px;right:28px;width:46px;height:46px;border-radius:50%;
+    border:1px solid rgba(244,238,225,.4);background:transparent;color:var(--cream);
+    font-size:26px;line-height:1;cursor:pointer;transition:background .3s,transform .3s}
+  .film-lb-close:hover{background:rgba(244,238,225,.14);transform:rotate(90deg)}
+
   /* ---------- footer ---------- */
   footer{background:var(--ink);color:var(--cream);padding:80px 8vw 50px;
     display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-end}
@@ -529,9 +558,26 @@
   <div class="inner">
     <div class="he">אני רוצה את זה. <em>בשבילי.</em></div>
     <div class="en">I want this — for myself.</div>
-    <button class="cta" data-he="להיכנס אל העולם <span class='dot'></span>">Step into the world <span class="dot"></span></button>
+    <button class="cta" id="enterWorld" data-he="להיכנס אל העולם <span class='dot'></span>">Step into the world <span class="dot"></span></button>
+
+    <div class="film" id="filmFrame" role="button" tabindex="0"
+         aria-label="Play the ORÉA film" data-he-aria="הפעלת סרט ORÉA">
+      <video id="filmAmbient" muted loop playsinline preload="metadata" poster="img/lounge.jpg">
+        <source src="orea-film.mp4" type="video/mp4">
+      </video>
+      <span class="film-play" aria-hidden="true"></span>
+      <span class="film-cap" data-he="הסרט · ORÉA">The film · ORÉA</span>
+    </div>
   </div>
 </section>
+
+<!-- ============ FILM LIGHTBOX ============ -->
+<div class="film-lb" id="filmLb" aria-hidden="true">
+  <button class="film-lb-close" id="filmLbClose" aria-label="Close" data-he-aria="סגירה">&times;</button>
+  <video id="filmFull" controls playsinline preload="none">
+    <source src="orea-film.mp4" type="video/mp4">
+  </video>
+</div>
 
 <footer>
   <div class="f-brand">ORÉA</div>
@@ -690,6 +736,42 @@
     btn.addEventListener('click', function(){ set(lang==='he'?'en':'he'); });
     var saved; try{ saved = localStorage.getItem('orea-lang'); }catch(e){}
     if(saved==='he') set('he');
+  })();
+</script>
+<script>
+  /* ---- closer film: ambient autoplay + fullscreen lightbox ---- */
+  (function(){
+    var frame   = document.getElementById('filmFrame');
+    var ambient = document.getElementById('filmAmbient');
+    var enter   = document.getElementById('enterWorld');
+    var lb      = document.getElementById('filmLb');
+    var full    = document.getElementById('filmFull');
+    var lbClose = document.getElementById('filmLbClose');
+    if(!frame||!lb) return;
+
+    // ambient muted loop plays only while in view
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ ambient.play().catch(function(){}); } else { ambient.pause(); } });
+    },{threshold:.35});
+    io.observe(frame);
+
+    function open(){
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      try{ full.currentTime=0; }catch(e){}
+      full.play().catch(function(){});
+    }
+    function close(){
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      full.pause();
+    }
+    enter.addEventListener('click', open);
+    frame.addEventListener('click', open);
+    frame.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.getAttribute('aria-hidden')==='false') close(); });
   })();
 </script>
 </body>
