@@ -90,14 +90,14 @@ section{position:relative}
   cursor:default;user-select:none;
 }
 .wordmark span{display:block}
-.wordmark .base{color:#242a32;} /* dim, embossed */
+.wordmark .base{color:#59626e;} /* ghosted but clearly legible */
 .wordmark .lit{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,var(--copper-lt),#f3ede3 55%,var(--copper));
+  background:linear-gradient(180deg,var(--copper-lt),#f7f2ea 55%,var(--copper));
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  -webkit-mask-image:radial-gradient(circle var(--r,240px) at var(--mx,50%) var(--my,42%), #000 0%, rgba(0,0,0,.55) 42%, transparent 66%);
-  mask-image:radial-gradient(circle var(--r,240px) at var(--mx,50%) var(--my,42%), #000 0%, rgba(0,0,0,.55) 42%, transparent 66%);
-  filter:drop-shadow(0 0 26px rgba(219,169,120,.35));
+  -webkit-mask-image:radial-gradient(circle var(--r,340px) at var(--mx,50%) var(--my,42%), #000 0%, rgba(0,0,0,.7) 48%, transparent 72%);
+  mask-image:radial-gradient(circle var(--r,340px) at var(--mx,50%) var(--my,42%), #000 0%, rgba(0,0,0,.7) 48%, transparent 72%);
+  filter:drop-shadow(0 0 34px rgba(219,169,120,.5));
   transition:opacity .4s ease;
 }
 .hero__tag{position:relative;z-index:4}
