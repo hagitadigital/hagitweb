@@ -17,7 +17,7 @@
     })();
     </script>
 
-    <!-- Meta Pixel Code (fbq stub fires immediately + queues; the heavy fbevents.js loads on first engagement) -->
+    <!-- Meta Pixel Code (loads immediately on this paid LP — the campaign optimizes on LPV, so every PageView must be sent even on a fast bounce) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,20 +26,20 @@
     n.queue=[]}(window, document);
     fbq('init', '1326960187891724');
     fbq('track', 'PageView');
-    window.__onFirstEngage(function () {
+    (function () {
       var t = document.createElement('script'); t.async = !0;
       t.src = 'https://connect.facebook.net/en_US/fbevents.js';
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(t, s);
-    });
+    })();
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <title>העסק שלך גדל. הזמן שגם המותג ייראה ככה | Brand Worlds Studio</title>
-    <meta name="description" content="התרחבת — וכל נכס התחיל לדבר בשפה אחרת: האתר, הפיד, הרילים, האימייל. מותג חזק לא נראה כמו אוסף נכסים; הוא מרגיש כמו עולם אחד. אני בונה לך עולם מותג עם DNA אחד שמחזיק הכול. אבחון שפה מותגית · 30 דקות · בלי עלות.">
+    <title>העסק שלך נראה פרימיום במציאות. הזמן שגם הדיגיטל ירגיש ככה | Brand Worlds Studio</title>
+    <meta name="description" content="העסק שלך נראה פרימיום במציאות — אבל בדיגיטל כל נכס מדבר בשפה אחרת: האתר, הפיד, הקמפיין, האימייל. אני בונה עולם מותג דיגיטלי אחד: אתר, תוכן, וידאו ושפה אחת שנראית יקרה, ברורה וזכירה. אבחון שפה מותגית · 30 דקות · בלי עלות.">
     <meta name="keywords" content="עולם מותג, Brand World, עקביות מותג, שפת מותג אחידה, מיתוג אחרי צמיחה, מיתוג מחדש, Brand DNA, אתר מונפש, מותג לייפסטייל, מיתוג אופנה, AI למותגים, אבחון שפה מותגית, אבחון מותג, חגית אנטבי, BrandOS Custom">
     <meta name="author" content="Hagit Antebi">
     <meta name="robots" content="index, follow">
@@ -52,14 +52,14 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hagitantebi.co.il/brand-world.html">
-    <meta property="og:title" content="העסק שלך כבר גדל. עכשיו הזמן שגם המותג ייראה ככה.">
-    <meta property="og:description" content="כשגדלת, כל נכס התחיל לדבר בשפה אחרת. אני מאחדת את האתר, התוכן והווידאו לעולם מותג אחד — DNA אחד, שפה אחת. אבחון שפה מותגית · בלי עלות.">
+    <meta property="og:title" content="העסק שלך נראה פרימיום במציאות. אבל בדיגיטל — הוא עוד לא מרגיש ככה.">
+    <meta property="og:description" content="כשכל נכס מדבר בשפה אחרת — האתר, הפיד, הקמפיין — הלקוח לא מרגיש מותג. אני מאחדת הכול לעולם מותג אחד: DNA אחד, שפה אחת. אבחון שפה מותגית · בלי עלות.">
     <meta property="og:image" content="https://hagitantebi.co.il/aurelle/og.jpg">
     <meta property="og:locale" content="he_IL">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="העסק שלך כבר גדל. עכשיו הזמן שגם המותג ייראה ככה.">
-    <meta name="twitter:description" content="כשגדלת, כל נכס מדבר בשפה אחרת. אני מאחדת אתר, תוכן ווידאו לעולם מותג אחד — DNA אחד, שפה אחת. אבחון שפה מותגית · בלי עלות.">
+    <meta name="twitter:title" content="העסק שלך נראה פרימיום במציאות. אבל בדיגיטל — הוא עוד לא מרגיש ככה.">
+    <meta name="twitter:description" content="כשכל נכס מדבר בשפה אחרת, הלקוח לא מרגיש מותג. אני מאחדת אתר, תוכן ווידאו לעולם מותג אחד — DNA אחד, שפה אחת. אבחון שפה מותגית · בלי עלות.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/aurelle/og.jpg">
 
     <!-- LCP: paint the hero poster as early as possible -->
@@ -334,6 +334,16 @@
         .lead-form__note { margin-top: 14px; font-size: 0.78rem; text-align: center; color: rgba(250,248,243,0.5); }
         .lead-form__wa { display: block; margin-top: 18px; text-align: center; font-size: 0.9rem; color: rgba(250,248,243,0.75); text-decoration: none; }
         .lead-form__wa a, .lead-form__wa strong { color: var(--color-copper); }
+        .lead-form__wa-btn {
+            display: flex; align-items: center; justify-content: center; gap: 9px;
+            width: 100%; margin-top: 12px; padding: 15px;
+            font-family: var(--font-body-he); font-size: 1rem; font-weight: 500;
+            background: transparent; color: var(--color-cream);
+            border: 1px solid rgba(37,211,102,0.65); text-decoration: none;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .lead-form__wa-btn:hover { background: rgba(37,211,102,0.14); border-color: #25D366; }
+        .lead-form__wa-btn svg { width: 18px; height: 18px; color: #25D366; flex-shrink: 0; }
 
         /* FAQ */
         .faq-list { max-width: 800px; margin: 0 auto; }
@@ -602,7 +612,9 @@
                 <a href="#audit" class="btn btn-primary">לאבחון שפה מותגית
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <a href="#worlds" class="btn btn-ghost">לראות עולמות לדוגמה</a>
+                <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" class="btn btn-ghost" target="_blank" rel="noopener">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+                    או ישר בוואטסאפ</a>
             </div>
         </div>
 
@@ -779,8 +791,8 @@
                   </video>
                   <span class="world__live">Live</span>
                 </div>
-                <div class="t"><img src="aurelle/site-collection.jpeg" alt="AURELLE — ליין מוצרים" loading="lazy"></div>
-                <div class="t"><img src="aurelle/site-clinic-kit.jpeg" alt="AURELLE — Clinic Kit ממותג" loading="lazy" style="object-position:50% 30%"></div>
+                <div class="t"><img src="aurelle/site-collection-sm.webp" alt="AURELLE — ליין מוצרים" loading="lazy"></div>
+                <div class="t"><img src="aurelle/site-clinic-kit-sm.webp" alt="AURELLE — Clinic Kit ממותג" loading="lazy" style="object-position:50% 30%"></div>
                 <div class="t t--agent"><span>"שאלי אותי<br>על AURELLE"</span></div>
               </div>
             </div>
@@ -834,7 +846,7 @@
                 <p class="section-lede">כל אחד מאלה הוא עולם מותג שלם — אתר, תוכן ווידאו שכולם נגזרים מ-DNA אחד. אותו סטודיו, ביצוע שונה לחלוטין. תיכנסי, תגללי, תרגישי את השפה האחת בעצמך.</p>
             </div>
             <div class="worlds-grid">
-                <a href="aurelle/" class="world-card reveal">
+                <a href="aurelle/" class="world-card reveal" target="_blank" rel="noopener">
                     <video class="world-card__media" muted loop playsinline preload="none" data-io poster="aurelle/assets/hero-poster.jpg" aria-hidden="true">
                         <source src="aurelle/assets/hero-opt.mp4" type="video/mp4">
                     </video>
@@ -844,7 +856,7 @@
                         <span class="world-card__cat">Skincare · Beauty</span>
                     </div>
                 </a>
-                <a href="solara-wild/" class="world-card reveal">
+                <a href="solara-wild/" class="world-card reveal" target="_blank" rel="noopener">
                     <video class="world-card__media" muted loop playsinline preload="none" data-io poster="solara-wild/og.jpg" aria-hidden="true">
                         <source src="solara-wild/hero.mp4" type="video/mp4">
                     </video>
@@ -854,7 +866,7 @@
                         <span class="world-card__cat">Sun · Lifestyle</span>
                     </div>
                 </a>
-                <a href="vela-motion/" class="world-card reveal">
+                <a href="vela-motion/" class="world-card reveal" target="_blank" rel="noopener">
                     <video class="world-card__media" muted loop playsinline preload="none" data-io poster="vela-motion/og.jpg" aria-hidden="true">
                         <source src="vela-motion/hero.mp4" type="video/mp4">
                     </video>
@@ -864,7 +876,7 @@
                         <span class="world-card__cat">Fashion · Atelier</span>
                     </div>
                 </a>
-                <a href="aerea.html" class="world-card reveal">
+                <a href="aerea.html" class="world-card reveal" target="_blank" rel="noopener">
                     <video class="world-card__media" muted loop playsinline preload="none" data-io poster="images/aerea/aerea-card-poster.jpg" aria-hidden="true">
                         <source src="images/aerea/aerea-card.mp4" type="video/mp4">
                     </video>
@@ -874,7 +886,7 @@
                         <span class="world-card__cat">Fragrance · Luxury</span>
                     </div>
                 </a>
-                <a href="basalt/" class="world-card reveal">
+                <a href="basalt/" class="world-card reveal" target="_blank" rel="noopener">
                     <img class="world-card__media" src="basalt/assets/shot.jpg" alt="BASALT — עולם מותג לרפואת עור ואסתטיקה לגברים" loading="lazy">
                     <span class="world-card__live">Live</span>
                     <div class="world-card__overlay">
@@ -1020,7 +1032,7 @@
                 <h2 class="section-title">סטודיו של אחת + מערך סוכני AI</h2>
             </div>
             <div class="why reveal">
-                <img class="why__photo" src="hagit-portrait-2026.png" alt="חגית אנטבי — Brand Worlds Architect" loading="lazy" width="116" height="116">
+                <img class="why__photo" src="hagit-portrait-232.webp" alt="חגית אנטבי — Brand Worlds Architect" loading="lazy" width="116" height="116">
                 <p class="why__copy">אני <strong>חגית אנטבי</strong>, Brand Worlds Architect עם 15+ שנות ניסיון בבניית מותגים דיגיטליים. את עובדת <strong>ישירות איתי</strong> — מהשיחה הראשונה ועד ההפעלה. מערך סוכני AI שפיתחתי מבצע את העבודה התפעולית, בליווי השיפוט המקצועי שלי. זה מאפשר תפוקה של צוות שלם, בקשר אישי של אדם אחד.</p>
                 <span class="why__pull">Built to Strategy. Run by AI.</span>
             </div>
@@ -1083,7 +1095,7 @@
 
                         <div class="field">
                             <label for="bw-phone">וואטסאפ *</label>
-                            <input type="tel" id="bw-phone" name="phone" required autocomplete="tel" placeholder="050-0000000">
+                            <input type="tel" id="bw-phone" name="phone" required autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{9,15}" title="מספר טלפון תקין — ספרות בלבד, למשל 050-0000000" placeholder="050-0000000">
                         </div>
                         <div class="field">
                             <label for="bw-link">קישור לאתר או לאינסטגרם (לא חובה)</label>
@@ -1119,8 +1131,10 @@
                         <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
 
                         <button type="submit" class="lead-form__submit">בואי נדבר →</button>
+                        <a class="lead-form__wa-btn" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.04c-.24.68-1.4 1.3-1.93 1.38-.49.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-2.99 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36l.55.01c.18 0 .41-.07.64.49.24.57.82 1.99.89 2.13.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.69-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.61.76 1.89.9.28.14.46.21.53.33.07.12.07.68-.17 1.36Z"/></svg>
+                            או ישירות בוואטסאפ</a>
                         <p class="lead-form__note">הפרטים שלך לא יועברו לצד שלישי.</p>
-                        <p class="lead-form__wa">מעדיפה ישירות? <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" target="_blank" rel="noopener"><strong>בוואטסאפ →</strong></a></p>
                     </form>
                 </div>
             </div>
@@ -1230,11 +1244,12 @@
             fbTrack('Lead'); gaEvent('generate_lead', { method: src });
         });
 
-        // 2) WhatsApp clicks → Meta "Contact" (the channel your only lead actually used).
-        document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(function (a) {
-            a.addEventListener('click', function () {
-                fbTrack('Contact'); gaEvent('contact', { method: 'whatsapp' });
-            });
+        // 2) WhatsApp clicks → Meta "Contact" — delegated, so wa.me links added later (FAB, error fallback, agent chat) count too.
+        document.addEventListener('click', function (e) {
+            var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]') : null;
+            if (!a) return;
+            fbTrack('Contact');
+            gaEvent('contact', { method: a.id === 'wa-fab' ? 'whatsapp_fab' : 'whatsapp' });
         });
 
         // 3) Scroll depth + "reached form" → see WHERE visitors drop off (shows up in Events Manager).
@@ -1468,12 +1483,9 @@
       var fab = document.getElementById('wa-fab');
       if (fab) {
         window.addEventListener('scroll', function(){
-          if (window.scrollY > 500) fab.classList.add('show'); else fab.classList.remove('show');
+          if (window.scrollY > 150) fab.classList.add('show'); else fab.classList.remove('show');
         }, { passive:true });
-        fab.addEventListener('click', function(){
-          if (typeof fbq === 'function') fbq('track', 'Contact');
-          if (window.gtag) gtag('event', 'contact', { method: 'whatsapp_fab' });
-        });
+        /* Contact tracking handled by the delegated wa.me click listener above */
       }
     })();
     </script>
