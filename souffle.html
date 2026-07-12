@@ -131,6 +131,8 @@
     --display:'Cormorant Garamond',serif;
     --body:'Assistant',sans-serif;
     --nav-h:64px;
+    --topbar-h:34px;
+    --head-h:calc(var(--topbar-h) + var(--nav-h));
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -150,9 +152,25 @@
   .kicker .he{letter-spacing:.08em}
   .italic{font-style:italic}
 
+  /* TOPBAR (dark sliver above nav) */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:80;height:var(--topbar-h);
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:0 5vw;background:var(--figue);color:var(--creme);font-size:12px;direction:rtl}
+  .topbar .label{opacity:.82;font-weight:500}
+  .topbar .bws{opacity:.55}
+  .topbar a{color:var(--creme);text-decoration:none;font-weight:700;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:6px;
+    border-bottom:1px solid rgba(248,240,228,.45);padding-bottom:1px;transition:border-color .3s}
+  .topbar a:hover{border-color:var(--creme)}
+  @media(max-width:680px){
+    :root{--topbar-h:30px}
+    .topbar{font-size:10.5px}
+    .topbar .bws{display:none}
+  }
+
   /* NAV */
   nav{
-    position:fixed;top:0;right:0;left:0;height:var(--nav-h);z-index:70;
+    position:fixed;top:var(--topbar-h);right:0;left:0;height:var(--nav-h);z-index:70;
     display:flex;align-items:center;justify-content:space-between;
     padding:0 5vw;
     background:rgba(248,240,228,.82);backdrop-filter:blur(14px);
@@ -165,11 +183,6 @@
   .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{font-size:13.5px;text-decoration:none;color:var(--figue-70);transition:color .2s}
   .nav-links a:hover{color:var(--abricot)}
-  .nav-back{
-    font-size:12.5px;border:1px solid var(--line);border-radius:99px;padding:7px 14px;
-    text-decoration:none;color:var(--figue-70);white-space:nowrap;transition:.2s;
-  }
-  .nav-back:hover{border-color:var(--abricot);color:var(--abricot)}
   @media(max-width:860px){.nav-links{display:none}}
 
   /* ===== LA DESCENTE — pinned stage ===== */
@@ -273,7 +286,7 @@
   /* top-row items carry their label ABOVE the image so it never dips into the row below */
   .ing.ltop .ing-label{order:-1;margin:0 0 9px}
   .inside-head{
-    position:absolute;inset-inline:0;top:calc(var(--nav-h) + 38px);z-index:15;
+    position:absolute;inset-inline:0;top:calc(var(--head-h) + 38px);z-index:15;
     text-align:center;padding:0 6vw;
     opacity:0;transform:translateY(26px);
     will-change:transform,opacity;pointer-events:none;
@@ -320,10 +333,10 @@
     overflow:hidden;
     will-change:transform;
   }
-  .d-card:nth-child(1){top:calc(var(--nav-h) + 18px)}
-  .d-card:nth-child(2){top:calc(var(--nav-h) + 32px)}
-  .d-card:nth-child(3){top:calc(var(--nav-h) + 46px)}
-  .d-card:nth-child(4){top:calc(var(--nav-h) + 60px)}
+  .d-card:nth-child(1){top:calc(var(--head-h) + 18px)}
+  .d-card:nth-child(2){top:calc(var(--head-h) + 32px)}
+  .d-card:nth-child(3){top:calc(var(--head-h) + 46px)}
+  .d-card:nth-child(4){top:calc(var(--head-h) + 60px)}
   .d-card.c-vanille{background:#F6EEDF}
   .d-card.c-abricot{background:#F3DEC6}
   .d-card.c-figue{background:#5B3B4C;color:var(--creme)}
@@ -575,6 +588,11 @@
 </head>
 <body>
 
+<div class="topbar">
+  <span class="label">קונספט אנימציה לדוגמה<span class="bws"> · Brand Worlds Studio</span></span>
+  <a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+</div>
+
 <nav>
   <a class="nav-brand" href="#" aria-label="SOUFFLÉ°">SOUFFLÉ<span class="deg" style="color:var(--abricot)">°</span></a>
   <div class="nav-links">
@@ -585,7 +603,6 @@
     <a href="#film">Le Film</a>
     <a href="#boite">La Boîte</a>
   </div>
-  <a class="nav-back" href="brand-worlds/">← כל העולמות</a>
 </nav>
 
 <!-- ===== ACT 1-4 · LA DESCENTE (pinned) ===== -->
