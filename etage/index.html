@@ -298,7 +298,8 @@
   .spec-kicker,.spec h2,.spec li,.spec-note{opacity:0}
 
   @media (max-width:820px){
-    .stage2{height:auto;width:88vw;top:38%}
+    /* smaller, higher turntable so the spec sheet never covers it */
+    .stage2{height:auto;width:min(58vw,300px);top:27%}
     .spec{
       right:50%;transform:translate(50%,0);top:auto;bottom:4svh;
       width:88vw;background:rgba(245,236,225,.55);
@@ -573,9 +574,11 @@
   }
 
   @media (max-width:640px){
-    .topbar{padding:12px 16px;font-size:9px;letter-spacing:.16em}
-    .stage{height:auto;width:92vw;max-height:78svh}
-    .copy--open{top:9vh}
+    /* keep a clear breath between the opening copy and the photo */
+    .hero{align-items:flex-end}
+    .stage{height:auto;width:min(86vw,42svh);margin-bottom:11svh}
+    .copy--open{top:6svh}
+    .copy--close{bottom:5svh}
   }
   @media (prefers-reduced-motion:reduce){
     .scroll-hint{display:none}
