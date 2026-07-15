@@ -94,6 +94,12 @@
     --ink-soft:#6E5450;
     --copper:#B57A5E;
     --bordeaux:#6B2E3A;
+
+    /* hero atmosphere — sampled from assets/cake-photo.webp */
+    --bg-hero:#E3D3C4;          /* ambient warm cream of the fabric */
+    --bg-hero-light:#F0E3D3;    /* lit pool behind the cake */
+    --bg-hero-top:#C7B3A0;      /* upper fabric shadow band */
+    --bg-hero-floor:#EFE7E0;    /* bright floor sweep at the bottom */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:auto}
@@ -133,22 +139,49 @@
     height:100vh;height:100svh;
     display:flex;align-items:center;justify-content:center;
     overflow:hidden;
+    /* one atmosphere: the photo's own fabric light, continued by the page */
+    background:
+      radial-gradient(ellipse 42% 40% at 50% 46%, var(--bg-hero-light) 0%, rgba(240,227,211,0) 72%),
+      radial-gradient(ellipse 38% 62% at 100% 24%, rgba(85,60,37,.30), rgba(85,60,37,0) 74%),
+      radial-gradient(ellipse 34% 58% at 0% 28%, rgba(133,105,81,.22), rgba(133,105,81,0) 74%),
+      linear-gradient(to bottom, var(--bg-hero-top) 0%, var(--bg-hero) 34%, #E7D9CB 64%, var(--bg-hero-floor) 88%, #EFE2DA 100%);
+    background-color:var(--bg-hero);
+  }
+  .hero-blush{
+    position:absolute;inset:0;pointer-events:none;opacity:0;
+    background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(240,205,190,.38), rgba(239,220,211,.22));
   }
   .stage{
     position:relative;
-    height:min(80vh,80svh);
+    top:4svh;                       /* the frame rides a touch low so the subhead clears the topper */
+    height:min(88vh,900px);
+    height:min(88svh,900px);
     aspect-ratio:896/1200;
     max-width:92vw;
+    /* feather: the mask lives on the shared wrapper, so the photo AND the
+       flying decorations dissolve at the same edges */
+    --fx:12%;   /* side feather */
+    --ft:7%;    /* top feather — without it the photo's top edge prints a hard line */
+    --fb:78%;   /* where the floor starts dissolving */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, #000 var(--fx), #000 calc(100% - var(--fx)), transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 var(--fb), transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0, #000 var(--fx), #000 calc(100% - var(--fx)), transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 var(--fb), transparent 100%);
+    mask-composite:intersect;
+    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   }
   .cake-photo{
     position:absolute;inset:0;
     width:100%;height:100%;object-fit:cover;
-    -webkit-mask-image:radial-gradient(ellipse 85% 72% at 50% 46%, #000 55%, transparent 82%);
-    mask-image:radial-gradient(ellipse 85% 72% at 50% 46%, #000 55%, transparent 82%);
   }
   .el{
     position:absolute;
     transform:translate(-50%,-50%);
+    opacity:0;  /* hidden until GSAP takes over — prevents the dressed-cake flash on load */
     will-change:transform,opacity;
     filter:drop-shadow(0 10px 18px rgba(61,43,42,.14));
     pointer-events:none;
@@ -178,8 +211,20 @@
     text-align:center;width:min(680px,90vw);
     direction:ltr;
   }
-  .copy--open{top:12vh}
+  .copy--open{top:5svh}
   .copy--close{bottom:9vh;opacity:0}
+  /* inner wrapper — the handoff timeline fades THIS, the dressing timeline fades
+     .copy--close itself; separate owners so the two scrubs never fight */
+  .cc-inner{position:relative;z-index:0}
+  /* same floor halo as the scroll cue — the closing line lands on air, not on the plinth */
+  .cc-inner::before{
+    content:"";position:absolute;z-index:-1;
+    inset:-50% -12%;
+    background:rgba(239,231,224,.88);
+    border-radius:50%;
+    filter:blur(30px);
+    pointer-events:none;
+  }
   .wordmark{
     font-family:'Cormorant Garamond',serif;
     font-weight:600;font-size:clamp(34px,4.6vw,58px);
@@ -198,8 +243,23 @@
   .copy--close .tagline{font-size:clamp(20px,2.4vw,30px);color:var(--ink)}
   .scroll-hint{
     position:absolute;bottom:4.5vh;left:50%;transform:translateX(-50%);
+    z-index:5;text-align:center;
+  }
+  .scroll-hint .eyebrow{
     font-size:10px;letter-spacing:.3em;text-transform:uppercase;
     color:var(--copper);direction:ltr;
+  }
+  .scroll-hint .promise{
+    margin-top:6px;font-size:14px;font-weight:300;color:var(--ink);direction:rtl;
+  }
+  /* soft floor halo — melts whatever is left of the plinth under the cue */
+  .scroll-hint::before{
+    content:"";position:absolute;z-index:-1;
+    inset:-55% -90% -20% -90%;
+    background:rgba(239,231,224,.9);
+    border-radius:50%;
+    filter:blur(26px);
+    pointer-events:none;
   }
   .scroll-hint::after{
     content:"";display:block;width:1px;height:34px;
@@ -573,11 +633,18 @@
     color:var(--copper);direction:ltr;margin-top:12px;
   }
 
+  /* shorter viewports: the copy stack is fixed-px, so the frame gives way —
+     drops a little lower (and slims a touch) to keep >=40px air under the subhead */
+  @media (max-height:950px){
+    .stage{top:8svh;--fb:74%}   /* floor dissolves sooner so the cue sits on air, not on the plinth */
+    .scroll-hint{bottom:2.8svh}
+  }
+  @media (max-height:800px){
+    .stage{top:12svh;height:min(85vh,900px);height:min(85svh,900px);--fb:72%}
+  }
   @media (max-width:640px){
-    /* keep a clear breath between the opening copy and the photo */
-    .hero{align-items:flex-end}
-    .stage{height:auto;width:min(86vw,42svh);margin-bottom:11svh}
-    .copy--open{top:6svh}
+    .stage{--fx:5%;height:auto;width:min(92vw,50svh)}
+    .copy--open{top:5svh}
     .copy--close{bottom:5svh}
   }
   @media (prefers-reduced-motion:reduce){
@@ -593,6 +660,7 @@
 </div>
 
 <section class="hero" id="hero">
+  <div class="hero-blush" id="heroBlush"></div>
   <div class="copy copy--open" id="copyOpen">
     <div class="wordmark">ÉTAGE<sup>°</sup></div>
     <div class="tagline">A love story, layered.</div>
@@ -614,11 +682,16 @@
   </div>
 
   <div class="copy copy--close" id="copyClose">
-    <div class="tagline">Your story deserves its own cake.</div>
-    <div class="subline">עוגות חתונה בעיצוב אישי, שנוצרות סביב הסיפור, האירוע והטעם שלכם</div>
+    <div class="cc-inner" id="ccInner">
+      <div class="tagline">Your story deserves its own cake.</div>
+      <div class="subline">עוגות חתונה בעיצוב אישי, שנוצרות סביב הסיפור, האירוע והטעם שלכם</div>
+    </div>
   </div>
 
-  <div class="scroll-hint" id="hint">The Dress · Scroll</div>
+  <div class="scroll-hint" id="hint">
+    <div class="eyebrow">The Dress</div>
+    <div class="promise">גללו — והיא מתלבשת</div>
+  </div>
 </section>
 
 <div class="chapter-mark"><div class="cm-inner">
@@ -890,9 +963,12 @@ tl.fromTo('#topper',
     {y:0, duration:.05, ease:'power1.out'}
   ]}, 0.68);
 
-/* 6 — completion: light warms, the room blushes, copy returns */
+/* 6 — completion: light warms, the room blushes, copy returns
+   (the hero owns its background now, so the blush happens on its own
+    overlay layer; the body tween still warms the sections after the hero) */
 tl.to('#glow',{opacity:1,duration:.14},0.84)
   .to('#stage',{scale:1.015,duration:.16,ease:'sine.out'},0.84)
+  .to('#heroBlush',{opacity:1,duration:.18},0.80)
   .to('body',{backgroundColor:'#EFDCD3',duration:.18},0.80)
   .to('#copyClose',{opacity:1,duration:.12},0.88);
 
@@ -935,11 +1011,11 @@ else setTimeout(preloadFrames,3000);
    (same cake, same spot) across the transition zone, so it reads as one
    continuous descent instead of two images with a gap */
 gsap.timeline({scrollTrigger:{trigger:'#rosalie',start:'top bottom',end:'top top',scrub:true}})
-  .to('#stage',{opacity:0,scale:.965,ease:'none',duration:.5},0)
-  .to('#copyClose',{opacity:0,ease:'none',duration:.3},0)
-  .fromTo('.cm-inner',{opacity:0},{opacity:1,duration:.25,ease:'none'},.22)
-  .to('.cm-inner',{opacity:0,duration:.2,ease:'none'},.72)
-  .fromTo('#stage2',{opacity:0,y:'6vh'},{opacity:1,y:0,duration:.4,ease:'none'},.6);
+  .to('#stage',{opacity:0,scale:.965,ease:'none',duration:.4},0)
+  .to('#ccInner',{opacity:0,ease:'none',duration:.25},0)
+  .fromTo('.cm-inner',{opacity:0},{opacity:1,duration:.2,ease:'none'},.15)
+  .to('.cm-inner',{opacity:0,duration:.18,ease:'none'},.5)
+  .fromTo('#stage2',{opacity:0,y:'3vh'},{opacity:1,y:0,duration:.5,ease:'none'},.42);
 
 const turn = {frame:0};
 const isDesktop = matchMedia('(min-width:821px)').matches;
