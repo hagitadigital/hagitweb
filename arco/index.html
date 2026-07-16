@@ -262,6 +262,10 @@
   .gate .recess{
     background:#8D7B63;
     box-shadow:inset 0 8px 30px rgba(0,0,0,.42), inset 0 0 0 1px rgba(0,0,0,.15);
+    /* isolate: without its own render surface Chrome drops the arch
+       radius clip once .shut + .enter promote to composited layers */
+    isolation:isolate;
+    transform:translateZ(0);
   }
   .gate .photo{
     position:absolute;inset:0;display:block;
@@ -298,13 +302,27 @@
     position:absolute;left:40%;top:42%;z-index:2;
     transform:translate(-50%,-30%);
     display:inline-block;padding:11px 24px;border-radius:999px;
-    background:rgba(51,48,43,.72);color:var(--sand);
+    background:rgba(51,48,43,.8);color:var(--sand);
     border:1px solid rgba(239,231,218,.5);
     font-size:13px;font-weight:600;letter-spacing:.1em;white-space:nowrap;
-    backdrop-filter:blur(3px);
     opacity:0;transition:opacity .5s ease .45s,transform .5s ease .45s;
   }
   .gate[aria-expanded="true"] .enter{opacity:1;transform:translate(-50%,-50%)}
+
+  .gate .shut{
+    position:absolute;left:50%;top:12%;z-index:2;
+    transform:translateX(-50%) scale(.8);
+    display:flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;
+    background:rgba(51,48,43,.65);color:var(--sand);
+    border:1px solid rgba(239,231,218,.5);
+    font-size:13px;line-height:1;
+    opacity:0;transition:opacity .5s ease .45s,transform .5s ease .45s,background .3s ease;
+  }
+  .gate[aria-expanded="true"] .shut{opacity:1;transform:translateX(-50%) scale(1)}
+  @media (hover:hover){
+    .gate .shut:hover{background:rgba(51,48,43,.85)}
+  }
 
   .gate .door{
     z-index:3;
@@ -821,6 +839,7 @@
           <span class="pmeta">${p.meta}</span>
         </span>
         <span class="enter">היכנסו ↗</span>
+        <span class="shut" data-shut aria-hidden="true">✕</span>
       </span>
       <span class="door">
         <span class="n">N°${p.n}</span>
@@ -828,7 +847,13 @@
         <span class="dname">${p.name}</span>
         <span class="handle"></span>
       </span>`;
-    btn.addEventListener('click',()=>{
+    const closeGate = ()=>{
+      btn.setAttribute('aria-expanded','false');
+      btn.setAttribute('aria-label','פרויקט '+p.n+' — '+p.name+'. לחיצה פותחת את הדלת.');
+    };
+    btn._closeGate = closeGate;
+    btn.addEventListener('click',(e)=>{
+      if (e.target.closest('[data-shut]')){ closeGate(); return; }
       if (btn.getAttribute('aria-expanded') !== 'true'){
         btn.setAttribute('aria-expanded','true');
         btn.setAttribute('aria-label','פרויקט '+p.n+' — '+p.name+'. לחיצה נוספת נכנסת פנימה.');
@@ -837,6 +862,15 @@
       openPortal(p, btn);
     });
     wall.appendChild(btn);
+  });
+
+  function closeAllGates(){
+    wall.querySelectorAll('.gate[aria-expanded="true"]').forEach(g=>g._closeGate());
+  }
+  // clicking outside the arches closes any open door
+  document.addEventListener('click',(e)=>{
+    if (portalOpen) return;
+    if (!e.target.closest('.gate') && !e.target.closest('.portal')) closeAllGates();
   });
 
   const TRANS = 'left .95s cubic-bezier(.6,.05,.15,1), top .95s cubic-bezier(.6,.05,.15,1), width .95s cubic-bezier(.6,.05,.15,1), height .95s cubic-bezier(.6,.05,.15,1), border-radius .95s cubic-bezier(.6,.05,.15,1), opacity .4s ease';
@@ -918,7 +952,9 @@
 
   pClose.addEventListener('click', closePortal);
   addEventListener('keydown', e=>{
-    if (e.key === 'Escape' && portalOpen) closePortal();
+    if (e.key !== 'Escape') return;
+    if (portalOpen) closePortal();
+    else closeAllGates();
   });
 })();
 </script>
