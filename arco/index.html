@@ -212,6 +212,281 @@
     margin-top:60px;font-size:12px;letter-spacing:.3em;font-weight:600;opacity:.5;
     direction:ltr;
   }
+
+  /* ---------- ACT III — projects as arches ---------- */
+  .doors{
+    padding:clamp(90px,12vw,150px) 24px clamp(80px,10vw,130px);
+    text-align:center;
+  }
+  .doors .kicker{
+    font-size:12px;letter-spacing:.4em;font-weight:700;color:var(--bronze);
+    margin-bottom:26px;
+  }
+  .doors h2{
+    font-size:clamp(30px,4.4vw,58px);
+    font-weight:200;line-height:1.25;letter-spacing:.02em;
+  }
+  .doors .lede{
+    margin:18px auto clamp(54px,7vw,84px);
+    font-size:clamp(15px,1.7vw,20px);font-weight:300;letter-spacing:.04em;
+    color:rgba(51,48,43,.75);
+  }
+  .wall{
+    display:flex;justify-content:center;align-items:flex-end;
+    gap:clamp(16px,3vw,42px);flex-wrap:wrap;
+    max-width:1180px;margin:0 auto;
+  }
+  .gate{
+    position:relative;flex:0 0 auto;
+    width:clamp(150px,19vw,225px);height:clamp(300px,38vw,450px);
+    border:none;background:transparent;padding:0;cursor:pointer;
+    perspective:1500px;-webkit-tap-highlight-color:transparent;
+    font-family:inherit;color:inherit;
+    transition:transform .5s ease;
+  }
+  .gate:focus-visible{outline:2px solid var(--bronze);outline-offset:10px;border-radius:6px}
+  .gate::after{ /* floor shadow */
+    content:"";position:absolute;left:8%;right:8%;bottom:-24px;height:24px;
+    background:radial-gradient(60% 100% at 50% 0,rgba(51,48,43,.22),transparent 72%);
+    filter:blur(3px);
+    transition:opacity .8s ease,transform .8s ease;
+  }
+  .gate[aria-expanded="true"]::after{transform:translateX(6%) scaleX(1.08);opacity:.85}
+
+  .gate .recess,
+  .gate .door{
+    position:absolute;inset:0;display:block;
+    border-radius:50% 50% 6px 6px / 34% 34% 3% 3%;
+    overflow:hidden;
+  }
+  .gate .recess{
+    background:#8D7B63;
+    box-shadow:inset 0 8px 30px rgba(0,0,0,.42), inset 0 0 0 1px rgba(0,0,0,.15);
+  }
+  .gate .photo{
+    position:absolute;inset:0;display:block;
+    background-size:cover;
+    transform:scale(1.07);
+    transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
+    filter:saturate(.94) brightness(.97);
+  }
+  .gate[aria-expanded="true"] .photo{transform:scale(1)}
+  .gate .recess::before{ /* shadow the open door casts inward */
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(255deg,rgba(0,0,0,.45),rgba(0,0,0,0) 55%);
+    opacity:0;transition:opacity .9s ease;
+  }
+  .gate[aria-expanded="true"] .recess::before{opacity:1}
+
+  .gate .cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;display:block;
+    padding:44px 14px 20px;
+    background:linear-gradient(0deg,rgba(28,24,20,.78),transparent);
+    color:var(--sand);
+    opacity:0;transform:translateY(10px);
+    transition:opacity .7s ease .25s,transform .7s ease .25s;
+  }
+  .gate[aria-expanded="true"] .cap{opacity:1;transform:none}
+  .gate .cap .num{
+    display:block;font-size:11px;letter-spacing:.3em;font-weight:600;
+    color:var(--bronze);margin-bottom:5px;direction:ltr;
+  }
+  .gate .cap .pname{display:block;font-size:17px;font-weight:600;letter-spacing:.02em}
+  .gate .cap .pmeta{display:block;margin-top:3px;font-size:12px;font-weight:300;letter-spacing:.06em;opacity:.8}
+
+  .gate .enter{
+    position:absolute;left:40%;top:42%;z-index:2;
+    transform:translate(-50%,-30%);
+    display:inline-block;padding:11px 24px;border-radius:999px;
+    background:rgba(51,48,43,.72);color:var(--sand);
+    border:1px solid rgba(239,231,218,.5);
+    font-size:13px;font-weight:600;letter-spacing:.1em;white-space:nowrap;
+    backdrop-filter:blur(3px);
+    opacity:0;transition:opacity .5s ease .45s,transform .5s ease .45s;
+  }
+  .gate[aria-expanded="true"] .enter{opacity:1;transform:translate(-50%,-50%)}
+
+  .gate .door{
+    z-index:3;
+    background:linear-gradient(200deg,#F7F1E6,var(--sand) 55%,#CBBEA8 140%);
+    transform-origin:right center;
+    transform:rotateY(0deg);
+    transition:transform 1.05s cubic-bezier(.62,.02,.16,1);
+    backface-visibility:hidden;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.4),
+      inset -22px 0 38px -30px rgba(0,0,0,.45),
+      0 18px 40px -30px rgba(51,48,43,.4);
+  }
+  .gate[aria-expanded="true"] .door{
+    transform:rotateY(64deg);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.3),
+      -18px 12px 44px -22px rgba(0,0,0,.5);
+  }
+  .gate .door .n{
+    position:absolute;top:26px;left:0;right:0;display:block;text-align:center;
+    font-size:13px;letter-spacing:.24em;font-weight:300;color:rgba(51,48,43,.65);
+    direction:ltr;
+  }
+  .gate .door .rule{
+    position:absolute;left:26%;right:26%;top:58px;height:1px;display:block;
+    background:rgba(51,48,43,.18);
+  }
+  .gate .door .dname{
+    position:absolute;bottom:34px;left:0;right:0;display:block;text-align:center;
+    font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--ink);
+    padding:0 12px;
+  }
+  .gate .door .handle{
+    position:absolute;top:50%;left:13px;width:6px;height:34px;border-radius:4px;
+    transform:translateY(-50%);display:block;
+    background:linear-gradient(180deg,var(--bronze),#8a6540);
+    box-shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+  @media (hover:hover){
+    .gate[aria-expanded="false"]:hover .door{transform:rotateY(9deg)}
+    .gate[aria-expanded="false"]:hover{transform:translateY(-4px)}
+  }
+
+  .doors .hint{
+    margin:clamp(48px,6vw,72px) auto 0;
+    font-size:12px;letter-spacing:.24em;font-weight:600;color:rgba(51,48,43,.55);
+  }
+  .doors .hint span{color:var(--bronze)}
+
+  /* ---------- ACT IV — the designer ---------- */
+  .designer{
+    padding:clamp(70px,9vw,120px) 24px clamp(90px,11vw,140px);
+  }
+  .designer-inner{
+    max-width:980px;margin:0 auto;
+    display:flex;align-items:center;justify-content:center;
+    gap:clamp(40px,6vw,84px);flex-wrap:wrap;
+  }
+  .d-portrait{
+    position:relative;flex:0 0 auto;
+    width:clamp(240px,28vw,330px);
+  }
+  .d-portrait::before{ /* offset bronze arch hairline */
+    content:"";position:absolute;inset:0;
+    transform:translate(-14px,14px);
+    border:1px solid rgba(168,126,82,.5);
+    border-radius:50% 50% 6px 6px / 34% 34% 3% 3%;
+  }
+  .d-portrait img{
+    display:block;width:100%;aspect-ratio:3/4.4;object-fit:cover;
+    border-radius:50% 50% 6px 6px / 34% 34% 3% 3%;
+    filter:saturate(.94);
+    box-shadow:0 24px 50px -30px rgba(51,48,43,.45);
+  }
+  .d-text{
+    flex:1 1 300px;max-width:520px;text-align:right;
+  }
+  .d-text .kicker{
+    font-size:12px;letter-spacing:.4em;font-weight:700;color:var(--bronze);
+    margin-bottom:22px;
+  }
+  .d-text h2{
+    font-size:clamp(30px,4.2vw,54px);
+    font-weight:200;line-height:1.2;letter-spacing:.02em;
+  }
+  .d-text .d-role{
+    margin-top:8px;font-size:clamp(13px,1.4vw,16px);
+    font-weight:300;letter-spacing:.14em;color:var(--olive);
+  }
+  .d-text .d-lead{
+    margin-top:26px;
+    font-size:clamp(17px,2vw,23px);font-weight:300;line-height:1.7;
+  }
+  .d-steps{
+    margin-top:34px;list-style:none;
+  }
+  .d-steps li{
+    display:flex;gap:18px;align-items:baseline;
+    padding:16px 0;
+    border-top:1px solid rgba(168,126,82,.28);
+  }
+  .d-steps .sn{
+    flex:0 0 auto;font-size:12px;letter-spacing:.2em;font-weight:600;
+    color:var(--bronze);direction:ltr;
+  }
+  .d-steps p{
+    font-size:clamp(14.5px,1.6vw,17.5px);font-weight:300;line-height:1.75;
+  }
+  .d-steps b{font-weight:600}
+  @media (max-width:760px){
+    .designer-inner{gap:48px}
+    .d-text{text-align:right}
+    .d-portrait{margin:0 auto}
+  }
+
+  /* ---------- the portal (second click) ---------- */
+  .portal{
+    position:fixed;z-index:200;overflow:hidden;
+    left:0;top:0;width:100px;height:200px;
+    border-radius:50% 50% 6px 6px / 34% 34% 3% 3%;
+    background:var(--ink);
+    opacity:0;pointer-events:none;
+  }
+  .portal .p-photo{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    transform:scale(1.12);
+    transition:transform 6s cubic-bezier(.2,.6,.2,1);
+  }
+  .portal.open .p-photo{transform:scale(1)}
+  .portal .p-scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(24,20,16,.78),rgba(24,20,16,.28) 38%,rgba(24,20,16,0) 62%);
+  }
+  .portal .p-close{
+    position:absolute;top:22px;right:22px;z-index:3;
+    background:rgba(24,20,16,.45);color:var(--sand);
+    border:1px solid rgba(239,231,218,.55);border-radius:999px;
+    padding:10px 22px;font-family:inherit;font-size:13px;font-weight:600;
+    letter-spacing:.08em;cursor:pointer;
+    backdrop-filter:blur(4px);
+    opacity:0;transition:opacity .5s ease .55s;
+  }
+  .portal.open .p-close{opacity:1}
+  .portal .p-info{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    padding:0 24px clamp(34px,6vh,64px);
+    text-align:center;color:var(--sand);
+    text-shadow:0 1px 26px rgba(24,20,16,.5);
+    opacity:0;transform:translateY(16px);
+    transition:opacity .7s ease .55s,transform .7s ease .55s;
+  }
+  .portal.open .p-info{opacity:1;transform:none}
+  .portal .p-num{
+    display:block;font-size:12px;letter-spacing:.35em;font-weight:600;
+    color:var(--bronze);margin-bottom:10px;direction:ltr;
+  }
+  .portal .p-info h3{
+    font-size:clamp(30px,5vw,56px);font-weight:200;letter-spacing:.04em;line-height:1.15;
+  }
+  .portal .p-meta{
+    margin-top:8px;font-size:clamp(13px,1.4vw,16px);font-weight:300;
+    letter-spacing:.08em;opacity:.85;
+  }
+  .portal .p-line{
+    margin:18px auto 0;max-width:560px;
+    font-size:clamp(15px,1.7vw,20px);font-weight:300;line-height:1.8;
+  }
+  .portal .p-rule{width:56px;height:1px;background:var(--bronze);margin:20px auto 0}
+
+  @media (max-width:640px){
+    .wall{gap:18px 14px}
+    .gate{width:min(42vw,190px);height:min(84vw,380px)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .gate .door{transition:opacity .5s ease}
+    .gate[aria-expanded="true"] .door{transform:none;opacity:0;pointer-events:none}
+    .gate[aria-expanded="false"]:hover .door{transform:none}
+    .gate .photo,.gate .cap,.gate{transition:opacity .4s ease}
+    .portal .p-photo{transition:none;transform:none}
+  }
 </style>
 </head>
 <body>
@@ -296,6 +571,60 @@
     </div>
   </div>
 </div>
+
+<!-- ========== ACT III — projects as arches ========== -->
+<section class="doors" aria-label="פרויקטים">
+  <div class="kicker"><span dir="ltr">ARCO°</span> · פרויקטים</div>
+  <h2>כל קשת היא דלת.</h2>
+  <p class="lede">מאחורי כל אחת — בית שכבר הקשבנו לו.</p>
+
+  <div class="wall" id="doorsWall"></div>
+
+  <p class="hint">לחיצה פותחת את הדלת · <span>לחיצה שנייה נכנסת</span></p>
+</section>
+
+<!-- fullscreen project portal -->
+<div class="portal" id="portal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="p-photo" id="pPhoto"></div>
+  <div class="p-scrim"></div>
+  <button class="p-close" id="pClose" type="button">✕ &nbsp;חזרה דרך הקשת</button>
+  <div class="p-info">
+    <span class="p-num" id="pNum"></span>
+    <h3 id="pName"></h3>
+    <p class="p-meta" id="pMeta"></p>
+    <p class="p-line" id="pLine"></p>
+    <div class="p-rule"></div>
+  </div>
+</div>
+
+<!-- ========== ACT IV — the designer ========== -->
+<section class="designer" aria-label="המעצבת">
+  <div class="designer-inner">
+    <div class="d-portrait">
+      <img src="designer.webp" alt="ישראלה ישראלי — מעצבת הפנים והמייסדת של ARCO°" loading="lazy">
+    </div>
+    <div class="d-text">
+      <div class="kicker"><span dir="ltr">ARCO°</span> · המעצבת</div>
+      <h2>ישראלה ישראלי.</h2>
+      <p class="d-role">מייסדת ARCO° · מעצבת פנים</p>
+      <p class="d-lead">אני לא מגיעה עם קונספט מוכן.<br>אני מגיעה עם שאלות.</p>
+      <ul class="d-steps">
+        <li>
+          <span class="sn">N°1</span>
+          <p><b>מקשיבה.</b> מבקרת בחלל כשהוא עוד ריק, בשעות אור שונות, לפני שאני מציירת קו אחד.</p>
+        </li>
+        <li>
+          <span class="sn">N°2</span>
+          <p><b>מתרגמת.</b> הפרופורציות, האור והקצב של החלל הופכים לשפת חומרים אחת — טיח, עץ, אבן.</p>
+        </li>
+        <li>
+          <span class="sn">N°3</span>
+          <p><b>מלווה.</b> נשארת עד הפרט האחרון, כי בית מתעורר רק כשהכול מדבר באותה שפה.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ========== after ========== -->
 <section class="after">
@@ -437,6 +766,159 @@
   // hero first; garden preloads quietly right after
   home.loadAll().then(()=> garden.loadAll()).then(()=>{
     home.onScroll(); garden.onScroll();
+  });
+})();
+</script>
+
+<script>
+/* ========== ACT III — doors + portal ========== */
+(function(){
+  const isMobile = matchMedia('(max-width:768px)').matches;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const suffix = isMobile ? 'm' : 'd';
+  const ARCH_RADIUS = '50% 50% 6px 6px / 34% 34% 3% 3%';
+
+  // door crops always use the desktop (landscape) frame so each arch
+  // shows a different vertical slice; the fullscreen portal uses the
+  // orientation-appropriate frame (already preloaded by the scrub).
+  const projects = [
+    { n:'01', name:'בית הקשתות', meta:'מרחב מגורים · 2025',
+      line:'הסלון הזה לא עוצב סביב הרהיטים — הוא עוצב סביב האור של ארבע אחר הצהריים.',
+      crop:'home-d/f_061.webp',  pos:'58% 52%', full:'home',   fullPos:'50% 60%' },
+    { n:'02', name:'המעבר', meta:'כניסה וגלריה · 2024',
+      line:'קשת בתוך קשת. הכניסה שמלמדת את הבית את הקצב שלו.',
+      crop:'home-d/f_061.webp',  pos:'2% 55%',  full:'home',   fullPos:'30% 55%' },
+    { n:'03', name:'חצר הבריכה', meta:'עיצוב חוץ · 2025',
+      line:'המים לוקחים את הקו של הבית — וממשיכים אותו עד קצה המגרש.',
+      crop:'garden-d/f_061.webp', pos:'12% 55%', full:'garden', fullPos:'25% 55%' },
+    { n:'04', name:'פרגולת הזית', meta:'אירוח בגן · 2024',
+      line:'תקרה של קנים, אור של שבע בערב. חדר שאין לו קירות.',
+      crop:'garden-d/f_061.webp', pos:'86% 50%', full:'garden', fullPos:'75% 50%' },
+  ];
+
+  const wall = document.getElementById('doorsWall');
+  const portal = document.getElementById('portal');
+  const pPhoto = document.getElementById('pPhoto');
+  const pNum  = document.getElementById('pNum');
+  const pName = document.getElementById('pName');
+  const pMeta = document.getElementById('pMeta');
+  const pLine = document.getElementById('pLine');
+  const pClose = document.getElementById('pClose');
+  let lastBtn = null, portalOpen = false;
+
+  projects.forEach(p=>{
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gate';
+    btn.setAttribute('aria-expanded','false');
+    btn.setAttribute('aria-label','פרויקט '+p.n+' — '+p.name+'. לחיצה פותחת את הדלת.');
+    btn.innerHTML = `
+      <span class="recess">
+        <span class="photo" style="background-image:url('${p.crop}');background-position:${p.pos}"></span>
+        <span class="cap">
+          <span class="num">N°${p.n}</span>
+          <span class="pname">${p.name}</span>
+          <span class="pmeta">${p.meta}</span>
+        </span>
+        <span class="enter">היכנסו ↗</span>
+      </span>
+      <span class="door">
+        <span class="n">N°${p.n}</span>
+        <span class="rule"></span>
+        <span class="dname">${p.name}</span>
+        <span class="handle"></span>
+      </span>`;
+    btn.addEventListener('click',()=>{
+      if (btn.getAttribute('aria-expanded') !== 'true'){
+        btn.setAttribute('aria-expanded','true');
+        btn.setAttribute('aria-label','פרויקט '+p.n+' — '+p.name+'. לחיצה נוספת נכנסת פנימה.');
+        return;
+      }
+      openPortal(p, btn);
+    });
+    wall.appendChild(btn);
+  });
+
+  const TRANS = 'left .95s cubic-bezier(.6,.05,.15,1), top .95s cubic-bezier(.6,.05,.15,1), width .95s cubic-bezier(.6,.05,.15,1), height .95s cubic-bezier(.6,.05,.15,1), border-radius .95s cubic-bezier(.6,.05,.15,1), opacity .4s ease';
+
+  function setRect(r){
+    portal.style.left = r.left+'px';
+    portal.style.top = r.top+'px';
+    portal.style.width = r.width+'px';
+    portal.style.height = r.height+'px';
+  }
+  function setFull(){
+    portal.style.left = '0px';
+    portal.style.top = '0px';
+    portal.style.width = '100vw';
+    portal.style.height = '100vh';
+    portal.style.borderRadius = '0px';
+  }
+
+  function openPortal(p, btn){
+    if (portalOpen) return;
+    portalOpen = true;
+    lastBtn = btn;
+    pPhoto.style.backgroundImage = `url('${p.full}-${suffix}/f_061.webp')`;
+    pPhoto.style.backgroundPosition = p.fullPos;
+    pNum.textContent = 'ARCO° · N°'+p.n;
+    pName.textContent = p.name;
+    pMeta.textContent = p.meta;
+    pLine.textContent = p.line;
+    portal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    portal.style.transition = 'none';
+    portal.style.opacity = '1';
+    portal.style.pointerEvents = 'auto';
+    if (reduce){
+      setFull();
+      portal.style.opacity = '0';
+      requestAnimationFrame(()=>{
+        portal.style.transition = 'opacity .5s ease';
+        portal.style.opacity = '1';
+        portal.classList.add('open');
+      });
+      pClose.focus();
+      return;
+    }
+    portal.style.borderRadius = ARCH_RADIUS;
+    setRect(btn.getBoundingClientRect());
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      portal.style.transition = TRANS;
+      setFull();
+      portal.classList.add('open');
+    }));
+    setTimeout(()=>pClose.focus(), 1000);
+  }
+
+  function closePortal(){
+    if (!portalOpen) return;
+    portalOpen = false;
+    portal.classList.remove('open');
+    const done = ()=>{
+      portal.style.transition = 'none';
+      portal.style.opacity = '0';
+      portal.style.pointerEvents = 'none';
+      portal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      if (lastBtn) lastBtn.focus();
+    };
+    if (reduce){
+      portal.style.transition = 'opacity .4s ease';
+      portal.style.opacity = '0';
+      setTimeout(done, 420);
+      return;
+    }
+    portal.style.transition = TRANS;
+    portal.style.borderRadius = ARCH_RADIUS;
+    if (lastBtn) setRect(lastBtn.getBoundingClientRect());
+    portal.style.opacity = '0';
+    setTimeout(done, 980);
+  }
+
+  pClose.addEventListener('click', closePortal);
+  addEventListener('keydown', e=>{
+    if (e.key === 'Escape' && portalOpen) closePortal();
   });
 })();
 </script>
