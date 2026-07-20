@@ -126,6 +126,17 @@
       ]
     },
     {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/aerea.html#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"ORBE — טיפה אחת, עולם שלם","url":"https://hagitantebi.co.il/orbe/"},
+        {"@type":"ListItem","position":2,"name":"ELVÉA — טיפוח בוטני־מדעי","url":"https://hagitantebi.co.il/elvea/"},
+        {"@type":"ListItem","position":3,"name":"ÉCRU — מוזה אחת, אינסוף לוקים","url":"https://hagitantebi.co.il/ecru.html"}
+      ]
+    },
+    {
       "@type":"FAQPage",
       "@id":"https://hagitantebi.co.il/aerea.html#faq",
       "mainEntity":[
@@ -624,6 +635,31 @@ section.world.film{padding:clamp(70px,10vh,130px) 0}
 }
 .wink button.ghost:hover{border-color:var(--accent);color:var(--accent)}
 
+/* ============ MONDI VICINI — related worlds ============ */
+.voisins{padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);text-align:center;position:relative}
+.voisins .kicker{margin-bottom:14px}
+.voisins h2{font-family:var(--serif-he);font-weight:300;font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.15;color:var(--ink)}
+.voisins h2 b{font-weight:400;color:var(--accent)}
+.voisins .sub{color:var(--ink-soft);font-weight:300;font-size:1.02rem;margin-top:12px}
+.v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1100px;margin:48px auto 0}
+.v-card{
+  display:block;text-decoration:none;color:var(--ink);
+  background:rgba(255,255,255,.45);backdrop-filter:blur(4px);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  opacity:0;transform:translateY(26px);
+  transition:border-color .25s var(--ease-out),box-shadow .25s var(--ease-out);
+}
+.v-card:hover{border-color:var(--accent);box-shadow:0 24px 50px -22px var(--accent)}
+.v-card .ph{aspect-ratio:16/10;overflow:hidden}
+.v-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out)}
+.v-card:hover .ph img{transform:scale(1.045)}
+.v-card .v-body{padding:20px 22px 24px;text-align:center}
+.v-card .fr{font-family:var(--serif-lat);font-style:italic;font-size:1.3rem;letter-spacing:.08em;direction:ltr;color:var(--accent)}
+.v-card .he{font-weight:600;margin-top:2px;color:var(--ink)}
+.v-card .note{font-weight:300;color:var(--ink-soft);font-size:.92rem;margin-top:8px;line-height:1.7}
+.v-card .go{margin-top:14px;font-family:var(--serif-lat);font-style:italic;font-size:.86rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);direction:ltr}
+@media(max-width:880px){.v-cards{grid-template-columns:1fr;max-width:440px}}
+
 /* ============ STUDIO NOTE ============ */
 .concept-note{padding:clamp(60px,10vh,100px) clamp(20px,6vw,90px);background:rgba(255,255,255,.35);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .concept-note__inner{max-width:680px;margin:0 auto;text-align:center}
@@ -675,6 +711,7 @@ footer a:hover{text-decoration:underline}
   html{scroll-behavior:auto}
   .scroll-hint span,.halo{animation:none!important}
   .reveal{transform:none!important;transition:opacity .25s ease!important}
+  .v-card{opacity:1!important;transform:none!important}
   .pyramid-vis.in .molecule{animation:none!important;opacity:.55!important}
   .layer.in .bar i,.ritual-card.in .meter i{transition:none!important}
   .scent-chip:hover,.mini:hover,.layer:hover,.car-arrow:hover,.add-btn:hover,.cart-btn:hover{transform:none!important}
@@ -904,6 +941,45 @@ footer a:hover{text-decoration:underline}
     <div class="hint">זה הניחוח שלך.</div>
   </div>
   <p class="layer-note" id="layerNote">לחצו על שני בקבוקים כדי להלביש אחד על השני.</p>
+</section>
+
+<!-- MONDI VICINI — related worlds -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+  <p class="kicker">Mondi Vicini</p>
+  <h2>העולם הבא <b>כבר פתוח.</b></h2>
+  <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+  <div class="v-cards" id="vCards">
+    <a class="v-card" href="https://hagitantebi.co.il/orbe/">
+      <div class="ph"><img src="brand-worlds/thumbs/orbe.webp" width="720" height="900"
+        alt="ORBE — מסע אל תוך טיפת בושם אחת" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">ORBE</div>
+        <div class="he">טיפה אחת, עולם שלם</div>
+        <div class="note">בושם שנולד מטיפה — עולם עגול, נוזלי ומהפנט.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/elvea/">
+      <div class="ph"><img src="brand-worlds/thumbs/elvea.webp" width="720" height="378"
+        alt="ELVÉA — עולם טיפוח בוטני־מדעי" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">ELVÉA</div>
+        <div class="he">טיפוח בוטני־מדעי</div>
+        <div class="note">הטבע מתחיל את הסיפור, הפורמולה משלימה אותו — קו ירוק אחד רציף.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/ecru.html">
+      <div class="ph"><img src="brand-worlds/thumbs/ecru.webp" width="720" height="964"
+        alt="ÉCRU — בוטיק אופנה הולוגרפי" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">ÉCRU</div>
+        <div class="he">מוזה אחת, אינסוף לוקים</div>
+        <div class="note">בוטיק אופנה בגלריה הולוגרפית מסתובבת.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+  </div>
 </section>
 
 <!-- STUDIO NOTE — concept explanation -->
@@ -1344,7 +1420,7 @@ if(!prefersReduced && window.gsap && window.ScrollTrigger){
   /* finale: the bottle checks itself out — flies into the cart */
   let checkedOut=false;
   ScrollTrigger.create({
-    trigger:'#concept-note',start:'top 72%',
+    trigger:'#voisins',start:'top 72%',
     onEnter(){
       if(checkedOut)return;checkedOut=true;
       const dst=cartBtn.getBoundingClientRect();
@@ -1364,6 +1440,15 @@ if(!prefersReduced && window.gsap && window.ScrollTrigger){
   });
 
   window.addEventListener('resize',()=>ScrollTrigger.refresh());
+}
+
+/* ============ MONDI VICINI — cards rise in ============ */
+if(!prefersReduced && window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to('.v-card',{
+    opacity:1,y:0,stagger:.12,duration:.9,ease:'power2.out',
+    scrollTrigger:{trigger:'#vCards',start:'top 82%'}
+  });
 }
 </script>
 </body>

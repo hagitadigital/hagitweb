@@ -123,6 +123,17 @@
       ]
     },
     {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/crema.html#voisins",
+      "name":"Mondi Vicini — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"MELTÉ — שוקולד שנמס בגלילה","url":"https://hagitantebi.co.il/melte.html"},
+        {"@type":"ListItem","position":2,"name":"MAISON DE L'HEURE — מאפייה־קפה מליסבון","url":"https://hagitantebi.co.il/maison/"},
+        {"@type":"ListItem","position":3,"name":"SOUFFLÉ — ביוטי־גורמה","url":"https://hagitantebi.co.il/souffle.html"}
+      ]
+    },
+    {
       "@type":"FAQPage",
       "@id":"https://hagitantebi.co.il/crema.html#faq",
       "mainEntity":[
@@ -362,6 +373,33 @@
   .mc-body{transition:fill .5s ease}
   .reveal{opacity:0;transform:translateY(42px)}
 
+  /* ═══════════ MONDI VICINI — related worlds ═══════════ */
+  .voisins{padding:100px 6vw;text-align:center;background:linear-gradient(180deg,var(--cream),var(--cream2))}
+  .voisins .kicker{margin-bottom:16px;display:inline-block}
+  .voisins h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.2vw,54px);
+      line-height:1.08;letter-spacing:-.5px}
+  .voisins h2 b{font-weight:300;color:var(--copper)}
+  .voisins .sub{margin-top:12px;color:var(--muted);font-size:16.5px}
+  .v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1120px;margin:52px auto 0}
+  .v-card{display:block;text-decoration:none;color:var(--ink);text-align:center;overflow:hidden;
+      background:#fff;border-radius:24px;border:1px solid rgba(255,255,255,.8);
+      box-shadow:0 18px 40px -26px rgba(46,30,22,.4);
+      opacity:0;transform:translateY(26px);
+      transition:box-shadow .5s}
+  .v-card:hover{box-shadow:0 30px 54px -26px rgba(46,30,22,.5)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
+  .v-card .ph img{width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .v-card:hover .ph img{transform:scale(1.05)}
+  .v-card .body{padding:22px 22px 24px}
+  .v-card .fr{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:.1em;direction:ltr;color:var(--ink)}
+  .v-card .he{font-weight:700;font-size:15.5px;margin-top:4px;color:var(--ink-soft)}
+  .v-card .note{color:var(--muted);font-size:14.5px;line-height:1.65;margin-top:8px}
+  .v-card .go{margin-top:14px;font-family:var(--display);font-style:italic;font-size:13px;
+      letter-spacing:.24em;text-transform:uppercase;color:var(--copper);direction:ltr}
+  @media(max-width:900px){.voisins{padding:80px 6vw}.v-cards{grid-template-columns:1fr;max-width:420px}}
+  @media (prefers-reduced-motion:reduce){.v-card{opacity:1!important;transform:none!important}}
+
   /* STUDIO NOTE — concept explanation for SEO/visitors */
   .concept-note{padding:64px 6vw 84px;background:var(--cream)}
   .concept-note__inner{max-width:680px;margin:0 auto;text-align:center}
@@ -525,6 +563,45 @@
           <span class="bean on"></span><span class="bean on"></span><span class="bean"></span><span class="bean"></span><span class="bean"></span>
         </div>
       </article>
+    </div>
+  </section>
+
+  <!-- ═══════════ MONDI VICINI — related worlds ═══════════ -->
+  <section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+    <div class="kicker">Mondi Vicini</div>
+    <h2>העולם הבא <b>כבר פתוח.</b></h2>
+    <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+    <div class="v-cards" id="vCards">
+      <a class="v-card" href="https://hagitantebi.co.il/melte.html">
+        <div class="ph"><img src="brand-worlds/thumbs/melte.webp" width="720" height="378"
+          alt="MELTÉ — עולם מותג שוקולד שנמס בגלילה" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">MELTÉ</div>
+          <div class="he">שוקולד שנמס בגלילה</div>
+          <div class="note">עולם שוקולד בטמפרטורה מדויקת — מהפולים ועד הריבוע הראשון.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/maison/">
+        <div class="ph"><img src="brand-worlds/thumbs/maison.webp" width="720" height="406"
+          alt="MAISON DE L'HEURE — עולם מותג מאפייה־קפה מליסבון" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">MAISON DE L'HEURE</div>
+          <div class="he">מאפייה־קפה מליסבון</div>
+          <div class="note">קייס סטאדי מלא — מבית קפה שכונתי לעולם מותג שלם.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/souffle.html">
+        <div class="ph"><img src="brand-worlds/thumbs/souffle.webp" width="720" height="378"
+          alt="SOUFFLÉ — עולם מותג ביוטי־גורמה של חמאת גוף מוקצפת" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">SOUFFLÉ</div>
+          <div class="he">ביוטי־גורמה</div>
+          <div class="note">חמאת גוף מוקצפת — עולם שבין קונדיטוריה לטיפוח.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -782,6 +859,10 @@ gsap.utils.toArray('.reveal').forEach(el=>{
 });
 ScrollTrigger.batch('.cap-card',{start:'top 88%',
   onEnter:b=>gsap.to(b,{y:0,opacity:1,duration:.7,stagger:.09,ease:'back.out(1.4)'})});
+
+/* ---------- mondi vicini cards rise in ---------- */
+gsap.to('.v-card',{y:0,opacity:1,stagger:.12,duration:.9,ease:'power2.out',
+  scrollTrigger:{trigger:'#vCards',start:'top 82%'}});
 
 /* ---------- floating background specks ---------- */
 const speckCols=['#C28A5A','#6B4327','#A8762E'];

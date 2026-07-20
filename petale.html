@@ -130,6 +130,17 @@
       ]
     },
     {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/petale.html#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"MELTÉ — שוקולד שנמס בגלילה","url":"https://hagitantebi.co.il/melte.html"},
+        {"@type":"ListItem","position":2,"name":"ÉTAGE — סיפור אהבה, בקומות","url":"https://hagitantebi.co.il/etage/"},
+        {"@type":"ListItem","position":3,"name":"POPPI — ממתק קטן, פיצוץ גדול","url":"https://hagitantebi.co.il/poppi.html"}
+      ]
+    },
+    {
       "@type":"FAQPage",
       "@id":"https://hagitantebi.co.il/petale.html#faq",
       "mainEntity":[
@@ -306,6 +317,35 @@
 
   .reveal{opacity:0;transform:translateY(50px)}
 
+  /* ═══════════ MONDES VOISINS — related worlds ═══════════ */
+  .voisins{padding:96px 5vw;text-align:center;background:linear-gradient(180deg,var(--cream),var(--cream2))}
+  .voisins .kicker{font-size:13px;letter-spacing:5px;text-transform:uppercase;font-weight:700;
+      color:var(--framboise);display:inline-block;margin-bottom:16px}
+  .voisins h2{font-family:"Fraunces",serif;font-size:clamp(34px,5.5vw,64px);font-weight:500;
+      line-height:1.02;letter-spacing:-1.5px}
+  .voisins h2 b{font-style:italic;font-weight:300;color:var(--rose)}
+  .voisins .sub{margin-top:14px;color:var(--muted);font-size:17px}
+  .v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1120px;margin:52px auto 0}
+  .v-card{display:block;text-decoration:none;color:var(--ink);text-align:center;position:relative;overflow:hidden;
+      background:#fff;border-radius:28px;border:1px solid rgba(255,255,255,.7);
+      border-bottom:5px solid var(--vb);
+      box-shadow:0 16px 36px -22px rgba(58,36,56,.35);
+      opacity:0;transform:translateY(26px);
+      transition:box-shadow .5s}
+  .v-card:hover{box-shadow:0 36px 56px -30px rgba(58,36,56,.5)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden}
+  .v-card .ph img{width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .v-card:hover .ph img{transform:scale(1.05)}
+  .v-card .body{padding:22px 22px 24px}
+  .v-card .fr{font-family:"Fraunces",serif;font-size:24px;font-weight:600;letter-spacing:.02em;direction:ltr}
+  .v-card .he{font-weight:600;font-size:16px;margin-top:4px}
+  .v-card .note{color:var(--muted);font-size:14.5px;line-height:1.6;margin-top:8px}
+  .v-card .go{margin-top:14px;font-family:"Fraunces",serif;font-style:italic;font-size:14px;
+      letter-spacing:.22em;text-transform:uppercase;color:var(--vb);direction:ltr}
+  @media(max-width:900px){.voisins{padding:76px 5vw}.v-cards{grid-template-columns:1fr;max-width:420px}}
+  @media (prefers-reduced-motion:reduce){.v-card{opacity:1!important;transform:none!important}}
+
   /* STUDIO NOTE — concept explanation for SEO/visitors */
   .concept-note{padding:60px 6vw 80px;background:var(--cream)}
   .concept-note__inner{max-width:680px;margin:0 auto;text-align:center}
@@ -413,6 +453,45 @@
         <div class="name">Bleuet</div>
         <div class="price">₪14</div>
       </article>
+    </div>
+  </section>
+
+  <!-- ═══════════ MONDES VOISINS — related worlds ═══════════ -->
+  <section class="voisins" id="voisins" dir="rtl" lang="he" aria-label="עולמות מותג נוספים מהסטודיו">
+    <div class="kicker">Mondes Voisins</div>
+    <h2>העולם הבא <b>כבר פתוח.</b></h2>
+    <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+    <div class="v-cards" id="vCards">
+      <a class="v-card" href="https://hagitantebi.co.il/melte.html" style="--vb:var(--caramel)">
+        <div class="ph"><img src="brand-worlds/thumbs/melte.webp" width="720" height="378"
+          alt="MELTÉ — עולם מותג שוקולד שנמס בגלילה" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">MELTÉ</div>
+          <div class="he">שוקולד שנמס בגלילה</div>
+          <div class="note">עולם שוקולד בטמפרטורה מדויקת — מהפולים ועד הריבוע הראשון.</div>
+          <div class="go">Entrer ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/etage/" style="--vb:var(--rose)">
+        <div class="ph"><img src="brand-worlds/thumbs/etage.webp" width="720" height="378"
+          alt="ÉTAGE — עולם מותג עוגות חתונה" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">ÉTAGE</div>
+          <div class="he">סיפור אהבה, בקומות</div>
+          <div class="note">עוגות חתונה — כל קומה מספרת פרק.</div>
+          <div class="go">Entrer ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/poppi.html" style="--vb:var(--framboise)">
+        <div class="ph"><img src="brand-worlds/thumbs/poppi.webp" width="720" height="378"
+          alt="POPPI — עולם מותג סוכריות צבעוני" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">POPPI</div>
+          <div class="he">ממתק קטן, פיצוץ גדול</div>
+          <div class="note">Tiny candy. Big pop. — עולם סוכריות צבעוני שמתפוצץ משמחה.</div>
+          <div class="go">Entrer ↗</div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -578,6 +657,10 @@ gsap.utils.toArray('.reveal').forEach(el=>{
   gsap.to(el,{y:0,opacity:1,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
 });
 ScrollTrigger.batch('.card',{start:'top 90%',onEnter:b=>gsap.to(b,{y:0,opacity:1,duration:.7,stagger:.1,ease:'back.out(1.4)'})});
+
+/* ---------- mondes voisins cards rise in ---------- */
+gsap.to('.v-card',{y:0,opacity:1,stagger:.12,duration:.9,ease:'power2.out',
+  scrollTrigger:{trigger:'#vCards',start:'top 82%'}});
 
 /* ---------- world emojis parallax ---------- */
 gsap.to('.float-emoji',{y:(i)=>(i%2?-46:54),ease:'none',scrollTrigger:{trigger:'.world',start:'top bottom',end:'bottom top',scrub:1.2}});

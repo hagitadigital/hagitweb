@@ -125,6 +125,17 @@
       "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/brand-worlds/"}
     },
     {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/melte.html#voisins",
+      "name":"Mondi Vicini — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"PÉTALE — מקרונים בצבעי פסטל","url":"https://hagitantebi.co.il/petale.html"},
+        {"@type":"ListItem","position":2,"name":"SOUFFLÉ — ביוטי־גורמה","url":"https://hagitantebi.co.il/souffle.html"},
+        {"@type":"ListItem","position":3,"name":"CREMA — קפה שנחלט בגלילה","url":"https://hagitantebi.co.il/crema.html"}
+      ]
+    },
+    {
       "@type":"FAQPage",
       "@id":"https://hagitantebi.co.il/melte.html#faq",
       "mainEntity":[
@@ -603,6 +614,34 @@
   .reveal{opacity:0;transform:translateY(42px)}
   .reveal.in{opacity:1;transform:translateY(0);transition:opacity .9s ease,transform .9s ease}
 
+  /* ═══════════ MONDES VOISINS — related worlds ═══════════ */
+  .voisins{padding:104px 6vw;text-align:center;color:var(--cream);
+        background:linear-gradient(135deg,#3A1F14,#5A382A 55%,#2B1A12)}
+  .voisins .kicker{color:var(--gold-soft);margin-bottom:16px;display:inline-block}
+  .voisins h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.2vw,54px);
+        line-height:1.08;letter-spacing:-.5px}
+  .voisins h2 b{font-weight:500;color:var(--gold-soft)}
+  .voisins .sub{margin-top:12px;font-size:16px;color:var(--cream);opacity:.72}
+  .v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1120px;margin:54px auto 0}
+  .v-card{display:block;text-decoration:none;color:var(--cream);text-align:center;
+        background:linear-gradient(180deg,rgba(241,231,214,.07),rgba(241,231,214,.03));
+        border:1px solid rgba(207,169,120,.28);border-radius:26px;overflow:hidden;
+        box-shadow:0 24px 48px -26px rgba(0,0,0,.55);
+        opacity:0;transform:translateY(26px);
+        transition:border-color .4s ease,box-shadow .4s ease}
+  .v-card:hover{border-color:var(--gold-soft);box-shadow:0 30px 58px -26px rgba(0,0,0,.7)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden;background:#241009}
+  .v-card .ph img{width:100%;height:100%;object-fit:cover;display:block;
+        transition:transform .8s var(--ease-out)}
+  .v-card:hover .ph img{transform:scale(1.045)}
+  .v-card .body{padding:22px 22px 26px}
+  .v-card .fr{font-family:var(--display);font-size:21px;letter-spacing:.14em;direction:ltr;color:var(--gold-soft)}
+  .v-card .he{font-weight:600;margin-top:4px}
+  .v-card .note{font-weight:300;font-size:14.5px;line-height:1.65;margin-top:8px;color:var(--cream);opacity:.68}
+  .v-card .go{margin-top:14px;font-family:var(--italic);font-style:italic;font-size:13px;
+        letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft);direction:ltr}
+  @media(max-width:900px){.voisins{padding:84px 6vw}.v-cards{grid-template-columns:1fr;max-width:420px}}
+
   /* STUDIO NOTE — concept explanation for SEO/visitors */
   .concept-note{padding:64px 6vw 84px;background:var(--cream)}
   .concept-note__inner{max-width:680px;margin:0 auto;text-align:center}
@@ -620,7 +659,7 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     /* never hide content behind motion that may be skipped */
-    .reveal,.coll-item{opacity:1!important;transform:none!important;transition:opacity .25s ease!important}
+    .reveal,.coll-item,.v-card{opacity:1!important;transform:none!important;transition:opacity .25s ease!important}
     /* slot swaps fade only, no scale/slide */
     .cup-slot,.card-slot{transition:opacity .3s ease!important;transform:none!important}
     .cup-slot.active,.card-slot.active{transform:none!important}
@@ -953,6 +992,45 @@
         <button class="scat-add" id="scatAdd" disabled>המארז לעגלה · ₪149</button>
         <p class="scat-hint" id="scatHint">בחרו 5 טעמים</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MONDES VOISINS — related worlds ═══════════ -->
+  <section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+    <div class="kicker">Mondi Vicini</div>
+    <h2>העולם הבא <b>כבר פתוח.</b></h2>
+    <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+    <div class="v-cards" id="vCards">
+      <a class="v-card" href="https://hagitantebi.co.il/petale.html">
+        <div class="ph"><img src="brand-worlds/thumbs/petale.webp" width="720" height="378"
+          alt="PÉTALE — עולם מותג מקרונים בצבעי פסטל" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">PÉTALE</div>
+          <div class="he">מקרונים בצבעי פסטל</div>
+          <div class="note">קונדיטוריה צרפתית — עולם שנפתח כמו קופסת מקרונים.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/souffle.html">
+        <div class="ph"><img src="brand-worlds/thumbs/souffle.webp" width="720" height="378"
+          alt="SOUFFLÉ — עולם מותג ביוטי־גורמה של חמאת גוף מוקצפת" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">SOUFFLÉ</div>
+          <div class="he">ביוטי־גורמה</div>
+          <div class="note">חמאת גוף מוקצפת — עולם שבין קונדיטוריה לטיפוח.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
+      <a class="v-card" href="https://hagitantebi.co.il/crema.html">
+        <div class="ph"><img src="brand-worlds/thumbs/crema.webp" width="720" height="378"
+          alt="CREMA — עולם מותג קפה שנחלט בגלילה" loading="lazy"></div>
+        <div class="body">
+          <div class="fr">CREMA</div>
+          <div class="he">קפה שנחלט בגלילה</div>
+          <div class="note">מהפולה ועד הכוס — טקס חליטה אינטראקטיבי.</div>
+          <div class="go">Entra ↗</div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -1467,6 +1545,14 @@ for(let i=0; !reduceMotion && i<16; i++){
     x: (Math.random()-.5)*60,
     duration: 5 + Math.random()*5,
     repeat:-1, yoyo:true, ease:'sine.inOut', delay: Math.random()*4
+  });
+}
+
+/* ---------- mondes voisins cards rise in ---------- */
+if(!reduceMotion){
+  gsap.to('.v-card',{
+    opacity:1,y:0,stagger:.12,duration:.9,ease:'power2.out',
+    scrollTrigger:{trigger:'#vCards',start:'top 82%'}
   });
 }
 </script>

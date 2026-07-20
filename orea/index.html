@@ -35,6 +35,20 @@
   "keywords": "concept brand, brand world, demo, sculptural furniture, Hagit Antebi, Brand Worlds Studio"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://hagitantebi.co.il/orea/#voisins",
+  "name": "Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "BASALT — אסתטיקה גברית, בשקט", "url": "https://hagitantebi.co.il/basalt/"},
+    {"@type": "ListItem", "position": 2, "name": "SOLARA WILD — שמש על העור, פרא בנשמה", "url": "https://hagitantebi.co.il/solara-wild/"},
+    {"@type": "ListItem", "position": 3, "name": "LUMÉRA — כל זווית, אור אחר", "url": "https://hagitantebi.co.il/lumera/"}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -377,6 +391,55 @@
   .cart-note{text-align:center;font-size:11px;letter-spacing:.06em;opacity:.5;margin-top:14px}
   body.lang-he .cart-items,body.lang-he .cart-foot,body.lang-he .cart-head{direction:rtl}
 
+  /* ---------- worlds nearby (voisins) ---------- */
+  .voisins{background:var(--bone);padding:18vh 8vw 16vh;text-align:center;position:relative}
+  .voisins .k{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--clay);margin-bottom:34px}
+  .voisins h2{
+    font-family:'Frank Ruhl Libre',serif;font-weight:300;direction:rtl;
+    font-size:clamp(28px,4.4vw,56px);line-height:1.15;letter-spacing:0;color:var(--ink);
+  }
+  .voisins h2 b{font-weight:500;color:var(--amber)}
+  .voisins .sub{
+    font-family:'Heebo',sans-serif;font-weight:300;direction:rtl;
+    font-size:clamp(15px,1.6vw,18px);color:var(--ink);opacity:.72;margin-top:16px;
+  }
+  .v-cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,34px);
+    max-width:1180px;margin:9vh auto 0;
+  }
+  .v-card{
+    display:block;text-decoration:none;color:var(--ink);
+    background:var(--cream);border-radius:14px;overflow:hidden;
+    box-shadow:0 22px 54px rgba(42,36,32,.16);outline:1px solid rgba(42,36,32,.08);
+    transition:transform .6s var(--ease),box-shadow .6s;
+  }
+  .v-card:hover{transform:translateY(-5px);box-shadow:0 32px 72px rgba(42,36,32,.24)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden}
+  .v-card .ph img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .9s var(--ease);
+  }
+  .v-card:hover .ph img{transform:scale(1.05)}
+  .v-card .body{padding:24px 24px 28px;text-align:center}
+  .v-card .fr{
+    font-family:'Fraunces',serif;font-weight:400;font-size:20px;
+    letter-spacing:.18em;direction:ltr;color:var(--ink);
+  }
+  .v-card .he{
+    font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:16px;
+    direction:rtl;margin-top:5px;
+  }
+  .v-card .note{
+    font-family:'Heebo',sans-serif;font-weight:300;font-size:13.5px;line-height:1.75;
+    direction:rtl;color:var(--ink);opacity:.68;margin-top:8px;
+  }
+  .v-card .go{
+    margin-top:18px;font-family:'Hanken Grotesk',sans-serif;font-weight:500;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--amber);direction:ltr;
+  }
+  @media(max-width:900px){.v-cards{grid-template-columns:1fr;max-width:440px}}
+
   /* ---------- studio back / concept flag + demo note ---------- */
   .bw-flag{position:fixed;bottom:20px;left:20px;z-index:9300;display:inline-flex;align-items:center;gap:9px;
     font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
@@ -578,6 +641,45 @@
     <source src="orea-film.mp4" type="video/mp4">
   </video>
 </div>
+
+<!-- ============ WORLDS NEARBY — related worlds ============ -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+  <div class="k">Worlds Nearby</div>
+  <h2>העולם הבא <b>כבר פתוח.</b></h2>
+  <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+  <div class="v-cards" id="vCards">
+    <a class="v-card" href="https://hagitantebi.co.il/basalt/">
+      <div class="ph"><img src="../brand-worlds/thumbs/basalt.webp" width="720" height="378"
+        alt="BASALT — עולם מותג רפואת עור לגברים" loading="lazy"></div>
+      <div class="body">
+        <div class="fr">BASALT</div>
+        <div class="he">אסתטיקה גברית, בשקט</div>
+        <div class="note">רפואת עור לגברים — Resurface. Quietly.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/solara-wild/">
+      <div class="ph"><img src="../brand-worlds/thumbs/solara-wild.webp" width="720" height="378"
+        alt="SOLARA WILD — עולם מותג הגנת שמש" loading="lazy"></div>
+      <div class="body">
+        <div class="fr">SOLARA WILD</div>
+        <div class="he">שמש על העור, פרא בנשמה</div>
+        <div class="note">הגנת שמש שמרגישה כמו חופש — לא כמו חובה.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/lumera/">
+      <div class="ph"><img src="../brand-worlds/thumbs/lumera.webp" width="720" height="900"
+        alt="LUMÉRA — עולם מותג תכשיטי אור" loading="lazy"></div>
+      <div class="body">
+        <div class="fr">LUMÉRA</div>
+        <div class="he">כל זווית, אור אחר</div>
+        <div class="note">תכשיטי אור — חוויה אינטראקטיבית תלת־ממדית.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+  </div>
+</section>
 
 <footer>
   <div class="f-brand">ORÉA</div>

@@ -253,6 +253,33 @@ nav.scrolled .nav-burger span{background:var(--cocoa)}
 .agent-cta:active{transform:scale(.97)}
 .agent-note{font-size:.78rem;color:rgba(250,239,224,.5);margin-top:.9rem;text-align:center}
 
+/* ---------- worlds nearby — related brand worlds ---------- */
+.voisins{background:var(--cream);padding:6.5rem 2.4rem 7rem}
+.voisins .sec-head .eyebrow{color:var(--teal-2)}
+.voisins h2 b{font-family:var(--display);font-style:italic;font-weight:500;color:var(--coral)}
+.v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1080px;margin:3rem auto 0}
+.v-card{
+  display:block;background:var(--cream-2);border-radius:22px;overflow:hidden;
+  box-shadow:0 22px 54px rgba(42,23,18,.14);
+  opacity:0;transform:translateY(36px);
+  transition:box-shadow .5s var(--ease);
+}
+.v-card:hover{box-shadow:0 30px 70px rgba(42,23,18,.24)}
+.v-card .ph{aspect-ratio:16/10;overflow:hidden}
+.v-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.v-card:hover .ph img{transform:scale(1.06) rotate(-1.2deg)}
+.v-card .vbody{padding:1.5rem 1.6rem 1.8rem;text-align:center}
+.v-card .fr{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.5rem;direction:ltr;color:var(--cocoa)}
+.v-card .he{font-weight:600;font-size:.98rem;color:var(--cocoa);margin-top:.2rem}
+.v-card .note{font-size:.9rem;line-height:1.7;color:var(--cocoa-2);margin-top:.5rem}
+.v-card .go{
+  margin-top:.9rem;font-family:var(--body);font-weight:700;text-transform:uppercase;
+  letter-spacing:.22em;font-size:.66rem;direction:ltr;color:var(--coral);
+}
+.v-card:nth-child(2) .go{color:var(--teal-2)}
+.v-card:nth-child(3) .go{color:var(--pink)}
+@media(max-width:980px){.v-cards{grid-template-columns:1fr;max-width:440px}}
+
 /* ---------- studio note (geo) ---------- */
 .studio-note{background:var(--cream-2);padding:4.5rem 2.4rem}
 .studio-note__inner{max-width:760px;margin:0 auto;text-align:center}
@@ -303,7 +330,7 @@ footer a:hover{border-color:var(--sand)}
 @media(prefers-reduced-motion:reduce){
   .sun{animation:none}
   .marquee__track,.scroll-line::after{animation:none}
-  .reveal{opacity:1;transform:none}
+  .reveal,.v-card{opacity:1;transform:none}
 }
 </style>
 
@@ -340,6 +367,17 @@ footer a:hover{border-color:var(--sand)}
         {"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"Sunglasses","category":"Italian acetate · Cocoa Night"}},
         {"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"Summer Drink","category":"Tropical Mango · Non-alcoholic"}},
         {"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"Resort Kit","category":"Signature · Set of Six"}}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/solara-wild/#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"SOLUNA — פורמולה אחת, כל הקצב של היום","url":"https://hagitantebi.co.il/soluna.html"},
+        {"@type":"ListItem","position":2,"name":"VELA MOTION — תנועה יפה, נוכחות ברורה","url":"https://hagitantebi.co.il/vela-motion/"},
+        {"@type":"ListItem","position":3,"name":"SOUFFLÉ — ביוטי־גורמה","url":"https://hagitantebi.co.il/souffle.html"}
       ]
     },
     {
@@ -673,6 +711,47 @@ footer a:hover{border-color:var(--sand)}
   </div>
 </section>
 
+<!-- WORLDS NEARBY — related brand worlds -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+  <div class="sec-head">
+    <span class="eyebrow"><svg class="sun" style="width:15px;height:15px"><use href="#sunburst"/></svg> Worlds Nearby</span>
+    <h2>העולם הבא <b>כבר פתוח.</b></h2>
+    <p>שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+  </div>
+  <div class="v-cards" id="vCards">
+    <a class="v-card" href="https://hagitantebi.co.il/soluna.html">
+      <div class="ph"><img src="../brand-worlds/thumbs/soluna.webp" width="720" height="900"
+        alt="SOLUNA — עולם מותג טיפוח של בית מרקחת עור" loading="lazy"></div>
+      <div class="vbody">
+        <div class="fr">SOLUNA</div>
+        <div class="he">פורמולה אחת, כל הקצב של היום</div>
+        <div class="note">בית מרקחת עור — טיפוח מדויק שחי סביב השעון שלך.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/vela-motion/">
+      <div class="ph"><img src="../brand-worlds/thumbs/vela-motion.webp" width="720" height="378"
+        alt="VELA MOTION — עולם מותג אקטיבוור לנשים" loading="lazy"></div>
+      <div class="vbody">
+        <div class="fr">VELA MOTION</div>
+        <div class="he">תנועה יפה, נוכחות ברורה</div>
+        <div class="note">אקטיבוור לנשים — Move beautifully. Stay unmistakable.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/souffle.html">
+      <div class="ph"><img src="../brand-worlds/thumbs/souffle.webp" width="720" height="378"
+        alt="SOUFFLÉ — עולם מותג ביוטי־גורמה של חמאת גוף" loading="lazy"></div>
+      <div class="vbody">
+        <div class="fr">SOUFFLÉ</div>
+        <div class="he">ביוטי־גורמה</div>
+        <div class="note">חמאת גוף מוקצפת — עולם שבין קונדיטוריה לטיפוח.</div>
+        <div class="go">Enter ↗</div>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- STUDIO NOTE (GEO) -->
 <section class="studio-note">
   <div class="studio-note__inner">
@@ -718,6 +797,9 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.utils.toArray('.reveal').forEach(el=>{
   gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
 });
+/* worlds nearby cards rise in */
+gsap.to('.v-card',{opacity:1,y:0,stagger:.12,duration:.9,ease:'power3.out',
+  scrollTrigger:{trigger:'#vCards',start:'top 82%'}});
 /* hero staggered load */
 gsap.from('.hero-eyebrow',{opacity:0,y:18,duration:1,delay:.25,ease:'power3.out'});
 gsap.from('.hero h1',{opacity:0,y:36,duration:1.2,delay:.4,ease:'power3.out'});

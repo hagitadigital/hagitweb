@@ -187,6 +187,33 @@
   #acquire .legal{margin-top:30px;font-size:11.5px;letter-spacing:.12em;color:var(--cream-25);line-height:2}
   #acquire .legal a{color:var(--cream-50);text-decoration:none;border-bottom:1px solid rgba(194,138,90,.4)}
 
+  /* ===== mondes voisins — related worlds ===== */
+  .voisins{
+    position:relative;z-index:20;background:var(--void);
+    padding:110px clamp(20px,5vw,48px) 130px;text-align:center;
+    border-top:1px solid rgba(194,138,90,.25);
+  }
+  .voisins .eyebrow{margin-bottom:18px}
+  .voisins h2{font-weight:400;font-size:clamp(26px,3.6vw,42px);line-height:1.3;color:var(--cream)}
+  .voisins h2 b{font-weight:500;color:var(--gold)}
+  .voisins .sub{margin-top:14px;font-weight:300;color:var(--cream-50);font-size:clamp(15px,1.8vw,17.5px);letter-spacing:.02em}
+  .v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1140px;margin:56px auto 0}
+  .v-card{
+    display:block;text-decoration:none;color:var(--cream);
+    background:rgba(11,16,24,.55);border:1px solid rgba(194,138,90,.35);
+    overflow:hidden;transition:border-color .45s,box-shadow .45s,background .45s;
+  }
+  .v-card:hover{border-color:var(--gold);box-shadow:0 0 40px rgba(224,178,108,.18);background:rgba(15,21,31,.75)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden}
+  .v-card .ph img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.94);transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .5s}
+  .v-card:hover .ph img{transform:scale(1.045);filter:saturate(1.05)}
+  .v-card .v-body{padding:22px 22px 26px;text-align:center}
+  .v-card .fr{font-family:var(--display);font-style:italic;font-size:20px;letter-spacing:.24em;direction:ltr;color:var(--cream)}
+  .v-card .he{font-weight:500;margin-top:6px;color:var(--cream)}
+  .v-card .note{font-weight:300;color:var(--cream-50);font-size:14.5px;margin-top:8px;line-height:1.8}
+  .v-card .go{margin-top:16px;font-family:var(--display);font-style:italic;font-size:12.5px;letter-spacing:.3em;color:var(--gold);direction:ltr}
+  @media(max-width:900px){.v-cards{grid-template-columns:1fr;max-width:420px}}
+
   @media (max-width:760px){
     #rail .lbl{display:none}
     .side-r,.side-l{right:50%;left:auto;transform:translate(50%,-50%);text-align:center;width:calc(100vw - 44px)}
@@ -197,6 +224,20 @@
     .hint::after,#loader .mark{animation:none}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "@id":"https://hagitantebi.co.il/orbe/#voisins",
+  "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+  "itemListOrder":"https://schema.org/ItemListOrderAscending",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"AERÉA — בושם שנפתח בגלילה","url":"https://hagitantebi.co.il/aerea.html"},
+    {"@type":"ListItem","position":2,"name":"AURELLE — יוקרה שקטה, ביטחון גלוי","url":"https://hagitantebi.co.il/aurelle/"},
+    {"@type":"ListItem","position":3,"name":"LUMÉRA — כל זווית, אור אחר","url":"https://hagitantebi.co.il/lumera/"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -284,6 +325,45 @@
 </section>
 
 <div id="track" aria-hidden="true"></div>
+
+<!-- ===== MONDES VOISINS — related worlds ===== -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+  <p class="eyebrow">Mondes Voisins</p>
+  <h2>העולם הבא <b>כבר פתוח.</b></h2>
+  <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+  <div class="v-cards" id="vCards">
+    <a class="v-card" href="https://hagitantebi.co.il/aerea.html">
+      <div class="ph"><img src="../brand-worlds/thumbs/aerea.webp" width="720" height="450"
+        alt="AERÉA — עולם מותג בושם אינטראקטיבי" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">AERÉA</div>
+        <div class="he">בושם שנפתח בגלילה</div>
+        <div class="note">חמישה ריחות, עולם חושי אחד.</div>
+        <div class="go">Entrer ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/aurelle/">
+      <div class="ph"><img src="../brand-worlds/thumbs/aurelle.webp" width="720" height="378"
+        alt="AURELLE — עולם ביוטי של יוקרה שקטה" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">AURELLE</div>
+        <div class="he">יוקרה שקטה, ביטחון גלוי</div>
+        <div class="note">עולם ביוטי שבו היוקרה לא מרימה את הקול — והנוכחות נראית לעין.</div>
+        <div class="go">Entrer ↗</div>
+      </div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/lumera/">
+      <div class="ph"><img src="../brand-worlds/thumbs/lumera.webp" width="720" height="900"
+        alt="LUMÉRA — עולם תכשיטי אור אינטראקטיבי" loading="lazy"></div>
+      <div class="v-body">
+        <div class="fr">LUMÉRA</div>
+        <div class="he">כל זווית, אור אחר</div>
+        <div class="note">תכשיטי אור — חוויה אינטראקטיבית תלת־ממדית.</div>
+        <div class="go">Entrer ↗</div>
+      </div>
+    </a>
+  </div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -506,9 +586,11 @@ function fogAt(p){
 
 /* ---------- scroll & cursor ---------- */
 let target = 0, prog = 0;
+const trackEl = document.getElementById('track');
 function readScroll(){
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  target = max > 0 ? window.scrollY / max : 0;
+  /* the journey runs across #track only — flow sections after it (voisins) slide over the finished scene */
+  const max = trackEl.offsetHeight - window.innerHeight;
+  target = max > 0 ? Math.min(1, window.scrollY / max) : 0;
 }
 window.addEventListener('scroll', readScroll, {passive:true});
 readScroll();

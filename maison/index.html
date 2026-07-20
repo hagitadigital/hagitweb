@@ -29,6 +29,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/maison/#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"CREMA — קפה שנחלט בגלילה","url":"https://hagitantebi.co.il/crema.html"},
+        {"@type":"ListItem","position":2,"name":"ÉTAGE — סיפור אהבה, בקומות","url":"https://hagitantebi.co.il/etage/"},
+        {"@type":"ListItem","position":3,"name":"PÉTALE — מקרונים בצבעי פסטל","url":"https://hagitantebi.co.il/petale.html"}
+      ]
+    }
+    </script>
+
     <style>
         /* ========================================
            VARIABLES — Maison de l'Heure Palette
@@ -1170,6 +1185,111 @@
         .closing__cta:hover svg { transform: translateX(-4px); }
 
         /* ========================================
+           MONDES VOISINS — related worlds
+        ======================================== */
+        .voisins {
+            background: var(--color-warm-beige);
+            text-align: center;
+            padding: var(--section-padding) var(--container-padding);
+        }
+
+        .voisins__eyebrow {
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            margin-bottom: 16px;
+            direction: ltr;
+        }
+
+        .voisins h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--color-espresso);
+        }
+
+        .voisins h2 b { font-weight: 600; color: var(--color-copper); }
+
+        .voisins .sub {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            color: var(--color-warm-oak);
+            margin-top: 12px;
+        }
+
+        .v-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(20px, 2.5vw, 32px);
+            max-width: var(--container-max);
+            margin: 64px auto 0;
+        }
+
+        .v-card {
+            display: block;
+            background: var(--color-cream);
+            border: 1px solid rgba(184, 115, 51, 0.18);
+            border-radius: 2px;
+            overflow: hidden;
+            color: var(--color-espresso);
+            box-shadow: 0 16px 40px rgba(43, 31, 24, 0.06);
+            transition: box-shadow 0.4s var(--transition-smooth), border-color 0.4s var(--transition-smooth), transform 0.4s var(--transition-smooth);
+        }
+        .v-card:hover {
+            border-color: var(--color-copper);
+            box-shadow: 0 24px 52px rgba(43, 31, 24, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .v-card .ph { aspect-ratio: 16/10; overflow: hidden; }
+        .v-card .ph img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.8s var(--transition-smooth);
+        }
+        .v-card:hover .ph img { transform: scale(1.045); }
+
+        .v-card .body { padding: 26px 26px 30px; text-align: center; }
+
+        .v-card .fr {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            direction: ltr;
+            color: var(--color-espresso);
+        }
+
+        .v-card .he { font-weight: 500; font-size: 0.9375rem; margin-top: 4px; }
+
+        .v-card .note {
+            font-weight: 300;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--color-warm-oak);
+            margin-top: 8px;
+        }
+
+        .v-card .go {
+            margin-top: 18px;
+            font-family: var(--font-body-en);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            direction: ltr;
+        }
+
+        @media (max-width: 900px) {
+            .v-cards { grid-template-columns: 1fr; max-width: 440px; }
+        }
+
+        /* ========================================
            FOOTER — Concept Project Note
         ======================================== */
         .concept-footer {
@@ -1915,6 +2035,47 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         Talk to Hagit
     </a>
+</section>
+
+<!-- ============================================
+     MONDES VOISINS — related worlds
+============================================ -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+    <p class="voisins__eyebrow">Mondes Voisins</p>
+    <h2>העולם הבא <b>כבר פתוח.</b></h2>
+    <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+    <div class="v-cards" id="vCards">
+        <a class="v-card" href="https://hagitantebi.co.il/crema.html">
+            <div class="ph"><img src="../brand-worlds/thumbs/crema.webp" width="720" height="378"
+                alt="CREMA — עולם מותג קפה שנחלט בגלילה" loading="lazy"></div>
+            <div class="body">
+                <div class="fr">CREMA</div>
+                <div class="he">קפה שנחלט בגלילה</div>
+                <div class="note">מהפולה ועד הכוס — טקס חליטה אינטראקטיבי.</div>
+                <div class="go">Entrer ↗</div>
+            </div>
+        </a>
+        <a class="v-card" href="https://hagitantebi.co.il/etage/">
+            <div class="ph"><img src="../brand-worlds/thumbs/etage.webp" width="720" height="378"
+                alt="ÉTAGE — עולם מותג עוגות חתונה" loading="lazy"></div>
+            <div class="body">
+                <div class="fr">ÉTAGE</div>
+                <div class="he">סיפור אהבה, בקומות</div>
+                <div class="note">עוגות חתונה — כל קומה מספרת פרק.</div>
+                <div class="go">Entrer ↗</div>
+            </div>
+        </a>
+        <a class="v-card" href="https://hagitantebi.co.il/petale.html">
+            <div class="ph"><img src="../brand-worlds/thumbs/petale.webp" width="720" height="378"
+                alt="PÉTALE — עולם מותג מקרונים בצבעי פסטל" loading="lazy"></div>
+            <div class="body">
+                <div class="fr">PÉTALE</div>
+                <div class="he">מקרונים בצבעי פסטל</div>
+                <div class="note">קונדיטוריה צרפתית — עולם שנפתח כמו קופסת מקרונים.</div>
+                <div class="go">Entrer ↗</div>
+            </div>
+        </a>
+    </div>
 </section>
 
 <!-- ============================================

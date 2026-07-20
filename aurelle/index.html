@@ -468,6 +468,52 @@ nav.scrolled .nav-burger span{background:var(--espresso)}
   margin-top:1rem;text-align:center;
 }
 
+/* ---------- worlds nearby — related brand worlds ---------- */
+.voisins{padding:7rem 2.6rem;background:var(--light);text-align:center}
+.voisins .roman{display:block;margin-bottom:1.4rem}
+.voisins h2{
+  font-family:var(--serif-he);font-weight:400;
+  font-size:clamp(1.7rem,3.6vw,2.6rem);color:var(--soft);line-height:1.25;
+}
+.voisins h2 b{font-weight:700;color:var(--champagne)}
+.voisins .sub{
+  font-family:var(--serif-he);font-size:1.02rem;color:var(--soft);
+  opacity:.78;margin-top:1rem;line-height:1.8;
+}
+.v-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  max-width:1180px;margin:3.6rem auto 0;
+}
+.v-card{
+  display:block;background:var(--light);text-align:center;
+  padding:0 0 2.4rem;opacity:0;transform:translateY(32px);
+  transition:background .6s ease;
+}
+.v-card:hover{background:var(--ivory)}
+.v-card .ph{aspect-ratio:16/10;overflow:hidden}
+.v-card .ph img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.16,1,.3,1);
+}
+.v-card:hover .ph img{transform:scale(1.05)}
+.v-card .fr{
+  font-family:var(--serif-en);font-size:1.5rem;letter-spacing:.14em;
+  direction:ltr;margin-top:1.8rem;color:var(--espresso);
+}
+.v-card .he{font-family:var(--serif-he);font-weight:500;margin-top:.35rem;color:var(--soft)}
+.v-card .note{
+  font-family:var(--serif-he);font-size:.9rem;color:var(--soft);
+  opacity:.75;line-height:1.65;max-width:280px;margin:.7rem auto 0;
+}
+.v-card .go{
+  margin-top:1.2rem;font-family:var(--serif-en);font-style:italic;
+  font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--champagne);direction:ltr;
+}
+@media(max-width:900px){.v-cards{grid-template-columns:1fr;max-width:440px}}
+@media(prefers-reduced-motion:reduce){.v-card{opacity:1!important;transform:none!important}}
+
 /* ---------- footer ---------- */
 footer{
   background:var(--espresso);color:rgba(246,241,232,.6);
@@ -678,6 +724,17 @@ body.stage-locked{overflow:hidden}
         {"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"Renewal Mask","category":"Exfoliate · Illuminate"}},
         {"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"Eye Elixir","category":"Smooth · Lift · Awaken"}},
         {"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"The Clinic Kit","category":"The Full Ritual · Six Pieces"}}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/aurelle/#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"ELVÉA — טיפוח בוטני־מדעי","url":"https://hagitantebi.co.il/elvea/"},
+        {"@type":"ListItem","position":2,"name":"SOLUNA — פורמולה אחת, כל הקצב של היום","url":"https://hagitantebi.co.il/soluna.html"},
+        {"@type":"ListItem","position":3,"name":"LUMÉRA — כל זווית, אור אחר","url":"https://hagitantebi.co.il/lumera/"}
       ]
     },
     {
@@ -949,6 +1006,39 @@ body.stage-locked{overflow:hidden}
   </div>
 </section>
 
+<!-- WORLDS NEARBY — related brand worlds -->
+<section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
+  <span class="roman">Worlds Nearby</span>
+  <h2>העולם הבא <b>כבר פתוח.</b></h2>
+  <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+  <div class="v-cards" id="vCards">
+    <a class="v-card" href="https://hagitantebi.co.il/elvea/">
+      <div class="ph"><img src="../brand-worlds/thumbs/elvea.webp" width="720" height="378"
+        alt="ELVÉA — עולם מותג טיפוח בוטני־מדעי" loading="lazy"></div>
+      <div class="fr">ELVÉA</div>
+      <div class="he">טיפוח בוטני־מדעי</div>
+      <div class="note">הטבע מתחיל את הסיפור, הפורמולה משלימה אותו — קו ירוק אחד רציף.</div>
+      <div class="go">Enter ↗</div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/soluna.html">
+      <div class="ph"><img src="../brand-worlds/thumbs/soluna.webp" width="720" height="900"
+        alt="SOLUNA — עולם מותג טיפוח של בית מרקחת עור" loading="lazy"></div>
+      <div class="fr">SOLUNA</div>
+      <div class="he">פורמולה אחת, כל הקצב של היום</div>
+      <div class="note">בית מרקחת עור — טיפוח מדויק שחי סביב השעון שלך.</div>
+      <div class="go">Enter ↗</div>
+    </a>
+    <a class="v-card" href="https://hagitantebi.co.il/lumera/">
+      <div class="ph"><img src="../brand-worlds/thumbs/lumera.webp" width="720" height="900"
+        alt="LUMÉRA — עולם מותג תכשיטי אור אינטראקטיבי" loading="lazy"></div>
+      <div class="fr">LUMÉRA</div>
+      <div class="he">כל זווית, אור אחר</div>
+      <div class="note">תכשיטי אור — חוויה אינטראקטיבית תלת־ממדית.</div>
+      <div class="go">Enter ↗</div>
+    </a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">AURELLE</div>
@@ -1002,6 +1092,11 @@ gsap.utils.toArray('.reveal').forEach((el,i)=>{
     opacity:1,y:0,duration:1.1,ease:'power3.out',
     scrollTrigger:{trigger:el,start:'top 86%'}
   });
+});
+/* worlds nearby cards rise in */
+gsap.to('.v-card',{
+  opacity:1,y:0,stagger:.12,duration:1.1,ease:'power3.out',
+  scrollTrigger:{trigger:'#vCards',start:'top 82%'}
 });
 /* hero text intro */
 gsap.from('.hero .eyebrow',{opacity:0,y:20,duration:1.4,delay:.3,ease:'power3.out'});

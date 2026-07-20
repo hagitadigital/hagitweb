@@ -64,6 +64,17 @@
       ]
     },
     {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/poppi.html#voisins",
+      "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"PÉTALE — מקרונים בצבעי פסטל","url":"https://hagitantebi.co.il/petale.html"},
+        {"@type":"ListItem","position":2,"name":"MELTÉ — שוקולד שנמס בגלילה","url":"https://hagitantebi.co.il/melte.html"},
+        {"@type":"ListItem","position":3,"name":"SOLARA WILD — שמש על העור, פרא בנשמה","url":"https://hagitantebi.co.il/solara-wild/"}
+      ]
+    },
+    {
       "@type":"FAQPage",
       "mainEntity":[
         {"@type":"Question","name":"מה זה POPPI?","acceptedAnswer":{"@type":"Answer","text":"POPPI הוא מותג סוכריות בדיוני (concept) שנבנה כהדגמה — עולם מותג צעיר, צבעוני ופרימיומי, על כל המרכיבים: שם, DNA, אריזה, חמישה טעמים, פרזנטורית, קמפיין וידאו ואתר אינטראקטיבי."}},
@@ -75,6 +86,36 @@
     }
   ]
   }</script>
+  <style>
+  /* ═══════════ WORLDS NEARBY — related worlds ═══════════ */
+  .voisins{padding:6rem 5vw;text-align:center;background:var(--paper)}
+  .voisins .kicker{display:inline-block;margin-bottom:1rem;padding:.4rem .9rem;border-radius:999px;
+    background:rgba(255,44,136,.1);color:var(--pink);
+    font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;direction:ltr}
+  .voisins h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(2rem,4.5vw,3.4rem);
+    line-height:.98;letter-spacing:-.01em}
+  .voisins h2 b{font-weight:600;color:var(--pink)}
+  .voisins .sub{margin-top:.9rem;color:var(--ink-soft);font-size:1.05rem}
+  .v-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;max-width:var(--maxw);margin:3.2rem auto 0}
+  .v-card{display:block;text-decoration:none;color:var(--ink);text-align:center;overflow:hidden;position:relative;
+    background:#fff;border-radius:var(--r);border:1px solid var(--line);border-top:6px solid var(--vb);
+    box-shadow:0 24px 48px -30px rgba(42,13,36,.4);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .v-card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 40px 70px -34px var(--vb)}
+  .v-card .ph{aspect-ratio:16/10;overflow:hidden}
+  .v-card .ph img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .v-card:hover .ph img{transform:scale(1.06)}
+  .v-card .body{padding:1.4rem 1.4rem 1.6rem}
+  .v-card .fr{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;direction:ltr}
+  .v-card .he{font-weight:600;font-size:1rem;margin-top:.25rem}
+  .v-card .note{color:var(--ink-soft);font-size:.92rem;line-height:1.6;margin-top:.5rem}
+  .v-card .go{display:inline-block;margin-top:1rem;padding:.5rem 1.2rem;border-radius:999px;
+    background:var(--vb);color:#fff;font-weight:600;font-size:.9rem;direction:ltr;transition:transform .3s ease}
+  .v-card:hover .go{transform:scale(1.06)}
+  @media(max-width:900px){.voisins{padding:4.5rem 5vw}.v-cards{grid-template-columns:1fr;max-width:26rem}}
+  @media (prefers-reduced-motion:reduce){.v-card,.v-card .ph img,.v-card .go{transition:none}}
+  </style>
 </head>
 <body>
 <div id="poppi" class="page">
@@ -189,6 +230,45 @@
     <section id="contact" class="final">
       <div class="finalCopy reveal"><p>FICTIONAL BRAND / REAL POSSIBILITY</p><h2>A fictional candy brand.<br><i>A full brand world.</i></h2><span>POPPI is a fictional concept created to demonstrate how a simple product idea can become a complete brand world: name, DNA, packaging, flavors, presenter, campaign, video sequence and digital experience.</span><div class="actions"><a class="darkButton" href="contact.html">Create your brand world ↗</a><a class="textLink" href="#top">Back to top ↑</a></div></div>
       <div class="finalCollage"><img class="collageMain" src="POPPI%20Case%20Study/campaign-end-v2.jpg" alt="POPPI presenter holding the Pink Rush product" width="1672" height="941"><img class="collageSmall" src="POPPI%20Case%20Study/storyboard.jpg" alt="POPPI campaign storyboard" width="1122" height="1402"></div>
+    </section>
+
+    <!-- ═══════════ WORLDS NEARBY — related worlds ═══════════ -->
+    <section class="voisins" id="voisins" dir="rtl" lang="he" aria-label="עולמות מותג נוספים מהסטודיו">
+      <div class="kicker">Worlds Nearby</div>
+      <h2>העולם הבא <b>כבר פתוח.</b></h2>
+      <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
+      <div class="v-cards" id="vCards">
+        <a class="v-card" href="https://hagitantebi.co.il/petale.html" style="--vb:var(--pink)">
+          <div class="ph"><img src="brand-worlds/thumbs/petale.webp" width="720" height="378"
+            alt="PÉTALE — עולם מותג מקרונים בצבעי פסטל" loading="lazy"></div>
+          <div class="body">
+            <div class="fr">PÉTALE</div>
+            <div class="he">מקרונים בצבעי פסטל</div>
+            <div class="note">קונדיטוריה צרפתית — עולם שנפתח כמו קופסת מקרונים.</div>
+            <div class="go">Enter ↗</div>
+          </div>
+        </a>
+        <a class="v-card" href="https://hagitantebi.co.il/melte.html" style="--vb:var(--purple)">
+          <div class="ph"><img src="brand-worlds/thumbs/melte.webp" width="720" height="378"
+            alt="MELTÉ — עולם מותג שוקולד שנמס בגלילה" loading="lazy"></div>
+          <div class="body">
+            <div class="fr">MELTÉ</div>
+            <div class="he">שוקולד שנמס בגלילה</div>
+            <div class="note">עולם שוקולד בטמפרטורה מדויקת — מהפולים ועד הריבוע הראשון.</div>
+            <div class="go">Enter ↗</div>
+          </div>
+        </a>
+        <a class="v-card" href="https://hagitantebi.co.il/solara-wild/" style="--vb:var(--orange)">
+          <div class="ph"><img src="brand-worlds/thumbs/solara-wild.webp" width="720" height="378"
+            alt="SOLARA WILD — עולם מותג הגנת שמש שמרגישה כמו חופש" loading="lazy"></div>
+          <div class="body">
+            <div class="fr">SOLARA WILD</div>
+            <div class="he">שמש על העור, פרא בנשמה</div>
+            <div class="note">הגנת שמש שמרגישה כמו חופש — לא כמו חובה.</div>
+            <div class="go">Enter ↗</div>
+          </div>
+        </a>
+      </div>
     </section>
 
     <section class="studioNote" id="studio" dir="rtl" lang="he" aria-labelledby="studio-note-title">
