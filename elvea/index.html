@@ -71,6 +71,11 @@
         },
         {
           "@type":"Question",
+          "name":"איך הקרוסלה של ELVÉA° משולבת באתר?",
+          "acceptedAnswer":{"@type":"Answer","text":"קמפיין ההשקה — קרוסלת אינסטגרם של חמישה שקפים המצוירת על קו ירוק אחד רציף — נפרש באתר כרצועה אופקית נגללת בשם Le Fil Vert: הגלילה מזיזה את השקפים, וקווי חיבור חיים מצוירים ביניהם בדיוק בגובה שבו הקו פוגש את שולי כל תמונה, מהיד שמרימה את הקו ועד היד שמחזיקה את המוצר."}
+        },
+        {
+          "@type":"Question",
           "name":"אפשר להזמין עולם מותג כזה לעסק שלי?",
           "acceptedAnswer":{"@type":"Answer","text":"כן. Brand Worlds Studio של חגית אנטבי בונה עולמות מותג מלאים — אסטרטגיה, שפה ויזואלית, אתר חי ותנועה — לעסקים אמיתיים. מתחילים באבחון פער המותג או בעמוד BrandOS Custom."}
         }
@@ -243,6 +248,75 @@
   }
   .sym-legend .item .t{font-weight:600}
   .sym-legend .item .d{font-weight:300;color:var(--ink-soft);font-size:15px}
+
+  /* ═══════════ LE FIL VERT — the carousel, on one continuous line ═══════════ */
+  .fil{--filH:min(56vh,540px);background:var(--cream);position:relative}
+  .fil-head{text-align:center;padding:clamp(56px,8vh,92px) 24px 0;max-width:740px;margin:0 auto}
+  .fil-head .kicker{margin-bottom:14px}
+  .fil-head h2{font-size:clamp(26px,3vw,40px);font-weight:300}
+  .fil-head h2 b{font-weight:600;color:var(--olive)}
+  .fil-head .sub{font-weight:300;color:var(--ink-soft);margin-top:12px}
+  .fil-hint{
+    display:none;margin-top:14px;font-weight:300;font-size:13.5px;color:var(--olive);
+  }
+  .fil-stage{
+    position:relative;margin-top:clamp(28px,4.5vh,48px);padding-bottom:110px;
+    overflow-x:clip; /* the translated track must never spill into the RTL document — it horizontally shifts the whole page */
+  }
+  .fil-track{
+    display:flex;align-items:flex-start;direction:rtl;
+    width:max-content;
+    padding-inline-start:max(6vw,calc(50vw - 205px)); /* slide 1 opens centered */
+    padding-inline-end:max(6vw,40px);
+  }
+  .fil-panel{flex:0 0 auto;margin:0}
+  .fil-panel img{
+    display:block;height:var(--filH);width:auto;
+    border-radius:14px;
+    box-shadow:0 22px 54px rgba(62,73,48,.14);
+  }
+  .fil-panel figcaption{margin-top:16px;text-align:center}
+  .fil-panel figcaption .n{
+    font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--olive);direction:ltr;
+  }
+  .fil-panel figcaption .t{font-weight:300;font-size:15.5px;color:var(--ink-soft);margin-top:4px}
+  .fil-link{flex:0 0 auto;width:clamp(64px,8vw,130px);pointer-events:none}
+  .fil-link svg{width:100%;height:var(--filH);display:block;overflow:visible}
+  .fil-link .lien{fill:none;stroke:var(--olive);stroke-width:2.4;stroke-linecap:round}
+  .fil-end{
+    flex:0 0 auto;position:relative;width:clamp(120px,12vw,180px);
+    height:var(--filH);pointer-events:none;
+  }
+  .fil-end .tail{
+    position:absolute;top:59.2%;right:0;left:40%;height:2.4px;
+    background:var(--olive);border-radius:2px;
+  }
+  .fil-end .mark{
+    position:absolute;top:59.2%;left:0;width:38%;transform:translateY(-50%);
+    text-align:center;letter-spacing:.4em;color:var(--olive);
+    font-size:12px;direction:ltr;
+  }
+  @media(max-width:768px){
+    .fil{--filH:min(54vh,470px)}
+    .fil-head{padding-top:80px}
+    .fil-hint{display:block}
+    .fil-stage{
+      margin-top:38px;padding-bottom:80px;
+      overflow-x:auto;-webkit-overflow-scrolling:touch;
+      scroll-snap-type:x mandatory;scrollbar-width:none;
+    }
+    .fil-stage::-webkit-scrollbar{display:none}
+    .fil-panel{scroll-snap-align:center}
+    .fil-panel img{border-radius:12px}
+    .fil-link{width:52px}
+    .fil-track{padding-inline:6vw}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fil-hint{display:block}
+    .fil-stage{overflow-x:auto;scroll-snap-type:x mandatory}
+    .fil-panel{scroll-snap-align:center}
+  }
 
   /* ═══════════ THE PROMISE — full bleed ═══════════ */
   .promesse{position:relative;min-height:88svh;display:grid;place-items:center;overflow:hidden}
@@ -491,6 +565,60 @@
   </div>
 </section>
 
+<!-- ═══════════ LE FIL VERT — the campaign, one continuous line ═══════════ -->
+<section class="fil" id="fil" aria-label="קמפיין הקרוסלה של ELVÉA — חמישה שקפים על קו ירוק אחד רציף">
+  <div class="fil-head">
+    <div class="kicker">Le Fil Vert</div>
+    <h2>חמישה שקפים. <b>קו אחד רציף.</b></h2>
+    <p class="sub">קמפיין ההשקה של <span dir="ltr">ELVÉA°</span> באינסטגרם מצויר על אותו קו מהסמל: הוא יוצא מהיד שלה, עובר דרך המרכיבים, נכנס אל הפורמולה, נמתח לאורך הדלפק — וחוזר אל היד שלה, הפעם עם המוצר. גללו, והקו נמשך משקף לשקף.</p>
+    <p class="fil-hint">החליקו — הקו ממשיך ←</p>
+  </div>
+  <div class="fil-stage" id="filStage">
+    <div class="fil-track" id="filTrack">
+      <figure class="fil-panel">
+        <img src="assets/img/fil-01.webp" width="768" height="1200"
+          srcset="assets/img/fil-01-m.webp 486w, assets/img/fil-01.webp 768w"
+          sizes="(max-width:768px) 300px, 360px"
+          alt="שקף 1 — אשת ELVÉA מרימה קו ירוק שהופך לעלה הסמל, על רקע חנות המותג" loading="lazy">
+        <figcaption><div class="n">01 · La Main</div><div class="t">הכול מתחיל ביד: היא מרימה קו ירוק אחד.</div></figcaption>
+      </figure>
+      <div class="fil-link" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="lien" pathLength="100" vector-effect="non-scaling-stroke" d="M100,50.3 C58,50.3 42,52 0,52"/></svg></div>
+      <figure class="fil-panel">
+        <img src="assets/img/fil-02.webp" width="960" height="1200"
+          srcset="assets/img/fil-02-m.webp 608w, assets/img/fil-02.webp 960w"
+          sizes="(max-width:768px) 380px, 450px"
+          alt="שקף 2 — הקו עובר דרך המרכיבים: פרח קמליה לבן, עלה, טיפת סרום ופנינים בוטניות" loading="lazy">
+        <figcaption><div class="n">02 · Les Actifs</div><div class="t">הקו עובר דרך המרכיבים — פרח, עלה, טיפה.</div></figcaption>
+      </figure>
+      <div class="fil-link" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="lien" pathLength="100" vector-effect="non-scaling-stroke" d="M100,52.1 C58,52.1 42,61.7 0,61.7"/></svg></div>
+      <figure class="fil-panel">
+        <img src="assets/img/fil-03.webp" width="960" height="1200"
+          srcset="assets/img/fil-03-m.webp 608w, assets/img/fil-03.webp 960w"
+          sizes="(max-width:768px) 380px, 450px"
+          alt="שקף 3 — הקו מקיף צלוחית זכוכית עם עלה ועלי כותרת ונכנס אל בקבוק הסרום" loading="lazy">
+        <figcaption><div class="n">03 · La Formule</div><div class="t">ונכנס אל הבקבוק. המפגש קורה בפורמולה.</div></figcaption>
+      </figure>
+      <div class="fil-link" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="lien" pathLength="100" vector-effect="non-scaling-stroke" d="M100,61.7 C58,61.7 42,65.2 0,65.2"/></svg></div>
+      <figure class="fil-panel">
+        <img src="assets/img/fil-04.webp" width="720" height="1200"
+          srcset="assets/img/fil-04-m.webp 456w, assets/img/fil-04.webp 720w"
+          sizes="(max-width:768px) 285px, 340px"
+          alt="שקף 4 — הקו נמתח לאורך דלפק הזכוכית עם קולקציית ELVÉA, והיא מטפטפת סרום על ידה" loading="lazy">
+        <figcaption><div class="n">04 · La Collection</div><div class="t">הקו נהיה הדלפק שעליו הקולקציה כולה.</div></figcaption>
+      </figure>
+      <div class="fil-link" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="lien" pathLength="100" vector-effect="non-scaling-stroke" d="M100,71.5 C58,71.5 42,52.2 0,52.2"/></svg></div>
+      <figure class="fil-panel">
+        <img src="assets/img/fil-05.webp" width="728" height="1200"
+          srcset="assets/img/fil-05-m.webp 461w, assets/img/fil-05.webp 728w"
+          sizes="(max-width:768px) 285px, 340px"
+          alt="שקף 5 — היא מחזיקה את המוצר המוגמר ליד שקית ומארז המתנה של ELVÉA, והקו חוזר אל העלה" loading="lazy">
+        <figcaption><div class="n">05 · La Rencontre</div><div class="t">והוא נסגר שוב ביד שלה — הפעם עם המוצר.</div></figcaption>
+      </figure>
+      <div class="fil-end" aria-hidden="true"><span class="tail"></span><span class="mark">··· O ···</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ THE PROMISE ═══════════ -->
 <section class="promesse" id="promesse">
   <img src="assets/img/greenhouse-lineup.webp"
@@ -617,6 +745,13 @@
       זה מה שהופך סט תמונות לעולם: <strong>שפה אחת שכל פרט בה מציית לאותו רעיון</strong>.
     </p>
     <p>
+      אותו קו יוצא מהאתר גם אל הפיד: קמפיין ההשקה, Le Fil Vert, הוא קרוסלת אינסטגרם של חמישה שקפים
+      שמצוירת כולה על קו ירוק אחד רציף — מהיד שמרימה את הקו ועד היד שמחזיקה את המוצר.
+      באתר היא לא הוטמעה כגלריה: השקפים נפרשים לרוחב בגלילה, מדדנו את הנקודה המדויקת שבה הקו פוגש
+      את שולי כל תמונה, וקווי חיבור חיים מצוירים ביניהן בזמן התנועה — כך שהקו באמת לא נשבר אף פעם,
+      <strong>לא בין שקף לשקף, ולא בין האתר לקמפיין</strong>.
+    </p>
+    <p>
       זה בדיוק מה שהסטודיו בונה למותגים אמיתיים: לא "אתר יפה" אלא עולם עם היגיון רגשי אחד.
       רוצים לראות איך זה נראה על העסק שלכם?
       התחילו ב<a href="https://hagitantebi.co.il/brand-world.html">אבחון פער המותג</a> או הציצו ב<a href="https://hagitantebi.co.il/brandos-custom.html">BrandOS Custom</a>.
@@ -634,6 +769,10 @@
       <details>
         <summary>מה מסמל הסמל?</summary>
         <p>הקו הראשון — עלה, המקור הבוטני. הקו השני — טיפה, הפורמולה. נקודת המפגש ביניהם — העור. באתר הוא מצויר בקו חי בזמן הגלילה.</p>
+      </details>
+      <details>
+        <summary>איך הקרוסלה של <span dir="ltr">ELVÉA°</span> משולבת באתר?</summary>
+        <p>קמפיין ההשקה — קרוסלת אינסטגרם של חמישה שקפים המצוירת על קו ירוק אחד רציף — נפרש באתר כרצועה אופקית נגללת (Le Fil Vert). הגלילה מזיזה את השקפים, וקווי חיבור חיים מצוירים ביניהם בדיוק בגובה שבו הקו פוגש את שולי כל תמונה, כך שהקו נמשך משקף לשקף בלי להישבר.</p>
       </details>
       <details>
         <summary>אפשר להזמין עולם מותג כזה לעסק שלי?</summary>
@@ -764,6 +903,51 @@ if(!reduced){
   document.getElementById('symMeet').style.opacity = 1;
   document.querySelectorAll('.sym-legend .item').forEach(i=>{i.style.opacity=1;i.style.transform='none'});
 }
+
+/* ══ LE FIL VERT — the carousel scrubbed sideways, links drawn between slides ══ */
+gsap.matchMedia().add('(min-width:769px) and (prefers-reduced-motion: no-preference)', ()=>{
+  const stage = document.getElementById('filStage');
+  const track = document.getElementById('filTrack');
+  const liens = gsap.utils.toArray('.fil-link .lien');
+  const caps  = gsap.utils.toArray('.fil-panel figcaption');
+
+  /* pathLength="100" — normalized, immune to the preserveAspectRatio:none distortion */
+  gsap.set(liens,{strokeDasharray:100,strokeDashoffset:100});
+  gsap.set(caps,{opacity:0,y:14});
+  gsap.set('.fil-end .tail',{scaleX:0,transformOrigin:'100% 50%'});
+  gsap.set('.fil-end .mark',{opacity:0});
+
+  const dist = ()=> Math.max(0, track.scrollWidth - stage.clientWidth);
+
+  /* progress at which an element's center crosses the stage center (RTL pan → x grows) */
+  const sRect = stage.getBoundingClientRect();
+  const sc = sRect.left + sRect.width/2;
+  const prog = el=>{
+    const D = dist(); if(!D) return 0;
+    const r = el.getBoundingClientRect();
+    return gsap.utils.clamp(0,1,(sc - (r.left + r.width/2)) / D);
+  };
+  const put = (t,dur)=> Math.min(Math.max(0,t), 1-dur);
+
+  const ftl = gsap.timeline({
+    defaults:{ease:'none'},
+    scrollTrigger:{
+      trigger:'#fil',start:'top top',end:'+=280%',
+      scrub:.7,pin:true,anticipatePin:1,invalidateOnRefresh:true
+    }
+  });
+  ftl.to(track,{x:dist,duration:1},0);
+
+  liens.forEach(p=>{
+    ftl.to(p,{strokeDashoffset:0,duration:.12}, put(prog(p.closest('.fil-link'))-.07,.12));
+  });
+  caps.forEach(c=>{
+    ftl.to(c,{opacity:1,y:0,duration:.08,ease:'power1.out'}, put(prog(c)-.11,.08));
+  });
+  const endBox = document.querySelector('.fil-end');
+  ftl.to('.fil-end .tail',{scaleX:1,duration:.10}, put(prog(endBox)-.08,.10))
+     .to('.fil-end .mark',{opacity:1,duration:.06}, put(prog(endBox)-.01,.06));
+});
 
 /* ══ collection cards rise in ══ */
 if(!reduced){
