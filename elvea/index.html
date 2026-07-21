@@ -322,11 +322,21 @@
     .fil-panel img{border-radius:12px}
     .fil-link{width:52px}
     .fil-track{padding-inline:6vw}
+    /* no scroll-drawing on touch — the line is simply whole, always:
+       match its weight to the line baked inside the smaller slides */
+    .fil-link .lien{stroke-dasharray:none !important;stroke-dashoffset:0 !important;stroke-width:2}
+    .fil-panel figcaption{opacity:1 !important;transform:none !important}
+    .fil-end .tail{transform:none !important}
+    .fil-end .mark{opacity:1 !important}
   }
   @media (prefers-reduced-motion:reduce){
     .fil-hint{display:block}
     .fil-stage{overflow-x:auto;scroll-snap-type:x mandatory}
     .fil-panel{scroll-snap-align:center}
+    .fil-link .lien{stroke-dasharray:none !important;stroke-dashoffset:0 !important}
+    .fil-panel figcaption{opacity:1 !important;transform:none !important}
+    .fil-end .tail{transform:none !important}
+    .fil-end .mark{opacity:1 !important}
   }
 
   /* ═══════════ THE PROMISE — full bleed ═══════════ */
@@ -1034,6 +1044,19 @@ gsap.matchMedia().add('(min-width:769px) and (prefers-reduced-motion: no-prefere
   const endBox = document.querySelector('.fil-end');
   ftl.to('.fil-end .tail',{scaleX:1,duration:.10}, put(prog(endBox)-.08,.10))
      .to('.fil-end .mark',{opacity:1,duration:.06}, put(prog(endBox)-.01,.06));
+});
+
+/* on touch the stage is a native RTL scroller — some browsers open it at the wrong
+   end, so force the start position: slide 1, where the line begins */
+gsap.matchMedia().add('(max-width:768px)', ()=>{
+  const stage = document.getElementById('filStage');
+  const first = document.querySelector('.fil-panel');
+  const align = ()=>{
+    const sr = stage.getBoundingClientRect(), fr = first.getBoundingClientRect();
+    stage.scrollLeft += (fr.left + fr.width/2) - (sr.left + sr.width/2);
+  };
+  requestAnimationFrame(align);
+  addEventListener('load', align, {once:true});
 });
 
 /* ══ collection + voisins cards rise in ══ */
