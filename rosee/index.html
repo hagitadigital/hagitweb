@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ROSÉE° — נולד עם שחר | Brand Worlds Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Assistant:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F0E6;
+    --ink:#3B2E33;
+    --ink-soft:#6E5A61;
+    --rose:#E8B4B8;
+    --rose-deep:#C9878E;
+    --copper:#C28A5A;
+    --linen:#FBF6EE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Assistant',-apple-system,'Segoe UI',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--rose);color:var(--ink)}
+  .kicker{
+    font-family:'Cormorant Garamond',serif;
+    font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--rose-deep);direction:ltr;
+  }
+
+  /* ═══════════ HERO — La Goutte ═══════════ */
+  .drop-track{height:520vh;position:relative}
+  .drop-stage{
+    position:sticky;top:0;height:100vh;width:100%;
+    overflow:hidden;background:var(--cream);
+  }
+  #dropCanvas{
+    position:absolute;inset:0;width:100%;height:100%;
+    display:block;
+  }
+  .stage-ui{
+    position:absolute;inset:0;pointer-events:none;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:clamp(24px,4vw,56px);
+  }
+  .wordmark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(17px,1.6vw,22px);
+    letter-spacing:.42em;
+    font-weight:500;
+    direction:ltr;text-align:right;
+  }
+  .wordmark span{color:var(--rose-deep)}
+
+  .drop-caption{
+    position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+    text-align:center;
+    opacity:0;transition:opacity .6s ease;
+  }
+  .drop-caption.visible{opacity:1}
+  .drop-caption h1{
+    font-size:clamp(44px,7.5vw,110px);
+    font-weight:200;
+    letter-spacing:.08em;
+    line-height:1.05;
+  }
+  .drop-caption p{
+    margin-top:18px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(15px,1.5vw,20px);
+    letter-spacing:.3em;text-transform:uppercase;
+    color:var(--ink);opacity:.6;direction:ltr;
+  }
+
+  .scroll-hint{
+    align-self:center;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.35em;font-weight:600;
+    opacity:.65;
+    transition:opacity .5s;
+  }
+  .scroll-hint.hidden{opacity:0}
+  .scroll-hint .line{
+    width:1px;height:44px;background:var(--ink);opacity:.4;
+    animation:hintPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes hintPulse{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+  .loader{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:var(--cream);z-index:5;
+    transition:opacity .7s ease;
+  }
+  .loader.done{opacity:0;pointer-events:none}
+  .loader-drop{
+    width:14px;height:14px;border-radius:50% 50% 50% 0;
+    background:var(--rose);transform:rotate(-45deg);
+    animation:dropFall 1.2s ease-in-out infinite;
+  }
+  @keyframes dropFall{0%{transform:rotate(-45deg) translateY(-14px);opacity:0}40%{opacity:1}100%{transform:rotate(-45deg) translateY(14px);opacity:0}}
+
+  /* ═══════════ LE CADRAN DE L'AUBE — the wheel ═══════════ */
+  .cadran-track{height:560vh;position:relative}
+  .cadran-stage{
+    position:sticky;top:0;height:100vh;width:100%;overflow:hidden;
+    display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#E5C4CB 0%,var(--cream) 72%);
+  }
+  .cad-head{
+    text-align:center;padding:clamp(28px,5.5vh,64px) 24px 0;flex:none;
+  }
+  .cad-head h2{
+    font-size:clamp(28px,3.4vw,46px);font-weight:200;letter-spacing:.04em;
+    margin-top:12px;
+  }
+  .cad-head h2 b{font-weight:600;color:var(--rose-deep)}
+  .cad-head .sub{
+    margin-top:8px;font-weight:300;color:var(--ink-soft);
+    font-size:clamp(14px,1.4vw,17px);
+  }
+  .wheel-wrap{
+    position:relative;flex:none;
+    width:min(92vw,64vh);height:min(92vw,64vh);
+    margin:auto;
+    --ps:clamp(86px,15.5vh,150px);
+  }
+  .cadran-stage{padding-bottom:clamp(14px,3.5vh,40px)}
+  .wheel-ring{position:absolute;inset:0;pointer-events:none}
+  .wheel-ring svg{width:100%;height:100%;display:block;overflow:visible}
+  .wheel-ring .ring{fill:none;stroke:var(--copper);stroke-width:1;opacity:.4}
+  .wheel-ring .tick{stroke:var(--copper);stroke-width:1;opacity:.35}
+  .rays{
+    position:absolute;inset:12%;pointer-events:none;opacity:.5;
+    will-change:transform;
+  }
+  .rays svg{width:100%;height:100%;display:block}
+  .rays line{stroke:var(--copper);stroke-width:.6;opacity:.45}
+  .wheel-center{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:62%;text-align:center;pointer-events:none;
+  }
+  .wheel-center::before{
+    content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:130%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,180,184,.34) 0%,rgba(232,180,184,.12) 46%,transparent 70%);
+    z-index:-1;
+  }
+  .wheel-center .c-fr{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:.1em;
+    direction:ltr;color:var(--ink);
+    transition:opacity .25s ease;
+  }
+  .wheel-center .c-he{
+    margin-top:2px;font-weight:600;font-size:clamp(15px,1.6vw,19px);
+    transition:opacity .25s ease;
+  }
+  .wheel-center .c-line{
+    margin-top:8px;font-weight:300;color:var(--ink-soft);
+    font-size:clamp(14px,1.5vw,18px);line-height:1.5;
+    transition:opacity .25s ease;
+  }
+  .wheel-center.swap .c-fr,.wheel-center.swap .c-he,.wheel-center.swap .c-line{opacity:0}
+  .wheel-center .c-hint{
+    margin-top:14px;font-size:12px;letter-spacing:.14em;font-weight:400;
+    color:var(--rose-deep);opacity:.8;
+    animation:hintFade 2.2s ease-in-out infinite;
+  }
+  @keyframes hintFade{0%,100%{opacity:.35}50%{opacity:.85}}
+  .cadran-stage.open .wheel-center .c-hint{opacity:0;animation:none}
+  .wheel-center{transition:opacity .3s ease}
+  .cadran-stage.open .wheel-center{opacity:0}
+
+  .prod{
+    position:absolute;left:0;top:0;
+    width:var(--ps);height:var(--ps);
+    border:none;padding:0;background:none;
+    pointer-events:none;cursor:default;
+    will-change:transform,opacity;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .prod .ph{
+    display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;
+    border:1px solid rgba(194,138,90,.4);
+    box-shadow:0 16px 40px rgba(59,46,51,.14);
+    background:#F2E1DE;
+    transition:box-shadow .4s ease,border-color .4s ease;
+  }
+  .prod img{width:100%;height:100%;object-fit:cover;display:block}
+  .prod.is-focus{pointer-events:auto;cursor:pointer}
+  .prod.is-focus .ph{
+    border-color:var(--copper);
+    box-shadow:0 26px 60px rgba(59,46,51,.22);
+  }
+
+  /* ingredients — the product opens */
+  .ing-layer{position:absolute;inset:0;pointer-events:none}
+  .ing-line{
+    position:absolute;height:1px;background:var(--copper);
+    transform-origin:0 50%;opacity:0;transition:opacity .35s ease;
+  }
+  .ing-chip{
+    position:absolute;transform:translate(-50%,-50%) scale(.85);
+    background:var(--linen);border:1px solid rgba(194,138,90,.45);
+    border-radius:12px;padding:9px 14px;text-align:center;
+    box-shadow:0 12px 30px rgba(59,46,51,.12);
+    opacity:0;transition:opacity .35s ease,transform .35s cubic-bezier(.2,.8,.3,1.2);
+    max-width:170px;
+  }
+  .ing-chip .n{font-weight:600;font-size:13.5px}
+  .ing-chip .r{font-weight:300;font-size:12px;color:var(--ink-soft);margin-top:1px}
+  .cadran-stage.open .ing-line{opacity:.65}
+  .cadran-stage.open .ing-chip{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+  /* ═══════════ FIN ═══════════ */
+  .fin{
+    min-height:64vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;
+    text-align:center;padding:90px 24px;
+  }
+  .fin .mark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(38px,5vw,60px);letter-spacing:.3em;font-weight:500;
+    direction:ltr;
+  }
+  .fin .mark span{color:var(--rose-deep)}
+  .fin .line{font-weight:300;font-size:clamp(16px,1.7vw,20px);color:var(--ink-soft)}
+  .fin .tag{
+    margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:12px;
+    letter-spacing:.34em;text-transform:uppercase;color:var(--rose-deep);direction:ltr;
+  }
+
+  @media(max-width:768px){
+    .wheel-wrap{width:min(94vw,58vh);height:min(94vw,58vh);--ps:clamp(74px,23vw,110px)}
+    .wheel-center{width:66%}
+    .wheel-center .c-hint{font-size:11px}
+    .ing-chip{max-width:132px;padding:7px 10px}
+    .ing-chip .n{font-size:12.5px}
+    .ing-chip .r{font-size:11px}
+    .cad-head{padding-top:20px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .scroll-hint{display:none}
+    .drop-caption{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LA GOUTTE — the drop ═══════════ -->
+<div class="drop-track" id="dropTrack">
+  <div class="drop-stage">
+    <canvas id="dropCanvas"></canvas>
+
+    <div class="loader" id="loader"><div class="loader-drop"></div></div>
+
+    <div class="stage-ui">
+      <div class="wordmark">R O S É E <span>°</span></div>
+      <div class="scroll-hint" id="scrollHint">
+        <div class="line"></div>
+        גללו לאט
+      </div>
+    </div>
+
+    <div class="drop-caption" id="cap1">
+      <h1>נולד עם שחר</h1>
+      <p>Née à l'aube</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LE CADRAN DE L'AUBE — the wheel ═══════════ -->
+<section class="cadran-track" id="cadranTrack" aria-label="ROSÉE — הקולקציה: גלגל הבוקר">
+  <div class="cadran-stage" id="cadranStage">
+    <header class="cad-head">
+      <div class="kicker">Le Cadran de l'Aube</div>
+      <h2>הבוקר הוא <b>מעגל.</b></h2>
+      <p class="sub">חמישה מוצרים · חמש שעות של טל</p>
+    </header>
+    <div class="wheel-wrap" id="wheelWrap">
+      <div class="wheel-ring" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring" cx="50" cy="50" r="49.4"/>
+          <g id="ticks"></g>
+        </svg>
+      </div>
+      <div class="rays" id="rays" aria-hidden="true">
+        <svg viewBox="0 0 100 100" id="raysSvg"></svg>
+      </div>
+      <div class="wheel-center" id="wheelCenter">
+        <div class="c-fr" id="cFr">La Brume</div>
+        <div class="c-he" id="cHe">מי טל</div>
+        <div class="c-line" id="cLine">הטיפה הראשונה של היום</div>
+        <div class="c-hint">הקליקו על המוצר — והוא נפתח</div>
+      </div>
+      <div class="ing-layer" id="ingLayer" aria-hidden="true"></div>
+      <!-- product buttons injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FIN ═══════════ -->
+<section class="fin">
+  <div class="mark">R O S É E <span>°</span></div>
+  <div class="line">נולד עם שחר · חמישה מוצרים, מעגל אחד</div>
+  <div class="tag">Brand Worlds Studio · Demo World</div>
+</section>
+
+<script>
+(function(){
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ══ LA GOUTTE — canvas scrub (unchanged mechanics) ══ */
+  const isMobile = matchMedia('(max-width:768px)').matches;
+  const FRAME_COUNT = window.ROSEE_FRAME_COUNT || 80;
+  const DIR = isMobile ? 'frames-mobile' : 'frames-desktop';
+  const src = i => `${DIR}/f_${String(i+1).padStart(3,'0')}.webp`;
+
+  const canvas = document.getElementById('dropCanvas');
+  const ctx = canvas.getContext('2d');
+  const track = document.getElementById('dropTrack');
+  const loader = document.getElementById('loader');
+  const hint = document.getElementById('scrollHint');
+  const cap1 = document.getElementById('cap1');
+
+  const frames = new Array(FRAME_COUNT).fill(null);
+  let currentFrame = 0, renderedFrame = -1;
+
+  function resize(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = innerWidth * dpr;
+    canvas.height = innerHeight * dpr;
+    renderedFrame = -1;
+    draw();
+  }
+  function draw(){
+    const img = nearestLoaded(currentFrame);
+    if (!img || currentFrame === renderedFrame) return;
+    renderedFrame = currentFrame;
+    const cw = canvas.width, ch = canvas.height;
+    const iw = img.width, ih = img.height;
+    const s = Math.max(cw/iw, ch/ih);
+    const dw = iw*s, dh = ih*s;
+    ctx.drawImage(img, (cw-dw)/2, (ch-dh)/2, dw, dh);
+  }
+  function nearestLoaded(i){
+    if (frames[i]) return frames[i];
+    for (let d=1; d<FRAME_COUNT; d++){
+      if (frames[i-d]) return frames[i-d];
+      if (frames[i+d]) return frames[i+d];
+    }
+    return null;
+  }
+  function load(i){
+    return new Promise(res=>{
+      const im = new Image();
+      im.onload = ()=>{ frames[i]=im; res(); };
+      im.onerror = ()=>res();
+      im.src = src(i);
+    });
+  }
+  async function loadAll(){
+    const first=[], rest=[];
+    for(let i=0;i<FRAME_COUNT;i++) (i%4===0?first:rest).push(i);
+    await Promise.all(first.map(load));
+    loader.classList.add('done');
+    renderedFrame=-1; draw();
+    await Promise.all(rest.map(load));
+    renderedFrame=-1; draw();
+  }
+  function onScrollHero(){
+    const r = track.getBoundingClientRect();
+    const total = r.height - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    currentFrame = Math.min(FRAME_COUNT-1, Math.floor(p * FRAME_COUNT));
+    hint.classList.toggle('hidden', p > 0.03);
+    cap1.classList.toggle('visible', reduced || p > 0.86);
+    requestAnimationFrame(draw);
+  }
+
+  /* ══ LE CADRAN — data ══ */
+  const PRODUCTS = [
+    {img:'collection/brume.webp',   fr:'La Brume',   he:'מי טל',        line:'הטיפה הראשונה של היום',
+     alt:'ROSÉE La Brume — בקבוק מי טל מזכוכית ורודה עם ראש נחושת',
+     ings:[['מי ורד דמשקאי','הבסיס העדין'],['טל בוקר','לחות מיידית'],['אלוורה','מרגיע את ההתעוררות']]},
+    {img:'collection/reveil.webp',  fr:'Le Réveil',  he:'סרום בוקר',    line:'העור מתעורר לפני הקפה',
+     alt:'ROSÉE Le Réveil — בקבוקון סרום עם טפטפת נחושת',
+     ings:[['ויטמין C','אור מיידי'],['חומצה היאלורונית','מילוי מבפנים'],['קפאין צמחי','פוקוס לעור']]},
+    {img:'collection/lumiere.webp', fr:'La Lumière', he:'קרם יום',      line:'אור שנשאר על העור',
+     alt:'ROSÉE La Lumière — צנצנת קרם יום עם מכסה נחושת',
+     ings:[['סקוואלן','מעטפת רכה'],['ניאצינמיד','גוון אחיד'],['שמן קמליה','זוהר שקט']]},
+    {img:'collection/voile.webp',   fr:'Le Voile',   he:'קרם עיניים',   line:'הצעיף שמסתיר את הלילה הקצר',
+     alt:'ROSÉE Le Voile — שפופרת קרם עיניים ורודה על בסיס נחושת',
+     ings:[['פפטידים','מתיחה עדינה'],['קפאין','מעורר את המבט'],['שמן שקדים','רכות סביב העין']]},
+    {img:'collection/nuit.webp',    fr:'La Nuit',    he:'אליקסיר לילה', line:'הטל נולד בלילה',
+     alt:'ROSÉE La Nuit — בקבוק אליקסיר לילה בוורוד עמוק',
+     ings:[['רטינול עדין','חידוש בשינה'],['שמן ורדים','הזנה עמוקה'],['סרמידים','חומת הלחות']]},
+  ];
+  const SEGS = PRODUCTS.length - 1;
+
+  const track2 = document.getElementById('cadranTrack');
+  const stage2 = document.getElementById('cadranStage');
+  const wrap = document.getElementById('wheelWrap');
+  const rays = document.getElementById('rays');
+  const center = document.getElementById('wheelCenter');
+  const cFr = document.getElementById('cFr');
+  const cHe = document.getElementById('cHe');
+  const cLine = document.getElementById('cLine');
+  const ingLayer = document.getElementById('ingLayer');
+
+  /* build ticks (60, clock language) + rays (12) */
+  const ticks = document.getElementById('ticks');
+  let tickHtml = '';
+  for(let i=0;i<60;i++){
+    const a = i*6*Math.PI/180, big = i%12===0;
+    const r1 = big ? 47.2 : 48.3, r2 = 49.4;
+    tickHtml += `<line class="tick" x1="${50+r1*Math.sin(a)}" y1="${50-r1*Math.cos(a)}" x2="${50+r2*Math.sin(a)}" y2="${50-r2*Math.cos(a)}"/>`;
+  }
+  ticks.innerHTML = tickHtml;
+  const raysSvg = document.getElementById('raysSvg');
+  let rayHtml = '';
+  for(let i=0;i<12;i++){
+    const a = i*30*Math.PI/180;
+    rayHtml += `<line x1="${50+16*Math.sin(a)}" y1="${50-16*Math.cos(a)}" x2="${50+40*Math.sin(a)}" y2="${50-40*Math.cos(a)}"/>`;
+  }
+  raysSvg.innerHTML = rayHtml;
+
+  /* build product buttons */
+  const prods = PRODUCTS.map((p,i)=>{
+    const b = document.createElement('button');
+    b.className = 'prod';
+    b.setAttribute('aria-label', `${p.fr} — ${p.he}`);
+    b.innerHTML = `<span class="ph"><img src="${p.img}" alt="${p.alt}" loading="lazy" width="640" height="640"></span>`;
+    b.addEventListener('click', ()=> toggleIng(i));
+    wrap.appendChild(b);
+    return b;
+  });
+
+  let R = 0, rot = 0, focusIdx = -1, openIdx = -1;
+  const clamp = (v,a,b)=> Math.min(b, Math.max(a, v));
+  const smooth = t => t<=0?0 : t>=1?1 : t*t*(3-2*t);
+
+  function layout(){
+    const ps = prods[0].offsetWidth;
+    R = wrap.clientWidth/2 - ps/2 - wrap.clientWidth*0.015;
+    place();
+  }
+
+  function place(){
+    const cx = wrap.clientWidth/2, cy = wrap.clientHeight/2;
+    let best = 0, bestF = -2;
+    prods.forEach((el,i)=>{
+      const a = (i*72 - rot) * Math.PI/180;
+      const f = Math.cos(a);
+      const x = cx + R*Math.sin(a), y = cy - R*Math.cos(a);
+      const s = .78 + .58*Math.pow(Math.max(0,f),3);
+      el.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%) scale(${s})`;
+      el.style.opacity = .35 + .65*Math.pow((f+1)/2,2);
+      el.style.zIndex = Math.round(10 + 10*f);
+      el.classList.toggle('is-focus', false);
+      if (f > bestF){ bestF = f; best = i; }
+    });
+    prods[best].classList.add('is-focus');
+    if (best !== focusIdx){
+      focusIdx = best;
+      setCenter(best);
+      closeIng();
+    }
+    rays.style.transform = `rotate(${-rot*0.35}deg)`;
+  }
+
+  let swapTimer = null;
+  function setCenter(i){
+    center.classList.add('swap');
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(()=>{
+      cFr.textContent = PRODUCTS[i].fr;
+      cHe.textContent = PRODUCTS[i].he;
+      cLine.textContent = PRODUCTS[i].line;
+      center.classList.remove('swap');
+    }, 160);
+  }
+
+  function skyFor(p){
+    const a = [229,196,203], b = [247,240,230];
+    const m = a.map((v,i)=> Math.round(v + (b[i]-v)*p));
+    stage2.style.background = `linear-gradient(180deg, rgb(${m.join(',')}) 0%, var(--cream) 72%)`;
+  }
+
+  function onScrollWheel(){
+    const r = track2.getBoundingClientRect();
+    const total = r.height - innerHeight;
+    const p = clamp(-r.top/total, 0, 1);
+    const x = p * SEGS;
+    const seg = Math.min(SEGS-1, Math.floor(x));
+    const t = x - seg;
+    const DWELL = .45;
+    const tt = t < DWELL ? 0 : smooth((t-DWELL)/(1-DWELL));
+    rot = (seg + tt) * 72;
+    place();
+    skyFor(p);
+  }
+
+  /* ingredients open/close */
+  function toggleIng(i){
+    if (i !== focusIdx) return;
+    if (openIdx === i){ closeIng(); return; }
+    openIdx = i;
+    const cx = wrap.clientWidth/2, cy = wrap.clientHeight/2;
+    const px = cx, py = cy - R;                    // focused product sits at 12:00
+    const ps = prods[0].offsetWidth * 1.36;
+    const mob = wrap.clientWidth < 480;
+    const slots = mob
+      ? [[-.92,-.62],[.92,-.62],[0,1.02]]
+      : [[-1.28,-.42],[1.28,-.42],[0,1.12]];
+    let html = '';
+    PRODUCTS[i].ings.forEach((ing,k)=>{
+      const dx = slots[k][0]*ps, dy = slots[k][1]*ps;
+      const chipX = px + dx, chipY = py + dy;
+      const len = Math.hypot(dx,dy), ang = Math.atan2(dy,dx)*180/Math.PI;
+      html += `<div class="ing-line" style="left:${px}px;top:${py}px;width:${len*.62}px;transform:rotate(${ang}deg) translateX(${len*.3}px)"></div>`;
+      html += `<div class="ing-chip" style="left:${chipX}px;top:${chipY}px;transition-delay:${k*70}ms"><div class="n">${ing[0]}</div><div class="r">${ing[1]}</div></div>`;
+    });
+    ingLayer.innerHTML = html;
+    requestAnimationFrame(()=> stage2.classList.add('open'));
+  }
+  function closeIng(){
+    if (openIdx === -1) return;
+    openIdx = -1;
+    stage2.classList.remove('open');
+  }
+  document.addEventListener('click', e=>{
+    if (openIdx !== -1 && !e.target.closest('.prod')) closeIng();
+  });
+
+  /* ══ wire up ══ */
+  function onScroll(){
+    onScrollHero();
+    if (!reduced) onScrollWheel();
+  }
+  addEventListener('resize', ()=>{ resize(); layout(); });
+  addEventListener('scroll', onScroll, {passive:true});
+  resize();
+  layout();
+  if (reduced){ rot = 0; place(); skyFor(1); }
+  loadAll().then(onScroll);
+})();
+</script>
+</body>
+</html>
