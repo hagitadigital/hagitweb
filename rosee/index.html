@@ -1128,7 +1128,7 @@
     const cx = wrap.clientWidth/2, cy = wrap.clientHeight/2;
     let best = 0, bestF = -2;
     prods.forEach((el,i)=>{
-      const a = (i*72 - rot) * Math.PI/180;
+      const a = (rot - i*72) * Math.PI/180;
       const f = Math.cos(a);
       const x = cx + R*Math.sin(a), y = cy - R*Math.cos(a);
       const s = .78 + .58*Math.pow(Math.max(0,f),3);
@@ -1144,7 +1144,7 @@
       setCenter(best);
       closeIng();
     }
-    rays.style.transform = `rotate(${-rot*0.35}deg)`;
+    rays.style.transform = `rotate(${rot*0.35}deg)`;
   }
 
   let swapTimer = null;
