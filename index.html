@@ -2231,11 +2231,38 @@
         <div class="container motion-studies__header reveal">
             <p class="motion-studies__label" dir="ltr">The Range · Motion Studies</p>
             <h2 class="motion-studies__title" id="motion-studies-title">עולמות קונספט בתנועה</h2>
-            <p class="motion-studies__subtitle">שבעה עולמות דמו שבניתי כדי להדגים קצה — הדגמות קונספט, לא מותגים מסחריים. כל אחד מוכיח שפת מותג אחרת שנבנית מקוד תנועה.</p>
+            <p class="motion-studies__subtitle">עשרה עולמות דמו שבניתי כדי להדגים קצה — הדגמות קונספט, לא מותגים מסחריים. כל אחד מוכיח שפת מותג אחרת שנבנית מקוד תנועה.</p>
         </div>
 
         <div class="motion-studies__rail reveal">
         <div class="motion-studies__train" id="worldsTrain">
+            <a href="rosee/" class="motion-card" aria-label="ROSÉE° — עולם קונספט בתנועה (סקינקר של שחר)">
+                <div class="motion-card__img" style="background-image:url('rosee-card.jpg')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name" dir="ltr">ROSÉE°</p>
+                    <p class="motion-card__tagline">סקינקר שנולד עם הזריחה — הקולקציה מסתובבת בגלילה כשעון שחר, והריטואל נבנה לפי שעות הבוקר.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
+            <a href="elvea/" class="motion-card" aria-label="ELVÉA° — עולם קונספט בתנועה (מדע-עור בוטני)">
+                <div class="motion-card__img" style="background-image:url('elvea-card.jpg')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name" dir="ltr">ELVÉA°</p>
+                    <p class="motion-card__tagline">מדע-עור בוטני על קו ירוק אחד — פרח, עלה וטיפה נפגשים בגלילה בתוך בקבוק סרום אחד.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
+            <a href="arco/" class="motion-card" aria-label="ARCO° — עולם קונספט בתנועה (עיצוב פנים וחוץ)">
+                <div class="motion-card__img" style="background-image:url('arco-card.jpg')"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name" dir="ltr">ARCO°</p>
+                    <p class="motion-card__tagline">עיצוב פנים וחוץ — הגלילה ממלאת את החלל: מחדר ריק לבית חי, ממרפסת ריקה לגינה.</p>
+                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                </div>
+            </a>
+
             <a href="etage/" class="motion-card" aria-label="ÉTAGE° — עולם קונספט בתנועה (עוגות חתונה)">
                 <div class="motion-card__img" style="background-image:url('etage-og.png')"></div>
                 <div class="motion-card__body">
@@ -2314,6 +2341,29 @@
             t.classList.add('running');
         })();
         </script>
+        <style>
+        .worlds-hub-strip{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+            margin-top:clamp(36px,4.5vw,54px);padding:20px var(--container-padding);
+            background:#2A2118;color:#F5EFE4;text-decoration:none;
+            transition:background .35s}
+        .worlds-hub-strip:hover{background:#3A2E20}
+        .worlds-hub-strip__he{font-family:var(--font-body-he);font-size:16px;font-weight:600}
+        .worlds-hub-strip__sep{color:var(--color-copper)}
+        .worlds-hub-strip__en{font-family:var(--font-body-en);font-size:12px;font-weight:600;
+            letter-spacing:2.2px;text-transform:uppercase;color:#D8B48E}
+        .worlds-hub-strip__arrow{color:var(--color-copper);font-size:17px;
+            transition:transform .3s}
+        .worlds-hub-strip:hover .worlds-hub-strip__arrow{transform:translateX(-4px)}
+        @media(max-width:680px){.worlds-hub-strip{gap:6px 8px;padding:16px 6vw}
+            .worlds-hub-strip__he{font-size:14.5px}.worlds-hub-strip__en{font-size:10.5px;letter-spacing:1.6px}
+            .worlds-hub-strip__sep{display:none}}
+        </style>
+        <a href="brand-worlds/" class="worlds-hub-strip" aria-label="כל העולמות שבנינו — 2026 Capsule Hub">
+            <span class="worlds-hub-strip__he">כל העולמות שבנינו</span>
+            <span class="worlds-hub-strip__sep" aria-hidden="true">·</span>
+            <span class="worlds-hub-strip__en" dir="ltr">2026 Capsule Hub · 18 Worlds</span>
+            <span class="worlds-hub-strip__arrow" aria-hidden="true">←</span>
+        </a>
     </section>
 
     <!-- ============================================================
