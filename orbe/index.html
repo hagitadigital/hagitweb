@@ -111,6 +111,8 @@
   }
   #rail .stop.on .dot{background:var(--gold);box-shadow:0 0 12px rgba(224,178,108,.8);transform:scale(1.5)}
   #rail .stop.on .lbl{opacity:1;color:var(--gold);transform:translate(0,-50%)}
+  #rail, header{transition:opacity .7s ease}
+  .layer-open #rail, .layer-open header{opacity:0;pointer-events:none}
 
   /* ===== chapters (overlay text) ===== */
   .chapter{
@@ -167,7 +169,107 @@
   }
   @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
+  /* ============================================================
+     ACTE IV · LA GOUTTE OUVERTE — the drop returns as an object
+     ============================================================ */
+  #atelier{position:relative;z-index:2;height:190vh;pointer-events:none}
+  .atelier-ui{
+    position:sticky;top:0;height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:clamp(78px,12vh,132px) clamp(20px,4vw,48px) clamp(30px,5.5vh,58px);
+    text-align:center;
+  }
+  .atelier-head{opacity:0;transition:opacity 1s ease;max-width:640px}
+  .atelier-head h2{
+    font-weight:400;font-size:clamp(25px,3.6vw,40px);line-height:1.35;color:var(--cream);
+    text-shadow:0 0 26px rgba(0,0,0,.92), 0 2px 10px rgba(0,0,0,.85);
+  }
+  .atelier-head h2 em{font-family:var(--display);font-style:italic;letter-spacing:.05em;color:var(--gold);padding-inline:.08em}
+  .atelier-head .sub{
+    margin-top:18px;font-size:clamp(13.5px,1.6vw,15.5px);font-weight:300;letter-spacing:.06em;
+    color:var(--cream-25);line-height:1.9;text-shadow:0 0 18px rgba(0,0,0,.9);
+  }
+  .atelier-head .sub .touch-only{display:none}
+  #atelier.live .atelier-head{opacity:1}
+  #atelier.focused .atelier-head{opacity:.18}
+
+  /* the three keys — also the accessible + mobile control */
+  .strata-keys{
+    display:flex;gap:clamp(16px,4vw,52px);pointer-events:auto;
+    opacity:0;transition:opacity 1s ease .18s;
+  }
+  #atelier.live .strata-keys{opacity:1}
+  .skey{
+    background:none;border:0;cursor:pointer;padding:10px 2px 14px;position:relative;
+    font-family:var(--display);font-style:italic;direction:ltr;
+    font-size:clamp(15px,1.9vw,20px);letter-spacing:.24em;color:var(--cream-50);
+    transition:color .45s;text-shadow:0 0 18px rgba(0,0,0,.9);
+  }
+  .skey::after{
+    content:"";position:absolute;bottom:6px;right:0;left:0;height:1px;background:currentColor;
+    transform:scaleX(0);transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .skey:hover,.skey[aria-expanded="true"]{color:var(--gold)}
+  .skey:hover::after,.skey[aria-expanded="true"]::after{transform:scaleX(1)}
+  .skey .he{
+    display:block;direction:rtl;font-family:var(--serif);font-style:normal;
+    font-size:11.5px;letter-spacing:.2em;margin-top:7px;color:var(--cream-25);
+  }
+
+  /* veil — the world steps back while a layer is open */
+  #veil{
+    position:fixed;inset:0;z-index:11;pointer-events:none;opacity:0;
+    background:radial-gradient(ellipse at 50% 50%, rgba(7,10,15,.30) 0%, rgba(7,10,15,.78) 78%);
+    transition:opacity .8s ease;
+  }
+  #veil.on{opacity:1}
+
+  /* the panel — la note · la matière · l'heure */
+  .orb-panel{
+    position:fixed;z-index:12;opacity:0;visibility:hidden;pointer-events:none;
+    right:clamp(20px,6vw,96px);top:50%;
+    transform:translateY(-50%) translateX(26px);
+    width:min(432px, calc(100vw - 40px));text-align:right;
+    transition:opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), visibility .7s;
+  }
+  .orb-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(-50%) translateX(0)}
+  .orb-panel .card{
+    border:1px solid rgba(194,138,90,.32);background:rgba(9,13,20,.74);
+    backdrop-filter:blur(14px);padding:clamp(28px,3.4vw,38px) clamp(24px,3vw,34px) clamp(24px,3vw,32px);
+    position:relative;
+  }
+  .orb-panel .fr{
+    font-family:var(--display);font-style:italic;direction:ltr;text-align:right;
+    font-size:clamp(23px,2.8vw,28px);letter-spacing:.26em;color:var(--gold);
+  }
+  .orb-panel .he{margin-top:9px;font-size:13.5px;letter-spacing:.2em;color:var(--cream-50)}
+  .orb-panel dl{margin-top:28px}
+  .orb-panel dt{
+    font-family:var(--display);font-style:italic;direction:ltr;text-align:right;
+    font-size:12.5px;letter-spacing:.3em;color:var(--copper);
+  }
+  .orb-panel dd{
+    margin:9px 0 24px;font-weight:300;font-size:clamp(14.5px,1.7vw,16px);
+    line-height:1.95;color:rgba(242,235,220,.87);
+  }
+  .orb-panel dd:last-of-type{margin-bottom:4px}
+  .orb-panel dd.notes{
+    font-family:var(--display);font-style:italic;font-size:clamp(16px,1.9vw,18px);
+    letter-spacing:.2em;color:var(--gold);
+  }
+  .orb-panel .close{
+    position:absolute;top:14px;left:14px;width:34px;height:34px;cursor:pointer;
+    background:none;border:0;color:var(--cream-25);font-size:19px;line-height:1;
+    transition:color .4s;
+  }
+  .orb-panel .close:hover{color:var(--gold)}
+
   /* ===== acquire ===== */
+  .acquire-sec{
+    position:relative;z-index:20;background:var(--void);text-align:center;
+    padding:clamp(84px,13vh,132px) clamp(20px,5vw,48px) clamp(74px,11vh,116px);
+    border-top:1px solid rgba(194,138,90,.18);
+  }
   #acquire .card{
     margin:34px auto 0;max-width:380px;padding:38px 34px 32px;
     border:1px solid rgba(194,138,90,.35);background:rgba(11,16,24,.55);
@@ -214,27 +316,128 @@
   .v-card .go{margin-top:16px;font-family:var(--display);font-style:italic;font-size:12.5px;letter-spacing:.3em;color:var(--gold);direction:ltr}
   @media(max-width:900px){.v-cards{grid-template-columns:1fr;max-width:420px}}
 
+  /* ===== studio note ===== */
+  .studio{
+    position:relative;z-index:20;background:var(--void);text-align:center;
+    padding:clamp(80px,12vh,124px) clamp(20px,5vw,48px);
+    border-top:1px solid rgba(194,138,90,.25);
+  }
+  .studio .wrap{max-width:720px;margin-inline:auto}
+  .studio h2{font-weight:400;font-size:clamp(24px,3.3vw,36px);line-height:1.35;color:var(--cream);margin-top:16px}
+  .studio h2 em{font-family:var(--display);font-style:italic;color:var(--gold)}
+  .studio p{
+    margin-top:22px;font-weight:300;font-size:clamp(15px,1.8vw,17.5px);line-height:1.95;color:var(--cream-50);
+  }
+  .studio p a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(194,138,90,.45)}
+  .studio p a:hover{border-color:var(--gold)}
+  .studio .cta{
+    display:inline-block;margin-top:34px;padding:15px 38px;
+    border:1px solid var(--copper);color:var(--cream);text-decoration:none;
+    font-size:13.5px;letter-spacing:.26em;transition:background .45s,color .45s;
+  }
+  .studio .cta:hover{background:var(--copper);color:var(--void)}
+
   @media (max-width:760px){
     #rail .lbl{display:none}
     .side-r,.side-l{right:50%;left:auto;transform:translate(50%,-50%);text-align:center;width:calc(100vw - 44px)}
     .side-r .body,.side-l .body{margin-inline:auto}
     header .crumb-long{display:none}
+    #atelier{height:170vh}
+    .atelier-head .sub .drag-only{display:none}
+    .atelier-head .sub .touch-only{display:inline}
+    .strata-keys{gap:14px}
+    .skey{letter-spacing:.16em}
+    /* the panel becomes a sheet that rises from the bottom */
+    .orb-panel{
+      right:0;left:0;top:auto;bottom:0;width:100%;
+      transform:translateY(30px);max-height:76vh;overflow-y:auto;
+    }
+    .orb-panel.open{transform:translateY(0)}
+    .orb-panel .card{border-inline:0;border-bottom:0;padding-bottom:34px}
   }
   @media (prefers-reduced-motion:reduce){
     .hint::after,#loader .mark{animation:none}
+    .orb-panel{transition:opacity .3s ease, visibility .3s}
   }
 </style>
+<!-- ============ Schema: 4-node @graph (CreativeWork + Breadcrumb + ItemList + FAQPage) ============ -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"ItemList",
-  "@id":"https://hagitantebi.co.il/orbe/#voisins",
-  "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
-  "itemListOrder":"https://schema.org/ItemListOrderAscending",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"AERÉA — בושם שנפתח בגלילה","url":"https://hagitantebi.co.il/aerea.html"},
-    {"@type":"ListItem","position":2,"name":"AURELLE — יוקרה שקטה, ביטחון גלוי","url":"https://hagitantebi.co.il/aurelle/"},
-    {"@type":"ListItem","position":3,"name":"LUMÉRA — כל זווית, אור אחר","url":"https://hagitantebi.co.il/lumera/"}
+  "@graph":[
+    {
+      "@type":"CreativeWork",
+      "@id":"https://hagitantebi.co.il/orbe/#work",
+      "name":"ORBE — עולם מותג בושם קונספטואלי",
+      "headline":"ORBE · טיפה אחת. עולם שלם.",
+      "description":"עולם מותג קונספטואלי לבושם תמצית: מסע מצלמה תלת־ממדי אל תוך טיפה אחת, דרך שלוש שכבות הניחוח — האור, הלב והעומק — ועד לפלָקוֹן. בסופו הטיפה חוזרת כאובייקט אינטראקטיבי שאפשר לסובב ולפתוח שכבה־שכבה: התו, חומר הגלם והשעה שבה לובשים אותה. הדגמה של עולם מותג שלם — לא לוגו וצבעים.",
+      "inLanguage":"he",
+      "url":"https://hagitantebi.co.il/orbe/",
+      "image":"https://hagitantebi.co.il/orbe/orbe-og.jpg",
+      "genre":"Interactive brand world demo",
+      "keywords":"עולם מותג בושם, מיתוג בושם, WebGL scroll experience, פירמידת ניחוח, עולם מותג יוקרה, חוויית מותג אינטראקטיבית, מיתוג מוצר פרימיום, Brand World",
+      "creator":{"@type":"Person","name":"Hagit Antebi","url":"https://hagitantebi.co.il/about.html"},
+      "author":{"@type":"Person","name":"Hagit Antebi"},
+      "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/brand-worlds/"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://hagitantebi.co.il/orbe/#crumbs",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"בית","item":"https://hagitantebi.co.il"},
+        {"@type":"ListItem","position":2,"name":"Brand Worlds Studio","item":"https://hagitantebi.co.il/brand-worlds/"},
+        {"@type":"ListItem","position":3,"name":"ORBE","item":"https://hagitantebi.co.il/orbe/"}
+      ]
+    },
+    {
+      "@type":"ItemList",
+      "@id":"https://hagitantebi.co.il/orbe/#strata",
+      "name":"שלוש שכבות הניחוח של ORBE Nº 1",
+      "itemListOrder":"https://schema.org/ItemListOrderAscending",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Lumière · האור — ברגמוט, נרולי, פלפל ורוד"},
+        {"@type":"ListItem","position":2,"name":"Cœur · הלב — ורד מאי, איריס, תה לבן"},
+        {"@type":"ListItem","position":3,"name":"Profondeur · העומק — ענבר, עץ ארז, מאסק"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "@id":"https://hagitantebi.co.il/orbe/#faq",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"מה זה עולם מותג (Brand World) לבושם?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"עולם מותג לבושם הוא שפה שלמה — ויזואלית, מילולית וחווייתית — ולא רק לוגו וצבעים. הוא כולל את ה-DNA של המותג (ערכים, קול, הבטחה), את הזהות החזותית, את הבקבוק והאריזה, את פירמידת הניחוח, את שפת הקמפיין ואת המערכת הדיגיטלית. ORBE הוא הדגמה של עולם כזה: מוצר אחד, שלוש שכבות, ושפה שמחזיקה את כולן."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"מה ההבדל בין ORBE לבין AERÉA?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"שני עולמות בושם מאותו סטודיו, בנויים על אסטרטגיות הפוכות. AERÉA הוא עולם של ריבוי — חמישה ניחוחות, קרוסלה, סל קניות, התנהגות של חנות פלגשיפ. ORBE הוא עולם של יחיד — מוצר אחד, שבעה מיליליטר, טיפה אחת ליום. AERÉA מוכר בחירה; ORBE מוכר ויתור על בחירה. זו החלטת מותג לפני שזו החלטת עיצוב."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"מה הן שלוש שכבות הניחוח של ORBE?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Lumière (האור) — ברגמוט, נרולי ופלפל ורוד; פתיחה קרה שבוערת כעשרים דקות. Cœur (הלב) — ורד מאי, איריס ותה לבן; נשאר על העור שעות. Profondeur (העומק) — ענבר, עץ ארז ומאסק; החתימה שנשארת אחרי שכולם הלכו. באתר אפשר לפתוח כל שכבה ולראות את התו, את מקור חומר הגלם ואת השעה ביום שהיא נועדה לה."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"האם ORBE הוא מותג אמיתי שאפשר לקנות?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"לא. ORBE הוא עולם מותג קונספטואלי מבית Brand Worlds Studio של חגית אנטבי — הדגמת תיק עבודות ולא מוצר מסחרי. הוא נבנה כדי להראות איך נראה מותג שנבנה מ-DNA אחד: המוצר, החומר, השפה והחוויה הדיגיטלית יוצאים כולם מאותה החלטה אסטרטגית."
+          }
+        }
+      ]
+    }
   ]
 }
 </script>
@@ -273,6 +476,7 @@
   <div class="stop" data-at="0.56"><span class="lbl">הלב</span><span class="dot"></span></div>
   <div class="stop" data-at="0.70"><span class="lbl">העומק</span><span class="dot"></span></div>
   <div class="stop" data-at="0.90"><span class="lbl">הבקבוק</span><span class="dot"></span></div>
+  <div class="stop" data-at="1.12"><span class="lbl">הטיפה, פתוחה</span><span class="dot"></span></div>
 </nav>
 
 <!-- ===== chapters ===== -->
@@ -316,13 +520,98 @@
   <p class="body">העומק הוא החתימה. חם, איטי, פרטי — הריח שמישהו יזכור עלייך גם בעוד שנה.</p>
 </section>
 
-<section class="chapter center" data-in="0.80" data-hold="0.875" data-out="0.90">
+<section class="chapter center" data-in="0.80" data-hold="0.88" data-out="0.99">
   <p class="eyebrow">הפלָקוֹן</p>
   <h2>הטיפה, חתומה <em>בזכוכית.</em></h2>
   <p class="body">כדור זכוכית מלא בתמצית. בלי תרסיס, בלי מים, בלי רעש — צורת הבושם היא צורת הטיפה.</p>
 </section>
 
-<section class="chapter center" id="acquire" data-in="0.915" data-hold="1.0" data-out="1.2">
+<div id="track" aria-hidden="true"></div>
+
+<div id="veil" aria-hidden="true"></div>
+
+<!-- ============================================================
+     ACTE IV · LA GOUTTE OUVERTE — the drop returns, openable
+     ============================================================ -->
+<section id="atelier" aria-label="שלוש שכבות הניחוח">
+  <div class="atelier-ui">
+
+    <div class="atelier-head">
+      <p class="eyebrow">ACTE IV · LA GOUTTE OUVERTE</p>
+      <h2>הטיפה חוזרת — הפעם <em>פתוחה.</em></h2>
+      <p class="sub">
+        שלוש השכבות שעברת דרכן — עכשיו מסביבה.<br>
+        <span class="drag-only">גררי כדי לסובב את הטיפה · בחרי שכבה כדי להיכנס אליה.</span>
+        <span class="touch-only">בחרי שכבה כדי להיכנס אליה.</span>
+      </p>
+    </div>
+
+    <div class="strata-keys" role="group" aria-label="בחירת שכבת ניחוח">
+      <button type="button" class="skey" data-key="lumiere" aria-expanded="false" aria-controls="p-lumiere">
+        Lumière<span class="he">האור</span>
+      </button>
+      <button type="button" class="skey" data-key="coeur" aria-expanded="false" aria-controls="p-coeur">
+        Cœur<span class="he">הלב</span>
+      </button>
+      <button type="button" class="skey" data-key="profondeur" aria-expanded="false" aria-controls="p-profondeur">
+        Profondeur<span class="he">העומק</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- the three layers, in full — kept in the document, revealed on demand -->
+<div class="orb-panel" id="p-lumiere" data-key="lumiere" role="region" aria-labelledby="t-lumiere">
+  <div class="card">
+    <button type="button" class="close" aria-label="לסגור">✕</button>
+    <div class="fr" id="t-lumiere">Lumière</div>
+    <div class="he">השכבה הראשונה · האור</div>
+    <dl>
+      <dt>la note</dt>
+      <dd class="notes">ברגמוט · נרולי · פלפל ורוד</dd>
+      <dt>la matière</dt>
+      <dd>הברגמוט נקטף בקלבריה בין דצמבר לפברואר, כשהקליפה עוד קרה מהלילה. סוחטים אותה בלחיצה ולא בחום — חום היה הורג את החדוּת. שלושים קילו פרי לבקבוקון אחד של שמן.</dd>
+      <dt>l'heure</dt>
+      <dd>השעה השביעית בבוקר. לפני שהיום החליט מה הוא רוצה ממך.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="orb-panel" id="p-coeur" data-key="coeur" role="region" aria-labelledby="t-coeur">
+  <div class="card">
+    <button type="button" class="close" aria-label="לסגור">✕</button>
+    <div class="fr" id="t-coeur">Cœur</div>
+    <div class="he">השכבה השנייה · הלב</div>
+    <dl>
+      <dt>la note</dt>
+      <dd class="notes">ורד מאי · איריס · תה לבן</dd>
+      <dt>la matière</dt>
+      <dd>האיריס לא נקטף — הוא מחכה. השורש נשאר באדמה שלוש שנים, ואז מתייבש שלוש שנים נוספות לפני שנוגעים בו. שש שנים בשביל תו אחד.</dd>
+      <dt>l'heure</dt>
+      <dd>ארבע אחר הצהריים. כשהחדר כבר מכיר אותך.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="orb-panel" id="p-profondeur" data-key="profondeur" role="region" aria-labelledby="t-profondeur">
+  <div class="card">
+    <button type="button" class="close" aria-label="לסגור">✕</button>
+    <div class="fr" id="t-profondeur">Profondeur</div>
+    <div class="he">השכבה השלישית · העומק</div>
+    <dl>
+      <dt>la note</dt>
+      <dd class="notes">ענבר · עץ ארז · מאסק</dd>
+      <dt>la matière</dt>
+      <dd>הארז מגיע מהרי האטלס, מעץ שנפל מעצמו. אין כאן חיתוך — רק זמן. ככל שהעץ שכב יותר, הריח שנשאר בו עמוק יותר.</dd>
+      <dt>l'heure</dt>
+      <dd>השעה שאחרי. את כבר לא לובשת אותו — והוא עדיין שם.</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ===== ACQUÉRIR ===== -->
+<section class="acquire-sec" id="acquire">
   <p class="eyebrow">להשיג</p>
   <div class="card">
     <div class="pname">ORBE Nº 1</div>
@@ -334,7 +623,16 @@
   </div>
 </section>
 
-<div id="track" aria-hidden="true"></div>
+<!-- ===== STUDIO NOTE ===== -->
+<section class="studio" aria-label="הערת סטודיו">
+  <div class="wrap">
+    <p class="eyebrow">STUDIO NOTE</p>
+    <h2>ORBE הוא עולם מותג <em>הדגמה.</em></h2>
+    <p>ORBE אינו מותג מסחרי — הוא הדגמה של <a href="/brand-world.html">Brand Worlds Studio</a>: איך נראה עולם שלם כשהוא נבנה מהחלטה אסטרטגית אחת ולא מאוסף החלטות עיצוב. ההחלטה כאן הייתה ויתור: מוצר אחד במקום סדרה, שבעה מיליליטר במקום מאה, טיפה במקום תרסיס. מרגע שההחלטה הזאת התקבלה, כל השאר נגזר ממנה — צורת הבקבוק, שלוש השכבות, קצב הגלילה, ואפילו העובדה שהאתר צולל פנימה במקום להציג מדף.</p>
+    <p>זה ההבדל בין מותג שנראה טוב לבין מותג שמחזיק החלטה. אם יש לך מוצר שצריך עולם — לא לוגו, עולם — זה בדיוק מה ש<a href="/about.html">חגית אנטבי</a> בונה.</p>
+    <a class="cta" href="/brand-world.html">לאבחון פער המותג</a>
+  </div>
+</section>
 
 <!-- ===== MONDES VOISINS — related worlds ===== -->
 <section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
@@ -539,6 +837,62 @@ collar.position.y = 3.86;
 bottle.add(collar);
 scene.add(bottle);
 
+/* ---------- ACTE IV · L'ATELIER — the drop, returned as an object ---------- */
+const ATELIER_Z = -128;
+const atelier = new THREE.Group();
+atelier.position.set(0, 0, ATELIER_Z);
+atelier.visible = false;
+scene.add(atelier);
+
+/* the drop itself — this one the visitor turns */
+const orbSpin = new THREE.Group();
+atelier.add(orbSpin);
+const orbMat = fresnelMaterial({color:0x18202d, rim:0xE0B26C, wobble:reduceMotion?0:0.07, power:2.4, opacity:0});
+orbSpin.add(new THREE.Mesh(new THREE.SphereGeometry(5, isMobile?56:96, isMobile?56:96), orbMat));
+const orbCoreMat = fresnelMaterial({color:0x7a4a1e, rim:0xC28A5A, opacity:0, power:1.5});
+orbSpin.add(new THREE.Mesh(new THREE.SphereGeometry(2.15, 48, 48), orbCoreMat));
+const CORE_REST = new THREE.Color(0xC28A5A);
+
+/* the three strata orbit the drop like moons — the plane is tilted almost flat,
+   so they swing in front of the glass and pass behind it, and never climb into the copy */
+const RING_TILT = -1.02;
+const PRESENT_ANGLE = Math.PI * 1.13;   /* where an opened layer comes to rest: front, left, clear of the panel */
+const ring = new THREE.Group();
+ring.rotation.x = RING_TILT;
+atelier.add(ring);
+
+const STRATA = [
+  {key:'lumiere',    color:0xF0D9A0, a:Math.PI*0.5},
+  {key:'coeur',      color:0xD98A6A, a:Math.PI*(7/6)},
+  {key:'profondeur', color:0xB0622E, a:Math.PI*(11/6)}
+];
+const hitTargets = [];
+STRATA.forEach(s=>{
+  const g = new THREE.Group();
+  s.mat  = fresnelMaterial({color:s.color, rim:s.color, power:1.5, opacity:0});
+  s.core = new THREE.Mesh(new THREE.SphereGeometry(0.78, 36, 36), s.mat);
+  s.haloMat = fresnelMaterial({color:s.color, rim:s.color, power:3.4, opacity:0});
+  s.halo = new THREE.Mesh(new THREE.SphereGeometry(1.42, 28, 28), s.haloMat);
+  s.halo.userData.key = s.key;
+  g.add(s.core); g.add(s.halo);
+  ring.add(g);
+  s.g = g; s.hover = 0; s.hoverT = 0; s.sel = 0; s.selT = 0;
+  s.rgb = new THREE.Color(s.color);
+  hitTargets.push(s.halo);
+});
+
+/* the orbit tightens on narrow screens so nothing falls off the frame */
+function ringRadius(){ return window.innerWidth < window.innerHeight ? 6.4 : 9.2; }
+/* pull back only as far as the frame demands: the drop keeps its presence, the orbit keeps its room */
+function atelierDistance(){
+  const tanV = Math.tan(camera.fov * Math.PI / 360);
+  const portrait = window.innerWidth < window.innerHeight;
+  return Math.max(
+    (5 / (portrait ? 0.36 : 0.42)) / tanV,                              /* the drop, vertically */
+    (ringRadius() * (portrait ? 1.55 : 1.30)) / (tanV * camera.aspect)  /* the orbit, clear of the edges */
+  );
+}
+
 /* lights (for the stopper + collar) */
 scene.add(new THREE.AmbientLight(0x3a2f22, 0.9));
 const keyLight = new THREE.PointLight(0xE0B26C, 1.4, 60);
@@ -644,6 +998,81 @@ function tintAt(p){
 }
 const clampSmooth = x => smooth(Math.max(0, Math.min(1, x)));
 
+/* ---------- ACTE IV · interaction ---------- */
+const atelierEl = document.getElementById('atelier');
+const veilEl    = document.getElementById('veil');
+const panels = Array.from(document.querySelectorAll('.orb-panel'));
+const skeys  = Array.from(document.querySelectorAll('.skey'));
+const ray = new THREE.Raycaster();
+const ndc = new THREE.Vector2();
+const atelierPos = new THREE.Vector3();
+const atelierFocus = new THREE.Vector3();
+const canDrag = !isMobile && !reduceMotion;
+
+let stage = 0, stageLive = false, openKey = null, openSm = 0, panShift = 0;
+let orbitPhase = 0, orbitSpeed = 0.15, orbitLast = 0;
+let dragging = false, dragMoved = 0, lastPX = 0, lastPY = 0;
+let spinVX = 0, spinVY = 0, spinX = 0, spinY = 0;
+
+function setNdc(e){
+  ndc.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
+}
+function pickStratum(){
+  ray.setFromCamera(ndc, camera);
+  const hits = ray.intersectObjects(hitTargets, false);
+  return hits.length ? hits[0].object.userData.key : null;
+}
+function openStratum(key){
+  openKey = key;
+  panels.forEach(p=>p.classList.toggle('open', p.dataset.key === key));
+  skeys.forEach(k=>k.setAttribute('aria-expanded', String(k.dataset.key === key)));
+  veilEl.classList.add('on');
+  atelierEl.classList.add('focused');
+  document.documentElement.classList.add('layer-open');
+}
+function closeStratum(){
+  openKey = null;
+  panels.forEach(p=>p.classList.remove('open'));
+  skeys.forEach(k=>k.setAttribute('aria-expanded','false'));
+  veilEl.classList.remove('on');
+  atelierEl.classList.remove('focused');
+  document.documentElement.classList.remove('layer-open');
+}
+
+skeys.forEach(k=>k.addEventListener('click', ()=>{
+  if(openKey === k.dataset.key) closeStratum(); else openStratum(k.dataset.key);
+}));
+panels.forEach(p=>p.querySelector('.close').addEventListener('click', closeStratum));
+window.addEventListener('keydown', e=>{ if(e.key === 'Escape' && openKey) closeStratum(); });
+
+/* drag turns the drop · a clean click opens a layer */
+const onUI = e => !!(e.target.closest && e.target.closest('.skey, .orb-panel, header, .voisins, .acquire-sec, .studio'));
+window.addEventListener('pointerdown', e=>{
+  if(!stageLive || onUI(e)) return;
+  setNdc(e);
+  dragging = canDrag; dragMoved = 0; lastPX = e.clientX; lastPY = e.clientY;
+});
+window.addEventListener('pointermove', e=>{
+  if(!stageLive) return;
+  setNdc(e);
+  if(!dragging) return;
+  const dx = e.clientX - lastPX, dy = e.clientY - lastPY;
+  lastPX = e.clientX; lastPY = e.clientY;
+  dragMoved += Math.abs(dx) + Math.abs(dy);
+  spinVX = dx * 0.0045;
+  spinVY = dy * 0.0030;
+}, {passive:true});
+window.addEventListener('pointerup', e=>{
+  const wasDragging = dragging;
+  dragging = false;
+  if(!stageLive || onUI(e)) return;
+  if(wasDragging && dragMoved > 8) return;    /* that was a turn, not a choice */
+  setNdc(e);
+  const key = pickStratum();
+  if(key){ if(key === openKey) closeStratum(); else openStratum(key); }
+  else if(openKey) closeStratum();
+});
+
 let dimTarget = 0;
 function updateOverlays(p){
   let maxOp = 0;
@@ -660,9 +1089,10 @@ function updateOverlays(p){
     if(idx > 0) maxOp = Math.max(maxOp, o);   /* hero doesn't dim the world */
   });
   dimTarget = maxOp;
-  /* rail */
+  /* rail — the depth reading continues past the journey, into the atelier */
+  const depth = p + stage * 0.22;
   let active = 0;
-  for(let i=0;i<stops.length;i++) if(p >= stops[i].at - 0.04) active = i;
+  for(let i=0;i<stops.length;i++) if(depth >= stops[i].at - 0.04) active = i;
   stops.forEach((s,i)=>s.el.classList.toggle('on', i === active));
   /* plunge flash — sharp ignite, lingering bloom on the way in */
   const fc = 0.318;
@@ -695,11 +1125,23 @@ function tick(){
   prog += (target - prog) * ease;
   const p = prog;
 
+  /* acte IV — how far into the atelier are we */
+  const vh = window.innerHeight;
+  const ar = atelierEl.getBoundingClientRect();
+  stage = Math.min(
+    clampSmooth((vh - ar.top) / (vh * 0.85)),
+    clampSmooth((ar.bottom - vh * 0.12) / (vh * 0.55))
+  );
+  stageLive = stage > 0.72;
+  atelierEl.classList.toggle('live', stage > 0.45);
+  if(openKey && stage < 0.35) closeStratum();
+  openSm += ((openKey ? 1 : 0) - openSm) * 0.07;
+
   /* camera */
   const pos = camAt(p);
   mouse.sx += (mouse.x - mouse.sx) * 0.05;
   mouse.sy += (mouse.y - mouse.sy) * 0.05;
-  const sway = reduceMotion ? 0 : 1;
+  const sway = reduceMotion ? 0 : (1 - 0.7 * stage);
   camera.position.set(
     pos.x + mouse.sx * 0.9 * sway,
     pos.y - mouse.sy * 0.6 * sway + Math.sin(t*0.4)*0.08*sway,
@@ -707,12 +1149,25 @@ function tick(){
   );
   const blend = smooth(Math.max(0, Math.min(1, (p - 0.78) / 0.12)));
   lookTmp.set(pos.x*(1-blend), pos.y*(1-blend), pos.z - 12).lerp(bottleFocus, blend);
+  if(stage > 0.001){
+    const sm = smooth(stage);
+    atelierPos.set(0, 0.4, ATELIER_Z + atelierDistance());
+    camera.position.lerp(atelierPos, sm);
+    /* an open layer moves the drop out of the panel's way — aside on a desktop, up above the sheet on a phone */
+    panShift += ((openKey ? 1 : 0) - panShift) * 0.055;
+    atelierFocus.set(
+      isMobile ? 0 : panShift * 3.6,
+      isMobile ? 2.4 - panShift * 6.2 : 0.2,
+      ATELIER_Z
+    );
+    lookTmp.lerp(atelierFocus, sm);
+  }
   camera.lookAt(lookTmp);
 
   /* fog + clear color */
   FOG.color.copy(fogAt(p));
   renderer.setClearColor(FOG.color);
-  FOG.density = 0.016 + 0.012 * smooth(Math.max(0, Math.min(1, (p-0.32)/0.1))) * (p < 0.8 ? 1 : Math.max(0, 1-(p-0.8)/0.1));
+  FOG.density = (0.016 + 0.012 * smooth(Math.max(0, Math.min(1, (p-0.32)/0.1))) * (p < 0.8 ? 1 : Math.max(0, 1-(p-0.8)/0.1))) * (1 - 0.55 * stage);
 
   /* drop fades once we're deep inside */
   const inside = smooth(Math.max(0, Math.min(1, (-camera.position.z - 4) / 8)));
@@ -721,17 +1176,74 @@ function tick(){
   drop.visible = dropMat.uniforms.uOpacity.value > 0.01;
   core.visible = drop.visible;
 
-  /* world makes room for the words */
+  /* world makes room for the words — and clears out entirely for the atelier */
   dimSm += (dimTarget - dimSm) * 0.08;
-  const keep = 1 - 0.55 * dimSm;
+  const keep = (1 - 0.55 * dimSm) * (1 - 0.88 * stage) * (1 - 0.45 * openSm);
   for(const s of [dust, strataLight, strataHeart, strataDepth]) s.material.uniforms.uOpacity.value = keep;
-  stars.material.uniforms.uOpacity.value = 1 - 0.3 * dimSm;
+  stars.material.uniforms.uOpacity.value = (1 - 0.3 * dimSm) * (1 - 0.4 * stage) * (1 - 0.35 * openSm);
 
-  /* the flacon only exists once we arrive */
+  /* the flacon only exists once we arrive — and lets go once the drop returns */
   const reveal = smooth(Math.max(0, Math.min(1, (p - 0.74) / 0.10)));
-  bottle.visible = reveal > 0.001;
-  glassMat.uniforms.uOpacity.value = reveal;
-  liquidMat.uniforms.uOpacity.value = 0.95 * reveal;
+  const recede = 1 - 0.94 * stage;
+  bottle.visible = reveal > 0.001 && recede > 0.02;
+  glassMat.uniforms.uOpacity.value = reveal * recede;
+  liquidMat.uniforms.uOpacity.value = 0.95 * reveal * recede;
+
+  /* ---------- ACTE IV · the drop, open ---------- */
+  atelier.visible = stage > 0.004;
+  if(atelier.visible){
+    const sm = smooth(stage);
+    const R = ringRadius();
+    orbMat.uniforms.uTime.value = t;
+    orbCoreMat.uniforms.uTime.value = t;
+    orbMat.uniforms.uOpacity.value = sm * (1 - 0.30 * openSm);
+    orbCoreMat.uniforms.uOpacity.value = 0.62 * sm;
+
+    /* the turn: drag with inertia, over a slow life of its own */
+    if(!dragging){ spinVX *= 0.93; spinVY *= 0.93; }
+    spinY += spinVX;
+    spinX = Math.max(-0.55, Math.min(0.55, spinX + spinVY));
+    orbSpin.rotation.y = spinY + (reduceMotion ? 0 : t * 0.045);
+    orbSpin.rotation.x = spinX;
+
+    const hoverKey = (stageLive && !dragging) ? pickStratum() : null;
+    canvas.style.cursor = hoverKey ? 'pointer' : (canDrag && stageLive ? 'grab' : '');
+
+    /* the orbit all but stops the moment you reach for a layer — never a moving target */
+    const odt = Math.min(0.05, t - orbitLast); orbitLast = t;
+    orbitSpeed += (((hoverKey || openKey) ? 0.012 : 0.15) - orbitSpeed) * 0.07;
+    if(!reduceMotion) orbitPhase += orbitSpeed * odt;
+
+    STRATA.forEach((st, i)=>{
+      let ang = st.a + orbitPhase;
+      /* the layer you opened leaves the orbit and comes to rest where you can still see it */
+      if(st.sel > 0.001 && !isMobile){
+        let d = (PRESENT_ANGLE - ang) % (Math.PI * 2);
+        if(d >  Math.PI) d -= Math.PI * 2;
+        if(d < -Math.PI) d += Math.PI * 2;
+        ang += d * st.sel;
+      }
+      st.g.position.set(Math.cos(ang) * R, Math.sin(ang) * R, 0);
+      /* 1 when the moon swings toward us, 0 when it slips behind the glass */
+      const front = 0.5 - 0.5 * Math.sin(ang);
+      st.hover += (((hoverKey === st.key) ? 1 : 0) - st.hover) * 0.12;
+      st.sel   += (((openKey  === st.key) ? 1 : 0) - st.sel)   * 0.08;
+      const depth = Math.max(0.42 + 0.58 * front, st.sel);   /* the chosen layer is never dimmed by distance */
+      const live = sm * depth * (openKey && openKey !== st.key ? 0.22 : 1);
+      st.mat.uniforms.uOpacity.value     = live * (0.85 + 0.40 * st.hover + 0.50 * st.sel);
+      st.haloMat.uniforms.uOpacity.value = live * (0.10 + 0.30 * st.hover + 0.40 * st.sel);
+      st.halo.scale.setScalar(1 + 0.22 * st.hover + 0.38 * st.sel);
+      st.core.scale.setScalar(1 + 0.10 * st.sel);
+      st.mat.uniforms.uTime.value = t;
+      st.haloMat.uniforms.uTime.value = t;
+    });
+
+    /* the heart of the drop takes the colour of the layer you opened */
+    const chosen = STRATA.find(x => x.key === openKey);
+    orbCoreMat.uniforms.uRim.value.lerp(chosen ? chosen.rgb : CORE_REST, 0.05);
+  } else if(canvas.style.cursor){
+    canvas.style.cursor = '';
+  }
 
   /* time uniforms + spin */
   dropMat.uniforms.uTime.value = t;
