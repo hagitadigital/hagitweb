@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>שאלון היכרות — ליין קוסמטיקה | Brand Worlds Studio</title>
+  <meta name="description" content="שאלון היכרות קצר לקראת שיחה על מיתוג ליין קוסמטיקה — Brand Worlds Studio">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://hagitantebi.co.il/brand-os/forms/cosmetics-line.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F2EBDC;
+      --panel: #F8F3E7;
+      --ink: #15202E;
+      --ink-soft: rgba(21, 32, 46, 0.62);
+      --copper: #C28A5A;
+      --copper-dim: rgba(194, 138, 90, 0.16);
+      --line: rgba(21, 32, 46, 0.12);
+      --radius: 10px;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-he: 'Heebo', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-he);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.75;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(242, 235, 220, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .logo span { color: var(--copper); }
+    .top-bar .back {
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-bar .back:hover { color: var(--copper); }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 56px 24px 88px;
+    }
+
+    /* Header */
+    .form-header { text-align: center; margin-bottom: 52px; }
+    .form-header .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--copper);
+      border: 1px solid var(--copper-dim);
+      background: rgba(255, 255, 255, 0.4);
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    .form-header h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .form-header .sub {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 19px;
+      color: var(--copper);
+      margin-bottom: 20px;
+    }
+    .form-header p.intro {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+    .copper-thread {
+      width: 64px;
+      height: 2px;
+      background: var(--copper);
+      margin: 26px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Sections */
+    .form-section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 34px 32px;
+      margin-bottom: 22px;
+      transition: border-color 0.3s;
+    }
+    .form-section:hover { border-color: rgba(194, 138, 90, 0.35); }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 6px;
+    }
+    .section-number {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--copper);
+      opacity: 0.55;
+      min-width: 34px;
+    }
+    .section-title { font-size: 18px; font-weight: 600; }
+    .section-note {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin: 0 0 22px 48px;
+    }
+
+    /* Fields */
+    .field { margin-bottom: 26px; }
+    .field:last-child { margin-bottom: 0; }
+    .field > label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .field label .required { color: var(--copper); margin-right: 2px; }
+    .field .hint {
+      display: block;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin: -4px 0 10px;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field textarea {
+      width: 100%;
+      background: #FDFAF2;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 15px;
+      padding: 12px 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--copper);
+      box-shadow: 0 0 0 3px var(--copper-dim);
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(21, 32, 46, 0.35); }
+
+    /* Radio group */
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 12px 15px;
+      background: #FDFAF2;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    .radio-option:hover {
+      border-color: rgba(194, 138, 90, 0.45);
+      background: #FFFDF6;
+    }
+    .radio-option:has(input:checked) {
+      border-color: var(--copper);
+      background: rgba(194, 138, 90, 0.07);
+    }
+    .radio-option input[type="radio"] {
+      accent-color: var(--copper);
+      width: 17px;
+      height: 17px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Submit */
+    .submit-section { text-align: center; margin-top: 36px; }
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      padding: 15px 46px;
+      border-radius: 40px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .submit-btn:hover {
+      background: var(--copper);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(194, 138, 90, 0.35);
+    }
+    .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .submit-note {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 14px;
+    }
+    .submit-note a { color: var(--copper); text-decoration: none; }
+
+    /* Footer */
+    .form-footer {
+      text-align: center;
+      padding: 30px 24px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .form-footer .mark {
+      font-family: var(--font-display);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 16px 64px; }
+      .form-section { padding: 26px 18px; }
+      .section-note { margin-right: 0; margin-left: 0; }
+      .top-bar { padding: 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a class="back" href="https://hagitantebi.co.il/">← hagitantebi.co.il</a>
+    <a href="https://hagitantebi.co.il/" class="logo">Brand <span>Worlds</span> Studio</a>
+  </div>
+
+  <div class="container">
+    <div class="form-header">
+      <span class="tag">שאלון היכרות</span>
+      <h1>ליין הקוסמטיקה שלך</h1>
+      <div class="sub">Brand Worlds Studio · Hagit Antebi</div>
+      <p class="intro">
+        לפני שנדבר, כמה שאלות קצרות שיעזרו לי להבין איפה את נמצאת בתהליך —
+        ככה השיחה שלנו תהיה ממוקדת ושווה לשתינו.
+        אין תשובות נכונות או לא נכונות, רק תמונה אמיתית.
+        זה לוקח כ־5 דקות, אפשר גם מהטלפון.
+      </p>
+      <div class="copper-thread"></div>
+    </div>
+
+    <form id="cosmeticsForm" data-lead-source="cosmetics-line-intake" data-lead-interest="שאלון היכרות — ליין קוסמטיקה">
+      <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0);">
+
+      <!-- 01 — פרטים -->
+      <div class="form-section">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <span class="section-title">כמה פרטים עלייך</span>
+        </div>
+        <p class="section-note">כדי שאדע איך לחזור אלייך.</p>
+
+        <div class="field">
+          <label>שם מלא <span class="required">*</span></label>
+          <input type="text" name="full_name" required>
+        </div>
+        <div class="field">
+          <label>טלפון (וואטסאפ) <span class="required">*</span></label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div class="field">
+          <label>אימייל</label>
+          <input type="email" name="email">
+        </div>
+        <div class="field">
+          <label>יש כבר שם לליין?</label>
+          <span class="hint">אם עדיין לא — זה לגמרי בסדר.</span>
+          <input type="text" name="brand_name">
+        </div>
+      </div>
+
+      <!-- 02 — המוצר -->
+      <div class="form-section">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <span class="section-title">המוצר</span>
+        </div>
+
+        <div class="field">
+          <label>איפה את נמצאת היום עם המוצר עצמו? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="product_stage" value="רעיון בלבד — עוד אין מוצר" required>
+              רעיון בלבד — עוד אין מוצר
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="product_stage" value="מחפשת פורמולה או יצרן">
+              אני מחפשת פורמולה או יצרן
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="product_stage" value="יש פורמולה / יצרן בתהליך">
+              יש פורמולה או יצרן — אנחנו בתהליך
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="product_stage" value="יש דוגמאות אצלי ביד">
+              יש דוגמאות אצלי ביד
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="product_stage" value="יש מלאי מוכן למכירה">
+              יש מלאי מוכן למכירה
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>אם יש יצרן או ספק — מה כבר סוכם איתו?</label>
+          <span class="hint">כמויות, מחירים, לוחות זמנים — מה שכבר סגור, גם אם חלקית.</span>
+          <textarea name="supplier_status"></textarea>
+        </div>
+
+        <div class="field">
+          <label>התנסית במוצר בעצמך? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="tried_product" value="כן — ואני מרוצה ממנו" required>
+              כן — ואני מרוצה ממנו
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="tried_product" value="כן — אבל עוד צריך שיפור">
+              כן — אבל הוא עוד צריך שיפור
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="tried_product" value="עדיין אין לי מה לנסות">
+              עדיין אין לי מה לנסות
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — המספרים -->
+      <div class="form-section">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <span class="section-title">המספרים</span>
+        </div>
+        <p class="section-note">ליין קוסמטיקה הוא עסק שלם — לא רק מיתוג. חשוב לי להבין את התמונה המלאה.</p>
+
+        <div class="field">
+          <label>מה סדר הגודל של התקציב לשנה הראשונה — הכל, לא רק מיתוג? <span class="required">*</span></label>
+          <span class="hint">ייצור, רגולציה, אריזות, מיתוג, אתר, פרסום — ביחד.</span>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="budget_range" value="עד 20 אלף ₪" required>
+              עד 20 אלף ₪
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="budget_range" value="20–60 אלף ₪">
+              20–60 אלף ₪
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="budget_range" value="60–150 אלף ₪">
+              60–150 אלף ₪
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="budget_range" value="מעל 150 אלף ₪">
+              מעל 150 אלף ₪
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="budget_range" value="עדיין אין לי מספר">
+              עדיין אין לי מספר
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>בדקת מה נדרש רגולטורית כדי למכור תמרוקים בישראל? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="regulation" value="כן — יש לי כיוון ברור" required>
+              כן — יש לי כיוון ברור
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="regulation" value="שמעתי שצריך, עוד לא בדקתי לעומק">
+              שמעתי שצריך, עוד לא בדקתי לעומק
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="regulation" value="לא ידעתי שצריך">
+              לא ידעתי שצריך
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 — הלקוחה -->
+      <div class="form-section">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <span class="section-title">הלקוחה שלך</span>
+        </div>
+
+        <div class="field">
+          <label>מי הלקוחה שלך — במשפט אחד? <span class="required">*</span></label>
+          <span class="hint">גיל, מצב, מה היא קונה היום.</span>
+          <textarea name="customer_one_line" required></textarea>
+        </div>
+
+        <div class="field">
+          <label>למה שהיא תעזוב את מה שהיא קונה היום — ותעבור אלייך? <span class="required">*</span></label>
+          <textarea name="why_switch" required></textarea>
+        </div>
+      </div>
+
+      <!-- 05 — את -->
+      <div class="form-section">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <span class="section-title">את</span>
+        </div>
+
+        <div class="field">
+          <label>מה גרם לך להתחיל דווקא עכשיו? <span class="required">*</span></label>
+          <textarea name="why_now" required></textarea>
+        </div>
+
+        <div class="field">
+          <label>כמה שעות בשבוע יש לך לזה בפועל? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="weekly_hours" value="עד 5 שעות" required>
+              עד 5 שעות
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="weekly_hours" value="5–15 שעות">
+              5–15 שעות
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="weekly_hours" value="15–30 שעות">
+              15–30 שעות
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="weekly_hours" value="זה העיסוק המרכזי שלי">
+              זה העיסוק המרכזי שלי
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>אם הכל מתקדם כמו שצריך — מתי היית רוצה למכור את היחידה הראשונה? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="first_sale_target" value="תוך 3 חודשים" required>
+              תוך 3 חודשים
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="first_sale_target" value="תוך חצי שנה">
+              תוך חצי שנה
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="first_sale_target" value="תוך שנה">
+              תוך שנה
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="first_sale_target" value="אין לי תאריך — חשוב לי לעשות את זה נכון">
+              אין לי תאריך — חשוב לי לעשות את זה נכון
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>עוד משהו שחשוב לך שאדע?</label>
+          <span class="hint">כל דבר — שותפים, חששות, חלומות. הכל לגיטימי.</span>
+          <textarea name="additional_notes"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-section">
+        <button type="submit" class="submit-btn" id="submitBtn">שליחת השאלון ←</button>
+        <p class="submit-note">
+          התשובות מגיעות ישירות אליי, ורק אליי. אם משהו לא ברור —
+          <a href="https://wa.me/972528351676" target="_blank" rel="noopener">אפשר לכתוב לי בוואטסאפ</a>.
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-footer">
+    <span class="mark">Brand Worlds Studio</span><br>
+    Built to Strategy. Run by AI. © 2026
+  </div>
+
+  <script src="/lead-intake.js" defer></script>
+</body>
+</html>
