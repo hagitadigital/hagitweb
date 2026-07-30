@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio AI | Hagit Antebi</title>
-    <meta name="description" content="הסטודיו — סדנאות, מעבדת AI ותהליכי עבודה יצירתיים. למד לבנות עולמות מותג עם כלים מתקדמים.">
+    <title>הסטודיו · סדנה ושלוש מעבדות AI | Brand Worlds Studio</title>
+    <meta name="description" content="מה שרץ בסטודיו — נלמד בסטודיו. World Builder Workshop ושלוש מעבדות פתוחות: Visual, Video ו-Workflow — הפרומפטים, הזרימות ומקרי הבוחן האמיתיים מהסטודיו.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
@@ -13,14 +13,14 @@
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hagitantebi.co.il/studio.html">
-    <meta property="og:title" content="Studio AI | Hagit Antebi">
-    <meta property="og:description" content="הסטודיו — סדנאות, מעבדת AI ותהליכי עבודה יצירתיים. למד לבנות עולמות מותג עם כלים מתקדמים.">
+    <meta property="og:title" content="הסטודיו · סדנה ושלוש מעבדות AI | Brand Worlds Studio">
+    <meta property="og:description" content="מה שרץ בסטודיו — נלמד בסטודיו. World Builder Workshop ושלוש מעבדות פתוחות: Visual, Video ו-Workflow — הפרומפטים, הזרימות ומקרי הבוחן האמיתיים מהסטודיו.">
     <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
     <meta property="og:locale" content="he_IL">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Studio AI | Hagit Antebi">
-    <meta name="twitter:description" content="הסטודיו — סדנאות, מעבדת AI ותהליכי עבודה יצירתיים. למד לבנות עולמות מותג עם כלים מתקדמים.">
+    <meta name="twitter:title" content="הסטודיו · סדנה ושלוש מעבדות AI | Brand Worlds Studio">
+    <meta name="twitter:description" content="מה שרץ בסטודיו — נלמד בסטודיו. World Builder Workshop ושלוש מעבדות פתוחות: Visual, Video ו-Workflow — הפרומפטים, הזרימות ומקרי הבוחן האמיתיים מהסטודיו.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,10 +98,10 @@
             .nav__link--cta { padding: 6px 12px; }
         }
 
-        /* Page Hero */
+        /* Page Hero — the copper thread draws itself, the bead rolls it */
         .page-hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(160deg, #1A1612 0%, #0F0D0B 100%);
+            padding: clamp(130px, 16vw, 175px) 0 clamp(34px, 6vw, 60px);
+            background: var(--color-cream);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -109,41 +109,87 @@
         .page-hero::before {
             content: '';
             position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 80%, rgba(184, 137, 74, 0.06) 0%, transparent 60%);
-        }
-        .page-hero__icon {
-            font-size: 3rem;
-            margin-bottom: 24px;
-            display: block;
+            background: radial-gradient(ellipse at 50% 30%, rgba(196, 118, 90, 0.07) 0%, transparent 62%);
+            pointer-events: none;
         }
         .page-hero__label {
-            font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500;
-            letter-spacing: 0.3em; text-transform: uppercase;
-            color: var(--color-copper); margin-bottom: 16px;
+            font-family: var(--font-body-en); font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.34em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 18px;
         }
         .page-hero__title {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 400; color: #FAF8F3;
-            margin-bottom: 20px;
+            font-size: clamp(3rem, 9vw, 6rem);
+            font-weight: 400; color: var(--color-chocolate);
+            line-height: 1.02;
+            letter-spacing: 0.02em;
+            margin-bottom: 4px;
+        }
+        .page-hero__title em {
+            font-style: normal;
+            color: var(--color-copper);
+            font-size: 0.34em;
+            vertical-align: 0.86em;
+            margin-inline-start: 0.06em;
+        }
+
+        /* The thread */
+        .thread {
+            width: min(100%, 1000px);
+            margin: clamp(10px, 2vw, 22px) auto clamp(4px, 1vw, 12px);
+            display: block;
+            overflow: visible;
+        }
+        .thread__line {
+            fill: none;
+            stroke: var(--color-copper);
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-dasharray: 1400;
+            stroke-dashoffset: 1400;
+            animation: thread-draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards;
+        }
+        @keyframes thread-draw { to { stroke-dashoffset: 0; } }
+        .thread__bead-core { fill: var(--color-copper); }
+        .thread__bead-seam {
+            stroke: var(--color-cream);
+            stroke-width: 1.1;
+            stroke-linecap: round;
+            opacity: 0.5;
+        }
+        .thread__bead { opacity: 0; animation: bead-in 0.6s ease 2.3s forwards; }
+        @keyframes bead-in { to { opacity: 1; } }
+
+        .page-hero__deck {
+            font-family: var(--font-display);
+            font-size: clamp(1.35rem, 3.2vw, 2.15rem);
+            font-weight: 400;
+            color: var(--color-chocolate);
+            margin-bottom: 18px;
         }
         .page-hero__subtitle {
-            font-family: var(--font-display);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            font-style: italic; color: var(--color-taupe);
-            max-width: 600px; margin: 0 auto;
+            font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+            line-height: 1.85;
+            color: var(--color-chocolate);
+            opacity: 0.78;
+            max-width: 620px; margin: 0 auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .thread__line { animation: none; stroke-dashoffset: 0; }
+            .thread__bead { animation: none; opacity: 1; }
         }
 
         /* Studio Gates */
         .studio-gates {
-            padding: clamp(80px, 12vw, 140px) 0;
+            padding: clamp(40px, 7vw, 80px) 0 clamp(70px, 10vw, 120px);
         }
 
         .studio-gates__grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(24px, 4vw, 48px);
-            max-width: 1200px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(20px, 2.6vw, 34px);
+            max-width: 1060px;
             margin: 0 auto;
         }
 
@@ -153,7 +199,7 @@
             color: inherit;
             background: var(--color-warm-beige);
             border: 1px solid var(--color-light-taupe);
-            padding: clamp(40px, 5vw, 64px);
+            padding: clamp(34px, 3.6vw, 48px);
             position: relative;
             transition: transform 0.5s var(--transition-smooth), 
                         box-shadow 0.5s var(--transition-smooth),
@@ -181,11 +227,19 @@
             transform: scaleX(1);
         }
 
-        .studio-gate__icon {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
+        .studio-gate__mark {
             display: block;
+            width: 46px; height: 46px;
+            margin-bottom: 26px;
+            color: var(--color-copper);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.15;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s var(--transition-smooth);
         }
+        .studio-gate:hover .studio-gate__mark { transform: translateY(-2px); }
 
         .studio-gate__name {
             font-family: var(--font-body-en);
@@ -204,16 +258,16 @@
             margin-bottom: 16px;
         }
 
-        .studio-gate__desc {
+        .studio-gate__desc-he {
             font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.85;
             color: var(--color-chocolate);
-            opacity: 0.8;
-            margin-bottom: 24px;
+            opacity: 0.85;
+            margin-bottom: 18px;
         }
 
-        .studio-gate__desc-he {
-            font-size: 0.9375rem;
+        .studio-gate__desc {
+            font-size: 0.875rem;
             line-height: 1.7;
             color: var(--color-taupe);
             margin-bottom: 32px;
@@ -236,12 +290,99 @@
             gap: 12px;
         }
 
+        /* Worlds — the proof the labs point at */
+        .worlds-proof {
+            padding: clamp(64px, 9vw, 110px) 0;
+            background: var(--color-warm-beige);
+            border-top: 1px solid var(--color-light-taupe);
+            border-bottom: 1px solid var(--color-light-taupe);
+            text-align: center;
+        }
+        .worlds-proof__kicker {
+            font-family: var(--font-body-en); font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.34em; text-transform: uppercase;
+            color: var(--color-copper); margin-bottom: 16px;
+        }
+        .worlds-proof__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+            font-weight: 400; line-height: 1.25;
+            color: var(--color-chocolate);
+            max-width: 780px; margin: 0 auto 16px;
+        }
+        .worlds-proof__title em { font-style: normal; color: var(--color-copper); }
+        .worlds-proof__deck {
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            line-height: 1.85;
+            color: var(--color-chocolate); opacity: 0.8;
+            max-width: 660px; margin: 0 auto;
+        }
+        .worlds-proof__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(18px, 2.4vw, 30px);
+            max-width: 1060px;
+            margin: clamp(38px, 5vw, 58px) auto 0;
+        }
+        .world-tile {
+            display: block; text-decoration: none; color: inherit;
+            background: var(--color-cream);
+            border: 1px solid var(--color-light-taupe);
+            overflow: hidden;
+            transition: transform 0.5s var(--transition-smooth),
+                        box-shadow 0.5s var(--transition-smooth),
+                        border-color 0.4s;
+        }
+        .world-tile:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 48px rgba(79, 55, 44, 0.13);
+            border-color: var(--color-copper);
+        }
+        .world-tile__ph { overflow: hidden; line-height: 0; }
+        .world-tile__ph img {
+            width: 100%; height: auto; display: block;
+            transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+        }
+        .world-tile:hover .world-tile__ph img { transform: scale(1.045); }
+        .world-tile__body { padding: 22px 22px 26px; }
+        .world-tile__name {
+            font-family: var(--font-display); font-size: 1.45rem;
+            letter-spacing: 0.1em; direction: ltr;
+            color: var(--color-chocolate); margin-bottom: 4px;
+        }
+        .world-tile__cat {
+            font-family: var(--font-body-en); font-size: 0.7rem; font-weight: 500;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--color-taupe); margin-bottom: 12px;
+        }
+        .world-tile__he { font-size: 0.95rem; line-height: 1.7; color: var(--color-chocolate); opacity: 0.85; }
+        .world-tile__go {
+            display: inline-block; margin-top: 16px;
+            font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--color-copper);
+        }
+        .worlds-proof__all {
+            display: inline-block;
+            margin-top: clamp(30px, 4vw, 46px);
+            font-size: 0.98rem; font-weight: 500;
+            color: var(--color-chocolate);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-copper);
+            padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .worlds-proof__all:hover { color: var(--color-copper); }
+        @media (max-width: 900px) {
+            .worlds-proof__grid { grid-template-columns: 1fr; max-width: 460px; }
+        }
+
         /* Extras Section */
         .studio-extras {
             padding: 0 0 clamp(80px, 12vw, 140px);
         }
         .studio-extras__inner {
-            max-width: 700px;
+            max-width: 760px;
             margin: 0 auto;
             text-align: center;
             padding: clamp(40px, 6vw, 64px);
@@ -271,6 +412,16 @@
             transition: all 0.4s var(--transition-smooth);
         }
         .studio-extras__cta:hover { background: var(--color-copper); }
+        .studio-extras__aside {
+            margin-top: 26px;
+            font-size: 0.9rem; line-height: 1.8;
+            color: var(--color-taupe);
+        }
+        .studio-extras__aside a {
+            color: var(--color-copper); text-decoration: none;
+            border-bottom: 1px solid currentColor; padding-bottom: 1px;
+            white-space: nowrap;
+        }
 
         /* Footer */
         .footer-minimal {
@@ -286,19 +437,85 @@
         }
 
         @media (max-width: 1024px) {
-            .studio-gates__grid { grid-template-columns: repeat(2, 1fr); }
+            .studio-gates__grid { grid-template-columns: repeat(2, 1fr); max-width: 860px; }
         }
         @media (max-width: 640px) {
             .studio-gates__grid { grid-template-columns: 1fr; }
         }
     </style>
+<!-- GEO: CreativeWork — the studio hub itself -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": "https://hagitantebi.co.il/studio.html#studio",
+  "name": "הסטודיו — Brand Worlds Studio",
+  "headline": "מה שרץ בסטודיו — נלמד בסטודיו.",
+  "url": "https://hagitantebi.co.il/studio.html",
+  "inLanguage": "he-IL",
+  "description": "הצד הפתוח של Brand Worlds Studio: World Builder Workshop ושלוש מעבדות — AI Visual Lab, AI Video Lab ו-AI Workflow Lab. הפרומפטים, הזרימות ומקרי הבוחן שרצים קודם על עולמות מותג אמיתיים.",
+  "author": {
+    "@type": "Person",
+    "name": "חגית אנטבי",
+    "jobTitle": "Brand Worlds Architect",
+    "url": "https://hagitantebi.co.il/about.html"
+  },
+  "publisher": { "@type": "Organization", "name": "Brand Worlds Studio", "url": "https://hagitantebi.co.il" },
+  "about": ["עולם מותג", "Brand DNA", "AI למותגים", "סדנת מיתוג", "זרימות עבודה AI"],
+  "mentions": [
+    {"@type": "CreativeWork", "name": "AURELLE", "url": "https://hagitantebi.co.il/aurelle/"},
+    {"@type": "CreativeWork", "name": "BASALT", "url": "https://hagitantebi.co.il/basalt/"},
+    {"@type": "CreativeWork", "name": "SOUFFLÉ°", "url": "https://hagitantebi.co.il/souffle.html"},
+    {"@type": "CollectionPage", "name": "ארכיון עולמות המותג", "url": "https://hagitantebi.co.il/brand-worlds/"}
+  ]
+}
+</script>
+
+<!-- GEO: ItemList — the four studio tracks -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://hagitantebi.co.il/studio.html#tracks",
+  "name": "ארבעת המסלולים של הסטודיו",
+  "itemListOrder": "https://schema.org/ItemListUnordered",
+  "numberOfItems": 4,
+  "itemListElement": [
+    {
+      "@type": "ListItem", "position": 1,
+      "url": "https://hagitantebi.co.il/workshop.html",
+      "name": "World Builder Workshop",
+      "description": "סדנה מעשית לבניית עולם מותג מלא — מה-DNA דרך הנרטיב ועד לשפה הוויזואלית. יוצאות ממנה עם נכס עובד."
+    },
+    {
+      "@type": "ListItem", "position": 2,
+      "url": "https://hagitantebi.co.il/ai-visual-lab.html",
+      "name": "AI Visual Lab",
+      "description": "מעבדה ויזואלית: איך מלמדים כלי AI לדבר בשפה של מותג אחד — טיפוגרפיה עברית, אובייקט פיסולי וקמפיין שלם מאותו DNA."
+    },
+    {
+      "@type": "ListItem", "position": 3,
+      "url": "https://hagitantebi.co.il/ai-video-lab.html",
+      "name": "AI Video Lab",
+      "description": "מקרי בוחן אמיתיים מהסטודיו — איך נבנה סרטון AI קולנועי למותג, עם הכלים, הפרומפטים והתהליך."
+    },
+    {
+      "@type": "ListItem", "position": 4,
+      "url": "https://hagitantebi.co.il/ai-workflow-lab.html",
+      "name": "AI Workflow Lab",
+      "description": "זרימות עבודה פתוחות: איך Claude Code, MCP ו-Higgsfield הופכים טרמינל אחד ל-OS יצירתי שלם."
+    }
+  ]
+}
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
         {"@type":"ListItem","position":1,"name":"בית","item":"https://hagitantebi.co.il"},
-        {"@type":"ListItem","position":2,"name":"Studio AI","item":"https://hagitantebi.co.il/studio.html"}
+        {"@type":"ListItem","position":2,"name":"הסטודיו","item":"https://hagitantebi.co.il/studio.html"}
   ]
 }
 </script>
@@ -333,6 +550,22 @@
         "@type": "Answer",
         "text": "ה-Labs הם מעבדות פתוחות שבהן מתפרסמים ניסויים, מקרי בוחן וזרימות עבודה אמיתיות מהסטודיו — חומר לקריאה ולמידה עצמית. הסדנה היא מסלול מובנה של מפגשים חיים שבסופו יוצאים עם נכס עובד: Brand Skill אישי שמריץ את המותג."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "על מה נבדקות השיטות שנלמדות בסטודיו?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "על עולמות מותג אמיתיים. כל שיטה שנפתחת בסטודיו — Brand DNA, פרומפטים, זרימות עבודה — רצה קודם על עולם מותג שלם: אסטרטגיה, שפה, אתר חי ותנועה. שלוש דוגמאות מהארכיון: AURELLE (טיפוח יוקרה), BASALT (רפואת עור ואסתטיקה לגברים) ו-SOUFFLÉ° (חמאת גוף גורמה). את כל הארכיון אפשר לראות בעמוד עולמות המותג."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "אני לא רוצה ללמוד — אני רוצה שיבנו לי. איך מתחילים?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "מתחילים באבחון פער המותג: פגישה של 30 דקות, ללא עלות, שבה ממפים יחד את המרחק בין הערך שכבר קיים בעסק לבין מה שהנוכחות הדיגיטלית מצליחה להעביר. משם נקבע היקף העבודה על עולם המותג."
+      }
     }
   ]
 }
@@ -352,10 +585,27 @@
 
     <section class="page-hero">
         <div class="container" style="position: relative; z-index: 1;">
-            <span class="page-hero__icon">🧠</span>
-            <p class="page-hero__label">Studio AI</p>
-            <h1 class="page-hero__title">The Studio</h1>
-            <p class="page-hero__subtitle">הסטודיו שבו הכלים, הידע והיצירתיות נפגשים — סדנאות, מעבדות AI ותהליכים שמרחיבים גבולות.</p>
+            <p class="page-hero__label">Brand Worlds Studio</p>
+            <h1 class="page-hero__title">הסטודיו<em>°</em></h1>
+
+            <svg class="thread" viewBox="0 0 1000 116" preserveAspectRatio="xMidYMid meet" role="presentation" aria-hidden="true" focusable="false">
+                <path id="studio-thread" class="thread__line"
+                      d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40"/>
+                <g class="thread__bead">
+                    <g>
+                        <circle class="thread__bead-core" r="10"/>
+                        <line class="thread__bead-seam" x1="0" y1="-10" x2="0" y2="10"/>
+                        <animateTransform attributeName="transform" type="rotate"
+                                          from="0" to="1800" dur="9s" repeatCount="indefinite"/>
+                    </g>
+                    <animateMotion dur="9s" begin="2.3s" repeatCount="indefinite" rotate="auto" calcMode="linear">
+                        <mpath href="#studio-thread" xlink:href="#studio-thread"/>
+                    </animateMotion>
+                </g>
+            </svg>
+
+            <p class="page-hero__deck">מה שרץ בסטודיו — נלמד בסטודיו.</p>
+            <p class="page-hero__subtitle">כל מה שאני מריצה על מותגים אמיתיים — הפרומפטים, הזרימות והכשלונות — נפתח כאן. ארבע דלתות: סדנה אחת ושלוש מעבדות פתוחות.</p>
         </div>
     </section>
 
@@ -364,11 +614,14 @@
             <div class="studio-gates__grid">
                 <!-- Gate 1: World Builder Workshop -->
                 <a href="workshop.html" class="studio-gate">
-                    <span class="studio-gate__icon">🏗️</span>
+                    <svg class="studio-gate__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+                        <path d="M22 5 40 15v14L22 39 4 29V15Z"/>
+                        <path d="M4 15l18 10 18-10M22 25v14"/>
+                    </svg>
                     <p class="studio-gate__name">Workshop</p>
                     <h2 class="studio-gate__title">World Builder Workshop</h2>
+                    <p class="studio-gate__desc-he">סדנה מעשית לבניית עולם מותג מלא — מה-DNA דרך הנרטיב ועד לשפה הוויזואלית. יוצאות ממנה עם נכס עובד, לא עם סיכום.</p>
                     <p class="studio-gate__desc">A hands-on workshop for building your own brand world from scratch, using the complete Brand Worlds methodology.</p>
-                    <p class="studio-gate__desc-he">סדנה מעשית לבניית עולם מותג מלא — מה-DNA דרך הנרטיב ועד לשפה הויזואלית. מושלם למותגים שרוצים לעשות את זה בעצמם.</p>
                     <span class="studio-gate__enter">
                         Explore Workshop
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -379,11 +632,15 @@
 
                 <!-- Gate 2: AI Visual Lab -->
                 <a href="ai-visual-lab.html" class="studio-gate">
-                    <span class="studio-gate__icon">🔬</span>
+                    <svg class="studio-gate__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+                        <circle cx="22" cy="22" r="16"/>
+                        <circle cx="22" cy="22" r="6.5"/>
+                        <path d="M22 6v9M22 29v9"/>
+                    </svg>
                     <p class="studio-gate__name">AI Lab</p>
                     <h2 class="studio-gate__title">AI Visual Lab</h2>
+                    <p class="studio-gate__desc-he">מעבדה ויזואלית: איך מלמדים כלי AI לדבר בשפה של מותג אחד — טיפוגרפיה עברית, אובייקט פיסולי, קמפיין שלם מאותו DNA.</p>
                     <p class="studio-gate__desc">Advanced AI tools for creating stunning visual content — from Midjourney mastery to video generation with Runway and Sora.</p>
-                    <p class="studio-gate__desc-he">מעבדה ליצירת תוכן ויזואלי עם כלי AI מתקדמים — Midjourney, Runway, Sora ועוד. למד ליצור תוכן ברמה מקצועית.</p>
                     <span class="studio-gate__enter">
                         Explore AI Lab
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -393,11 +650,15 @@
                 </a>
                 <!-- Gate 3: AI Video Lab -->
                 <a href="ai-video-lab.html" class="studio-gate">
-                    <span class="studio-gate__icon">🎬</span>
+                    <svg class="studio-gate__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+                        <rect x="4" y="10" width="36" height="24" rx="3"/>
+                        <path d="M18 17.5 27 22l-9 4.5Z"/>
+                        <path d="M4 17h5M35 17h5M4 27h5M35 27h5"/>
+                    </svg>
                     <p class="studio-gate__name">Video Lab</p>
                     <h2 class="studio-gate__title">AI Video Lab</h2>
+                    <p class="studio-gate__desc-he">מעבדת וידאו: מקרי בוחן אמיתיים מהסטודיו — איך נבנה סרטון AI קולנועי למותג, עם הכלים, הפרומפטים והתהליך שמאחורי הקלעים.</p>
                     <p class="studio-gate__desc">Real case studies from the studio — how an AI video gets built, from first sketch to final cut. Tools, prompts, and the honest process behind cinematic AI video.</p>
-                    <p class="studio-gate__desc-he">מעבדת וידאו AI — מקרי בוחן אמיתיים מהסטודיו. איך נבנה סרטון AI קולנועי למותג, עם הכלים, הפרומפטים, והתהליך האמיתי מאחורי הקלעים.</p>
                     <span class="studio-gate__enter">
                         Explore Video Lab
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -407,11 +668,16 @@
                 </a>
                 <!-- Gate 4: AI Workflow Lab -->
                 <a href="ai-workflow-lab.html" class="studio-gate">
-                    <span class="studio-gate__icon">⚡</span>
+                    <svg class="studio-gate__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+                        <circle cx="8" cy="22" r="4"/>
+                        <circle cx="36" cy="10" r="4"/>
+                        <circle cx="36" cy="34" r="4"/>
+                        <path d="M12 21 22 13.5h10M12 23 22 30.5h10"/>
+                    </svg>
                     <p class="studio-gate__name">Workflow Lab</p>
                     <h2 class="studio-gate__title">AI Workflow Lab</h2>
+                    <p class="studio-gate__desc-he">מעבדת זרימות עבודה: איך Claude Code, MCP ו-Higgsfield הופכים טרמינל אחד ל-OS יצירתי שלם. הפרומפטים, ה-stack והתובנות האמיתיות.</p>
                     <p class="studio-gate__desc">Open workflows from the studio — how Claude Code, MCP, and Higgsfield turn one terminal into a full creative OS. The prompts, the stack, and the honest takeaways.</p>
-                    <p class="studio-gate__desc-he">מעבדת זרימות עבודה AI — איך Claude Code, MCP ו-Higgsfield הופכים טרמינל אחד ל-OS יצירתי שלם. הפרומפטים, ה-stack, והתובנות האמיתיות.</p>
                     <span class="studio-gate__enter">
                         Explore Workflow Lab
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -423,20 +689,75 @@
         </div>
     </section>
 
+    <!-- The worlds the labs were built on -->
+    <section class="worlds-proof" id="worlds" aria-label="עולמות מותג מארכיון הסטודיו">
+        <div class="container">
+            <p class="worlds-proof__kicker">Les Mondes</p>
+            <h2 class="worlds-proof__title">המעבדות מסבירות איך.<br><em>העולמות מראים מה יצא מזה.</em></h2>
+            <p class="worlds-proof__deck">כל מה שנפתח כאן — שיטת ה-DNA, הפרומפטים, הזרימות — רץ קודם על עולם מותג שלם: אסטרטגיה, שפה, אתר חי ותנועה. שלושה עולמות מהארכיון, קרובים ברוח ורחוקים בסיפור.</p>
+
+            <div class="worlds-proof__grid">
+                <a class="world-tile" href="/aurelle/">
+                    <div class="world-tile__ph">
+                        <img src="/brand-worlds/thumbs/aurelle.webp" width="720" height="378" loading="lazy"
+                             alt="AURELLE — עולם מותג לטיפוח יוקרה ואריכות עור">
+                    </div>
+                    <div class="world-tile__body">
+                        <div class="world-tile__name">Aurelle</div>
+                        <div class="world-tile__cat">Premium Skincare</div>
+                        <p class="world-tile__he">יופי שקט, נוכחות שמרגישים — עולם שבו היוקרה לא מרימה את הקול.</p>
+                        <span class="world-tile__go">להיכנס לעולם ←</span>
+                    </div>
+                </a>
+
+                <a class="world-tile" href="/basalt/">
+                    <div class="world-tile__ph">
+                        <img src="/brand-worlds/thumbs/basalt.webp" width="720" height="378" loading="lazy"
+                             alt="BASALT — עולם מותג לרפואת עור ואסתטיקה לגברים">
+                    </div>
+                    <div class="world-tile__body">
+                        <div class="world-tile__name">Basalt</div>
+                        <div class="world-tile__cat">Men's Dermatology</div>
+                        <p class="world-tile__he">עור חזק, שפה אחת — הוכחה שאותה שיטה עובדת גם בעולם גברי לגמרי.</p>
+                        <span class="world-tile__go">להיכנס לעולם ←</span>
+                    </div>
+                </a>
+
+                <a class="world-tile" href="/souffle.html">
+                    <div class="world-tile__ph">
+                        <img src="/brand-worlds/thumbs/souffle.webp" width="720" height="378" loading="lazy"
+                             alt="SOUFFLÉ° — עולם מותג לחמאת גוף גורמה">
+                    </div>
+                    <div class="world-tile__body">
+                        <div class="world-tile__name" dir="ltr">SOUFFLÉ°</div>
+                        <div class="world-tile__cat">Gourmand Body Care</div>
+                        <p class="world-tile__he">מרקם שנכתב לפני המילים — עולם שנבנה מתנועה, לא מלוגו.</p>
+                        <span class="world-tile__go">להיכנס לעולם ←</span>
+                    </div>
+                </a>
+            </div>
+
+            <a class="worlds-proof__all" href="/brand-worlds/">כל העולמות בארכיון הסטודיו ←</a>
+        </div>
+    </section>
+
     <section class="studio-extras">
         <div class="container">
             <div class="studio-extras__inner">
-                <h3 class="studio-extras__title">Want a custom experience?</h3>
+                <h3 class="studio-extras__title">ואם את רוצה שיבנו לך אחד כזה?</h3>
                 <p class="studio-extras__text">
-                    מחפשים משהו ספציפי? אני בונה גם חוויות למידה מותאמות אישית<br>
-                    לצוותים, סטארטאפים ומותגים שרוצים לשלב AI בתהליך היצירתי.
+                    הסטודיו הוא הצד הפתוח. הצד השני הוא עבודה: אני בונה את עולם המותג במקומך.
+                    מתחילים באבחון פער המותג — 30 דקות, בלי עלות, שבהן נמפה יחד את המרחק בין הערך
+                    שכבר קיים בעסק לבין מה שהנוכחות הדיגיטלית מצליחה להעביר.
                 </p>
-                <a href="https://api.whatsapp.com/send/?phone=972528351676&text&type=phone_number&app_absent=0">
-                    Let's Talk
+                <a class="studio-extras__cta" href="/brand-world.html">
+                    לאבחון פער המותג
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
+                <p class="studio-extras__aside">מנהלת צוות? אני בונה גם סדנאות מותאמות לצוותים ולמותגים —
+                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לשמוע%20על%20סדנה%20מותאמת%20לצוות" target="_blank" rel="noopener">דברי איתי בוואטסאפ</a></p>
             </div>
         </div>
     </section>
@@ -449,6 +770,24 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         </div>
     </a>
+
+    <script>
+    (function () {
+        var svg = document.querySelector('.thread');
+        if (!svg) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (svg.pauseAnimations) svg.pauseAnimations();
+            return;
+        }
+        // exact dash length so the thread lands on its last point, not before it
+        var line = svg.querySelector('.thread__line');
+        if (line && line.getTotalLength) {
+            var len = line.getTotalLength();
+            line.style.strokeDasharray = len;
+            line.style.strokeDashoffset = len;
+        }
+    })();
+    </script>
 
     <div class="footer-minimal">
         <p class="footer-minimal__text">
