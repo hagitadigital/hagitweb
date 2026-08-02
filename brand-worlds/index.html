@@ -1308,6 +1308,56 @@ body::before {
 }
 
 /* ─────────────────────────────────────────────
+   Hebrew offer framing + mid-gallery CTA
+   ───────────────────────────────────────────── */
+.offer-band {
+  direction: rtl;
+  text-align: center;
+  background: var(--cream-soft);
+  border-top: 1px solid var(--hairline-soft);
+  border-bottom: 1px solid var(--hairline);
+  padding: 2.6rem 2rem;
+}
+.offer-band__line {
+  font-family: var(--hebrew);
+  font-weight: 300;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.offer-band__line strong { font-weight: 500; color: var(--gold); }
+
+.cta--mid {
+  padding: 6.5rem 2rem;
+  background: var(--cream-light);
+  border-top: 1px solid var(--hairline-soft);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.cta__he-statement {
+  font-family: var(--hebrew);
+  direction: rtl;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 2.6rem;
+}
+.cta__he-statement strong { font-weight: 500; color: var(--gold); }
+
+.cta__button--he {
+  font-family: var(--hebrew);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  direction: rtl;
+}
+.cta__button--he:hover { letter-spacing: 0.06em; }
+.cta__button--he:hover .arr { transform: translateX(-4px); }
+
+/* ─────────────────────────────────────────────
    COLOPHON
    ───────────────────────────────────────────── */
 .colophon {
@@ -1563,6 +1613,11 @@ body::before {
   <hr class="masthead__rule" />
   <div class="scroll-cue"><span>Enter the gallery</span></div>
 </header>
+
+<!-- ─────────── OFFER FRAMING (he) ─────────── -->
+<div class="offer-band" lang="he">
+  <p class="offer-band__line">כל עולם בגלריה הזאת נבנה באותה שיטה שאני בונה ללקוחות: <strong>עולם מותג</strong> שלם — שם, שפה, מוצרים ואתר חי. העולם הבא יכול להיות של המותג שלך.</p>
+</div>
 
 <!-- ─────────── SECTION I — THE THREE WORLDS ─────────── -->
 <section class="section worlds" id="worlds">
@@ -1886,6 +1941,23 @@ body::before {
   </div>
 </section>
 
+<!-- ─────────── MID CTA — right after the worlds ─────────── -->
+<section class="cta cta--mid" id="cta-mid" lang="he">
+  <div class="cta__inner reveal">
+    <p class="cta__he-statement">כל העולמות שראית נבנו מאפס, באותה שיטה.<br/><strong>העולם הבא — של המותג שלך.</strong></p>
+    <div class="cta__buttons">
+      <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A2%D7%95%D7%9C%D7%9E%D7%95%D7%AA%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92" target="_blank" rel="noopener" class="cta__button cta__button--primary cta__button--he">
+        <span>לאבחון פער המותג</span>
+        <span class="arr">←</span>
+      </a>
+      <a href="../brand-world.html" class="cta__button cta__button--ghost cta__button--he">
+        <span>איך נראה עולם מותג חי</span>
+        <span class="arr">←</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────── SECTION II — STUDIO NOTE ─────────── -->
 <section class="section manifesto" id="manifesto">
   <div class="section__inner">
@@ -2156,18 +2228,18 @@ body::before {
 <section class="cta" id="cta">
   <div class="cta__inner reveal">
     <h2 class="cta__statement">Want a <em>world</em><br/>for your brand?</h2>
-    <p class="cta__he" lang="he">רוצה עולם משלך?</p>
+    <p class="cta__he" lang="he">רוצה עולם משלך? מתחילים באבחון פער המותג — שיחה אחת שממפה איפה המותג שלך היום, ומה חסר לו כדי להיבחר.</p>
     <div class="cta__buttons">
-      <a href="https://hagitantebi.co.il" class="cta__button cta__button--primary">
-        <span>Visit the Studio</span>
-        <span class="arr">→</span>
+      <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A2%D7%95%D7%9C%D7%9E%D7%95%D7%AA%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92" target="_blank" rel="noopener" class="cta__button cta__button--primary cta__button--he">
+        <span>לאבחון פער המותג</span>
+        <span class="arr">←</span>
       </a>
-      <a href="https://hagitantebi.co.il#contact" class="cta__button cta__button--ghost">
-        <span>Start a Conversation</span>
-        <span class="arr">→</span>
+      <a href="../brand-world.html" class="cta__button cta__button--ghost cta__button--he">
+        <span>עולם מותג לעסק שלך</span>
+        <span class="arr">←</span>
       </a>
     </div>
-    <p class="cta__note">More worlds: <a href="https://hagitantebi.co.il/#worlds">Mora · Shiro · Nexus · Frost</a></p>
+    <p class="cta__note">More worlds: <a href="https://hagitantebi.co.il/#live-worlds">the live worlds on the homepage</a> · <a href="../brand-worlds-museum.html">the museum</a></p>
   </div>
 </section>
 
