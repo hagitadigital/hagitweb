@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>REGARD° — את לא מחליפה משקפיים. את מחליפה את המבט. | Brand Worlds Studio</title>
+<meta name="description" content="REGARD° — עולם מותג קונספטואלי של בית אופטיקה. חמש מסגרות, חמישה מבטים, עדשה אחת שלא זזה. הדגמת תיק עבודות מבית Brand Worlds Studio · חגית אנטבי.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500&family=Assistant:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#0C1420;
+  --bg1:#121E2C;
+  --cream:#F2EBDC;
+  --muted:rgba(242,235,220,.62);
+  --faint:rgba(242,235,220,.38);
+  --ink:#15202E;
+  --copper:#C28A5A;
+  --copper-soft:rgba(194,138,90,.38);
+  --accent:#D9A8A2;
+  --lens-size:min(340px, 34vw);
+  --item-h:172px;
+  --ease-ui:cubic-bezier(0.23,1,0.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg0);
+  background-image:linear-gradient(160deg, #0C1420 0%, #131F2E 48%, #0B1220 100%);
+  color:var(--cream);
+  font-family:'Assistant',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+::selection{background:var(--copper);color:var(--ink)}
+
+/* grain */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+  background:
+    radial-gradient(1200px 700px at 18% 50%, rgba(194,138,90,.07), transparent 65%),
+    linear-gradient(160deg, #0C1420 0%, #131F2E 55%, #0C1420 100%);
+}
+.wash{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  opacity:0;transition:opacity 1s var(--ease-ui);
+}
+.wash.is-on{opacity:1}
+.wash i{
+  position:absolute;left:-12%;top:-20%;width:82%;height:140%;
+  background:radial-gradient(closest-side, var(--w, #D9A8A2) 0%, transparent 70%);
+  opacity:.1;display:block;
+}
+
+.hero-copy{
+  position:absolute;
+  inset-block:0;
+  inset-inline-start:0;
+  width:min(54%, 720px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding-inline-start:clamp(24px,6vw,96px);
+  padding-inline-end:clamp(16px,3vw,48px);
+  z-index:5;
+}
+.eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(11px,1vw,13px);
+  letter-spacing:.48em;
+  text-transform:uppercase;
+  color:var(--copper);
+  margin-bottom:clamp(20px,3.4vh,38px);
+}
+.brand{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+  font-size:clamp(56px,7.5vw,112px);
+  line-height:.94;
+  letter-spacing:.03em;
+  color:var(--cream);
+  direction:ltr;text-align:right;
+}
+.brand sup{font-size:.32em;vertical-align:.9em;color:var(--copper);font-weight:300}
+.promise{
+  font-family:'Frank Ruhl Libre',serif;
+  font-weight:300;
+  font-size:clamp(18px,1.7vw,24px);
+  line-height:1.7;
+  color:rgba(242,235,220,.88);
+  margin-top:clamp(18px,3vh,34px);
+  max-width:24em;
+}
+.promise em{font-style:normal;color:var(--copper)}
+.sub{
+  font-size:clamp(13px,1.05vw,15px);
+  font-weight:300;
+  letter-spacing:.04em;
+  color:var(--muted);
+  margin-top:12px;max-width:36em;line-height:1.75;
+}
+
+/* model panel */
+.model-panel{
+  margin-top:clamp(30px,6vh,64px);
+  min-height:170px;
+  position:relative;
+}
+.model-slide{position:absolute;inset:0;opacity:0;pointer-events:none}
+.model-slide.is-active{pointer-events:auto}
+.model-rule{
+  width:56px;height:1px;background:var(--copper);opacity:.7;margin-bottom:16px;
+}
+.model-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:500;
+  font-size:clamp(38px,4.2vw,60px);
+  line-height:1;
+  direction:ltr;text-align:right;
+  color:var(--accent);
+}
+.model-line{
+  font-family:'Frank Ruhl Libre',serif;font-weight:300;
+  font-size:clamp(16px,1.5vw,20px);
+  color:rgba(242,235,220,.85);
+  margin-top:10px;
+}
+.model-chips{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
+.chip{
+  font-size:12px;letter-spacing:.08em;
+  border:1px solid rgba(242,235,220,.22);
+  border-radius:999px;
+  padding:5px 13px;
+  color:rgba(242,235,220,.72);
+}
+
+.scroll-hint{
+  position:absolute;bottom:clamp(18px,4vh,36px);inset-inline-start:clamp(24px,6vw,96px);
+  display:flex;align-items:center;gap:12px;z-index:5;
+  font-size:12.5px;letter-spacing:.12em;color:var(--faint);
+}
+.scroll-hint::after{
+  content:'';width:1px;height:44px;background:linear-gradient(var(--copper),transparent);
+  animation:hint 2.2s var(--ease-ui) infinite;
+}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}46%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- RIG : rail + roller + lens ---------- */
+.rig{
+  position:absolute;inset-block:0;left:0;width:44%;z-index:4;
+  touch-action:pan-y;
+  cursor:grab;
+}
+.rig.is-dragging{cursor:grabbing}
+.rail{
+  position:absolute;top:0;bottom:0;
+  left:var(--lens-x, 200px);
+  width:1px;
+  background:linear-gradient(to bottom, transparent, var(--copper) 12%, var(--copper) 88%, transparent);
+  opacity:.5;
+  pointer-events:none;
+}
+.roller{position:absolute;inset:0}
+.roller-item{
+  position:absolute;
+  top:50%;left:var(--lens-x,200px);
+  width:var(--item-h);height:var(--item-h);
+  margin-top:calc(var(--item-h) / -2);
+  margin-left:calc(var(--item-h) / -2);
+  cursor:pointer;
+  border:none;background:none;padding:0;
+  will-change:transform,opacity;
+}
+.roller-item::before{ /* soft backing glow so dark frames read on the navy bg */
+  content:'';position:absolute;inset:6%;border-radius:50%;
+  background:radial-gradient(circle, rgba(242,235,220,.09), transparent 68%);
+}
+.roller-item img{
+  position:relative;
+  width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));
+  pointer-events:none;
+}
+.roller-item:focus-visible{outline:2px solid var(--copper);outline-offset:6px;border-radius:12px}
+
+.dial{
+  position:absolute;top:50%;transform:translateY(-50%);
+  left:calc(var(--lens-x,200px) + var(--lens-size)/2 + 26px);
+  display:flex;flex-direction:column;gap:14px;z-index:6;
+}
+.dial b{
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:13px;color:var(--faint);
+  transition:color .25s var(--ease-ui), transform .25s var(--ease-ui);
+  direction:ltr;cursor:pointer;
+}
+.dial b.is-active{color:var(--copper);transform:scale(1.35)}
+
+/* lens */
+.lens{
+  position:absolute;top:50%;left:var(--lens-x,200px);
+  width:var(--lens-size);height:var(--lens-size);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  z-index:5;
+  pointer-events:none;
+}
+.lens-halo{
+  position:absolute;inset:-22%;border-radius:50%;
+  background:radial-gradient(circle, rgba(194,138,90,.14), transparent 68%);
+}
+.lens-glass{
+  position:absolute;inset:0;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.12), rgba(255,255,255,.015) 58%);
+  box-shadow:
+    inset 0 0 0 1px rgba(242,235,220,.14),
+    inset 0 -20px 44px rgba(0,0,0,.28),
+    0 34px 80px rgba(0,0,0,.45);
+}
+.lens-view{position:absolute;inset:0}
+.lens-strip .lens-item{
+  position:absolute;top:50%;left:50%;
+  width:calc(var(--item-h) * 1.5);height:calc(var(--item-h) * 1.5);
+  will-change:transform,opacity;
+}
+.lens-strip .lens-item img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 22px 38px rgba(0,0,0,.6))}
+.lens-ring{
+  position:absolute;inset:-2px;border-radius:50%;
+  border:2.5px solid var(--copper);
+  box-shadow:0 0 0 7px rgba(194,138,90,.1), 0 0 46px rgba(194,138,90,.22), inset 0 0 0 1px rgba(194,138,90,.35);
+}
+.lens-ring::after{
+  content:'';position:absolute;
+  bottom:-13%;left:8%;
+  width:34%;height:3px;border-radius:3px;
+  background:linear-gradient(90deg, var(--copper), transparent);
+  transform:rotate(38deg);transform-origin:left center;
+}
+.lens-flare{
+  position:absolute;top:12%;left:16%;width:30%;height:16%;
+  border-radius:50%;
+  background:linear-gradient(120deg, rgba(255,255,255,.3), rgba(255,255,255,0));
+  filter:blur(2px);
+  transform:rotate(-24deg);
+}
+
+/* traveler */
+.traveler{
+  position:fixed;top:0;left:0;z-index:40;
+  width:calc(var(--item-h) * 1.2);height:calc(var(--item-h) * 1.2);
+  pointer-events:none;opacity:0;
+  will-change:transform;
+}
+.traveler img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 26px 40px rgba(0,0,0,.55))}
+
+/* ---------- RECEIVE ---------- */
+.receive{
+  position:relative;
+  min-height:120vh;
+  padding:clamp(80px,14vh,160px) clamp(24px,6vw,96px) clamp(80px,12vh,140px);
+  display:grid;
+  grid-template-columns:minmax(280px,0.9fr) 1.1fr;
+  gap:clamp(32px,6vw,90px);
+  align-items:center;
+  background:
+    radial-gradient(900px 600px at 24% 40%, rgba(194,138,90,.06), transparent 65%),
+    linear-gradient(#0C1420, #111C2A 55%, #0C1420);
+}
+.receive .thread{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;overflow:visible;
+}
+.receive .thread path{
+  fill:none;stroke:var(--copper);stroke-width:1.5;
+  opacity:.6;
+}
+.landing{
+  order:2;
+  position:relative;z-index:3;
+  display:flex;align-items:center;justify-content:center;
+}
+.landing-slot{
+  width:min(360px,80%);aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid var(--copper-soft);
+  background:radial-gradient(circle at 50% 38%, rgba(255,255,255,.07), rgba(255,255,255,0) 70%);
+  box-shadow:0 0 60px rgba(194,138,90,.1);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.landing-slot::before{
+  content:'Nº ' attr(data-n);
+  position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;
+  color:var(--copper);direction:ltr;
+}
+.landing-slot img{
+  width:74%;height:74%;object-fit:contain;
+  filter:drop-shadow(0 30px 46px rgba(0,0,0,.55));
+  opacity:0;transform:scale(.94);
+  transition:opacity .3s var(--ease-ui), transform .3s var(--ease-ui);
+}
+.landing-slot.is-docked img{opacity:1;transform:scale(1)}
+
+.story{order:1;position:relative;z-index:3}
+.story .eyebrow{margin-bottom:14px}
+.story-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:clamp(40px,5vw,72px);line-height:1;
+  color:var(--accent);direction:ltr;text-align:right;
+}
+.story-title{
+  font-family:'Frank Ruhl Libre',serif;font-weight:300;
+  font-size:clamp(21px,2.2vw,30px);line-height:1.5;
+  color:rgba(242,235,220,.92);
+  margin-top:18px;max-width:18em;
+}
+.story-body{
+  font-size:clamp(15px,1.25vw,18px);line-height:1.9;
+  color:var(--muted);
+  margin-top:16px;max-width:36em;
+}
+.story .model-chips{margin-top:22px}
+.story-cta{
+  margin-top:clamp(28px,4vh,44px);
+  display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+}
+.btn{
+  font-family:'Assistant',sans-serif;font-weight:600;font-size:15px;
+  text-decoration:none;border-radius:999px;
+  padding:13px 26px;letter-spacing:.02em;
+  transition:transform .16s var(--ease-ui), box-shadow .2s var(--ease-ui), border-color .2s var(--ease-ui);
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--copper);color:var(--ink)}
+.btn-primary:hover{box-shadow:0 12px 30px rgba(194,138,90,.35)}
+.btn-ghost{color:var(--cream);border:1px solid rgba(242,235,220,.28)}
+.btn-ghost:hover{border-color:var(--copper);color:var(--copper)}
+
+/* footer note */
+.studio-note{
+  padding:60px clamp(24px,6vw,96px) 80px;
+  border-top:1px solid rgba(242,235,220,.09);
+  font-size:14px;line-height:1.8;color:var(--muted);
+  max-width:52em;
+  background:#0C1420;
+}
+.studio-note strong{font-weight:600;color:var(--cream)}
+.studio-note a{color:var(--copper)}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:900px){
+  :root{--item-h:118px;--lens-size:220px}
+  .hero-copy{
+    width:100%;inset-block:auto;top:0;
+    padding-top:clamp(44px,8vh,72px);
+    justify-content:flex-start;
+  }
+  .model-panel{min-height:130px;margin-top:clamp(20px,3.5vh,34px)}
+  .rig{
+    inset-block:auto;left:0;bottom:0;width:100%;height:44vh;
+    touch-action:pan-y;
+  }
+  .rail{
+    top:auto;left:0;right:0;bottom:var(--lens-y-m,22vh);
+    width:auto;height:1px;
+    background:linear-gradient(to right, transparent, var(--copper) 12%, var(--copper) 88%, transparent);
+  }
+  .roller-item{top:auto;bottom:var(--lens-y-m,22vh);left:50%;margin-bottom:calc(var(--item-h) / -2)}
+  .lens{top:auto;bottom:var(--lens-y-m,22vh);left:50%;transform:translate(-50%,50%)}
+  .dial{
+    top:auto;bottom:10px;left:50%;transform:translateX(-50%);
+    flex-direction:row;gap:18px;
+  }
+  .scroll-hint{display:none}
+  .receive{grid-template-columns:1fr;min-height:auto}
+  .landing{order:1}
+  .story{order:2}
+}
+
+/* ---------- REDUCED MOTION / STATIC ---------- */
+@media (prefers-reduced-motion: reduce){
+  .scroll-hint::after{animation:none}
+}
+body.static .hero{height:auto;min-height:100vh;padding-bottom:60px}
+body.static .rig{position:relative;inset:auto;width:100%;height:auto;margin-top:40px}
+body.static .rail,body.static .lens,body.static .dial{display:none}
+body.static .roller{position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding:0 24px}
+body.static .roller-item{position:relative;top:auto;left:auto;margin:0}
+body.static .traveler{display:none}
+body.static .model-slide{position:relative;opacity:1;pointer-events:auto;display:none}
+body.static .model-slide.is-active{display:block}
+</style>
+</head>
+<body>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="hero" aria-label="REGARD° — קולקציית המבטים">
+  <div class="wash" data-wash><i></i></div>
+  <div class="wash" data-wash><i></i></div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Maison d'Optique&nbsp;·&nbsp;Brand World Nº&nbsp;16</p>
+    <h1 class="brand">REGARD<sup>°</sup></h1>
+    <p class="promise">את לא מחליפה משקפיים.<br>את מחליפה <em>את המבט</em> — איך את רואה, ואיך רואים אותך.</p>
+    <p class="sub">חמש מסגרות · חמישה מבטים · העדשה לא זזה — העולם שעובר דרכה מתחלף</p>
+
+    <div class="model-panel" aria-live="polite"></div>
+  </div>
+
+  <div class="rig">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="roller" role="listbox" aria-label="בחירת מסגרת"></div>
+    <div class="lens" aria-hidden="true">
+      <div class="lens-halo"></div>
+      <div class="lens-glass">
+        <div class="lens-view"><div class="lens-strip"></div></div>
+        <div class="lens-flare"></div>
+      </div>
+      <div class="lens-ring"></div>
+    </div>
+    <div class="dial" aria-hidden="true"></div>
+  </div>
+
+  <p class="scroll-hint">סובבי את הגלגל · גללי להמשיך עם הדגם שבחרת</p>
+</section>
+
+<!-- traveler -->
+<div class="traveler" aria-hidden="true"><img alt=""></div>
+
+<!-- ======================= RECEIVE ======================= -->
+<section class="receive" id="look" aria-label="המבט">
+  <svg class="thread" aria-hidden="true" preserveAspectRatio="none"><path d=""/></svg>
+
+  <div class="landing">
+    <div class="landing-slot" data-n="01"><img alt="המסגרת הנבחרת"></div>
+  </div>
+
+  <div class="story">
+    <p class="eyebrow">Le Regard&nbsp;·&nbsp;המבט</p>
+    <h2 class="story-name" data-story-name>La Muse</h2>
+    <p class="story-title" data-story-title></p>
+    <p class="story-body" data-story-body></p>
+    <div class="model-chips" data-story-chips></div>
+    <div class="story-cta">
+      <a class="btn btn-primary" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92">לאבחון פער המותג</a>
+      <a class="btn btn-ghost" href="/brand-world.html">מה זה עולם מותג?</a>
+    </div>
+  </div>
+</section>
+
+<div class="studio-note">
+  <strong>Studio Note.</strong> REGARD° הוא עולם מותג קונספטואלי — הדגמת תיק עבודות מבית
+  <a href="/">Brand Worlds Studio · חגית אנטבי</a>. המסגרות אינן למכירה; מה שמוצג כאן הוא השיטה:
+  הבטחה אחת, חמש התגלמויות, ועדשה שלא זזה. עמוד זה בבנייה (Prototype · Phase 2).
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ================= REGARD° hero engine v2 =================
+   The wheel is self-driven (wheel / drag / click / keys) —
+   page scroll stays free, and whichever model is CHOSEN
+   travels down the copper thread into the receive section. */
+const MODELS = [
+  {
+    id:'la-muse',    n:'01', name:'La Muse',       accent:'#D9A8A2',
+    img:'assets/frames/01-la-muse.png',
+    line:'היא לא מחפשת את האור. האור מחפש אותה.',
+    chips:['עגול רך','אצטט ורדרד שקוף','מבט פתוח'],
+    storyTitle:'מה משתנה כשהיא מרכיבה את La Muse?',
+    storyBody:'הקו מתעגל, הצבע מתרכך, והחדר נהיה קצת יותר סבלני. אותה אישה, אותו בוקר — אבל המבט שחוזר אליה מהמראה כבר מספר סיפור אחר: כזה שמתחיל בהשראה, לא במטלות.'
+  },
+  {
+    id:'l-icone',    n:'02', name:"L'Icône",       accent:'#D6C7A9',
+    img:'assets/frames/02-licone.png',
+    line:'נכנסת לחדר. השאר היסטוריה.',
+    chips:['קאט-איי חד','אצטט שחור מבריק','מבט שלא מתנצל'],
+    storyTitle:"מה משתנה כשהיא מרכיבה את L'Icône?",
+    storyBody:'הצללית מתחדדת, הדיבור נהיה קצר יותר, וההיסוס נשאר מחוץ לדלת. המסגרת הזאת לא מבקשת תשומת לב — היא קובעת מי מוביל את השיחה.'
+  },
+  {
+    id:'la-poete',   n:'03', name:'La Poète',      accent:'#C89A6B',
+    img:'assets/frames/03-la-poete.png',
+    line:'רואה את מה שאחרים פספסו.',
+    chips:['מתכת נחושת דקה','עיגול מושלם','מבט חולם'],
+    storyTitle:'מה משתנה כשהיא מרכיבה את La Poète?',
+    storyBody:'העולם מאט. פרטים קטנים — קפל של וילון, אור על כוס — מקבלים פתאום משקל. חוט הנחושת הדק ביותר בקולקציה, למי שהמבט שלה הוא כלי עבודה.'
+  },
+  {
+    id:'la-directrice', n:'04', name:'La Directrice', accent:'#8FA6C0',
+    img:'assets/frames/04-la-directrice.png',
+    line:'ההחלטה כבר התקבלה. עכשיו רק מנסחים אותה.',
+    chips:['מלבני מדויק','נייבי מט','מבט ישיר'],
+    storyTitle:'מה משתנה כשהיא מרכיבה את La Directrice?',
+    storyBody:'השולחן מתיישר. הקווים המקבילים של המסגרת עושים לחדר מה שסדר יום טוב עושה לשבוע — פתאום ברור מה חשוב, מה דחוף, ומה סתם רעש.'
+  },
+  {
+    id:'l-etoile',   n:'05', name:"L'Étoile",      accent:'#C99A4F',
+    img:'assets/frames/05-letoile.png',
+    line:'כשהיא מסתכלת עלייך — את מרגישה נבחרת.',
+    chips:['אוברסייז','צב ענברי','מבט זוהר'],
+    storyTitle:"מה משתנה כשהיא מרכיבה את L'Étoile?",
+    storyBody:'הכול נהיה קצת יותר נוצץ, כולל דברים שלא נגעת בהם. מסגרת הערב של הקולקציה — למי שיודעת שכניסה טובה שווה אלף מצגות.'
+  }
+];
+
+const COUNT = MODELS.length;
+const ZOOM = 1.5;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+const hero    = document.getElementById('hero');
+const rig     = document.querySelector('.rig');
+const roller  = document.querySelector('.roller');
+const strip   = document.querySelector('.lens-strip');
+const dial    = document.querySelector('.dial');
+const panel   = document.querySelector('.model-panel');
+const washes  = document.querySelectorAll('[data-wash]');
+const traveler= document.querySelector('.traveler');
+const travImg = traveler.querySelector('img');
+const receive = document.getElementById('look');
+const slot    = document.querySelector('.landing-slot');
+const slotImg = slot.querySelector('img');
+const thread  = document.querySelector('.thread');
+const threadPath = thread.querySelector('path');
+
+/* build DOM */
+MODELS.forEach((m,i)=>{
+  const b = document.createElement('button');
+  b.className='roller-item'; b.type='button';
+  b.setAttribute('role','option');
+  b.setAttribute('aria-label', m.name);
+  b.dataset.i=i;
+  b.innerHTML=`<img src="${m.img}" alt="${m.name}" loading="eager">`;
+  roller.appendChild(b);
+
+  const li=document.createElement('div');
+  li.className='lens-item';
+  li.innerHTML=`<img src="${m.img}" alt="">`;
+  strip.appendChild(li);
+
+  const d=document.createElement('b'); d.textContent=m.n; d.dataset.i=i; dial.appendChild(d);
+
+  const s=document.createElement('div');
+  s.className='model-slide'+(i===0?' is-active':'');
+  s.innerHTML=`
+    <div class="model-rule"></div>
+    <div class="model-name" style="color:${m.accent}">${m.name}</div>
+    <div class="model-line">${m.line}</div>
+    <div class="model-chips">${m.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>`;
+  panel.appendChild(s);
+});
+
+const items    = [...roller.children];
+const lensItems= [...strip.children];
+const dials    = [...dial.children];
+const slides   = [...panel.children];
+
+let active = 0;
+let target = 0;
+let washFlip = 0;
+let handoffActive = false;
+const proxy = { p:0 };
+
+function itemH(){ return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--item-h')); }
+function lensCenter(){
+  const l=document.querySelector('.lens').getBoundingClientRect();
+  return { x:l.left+l.width/2, y:l.top+l.height/2 };
+}
+const clamp01 = v => Math.max(0, Math.min(1, v));
+
+/* render wheel at continuous p */
+function render(p){
+  const H = itemH();
+  const mob = isMobile();
+  items.forEach((el,i)=>{
+    const d = i - p;
+    const ad = Math.abs(d);
+    const main = d * H * 1.06 * (mob ? -1 : 1);
+    const bulge = Math.pow(ad,1.6) * 16;
+    const scale = Math.max(.42, 1 - .24*ad);
+    /* fade the ORIGINAL out as it enters the lens — inside the glass
+       only the magnified copy exists (no doubling) */
+    const inLens = clamp01((ad - .45) / .35);
+    const op = (ad > 2.6 ? 0 : Math.max(.15, 1 - .34*ad)) * inLens;
+    const rot = d * -8;
+    el.style.transform = mob
+      ? `translate(${main}px, ${bulge}px) rotate(${-rot}deg) scale(${scale})`
+      : `translate(${bulge}px, ${main}px) rotate(${rot}deg) scale(${scale})`;
+    el.style.opacity = op;
+    el.setAttribute('aria-selected', Math.round(p)===i ? 'true':'false');
+  });
+  lensItems.forEach((el,i)=>{
+    const d = i - p;
+    const main = d * H * 1.06 * ZOOM * (mob ? -1 : 1);
+    el.style.transform = mob
+      ? `translate(calc(-50% + ${main}px), -50%)`
+      : `translate(-50%, calc(-50% + ${main}px))`;
+    el.style.opacity = (Math.abs(d) < .9 && !(handoffActive && i===active)) ? 1 : 0;
+  });
+  const idx = Math.max(0, Math.min(COUNT-1, Math.round(p)));
+  if(idx !== active) setActive(idx);
+}
+lensItems.forEach(el=>{ el.style.top='50%'; el.style.left='50%'; });
+
+function setActive(idx){
+  active = idx;
+  const m = MODELS[idx];
+  document.documentElement.style.setProperty('--accent', m.accent);
+  dials.forEach((d,i)=>d.classList.toggle('is-active', i===idx));
+
+  slides.forEach((s,i)=>{
+    if(i===idx){
+      s.classList.add('is-active');
+      gsap.fromTo(s,{opacity:0,y:14},{opacity:1,y:0,duration:.24,ease:'expo.out',overwrite:'auto'});
+    } else if (s.classList.contains('is-active')){
+      s.classList.remove('is-active');
+      gsap.to(s,{opacity:0,y:-12,duration:.18,ease:'power2.in',overwrite:'auto'});
+    }
+  });
+
+  washFlip ^= 1;
+  washes.forEach((w,i)=>{
+    w.querySelector('i').style.setProperty('--w', m.accent);
+    w.classList.toggle('is-on', i===washFlip);
+  });
+
+  slot.dataset.n = m.n;
+  slotImg.src = m.img;
+  travImg.src = m.img;
+  const sn = document.querySelector('[data-story-name]');
+  sn.textContent = m.name; sn.style.color = m.accent;
+  document.querySelector('[data-story-title]').textContent = m.storyTitle;
+  document.querySelector('[data-story-body]').textContent = m.storyBody;
+  document.querySelector('[data-story-chips]').innerHTML = m.chips.map(c=>`<span class="chip">${c}</span>`).join('');
+}
+
+/* ---------- static fallback ---------- */
+if (reduceMotion){
+  document.body.classList.add('static');
+  render(0); setActive(0);
+  slot.classList.add('is-docked');
+  items.forEach(el=>{
+    el.style.transform='none'; el.style.opacity=1;
+    el.addEventListener('click', ()=> setActive(+el.dataset.i));
+  });
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* --- the wheel drives itself --- */
+  function goTo(i, dur){
+    target = Math.max(0, Math.min(COUNT-1, Math.round(i)));
+    gsap.to(proxy, {
+      p: target, duration: dur ?? .7, ease:'expo.out',
+      overwrite:'auto', onUpdate:()=>render(proxy.p)
+    });
+  }
+  window.REGARD = { goTo, get active(){ return active; } };  /* QA hook */
+
+  /* wheel over the rig steps the roller; at the edges scroll passes through */
+  let acc = 0, lastStep = 0;
+  rig.addEventListener('wheel', e=>{
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const can = (dir>0 && target<COUNT-1) || (dir<0 && target>0);
+    if(!can) return;                       /* free exit past the edges */
+    e.preventDefault();
+    const now = performance.now();
+    acc += e.deltaY;
+    if(Math.abs(acc) > 60 && now - lastStep > 240){
+      goTo(target + dir, .55);
+      acc = 0; lastStep = now;
+    }
+  }, {passive:false});
+
+  /* drag the wheel (vertical desktop / horizontal mobile) */
+  let dragging=false, moved=false, startP=0, startX=0, startY=0;
+  rig.addEventListener('pointerdown', e=>{
+    dragging=true; moved=false;
+    startP=proxy.p; startX=e.clientX; startY=e.clientY;
+    rig.classList.add('is-dragging');
+    rig.setPointerCapture(e.pointerId);
+    gsap.killTweensOf(proxy);
+  });
+  rig.addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    const H = itemH();
+    const delta = isMobile() ? (e.clientX - startX) : -(e.clientY - startY);
+    if(Math.abs(delta) > 5) moved = true;
+    proxy.p = Math.max(-.35, Math.min(COUNT-1+.35, startP + delta / (H*1.06)));
+    render(proxy.p);
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging=false; rig.classList.remove('is-dragging');
+    goTo(proxy.p, .5);
+  }
+  rig.addEventListener('pointerup', endDrag);
+  rig.addEventListener('pointercancel', endDrag);
+
+  /* click item / dial (suppressed right after a drag) */
+  items.forEach(el=> el.addEventListener('click', ()=>{ if(!moved) goTo(+el.dataset.i); }));
+  dials.forEach(el=> el.addEventListener('click', ()=> goTo(+el.dataset.i)));
+
+  window.addEventListener('keydown', e=>{
+    if(e.key==='ArrowDown'&&target<COUNT-1){ e.preventDefault(); goTo(target+1); }
+    if(e.key==='ArrowUp'&&target>0){ e.preventDefault(); goTo(target-1); }
+  });
+
+  /* ---------- handoff: the CHOSEN frame leaves the lens ---------- */
+  function curvePoint(t, s, e){
+    const cx = (s.x + e.x)/2 + (isMobile()? 0 : 90);
+    const cy = (s.y + e.y)/2 - 60;
+    const x = (1-t)*(1-t)*s.x + 2*(1-t)*t*cx + t*t*e.x;
+    const y = (1-t)*(1-t)*s.y + 2*(1-t)*t*cy + t*t*e.y;
+    return {x,y};
+  }
+  ScrollTrigger.create({
+    trigger: receive, start:'top 85%', end:'center 55%', scrub:.5,
+    onUpdate(self){
+      const t = self.progress;
+      if(t<=0.001){
+        handoffActive=false; traveler.style.opacity=0;
+        slot.classList.remove('is-docked'); render(proxy.p); return;
+      }
+      const s = lensCenter();
+      const r = slot.getBoundingClientRect();
+      const e = { x:r.left+r.width/2, y:r.top+r.height/2 };
+      const pt = curvePoint(t, s, e);
+      const startScale = ZOOM, endScale = (r.width*0.74)/(itemH()*1.2);
+      const sc = startScale + (endScale-startScale)*t;
+      const rot = Math.sin(t*Math.PI) * -10;
+      traveler.style.transform = `translate(${pt.x - traveler.offsetWidth/2}px, ${pt.y - traveler.offsetHeight/2}px) rotate(${rot}deg) scale(${sc})`;
+      if(t>0.02 && t<0.97){
+        handoffActive=true;
+        traveler.style.opacity=1;
+        lensItems[active].style.opacity=0;   /* the glass empties while it travels */
+        slot.classList.remove('is-docked');
+      } else if (t>=0.97){
+        traveler.style.opacity=0;
+        slot.classList.add('is-docked');
+      }
+    },
+    onLeave(){ traveler.style.opacity=0; slot.classList.add('is-docked'); },
+    onLeaveBack(){ handoffActive=false; traveler.style.opacity=0; slot.classList.remove('is-docked'); render(proxy.p); }
+  });
+
+  /* copper thread drawn on scroll */
+  function layThread(){
+    const rr = receive.getBoundingClientRect();
+    thread.setAttribute('viewBox', `0 0 ${rr.width} ${rr.height}`);
+    const sX = isMobile()? rr.width/2 : Math.min(260, rr.width*0.22);
+    const r  = slot.getBoundingClientRect();
+    const eX = r.left - rr.left + r.width/2;
+    const eY = r.top - rr.top + r.height/2;
+    threadPath.setAttribute('d', `M ${sX} 0 C ${sX+70} ${eY*0.35}, ${eX-90} ${eY*0.55}, ${eX} ${eY}`);
+    const len = threadPath.getTotalLength();
+    threadPath.style.strokeDasharray = len;
+    threadPath.style.strokeDashoffset = len;
+  }
+  layThread();
+  gsap.to(threadPath, {
+    strokeDashoffset:0, ease:'none',
+    scrollTrigger:{ trigger:receive, start:'top 85%', end:'center 55%', scrub:.5 }
+  });
+  window.addEventListener('resize', ()=>{ layThread(); ScrollTrigger.refresh(); });
+
+  render(0); setActive(0);
+}
+</script>
+</body>
+</html>
