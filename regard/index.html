@@ -127,6 +127,30 @@ body::after{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
 }
 
+/* ---------- STUDIO TOPBAR (dark sliver, like all motion worlds) ---------- */
+.topbar{
+  position:fixed;inset:0 0 auto 0;z-index:90;height:34px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:0 28px;
+  background:var(--ink);color:var(--cream);
+  border-bottom:1px solid rgba(242,235,220,.08);
+  font-size:12px;direction:rtl;
+}
+.topbar .label{opacity:.85;font-weight:300}
+.topbar .label b{font-weight:600;letter-spacing:.06em}
+.topbar .bws{opacity:.55}
+.topbar a{
+  color:var(--cream);text-decoration:none;font-weight:600;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1px solid rgba(242,235,220,.45);padding-bottom:1px;
+  transition:border-color .3s;
+}
+.topbar a:hover{border-color:var(--copper);color:var(--copper)}
+@media(max-width:680px){
+  .topbar{font-size:10.5px;padding:0 14px}
+  .topbar .bws{display:none}
+}
+
 /* ---------- HERO ---------- */
 .hero{
   position:relative;
@@ -480,8 +504,11 @@ body::after{
 }
 .face-breathe{position:absolute;inset:0;will-change:transform}
 .face-card.is-active .face-breathe{animation:breathe 8s ease-in-out infinite alternate}
+/* the video already breathes on its own — no CSS breathe on top of it */
+.face-card.is-active .face-breathe:has(video){animation:none}
 @keyframes breathe{from{transform:scale(1.035)}to{transform:scale(1)}}
-.face-breathe img{
+.face-breathe img,
+.face-breathe video{
   width:100%;height:100%;object-fit:cover;
   transform:translateX(var(--par,0)) scale(1.08);
   will-change:transform;
@@ -559,6 +586,118 @@ body.static .faces-line{display:none}
   color:var(--copper);direction:ltr;
 }
 @media(max-width:900px){.v-cards{grid-template-columns:1fr;max-width:440px}}
+
+/* ---------- LA BOUTIQUE ---------- */
+.boutique{
+  padding:clamp(70px,12vh,130px) clamp(24px,6vw,96px);
+  background:
+    radial-gradient(800px 500px at 50% 30%, rgba(194,138,90,.05), transparent 65%),
+    linear-gradient(#0C1420, #111C2A 55%, #0C1420);
+  border-top:1px solid rgba(242,235,220,.07);
+  text-align:center;
+}
+.boutique h2{
+  font-family:'Frank Ruhl Libre',serif;font-weight:300;
+  font-size:clamp(24px,3vw,40px);color:rgba(242,235,220,.94);
+}
+.boutique h2 em{font-style:normal;color:var(--copper)}
+.boutique .sub{margin-top:12px;font-size:15px;color:var(--muted);font-weight:300}
+.b-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:clamp(14px,1.8vw,24px);
+  max-width:1280px;margin:clamp(36px,6vh,60px) auto 0;
+}
+@media(max-width:1100px){.b-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.b-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:430px){.b-grid{grid-template-columns:1fr;max-width:300px}}
+.b-card{
+  position:relative;
+  border:1px solid rgba(242,235,220,.1);
+  background:linear-gradient(rgba(242,235,220,.045), rgba(242,235,220,.015));
+  padding:22px 16px 24px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  transition:border-color .4s var(--ease-ui), transform .4s var(--ease-ui), box-shadow .4s var(--ease-ui);
+}
+.b-card:hover{border-color:var(--copper);transform:translateY(-4px);box-shadow:0 24px 52px rgba(0,0,0,.45)}
+.b-ph{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.b-ph img{width:82%;height:82%;object-fit:contain;filter:drop-shadow(0 20px 34px rgba(0,0,0,.55));transition:transform .5s var(--ease-ui)}
+.b-card:hover .b-ph img{transform:scale(1.06) rotate(-3deg)}
+.b-n{font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;color:var(--copper);direction:ltr}
+.b-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(22px,1.8vw,27px);direction:ltr;line-height:1}
+.b-line{font-size:13px;color:var(--muted);line-height:1.6;min-height:2.1em}
+.b-price{font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:.08em;color:var(--cream);direction:ltr;margin-top:2px}
+.b-add{
+  margin-top:12px;
+  font-family:'Assistant',sans-serif;font-weight:600;font-size:13.5px;
+  border:1px solid var(--copper);border-radius:999px;color:var(--copper);
+  background:none;padding:9px 22px;cursor:pointer;letter-spacing:.02em;
+  transition:background .25s var(--ease-ui), color .25s var(--ease-ui), transform .16s var(--ease-ui);
+}
+.b-add:hover{background:var(--copper);color:var(--ink)}
+.b-add:active{transform:scale(.96)}
+.b-add.is-added{background:var(--copper);color:var(--ink)}
+
+/* ---------- LE PANIER : fab + drawer ---------- */
+.cart-fab{
+  position:fixed;bottom:24px;inset-inline-start:24px;z-index:85;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--copper);color:var(--ink);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
+  transform:scale(0);transition:transform .35s var(--ease-ui);
+}
+.cart-fab.is-on{transform:scale(1)}
+.cart-fab.is-on:hover{transform:scale(1.08)}
+.cart-fab b{
+  position:absolute;top:-4px;inset-inline-end:-4px;
+  min-width:22px;height:22px;border-radius:999px;
+  background:var(--cream);color:var(--ink);
+  font-size:12px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+.cart-veil{
+  position:fixed;inset:0;z-index:94;
+  background:rgba(5,9,15,.55);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .35s var(--ease-ui);
+}
+body.cart-open .cart-veil{opacity:1;pointer-events:auto}
+.cart-drawer{
+  position:fixed;top:0;bottom:0;left:0;z-index:95;
+  width:min(400px,94vw);
+  background:#101B29;border-right:1px solid rgba(242,235,220,.12);
+  box-shadow:30px 0 80px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;
+  transform:translateX(-104%);transition:transform .45s var(--ease-ui);
+}
+body.cart-open .cart-drawer{transform:none}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(242,235,220,.1)}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.14em;color:var(--copper);direction:ltr}
+.cart-close{background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;line-height:1;padding:4px}
+.cart-close:hover{color:var(--copper)}
+.cart-body{flex:1;overflow-y:auto;padding:10px 24px}
+.cart-empty{color:var(--muted);font-size:14.5px;text-align:center;margin-top:40px;line-height:1.9}
+.cart-row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid rgba(242,235,220,.08)}
+.cart-row img{width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5));flex-shrink:0}
+.cart-info{flex:1}
+.cart-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;direction:ltr;text-align:right}
+.cart-price{font-size:13px;color:var(--muted);direction:ltr;text-align:right;margin-top:2px}
+.cart-qty{display:flex;align-items:center;gap:10px}
+.cart-qty button{
+  width:24px;height:24px;border-radius:50%;
+  border:1px solid rgba(242,235,220,.25);background:none;color:var(--cream);
+  cursor:pointer;font-size:14px;line-height:1;
+}
+.cart-qty button:hover{border-color:var(--copper);color:var(--copper)}
+.cart-qty span{min-width:16px;text-align:center;font-size:14px}
+.cart-foot{padding:20px 24px 26px;border-top:1px solid rgba(242,235,220,.1)}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;margin-bottom:14px}
+.cart-total b{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.06em;direction:ltr}
+.cart-checkout{width:100%;display:block;border:none;cursor:pointer}
+.cart-reveal{display:none;padding:34px 28px;text-align:center;flex-direction:column;gap:14px;align-items:center}
+.cart-reveal h3{font-family:'Frank Ruhl Libre',serif;font-weight:300;font-size:24px;color:rgba(242,235,220,.94)}
+.cart-reveal h3 em{font-style:normal;color:var(--copper)}
+.cart-reveal p{font-size:14.5px;color:var(--muted);line-height:1.9}
+.cart-reveal .story-cta{justify-content:center;margin-top:6px}
 
 /* footer note */
 .studio-note{
@@ -660,6 +799,11 @@ body.static .model-slide.is-active{display:block}
 </head>
 <body>
 
+<div class="topbar">
+  <span class="label"><b dir="ltr">REGARD°</b> · קונספט אנימציה לדוגמה<span class="bws"> · Brand Worlds Studio · World N°16</span></span>
+  <a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+</div>
+
 <!-- ======================= HERO ======================= -->
 <section class="hero" id="hero" aria-label="REGARD° — קולקציית המבטים">
   <div class="wash" data-wash><i></i></div>
@@ -726,6 +870,55 @@ body.static .model-slide.is-active{display:block}
   </div>
 </section>
 
+<!-- ======================= LA BOUTIQUE ======================= -->
+<section class="boutique" id="boutique" aria-label="La Boutique — החנות">
+  <p class="eyebrow">La Boutique&nbsp;·&nbsp;לקחת מבט הביתה</p>
+  <h2>בחרי את המבט שלך. <em>קחי אותו איתך.</em></h2>
+  <p class="sub">כל מסגרת מגיעה בקופסת נייבי עם חוט נחושת — והמבט כבר בפנים.</p>
+  <div class="b-grid">
+    <article class="b-card">
+      <div class="b-ph"><img src="assets/frames/01-la-muse.png" alt="La Muse — מסגרת עגולה רכה באצטט ורדרד שקוף" loading="lazy"></div>
+      <div class="b-n">Nº 01</div>
+      <div class="b-name" style="color:#D9A8A2">La Muse</div>
+      <p class="b-line">עגול רך · אצטט ורדרד שקוף</p>
+      <div class="b-price">€ 240</div>
+      <button class="b-add" type="button" data-add="0">הוספה לסל</button>
+    </article>
+    <article class="b-card">
+      <div class="b-ph"><img src="assets/frames/02-licone.png" alt="L'Icône — מסגרת קאט-איי באצטט שחור מבריק" loading="lazy"></div>
+      <div class="b-n">Nº 02</div>
+      <div class="b-name" style="color:#D6C7A9">L'Icône</div>
+      <p class="b-line">קאט-איי חד · אצטט שחור מבריק</p>
+      <div class="b-price">€ 280</div>
+      <button class="b-add" type="button" data-add="1">הוספה לסל</button>
+    </article>
+    <article class="b-card">
+      <div class="b-ph"><img src="assets/frames/03-la-poete.png" alt="La Poète — מסגרת עגולה ממתכת נחושת דקה" loading="lazy"></div>
+      <div class="b-n">Nº 03</div>
+      <div class="b-name" style="color:#C89A6B">La Poète</div>
+      <p class="b-line">מתכת נחושת דקה · עיגול מושלם</p>
+      <div class="b-price">€ 260</div>
+      <button class="b-add" type="button" data-add="2">הוספה לסל</button>
+    </article>
+    <article class="b-card">
+      <div class="b-ph"><img src="assets/frames/04-la-directrice.png" alt="La Directrice — מסגרת מלבנית בנייבי מט" loading="lazy"></div>
+      <div class="b-n">Nº 04</div>
+      <div class="b-name" style="color:#8FA6C0">La Directrice</div>
+      <p class="b-line">מלבני מדויק · נייבי מט</p>
+      <div class="b-price">€ 250</div>
+      <button class="b-add" type="button" data-add="3">הוספה לסל</button>
+    </article>
+    <article class="b-card">
+      <div class="b-ph"><img src="assets/frames/05-letoile.png" alt="L'Étoile — מסגרת אוברסייז בצב ענברי" loading="lazy"></div>
+      <div class="b-n">Nº 05</div>
+      <div class="b-name" style="color:#C99A4F">L'Étoile</div>
+      <p class="b-line">אוברסייז · צב ענברי</p>
+      <div class="b-price">€ 320</div>
+      <button class="b-add" type="button" data-add="4">הוספה לסל</button>
+    </article>
+  </div>
+</section>
+
 <!-- ======================= MONDES VOISINS ======================= -->
 <section class="voisins" id="voisins" aria-label="עולמות מותג נוספים מהסטודיו">
   <p class="eyebrow">Mondes Voisins</p>
@@ -787,10 +980,12 @@ body.static .model-slide.is-active{display:block}
       אותה תאורה, אותו פריים — בחמש פוזות, אחת לכל מסגרת. הדמות נוצרה ב-AI בתהליך דו-שלבי:
       תחילה character sheet שמקבע את הזהות (גיל, שיער, תווים, תכשיט), ואחר כך כל פורטרט נוצר
       משני רפרנסים — גיליון הדמות ותצלום המוצר המדויק — כך שהמשקפיים בפורטרטים הן המסגרות עצמן.
-      הגלריה צמודה לגלילה, הפורטרט הפעיל נושם, והחוט ממשיך לרוץ מתחת.
+      הגלריה צמודה לגלילה, והפורטרט הפעיל חי — לופ וידאו עדין שנוצר ב-AI מהפורטרט עצמו כפריים הפתיחה:
+      נשימה, מצמוץ, הטיית ראש קלה — והמשקפיים לא זזים מילימטר.
     </p>
     <p>
-      המסגרות אינן למכירה; מה שמוצג כאן הוא השיטה עצמה — הבטחה אחת, חמש התגלמויות, ועדשה שלא זזה.
+      גם <strong>La Boutique</strong> — החנות עם הסל בתחתית העמוד — היא חלק מההדגמה: המסגרות אינן באמת למכירה,
+      וההזמנה נגמרת בקריצה. מה שמוצג כאן הוא השיטה עצמה — הבטחה אחת, חמש התגלמויות, ועדשה שלא זזה.
       רוצה לראות איך זה נראה על העסק שלך? <a href="https://hagitantebi.co.il/brand-world.html">מתחילים באבחון פער המותג</a>.
     </p>
     <div class="sn-faq">
@@ -829,6 +1024,33 @@ body.static .model-slide.is-active{display:block}
   </div>
   <p class="tag">Brand Worlds Studio · Hagit Antebi</p>
 </section>
+
+<!-- ======================= LE PANIER ======================= -->
+<div class="cart-veil" aria-hidden="true"></div>
+<button class="cart-fab" type="button" aria-label="פתיחת הסל">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+  <b>0</b>
+</button>
+<aside class="cart-drawer" aria-label="הסל שלי">
+  <div class="cart-head">
+    <span class="cart-title">Le Panier</span>
+    <button class="cart-close" type="button" aria-label="סגירת הסל">×</button>
+  </div>
+  <div class="cart-body"></div>
+  <div class="cart-reveal">
+    <p class="eyebrow">Un monde, pas une boutique</p>
+    <h3>זה הרגיש אמיתי, <em>נכון?</em></h3>
+    <p><span dir="ltr">REGARD°</span> הוא עולם קונספט — המסגרות לא באמת בדרך אלייך. אבל ההרגשה הזאת, שכל פרט בחנות מספר את אותו סיפור אחד — זה בדיוק מה שעולם מותג עושה. וזה מה שהלקוחות של המותג שלך יכולים להרגיש.</p>
+    <div class="story-cta">
+      <a class="btn btn-primary" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92">לאבחון פער המותג</a>
+      <a class="btn btn-ghost" href="/brand-world.html">מה זה עולם מותג?</a>
+    </div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total · סה״כ</span><b data-cart-total>€ 0</b></div>
+    <button class="btn btn-primary cart-checkout" type="button" data-checkout>להשלמת ההזמנה</button>
+  </div>
+</aside>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -882,11 +1104,11 @@ const MODELS = [
 
 /* one face, five gazes — the portrait set (index-aligned with MODELS) */
 const PORTRAITS = [
-  {img:'assets/portraits/01-la-muse.webp',      pose:'מבט רך הצידה, חצי חיוך — מוארת'},
-  {img:'assets/portraits/02-licone.webp',        pose:'פרונטלית, סנטר מעט למטה — לא מתנצלת'},
-  {img:'assets/portraits/03-la-poete.webp',      pose:'שלושת-רבעי, מבט למעלה — חולמת'},
-  {img:'assets/portraits/04-la-directrice.webp', pose:'ישרה, כתפיים פתוחות — סמכותית'},
-  {img:'assets/portraits/05-letoile.webp',       pose:'מבט מעבר לכתף — נבחרת'}
+  {img:'assets/portraits/01-la-muse.webp',       vid:'assets/portraits/01-la-muse.mp4',       pose:'מבט רך הצידה, חצי חיוך — מוארת'},
+  {img:'assets/portraits/02-licone.webp',        vid:'assets/portraits/02-licone.mp4',        pose:'פרונטלית, סנטר מעט למטה — לא מתנצלת'},
+  {img:'assets/portraits/03-la-poete.webp',      vid:'assets/portraits/03-la-poete.mp4',      pose:'שלושת-רבעי, מבט למעלה — חולמת'},
+  {img:'assets/portraits/04-la-directrice.webp', vid:'assets/portraits/04-la-directrice.mp4', pose:'ישרה, כתפיים פתוחות — סמכותית'},
+  {img:'assets/portraits/05-letoile.webp',       vid:'assets/portraits/05-letoile.mp4',       pose:'מבט מעבר לכתף — נבחרת'}
 ];
 
 const COUNT = MODELS.length;
@@ -936,13 +1158,17 @@ MODELS.forEach((m,i)=>{
   panel.appendChild(s);
 });
 
-/* faces gallery DOM */
+/* faces gallery DOM — living portraits: video loops with the still as poster;
+   reduced-motion keeps the stills */
 const facesStage = document.querySelector('.faces-stage');
 MODELS.forEach((m,i)=>{
   const c = document.createElement('figure');
   c.className='face-card'+(i===0?' is-active':'');
+  const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? `<img src="${PORTRAITS[i].img}" alt="${m.name} — ${PORTRAITS[i].pose}" loading="lazy">`
+    : `<video src="${PORTRAITS[i].vid}" poster="${PORTRAITS[i].img}" muted loop playsinline preload="none" aria-label="${m.name} — ${PORTRAITS[i].pose}"></video>`;
   c.innerHTML=`
-    <div class="face-media"><div class="face-breathe"><img src="${PORTRAITS[i].img}" alt="${m.name} — ${PORTRAITS[i].pose}" loading="lazy"></div></div>
+    <div class="face-media"><div class="face-breathe">${media}</div></div>
     <figcaption class="face-cap">
       <b>Nº ${m.n}</b>
       <span class="face-name" style="color:${m.accent}">${m.name}</span>
@@ -1058,9 +1284,17 @@ if (reduceMotion){
   }
   window.REGARD = { goTo, get active(){ return active; } };  /* QA hook */
 
-  /* wheel over the rig steps the roller; at the edges scroll passes through */
+  /* wheel steps the roller ONLY when the cursor is on the lens/rail band —
+     everywhere else page scroll stays free, so the chosen model never
+     changes just because you scrolled past the hero */
   let acc = 0, lastStep = 0;
   rig.addEventListener('wheel', e=>{
+    const lr = document.querySelector('.lens').getBoundingClientRect();
+    const pad = 70;
+    const onBand = isMobile()
+      ? (e.clientY > lr.top - pad && e.clientY < lr.bottom + pad)
+      : (e.clientX > lr.left - pad && e.clientX < lr.right + pad);
+    if(!onBand) return;                    /* free scroll off the wheel band */
     const dir = e.deltaY > 0 ? 1 : -1;
     const can = (dir>0 && target<COUNT-1) || (dir<0 && target>0);
     if(!can) return;                       /* free exit past the edges */
@@ -1128,8 +1362,11 @@ if (reduceMotion){
       const e = { x:r.left+r.width/2, y:r.top+r.height/2 };
       const pt = curvePoint(t, s, e);
       const startScale = ZOOM, endScale = (r.width*0.74)/(itemH()*1.2);
-      const sc = startScale + (endScale-startScale)*t;
-      const rot = Math.sin(t*Math.PI) * -10;
+      /* the chosen frame swells mid-flight and makes one full turn
+         on its way down the copper thread */
+      const swell = 1 + 0.6 * Math.sin(t * Math.PI);
+      const sc = (startScale + (endScale-startScale)*t) * swell;
+      const rot = -360 * t;
       traveler.style.transform = `translate(${pt.x - traveler.offsetWidth/2}px, ${pt.y - traveler.offsetHeight/2}px) rotate(${rot}deg) scale(${sc})`;
       if(t>0.02 && t<0.97){
         handoffActive=true;
@@ -1176,8 +1413,15 @@ if (reduceMotion){
       el.style.transform = `translate(calc(-50% + ${x}px), -50%) scale(${sc})`;
       el.style.opacity = Math.max(0, 1 - .34*ad);
       el.style.zIndex = String(50 - Math.round(ad*10));
-      el.classList.toggle('is-active', Math.round(p)===i);
-      el.querySelector('img').style.setProperty('--par', `${(d*6).toFixed(2)}%`);
+      const on = Math.round(p)===i;
+      el.classList.toggle('is-active', on);
+      el.querySelector('img,video').style.setProperty('--par', `${(d*6).toFixed(2)}%`);
+      /* only the active portrait lives — the neighbours hold their poster still */
+      const v = el.querySelector('video');
+      if(v){
+        if(on){ if(v.paused) v.play().catch(()=>{}); }
+        else if(!v.paused) v.pause();
+      }
     });
   }
   const fProxy = { p:0 };
@@ -1193,6 +1437,94 @@ if (reduceMotion){
 
   render(0); setActive(0);
 }
+
+/* ================= La Boutique : le panier ================= */
+const PRICES = [240, 280, 260, 250, 320];      /* index-aligned with MODELS */
+const cart = new Map();                          /* idx -> qty */
+const fab       = document.querySelector('.cart-fab');
+const fabCount  = fab.querySelector('b');
+const veil      = document.querySelector('.cart-veil');
+const cartDrawer= document.querySelector('.cart-drawer');
+const cartBody  = cartDrawer.querySelector('.cart-body');
+const cartFoot  = cartDrawer.querySelector('.cart-foot');
+const cartReveal= cartDrawer.querySelector('.cart-reveal');
+const cartTotal = cartDrawer.querySelector('[data-cart-total]');
+
+const euro = n => '€ ' + n;
+function cartCount(){ let n = 0; cart.forEach(q => n += q); return n; }
+
+function renderCart(){
+  const n = cartCount();
+  fabCount.textContent = n;
+  fab.classList.toggle('is-on', n > 0);
+  if(n === 0){
+    cartBody.innerHTML = '<p class="cart-empty">הסל עדיין ריק.<br>כל מבט מחכה למעלה בקולקציה.</p>';
+    cartFoot.style.display = 'none';
+    return;
+  }
+  cartFoot.style.display = '';
+  let total = 0, html = '';
+  cart.forEach((q, i)=>{
+    const m = MODELS[i];
+    total += q * PRICES[i];
+    html += `<div class="cart-row">
+      <img src="${m.img}" alt="${m.name}">
+      <div class="cart-info">
+        <div class="cart-name" style="color:${m.accent}">${m.name}</div>
+        <div class="cart-price">${euro(PRICES[i])}</div>
+      </div>
+      <div class="cart-qty">
+        <button type="button" data-dec="${i}" aria-label="להוריד אחד">–</button>
+        <span>${q}</span>
+        <button type="button" data-inc="${i}" aria-label="להוסיף אחד">+</button>
+      </div>
+    </div>`;
+  });
+  cartBody.innerHTML = html;
+  cartTotal.textContent = euro(total);
+}
+
+document.querySelectorAll('[data-add]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const i = +b.dataset.add;
+    cart.set(i, (cart.get(i) || 0) + 1);
+    renderCart();
+    b.classList.add('is-added'); b.textContent = 'נוסף לסל ✓';
+    setTimeout(()=>{ b.classList.remove('is-added'); b.textContent = 'הוספה לסל'; }, 1200);
+  });
+});
+
+cartBody.addEventListener('click', e=>{
+  const inc = e.target.closest('[data-inc]');
+  const dec = e.target.closest('[data-dec]');
+  if(inc){ const i = +inc.dataset.inc; cart.set(i, cart.get(i) + 1); renderCart(); }
+  if(dec){
+    const i = +dec.dataset.dec, q = cart.get(i) - 1;
+    if(q <= 0) cart.delete(i); else cart.set(i, q);
+    renderCart();
+  }
+});
+
+function openCart(){
+  cartReveal.style.display = 'none';
+  cartBody.style.display = '';
+  renderCart();
+  document.body.classList.add('cart-open');
+}
+function closeCart(){ document.body.classList.remove('cart-open'); }
+fab.addEventListener('click', openCart);
+cartDrawer.querySelector('.cart-close').addEventListener('click', closeCart);
+veil.addEventListener('click', closeCart);
+window.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeCart(); });
+
+/* checkout — the moment the world admits it's a world */
+cartDrawer.querySelector('[data-checkout]').addEventListener('click', ()=>{
+  cartBody.style.display = 'none';
+  cartFoot.style.display = 'none';
+  cartReveal.style.display = 'flex';
+});
+
+renderCart();
 </script>
 </body>
 </html>
