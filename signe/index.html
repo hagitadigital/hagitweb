@@ -68,11 +68,9 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       "itemListOrder":"https://schema.org/ItemListOrderAscending",
       "itemListElement":[
         {"@type":"ListItem","position":1,"name":"Le Noir — אקלר שוקולד 70% ועלי זהב"},
-        {"@type":"ListItem","position":2,"name":"La Coupe Glacée — כדור וניל בשוקולד חם"},
-        {"@type":"ListItem","position":3,"name":"La Tarte Framboise — פטל טרי על קרם וניל"},
-        {"@type":"ListItem","position":4,"name":"La Crème Brûlée — קרם וניל בסוכר שרוף"},
-        {"@type":"ListItem","position":5,"name":"Le Chou — בצק רבוך במילוי קרם"},
-        {"@type":"ListItem","position":6,"name":"Le Dôme Pistache — מוס פיסטוק בגלזורת מראה"}
+        {"@type":"ListItem","position":2,"name":"La Tarte Framboise — פטל טרי על קרם פטיסייר"},
+        {"@type":"ListItem","position":3,"name":"Le Chou — בצק רבוך בקרם וניל מוזלף"},
+        {"@type":"ListItem","position":4,"name":"Le Dôme Pistache — מוס פיסטוק בגלזורת מראה"}
       ]
     },
     {
@@ -92,7 +90,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
         {
           "@type":"Question",
           "name":"איך עובד התפריט החי?",
-          "acceptedAnswer":{"@type":"Answer","text":"ספר תפריט פתוח מצולם ב-AI משמש במה: שורות התפריט הן HTML אמיתי, וכל כמה שניות קינוח אחר — צילום שהוסר ממנו הרקע — קופץ מעל הספר, מרחף, וצולל חזרה כשהבא עולה. ריחוף על שורה מקפיץ מיד את המנה שלה."}
+          "acceptedAnswer":{"@type":"Answer","text":"ארבעה סרטוני AI של ספר תפריט על שולחן מסעדה, שבהם כל מנה עולה מהדף כהולוגרמה נוצצת. שורות התפריט הן HTML אמיתי לצד הווידאו: ריחוף על שורה מזמן את סרטון המנה שלה, וכשהסרטון מסתיים — המנה הבאה עולה לבד. כיתובי השמות שנוצרו בווידאו טושטשו בעריכה עם מסכת שוליים רכה."}
         },
         {
           "@type":"Question",
@@ -338,33 +336,17 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .book-stage{
     position:relative;
   }
-  .book-stage img.book{
-    width:100%;border-radius:6px;
+  .carte-videos{
+    position:relative;aspect-ratio:16/9;
+    border-radius:6px;overflow:hidden;
+    background:#0D0A06;
     box-shadow:0 34px 80px rgba(0,0,0,.6);
   }
-  .float-stage{
-    position:absolute;left:50%;top:-8%;
-    width:clamp(150px,17vw,230px);aspect-ratio:1;
-    transform:translateX(-50%);
-    pointer-events:none;z-index:6;
+  .carte-videos video{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;opacity:0;transition:opacity .7s ease;
   }
-  .float-stage .pop{
-    position:absolute;inset:0;opacity:0;
-    will-change:transform,opacity;
-  }
-  .float-stage .pop img{
-    width:100%;height:100%;object-fit:contain;
-    filter:drop-shadow(0 24px 34px rgba(0,0,0,.55));
-  }
-  .float-stage .pop.bob img{animation:bob 3.2s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  .pop-shadow{
-    position:absolute;left:50%;top:24%;z-index:5;
-    width:clamp(90px,10vw,140px);height:22px;
-    transform:translateX(-50%);
-    background:radial-gradient(ellipse at center, rgba(0,0,0,.5) 0%, transparent 68%);
-    opacity:0;transition:opacity .5s;
-  }
+  .carte-videos video.on{opacity:1}
   .menu-list{list-style:none}
   .menu-list li{
     padding:15px 4px;border-bottom:1px dashed rgba(240,227,206,.14);
@@ -390,7 +372,6 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   }
   @media(max-width:900px){
     .carte-scene{grid-template-columns:1fr}
-    .float-stage{top:-16%;width:clamp(130px,34vw,180px)}
   }
 
   /* ---------- 04 · LES ÉDITIONS ---------- */
@@ -681,28 +662,22 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <div class="num reveal">03</div>
     <p class="ch-tag reveal">La Carte Vivante</p>
     <h2 class="ch-title reveal">התפריט לא מודפס.<br><b>הוא חי.</b></h2>
-    <p class="ch-body reveal">עברי על השורות — כל מנה קופצת מהתפריט כשקוראים לה. ואם רק מסתכלים, הן עולות להציג את עצמן, אחת אחרי השנייה.</p>
+    <p class="ch-body reveal">עברי על השורות — כל מנה עולה מהספר כשקוראים לה. ואם רק מסתכלים, הן מציגות את עצמן, אחת אחרי השנייה.</p>
     <div class="carte-scene">
       <div class="book-stage reveal">
-        <div class="float-stage" id="float-stage">
-          <div class="pop" data-pop="0"><img src="assets/cut-eclair.webp" alt="Le Noir — אקלר שוקולד 70% עם עלי זהב"></div>
-          <div class="pop" data-pop="1"><img src="assets/cut-scoop.webp" alt="La Coupe Glacée — כדור וניל בשוקולד חם"></div>
-          <div class="pop" data-pop="2"><img src="assets/cut-tarte.webp" alt="La Tarte Framboise — טארט פטל טרי"></div>
-          <div class="pop" data-pop="3"><img src="assets/cut-brulee.webp" alt="La Crème Brûlée — קרם וניל בסוכר שרוף"></div>
-          <div class="pop" data-pop="4"><img src="assets/cut-choux.webp" alt="Le Chou — בצק רבוך במילוי קרם וניל"></div>
-          <div class="pop" data-pop="5"><img src="assets/cut-pistache.webp" alt="Le Dôme Pistache — מוס פיסטוק בגלזורת מראה"></div>
+        <div class="carte-videos">
+          <video data-cv="0" src="assets/carte/noir.mp4" muted playsinline preload="auto" aria-label="Le Noir — אקלר שוקולד עולה כהולוגרמה מספר התפריט"></video>
+          <video data-cv="1" src="assets/carte/framboise.mp4" muted playsinline preload="metadata" aria-label="La Tarte Framboise — טארט פטל עולה כהולוגרמה מספר התפריט"></video>
+          <video data-cv="2" src="assets/carte/chou.mp4" muted playsinline preload="metadata" aria-label="Le Chou — שו קרם עולה כהולוגרמה מספר התפריט"></video>
+          <video data-cv="3" src="assets/carte/pistache.mp4" muted playsinline preload="metadata" aria-label="Le Dôme Pistache — מוס פיסטוק עולה כהולוגרמה מספר התפריט"></video>
         </div>
-        <div class="pop-shadow" id="pop-shadow"></div>
-        <img class="book" src="assets/menu-book.webp" alt="ספר התפריט הפתוח של SIGNÉ° לאור נר">
       </div>
       <div>
         <ul class="menu-list" id="menu-list">
           <li data-item="0"><div class="fr">Le Noir</div><div class="he">אקלר שוקולד 70% · עלי זהב</div></li>
-          <li data-item="1"><div class="fr">La Coupe Glacée</div><div class="he">כדור וניל · שוקולד חם</div></li>
-          <li data-item="2"><div class="fr">La Tarte Framboise</div><div class="he">פטל טרי על קרם וניל</div></li>
-          <li data-item="3"><div class="fr">La Crème Brûlée</div><div class="he">קרם וניל · סוכר שרוף</div></li>
-          <li data-item="4"><div class="fr">Le Chou</div><div class="he">בצק רבוך · קרם וניל</div></li>
-          <li data-item="5"><div class="fr">Le Dôme Pistache</div><div class="he">מוס פיסטוק · גלזורת מראה</div></li>
+          <li data-item="1"><div class="fr">La Tarte Framboise</div><div class="he">פטל טרי על קרם פטיסייר</div></li>
+          <li data-item="2"><div class="fr">Le Chou</div><div class="he">בצק רבוך · קרם וניל מוזלף</div></li>
+          <li data-item="3"><div class="fr">Le Dôme Pistache</div><div class="he">מוס פיסטוק · גלזורת מראה</div></li>
         </ul>
         <div class="carte-note">— la carte change avec les saisons.</div>
       </div>
@@ -803,7 +778,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <p class="tag">Studio Note · איך העולם הזה נבנה</p>
     <h2>מותג לא מתחיל מלוגו.<br>הוא מתחיל <b>מהבטחה שנגזרים ממנה האלמנטים.</b></h2>
     <p>SIGNÉ° הוא עולם מותג קונספט — Maison de Desserts בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>קינוח לא יוצא מהמטבח בלי חתימה ביד.</b> ממנה נגזר כל השאר: השם, המזלף שהוא כתב היד של הבית, ושלושת רגעי התנועה של האתר.</p>
-    <p><b>המזיגה:</b> סטיל AI אחד של כדור וניל תחת זרם שוקולד הוזן למודל וידאו, ומהווידאו חולצו 41 פריימים שמנוגנים לפי מיקום הגלילה — הגלילה עצמה מוזגת את השוקולד. בסוף המזיגה הכדור משתחרר, נופל אל הסקשן הבא ונוחת בקערת הטעמים. <b>התפריט החי:</b> שורות התפריט הן HTML אמיתי, וכל כמה שניות מנה אחרת — צילום שהוסר ממנו הרקע — קופצת מעל הספר, מרחפת וצוללת חזרה. <b>קו הקרם:</b> חרוז קרם נוסע בראש קו שנמזלף לאורך העמוד וחותם כל פרק — הקו קיים רק היכן שהחרוז כבר עבר.</p>
+    <p><b>המזיגה:</b> סטיל AI אחד של כדור וניל תחת זרם שוקולד הוזן למודל וידאו, ומהווידאו חולצו 41 פריימים שמנוגנים לפי מיקום הגלילה — הגלילה עצמה מוזגת את השוקולד. בסוף המזיגה הכדור משתחרר, נופל אל הסקשן הבא ונוחת בקערת הטעמים. <b>התפריט החי:</b> ארבעה סרטוני AI שבהם כל מנה עולה מדף התפריט כהולוגרמה נוצצת — שורות התפריט הן HTML אמיתי לצדם, וריחוף על שורה מזמן את המנה שלה. <b>קו הקרם:</b> חרוז קרם נוסע בראש קו שנמזלף לאורך העמוד וחותם כל פרק — הקו קיים רק היכן שהחרוז כבר עבר.</p>
     <p>ככה נראית עבודה של <b>Brand Worlds Studio</b>: לא עמוד יפה עם טקסטים, אלא עולם שלם שבו כל פרט — תנועה, שפה, תפריט, טיפוגרפיה — נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>
@@ -982,51 +957,55 @@ gsap.to('[data-parallax]',{
   scrollTrigger:{trigger:'#coeur',start:'top bottom',end:'bottom top',scrub:true}
 });
 
-/* ============ LA CARTE VIVANTE — auto-cycle + hover ============ */
+/* ============ LA CARTE VIVANTE — hologram videos, auto-cycle + hover ============ */
 (function(){
-  const pops = Array.from(document.querySelectorAll('.float-stage .pop'));
+  const vids = Array.from(document.querySelectorAll('.carte-videos video'));
   const rows = Array.from(document.querySelectorAll('#menu-list li'));
-  const shadow = document.getElementById('pop-shadow');
-  if(!pops.length) return;
-  let idx = -1, timer = null, paused = false;
+  if(!vids.length) return;
+  let idx = -1, timer = null, paused = false, started = false, inView = false;
+
+  function safePlay(v){ const p = v.play(); if(p && p.catch) p.catch(()=>{}); }
 
   function show(i){
     if(i===idx) return;
-    const prev = idx>=0 ? pops[idx] : null;
-    const next = pops[i];
+    clearTimeout(timer); timer = null;
+    if(idx>=0){ vids[idx].classList.remove('on'); vids[idx].pause(); }
     rows.forEach((r,k)=>r.classList.toggle('active', k===i));
-    if(prev){
-      prev.classList.remove('bob');
-      gsap.to(prev,{opacity:0,y:70,scale:.45,duration:.45,ease:'power2.in'});
-    }
-    gsap.fromTo(next,
-      {opacity:0,y:90,scale:.4,rotate:-6},
-      {opacity:1,y:0,scale:1,rotate:0,duration:.75,ease:'back.out(1.4)',delay:prev?0.18:0,
-       onComplete(){ next.classList.add('bob'); }});
-    shadow.style.opacity = .85;
+    const v = vids[i];
+    try{ v.currentTime = 0; }catch(e){}
+    v.classList.add('on');
+    if(inView) safePlay(v);
     idx = i;
   }
 
-  function startCycle(){
-    stopCycle();
-    timer = setInterval(()=>{ if(!paused) show((idx+1)%pops.length); }, 3600);
-  }
-  function stopCycle(){ if(timer){ clearInterval(timer); timer=null; } }
+  vids.forEach((v,i)=>{
+    v.addEventListener('ended', ()=>{
+      if(i!==idx || paused || !inView) return;
+      timer = setTimeout(()=>{ if(!paused && inView) show((idx+1)%vids.length); }, 1200);
+    });
+  });
 
   rows.forEach((r,i)=>{
-    r.addEventListener('mouseenter',()=>{ paused=true; show(i); });
-    r.addEventListener('mouseleave',()=>{ paused=false; });
-    r.addEventListener('click',()=>{ show(i); });
+    r.addEventListener('mouseenter', ()=>{ paused = true; show(i); });
+    r.addEventListener('mouseleave', ()=>{
+      paused = false;
+      const v = vids[idx];
+      if(v && v.ended){ timer = setTimeout(()=>{ if(!paused && inView) show((idx+1)%vids.length); }, 900); }
+    });
+    r.addEventListener('click', ()=>{ show(i); });
   });
 
   ScrollTrigger.create({
     trigger:'#carte',
     start:'top 70%',
-    once:false,
-    onEnter(){ if(idx<0) show(0); startCycle(); },
-    onLeave(){ stopCycle(); },
-    onEnterBack(){ startCycle(); },
-    onLeaveBack(){ stopCycle(); }
+    onEnter(){
+      inView = true;
+      if(!started){ started = true; show(0); }
+      else { const v = vids[idx]; if(v && v.paused && !v.ended) safePlay(v); }
+    },
+    onLeave(){ inView = false; if(idx>=0) vids[idx].pause(); },
+    onEnterBack(){ inView = true; const v = vids[idx]; if(v && v.paused && !v.ended) safePlay(v); },
+    onLeaveBack(){ inView = false; if(idx>=0) vids[idx].pause(); }
   });
 })();
 
