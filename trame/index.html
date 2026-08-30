@@ -460,7 +460,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .panel:hover .he{opacity:1;transform:none}
   @media(max-width:900px){
     #create .panels{display:flex;flex-direction:column;height:auto;gap:12px}
-    .panel{clip-path:none;aspect-ratio:16/9;flex:none!important}
+    .panel{clip-path:none;aspect-ratio:1/1;flex:none!important}
+    .panel img{object-position:50% 12%}
     .panel .he{opacity:1;transform:none}
   }
 
@@ -529,7 +530,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   }
   .btn-world:hover{background:var(--bordeaux);color:#fff}
   @media(max-width:700px){
-    .jstep img{aspect-ratio:16/11;object-position:60% 30%}
+    .jstep img{aspect-ratio:16/11;object-position:50% 22%;display:block}
+    .jstep .tag{position:static;max-width:none;margin:0;border-radius:0;padding:12px 16px 11px}
   }
 
   /* ---------- STUDIO NOTE ---------- */
