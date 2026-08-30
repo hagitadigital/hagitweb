@@ -630,18 +630,12 @@
         .hero__cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
         .hero__cta--primary { background: var(--color-chocolate); color: var(--color-cream); }
         .hero__cta--primary:hover { background: var(--color-copper); border-color: var(--color-copper); color: var(--color-cream); }
-        /* כניסה עדינה למוזיאון העולמות — דלת רגשית, לא כפתור שלישי כבד */
-        .hero__museum-link {
-            display: inline-flex; align-items: center; gap: 8px;
+        /* שורת הרגעה מתחת ל-CTA — 30 דקות, בלי עלות */
+        .hero__cta-note {
             margin-top: 4px;
-            font-family: var(--font-body); font-size: 0.84rem; letter-spacing: 0.04em;
-            color: var(--color-copper); text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.35s var(--transition-smooth);
+            font-family: var(--font-body); font-size: 0.84rem; letter-spacing: 0.02em;
+            color: var(--color-taupe);
         }
-        .hero__museum-link svg { transform: scaleX(-1); transition: transform 0.3s var(--transition-smooth); }
-        .hero__museum-link:hover { border-color: var(--color-copper); }
-        .hero__museum-link:hover svg { transform: scaleX(-1) translateX(4px); }
         @media (max-width: 480px) {
             .hero__cta-row { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
             .hero__cta-row .hero__cta { width: 100%; justify-content: center; }
@@ -1978,19 +1972,13 @@
                         </svg>
                     </a>
                     <ul class="nav__dropdown-menu">
+                        <li class="nav__dropdown-item"><a href="brand-worlds/" class="nav__dropdown-link nav__dropdown-link--feature">כל העולמות &nbsp;<em>·&nbsp;The Gallery</em></a></li>
                         <li class="nav__dropdown-item"><a href="brand-worlds-museum.html" class="nav__dropdown-link nav__dropdown-link--feature">Brand Worlds Museum &nbsp;<em>·&nbsp;The Experience</em></a></li>
-                        <li class="nav__dropdown-item"><a href="brand-worlds/" class="nav__dropdown-link nav__dropdown-link--feature">Brand Worlds &nbsp;<em>·&nbsp;2026 Capsule</em></a></li>
+                        <li class="nav__dropdown-item nav__dropdown-divider" aria-hidden="true"></li>
                         <li class="nav__dropdown-item"><a href="experiences.html" class="nav__dropdown-link">Brand Experiences</a></li>
                         <li class="nav__dropdown-item"><a href="vision-story.html" class="nav__dropdown-link">Vision &amp; Story</a></li>
                         <li class="nav__dropdown-item"><a href="studio.html" class="nav__dropdown-link">Studio AI</a></li>
                         <li class="nav__dropdown-item"><a href="ai-video-lab.html" class="nav__dropdown-link">AI Video Lab</a></li>
-                        <li class="nav__dropdown-item nav__dropdown-divider" aria-hidden="true"></li>
-                        <li class="nav__dropdown-item"><a href="aurelle/" class="nav__dropdown-link">Aurelle <span class="nav__dropdown-sub">— The Live Site</span></a></li>
-                        <li class="nav__dropdown-item"><a href="aurelle/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
-                        <li class="nav__dropdown-item"><a href="vela-motion/" class="nav__dropdown-link">Vela Motion <span class="nav__dropdown-sub">— The Live Site</span></a></li>
-                        <li class="nav__dropdown-item"><a href="vela-motion/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
-                        <li class="nav__dropdown-item"><a href="solara-wild/" class="nav__dropdown-link">Solara Wild <span class="nav__dropdown-sub">— The Live Site</span></a></li>
-                        <li class="nav__dropdown-item"><a href="solara-wild/book.html" class="nav__dropdown-link" style="font-size:0.78rem;color:var(--color-taupe);padding-inline-start:1.4rem;" dir="ltr">↳ The Brand Book</a></li>
                     </ul>
                 </li>
                 <li><a href="brandos-custom.html" class="nav__link">BrandOS</a></li>
@@ -2093,7 +2081,7 @@
 
             <div class="hero__cta-block">
                 <div class="hero__cta-row">
-                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="hero__cta hero__cta--primary">בואו נדבר</a>
+                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="hero__cta hero__cta--primary">לאבחון פער המותג</a>
                     <a href="#live-worlds" class="hero__cta">
                         ראו עולמות חיים
                         <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2101,10 +2089,7 @@
                         </svg>
                     </a>
                 </div>
-                <a href="brand-worlds-museum.html" class="hero__museum-link">
-                    היכנסו למוזיאון עולמות המותג
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                <p class="hero__cta-note">שיחת אבחון בוואטסאפ · 30 דקות · בלי עלות</p>
                 <span class="hero__scroll-label" dir="ltr">Scroll &darr;</span>
             </div>
         </div>
@@ -2147,16 +2132,13 @@
     .lw-card__cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body-en);font-size:13px;font-weight:600;color:var(--color-copper);text-transform:uppercase;letter-spacing:1.5px;margin-top:auto;align-self:flex-start}
     .lw-card:hover .lw-card__cta-arrow{transform:translateX(4px)}
     .lw-card__cta-arrow{transition:transform .3s var(--transition-smooth)}
-    .live-worlds__foot{text-align:center;margin-top:clamp(32px,4vw,46px);padding:0 var(--container-padding)}
-    .live-worlds__foot a{font-family:var(--font-body-en);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-chocolate);border-bottom:1px solid var(--color-copper);padding-bottom:3px;transition:color .3s}
-    .live-worlds__foot a:hover{color:var(--color-copper)}
     @media(prefers-reduced-motion:reduce){.lw-card__live .dot{animation:none}}
     </style>
     <section class="live-worlds" id="live-worlds" aria-labelledby="live-worlds-title">
         <div class="live-worlds__header reveal">
             <p class="live-worlds__label" dir="ltr">Live Brand Worlds · Built with AI + Claude Code</p>
             <h2 class="live-worlds__title" id="live-worlds-title">עולמות מותג חיים</h2>
-            <p class="live-worlds__subtitle">שלושה עולמות קונספט שבניתי מקצה לקצה כדי להדגים את השיטה — שם, שפה, מוצרים, סרטונים ואתר חי. כל אחד עם רוח אחרת לגמרי. הקליקו והיכנסו.</p>
+            <p class="live-worlds__subtitle">שלושה עולמות מותג שלמים שבניתי מקצה לקצה כדי להדגים את השיטה — שם, שפה, מוצרים, סרטונים ואתר חי. כל אחד עם רוח אחרת לגמרי. הקליקו והיכנסו.</p>
         </div>
         <div class="live-worlds__grid">
 
@@ -2209,9 +2191,6 @@
             </a>
 
         </div>
-        <div class="live-worlds__foot reveal">
-            <a href="brand-worlds/">כל העולמות · 2026 Capsule Hub →</a>
-        </div>
     </section>
     <script>
     (function(){
@@ -2238,7 +2217,7 @@
         <div class="container motion-studies__header reveal">
             <p class="motion-studies__label" dir="ltr">The Range · Motion Studies</p>
             <h2 class="motion-studies__title" id="motion-studies-title">עולמות קונספט בתנועה</h2>
-            <p class="motion-studies__subtitle">עשרה עולמות דמו שבניתי כדי להדגים קצה — הדגמות קונספט, לא מותגים מסחריים. כל אחד מוכיח שפת מותג אחרת שנבנית מקוד תנועה.</p>
+            <p class="motion-studies__subtitle">ואם השיטה עובדת גם בקפה, בבשמים או בעיצוב פנים? עשרה מחקרי תנועה שמותחים אותה לתעשיות אחרות — הדגמות קונספט, לא מותגים מסחריים, וכל אחת מוכיחה שפת תנועה אחרת בגלילה אחת.</p>
         </div>
 
         <div class="motion-studies__rail reveal">
@@ -2365,10 +2344,10 @@
             .worlds-hub-strip__he{font-size:14.5px}.worlds-hub-strip__en{font-size:10.5px;letter-spacing:1.6px}
             .worlds-hub-strip__sep{display:none}}
         </style>
-        <a href="brand-worlds/" class="worlds-hub-strip" aria-label="כל העולמות שבנינו — 2026 Capsule Hub">
+        <a href="brand-worlds/" class="worlds-hub-strip" aria-label="כל העולמות שבנינו — הגלריה המלאה">
             <span class="worlds-hub-strip__he">כל העולמות שבנינו</span>
             <span class="worlds-hub-strip__sep" aria-hidden="true">·</span>
-            <span class="worlds-hub-strip__en" dir="ltr">2026 Capsule Hub · 18 Worlds</span>
+            <span class="worlds-hub-strip__en" dir="ltr">The Gallery · 18 Worlds</span>
             <span class="worlds-hub-strip__arrow" aria-hidden="true">←</span>
         </a>
     </section>
