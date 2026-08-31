@@ -644,6 +644,31 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   footer a{color:var(--ivory-dim);text-decoration:none;border-bottom:1px solid rgba(237,230,216,.25)}
   footer a:hover{color:#D9909F;border-color:var(--bordeaux)}
 </style>
+
+<!-- BWS World Signals -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var WORLD = "TRAME";
+  var cta = document.querySelector('a[href*="brand-world"]');
+  if (!cta) return;
+  cta.addEventListener('click', function () {
+    if (typeof fbq === 'function') fbq('trackCustom', 'WorldCtaClick', { world: WORLD });
+  });
+  if (!('IntersectionObserver' in window)) return;
+  var fired = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: WORLD, content_category: 'brand-world' });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(cta);
+});
+</script>
+<!-- End BWS World Signals -->
 </head>
 <body>
 

@@ -451,6 +451,49 @@
 <meta name="twitter:title" content="ORBE · A Concept Brand World">
 <meta name="twitter:description" content="Une goutte. Un monde. — מסע מצלמה אל תוך טיפה אחת של בושם. עולם מותג קונספטואלי מבית Brand Worlds Studio.">
 <meta name="twitter:image" content="https://hagitantebi.co.il/orbe/orbe-og.jpg">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[]}(window, document);
+fbq('init', '1326960187891724');
+fbq('track', 'PageView');
+(function () {
+  var t = document.createElement('script'); t.async = !0;
+  t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(t, s);
+})();
+</script>
+<!-- End Meta Pixel Code -->
+
+<!-- BWS World Signals -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var WORLD = "ORBE";
+  var cta = document.querySelector('a[href*="brand-world"]');
+  if (!cta) return;
+  cta.addEventListener('click', function () {
+    if (typeof fbq === 'function') fbq('trackCustom', 'WorldCtaClick', { world: WORLD });
+  });
+  if (!('IntersectionObserver' in window)) return;
+  var fired = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: WORLD, content_category: 'brand-world' });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(cta);
+});
+</script>
+<!-- End BWS World Signals -->
 </head>
 <body>
 
