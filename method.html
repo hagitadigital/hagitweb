@@ -579,5 +579,25 @@
         <p class="footer__text">© 2026 Hagit Antebi. All rights reserved. | <a href="/glossary.html">Glossary</a></p>
         <p class="footer__legal" style="max-width:1400px;margin:16px auto 0;padding:0 clamp(24px,5vw,80px);font-size:.82em;opacity:.7;line-height:1.9;text-align:center"><a href="/privacy.html" style="color:inherit;text-decoration:none">מדיניות פרטיות</a> · <a href="/terms.html" style="color:inherit;text-decoration:none">תנאי שימוש</a> · <a href="/accessibility.html" style="color:inherit;text-decoration:none">הצהרת נגישות</a></p>
     </footer>
+
+  <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
+  <script>
+  (function(){
+    if (typeof window.gtag !== 'function') {
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());
+      gtag('config','G-30WB1J2R2T');
+    }
+    document.addEventListener('click',function(e){
+      var t=e.target instanceof Element?e.target:null;
+      var a=t&&t.closest?t.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+      if(a)gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname});
+    },true);
+  })();
+  </script>
 </body>
 </html>

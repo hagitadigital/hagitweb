@@ -1136,5 +1136,25 @@ Professional Pixar movie cinematography.</div>
   reveals.forEach((el) => observer.observe(el));
 </script>
 
+
+  <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
+  <script>
+  (function(){
+    if (typeof window.gtag !== 'function') {
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());
+      gtag('config','G-30WB1J2R2T');
+    }
+    document.addEventListener('click',function(e){
+      var t=e.target instanceof Element?e.target:null;
+      var a=t&&t.closest?t.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+      if(a)gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname});
+    },true);
+  })();
+  </script>
 </body>
 </html>
