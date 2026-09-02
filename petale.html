@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pétale° — קונספט אנימציית עולם מותג מקרונים | Hagit Antebi</title>
-<meta name="description" content="Pétale° — קונספט אנימציה לעולם מותג מקרונים: מגדל שנבנה תוך כדי גלילה, שבעה טעמים בגווני פסטל וטיפוגרפיה פריזאית. הדגמת עולם מותג אינטראקטיבי מבית Brand Worlds Studio.">
+<meta name="description" content="Pétale° — קונספט אנימציה לעולם מותג מקרונים: מגדל שנבנה תוך כדי גלילה, חתך מקרון בשלוש שכבות, ובניית קופסת מתנה אינטראקטיבית משבעה טעמי פסטל. הדגמת עולם מותג מבית Brand Worlds Studio.">
 <meta name="keywords" content="עולם מותג, אנימציית אתר, scroll animation, אתר אינטראקטיבי, קונספט מותג, חוויית מותג דיגיטלית, Brand Worlds Studio, חגית אנתבי">
 <meta name="author" content="Hagit Antebi">
 <meta name="robots" content="index, follow">
@@ -38,7 +38,7 @@
       "@id":"https://hagitantebi.co.il/petale.html#work",
       "name":"Pétale° — קונספט אנימציית עולם מותג מקרונים",
       "headline":"Pétale° — עולם מותג מקרונים אינטראקטיבי",
-      "description":"קונספט אנימציה לעולם מותג מקרונים: מגדל מקרונים שנבנה שכבה אחר שכבה תוך כדי גלילה, שבעה טעמים בגווני פסטל וטיפוגרפיה פריזאית.",
+      "description":"קונספט אנימציה לעולם מותג מקרונים: מגדל מקרונים שנבנה שכבה אחר שכבה תוך כדי גלילה, חתך אנטומי של מקרון בשלוש שכבות (קליפה, pied, קרם), ובניית קופסת מתנה אינטראקטיבית משבעה טעמים בגווני פסטל.",
       "inLanguage":"he",
       "url":"https://hagitantebi.co.il/petale.html",
       "image":"https://hagitantebi.co.il/petale-og.png",
@@ -317,6 +317,75 @@
 
   .reveal{opacity:0;transform:translateY(50px)}
 
+  /* hero + tower now use the real macaron photos */
+  .hero-mac img{display:block;width:100%;filter:drop-shadow(0 14px 14px rgba(58,36,56,.17))}
+  .mac-stack img{display:block;width:100%;filter:drop-shadow(0 10px 8px rgba(58,36,56,.22))}
+  .hero h1 .ch{display:inline-block;will-change:transform}
+
+  /* full-page flavor tint (hover on flavor cards) */
+  #tint{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;
+    transition:opacity .6s ease,background .6s ease}
+
+  /* ═══════════ L'ANATOMIE — one macaron, three layers ═══════════ */
+  .anatomie{position:relative;background:var(--cream2)}
+  .anat-stage{height:100vh;display:flex;align-items:center;justify-content:center;gap:7vw;padding:0 6vw;overflow:hidden}
+  .anat-fig{width:min(46vw,340px);flex-shrink:0}
+  .anat-fig svg{display:block;width:100%;overflow:visible;filter:drop-shadow(0 16px 16px rgba(58,36,56,.16))}
+  .anat-copy{max-width:380px}
+  .anat-copy .k{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--framboise);font-weight:700}
+  .anat-copy h2{font-family:"Fraunces",serif;font-size:clamp(36px,4.6vw,60px);font-weight:500;line-height:1.02;letter-spacing:-1.5px;margin:16px 0 26px}
+  .anat-copy h2 em{font-style:italic;font-weight:300;color:var(--rose)}
+  .anat-step{opacity:.15;margin-top:20px}
+  .anat-step .fr{font-family:"Fraunces",serif;font-style:italic;font-size:22px;color:var(--ink)}
+  .anat-step .fr b{font-style:normal;font-weight:600}
+  .anat-step .he{direction:rtl;text-align:left;color:var(--muted);font-size:15.5px;line-height:1.6;margin-top:4px}
+  @media(max-width:780px){
+    .anat-stage{flex-direction:column;gap:26px}
+    .anat-fig{width:min(60vw,240px)}
+    .anat-copy{text-align:center;max-width:90vw}
+    .anat-step .he{text-align:center}
+  }
+
+  /* ═══════════ LA BOÎTE — build-your-box tray ═══════════ */
+  .boite{position:fixed;left:50%;bottom:18px;transform:translate(-50%,150%);z-index:80;
+    width:min(580px,94vw);background:#fff;border-radius:26px;
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 26px 52px -20px rgba(58,36,56,.45);
+    padding:13px 22px;transition:transform .55s cubic-bezier(.2,.8,.2,1),background .5s}
+  .boite.show{transform:translate(-50%,0)}
+  .boite-inner{display:flex;align-items:center;gap:16px}
+  .boite-label{display:flex;flex-direction:column;line-height:1.1;flex-shrink:0}
+  .boite-label .fr{font-family:"Fraunces",serif;font-style:italic;font-size:19px}
+  .boite-label .cnt{font-size:13px;color:var(--muted);font-weight:600;margin-top:3px}
+  .boite-label .cnt b{color:var(--framboise)}
+  .slots{display:flex;gap:9px;flex:1;justify-content:center}
+  .slot{width:44px;height:44px;border-radius:50%;border:2px dashed #e8d3de;background:var(--cream);
+    padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s}
+  .slot img{width:88%;display:block;filter:drop-shadow(0 4px 4px rgba(58,36,56,.2))}
+  .slot.filled{border-style:solid;border-color:transparent;background:#fff}
+  .slot:not(.filled){pointer-events:none}
+  .boite-done{display:none;align-items:center;justify-content:center;gap:16px;padding:4px 0}
+  .boite.done{background:linear-gradient(120deg,var(--framboise),var(--rose));color:#fff}
+  .boite.done .boite-inner{display:none}
+  .boite.done .boite-done{display:flex}
+  .boite-done svg{width:52px;flex-shrink:0}
+  .boite-done .txt .fr{font-family:"Fraunces",serif;font-style:italic;font-size:19px}
+  .boite-done .txt .he{direction:rtl;font-size:13.5px;opacity:.92;margin-top:2px}
+  .boite-done button{border:0;cursor:pointer;background:rgba(255,255,255,.22);color:#fff;
+    font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;padding:9px 16px;border-radius:20px;
+    transition:background .3s}
+  .boite-done button:hover{background:rgba(255,255,255,.34)}
+  .fly-mac{position:fixed;z-index:90;pointer-events:none;filter:drop-shadow(0 8px 8px rgba(58,36,56,.25))}
+  @media(max-width:560px){
+    .boite{padding:11px 16px;border-radius:22px;bottom:12px}
+    .boite-label .fr{font-size:16px}
+    .slots{gap:6px}
+    .slot{width:38px;height:38px}
+    .boite-done .txt .fr{font-size:16px}
+    .boite-done .txt .he{font-size:12px}
+  }
+  .he-hint{direction:rtl;color:var(--muted);font-size:15px;margin-top:10px}
+
   /* ═══════════ MONDES VOISINS — related worlds ═══════════ */
   .voisins{padding:96px 5vw;text-align:center;background:linear-gradient(180deg,var(--cream),var(--cream2))}
   .voisins .kicker{font-size:13px;letter-spacing:5px;text-transform:uppercase;font-weight:700;
@@ -405,6 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- End BWS World Signals -->
 </head>
 <body>
+<div id="tint" aria-hidden="true"></div>
 <div class="wrap">
 
   <div class="topbar">
@@ -416,6 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="logo">Pétale°</div>
     <div class="links">
       <a href="#tower">The Tower</a>
+      <a href="#anatomie">Anatomie</a>
       <a href="#menu">Flavors</a>
       <a href="#world">The World</a>
     </div>
@@ -447,50 +518,74 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </section>
 
+  <!-- L'ANATOMIE -->
+  <section class="anatomie" id="anatomie">
+    <div class="anat-stage">
+      <div class="anat-copy">
+        <div class="k">L'Anatomie</div>
+        <h2>Three layers,<br><em>one promise.</em></h2>
+        <div class="anat-step" id="step-coque">
+          <div class="fr"><b>01 ·</b> La Coque</div>
+          <div class="he" lang="he">קליפה דקה שנשברת ברוך — מרנג שקט, בצבע ה-DNA של הטעם.</div>
+        </div>
+        <div class="anat-step" id="step-pied">
+          <div class="fr"><b>02 ·</b> Le Pied</div>
+          <div class="he" lang="he">הרגל המסולסלת בשוליים — חותמת האפייה של מקרון אמיתי.</div>
+        </div>
+        <div class="anat-step" id="step-ganache">
+          <div class="fr"><b>03 ·</b> La Ganache</div>
+          <div class="he" lang="he">הלב: קרם שמחזיק את הטעם — ואת ההבטחה של המותג.</div>
+        </div>
+      </div>
+      <div class="anat-fig" id="anatFig"><!-- layered SVG injected by JS --></div>
+    </div>
+  </section>
+
   <!-- MENU -->
   <section class="menu" id="menu">
     <div class="head reveal">
       <h2>The Flavor Box</h2>
-      <p>Seven shades of sweet. Build your own box.</p>
+      <p>Seven shades of sweet. Tap to fill your boîte.</p>
+      <p class="he-hint" lang="he">לחיצה על טעם מוסיפה אותו לקופסה — שישה מקרונים לקופסה אחת.</p>
     </div>
     <div class="grid" id="flavor-grid">
-      <article class="card reveal" style="--blob:var(--rose);--accent:var(--rose)">
+      <article class="card reveal" style="--blob:var(--rose);--accent:var(--rose)" data-idx="0" data-shell="#ffc2d4" role="button" tabindex="0" aria-label="הוספת מקרון Rose לקופסה">
         <div class="ph"><img src="petale/rose.webp" alt="מקרון Rose & Lychee — ורד ולאיצ'י, גוון פסטל ורדרד" loading="lazy"></div>
         <div class="fr">Rose &amp; Lychee</div>
         <div class="name">Rose</div>
         <div class="price">₪14</div>
       </article>
-      <article class="card reveal" style="--blob:var(--pistache);--accent:var(--pistache)">
+      <article class="card reveal" style="--blob:var(--pistache);--accent:var(--pistache)" data-idx="1" data-shell="#d4eeb0" role="button" tabindex="0" aria-label="הוספת מקרון Pistache לקופסה">
         <div class="ph"><img src="petale/pistache.webp" alt="מקרון Pistachio — פיסטוק קלוי, גוון ירוק עדין" loading="lazy"></div>
         <div class="fr">Pistachio</div>
         <div class="name">Pistache</div>
         <div class="price">₪13</div>
       </article>
-      <article class="card reveal" style="--blob:var(--lavande);--accent:var(--lavande)">
+      <article class="card reveal" style="--blob:var(--lavande);--accent:var(--lavande)" data-idx="2" data-shell="#ddccf5" role="button" tabindex="0" aria-label="הוספת מקרון Lavande לקופסה">
         <div class="ph"><img src="petale/lavande.webp" alt="מקרון Lavender Honey — לבנדר ודבש, גוון סגול-לבנדר" loading="lazy"></div>
         <div class="fr">Lavender Honey</div>
         <div class="name">Lavande</div>
         <div class="price">₪15</div>
       </article>
-      <article class="card reveal" style="--blob:var(--citron);--accent:var(--citron)">
+      <article class="card reveal" style="--blob:var(--citron);--accent:var(--citron)" data-idx="3" data-shell="#fff0a6" role="button" tabindex="0" aria-label="הוספת מקרון Citron לקופסה">
         <div class="ph"><img src="petale/citron.webp" alt="מקרון Lemon Curd — קרם לימון, גוון צהוב פסטלי" loading="lazy"></div>
         <div class="fr">Lemon Curd</div>
         <div class="name">Citron</div>
         <div class="price">₪13</div>
       </article>
-      <article class="card reveal" style="--blob:var(--framboise);--accent:var(--framboise)">
+      <article class="card reveal" style="--blob:var(--framboise);--accent:var(--framboise)" data-idx="4" data-shell="#ffabc9" role="button" tabindex="0" aria-label="הוספת מקרון Framboise לקופסה">
         <div class="ph"><img src="petale/framboise.webp" alt="מקרון Raspberry — פטל, גוון ורוד פטל" loading="lazy"></div>
         <div class="fr">Raspberry</div>
         <div class="name">Framboise</div>
         <div class="price">₪14</div>
       </article>
-      <article class="card reveal" style="--blob:var(--caramel);--accent:var(--caramel)">
+      <article class="card reveal" style="--blob:var(--caramel);--accent:var(--caramel)" data-idx="5" data-shell="#ffd9ad" role="button" tabindex="0" aria-label="הוספת מקרון Caramel לקופסה">
         <div class="ph"><img src="petale/caramel.webp" alt="מקרון Salted Caramel — קרמל מלוח, גוון חום-קרמל" loading="lazy"></div>
         <div class="fr">Salted Caramel</div>
         <div class="name">Caramel</div>
         <div class="price">₪15</div>
       </article>
-      <article class="card reveal" style="--blob:var(--bleu);--accent:var(--bleu)">
+      <article class="card reveal" style="--blob:var(--bleu);--accent:var(--bleu)" data-idx="6" data-shell="#bfe3f7" role="button" tabindex="0" aria-label="הוספת מקרון Bleuet לקופסה">
         <div class="ph"><img src="petale/bleuet.webp" alt="מקרון Blueberry — אוכמניות, גוון כחול-בייבי" loading="lazy"></div>
         <div class="fr">Blueberry</div>
         <div class="name">Bleuet</div>
@@ -543,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="concept-note__inner reveal">
       <span class="kicker">Studio Note · <span class="it">On This Concept</span></span>
       <p>Pétale° הוא קייס סטדי של <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds Studio</a> — לא מותג מסחרי. הוא מדגים איך DNA מותגי אחד (בית מקרונים פריזאי קליל ופלרטטני) מתורגם לשבעה טעמים, שבעה גוונים, תיבת מתנה וחוויית בנייה.</p>
-      <p>כל מקרון שנופל למקומו בגלילה הוא רגע של גילוי — שם, צבע, ניחוח. כך נראה עולם מותג שנבנה מקוד DNA, ולא ממראה בלבד.</p>
+      <p>כל מקרון שנופל למקומו בגלילה הוא רגע של גילוי — שם, צבע, ניחוח. גם הקופסה אינטראקטיבית: בוחרים שישה טעמים, והיא נסגרת עם סרט. כך נראה עולם מותג שנבנה מקוד DNA, ולא ממראה בלבד.</p>
       <p class="closing">Brand World concept · built with Brand Worlds Studio</p>
     </div>
   </section>
@@ -558,6 +653,33 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="by reveal">A Brand World — built with Brand Worlds Studio</p>
   </section>
 
+  <!-- LA BOÎTE — build-your-box tray -->
+  <div class="boite" id="boite" aria-live="polite">
+    <div class="boite-inner">
+      <div class="boite-label"><span class="fr">La Boîte</span><span class="cnt"><b id="bCount">0</b> / 6</span></div>
+      <div class="slots" id="bSlots">
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
+      </div>
+    </div>
+    <div class="boite-done">
+      <svg viewBox="0 0 60 44" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M30 22 C18 10 6 12 8 22 C10 32 24 28 30 22Z"/>
+        <path d="M30 22 C42 10 54 12 52 22 C50 32 36 28 30 22Z"/>
+        <path d="M30 22 L22 40 M30 22 L38 40"/>
+      </svg>
+      <div class="txt">
+        <div class="fr">Votre boîte est prête.</div>
+        <div class="he" lang="he">שישה טעמים, DNA אחד — הקופסה מוכנה.</div>
+      </div>
+      <button id="bAgain" type="button">Recommencer ↺</button>
+    </div>
+  </div>
+
   <footer>
     <div class="big reveal">stay sweet.</div>
     <p class="meta">Pétale° · קונספט אנימציה לדוגמה · Brand Worlds Studio</p>
@@ -569,6 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- color helpers ---------- */
 function shade(hex,amt){ // darken hex by amt (0-1)
@@ -628,19 +751,19 @@ function macaron(shell,filling){
 
 /* ---------- flavor data ---------- */
 const flavors=[
-  {name:"Rose",     fr:"Rose & Lychee",  shell:"#ffc2d4", fill:"#ff7aa2", c:"var(--rose)"},
-  {name:"Pistache", fr:"Pistachio",       shell:"#d4eeb0", fill:"#8fd14f", c:"var(--pistache)"},
-  {name:"Lavande",  fr:"Lavender Honey",  shell:"#ddccf5", fill:"#a87fe0", c:"var(--lavande)"},
-  {name:"Citron",   fr:"Lemon Curd",      shell:"#fff0a6", fill:"#ffcf2e", c:"var(--citron)"},
-  {name:"Framboise",fr:"Raspberry",       shell:"#ffabc9", fill:"#e84a8a", c:"var(--framboise)"},
-  {name:"Caramel",  fr:"Salted Caramel",  shell:"#ffd9ad", fill:"#e0964a", c:"var(--caramel)"},
-  {name:"Bleuet",   fr:"Blueberry",       shell:"#bfe3f7", fill:"#5fb8e8", c:"var(--bleu)"}
+  {name:"Rose",     fr:"Rose & Lychee",  shell:"#ffc2d4", fill:"#ff7aa2", c:"var(--rose)",      img:"rose"},
+  {name:"Pistache", fr:"Pistachio",       shell:"#d4eeb0", fill:"#8fd14f", c:"var(--pistache)", img:"pistache"},
+  {name:"Lavande",  fr:"Lavender Honey",  shell:"#ddccf5", fill:"#a87fe0", c:"var(--lavande)",  img:"lavande"},
+  {name:"Citron",   fr:"Lemon Curd",      shell:"#fff0a6", fill:"#ffcf2e", c:"var(--citron)",   img:"citron"},
+  {name:"Framboise",fr:"Raspberry",       shell:"#ffabc9", fill:"#e84a8a", c:"var(--framboise)",img:"framboise"},
+  {name:"Caramel",  fr:"Salted Caramel",  shell:"#ffd9ad", fill:"#e0964a", c:"var(--caramel)",  img:"caramel"},
+  {name:"Bleuet",   fr:"Blueberry",       shell:"#bfe3f7", fill:"#5fb8e8", c:"var(--bleu)",     img:"bleuet"}
 ];
 
-/* ---------- hero macarons (SVG) ---------- */
+/* ---------- hero macarons (real photos) ---------- */
 document.querySelectorAll('.hero-mac').forEach(el=>{
   const f = el.dataset.mac==='rose'?flavors[0]:flavors[1];
-  el.innerHTML=macaron(f.shell,f.fill);
+  el.innerHTML=`<img src="petale/${f.img}.webp" alt="">`;
 });
 
 /* ---------- build the TOWER (stack of SVG macarons) ---------- */
@@ -651,31 +774,144 @@ flavors.forEach((f,i)=>{
   d.className='mac-stack';
   d.style.bottom=(8+i*macH)+'px';
   d.style.zIndex=(20-i);
-  d.innerHTML=macaron(f.shell,f.fill);
+  d.innerHTML=`<img src="petale/${f.img}.webp" alt="" loading="lazy">`;
   tc.appendChild(d);
 });
 const stacks=gsap.utils.toArray('.mac-stack');
-gsap.set(stacks,{y:-560,opacity:0,rotation:()=> (Math.random()-.5)*70});
-
 const numEl=document.getElementById('c-num');
-const tl=gsap.timeline({
-  scrollTrigger:{
-    trigger:'.tower-section',
-    start:'top top',
-    end:'+=2600',
-    scrub:.8,
-    pin:'.tower-stage'
-  }
-});
-stacks.forEach((m,i)=>{
-  tl.to(m,{
-    y:0,opacity:1,rotation:0,ease:'power2.out',duration:1,
-    onStart:()=>{numEl.textContent=i+1;},
-    onReverseComplete:()=>{numEl.textContent=i;}
-  }, i*0.9);
-});
+if(REDUCED){
+  gsap.set(stacks,{y:0,opacity:1});
+  numEl.textContent=7;
+}else{
+  gsap.set(stacks,{y:-560,opacity:0,rotation:()=> (Math.random()-.5)*70});
+  const tl=gsap.timeline({
+    scrollTrigger:{
+      trigger:'.tower-section',
+      start:'top top',
+      end: window.innerWidth<780 ? '+=1900' : '+=2600',
+      scrub:.8,
+      pin:'.tower-stage'
+    }
+  });
+  stacks.forEach((m,i)=>{
+    tl.to(m,{
+      y:0,opacity:1,rotation:0,ease:'power2.out',duration:1,
+      onStart:()=>{numEl.textContent=i+1;},
+      onReverseComplete:()=>{numEl.textContent=i;}
+    }, i*0.9);
+  });
+}
 
-/* ---------- flavor cards are static HTML (for SEO/GEO) — JS only handles reveal ---------- */
+/* ---------- L'ANATOMIE — layered SVG macaron + scroll separation ---------- */
+(function(){
+  const shell='#ffc2d4', fill='#ff7aa2';
+  const top=lighten(shell,.30), bot=shade(shell,.12), pd=shade(shell,.22);
+  const fTop=lighten(fill,.16), fBot=shade(fill,.14);
+  document.getElementById('anatFig').innerHTML=`<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="anT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${shell}"/></linearGradient>
+      <linearGradient id="anB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${shell}"/><stop offset="1" stop-color="${bot}"/></linearGradient>
+      <linearGradient id="anF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${fTop}"/><stop offset="1" stop-color="${fBot}"/></linearGradient>
+    </defs>
+    <g id="anatCream"><path d="M18 64 C58 53 142 53 182 64 C188 74 188 80 182 90 C142 101 58 101 18 90 C12 80 12 74 18 64Z" fill="url(#anF)"/></g>
+    <g id="anatTop"><path d="M22 62 C22 26 48 14 100 14 C152 14 178 26 178 62 Z" fill="url(#anT)"/><g id="anatPiedT">${pieds(64,pd)}</g><ellipse cx="72" cy="34" rx="32" ry="12" fill="#fff" opacity=".42"/></g>
+    <g id="anatBottom"><path d="M22 84 C22 120 48 132 100 132 C152 132 178 120 178 84 Z" fill="url(#anB)"/><g id="anatPiedB">${pieds(82,pd)}</g><ellipse cx="134" cy="110" rx="24" ry="8" fill="#fff" opacity=".13"/></g>
+  </svg>`;
+})();
+if(REDUCED){
+  gsap.set(['#step-coque','#step-pied','#step-ganache'],{opacity:1});
+}else{
+  const atl=gsap.timeline({
+    scrollTrigger:{trigger:'.anatomie',start:'top top',end:'+=1600',scrub:.8,pin:'.anat-stage'}
+  });
+  atl.to('#anatTop',{y:-46,ease:'power1.inOut',duration:1.4},0)
+     .to('#anatBottom',{y:34,ease:'power1.inOut',duration:1.4},0)
+     .to('#step-coque',{opacity:1,duration:.4},.05)
+     .to('#step-pied',{opacity:1,duration:.4},.6)
+     .fromTo('#anatPiedT',{scale:1},{scale:1.12,transformOrigin:'50% 50%',yoyo:true,repeat:1,duration:.25},.6)
+     .fromTo('#anatPiedB',{scale:1},{scale:1.12,transformOrigin:'50% 50%',yoyo:true,repeat:1,duration:.25},.68)
+     .to('#step-ganache',{opacity:1,duration:.4},1.15)
+     .fromTo('#anatCream',{scale:1},{scale:1.07,transformOrigin:'50% 50%',yoyo:true,repeat:1,duration:.3},1.15);
+}
+
+/* ---------- LA BOÎTE — build-your-box ---------- */
+const boiteEl=document.getElementById('boite');
+const slotEls=gsap.utils.toArray('#bSlots .slot');
+const bCount=document.getElementById('bCount');
+const cards=gsap.utils.toArray('#flavor-grid .card');
+const picked=[]; let boxDone=false;
+
+function updateCount(){bCount.textContent=picked.length;}
+function fillSlot(slot,f){
+  slot.innerHTML=`<img src="petale/${f.img}.webp" alt="">`;
+  slot.classList.add('filled');
+}
+function completeBox(){
+  boxDone=true; boiteEl.classList.add('done');
+  const paths=boiteEl.querySelectorAll('.boite-done path');
+  paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;});
+  gsap.to(paths,{strokeDashoffset:0,duration:.9,stagger:.18,ease:'power2.out',delay:.15});
+  if(typeof fbq==='function')fbq('trackCustom','BoiteComplete',{world:'PETALE'});
+  if(typeof gtag==='function')gtag('event','boite_complete',{page_path:location.pathname});
+}
+function resetBox(){
+  picked.length=0; boxDone=false; boiteEl.classList.remove('done');
+  slotEls.forEach(s=>{s.innerHTML='';s.classList.remove('filled');});
+  updateCount();
+}
+document.getElementById('bAgain').addEventListener('click',e=>{e.stopPropagation();resetBox();});
+
+function addToBox(card){
+  if(boxDone||picked.length>=6)return;
+  const f=flavors[+card.dataset.idx];
+  const slot=slotEls[picked.length];
+  picked.push(f); updateCount();
+  const trayVisible=boiteEl.classList.contains('show');
+  boiteEl.classList.add('show');
+  const done=()=>{fillSlot(slot,f); if(picked.length===6)completeBox();};
+  const img=card.querySelector('.ph img');
+  if(REDUCED||!trayVisible||!img){done();return;}
+  const r1=img.getBoundingClientRect(), r2=slot.getBoundingClientRect();
+  const c=img.cloneNode(); c.className='fly-mac';
+  c.style.left=r1.left+'px'; c.style.top=r1.top+'px'; c.style.width=r1.width+'px';
+  document.body.appendChild(c);
+  gsap.to(c,{left:r2.left+r2.width*.06,top:r2.top+r2.height*.08,width:r2.width*.88,
+    rotation:360,duration:.65,ease:'power2.inOut',
+    onComplete:()=>{c.remove();done();}});
+}
+cards.forEach(card=>{
+  card.addEventListener('click',()=>addToBox(card));
+  card.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();addToBox(card);}
+  });
+});
+slotEls.forEach((slot,i)=>slot.addEventListener('click',()=>{
+  if(boxDone||i>=picked.length)return;
+  picked.splice(i,1);
+  slotEls.forEach((s,j)=>{
+    if(j<picked.length){fillSlot(s,picked[j]);}
+    else{s.innerHTML='';s.classList.remove('filled');}
+  });
+  updateCount();
+}));
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting||picked.length>0)boiteEl.classList.add('show');
+    else boiteEl.classList.remove('show');
+  });},{rootMargin:'140px 0px'}).observe(document.getElementById('menu'));
+}else boiteEl.classList.add('show');
+
+/* ---------- flavor tint — hover paints the page in the flavor's pastel ---------- */
+if(window.matchMedia('(hover:hover)').matches){
+  const tint=document.getElementById('tint');
+  cards.forEach(card=>{
+    card.addEventListener('mouseenter',()=>{
+      tint.style.background=`linear-gradient(180deg,${lighten(card.dataset.shell,.5)},${lighten(card.dataset.shell,.78)})`;
+      tint.style.opacity='1';
+    });
+    card.addEventListener('mouseleave',()=>{tint.style.opacity='0';});
+  });
+}
 
 /* ---------- floating sprinkles ---------- */
 const cols=['#ff7aa2','#8fd14f','#a87fe0','#ffcf2e','#5fb8e8','#e84a8a'];
@@ -686,14 +922,19 @@ for(let i=0;i<20;i++){
   s.style.background=cols[i%cols.length];
   s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
   document.body.appendChild(s);
-  gsap.to(s,{y:-50-Math.random()*60,x:(Math.random()-.5)*60,duration:4+Math.random()*4,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*3});
+  if(!REDUCED)gsap.to(s,{y:-50-Math.random()*60,x:(Math.random()-.5)*60,duration:4+Math.random()*4,repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*3});
 }
 
 /* ---------- hero load + idle motion ---------- */
-gsap.from('.hero .ln',{y:70,opacity:0,duration:1,stagger:.1,ease:'power4.out',delay:.15});
-gsap.to('.hm1',{y:-24,rotation:8,duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
-gsap.to('.hm2',{y:20,rotation:-10,duration:6,repeat:-1,yoyo:true,ease:'sine.inOut'});
-gsap.to('.hero-mac',{yPercent:50,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+const heroWord=document.querySelector('.hero h1 .ln:not(.it)');
+heroWord.innerHTML=[...heroWord.textContent].map(c=>`<span class="ch">${c}</span>`).join('');
+if(!REDUCED){
+  gsap.from('.hero h1 .ch',{y:96,opacity:0,rotate:9,duration:1.05,stagger:.055,ease:'power4.out',delay:.1});
+  gsap.from(['.hero .eyebrow','.hero h1 .it','.hero p.sub'],{y:60,opacity:0,duration:1,stagger:.12,ease:'power4.out',delay:.4});
+  gsap.to('.hm1',{y:-24,rotation:8,duration:5,repeat:-1,yoyo:true,ease:'sine.inOut'});
+  gsap.to('.hm2',{y:20,rotation:-10,duration:6,repeat:-1,yoyo:true,ease:'sine.inOut'});
+  gsap.to('.hero-mac',{yPercent:50,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+}
 
 /* ---------- reveals ---------- */
 gsap.utils.toArray('.reveal').forEach(el=>{
