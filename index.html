@@ -963,7 +963,8 @@
         .portal:hover .portal__enter-arrow { transform: translateX(4px); }
 
         /* ============================================================
-           MOTION STUDIES — 5 interactive concept demos
+           MOTION STUDIES — all 23 concept worlds, two counter-moving rails
+           (compact cards: screenshot + name + category; copy lives on /brand-worlds/)
            ============================================================ */
         .motion-studies {
             background: var(--color-warm-beige);
@@ -972,7 +973,7 @@
         }
         .motion-studies__header {
             text-align: center;
-            margin-bottom: clamp(30px, 4vw, 48px);
+            margin-bottom: clamp(26px, 3.5vw, 40px);
         }
         .motion-studies__label {
             font-family: var(--font-body-en);
@@ -999,11 +1000,16 @@
             margin: 0 auto;
             line-height: 1.6;
         }
+        .motion-studies__rails {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(14px, 1.6vw, 20px);
+        }
         .motion-studies__rail {
             position: relative;
             overflow: hidden;
             direction: ltr;
-            padding: 6px 0 14px;
+            padding: 6px 0 10px;
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
         }
@@ -1013,14 +1019,16 @@
             direction: ltr;
         }
         .motion-studies__train .motion-card {
-            width: clamp(260px, 24vw, 330px);
+            width: clamp(220px, 19vw, 272px);
             flex: none;
-            margin-left: clamp(16px, 1.8vw, 22px);
+            margin-left: clamp(14px, 1.5vw, 18px);
         }
-        .motion-studies__train.running { animation: worldsTrain 42s linear infinite; }
+        .motion-studies__train.running { animation: worldsTrain 64s linear infinite; }
+        .motion-studies__train--back.running { animation-name: worldsTrainBack; animation-duration: 58s; }
         .motion-studies__rail:hover .motion-studies__train.running { animation-play-state: paused; }
         @keyframes worldsTrain { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        /* touch devices: finger-swipe rail instead of the slow auto-train */
+        @keyframes worldsTrainBack { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        /* touch devices: finger-swipe rails instead of the slow auto-train */
         @media (hover: none), (max-width: 820px) {
             .motion-studies__train.running { animation: none; }
             .motion-studies__rail {
@@ -1028,10 +1036,15 @@
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x proximity;
                 scroll-padding: 0 6vw;
+                scrollbar-width: none;
                 mask-image: none; -webkit-mask-image: none;
                 padding-right: 6vw; padding-left: 6vw;
             }
-            .motion-studies__train .motion-card { scroll-snap-align: center; width: min(300px, 76vw); }
+            .motion-studies__rail::-webkit-scrollbar { display: none; }
+            .motion-studies__train .motion-card { scroll-snap-align: center; width: min(236px, 62vw); }
+            .motion-card__body { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 16px 14px; }
+            .motion-card__name { font-size: 20px; }
+            .motion-card__category { text-align: left; }
         }
         @media (prefers-reduced-motion: reduce) {
             .motion-studies__train.running { animation: none; }
@@ -1041,71 +1054,67 @@
             display: flex;
             flex-direction: column;
             background: #fff;
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             border: 1px solid var(--color-light-taupe);
-            box-shadow: 0 18px 40px -28px rgba(43, 26, 18, 0.35);
+            box-shadow: 0 16px 36px -26px rgba(43, 26, 18, 0.35);
             transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s;
         }
         .motion-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 32px 50px -28px rgba(43, 26, 18, 0.5);
+            box-shadow: 0 28px 46px -26px rgba(43, 26, 18, 0.5);
         }
         .motion-card__img {
             position: relative;
             width: 100%;
             aspect-ratio: 1200 / 630;
-            background-size: cover;
-            background-position: center;
             background-color: var(--color-warm-beige);
+            overflow: hidden;
+        }
+        .motion-card__img img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         /* LUSHA OG lacks the topbar band — recreate it in CSS for visual consistency with sibling cards */
         a[href="lusha.html"] .motion-card__img::before {
             content: "";
             position: absolute;
+            z-index: 1;
             top: 0; left: 0; right: 0;
             height: 6.5%;
             background: #15202E;
         }
         .motion-card__body {
-            padding: 24px 26px 28px;
+            padding: 14px 18px 16px;
             display: flex;
-            flex-direction: column;
-            flex: 1;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            direction: ltr;
         }
         .motion-card__name {
             font-family: var(--font-display);
-            font-size: 28px;
+            font-size: 21px;
             font-weight: 500;
             color: var(--color-chocolate);
-            margin-bottom: 6px;
             line-height: 1.1;
+            white-space: nowrap;
         }
-        .motion-card__tagline {
-            font-size: 15px;
-            line-height: 1.55;
-            color: var(--color-taupe);
-            margin-bottom: 16px;
-        }
-        .motion-card__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .motion-card__category {
             font-family: var(--font-body-en);
-            font-size: 13px;
+            font-size: 10px;
             font-weight: 600;
-            color: var(--color-copper);
+            letter-spacing: 1.4px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: auto;
-            align-self: flex-start;
+            color: var(--color-copper);
+            text-align: right;
+            line-height: 1.35;
+            white-space: nowrap;
         }
-        .motion-card__cta-arrow {
-            transition: transform 0.3s var(--transition-smooth);
-        }
-        .motion-card:hover .motion-card__cta-arrow { transform: translateX(5px); }
 
         /* ============================================================
            INSIDE-SECTION — 6 cards, anchor to maison sections
@@ -2252,122 +2261,208 @@ document.addEventListener('DOMContentLoaded', function () {
     </script>
 
     <!-- ============================================================
-         RANGE STRIP — 5 concept worlds in motion
-         (demoted below the flagship 2026-07-03; smaller weight, renamed off
-          "עולמות מותג" so the flagship uniquely owns the money term)
+         RANGE STRIP — all 23 concept worlds in motion, two counter-moving rails
+         (demoted below the flagship 2026-07-03; compact cards since 2026-09-03 —
+          copy per world lives on /brand-worlds/, this strip proves breadth)
          ============================================================ -->
     <section class="motion-studies" id="motion-studies" aria-labelledby="motion-studies-title">
         <div class="container motion-studies__header reveal">
             <p class="motion-studies__label" dir="ltr">The Range · Motion Studies</p>
             <h2 class="motion-studies__title" id="motion-studies-title">עולמות קונספט בתנועה</h2>
-            <p class="motion-studies__subtitle">ואם השיטה עובדת גם בקפה, בבשמים או בעיצוב פנים? עשרה מחקרי תנועה שמותחים אותה לתעשיות אחרות — הדגמות קונספט, לא מותגים מסחריים, וכל אחת מוכיחה שפת תנועה אחרת בגלילה אחת.</p>
+            <p class="motion-studies__subtitle">ואם השיטה עובדת גם בקפה, בבשמים או בעיצוב פנים? עשרים ושלושה מחקרי תנועה שמותחים אותה לתעשיות אחרות — הדגמות קונספט, לא מותגים מסחריים, וכל אחת מוכיחה שפת תנועה אחרת בגלילה אחת.</p>
         </div>
 
-        <div class="motion-studies__rail reveal">
+        <div class="motion-studies__rails reveal">
+        <div class="motion-studies__rail">
         <div class="motion-studies__train" id="worldsTrain">
+            <a href="trame/" class="motion-card" aria-label="TRAME° — עולם קונספט בתנועה (בית קוטור)">
+                <div class="motion-card__img"><img src="images/home-worlds/trame.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">TRAME°</p>
+                    <p class="motion-card__category">Maison de Couture</p>
+                </div>
+            </a>
+            <a href="signe/" class="motion-card" aria-label="SIGNÉ° — עולם קונספט בתנועה (קינוחים חתומים)">
+                <div class="motion-card__img"><img src="images/home-worlds/signe.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">SIGNÉ°</p>
+                    <p class="motion-card__category">Maison de Desserts</p>
+                </div>
+            </a>
             <a href="rosee/" class="motion-card" aria-label="ROSÉE° — עולם קונספט בתנועה (סקינקר של שחר)">
-                <div class="motion-card__img" style="background-image:url('rosee-card.jpg')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/rosee.webp" width="1200" height="630" alt="" decoding="async"></div>
                 <div class="motion-card__body">
-                    <p class="motion-card__name" dir="ltr">ROSÉE°</p>
-                    <p class="motion-card__tagline">סקינקר שנולד עם הזריחה — הקולקציה מסתובבת בגלילה כשעון שחר, והריטואל נבנה לפי שעות הבוקר.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__name">ROSÉE°</p>
+                    <p class="motion-card__category">Dawn Skincare</p>
                 </div>
             </a>
-
+            <a href="regard/" class="motion-card" aria-label="REGARD° — עולם קונספט בתנועה (משקפיים)">
+                <div class="motion-card__img"><img src="images/home-worlds/regard.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">REGARD°</p>
+                    <p class="motion-card__category">Maison d’Optique</p>
+                </div>
+            </a>
             <a href="elvea/" class="motion-card" aria-label="ELVÉA° — עולם קונספט בתנועה (מדע-עור בוטני)">
-                <div class="motion-card__img" style="background-image:url('elvea-card.jpg')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/elvea.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
-                    <p class="motion-card__name" dir="ltr">ELVÉA°</p>
-                    <p class="motion-card__tagline">מדע-עור בוטני על קו ירוק אחד — פרח, עלה וטיפה נפגשים בגלילה בתוך בקבוק סרום אחד.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__name">ELVÉA°</p>
+                    <p class="motion-card__category">Botanical Skincare</p>
                 </div>
             </a>
-
+            <a href="poppi.html" class="motion-card" aria-label="POPPI — עולם קונספט בתנועה (סוכריות)">
+                <div class="motion-card__img"><img src="images/home-worlds/poppi.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">POPPI</p>
+                    <p class="motion-card__category">Candy</p>
+                </div>
+            </a>
             <a href="arco/" class="motion-card" aria-label="ARCO° — עולם קונספט בתנועה (עיצוב פנים וחוץ)">
-                <div class="motion-card__img" style="background-image:url('arco-card.jpg')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/arco.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
-                    <p class="motion-card__name" dir="ltr">ARCO°</p>
-                    <p class="motion-card__tagline">עיצוב פנים וחוץ — הגלילה ממלאת את החלל: מחדר ריק לבית חי, ממרפסת ריקה לגינה.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__name">ARCO°</p>
+                    <p class="motion-card__category">Interior Design</p>
                 </div>
             </a>
-
+            <a href="orbe/" class="motion-card" aria-label="ORBE — עולם קונספט בתנועה (בושמות עילית)">
+                <div class="motion-card__img"><img src="images/home-worlds/orbe.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">ORBE</p>
+                    <p class="motion-card__category">Haute Parfumerie</p>
+                </div>
+            </a>
             <a href="etage/" class="motion-card" aria-label="ÉTAGE° — עולם קונספט בתנועה (עוגות חתונה)">
-                <div class="motion-card__img" style="background-image:url('etage-og.png')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/etage.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
-                    <p class="motion-card__name" dir="ltr">ÉTAGE°</p>
-                    <p class="motion-card__tagline">עוגת חתונה שמתלבשת בגלילה — סרט, פנינים ופרחי סוכר ננעצים שכבה אחר שכבה, עד שולחן האירוע.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__name">ÉTAGE°</p>
+                    <p class="motion-card__category">Wedding Cakes</p>
                 </div>
             </a>
-
-            <a href="souffle.html" class="motion-card" aria-label="SOUFFLÉ° — עולם קונספט בתנועה (ביוטי-גורמה)">
-                <div class="motion-card__img" style="background-image:url('souffle-og.png')"></div>
-                <div class="motion-card__body">
-                    <p class="motion-card__name" dir="ltr">SOUFFLÉ°</p>
-                    <p class="motion-card__tagline">חמאת גוף מוקצפת שנוחתת על צלחת קרמיקה — והרכיבים מתעופפים וקופאים לרשימת "מה בפנים".</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
-                </div>
-            </a>
-
-            <a href="lusha.html" class="motion-card" aria-label="LUSHA — עולם קונספט בתנועה (ספריי שיער), שני עולמות רינדור">
-                <div class="motion-card__img" style="background-image:url('lusha-og.png')"></div>
+            <a href="lusha.html" class="motion-card" aria-label="LUSHA — עולם קונספט בתנועה (ספריי שיער)">
+                <div class="motion-card__img"><img src="images/home-worlds/lusha.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
                     <p class="motion-card__name">LUSHA</p>
-                    <p class="motion-card__tagline">חמישה בקבוקי ספריי, שני עולמות רינדור — Toggle חי בין Claymation ל-Studio על אותו סטוריבורד.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__category">Hair Spray · Clay</p>
                 </div>
             </a>
-
-            <a href="aerea.html" class="motion-card" aria-label="AERÉA — עולם קונספט בתנועה (בושם)">
-                <div class="motion-card__img" style="background-image:url('aerea-og.png')"></div>
+            <a href="souffle.html" class="motion-card" aria-label="SOUFFLÉ° — עולם קונספט בתנועה (חמאת גוף)">
+                <div class="motion-card__img"><img src="images/home-worlds/souffle.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
-                    <p class="motion-card__name">AERÉA</p>
-                    <p class="motion-card__tagline">בקבוק פיסולי אחד, חמישה ניחוחות שמחליפים במגע — פירמידת ניחוח שנפתחת בגלילה.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__name">SOUFFLÉ°</p>
+                    <p class="motion-card__category">Gourmand Body</p>
                 </div>
             </a>
-
+            <a href="lumera/" class="motion-card" aria-label="LUMÉRA — עולם קונספט בתנועה (תכשיטים)">
+                <div class="motion-card__img"><img src="images/home-worlds/lumera.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">LUMÉRA</p>
+                    <p class="motion-card__category">Fine Jewellery</p>
+                </div>
+            </a>
+        </div>
+        </div>
+        <div class="motion-studies__rail motion-studies__rail--back">
+        <div class="motion-studies__train motion-studies__train--back" id="worldsTrainBack">
+            <a href="aurelle/" class="motion-card" aria-label="AURELLE — עולם קונספט בתנועה (סקינקר פרימיום)">
+                <div class="motion-card__img"><img src="images/home-worlds/aurelle.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">AURELLE</p>
+                    <p class="motion-card__category">Premium Skincare</p>
+                </div>
+            </a>
+            <a href="basalt/" class="motion-card" aria-label="BASALT — עולם קונספט בתנועה (טיפוח גברי)">
+                <div class="motion-card__img"><img src="images/home-worlds/basalt.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">BASALT</p>
+                    <p class="motion-card__category">Men’s Skincare</p>
+                </div>
+            </a>
             <a href="petale.html" class="motion-card" aria-label="Pétale° — עולם קונספט בתנועה (מקרונים)">
-                <div class="motion-card__img" style="background-image:url('petale-og.png')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/petale.webp" width="1200" height="630" alt="" decoding="async"></div>
                 <div class="motion-card__body">
                     <p class="motion-card__name">Pétale°</p>
-                    <p class="motion-card__tagline">סרט בשלושה פרקים — שבעה מקרונים יורדים לקופסה, הסרט נקשר, והיא עוברת לידיים. הקופסה נשארת, הסיפור זז.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__category">Macarons · Film</p>
                 </div>
             </a>
-
+            <a href="ecru.html" class="motion-card" aria-label="ÉCRU — עולם קונספט בתנועה (בוטיק אופנה)">
+                <div class="motion-card__img"><img src="images/home-worlds/ecru.webp" width="1200" height="630" alt="" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">ÉCRU</p>
+                    <p class="motion-card__category">Fashion Boutique</p>
+                </div>
+            </a>
             <a href="crema.html" class="motion-card" aria-label="Crema° — עולם קונספט בתנועה (קפה)">
-                <div class="motion-card__img" style="background-image:url('crema-og.png')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/crema.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
                     <p class="motion-card__name">Crema°</p>
-                    <p class="motion-card__tagline">מכונה שמחליפה צבע במגע, חליטה בגלילה — שבעה גוונים של בוקר איטלקי.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__category">Espresso · Italia</p>
                 </div>
             </a>
-
+            <a href="orea/" class="motion-card" aria-label="ORÉA — עולם קונספט בתנועה (רהיטים פיסוליים)">
+                <div class="motion-card__img"><img src="images/home-worlds/orea.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">ORÉA</p>
+                    <p class="motion-card__category">Furniture</p>
+                </div>
+            </a>
             <a href="melte.html" class="motion-card" aria-label="MELTÉ° — עולם קונספט בתנועה (שוקולד)">
-                <div class="motion-card__img" style="background-image:url('melte-og.png')"></div>
+                <div class="motion-card__img"><img src="images/home-worlds/melte.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
                 <div class="motion-card__body">
                     <p class="motion-card__name">MELTÉ°</p>
-                    <p class="motion-card__tagline">חמש כוסות שוקולד נמסות אחת אחת — שפה אחת, חמש שפות טעם נפרדות.</p>
-                    <span class="motion-card__cta">צפו בקונספט <span class="motion-card__cta-arrow" aria-hidden="true">→</span></span>
+                    <p class="motion-card__category">Chocolate</p>
                 </div>
             </a>
+            <a href="soluna.html" class="motion-card" aria-label="SOLUNA — עולם קונספט בתנועה (תוספי תזונה)">
+                <div class="motion-card__img"><img src="images/home-worlds/soluna.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">SOLUNA</p>
+                    <p class="motion-card__category">Apothecary</p>
+                </div>
+            </a>
+            <a href="aerea.html" class="motion-card" aria-label="AERÉA — עולם קונספט בתנועה (בושם)">
+                <div class="motion-card__img"><img src="images/home-worlds/aerea.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">AERÉA</p>
+                    <p class="motion-card__category">Parfum</p>
+                </div>
+            </a>
+            <a href="solara-wild/" class="motion-card" aria-label="SOLARA Wild — עולם קונספט בתנועה (נרות ולייפסטייל)">
+                <div class="motion-card__img"><img src="images/home-worlds/solara-wild.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">SOLARA Wild</p>
+                    <p class="motion-card__category">Resort Lifestyle</p>
+                </div>
+            </a>
+            <a href="vela-motion/" class="motion-card" aria-label="VELA Motion — עולם קונספט בתנועה (תיקים ואקססוריז)">
+                <div class="motion-card__img"><img src="images/home-worlds/vela-motion.webp" width="1200" height="630" alt="" loading="lazy" decoding="async"></div>
+                <div class="motion-card__body">
+                    <p class="motion-card__name">VELA Motion</p>
+                    <p class="motion-card__category">Accessories</p>
+                </div>
+            </a>
+        </div>
         </div>
         </div>
         <script>
         (function(){
-            var t = document.getElementById('worldsTrain');
-            if (!t) return;
             var touch = window.matchMedia('(hover: none)').matches || window.innerWidth <= 820;
-            if (touch) return; /* swipeable rail — no duplication, no auto-drift */
-            t.innerHTML += t.innerHTML;
-            Array.prototype.slice.call(t.children, t.children.length / 2).forEach(function(c){
-                c.setAttribute('aria-hidden','true');
-                c.setAttribute('tabindex','-1');
+            if (touch) {
+                /* swipeable rails — no duplication; second rail starts at its far end so the rows don't mirror */
+                var back = document.querySelector('.motion-studies__rail--back');
+                if (back) back.scrollLeft = back.scrollWidth;
+                return;
+            }
+            ['worldsTrain','worldsTrainBack'].forEach(function(id){
+                var t = document.getElementById(id);
+                if (!t) return;
+                t.innerHTML += t.innerHTML;
+                Array.prototype.slice.call(t.children, t.children.length / 2).forEach(function(c){
+                    c.setAttribute('aria-hidden','true');
+                    c.setAttribute('tabindex','-1');
+                    var im = c.querySelector('img'); if (im) im.removeAttribute('loading');
+                });
+                t.classList.add('running');
             });
-            t.classList.add('running');
         })();
         </script>
         <style>
@@ -2390,7 +2485,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a href="brand-worlds/" class="worlds-hub-strip" aria-label="כל העולמות שבנינו — הגלריה המלאה">
             <span class="worlds-hub-strip__he">כל העולמות שבנינו</span>
             <span class="worlds-hub-strip__sep" aria-hidden="true">·</span>
-            <span class="worlds-hub-strip__en" dir="ltr">The Gallery · 18 Worlds</span>
+            <span class="worlds-hub-strip__en" dir="ltr">The Gallery · All Worlds</span>
             <span class="worlds-hub-strip__arrow" aria-hidden="true">←</span>
         </a>
     </section>
