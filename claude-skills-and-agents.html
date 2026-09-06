@@ -48,7 +48,7 @@
       "jobTitle": "אסטרטגית מותג ומייסדת Brand Worlds Studio, מפתחת BrandOS"
     },
     "datePublished": "2026-05-15",
-    "dateModified": "2026-06-29",
+    "dateModified": "2026-09-06",
     "publisher": {
       "@type": "Organization",
       "name": "Brand Worlds Studio",
@@ -64,8 +64,14 @@
     },
     "inLanguage": "he-IL",
     "articleSection": "AI Strategy",
-    "keywords": "Claude Skills, Claude Agents, Skills מול Agents, אוטומציה ממותגת, BrandOS, AI לעסקים",
-    "wordCount": 1850
+    "keywords": "Claude Skills, Claude Agents, Skills מול Agents, סוכן AI לעסק, Subagents, אוטומציה ממותגת, BrandOS, AI לעסקים",
+    "wordCount": 2050,
+    "citation": [
+      {"@type": "CreativeWork", "name": "Anthropic Engineering — Building effective agents (19.12.2024)", "url": "https://www.anthropic.com/engineering/building-effective-agents"},
+      {"@type": "CreativeWork", "name": "Anthropic — Agent Skills overview (Claude Platform docs)", "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"},
+      {"@type": "CreativeWork", "name": "Claude Code docs — Subagents", "url": "https://code.claude.com/docs/en/sub-agents"},
+      {"@type": "CreativeWork", "name": "Gartner — Over 40% of Agentic AI Projects Will Be Canceled by End of 2027 (25.6.2025)", "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027"}
+    ]
   }
   </script>
 
@@ -120,7 +126,7 @@
         "name": "Skills עובדים גם ב-Claude.ai וגם ב-Claude Code?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "כן בשניהם, עם הבדל אחד — ב-Claude.ai (הצ'אט) הסקילים נטענים אוטומטית מתוך תיקיית הסקילים הגלובלית של החשבון. ב-Claude Code (ה-CLI) הם נטענים מתיקיית הפרויקט או מתיקייה גלובלית. אותם קבצי SKILL.md, שני קונטקסטים."
+          "text": "כן, בשניהם, אבל הם לא מסתנכרנים. ב-Claude.ai מעלים את תיקיית הסקיל כקובץ zip דרך Settings > Features (Pro ומעלה). ב-Claude Code שמים אותה ב-.claude/skills/ בפרויקט או ב-~/.claude/skills/ לכל הפרויקטים, וקלוד מזהה אותה לבד. אותו קובץ SKILL.md, שני מקומות שצריך לעדכן בנפרד."
         }
       }
     ]
@@ -594,9 +600,16 @@
     <div class="article-meta">
       <span class="author">✦ <a href="/about.html">חגית אנטבי</a> · אסטרטגית מותג ומייסדת Brand Worlds Studio</span>
       <span class="dot">·</span>
-      <span>מאי 2026 · עודכן יוני 2026</span>
+      <span>מאי 2026</span>
+      <span class="dot">·</span>
+      <span>עודכן: ספטמבר 2026</span>
       <span class="dot">·</span>
       <span>9 דקות קריאה</span>
+    </div>
+
+    <div class="tldr">
+      <div class="tldr-label">תשובה ישירה</div>
+      <p><strong>Claude Skill</strong> הוא ידע ארוז ש-Claude טוען אוטומטית כשהוא מזהה שזה רלוונטי, למשל מדריך הקול של המותג שלכם. <strong>Claude Agent</strong> הוא יחידת ביצוע אוטונומית שמתכננת, מפעילה כלים ומשלימה משימות מורכבות בעצמה. לפי ההגדרה של אנתרופיק, סוכן הוא מערכת שבה המודל מכוון בעצמו את התהליך ואת השימוש בכלים. עסק שמשתמש רק באחד מהם מקבל אוטומציה חצי-עובדת: Skill בלי Agent הוא עקביות ידנית, Agent בלי Skill הוא אוטומציה גנרית. עסק שמשתמש בשניהם, <strong>Skill כזיכרון, Agent כיד</strong>, בונה מערכת AI שמדברת בקול שלו.</p>
     </div>
   </header>
 
@@ -608,12 +621,7 @@
   <!-- Article Body -->
   <article class="article-body">
 
-    <div class="tldr">
-      <div class="tldr-label">תשובה ישירה</div>
-      <p><strong>Claude Skill</strong> הוא ידע ארוז ש-Claude טוען אוטומטית כשהוא מזהה שזה רלוונטי — למשל מדריך הקול של המותג שלכם. <strong>Claude Agent</strong> הוא יחידת ביצוע אוטונומית שמתכננת, מפעילה כלים ומשלימה משימות מורכבות בעצמה. עסק שמשתמש רק באחד מהם מקבל אוטומציה חצי-עובדת. עסק שמשתמש בשניהם — <strong>Skill כזיכרון, Agent כיד</strong> — בונה מערכת AI שמדברת בקול שלו.</p>
-    </div>
-
-    <h2>מה קרה ב-2025 שהפך את השאלה הזו לקריטית</h2>
+    <h2>מה קרה ב-2025 שהפך את השאלה "Skills מול Agents" לקריטית?</h2>
     <p class="h2-answer">באוקטובר 2025 Anthropic השיקה את Skills כפיצ'ר רשמי. במקביל, Agents הפכו מהבטחה למשהו שאפשר באמת לבנות עליו ערך עסקי. השוק התחיל להשתמש בשני המונחים לסירוגין — וזו טעות יקרה.</p>
 
     <p>עדכון יוני 2026: חצי שנה אחרי, זו הפכה לשאלה הראשונה שעסקים שואלים אותי כשהם נכנסים לעולם ה-AI. ההבדל בין Skill ל-Agent כבר לא דקדוק טכני — הוא מה שמפריד בין אוטומציה שמדברת בקול של המותג לבין כזו שנשמעת כמו כל בוט אחר.</p>
@@ -622,24 +630,24 @@
 
     <p><strong>Skills שוחררו כפיצ'ר רשמי</strong> — לא פרומפטים שמורים, ולא Custom GPTs. הם מודולים של ידע שנשענים על "Discovery הדרגתי": Claude רואה רק את השם והתיאור שלהם, וטוען אותם רק כשהוא מזהה רלוונטיות.</p>
 
-    <p><strong>Agents הפכו לאמיתיים</strong> — Claude Agent רץ ב-context נפרד, מפעיל כלים (Tools), עובד עם MCP servers, ומתכנן רצף פעולות שלם. הוא לא רק עונה — הוא מבצע.</p>
+    <p><strong>Agents הפכו לאמיתיים</strong> — Claude Agent רץ ב-context נפרד, מפעיל כלים (Tools), עובד עם MCP servers, ומתכנן רצף פעולות שלם. הוא לא רק עונה — הוא מבצע. ההגדרה שאני עובדת לפיה היא של אנתרופיק, מהמאמר <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents (דצמבר 2024)</a>: "תהליכי עבודה הם מערכות שבהן מודלים וכלים מתוזמרים דרך נתיבי קוד מוגדרים מראש. סוכנים הם מערכות שבהן המודל מכוון בעצמו את התהליך ואת השימוש בכלים." ובאותו מאמר גם ההמלצה שרוב העסקים מדלגים עליה: "למצוא את הפתרון הפשוט ביותר, ולהוסיף מורכבות רק כשצריך".</p>
 
     <p>הבעיה: השוק התחיל לחבר את שני המונחים בשגגה. כשמדברים על <strong>Skills מול Agents</strong> מתפתחת תחושה שצריך לבחור — ובחירה כזו עולה ביוקר. אם תבנו רק Skill — תקבלו תוצר עקבי אבל תפעילו אותו ידנית. אם תבנו רק Agent בלי Skill — תקבלו אוטומציה שמדברת כמו ChatGPT גנרי. השאלה האמיתית של 2026 איננה "איך לעשות AI" אלא "<strong>איך לעשות AI שמדבר בקול של העסק שלי</strong>".</p>
 
     <hr class="divider">
 
-    <h2>Claude Skill: הזיכרון שלא נשכח</h2>
+    <h2>מה זה Claude Skill, ולמה הוא הזיכרון של המערכת?</h2>
     <p class="h2-answer">Skill הוא תיקייה עם הוראות שמלמדות את Claude לבצע משימה ספציפית באופן עקבי — לאורך זמן, על פני שיחות. Claude טוען אותו אוטומטית כשהוא מזהה רלוונטיות.</p>
 
     <p>דמיינו שיש לכם עוזרת אישית שעובדת איתכם כבר שנים. אתם לא צריכים להסביר לה כל פעם איך אתם כותבים מיילים אצלכם — היא יודעת. אתם לא צריכים לחזור על מה הצבעים של המותג — היא זוכרת. <strong>זה Skill</strong>.</p>
 
     <p>מבחינה טכנית: זו תיקייה שמכילה לפחות קובץ אחד בשם <code>SKILL.md</code>, שמתחיל ב-frontmatter עם שני שדות חיוניים — <code>name</code> (השם של הסקיל) ו-<code>description</code> (מתי להשתמש בו). הקובץ עצמו מכיל הוראות מפורטות, ויכול להפנות לקבצי משנה, סקריפטים, או דוגמאות.</p>
 
-    <p>הקסם הוא ב-<strong>Discovery הדרגתי</strong>: Claude לא טוען את כל הסקילים כל הזמן — זה היה ממלא את ה-context. הוא רק רואה את שמותיהם ותיאוריהם. כשמשהו רלוונטי עולה בשיחה — למשל אתם כותבים "תכין קרוסלה ל-Solara Wild" — Claude מזהה שיש לו סקיל בשם <code>brand-worlds-carousel</code> עם תיאור שמתאר בדיוק את המקרה הזה, וטוען אותו לתוך השיחה.</p>
+    <p>הקסם הוא ב-<strong>Discovery הדרגתי</strong>: Claude לא טוען את כל הסקילים כל הזמן — זה היה ממלא את ה-context. הוא רק רואה את שמותיהם ותיאוריהם, לפי <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">התיעוד של אנתרופיק</a> בערך 100 טוקנים לסקיל, וגוף ההוראות (עד כ-5,000 טוקנים) נכנס רק כשהסקיל מופעל. כשמשהו רלוונטי עולה בשיחה — למשל אתם כותבים "תכין קרוסלה ל-Solara Wild" — Claude מזהה שיש לו סקיל בשם <code>brand-worlds-carousel</code> עם תיאור שמתאר בדיוק את המקרה הזה, וטוען אותו לתוך השיחה.</p>
 
     <p><strong>דוגמה קונקרטית:</strong> סקיל בשם <code>brand-voice-linkedin</code> שמכיל את 8 העקרונות של הקול שלכם בלינקדאין, רשימת מילים שכן ולא להשתמש בהן, ומבנה פוסט מועדף. כל פעם שאתם מבקשים לכתוב פוסט לינקדאין, Claude טוען את הסקיל הזה — ואתם מקבלים פוסט שנשמע כמוכם, לא כמו ChatGPT גנרי.</p>
 
-    <h2>Claude Agent: היד שמבצעת</h2>
+    <h2>מה זה Claude Agent, ולמה הוא היד שמבצעת?</h2>
     <p class="h2-answer">Agent הוא יחידה אוטונומית שמתכננת, מחליטה, מפעילה כלים ומשלימה משימה מרובת-שלבים בעצמה. בניגוד ל-Skill, Agent לא טוען ידע — הוא מבצע פעולות.</p>
 
     <p>אם Skill הוא הזיכרון של העוזרת הוותיקה, <strong>Agent הוא היכולת שלה לבצע משימה שלמה מקצה לקצה</strong> — לאסוף נתונים, להחליט מה לעשות איתם, לכתוב, לשלוח, לעקוב — בלי שתפרטו לה כל צעד.</p>
@@ -648,9 +656,9 @@
 
     <p><strong>דוגמה קונקרטית:</strong> Agent שעובד כל שני בבוקר, מתחבר ל-Google Search Console ול-Google Analytics, מושך את הנתונים של השבוע, מזהה דפים שמאבדים טראפיק, כותב סיכום עם המלצות, ושולח לכם אותו במייל. הוא לא צריך שתפעילו אותו ידנית. הוא לא צריך שתסבירו לו כל פעם מה לעשות. <strong>הוא יודע לבד</strong>.</p>
 
-    <p>זה כוח גדול. אבל יש לו חולשה קריטית — והיא מה שמוביל אותנו ישר לחלק הבא.</p>
+    <p>זה כוח גדול, וגם המקום שבו רוב הכסף נשרף. <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener">Gartner העריכה ביוני 2025</a> שיותר מ-40% מפרויקטי ה-agentic AI יבוטלו עד סוף 2027 בגלל עלויות, ערך עסקי לא ברור ובקרות סיכון חסרות, ושמתוך אלפי ספקים שמוכרים "סוכנים" רק כ-130 מציעים יכולת סוכנית אמיתית. השאר הוא מה ש-Gartner קוראת לו agent washing: צ'אטבוט עם שם חדש. וזו בדיוק החולשה שמובילה לחלק הבא: סוכן בלי ידע מותגי מייצר הרבה, ולא בטוח שהוא מייצר אתכם.</p>
 
-    <h2>ההבדל ב-30 שניות</h2>
+    <h2>מה ההבדל בין Skill ל-Agent בשלושים שניות?</h2>
     <p class="h2-answer">Skill = ידע סטטי שנטען לפי הקשר. Agent = ביצוע דינמי שמתכנן ופועל. הבחנה ברורה בין <strong>Skills מול Agents</strong> — אבל לא תחרות, השלמה.</p>
 
     <table class="compare-table">
@@ -688,6 +696,11 @@
           <td>תוצאה של תהליך שלם</td>
         </tr>
         <tr>
+          <th>איפה זה חי</th>
+          <td>תיקייה עם SKILL.md, קובץ שאתם מחזיקים</td>
+          <td>Claude Code, Agent SDK, או תזמון חיצוני</td>
+        </tr>
+        <tr>
           <th>דוגמה</th>
           <td>"תכתוב פוסט לפי המותג שלי"</td>
           <td>"תכין סיכום שבועי מ-A עד Z"</td>
@@ -697,7 +710,7 @@
 
     <p>זה לא או/או. <strong>זה איך הם עובדים יחד שמייצר את הערך האמיתי</strong> — נכנס לזה עכשיו.</p>
 
-    <h2>למה צריך את שניהם: המשוואה Skill × Agent = מערכת ממותגת</h2>
+    <h2>למה צריך גם Skill וגם Agent? המשוואה Skill × Agent</h2>
     <p class="h2-answer">Agent בלי Skill נותן לכם אוטומציה גנרית. Skill בלי Agent נותן לכם עקביות אבל ידנית. ההכפלה ביניהם — Agent שמפעיל Skills בזמן הנכון — היא מה שהופך AI מ"כלי" ל"מערכת ממותגת".</p>
 
     <p>נחזור לעוזרת הוותיקה. בלעדיה, אתם יכולים לעשות הכל בעצמכם — איטי, אבל אתם תמיד אתם. עם עוזרת חדשה שלא מכירה את הסטנדרטים שלכם, אתם תקבלו תוצרים מהר יותר — אבל הם יישמעו כאילו "מישהי אחרת" עשתה אותם. עם עוזרת ותיקה שיודעת בדיוק איך אתם עובדים — אתם מקבלים את שני הדברים יחד.</p>
@@ -732,7 +745,7 @@
 
     <p>המסקנה לא טכנית — היא אסטרטגית. השאלה האמיתית של בעלי עסקים ב-2026 איננה "האם להשתמש ב-AI" אלא "<strong>איך להבטיח שה-AI שלי מדבר בקול שלי</strong>". התשובה היחידה היא: שתי שכבות. Skill לזיכרון, Agent ליד.</p>
 
-    <h2>4 תרחישים: מה צריך, מתי</h2>
+    <h2>מתי מספיק Skill, מתי צריך Agent, ומתי את שניהם? ארבעה תרחישים</h2>
     <p class="h2-answer">כשהמשימה חוזרת ומוגדרת, מספיק Skill. כשהיא רב-שלבית ואוטונומית, צריך Agent. אבל ברוב המקרים העסקיים — צריך את שניהם יחד.</p>
 
     <div class="scenario">
@@ -759,7 +772,7 @@
       <p>אי אפשר רק עם Skill. אי אפשר רק עם Agent. שתי שכבות בעבודה משותפת — זה ה-stack האמיתי.</p>
     </div>
 
-    <h2>שאלות נפוצות</h2>
+    <h2>שאלות נפוצות על Skills, Agents ו-Subagents</h2>
     <p class="h2-answer">השאלות הכי נפוצות שעולות ב-2026 על ההבדל בין Skills, Agents, ו-Subagents.</p>
 
     <div class="faq">
@@ -779,7 +792,7 @@
 
       <div class="faq-item">
         <h3>ומה זה Subagents?</h3>
-        <p>ב-Claude Code יש קונספט שלישי: <strong>Subagents</strong>. אלה Agents מתמחים (כמו <code>explore</code>, <code>plan</code>, <code>code-reviewer</code>) שה-Agent הראשי יכול להאציל אליהם תת-משימות. דמיינו Agent ראשי כמו מנהלת פרויקט, ו-Subagents כצוות שלה. בעוד שסקיל = ידע, Agent = ביצוע, Subagent = עוזר ספציפי בתוך ביצוע גדול יותר.</p>
+        <p>ב-Claude Code יש קונספט שלישי: <strong>Subagents</strong>. אלה Agents מתמחים (כמו <code>explore</code>, <code>plan</code>, <code>code-reviewer</code>) שה-Agent הראשי יכול להאציל אליהם תת-משימות. לפי <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">התיעוד של Claude Code</a>, כל subagent רץ בחלון הקשר משלו, עם system prompt וכלים משלו, ומוגדר כקובץ Markdown עם frontmatter בתיקיית <code>.claude/agents/</code>. דמיינו Agent ראשי כמו מנהלת פרויקט, ו-Subagents כצוות שלה. בעוד שסקיל = ידע, Agent = ביצוע, Subagent = עוזר ספציפי בתוך ביצוע גדול יותר.</p>
       </div>
 
       <div class="faq-item">
@@ -789,11 +802,11 @@
 
       <div class="faq-item">
         <h3>Skills עובדים גם ב-Claude.ai וגם ב-Claude Code?</h3>
-        <p>כן בשניהם, עם הבדל אחד — ב-Claude.ai (הצ'אט) הסקילים נטענים אוטומטית מתוך תיקיית הסקילים הגלובלית של החשבון. ב-Claude Code (ה-CLI) הם נטענים מתיקיית הפרויקט או מתיקייה גלובלית. אותם קבצי <code>SKILL.md</code>, שני קונטקסטים.</p>
+        <p>כן, בשניהם, אבל הם לא מסתנכרנים. ב-Claude.ai מעלים את תיקיית הסקיל כקובץ zip דרך Settings &gt; Features (Pro ומעלה). ב-Claude Code שמים אותה ב-<code>.claude/skills/</code> בפרויקט או ב-<code>~/.claude/skills/</code> לכל הפרויקטים, וקלוד מזהה אותה לבד. אותו קובץ <code>SKILL.md</code>, שני מקומות שצריך לעדכן בנפרד.</p>
       </div>
     </div>
 
-    <h2>סיכום</h2>
+    <h2>אז מה בוחרים ב-2026, Skills או Agents?</h2>
     <p class="h2-answer">השאלה ב-2026 איננה <strong>Skills מול Agents</strong>. השאלה היא איך לבנות שתי שכבות שעובדות יחד — זיכרון ויד — כדי שה-AI שלכם לא רק יעבוד, אלא יעבוד בקול שלכם.</p>
 
     <p>אם מסכמים את כל המאמר בשורה אחת:</p>
