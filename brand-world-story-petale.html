@@ -43,7 +43,7 @@
     "jobTitle": "אסטרטגית מותג ומייסדת Brand Worlds Studio, מפתחת BrandOS"
   },
   "datePublished": "2026-09-05",
-  "dateModified": "2026-09-05",
+  "dateModified": "2026-09-06",
   "publisher": {
     "@type": "Organization",
     "name": "Brand Worlds Studio",
@@ -485,6 +485,7 @@
             margin-bottom: 16px;
         }
         
+        .article-content .article-cta__text { color: rgba(255,255,255,0.72); opacity: 1; }
         .article-cta__text {
             font-size: 1rem;
             color: rgba(255,255,255,0.7);
@@ -655,6 +656,15 @@
 
         .article-content a:not(.article-cta__btn):hover { color: var(--color-accent); }
 
+        /* Share row */
+        .share { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+        .share__label { font-family: var(--font-body-en); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-light); margin-left: 6px; }
+        .share__btn { font-family: var(--font-body-he); font-size: 0.875rem; font-weight: 500; color: var(--color-text); background: transparent; border: 1px solid var(--color-border); border-radius: 999px; padding: 9px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color .3s, color .3s, background .3s; }
+        .share__btn svg { width: 15px; height: 15px; fill: currentColor; }
+        .share__btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+        .share__btn.is-done { background: var(--color-accent-dim); border-color: var(--color-accent); }
+        .share__btn--native { display: none; }
+        @media (max-width: 700px) { .share { gap: 8px; } .share__label { width: 100%; text-align: center; margin: 0 0 4px; } }
         /* Responsive */
         @media (max-width: 700px) {
             .nav { padding: 16px 24px; }
@@ -719,13 +729,13 @@
     </nav>
     <article>
         <header class="article-header">
-            <p class="article-header__label">World Stories · No.01 · Pétale°</p>
-            <h1 class="article-header__title">מיתוג מאפייה שמדבר בשפה אחת: הסיפור של Pétale°</h1>
+            <p class="article-header__label" dir="ltr">World Stories · No.01 · Pétale°&lrm;</p>
+            <h1 class="article-header__title">מיתוג מאפייה שמדבר בשפה אחת: הסיפור של Pétale°&lrm;</h1>
             <p class="article-header__subtitle">תפריט, קופסה, אתר, סרט וסטוריז. חמש נקודות מגע, הבטחה אחת.</p>
             <p class="article-header__meta">מאת <a href="/about.html">חגית אנטבי</a> · ספטמבר 2026 · <a href="petale.html">לעולם עצמו ←</a></p>
         </header>
         <div class="article-content">
-            <p class="article-lede">Pétale° הוא בית מקרונים פריזאי שלא קיים. בניתי אותו בסטודיו כדי לענות על שאלה שאני שומעת מבעלות מאפיות וקונדיטוריות כמעט בכל שיחת אבחון: "יש לי לוגו, יש לי תפריט, יש לי אינסטגרם. למה זה לא מרגיש כמו מותג?" התשובה הקצרה: כי כל אחד מהם נולד בנפרד. המאמר הזה עובר על Pétale° שכבה אחרי שכבה ומראה מה קורה כשכולן נגזרות מאותה הבטחה. אפשר <a href="petale.html">לפתוח את העולם עצמו</a> בחלון נפרד ולקרוא במקביל.</p>
+            <p class="article-lede">Pétale°&lrm; הוא בית מקרונים פריזאי שלא קיים. בניתי אותו בסטודיו כדי לענות על שאלה שאני שומעת מבעלות מאפיות וקונדיטוריות כמעט בכל שיחת אבחון: "יש לי לוגו, יש לי תפריט, יש לי אינסטגרם. למה זה לא מרגיש כמו מותג?" התשובה הקצרה: כי כל אחד מהם נולד בנפרד. המאמר הזה עובר על Pétale°&lrm; שכבה אחרי שכבה ומראה מה קורה כשכולן נגזרות מאותה הבטחה. אפשר <a href="petale.html">לפתוח את העולם עצמו</a> בחלון נפרד ולקרוא במקביל.</p>
 
             <h2>הלקוחה והמקום</h2>
             <p>פריז, הרובע הראשון. חמש ושתים עשרה בבוקר. באטלייה יש שיש ורוד, קערת נחושת, ואור של שחר שנכנס מחלון גבוה. הבעלים מכינים שבעה טעמים בלבד, אותם שבעה כל השנה, ומוכרים אותם בקופסה משושה שנקשרת בסרט אורגנזה. אחר הצהריים הקופסה הזאת מונחת על שולחן ליד החלון בסלון, ושתי ידיים פותחות אותה.</p>
@@ -735,8 +745,8 @@
             </div>
             <p>שימי לב שההבטחה לא אומרת מילה על צבע, פונט או לוגו. היא אומרת מה המותג מוכר באמת. מהרגע שזה ברור, כל החלטה עיצובית הופכת לשאלה אחת פשוטה: האם זה משרת את הרגע, או מפריע לו?</p>
 
-            <h2>מה זה עולם מותג, דרך Pétale°</h2>
-            <p>עולם מותג הוא לא לוגו ולא ספר מותג. הוא <strong>שכבת החלטה</strong>: סט חוקים שקובע מראש איך המותג נראה, נשמע ונע, כך שכל נקודת מגע חדשה יודעת מה לעשות בלי להתחיל מאפס. ב-Pétale° השכבה הזאת מורכבת מארבעה חוקים בלבד:</p>
+            <h2>מה זה עולם מותג, דרך Pétale°&lrm;</h2>
+            <p>עולם מותג הוא לא לוגו ולא ספר מותג. הוא <strong>שכבת החלטה</strong>: סט חוקים שקובע מראש איך המותג נראה, נשמע ונע, כך שכל נקודת מגע חדשה יודעת מה לעשות בלי להתחיל מאפס. ב-Pétale°&lrm; השכבה הזאת מורכבת מארבעה חוקים בלבד:</p>
             <div class="process">
                 <div class="process__step">
                     <span class="process__number">01</span>
@@ -779,7 +789,7 @@
             <p class="constant"><span>מה נשאר קבוע</span>הקופסה במרכז המסך, שיש ורוד ברקע, הקצב האיטי.</p>
 
             <h2>שכבה 2: התפריט והקופסה</h2>
-            <p>בתפריט של Pétale° אין רשימת מחירים. יש שבעה מקרונים, כל אחד בגוון שלו: ורד ולאיצ׳י, פיסטוק, לבנדר ודבש, לימון, פטל, קרמל מלוח, אוכמניות. לחיצה על טעם מוסיפה אותו לקופסה. שישה מקרונים, קופסה אחת, והלקוחה הרכיבה אותה בעצמה.</p>
+            <p>בתפריט של Pétale°&lrm; אין רשימת מחירים. יש שבעה מקרונים, כל אחד בגוון שלו: ורד ולאיצ׳י, פיסטוק, לבנדר ודבש, לימון, פטל, קרמל מלוח, אוכמניות. לחיצה על טעם מוסיפה אותו לקופסה. שישה מקרונים, קופסה אחת, והלקוחה הרכיבה אותה בעצמה.</p>
             <figure class="media">
                 <img src="petale/film/boite-ouverte.webp" width="1600" height="900" alt="קופסת Pétale° פתוחה: שבעה מקרונים בגווני פסטל על שיש ורוד, סרט אורגנזה משוחרר" loading="lazy">
                 <figcaption>La Boîte. התפריט הוא הקולקציה, והקופסה נבנית ממנו.</figcaption>
@@ -808,7 +818,7 @@
             <p class="constant"><span>מה נשאר קבוע</span>אותה קופסה, אותם חומרים, אותו אור.</p>
 
             <h2>שכבה 5: הסטוריז</h2>
-            <p>וזה החלק שבו רוב המותגים הקטנים מתפזרים. הפוסט מיוצר ביום ראשון בכלי אחד, הסטורי ביום שלישי בכלי אחר, והריל אצל עורכת חיצונית. שלושה מקורות, שלוש שפות. ב-Pétale° הסטוריז לא נוצרות מחדש. הן <strong>נחתכות מהעולם</strong>: שלושת פרקי הסרט, בגובה של טלפון, עם הכותרת הצרפתית והשורה העברית של כל פרק. אותה טיפוגרפיה, אותו ורוד, אותו קצב.</p>
+            <p>וזה החלק שבו רוב המותגים הקטנים מתפזרים. הפוסט מיוצר ביום ראשון בכלי אחד, הסטורי ביום שלישי בכלי אחר, והריל אצל עורכת חיצונית. שלושה מקורות, שלוש שפות. ב-Pétale°&lrm; הסטוריז לא נוצרות מחדש. הן <strong>נחתכות מהעולם</strong>: שלושת פרקי הסרט, בגובה של טלפון, עם הכותרת הצרפתית והשורה העברית של כל פרק. אותה טיפוגרפיה, אותו ורוד, אותו קצב.</p>
             <div class="stories" aria-label="שלוש סטוריז של Pétale°, חתוכות משלושת פרקי הסרט">
                 <div class="story">
                     <video src="petale/film/01-descend-m.mp4" poster="petale/film/01-descend-m.webp" autoplay muted loop playsinline preload="metadata" aria-label="סטורי 1: שבעה מקרונים יורדים לקופסה"></video>
@@ -843,7 +853,7 @@
             <p>קראי את העמודה השמאלית מלמעלה למטה. זו ההגדרה הכי פשוטה שיש לי לעולם מותג: <strong>רשימת הדברים שלא משתנים</strong> כשעוברים מנקודת מגע לנקודת מגע.</p>
 
             <h2>מה זה אומר למאפייה שלך: מיתוג קונדיטוריה שנבחרת ולא מושווית</h2>
-            <p>Pétale° דמיוני, אבל הפער שהוא פותר אמיתי מאוד. כשהתפריט מעוצב אצל גרפיקאית, הקופסה אצל ספק אריזות, האתר אצל בונה אתרים והאינסטגרם אצלך, הלקוחה פוגשת ארבעה עסקים שונים. היא לא יכולה לזהות אותך, ולכן היא עושה את הדבר היחיד שנשאר לה: משווה במחיר.</p>
+            <p>Pétale°&lrm; דמיוני, אבל הפער שהוא פותר אמיתי מאוד. כשהתפריט מעוצב אצל גרפיקאית, הקופסה אצל ספק אריזות, האתר אצל בונה אתרים והאינסטגרם אצלך, הלקוחה פוגשת ארבעה עסקים שונים. היא לא יכולה לזהות אותך, ולכן היא עושה את הדבר היחיד שנשאר לה: משווה במחיר.</p>
             <div class="highlight-box">
                 <p>מאפייה עם עולם <strong>נבחרת</strong>. מאפייה בלי עולם <strong>מושווית</strong>. ההבדל הוא לא כמה יפה כל נקודת מגע, אלא האם כולן ממשיכות את אותה הבטחה.</p>
             </div>
@@ -853,11 +863,11 @@
             <p>בקצרה, כי יש על זה <a href="build-brand-world-with-claude-code.html">מאמר שלם</a>: ה-DNA נכתב קודם, בשלוש מילים והבטחה אחת. ממנו נגזרה מערכת תמונה אחת: חומרים, אור, פלטה, קומפוזיציה. הווידאו והסטילס נוצרו ב-AI מאותה מערכת, ולכן הם מסכימים זה עם זה. הקוד תפר אותם לחוויית גלילה אחת עם הקופסה האינטראקטיבית. הסטוריז נחתכות בסוף, מהעולם המוכן. זה הסדר שאני עובדת בו בכל עולם: <a href="brand-dna-as-skill.html">DNA לפני כלים</a>, תמיד.</p>
 
             <h2>עולמות שכנים</h2>
-            <p>Pétale° הוא הראשון בסדרת "סיפורי עולמות". שלושה עולמות קולינריים נוספים מהסטודיו, קרובים ברוח ושונים בסיפור:</p>
+            <p>Pétale°&lrm; הוא הראשון בסדרת "סיפורי עולמות". הפרק השני כבר פורק את MELTÉ°&lrm;, ועוד שני עולמות קולינריים מהסטודיו קרובים ברוח ושונים בסיפור:</p>
             <div class="worlds-grid">
-                <a href="melte.html">
-                    <span class="world-name">MELTÉ°</span>
-                    <span class="world-desc">שוקולד שנמס בגלילה. עולם של היתוך, חום וזרימה</span>
+                <a href="brand-world-story-melte.html">
+                    <span class="world-name">MELTÉ°&lrm; · No.02</span>
+                    <span class="world-desc">מיתוג שוקולד: חמישה טעמים, חדר שמתחלף, סרט ומארז. הפרק הבא בסדרה</span>
                 </a>
                 <a href="/etage/">
                     <span class="world-name">ÉTAGE°</span>
@@ -880,15 +890,15 @@
             </div>
             <div class="faq-item">
                 <h3>מה ההבדל בין עיצוב תפריט למיתוג התפריט?</h3>
-                <p>עיצוב תפריט עונה על "איך זה נראה": פונט, סידור, תמונות. מיתוג התפריט עונה על "מה התפריט אומר על המותג". ב-Pétale° התפריט הוא הקולקציה, שבעה טעמים בשבעה גוונים שנגזרים מאותו DNA, והלקוחה מרכיבה מהם קופסה.</p>
+                <p>עיצוב תפריט עונה על "איך זה נראה": פונט, סידור, תמונות. מיתוג התפריט עונה על "מה התפריט אומר על המותג". ב-Pétale°&lrm; התפריט הוא הקולקציה, שבעה טעמים בשבעה גוונים שנגזרים מאותו DNA, והלקוחה מרכיבה מהם קופסה.</p>
             </div>
             <div class="faq-item">
                 <h3>האם עולם מותג מתאים גם לקונדיטוריה קטנה?</h3>
                 <p>דווקא כן. עסק קטן מייצר הרבה נקודות מגע בעצמו, ובלי חוקיות אחת הן מתפזרות מהר. עולם מותג נותן לקונדיטוריה קטנה שכבת החלטה שחוסכת זמן ומונעת את הרושם של "ארבעה עסקים שונים".</p>
             </div>
             <div class="faq-item">
-                <h3>איך נבנה עולם המותג של Pétale°?</h3>
-                <p>DNA בשלוש מילים והבטחה אחת, מערכת תמונה אחת, וידאו וסטילס שנוצרו ב-AI מאותה מערכת, וקוד שתופר הכול לחוויית גלילה אחת עם קופסה אינטראקטיבית. הסטוריז נחתכות מאותו עולם. Pétale° הוא קייס סטדי של הסטודיו, לא מותג מסחרי.</p>
+                <h3>איך נבנה עולם המותג של Pétale°&lrm;?</h3>
+                <p>DNA בשלוש מילים והבטחה אחת, מערכת תמונה אחת, וידאו וסטילס שנוצרו ב-AI מאותה מערכת, וקוד שתופר הכול לחוויית גלילה אחת עם קופסה אינטראקטיבית. הסטוריז נחתכות מאותו עולם. Pétale°&lrm; הוא קייס סטדי של הסטודיו, לא מותג מסחרי.</p>
             </div>
             <div class="faq-item">
                 <h3>מה קורה כשהתפריט, האריזה והאינסטגרם מעוצבים בנפרד?</h3>
@@ -897,7 +907,7 @@
 
             <div class="studio-note">
                 <span class="label">Studio Note</span>
-                <p>Pétale° הוא עולם מספר 01 בסדרת "סיפורי עולמות": בכל פרק אני לוקחת עולם אחד מהארכיון ומפרקת אותו לשכבות, עם הנכסים האמיתיים שלו מוטמעים בעמוד. הסרט, התמונות והסטוריז שמופיעים כאן הם אותם קבצים שמריצים את <a href="petale.html">העולם עצמו</a>, לא גרסאות "למאמר". זו הדרך שלי להראות שעולם מותג הוא לא רעיון אלא קבצים שמדברים באותה שפה.</p>
+                <p>Pétale°&lrm; הוא עולם מספר 01 בסדרת "סיפורי עולמות": בכל פרק אני לוקחת עולם אחד מהארכיון ומפרקת אותו לשכבות, עם הנכסים האמיתיים שלו מוטמעים בעמוד. הסרט, התמונות והסטוריז שמופיעים כאן הם אותם קבצים שמריצים את <a href="petale.html">העולם עצמו</a>, לא גרסאות "למאמר". זו הדרך שלי להראות שעולם מותג הוא לא רעיון אלא קבצים שמדברים באותה שפה.</p>
             </div>
             <div class="closing">
                 <p>שבעה מקרונים, קופסה אחת, סרט אחד.<br>
@@ -910,11 +920,20 @@
                 <p class="article-cta__text">באבחון פער המותג פורסות יחד את התפריט, האריזה, האתר והפוסטים על שולחן אחד, ובודקות איפה יש עולם ואיפה יש רק נראות.</p>
                 <a href="brand-world.html" class="article-cta__btn">לאבחון פער המותג ←</a>
             </div>
+            <div class="share" aria-label="שיתוף המאמר">
+                <span class="share__label">Share</span>
+                <button type="button" class="share__btn share__btn--native" data-share="native"><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-7-4a3 3 0 0 0 0-2.4l7-4A3 3 0 1 0 15 5a3 3 0 0 0 .1.7l-7 4a3 3 0 1 0 0 4.6l7 4A3 3 0 1 0 18 16z"/></svg>שיתוף</button>
+                <button type="button" class="share__btn" data-share="whatsapp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3 4.4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.3s1 2.7 1.1 2.9c.2.2 2 3.1 4.9 4.2 2.4.9 2.9.8 3.4.7.5 0 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4l-.5-.2-1.9-.9c-.3-.1-.4-.2-.6.1l-.9 1.1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.4 0-.5l-.9-2c-.2-.5-.4-.5-.6-.5H9z"/></svg>WhatsApp</button>
+                <button type="button" class="share__btn" data-share="linkedin"><svg viewBox="0 0 24 24"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6V19h-3V9h2.9v1.4a3.2 3.2 0 0 1 2.8-1.6c3 0 3.6 2 3.6 4.6z"/></svg>LinkedIn</button>
+                <button type="button" class="share__btn" data-share="facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>Facebook</button>
+                <button type="button" class="share__btn" data-share="copy"><svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11z"/></svg><span>העתקת קישור</span></button>
+            </div>
         </div>
     </article>
     <section class="read-more">
         <h3>עוד Insights</h3>
         <div class="read-more-grid">
+            <a href="brand-world-story-melte.html" class="read-more-link">סיפורי עולמות No.02: מיתוג שוקולד שמדבר בשפה אחת, הסיפור של MELTÉ°&lrm;</a>
             <a href="why-i-build-worlds.html" class="read-more-link">למה אני בונה עולמות ולא מותגים</a>
             <a href="brand-world.html" class="read-more-link">עולם מותג לעסק שלך: לא מספיק שיראו שהעסק יפה, צריך שיזהו שזו את</a>
             <a href="build-brand-world-with-claude-code.html" class="read-more-link">בניית עולמות מותג עם Claude Code: אתר, אנימציה ווידאו</a>
@@ -926,6 +945,30 @@
         <p class="footer__text">© 2026 Hagit Antebi. All rights reserved. | <a href="/glossary.html">Glossary</a></p>
         <p class="footer__legal" style="max-width:1400px;margin:16px auto 0;padding:0 clamp(24px,5vw,80px);font-size:.82em;opacity:.7;line-height:1.9;text-align:center"><a href="/privacy.html" style="color:inherit;text-decoration:none">מדיניות פרטיות</a> · <a href="/terms.html" style="color:inherit;text-decoration:none">תנאי שימוש</a> · <a href="/accessibility.html" style="color:inherit;text-decoration:none">הצהרת נגישות</a></p>
     </footer>
+  <script>
+  (function(){
+    var row=document.querySelector('.share'); if(!row) return;
+    var url=(document.querySelector('link[rel=canonical]')||{}).href||location.href;
+    var title=document.title.replace(/\s*\|.*$/,'');
+    var nat=row.querySelector('[data-share=native]');
+    if(navigator.share&&nat&&matchMedia('(pointer:coarse)').matches) nat.style.display='inline-flex';
+    row.addEventListener('click',function(e){
+      var b=e.target.closest('[data-share]'); if(!b) return;
+      var m=b.getAttribute('data-share'), u=encodeURIComponent(url), t=encodeURIComponent(title);
+      if(typeof gtag==='function') gtag('event','share',{method:m,content_type:'article',item_id:location.pathname});
+      if(m==='native'){ navigator.share({title:title,url:url}).catch(function(){}); return; }
+      if(m==='copy'){
+        var done=function(){ var s=b.querySelector('span'); if(s){ s.textContent='הקישור הועתק'; } b.classList.add('is-done'); setTimeout(function(){ if(s) s.textContent='העתקת קישור'; b.classList.remove('is-done'); },2200); };
+        if(navigator.clipboard) navigator.clipboard.writeText(url).then(done,done); else { var i=document.createElement('input'); i.value=url; document.body.appendChild(i); i.select(); try{document.execCommand('copy');}catch(_){ } i.remove(); done(); }
+        return;
+      }
+      var href = m==='whatsapp' ? 'https://api.whatsapp.com/send?text='+t+'%0A'+u
+               : m==='linkedin' ? 'https://www.linkedin.com/sharing/share-offsite/?url='+u
+               : 'https://www.facebook.com/sharer/sharer.php?u='+u;
+      window.open(href,'_blank','noopener,width=640,height=560');
+    });
+  })();
+  </script>
   <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
   <script>
   (function(){
