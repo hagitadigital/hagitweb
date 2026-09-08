@@ -171,3 +171,24 @@ Wikidata: **לא עכשיו** (מחקר + זיכרון מסכימים — פרי
 - "עולם מותג" עם הופעות (היום 0 למרות P1).
 - business-branding-guide בעמוד 2 → עמוד 1 על "בניית מותג עסקי".
 - קליקים אורגניים ×2, ואבחונים (whatsapp_click) לפי עמוד — המספר היחיד שבאמת חשוב.
+
+
+## סטטוס 8.9.2026 — פאזה 2 הושלמה (12/12), חודש לפני הלוח
+
+| # | עמוד | קומיט | מה נוסף מעבר לפרוטוקול |
+|---|---|---|---|
+| 1 | business-branding-guide | d4509c2 | Edelman · Nielsen · Lucidpress · מבקר המדינה |
+| 2 | claude-skills-hebrew-guide | 4d4c65e | Anthropic docs · טבלת Skills/Projects/MCP |
+| 3 | claude-skills-and-agents | 023538d | Anthropic + Gartner |
+| 4 | hebrew-ai-images-brand-typography | 12b722d | MultiTextEdit · LingT2I · טבלת 3 שיטות |
+| 5 | gpt-brand-content-hebrew | 818d772 | סקשן "מה שונה בעברית" (4 כללי DNA) · Doshi & Hauser · CHI 2025 · OpenAI · HubSpot |
+| 6 | ai-branded-content | 6e3691a | סקשן עריכה אנושית · FAQ גלוי (היה רק בסכמה) · Bynder · Google |
+| 7 | brand-architecture (שירות) | 1510d5a | H1 עברי "ארכיטקטורת מותג ושפה מותגית" · טבלת 4 הגדרות · FAQ גלוי · תיאור כפול הוסר |
+| 8 | ai-for-small-business (פילר) | ea97128 | תיקון מקור 39% (IDI=28%; למ״ס דרך דבר/Bizportal) · מחיר Team מתוקן · **קופסת "נכון ל‑"** |
+| 9 | ai-agent-vs-chatbot | 1f62812 | H2 = השאילתה שסוכן AI חיפש · Anthropic · Gartner (לא אומת ישירות, 403) |
+| 10 | rebranding-guide | 496bc39 | טבלת רענון/מיתוג מחדש/מותג חדש · טרופיקנה 2009 · h2→h3 |
+| 11 | why-your-business-isnt-in-chatgpt | 98a523d | Princeton GEO · Muck Rack 84% · Google AI features · שאילתת הסוכן כהוכחה · לשון נקבה |
+| 12 | brand-world (מכירה) | c1d2a67 | רצועת תשובה ישירה + קישור למדריך · Edelman · טבלת אתר/מיתוג/עולם · Person עברי |
+
+**כללים שנולדו בדרך:** קופסת "נכון ל‑" לעובדות מתכלות (רענון ב‑5 לחודש) · לא "נחווה", כן "מרגיש" · Gartner/Reuters/Forbes חוסמים fetch — לאמת דרך ≥3 כלי תקשורת אם הדף עצמו חסום.
+**מדידה:** 5.10 ייצוא GSC #2 = הראשון שמודד את הרטרופיט. לצפות לשינוי בהופעות לפני שינוי במיקום.
