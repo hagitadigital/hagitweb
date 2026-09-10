@@ -4,6 +4,8 @@
    A form opts in by declaring:
      <form data-lead-source="workshop" data-lead-interest="סדנת World Builder">
    …and including a honeypot field named "lead_hp".
+   A checkbox may carry data-lead-label / data-lead-value to
+   control how it appears in the lead summary (e.g. "דיוור: כן").
    Submissions are sent to the leads system (agent_leads) and
    trigger a Telegram ping to Hagit. No page reload.
    ============================================================ */
@@ -22,6 +24,7 @@
 
   // Visible label for a field's group / question.
   function labelText(el) {
+    if (el.dataset && el.dataset.leadLabel) return el.dataset.leadLabel;
     var form = el.form;
     if (el.id && form) {
       var l = form.querySelector('label[for="' + el.id + '"]');
@@ -42,6 +45,7 @@
 
   // Visible label for a single checkbox/radio option.
   function optionLabel(el) {
+    if (el.dataset && el.dataset.leadValue) return el.dataset.leadValue;
     if (el.id && el.form) {
       var l = el.form.querySelector('label[for="' + el.id + '"]');
       if (l) return clean(l.textContent);
