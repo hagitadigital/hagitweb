@@ -1080,7 +1080,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
 <script>
 (function(){
-  if (typeof window.gtag !== 'function') {
+  if (!/(^|\.)hagitantebi\.co\.il$/.test(location.hostname) || navigator.webdriver) return; /* ga4-live-guard */
+    if (typeof window.gtag !== 'function') {
     var s=document.createElement('script');s.async=true;
     s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
     document.head.appendChild(s);

@@ -29,7 +29,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-30WB1J2R2T');
+      if (/(^|\.)hagitantebi\.co\.il$/.test(location.hostname) && !navigator.webdriver) gtag('config', 'G-30WB1J2R2T'); /* ga4-live-guard */
     </script>
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -3092,6 +3092,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
   <script>
   (function(){
+    if (!/(^|\.)hagitantebi\.co\.il$/.test(location.hostname) || navigator.webdriver) return; /* ga4-live-guard */
     if (typeof window.gtag !== 'function') {
       var s=document.createElement('script');s.async=true;
       s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
