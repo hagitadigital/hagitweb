@@ -62,7 +62,8 @@
       {"@type":"ListItem","position":18,"name":"TRAME° — Maison de Couture","url":"https://hagitantebi.co.il/trame/"},
       {"@type":"ListItem","position":19,"name":"CHASEN° — Bar à Matcha","url":"https://hagitantebi.co.il/chasen/"},
       {"@type":"ListItem","position":20,"name":"SONAIR° — Premium Wireless Earbuds","url":"https://hagitantebi.co.il/sonair/"},
-      {"@type":"ListItem","position":21,"name":"ORÉVA° Skin Studio — Founder-led Beauty Brand + Shop","url":"https://hagitantebi.co.il/oreva/"}
+      {"@type":"ListItem","position":21,"name":"ORÉVA° Skin Studio — Founder-led Beauty Brand + Shop","url":"https://hagitantebi.co.il/oreva/"},
+      {"@type":"ListItem","position":22,"name":"VELUNE° Maison de Parfum — Luxury Perfume + Shop","url":"https://hagitantebi.co.il/velune/"}
     ]
   },
   {
@@ -917,6 +918,13 @@ body::before {
 .world-card--oreva .world-card__issue { color: #8F5A3C; }
 .world-card--oreva .world-card__tag { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #B87A57; }
 .world-card--oreva .world-card__media img { object-position: 50% 45%; }
+/* VELUNE° card */
+.world-card--velune { background: #DCE3EB; color: #1E2A38; }
+.world-card--velune .world-card__name { font-family: 'Marcellus', 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.34em; }
+.world-card--velune .world-card__category,
+.world-card--velune .world-card__issue { color: #6E8399; }
+.world-card--velune .world-card__tag { font-family: 'Marcellus', 'Cormorant Garamond', serif; color: #8E1E44; letter-spacing: 0.06em; }
+.world-card--velune .world-card__media img { object-position: 50% 55%; }
 
 /* SONAIR° card */
 .world-card--sonair { background: #EEF0F2; color: #1C1F24; }
@@ -2141,6 +2149,24 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="world-card__tag-he" lang="he">קודם הידיים, אחר כך הבקבוק: הקוסמטיקאית בפרונט, ושבעת המוצרים שלה אחריה. סרט נחושת שנמשך מהיד שלה עד הסל, סרט פריחה שנגלל, לפני ואחרי עם ידית, וחנות בתוך הסיפור.</div>
           <div class="world-card__cta">
             <span>Enter the studio</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="../velune/" class="world-card world-card--velune reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 22</div>
+          <div class="world-card__cta-corner">Shop</div>
+          <img src="../images/home-worlds/velune.webp" alt="VELUNE° Maison de Parfum — Luxury perfume brand world" loading="lazy" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Concept · Parfum · Shop</div>
+          <div class="world-card__name">VELUNE°</div>
+          <div class="world-card__category">Maison de Parfum · Luxury</div>
+          <div class="world-card__tag">Un parfum n'est pas une odeur. C'est un lieu.</div>
+          <div class="world-card__tag-he" lang="he">בושם הוא לא ריח, הוא מקום: דלת שנפתחת עם הגלילה ומצלמה שנכנסת לגן, פרי אחד שנפתח לטיפה שהופכת לבקבוק, ואותו בקבוק בשלוש שעות ביום שמחליפות את גוון כל העמוד. עם בוטיק.</div>
+          <div class="world-card__cta">
+            <span>Enter the maison</span>
             <span class="arr">→</span>
           </div>
         </div>
