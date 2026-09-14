@@ -63,7 +63,8 @@
       {"@type":"ListItem","position":19,"name":"CHASEN° — Bar à Matcha","url":"https://hagitantebi.co.il/chasen/"},
       {"@type":"ListItem","position":20,"name":"SONAIR° — Premium Wireless Earbuds","url":"https://hagitantebi.co.il/sonair/"},
       {"@type":"ListItem","position":21,"name":"ORÉVA° Skin Studio — Founder-led Beauty Brand + Shop","url":"https://hagitantebi.co.il/oreva/"},
-      {"@type":"ListItem","position":22,"name":"VELUNE° Maison de Parfum — Luxury Perfume + Shop","url":"https://hagitantebi.co.il/velune/"}
+      {"@type":"ListItem","position":22,"name":"VELUNE° Maison de Parfum — Luxury Perfume + Shop","url":"https://hagitantebi.co.il/velune/"},
+      {"@type":"ListItem","position":23,"name":"PANCAKERIE° Morning Patisserie — Pancakes + Dish Builder","url":"https://hagitantebi.co.il/pancakerie/"}
     ]
   },
   {
@@ -77,7 +78,7 @@
 }</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,700;1,500&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,600,100;1,9..144,500,100&display=swap" rel="stylesheet">
 
 <style>
 /* ─────────────────────────────────────────────
@@ -925,6 +926,14 @@ body::before {
 .world-card--velune .world-card__issue { color: #6E8399; }
 .world-card--velune .world-card__tag { font-family: 'Marcellus', 'Cormorant Garamond', serif; color: #8E1E44; letter-spacing: 0.06em; }
 .world-card--velune .world-card__media img { object-position: 50% 55%; }
+
+/* PANCAKERIE° card */
+.world-card--pancakerie { background: #EEE6DA; color: #523726; }
+.world-card--pancakerie .world-card__name { font-family: 'Fraunces', 'Playfair Display', serif; font-weight: 600; font-variation-settings: 'SOFT' 100; letter-spacing: 0.06em; }
+.world-card--pancakerie .world-card__category,
+.world-card--pancakerie .world-card__issue { color: #A5A57F; }
+.world-card--pancakerie .world-card__tag { font-family: 'Fraunces', 'Playfair Display', serif; font-style: italic; color: #D39483; letter-spacing: 0.02em; }
+.world-card--pancakerie .world-card__media img { object-position: 60% 50%; }
 
 /* SONAIR° card */
 .world-card--sonair { background: #EEF0F2; color: #1C1F24; }
@@ -2149,6 +2158,24 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="world-card__tag-he" lang="he">קודם הידיים, אחר כך הבקבוק: הקוסמטיקאית בפרונט, ושבעת המוצרים שלה אחריה. סרט נחושת שנמשך מהיד שלה עד הסל, סרט פריחה שנגלל, לפני ואחרי עם ידית, וחנות בתוך הסיפור.</div>
           <div class="world-card__cta">
             <span>Enter the studio</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="../pancakerie/" class="world-card world-card--pancakerie reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 23</div>
+          <div class="world-card__cta-corner">Builder</div>
+          <img src="../images/home-worlds/pancakerie.webp" alt="PANCAKERIE° Morning Patisserie — Pancake brand world with a dish builder" loading="lazy" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Concept · Pancakes · Builder</div>
+          <div class="world-card__name">PANCAKERIE°</div>
+          <div class="world-card__category">Morning Patisserie · Colour</div>
+          <div class="world-card__tag">Le goût se voit avant de se goûter.</div>
+          <div class="world-card__tag-he" lang="he">טעם שרואים לפני שטועמים: ארבע מנות חתימה בארבעת צבעי המותג, מניפה שמחליפה את צבע כל העמוד, בנאי מנה בארבעה שלבים שנבנה משכבות צילום, ומארז שיוצא בצבע המנה שבחרת.</div>
+          <div class="world-card__cta">
+            <span>Enter the patisserie</span>
             <span class="arr">→</span>
           </div>
         </div>
