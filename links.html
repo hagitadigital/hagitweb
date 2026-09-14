@@ -286,6 +286,28 @@
   .now-cta .arrow { color: var(--gold); transition: transform 0.25s ease; }
   .now:hover .now-cta .arrow { transform: translateX(-4px); }
 
+  /* NOW rail — five latest worlds, horizontal scroll with a visible gold scrollbar */
+  .rail {
+    display: flex; gap: 12px;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 2px 14px;
+    margin: 0 -2px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--gold-soft);
+  }
+  .rail::-webkit-scrollbar { height: 4px; }
+  .rail::-webkit-scrollbar-track { background: var(--gold-soft); border-radius: 4px; }
+  .rail::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+  .rail .now { flex: 0 0 84%; scroll-snap-align: start; margin-bottom: 0; }
+  .rail .now-body { padding: 16px 18px 18px; }
+  .rail .now-title { font-size: clamp(21px, 5vw, 26px); }
+  .rail .now-sub { font-size: 13.5px; min-height: 2.9em; }
+  @media (min-width: 560px) { .rail .now { flex-basis: 62%; } }
+  .rail-bar { position: relative; height: 3px; border-radius: 3px; background: var(--gold-soft); margin: -6px 6px 18px; overflow: hidden; }
+  .rail-bar i { position: absolute; top: 0; bottom: 0; right: 0; width: 20%; border-radius: 3px; background: var(--gold); transition: transform .12s linear, width .2s ease; }
+
   /* FEATURED card (BrandOS) — slightly distinct */
   .link-card.featured {
     background: linear-gradient(135deg, #FFFFFF 0%, var(--bg-warm) 100%);
@@ -413,17 +435,56 @@
       <a href="/" class="profile-home">hagitantebi.co.il <span class="arrow">←</span></a>
     </section>
 
-    <!-- NOW: swap this card every time a new post goes out (title, sub, image, href) -->
-    <div class="group-label">Now</div>
-    <a href="/oreva/" class="now" data-link="now-oreva">
-      <img src="oreva-og.png" alt="ORÉVA° Skin Studio — עולם מותג לקוסמטיקאית עם ליין משלה" class="now-media" width="1200" height="630" loading="eager">
-      <div class="now-body">
-        <div class="now-kicker">World No.21 · New</div>
-        <div class="now-title">ORÉVA° <em>Skin Studio</em></div>
-        <p class="now-sub">קודם הידיים. אחר כך הבקבוק. עולם מותג לקוסמטיקאית עם ליין משלה — היא בפרונט, שבעה מוצרים אחריה, וחנות.</p>
-        <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
-      </div>
-    </a>
+    <!-- NOW: the five latest worlds, newest first (right, RTL). Add a new card at the front, drop the last. -->
+    <div class="group-label">Now · חמשת העולמות האחרונים</div>
+    <div class="rail" id="nowRail" aria-label="העולמות האחרונים">
+      <a href="/pancakerie/" class="now" data-link="now-pancakerie">
+        <img src="images/home-worlds/pancakerie.webp" alt="PANCAKERIE° Morning Patisserie — עולם מותג לפנקייקרי עם בנאי מנה" class="now-media" width="1200" height="630" loading="eager">
+        <div class="now-body">
+          <div class="now-kicker">World No.23 · New</div>
+          <div class="now-title">PANCAKERIE° <em>Morning Patisserie</em></div>
+          <p class="now-sub">טעם שרואים לפני שטועמים. ארבע מנות, ארבעה צבעים, ובנאי מנה.</p>
+          <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
+        </div>
+      </a>
+      <a href="/velune/" class="now" data-link="now-velune">
+        <img src="images/home-worlds/velune.webp" alt="VELUNE° Maison de Parfum — עולם מותג לבית בושם" class="now-media" width="1200" height="630" loading="lazy">
+        <div class="now-body">
+          <div class="now-kicker">World No.22</div>
+          <div class="now-title">VELUNE° <em>Maison de Parfum</em></div>
+          <p class="now-sub">בושם הוא לא ריח. הוא מקום. דלת שנפתחת עם הגלילה.</p>
+          <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
+        </div>
+      </a>
+      <a href="/oreva/" class="now" data-link="now-oreva">
+        <img src="images/home-worlds/oreva.webp" alt="ORÉVA° Skin Studio — עולם מותג לקוסמטיקאית עם ליין משלה" class="now-media" width="1200" height="630" loading="lazy">
+        <div class="now-body">
+          <div class="now-kicker">World No.21</div>
+          <div class="now-title">ORÉVA° <em>Skin Studio</em></div>
+          <p class="now-sub">קודם הידיים. אחר כך הבקבוק. ליין משלה, וחנות.</p>
+          <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
+        </div>
+      </a>
+      <a href="/sonair/" class="now" data-link="now-sonair">
+        <img src="images/home-worlds/sonair.webp" alt="SONAIR° — עולם מותג לאוזניות אלחוטיות פרימיום" class="now-media" width="1200" height="630" loading="lazy">
+        <div class="now-body">
+          <div class="now-kicker">World No.20</div>
+          <div class="now-title">SONAIR° <em>Earbuds</em></div>
+          <p class="now-sub">A more human sound. סרט אחד רציף, מזווית אחת.</p>
+          <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
+        </div>
+      </a>
+      <a href="/chasen/" class="now" data-link="now-chasen">
+        <img src="images/home-worlds/chasen.webp" alt="CHASEN° — עולם מותג אינטראקטיבי לבר מאצ'ה" class="now-media" width="1200" height="630" loading="lazy">
+        <div class="now-body">
+          <div class="now-kicker">World No.19</div>
+          <div class="now-title">CHASEN° <em>Bar à Matcha</em></div>
+          <p class="now-sub">כוס שמרכיבים. העולם האינטראקטיבי הראשון.</p>
+          <span class="now-cta">להיכנס לעולם <span class="arrow" aria-hidden="true">←</span></span>
+        </div>
+      </a>
+    </div>
+    <div class="rail-bar" aria-hidden="true"><i id="nowRailThumb"></i></div>
 
     <nav class="links" aria-label="הקישורים">
 
@@ -451,7 +512,7 @@
         <div class="link-icon" aria-hidden="true">W</div>
         <div class="link-body">
           <div class="link-title">כל העולמות</div>
-          <div class="link-sub">21 עולמות מותג חיים — בושם, שוקולד, קפה, מאצ׳ה, יין, אופנה ועוד</div>
+          <div class="link-sub">23 עולמות מותג חיים — בושם, שוקולד, קפה, מאצ׳ה, יין, אופנה ועוד</div>
         </div>
         <span class="link-arrow" aria-hidden="true">←</span>
       </a>
@@ -521,5 +582,19 @@
     },true);
   })();
   </script>
+<script>
+(function(){
+  var rail = document.getElementById('nowRail'), thumb = document.getElementById('nowRailThumb');
+  if (!rail || !thumb) return;
+  function upd(){
+    var max = rail.scrollWidth - rail.clientWidth; if (max <= 0){ thumb.style.width = '100%'; return; }
+    var frac = rail.clientWidth / rail.scrollWidth; thumb.style.width = (frac*100).toFixed(1) + '%';
+    var p = Math.abs(rail.scrollLeft) / max;               /* RTL: scrollLeft is negative in most engines */
+    var travel = rail.clientWidth * (1 - frac);
+    thumb.style.transform = 'translateX(' + (-(p*travel)).toFixed(1) + 'px)';
+  }
+  rail.addEventListener('scroll', upd, {passive:true}); window.addEventListener('resize', upd); upd();
+})();
+</script>
 </body>
 </html>
