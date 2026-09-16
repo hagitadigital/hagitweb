@@ -30,6 +30,7 @@ WORLDS = {
     "orbe/index.html": "ORBE",
     "orea/index.html": "ORÉA",
     "oreva/index.html": "ORÉVA°",
+    "miel/index.html": "MIEL°",
     "pancakerie/index.html": "PANCAKERIE°",
     "regard/index.html": "REGARD°",
     "rosee/index.html": "ROSÉE°",
