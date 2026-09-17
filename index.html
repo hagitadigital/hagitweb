@@ -2544,6 +2544,62 @@ document.addEventListener('DOMContentLoaded', function () {
             <span class="worlds-hub-strip__en" dir="ltr">The Gallery · All Worlds</span>
             <span class="worlds-hub-strip__arrow" aria-hidden="true">←</span>
         </a>
+
+        <!-- La Vitrine teaser — one object in real 3D; the viewer library loads only when this scrolls into view -->
+        <style>
+        .vitrine-teaser{max-width:920px;margin:clamp(22px,3vw,34px) auto 0;padding:0 clamp(16px,4vw,32px)}
+        .vitrine-teaser__card{display:grid;grid-template-columns:200px 1fr;gap:clamp(18px,3vw,36px);align-items:center;background:#fff;border:1px solid rgba(139,115,85,.16);border-radius:20px;padding:clamp(14px,2vw,22px);box-shadow:0 30px 60px -48px rgba(42,32,26,.45)}
+        .vitrine-teaser__stage{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,#FFFDF8 0%,#F5F1E8 58%,#ECE4D6 100%);cursor:grab}
+        .vitrine-teaser__stage:active{cursor:grabbing}
+        .vitrine-teaser__stage img{width:100%;height:100%;object-fit:contain;display:block;animation:vitrine-bob 6s ease-in-out infinite}
+        .vitrine-teaser__stage model-viewer{position:absolute;inset:0;display:block;width:100%;height:100%;background:transparent;--poster-color:transparent;--progress-bar-color:var(--color-copper);--progress-bar-height:2px;touch-action:pan-y;outline:none}
+        .vitrine-teaser__hint{position:absolute;bottom:10px;left:10px;font-size:11px;color:var(--color-chocolate);background:rgba(255,255,255,.8);padding:3px 9px;border-radius:99px;pointer-events:none;transition:opacity .5s}
+        .vitrine-teaser__stage.touched .vitrine-teaser__hint{opacity:0}
+        .vitrine-teaser__label{font-family:var(--font-body-en);font-size:12px;letter-spacing:3.5px;text-transform:uppercase;color:var(--color-copper);font-weight:600;margin-bottom:10px}
+        .vitrine-teaser__title{font-family:var(--font-body-he);font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.2;color:var(--color-chocolate);margin:0 0 8px}
+        .vitrine-teaser__sub{font-size:15px;color:var(--color-taupe);line-height:1.65;max-width:44ch;margin:0 0 14px}
+        .vitrine-teaser__link{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:15px;color:var(--color-copper);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s,gap .3s}
+        .vitrine-teaser__link:hover{border-color:var(--color-copper);gap:12px}
+        @keyframes vitrine-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+        @media(max-width:640px){.vitrine-teaser__card{grid-template-columns:1fr;text-align:center}.vitrine-teaser__stage{max-width:240px;margin:0 auto;width:100%}.vitrine-teaser__sub{margin-inline:auto}}
+        @media(prefers-reduced-motion:reduce){.vitrine-teaser__stage img{animation:none}}
+        </style>
+        <div class="vitrine-teaser reveal" id="vitrine-teaser">
+            <div class="vitrine-teaser__card">
+                <div class="vitrine-teaser__stage" id="vitrineStage" data-src="/vitrine/models/oreva.glb" data-poster="/vitrine/posters/oreva.webp">
+                    <img src="/vitrine/posters/oreva.webp" width="600" height="630" alt="ORÉVA° — בקבוק סרום בתלת-ממד" loading="lazy" decoding="async">
+                    <span class="vitrine-teaser__hint">גררי לסיבוב</span>
+                </div>
+                <div>
+                    <p class="vitrine-teaser__label" dir="ltr">La Vitrine · New</p>
+                    <h3 class="vitrine-teaser__title">המוצרים שלא קיימים, ביד שלך.</h3>
+                    <p class="vitrine-teaser__sub">חמישה חפצים מהעולמות בתלת-ממד אמיתי, לא בסרטון. לסובב, לפתוח, ולהיכנס לעולם. וככה זה נראה גם עם המוצר שלך.</p>
+                    <a class="vitrine-teaser__link" href="/vitrine/">לוויטרינה <span aria-hidden="true">←</span></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function(){
+            var stage=document.getElementById('vitrineStage'); if(!stage||!('IntersectionObserver' in window))return;
+            var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting)return; io.disconnect(); mount(); },{rootMargin:'200px 0px'});
+            io.observe(stage);
+            function mount(){
+                import('https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js').then(function(){
+                    var mv=document.createElement('model-viewer');
+                    mv.setAttribute('src',stage.dataset.src); mv.setAttribute('poster',stage.dataset.poster); mv.setAttribute('alt','ORÉVA° — בקבוק סרום בתלת-ממד');
+                    ['camera-controls','auto-rotate','disable-zoom','disable-pan'].forEach(function(a){mv.setAttribute(a,'');});
+                    mv.setAttribute('auto-rotate-delay','4000'); mv.setAttribute('rotation-per-second','14deg'); mv.setAttribute('camera-orbit','-15deg 84deg 108%'); mv.setAttribute('min-camera-orbit','auto auto 40%');
+                    mv.setAttribute('interaction-prompt','none'); mv.setAttribute('shadow-intensity','0.9'); mv.setAttribute('shadow-softness','0.8'); mv.setAttribute('exposure','1.05'); mv.setAttribute('environment-image','neutral');
+                    mv.addEventListener('load',function(){ var img=stage.querySelector('img'); if(img) img.style.visibility='hidden'; });
+                    var sx,sy,moved;
+                    mv.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY;moved=false;stage.classList.add('touched');});
+                    mv.addEventListener('pointermove',function(e){ if(Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6) moved=true; });
+                    mv.addEventListener('pointerup',function(){ if(!moved) location.href='/vitrine/'; });
+                    stage.insertBefore(mv, stage.firstChild);
+                }).catch(function(){});
+            }
+        })();
+        </script>
     </section>
 
     <!-- ============================================================

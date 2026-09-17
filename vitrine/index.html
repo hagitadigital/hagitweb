@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fire 3rd-party tags on first engagement (or after a fallback delay) — keeps the main thread free on load -->
+    <script>
+    window.__onFirstEngage = (function () {
+      var cbs = [], done = false;
+      function run() { if (done) return; done = true; cbs.forEach(function (f) { try { f(); } catch (e) {} }); }
+      ['pointerdown', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(function (ev) {
+        addEventListener(ev, run, { once: true, passive: true });
+      });
+      setTimeout(run, 3500);
+      return function (f) { done ? f() : cbs.push(f); };
+    })();
+    </script>
+
+    <title>La Vitrine — המוצרים שלא קיימים, ביד שלך · חמישה חפצי מותג בתלת-ממד | Brand Worlds Studio</title>
+    <meta name="description" content="ויטרינה של חמישה חפצים מעולמות המותג של Brand Worlds Studio, בתלת-ממד אמיתי: כוס השוקולד של MELTÉ°, הדלת והבקבוק של VELUNE°, קופסת המקרונים של Pétale°, העוגה של MIEL° והסרום של ORÉVA°. גוררים כדי לסובב, לוחצים כדי להיכנס לעולם. וככה זה נראה עם מוצר אמיתי באתר ובחנות.">
+    <meta name="keywords" content="מוצר תלת מימד לאתר, 3D product viewer, מודל תלת ממד למוצר, עולם מותג, Brand World, חנות אונליין תלת מימד, AR מוצר, Brand Worlds Studio, חגית אנטבי">
+    <meta name="author" content="Hagit Antebi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hagitantebi.co.il/vitrine/">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hagitantebi.co.il/vitrine/">
+    <meta property="og:title" content="La Vitrine — המוצרים שלא קיימים, ביד שלך">
+    <meta property="og:description" content="חמישה חפצים מעולמות המותג של הסטודיו, בתלת-ממד אמיתי. גוררים כדי לסובב, לוחצים כדי להיכנס לעולם.">
+    <meta property="og:image" content="https://hagitantebi.co.il/vitrine-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="Brand Worlds Studio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Vitrine — המוצרים שלא קיימים, ביד שלך">
+    <meta name="twitter:description" content="חמישה חפצים מעולמות המותג של הסטודיו, בתלת-ממד אמיתי. גוררים כדי לסובב, לוחצים כדי להיכנס לעולם.">
+    <meta name="twitter:image" content="https://hagitantebi.co.il/vitrine-og.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="posters/melte.webp" as="image">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://hagitantebi.co.il/vitrine/",
+          "url": "https://hagitantebi.co.il/vitrine/",
+          "name": "La Vitrine — המוצרים שלא קיימים, ביד שלך",
+          "description": "ויטרינה של חמישה חפצים מעולמות המותג של Brand Worlds Studio בתלת-ממד אמיתי: גוררים כדי לסובב, לוחצים כדי להיכנס לעולם. הדגמה של מוצר תלת-ממדי באתר ובחנות.",
+          "inLanguage": "he-IL",
+          "datePublished": "2026-09-17",
+          "dateModified": "2026-09-17",
+          "isPartOf": { "@id": "https://hagitantebi.co.il/#website" },
+          "author": { "@id": "https://hagitantebi.co.il/about.html#hagit" },
+          "publisher": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" },
+          "primaryImageOfPage": "https://hagitantebi.co.il/vitrine-og.jpg",
+          "mainEntity": { "@id": "https://hagitantebi.co.il/vitrine/#objects" }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://hagitantebi.co.il/vitrine/#objects",
+          "name": "חפצי הוויטרינה — חמישה מוצרים מעולמות מותג בתלת-ממד",
+          "itemListOrder": "https://schema.org/ItemListOrderAscending",
+          "numberOfItems": 5,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "MELTÉ° — כוס שוקולד Dark Velvet", "url": "https://hagitantebi.co.il/melte.html" },
+            { "@type": "ListItem", "position": 2, "name": "VELUNE° — דלת ובקבוק בושם", "url": "https://hagitantebi.co.il/velune/" },
+            { "@type": "ListItem", "position": 3, "name": "Pétale° — קופסת מקרונים", "url": "https://hagitantebi.co.il/petale.html" },
+            { "@type": "ListItem", "position": 4, "name": "MIEL° — עוגה רומנטית", "url": "https://hagitantebi.co.il/miel/" },
+            { "@type": "ListItem", "position": 5, "name": "ORÉVA° — סרום GLOW", "url": "https://hagitantebi.co.il/oreva/" }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://hagitantebi.co.il/#brand-worlds-studio",
+          "name": "Brand Worlds Studio",
+          "url": "https://hagitantebi.co.il/",
+          "founder": { "@id": "https://hagitantebi.co.il/about.html#hagit" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://hagitantebi.co.il/about.html#hagit",
+          "name": "חגית אנטבי",
+          "alternateName": "Hagit Antebi",
+          "jobTitle": "אסטרטגית מותג ומייסדת Brand Worlds Studio, מפתחת BrandOS",
+          "url": "https://hagitantebi.co.il/",
+          "worksFor": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://hagitantebi.co.il/" },
+            { "@type": "ListItem", "position": 2, "name": "עולם מותג חי", "item": "https://hagitantebi.co.il/brand-world.html" },
+            { "@type": "ListItem", "position": 3, "name": "La Vitrine", "item": "https://hagitantebi.co.il/vitrine/" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "זה תלת-ממד אמיתי או סרטון?",
+              "acceptedAnswer": { "@type": "Answer", "text": "תלת-ממד אמיתי. כל חפץ הוא מודל גיאומטרי שנטען לדפדפן, ואפשר לסובב אותו ביד לכל כיוון. האותיות על המוצרים הן גופים תלת-ממדיים ולא תמונה מודבקת, ולכן הן נשארות חדות מכל זווית." }
+            },
+            {
+              "@type": "Question",
+              "name": "אפשר לעשות את זה למוצר אמיתי?",
+              "acceptedAnswer": { "@type": "Answer", "text": "כן. מוצר אמיתי נבנה מחדש כגיאומטריה על בסיס תצלומים וקובץ התווית המקורי, כך שהשם והעיצוב מדויקים. המודל משתלב בעמוד המוצר באתר, בחנויות Shopify כקובץ תלת-ממד מובנה, ונפתח בטלפון גם כתצוגת AR. מתאים במיוחד לבקבוקים, צנצנות, קופסאות, כוסות ואריזות." }
+            },
+            {
+              "@type": "Question",
+              "name": "זה עובד בטלפון?",
+              "acceptedAnswer": { "@type": "Answer", "text": "כן. המודלים דחוסים למאות קילובייטים בודדים, נטענים רק כשמגיעים אליהם בגלילה, ורק החפץ שעל המסך מסתובב. גרירה אופקית מסובבת את החפץ, וגרירה אנכית ממשיכה לגלול את העמוד." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --color-cream: #FAF8F3;
+            --color-warm-beige: #F5F1E8;
+            --color-chocolate: #8B7355;
+            --color-ink: #2A201A;
+            --color-copper: #C4765A;
+            --color-copper-deep: #A85F44;
+            --color-taupe: #B8A89A;
+            --color-light-taupe: #D4C9BC;
+            --color-dark-bg: #1A1612;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-body-he: 'Heebo', sans-serif;
+            --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body-he); background: var(--color-cream); color: var(--color-ink); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+        a { color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        /* Nav */
+        .nav-minimal { position: fixed; top: 0; inset-inline: 0; z-index: 50; padding: 16px 0; background: rgba(26,22,18,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .nav-minimal__inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-minimal__logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-cream); text-decoration: none; white-space: nowrap; }
+        .nav-minimal__cta { font-family: var(--font-body-he); font-size: 0.875rem; font-weight: 500; color: var(--color-cream); text-decoration: none; padding: 9px 18px; border: 1px solid rgba(250,248,243,0.4); border-radius: 999px; transition: all .3s; }
+        .nav-minimal__cta:hover { background: var(--color-copper); border-color: var(--color-copper); }
+
+        /* Hero */
+        .hero { padding: clamp(120px, 16vw, 180px) 0 clamp(40px, 6vw, 72px); text-align: center; }
+        .kicker { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.4rem); color: var(--color-copper); letter-spacing: 0.02em; }
+        .hero h1 { font-family: var(--font-body-he); font-weight: 300; font-size: clamp(2.1rem, 5.2vw, 4rem); line-height: 1.12; margin: 14px auto 18px; max-width: 18ch; color: var(--color-ink); }
+        .hero__lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); font-weight: 300; max-width: 58ch; margin: 0 auto; color: #4A3D33; }
+        .hero__how { display: inline-flex; gap: 22px; margin-top: 30px; font-size: 0.9rem; color: var(--color-chocolate); }
+        .hero__how span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-copper); margin-inline-end: 8px; vertical-align: middle; }
+
+        /* Stations */
+        .station { padding: clamp(36px, 6vw, 72px) 0; }
+        .station:nth-of-type(even) { background: var(--color-warm-beige); }
+        .station__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+        .station:nth-of-type(even) .station__grid { direction: ltr; }
+        .station:nth-of-type(even) .station__text { direction: rtl; }
+        .stage { position: relative; border-radius: 22px; overflow: hidden; background: radial-gradient(ellipse at 50% 72%, #FFFDF8 0%, #F5F1E8 58%, #ECE4D6 100%); border: 1px solid rgba(139,115,85,0.14); box-shadow: 0 40px 70px -50px rgba(42,32,26,0.45); }
+        model-viewer { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.05; background: transparent; --poster-color: transparent; --progress-bar-color: var(--color-copper); --progress-bar-height: 2px; touch-action: pan-y; outline: none; }
+        .stage__hint { position: absolute; top: 16px; left: 16px; font-size: 0.78rem; color: var(--color-chocolate); background: rgba(255,255,255,0.78); padding: 5px 11px; border-radius: 999px; pointer-events: none; transition: opacity .6s; display: flex; align-items: center; gap: 7px; }
+        .stage__hint svg { width: 14px; height: 14px; }
+        .stage.touched .stage__hint { opacity: 0; }
+        .stage__num { position: absolute; bottom: 14px; right: 18px; font-family: var(--font-body-en); font-size: 0.72rem; letter-spacing: 0.22em; color: var(--color-taupe); pointer-events: none; }
+        .station__text .kicker { font-size: 1.05rem; }
+        .station__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: 0.12em; line-height: 1; margin: 8px 0 6px; color: var(--color-ink); }
+        .station__sub { font-family: var(--font-body-en); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-chocolate); margin-bottom: 20px; }
+        .station__body { font-size: clamp(1.02rem, 1.35vw, 1.15rem); font-weight: 300; color: #3E3229; max-width: 46ch; }
+        .station__body strong { font-weight: 500; color: var(--color-ink); }
+        .station__cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 1rem; font-weight: 500; color: var(--color-copper); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, gap .3s; }
+        .station__cta:hover { border-color: var(--color-copper); gap: 14px; }
+        .station__cta svg { width: 18px; height: 18px; }
+
+        /* Your product */
+        .yours { padding: clamp(64px, 9vw, 120px) 0; background: var(--color-dark-bg); color: var(--color-cream); }
+        .yours__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+        .yours h2 { font-family: var(--font-body-he); font-weight: 300; font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.2; max-width: 18ch; }
+        .yours h2 em { font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--color-copper); }
+        .yours__lead { margin-top: 18px; font-weight: 300; font-size: 1.08rem; color: rgba(250,248,243,0.8); max-width: 48ch; }
+        .yours__list { list-style: none; display: grid; gap: 18px; }
+        .yours__list li { padding: 20px 22px; border: 1px solid rgba(250,248,243,0.14); border-radius: 16px; background: rgba(250,248,243,0.04); }
+        .yours__list h3 { font-weight: 500; font-size: 1.05rem; margin-bottom: 6px; color: var(--color-cream); }
+        .yours__list p { font-weight: 300; font-size: 0.98rem; color: rgba(250,248,243,0.75); }
+        .yours__cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 999px; font-family: var(--font-body-he); font-size: 1rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: all .3s; }
+        .btn-primary { background: var(--color-copper); color: var(--color-cream); border-color: var(--color-copper); }
+        .btn-primary:hover { background: var(--color-copper-deep); border-color: var(--color-copper-deep); transform: translateY(-2px); }
+        .btn-ghost { color: var(--color-cream); border-color: rgba(250,248,243,0.4); }
+        .btn-ghost:hover { border-color: var(--color-copper); color: var(--color-copper); }
+        .yours__note { font-size: 0.85rem; color: rgba(250,248,243,0.55); margin-top: 14px; }
+
+        /* Studio note */
+        .section--beige { background: var(--color-warm-beige); padding: clamp(56px, 8vw, 96px) 0; }
+        .studio-note { max-width: 720px; margin: 0 auto; text-align: center; }
+        .studio-note__label { font-family: var(--font-body-en); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 18px; }
+        .studio-note__text { font-family: var(--font-display); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-style: italic; line-height: 1.55; color: var(--color-ink); }
+        .studio-note__sig { margin-top: 22px; font-size: 0.9rem; color: var(--color-chocolate); }
+
+        /* Footer */
+        .footer-minimal { padding: 52px 0; border-top: 1px solid var(--color-light-taupe); text-align: center; background: var(--color-cream); }
+        .footer-minimal__text { font-size: 0.875rem; color: var(--color-chocolate); }
+        .footer-minimal__text a { color: var(--color-copper); text-decoration: none; }
+        .footer__legal { max-width: 1400px; margin: 16px auto 0; padding: 0 clamp(24px,5vw,80px); font-size: .82em; opacity: .7; line-height: 1.9; text-align: center; }
+        .footer__legal a { color: inherit; text-decoration: none; }
+
+        @media (max-width: 860px) {
+            .station__grid, .yours__grid { grid-template-columns: 1fr; }
+            .station:nth-of-type(even) .station__grid { direction: rtl; }
+            .station__text { text-align: center; }
+            .station__body { margin: 0 auto; }
+            .stage { max-width: 520px; margin: 0 auto; width: 100%; }
+            model-viewer { aspect-ratio: 1 / 1; }
+            .nav-minimal { padding: 13px 0; }
+            .nav-minimal__logo { font-size: 1.2rem; }
+            .nav-minimal__cta { padding: 8px 15px; font-size: 0.8125rem; white-space: nowrap; }
+            .hero__how { flex-direction: column; gap: 8px; }
+            .yours h2 { max-width: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-minimal" aria-label="ניווט ראשי">
+        <div class="container nav-minimal__inner">
+            <a href="/" class="nav-minimal__logo">Hagit Antebi</a>
+            <a href="#yours" class="nav-minimal__cta">לאבחון פער המותג</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <p class="kicker">La Vitrine · Brand Worlds Studio</p>
+            <h1>המוצרים שלא קיימים, ביד שלך.</h1>
+            <p class="hero__lede">כל עולם מותג בסטודיו מתחיל מחפץ אחד. חמישה מהם עומדים כאן בתלת-ממד אמיתי, לא בסרטון: אפשר לסובב, לפתוח, ולהיכנס לעולם שנבנה סביבם.</p>
+            <p class="hero__how"><span>גררי כדי לסובב</span><span>לחצי על השם כדי להיכנס לעולם</span></p>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 01 · MELTÉ -->
+        <section class="station" id="melte">
+            <div class="container station__grid">
+                <div class="stage reveal">
+                    <model-viewer src="models/melte.glb" poster="posters/melte.webp" alt="MELTÉ° — כוס שוקולד Dark Velvet בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="16deg" autoplay animation-name="MELTE cup turntable" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="eager" reveal="auto"></model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__num">No.05</span>
+                </div>
+                <div class="station__text reveal">
+                    <p class="kicker">Dark Velvet Chocolate</p>
+                    <h2 class="station__name">MELTÉ°</h2>
+                    <p class="station__sub">Brand World No.05</p>
+                    <p class="station__body">כוס שוקולד שנמסה מלמעלה. בעולם של MELTÉ° קליק אחד מחליף טעם, והחדר כולו מתחלף איתו. כאן היא עומדת לבד: <strong>האותיות בפויל, היהלומים המובלטים על הנייר, והשוקולד שגולש על השפה</strong>. סובבי אותה ותראי שהשם לא מודבק עליה. הוא בנוי לתוכה.</p>
+                    <a class="station__cta" href="/melte.html">להיכנס לעולם MELTÉ° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 · VELUNE -->
+        <section class="station" id="velune">
+            <div class="container station__grid">
+                <div class="stage reveal">
+                    <model-viewer src="models/velune.glb" poster="posters/velune.webp" alt="VELUNE° — דלת ובקבוק בושם בתלת-ממד" camera-controls autoplay animation-name="Doors" camera-orbit="-26deg 78deg auto" interpolation-decay="600" data-sway="26" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__num">No.22</span>
+                </div>
+                <div class="station__text reveal">
+                    <p class="kicker">Maison de Parfum</p>
+                    <h2 class="station__name">VELUNE°</h2>
+                    <p class="station__sub">Brand World No.22</p>
+                    <p class="station__body">בושם הוא לא ריח. הוא מקום. בעולם של VELUNE° הדלת נפתחת עם הגלילה. כאן היא נפתחת מעצמה, שוב ושוב: <strong>שתי כנפיים בכחול אבקה, קטיפה בפנים, והבקבוק עם הפקק בצבע פטל</strong>. חכי שתיסגר, ותראי את הקשת המובלטת עם השם משני צידיה.</p>
+                    <a class="station__cta" href="/velune/">להיכנס לעולם VELUNE° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 · Pétale -->
+        <section class="station" id="petale">
+            <div class="container station__grid">
+                <div class="stage reveal">
+                    <model-viewer src="models/petale.glb" poster="posters/petale.webp" alt="Pétale° — קופסת מקרונים עם מכסה שנפתח בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="30deg 64deg 128%" min-camera-orbit="auto auto 60%" camera-target="auto 3% auto" data-lid="LID - open close" data-lid-open="0.22" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב · לחצי לפתיחה</span>
+                    <span class="stage__num">No.01</span>
+                </div>
+                <div class="station__text reveal">
+                    <p class="kicker">Maison de Macarons</p>
+                    <h2 class="station__name">Pétale°</h2>
+                    <p class="station__sub">Brand World No.01</p>
+                    <p class="station__body">הקופסה שממנה התחיל הסטודיו. Pétale° הוא העולם הראשון שבניתי, וזה החפץ הראשון שלו: <strong>שבעה מקרונים, סרט אורגנזה קשור, ומכסה שנפתח</strong>. לחצי על הקופסה כדי לפתוח אותה, וסובבי כדי לראות איך הסרט נופל על הצדדים.</p>
+                    <a class="station__cta" href="/petale.html">להיכנס לעולם Pétale° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 · MIEL -->
+        <section class="station" id="miel">
+            <div class="container station__grid">
+                <div class="stage reveal">
+                    <model-viewer src="models/miel.glb" poster="posters/miel.webp" alt="MIEL° — עוגה רומנטית על מגש ממותג בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="12deg" camera-orbit="-20deg 72deg 70%" min-camera-orbit="auto auto 40%" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__num">No.24</span>
+                </div>
+                <div class="station__text reveal">
+                    <p class="kicker">Maison Miel Pâtisserie</p>
+                    <h2 class="station__name">MIEL°</h2>
+                    <p class="station__sub">Brand World No.24</p>
+                    <p class="station__body">בעולם של MIEL° העוגה נבנית בגלילה, שכבה אחרי שכבה, וטאפ אחד חותך אותה ומראה מה בפנים. כאן היא שלמה: <strong>ורדים מקרם, מקרונים, מרנגים ופטל, על מגש עם השם</strong>. סובבי ותראי שאין לה צד קדמי. כל צד הוא הצד היפה.</p>
+                    <a class="station__cta" href="/miel/">להיכנס לעולם MIEL° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 · ORÉVA -->
+        <section class="station" id="oreva">
+            <div class="container station__grid">
+                <div class="stage reveal">
+                    <model-viewer src="models/oreva.glb" poster="posters/oreva.webp" alt="ORÉVA° — בקבוק סרום GLOW עם משאבה בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="-15deg 84deg 108%" min-camera-orbit="auto auto 40%" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__num">No.21</span>
+                </div>
+                <div class="station__text reveal">
+                    <p class="kicker">Skin Studio</p>
+                    <h2 class="station__name">ORÉVA°</h2>
+                    <p class="station__sub">Brand World No.21</p>
+                    <p class="station__body">סרום GLOW של קוסמטיקאית שיצאה מחדר הטיפולים עם ליין משלה. <strong>זכוכית חלבית, סרום ורדרד בפנים, משאבה בנחושת</strong>, והשם כתוב על הבקבוק ולא מודבק עליו. זה החפץ שהכי קרוב למוצר אמיתי, ולכן הוא סוגר את הוויטרינה.</p>
+                    <a class="station__cta" href="/oreva/">להיכנס לעולם ORÉVA° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Your product -->
+        <section class="yours" id="yours">
+            <div class="container yours__grid">
+                <div class="reveal">
+                    <p class="kicker">ככה זה נראה עם המוצר שלך</p>
+                    <h2>המוצר שלך, <em>ביד של הלקוחה</em>, עוד לפני שהיא הזמינה.</h2>
+                    <p class="yours__lead">חמשת החפצים כאן שייכים למותגים שלא קיימים. עם מוצר אמיתי זה עובד אותו דבר, ואפילו מדויק יותר, כי יש לך משהו שלמותג פיקטיבי אין: קובץ התווית המקורי. המוצר נבנה מחדש כגיאומטריה על בסיס תצלומים והתווית, השם נשאר חד מכל זווית, והחפץ עומד בעמוד המוצר ומחכה שיסובבו אותו.</p>
+                    <div class="yours__cta">
+                        <a class="btn btn-primary" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%95%D7%95%D7%99%D7%98%D7%A8%D7%99%D7%A0%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92" target="_blank" rel="noopener">לאבחון פער המותג</a>
+                        <a class="btn btn-ghost" href="/brand-world.html">מה זה עולם מותג</a>
+                    </div>
+                    <p class="yours__note">30 דקות, בלי התחייבות. נמפה יחד מה הלקוחה שלך רואה היום, ומה היא צריכה להחזיק ביד.</p>
+                </div>
+                <ul class="yours__list reveal">
+                    <li><h3>בעמוד המוצר באתר</h3><p>החפץ מסתובב במקום גלריית תמונות סטטית. גרירה מסובבת, לחיצה פותחת, וכל זווית נשארת חדה כי הכול גיאומטריה ולא תמונה.</p></li>
+                    <li><h3>בחנות</h3><p>Shopify תומכת בקבצי תלת-ממד בגלריית המוצר באופן מובנה. אותו קובץ נפתח בטלפון כתצוגת AR: הצנצנת על השיש של הלקוחה, לפני שהזמינה.</p></li>
+                    <li><h3>מה מתאים</h3><p>בקבוקים, צנצנות, קופסאות, כוסות, נרות ואריזות. כל מה שהצורה שלו ברורה והחומר מספר את הסיפור. מוצר אחד, לא קטלוג שלם.</p></li>
+                    <li><h3>ומה זה לא</h3><p>לא סרטון סיבוב ולא תמונה שמנופחת לתלת-ממד. המודל נבנה חלק אחרי חלק, ולכן אפשר לפתוח מכסה, להזיז דלת, ולשנות טעם בלי לבנות מחדש.</p></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Studio note -->
+        <section class="section--beige">
+            <div class="container">
+                <div class="studio-note reveal">
+                    <p class="studio-note__label">הערת סטודיו</p>
+                    <p class="studio-note__text">"סיבוב אחד ביד עושה למותג מה שעשר תמונות לא עושות: הוא הופך אותו לדבר שהלקוחה כבר החזיקה. וממה שהחזקת, קשה להיפרד בגלל מחיר."</p>
+                    <p class="studio-note__sig">— חגית אנטבי · אסטרטגית מותג ומייסדת Brand Worlds Studio</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-minimal">
+        <div class="container">
+            <p class="footer-minimal__text">
+                <a href="/">Brand Worlds Studio</a> · <a href="/brand-world.html">עולם מותג חי</a> · <a href="/brandos-custom.html">BrandOS Custom</a> · <a href="/about.html">אודות</a> · © <span id="year"></span>
+            </p>
+        </div>
+        <p class="footer__legal"><a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a></p>
+    </footer>
+
+    <script>
+    (function () {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Reveal on scroll
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+        var viewers = document.querySelectorAll('model-viewer');
+
+        // Only the object on screen turns; the rest rest.
+        var vio = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                var mv = e.target;
+                if (e.isIntersecting) { mv.dataset.onscreen = '1'; if (mv.dataset.rotate) mv.setAttribute('auto-rotate', ''); if (mv.dataset.anim) mv.play && mv.play(); }
+                else { delete mv.dataset.onscreen; if (mv.hasAttribute('auto-rotate')) { mv.dataset.rotate = '1'; mv.removeAttribute('auto-rotate'); } if (mv.hasAttribute('autoplay')) { mv.dataset.anim = '1'; mv.pause && mv.pause(); } }
+            });
+        }, { threshold: 0.2 });
+
+        viewers.forEach(function (mv) {
+            var stage = mv.closest('.stage');
+            vio.observe(mv);
+            ['pointerdown', 'touchstart'].forEach(function (ev) { mv.addEventListener(ev, function () { stage.classList.add('touched'); }, { passive: true }); });
+
+            // VELUNE reads best from the front: a slow sway instead of a full turn
+            if (mv.dataset.sway) {
+                var amp = +mv.dataset.sway, dir = 1;
+                mv.addEventListener('load', function () {
+                    setInterval(function () { if (!mv.dataset.onscreen || stage.classList.contains('touched')) return; dir = -dir; mv.cameraOrbit = (dir * amp) + 'deg 78deg auto'; }, 3400);
+                });
+            }
+
+            // Pétale: the lid opens on a click, not on a loop
+            if (mv.dataset.lid) {
+                var open = false, sx, sy, moved;
+                mv.addEventListener('load', function () { mv.animationName = mv.dataset.lid; mv.pause(); mv.currentTime = 0; });
+                mv.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; moved = false; });
+                mv.addEventListener('pointermove', function (e) { if (Math.abs(e.clientX - sx) > 6 || Math.abs(e.clientY - sy) > 6) moved = true; });
+                mv.addEventListener('pointerup', function () {
+                    if (moved) return;
+                    open = !open;
+                    var dur = mv.duration || 2; var t0 = performance.now(); var from = mv.currentTime;
+                    var to = open ? dur * (+mv.dataset.lidOpen || 0.5) : 0;
+                    (function step(now) {
+                        var k = Math.min(1, (now - t0) / 900); var ease = 1 - Math.pow(1 - k, 3);
+                        mv.currentTime = from + (to - from) * ease;
+                        if (k < 1) requestAnimationFrame(step);
+                    })(t0);
+                });
+            }
+        });
+    })();
+    </script>
+
+<!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
+  <script>
+  (function(){
+    if (!/(^|\.)hagitantebi\.co\.il$/.test(location.hostname) || navigator.webdriver) return; /* ga4-live-guard */
+    if (typeof window.gtag !== 'function') {
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());
+      gtag('config','G-30WB1J2R2T');
+    }
+    document.addEventListener('click',function(e){
+      var t=e.target instanceof Element?e.target:null;
+      var a=t&&t.closest?t.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+      if(a)gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname});
+      var w=t&&t.closest?t.closest('a.station__cta'):null;
+      if(w)gtag('event','vitrine_enter_world',{world:w.closest('.station').id,page_path:location.pathname});
+    },true);
+  })();
+  </script>
+</body>
+</html>
