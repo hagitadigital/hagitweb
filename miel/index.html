@@ -295,9 +295,36 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .rooms{max-width:1240px;margin:0 auto;padding:clamp(40px,7vh,80px) var(--gutter) 0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px)}
   .rooms img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:18px}
   .boite{max-width:1240px;margin:0 auto;padding:clamp(60px,10vh,120px) var(--gutter) clamp(70px,12vh,150px);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
-  .boite .pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .boite .pics img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:18px}
-  .boite .pics img:first-child{grid-column:1/-1;aspect-ratio:3/2}
+  /* La Boîte · a sculptural box; the cake, in real 3D, rises out of it and past the frame */
+  .ecrin{position:relative;width:100%;max-width:620px;aspect-ratio:1/1.15;margin:0 auto;isolation:isolate}
+  .ecrin>*{position:absolute}
+  .ecrin .cadre{left:0;right:0;top:34%;bottom:0;z-index:0;border-radius:24px;background:linear-gradient(180deg,#FBF4ED,var(--creme));box-shadow:inset 0 0 0 1px var(--or-soft),0 34px 70px -34px rgba(74,44,36,.28)}
+  .ecrin .cadre::after{content:"";position:absolute;inset:10px;border-radius:16px;border:1px solid rgba(184,149,106,.26)}
+  .ecrin .n{bottom:2.4%;left:22px;z-index:7;line-height:1.5;font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:.06em;color:var(--or);direction:ltr}
+  .ecrin .shadow{left:12%;right:12%;top:89%;height:10%;z-index:0;border-radius:50%;background:radial-gradient(closest-side,rgba(74,44,36,.24),transparent);filter:blur(6px)}
+  .ecrin .open{left:10%;width:80%;top:62%;height:8%;z-index:1;clip-path:polygon(7.5% 0,92.5% 0,100% 100%,0 100%);background:linear-gradient(180deg,#C99A95,#E4C2BC 70%,#EDD2CC)}
+  .ecrin .ribbon{left:26%;width:5.5%;z-index:2;background:linear-gradient(90deg,#B97878,#DAA3A3 38%,#CD8F8F 70%,#B57373)}
+  .ecrin .ribbon.in{top:62%;height:8%;transform:skewX(-21deg);transform-origin:50% 100%;filter:brightness(.92)}
+  .ecrin .ribbon.out{top:70%;height:22%;z-index:6;box-shadow:0 0 0 1px rgba(74,44,36,.05)}
+  .ecrin .lidwrap{left:16%;width:68%;top:36%;height:26%;z-index:3;perspective:900px;perspective-origin:50% -80%}
+  .ecrin .lid{position:absolute;inset:0;transform-origin:50% 100%;transform:rotateX(-84deg);border-radius:6px 6px 0 0;background:linear-gradient(180deg,#FFFDFA,#F6ECE3);box-shadow:inset 0 0 0 1px rgba(184,149,106,.35);backface-visibility:visible}
+  .ecrin .lid::after{content:"";position:absolute;inset:9px;border:1px solid rgba(184,149,106,.3);border-radius:3px}
+  .ecrin .cakeclip{left:0;right:0;top:0;bottom:8%;z-index:4;overflow:hidden;pointer-events:none}
+  .ecrin .cake{position:absolute;left:13%;width:74%;top:6.4%;aspect-ratio:1103/1158;pointer-events:auto}
+  .ecrin .cake__in{position:absolute;inset:0}
+  .ecrin.out .cake__in{animation:cakefloat 5.5s ease-in-out infinite}
+  @keyframes cakefloat{50%{transform:translateY(-1.4%)}}
+  .ecrin .cake img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transition:opacity .5s}
+  .ecrin.loaded .cake img{opacity:0}
+  .ecrin model-viewer{position:absolute;inset:0;width:100%;height:100%;background:transparent;--poster-color:transparent;--progress-bar-color:var(--or);--progress-bar-height:2px;touch-action:pan-y;outline:none;cursor:grab}
+  .ecrin .front{left:10%;width:80%;top:70%;height:22%;z-index:5;border-radius:0 0 12px 12px;background:linear-gradient(180deg,#FFFDFA,#F6ECE3);box-shadow:inset 0 0 0 1px rgba(184,149,106,.35),0 18px 30px -18px rgba(74,44,36,.35)}
+  .ecrin .front::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(180deg,#EBDBCF,#FFFDFA)}
+  .ecrin .front .inner{position:absolute;inset:11px;border:1px solid rgba(184,149,106,.3);border-radius:0 0 7px 7px}
+  .ecrin .front .name{position:absolute;left:36%;right:5%;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--serif);font-size:clamp(18px,2.6vw,28px);letter-spacing:.2em;color:var(--cacao);direction:ltr}
+  .ecrin .front .name b{font-weight:400;color:var(--or)}
+  .ecrin .front .name small{display:block;font-size:.42em;letter-spacing:.34em;margin-top:6px;color:var(--or)}
+  .ecrin .hint{left:0;right:0;bottom:2.4%;z-index:7;text-align:center;font-size:13px;letter-spacing:.1em;color:var(--or);transition:opacity .4s;pointer-events:none}
+  .ecrin.touched .hint{opacity:0}
   .boite h2{font-size:clamp(30px,3.8vw,54px)}
   .boxlist{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
   .boxlist li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:15.5px}
@@ -307,7 +334,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .boxsvg{width:110px;height:auto;margin-bottom:18px}
   .boite .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:15px}
   .boite .tot .p{font-family:var(--serif);font-size:26px;direction:ltr;unicode-bidi:isolate}
-  @media (max-width:900px){.rooms,.boite{grid-template-columns:1fr} .lieu{height:60vh}}
+  @media (max-width:900px){.rooms,.boite{grid-template-columns:1fr} .lieu{height:60vh} .ecrin{max-width:440px} .ecrin .n{display:none} .boite{padding-top:clamp(40px,7vh,80px)}}
 
   /* ---------- brand footer ---------- */
   footer.brand{background:var(--cacao);color:var(--creme);padding:64px var(--gutter) 28px}
@@ -647,10 +674,21 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <picture><source media="(max-width:700px)" srcset="assets/01-maison-counter-m.webp"><img src="assets/01-maison-counter.webp" alt="לקוחה מקבלת עוגה בקופסה בדלפק" width="1920" height="1080" loading="lazy"></picture>
   </div>
   <div class="boite" id="boite">
-    <div class="pics">
-      <picture><source media="(max-width:700px)" srcset="assets/02-maison-giftbox-m.webp"><img src="assets/02-maison-giftbox.webp" alt="קופסת עוגה לבנה עם סרט ורוד" width="1920" height="1080" loading="lazy"></picture>
-      <picture><source media="(max-width:700px)" srcset="assets/04-maison-cake-in-box-m.webp"><img src="assets/04-maison-cake-in-box.webp" alt="עוגת החתימה בתוך הקופסה הפתוחה" width="1920" height="1080" loading="lazy"></picture>
-      <picture><source media="(max-width:700px)" srcset="assets/13-still-table-set-m.webp"><img src="assets/13-still-table-set.webp" alt="שולחן ערוך עם עוגות, קאפקייקס ומקרונים" width="1920" height="1080" loading="lazy"></picture>
+    <div class="ecrin" id="ecrin" data-src="assets/cake-3d.glb" data-poster="assets/cake-3d.webp">
+      <div class="cadre" aria-hidden="true"></div>
+      <span class="n" aria-hidden="true">La Boîte · N° 24</span>
+      <div class="shadow" aria-hidden="true"></div>
+      <div class="open" aria-hidden="true"></div>
+      <div class="ribbon in" aria-hidden="true"></div>
+      <div class="lidwrap" aria-hidden="true"><div class="lid"></div></div>
+      <div class="cakeclip">
+        <div class="cake"><div class="cake__in">
+          <img src="assets/cake-3d.webp" alt="עוגת החתימה של MIEL° על מגש ממותג, בתלת-ממד, עולה מתוך הקופסה" loading="lazy" width="1103" height="1158">
+        </div></div>
+      </div>
+      <div class="front" aria-hidden="true"><div class="inner"></div><div class="name">MIEL<b>°</b><small>MAISON MIEL · PÂTISSERIE</small></div></div>
+      <div class="ribbon out" aria-hidden="true"></div>
+      <span class="hint" aria-hidden="true">גררי לסובב · אין לה צד קדמי</span>
     </div>
     <div>
       <svg class="boxsvg" viewBox="0 0 110 80" aria-hidden="true"><rect x="8" y="26" width="94" height="48" rx="4" fill="none" stroke="#B8956A" stroke-width="1.5"/><path d="M4 26h102l-6-14H10z" fill="none" stroke="#B8956A" stroke-width="1.5"/><path d="M55 12v62M8 50h94" stroke="#C98989" stroke-width="1.5"/><path d="M55 12c-6-8-16-8-14 0 2 6 10 6 14 0zm0 0c6-8 16-8 14 0-2 6-10 6-14 0z" fill="none" stroke="#C98989" stroke-width="1.5"/></svg>
@@ -1001,6 +1039,36 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   $("#boxClear").addEventListener("click", function(){ box = []; try { localStorage.removeItem(KEY); } catch(e){} renderBox(); });
   renderBox();
   renderBuild();
+
+  /* ---------- 06 · La Boîte: the lid opens, the cake rises out of the box in real 3D ---------- */
+  (function(){
+    var ecrin = $("#ecrin"); if (!ecrin) return;
+    var lid = $(".lid", ecrin), cake = $(".cake", ecrin), holder = $(".cake__in", ecrin);
+    if (reduced){ gsap.set(lid, { rotateX:24 }); gsap.set(cake, { yPercent:0 }); ecrin.classList.add("out"); }
+    else {
+      gsap.set(lid, { rotateX:-84 }); gsap.set(cake, { y:0, yPercent:84 });
+      gsap.timeline({ scrollTrigger:{ trigger:ecrin, start:"top 80%", end:"center 45%", scrub:.7,
+        onUpdate:function(st){ ecrin.classList.toggle("out", st.progress > .96); } } })
+        .to(lid, { rotateX:24, duration:.45, ease:"power2.inOut" }, 0)
+        .to(cake, { yPercent:0, duration:.6, ease:"power2.out" }, .3);
+    }
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(es){ if (!es[0].isIntersecting) return; io.disconnect(); mount(); }, { rootMargin:"320px 0px" });
+    io.observe(ecrin);
+    function mount(){
+      import("https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js").then(function(){
+        var mv = document.createElement("model-viewer");
+        mv.setAttribute("src", ecrin.dataset.src); mv.setAttribute("poster", ecrin.dataset.poster); mv.setAttribute("alt", "עוגת החתימה של MIEL° בתלת-ממד, גררי לסובב");
+        ["camera-controls","auto-rotate","disable-zoom","disable-pan"].forEach(function(a){ mv.setAttribute(a, ""); });
+        mv.setAttribute("auto-rotate-delay", "3500"); mv.setAttribute("rotation-per-second", "10deg");
+        mv.setAttribute("camera-orbit", "-20deg 72deg 70%"); mv.setAttribute("min-camera-orbit", "auto 62deg 70%"); mv.setAttribute("max-camera-orbit", "auto 84deg auto");
+        mv.setAttribute("interaction-prompt", "none"); mv.setAttribute("shadow-intensity", "0.35"); mv.setAttribute("shadow-softness", "1"); mv.setAttribute("exposure", "1.05"); mv.setAttribute("environment-image", "neutral");
+        mv.addEventListener("load", function(){ ecrin.classList.add("loaded"); });
+        mv.addEventListener("pointerdown", function(){ ecrin.classList.add("touched"); });
+        holder.insertBefore(mv, holder.firstChild);
+      }).catch(function(){});
+    }
+  })();
 })();
 </script>
 <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
