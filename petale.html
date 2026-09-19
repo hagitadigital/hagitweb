@@ -395,9 +395,26 @@
   .menu .head{text-align:center;margin-bottom:60px}
   .menu .head h2{font-family:"Fraunces",serif;font-size:clamp(40px,7vw,82px);font-weight:500;line-height:1;letter-spacing:-2px}
   .menu .head p{margin-top:14px;color:var(--muted);font-size:18px}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .menu-body{display:grid;grid-template-columns:minmax(300px,.92fr) 1.08fr;gap:clamp(24px,4vw,56px);align-items:start}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  /* La Boîte in real 3D: her picks colour the seven macarons, the lid closes on the seventh */
+  .boite3d{position:sticky;top:112px;aspect-ratio:1/1;border-radius:36px;overflow:hidden;isolation:isolate;
+        background:radial-gradient(circle at 50% 38%,#fff 0%,var(--cream) 62%,#fbeee9 100%);
+        box-shadow:0 30px 60px -34px rgba(58,36,56,.35),inset 0 0 0 1px rgba(255,255,255,.8)}
+  .boite3d img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transition:opacity .5s;z-index:0}
+  .boite3d.loaded img{opacity:0}
+  .boite3d model-viewer{position:absolute;inset:0;width:100%;height:100%;background:transparent;z-index:1;--poster-color:transparent;--progress-bar-color:var(--framboise);--progress-bar-height:2px;touch-action:pan-y;outline:none;cursor:grab}
+  .b3-hint{position:absolute;left:0;right:0;bottom:18px;z-index:2;text-align:center;font-size:13px;letter-spacing:.06em;color:var(--muted);pointer-events:none;transition:opacity .4s}
+  .b3-hint.he{bottom:38px;direction:rtl;letter-spacing:0}
+  .boite3d.touched .b3-hint{opacity:0}
+  .b3-tag{position:absolute;top:20px;left:24px;z-index:2;font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink);pointer-events:none}
+  .b3-tag b{font-style:normal;font-weight:600;color:var(--framboise)}
+  @media(max-width:900px){
+    .menu-body{grid-template-columns:1fr;gap:18px}
+    .boite3d{top:calc(30px + 62px);z-index:5;aspect-ratio:auto;height:min(58vw,300px);border-radius:26px}
+    .b3-hint{bottom:10px;font-size:12px} .b3-hint.he{bottom:26px} .b3-tag{top:14px;left:18px;font-size:15px}
+  }
+  @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:14px} .card{padding:22px 14px 20px;border-radius:22px} .card .ph{height:110px} .card .name{font-size:20px}}
   .card{background:#fff;border-radius:28px;padding:30px 22px 28px;text-align:center;position:relative;overflow:hidden;cursor:pointer;
         box-shadow:0 16px 36px -22px rgba(58,36,56,.35);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
         border:1px solid rgba(255,255,255,.7)}
@@ -725,7 +742,14 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="head reveal">
       <h2>The Flavor Box</h2>
       <p>Seven shades of sweet. Tap to fill your boîte.</p>
-      <p class="he-hint" lang="he">לחיצה על טעם מוסיפה אותו לקופסה — שישה מקרונים לקופסה אחת.</p>
+      <p class="he-hint" lang="he">לחיצה על טעם צובעת מקרון בקופסה — שבעה מקרונים, ובשביעי המכסה נסגר.</p>
+    </div>
+    <div class="menu-body">
+    <div class="boite3d" id="boite3d" data-src="petale/boite-3d.glb" data-poster="petale/boite-3d.webp">
+      <img src="petale/boite-3d.webp" alt="Pétale° macaron box in 3D, seven macarons, lid open" loading="lazy" width="1103" height="1158">
+      <span class="b3-tag">Votre boîte · <b id="b3Count">0</b>/7</span>
+      <span class="b3-hint he" lang="he">גררי לסובב · לחצי על טעם למלא</span>
+      <span class="b3-hint">Drag to turn · Tap a flavor to fill</span>
     </div>
     <div class="grid" id="flavor-grid">
       <article class="card reveal" style="--blob:var(--rose);--accent:var(--rose)" data-idx="0" data-shell="#ffc2d4" role="button" tabindex="0" aria-label="הוספת מקרון Rose לקופסה">
@@ -770,6 +794,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="name">Bleuet</div>
         <div class="price">₪14</div>
       </article>
+    </div>
     </div>
   </section>
 
@@ -861,8 +886,9 @@ document.addEventListener('DOMContentLoaded', function () {
   <!-- LA BOÎTE — build-your-box tray -->
   <div class="boite" id="boite" aria-live="polite">
     <div class="boite-inner">
-      <div class="boite-label"><span class="fr">La Boîte</span><span class="cnt"><b id="bCount">0</b> / 6</span></div>
+      <div class="boite-label"><span class="fr">La Boîte</span><span class="cnt"><b id="bCount">0</b> / 7</span></div>
       <div class="slots" id="bSlots">
+        <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
         <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
         <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
         <button class="slot" type="button" aria-label="הסרת מקרון מהקופסה"></button>
@@ -879,7 +905,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </svg>
       <div class="txt">
         <div class="fr">Votre boîte est prête.</div>
-        <div class="he" lang="he">שישה טעמים, DNA אחד — הקופסה מוכנה.</div>
+        <div class="he" lang="he">שבעה טעמים, DNA אחד — הקופסה נסגרה.</div>
       </div>
       <button id="bAgain" type="button">Recommencer ↺</button>
     </div>
@@ -1059,7 +1085,7 @@ const bCount=document.getElementById('bCount');
 const cards=gsap.utils.toArray('#flavor-grid .card');
 const picked=[]; let boxDone=false;
 
-function updateCount(){bCount.textContent=picked.length;}
+function updateCount(){bCount.textContent=picked.length; const c3=document.getElementById('b3Count'); if(c3)c3.textContent=picked.length; paintAll();}
 function fillSlot(slot,f){
   slot.innerHTML=`<img src="petale/${f.img}.webp" alt="">`;
   slot.classList.add('filled');
@@ -1071,25 +1097,28 @@ function completeBox(){
   gsap.to(paths,{strokeDashoffset:0,duration:.9,stagger:.18,ease:'power2.out',delay:.15});
   if(typeof fbq==='function')fbq('trackCustom','BoiteComplete',{world:'PETALE'});
   if(typeof gtag==='function')gtag('event','boite_complete',{page_path:location.pathname});
+  setTimeout(()=>setLid(false),650);
 }
 function resetBox(){
   picked.length=0; boxDone=false; boiteEl.classList.remove('done');
   slotEls.forEach(s=>{s.innerHTML='';s.classList.remove('filled');});
-  updateCount();
+  updateCount(); setLid(true);
 }
 document.getElementById('bAgain').addEventListener('click',e=>{e.stopPropagation();resetBox();});
 
 function addToBox(card){
-  if(boxDone||picked.length>=6)return;
+  if(boxDone||picked.length>=7)return;
   const f=flavors[+card.dataset.idx];
   const slot=slotEls[picked.length];
   picked.push(f); updateCount();
   const trayVisible=boiteEl.classList.contains('show');
   boiteEl.classList.add('show');
-  const done=()=>{fillSlot(slot,f); if(picked.length===6)completeBox();};
+  const done=()=>{fillSlot(slot,f); if(picked.length===7)completeBox();};
   const img=card.querySelector('.ph img');
-  if(REDUCED||!trayVisible||!img){done();return;}
-  const r1=img.getBoundingClientRect(), r2=slot.getBoundingClientRect();
+  const b3r=b3.getBoundingClientRect(), stageOn=b3r.bottom>0&&b3r.top<innerHeight;
+  if(REDUCED||!(trayVisible||stageOn)||!img){done();return;}
+  const r1=img.getBoundingClientRect();
+  const r2=stageOn?{left:b3r.left+b3r.width*.5-22,top:b3r.top+b3r.height*.46-22,width:44,height:44}:slot.getBoundingClientRect();
   const c=img.cloneNode(); c.className='fly-mac';
   c.style.left=r1.left+'px'; c.style.top=r1.top+'px'; c.style.width=r1.width+'px';
   document.body.appendChild(c);
@@ -1118,6 +1147,68 @@ if('IntersectionObserver' in window){
     else boiteEl.classList.remove('show');
   });},{rootMargin:'140px 0px'}).observe(document.getElementById('menu'));
 }else boiteEl.classList.add('show');
+
+/* ---------- LA BOÎTE 3D — her picks colour the real macarons, the lid closes on the seventh ---------- */
+const b3=document.getElementById('boite3d');
+const MAC=['Rose','Pistachio','Lavender','Lemon','Caramel','Blueberry','Vanilla rose'];
+const BLANK='#efe4dc';
+let mv3=null, lidIsOpen=true, lidRaf=0;
+const lin=v=>Math.pow(v,2.2);
+function hexLin(h,k=1){h=h.replace('#','');return [0,2,4].map(i=>lin(Math.min(1,parseInt(h.slice(i,i+2),16)/255*k)));}
+const painted={};
+function setColor(mat,to,instant){
+  if(!mat)return; const key=mat.name; const from=painted[key]||mat.pbrMetallicRoughness.baseColorFactor.slice(0,3);
+  painted[key]=to;
+  if(instant||REDUCED){mat.pbrMetallicRoughness.setBaseColorFactor([to[0],to[1],to[2],1]);return;}
+  const t0=performance.now();
+  (function step(now){
+    if(painted[key]!==to)return;
+    const k=Math.min(1,(now-t0)/480), e=1-Math.pow(1-k,3);
+    mat.pbrMetallicRoughness.setBaseColorFactor([from[0]+(to[0]-from[0])*e,from[1]+(to[1]-from[1])*e,from[2]+(to[2]-from[2])*e,1]);
+    if(k<1)requestAnimationFrame(step);
+  })(t0);
+}
+function paintAll(instant){
+  if(!mv3||!mv3.model)return;
+  MAC.forEach((m,i)=>{
+    const f=picked[i];
+    const shell=f?hexLin(f.shell):hexLin(BLANK), gan=f?hexLin(f.shell,.8):hexLin(BLANK,.9);
+    setColor(mv3.model.getMaterialByName(m+' almond shell'),shell,instant);
+    setColor(mv3.model.getMaterialByName(m+' ganache'),gan,instant);
+  });
+}
+function setLid(open){
+  if(!mv3||lidIsOpen===open)return; lidIsOpen=open;
+  /* open = tight on the macarons (the lifted lid leaves the frame); closed = step back so the bow fits */
+  const o=mv3.getCameraOrbit(); mv3.cameraOrbit=`${o.theta}rad ${o.phi}rad ${open?0.55:0.68}m`; mv3.cameraTarget=`auto ${open?0.015:0.05}m auto`;
+  const dur=mv3.duration||2, to=open?dur*0.5:0, from=mv3.currentTime, t0=performance.now();
+  cancelAnimationFrame(lidRaf);
+  if(REDUCED){mv3.currentTime=to;return;}
+  (function step(now){const k=Math.min(1,(now-t0)/900), e=1-Math.pow(1-k,3); mv3.currentTime=from+(to-from)*e; if(k<1)lidRaf=requestAnimationFrame(step);})(t0);
+}
+if(b3&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return; io.disconnect(); mount3d();},{rootMargin:'360px 0px'});
+  io.observe(b3);
+}
+function mount3d(){
+  import('https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js').then(()=>{
+    const mv=document.createElement('model-viewer');
+    mv.setAttribute('src',b3.dataset.src); mv.setAttribute('poster',b3.dataset.poster); mv.setAttribute('alt','Pétale° macaron box in 3D, drag to turn');
+    ['camera-controls','auto-rotate','disable-zoom','disable-pan'].forEach(a=>mv.setAttribute(a,''));
+    mv.setAttribute('auto-rotate-delay','4000'); mv.setAttribute('rotation-per-second','9deg');
+    mv.setAttribute('camera-orbit','30deg 54deg 0.55m'); mv.setAttribute('min-camera-orbit','auto 40deg 0.55m'); mv.setAttribute('max-camera-orbit','auto 80deg 0.7m'); mv.setAttribute('camera-target','auto 0.015m auto');
+    mv.setAttribute('interaction-prompt','none'); mv.setAttribute('shadow-intensity','0.9'); mv.setAttribute('shadow-softness','0.8'); mv.setAttribute('exposure','0.92'); mv.setAttribute('environment-image','neutral');
+    mv.addEventListener('load',()=>{
+      mv3=mv; mv.animationName='LID - open close'; mv.pause(); lidIsOpen=true;
+      requestAnimationFrame(()=>{mv.currentTime=(mv.duration||2)*0.5; paintAll(true); if(boxDone)setLid(false); b3.classList.add('loaded');});
+    });
+    let sx,sy,moved;
+    mv.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;moved=false;b3.classList.add('touched');});
+    mv.addEventListener('pointermove',e=>{if(Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6)moved=true;});
+    mv.addEventListener('pointerup',()=>{if(!moved)setLid(!lidIsOpen);});
+    b3.insertBefore(mv,b3.firstChild);
+  }).catch(()=>{});
+}
 
 /* ---------- flavor tint — hover paints the page in the flavor's pastel ---------- */
 if(window.matchMedia('(hover:hover)').matches){
