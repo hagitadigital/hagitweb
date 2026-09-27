@@ -500,6 +500,13 @@
   .studio-note strong{font-weight:600}
   .studio-note a{color:var(--olive);font-weight:600;text-decoration:none;border-bottom:1px solid var(--sage)}
   .studio-note a:hover{color:var(--olive-deep)}
+  .studio-note .rules{margin:8px 0 26px;padding:22px 24px;border:1px solid var(--sand)}
+  .studio-note .rules h3{font-weight:600;font-size:18px;margin-bottom:12px;color:var(--olive-deep)}
+  .studio-note .rules p{margin-bottom:12px}
+  .studio-note .rules p:last-child{margin-bottom:0}
+  .studio-note .me{margin:8px 0 26px;padding:6px 22px 6px 0;border-right:2px solid var(--olive)}
+  .studio-note .me p{font-weight:400;font-size:21px;line-height:1.6;margin-bottom:0}
+  .studio-note .me footer{margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--ink-soft)}
   .sn-faq{margin-top:40px;border-top:1px solid var(--sand)}
   .sn-faq details{border-bottom:1px solid var(--sand);padding:16px 4px}
   .sn-faq summary{cursor:pointer;font-weight:600;list-style:none;position:relative;padding-left:26px}
@@ -874,10 +881,9 @@ document.addEventListener('DOMContentLoaded', function () {
       וכל העמוד הזה בנוי כדי להוכיח את המשפט הזה, לא רק להגיד אותו.
     </p>
     <p>
-      רצף הפתיחה, La Rencontre, הוא image sequence נגלל: שישה צילומי AI מאותה סצנה בדיוק —
-      פרח לבד, עלה וטיפות שמתקרבים, רגע המפגש בתוך טיפה אחת גדולה, המזיגה אל הבקבוק, המוצר, והמוצר עם האריזה.
-      הגלילה מערבבת בין הפריימים בהצלבה רכה עם GSAP, והטקסט מתחלף איתם — כך שהסיפור מסופר בתוך המעברים עצמם.
-      כל ששת הפריימים יחד שוקלים פחות מ־250KB, וכל העמוד — כולל החנות, הקולקציה והפרסונה — פחות מ־2MB.
+      רצף הפתיחה, La Rencontre, הוא image sequence נגלל: וידאו AI אחד רציף מאותה סצנה —
+      פרח לבד, עלה וטיפות שמתקרבים, רגע המפגש בתוך טיפה אחת גדולה, המזיגה אל הבקבוק, והמוצר —
+      פורק לשמונים פריימים שהגלילה מנגנת על קנבס, והטקסט מתחלף איתם, כך שהסיפור מסופר בתוך התנועה עצמה.
     </p>
     <p>
       הסמל של המותג מצויר בהמשך העמוד בקו חי: הקו הראשון הוא עלה — המקור הבוטני; הקו השני טיפה — הפורמולה;
@@ -891,6 +897,22 @@ document.addEventListener('DOMContentLoaded', function () {
       את שולי כל תמונה, וקווי חיבור חיים מצוירים ביניהן בזמן התנועה — כך שהקו באמת לא נשבר אף פעם,
       <strong>לא בין שקף לשקף, ולא בין האתר לקמפיין</strong>.
     </p>
+    <p>
+      <strong>מה בעצם נבנה כאן:</strong> לא עוד קו מוצרים ירוק, אלא משהו שהלקוחה עוברת בעצמה: לראות את העלה והטיפה נפגשים,
+      ולדעת שנקודת המפגש הזאת היא העור שלה. מי שעקבה פעם אחת אחרי הקו הזה מזהה אותו בכל תוכן שבא אחריו, בתווית, בשקית, בפוסט.
+      הקו ממשיך, ולכן אף פוסט לא צריך להמציא את עצמו מחדש. וזה מה שמוציא מותג מטבלת ההשוואה:
+      אי אפשר להשוות מפגש בין טבע למדע לאחוז של רכיב פעיל.
+    </p>
+    <div class="rules">
+      <h3>שלושה כללים שמחזיקים את העולם</h3>
+      <p><strong>מה אף פעם לא משתנה: הקו.</strong> עלה, טיפה, ונקודת המפגש ביניהם, שהיא העור. כל תוכן של <span dir="ltr">ELVÉA°</span>&lrm; עובר דרך הקו הירוק הזה: בתווית, בשקית, בקרוסלה ובסטורי. בלי קו, זה לא <span dir="ltr">ELVÉA°</span>&lrm;.</p>
+      <p><strong>מה מותר לשנות: כל השאר.</strong> המוצר, הרכיב, העונה, הצילום. סרום חדש עם רכיב אחר נכנס לעולם בלי לשנות אותו, כל עוד הקו מביא אותו אל העור.</p>
+      <p><strong>הטעות שהייתה שוברת את העולם:</strong> לבחור צד. שדה פרחים עם ״טבעי 100%״, או מעבדה לבנה עם ״מוכח קלינית״. ברגע ש-<span dir="ltr">ELVÉA°</span>&lrm; בוחר בין טבע למדע, ההבטחה נשברת, והוא חוזר להיות עוד מותג בטבלת ההשוואה.</p>
+    </div>
+    <blockquote class="me">
+      <p>אסתטיקה חשובה לי מאוד. אני מתחברת לעולמות נקיים ויפים. אבל היופי הוא לא מה שמוביל אותי. מה שמוביל אותי הוא שיבחרו בך כמותג, ושיזכרו אותך. ולכן הרגש והסיפור חשובים לי יותר מהיופי.</p>
+      <footer>חגית אנטבי · Brand Worlds Studio</footer>
+    </blockquote>
     <p>
       זה בדיוק מה שהסטודיו בונה למותגים אמיתיים: לא "אתר יפה" אלא עולם עם היגיון רגשי אחד.
       רוצים לראות איך זה נראה על העסק שלכם?
