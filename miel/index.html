@@ -286,7 +286,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   /* ---------- 06 · LA MAISON & LA BOÎTE ---------- */
   #maison{background:var(--poudre)}
   .lieu{position:relative;height:min(78vh,720px);overflow:hidden}
-  .lieu img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 18s var(--ease) both;transform-origin:50% 60%}
+  .lieu img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 6%;animation:kb 18s var(--ease) both;transform-origin:50% 60%}
   @keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
   .lieu .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,44,36,.05),rgba(74,44,36,.42))}
   .lieu .copy{position:absolute;right:var(--gutter);bottom:clamp(30px,7vh,80px);color:#fff;text-shadow:0 1px 20px rgba(74,44,36,.45);max-width:40ch}
@@ -664,7 +664,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   <div class="lieu">
     <picture>
       <source media="(max-width:700px)" srcset="assets/03-maison-storefront-m.webp">
-      <img src="assets/03-maison-storefront.webp" alt="חזית החנות של Maison Miel: סוכך ורוד, ויטרינה עם עוגות ופרחים" width="1920" height="1080" loading="lazy">
+      <img src="assets/03-maison-storefront.webp" alt="חזית החנות של MIEL°: שלט זהב, סוכך בפס של שכבות עוגה, ובחלונות פרוסות שמראות את הפנים" width="1448" height="1086" loading="lazy">
     </picture>
     <div class="veil"></div>
     <div class="copy">
@@ -673,8 +673,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     </div>
   </div>
   <div class="rooms">
-    <picture><source media="(max-width:700px)" srcset="assets/05-maison-interior-m.webp"><img src="assets/05-maison-interior.webp" alt="פנים החנות: ויטרינה, שיש, כיסאות ורודים ופרחים" width="1920" height="1080" loading="lazy"></picture>
-    <picture><source media="(max-width:700px)" srcset="assets/01-maison-counter-m.webp"><img src="assets/01-maison-counter.webp" alt="לקוחה מקבלת עוגה בקופסה בדלפק" width="1920" height="1080" loading="lazy"></picture>
+    <picture><source media="(max-width:700px)" srcset="assets/05-maison-interior-m.webp"><img src="assets/05-maison-interior.webp" alt="פנים החנות: ויטרינה של חמש פרוסות החתימה על מעמדי זהב, החתך פונה החוצה" width="1448" height="1086" loading="lazy"></picture>
+    <picture><source media="(max-width:700px)" srcset="assets/01-maison-counter-m.webp"><img src="assets/01-maison-counter.webp" alt="בדלפק: הקונדיטורית מגישה את קופסת MIEL° עם פס השכבות, ולידה פרוסה שמראה מה בפנים" width="1448" height="1086" loading="lazy"></picture>
   </div>
   <div class="boite" id="boite">
     <div class="ecrin" id="ecrin" data-src="assets/cake-3d.glb" data-poster="assets/cake-3d.webp">
@@ -815,7 +815,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       var n = 0;
       function next(){ if (n >= order.length) return; var i = order[n++]; var im = new Image(); im.decoding = "async";
         im.onload = function(){ if (i === want || drawn < 0) show(want/(N-1)); next(); }; im.onerror = next;
-        im.src = "assets/" + dir + "/f" + String(i+1).padStart(3,"0") + ".webp"; frames[i] = im; }
+        im.src = "assets/" + dir + "/f" + String(i+1).padStart(3,"0") + ".webp" + (dir === "a" ? "?v=slices" : ""); frames[i] = im; }
       next(); next(); next();
     }
     return { show:show, start:start, drawn:function(){ return drawn; } };
