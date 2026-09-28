@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מחוץ לטבלה · הגשה לעונה הראשונה | Brand Worlds Studio</title>
+  <meta name="description" content="מחוץ לטבלה: סדרה קצרה של Brand Worlds Studio. שלושה עסקים אמיתיים, ההחלטה האחת שמוציאה כל אחד מהם מטבלת ההשוואה, ואיך היא נראית על שלט, כרטיס ביקור, פוסט וראש האתר.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://hagitantebi.co.il/outside-the-table.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-cream: #FAF8F3;
+      --color-warm-beige: #F5F1E8;
+      --color-copper: #C4765A;
+      --color-copper-text: #A45839;
+      --color-chocolate-text: #7A6349;
+      --color-text-deep: #4F372C;
+      --line: rgba(79, 55, 44, 0.14);
+      --copper-dim: rgba(196, 118, 90, 0.18);
+      --radius: 10px;
+      --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+      --font-body-he: 'Heebo', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body-he);
+      background: var(--color-cream);
+      color: var(--color-text-deep);
+      line-height: 1.75;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--color-text-deep);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .logo span { color: var(--color-copper-text); }
+    .top-bar .back {
+      font-size: 13px;
+      color: var(--color-chocolate-text);
+      text-decoration: none;
+    }
+    .top-bar .back:hover { color: var(--color-copper-text); }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 88px;
+    }
+
+    .form-header { text-align: center; margin-bottom: 44px; }
+    .form-header .tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--color-copper-text);
+      border: 1px solid var(--copper-dim);
+      background: #fff;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    .form-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 7vw, 56px);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .form-header p.intro {
+      color: var(--color-chocolate-text);
+      font-size: 16px;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+    .copper-thread {
+      width: 64px;
+      height: 2px;
+      background: var(--color-copper);
+      margin: 26px auto 0;
+      border-radius: 2px;
+    }
+
+    .episode {
+      list-style: none;
+      background: var(--color-warm-beige);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 26px 28px;
+      margin-bottom: 18px;
+      counter-reset: ep;
+    }
+    .episode li {
+      counter-increment: ep;
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      font-size: 15.5px;
+      padding: 6px 0;
+    }
+    .episode li::before {
+      content: "0" counter(ep);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-copper-text);
+      min-width: 30px;
+    }
+    .gets {
+      text-align: center;
+      font-size: 15px;
+      color: var(--color-text-deep);
+      margin: 0 0 18px;
+    }
+    .gets b { font-weight: 600; }
+    .dates {
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--color-chocolate-text);
+      margin-bottom: 44px;
+    }
+
+    .form-section {
+      background: var(--color-warm-beige);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 34px 32px;
+      margin-bottom: 22px;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .section-title { font-size: 18px; font-weight: 600; }
+
+    .field { margin-bottom: 26px; }
+    .field:last-child { margin-bottom: 0; }
+    .field > label {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .field .q-num {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--color-copper-text);
+      font-weight: 600;
+    }
+    .field label .required { color: var(--color-copper-text); }
+    .field .hint {
+      display: block;
+      font-size: 13.5px;
+      color: var(--color-chocolate-text);
+      margin: -4px 0 10px;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="url"],
+    .field textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--color-text-deep);
+      font-family: inherit;
+      font-size: 15px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--color-copper);
+      box-shadow: 0 0 0 3px var(--copper-dim);
+    }
+    .field textarea { min-height: 92px; resize: vertical; }
+
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-option,
+    .field > label.consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 12px 15px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 14.5px;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+    .radio-option:has(input:checked),
+    .consent:has(input:checked) {
+      border-color: var(--color-copper);
+      background: #FFFBF7;
+    }
+    .radio-option input,
+    .consent input {
+      accent-color: var(--color-copper-text);
+      width: 17px;
+      height: 17px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .submit-section { text-align: center; margin-top: 36px; }
+    .submit-btn {
+      background: var(--color-text-deep);
+      color: var(--color-cream);
+      border: none;
+      padding: 15px 46px;
+      border-radius: 40px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .submit-btn:hover { background: var(--color-copper-text); }
+    .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    .submit-note {
+      font-size: 13px;
+      color: var(--color-chocolate-text);
+      margin-top: 14px;
+    }
+    .submit-note a { color: var(--color-copper-text); }
+
+    .form-footer {
+      text-align: center;
+      padding: 30px 24px;
+      color: var(--color-chocolate-text);
+      font-size: 12.5px;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 36px 16px 64px; }
+      .form-section, .episode { padding: 24px 18px; }
+      .top-bar { padding: 14px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a class="back" href="https://hagitantebi.co.il/">← hagitantebi.co.il</a>
+    <a href="https://hagitantebi.co.il/" class="logo">Brand <span>Worlds</span> Studio</a>
+  </div>
+
+  <main class="container">
+    <div class="form-header">
+      <span class="tag">סדרה חדשה · עונה ראשונה</span>
+      <h1>מחוץ לטבלה</h1>
+      <p class="intro">
+        שלושה עסקים אמיתיים שכבר עושים עבודה טובה, ופרק לכל אחד.
+        אני מחפשת את ההחלטה האחת שהופכת את העסק לבחירה ברורה, ולא לעוד שורה בטבלת ההשוואה.
+      </p>
+      <div class="copper-thread"></div>
+    </div>
+
+    <ol class="episode" aria-label="מה יש בכל פרק">
+      <li>איך העסק נראה היום, ומה כבר עובד בו</li>
+      <li>ההחלטה האחת שמוציאה אותו מההשוואה</li>
+      <li>איך ההחלטה הזאת נראית על שלט, כרטיס ביקור, פוסט וראש האתר</li>
+    </ol>
+    <p class="gets">העסקים שייבחרו יקבלו את ההחלטה ואת ארבע ההדמיות. <b>הן שלהם.</b></p>
+    <p class="dates">ההגשה פתוחה עד 7.10 · העסקים שנבחרו יקבלו הודעה עד 9.10</p>
+
+    <form id="tableForm" data-lead-source="outside-the-table" data-lead-interest="מחוץ לטבלה · הגשה לעונה הראשונה">
+      <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0);">
+
+      <div class="form-section">
+        <div class="section-header"><span class="section-title">כמה פרטים</span></div>
+        <div class="field">
+          <label for="f-name">שם מלא <span class="required">*</span></label>
+          <input type="text" id="f-name" name="full_name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">טלפון (וואטסאפ) <span class="required">*</span></label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="f-business">שם העסק <span class="required">*</span></label>
+          <input type="text" id="f-business" name="business_name" required>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-header"><span class="section-title">חמש שאלות על העסק</span></div>
+
+        <div class="field">
+          <label><span class="q-num">01</span> איזה סוג עסק? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="business_type" value="מותג מוצר" required> מותג מוצר</label>
+            <label class="radio-option"><input type="radio" name="business_type" value="קליניקה"> קליניקה</label>
+            <label class="radio-option"><input type="radio" name="business_type" value="עסק בוטיק"> עסק בוטיק</label>
+            <label class="radio-option"><input type="radio" name="business_type" value="אחר"> אחר</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-what"><span class="q-num">02</span> מה העסק מוכר, ולמי? <span class="required">*</span></label>
+          <span class="hint">משפט או שניים מספיקים.</span>
+          <textarea id="f-what" name="what_and_who" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-works"><span class="q-num">03</span> מה כבר עובד אצלך? <span class="required">*</span></label>
+          <span class="hint">מה הלקוחות אומרות עלייך, למה הן חוזרות.</span>
+          <textarea id="f-works" name="what_works" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-compare"><span class="q-num">04</span> באיזה רגע את מרגישה שמשווים אותך? <span class="required">*</span></label>
+          <span class="hint">למשל: ״כמה זה עולה אצלך?״, הודעה שנשארת בלי תשובה, לקוחה שבחרה במישהי אחרת.</span>
+          <textarea id="f-compare" name="compare_moment" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-link"><span class="q-num">05</span> איפה אפשר לראות את העסק? <span class="required">*</span></label>
+          <span class="hint">קישור לאינסטגרם, לאתר או לעמוד בפייסבוק.</span>
+          <input type="text" id="f-link" name="business_link" dir="ltr" inputmode="url" required>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="field">
+          <label class="consent">
+            <input type="checkbox" name="publish_consent" required data-lead-label="אישור פרסום" data-lead-value="כן">
+            אם העסק ייבחר, אני מאשרת להציג אותו בסדרה (שם, לוגו וחומרים גלויים). אראה את הפרק לפני שהוא עולה.
+          </label>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-btn" id="submitBtn">שליחת ההגשה ←</button>
+        <p class="submit-note">
+          ההגשה מגיעה ישירות אליי. שאלות?
+          <a href="https://wa.me/972528351676" target="_blank" rel="noopener">אפשר לכתוב לי בוואטסאפ</a>.
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <div class="form-footer">
+    Brand Worlds Studio · חגית אנטבי · © 2026
+  </div>
+
+  <script src="/lead-intake.js" defer></script>
+
+  <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
+  <script>
+  (function(){
+    if (!/(^|\.)hagitantebi\.co\.il$/.test(location.hostname) || navigator.webdriver) return; /* ga4-live-guard */
+    if (typeof window.gtag !== 'function') {
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-30WB1J2R2T';
+      document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[];
+      window.gtag=function(){dataLayer.push(arguments);};
+      gtag('js',new Date());
+      gtag('config','G-30WB1J2R2T');
+    }
+    document.addEventListener('lead:intake:success',function(){
+      gtag('event','generate_lead',{lead_source:'outside-the-table'});
+    });
+    document.addEventListener('click',function(e){
+      var t=e.target instanceof Element?e.target:null;
+      var a=t&&t.closest?t.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]'):null;
+      if(a)gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname});
+    },true);
+  })();
+  </script>
+</body>
+</html>
