@@ -254,6 +254,7 @@
   .stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;
     -webkit-mask-image:radial-gradient(circle closest-side at 50% 47%,#000 70%,transparent 99%);mask-image:radial-gradient(circle closest-side at 50% 47%,#000 70%,transparent 99%)}
   .stage canvas{opacity:0;transition:opacity .4s}
+  .stage .well{position:absolute;left:29.2%;top:26.8%;width:40.6%;height:40.6%;border-radius:50%;touch-action:none}   /* over the liquid only: a finger there stirs, anywhere else it still scrolls */
   .stage.gl canvas{opacity:1}
   .tazza .hint{font-size:.95rem;color:var(--muted)}
   .pick{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:640px}
@@ -489,6 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <img id="photo" src="images/crema/cup-foresta-heart.jpg" width="1024" height="1024" loading="lazy" decoding="async"
         alt="כוס Foresta מלמעלה, פס ירוק על שפת הכוס, לב מקצף חלב בתוך קרמה בגוון אגוז">
       <canvas id="gl" aria-hidden="true"></canvas>
+      <i class="well" aria-hidden="true"></i>
     </div>
     <p class="hint">העבירי את העכבר או את האצבע על הקפה</p>
     <div class="pick" role="group" aria-label="איזו קלייה" id="tRoasts"></div>
@@ -798,7 +800,8 @@ var TAZZA = (function(){
       var b = stage.getBoundingClientRect(), x = (e.clientX-b.left)/b.width, y = (e.clientY-b.top)/b.height;
       if(pm){
         var dx = x-pm[0], dy = y-pm[1];
-        tv[0] = Math.max(-.08, Math.min(.08, dx*2.6*AMP)); tv[1] = Math.max(-.08, Math.min(.08, dy*2.6*AMP));
+        // the drag builds up across events, so a slow hand stirs as surely as a quick one
+        tv[0] = Math.max(-.08, Math.min(.08, tv[0] + dx*2.6*AMP)); tv[1] = Math.max(-.08, Math.min(.08, tv[1] + dy*2.6*AMP));
         // the part of the movement that circles the cup's centre stirs the whole cup
         var rx = x-LIQ[0], ry = y-LIQ[1], rr = Math.hypot(rx,ry);
         if(rr < LIQ[2]*1.1 && rr > .01) spinV += (rx*dy - ry*dx)/(rr*rr) * .5 * AMP;
