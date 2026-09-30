@@ -734,16 +734,16 @@
             </div>
             <div class="lt__tiles">
                 <div class="lt__grid" id="lt-grid">
-                    <button type="button" class="lt__tile" data-id="boutique" aria-label="תמונה 1: חנות עם מדפים בקשתות"><img src="images/bw-lp/logo-test/t-boutique.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="rosee/collection/boutique-m.webp" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · החנות</span></button>
+                    <button type="button" class="lt__tile" data-id="dial" aria-label="תמונה 1: חוגה עגולה עם חמישה מוצרים"><img src="images/bw-lp/logo-test/t-dial.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="images/bw-lp/logo-test/t-dial.jpg" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · החוגה</span></button>
                     <button type="button" class="lt__tile" data-id="generic" data-odd aria-label="תמונה 2: בקבוק סרום עם פקק שחור"><img src="images/bw-lp/logo-test/t-generic.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="images/bw-lp/logo-test/t-generic.jpg" alt="" loading="lazy"><span class="lt__tag" data-odd-tag>זו לא שייכת</span></button>
-                    <button type="button" class="lt__tile" data-id="film" aria-label="תמונה 3: מרקם קרם ורוד בתקריב"><img src="images/bw-lp/logo-test/t-film.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="images/bw-lp/logo-test/t-film.jpg" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · הסרט</span></button>
-                    <button type="button" class="lt__tile" data-id="mist" aria-label="תמונה 4: פקק נחושת של בקבוק ורוד"><img src="images/bw-lp/logo-test/t-mist.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="rosee/collection/brume.webp" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · המוצר</span></button>
+                    <button type="button" class="lt__tile" data-id="drop" aria-label="תמונה 3: טיפה ורודה נופלת"><img src="images/bw-lp/logo-test/t-drop.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="images/bw-lp/logo-test/t-drop.jpg" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · הטיפה</span></button>
+                    <button type="button" class="lt__tile" data-id="boutique" aria-label="תמונה 4: חנות עם מדפים בקשתות"><img src="images/bw-lp/logo-test/t-boutique.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="rosee/collection/boutique-m.webp" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · החנות</span></button>
                 </div>
                 <p class="lt__hint">הקישי על התמונה שלא שייכת</p>
             </div>
             <div class="lt__result" aria-live="polite">
                 <p class="lt__verdict" id="lt-verdict"></p>
-                <p>שלוש נקודות מגע של <b>ROSÉE°</b>: החנות, המוצר, הסרט. בלי לקרוא שם, ידעת שהן מאותו בית. זה מה שעולם מותג עושה. וכשמזהים אותך ככה, כבר לא משווים אותך.</p>
+                <p>שלוש נקודות מגע של <b>ROSÉE°</b>: החוגה, הטיפה, החנות. בלי לקרוא שם, ידעת שהן מאותו בית. זה מה שעולם מותג עושה. וכשמזהים אותך ככה, כבר לא משווים אותך.</p>
                 <a href="#audit" class="lt__cta">ומה מזהים אצלך? לאבחון פער המותג</a>
                 <div class="lt__more"><a href="rosee/" target="_blank" rel="noopener">להיכנס לעולם ROSÉE° ←</a><button type="button" id="lt-reset">לנסות שוב</button></div>
             </div>
@@ -757,7 +757,7 @@
       grid.addEventListener('click', function (e) {
         var t = e.target.closest('.lt__tile'); if (!t || sec.classList.contains('is-done')) return;
         var right = t.hasAttribute('data-odd');
-        verdict.textContent = right ? 'זיהית בשנייה. בלי לוגו אחד.' : 'כמעט. הבקבוק הלבן הוא זה שלא שייך, ושלוש האחרות מאותו בית.';
+        verdict.textContent = right ? 'זיהית בשנייה. בלי לוגו אחד.' : 'כמעט. הסרום האפור הוא זה שלא שייך, ושלוש האחרות מאותו בית.';
         oddTag.textContent = right ? 'בדיוק. זו' : 'זו לא שייכת';
         q.hidden = true; a.hidden = false; sec.classList.add('is-done');
         if (typeof fbq === 'function') fbq('trackCustom', 'LogoTest', { pick: t.dataset.id, correct: right });
