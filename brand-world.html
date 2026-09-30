@@ -65,7 +65,7 @@
     <meta name="twitter:image:alt" content="עולם מותג חי: אתר, תוכן ווידאו בשפה אחת, Brand Worlds Studio">
 
     <!-- LCP: paint the hero poster as early as possible -->
-    <link rel="preload" as="image" href="images/bw-lp/oreva-screen.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="images/bw-lp/hero-reel/oreva.jpg" fetchpriority="high">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -180,6 +180,12 @@
         .pain__num { font-family: var(--font-display); font-size: 2.5rem; font-style: italic; color: var(--color-copper); display: block; margin-bottom: 12px; line-height: 1; }
         .pain__title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--color-cream); margin-bottom: 12px; }
         .pain__text { font-size: 0.9375rem; line-height: 1.75; color: rgba(250,248,243,0.78); }
+        /* Copper thread: draws across the three gaps as she scrolls and lands on the close line */
+        .pain-wrap { position: relative; }
+        .pain-thread { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; }
+        .pain-thread__line { fill: none; stroke: var(--color-copper); stroke-width: 2; stroke-linecap: round; }
+        .pain-thread__bead { fill: var(--color-copper); filter: drop-shadow(0 0 6px rgba(196,118,90,.9)); }
+        .has-thread .pain { border-top-color: rgba(196,118,90,0.22); }
 
         /* Cost of the gap */
         .cost-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 28px; max-width: 920px; margin: 0 auto; }
@@ -317,18 +323,16 @@
         }
         .lead-form__submit:hover { background: var(--color-copper-deep); }
         .lead-form__note { margin-top: 14px; font-size: 0.78rem; text-align: center; color: rgba(250,248,243,0.5); }
-        .lead-form__wa { display: block; margin-top: 18px; text-align: center; font-size: 0.9rem; color: rgba(250,248,243,0.75); text-decoration: none; }
-        .lead-form__wa a, .lead-form__wa strong { color: var(--color-copper); }
         .lead-form__wa-btn {
             display: flex; align-items: center; justify-content: center; gap: 9px;
             width: 100%; margin-top: 12px; padding: 15px;
             font-family: var(--font-body-he); font-size: 1rem; font-weight: 500;
             background: transparent; color: var(--color-cream);
-            border: 1px solid rgba(37,211,102,0.65); text-decoration: none;
+            border: 1px solid rgba(196,118,90,0.7); text-decoration: none;
             transition: background 0.3s, border-color 0.3s;
         }
-        .lead-form__wa-btn:hover { background: rgba(37,211,102,0.14); border-color: #25D366; }
-        .lead-form__wa-btn svg { width: 18px; height: 18px; color: #25D366; flex-shrink: 0; }
+        .lead-form__wa-btn:hover { background: rgba(196,118,90,0.14); border-color: var(--color-copper); }
+        .lead-form__wa-btn svg { width: 18px; height: 18px; color: var(--color-copper); flex-shrink: 0; }
 
         /* FAQ */
         .faq-list { max-width: 800px; margin: 0 auto; }
@@ -620,7 +624,7 @@
                     <div class="frame">
                         <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">oreva.skin</span></div>
                         <span class="live">Live</span>
-                        <div class="viewport"><img src="images/bw-lp/oreva-screen.jpg" alt="ORÉVA° — עולם מותג חי לסטודיו טיפוח" fetchpriority="high" decoding="async" width="960" height="540"></div>
+                        <div class="viewport"><img src="images/bw-lp/hero-reel/oreva.jpg" alt="ORÉVA° — עולם מותג חי לסטודיו טיפוח" fetchpriority="high" decoding="async" width="960" height="540"></div>
                     </div>
                     <div class="caption"><span class="name">ORÉVA°</span><span class="cat">Skin Studio · Cosmetics</span></div>
                 </div>
@@ -638,7 +642,7 @@
     <script>
     (function(){
       const WORLDS = [
-        { key:'oreva',   name:'ORÉVA°',  cat:'Skin Studio · Cosmetics',      url:'oreva.skin',     href:'oreva/',      vid:'images/bw-lp/oreva-hero.mp4',  poster:'images/bw-lp/oreva-screen.jpg' },
+        { key:'oreva',   name:'ORÉVA°',  cat:'Skin Studio · Cosmetics',      url:'oreva.skin',     href:'oreva/',      vid:'images/bw-lp/hero-reel/oreva.mp4',  poster:'images/bw-lp/hero-reel/oreva.jpg' },
         { key:'miel',    name:'MIEL°',   cat:'Pâtisserie · Boutique',        url:'maison-miel.fr', href:'miel/',       vid:'images/bw-lp/hero-reel/miel.mp4',    poster:'images/bw-lp/hero-reel/miel.jpg' },
         { key:'velune',  name:'VELUNE°', cat:'Maison de Parfum · Lifestyle', url:'velune.parfum',  href:'velune/',     vid:'images/bw-lp/hero-reel/velune.mp4', poster:'images/bw-lp/velune-door-poster.jpg' },
         { key:'aurelle', name:'AURELLE', cat:'Skincare · Beauty',            url:'aurelle.world',  href:'aurelle/',    vid:'images/bw-lp/hero-reel/aurelle.mp4', poster:'aurelle/assets/hero-poster.jpg' },
@@ -793,6 +797,7 @@
                 <h2 class="section-title">העסק שלך כבר גדל.<br>המותג עדיין לא מחזיק את כל מה שנהיית.</h2>
                 <p class="section-lede">יש לך ניסיון, לקוחות ומוצרים טובים. השקעת באתר, בתוכן ובקמפיינים, וכל אחד מהם נראה טוב בפני עצמו. אבל ביחד עדיין אין תחושה של מותג אחד, ובכל מפגש הלקוחה צריכה להבין מחדש מי את ולמה דווקא את.</p>
             </div>
+            <div class="pain-wrap" id="painWrap">
             <div class="pain-grid">
                 <article class="pain reveal">
                     <span class="pain__num">01</span>
@@ -811,6 +816,40 @@
                 </article>
             </div>
             <p class="section-close reveal">וכשלא מזהים את ההבדל —<br><em>משווים את מה שקל להשוות: מחיר.</em></p>
+            <svg class="pain-thread" aria-hidden="true"><path class="pain-thread__line"/><circle class="pain-thread__bead" r="5"/></svg>
+            </div>
+            <script>
+            (function(){
+              var wrap = document.getElementById('painWrap'); if (!wrap) return;
+              var svg = wrap.querySelector('.pain-thread'), line = svg.querySelector('path'), bead = svg.querySelector('circle');
+              var cards = wrap.querySelectorAll('.pain'), close = wrap.querySelector('.section-close');
+              var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, len = 0;
+              wrap.closest('section').classList.add('has-thread');
+              function rel(el){ return { l:el.offsetLeft, r:el.offsetLeft+el.offsetWidth, t:el.offsetTop, b:el.offsetTop+el.offsetHeight }; }   // offsets ignore the reveal translate
+              function build(){
+                var c1 = rel(cards[0]), c3 = rel(cards[cards.length-1]), cl = rel(close), W = wrap.clientWidth, d, y = c1.t + 1.5;
+                var endY = cl.t - 14, midX = W / 2;
+                if (c3.t > c1.t + 10) {                     // stacked (mobile): down the right edge, RTL start
+                  var x = c1.r - 1;
+                  d = 'M' + x + ',' + y + ' V' + (c3.b - 20) + ' C' + x + ',' + (endY - 10) + ' ' + midX + ',' + (c3.b + 10) + ' ' + midX + ',' + endY;
+                } else {                                     // row (desktop): right → left across the tops, then down to the close line
+                  var xl = c3.l + 1;
+                  d = 'M' + c1.r + ',' + y + ' H' + xl + ' V' + (c3.b - 24) + ' C' + xl + ',' + (endY - 20) + ' ' + midX + ',' + (c3.b + 10) + ' ' + midX + ',' + endY;
+                }
+                line.setAttribute('d', d); len = line.getTotalLength();
+                line.style.strokeDasharray = len; update();
+              }
+              function update(){
+                var r = wrap.getBoundingClientRect(), vh = innerHeight;
+                var p = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.78 - r.top) / (r.height * 0.9)));
+                line.style.strokeDashoffset = len * (1 - p);
+                var pt = line.getPointAtLength(len * p); bead.setAttribute('cx', pt.x); bead.setAttribute('cy', pt.y);
+                bead.style.opacity = p > 0.005 ? 1 : 0;
+              }
+              build(); addEventListener('scroll', update, { passive: true }); addEventListener('resize', build);
+              if (document.fonts) document.fonts.ready.then(build);
+            })();
+            </script>
             <p class="section-src reveal">ולמה זה עולה כסף ולא רק אנרגיה: לפי <a href="https://www.edelman.com/trust/2025/trust-barometer/special-report-brands" target="_blank" rel="noopener">דוח האמון במותגים של Edelman לשנת 2025</a>, אמון במותג שווה היום בחשיבותו למחיר ולאיכות בהחלטת הרכישה. כשאין זיהוי, אין אמון, ונשאר רק המחיר.</p>
 
         </div>
@@ -1513,6 +1552,19 @@
     .bw-answer p{ font-family:'Heebo',sans-serif; font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.85; color:#4F372C; margin:0; }
     .bw-answer a{ color:#C4765A; text-decoration:underline; text-decoration-color:#D4C9BC; text-underline-offset:3px; }
     .bw-answer a:hover{ color:#2A201A; }
+    /* Mobile rhythm: one vertical beat between sections instead of stacked desktop paddings */
+    @media (max-width:680px){
+      .section{ padding:48px 0; }
+      .section-header{ margin-bottom:32px; }
+      .section-title{ margin-bottom:14px; }
+      .lt{ padding:44px 0; }
+      .cb{ padding:48px 0; }
+      .cb__head{ margin-bottom:28px; }
+      .wsb{ padding:48px 0; }
+      .wsb__tabs{ margin:20px 0 24px; }
+      .bw-answer{ padding:36px 0; }
+      .footer-minimal{ padding:36px 0; }
+    }
     </style>
     <section class="bw-answer" id="answer">
         <div class="bw-answer__inner">
@@ -1539,7 +1591,7 @@
             entries.forEach(e => {
                 if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
         // FAQ accordion
@@ -1643,12 +1695,13 @@
     <!-- WhatsApp floating button + play-on-view performance -->
     <style>
     .wa-fab{ position:fixed; bottom:22px; left:22px; z-index:9990; display:flex; align-items:center; gap:9px;
-      background:#25D366; color:#fff; padding:12px 18px; border-radius:40px; text-decoration:none;
-      box-shadow:0 10px 30px rgba(0,0,0,.28); font-family:'Heebo',sans-serif; font-size:.95rem; font-weight:600;
+      background:#2A201A; color:#FAF8F3; padding:12px 18px; border-radius:40px; text-decoration:none;
+      border:1px solid rgba(196,118,90,.75); box-shadow:0 10px 30px rgba(0,0,0,.28); font-family:'Heebo',sans-serif; font-size:.95rem; font-weight:600;
       opacity:0; transform:translateY(20px); pointer-events:none; transition:opacity .4s ease, transform .4s ease; }
     .wa-fab.show{ opacity:1; transform:none; pointer-events:auto; }
-    .wa-fab:hover{ background:#1ebe5b; }
-    .wa-fab svg{ width:20px; height:20px; flex-shrink:0; }
+    .wa-fab:hover{ background:#A45839; border-color:#A45839; }
+    .wa-fab:hover svg{ color:#FAF8F3; }
+    .wa-fab svg{ width:20px; height:20px; flex-shrink:0; color:#C4765A; transition:color .3s; }
     @media (max-width:680px){ .wa-fab{ bottom:16px; left:14px; padding:11px 15px; font-size:.9rem; } }
     </style>
     <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" class="wa-fab" id="wa-fab" target="_blank" rel="noopener" aria-label="פנייה בוואטסאפ">
