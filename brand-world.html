@@ -1013,6 +1013,260 @@
     })();
     </script>
 
+    <!-- 4b · What she really buys — four live dials from the worlds (ENCORE° · ROSÉE° · CREMA° · PANCAKERIE°), from the "מה היא קונה באמת" reel -->
+    <style>
+    .wsb{ background:#FAF8F3; padding:clamp(64px,9vw,120px) 0; font-family:'Heebo',sans-serif; color:#2A201A; overflow:hidden; }
+    .wsb__inner{ max-width:1180px; margin:0 auto; padding:0 clamp(16px,5vw,48px); }
+    .wsb__label{ font-size:.8rem; font-weight:500; letter-spacing:.08em; color:#A45839; margin:0 0 12px; }
+    .wsb h2{ font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-weight:500; font-size:clamp(2.2rem,5vw,3.8rem); line-height:1.04; margin:0; }
+    .wsb__tabs{ display:flex; gap:8px; flex-wrap:wrap; margin:28px 0 36px; }
+    .wsb__tab{ font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:600; letter-spacing:.02em; direction:ltr; min-height:44px; padding:8px 20px;
+      border-radius:999px; border:1px solid #D4C9BC; background:transparent; color:#2A201A; cursor:pointer; transition:background .3s, color .3s, border-color .3s; }
+    .wsb__tab:hover{ border-color:#A45839; }
+    .wsb__tab[aria-selected="true"]{ background:#2A201A; border-color:#2A201A; color:#FAF8F3; }
+    .wsb__stage{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,440px); gap:clamp(32px,6vw,88px); align-items:center; }
+    .wsb__world{ display:flex; flex-wrap:wrap; align-items:baseline; column-gap:12px; row-gap:2px; margin-bottom:26px; }
+    .wsb__name{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.4vw,2.6rem); font-weight:600; direction:ltr; }
+    .wsb__no{ font-size:.9rem; color:#7A6349; }
+    .wsb__k{ font-size:.78rem; letter-spacing:.14em; color:#7A6349; margin:0 0 6px; }
+    .wsb__k--buy{ color:#A45839; font-weight:500; }
+    .wsb__cmp{ font-size:clamp(1.05rem,1.8vw,1.3rem); color:#8C7A6B; text-decoration:line-through; text-decoration-color:#C4765A; text-decoration-thickness:1.5px; margin:0 0 26px; }
+    .wsb__buy{ font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; line-height:1.2; margin:0 0 10px; }
+    .wsb__line{ font-size:clamp(1rem,1.6vw,1.15rem); line-height:1.65; color:#A45839; margin:0 0 18px; }
+    .wsb__enter{ font-size:.95rem; color:#7E4129; text-decoration:underline; text-decoration-color:#D4C9BC; text-underline-offset:3px; display:inline-block; padding:10px 0; }
+    .wsb__text{ transition:opacity .35s; }
+    .wsb__text.is-out{ opacity:0; }
+
+    /* the card: a 4:5 window into the world, sized in container units so every dial scales with it */
+    .wsb__card{ position:relative; width:100%; aspect-ratio:4/5; container-type:inline-size; border-radius:6px; overflow:hidden; touch-action:pan-y;
+      box-shadow:0 34px 80px -34px rgba(42,32,26,.5); background:#6E4E4A; transition:background-color .9s cubic-bezier(.4,0,.2,1); cursor:grab; user-select:none; }
+    .wsb__card:active{ cursor:grabbing; }
+    .wsb__dial{ position:absolute; inset:0; opacity:0; visibility:hidden; transition:opacity .5s, visibility 0s .5s; }
+    .wsb__dial.is-on{ opacity:1; visibility:visible; transition:opacity .5s; }
+    .wsb__head{ position:absolute; top:6cqw; left:6cqw; right:6cqw; text-align:center; }
+    .wsb__it{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:4cqw; direction:ltr; }
+    .wsb__ht{ font-family:'Frank Ruhl Libre',serif; font-size:6.4cqw; line-height:1.2; margin-top:1cqw; }
+    .wsb__pin{ position:absolute; top:26cqw; left:50%; margin-left:-2cqw; width:0; height:0; border-left:2cqw solid transparent; border-right:2cqw solid transparent; border-top:2.8cqw solid currentColor; }
+    .wsb__read{ position:absolute; left:6cqw; right:6cqw; bottom:6cqw; text-align:center; }
+    .wsb__t{ font-family:'Cormorant Garamond',serif; font-size:9cqw; line-height:1; direction:ltr; display:block; }
+    .wsb__n{ font-family:'Frank Ruhl Libre',serif; font-size:4.6cqw; display:block; margin-top:1.2cqw; }
+    .wsb__s{ font-size:3.2cqw; display:block; margin-top:1cqw; opacity:.85; }
+    .wsb__ring{ position:absolute; left:50%; width:0; height:0; transition:transform 1s cubic-bezier(.4,0,.2,1); }
+    .wsb__ring > span{ position:absolute; left:0; top:0; }
+    .wsb__ring > span > span{ position:absolute; display:block; transition:transform 1s cubic-bezier(.4,0,.2,1); }
+    .wsb__center{ position:absolute; left:50%; border-radius:50%; overflow:hidden; }
+    .wsb__center img,.wsb__ring img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+    .wsb__center img{ opacity:0; transition:opacity .6s; }
+    .wsb__center img.is-on{ opacity:1; }
+    /* ENCORE° — the sun dial */
+    .wsb__disc{ position:absolute; top:31cqw; left:50%; width:60cqw; height:60cqw; margin-left:-30cqw; border-radius:50%;
+      background:conic-gradient(from -45deg, #241212 0 25%, #6E4E4A 0 50%, #34405A 0 75%, #853A26 0 100%);
+      box-shadow:0 0 0 .4cqw #D9B26A, 0 5cqw 12cqw rgba(0,0,0,.35); transition:transform 1s cubic-bezier(.4,0,.2,1); }
+    .wsb__disc svg{ position:absolute; inset:0; width:100%; height:100%; }
+    .wsb__disc + .wsb__center{ top:46cqw; width:30cqw; height:30cqw; margin-left:-15cqw; background:#F6EEE4; box-shadow:0 0 0 .3cqw #D9B26A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    .wsb__disc + .wsb__center img{ object-fit:contain; padding:3.5cqw; box-sizing:border-box; }
+    /* ROSÉE° — le cadran de l'aube */
+    .wsb__orbit{ position:absolute; top:36cqw; left:50%; width:56cqw; height:56cqw; margin-left:-28cqw; border-radius:50%; border:.25cqw dashed rgba(194,138,90,.6); }
+    .wsb__dial--rosee .wsb__ring{ top:64cqw; }
+    .wsb__dial--rosee .wsb__ring > span > span{ width:15cqw; height:15cqw; left:-7.5cqw; top:-7.5cqw; border-radius:50%; overflow:hidden; box-shadow:0 0 0 .35cqw #C28A5A, 0 2cqw 5cqw rgba(0,0,0,.25); }
+    .wsb__dial--rosee .wsb__center{ top:52cqw; width:24cqw; height:24cqw; margin-left:-12cqw; background:#F4E8DC; box-shadow:0 0 0 .3cqw #C28A5A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    /* CREMA° — seven roasts around one cup */
+    .wsb__dial--crema .wsb__ring{ top:62cqw; }
+    .wsb__dial--crema .wsb__ring > span > span{ width:7cqw; height:9cqw; left:-3.5cqw; top:-4.5cqw; border-radius:1.4cqw 1.4cqw 3.5cqw 3.5cqw;
+      box-shadow:inset 0 -1.6cqw 2cqw rgba(0,0,0,.18), 0 1.6cqw 2.4cqw rgba(46,30,22,.25); }
+    .wsb__dial--crema .wsb__center{ top:44cqw; width:36cqw; height:36cqw; margin-left:-18cqw; box-shadow:0 3cqw 7cqw rgba(46,30,22,.25); }
+    /* PANCAKERIE° — the fan */
+    .wsb__logo{ position:absolute; top:7cqw; left:50%; width:44cqw; margin-left:-22cqw; }
+    .wsb__blob{ position:absolute; top:40cqw; left:12cqw; width:76cqw; height:76cqw; border-radius:47% 53% 44% 56% / 52% 45% 55% 48%; opacity:.5; transition:background-color .9s; }
+    .wsb__dial--pancakerie .wsb__ring{ top:192cqw; }
+    .wsb__dial--pancakerie .wsb__ring > span > span{ width:64cqw; height:48cqw; left:-32cqw; top:-24cqw; }
+    .wsb__dial--pancakerie .wsb__ring img{ object-fit:contain; filter:drop-shadow(0 3cqw 3.4cqw rgba(64,38,19,.28)); }
+    .wsb__hint{ margin:14px 0 0; text-align:center; font-size:.85rem; color:#7A6349; }
+    .wsb__steps{ display:flex; justify-content:center; gap:10px; margin-top:10px; }
+    .wsb__steps button{ width:44px; height:44px; border-radius:50%; border:1px solid #D4C9BC; background:#FAF8F3; color:#2A201A; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+    .wsb__steps button:hover{ border-color:#A45839; color:#A45839; }
+    .wsb__close{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:clamp(40px,6vw,72px); padding-top:28px; border-top:1px solid #E4DBCF; }
+    .wsb__close p{ margin:0; font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-size:clamp(1.5rem,2.8vw,2.1rem); line-height:1.2; }
+    .wsb__cta{ display:inline-flex; align-items:center; gap:9px; padding:15px 30px; background:#A45839; color:#FAF8F3; text-decoration:none; font-weight:500; border-radius:2px; transition:background .3s; }
+    .wsb__cta:hover{ background:#8A4A2F; }
+    @media (max-width:820px){
+      .wsb__stage{ grid-template-columns:1fr; }
+      .wsb__cardwrap{ order:-1; max-width:340px; width:100%; margin:0 auto; }
+      .wsb__tabs{ flex-wrap:nowrap; overflow-x:auto; margin:22px -16px 24px; padding:0 16px; scrollbar-width:none; }
+      .wsb__tab{ flex-shrink:0; }
+    }
+    @media (prefers-reduced-motion:reduce){ .wsb__ring,.wsb__ring > span > span,.wsb__disc,.wsb__card{ transition:none; } }
+    </style>
+    <section class="wsb" id="what-she-buys" aria-labelledby="wsb-title">
+        <div class="wsb__inner">
+            <p class="wsb__label">המוצר שלך טוב. אז למה משווים אותו לפי מחיר?</p>
+            <h2 id="wsb-title">מה היא קונה באמת?</h2>
+            <div class="wsb__tabs" role="tablist" aria-label="ארבעה עולמות, ארבע חוגות" id="wsb-tabs">
+                <button type="button" role="tab" class="wsb__tab" data-w="0" aria-selected="true" aria-controls="wsb-panel">ENCORE°</button>
+                <button type="button" role="tab" class="wsb__tab" data-w="1" aria-selected="false" aria-controls="wsb-panel">ROSÉE°</button>
+                <button type="button" role="tab" class="wsb__tab" data-w="2" aria-selected="false" aria-controls="wsb-panel">CREMA°</button>
+                <button type="button" role="tab" class="wsb__tab" data-w="3" aria-selected="false" aria-controls="wsb-panel">PANCAKERIE°</button>
+            </div>
+            <div class="wsb__stage" id="wsb-panel" role="tabpanel">
+                <div class="wsb__text" id="wsb-text">
+                    <div class="wsb__world"><span class="wsb__name" data-f="name">ENCORE°</span><span class="wsb__no" data-f="no">עולם 25 · Maison de Bijoux</span></div>
+                    <p class="wsb__k">מה שמשווים</p>
+                    <p class="wsb__cmp" data-f="cmp">עוד שרשרת זהב על רקע קרם.</p>
+                    <p class="wsb__k wsb__k--buy">מה היא קונה</p>
+                    <p class="wsb__buy" data-f="buy">התכשיט שתמיד נשאר עלייך.</p>
+                    <p class="wsb__line" data-f="line">היא לא קונה קישוט. היא קונה את היום שלה.</p>
+                    <a class="wsb__enter" data-f="href" href="encore/" target="_blank" rel="noopener">להיכנס לעולם ENCORE° ←</a>
+                </div>
+                <div class="wsb__cardwrap">
+                    <div class="wsb__card" id="wsb-card"></div>
+                    <div class="wsb__steps">
+                        <button type="button" id="wsb-prev" aria-label="לסובב אחורה"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+                        <button type="button" id="wsb-next" aria-label="לסובב קדימה"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                    </div>
+                    <p class="wsb__hint">סובבי את החוגה: הקשה, גרירה או החצים</p>
+                </div>
+            </div>
+            <div class="wsb__close">
+                <p>כשהלקוחה מרגישה שזה שלה, <b style="font-weight:600">היא מפסיקה להשוות.</b></p>
+                <a href="#audit" class="wsb__cta">ומה הלקוחות שלך קונות באמת?
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></a>
+            </div>
+        </div>
+    </section>
+    <script>
+    (function(){
+      var sec = document.getElementById('what-she-buys'); if (!sec) return;
+      var card = document.getElementById('wsb-card'), textBox = document.getElementById('wsb-text');
+      var D = 'images/bw-lp/dials/';
+      var WORLDS = [
+        { key:'encore', name:'ENCORE°', no:'עולם 25 · Maison de Bijoux', href:'encore/',
+          cmp:'עוד שרשרת זהב על רקע קרם.', buy:'התכשיט שתמיד נשאר עלייך.', line:'היא לא קונה קישוט. היא קונה את היום שלה.',
+          it:'Le Jour', ht:'תכשיט אחד לכל שעה ביום.', ink:'#F6EEE4', pin:'#D9B26A', type:'disc',
+          steps:[
+            { t:'06:00', n:'שחר · טבעות',      s:'הדבר הראשון שאת עונדת בבוקר.', img:'encore/assets/pieces/rings-1.webp',     bg:'#6E4E4A', rot:-90 },
+            { t:'12:00', n:'צהריים · שרשראות', s:'באמצע היום, היא עדיין שם.',     img:'encore/assets/pieces/pendants-1.webp',  bg:'#34405A', rot:-180 },
+            { t:'18:00', n:'שקיעה · צמידים',   s:'צמיד שזוכר איפה היית.',          img:'encore/assets/pieces/bracelets-1.webp', bg:'#853A26', rot:-270 },
+            { t:'00:00', n:'לילה · עגילים',     s:'כשהיום נגמר, את נשארת.',          img:'encore/assets/pieces/earrings-1.webp',  bg:'#241212', rot:-360 } ] },
+        { key:'rosee', name:'ROSÉE°', no:'עולם 15 · Skincare Ritual', href:'rosee/',
+          cmp:'עוד בקבוק ורוד על המדף.', buy:'הרגע בבוקר שמחזיק יום שלם.', line:'היא לא קונה סרום. היא קונה את הבוקר שלה.',
+          it:"Le Cadran de l'Aube", ht:'הבוקר הוא מעגל.', pin:'#C28A5A', type:'ring', r:28,
+          steps:[
+            { t:'05:30', n:'La Brume',   s:'מי טל · הטיפה הראשונה של היום', img:'rosee/collection/brume.webp',   bg:'#4A3640', ink:'#F7F0E6' },
+            { t:'06:15', n:'Le Réveil',  s:'סרום בוקר',                       img:'rosee/collection/reveil.webp',  bg:'#7A5566', ink:'#F7F0E6' },
+            { t:'07:00', n:'Le Voile',   s:'קרם עיניים',                      img:'rosee/collection/voile.webp',   bg:'#D9B7B3', ink:'#3B2E33' },
+            { t:'07:45', n:'La Lumière', s:'קרם יום',                         img:'rosee/collection/lumiere.webp', bg:'#EFD9CF', ink:'#3B2E33' },
+            { t:'22:00', n:'La Nuit',    s:'אליקסיר לילה',                    img:'rosee/collection/nuit.webp',    bg:'#2E2430', ink:'#F7F0E6' } ] },
+        { key:'crema', name:'CREMA°', no:'עולם 26 · Caffè', href:'crema.html',
+          cmp:'עוד קפסולה שמשווים לפי מחיר.', buy:'הגוון שצובע את כל היום שלך.', line:'היא לא קונה קפה. היא בוחרת את הגוון של היום.',
+          it:'Il Rito', ht:'שבע קליות. מכונה אחת.', ink:'#2E1E16', pin:'#87502C', type:'ring', r:28,
+          steps:[
+            { t:'Ristretto', n:'Espresso · Corto',    c:'#D2382B', img:D+'crema-ristretto.webp' },
+            { t:'Arancia',   n:'Espresso · Agrumi',   c:'#E07F2A', img:D+'crema-arancia.webp' },
+            { t:'Miele',     n:'Lungo · Dolce',       c:'#E3B23C', img:D+'crema-miele.webp' },
+            { t:'Foresta',   n:'Espresso · Nocciola', c:'#4F9D58', img:D+'crema-foresta.webp' },
+            { t:'Onda',      n:'Espresso · Classico', c:'#3C84C2', img:D+'crema-onda.webp' },
+            { t:'Viola',     n:'Espresso · Floreale', c:'#7C5BAF', img:D+'crema-viola.webp' },
+            { t:'Rosa',      n:'Lungo · Fruttato',    c:'#D24E86', img:D+'crema-rosa.webp' } ] },
+        { key:'pancakerie', name:'PANCAKERIE°', no:'עולם 23 · Morning Patisserie', href:'pancakerie/',
+          cmp:'עוד מנה בתפריט.', buy:'טעם שרואים לפני שטועמים.', line:'היא מזהה את המנה שלה מהצבע, עוד לפני שקראה את השם.',
+          ink:'#402613', type:'fan', r:130, arc:22,
+          steps:[
+            { t:'PISTACHE', n:'פיסטוק',    img:D+'pk-pistache.webp', bg:'#D4CFBA', blob:'#A5A57F' },
+            { t:'FRAISE',   n:'תות',       img:D+'pk-fraise.webp',   bg:'#EBCFC7', blob:'#D9928A' },
+            { t:'NOISETTE', n:'אגוזי לוז', img:D+'pk-noisette.webp', bg:'#DCC7AE', blob:'#A9835E' },
+            { t:'CITRON',   n:'לימון',     img:D+'pk-citron.webp',   bg:'#F0E2B0', blob:'#D8B94E' } ] }
+      ];
+      function tint(c){ return 'color-mix(in srgb, ' + c + ' 26%, #F6EEE4)'; }
+
+      // build one dial per world (images load lazily: only when the section comes near)
+      var dials = WORLDS.map(function (w, wi) {
+        var el = document.createElement('div'); el.className = 'wsb__dial wsb__dial--' + w.key; el.style.color = w.ink || '#F6EEE4';
+        var h = '';
+        if (w.it) h += '<div class="wsb__head"><div class="wsb__it" style="color:' + (w.pin) + '">' + w.it + '</div><div class="wsb__ht">' + w.ht + '</div></div>';
+        if (w.type === 'disc') {
+          var ticks = ''; for (var k = 0; k < 24; k++) { var a = k * 15 * Math.PI / 180, r1 = k % 6 ? 46 : 44; ticks += '<line x1="' + (50 + r1 * Math.sin(a)).toFixed(2) + '" y1="' + (50 - r1 * Math.cos(a)).toFixed(2) + '" x2="' + (50 + 48 * Math.sin(a)).toFixed(2) + '" y2="' + (50 - 48 * Math.cos(a)).toFixed(2) + '"/>'; }
+          h += '<div class="wsb__pin" style="color:' + w.pin + '"></div><div class="wsb__disc"><svg viewBox="0 0 100 100" fill="none" stroke="#D9B26A" stroke-width=".35" aria-hidden="true"><circle cx="50" cy="50" r="44"/><line x1="14.6" y1="14.6" x2="85.4" y2="85.4"/><line x1="85.4" y1="14.6" x2="14.6" y2="85.4"/>' + ticks + '</svg></div>';
+          h += '<div class="wsb__center">' + w.steps.map(function (s, i) { return '<img data-src="' + s.img + '" alt="' + s.n + '">'; }).join('') + '</div>';
+        } else if (w.type === 'ring') {
+          if (w.key === 'rosee') h += '<div class="wsb__orbit"></div>';
+          h += '<div class="wsb__pin" style="color:' + w.pin + '"></div><div class="wsb__ring">' + w.steps.map(function (s, i) {
+            var a = i * 360 / w.steps.length;
+            var inner = w.key === 'crema' ? '<span style="background:' + s.c + '"></span>' : '<span><img data-src="' + s.img + '" alt=""></span>';
+            return '<span style="transform:rotate(' + a + 'deg) translateY(-' + w.r + 'cqw) rotate(' + (-a) + 'deg)">' + inner + '</span>';
+          }).join('') + '</div>';
+          h += '<div class="wsb__center">' + w.steps.map(function (s) { return '<img data-src="' + s.img + '" alt="' + (s.n || s.t) + '">'; }).join('') + '</div>';
+        } else {
+          h += '<img class="wsb__logo" data-src="pancakerie/assets/logo.webp" alt="Pancakerie · Morning Patisserie"><div class="wsb__blob"></div>';
+          h += '<div class="wsb__ring">' + w.steps.map(function (s, i) {
+            return '<span style="transform:rotate(' + (i * w.arc) + 'deg) translateY(-' + w.r + 'cqw)"><span><img data-src="' + s.img + '" alt="' + s.t + ' · ' + s.n + '"></span></span>';
+          }).join('') + '</div>';
+        }
+        h += '<div class="wsb__read"><span class="wsb__t"></span><span class="wsb__n"></span><span class="wsb__s"></span></div>';
+        el.innerHTML = h; card.appendChild(el);
+        return el;
+      });
+
+      var cur = 0, step = [0, 0, 0, 0], turns = [0, 0, 0, 0], auto = true, timer = null, visible = false, loaded = false;
+      function paint(wi){
+        var w = WORLDS[wi], el = dials[wi], i = step[wi], s = w.steps[i], n = w.steps.length;
+        var bg = s.bg || (s.c ? tint(s.c) : '#6E4E4A');
+        card.style.backgroundColor = bg; el.style.color = s.ink || w.ink;
+        if (w.type === 'disc') el.querySelector('.wsb__disc').style.transform = 'rotate(' + (s.rot + turns[wi] * -360) + 'deg)';
+        else {
+          var unit = w.type === 'fan' ? w.arc : 360 / n, rot = -(i * unit) - turns[wi] * (w.type === 'fan' ? 0 : 360);
+          var ring = el.querySelector('.wsb__ring'); ring.style.transform = 'rotate(' + rot + 'deg)';
+          if (w.type !== 'fan') ring.querySelectorAll(':scope > span > span').forEach(function (sp) { sp.style.transform = 'rotate(' + (-rot) + 'deg)'; });
+          if (w.type === 'fan') el.querySelector('.wsb__blob').style.backgroundColor = s.blob;
+        }
+        var cimgs = el.querySelectorAll('.wsb__center img'); cimgs.forEach(function (im, k) { im.classList.toggle('is-on', k === i); });
+        el.querySelector('.wsb__t').textContent = s.t; el.querySelector('.wsb__n').textContent = s.n; el.querySelector('.wsb__s').textContent = s.s || '';
+      }
+      function setText(w){
+        textBox.classList.add('is-out');
+        setTimeout(function () {
+          textBox.querySelector('[data-f="name"]').textContent = w.name; textBox.querySelector('[data-f="no"]').textContent = w.no;
+          textBox.querySelector('[data-f="cmp"]').textContent = w.cmp; textBox.querySelector('[data-f="buy"]').textContent = w.buy;
+          textBox.querySelector('[data-f="line"]').textContent = w.line;
+          var a = textBox.querySelector('[data-f="href"]'); a.href = w.href; a.textContent = 'להיכנס לעולם ' + w.name + ' ←';
+          textBox.classList.remove('is-out');
+        }, 300);
+      }
+      function world(wi){
+        cur = wi; dials.forEach(function (d, k) { d.classList.toggle('is-on', k === wi); });
+        sec.querySelectorAll('.wsb__tab').forEach(function (t, k) { t.setAttribute('aria-selected', k === wi ? 'true' : 'false'); if (k === wi) { var tl = t.parentNode; if (tl.scrollWidth > tl.clientWidth) tl.scrollTo({ left: t.offsetLeft - (tl.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' }); } });
+        setText(WORLDS[wi]); paint(wi);
+      }
+      function turn(dir){
+        var w = WORLDS[cur], n = w.steps.length, i = step[cur] + dir;
+        if (w.type !== 'fan') { if (i >= n) turns[cur]++; if (i < 0) turns[cur]--; }
+        step[cur] = ((i % n) + n) % n; paint(cur);
+      }
+      function user(){ if (auto) { auto = false; clearInterval(timer); } }
+      function track(){ if (window.gtag) gtag('event', 'dial_turn', { world: WORLDS[cur].key }); }
+      function tick(){
+        if (!visible) return;
+        if (step[cur] === WORLDS[cur].steps.length - 1) { world((cur + 1) % WORLDS.length); step[cur] = 0; paint(cur); }
+        else turn(1);
+      }
+      sec.querySelectorAll('.wsb__tab').forEach(function (t) { t.addEventListener('click', function () { user(); world(+t.dataset.w); }); });
+      document.getElementById('wsb-next').addEventListener('click', function () { user(); turn(1); track(); });
+      document.getElementById('wsb-prev').addEventListener('click', function () { user(); turn(-1); track(); });
+      var x0 = null, moved = false;
+      card.addEventListener('pointerdown', function (e) { x0 = e.clientX; moved = false; });
+      card.addEventListener('pointermove', function (e) { if (x0 !== null && Math.abs(e.clientX - x0) > 40) { user(); turn(e.clientX < x0 ? 1 : -1); track(); x0 = null; moved = true; } });
+      card.addEventListener('pointerup', function () { if (x0 !== null && !moved) { user(); turn(1); track(); } x0 = null; });
+      card.addEventListener('pointerleave', function () { x0 = null; });
+
+      world(0);
+      function load(){ if (loaded) return; loaded = true; card.querySelectorAll('img[data-src]').forEach(function (im) { im.src = im.dataset.src; }); }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { if (es[0].isIntersecting) load(); }, { rootMargin: '600px 0px' }).observe(sec);
+        new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: .35 }).observe(card);
+      } else { load(); visible = true; }
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(tick, 2600);
+    })();
+    </script>
+
     <!-- 5 · The solution — what a Brand World is -->
     <section class="section">
         <div class="container">
