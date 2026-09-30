@@ -713,6 +713,11 @@
     .lt.is-done .lt__tag{ opacity:1; transform:none; }
     .lt.is-done .lt__tile[data-odd]{ border-color:#A45839; opacity:.6; }
     .lt.is-done .lt__tile[data-odd] .lt__tag{ background:#A45839; color:#fff; }
+    .lt__film{ display:none; aspect-ratio:4/5; border-radius:14px; overflow:hidden; background:#EFE3D6; }
+    .lt__film video{ width:100%; height:100%; object-fit:cover; display:block; }
+    .lt.is-film .lt__grid{ display:none; }
+    .lt.is-film .lt__film{ display:block; animation:ltIn .8s ease both; }
+    @keyframes ltIn{ from{ opacity:0; } to{ opacity:1; } }
     .lt__hint{ margin:14px 0 0; font-size:.88rem; color:#7A6349; text-align:center; }
     .lt__result{ display:none; margin-top:22px; }
     .lt.is-done .lt__result{ display:block; }
@@ -739,13 +744,14 @@
                     <button type="button" class="lt__tile" data-id="drop" aria-label="תמונה 3: טיפה ורודה נופלת"><img src="images/bw-lp/logo-test/t-drop.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="images/bw-lp/logo-test/t-drop.jpg" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · הטיפה</span></button>
                     <button type="button" class="lt__tile" data-id="boutique" aria-label="תמונה 4: חנות עם מדפים בקשתות"><img src="images/bw-lp/logo-test/t-boutique.jpg" alt="" loading="lazy" width="560" height="560"><img class="full" src="rosee/collection/boutique-m.webp" alt="" loading="lazy"><span class="lt__tag">ROSÉE° · החנות</span></button>
                 </div>
+                <div class="lt__film"><video muted loop playsinline preload="none" poster="images/bw-lp/films/rosee.webp" aria-label="ROSÉE° — סרט עולם המותג"><source src="images/bw-lp/films/rosee.mp4" type="video/mp4"></video></div>
                 <p class="lt__hint">הקישי על התמונה שלא שייכת</p>
             </div>
             <div class="lt__result" aria-live="polite">
                 <p class="lt__verdict" id="lt-verdict"></p>
                 <p>שלוש נקודות מגע של <b>ROSÉE°</b>: החוגה, הטיפה, החנות. בלי לקרוא שם, ידעת שהן מאותו בית. זה מה שעולם מותג עושה. וכשמזהים אותך ככה, כבר לא משווים אותך.</p>
                 <a href="#audit" class="lt__cta">ומה מזהים אצלך? לאבחון פער המותג</a>
-                <div class="lt__more"><a href="rosee/" target="_blank" rel="noopener">להיכנס לעולם ROSÉE° ←</a><button type="button" id="lt-reset">לנסות שוב</button></div>
+                <div class="lt__more"><a href="rosee/" target="_blank" rel="noopener">להיכנס לעולם ROSÉE° ←</a><button type="button" id="lt-swap">לראות את הסרט של ROSÉE°</button><button type="button" id="lt-reset">לנסות שוב</button></div>
             </div>
         </div>
     </section>
@@ -754,16 +760,23 @@
       var sec = document.getElementById('logo-test'); if (!sec) return;
       var grid = document.getElementById('lt-grid'), verdict = document.getElementById('lt-verdict');
       var q = sec.querySelector('[data-lt-q]'), a = sec.querySelector('[data-lt-a]'), oddTag = sec.querySelector('[data-odd-tag]');
+      var film = sec.querySelector('.lt__film video'), filmT = null;
+      document.getElementById('lt-swap').addEventListener('click', function () {
+        var on = sec.classList.toggle('is-film'); this.textContent = on ? 'לראות שוב את התמונות' : 'לראות את הסרט של ROSÉE°';
+        if (on) film.play().catch(function () {}); else film.pause();
+      });
       grid.addEventListener('click', function (e) {
         var t = e.target.closest('.lt__tile'); if (!t || sec.classList.contains('is-done')) return;
         var right = t.hasAttribute('data-odd');
         verdict.textContent = right ? 'זיהית בשנייה. בלי לוגו אחד.' : 'כמעט. הסרום האפור הוא זה שלא שייך, ושלוש האחרות מאותו בית.';
         oddTag.textContent = right ? 'בדיוק. זו' : 'זו לא שייכת';
         q.hidden = true; a.hidden = false; sec.classList.add('is-done');
+        // after the logos return, the world itself plays: ROSÉE°'s film takes the tiles' place
+        clearTimeout(filmT); filmT = setTimeout(function () { sec.classList.add('is-film'); document.getElementById('lt-swap').textContent = 'לראות שוב את התמונות'; film.play().catch(function () {}); }, 2600);
         if (typeof fbq === 'function') fbq('trackCustom', 'LogoTest', { pick: t.dataset.id, correct: right });
         if (window.gtag) gtag('event', 'logo_test_pick', { pick: t.dataset.id, correct: right });
       });
-      document.getElementById('lt-reset').addEventListener('click', function () { sec.classList.remove('is-done'); q.hidden = false; a.hidden = true; });
+      document.getElementById('lt-reset').addEventListener('click', function () { clearTimeout(filmT); film.pause(); sec.classList.remove('is-done', 'is-film'); document.getElementById('lt-swap').textContent = 'לראות את הסרט של ROSÉE°'; q.hidden = false; a.hidden = true; });
     })();
     </script>
 
@@ -831,6 +844,7 @@
     /* the world's moment */
     .cb__stage{aspect-ratio:4/5;border-radius:14px;overflow:hidden;position:relative;background:#F0E8DC;box-shadow:0 30px 70px -34px rgba(42,32,26,.5),0 0 0 1px rgba(196,118,90,.28);}
     .cb__stage video,.cb__stage>img{width:100%;height:100%;object-fit:cover;display:block;}
+    .cb__stage--film{aspect-ratio:9/16;max-width:320px;margin:0 auto;background:#EFE7DC;}
     .cb__stage--3d{background:radial-gradient(ellipse at 50% 62%,#FFFDF8 0%,#F3ECE1 56%,#E9DFCF 100%);cursor:grab;touch-action:pan-y;}
     .cb__stage--3d:active{cursor:grabbing}
     .cb__stage--3d>img{object-fit:contain;padding:8%;}
@@ -872,7 +886,7 @@
         <div class="cb__head">
           <p class="cb__label">אותו מוצר · אותו מחיר</p>
           <h2 class="cb__title">ככה משווים. <em>ככה בוחרים.</em></h2>
-          <p class="cb__lede">כרטיס מוצר עם מחיר וכפתור זה מה שכולן מפרסמות, וזה כרטיס תקין. הבעיה היא מה שהלקוחה יכולה לעשות איתו: להשוות. עולם מותג נותן לה משהו אחר לעשות עם אותו מוצר, באותו מחיר: לסובב, להיכנס, לבנות. ואת זה כבר אי אפשר לשים בטבלה.</p>
+          <p class="cb__lede">כרטיס מוצר עם מחיר וכפתור זה מה שכולן מפרסמות, וזה כרטיס תקין. הבעיה היא מה שהלקוחה יכולה לעשות איתו: להשוות. עולם מותג נותן לה משהו אחר לעשות עם אותו מוצר, באותו מחיר: להרגיש, להיכנס, לבנות. ואת זה כבר אי אפשר לשים בטבלה.</p>
         </div>
 
         <div class="cb__pairs" id="cbPairs">
@@ -888,16 +902,14 @@
             </div>
             <div class="cb__side cb__side--world">
               <div class="cb__tag cb__tag--world">ככה בוחרים</div>
-              <div class="cb__stage cb__stage--3d" id="cbOreva" data-src="oreva/assets/glow-3d.glb" data-poster="oreva/assets/glow-3d.webp">
-                <img src="oreva/assets/glow-3d.webp" width="1103" height="1158" alt="ORÉVA° GLOW — בקבוק הסרום בתלת-ממד, גררי לסובב" loading="lazy">
-                <span class="cb__live">Live</span>
-                <span class="cb__hint">סובבי</span>
+              <div class="cb__stage cb__stage--film">
+                <video muted loop playsinline preload="none" data-io poster="images/bw-lp/films/oreva.webp" aria-label="ORÉVA° — סרט עולם המותג: קודם הידיים, אחר כך הבקבוק"><source src="images/bw-lp/films/oreva.mp4" type="video/mp4"></video>
               </div>
               <p class="cb__world">ORÉVA° · Skin Studio</p>
             </div>
             <div class="cb__text">
-              <p class="cb__evid">מוצר שהיא כבר סובבה ביד.</p>
-              <p class="cb__rule"><em>סובבי.</em>ככה היא פוגשת את המוצר, עוד לפני שהיא רואה מחיר. וממה שהחזקת ביד, קשה להיפרד בגלל מחיר.</p>
+              <p class="cb__evid">קודם הידיים. אחר כך הבקבוק.</p>
+              <p class="cb__rule"><em>מתי זה נכון לך?</em>כשמה שמוכר אצלך הוא המגע, תני לה לפגוש את הידיים לפני שהיא פוגשת את המחיר.</p>
               <a class="cb__link" href="oreva/" target="_blank" rel="noopener">להיכנס לעולם ←</a>
             </div>
           </article>
@@ -914,9 +926,8 @@
             </div>
             <div class="cb__side cb__side--world">
               <div class="cb__tag cb__tag--world">ככה בוחרים</div>
-              <div class="cb__stage">
-                <video muted loop playsinline preload="none" data-io poster="images/bw-lp/velune-door-poster.jpg" aria-label="VELUNE° — הדלת נפתחת והמצלמה נכנסת לגן"><source src="images/bw-lp/velune-door.mp4" type="video/mp4"></video>
-                <span class="cb__live">Live</span>
+              <div class="cb__stage cb__stage--film">
+                <video muted loop playsinline preload="none" data-io poster="images/bw-lp/films/velune.webp" aria-label="VELUNE° — סרט עולם המותג: בושם הוא לא ריח, הוא מקום"><source src="images/bw-lp/films/velune.mp4" type="video/mp4"></video>
               </div>
               <p class="cb__world">VELUNE° · Maison de Parfum</p>
             </div>
@@ -939,9 +950,8 @@
             </div>
             <div class="cb__side cb__side--world">
               <div class="cb__tag cb__tag--world">ככה בוחרים</div>
-              <div class="cb__stage">
-                <video muted loop playsinline preload="none" data-io poster="images/bw-lp/miel-cut-poster.jpg" aria-label="MIEL° — העוגה שהיא בנתה נחתכת, הפרוסה מתגלה"><source src="images/bw-lp/miel-cut.mp4" type="video/mp4"></video>
-                <span class="cb__live">Live</span>
+              <div class="cb__stage cb__stage--film">
+                <video muted loop playsinline preload="none" data-io poster="images/bw-lp/films/miel.webp" aria-label="MIEL° — סרט עולם המותג: רומנטיקה מתחילה מבפנים"><source src="images/bw-lp/films/miel.mp4" type="video/mp4"></video>
               </div>
               <p class="cb__world">MIEL° · Pâtisserie</p>
             </div>
@@ -969,26 +979,6 @@
       </div>
     </section>
 
-    <!-- the ORÉVA° bottle mounts as live 3D only when the section is near the viewport (same lazy pattern as the homepage vitrine teaser) -->
-    <script>
-    (function(){
-      var stage=document.getElementById('cbOreva'); if(!stage||!('IntersectionObserver' in window))return;
-      var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting)return; io.disconnect(); mount(); },{rootMargin:'260px 0px'});
-      io.observe(stage);
-      function mount(){
-        import('https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js').then(function(){
-          var mv=document.createElement('model-viewer');
-          mv.setAttribute('src',stage.dataset.src); mv.setAttribute('poster',stage.dataset.poster); mv.setAttribute('alt','ORÉVA° GLOW — בקבוק הסרום בתלת-ממד, גררי לסובב');
-          ['camera-controls','auto-rotate','disable-zoom','disable-pan'].forEach(function(a){mv.setAttribute(a,'');});
-          mv.setAttribute('auto-rotate-delay','3500'); mv.setAttribute('rotation-per-second','12deg'); mv.setAttribute('camera-orbit','-15deg 84deg 105%'); mv.setAttribute('min-camera-orbit','auto auto 40%');
-          mv.setAttribute('interaction-prompt','none'); mv.setAttribute('shadow-intensity','0.9'); mv.setAttribute('shadow-softness','0.8'); mv.setAttribute('exposure','1.05'); mv.setAttribute('environment-image','neutral');
-          mv.addEventListener('load',function(){ stage.classList.add('loaded'); });
-          mv.addEventListener('pointerdown',function(){ stage.classList.add('touched'); });
-          stage.insertBefore(mv, stage.firstChild);
-        }).catch(function(){});
-      }
-    })();
-    </script>
 
     <!-- 4b · What she really buys — four live dials from the worlds (ENCORE° · ROSÉE° · CREMA° · PANCAKERIE°), from the "מה היא קונה באמת" reel -->
     <style>
