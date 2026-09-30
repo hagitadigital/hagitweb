@@ -65,7 +65,7 @@
     <meta name="twitter:image:alt" content="עולם מותג חי: אתר, תוכן ווידאו בשפה אחת, Brand Worlds Studio">
 
     <!-- LCP: paint the hero poster as early as possible -->
-    <link rel="preload" as="image" href="images/bw-lp/hero/melte.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/bw-lp/oreva-screen.jpg" fetchpriority="high">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -399,34 +399,38 @@
     @keyframes bwRise{ from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
     .bw-hero .ctas-top{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:26px;
       opacity:0; animation:bwRise 1s var(--ease) .52s forwards; }
-    /* Film reel: four worlds in sequence, 4:5 frames, crossfade (replaces the 3D browser carousel) */
-    .bw-hero__grid{ position:relative; z-index:5; width:100%; max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px);
-      display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(32px,5vw,72px); align-items:center; flex:1; }
-    .bw-hero__grid .top{ max-width:none; padding:0; text-align:start; }
-    .bw-hero__grid .sub{ margin-inline:0; }
-    .bw-hero__grid .ctas-top{ justify-content:flex-start; }
-    .bw-hero__grid .trust{ text-align:start; }
-    .bw-hero .film{ position:relative; margin:0; justify-self:center; width:min(100%, calc(min(68vh,640px) * .8));
-      opacity:0; animation:bwRise 1.1s var(--ease) .45s forwards; }
-    .bw-hero .reel{ position:relative; aspect-ratio:4/5; border-radius:18px; overflow:hidden; background:#0d0b09; cursor:pointer;
-      border:1px solid rgba(212,201,188,.16); box-shadow:0 40px 90px -30px rgba(0,0,0,.85); }
-    .bw-hero .reel video,.bw-hero .reel img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
-      opacity:0; transition:opacity .9s var(--ease); }
-    .bw-hero .reel .is-on{ opacity:1; }
-    .bw-hero .reel::after{ content:''; position:absolute; inset:auto 0 0 0; height:42%; pointer-events:none;
-      background:linear-gradient(0deg, rgba(12,10,8,.72) 0%, rgba(12,10,8,0) 100%); }
-    .bw-hero .segs{ position:absolute; top:14px; left:14px; right:14px; z-index:3; display:flex; gap:6px; direction:ltr; }
-    .bw-hero .seg{ flex:1; height:3px; padding:10px 0; margin:-10px 0; border:none; background:none; cursor:pointer; }
-    .bw-hero .seg span{ display:block; height:3px; border-radius:2px; background:rgba(250,248,243,.28); overflow:hidden; }
-    .bw-hero .seg i{ display:block; height:100%; width:0; background:var(--cream); }
-    .bw-hero .seg.done i{ width:100%; }
-    .bw-hero .seg.run i{ width:100%; transition:width var(--dur,3.6s) linear; }
-    .bw-hero .film figcaption{ position:absolute; left:18px; right:18px; bottom:16px; z-index:3; display:flex; justify-content:space-between;
-      align-items:flex-end; gap:12px; direction:ltr; pointer-events:none; }
-    .bw-hero .film .name{ font-family:var(--display); font-size:1.7rem; font-weight:600; color:var(--cream); line-height:1; display:block; }
-    .bw-hero .film .cat{ white-space:nowrap; font-family:var(--en); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#E3A88F; }
-    .bw-hero .film .enter{ font-family:var(--he); font-size:.8rem; color:rgba(250,248,243,.8); direction:rtl; white-space:nowrap; }
-    @media (prefers-reduced-motion:reduce){ .bw-hero .reel video{ display:none; } .bw-hero .seg.run i{ transition:none; } }
+    .bw-hero .stage{ position:relative; width:100%; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:15px;
+      perspective:1900px; min-height:42vh; padding:24px 24px clamp(62px,8.5vh,86px); touch-action:pan-y; }
+    .bw-hero .stage-label{ font-family:var(--en); font-size:.63rem; letter-spacing:.2em; text-transform:uppercase;
+      color:rgba(250,248,243,.6); text-align:center; opacity:0; animation:bwRise 1s var(--ease) .5s forwards; }
+    .bw-hero .stage-label b{ color:var(--copper); font-weight:600; letter-spacing:.14em; }
+    .bw-hero .track{ position:relative; width:min(560px,82vw); height:min(330px,44vh); transform-style:preserve-3d; opacity:0; animation:bwRise 1.1s var(--ease) .6s forwards; }
+    .bw-hero .screen{ position:absolute; inset:0; margin:auto; width:100%; height:100%;
+      transition:transform 1s var(--ease), opacity 1s var(--ease), filter 1s var(--ease);
+      will-change:transform,opacity; cursor:pointer; backface-visibility:hidden; }
+    .bw-hero .frame{ position:relative; width:100%; height:100%; border-radius:16px; overflow:hidden; background:#0d0b09;
+      border:1px solid rgba(212,201,188,.16); box-shadow:0 40px 90px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.02) inset; }
+    .bw-hero .bar{ height:34px; display:flex; align-items:center; gap:7px; padding:0 14px;
+      background:linear-gradient(180deg,#1c1814,#141009); border-bottom:1px solid rgba(212,201,188,.10); }
+    .bw-hero .dot{ width:9px; height:9px; border-radius:50%; background:rgba(212,201,188,.32); }
+    .bw-hero .dot:nth-child(1){ background:#C4765A88; }
+    .bw-hero .url{ margin-inline-start:10px; flex:1; height:20px; border-radius:6px; background:rgba(250,248,243,.06);
+      border:1px solid rgba(212,201,188,.10); display:flex; align-items:center; justify-content:center;
+      font-family:var(--en); font-size:.66rem; letter-spacing:.06em; color:rgba(250,248,243,.55); direction:ltr; }
+    .bw-hero .viewport{ position:absolute; top:34px; left:0; right:0; bottom:0; overflow:hidden; background:#000; }
+    .bw-hero .viewport video,.bw-hero .viewport img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .bw-hero .live{ position:absolute; top:46px; right:14px; z-index:3; display:inline-flex; align-items:center; gap:6px;
+      font-family:var(--en); font-size:.6rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--cream); background:rgba(12,10,8,.55); padding:5px 10px; border-radius:20px; backdrop-filter:blur(6px); }
+    .bw-hero .live::before{ content:''; width:6px; height:6px; border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80; }
+    .bw-hero .caption{ position:absolute; left:0; right:0; bottom:-62px; text-align:center; opacity:0; direction:ltr;
+      transition:opacity .6s var(--ease); pointer-events:none; }
+    .bw-hero .caption .name{ font-family:var(--display); font-size:1.6rem; font-weight:600; color:var(--cream); display:block; line-height:1; }
+    .bw-hero .caption .cat{ font-family:var(--en); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--copper); }
+    .bw-hero .dots{ display:flex; gap:9px; justify-content:center; margin-bottom:18px; }
+    .bw-hero .nav-dot{ width:8px; height:8px; border-radius:50%; background:rgba(250,248,243,.22); border:none; cursor:pointer;
+      transition:all .4s var(--ease); padding:0; }
+    .bw-hero .nav-dot.on{ background:var(--copper); width:26px; border-radius:4px; }
     .bw-hero .bottom{ position:relative; z-index:5; padding:0 24px; margin-top:clamp(14px,3vh,30px);
       opacity:0; animation:bwRise 1s var(--ease) .8s forwards; }
     .bw-hero .btn{ display:inline-flex; align-items:center; gap:9px; padding:16px 34px; font-family:var(--he);
@@ -441,10 +445,6 @@
       color:rgba(250,248,243,.6); text-decoration:none; border-bottom:1px solid rgba(250,248,243,.2); padding-bottom:2px;
       transition:color .3s, border-color .3s; }
     .bw-hero .bw-worlds-link:hover{ color:var(--copper); border-color:var(--copper); }
-    @media (max-width:900px){
-      .bw-hero__grid{ grid-template-columns:1fr; }
-      .bw-hero .film{ order:-1; width:min(100%, calc(52vh * .8)); }
-    }
     @media (max-width:680px){
       .bw-hero{ padding-top:58px; padding-bottom:16px; }
       .bw-hero .eyebrow{ letter-spacing:.12em; margin-bottom:10px; }
@@ -452,11 +452,11 @@
       .bw-hero .sub{ font-size:.9rem; line-height:1.55; margin-top:12px; }
       .bw-hero .ctas-top{ margin-top:16px; gap:10px; }
       .bw-hero .ctas-top .btn{ width:100%; justify-content:center; padding:13px 24px; }
-      .bw-hero__grid{ grid-template-columns:1fr; gap:22px; padding:0 16px; align-items:start; flex:0; }
-      .bw-hero .film{ order:-1; width:min(100%, calc(46svh * .8)); }
-      .bw-hero .film .name{ font-size:1.3rem; }
-      .bw-hero .film .cat{ font-size:.54rem; letter-spacing:.14em; }
-      .bw-hero .film .enter{ font-size:.74rem; }
+      .bw-hero .stage{ gap:9px; padding-top:14px; min-height:0; padding-bottom:clamp(48px,7vh,66px); }
+      .bw-hero .stage-label{ font-size:.58rem; letter-spacing:.14em; padding:0 16px; }
+      .bw-hero .track{ height:min(210px,27vh); }
+      .bw-hero .caption{ bottom:-48px; }
+      .bw-hero .caption .name{ font-size:1.25rem; }
     }
     </style>
 
@@ -585,101 +585,95 @@
 
     <!-- 1 · Hero — one living world (AURELLE) -->
     <header class="bw-hero" id="bw-hero">
-        <div class="bw-hero__grid">
-            <div class="top">
-                <p class="eyebrow">Brand Worlds Studio · לעסקים שכבר בנו משהו טוב</p>
-                <h1 class="title">לא מספיק שיראו שהעסק שלך יפה.<br><em>צריך שיזהו שזו את — עוד לפני שמשווים מחיר.</em></h1>
-                <p class="sub">אני חגית אנטבי, ואני בונה לעסקים מבוססים עולם מותג שלם — מיתוג עסקי מלא: אסטרטגיה, שפה, אתר ותוכן שמתחברים לחתימה אחת מזוהה. כדי שהלקוחות הנכונים יזהו את הערך שכבר קיים אצלך — <em>ויבחרו לפי משמעות, לא לפי טבלת השוואה.</em></p>
-                <div class="ctas-top">
-                    <a href="#audit" class="btn btn-primary">לאבחון פער המותג
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" class="btn btn-ghost" target="_blank" rel="noopener">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
-                        או ישר בוואטסאפ</a>
-                </div>
-                <p class="trust">30 דקות · בלי עלות · בלי מצגת מכירה</p>
+        <div class="top">
+            <p class="eyebrow">Brand Worlds Studio · לעסקים שכבר בנו משהו טוב</p>
+            <h1 class="title">לא מספיק שיראו שהעסק שלך יפה.<br><em>צריך שיזהו שזו את — עוד לפני שמשווים מחיר.</em></h1>
+            <p class="sub">אני חגית אנטבי, ואני בונה לעסקים מבוססים עולם מותג שלם — מיתוג עסקי מלא: אסטרטגיה, שפה, אתר ותוכן שמתחברים לחתימה אחת מזוהה. כדי שהלקוחות הנכונים יזהו את הערך שכבר קיים אצלך — <em>ויבחרו לפי משמעות, לא לפי טבלת השוואה.</em></p>
+            <div class="ctas-top">
+                <a href="#audit" class="btn btn-primary">לאבחון פער המותג
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%E2%80%94%20%D7%91%D7%90%20%D7%9C%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%95%D7%AA%D7%92%20%D7%A9%D7%9C%D7%99%20%F0%9F%A4%8D" class="btn btn-ghost" target="_blank" rel="noopener">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+                    או ישר בוואטסאפ</a>
             </div>
-            <figure class="film" id="bw-film" aria-label="עולמות מותג חיים, ברצף">
-                <div class="reel" id="bw-reel">
-                    <!-- LCP seed: הפוסטר של הסרט הראשון נצבע מיד; ה-JS בונה את הרצף -->
-                    <img class="is-on" src="images/bw-lp/hero/melte.webp" alt="MELTÉ° — עולם מותג לשוקולד" width="720" height="900" fetchpriority="high" decoding="async">
+        </div>
+
+        <div class="stage" id="bw-stage">
+            <p class="stage-label">עולמות מותג חיים · <b>קוסמטיקה · לייף-סטייל · בוטיק</b></p>
+            <div class="track" id="bw-track">
+                <!-- LCP seed: הכרטיס הראשון מרונדר סטטית כדי שהפוסטר (preloaded) ייצבע מיד. ה-JS מחליף אותו בקרוסלה החיה. -->
+                <div class="screen" data-seed>
+                    <div class="frame">
+                        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">oreva.skin</span></div>
+                        <span class="live">Live</span>
+                        <div class="viewport"><img src="images/bw-lp/oreva-screen.jpg" alt="ORÉVA° — עולם מותג חי לסטודיו טיפוח" fetchpriority="high" decoding="async" width="960" height="540"></div>
+                    </div>
+                    <div class="caption"><span class="name">ORÉVA°</span><span class="cat">Skin Studio · Cosmetics</span></div>
                 </div>
-                <div class="segs" id="bw-segs"></div>
-                <figcaption><span><span class="name" id="bw-name">MELTÉ°</span><span class="cat" id="bw-cat">Chocolatier · Boutique</span></span><span class="enter">להיכנס לעולם ←</span></figcaption>
-            </figure>
+            </div>
         </div>
 
         <div class="bottom">
+            <div class="dots" id="bw-dots"></div>
             <a href="#compare" class="bw-worlds-link">לראות את ההבדל ↓</a>
+            <p class="trust">30 דקות · בלי עלות · בלי מצגת מכירה</p>
         </div>
     </header>
 
-    <!-- Hero reel: four worlds in sequence (MELTÉ° · SOUFFLÉ° · ORÉVA° · ÉCRU). ?w=<world> from the ad plays that world first (message match). -->
+    <!-- Hero carousel: seven living worlds (cosmetics · lifestyle · boutique). ?w=oreva|miel|velune|aurelle|elvea|petale|rosee opens on that world (message match with the ads). -->
     <script>
     (function(){
-      const HERO = [
-        { key:'melte',   name:'MELTÉ°',   cat:'Chocolatier · Boutique',       href:'melte.html' },
-        { key:'souffle', name:'SOUFFLÉ°', cat:'Beauty Gourmand · Body',       href:'souffle.html' },
-        { key:'oreva',   name:'ORÉVA°',   cat:'Skin Studio · Cosmetics',      href:'oreva/' },
-        { key:'ecru',    name:'ÉCRU',     cat:'Fashion · One Muse',           href:'ecru.html' },
+      const WORLDS = [
+        { key:'oreva',   name:'ORÉVA°',  cat:'Skin Studio · Cosmetics',      url:'oreva.skin',     href:'oreva/',      vid:'images/bw-lp/oreva-hero.mp4',  poster:'images/bw-lp/oreva-screen.jpg' },
+        { key:'miel',    name:'MIEL°',   cat:'Pâtisserie · Boutique',        url:'maison-miel.fr', href:'miel/',       poster:'images/bw-lp/miel-screen.jpg' },
+        { key:'velune',  name:'VELUNE°', cat:'Maison de Parfum · Lifestyle', url:'velune.parfum',  href:'velune/',     vid:'images/bw-lp/velune-door.mp4', poster:'images/bw-lp/velune-door-poster.jpg' },
+        { key:'aurelle', name:'AURELLE', cat:'Skincare · Beauty',            url:'aurelle.world',  href:'aurelle/',    vid:'aurelle/assets/hero-opt.mp4',  poster:'aurelle/assets/hero-poster.jpg' },
+        { key:'elvea',   name:'ELVÉA°',  cat:'Botanical Skin Science',       url:'elvea.skin',     href:'elvea/',      poster:'images/bw-lp/elvea-screen.jpg' },
+        { key:'petale',  name:'Pétale°', cat:'Macarons · Boutique',          url:'petale.paris',   href:'petale.html', poster:'images/bw-lp/petale-screen.jpg' },
+        { key:'rosee',   name:'ROSÉE°',  cat:'Skincare · Ritual',            url:'rosee.skin',     href:'rosee/',      poster:'images/bw-lp/rosee-screen.jpg' },
       ];
-      const AD_ONLY = {   // worlds the ads may point to that are not in the default reel
-        velune:  { key:'velune',  name:'VELUNE°', cat:'Maison de Parfum · Lifestyle', href:'velune/' },
-        aurelle: { key:'aurelle', name:'AURELLE', cat:'Skincare · Beauty',            href:'aurelle/' },
-        miel:    { key:'miel',    name:'MIEL°',   cat:'Pâtisserie · Boutique',        href:'miel/' },
-      };
-      const reel = document.getElementById('bw-reel'), segsWrap = document.getElementById('bw-segs'), film = document.getElementById('bw-film');
-      const nameEl = document.getElementById('bw-name'), catEl = document.getElementById('bw-cat');
-      if (!reel) return;
+      const track = document.getElementById('bw-track'), dotsWrap = document.getElementById('bw-dots'), stage = document.getElementById('bw-stage');
+      if (!track) return;
       const want = new URLSearchParams(location.search).get('w');
-      let worlds = HERO.slice();
-      if (want) {
-        const i = worlds.findIndex(w => w.key === want);
-        if (i > 0) worlds.unshift(worlds.splice(i, 1)[0]);
-        else if (i < 0 && AD_ONLY[want]) worlds.unshift(AD_ONLY[want]);
-      }
-      const DUR = 3600, still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const src = w => 'images/bw-lp/hero/' + w.key;
+      let active = Math.max(0, WORLDS.findIndex(w => w.key === want)), timer = null, dragging = false, started = false;
 
-      const seed = reel.querySelector('img');
-      if (worlds[0].key !== 'melte') { seed.src = src(worlds[0]) + '.webp'; seed.alt = worlds[0].name; }
-      const clips = worlds.map((w, i) => {
-        const v = document.createElement('video');
-        v.muted = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.preload = i === 0 ? 'auto' : 'none';
-        v.poster = src(w) + '.webp'; v.src = src(w) + '.mp4'; v.setAttribute('aria-hidden', 'true');
-        reel.appendChild(v); return v;
+      track.innerHTML = '';
+      const screens = WORLDS.map((w, i) => {
+        const s = document.createElement('div'); s.className = 'screen';
+        const inner = w.vid
+          ? '<div class="viewport"><video muted loop playsinline preload="none" poster="' + w.poster + '"><source src="' + w.vid + '" type="video/mp4"></video></div>'
+          : '<div class="viewport"><img src="' + w.poster + '" alt="' + w.name + '" width="960" height="540" loading="' + (i === active ? 'eager' : 'lazy') + '"></div>';
+        s.innerHTML = '<div class="frame"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">' + w.url + '</span></div><span class="live">Live</span>' + inner + '</div>'
+          + '<div class="caption"><span class="name">' + w.name + '</span><span class="cat">' + w.cat + '</span></div>';
+        s.addEventListener('click', () => { if (i === active) window.open(w.href, '_blank'); else go(i); });
+        track.appendChild(s); return s;
       });
-      const segs = worlds.map((w, i) => {
-        const b = document.createElement('button'); b.type = 'button'; b.className = 'seg'; b.setAttribute('aria-label', w.name);
-        b.innerHTML = '<span><i></i></span>'; b.style.setProperty('--dur', DUR + 'ms');
-        b.addEventListener('click', e => { e.stopPropagation(); show(i); });
-        segsWrap.appendChild(b); return b;
-      });
+      const navDots = WORLDS.map((w, i) => { const b = document.createElement('button'); b.className = 'nav-dot'; b.setAttribute('aria-label', w.name); b.addEventListener('click', () => go(i)); dotsWrap.appendChild(b); return b; });
 
-      let cur = -1, timer = null, visible = true;
-      function show(i){
-        const n = worlds.length; i = ((i % n) + n) % n;
-        clearTimeout(timer);
-        clips.forEach((v, k) => { if (k !== i) { v.classList.remove('is-on'); v.pause(); } });
-        const v = clips[i];
-        v.classList.add('is-on');
-        if (!still) { try { v.currentTime = 0; } catch(e){} v.play().then(() => seed.classList.remove('is-on')).catch(() => {}); }
-        if (still || cur >= 0) seed.classList.remove('is-on');
-        const nxt = clips[(i + 1) % n]; if (nxt.preload === 'none') { nxt.preload = 'auto'; nxt.load(); }
-        segs.forEach((s, k) => { s.classList.toggle('done', k < i); s.classList.remove('run'); });
-        void segs[i].offsetWidth; segs[i].classList.add('run');
-        nameEl.textContent = worlds[i].name; catEl.textContent = worlds[i].cat;
-        cur = i;
-        if (visible) timer = setTimeout(() => show(cur + 1), DUR);
+      function layout(){
+        const n = WORLDS.length;
+        screens.forEach((s, i) => {
+          let off = i - active; if (off > n/2) off -= n; if (off < -n/2) off += n;
+          const abs = Math.abs(off);
+          s.style.transform = 'translateX(' + (off*56) + '%) translateZ(' + (-abs*230) + 'px) rotateY(' + (off*-34) + 'deg) scale(' + (abs === 0 ? 1 : 0.82 - (abs-1)*0.06) + ')';
+          s.style.opacity = abs > 2 ? 0 : 1 - abs*0.26; s.style.zIndex = 100 - abs; s.style.pointerEvents = abs > 2 ? 'none' : 'auto';
+          s.querySelector('.frame').style.filter = abs === 0 ? 'none' : 'brightness(.62) saturate(.85)';
+          s.querySelector('.caption').style.opacity = abs === 0 ? 1 : 0;
+          const v = s.querySelector('video'); if (v) { if (abs === 0 && started) v.play().catch(()=>{}); else v.pause(); }
+        });
+        navDots.forEach((d, i) => d.classList.toggle('on', i === active));
       }
-      reel.addEventListener('click', () => { if (cur >= 0) window.open(worlds[cur].href, '_blank', 'noopener'); });
-      if ('IntersectionObserver' in window) new IntersectionObserver(es => {
-        visible = es[0].isIntersecting;
-        if (!visible) { clearTimeout(timer); clips.forEach(v => v.pause()); }
-        else if (cur >= 0) show(cur);
-      }, { threshold: .15 }).observe(film);
-      (window.requestIdleCallback || function (cb) { setTimeout(cb, 600); })(() => show(0), { timeout: 1200 });
+      function go(i){ const n = WORLDS.length; active = ((i % n) + n) % n; layout(); restart(); }
+      function restart(){ clearInterval(timer); timer = setInterval(() => go(active + 1), 4800); }
+      let firstHold = want && WORLDS.some(w => w.key === want);   // arriving from an ad: stay on that world a while before the carousel moves on
+      let startX = 0;
+      stage.addEventListener('pointerdown', e => { dragging = true; startX = e.clientX; clearInterval(timer); });
+      window.addEventListener('pointerup', e => { if (!dragging) return; dragging = false; const dx = e.clientX - startX; if (Math.abs(dx) > 45) go(active + (dx < 0 ? 1 : -1)); else restart(); });
+      stage.addEventListener('mouseenter', () => clearInterval(timer));
+      stage.addEventListener('mouseleave', restart);
+      layout();
+      (window.requestIdleCallback || function (cb) { setTimeout(cb, 1000); })(function () { started = true; layout(); if (firstHold) setTimeout(restart, 9000); else restart(); }, { timeout: 2000 });
 
       // message match, part 2: the matching pair in "ככה משווים | ככה בוחרים" moves to the front
       if (want) document.addEventListener('DOMContentLoaded', () => { const pairs = document.getElementById('cbPairs'); const first = pairs && pairs.querySelector('[data-w="' + want + '"]'); if (first) pairs.prepend(first); });
