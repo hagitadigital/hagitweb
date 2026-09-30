@@ -424,6 +424,9 @@
       font-family:var(--en); font-size:.66rem; letter-spacing:.06em; color:rgba(250,248,243,.55); direction:ltr; }
     .bw-hero .viewport{ position:absolute; top:34px; left:0; right:0; bottom:0; overflow:hidden; background:#000; }
     .bw-hero .viewport video,.bw-hero .viewport img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .bw-hero .viewport img{ transition:transform 5.5s ease-out; }
+    .bw-hero .screen.is-active .viewport img{ transform:scale(1.07); }
+    @media (prefers-reduced-motion:reduce){ .bw-hero .viewport img{ transition:none; } .bw-hero .screen.is-active .viewport img{ transform:none; } }
     .bw-hero .live{ position:absolute; top:46px; right:14px; z-index:3; display:inline-flex; align-items:center; gap:6px;
       font-family:var(--en); font-size:.6rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
       color:var(--cream); background:rgba(12,10,8,.55); padding:5px 10px; border-radius:20px; backdrop-filter:blur(6px); }
@@ -636,12 +639,12 @@
     (function(){
       const WORLDS = [
         { key:'oreva',   name:'ORÉVA°',  cat:'Skin Studio · Cosmetics',      url:'oreva.skin',     href:'oreva/',      vid:'images/bw-lp/oreva-hero.mp4',  poster:'images/bw-lp/oreva-screen.jpg' },
-        { key:'miel',    name:'MIEL°',   cat:'Pâtisserie · Boutique',        url:'maison-miel.fr', href:'miel/',       poster:'images/bw-lp/miel-screen.jpg' },
-        { key:'velune',  name:'VELUNE°', cat:'Maison de Parfum · Lifestyle', url:'velune.parfum',  href:'velune/',     vid:'images/bw-lp/velune-door.mp4', poster:'images/bw-lp/velune-door-poster.jpg' },
-        { key:'aurelle', name:'AURELLE', cat:'Skincare · Beauty',            url:'aurelle.world',  href:'aurelle/',    vid:'aurelle/assets/hero-opt.mp4',  poster:'aurelle/assets/hero-poster.jpg' },
+        { key:'miel',    name:'MIEL°',   cat:'Pâtisserie · Boutique',        url:'maison-miel.fr', href:'miel/',       vid:'images/bw-lp/hero-reel/miel.mp4',    poster:'images/bw-lp/hero-reel/miel.jpg' },
+        { key:'velune',  name:'VELUNE°', cat:'Maison de Parfum · Lifestyle', url:'velune.parfum',  href:'velune/',     vid:'images/bw-lp/hero-reel/velune.mp4', poster:'images/bw-lp/velune-door-poster.jpg' },
+        { key:'aurelle', name:'AURELLE', cat:'Skincare · Beauty',            url:'aurelle.world',  href:'aurelle/',    vid:'images/bw-lp/hero-reel/aurelle.mp4', poster:'aurelle/assets/hero-poster.jpg' },
         { key:'elvea',   name:'ELVÉA°',  cat:'Botanical Skin Science',       url:'elvea.skin',     href:'elvea/',      poster:'images/bw-lp/elvea-screen.jpg' },
         { key:'petale',  name:'Pétale°', cat:'Macarons · Boutique',          url:'petale.paris',   href:'petale.html', poster:'images/bw-lp/petale-screen.jpg' },
-        { key:'rosee',   name:'ROSÉE°',  cat:'Skincare · Ritual',            url:'rosee.skin',     href:'rosee/',      poster:'images/bw-lp/rosee-screen.jpg' },
+        { key:'rosee',   name:'ROSÉE°',  cat:'Skincare · Ritual',            url:'rosee.skin',     href:'rosee/',      vid:'images/bw-lp/hero-reel/rosee.mp4',   poster:'images/bw-lp/hero-reel/rosee.jpg' },
       ];
       const track = document.getElementById('bw-track'), dotsWrap = document.getElementById('bw-dots'), stage = document.getElementById('bw-stage');
       if (!track) return;
@@ -670,6 +673,7 @@
           s.style.opacity = abs > 2 ? 0 : 1 - abs*0.26; s.style.zIndex = 100 - abs; s.style.pointerEvents = abs > 2 ? 'none' : 'auto';
           s.querySelector('.frame').style.filter = abs === 0 ? 'none' : 'brightness(.62) saturate(.85)';
           s.querySelector('.caption').style.opacity = abs === 0 ? 1 : 0;
+          s.classList.toggle('is-active', abs === 0 && started);
           const v = s.querySelector('video'); if (v) { if (abs === 0 && started) v.play().catch(()=>{}); else v.pause(); }
         });
         navDots.forEach((d, i) => d.classList.toggle('on', i === active));
