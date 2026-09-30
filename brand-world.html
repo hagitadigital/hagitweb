@@ -294,6 +294,11 @@
         .lead-form__title { font-family: var(--font-display); font-size: 1.625rem; font-weight: 500; color: var(--color-cream); margin-bottom: 6px; }
         .lead-form__sub { font-size: 0.9rem; color: rgba(250,248,243,0.65); margin-bottom: 26px; }
         .field { margin-bottom: 18px; }
+        .more-fields { margin: 4px 0 8px; }
+        .more-fields summary { cursor: pointer; font-size: .9rem; color: rgba(250,248,243,.8); padding: 10px 0 14px; list-style: none; }
+        .more-fields summary::-webkit-details-marker { display: none; }
+        .more-fields summary::before { content: '+'; display: inline-block; width: 1.2em; color: var(--color-copper); }
+        .more-fields[open] summary::before { content: '–'; }
         .field label { display: block; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; color: rgba(250,248,243,0.8); margin-bottom: 8px; }
         .field input, .field select, .field textarea {
             width: 100%; padding: 13px 16px; font-family: var(--font-body-he); font-size: 0.95rem;
@@ -535,6 +540,11 @@
           "mainEntity": [
             {
               "@type": "Question",
+              "name": "מה ההבדל בין אתר חדש, מיתוג מחדש ועולם מותג?",
+              "acceptedAnswer": { "@type": "Answer", "text": "אתר חדש נותן נכס אחד יפה; מיתוג מחדש נותן לוגו, שפה וספר מותג; עולם מותג נותן Brand DNA, שפה, אתר חי ותוכן שיוצאים מאותו מקור. אחרי שנה: באתר חדש השאר מתפזר, במיתוג מחדש העקביות תלויה בעבודה ידנית, ובעולם מותג המערכת ממשיכה לבנות את אותו מותג." }
+            },
+            {
+              "@type": "Question",
               "name": "האם זה מיתוג מחדש?",
               "acceptedAnswer": { "@type": "Answer", "text": "בניית עולם מותג היא לא בהכרח מיתוג מחדש. לפעמים יש למותג בסיס טוב, אבל הוא לא מתורגם למערכת שלמה. בתהליך נבדוק מה נכון לשמר, מה לדייק ומה צריך לבנות מחדש." }
             },
@@ -757,31 +767,14 @@
     })();
     </script>
 
-    <!-- 1b · Direct answer (GEO) -->
-    <style>
-    .bw-answer{ background:#F5F1E8; padding:clamp(40px,6vw,64px) 0; }
-    .bw-answer__inner{ max-width:820px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
-    .bw-answer__label{ font-family:'Heebo',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.05em; color:#C4765A; margin-bottom:12px; }
-    .bw-answer h2{ font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); line-height:1.2; color:#2A201A; margin:0 0 14px; }
-    .bw-answer p{ font-family:'Heebo',sans-serif; font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.85; color:#4F372C; margin:0; }
-    .bw-answer a{ color:#C4765A; text-decoration:underline; text-decoration-color:#D4C9BC; text-underline-offset:3px; }
-    .bw-answer a:hover{ color:#2A201A; }
-    </style>
-    <section class="bw-answer" id="answer">
-        <div class="bw-answer__inner">
-            <p class="bw-answer__label">תשובה ישירה · עודכן: ספטמבר 2026</p>
-            <h2>מה זה בניית מותג לעסק מבוסס, ולמה זה עולם מותג ולא עוד אתר?</h2>
-            <p><strong>בניית מותג לעסק מבוסס</strong> היא לא לוגו ולא אתר חדש. היא סגירת הפער בין מה שהעסק כבר נהיה לבין מה שהלקוחה רואה לפני שהיא משווה מחיר. <strong>עולם מותג</strong> הוא הצורה שבה אני בונה את זה: <a href="brand-dna-guide.html">Brand DNA</a> אחד, <a href="brand-architecture.html">שפה מותגית</a> שנגזרת ממנו, אתר שמרגיש כמו המותג, ותוכן שכולו יוצא מאותו מקור. למה מערכת ולא נכסים: לפי <a href="https://www.prnewswire.com/news-releases/study-finds-companies-with-consistent-branding-can-see-up-to-33-increase-in-revenue-300967219.html" target="_blank" rel="noopener">סקר Lucidpress בקרב יותר מ-200 ארגונים</a>, מיתוג עקבי מגדיל הכנסות בעד 33%, ו-81% מהארגונים מתקשים למנוע תוכן שסוטה מהמותג. עקביות לא באה ממשמעת, היא באה ממקור אחד. המונח מוגדר ב<a href="glossary.html#brand-world">מילון</a>, והמדריך המלא ל<a href="business-branding-guide.html">בניית מותג עסקי</a> מסביר את השלבים. בעמוד הזה: מה הפער עולה, איך נראה עולם מותג חי, מה מקבלים, ולמי זה מתאים.</p>
-        </div>
-    </section>
 
-    <!-- 2 · Identification — "the business already grew" -->
+    <!-- 3 · The gap — one pain, said once -->
     <section class="section section--dark">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">העסק כבר גדל</p>
+                <p class="section-label">הפער</p>
                 <h2 class="section-title">העסק שלך כבר גדל.<br>המותג עדיין לא מחזיק את כל מה שנהיית.</h2>
-                <p class="section-lede">יש לך ניסיון, לקוחות ומוצרים או שירותים טובים. השקעת באתר, בתוכן, בצילומים ובקמפיינים — וכל אחד מהם אולי נראה טוב בפני עצמו. אבל כשמסתכלים על הכול יחד, עדיין אין תחושה של מותג אחד ברור ומזוהה. האתר אומר דבר אחד, הפיד מרגיש אחרת, הקמפיין נראה כמו עוד מודעה — ובכל פעם שהלקוחה פוגשת אותך, היא צריכה להבין מחדש מי את ולמה דווקא את. יש מי שקוראות לזה מיתוג מחדש; אני קוראת לזה לסגור את הפער בין מי שנהיית לבין מה שרואים.</p>
+                <p class="section-lede">יש לך ניסיון, לקוחות ומוצרים טובים. השקעת באתר, בתוכן ובקמפיינים, וכל אחד מהם נראה טוב בפני עצמו. אבל ביחד עדיין אין תחושה של מותג אחד, ובכל מפגש הלקוחה צריכה להבין מחדש מי את ולמה דווקא את.</p>
             </div>
             <div class="pain-grid">
                 <article class="pain reveal">
@@ -800,25 +793,9 @@
                     <p class="pain__text">את יודעת שיש בעסק עומק והבדל — הלקוחות שפוגשות אותך מרגישות את זה מיד. אבל בדיגיטל, ההבדל הזה לא תמיד עובר את המסך.</p>
                 </article>
             </div>
-        </div>
-    </section>
-
-    <!-- 3 · The cost of the gap -->
-    <section class="section section--dark" style="padding-top:0;">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-label">המחיר של הפער</p>
-                <h2 class="section-title">כשלא מזהים את ההבדל —<br>משווים את מה שקל להשוות.</h2>
-                <p class="section-lede">וכשלא ברור מיד מה הופך את העסק שלך לאחר, השיחה חוזרת למחיר, לחבילה ולמה בדיוק כלול. לא מפני שאין לך ערך — אלא מפני שהמותג עדיין לא הפך את הערך הזה למשהו שאפשר לראות, להרגיש ולזכור.</p>
-            </div>
-            <div class="cost-grid reveal">
-                <div class="cost"><span class="cost__num">01</span><p class="cost__text">קשה יותר לזכור אותך.</p></div>
-                <div class="cost"><span class="cost__num">02</span><p class="cost__text">קשה יותר להסביר למה לבחור דווקא בך.</p></div>
-                <div class="cost"><span class="cost__num">03</span><p class="cost__text">קל יותר להשוות אותך למתחרים זולים.</p></div>
-                <div class="cost"><span class="cost__num">04</span><p class="cost__text">כל פוסט, עמוד או קמפיין מתחיל כמעט מחדש.</p></div>
-            </div>
-            <p class="section-close reveal">הבעיה אינה שחסר לך עוד תוכן.<br><em>חסרה מערכת שגורמת לכל התוכן לבנות את אותו מותג.</em></p>
+            <p class="section-close reveal">וכשלא מזהים את ההבדל —<br><em>משווים את מה שקל להשוות: מחיר.</em></p>
             <p class="section-src reveal">ולמה זה עולה כסף ולא רק אנרגיה: לפי <a href="https://www.edelman.com/trust/2025/trust-barometer/special-report-brands" target="_blank" rel="noopener">דוח האמון במותגים של Edelman לשנת 2025</a>, אמון במותג שווה היום בחשיבותו למחיר ולאיכות בהחלטת הרכישה. כשאין זיהוי, אין אמון, ונשאר רק המחיר.</p>
+
         </div>
     </section>
 
@@ -1267,180 +1244,75 @@
     })();
     </script>
 
-    <!-- 5 · The solution — what a Brand World is -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-label">Brand World System</p>
-                <h2 class="section-title">עולם מותג הוא לא עוד שכבת עיצוב.<br>הוא המערכת שמתרגמת את הערך שלך לנוכחות.</h2>
-                <p class="section-lede">אנחנו מתחילות במהות — למי המותג מדבר, מה הוא מבטיח, במה הוא שונה ואיזו תחושה צריכה להישאר אחרי המפגש איתו. מתוך ה-DNA הזה נבנים השפה, המסרים, האתר, התוכן והווידאו. כך כל נכס עושה תפקיד אחר — אבל כולם בונים יחד את אותה משמעות. עולמות מותג הם מה ש-Brand Worlds Studio בונה: לא עיצוב שמונח על העסק, אלא מערכת שממשיכה לפעול אחרי המסירה.</p>
-            </div>
-            <div class="layers">
-                <article class="layer reveal">
-                    <span class="layer__num">רובד 01</span>
-                    <h3 class="layer__title">אסטרטגיה</h3>
-                    <p class="layer__text">קהל, צורך, בידול, ערך והבטחה — הסיבה שבגללה בוחרים דווקא בך.</p>
-                </article>
-                <article class="layer reveal">
-                    <span class="layer__num">רובד 02</span>
-                    <h3 class="layer__title">זהות</h3>
-                    <p class="layer__text">אישיות, קול, סיפור, תחושה ועקרונות מותג — מי המותג כשהוא מדבר.</p>
-                </article>
-                <article class="layer reveal">
-                    <span class="layer__num">רובד 03</span>
-                    <h3 class="layer__title">שפה</h3>
-                    <p class="layer__text">צבע, טיפוגרפיה, קומפוזיציה, צילום, תנועה ותוכן — החתימה שהעין מזהה.</p>
-                </article>
-                <article class="layer reveal">
-                    <span class="layer__num">רובד 04</span>
-                    <h3 class="layer__title">מערכת חיה</h3>
-                    <p class="layer__text">אתר, קמפיינים, סרטונים ונכסים שממשיכים את אותה חתימה — יום אחרי יום.</p>
-                </article>
-            </div>
-            <p class="section-close reveal">לא מתחילות בשאלה "איך זה ייראה?"<br><em>מתחילות בשאלה "מה הלקוחות צריכים לזהות ולהבין?"</em></p>
-        </div>
-    </section>
-
-    <!-- 7 · The identification test -->
+    <!-- 6 · How it's built — the process, the layers and what stays with her, as one timeline -->
+    <style>
+    .how-steps .step{ display:flex; flex-direction:column; }
+    .step__layer{ font-size:.74rem; letter-spacing:.06em; color:var(--color-chocolate); margin:-8px 0 12px; }
+    .step__time{ margin-top:auto; padding-top:14px; font-family:var(--font-body-en); font-size:.72rem; letter-spacing:.16em; color:var(--color-chocolate); }
+    .how-keep{ margin-top:clamp(40px,6vw,64px); }
+    .how-keep__label{ text-align:center; font-size:.8rem; letter-spacing:.14em; color:var(--color-copper-deep); margin-bottom:18px; }
+    .how-keep .layer{ padding:26px 24px; }
+    .how-keep .layer__num{ letter-spacing:.14em; }
+    </style>
     <section class="section section--beige">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-label">מבחן המותג</p>
-                <h2 class="section-title">אם נסתיר את הלוגו —<br>עדיין ידעו שזו את?</h2>
-                <p class="section-lede">מותג מזוהה לא נשען רק על סימן אחד. מזהים אותו דרך השפה, הקול, הקצב, התחושה — והדרך שבה כל פרט מתחבר לאחר.</p>
-            </div>
-            <div class="idtest reveal">
-                <div class="idtest__q"><span class="idtest__num">01</span><p class="idtest__text">אפשר לזהות את המותג שלך לפני שקוראים את השם?</p></div>
-                <div class="idtest__q"><span class="idtest__num">02</span><p class="idtest__text">מבינים במה הוא שונה — עוד לפני שמגיעים למחיר?</p></div>
-                <div class="idtest__q"><span class="idtest__num">03</span><p class="idtest__text">האתר, התוכן והקמפיינים בונים יחד את אותה תפיסה?</p></div>
-            </div>
-            <div class="idtest__cta reveal">
-                <p>אם התשובה אינה חד־משמעית — זה בדיוק הפער שעולם מותג נועד לסגור.</p>
-                <a href="#audit" class="btn-primary" style="display:inline-flex;">לאבחון פער המותג
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8 · The process — 5 stages -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-label">התהליך</p>
+                <p class="section-label">איך זה נבנה</p>
                 <h2 class="section-title">לא מתחילות מעיצוב.<br>מתחילות מהסיבה לבחור.</h2>
+                <p class="section-lede">עולם מותג הוא לא עוד שכבת עיצוב. הוא המערכת שמתרגמת את הערך שלך לנוכחות: Brand DNA אחד, ומתוכו השפה, האתר, התוכן והווידאו. כל נכס עושה תפקיד אחר, וכולם בונים את אותה משמעות.</p>
             </div>
-            <div class="steps">
+            <div class="steps how-steps">
                 <article class="step reveal">
                     <span class="step__num">שלב 01</span>
                     <h3 class="step__title">מגלות</h3>
-                    <p class="step__text">נמפה את העסק, הקהל, הערך, התחרות — והפער בין מה שקיים לבין מה שהלקוחות צריכים להבין.</p>
+                    <p class="step__layer">אסטרטגיה</p>
+                    <p class="step__text">נמפה את העסק, הקהל, הערך והתחרות, ואת הפער בין מה שקיים לבין מה שהלקוחות צריכות להבין.</p>
                     <span class="step__out">תוצר: מפת פער המותג</span>
+                    <span class="step__time">שבועות 1–4</span>
                 </article>
                 <article class="step reveal">
                     <span class="step__num">שלב 02</span>
                     <h3 class="step__title">מנסחות</h3>
+                    <p class="step__layer">זהות</p>
                     <p class="step__text">נבנה את ה-Brand DNA: ההבטחה, הבידול, האישיות, הקול והרעיון שמחזיק את העולם.</p>
                     <span class="step__out">תוצר: מסמך DNA ועקרונות מותג</span>
+                    <span class="step__time">שבועות 1–4</span>
                 </article>
                 <article class="step reveal">
                     <span class="step__num">שלב 03</span>
                     <h3 class="step__title">מתרגמות</h3>
-                    <p class="step__text">נהפוך את האסטרטגיה לשפה חזותית, מילולית וחווייתית — צבע, טיפוגרפיה, תנועה וטון.</p>
+                    <p class="step__layer">שפה</p>
+                    <p class="step__text">נהפוך את האסטרטגיה לשפה חזותית, מילולית וחווייתית: צבע, טיפוגרפיה, תנועה וטון.</p>
                     <span class="step__out">תוצר: מערכת שפה וכיוון קריאייטיבי</span>
+                    <span class="step__time">+3–6 שבועות</span>
                 </article>
                 <article class="step reveal">
                     <span class="step__num">שלב 04</span>
                     <h3 class="step__title">בונות</h3>
-                    <p class="step__text">ניצור את הנכסים הדרושים למותג: אתר או עמוד, תוכן, סרטונים, קמפיין ונכסי השקה — לפי ההיקף שנבחר.</p>
+                    <p class="step__layer">מערכת חיה</p>
+                    <p class="step__text">ניצור את הנכסים הדרושים: אתר או עמוד, תוכן, סרטונים, קמפיין ונכסי השקה, לפי ההיקף שנבחר.</p>
                     <span class="step__out">תוצר: עולם מותג חי</span>
+                    <span class="step__time">+3–6 שבועות</span>
                 </article>
                 <article class="step reveal">
                     <span class="step__num">שלב 05</span>
                     <h3 class="step__title">מטמיעות</h3>
-                    <p class="step__text">נגדיר איך ממשיכים ליצור ולשווק — תוכן, קמפיינים, מענה ללקוחות — בלי לאבד את החתימה.</p>
+                    <p class="step__layer">מערכת חיה</p>
+                    <p class="step__text">נגדיר איך ממשיכים ליצור ולשווק, תוכן, קמפיינים ומענה ללקוחות, בלי לאבד את החתימה.</p>
                     <span class="step__out">תוצר: מערכת עבודה להמשך</span>
+                    <span class="step__time">ליווי שוטף</span>
                 </article>
             </div>
-        </div>
-    </section>
-
-    <!-- 9 · What you get -->
-    <section class="section section--beige">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-label">מה את מקבלת</p>
-                <h2 class="section-title">לא עוד אתר. בניית מותג עסקי שלם — מערכת מותג אחת.</h2>
-                <p class="section-lede">עולם מותג חי בנוי מארבעה רכיבים שמדברים אותה שפה — כי כולם נשענים על אותו Brand DNA.</p>
-            </div>
-            <div class="get-grid">
-                <article class="get reveal">
-                    <span class="get__icon" aria-hidden="true">🧬</span>
-                    <div>
-                        <h3 class="get__name">Brand DNA</h3>
-                        <span class="get__name-en">ה-Source of Truth</span>
-                        <p class="get__text">המסמך שהכל בנוי עליו: אבחון העסק, הגדרת קהל, בידול והבטחה, Essence, אישיות, קול וסיפור מותג. בלעדיו יש כלי AI גנרי; איתו — כל נכס מדבר בקול שלך.</p>
-                    </div>
-                </article>
-                <article class="get reveal">
-                    <span class="get__icon" aria-hidden="true">🎨</span>
-                    <div>
-                        <h3 class="get__name">שפת המותג</h3>
-                        <span class="get__name-en">Brand Language</span>
-                        <p class="get__text">כיוון קריאייטיבי, פלטת צבעים וטיפוגרפיה, עקרונות צילום, קומפוזיציה ותנועה, שפה מילולית ומסרים — ומערכת שמאפשרת לשמור על העקביות גם בהמשך.</p>
-                    </div>
-                </article>
-                <article class="get reveal">
-                    <span class="get__icon" aria-hidden="true">🌐</span>
-                    <div>
-                        <h3 class="get__name">עולם מותג חי</h3>
-                        <span class="get__name-en">Brand World · אתר מונפש</span>
-                        <p class="get__text">אתר־חוויה שנבנה ב-GSAP, מספר את המותג בתנועה ומוביל מההתפעלות אל הרכישה. דו־לשוני, RTL מובנה, מהיר ועצמאי — ובנוי <strong style="color:var(--color-copper);">SEO + GEO</strong>: נמצא בגוגל, וגם בתשובות של ChatGPT ומנועי ה-AI.</p>
-                    </div>
-                </article>
-                <article class="get reveal">
-                    <span class="get__icon" aria-hidden="true">🎬</span>
-                    <div>
-                        <h3 class="get__name">תוכן, וידאו ואוטומציה</h3>
-                        <span class="get__name-en">Content · Production · Automation</span>
-                        <p class="get__text">סרטוני קמפיין מבוססי AI (Veo · Seedance · Kling) בשפה ויזואלית אחת, תוכן עקבי בכל הערוצים — ואם תרצי, סוכן AI שמשיב ללקוחות בקול המותג ולא מפספס פנייה. <strong style="color:var(--color-copper);">הסוכן בפינת המסך כאן? זה בדיוק זה.</strong></p>
-                    </div>
-                </article>
-            </div>
-            <div class="bw-cmp reveal">
-                <p class="bw-cmp__lede">ההבדל בין שלוש הדרכים שעסק מבוסס יכול ללכת בהן, בשורה אחת לכל שאלה:</p>
-                <div class="bw-cmp__wrap">
-                <table class="bw-cmp__table">
-                    <thead><tr><th></th><th>אתר חדש</th><th>מיתוג מחדש</th><th>עולם מותג</th></tr></thead>
-                    <tbody>
-                        <tr><td>מה מקבלים</td><td>נכס אחד יפה</td><td>לוגו, שפה וספר מותג</td><td>DNA, שפה, אתר חי ותוכן מאותו מקור</td></tr>
-                        <tr><td>מי מחליט על הפוסט הבא</td><td>את, מאפס</td><td>ספר המותג, אם פותחים אותו</td><td>ה-DNA, גם כשמפעילים AI</td></tr>
-                        <tr><td>מה קורה אחרי שנה</td><td>האתר נשאר, השאר מתפזר</td><td>עקביות בעבודה ידנית</td><td>המערכת ממשיכה לבנות את אותו מותג</td></tr>
-                        <tr><td>מתאים ל</td><td>עסק שהמותג שלו כבר מוגדר</td><td>עסק שהזהות שלו התיישנה</td><td>עסק שגדל מהר מהמותג ורוצה מערכת</td></tr>
-                    </tbody>
-                </table>
+            <div class="how-keep">
+                <p class="how-keep__label reveal">מה נשאר אצלך, בבעלות שלך</p>
+                <div class="layers">
+                    <article class="layer reveal"><span class="layer__num">Source of Truth</span><h3 class="layer__title">Brand DNA</h3><p class="layer__text">קהל, בידול, הבטחה, אישיות, קול וסיפור. בלעדיו יש כלי AI גנרי; איתו, כל נכס מדבר בקול שלך.</p></article>
+                    <article class="layer reveal"><span class="layer__num">Brand Language</span><h3 class="layer__title">שפת המותג</h3><p class="layer__text">כיוון קריאייטיבי, צבע וטיפוגרפיה, צילום, תנועה ומסרים, ומערכת ששומרת על עקביות גם בהמשך.</p></article>
+                    <article class="layer reveal"><span class="layer__num">Brand World</span><h3 class="layer__title">עולם מותג חי</h3><p class="layer__text">אתר-חוויה שמספר את המותג בתנועה ומוביל מההתפעלות לרכישה. דו-לשוני, מהיר, ובנוי SEO + GEO: נמצא בגוגל ובתשובות של מנועי ה-AI.</p></article>
+                    <article class="layer reveal"><span class="layer__num">Content · Automation</span><h3 class="layer__title">תוכן, וידאו ואוטומציה</h3><p class="layer__text">סרטוני קמפיין בשפה ויזואלית אחת, תוכן עקבי בכל הערוצים, ואם תרצי, סוכן AI שעונה ללקוחות בקול המותג. הסוכן בפינת המסך כאן? זה בדיוק זה.</p></article>
                 </div>
             </div>
-            <p class="get-note reveal"><strong>הערת דיוק:</strong> היקף הנכסים נקבע לאחר האבחון ובהתאם למטרות העסק. האסטרטגיה וה-DNA הם הבסיס הקבוע של כל פרויקט; הביצוע — אתר, תוכן, וידאו, קמפיין — מותאם לצורך ולנקודות שבהן הפער משמעותי ביותר.</p>
-        </div>
-    </section>
-
-    <!-- 10 · The outcome -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-label">התוצאה</p>
-                <h2 class="section-title">בסוף התהליך לא יהיו לך רק נכסים חדשים.<br>תהיה לך דרך ברורה להיראות, לדבר ולהיות מזוהה.</h2>
-            </div>
-            <ul class="outcome-grid reveal">
-                <li>הלקוחות הנכונים מבינים מהר יותר מה מיוחד בעסק.</li>
-                <li>כל נקודת מגע מחזקת את אותה תפיסה.</li>
-                <li>התוכן כבר לא מתחיל בכל פעם מדף ריק.</li>
-                <li>קל יותר לשמור על רמה גבוהה לאורך זמן.</li>
-                <li>הנראות תומכת בערך — במקום לנסות לפצות עליו.</li>
-                <li>המחיר חוזר להקשר של מותג — לא לטבלת השוואה.</li>
-            </ul>
-            <p class="outcome-honest reveal">עולם מותג אינו מחליף מוצר טוב, שירות מצוין או שיווק עקבי.<br><strong>הוא גורם לכל אלה להתחבר, להיראות ולהישאר בזיכרון.</strong></p>
+            <p class="get-note reveal"><strong>הערת דיוק:</strong> האסטרטגיה וה-DNA הם הבסיס הקבוע של כל פרויקט. היקף הנכסים, אתר, תוכן, וידאו או קמפיין, נקבע אחרי האבחון, לפי המקומות שבהם הפער משמעותי ביותר.</p>
         </div>
     </section>
 
@@ -1537,32 +1409,35 @@
                             <label for="bw-link">קישור לאתר או לאינסטגרם (לא חובה)</label>
                             <input type="text" id="bw-link" name="link" placeholder="instagram.com/... או כתובת האתר — כדי שאוכל להציץ לפני">
                         </div>
-                        <div class="field">
-                            <label for="bw-pain">מה היית רוצה שהמותג ישדר — ועוד לא קורה? (לא חובה)</label>
-                            <textarea id="bw-pain" name="pain" rows="3" placeholder="במילים שלך — איפה את מרגישה שהמותג מתפזר, או איך היית רוצה שירגישו"></textarea>
-                        </div>
-                        <div class="field">
-                            <label for="bw-timing">מתי היית רוצה להתחיל? (לא חובה)</label>
-                            <select id="bw-timing" name="timing">
-                                <option value="">בחרי...</option>
-                                <option value="מיידי">בקרוב ככל האפשר</option>
-                                <option value="1-3 חודשים">ב-1–3 החודשים הקרובים</option>
-                                <option value="אוספת מידע">בודקת אפשרויות בשלב הזה</option>
-                            </select>
-                        </div>
-                        <div class="field">
-                            <label for="bw-decision">מי מקבל/ת את ההחלטה? (לא חובה)</label>
-                            <select id="bw-decision" name="decision">
-                                <option value="">בחרי...</option>
-                                <option value="אני">אני</option>
-                                <option value="אני + שותף/ה">אני יחד עם שותף/ה</option>
-                                <option value="צוות">צוות / הנהלה</option>
-                            </select>
-                        </div>
-                        <div class="field">
-                            <label for="bw-name">שם (לא חובה)</label>
-                            <input type="text" id="bw-name" name="name" autocomplete="name">
-                        </div>
+                        <details class="more-fields">
+                            <summary>רוצה לספר עוד? (לא חובה)</summary>
+                            <div class="field">
+                                <label for="bw-pain">מה היית רוצה שהמותג ישדר — ועוד לא קורה? (לא חובה)</label>
+                                <textarea id="bw-pain" name="pain" rows="3" placeholder="במילים שלך — איפה את מרגישה שהמותג מתפזר, או איך היית רוצה שירגישו"></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="bw-timing">מתי היית רוצה להתחיל? (לא חובה)</label>
+                                <select id="bw-timing" name="timing">
+                                    <option value="">בחרי...</option>
+                                    <option value="מיידי">בקרוב ככל האפשר</option>
+                                    <option value="1-3 חודשים">ב-1–3 החודשים הקרובים</option>
+                                    <option value="אוספת מידע">בודקת אפשרויות בשלב הזה</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="bw-decision">מי מקבל/ת את ההחלטה? (לא חובה)</label>
+                                <select id="bw-decision" name="decision">
+                                    <option value="">בחרי...</option>
+                                    <option value="אני">אני</option>
+                                    <option value="אני + שותף/ה">אני יחד עם שותף/ה</option>
+                                    <option value="צוות">צוות / הנהלה</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="bw-name">שם (לא חובה)</label>
+                                <input type="text" id="bw-name" name="name" autocomplete="name">
+                            </div>
+                        </details>
 
                         <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0);">
 
@@ -1587,6 +1462,22 @@
                 <h2 class="section-title">לפני שנדבר</h2>
             </div>
             <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">מה ההבדל בין אתר חדש, מיתוג מחדש ועולם מותג?<span class="faq-q__icon" aria-hidden="true">+</span></button>
+                    <div class="faq-a"><div class="faq-a__inner">בשורה אחת לכל שאלה:
+                    <div class="bw-cmp__wrap">
+                    <table class="bw-cmp__table">
+                        <thead><tr><th></th><th>אתר חדש</th><th>מיתוג מחדש</th><th>עולם מותג</th></tr></thead>
+                        <tbody>
+                            <tr><td>מה מקבלים</td><td>נכס אחד יפה</td><td>לוגו, שפה וספר מותג</td><td>DNA, שפה, אתר חי ותוכן מאותו מקור</td></tr>
+                            <tr><td>מי מחליט על הפוסט הבא</td><td>את, מאפס</td><td>ספר המותג, אם פותחים אותו</td><td>ה-DNA, גם כשמפעילים AI</td></tr>
+                            <tr><td>מה קורה אחרי שנה</td><td>האתר נשאר, השאר מתפזר</td><td>עקביות בעבודה ידנית</td><td>המערכת ממשיכה לבנות את אותו מותג</td></tr>
+                            <tr><td>מתאים ל</td><td>עסק שהמותג שלו כבר מוגדר</td><td>עסק שהזהות שלו התיישנה</td><td>עסק שגדל מהר מהמותג ורוצה מערכת</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    </div></div>
+                </div>
                 <div class="faq-item">
                     <button class="faq-q" aria-expanded="false">האם זה מיתוג מחדש?<span class="faq-q__icon" aria-hidden="true">+</span></button>
                     <div class="faq-a"><div class="faq-a__inner">בניית עולם מותג היא לא בהכרח מיתוג מחדש. לפעמים יש למותג בסיס טוב, אבל הוא לא מתורגם למערכת שלמה. בתהליך נבדוק מה נכון לשמר, מה לדייק ומה צריך לבנות מחדש.</div></div>
@@ -1619,14 +1510,21 @@
         </div>
     </section>
 
-    <!-- Studio note -->
-    <section class="section section--beige">
-        <div class="container">
-            <div class="studio-note reveal">
-                <p class="studio-note__label">הערת סטודיו</p>
-                <p class="studio-note__text">"מותג חזק לא נראה כמו אוסף נכסים. הוא מרגיש כמו עולם אחד — וברגע שנכנסים אליו, יודעים מיד שזה את. זאת המשמעות של Built to Strategy. Run by AI."</p>
-                <p class="studio-note__sig">— חגית אנטבי · אסטרטגית מותג ומייסדת Brand Worlds Studio</p>
-            </div>
+    <!-- Direct answer (GEO) — for search and AI answers; sits at the end so paid traffic meets the worlds first -->
+    <style>
+    .bw-answer{ background:#F5F1E8; padding:clamp(40px,6vw,64px) 0; }
+    .bw-answer__inner{ max-width:820px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+    .bw-answer__label{ font-family:'Heebo',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.05em; color:#C4765A; margin-bottom:12px; }
+    .bw-answer h2{ font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); line-height:1.2; color:#2A201A; margin:0 0 14px; }
+    .bw-answer p{ font-family:'Heebo',sans-serif; font-size:clamp(1rem,1.5vw,1.08rem); line-height:1.85; color:#4F372C; margin:0; }
+    .bw-answer a{ color:#C4765A; text-decoration:underline; text-decoration-color:#D4C9BC; text-underline-offset:3px; }
+    .bw-answer a:hover{ color:#2A201A; }
+    </style>
+    <section class="bw-answer" id="answer">
+        <div class="bw-answer__inner">
+            <p class="bw-answer__label">תשובה ישירה · עודכן: ספטמבר 2026</p>
+            <h2>מה זה בניית מותג לעסק מבוסס, ולמה זה עולם מותג ולא עוד אתר?</h2>
+            <p><strong>בניית מותג לעסק מבוסס</strong> היא לא לוגו ולא אתר חדש. היא סגירת הפער בין מה שהעסק כבר נהיה לבין מה שהלקוחה רואה לפני שהיא משווה מחיר. <strong>עולם מותג</strong> הוא הצורה שבה אני בונה את זה: <a href="brand-dna-guide.html">Brand DNA</a> אחד, <a href="brand-architecture.html">שפה מותגית</a> שנגזרת ממנו, אתר שמרגיש כמו המותג, ותוכן שכולו יוצא מאותו מקור. למה מערכת ולא נכסים: לפי <a href="https://www.prnewswire.com/news-releases/study-finds-companies-with-consistent-branding-can-see-up-to-33-increase-in-revenue-300967219.html" target="_blank" rel="noopener">סקר Lucidpress בקרב יותר מ-200 ארגונים</a>, מיתוג עקבי מגדיל הכנסות בעד 33%, ו-81% מהארגונים מתקשים למנוע תוכן שסוטה מהמותג. עקביות לא באה ממשמעת, היא באה ממקור אחד. המונח מוגדר ב<a href="glossary.html#brand-world">מילון</a>, והמדריך המלא ל<a href="business-branding-guide.html">בניית מותג עסקי</a> מסביר את השלבים.</p>
         </div>
     </section>
 
