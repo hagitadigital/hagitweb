@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ENCORE° · Reel scenes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500&display=swap">
+<style>
+/* Scenes for the "מחוץ לטבלה" ENCORE° reel. render.mjs calls window.show(scene, t) per frame. */
+:root{
+  --nuit:#2B1517;--aube:#6B4F4B;--zen:#2F3F5E;--lave:#9E4128;
+  --cream:#F3EDE3;--stone:#E4DACB;--ink:#1E0F0E;--gold:#C9A064;--goldl:#E2C48A;--goldt:#7A5A2A;--muted:#5A4640;
+  --serif:'Cormorant Garamond','Frank Ruhl Libre',serif;--heb:'Frank Ruhl Libre',serif;--sans:'Heebo',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden;font-family:var(--sans);color:var(--ink)}
+.scene{position:absolute;inset:0;display:none}
+.scene.on{display:block}
+.wm{font-family:var(--serif);font-weight:500;letter-spacing:.22em;white-space:nowrap;direction:ltr;unicode-bidi:isolate}
+.stamp{font-family:var(--serif);letter-spacing:.18em;font-variant-numeric:lining-nums tabular-nums;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+
+/* ---------- HOOK: the comparison table ---------- */
+#hook{background:var(--cream)}
+#hook .q{position:absolute;top:250px;right:90px;left:90px;font-family:var(--heb);font-weight:500;font-size:92px;line-height:1.12}
+#hook .q span{display:block}
+#hook .q .b{color:var(--lave)}
+#hook .label{position:absolute;top:150px;right:90px;font-size:30px;letter-spacing:.14em;color:var(--goldt);font-weight:500}
+#hook .table{position:absolute;top:720px;right:70px;left:70px;display:flex;flex-direction:column;gap:22px}
+#hook .row{position:relative;display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:30px;height:190px;padding:0 40px;background:#FBF8F2;border:1px solid rgba(30,15,14,.08);border-radius:18px}
+#hook .logo{width:110px;height:110px;border-radius:50%;background:#DCD5CA;display:flex;align-items:center;justify-content:center;font-size:24px;color:#8C8378}
+#hook .name{display:flex;flex-direction:column;gap:6px}
+#hook .name b{font-size:40px;font-weight:500}
+#hook .name i{font-style:normal;font-size:30px;color:#80766B}
+#hook .price{font-size:60px;font-weight:500;direction:ltr}
+#hook .hl{position:absolute;inset:-6px;border:4px solid var(--lave);border-radius:22px;opacity:0}
+#hook .tag{position:absolute;left:40px;top:-22px;background:var(--lave);color:#fff;font-size:24px;padding:6px 16px;border-radius:20px;opacity:0}
+
+/* ---------- Text overlays on video ---------- */
+.ov{position:absolute;inset:0}
+.scrim{position:absolute;left:0;right:0;bottom:0;height:900px;background:linear-gradient(to top,rgba(20,8,8,.82),rgba(20,8,8,.55) 45%,rgba(20,8,8,0))}
+.lines{position:absolute;right:80px;left:80px;bottom:300px;font-family:var(--heb);font-weight:500;font-size:84px;line-height:1.15;color:#FBF4EA;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.lines .g{color:var(--goldl)}
+.hour{position:absolute;top:120px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--goldl)}
+.hour .stamp{font-size:64px}
+.hour small{font-size:30px;letter-spacing:.1em;color:#F3E9DA}
+
+/* ---------- COVER TEST ---------- */
+#cover{background:var(--nuit);color:#F3E9DA}
+#cover .t{position:absolute;top:170px;right:80px;left:80px;font-family:var(--heb);font-weight:500;font-size:86px;line-height:1.15}
+#cover .t .g{color:var(--goldl)}
+#cover .grid{position:absolute;top:560px;right:80px;left:80px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+#cover .tile{position:relative;height:520px;overflow:hidden;border-radius:6px}
+#cover .cap{position:absolute;right:20px;bottom:18px;font-size:28px;color:#F3E9DA;background:rgba(20,8,8,.55);padding:6px 14px;border-radius:4px}
+#cover .foot{position:absolute;bottom:170px;left:0;right:0;text-align:center;font-size:36px;color:var(--goldl);letter-spacing:.04em}
+
+/* ---------- CTA ---------- */
+#cta{background:var(--cream)}
+#cta .wrap{position:absolute;top:430px;right:90px;left:90px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:34px}
+#cta .pill{font-size:30px;letter-spacing:.12em;color:#A45839;border:1px solid rgba(196,118,90,.4);padding:10px 30px;border-radius:40px;background:#fff}
+#cta h1{font-family:var(--heb);font-weight:700;font-size:168px;line-height:1;color:#4F372C}
+#cta .sub{font-size:54px;color:#A45839;font-weight:500}
+#cta .kinds{font-size:36px;color:#7A6349}
+#cta .thread{width:120px;height:3px;background:#C4765A;border-radius:2px}
+#cta .date{font-size:60px;font-weight:500;color:#4F372C}
+#cta .url{font-size:34px;color:#7A6349;direction:ltr}
+#cta .sig{position:absolute;bottom:150px;left:0;right:0;text-align:center;font-size:28px;letter-spacing:.08em;color:#7A6349}
+</style>
+</head>
+<body>
+
+<!-- HOOK -->
+<section class="scene" id="hook">
+  <div class="label" data-in="0">השוואה</div>
+  <div class="q"><span class="a" data-in="0.1">אם היא צריכה להשוות,</span><span class="b" data-in="1.05">היא תבחר לפי מחיר.</span></div>
+  <div class="table">
+    <div class="row" data-in="0.15"><div class="logo">לוגו</div><div class="name"><b>חנות תכשיטים</b><i>טבעת זהב 14K</i></div><div class="price">₪890</div><div class="hl"></div></div>
+    <div class="row" data-in="0.25"><div class="logo">לוגו</div><div class="name"><b>חנות תכשיטים</b><i>טבעת זהב 14K</i></div><div class="price">₪870</div><div class="hl"></div></div>
+    <div class="row" data-in="0.35"><div class="logo">לוגו</div><div class="name"><b>חנות תכשיטים</b><i>טבעת זהב 14K</i></div><div class="price">₪845</div><div class="hl"></div></div>
+    <div class="row" data-in="0.45"><div class="logo">לוגו</div><div class="name"><b>חנות תכשיטים</b><i>טבעת זהב 14K</i></div><div class="price">₪819</div><div class="hl"></div><div class="tag">הכי זול</div></div>
+  </div>
+</section>
+
+<!-- COVER TEST -->
+<section class="scene" id="cover">
+  <div class="t"><div data-in="0">מכסים את השם.</div><div class="g" data-in="0.5">עדיין <span dir="ltr" style="unicode-bidi:isolate">ENCORE°</span>.</div></div>
+  <div class="grid">
+    <div class="tile" data-in="0.9" style="background:var(--lave)">
+      <div style="position:absolute;left:50%;top:-90px;width:180px;height:180px;margin-left:-90px;border-radius:50%;border:9px solid #B8955A;clip-path:inset(50% 0 0 0)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:110px;text-align:center"><span class="stamp" style="font-size:40px;color:var(--goldl)">18:00</span></div>
+      <div class="cap">שקית</div>
+    </div>
+    <div class="tile" data-in="1.3" style="background:var(--stone)">
+      <div class="dial" style="position:absolute;right:-300px;bottom:-300px;width:600px;height:600px"></div>
+      <div class="cap">מכסה</div>
+    </div>
+    <div class="tile" data-in="1.7" style="background:#EFE8DD;display:flex;align-items:center;justify-content:center">
+      <div style="width:230px;height:230px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#B1543A,var(--lave) 55%,#6E2A18);box-shadow:0 10px 24px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center">
+        <div style="width:172px;height:172px;border-radius:50%;border:1px solid rgba(226,196,138,.75);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:190px;line-height:.5;color:var(--goldl);padding-top:56px">°</div>
+      </div>
+      <div class="cap">חותם</div>
+    </div>
+    <div class="tile" data-in="2.1" style="background:#D7CCBB;display:flex;align-items:center;justify-content:center">
+      <div style="width:300px;padding:34px 28px;background:#FBF7F0;display:flex;flex-direction:column;gap:16px;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,.14);color:var(--ink)">
+        <div class="mini" style="width:46px;height:46px"></div>
+        <div style="font-size:22px;color:var(--muted)">נרכש בשעה</div>
+        <span class="stamp" style="font-size:48px">18:42</span>
+        <div style="width:100%;height:1px;background:var(--gold)"></div>
+        <div style="font-size:22px;color:var(--muted)">צמיד · Lave</div>
+      </div>
+      <div class="cap">קבלה</div>
+    </div>
+  </div>
+  <div class="foot" data-in="2.6">היא מזהה לפני שהיא קוראת.</div>
+</section>
+
+<!-- CTA -->
+<section class="scene" id="cta">
+  <div class="wrap">
+    <div class="pill" data-in="0">סדרה חדשה · עונה ראשונה</div>
+    <h1 data-in="0.25">מחוץ לטבלה</h1>
+    <div class="sub" data-in="0.6">בוחרת 3 עסקים</div>
+    <div class="kinds" data-in="0.8">מותגי מוצר · קליניקות · עסקי בוטיק</div>
+    <div class="thread" data-in="1.0"></div>
+    <div class="date" data-in="1.2">ההגשה פתוחה עד 10.10</div>
+    <div class="url" data-in="1.4">hagitantebi.co.il/outside-the-table</div>
+  </div>
+  <div class="sig" data-in="1.6">Brand Worlds Studio · חגית אנטבי</div>
+</section>
+
+<!-- OVERLAY (text over a video clip); filled by show('ov', 0, {...}) -->
+<section class="scene" id="ov">
+  <div class="ov">
+    <div class="scrim" id="ovScrim"></div>
+    <div class="hour" id="ovHour"><span class="stamp" id="ovStamp"></span><small id="ovHourName"></small></div>
+    <div class="lines"><div id="ovA"></div><div class="g" id="ovB"></div></div>
+  </div>
+</section>
+
+<script>
+// the ENCORE dial: 00 top (Nuit), 06 right (Aube), 12 bottom (Zénith), 18 left (Lave)
+function dialHTML(s){
+  let h=`<div style="position:relative;width:${s}px;height:${s}px;border-radius:50%;background:conic-gradient(from -45deg,#2B1517 0deg 90deg,#6B4F4B 90deg 180deg,#2F3F5E 180deg 270deg,#9E4128 270deg 360deg);box-shadow:0 0 0 ${Math.round(s*.012)}px #A8834C">`;
+  h+=`<div style="position:absolute;inset:7%;border-radius:50%;border:2px solid rgba(226,196,138,.8)"></div>`;
+  const r=s*.43;
+  for(let i=0;i<12;i++){const hh=s*(i%3?.028:.05);h+=`<div style="position:absolute;left:${s/2-1}px;top:${s*.07}px;width:2px;height:${hh}px;background:#E2C48A;transform-origin:1px ${r}px;transform:rotate(${i*30}deg)"></div>`}
+  return h+'</div>';
+}
+function miniHTML(s,idx,c){
+  return `<div style="position:relative;width:${s}px;height:${s}px;border-radius:50%;border:2px solid ${c};overflow:hidden"><div style="position:absolute;inset:0;background:conic-gradient(from ${-45+idx*90}deg,${c} 0deg 90deg,transparent 90deg 360deg)"></div></div>`;
+}
+document.querySelectorAll('.dial').forEach(d=>d.innerHTML=dialHTML(parseInt(d.style.width)));
+document.querySelectorAll('.mini').forEach(d=>d.innerHTML=miniHTML(parseInt(d.style.width),3,'#7A5A2A'));
+
+const ease=x=>1-Math.pow(1-Math.min(1,Math.max(0,x)),3);
+function reveal(root,t){
+  root.querySelectorAll('[data-in]').forEach(el=>{
+    const p=ease((t-parseFloat(el.dataset.in))/0.45);
+    el.style.opacity=p; el.style.transform=`translateY(${(1-p)*28}px)`;
+  });
+}
+
+window.show=function(scene,t,o){
+  document.querySelectorAll('.scene').forEach(s=>s.classList.toggle('on',s.id===scene));
+  const root=document.getElementById(scene);
+  if(scene==='ov'){
+    // o: {a, b, part:'a'|'b', stamp, hourName}; part a draws scrim + hour + line A, part b only line B
+    document.getElementById('ovScrim').style.display=o.part==='a'?'block':'none';
+    document.getElementById('ovHour').style.display=(o.part==='a'&&o.stamp)?'flex':'none';
+    document.getElementById('ovStamp').textContent=o.stamp||'';
+    document.getElementById('ovHourName').textContent=o.hourName||'';
+    const A=document.getElementById('ovA'),B=document.getElementById('ovB');
+    A.textContent=o.a||''; B.textContent=o.b||'';
+    A.style.visibility=o.part==='a'?'visible':'hidden';
+    B.style.visibility=o.part==='b'?'visible':'hidden';
+    return;
+  }
+  reveal(root,t);
+  if(scene==='hook'){
+    // the highlight scans the rows and lands on the cheapest; everything greys out at the end
+    const rows=[...root.querySelectorAll('.row')];
+    const k=t<0.9?-1:Math.min(3,Math.floor((t-0.9)/0.35));
+    rows.forEach((r,i)=>{r.querySelector('.hl').style.opacity=i===k?1:0});
+    const tag=root.querySelector('.tag'); tag.style.opacity=ease((t-2.05)/0.25);
+    const g=ease((t-2.5)/0.4);
+    root.querySelector('.table').style.filter=`grayscale(${g}) opacity(${1-g*.55})`;
+  }
+};
+</script>
+</body>
+</html>

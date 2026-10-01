@@ -379,6 +379,34 @@
             .worlds-proof__grid { grid-template-columns: 1fr; max-width: 460px; }
         }
 
+        /* Brand books — the system behind each world */
+        .books { padding: clamp(64px, 9vw, 110px) 0; text-align: center; }
+        .books__grid {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(18px, 2.4vw, 30px);
+            max-width: 1060px; margin: clamp(38px, 5vw, 58px) auto 0;
+        }
+        .book-card {
+            --bk: #241212; --bk-accent: #D9B26A;
+            display: flex; flex-direction: column;
+            text-align: right; text-decoration: none;
+            background: var(--bk); color: #F6EEE4; overflow: hidden;
+            transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s var(--transition-smooth);
+        }
+        .book-card:hover { transform: translateY(-6px); box-shadow: 0 18px 48px rgba(36, 18, 18, 0.25); }
+        .book-card__ph { line-height: 0; overflow: hidden; }
+        .book-card__ph img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1); }
+        .book-card:hover .book-card__ph img { transform: scale(1.04); }
+        .book-card__body { padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 12px; flex: 1; }
+        .book-card__kicker { font-size: 0.78rem; letter-spacing: 0.16em; color: var(--bk-accent); }
+        .book-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; letter-spacing: 0.2em; direction: ltr; text-align: right; }
+        .book-card__title { font-family: var(--font-display); font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.25; }
+        .book-card__text { font-size: 0.95rem; line-height: 1.8; opacity: 0.88; }
+        .book-card__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .book-card__chips span { font-size: 0.76rem; border: 1px solid var(--bk-accent); color: var(--bk-accent); padding: 3px 10px; }
+        .book-card__go { font-size: 0.9rem; font-weight: 500; color: var(--bk-accent); margin-top: auto; padding-top: 6px; }
+        @media (max-width: 800px) { .books__grid { grid-template-columns: 1fr; max-width: 520px; } }
+
         /* Extras Section */
         .studio-extras {
             padding: 0 0 clamp(80px, 12vw, 140px);
@@ -740,6 +768,71 @@
             </div>
 
             <a class="worlds-proof__all" href="/brand-worlds/">כל העולמות בארכיון הסטודיו ←</a>
+        </div>
+    </section>
+
+    <section class="books" id="books" aria-label="ספרי מותג מקוצרים">
+        <div class="container">
+            <p class="worlds-proof__kicker">Les Livres</p>
+            <h2 class="worlds-proof__title">העולם הוא החוויה.<br><em>ספר המותג הוא החשיבה שמאחוריה.</em></h2>
+            <p class="worlds-proof__deck">לכל עולם יש החלטה אחת שמחזיקה אותו. ספר המותג המקוצר מראה איך היא הופכת לקודים, לצבעים ולכללים, ואיך כל נקודת מגע מזוהה גם בלי לקרוא את השם.</p>
+
+            <div class="books__grid">
+            <a class="book-card" href="/encore/brand-book.html" style="--bk:#241212;--bk-accent:#D9B26A">
+                <div class="book-card__ph">
+                    <img src="/encore/assets/touchpoints/bags-four.webp" width="900" height="1125" loading="lazy"
+                         alt="ארבע שקיות ENCORE° בארבעת צבעי השעות וקופסה עגולה שהמכסה שלה הוא שעון">
+                </div>
+                <div class="book-card__body">
+                    <div class="book-card__kicker">ספר מותג מקוצר · עולם מס׳ 25</div>
+                    <div class="book-card__name">ENCORE°</div>
+                    <div class="book-card__title">השעה היא הלוגו.</div>
+                    <p class="book-card__text">בית תכשיטים שכל העולם שלו הוא יום אחד: חוגה של ארבע שעות, וכל נקודת מגע, מהשלט בסמטה ביפו ועד הקבלה, לוקחת לעצמה רבע אחד.</p>
+                    <div class="book-card__chips"><span>חמישה קודים</span><span>ארבע שעות</span><span>מבחן הכיסוי</span><span>נקודות מגע</span></div>
+                    <span class="book-card__go">לפתוח את ספר המותג ←</span>
+                </div>
+            </a>
+            <a class="book-card" href="/oreva/brand-book.html" style="--bk:#3A2E29;--bk-accent:#D9A88A">
+                <div class="book-card__ph">
+                    <img src="/oreva/assets/packaging-set-ribbon.webp" width="1536" height="1024" loading="lazy" alt="אריזות ORÉVA° עם סרט נחושת על אבן טרוורטין">
+                </div>
+                <div class="book-card__body">
+                    <div class="book-card__kicker">ספר מותג מקוצר · עולם מס׳ 21</div>
+                    <div class="book-card__name">ORÉVA°</div>
+                    <div class="book-card__title">קו אחד, מהיד עד הבקבוק.</div>
+                    <p class="book-card__text">קוסמטיקאית עם ליין משלה, וסרט נחושת אחד שמתחיל בידיים שלה ונגמר במשאבה של כל אחד משבעת המוצרים.</p>
+                    <div class="book-card__chips"><span>חמישה קודים</span><span>שלושה גוונים</span><span>מבחן הכיסוי</span><span>נקודות מגע</span></div>
+                    <span class="book-card__go">לפתוח את ספר המותג ←</span>
+                </div>
+            </a>
+            <a class="book-card" href="/signe/brand-book.html" style="--bk:#120E08;--bk-accent:#C9A25E">
+                <div class="book-card__ph">
+                    <img src="/signe/assets/piping-signature.webp" width="1600" height="1067" loading="lazy" alt="יד מזלפת קו קרם רציף על משטח צפחה כהה, החתימה של SIGNÉ°">
+                </div>
+                <div class="book-card__body">
+                    <div class="book-card__kicker">ספר מותג מקוצר · עולם מס׳ 17</div>
+                    <div class="book-card__name">SIGNÉ°</div>
+                    <div class="book-card__title">קו אחד, ביד אחת.</div>
+                    <p class="book-card__text">בית קינוחים שכל העולם שלו הוא חתימה אחת: קו קרם רציף ביד חופשית שאין לו שניים זהים, ולכן אי אפשר להשוות אותו.</p>
+                    <div class="book-card__chips"><span>ארבעה קודים</span><span>חמישה טעמים</span><span>מבחן הכיסוי</span><span>נקודות מגע</span></div>
+                    <span class="book-card__go">לפתוח את ספר המותג ←</span>
+                </div>
+            </a>
+            <a class="book-card" href="/rosee/brand-book.html" style="--bk:#3B2E33;--bk-accent:#E8B4B8">
+                <div class="book-card__ph">
+                    <img src="/images/rosee/story/cadran-0530.webp" width="1600" height="900" loading="lazy" alt="שעון השחר של ROSÉE°: טבעת נחושת וחמישה בקבוקים ורודים סביבה">
+                </div>
+                <div class="book-card__body">
+                    <div class="book-card__kicker">ספר מותג מקוצר · עולם מס׳ 15</div>
+                    <div class="book-card__name">ROSÉE°</div>
+                    <div class="book-card__title">לא מוכרים סרום. מוכרים בוקר.</div>
+                    <p class="book-card__text">מותג טיפוח שכל העולם שלו הוא בוקר אחד: טיפה שפותחת, שעון של שחר, ושעה שבאה לפני השם בכל נקודת מגע.</p>
+                    <div class="book-card__chips"><span>חמישה קודים</span><span>שעון השחר</span><span>מבחן הכיסוי</span><span>נקודות מגע</span></div>
+                    <span class="book-card__go">לפתוח את ספר המותג ←</span>
+                </div>
+            </a>
+            <!-- more books -->
+            </div>
         </div>
     </section>
 
