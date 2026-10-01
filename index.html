@@ -2841,13 +2841,47 @@ document.addEventListener('DOMContentLoaded', function () {
     .path__swatches i { width: 16px; height: 16px; border-radius: 50%; display: block; }
     .path__aa { font-family: var(--font-display); font-size: 22px !important; }
     /* 03 · the world */
-    .path__worlds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: min(100%, 760px); }
-    .path__world { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; background: var(--color-cream); border-radius: 14px; overflow: hidden; padding-bottom: 12px; transition: transform .3s var(--transition-smooth), box-shadow .3s; }
-    .path__world:hover, .path__world:focus-visible { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(107, 86, 63, .14); }
-    .path__world img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
-    .path__world div { display: flex; flex-direction: column; gap: 4px; padding: 0 10px; }
     .path__world-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-copper); }
-    .path__world-line { font-family: var(--font-body-he); font-size: 14px; line-height: 1.4; padding: 0 10px; color: var(--path-ink); }
+    /* 03 · the world: the dials from the worlds themselves (same build as "מה היא קונה באמת?" on brand-world) */
+    .pw { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 4vw, 40px); width: min(100%, 640px); }
+    .pw__card { position: relative; flex: none; width: clamp(120px, min(22vw, 24vh), 220px); aspect-ratio: 4 / 5; container-type: inline-size; border-radius: 6px; overflow: hidden; background: #4A3640; box-shadow: 0 26px 60px -28px rgba(42, 32, 26, .55); transition: background-color .9s var(--transition-smooth); color: #F6EEE4; }
+    .pw__cap { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: right; min-width: 0; }
+    .pw__cap .path__world-name { font-size: clamp(1.5rem, 3vw, 2.1rem); transition: opacity .3s; }
+    .pw__line { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.25rem); font-weight: 500; line-height: 1.4; color: var(--path-ink); transition: opacity .3s; }
+    .pw__cap.is-out .path__world-name, .pw__cap.is-out .pw__line { opacity: 0; }
+    .pw__links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px; }
+    .pw__links a { font-family: var(--font-display); font-size: 1rem; color: var(--path-ink); text-decoration: underline; text-decoration-color: var(--color-light-taupe); text-underline-offset: 3px; padding: 6px 0; min-height: 32px; }
+    .pw__links a.is-on { color: var(--color-copper); text-decoration-color: var(--color-copper); }
+    .pw__dial { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .5s, visibility 0s .5s; }
+    .pw__dial.is-on { opacity: 1; visibility: visible; transition: opacity .5s; }
+    .pw__head { position: absolute; top: 6cqw; left: 6cqw; right: 6cqw; text-align: center; }
+    .pw__it { font-family: var(--font-display); font-style: italic; font-size: 5cqw; direction: ltr; }
+    .pw__ht { font-family: var(--font-body-he); font-size: 6.6cqw; line-height: 1.2; margin-top: 1cqw; }
+    .pw__pin { position: absolute; top: 26cqw; left: 50%; margin-left: -2cqw; width: 0; height: 0; border-left: 2cqw solid transparent; border-right: 2cqw solid transparent; border-top: 2.8cqw solid currentColor; }
+    .pw__read { position: absolute; left: 6cqw; right: 6cqw; bottom: 6cqw; text-align: center; }
+    .pw__t { font-family: var(--font-display); font-size: 10cqw; line-height: 1; direction: ltr; display: block; }
+    .pw__n { font-family: var(--font-body-he); font-size: 5.4cqw; display: block; margin-top: 1.2cqw; }
+    .pw__ring { position: absolute; left: 50%; width: 0; height: 0; transition: transform 1s var(--transition-smooth); }
+    .pw__ring > span { position: absolute; left: 0; top: 0; }
+    .pw__ring > span > span { position: absolute; display: block; transition: transform 1s var(--transition-smooth); }
+    .pw__center { position: absolute; left: 50%; border-radius: 50%; overflow: hidden; }
+    .pw__center img, .pw__ring img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pw__center img { opacity: 0; transition: opacity .6s; }
+    .pw__center img.is-on { opacity: 1; }
+    .pw__disc { position: absolute; top: 31cqw; left: 50%; width: 60cqw; height: 60cqw; margin-left: -30cqw; border-radius: 50%; background: conic-gradient(from -45deg, #241212 0 25%, #6E4E4A 0 50%, #34405A 0 75%, #853A26 0 100%); box-shadow: 0 0 0 .4cqw #D9B26A, 0 5cqw 12cqw rgba(0,0,0,.35); transition: transform 1s var(--transition-smooth); }
+    .pw__disc svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .pw__disc + .pw__center { top: 46cqw; width: 30cqw; height: 30cqw; margin-left: -15cqw; background: #F6EEE4; box-shadow: 0 0 0 .3cqw #D9B26A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    .pw__disc + .pw__center img { object-fit: contain; padding: 3.5cqw; box-sizing: border-box; }
+    .pw__orbit { position: absolute; top: 36cqw; left: 50%; width: 56cqw; height: 56cqw; margin-left: -28cqw; border-radius: 50%; border: .25cqw dashed rgba(194,138,90,.6); }
+    .pw__dial--rosee .pw__ring { top: 64cqw; }
+    .pw__dial--rosee .pw__ring > span > span { width: 15cqw; height: 15cqw; left: -7.5cqw; top: -7.5cqw; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 .35cqw #C28A5A, 0 2cqw 5cqw rgba(0,0,0,.25); }
+    .pw__dial--rosee .pw__center { top: 52cqw; width: 24cqw; height: 24cqw; margin-left: -12cqw; background: #F4E8DC; box-shadow: 0 0 0 .3cqw #C28A5A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    .pw__logo { position: absolute; top: 7cqw; left: 50%; width: 44cqw; margin-left: -22cqw; }
+    .pw__blob { position: absolute; top: 40cqw; left: 12cqw; width: 76cqw; height: 76cqw; border-radius: 47% 53% 44% 56% / 52% 45% 55% 48%; opacity: .5; transition: background-color .9s; }
+    .pw__dial--pancakerie .pw__ring { top: 192cqw; }
+    .pw__dial--pancakerie .pw__ring > span > span { width: 64cqw; height: 48cqw; left: -32cqw; top: -24cqw; }
+    .pw__dial--pancakerie .pw__ring img { object-fit: contain; filter: drop-shadow(0 3cqw 3.4cqw rgba(64,38,19,.28)); }
+    @media (prefers-reduced-motion: reduce) { .pw__ring, .pw__ring > span > span, .pw__disc, .pw__card { transition: none; } }
     /* the thread goes on */
     .path__stream { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
     .path__stream span { padding: 8px 18px; border: 1.5px solid var(--color-copper); border-radius: 999px; background: var(--color-cream); font-family: var(--font-body-he); font-size: 15px; font-weight: 500; color: var(--path-ink); }
@@ -2858,19 +2892,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* live: one sticky stage, the scroll rolls the bead */
     .path.is-live .path__track { height: 640vh; }
-    .path.is-live .path__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(80px, 10vh, 120px); padding-bottom: 32px; }
-    .path.is-live .path__panels { flex: 0 1 auto; height: min(46vh, 460px); height: min(46svh, 460px); }
-    .path.is-live .path__panel { position: absolute; inset: 0; justify-content: center; padding: 0; border: 0; opacity: 0; transform: translateY(26px); transition: opacity .55s var(--transition-smooth), transform .55s var(--transition-smooth); pointer-events: none; }
-    .path.is-live .path__panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+    .path.is-live .path__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(76px, 11vh, 120px); padding-bottom: clamp(20px, 4vh, 40px); }
+    .path.is-live .path__panels { flex: 1 1 auto; min-height: 0; max-height: 560px; }
+    .path.is-live .path__panel { position: absolute; inset: 0; justify-content: center; padding: 0; border: 0; opacity: 0; visibility: hidden; transform: translateY(18px); transition: opacity .18s ease-out, transform .18s ease-out, visibility 0s .18s; pointer-events: none; }
+    .path.is-live .path__panel.is-active { opacity: 1; visibility: visible; transform: none; pointer-events: auto; transition: opacity .45s var(--transition-smooth) .2s, transform .45s var(--transition-smooth) .2s, visibility 0s .2s; }
+    /* short screens (small laptops, phones with the browser bar): the header gives way to the stations */
+    @media (max-height: 780px) {
+        .path.is-live .path__label { display: none; }
+        .path.is-live .path__title { font-size: clamp(1.6rem, 4vh, 2.4rem); }
+        .path.is-live .path__header { margin-bottom: 8px; }
+        .path.is-live .path__line { margin-bottom: clamp(14px, 3vh, 30px); width: min(100%, 860px); }
+        .path.is-live .path__big { font-size: clamp(1.4rem, 3.6vh, 2.4rem); }
+        .path.is-live .path__panel { gap: clamp(10px, 1.8vh, 18px); }
+    }
     @media (max-width: 640px) {
+        .pw__card { width: clamp(120px, min(40vw, 22vh), 180px); }
         .path__line { width: calc(100% + 2 * var(--container-padding)); margin-inline: calc(-1 * var(--container-padding)); }
-        .path.is-live .path__panels { height: min(54vh, 520px); height: min(54svh, 520px); }
         .path__codex { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .path__worlds { grid-template-columns: 1fr; gap: 8px; }
-        .path__world { flex-direction: row; align-items: center; padding-bottom: 0; text-align: right; }
-        .path__world img { width: 72px; aspect-ratio: 1; flex: none; }
-        .path__world div { gap: 2px; padding: 0 0 0 10px; }
-        .path__world-line { padding: 0; }
     }
     </style>
     <section class="path" id="method" aria-labelledby="path-title">
@@ -2942,12 +2980,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="path__small">חוקים שמאפשרים לו לגדול בלי לאבד את עצמו.</p>
                 </article>
 
-                <article class="path__panel">
+                <article class="path__panel" id="pathWorld">
                     <div class="path__kicker"><span class="path__num" dir="ltr">03</span><span class="path__en" dir="ltr">The World</span><h3 class="path__he">העולם</h3></div>
-                    <div class="path__worlds">
-                        <a class="path__world" href="rosee/"><img src="rosee-card.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">ROSÉE°</span><span class="path__world-line">הרגע בבוקר שמחזיק יום שלם.</span></div></a>
-                        <a class="path__world" href="pancakerie/"><img src="pancakerie-og.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">PANCAKERIE°</span><span class="path__world-line">טעם שרואים לפני שטועמים.</span></div></a>
-                        <a class="path__world" href="encore/"><img src="encore-og.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">ENCORE°</span><span class="path__world-line">התכשיט שתמיד נשאר עלייך.</span></div></a>
+                    <div class="pw">
+                        <a class="pw__card" id="pwCard" href="rosee/" aria-label="להיכנס לעולם ROSÉE°"></a>
+                        <div class="pw__cap">
+                            <span class="path__world-name" id="pwName" dir="ltr">ROSÉE°</span>
+                            <span class="pw__line" id="pwLine">הרגע בבוקר שמחזיק יום שלם.</span>
+                            <nav class="pw__links" aria-label="להיכנס לעולם">
+                                <a href="rosee/" dir="ltr">ROSÉE°</a><a href="pancakerie/" dir="ltr">PANCAKERIE°</a><a href="encore/" dir="ltr">ENCORE°</a>
+                            </nav>
+                        </div>
                     </div>
                     <p class="path__big">המקום שבו הלקוחה מרגישה שזה שלה, <b>ומפסיקה להשוות.</b></p>
                 </article>
@@ -3018,6 +3061,96 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onScroll);
         frame();
+    })();
+    </script>
+    <script>
+    (function () {
+        // the World station turns the worlds' own dials, the way the reel does
+        var panel = document.getElementById('pathWorld'), card = document.getElementById('pwCard'); if (!panel || !card) return;
+        var cap = panel.querySelector('.pw__cap'), nameEl = document.getElementById('pwName'), lineEl = document.getElementById('pwLine'), links = panel.querySelectorAll('.pw__links a');
+        var D = 'images/bw-lp/dials/';
+        var W = [
+            { key: 'rosee', name: 'ROSÉE°', href: 'rosee/', line: 'הרגע בבוקר שמחזיק יום שלם.', it: "Le Cadran de l'Aube", ht: 'הבוקר הוא מעגל.', pin: '#C28A5A', type: 'ring', r: 28,
+              steps: [ { t: '05:30', n: 'La Brume', img: 'rosee/collection/brume.webp', bg: '#4A3640', ink: '#F7F0E6' },
+                       { t: '06:15', n: 'Le Réveil', img: 'rosee/collection/reveil.webp', bg: '#7A5566', ink: '#F7F0E6' },
+                       { t: '07:00', n: 'Le Voile', img: 'rosee/collection/voile.webp', bg: '#D9B7B3', ink: '#3B2E33' },
+                       { t: '07:45', n: 'La Lumière', img: 'rosee/collection/lumiere.webp', bg: '#EFD9CF', ink: '#3B2E33' },
+                       { t: '22:00', n: 'La Nuit', img: 'rosee/collection/nuit.webp', bg: '#2E2430', ink: '#F7F0E6' } ] },
+            { key: 'pancakerie', name: 'PANCAKERIE°', href: 'pancakerie/', line: 'טעם שרואים לפני שטועמים.', ink: '#402613', type: 'fan', r: 130, arc: 22,
+              steps: [ { t: 'PISTACHE', n: 'פיסטוק', img: D + 'pk-pistache.webp', bg: '#D4CFBA', blob: '#A5A57F' },
+                       { t: 'FRAISE', n: 'תות', img: D + 'pk-fraise.webp', bg: '#EBCFC7', blob: '#D9928A' },
+                       { t: 'NOISETTE', n: 'אגוזי לוז', img: D + 'pk-noisette.webp', bg: '#DCC7AE', blob: '#A9835E' },
+                       { t: 'CITRON', n: 'לימון', img: D + 'pk-citron.webp', bg: '#F0E2B0', blob: '#D8B94E' } ] },
+            { key: 'encore', name: 'ENCORE°', href: 'encore/', line: 'התכשיט שתמיד נשאר עלייך.', it: 'Le Jour', ht: 'תכשיט אחד לכל שעה ביום.', ink: '#F6EEE4', pin: '#D9B26A', type: 'disc',
+              steps: [ { t: '06:00', n: 'שחר · טבעות', img: 'encore/assets/pieces/rings-1.webp', bg: '#6E4E4A', rot: -90 },
+                       { t: '12:00', n: 'צהריים · שרשראות', img: 'encore/assets/pieces/pendants-1.webp', bg: '#34405A', rot: -180 },
+                       { t: '18:00', n: 'שקיעה · צמידים', img: 'encore/assets/pieces/bracelets-1.webp', bg: '#853A26', rot: -270 },
+                       { t: '00:00', n: 'לילה · עגילים', img: 'encore/assets/pieces/earrings-1.webp', bg: '#241212', rot: -360 } ] }
+        ];
+        var dials = W.map(function (w) {
+            var el = document.createElement('div'); el.className = 'pw__dial pw__dial--' + w.key; el.setAttribute('aria-hidden', 'true');
+            var h = '';
+            if (w.it) h += '<div class="pw__head"><div class="pw__it" style="color:' + w.pin + '">' + w.it + '</div><div class="pw__ht">' + w.ht + '</div></div>';
+            if (w.type === 'disc') {
+                var ticks = ''; for (var k = 0; k < 24; k++) { var a = k * 15 * Math.PI / 180, r1 = k % 6 ? 46 : 44; ticks += '<line x1="' + (50 + r1 * Math.sin(a)).toFixed(2) + '" y1="' + (50 - r1 * Math.cos(a)).toFixed(2) + '" x2="' + (50 + 48 * Math.sin(a)).toFixed(2) + '" y2="' + (50 - 48 * Math.cos(a)).toFixed(2) + '"/>'; }
+                h += '<div class="pw__pin" style="color:' + w.pin + '"></div><div class="pw__disc"><svg viewBox="0 0 100 100" fill="none" stroke="#D9B26A" stroke-width=".35"><circle cx="50" cy="50" r="44"/><line x1="14.6" y1="14.6" x2="85.4" y2="85.4"/><line x1="85.4" y1="14.6" x2="14.6" y2="85.4"/>' + ticks + '</svg></div>';
+                h += '<div class="pw__center">' + w.steps.map(function (s) { return '<img data-src="' + s.img + '" alt="">'; }).join('') + '</div>';
+            } else if (w.type === 'ring') {
+                h += '<div class="pw__orbit"></div><div class="pw__pin" style="color:' + w.pin + '"></div><div class="pw__ring">' + w.steps.map(function (s, i) {
+                    var a = i * 360 / w.steps.length;
+                    return '<span style="transform:rotate(' + a + 'deg) translateY(-' + w.r + 'cqw) rotate(' + (-a) + 'deg)"><span><img data-src="' + s.img + '" alt=""></span></span>';
+                }).join('') + '</div>';
+                h += '<div class="pw__center">' + w.steps.map(function (s) { return '<img data-src="' + s.img + '" alt="">'; }).join('') + '</div>';
+            } else {
+                h += '<img class="pw__logo" data-src="pancakerie/assets/logo.webp" alt=""><div class="pw__blob"></div>';
+                h += '<div class="pw__ring">' + w.steps.map(function (s, i) {
+                    return '<span style="transform:rotate(' + (i * w.arc) + 'deg) translateY(-' + w.r + 'cqw)"><span><img data-src="' + s.img + '" alt=""></span></span>';
+                }).join('') + '</div>';
+            }
+            h += '<div class="pw__read"><span class="pw__t"></span><span class="pw__n"></span></div>';
+            el.innerHTML = h; card.appendChild(el); return el;
+        });
+        var cur = 0, step = [0, 0, 0], turns = [0, 0, 0], loaded = false, timer = null;
+        function paint(wi) {
+            var w = W[wi], el = dials[wi], i = step[wi], s = w.steps[i], n = w.steps.length;
+            card.style.backgroundColor = s.bg; el.style.color = s.ink || w.ink;
+            if (w.type === 'disc') el.querySelector('.pw__disc').style.transform = 'rotate(' + (s.rot + turns[wi] * -360) + 'deg)';
+            else {
+                var unit = w.type === 'fan' ? w.arc : 360 / n, rot = -(i * unit) - turns[wi] * (w.type === 'fan' ? 0 : 360);
+                var ring = el.querySelector('.pw__ring'); ring.style.transform = 'rotate(' + rot + 'deg)';
+                if (w.type !== 'fan') ring.querySelectorAll(':scope > span > span').forEach(function (sp) { sp.style.transform = 'rotate(' + (-rot) + 'deg)'; });
+                else el.querySelector('.pw__blob').style.backgroundColor = s.blob;
+            }
+            el.querySelectorAll('.pw__center img').forEach(function (im, k) { im.classList.toggle('is-on', k === i); });
+            el.querySelector('.pw__t').textContent = s.t; el.querySelector('.pw__n').textContent = s.n;
+        }
+        function world(wi) {
+            cur = wi; var w = W[wi];
+            dials.forEach(function (d, k) { d.classList.toggle('is-on', k === wi); });
+            links.forEach(function (a, k) { a.classList.toggle('is-on', k === wi); });
+            card.href = w.href; card.setAttribute('aria-label', 'להיכנס לעולם ' + w.name);
+            cap.classList.add('is-out');
+            setTimeout(function () { nameEl.textContent = w.name; lineEl.textContent = w.line; cap.classList.remove('is-out'); }, 300);
+            paint(wi);
+        }
+        function load() { if (loaded) return; loaded = true; card.querySelectorAll('img[data-src]').forEach(function (im) { im.src = im.getAttribute('data-src'); }); }
+        function tick() {
+            var w = W[cur];
+            if (step[cur] === w.steps.length - 1) { var nx = (cur + 1) % W.length; step[nx] = 0; world(nx); }
+            else { step[cur]++; paint(cur); }
+        }
+        world(0);
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // the dials turn only while the World station is on screen
+        function sync() {
+            var on = panel.classList.contains('is-active') || !panel.closest('.path').classList.contains('is-live');
+            var r = panel.getBoundingClientRect(), inView = r.bottom > 0 && r.top < window.innerHeight;
+            if (on && inView) { load(); if (!timer && !reduce) timer = setInterval(tick, 1300); }
+            else if (timer) { clearInterval(timer); timer = null; }
+        }
+        if ('MutationObserver' in window) new MutationObserver(sync).observe(panel, { attributes: true, attributeFilter: ['class'] });
+        window.addEventListener('scroll', sync, { passive: true });
+        sync();
     })();
     </script>
 
