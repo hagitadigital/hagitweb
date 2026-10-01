@@ -2783,50 +2783,243 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <!-- ============================================================
-         04 · METHOD — moved DOWN, 4 phases (BrandOS as 04)
+         04 · HOW I WORK — the studio's copper thread; the bead is her brand.
+         Scroll rolls it through four stations and ends on the first step.
          ============================================================ -->
-    <section class="method section" id="method">
-        <div class="container">
-            <div class="method__header reveal">
-                <p class="method__label" dir="ltr">The Method</p>
-                <h2 class="method__title" dir="ltr">How I Build Brand Worlds</h2>
+    <style>
+    .path { background: var(--color-warm-beige); position: relative; --path-ink: #6B563F; }
+    .path__sticky { padding: clamp(96px, 12vw, 140px) var(--container-padding) clamp(48px, 7vw, 90px); }
+    .path__header { text-align: center; margin-bottom: clamp(18px, 3vw, 34px); }
+    .path__label { font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 12px; }
+    .path__title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; letter-spacing: -0.01em; color: var(--color-chocolate); }
+
+    .path__line { position: relative; width: min(100%, 1000px); margin: 0 auto clamp(30px, 5vw, 56px); aspect-ratio: 1000 / 116; }
+    .path__line svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .path__ghost { fill: none; stroke: var(--color-copper); stroke-opacity: .18; stroke-width: 1.6; }
+    .path__thread { fill: none; stroke: var(--color-copper); stroke-width: 1.8; stroke-linecap: round; }
+    .path__dot { fill: var(--color-warm-beige); stroke: var(--color-copper); stroke-width: 1.8; transition: fill .4s var(--transition-smooth); }
+    .path__dot.is-on { fill: var(--color-copper); }
+    .path__bead-core { fill: var(--color-copper); }
+    .path__bead-seam { stroke: var(--color-cream); stroke-width: 1.2; stroke-linecap: round; opacity: .55; }
+    .path__stop { position: absolute; transform: translate(-50%, 14px); font-family: var(--font-body-he); font-size: clamp(11px, 1.5vw, 15px); font-weight: 500; color: var(--path-ink); white-space: nowrap; opacity: .6; transition: opacity .4s; }
+    .path__stop.is-on { opacity: 1; }
+
+    .path__panels { position: relative; width: 100%; max-width: 860px; margin: 0 auto; }
+    .path__panel { text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2vw, 22px); padding: clamp(28px, 4vw, 44px) 0; border-top: 1px solid var(--color-light-taupe); }
+    .path__panel:first-child { border-top: 0; }
+    .path__kicker { display: flex; align-items: baseline; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .path__num { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--color-copper); }
+    .path__en { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--path-ink); }
+    .path__he { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 500; color: var(--path-ink); }
+    .path__big { font-family: var(--font-body-he); font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 500; line-height: 1.25; color: var(--path-ink); }
+    .path__big b { font-weight: 700; }
+    .path__small { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.6; color: var(--path-ink); }
+    .path__accent { color: var(--color-copper); }
+    .path__q { font-family: var(--font-body-he); font-size: clamp(1.2rem, 2.6vw, 1.8rem); color: var(--color-copper); }
+
+    /* 00 · the gap */
+    .path__gap { width: min(100%, 560px); display: flex; flex-direction: column; gap: 16px; text-align: right; }
+    .path__gap span { font-family: var(--font-body-he); font-size: 15px; font-weight: 500; color: var(--path-ink); }
+    .path__bar { height: 16px; border-radius: 8px; margin-top: 6px; }
+    .path__bar--full { background: var(--path-ink); }
+    .path__bar-row { display: flex; gap: 10px; margin-top: 6px; align-items: center; }
+    .path__bar--seen { width: 40%; height: 16px; border-radius: 8px; background: var(--color-light-taupe); }
+    .path__bar--gap { flex: 1; height: 16px; border-radius: 8px; border: 1.5px dashed var(--color-copper); font-size: 11px; line-height: 13px; text-align: center; color: var(--color-copper); font-weight: 600; }
+    /* 01 · the core */
+    .path__dna { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto auto; gap: 10px 22px; align-items: center; font-family: var(--font-body-he); font-size: clamp(14px, 1.6vw, 17px); font-weight: 500; color: var(--path-ink); }
+    .path__dna-core { grid-column: 2; grid-row: 2; width: clamp(96px, 14vw, 132px); aspect-ratio: 1; border-radius: 50%; border: 1.8px solid var(--color-copper); background: var(--color-cream); display: grid; place-items: center; font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--path-ink); }
+    .path__dna-w1 { grid-column: 2; grid-row: 1; text-align: center; }
+    .path__dna-w2 { grid-column: 1; grid-row: 2; text-align: left; }
+    .path__dna-w3 { grid-column: 3; grid-row: 2; text-align: right; }
+    .path__dna-w4 { grid-column: 2; grid-row: 3; text-align: center; }
+    /* 02 · the structure */
+    .path__codex { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: min(100%, 640px); }
+    .path__card { background: var(--color-cream); border: 1.5px solid var(--color-copper); border-radius: 16px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .path__card b { font-family: var(--font-body-he); font-size: 13px; color: var(--color-copper); font-weight: 600; }
+    .path__card span { font-family: var(--font-body-he); font-size: 13px; line-height: 1.35; color: var(--path-ink); }
+    .path__swatches { display: flex; gap: 5px; }
+    .path__swatches i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+    .path__aa { font-family: var(--font-display); font-size: 22px !important; }
+    /* 03 · the world */
+    .path__worlds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: min(100%, 760px); }
+    .path__world { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; background: var(--color-cream); border-radius: 14px; overflow: hidden; padding-bottom: 12px; transition: transform .3s var(--transition-smooth), box-shadow .3s; }
+    .path__world:hover, .path__world:focus-visible { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(107, 86, 63, .14); }
+    .path__world img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+    .path__world div { display: flex; flex-direction: column; gap: 4px; padding: 0 10px; }
+    .path__world-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-copper); }
+    .path__world-line { font-family: var(--font-body-he); font-size: 14px; line-height: 1.4; padding: 0 10px; color: var(--path-ink); }
+    /* the thread goes on */
+    .path__stream { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .path__stream span { padding: 8px 18px; border: 1.5px solid var(--color-copper); border-radius: 999px; background: var(--color-cream); font-family: var(--font-body-he); font-size: 15px; font-weight: 500; color: var(--path-ink); }
+    .path__os { font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--color-copper); text-decoration: none; }
+    /* the first step */
+    .path__cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; background: var(--color-chocolate); color: var(--color-cream); text-decoration: none; font-family: var(--font-body-he); font-size: 1.05rem; font-weight: 500; min-height: 44px; transition: background .3s; }
+    .path__cta-btn:hover, .path__cta-btn:focus-visible { background: var(--color-copper); }
+
+    /* live: one sticky stage, the scroll rolls the bead */
+    .path.is-live .path__track { height: 640vh; }
+    .path.is-live .path__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(80px, 10vh, 120px); padding-bottom: 32px; }
+    .path.is-live .path__panels { flex: 0 1 auto; height: min(46vh, 460px); height: min(46svh, 460px); }
+    .path.is-live .path__panel { position: absolute; inset: 0; justify-content: center; padding: 0; border: 0; opacity: 0; transform: translateY(26px); transition: opacity .55s var(--transition-smooth), transform .55s var(--transition-smooth); pointer-events: none; }
+    .path.is-live .path__panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+    @media (max-width: 640px) {
+        .path__line { width: calc(100% + 2 * var(--container-padding)); margin-inline: calc(-1 * var(--container-padding)); }
+        .path.is-live .path__panels { height: min(54vh, 520px); height: min(54svh, 520px); }
+        .path__codex { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .path__worlds { grid-template-columns: 1fr; gap: 8px; }
+        .path__world { flex-direction: row; align-items: center; padding-bottom: 0; text-align: right; }
+        .path__world img { width: 72px; aspect-ratio: 1; flex: none; }
+        .path__world div { gap: 2px; padding: 0 0 0 10px; }
+        .path__world-line { padding: 0; }
+    }
+    </style>
+    <section class="path" id="method" aria-labelledby="path-title">
+      <div class="path__track">
+        <div class="path__sticky">
+            <header class="path__header">
+                <p class="path__label" dir="ltr">The Method</p>
+                <h2 class="path__title" id="path-title">איך אני עובדת</h2>
+            </header>
+
+            <div class="path__line" aria-hidden="true">
+                <svg viewBox="0 0 1000 116" preserveAspectRatio="xMidYMid meet" focusable="false">
+                    <path class="path__ghost" d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40"/>
+                    <path class="path__thread" id="pathThread" d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40"/>
+                    <circle class="path__dot" cx="754.8" cy="40.5" r="6"/>
+                    <circle class="path__dot" cx="538.5" cy="27.7" r="6"/>
+                    <circle class="path__dot" cx="336.1" cy="67.8" r="6"/>
+                    <circle class="path__dot" cx="140" cy="49.3" r="6"/>
+                    <g class="path__bead" id="pathBead" transform="translate(951 87)">
+                        <g id="pathBeadRoll">
+                            <circle class="path__bead-core" r="11"/>
+                            <line class="path__bead-seam" x1="0" y1="-8.5" x2="0" y2="8.5"/>
+                        </g>
+                    </g>
+                </svg>
+                <span class="path__stop" style="left: 75.48%; top: 34.9%">אבחון</span>
+                <span class="path__stop" style="left: 53.85%; top: 23.9%">הליבה</span>
+                <span class="path__stop" style="left: 33.61%; top: 58.4%">המבנה</span>
+                <span class="path__stop" style="left: 14%; top: 42.5%">העולם</span>
             </div>
 
-            <div class="method__grid">
-                <div class="method__card reveal">
-                    <img src="cube1.jpg" alt="The Core" class="method__card-image">
-                    <div class="method__number">01</div>
-                    <h3 class="method__card-title" dir="ltr">The Core</h3>
-                    <p class="method__card-subtitle" dir="ltr">The inner logic.</p>
-                    <p class="method__card-text">ה-DNA שמאפשר לזהות אותך גם בלי הלוגו — הסיבה לבחור בך, עוד לפני שמשווים מחיר.</p>
-                </div>
+            <div class="path__panels">
+                <article class="path__panel is-active">
+                    <p class="path__q">המוצר שלך טוב.</p>
+                    <h3 class="path__big"><b>אז למה משווים אותו לפי מחיר?</b></h3>
+                    <p class="path__small">כי מבחוץ, הוא עוד נראה כמו כל השאר. ככה זה משתנה:</p>
+                </article>
 
-                <div class="method__card reveal">
-                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
-                    <div class="method__number">02</div>
-                    <h3 class="method__card-title" dir="ltr">The Narrative</h3>
-                    <p class="method__card-subtitle" dir="ltr">The story.</p>
-                    <p class="method__card-text">בניית הסיפור שמחבר את כל החלקים — שפה שאנשים מרגישים בה מובנים.</p>
-                </div>
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">00</span><span class="path__en" dir="ltr">Brand Gap</span><h3 class="path__he">אבחון פער המותג</h3></div>
+                    <div class="path__gap" aria-hidden="true">
+                        <div><span>מה שהעסק שלך באמת</span><div class="path__bar path__bar--full"></div></div>
+                        <div><span>מה שרואים ממנו</span><div class="path__bar-row"><div class="path__bar--seen"></div><div class="path__bar--gap">הפער</div></div></div>
+                    </div>
+                    <p class="path__big">מתחילים במרחק בין מה שהעסק שלך באמת, לבין מה שרואים ממנו.</p>
+                    <p class="path__small path__accent">30 דקות · בלי עלות</p>
+                </article>
 
-                <div class="method__card reveal">
-                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
-                    <div class="method__number">03</div>
-                    <h3 class="method__card-title" dir="ltr">The Visual World</h3>
-                    <p class="method__card-subtitle" dir="ltr">The space.</p>
-                    <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
-                </div>
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">01</span><span class="path__en" dir="ltr">The Core</span><h3 class="path__he">הליבה</h3></div>
+                    <div class="path__dna" aria-hidden="true">
+                        <span class="path__dna-w1">למה הוא קיים</span><span class="path__dna-w2">הערכים</span>
+                        <span class="path__dna-core" dir="ltr">DNA</span>
+                        <span class="path__dna-w3">הקול</span><span class="path__dna-w4">מה הוא מסרב להיות</span>
+                    </div>
+                    <p class="path__big">למה המותג קיים, ומה הוא מסרב להיות.</p>
+                    <p class="path__small">מסמך אחד שכל החלטה נשענת עליו.</p>
+                </article>
 
-                <div class="method__card reveal">
-                    <img src="sphere-outcome.png" alt="BrandOS" class="method__card-image">
-                    <div class="method__number">04</div>
-                    <h3 class="method__card-title" dir="ltr">BrandOS</h3>
-                    <p class="method__card-subtitle">הפעלה</p>
-                    <p class="method__card-text">המותג עולה לאוויר — תוכן, קריאייטיב ודפים שמופעלים על ידי מערכת ה-AI שלכם, יום-יום.</p>
-                </div>
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">02</span><span class="path__en" dir="ltr">The Structure</span><h3 class="path__he">המבנה</h3></div>
+                    <div class="path__codex" aria-hidden="true">
+                        <div class="path__card"><b>פלטה</b><span class="path__swatches"><i style="background:#FAF8F3;box-shadow:inset 0 0 0 1px #D4C9BC"></i><i style="background:#E8D8C3"></i><i style="background:#C4765A"></i><i style="background:#6B563F"></i></span></div>
+                        <div class="path__card"><b>טיפוגרפיה</b><span class="path__aa" dir="ltr">Aa · אב</span></div>
+                        <div class="path__card"><b>קול</b><span>״ככה אנחנו מדברות״</span></div>
+                        <div class="path__card"><b>סיפור</b><span>שמלווה כל נקודת מגע</span></div>
+                    </div>
+                    <p class="path__big">הסיפור והשפה של המותג, בקודקס אחד.</p>
+                    <p class="path__small">חוקים שמאפשרים לו לגדול בלי לאבד את עצמו.</p>
+                </article>
+
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">03</span><span class="path__en" dir="ltr">The World</span><h3 class="path__he">העולם</h3></div>
+                    <div class="path__worlds">
+                        <a class="path__world" href="rosee/"><img src="rosee-card.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">ROSÉE°</span><span class="path__world-line">הרגע בבוקר שמחזיק יום שלם.</span></div></a>
+                        <a class="path__world" href="pancakerie/"><img src="pancakerie-og.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">PANCAKERIE°</span><span class="path__world-line">טעם שרואים לפני שטועמים.</span></div></a>
+                        <a class="path__world" href="encore/"><img src="encore-og.jpg" alt="" loading="lazy" decoding="async"><div><span class="path__world-name" dir="ltr">ENCORE°</span><span class="path__world-line">התכשיט שתמיד נשאר עלייך.</span></div></a>
+                    </div>
+                    <p class="path__big">המקום שבו הלקוחה מרגישה שזה שלה, <b>ומפסיקה להשוות.</b></p>
+                </article>
+
+                <article class="path__panel">
+                    <h3 class="path__big"><b>וזה לא נגמר באתר.</b></h3>
+                    <div class="path__stream" aria-hidden="true"><span>פוסט</span><span>סטורי</span><span>ניוזלטר</span><span>דף נחיתה</span><span>קמפיין</span></div>
+                    <p class="path__small">העולם ממשיך לעבוד כל יום, עם</p>
+                    <a class="path__os" href="#brandos" dir="ltr">BrandOS</a>
+                </article>
+
+                <article class="path__panel">
+                    <p class="path__q">הצעד הראשון על הקו</p>
+                    <h3 class="path__big"><b>אבחון פער המותג</b></h3>
+                    <p class="path__small">30 דקות · בלי עלות</p>
+                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="path__cta-btn">
+                        לאבחון פער המותג בוואטסאפ
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
             </div>
         </div>
+      </div>
     </section>
+    <script>
+    (function () {
+        var sec = document.getElementById('method'); if (!sec) return;
+        var thread = document.getElementById('pathThread'), bead = document.getElementById('pathBead'), roll = document.getElementById('pathBeadRoll');
+        var dots = sec.querySelectorAll('.path__dot'), stops = sec.querySelectorAll('.path__stop'), panels = sec.querySelectorAll('.path__panel');
+        var L = thread.getTotalLength(), R = 11, START = 0.035, STN = [0.24, 0.46, 0.67, 0.87];
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function place(f, op) {
+            var pt = thread.getPointAtLength(f * L);
+            bead.setAttribute('transform', 'translate(' + pt.x.toFixed(1) + ' ' + pt.y.toFixed(1) + ')');
+            roll.setAttribute('transform', 'rotate(' + (-f * L / R * 57.3).toFixed(0) + ')');
+            bead.style.opacity = op;
+        }
+        function lightUp(n) {
+            for (var i = 0; i < dots.length; i++) { dots[i].classList.toggle('is-on', i < n); stops[i].classList.toggle('is-on', i < n); }
+        }
+        // no motion: the thread is drawn, every station is lit, the panels read as a list
+        if (reduce || !('requestAnimationFrame' in window)) { place(START, 1); lightUp(4); return; }
+
+        sec.classList.add('is-live');
+        thread.style.strokeDasharray = L; thread.style.strokeDashoffset = L;
+        var N = panels.length, active = -1, ticking = false;
+        // where the bead rests at the end of each panel: the question, the four stations, past the end, back to the start
+        var rest = [START, STN[0], STN[1], STN[2], STN[3], 1, START];
+        function ease(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }
+        function frame() {
+            ticking = false;
+            var r = sec.getBoundingClientRect(), span = sec.offsetHeight - window.innerHeight;
+            var q = Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
+            var x = q * N, i = Math.min(N - 1, Math.floor(x)), t = x - i;
+            thread.style.strokeDashoffset = (L * (1 - ease(i === 0 ? t / .8 : 1))).toFixed(1);
+            var from = i === 0 ? START : rest[i - 1], to = rest[i], f, op = 1;
+            if (i === N - 1) { f = START; op = ease(t / .4); }          // the bead reappears at the start: the first step
+            else { f = from + (to - from) * ease(t / .45); if (i === N - 2) op = 1 - ease((t - .55) / .35); }
+            place(f, op);
+            lightUp(i === 0 ? 0 : Math.min(4, i));
+            if (i !== active) {
+                if (active >= 0) panels[active].classList.remove('is-active');
+                panels[i].classList.add('is-active'); active = i;
+            }
+        }
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+        panels[0].classList.remove('is-active');
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        frame();
+    })();
+    </script>
 
     <!-- ============================================================
          05 · ABOUT TEASER (shortened)
