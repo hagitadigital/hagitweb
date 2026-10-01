@@ -2181,6 +2181,20 @@ document.addEventListener('DOMContentLoaded', function () {
     .live-worlds__subtitle{font-size:clamp(15px,1.4vw,17px);color:var(--color-taupe);max-width:660px;margin:0 auto;line-height:1.7}
     .live-worlds__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,26px);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}
     @media(max-width:900px){.live-worlds__grid{grid-template-columns:1fr;max-width:440px}}
+    .lw-item{position:relative;display:flex;flex-direction:column;container-type:inline-size}
+    .lw-item .lw-card{flex:1}
+    .lw-film{position:absolute;top:calc(125cqw - 62px);left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:rgba(250,248,243,.94);backdrop-filter:blur(6px);color:#2A201A;font-family:var(--font-body-he);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;box-shadow:0 10px 26px -12px rgba(43,26,18,.55);transition:background .3s,color .3s}
+    .lw-film:hover,.lw-film:focus-visible{background:var(--color-copper);color:var(--color-cream)}
+    .lw-dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;overflow:hidden}
+    .lw-dialog::backdrop{background:rgba(20,14,10,.82);backdrop-filter:blur(4px)}
+    .lw-dialog__in{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:56px 16px 20px;box-sizing:border-box}
+    .lw-dialog video{height:min(calc(100vh - 190px),1280px);height:min(calc(100svh - 190px),1280px);max-width:calc(100vw - 32px);aspect-ratio:9/16;object-fit:contain;background:#000;border-radius:10px;display:block}
+    .lw-dialog__cap{text-align:center;color:var(--color-cream);font-family:var(--font-body-he)}
+    .lw-dialog__name{font-family:var(--font-display);font-size:1.6rem;display:block}
+    .lw-dialog__line{font-size:1rem;display:block;margin:2px 0 8px;opacity:.9}
+    .lw-dialog__go{color:#E8C4A8;font-size:.95rem;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:8px 0}
+    .lw-dialog__x{position:absolute;top:12px;left:12px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(250,248,243,.4);background:transparent;color:var(--color-cream);font-size:22px;line-height:1;cursor:pointer}
+    .lw-dialog__x:hover,.lw-dialog__x:focus-visible{background:rgba(250,248,243,.15)}
     .lw-card{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid var(--color-light-taupe);box-shadow:0 18px 40px -28px rgba(43,26,18,.35);transition:transform .5s var(--transition-smooth),box-shadow .5s}
     .lw-card:hover{transform:translateY(-6px);box-shadow:0 32px 50px -28px rgba(43,26,18,.5)}
     .lw-card__media{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--color-warm-beige)}
@@ -2208,55 +2222,71 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="live-worlds__grid">
 
-            <a href="velune/" class="lw-card reveal" aria-label="VELUNE° — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">01</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/velune.webp" src="images/home-worlds/live/velune.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">VELUNE°</p>
-                    <p class="lw-card__cat">Maison de Parfum · World No.22</p>
-                    <p class="lw-card__tag">A scent is a place.</p>
-                    <p class="lw-card__tag-he">בושם הוא לא ריח. הוא מקום.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="velune/" class="lw-card" aria-label="VELUNE° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">01</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/velune.webp" src="images/home-worlds/live/velune.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">VELUNE°</p>
+                        <p class="lw-card__cat">Maison de Parfum · World No.22</p>
+                        <p class="lw-card__tag">A scent is a place.</p>
+                        <p class="lw-card__tag-he">בושם הוא לא ריח. הוא מקום.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="velune" data-name="VELUNE°" data-no="עולם 22" data-line="בושם הוא לא ריח. הוא מקום." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
-            <a href="oreva/" class="lw-card reveal" aria-label="ORÉVA° — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">02</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/oreva.webp" src="images/home-worlds/live/oreva.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">ORÉVA°</p>
-                    <p class="lw-card__cat">Skin Studio · World No.21</p>
-                    <p class="lw-card__tag">Hands first. Then the bottle.</p>
-                    <p class="lw-card__tag-he">קודם הידיים. אחר כך הבקבוק.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="oreva/" class="lw-card" aria-label="ORÉVA° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">02</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/oreva.webp" src="images/home-worlds/live/oreva.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">ORÉVA°</p>
+                        <p class="lw-card__cat">Skin Studio · World No.21</p>
+                        <p class="lw-card__tag">Hands first. Then the bottle.</p>
+                        <p class="lw-card__tag-he">קודם הידיים. אחר כך הבקבוק.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="oreva" data-name="ORÉVA°" data-no="עולם 21" data-line="קודם הידיים. אחר כך הבקבוק." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
-            <a href="pancakerie/" class="lw-card reveal" aria-label="PANCAKERIE° — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">03</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/pancakerie.webp" src="images/home-worlds/live/pancakerie.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">PANCAKERIE°</p>
-                    <p class="lw-card__cat">Morning Patisserie · World No.23</p>
-                    <p class="lw-card__tag">Taste you can see.</p>
-                    <p class="lw-card__tag-he">טעם שרואים לפני שטועמים.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="pancakerie/" class="lw-card" aria-label="PANCAKERIE° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">03</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/pancakerie.webp" src="images/home-worlds/live/pancakerie.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">PANCAKERIE°</p>
+                        <p class="lw-card__cat">Morning Patisserie · World No.23</p>
+                        <p class="lw-card__tag">Taste you can see.</p>
+                        <p class="lw-card__tag-he">טעם שרואים לפני שטועמים.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="pancakerie" data-name="PANCAKERIE°" data-no="עולם 23" data-line="טעם שרואים לפני שטועמים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
         </div>
+        <dialog class="lw-dialog" id="lwDialog" aria-label="הסרט של העולם">
+            <div class="lw-dialog__in">
+                <button type="button" class="lw-dialog__x" id="lwClose" aria-label="סגירה">&times;</button>
+                <video id="lwVideo" controls playsinline muted preload="none"></video>
+                <p class="lw-dialog__cap" dir="rtl"><span class="lw-dialog__name"><span id="lwName" dir="ltr"></span> · <span id="lwNo"></span></span><span class="lw-dialog__line" id="lwLine"></span><a class="lw-dialog__go" id="lwGo" href="#">להיכנס לעולם</a></p>
+            </div>
+        </dialog>
     </section>
     <script>
     (function(){
@@ -2271,6 +2301,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }, { threshold: 0.4 });
       vids.forEach(function(v){ io.observe(v); });
+    })();
+    </script>
+    <script>
+    (function () {
+      // the full world film: loaded only when someone asks for it
+      var dlg = document.getElementById('lwDialog'); if (!dlg || !dlg.showModal) { document.querySelectorAll('.lw-film').forEach(function (b) { b.hidden = true; }); return; }
+      var v = document.getElementById('lwVideo'), opener = null;
+      function close() { v.pause(); v.removeAttribute('src'); v.load(); if (dlg.open) dlg.close(); if (opener) opener.focus(); }
+      document.querySelectorAll('.lw-film').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var k = b.dataset.film; opener = b;
+          document.getElementById('lwName').textContent = b.dataset.name; document.getElementById('lwNo').textContent = b.dataset.no;
+          document.getElementById('lwLine').textContent = b.dataset.line;
+          var go = document.getElementById('lwGo'); go.href = k + '/'; go.textContent = 'להיכנס לעולם \u2066' + b.dataset.name + '\u2069 ←';
+          v.poster = 'images/home-worlds/live/films/' + k + '.jpg'; v.src = 'images/home-worlds/live/films/' + k + '.mp4';
+          dlg.showModal(); var p = v.play(); if (p && p.catch) p.catch(function () {});
+          if (window.gtag) gtag('event', 'world_film_open', { world: k });
+        });
+      });
+      document.getElementById('lwClose').addEventListener('click', close);
+      dlg.addEventListener('close', function () { v.pause(); v.removeAttribute('src'); v.load(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('lw-dialog__in')) close(); });
     })();
     </script>
 
