@@ -35,7 +35,9 @@ Propose two signature-scene concepts for the world, each in two lines: the idea 
 and mark the recommended one. Build the rest of the reel (hero sequence, touchpoints, promise) from the site around it.
 
 ## Concepts ready for worlds without one yet
-- **ELVÉA°** — "Le Point": the flower, the leaf and a drop each travel on a green line from three corners; every time two lines
-  meet a soft glow and the background warms from sage to nectar; at the third meeting the point opens into the bottle.
+- **ELVÉA°** — "Le Point" (built): flower, leaf and drop as line-art badges, each riding its own green line from a different edge;
+  flower + leaf meet first (glow, background sage → warm), the drop joins (second glow, background → nectar), the point opens as a
+  circular portal into the bottle. Copy from the site: "כל מרכיב מקבל משמעות רק כשהוא פוגש את האחרים", one line per element,
+  "המפגש קורה בפורמולה." Labels sit beside the edge each element comes from.
 - **VELUNE°** — the three hours as a sky dial over the boutique arch: dawn → bloom → dusk, the bottle on the plinth takes each light.
 - **AURELLE** — quiet luxury as a slow vertical "lift": the product rises through three planes of light, the type grows calmer each step.

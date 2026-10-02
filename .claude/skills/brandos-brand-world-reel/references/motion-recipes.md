@@ -64,6 +64,8 @@ camera-facing frame by (0, R·sin(tilt) − lift, −R·cos(tilt)+40) into the o
 ## 5. Copper ball on a line + portal (her branding — use in hooks and transitions)
 The line: `<path class="line" pathLength="1">` with `stroke-dasharray:1 1` and stroke-dashoffset 1 → 0 (linear).
 The ball: `.ball` with `offset-path: path(same d)`, offset-distance 0 → 100% on the same timing, the inner `.rl` spins −400°.
+An element on an `offset-path` is anchored at its own centre — never add a negative margin to centre it, or it lands half a
+badge away from the meeting point.
 Shape the line after the world (ORÉVA petal loop, ROSÉE drop, VELUNE arch, MIEL steps, ENCORE sun arc, ELVÉA leaf).
 Portal into the world at the end point (830,1200): the world layer gets `clip-path: circle(0 → 2300px at 830px 1200px)`
 over 0.9s, a copper SVG ring grows with it (r 44 → 2000, then fades), the ball scales 1.5 and fades.
