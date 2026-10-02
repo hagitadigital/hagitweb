@@ -15,6 +15,8 @@ Opacity < 1 on an element flattens 3D for its children, so fades go on a wrapper
 8. Fast cut sequence with synced labels (CREMA cups, MIEL slices)
 9. Text reveals
 10. Recolouring an inline SVG over time (@property)
+11. A signature interaction from the site — rebuild it from the site's own code (ELVÉA's Fil Vert)
+12. Pace of image changes
 
 ---
 
@@ -96,3 +98,25 @@ the run and an "after" image that appears when the run ends.
 ```
 SVGs copied from the site's own code (e.g. CREMA's capsuleSVG/machineSVG) keep the reel identical to the site; give every
 copy unique gradient ids.
+
+## 11. A signature interaction from the site — rebuild it from the site's own code
+When the world's site has a built interaction (a carousel, a dial, a line that runs through slides), open the site's HTML/CSS/JS
+and copy its construction — proportions, gaps, path data, end marks — instead of approximating it. The owner knows her sites;
+an approximation reads as wrong at once.
+
+ELVÉA's Le Fil Vert, as built on the site (`elvea/index.html`, section `.fil`):
+- A `direction: rtl` flex track: slide 1 on the right. Slides keep their own ratios (768×1200, 960×1200, 960×1200, 720×1200, 728×1200)
+  at one height, rounded 22px, soft shadow, the site's figcaption under each (`01 · La Main` + the Hebrew line).
+- Between slides a `.fil-link` gap (≈130px at a 1000px slide height) holding
+  `<svg viewBox="0 0 100 100" preserveAspectRatio="none">` with one path from the exit height on the right slide's edge to the entry
+  height on the next slide's edge (y in % of the slide height). The site's four paths:
+  `M100,50.3 C58,50.3 42,52 0,52` · `M100,52.1 C58,52.1 42,61.7 0,61.7` · `M100,61.7 C58,61.7 42,65.2 0,65.2` · `M100,71.5 C58,71.5 42,52.2 0,52.2`
+  (`pathLength="100"`, `vector-effect="non-scaling-stroke"`, olive #55613F).
+- After slide 5: a tail at 59.2% and the mark `··· O ···`.
+- In the reel: step the track slide by slide (hold ≈0.35s, move ≈0.65s, translateX positive because the track is RTL) and draw each
+  link (dashoffset 100 → 0) during the move that brings the next slide in. Give the scene ≈6s.
+
+## 12. Pace of image changes
+Product, boutique and lifestyle shots need time to be read: at least ≈1.2s per image, with 0.4–0.45s crossfades and one slow push
+(scale 1.08 → 1) across the run. Hard cuts under a second felt rushed. Keep fast hard cuts only for runs of near-identical
+frames where the change itself is the point (the rim colour across CREMA's cups).

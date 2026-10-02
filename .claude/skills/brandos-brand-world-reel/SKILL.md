@@ -40,6 +40,8 @@ If the request does not say, it is studio mode. Read `references/hooks.md` befor
 - Pull the copy: the promise, the section headlines, the signature element (a dial, a drop, a leaf line, a sundial, a slice…).
   Quote the site; don't invent new slogans.
 - Look at the sequence's first, middle and last frames (contact sheet) to see where the subject sits.
+- If the site has a signature interaction (a carousel, a dial, a line through slides), read how the site builds it in its
+  HTML/CSS/JS and plan to rebuild it the same way (recipe 11). If the owner sends a screen recording, treat it as the reference.
 
 ### 2. Spec first — always, before building
 Send a short spec and wait for approval. The owner works "קודם איפיון, אחר כך יצירה". The spec has:
