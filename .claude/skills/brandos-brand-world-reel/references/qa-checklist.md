@@ -15,6 +15,7 @@ then stack them into one contact sheet with ffmpeg (`hstack=12,scale=2400:-1`) a
 - [ ] Subjects centred: check each sequence's last frame and each tile (bottles drift right in 16:9 sources).
 - [ ] Dials turn clockwise; the item under the pointer matches the time label.
 - [ ] Labels in cut sequences match their pictures.
+- [ ] Every payoff (a card, a name, a reveal) stays fully visible ≈1.5–2s before the next scene starts covering it.
 - [ ] Image runs breathe: ≥ ≈1.2s per product/boutique shot with soft crossfades (recipe 12).
 - [ ] Any interaction copied from the site matches the site's construction — compare against the site's code or a screen recording (recipe 11).
 - [ ] Fonts loaded (render.js prints them) and no BROKEN IMAGES line.

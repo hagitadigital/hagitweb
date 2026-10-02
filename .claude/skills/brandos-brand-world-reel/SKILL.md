@@ -75,6 +75,8 @@ per world with her copper ball and a world-shaped line opening a circular portal
 
 ### 3. Build
 - Copy `assets/reel-template.html` next to a local copy of the assets it uses (relative paths; the page loads from file://).
+  The easiest path is a small Python generator that fills the template (see `examples/chasen-gen.py`): it keeps every timing
+  in one place and makes re-renders after feedback quick.
 - Fill the EDIT blocks: palette, world number, concept line, hook (keep one proof mechanic), HUD names, outro, the five scenes.
 - Time things with the template's `data-show="a,b"`, `data-in="t"` and `data-seq=…` attributes (seconds). Write custom
   `@keyframes` only for real motion (dials, carousels, pans), with percentages = seconds / 30 × 100.
@@ -104,6 +106,9 @@ logo + CTA 27–30. Everything else — recipes, QA, render — is the same.
 - `assets/frame-4x5.html` — side panels for the 4:5 version (rendered once to PNG by frame45.sh).
 - `scripts/render.js` — deterministic renderer (Playwright + ffmpeg). Prints loaded fonts and broken images.
 - `scripts/frame45.sh` — 9:16 → 4:5 with the studio side panels; the reel is never cropped.
+- `scripts/video2seq.sh` — a site film (mp4) → an image sequence for `data-seq`.
+- `examples/chasen-gen.py` — a complete worked build (CHASEN°, World 19): fills the template from Python, flavour dial,
+  pours, toppings, menu, promise. Start new worlds by copying its structure.
 - `references/signature-scenes.md` — how to invent the scene beyond the site, mechanisms per idea, ready concepts.
 - `references/hooks.md` — hook bank for both modes, writing rules, how to pick.
 - `references/motion-recipes.md` — sequences, pans, clockwise dials, 3D carousel, ball + portal, leaf lines, stirred cup, cut runs, text.

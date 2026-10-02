@@ -17,6 +17,9 @@ Opacity < 1 on an element flattens 3D for its children, so fades go on a wrapper
 10. Recolouring an inline SVG over time (@property)
 11. A signature interaction from the site — rebuild it from the site's own code (ELVÉA's Fil Vert)
 12. Pace of image changes
+13. Films on the site → sequences (several in a row)
+14. Pour / fill and layered toppings (CHASEN)
+15. A tinted world around a photo with its own backdrop
 
 ---
 
@@ -122,3 +125,25 @@ ELVÉA's Le Fil Vert, as built on the site (`elvea/index.html`, section `.fil`):
 Product, boutique and lifestyle shots need time to be read: at least ≈1.2s per image, with 0.4–0.45s crossfades and one slow push
 (scale 1.08 → 1) across the run. Hard cuts under a second felt rushed. Keep fast hard cuts only for runs of near-identical
 frames where the change itself is the point (the rim colour across CREMA's cups).
+
+## 13. Films on the site → sequences (several in a row)
+Some worlds have short films instead of frame folders (`<world>/film/*.mp4`; prefer the `-m` portrait version).
+`scripts/video2seq.sh film/01-poudre-m.mp4 f p 8` → `f/p_%03d.jpg` (every 8th frame ≈ 24 frames). Play each at data-step 0.06.
+A `data-seq` block keeps its first frame visible from t=0 and its last frame after it ends, so when chaining several films
+wrap each block in its own `data-show="a,b"` window (overlapping by ~0.05s), otherwise a later film's first frame covers the earlier one.
+
+## 14. Pour / fill and layered toppings (CHASEN)
+- Pour a new flavour into the same glass: stack the edited versions of one photo; each new one reveals with
+  `clip-path: inset(100% 0 0 0) → inset(0)` (fills from the bottom up) over ≈0.55s.
+- Toppings cut from the master photo (transparent PNG/WebP) sit at the coordinates the site already uses (CHASEN's `img/layers.json`:
+  frame 852×1820, cream at 149,159 552×719, chocolate at 178,532 512×1169) scaled to the displayed size.
+  Cream rises from the bottom (`inset(100% 0 0 0) → 0`), chocolate drips from the top (`inset(0 0 100% 0) → 0`), as on the site.
+
+## 15. A tinted world around a photo with its own backdrop
+Photos shot on a fixed backdrop (#f4e7d5 for CHASEN) can't sit on a background that changes colour. Put the photo in a shape
+whose fill is the backdrop colour — an arched niche (`border-radius: w/2 w/2 26px 26px`) — and tint only the scene around it.
+The niche reads as a deliberate frame, and the tint can change per step.
+
+## Layering note
+Later scenes sit above earlier ones in the DOM, so during a crossfade the incoming scene covers the outgoing one. A reveal that
+must be read (a card, a name) needs to finish ≥1.5s before the next scene's window starts.

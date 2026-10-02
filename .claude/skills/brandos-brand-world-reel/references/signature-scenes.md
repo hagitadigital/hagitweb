@@ -8,6 +8,10 @@ What she called out as the best moments:
 - **Pancakerie** — the pancakes swapping one into the next.
 - **CREMA°** — the capsules leaving their row and orbiting the machine in 3D; the machine and background take the colour of the capsule in front.
 - **MIEL°** — the cake building itself layer by layer on the stand, then the cut that shows the inside.
+- **CHASEN°** (the model case, planned in the spec from the start) — "חוגת הטעמים": the one glass in an arched niche, five small
+  glasses on a dial around it turning clockwise; each flavour that reaches the pointer pours into the big glass from the bottom up,
+  the background takes the flavour's colour and the name changes. Then cream rises, chocolate drips, and the drink gets its name card.
+  It combines the two mechanics she loved most — the dial (ENCORE, ROSÉE) and the swap (Pancakerie) — around CHASEN's own idea: choice.
 
 ## How to invent one
 
@@ -29,6 +33,12 @@ What she called out as the best moments:
 4. **Add a state change on every step.** Each stop changes something besides position: background colour, light, time label,
    the centre hero, the machine colour. That change is what makes the scene feel alive rather than mechanical.
 5. **Give it room.** ≈4–6 seconds, the centre of the reel (usually 02 The Visual World), its own header line from the site.
+
+## Plan it, don't add it
+Design the signature scene in the spec, before anything else is built. Comparing the two test worlds: ELVÉA got its scene added
+after the reel was done and it reads as a good insert; CHASEN was planned around it and the whole reel builds to it.
+Combining two loved mechanics (dial + swap, orbit + recolour, build + reveal) usually beats inventing a third one.
+After the scene, give its result a payoff that holds ≈2s (CHASEN's name card), then move on.
 
 ## In the spec
 Propose two signature-scene concepts for the world, each in two lines: the idea → the mechanism → what changes on each step,
