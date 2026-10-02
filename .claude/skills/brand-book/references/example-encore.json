@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "updated": "2026-10-02",
+  "brand": {
+    "name": "ENCORE°",
+    "slug": "encore",
+    "category": "תכשיטים",
+    "url": "https://hagitantebi.co.il/encore/",
+    "book_url": "https://hagitantebi.co.il/encore/brand-book.html",
+    "world_no": 25,
+    "fictional": true,
+    "thesis": "השעה היא הלוגו.",
+    "language": "he"
+  },
+  "decision": {
+    "problem": "בתכשיטים יש אינסוף מותגים, וכמעט כולם מראים זהב יפה על רקע קרם. אם כולם נראים אותו דבר, הלקוחה משווה מחירים.",
+    "promise": "תכשיט שלא יורד.",
+    "element": "יום אחד, ארבע שעות.",
+    "result": "מחוץ לטבלת ההשוואה.",
+    "why_not_compared": "אי אפשר להשוות יום שלם למחיר של שרשרת."
+  },
+  "codes": [
+    {
+      "id": "dial",
+      "name": "החוגה",
+      "rule": "הסמל המלא, רק במקומות של הבית. הלילה תמיד למעלה.",
+      "where": ["השלט", "מכסה הקופסה", "האווטאר"],
+      "min_per_asset": false
+    },
+    {
+      "id": "hour-mark",
+      "name": "סימן השעה",
+      "rule": "החוגה כקו, ורק רבע אחד מואר. מסמן שעה אחת בלי מילים.",
+      "where": ["כל חפץ ששייך לשעה אחת"],
+      "min_per_asset": false
+    },
+    {
+      "id": "hour-stamp",
+      "name": "חותמת השעה",
+      "rule": "שעה בפורמט של 24 שעות, עם נקודתיים וריווח רחב, תמיד מתחת לשם.",
+      "where": ["התווית", "השקית", "הקבלה"],
+      "min_per_asset": true
+    },
+    {
+      "id": "degree",
+      "name": "המעלה",
+      "rule": "הסימן הקטן ביותר, ולבד הוא נושא את כל המותג.",
+      "where": ["חותם שעווה", "אבזם", "פריט קטן מ-3 ס״מ"],
+      "min_per_asset": false
+    },
+    {
+      "id": "gold-line",
+      "name": "קו הזהב",
+      "rule": "זהב משמש רק כקו, אף פעם לא כמילוי.",
+      "where": ["מסגרת", "שוליים", "ציר", "הטבעה בדפוס"],
+      "min_per_asset": false
+    }
+  ],
+  "min_codes_per_asset": 3,
+  "palette": [
+    {"hex": "#6E4E4A", "name": "שחר", "role": "primary", "meaning": "06:00", "use": "טבעות"},
+    {"hex": "#34405A", "name": "צהריים", "role": "primary", "meaning": "12:00", "use": "שרשראות"},
+    {"hex": "#853A26", "name": "שקיעה", "role": "primary", "meaning": "18:00", "use": "צמידים"},
+    {"hex": "#241212", "name": "לילה", "role": "primary", "meaning": "00:00", "use": "עגילים"},
+    {"hex": "#EFE8DD", "name": "אבן", "role": "base", "meaning": "רקע", "use": "רקע, נייר"},
+    {"hex": "#1E0F0E", "name": "דיו", "role": "text", "meaning": "טקסט", "use": "טקסט"},
+    {"hex": "#D9B26A", "name": "זהב", "role": "line", "meaning": "קו", "use": "קו בלבד"},
+    {"hex": "#7A5A2A", "name": "זהב לטקסט", "role": "text", "meaning": "זהב שאפשר לקרוא", "use": "טקסט זהב על רקע אבן"}
+  ],
+  "type": {
+    "display": "Frank Ruhl Libre",
+    "body": "Heebo",
+    "accent": "Cormorant Garamond",
+    "wordmark": {"tracking": "+220", "notes": "ריווח +60 בתוך החוגה. המעלה 60% מגובה האות, צמודה ל-E."},
+    "languages": [
+      "הטקסט תמיד בעברית ושקט.",
+      "שם התכשיט תמיד בצרפתית ובאיטליק.",
+      "המספר תמיד בפורמט של 24 שעות."
+    ],
+    "numerals": "lining"
+  },
+  "voice": {
+    "tone": "שקט, בטוח",
+    "say": ["שעה", "נשאר", "יום", "עונדת"],
+    "never": ["מבצע", "הכי זול", "טרנד"],
+    "examples": [
+      "הדבר הראשון שאת עונדת בבוקר.",
+      "צמיד שזוכר איפה היית.",
+      "כשהיום נגמר, את נשארת."
+    ]
+  },
+  "cover_test": [
+    {"detail": "פינת שקית", "codes": ["שקיעה", "חותמת השעה"]},
+    {"detail": "רבע ממכסה", "codes": ["החוגה"]},
+    {"detail": "חותם", "codes": ["המעלה"]},
+    {"detail": "קבלה", "codes": ["סימן השעה", "חותמת השעה"]}
+  ],
+  "touchpoints": [
+    {"name": "השלט", "codes": ["החוגה", "קו הזהב"], "image": "/encore/assets/touchpoints/sign.webp"},
+    {"name": "ארבע השעות", "codes": ["חותמת השעה", "החוגה"], "image": "/encore/assets/touchpoints/bags-four.webp"},
+    {"name": "ברחוב", "codes": ["חותמת השעה"], "image": "/encore/assets/touchpoints/bag-street.webp"},
+    {"name": "התווית", "codes": ["חותמת השעה"], "image": "/encore/assets/touchpoints/tag-cuff.webp"},
+    {"name": "הקופסה", "codes": ["קו הזהב"], "image": "/encore/assets/touchpoints/box-open.webp"}
+  ],
+  "rules": {
+    "never_changes": "השעה. כל תוכן קורה באחת מארבע שעות, והצבע שלו הוא הצבע של השעה.",
+    "first_question": "איזו שעה זו?",
+    "may_change": "התכשיט, הדוגמנית, העונה, הקמפיין.",
+    "breaking_mistake": "קמפיין חגים של זהב מבריק על רקע קרם: תכשיט בלי שעה.",
+    "dos": [
+      {"yes": "חפץ אחד, שעה אחת.", "no": "שקית חצי שקיעה, חצי צהריים."},
+      {"yes": "הלילה תמיד למעלה.", "no": "חוגה מסובבת כדי שיתאים לעיצוב."},
+      {"yes": "זהב הוא קו.", "no": "רקע מלא של זהב מבריק."},
+      {"yes": "18:00", "no": "6 PM"}
+    ]
+  },
+  "source": {
+    "studio": "Brand Worlds Studio",
+    "author": "Hagit Antebi"
+  }
+}
