@@ -247,7 +247,7 @@
     <link rel="preload" as="image" href="hero-bg.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* ============================================================
@@ -1833,6 +1833,18 @@
         /* ============================================================
            WAYS TO WORK TOGETHER — Studio AI + Workshop (secondary on-ramps)
            ============================================================ */
+        /* Guides — commercial articles strip */
+        .guides { background: var(--color-cream); padding: clamp(56px, 7vw, 88px) 0; }
+        .guides__header { text-align: center; max-width: 640px; margin: 0 auto clamp(28px, 4vw, 44px); padding: 0 var(--container-padding); }
+        .guides__label { font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #A45839; font-weight: 600; margin-bottom: 16px; }
+        .guides__title { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-size: clamp(26px, 3.4vw, 42px); font-weight: 500; color: #4F372C; line-height: 1.15; }
+        .guides__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 20px); max-width: 1100px; margin: 0 auto; padding: 0 var(--container-padding); list-style: none; }
+        @media (max-width: 900px) { .guides__grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .guides__grid { grid-template-columns: 1fr; } }
+        .guides__card { display: block; height: 100%; background: var(--color-warm-beige); border: 1px solid var(--color-light-taupe); border-radius: 14px; padding: clamp(18px, 2.2vw, 26px); text-decoration: none; text-align: right; color: #4F372C; transition: border-color .3s; }
+        .guides__card:hover, .guides__card:focus-visible { border-color: var(--color-copper); }
+        .guides__card-title { font-family: 'Heebo', sans-serif; font-size: 17px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+        .guides__card-desc { font-family: 'Heebo', sans-serif; font-size: 14.5px; line-height: 1.7; color: #7A6349; }
         .ways { background: var(--color-warm-beige); padding: clamp(60px, 8vw, 96px) 0; }
         .ways__header { text-align: center; max-width: 640px; margin: 0 auto clamp(34px, 4vw, 50px); padding: 0 var(--container-padding); }
         .ways__label { font-family: var(--font-body-en); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-copper); font-weight: 600; margin-bottom: 16px; }
@@ -2965,6 +2977,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p class="faq__a">חגית אנטבי היא <strong>אסטרטגית מותג ומייסדת Brand Worlds Studio</strong> — בונה עולמות מותג שלמים ומפתחת BrandOS, מערכת AI ליצירת תוכן ממותג. בעלת תואר שני בשיווק ואסטרטגיה דיגיטלית מהקריה האקדמית אונו, ומתמחה במותגי יוקרה, קוסמטיקה, עיצוב ופרימיום.</p>
             </div>
         </div>
+    </section>
+
+    <!-- ============================================================
+         GUIDES — commercial articles (internal-link strip)
+         ============================================================ -->
+    <section class="guides" aria-labelledby="guides-title">
+        <div class="guides__header reveal">
+            <p class="guides__label" dir="ltr">Guides</p>
+            <h2 class="guides__title" id="guides-title">לפני שבוחרים סטודיו למיתוג</h2>
+        </div>
+        <ul class="guides__grid">
+            <li><a href="branding-cost-guide.html" class="guides__card"><p class="guides__card-title">כמה עולה מיתוג לעסק</p><p class="guides__card-desc">מה באמת קובע את ההשקעה, ואיך קוראים הצעת מחיר.</p></a></li>
+            <li><a href="brand-naming-guide.html" class="guides__card"><p class="guides__card-title">שם למותג</p><p class="guides__card-desc">חמישה מבחנים לשם שמחזיק עולם שלם.</p></a></li>
+            <li><a href="luxury-branding.html" class="guides__card"><p class="guides__card-title">מיתוג יוקרה</p><p class="guides__card-desc">איך בונים מותג שלא מתנצל על המחיר.</p></a></li>
+            <li><a href="premium-website.html" class="guides__card"><p class="guides__card-title">אתר פרימיום לעסק</p><p class="guides__card-desc">מה הופך אתר ליוקרתי — ומה רק נראה כך.</p></a></li>
+        </ul>
     </section>
 
     <!-- ============================================================
