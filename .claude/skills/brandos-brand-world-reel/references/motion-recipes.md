@@ -147,3 +147,15 @@ The niche reads as a deliberate frame, and the tint can change per step.
 ## Layering note
 Later scenes sit above earlier ones in the DOM, so during a crossfade the incoming scene covers the outgoing one. A reveal that
 must be read (a card, a name) needs to finish ≥1.5s before the next scene's window starts.
+
+## 16. State changes must hold (colour per stop)
+A colour or text that changes per step needs a *pair* of keyframes per stop — arrive at the new value, then hold it until the next
+move starts. With only one keyframe per arrival the colour slides continuously between stops and the in-between greys swallow the
+strong ones (SOUFFLÉ's plum evening jar read as grey until the holds were added). Pattern: `arrive_k, start_of_move_{k+1} { value_k }`.
+When a stop has a dark background, animate the text colour with the same held keyframes.
+
+## 17. Landing an object on a surface
+Cut-out photos have transparent margins. Measure where the visible base sits in the image (e.g. ≈85% of the height for SOUFFLÉ's jars)
+from one test still, then place the object so that base lands on the surface line of the plate/stand (the plate's top in its own image
+is rarely at its centre — ≈58% for SOUFFLÉ's plate). For a turntable, put the ring plane on the stand's surface and set each billboard's
+`top` to −(base offset) so the jars stand on it instead of floating. Add a small overshoot (8px down, 6px up) on landing and a ripple ring.

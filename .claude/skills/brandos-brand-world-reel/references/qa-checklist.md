@@ -13,6 +13,8 @@ then stack them into one contact sheet with ffmpeg (`hstack=12,scale=2400:-1`) a
 - [ ] HUD tag text matches the scene on screen in every window.
 - [ ] No text over a busy area without a gradient behind it; dark text never sits on a dark scene.
 - [ ] Subjects centred: check each sequence's last frame and each tile (bottles drift right in 16:9 sources).
+- [ ] Per-step colours hold on each stop (no grey in-betweens) and text stays readable on the dark stops (recipe 16).
+- [ ] Landed objects touch their surface — no floating jars (recipe 17).
 - [ ] Dials turn clockwise; the item under the pointer matches the time label.
 - [ ] Labels in cut sequences match their pictures.
 - [ ] Every payoff (a card, a name, a reveal) stays fully visible ≈1.5–2s before the next scene starts covering it.

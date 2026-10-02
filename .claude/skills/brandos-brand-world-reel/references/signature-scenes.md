@@ -34,6 +34,11 @@ What she called out as the best moments:
    the centre hero, the machine colour. That change is what makes the scene feel alive rather than mechanical.
 5. **Give it room.** ≈4–6 seconds, the centre of the reel (usually 02 The Visual World), its own header line from the site.
 
+- **SOUFFLÉ°** (built) — "La Vitrine": the four jars on a pâtisserie cake stand turning in 3D; each jar that reaches the front brings
+  its own colour and its moment of the day from the site (night after the bath → morning before a big day → evening before going out →
+  after the sea), its two ingredients float beside it, and the name card changes. Preceded by the site's La Descente rebuilt as a
+  landing (jar onto the plate, lid flies off, seven ingredients burst and freeze with labels).
+
 ## Plan it, don't add it
 Design the signature scene in the spec, before anything else is built. Comparing the two test worlds: ELVÉA got its scene added
 after the reel was done and it reads as a good insert; CHASEN was planned around it and the whole reel builds to it.
