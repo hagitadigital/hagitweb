@@ -59,14 +59,17 @@
       {"@type":"ListItem","position":15,"name":"ROSÉE° — Born at Dawn Skincare","url":"https://hagitantebi.co.il/rosee/"},
       {"@type":"ListItem","position":16,"name":"REGARD° — Maison d'Optique","url":"https://hagitantebi.co.il/regard/"},
       {"@type":"ListItem","position":17,"name":"SIGNÉ° — Maison de Desserts","url":"https://hagitantebi.co.il/signe/"},
-      {"@type":"ListItem","position":18,"name":"TRAME° — Maison de Couture","url":"https://hagitantebi.co.il/trame/"},
-      {"@type":"ListItem","position":19,"name":"CHASEN° — Bar à Matcha","url":"https://hagitantebi.co.il/chasen/"},
-      {"@type":"ListItem","position":20,"name":"SONAIR° — Premium Wireless Earbuds","url":"https://hagitantebi.co.il/sonair/"},
-      {"@type":"ListItem","position":21,"name":"ORÉVA° Skin Studio — Founder-led Beauty Brand + Shop","url":"https://hagitantebi.co.il/oreva/"},
-      {"@type":"ListItem","position":22,"name":"VELUNE° Maison de Parfum — Luxury Perfume + Shop","url":"https://hagitantebi.co.il/velune/"},
-      {"@type":"ListItem","position":23,"name":"PANCAKERIE° Morning Patisserie — Pancakes + Dish Builder","url":"https://hagitantebi.co.il/pancakerie/"},
-      {"@type":"ListItem","position":24,"name":"MIEL° Maison Miel Pâtisserie — Romantic Bakery + Cake Builder with a Real Cut","url":"https://hagitantebi.co.il/miel/"},
-      {"@type":"ListItem","position":25,"name":"ENCORE° Maison de Bijoux — Fine Jewellery: a Sun Dial of Four Hours, a Set Builder and a 3D Twist-Open Box","url":"https://hagitantebi.co.il/encore/"}
+      {"@type":"ListItem","position":18,"name":"Pétale° — Maison de Macarons","url":"https://hagitantebi.co.il/petale.html"},
+      {"@type":"ListItem","position":19,"name":"MELTÉ° — Cioccolato Artigianale","url":"https://hagitantebi.co.il/melte.html"},
+      {"@type":"ListItem","position":20,"name":"Crema° Caffè Torino — Seven Roasts on a Dial","url":"https://hagitantebi.co.il/crema.html"},
+      {"@type":"ListItem","position":21,"name":"TRAME° — Maison de Couture","url":"https://hagitantebi.co.il/trame/"},
+      {"@type":"ListItem","position":22,"name":"CHASEN° — Bar à Matcha","url":"https://hagitantebi.co.il/chasen/"},
+      {"@type":"ListItem","position":23,"name":"SONAIR° — Premium Wireless Earbuds","url":"https://hagitantebi.co.il/sonair/"},
+      {"@type":"ListItem","position":24,"name":"ORÉVA° Skin Studio — Founder-led Beauty Brand + Shop","url":"https://hagitantebi.co.il/oreva/"},
+      {"@type":"ListItem","position":25,"name":"VELUNE° Maison de Parfum — Luxury Perfume + Shop","url":"https://hagitantebi.co.il/velune/"},
+      {"@type":"ListItem","position":26,"name":"PANCAKERIE° Morning Patisserie — Pancakes + Dish Builder","url":"https://hagitantebi.co.il/pancakerie/"},
+      {"@type":"ListItem","position":27,"name":"MIEL° Maison Miel Pâtisserie — Romantic Bakery + Cake Builder with a Real Cut","url":"https://hagitantebi.co.il/miel/"},
+      {"@type":"ListItem","position":28,"name":"ENCORE° Maison de Bijoux — Fine Jewellery: a Sun Dial of Four Hours, a Set Builder and a 3D Twist-Open Box","url":"https://hagitantebi.co.il/encore/"}
     ]
   },
   {
@@ -963,6 +966,25 @@ body::before {
 .world-card--chasen .world-card__issue { color: #4C6B33; }
 .world-card--chasen .world-card__tag { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #4C6B33; }
 .world-card--chasen .world-card__media img { object-position: 50% 50%; }
+/* Pétale° · MELTÉ° · Crema° cards */
+.world-card--petale { background: #FDF6F0; color: #3A2433; }
+.world-card--petale .world-card__name { font-family: 'Fraunces', 'Playfair Display', serif; font-weight: 500; letter-spacing: 0.04em; }
+.world-card--petale .world-card__category,
+.world-card--petale .world-card__issue { color: #A8325F; }
+.world-card--petale .world-card__media img { object-position: 62% 50%; }
+.world-card--petale .world-card__tag { font-family: 'Fraunces', 'Playfair Display', serif; font-style: italic; color: #A8325F; }
+.world-card--melte { background: #F1E7D6; color: #2B1A12; }
+.world-card--melte .world-card__name { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.24em; }
+.world-card--melte .world-card__category,
+.world-card--melte .world-card__issue { color: #5E4634; }
+.world-card--melte .world-card__media img { object-position: 50% 30%; }
+.world-card--melte .world-card__tag { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #5E4634; }
+.world-card--crema { background: #F4EBE0; color: #2E1E16; }
+.world-card--crema .world-card__name { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.06em; }
+.world-card--crema .world-card__category,
+.world-card--crema .world-card__issue { color: #87502C; }
+.world-card--crema .world-card__media img { object-position: 50% 50%; }
+.world-card--crema .world-card__tag { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #87502C; }
 /* ORÉVA° card */
 .world-card--oreva { background: #F6EFE7; color: #3A2E29; }
 .world-card--oreva .world-card__name { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.3em; }
@@ -1832,7 +1854,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="world-item reveal">
         <a href="../encore/" class="world-card world-card--encore">
           <div class="world-card__media">
-            <div class="world-card__nº">No. 25</div>
+            <div class="world-card__nº">No. 28</div>
             <div class="world-card__cta-corner">Le Jour</div>
             <img src="../images/home-worlds/encore.webp" alt="ENCORE° Maison de Bijoux — קופסת תכשיטים עגולה שהמכסה שלה בארבעת צבעי השעות" width="1200" height="630" loading="lazy" />
             <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/encore.mp4" aria-hidden="true"></video>
@@ -1846,12 +1868,12 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="world-card__cta"><span>Enter the maison</span><span class="arr">→</span></div>
           </div>
         </a>
-        <button type="button" class="wc-film" data-film="encore" data-href="../encore/" data-name="ENCORE°" data-no="עולם 25" data-line="תכשיט אחד. שנים עלייך." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <button type="button" class="wc-film" data-film="encore" data-href="../encore/" data-name="ENCORE°" data-no="עולם 28" data-line="תכשיט אחד. שנים עלייך." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
       </div>
       <div class="world-item reveal">
         <a href="../miel/" class="world-card world-card--miel">
           <div class="world-card__media">
-            <div class="world-card__nº">No. 24</div>
+            <div class="world-card__nº">No. 27</div>
             <div class="world-card__cta-corner">La Coupe</div>
             <img src="../images/home-worlds/miel.webp" alt="MIEL° Maison Miel Pâtisserie — Romantic bakery brand world with a cake builder and a real cross-section" loading="lazy" />
             <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/miel.mp4" aria-hidden="true"></video>
@@ -1868,12 +1890,12 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
           </div>
         </a>
-        <button type="button" class="wc-film" data-film="miel" data-href="../miel/" data-name="MIEL°" data-no="עולם 24" data-line="רומנטיקה מתחילה מבפנים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <button type="button" class="wc-film" data-film="miel" data-href="../miel/" data-name="MIEL°" data-no="עולם 27" data-line="רומנטיקה מתחילה מבפנים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
       </div>
       <div class="world-item reveal">
         <a href="../pancakerie/" class="world-card world-card--pancakerie">
           <div class="world-card__media">
-            <div class="world-card__nº">No. 23</div>
+            <div class="world-card__nº">No. 26</div>
             <div class="world-card__cta-corner">Builder</div>
             <img src="../images/home-worlds/pancakerie.webp" alt="PANCAKERIE° Morning Patisserie — Pancake brand world with a dish builder" loading="lazy" />
             <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/pancakerie.mp4" aria-hidden="true"></video>
@@ -1890,12 +1912,12 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
           </div>
         </a>
-        <button type="button" class="wc-film" data-film="pancakerie" data-href="../pancakerie/" data-name="PANCAKERIE°" data-no="עולם 23" data-line="טעם שרואים לפני שטועמים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <button type="button" class="wc-film" data-film="pancakerie" data-href="../pancakerie/" data-name="PANCAKERIE°" data-no="עולם 26" data-line="טעם שרואים לפני שטועמים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
       </div>
       <div class="world-item reveal">
         <a href="../velune/" class="world-card world-card--velune">
           <div class="world-card__media">
-            <div class="world-card__nº">No. 22</div>
+            <div class="world-card__nº">No. 25</div>
             <div class="world-card__cta-corner">Shop</div>
             <img src="../images/home-worlds/velune.webp" alt="VELUNE° Maison de Parfum — Luxury perfume brand world" loading="lazy" />
             <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/velune.mp4" aria-hidden="true"></video>
@@ -1912,12 +1934,12 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
           </div>
         </a>
-        <button type="button" class="wc-film" data-film="velune" data-href="../velune/" data-name="VELUNE°" data-no="עולם 22" data-line="בושם הוא לא ריח. הוא מקום." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <button type="button" class="wc-film" data-film="velune" data-href="../velune/" data-name="VELUNE°" data-no="עולם 25" data-line="בושם הוא לא ריח. הוא מקום." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
       </div>
       <div class="world-item reveal">
         <a href="../oreva/" class="world-card world-card--oreva">
           <div class="world-card__media">
-            <div class="world-card__nº">No. 21</div>
+            <div class="world-card__nº">No. 24</div>
             <div class="world-card__cta-corner">Shop</div>
             <img src="../images/home-worlds/oreva.webp" alt="ORÉVA° Skin Studio — Founder-led beauty brand world" loading="lazy" />
             <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/oreva.mp4" aria-hidden="true"></video>
@@ -1934,11 +1956,11 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
           </div>
         </a>
-        <button type="button" class="wc-film" data-film="oreva" data-href="../oreva/" data-name="ORÉVA°" data-no="עולם 21" data-line="קודם הידיים. אחר כך הבקבוק." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <button type="button" class="wc-film" data-film="oreva" data-href="../oreva/" data-name="ORÉVA°" data-no="עולם 24" data-line="קודם הידיים. אחר כך הבקבוק." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
       </div>
       <a href="../sonair/" class="world-card world-card--sonair reveal">
         <div class="world-card__media">
-          <div class="world-card__nº">No. 20</div>
+          <div class="world-card__nº">No. 23</div>
           <div class="world-card__cta-corner">Film</div>
           <img src="../images/home-worlds/sonair.webp" alt="SONAIR° — Premium Wireless Earbuds" loading="lazy" />
           <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/sonair.mp4" aria-hidden="true"></video>
@@ -1955,29 +1977,32 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
         </div>
       </a>
-      <a href="../chasen/" class="world-card world-card--chasen reveal">
-        <div class="world-card__media">
-          <div class="world-card__nº">No. 19</div>
-          <div class="world-card__cta-corner">Interactif</div>
-          <img src="../images/home-worlds/chasen.webp" alt="CHASEN° — Bar à Matcha" loading="lazy" />
-          <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/chasen.mp4" aria-hidden="true"></video>
-        </div>
-        <div class="world-card__copy">
-          <div class="world-card__issue">Concept · Interactive</div>
-          <div class="world-card__name">CHASEN°</div>
-          <div class="world-card__category">Bar à Matcha · Interactive world</div>
-          <div class="world-card__tag">Le matcha ne se commande pas. Il se compose.</div>
-          <div class="world-card__tag-he" lang="he">העולם הראשון שמכינים: בוחרים אחד מחמישה טעמים, מוסיפים קצפת ושוקולד, ואותה כוס הופכת למשקה עם שם משלו.</div>
-          <div class="world-card__cta">
-            <span>Compose your cup</span>
-            <span class="arr">→</span>
+      <div class="world-item reveal">
+        <a href="../chasen/" class="world-card world-card--chasen">
+          <div class="world-card__media">
+            <div class="world-card__nº">No. 22</div>
+            <div class="world-card__cta-corner">Interactif</div>
+            <img src="../images/home-worlds/chasen.webp" alt="CHASEN° — Bar à Matcha" loading="lazy" />
+            <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/chasen.mp4" aria-hidden="true"></video>
           </div>
-        </div>
-      </a>
+          <div class="world-card__copy">
+            <div class="world-card__issue">Concept · Interactive</div>
+            <div class="world-card__name">CHASEN°</div>
+            <div class="world-card__category">Bar à Matcha · Interactive world</div>
+            <div class="world-card__tag">Le matcha ne se commande pas. Il se compose.</div>
+            <div class="world-card__tag-he" lang="he">העולם הראשון שמכינים: בוחרים אחד מחמישה טעמים, מוסיפים קצפת ושוקולד, ואותה כוס הופכת למשקה עם שם משלו.</div>
+            <div class="world-card__cta">
+              <span>Compose your cup</span>
+              <span class="arr">→</span>
+            </div>
+          </div>
+        </a>
+        <button type="button" class="wc-film" data-film="chasen" data-href="../chasen/" data-name="CHASEN°" data-no="עולם 22" data-line="מאצ׳ה לא מזמינים. מרכיבים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+      </div>
       <!-- TRAME° — maison de couture concept · live -->
       <a href="../trame/" class="world-card world-card--trame reveal">
         <div class="world-card__media">
-          <div class="world-card__nº">No. 18</div>
+          <div class="world-card__nº">No. 21</div>
           <div class="world-card__cta-corner">Concept</div>
           <img src="../trame/assets/hero-emotion.webp" alt="TRAME° — Maison de Couture" loading="lazy" />
           <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/trame.mp4" aria-hidden="true"></video>
@@ -1988,6 +2013,63 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="world-card__category">Maison de Couture · Haute Couture</div>
           <div class="world-card__tag">Every silhouette begins with a thread.</div>
           <div class="world-card__tag-he" lang="he">הגלילה בונה שמלת קוטור על מנקין בשמונה שלבים, חוט בורדו תופר את העמוד — ובסוף רוקם את מונוגרמת הבית.</div>
+          <div class="world-card__cta">
+            <span>Visit the live site</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+      <!-- Crema° — concept · live -->
+      <a href="../crema.html" class="world-card world-card--crema reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 20</div>
+          <div class="world-card__cta-corner">Il Rito</div>
+          <img src="../images/home-worlds/crema-card.webp" alt="Crema° — כוס קפוצ׳ינו עם לב בקצף על צלוחית לבנה" width="1024" height="1024" loading="lazy" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Concept · Interactive</div>
+          <div class="world-card__name">Crema°</div>
+          <div class="world-card__category">Caffè in Capsule · Torino</div>
+          <div class="world-card__tag">Il Rito.</div>
+          <div class="world-card__tag-he" lang="he">בית קפה בדיוני מטורינו: שבע קלייות על חוגה, חליטה בלחיצה, כרטיס בוקר לסטורי וכוס אמיתית שזזה מתחת לעכבר.</div>
+          <div class="world-card__cta">
+            <span>Visit the live site</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+      <!-- MELTÉ° — concept · live -->
+      <a href="../melte.html" class="world-card world-card--melte reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 19</div>
+          <div class="world-card__cta-corner">Motion</div>
+          <img src="../images/home-worlds/melte-card.webp" alt="MELTÉ° — אישה מחזיקה כוס שוקולד Dark Velvet עם פירורי שוקולד ופטל" width="1100" height="1100" loading="lazy" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Concept · Motion</div>
+          <div class="world-card__name">MELTÉ°</div>
+          <div class="world-card__category">Cioccolato Artigianale · Chocolate</div>
+          <div class="world-card__tag">Five flavours. One language.</div>
+          <div class="world-card__tag-he" lang="he">חמש כוסות נמסות תוך כדי גלילה, כל אחת עם זרימת שוקולד בצבע משלה וסיפור טעם נפרד.</div>
+          <div class="world-card__cta">
+            <span>Visit the live site</span>
+            <span class="arr">→</span>
+          </div>
+        </div>
+      </a>
+      <!-- Pétale° — concept · live -->
+      <a href="../petale.html" class="world-card world-card--petale reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 18</div>
+          <div class="world-card__cta-corner">Le Film</div>
+          <img src="../images/home-worlds/petale-card.webp" alt="Pétale° — שולחן שיש בסלון פריזאי עם מקרון, כוס תה וקופסה קשורה בסרט" width="1600" height="900" loading="lazy" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">Concept · Film</div>
+          <div class="world-card__name">Pétale°</div>
+          <div class="world-card__category">Maison de Macarons · Paris</div>
+          <div class="world-card__tag">Pétale in colour.</div>
+          <div class="world-card__tag-he" lang="he">שבעה מקרונים יורדים לקופסה, הקופסה נקשרת בסרט ועוברת לידיים.</div>
           <div class="world-card__cta">
             <span>Visit the live site</span>
             <span class="arr">→</span>
@@ -2117,25 +2199,28 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </a>
       <!-- SOUFFLÉ° — gourmand body care concept · live -->
-      <a href="../souffle.html" class="world-card world-card--souffle reveal">
-        <div class="world-card__media">
-          <div class="world-card__nº">No. 11</div>
-          <div class="world-card__cta-corner">Concept</div>
-          <img src="../images/souffle/jar-flagship-scene.webp" alt="SOUFFLÉ° — Whipped Body Butter" />
-          <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/souffle.mp4" aria-hidden="true"></video>
-        </div>
-        <div class="world-card__copy">
-          <div class="world-card__issue">Concept · Live site</div>
-          <div class="world-card__name">SOUFFLÉ°</div>
-          <div class="world-card__category">Gourmand Body Care · Beauty</div>
-          <div class="world-card__tag">Whipped, not stirred.</div>
-          <div class="world-card__tag-he" lang="he">טקסטורה שמרגישים דרך המסך.</div>
-          <div class="world-card__cta">
-            <span>Visit the live site</span>
-            <span class="arr">→</span>
+      <div class="world-item reveal">
+        <a href="../souffle.html" class="world-card world-card--souffle">
+          <div class="world-card__media">
+            <div class="world-card__nº">No. 11</div>
+            <div class="world-card__cta-corner">Concept</div>
+            <img src="../images/souffle/jar-flagship-scene.webp" alt="SOUFFLÉ° — Whipped Body Butter" />
+            <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/souffle.mp4" aria-hidden="true"></video>
           </div>
-        </div>
-      </a>
+          <div class="world-card__copy">
+            <div class="world-card__issue">Concept · Live site</div>
+            <div class="world-card__name">SOUFFLÉ°</div>
+            <div class="world-card__category">Gourmand Body Care · Beauty</div>
+            <div class="world-card__tag">Whipped, not stirred.</div>
+            <div class="world-card__tag-he" lang="he">טקסטורה שמרגישים דרך המסך.</div>
+            <div class="world-card__cta">
+              <span>Visit the live site</span>
+              <span class="arr">→</span>
+            </div>
+          </div>
+        </a>
+        <button type="button" class="wc-film" data-film="souffle" data-href="../souffle.html" data-name="SOUFFLÉ°" data-no="עולם 11" data-line="חמאת גוף מוקצפת, בהשראת פטיסרי." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+      </div>
       <!-- BASALT -->
       <a href="../basalt/" class="world-card world-card--basalt reveal">
         <div class="world-card__media">
@@ -2443,7 +2528,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="motion-study__eyebrow">A Second Interlude · Motion Study</span>
         <h2 class="motion-study__title">Crema<span>°</span></h2>
         <p class="motion-study__lede">A coffee world where she brews her own morning.</p>
-        <p class="motion-study__body">Seven capsules on a dial, a cup that pours for as long as you hold, a morning card to save for stories, and beneath it the real cup, stirred by your hand. World No.26.</p>
+        <p class="motion-study__body">Seven capsules on a dial, a cup that pours for as long as you hold, a morning card to save for stories, and beneath it the real cup, stirred by your hand. World No.20.</p>
         <p class="motion-study__body-he" lang="he">עולם מותג לבית קפה בדיוני: חוגה של שבע קליות, כוס שנמזגת כל עוד מחזיקים, כרטיס ״הבוקר שלך״ לסטורי, ומתחתיו הכוס האמיתית שזזה מתחת ליד.</p>
         <a href="../crema.html" class="motion-study__cta">
           <span>Enter the world</span>
@@ -2545,7 +2630,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="motion-study__eyebrow">A Fourth Interlude · Motion Study</span>
         <h2 class="motion-study__title">SONAIR<span>°</span></h2>
         <p class="motion-study__lede">A more human sound, told as one film.</p>
-        <p class="motion-study__body">Earbuds float down into their case, open into every component, meet the person who wears them, and come back in the finish she chooses. Nineteen films stitched into one continuous scroll, with a live finish selector and a personal listening ritual. World No.20.</p>
+        <p class="motion-study__body">Earbuds float down into their case, open into every component, meet the person who wears them, and come back in the finish she chooses. Nineteen films stitched into one continuous scroll, with a live finish selector and a personal listening ritual. World No.23.</p>
         <p class="motion-study__body-he" lang="he">סרט אחד רציף: האוזניות יורדות אל הקייס, נפתחות לכל הרכיבים, פוגשות את מי שעונדת אותן, וחוזרות בגימור שהיא בוחרת. בורר גימורים חי וריטואל האזנה אישי, בגלילה אחת.</p>
         <a href="../sonair/" class="motion-study__cta">
           <span>Watch the film</span>
