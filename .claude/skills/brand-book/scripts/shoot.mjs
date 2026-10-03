@@ -8,13 +8,28 @@
 // Screenshots go to /tmp/brand-book-shots/. Exit code 1 when a check fails.
 import { createRequire } from 'module';
 import { execSync } from 'child_process';
-import { mkdirSync } from 'fs';
+import { mkdirSync, existsSync } from 'fs';
+import os from 'os';
 import path from 'path';
 
+// playwright, then playwright-core; local install, PW_NODE_MODULES (a node_modules folder), then the global one.
 async function loadPlaywright() {
-  try { return await import('playwright'); } catch {}
-  const globalRoot = execSync('npm root -g').toString().trim();
-  return createRequire(path.join(globalRoot, 'noop.js'))('playwright');
+  for (const m of ['playwright', 'playwright-core']) { try { return await import(m); } catch {} }
+  const roots = [process.env.PW_NODE_MODULES, (() => { try { return execSync('npm root -g').toString().trim(); } catch { return null; } })()].filter(Boolean);
+  for (const root of roots) for (const m of ['playwright', 'playwright-core']) {
+    try { return createRequire(path.join(root, 'noop.js'))(m); } catch {}
+  }
+  throw new Error('playwright not found: npm i -D playwright, or set PW_NODE_MODULES to a node_modules that has it');
+}
+
+// Cloud sandbox ships Chromium at /opt/pw-browsers; elsewhere use an installed Edge or Chrome.
+async function launch(chromium) {
+  if (process.env.PLAYWRIGHT_BROWSERS_PATH) return chromium.launch();
+  if (existsSync('/opt/pw-browsers/chromium')) return chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+  for (const channel of [process.env.PW_CHANNEL, 'chrome', 'msedge'].filter(Boolean)) {
+    try { return await chromium.launch({ channel }); } catch {}
+  }
+  return chromium.launch();
 }
 
 const args = process.argv.slice(2);
@@ -27,7 +42,7 @@ const pages = opt('--url')
   : [['book', `${base}/${slug}/brand-book.html`], ['world', `${base}/${slug}/`]];
 if (!slug && !opt('--url')) { console.error('usage: shoot.mjs <slug> | --url <book url> --name <name>'); process.exit(2); }
 
-const OUT = '/tmp/brand-book-shots';
+const OUT = path.join(os.tmpdir(), 'brand-book-shots');
 mkdirSync(OUT, { recursive: true });
 const SIZES = [['desktop', 1440, 900], ['mobile', 390, 844]];
 
@@ -82,7 +97,9 @@ function audit(onlyBook) {
     // 5. contrast
     const bg = background(el);
     if (bg) {
-      const fg = over(rgba(cs.color), bg);
+      // outlined numerals (transparent fill + -webkit-text-stroke) are read by their stroke colour
+      const stroke = parseFloat(cs.webkitTextStrokeWidth) > 0 && rgba(cs.color)[3] === 0;
+      const fg = over(rgba(stroke ? cs.webkitTextStrokeColor : cs.color), bg);
       const [l1, l2] = [lum(fg), lum(bg)].sort((a, b) => b - a);
       const ratio = (l1 + .05) / (l2 + .05);
       const size = parseFloat(cs.fontSize), bold = parseInt(cs.fontWeight, 10) >= 700;
@@ -108,7 +125,7 @@ function audit(onlyBook) {
 }
 
 const { chromium } = await loadPlaywright();
-const browser = await chromium.launch(process.env.PLAYWRIGHT_BROWSERS_PATH ? {} : { executablePath: '/opt/pw-browsers/chromium' });
+const browser = await launch(chromium);
 let failed = 0;
 for (const [kind, url] of pages) {
   for (const [label, w, h] of SIZES) {

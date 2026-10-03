@@ -144,6 +144,40 @@ def check_html(html, errors, warnings):
         warnings.append("html: footer does not link to /studio.html#books")
 
 
+def check_house(html, book, folder, errors, warnings):
+    """The site's own rules (CLAUDE.md + studio voice) that a book must keep."""
+    head = html.split("</head>", 1)[0]
+    for prop in ("og:image:alt", "twitter:image:alt"):
+        if prop not in head:
+            errors.append(f"html: <meta {prop}> missing")
+    if re.search(r"(?m)^\s*html\s*\{[^}]*scroll-behavior:\s*smooth", html):
+        errors.append("html: scroll-behavior:smooth outside @media (prefers-reduced-motion:no-preference)")
+    for m in re.finditer(r"(--[\w-]+|font-family)\s*:\s*([^;}\n]*Cormorant[^;}\n]*)", html):
+        if not re.search(r"Frank Ruhl|Heebo|Assistant|Rubik|Noto Sans Hebrew|Noto Serif Hebrew", m.group(2)):
+            errors.append(f"html: font stack without a Hebrew font before the generic: {m.group(1)}: {m.group(2).strip()[:60]}")
+    body = re.sub(r"<(script|style)\b.*?</\1>", " ", html, flags=re.S)
+    if "חפץ" in body or "חפצים" in body:
+        errors.append("html: 'חפץ' in the copy — the studio says מוצר (or פריט / נקודת מגע)")
+    if book is None:
+        return
+    b = book.get("brand", {})
+    if b.get("fictional"):
+        eb = re.search(r'<p class="eyebrow"[^>]*>(.*?)</p>', html, re.S)
+        if not eb or "בדיוני" not in eb.group(1):
+            errors.append("html: the hero eyebrow must say the world is fictional (עולם קונספט בדיוני) at first mention")
+    n = b.get("world_no")
+    if n:
+        nums = set(int(x) for x in re.findall(r"מס[׳'](?:&nbsp;|\s)*(\d{1,3})", html))
+        if nums != {n}:
+            errors.append(f"html: world numbers in the page {sorted(nums)} != json world_no {n}")
+        world = folder / "index.html"
+        if world.exists():
+            w = world.read_text(encoding="utf-8")
+            wn = set(int(x) for x in re.findall(r"(?:מס[׳']\s*|No\.\s?)(\d{1,3})\b", w))
+            if wn and wn != {n}:
+                warnings.append(f"world page {world.name} shows numbers {sorted(wn)}, json says {n} — renumbered?")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slug", nargs="?")
@@ -154,6 +188,7 @@ def main():
     folder = Path(args.dir) if args.dir else ROOT / args.slug
 
     errors, warnings = [], []
+    book = None
     html_path, json_path = folder / "brand-book.html", folder / "brand-book.json"
     html = html_path.read_text(encoding="utf-8") if html_path.exists() else ""
     if not html:
@@ -168,6 +203,7 @@ def main():
             errors.append(f"json: not valid JSON — {e}")
     if html:
         check_html(html, errors, warnings)
+        check_house(html, book, folder, errors, warnings)
 
     for w in warnings:
         print("warn  ", w)

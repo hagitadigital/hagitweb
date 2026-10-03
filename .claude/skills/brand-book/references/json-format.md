@@ -30,7 +30,7 @@
     "category": "תכשיטים",
     "url": "https://hagitantebi.co.il/encore/",
     "book_url": "https://hagitantebi.co.il/encore/brand-book.html",
-    "world_no": 25,                     // רק בעולמות של הסטודיו. אחרת null
+    "world_no": 28,                     // רק בעולמות של הסטודיו. אחרת null. המספר הנוכחי בגלריה /brand-worlds/ (העולמות מוספרו מחדש ב-3.10)
     "fictional": true,                  // עולם קונספט = true, לקוחה אמיתית = false
     "thesis": "השעה היא הלוגו.",        // ה-h1 של הספר
     "language": "he"
@@ -53,7 +53,7 @@
       "min_per_asset": false            // true = חייב להופיע על כל פריט תוכן
     }
   ],
-  "min_codes_per_asset": 3,             // כמה קודים לפחות על כל חפץ
+  "min_codes_per_asset": 3,             // כמה קודים לפחות בכל נקודת מגע
 
   "palette": [
     {
