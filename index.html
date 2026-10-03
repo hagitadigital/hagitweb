@@ -247,7 +247,7 @@
     <link rel="preload" as="image" href="hero-bg.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* ============================================================
@@ -261,8 +261,8 @@
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
 
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
 
             --section-padding: clamp(80px, 12vw, 160px);
@@ -2181,6 +2181,20 @@ document.addEventListener('DOMContentLoaded', function () {
     .live-worlds__subtitle{font-size:clamp(15px,1.4vw,17px);color:var(--color-taupe);max-width:660px;margin:0 auto;line-height:1.7}
     .live-worlds__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,26px);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}
     @media(max-width:900px){.live-worlds__grid{grid-template-columns:1fr;max-width:440px}}
+    .lw-item{position:relative;display:flex;flex-direction:column;container-type:inline-size}
+    .lw-item .lw-card{flex:1}
+    .lw-film{position:absolute;top:calc(125cqw - 62px);left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:999px;background:rgba(250,248,243,.94);backdrop-filter:blur(6px);color:#2A201A;font-family:var(--font-body-he);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;box-shadow:0 10px 26px -12px rgba(43,26,18,.55);transition:background .3s,color .3s}
+    .lw-film:hover,.lw-film:focus-visible{background:var(--color-copper);color:var(--color-cream)}
+    .lw-dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;overflow:hidden}
+    .lw-dialog::backdrop{background:rgba(20,14,10,.82);backdrop-filter:blur(4px)}
+    .lw-dialog__in{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:56px 16px 20px;box-sizing:border-box}
+    .lw-dialog video{height:min(calc(100vh - 190px),1280px);height:min(calc(100svh - 190px),1280px);max-width:calc(100vw - 32px);aspect-ratio:9/16;object-fit:contain;background:#000;border-radius:10px;display:block}
+    .lw-dialog__cap{text-align:center;color:var(--color-cream);font-family:var(--font-body-he)}
+    .lw-dialog__name{font-family:var(--font-display);font-size:1.6rem;display:block}
+    .lw-dialog__line{font-size:1rem;display:block;margin:2px 0 8px;opacity:.9}
+    .lw-dialog__go{color:#E8C4A8;font-size:.95rem;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:8px 0}
+    .lw-dialog__x{position:absolute;top:12px;left:12px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(250,248,243,.4);background:transparent;color:var(--color-cream);font-size:22px;line-height:1;cursor:pointer}
+    .lw-dialog__x:hover,.lw-dialog__x:focus-visible{background:rgba(250,248,243,.15)}
     .lw-card{display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid var(--color-light-taupe);box-shadow:0 18px 40px -28px rgba(43,26,18,.35);transition:transform .5s var(--transition-smooth),box-shadow .5s}
     .lw-card:hover{transform:translateY(-6px);box-shadow:0 32px 50px -28px rgba(43,26,18,.5)}
     .lw-card__media{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--color-warm-beige)}
@@ -2208,55 +2222,71 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="live-worlds__grid">
 
-            <a href="aurelle/" class="lw-card reveal" aria-label="AURELLE — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">01</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="aurelle/assets/hero-poster.jpg" src="aurelle/assets/hero.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">AURELLE</p>
-                    <p class="lw-card__cat">Premium Skincare · Skin Longevity</p>
-                    <p class="lw-card__tag">Quiet beauty. Visible confidence.</p>
-                    <p class="lw-card__tag-he">יופי שקט. נוכחות שמרגישים.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="velune/" class="lw-card" aria-label="VELUNE° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">01</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/velune.webp" src="images/home-worlds/live/velune.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">VELUNE°</p>
+                        <p class="lw-card__cat">Maison de Parfum · World No.25</p>
+                        <p class="lw-card__tag">A scent is a place.</p>
+                        <p class="lw-card__tag-he">בושם הוא לא ריח. הוא מקום.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="velune" data-name="VELUNE°" data-no="עולם 25" data-line="בושם הוא לא ריח. הוא מקום." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
-            <a href="vela-motion/" class="lw-card reveal" aria-label="VELA MOTION — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">02</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="vela-motion/hero-poster.jpg" src="vela-motion/hero.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">VELA MOTION</p>
-                    <p class="lw-card__cat">Urban Accessories · Lifestyle</p>
-                    <p class="lw-card__tag">Move beautifully. Stay unmistakable.</p>
-                    <p class="lw-card__tag-he">לזוז יפה. להישאר בלתי נשכחת.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="oreva/" class="lw-card" aria-label="ORÉVA° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">02</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/oreva.webp" src="images/home-worlds/live/oreva.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">ORÉVA°</p>
+                        <p class="lw-card__cat">Skin Studio · World No.24</p>
+                        <p class="lw-card__tag">Hands first. Then the bottle.</p>
+                        <p class="lw-card__tag-he">קודם הידיים. אחר כך הבקבוק.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="oreva" data-name="ORÉVA°" data-no="עולם 24" data-line="קודם הידיים. אחר כך הבקבוק." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
-            <a href="solara-wild/" class="lw-card reveal" aria-label="SOLARA WILD — האתר החי">
-                <div class="lw-card__media">
-                    <span class="lw-card__num">03</span>
-                    <span class="lw-card__live"><span class="dot"></span>Live</span>
-                    <span class="lw-card__grad"></span>
-                    <video data-lw muted loop playsinline preload="none" poster="solara-wild/hero-poster.jpg" src="solara-wild/hero.mp4"></video>
-                </div>
-                <div class="lw-card__body">
-                    <p class="lw-card__name">SOLARA WILD</p>
-                    <p class="lw-card__cat">Resort Lifestyle · Capsule</p>
-                    <p class="lw-card__tag">Sun on your skin. Wild in your soul.</p>
-                    <p class="lw-card__tag-he">שמש על העור. חופש בנשמה.</p>
-                    <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </div>
-            </a>
+            <div class="lw-item reveal">
+            <a href="pancakerie/" class="lw-card" aria-label="PANCAKERIE° — האתר החי">
+                    <div class="lw-card__media">
+                        <span class="lw-card__num">03</span>
+                        <span class="lw-card__live"><span class="dot"></span>Live</span>
+                        <span class="lw-card__grad"></span>
+                        <video data-lw muted loop playsinline preload="none" poster="images/home-worlds/live/pancakerie.webp" src="images/home-worlds/live/pancakerie.mp4"></video>
+                    </div>
+                    <div class="lw-card__body">
+                        <p class="lw-card__name">PANCAKERIE°</p>
+                        <p class="lw-card__cat">Morning Patisserie · World No.26</p>
+                        <p class="lw-card__tag">Taste you can see.</p>
+                        <p class="lw-card__tag-he">טעם שרואים לפני שטועמים.</p>
+                        <span class="lw-card__cta">Enter the live site <svg class="lw-card__cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                <button type="button" class="lw-film" data-film="pancakerie" data-name="PANCAKERIE°" data-no="עולם 26" data-line="טעם שרואים לפני שטועמים." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+            </div>
 
         </div>
+        <dialog class="lw-dialog" id="lwDialog" aria-label="הסרט של העולם">
+            <div class="lw-dialog__in">
+                <button type="button" class="lw-dialog__x" id="lwClose" aria-label="סגירה">&times;</button>
+                <video id="lwVideo" controls playsinline muted preload="none"></video>
+                <p class="lw-dialog__cap" dir="rtl"><span class="lw-dialog__name"><span id="lwName" dir="ltr"></span> · <span id="lwNo"></span></span><span class="lw-dialog__line" id="lwLine"></span><a class="lw-dialog__go" id="lwGo" href="#">להיכנס לעולם</a></p>
+            </div>
+        </dialog>
     </section>
     <script>
     (function(){
@@ -2271,6 +2301,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }, { threshold: 0.4 });
       vids.forEach(function(v){ io.observe(v); });
+    })();
+    </script>
+    <script>
+    (function () {
+      // the full world film: loaded only when someone asks for it
+      var dlg = document.getElementById('lwDialog'); if (!dlg || !dlg.showModal) { document.querySelectorAll('.lw-film').forEach(function (b) { b.hidden = true; }); return; }
+      var v = document.getElementById('lwVideo'), opener = null;
+      function close() { v.pause(); v.removeAttribute('src'); v.load(); if (dlg.open) dlg.close(); if (opener) opener.focus(); }
+      document.querySelectorAll('.lw-film').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var k = b.dataset.film; opener = b;
+          document.getElementById('lwName').textContent = b.dataset.name; document.getElementById('lwNo').textContent = b.dataset.no;
+          document.getElementById('lwLine').textContent = b.dataset.line;
+          var go = document.getElementById('lwGo'); go.href = k + '/'; go.textContent = 'להיכנס לעולם \u2066' + b.dataset.name + '\u2069 ←';
+          v.poster = 'images/home-worlds/live/films/' + k + '.jpg'; v.src = 'images/home-worlds/live/films/' + k + '.mp4';
+          dlg.showModal(); var p = v.play(); if (p && p.catch) p.catch(function () {});
+          if (window.gtag) gtag('event', 'world_film_open', { world: k });
+        });
+      });
+      document.getElementById('lwClose').addEventListener('click', close);
+      dlg.addEventListener('close', function () { v.pause(); v.removeAttribute('src'); v.load(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('lw-dialog__in')) close(); });
     })();
     </script>
 
@@ -2783,93 +2835,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <!-- ============================================================
-         04 · METHOD — moved DOWN, 4 phases (BrandOS as 04)
-         ============================================================ -->
-    <section class="method section" id="method">
-        <div class="container">
-            <div class="method__header reveal">
-                <p class="method__label" dir="ltr">The Method</p>
-                <h2 class="method__title" dir="ltr">How I Build Brand Worlds</h2>
-            </div>
-
-            <div class="method__grid">
-                <div class="method__card reveal">
-                    <img src="cube1.jpg" alt="The Core" class="method__card-image">
-                    <div class="method__number">01</div>
-                    <h3 class="method__card-title" dir="ltr">The Core</h3>
-                    <p class="method__card-subtitle" dir="ltr">The inner logic.</p>
-                    <p class="method__card-text">ה-DNA שמאפשר לזהות אותך גם בלי הלוגו — הסיבה לבחור בך, עוד לפני שמשווים מחיר.</p>
-                </div>
-
-                <div class="method__card reveal">
-                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
-                    <div class="method__number">02</div>
-                    <h3 class="method__card-title" dir="ltr">The Narrative</h3>
-                    <p class="method__card-subtitle" dir="ltr">The story.</p>
-                    <p class="method__card-text">בניית הסיפור שמחבר את כל החלקים — שפה שאנשים מרגישים בה מובנים.</p>
-                </div>
-
-                <div class="method__card reveal">
-                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
-                    <div class="method__number">03</div>
-                    <h3 class="method__card-title" dir="ltr">The Visual World</h3>
-                    <p class="method__card-subtitle" dir="ltr">The space.</p>
-                    <p class="method__card-text">יצירת מרחב ויזואלי שאפשר להיכנס אליו — עולם שמחזיק תוכן, החלטות וקהל.</p>
-                </div>
-
-                <div class="method__card reveal">
-                    <img src="sphere-outcome.png" alt="BrandOS" class="method__card-image">
-                    <div class="method__number">04</div>
-                    <h3 class="method__card-title" dir="ltr">BrandOS</h3>
-                    <p class="method__card-subtitle">הפעלה</p>
-                    <p class="method__card-text">המותג עולה לאוויר — תוכן, קריאייטיב ודפים שמופעלים על ידי מערכת ה-AI שלכם, יום-יום.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         05 · ABOUT TEASER (shortened)
-         ============================================================ -->
-    <section class="intro section" id="about">
-        <div class="container intro__inner">
-            <div class="intro__content reveal">
-                <span class="intro__label" dir="ltr">The Brand Architect</span>
-                <h2 class="intro__title">אני חגית אנטבי</h2>
-                <span class="intro__divider"></span>
-                <div class="intro__pairs">
-                    <div class="intro__pair">
-                        <div class="intro__pair-dot"></div>
-                        <span class="intro__pair-text">מהאסטרטגיה של המותג ועד הקוד שמפעיל אותו — אני מטפלת ב<b>כל השכבה</b>.</span>
-                    </div>
-                    <div class="intro__pair">
-                        <div class="intro__pair-dot"></div>
-                        <span class="intro__pair-text"><b>תואר שני באסטרטגיה דיגיטלית.</b> 15+ שנות ניסיון מ-Lifestyle ועד SaaS.</span>
-                    </div>
-                    <div class="intro__pair">
-                        <div class="intro__pair-dot"></div>
-                        <span class="intro__pair-text">מפתחת <b>BrandOS</b> — מערכת ה-AI שעובדת בקול שלכם, יום-יום.</span>
-                    </div>
-                </div>
-                <a href="about.html" class="intro__link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Read More
-                </a>
-            </div>
-            <div class="intro__visual reveal">
-                <div class="intro__bg-shape"></div>
-                <div class="intro__image-frame">
-                    <img src="hagit-portrait-2026.png" alt="חגית אנטבי — אסטרטגית מותג ומייסדת Brand Worlds Studio" class="intro__image">
-                </div>
-                <div class="intro__float-tag">
-                    <p class="intro__float-label" dir="ltr">Brand Worlds Studio</p>
-                    <p class="intro__float-text" dir="ltr">Building worlds, not just brands</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
          06 · TESTIMONIALS — Words from clients (Google Reviews)
          ============================================================ -->
     <section class="testimonials section">
@@ -2932,13 +2897,426 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <!-- ============================================================
+         04 · HOW I WORK — the studio's copper thread; the bead is her brand.
+         Scroll rolls it through four stations and ends on the first step.
+         ============================================================ -->
+    <style>
+    .path { background: var(--color-warm-beige); position: relative; --path-ink: #6B563F; border-top: 1px solid var(--color-light-taupe); }
+    .path__sticky { padding: clamp(96px, 12vw, 140px) var(--container-padding) clamp(48px, 7vw, 90px); }
+    .path__header { text-align: center; margin-bottom: clamp(18px, 3vw, 34px); }
+    .path__label { font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 12px; }
+    .path__title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; letter-spacing: -0.01em; color: var(--color-chocolate); }
+
+    .path__line { position: relative; width: min(100%, 1000px); margin: 0 auto clamp(30px, 5vw, 56px); aspect-ratio: 1000 / 116; }
+    .path__line svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .path__ghost { fill: none; stroke: var(--color-copper); stroke-opacity: .18; stroke-width: 1.6; }
+    .path__thread { fill: none; stroke: var(--color-copper); stroke-width: 1.8; stroke-linecap: round; }
+    .path__dot { fill: var(--color-warm-beige); stroke: var(--color-copper); stroke-width: 1.8; transition: fill .4s var(--transition-smooth); }
+    .path__dot.is-on { fill: var(--color-copper); }
+    .path__bead-core { fill: var(--color-copper); }
+    .path__bead-seam { stroke: var(--color-cream); stroke-width: 1.2; stroke-linecap: round; opacity: .55; }
+    .path__stop { position: absolute; transform: translate(-50%, 14px); font-family: var(--font-body-he); font-size: clamp(11px, 1.5vw, 15px); font-weight: 500; color: var(--path-ink); white-space: nowrap; opacity: .6; transition: opacity .4s; }
+    .path__stop.is-on { opacity: 1; }
+
+    .path__panels { position: relative; width: 100%; max-width: 860px; margin: 0 auto; }
+    .path__panel { text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 2vw, 22px); padding: clamp(28px, 4vw, 44px) 0; border-top: 1px solid var(--color-light-taupe); }
+    .path__panel:first-child { border-top: 0; }
+    .path__kicker { display: flex; align-items: baseline; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .path__num { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--color-copper); }
+    .path__en { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--path-ink); }
+    .path__he { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 500; color: var(--path-ink); }
+    .path__big { font-family: var(--font-body-he); font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 500; line-height: 1.25; color: var(--path-ink); }
+    .path__big b { font-weight: 700; }
+    .path__small { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.25rem); line-height: 1.6; color: var(--path-ink); }
+    .path__accent { color: var(--color-copper); }
+    .path__q { font-family: var(--font-body-he); font-size: clamp(1.2rem, 2.6vw, 1.8rem); color: var(--color-copper); }
+
+    /* 00 · the gap */
+    .path__gap { width: min(100%, 560px); display: flex; flex-direction: column; gap: 16px; text-align: right; }
+    .path__gap span { font-family: var(--font-body-he); font-size: 15px; font-weight: 500; color: var(--path-ink); }
+    .path__bar { height: 16px; border-radius: 8px; margin-top: 6px; }
+    .path__bar--full { background: var(--path-ink); }
+    .path__bar-row { display: flex; gap: 10px; margin-top: 6px; align-items: center; }
+    .path__bar--seen { width: 40%; height: 16px; border-radius: 8px; background: var(--color-light-taupe); }
+    .path__bar--gap { flex: 1; height: 16px; border-radius: 8px; border: 1.5px dashed var(--color-copper); font-size: 11px; line-height: 13px; text-align: center; color: var(--color-copper); font-weight: 600; }
+    /* 01 · the core */
+    .path__dna { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto auto; gap: 10px 22px; align-items: center; font-family: var(--font-body-he); font-size: clamp(14px, 1.6vw, 17px); font-weight: 500; color: var(--path-ink); }
+    .path__dna-core { grid-column: 2; grid-row: 2; width: clamp(96px, 14vw, 132px); aspect-ratio: 1; border-radius: 50%; border: 1.8px solid var(--color-copper); background: var(--color-cream); display: grid; place-items: center; font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--path-ink); }
+    .path__dna-w1 { grid-column: 2; grid-row: 1; text-align: center; }
+    .path__dna-w2 { grid-column: 1; grid-row: 2; text-align: left; }
+    .path__dna-w3 { grid-column: 3; grid-row: 2; text-align: right; }
+    .path__dna-w4 { grid-column: 2; grid-row: 3; text-align: center; }
+    /* 02 · the structure */
+    .path__codex { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: min(100%, 640px); }
+    .path__card { background: var(--color-cream); border: 1.5px solid var(--color-copper); border-radius: 16px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .path__card b { font-family: var(--font-body-he); font-size: 13px; color: var(--color-copper); font-weight: 600; }
+    .path__card span { font-family: var(--font-body-he); font-size: 13px; line-height: 1.35; color: var(--path-ink); }
+    .path__swatches { display: flex; gap: 5px; }
+    .path__swatches i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+    .path__aa { font-family: var(--font-display); font-size: 22px !important; }
+    /* 03 · the world */
+    .path__world-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-copper); }
+    /* 03 · the world: the dials from the worlds themselves (same build as "מה היא קונה באמת?" on brand-world) */
+    .pw { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 4vw, 40px); width: min(100%, 640px); }
+    .pw__card { position: relative; flex: none; width: clamp(120px, min(22vw, 24vh), 220px); aspect-ratio: 4 / 5; container-type: inline-size; border-radius: 6px; overflow: hidden; background: #4A3640; box-shadow: 0 26px 60px -28px rgba(42, 32, 26, .55); transition: background-color .9s var(--transition-smooth); color: #F6EEE4; }
+    .pw__cap { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: right; min-width: 0; }
+    .pw__cap .path__world-name { font-size: clamp(1.5rem, 3vw, 2.1rem); transition: opacity .3s; }
+    .pw__line { font-family: var(--font-body-he); font-size: clamp(1rem, 1.8vw, 1.25rem); font-weight: 500; line-height: 1.4; color: var(--path-ink); transition: opacity .3s; }
+    .pw__cap.is-out .path__world-name, .pw__cap.is-out .pw__line { opacity: 0; }
+    .pw__links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px; }
+    .pw__links a { font-family: var(--font-display); font-size: 1rem; color: var(--path-ink); text-decoration: underline; text-decoration-color: var(--color-light-taupe); text-underline-offset: 3px; padding: 6px 0; min-height: 32px; }
+    .pw__links a.is-on { color: var(--color-copper); text-decoration-color: var(--color-copper); }
+    .pw__dial { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .5s, visibility 0s .5s; }
+    .pw__dial.is-on { opacity: 1; visibility: visible; transition: opacity .5s; }
+    .pw__head { position: absolute; top: 6cqw; left: 6cqw; right: 6cqw; text-align: center; }
+    .pw__it { font-family: var(--font-display); font-style: italic; font-size: 5cqw; direction: ltr; }
+    .pw__ht { font-family: var(--font-body-he); font-size: 6.6cqw; line-height: 1.2; margin-top: 1cqw; }
+    .pw__pin { position: absolute; top: 26cqw; left: 50%; margin-left: -2cqw; width: 0; height: 0; border-left: 2cqw solid transparent; border-right: 2cqw solid transparent; border-top: 2.8cqw solid currentColor; }
+    .pw__read { position: absolute; left: 6cqw; right: 6cqw; bottom: 6cqw; text-align: center; }
+    .pw__t { font-family: var(--font-display); font-size: 10cqw; line-height: 1; direction: ltr; display: block; }
+    .pw__n { font-family: var(--font-body-he); font-size: 5.4cqw; display: block; margin-top: 1.2cqw; }
+    .pw__ring { position: absolute; left: 50%; width: 0; height: 0; transition: transform 1s var(--transition-smooth); }
+    .pw__ring > span { position: absolute; left: 0; top: 0; }
+    .pw__ring > span > span { position: absolute; display: block; transition: transform 1s var(--transition-smooth); }
+    .pw__center { position: absolute; left: 50%; border-radius: 50%; overflow: hidden; }
+    .pw__center img, .pw__ring img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pw__center img { opacity: 0; transition: opacity .6s; }
+    .pw__center img.is-on { opacity: 1; }
+    .pw__disc { position: absolute; top: 31cqw; left: 50%; width: 60cqw; height: 60cqw; margin-left: -30cqw; border-radius: 50%; background: conic-gradient(from -45deg, #241212 0 25%, #6E4E4A 0 50%, #34405A 0 75%, #853A26 0 100%); box-shadow: 0 0 0 .4cqw #D9B26A, 0 5cqw 12cqw rgba(0,0,0,.35); transition: transform 1s var(--transition-smooth); }
+    .pw__disc svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .pw__disc + .pw__center { top: 46cqw; width: 30cqw; height: 30cqw; margin-left: -15cqw; background: #F6EEE4; box-shadow: 0 0 0 .3cqw #D9B26A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    .pw__disc + .pw__center img { object-fit: contain; padding: 3.5cqw; box-sizing: border-box; }
+    .pw__orbit { position: absolute; top: 36cqw; left: 50%; width: 56cqw; height: 56cqw; margin-left: -28cqw; border-radius: 50%; border: .25cqw dashed rgba(194,138,90,.6); }
+    .pw__dial--rosee .pw__ring { top: 64cqw; }
+    .pw__dial--rosee .pw__ring > span > span { width: 15cqw; height: 15cqw; left: -7.5cqw; top: -7.5cqw; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 .35cqw #C28A5A, 0 2cqw 5cqw rgba(0,0,0,.25); }
+    .pw__dial--rosee .pw__center { top: 52cqw; width: 24cqw; height: 24cqw; margin-left: -12cqw; background: #F4E8DC; box-shadow: 0 0 0 .3cqw #C28A5A, 0 3cqw 8cqw rgba(0,0,0,.3); }
+    .pw__logo { position: absolute; top: 7cqw; left: 50%; width: 44cqw; margin-left: -22cqw; }
+    .pw__blob { position: absolute; top: 40cqw; left: 12cqw; width: 76cqw; height: 76cqw; border-radius: 47% 53% 44% 56% / 52% 45% 55% 48%; opacity: .5; transition: background-color .9s; }
+    .pw__dial--pancakerie .pw__ring { top: 192cqw; }
+    .pw__dial--pancakerie .pw__ring > span > span { width: 64cqw; height: 48cqw; left: -32cqw; top: -24cqw; }
+    .pw__dial--pancakerie .pw__ring img { object-fit: contain; filter: drop-shadow(0 3cqw 3.4cqw rgba(64,38,19,.28)); }
+    @media (prefers-reduced-motion: reduce) { .pw__ring, .pw__ring > span > span, .pw__disc, .pw__card { transition: none; } }
+    /* the thread goes on */
+    .path__stream { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .path__stream span { padding: 8px 18px; border: 1.5px solid var(--color-copper); border-radius: 999px; background: var(--color-cream); font-family: var(--font-body-he); font-size: 15px; font-weight: 500; color: var(--path-ink); }
+    .path__os { font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--color-copper); text-decoration: none; }
+    /* the first step */
+    .path__cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; background: var(--color-chocolate); color: var(--color-cream); text-decoration: none; font-family: var(--font-body-he); font-size: 1.05rem; font-weight: 500; min-height: 44px; transition: background .3s; }
+    .path__cta-btn:hover, .path__cta-btn:focus-visible { background: var(--color-copper); }
+
+    /* live: one sticky stage, the scroll rolls the bead */
+    .path.is-live .path__track { height: 640vh; }
+    .path.is-live .path__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(76px, 11vh, 120px); padding-bottom: clamp(20px, 4vh, 40px); }
+    .path.is-live .path__panels { flex: 1 1 auto; min-height: 0; max-height: 560px; }
+    .path.is-live .path__panel { position: absolute; inset: 0; justify-content: center; padding: 0; border: 0; opacity: 0; visibility: hidden; transform: translateY(18px); transition: opacity .18s ease-out, transform .18s ease-out, visibility 0s .18s; pointer-events: none; }
+    .path.is-live .path__panel.is-active { opacity: 1; visibility: visible; transform: none; pointer-events: auto; transition: opacity .45s var(--transition-smooth) .2s, transform .45s var(--transition-smooth) .2s, visibility 0s .2s; }
+    /* short screens (small laptops, phones with the browser bar): the header gives way to the stations */
+    @media (max-height: 780px) {
+        .path.is-live .path__label { display: none; }
+        .path.is-live .path__title { font-size: clamp(1.6rem, 4vh, 2.4rem); }
+        .path.is-live .path__header { margin-bottom: 8px; }
+        .path.is-live .path__line { margin-bottom: clamp(14px, 3vh, 30px); width: min(100%, 860px); }
+        .path.is-live .path__big { font-size: clamp(1.4rem, 3.6vh, 2.4rem); }
+        .path.is-live .path__panel { gap: clamp(10px, 1.8vh, 18px); }
+    }
+    @media (max-width: 640px) {
+        .pw__card { width: clamp(120px, min(40vw, 22vh), 180px); }
+        .path__line { width: calc(100% + 2 * var(--container-padding)); margin-inline: calc(-1 * var(--container-padding)); }
+        .path__codex { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    </style>
+    <section class="path" id="method" aria-labelledby="path-title">
+      <div class="path__track">
+        <div class="path__sticky">
+            <header class="path__header">
+                <p class="path__label" dir="ltr">The Method</p>
+                <h2 class="path__title" id="path-title">איך אני עובדת</h2>
+            </header>
+
+            <div class="path__line" aria-hidden="true">
+                <svg viewBox="0 0 1000 116" preserveAspectRatio="xMidYMid meet" focusable="false">
+                    <path class="path__ghost" d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40"/>
+                    <path class="path__thread" id="pathThread" d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40"/>
+                    <circle class="path__dot" cx="754.8" cy="40.5" r="6"/>
+                    <circle class="path__dot" cx="538.5" cy="27.7" r="6"/>
+                    <circle class="path__dot" cx="336.1" cy="67.8" r="6"/>
+                    <circle class="path__dot" cx="140" cy="49.3" r="6"/>
+                    <g class="path__bead" id="pathBead" transform="translate(951 87)">
+                        <g id="pathBeadRoll">
+                            <circle class="path__bead-core" r="11"/>
+                            <line class="path__bead-seam" x1="0" y1="-8.5" x2="0" y2="8.5"/>
+                        </g>
+                    </g>
+                </svg>
+                <span class="path__stop" style="left: 75.48%; top: 34.9%">אבחון</span>
+                <span class="path__stop" style="left: 53.85%; top: 23.9%">הליבה</span>
+                <span class="path__stop" style="left: 33.61%; top: 58.4%">המבנה</span>
+                <span class="path__stop" style="left: 14%; top: 42.5%">העולם</span>
+            </div>
+
+            <div class="path__panels">
+                <article class="path__panel is-active">
+                    <p class="path__q">המוצר שלך טוב.</p>
+                    <h3 class="path__big"><b>אז למה משווים אותו לפי מחיר?</b></h3>
+                    <p class="path__small">כי מבחוץ, הוא עוד נראה כמו כל השאר. ככה זה משתנה:</p>
+                </article>
+
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">00</span><span class="path__en" dir="ltr">Brand Gap</span><h3 class="path__he">אבחון פער המותג</h3></div>
+                    <div class="path__gap" aria-hidden="true">
+                        <div><span>מה שהעסק שלך באמת</span><div class="path__bar path__bar--full"></div></div>
+                        <div><span>מה שרואים ממנו</span><div class="path__bar-row"><div class="path__bar--seen"></div><div class="path__bar--gap">הפער</div></div></div>
+                    </div>
+                    <p class="path__big">מתחילים במרחק בין מה שהעסק שלך באמת, לבין מה שרואים ממנו.</p>
+                    <p class="path__small path__accent">30 דקות · בלי עלות</p>
+                </article>
+
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">01</span><span class="path__en" dir="ltr">The Core</span><h3 class="path__he">הליבה</h3></div>
+                    <div class="path__dna" aria-hidden="true">
+                        <span class="path__dna-w1">למה הוא קיים</span><span class="path__dna-w2">הערכים</span>
+                        <span class="path__dna-core" dir="ltr">DNA</span>
+                        <span class="path__dna-w3">הקול</span><span class="path__dna-w4">מה הוא מסרב להיות</span>
+                    </div>
+                    <p class="path__big">למה המותג קיים, ומה הוא מסרב להיות.</p>
+                    <p class="path__small">מסמך אחד שכל החלטה נשענת עליו.</p>
+                </article>
+
+                <article class="path__panel">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">02</span><span class="path__en" dir="ltr">The Structure</span><h3 class="path__he">המבנה</h3></div>
+                    <div class="path__codex" aria-hidden="true">
+                        <div class="path__card"><b>פלטה</b><span class="path__swatches"><i style="background:#FAF8F3;box-shadow:inset 0 0 0 1px #D4C9BC"></i><i style="background:#E8D8C3"></i><i style="background:#C4765A"></i><i style="background:#6B563F"></i></span></div>
+                        <div class="path__card"><b>טיפוגרפיה</b><span class="path__aa" dir="ltr">Aa · אב</span></div>
+                        <div class="path__card"><b>קול</b><span>״ככה אנחנו מדברות״</span></div>
+                        <div class="path__card"><b>סיפור</b><span>שמלווה כל נקודת מגע</span></div>
+                    </div>
+                    <p class="path__big">הסיפור והשפה של המותג, בקודקס אחד.</p>
+                    <p class="path__small">חוקים שמאפשרים לו לגדול בלי לאבד את עצמו.</p>
+                </article>
+
+                <article class="path__panel" id="pathWorld">
+                    <div class="path__kicker"><span class="path__num" dir="ltr">03</span><span class="path__en" dir="ltr">The World</span><h3 class="path__he">העולם</h3></div>
+                    <div class="pw">
+                        <a class="pw__card" id="pwCard" href="rosee/" aria-label="להיכנס לעולם ROSÉE°"></a>
+                        <div class="pw__cap">
+                            <span class="path__world-name" id="pwName" dir="ltr">ROSÉE°</span>
+                            <span class="pw__line" id="pwLine">הרגע בבוקר שמחזיק יום שלם.</span>
+                            <nav class="pw__links" aria-label="להיכנס לעולם">
+                                <a href="rosee/" dir="ltr">ROSÉE°</a><a href="pancakerie/" dir="ltr">PANCAKERIE°</a><a href="encore/" dir="ltr">ENCORE°</a>
+                            </nav>
+                        </div>
+                    </div>
+                    <p class="path__big">המקום שבו הלקוחה מרגישה שזה שלה, <b>ומפסיקה להשוות.</b></p>
+                </article>
+
+                <article class="path__panel">
+                    <h3 class="path__big"><b>וזה לא נגמר באתר.</b></h3>
+                    <div class="path__stream" aria-hidden="true"><span>פוסט</span><span>סטורי</span><span>ניוזלטר</span><span>דף נחיתה</span><span>קמפיין</span></div>
+                    <p class="path__small">העולם ממשיך לעבוד כל יום, עם</p>
+                    <a class="path__os" href="#brandos" dir="ltr">BrandOS</a>
+                </article>
+
+                <article class="path__panel">
+                    <p class="path__q">הצעד הראשון על הקו</p>
+                    <h3 class="path__big"><b>אבחון פער המותג</b></h3>
+                    <p class="path__small">30 דקות · בלי עלות</p>
+                    <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="path__cta-btn">
+                        לאבחון פער המותג בוואטסאפ
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+      </div>
+    </section>
+    <script>
+    (function () {
+        var sec = document.getElementById('method'); if (!sec) return;
+        var thread = document.getElementById('pathThread'), bead = document.getElementById('pathBead'), roll = document.getElementById('pathBeadRoll');
+        var dots = sec.querySelectorAll('.path__dot'), stops = sec.querySelectorAll('.path__stop'), panels = sec.querySelectorAll('.path__panel');
+        var L = thread.getTotalLength(), R = 11, START = 0.035, STN = [0.24, 0.46, 0.67, 0.87];
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function place(f, op) {
+            var pt = thread.getPointAtLength(f * L);
+            bead.setAttribute('transform', 'translate(' + pt.x.toFixed(1) + ' ' + pt.y.toFixed(1) + ')');
+            roll.setAttribute('transform', 'rotate(' + (-f * L / R * 57.3).toFixed(0) + ')');
+            bead.style.opacity = op;
+        }
+        function lightUp(n) {
+            for (var i = 0; i < dots.length; i++) { dots[i].classList.toggle('is-on', i < n); stops[i].classList.toggle('is-on', i < n); }
+        }
+        // no motion: the thread is drawn, every station is lit, the panels read as a list
+        if (reduce || !('requestAnimationFrame' in window)) { place(START, 1); lightUp(4); return; }
+
+        sec.classList.add('is-live');
+        thread.style.strokeDasharray = L; thread.style.strokeDashoffset = L;
+        var N = panels.length, active = -1, ticking = false;
+        // where the bead rests at the end of each panel: the question, the four stations, past the end, back to the start
+        var rest = [START, STN[0], STN[1], STN[2], STN[3], 1, START];
+        function ease(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }
+        function frame() {
+            ticking = false;
+            var r = sec.getBoundingClientRect(), span = sec.offsetHeight - window.innerHeight;
+            var q = Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
+            var x = q * N, i = Math.min(N - 1, Math.floor(x)), t = x - i;
+            thread.style.strokeDashoffset = (L * (1 - ease(i === 0 ? t / .8 : 1))).toFixed(1);
+            var from = i === 0 ? START : rest[i - 1], to = rest[i], f, op = 1;
+            if (i === N - 1) { f = START; op = ease(t / .4); }          // the bead reappears at the start: the first step
+            else { f = from + (to - from) * ease(t / .45); if (i === N - 2) op = 1 - ease((t - .55) / .35); }
+            place(f, op);
+            lightUp(i === 0 ? 0 : Math.min(4, i));
+            if (i !== active) {
+                if (active >= 0) panels[active].classList.remove('is-active');
+                panels[i].classList.add('is-active'); active = i;
+            }
+        }
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+        panels[0].classList.remove('is-active');
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        frame();
+    })();
+    </script>
+    <script>
+    (function () {
+        // the World station turns the worlds' own dials, the way the reel does
+        var panel = document.getElementById('pathWorld'), card = document.getElementById('pwCard'); if (!panel || !card) return;
+        var cap = panel.querySelector('.pw__cap'), nameEl = document.getElementById('pwName'), lineEl = document.getElementById('pwLine'), links = panel.querySelectorAll('.pw__links a');
+        var D = 'images/bw-lp/dials/';
+        var W = [
+            { key: 'rosee', name: 'ROSÉE°', href: 'rosee/', line: 'הרגע בבוקר שמחזיק יום שלם.', it: "Le Cadran de l'Aube", ht: 'הבוקר הוא מעגל.', pin: '#C28A5A', type: 'ring', r: 28,
+              steps: [ { t: '05:30', n: 'La Brume', img: 'rosee/collection/brume.webp', bg: '#4A3640', ink: '#F7F0E6' },
+                       { t: '06:15', n: 'Le Réveil', img: 'rosee/collection/reveil.webp', bg: '#7A5566', ink: '#F7F0E6' },
+                       { t: '07:00', n: 'Le Voile', img: 'rosee/collection/voile.webp', bg: '#D9B7B3', ink: '#3B2E33' },
+                       { t: '07:45', n: 'La Lumière', img: 'rosee/collection/lumiere.webp', bg: '#EFD9CF', ink: '#3B2E33' },
+                       { t: '22:00', n: 'La Nuit', img: 'rosee/collection/nuit.webp', bg: '#2E2430', ink: '#F7F0E6' } ] },
+            { key: 'pancakerie', name: 'PANCAKERIE°', href: 'pancakerie/', line: 'טעם שרואים לפני שטועמים.', ink: '#402613', type: 'fan', r: 130, arc: 22,
+              steps: [ { t: 'PISTACHE', n: 'פיסטוק', img: D + 'pk-pistache.webp', bg: '#D4CFBA', blob: '#A5A57F' },
+                       { t: 'FRAISE', n: 'תות', img: D + 'pk-fraise.webp', bg: '#EBCFC7', blob: '#D9928A' },
+                       { t: 'NOISETTE', n: 'אגוזי לוז', img: D + 'pk-noisette.webp', bg: '#DCC7AE', blob: '#A9835E' },
+                       { t: 'CITRON', n: 'לימון', img: D + 'pk-citron.webp', bg: '#F0E2B0', blob: '#D8B94E' } ] },
+            { key: 'encore', name: 'ENCORE°', href: 'encore/', line: 'התכשיט שתמיד נשאר עלייך.', it: 'Le Jour', ht: 'תכשיט אחד לכל שעה ביום.', ink: '#F6EEE4', pin: '#D9B26A', type: 'disc',
+              steps: [ { t: '06:00', n: 'שחר · טבעות', img: 'encore/assets/pieces/rings-1.webp', bg: '#6E4E4A', rot: -90 },
+                       { t: '12:00', n: 'צהריים · שרשראות', img: 'encore/assets/pieces/pendants-1.webp', bg: '#34405A', rot: -180 },
+                       { t: '18:00', n: 'שקיעה · צמידים', img: 'encore/assets/pieces/bracelets-1.webp', bg: '#853A26', rot: -270 },
+                       { t: '00:00', n: 'לילה · עגילים', img: 'encore/assets/pieces/earrings-1.webp', bg: '#241212', rot: -360 } ] }
+        ];
+        var dials = W.map(function (w) {
+            var el = document.createElement('div'); el.className = 'pw__dial pw__dial--' + w.key; el.setAttribute('aria-hidden', 'true');
+            var h = '';
+            if (w.it) h += '<div class="pw__head"><div class="pw__it" style="color:' + w.pin + '">' + w.it + '</div><div class="pw__ht">' + w.ht + '</div></div>';
+            if (w.type === 'disc') {
+                var ticks = ''; for (var k = 0; k < 24; k++) { var a = k * 15 * Math.PI / 180, r1 = k % 6 ? 46 : 44; ticks += '<line x1="' + (50 + r1 * Math.sin(a)).toFixed(2) + '" y1="' + (50 - r1 * Math.cos(a)).toFixed(2) + '" x2="' + (50 + 48 * Math.sin(a)).toFixed(2) + '" y2="' + (50 - 48 * Math.cos(a)).toFixed(2) + '"/>'; }
+                h += '<div class="pw__pin" style="color:' + w.pin + '"></div><div class="pw__disc"><svg viewBox="0 0 100 100" fill="none" stroke="#D9B26A" stroke-width=".35"><circle cx="50" cy="50" r="44"/><line x1="14.6" y1="14.6" x2="85.4" y2="85.4"/><line x1="85.4" y1="14.6" x2="14.6" y2="85.4"/>' + ticks + '</svg></div>';
+                h += '<div class="pw__center">' + w.steps.map(function (s) { return '<img data-src="' + s.img + '" alt="">'; }).join('') + '</div>';
+            } else if (w.type === 'ring') {
+                h += '<div class="pw__orbit"></div><div class="pw__pin" style="color:' + w.pin + '"></div><div class="pw__ring">' + w.steps.map(function (s, i) {
+                    var a = i * 360 / w.steps.length;
+                    return '<span style="transform:rotate(' + a + 'deg) translateY(-' + w.r + 'cqw) rotate(' + (-a) + 'deg)"><span><img data-src="' + s.img + '" alt=""></span></span>';
+                }).join('') + '</div>';
+                h += '<div class="pw__center">' + w.steps.map(function (s) { return '<img data-src="' + s.img + '" alt="">'; }).join('') + '</div>';
+            } else {
+                h += '<img class="pw__logo" data-src="pancakerie/assets/logo.webp" alt=""><div class="pw__blob"></div>';
+                h += '<div class="pw__ring">' + w.steps.map(function (s, i) {
+                    return '<span style="transform:rotate(' + (i * w.arc) + 'deg) translateY(-' + w.r + 'cqw)"><span><img data-src="' + s.img + '" alt=""></span></span>';
+                }).join('') + '</div>';
+            }
+            h += '<div class="pw__read"><span class="pw__t"></span><span class="pw__n"></span></div>';
+            el.innerHTML = h; card.appendChild(el); return el;
+        });
+        var cur = 0, step = [0, 0, 0], turns = [0, 0, 0], loaded = false, timer = null;
+        function paint(wi) {
+            var w = W[wi], el = dials[wi], i = step[wi], s = w.steps[i], n = w.steps.length;
+            card.style.backgroundColor = s.bg; el.style.color = s.ink || w.ink;
+            if (w.type === 'disc') el.querySelector('.pw__disc').style.transform = 'rotate(' + (s.rot + turns[wi] * -360) + 'deg)';
+            else {
+                var unit = w.type === 'fan' ? w.arc : 360 / n, rot = -(i * unit) - turns[wi] * (w.type === 'fan' ? 0 : 360);
+                var ring = el.querySelector('.pw__ring'); ring.style.transform = 'rotate(' + rot + 'deg)';
+                if (w.type !== 'fan') ring.querySelectorAll(':scope > span > span').forEach(function (sp) { sp.style.transform = 'rotate(' + (-rot) + 'deg)'; });
+                else el.querySelector('.pw__blob').style.backgroundColor = s.blob;
+            }
+            el.querySelectorAll('.pw__center img').forEach(function (im, k) { im.classList.toggle('is-on', k === i); });
+            el.querySelector('.pw__t').textContent = s.t; el.querySelector('.pw__n').textContent = s.n;
+        }
+        function world(wi) {
+            cur = wi; var w = W[wi];
+            dials.forEach(function (d, k) { d.classList.toggle('is-on', k === wi); });
+            links.forEach(function (a, k) { a.classList.toggle('is-on', k === wi); });
+            card.href = w.href; card.setAttribute('aria-label', 'להיכנס לעולם ' + w.name);
+            cap.classList.add('is-out');
+            setTimeout(function () { nameEl.textContent = w.name; lineEl.textContent = w.line; cap.classList.remove('is-out'); }, 300);
+            paint(wi);
+        }
+        function load() { if (loaded) return; loaded = true; card.querySelectorAll('img[data-src]').forEach(function (im) { im.src = im.getAttribute('data-src'); }); }
+        function tick() {
+            var w = W[cur];
+            if (step[cur] === w.steps.length - 1) { var nx = (cur + 1) % W.length; step[nx] = 0; world(nx); }
+            else { step[cur]++; paint(cur); }
+        }
+        world(0);
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // the dials turn only while the World station is on screen
+        function sync() {
+            var on = panel.classList.contains('is-active') || !panel.closest('.path').classList.contains('is-live');
+            var r = panel.getBoundingClientRect(), inView = r.bottom > 0 && r.top < window.innerHeight;
+            if (on && inView) { load(); if (!timer && !reduce) timer = setInterval(tick, 1300); }
+            else if (timer) { clearInterval(timer); timer = null; }
+        }
+        if ('MutationObserver' in window) new MutationObserver(sync).observe(panel, { attributes: true, attributeFilter: ['class'] });
+        window.addEventListener('scroll', sync, { passive: true });
+        sync();
+    })();
+    </script>
+
+    <!-- ============================================================
+         05 · ABOUT TEASER (shortened)
+         ============================================================ -->
+    <section class="intro section" id="about">
+        <div class="container intro__inner">
+            <div class="intro__content reveal">
+                <span class="intro__label" dir="ltr">The Brand Architect</span>
+                <h2 class="intro__title">אני חגית אנטבי</h2>
+                <span class="intro__divider"></span>
+                <div class="intro__pairs">
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text">מהאסטרטגיה של המותג ועד הקוד שמפעיל אותו — אני מטפלת ב<b>כל השכבה</b>.</span>
+                    </div>
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text"><b>תואר שני באסטרטגיה דיגיטלית.</b> 15+ שנות ניסיון מ-Lifestyle ועד SaaS.</span>
+                    </div>
+                    <div class="intro__pair">
+                        <div class="intro__pair-dot"></div>
+                        <span class="intro__pair-text">מפתחת <b>BrandOS</b> — מערכת ה-AI שעובדת בקול שלכם, יום-יום.</span>
+                    </div>
+                </div>
+                <a href="about.html" class="intro__link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Read More
+                </a>
+            </div>
+            <div class="intro__visual reveal">
+                <div class="intro__bg-shape"></div>
+                <div class="intro__image-frame">
+                    <img src="hagit-portrait-2026.png" alt="חגית אנטבי — אסטרטגית מותג ומייסדת Brand Worlds Studio" class="intro__image">
+                </div>
+                <div class="intro__float-tag">
+                    <p class="intro__float-label" dir="ltr">Brand Worlds Studio</p>
+                    <p class="intro__float-text" dir="ltr">Building worlds, not just brands</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
          07 · CONTACT CTA
          ============================================================ -->
     <!-- ============================================================
          FAQ — GEO prose (visible answers; engines lift prose over schema)
          ============================================================ -->
     <style>
-    .faq { background: var(--color-cream); padding: clamp(64px, 9vw, 108px) 0; }
+    .faq { background: var(--color-cream); padding: clamp(64px, 9vw, 108px) 0; border-top: 1px solid var(--color-light-taupe); }
     .faq__header { text-align: center; max-width: 640px; margin: 0 auto clamp(38px, 5vw, 56px); padding: 0 var(--container-padding); }
     .faq__label { font-family: var(--font-body-en); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-copper); font-weight: 600; margin-bottom: 16px; }
     .faq__title { font-family: var(--font-display); font-size: clamp(28px, 3.6vw, 46px); font-weight: 500; color: var(--color-chocolate); line-height: 1.15; letter-spacing: -0.5px; }
