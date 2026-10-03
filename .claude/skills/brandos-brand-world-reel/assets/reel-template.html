@@ -1,0 +1,224 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Brand World Reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F7F0E6;      /* world background */
+  --w-ink:#3B2E33;     /* world text */
+  --w-accent:#C9878E;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.grey{filter:grayscale(1) contrast(.9) brightness(1.04)}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,98.7%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,98.7%{opacity:1}100%{opacity:0}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,98.7%{opacity:1}100%{opacity:0}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes: EDIT — add each scene's own motion here (percent = s/30*100) ── */
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">NN</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">EDIT: משפט אחד על העולם, מתוך האתר.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl">BRAND° · עולם מותג NN</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">EDIT: התשובה להוק.<br>שורה שנייה.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">EDIT: שאלה חוזרת ללקוחה<br>על העסק שלה.</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+  <!-- A · The Core (0–10s; it is what shows inside the window while the studio presents). EDIT -->
+  <section class="scene" data-show="0,10">
+    <div class="stack" style="background: var(--w-bg)"></div>
+    <!-- frame sequence example:
+    <div class="stack" data-seq="assets/seq/f_%03d.webp" data-from="1" data-to="80" data-by="2" data-start="5.4" data-step="0.06" data-fit="cover" data-pos="50% 50%"></div>
+    -->
+  </section>
+
+  <!-- B · The Visual World (9.7–14.8s). EDIT -->
+  <section class="scene" data-show="9.7,14.8"><div class="stack" style="background: var(--w-bg)"></div></section>
+
+  <!-- C · The Narrative / The Element (14.5–18.8s). EDIT -->
+  <section class="scene" data-show="14.5,18.8"><div class="stack" style="background: var(--w-bg)"></div></section>
+
+  <!-- D · Live Site / Touchpoints (18.5–22.8s). EDIT -->
+  <section class="scene" data-show="18.5,22.8"><div class="stack" style="background: var(--w-bg)"></div></section>
+
+  <!-- E · The Promise (22.5–30s; stays inside the window in the outro, so keep it calm and centred). EDIT -->
+  <section class="scene" data-show="22.5,30"><div class="stack" style="background: var(--w-bg)"></div></section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div>
+  </div>
+  <div class="hq" style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">EDIT: למה תמיד<br>משווים אותך <span style="color: var(--s-copper)">במחיר</span>?</div>
+
+  <!-- proof mechanic 1 · the price card ("ככה משווים") -->
+  <div class="hp" style="position: absolute; top: 640px; left: 260px; width: 560px; box-sizing: border-box; padding: 20px; background: #FFFFFF; border-radius: 20px; box-shadow: 0 24px 60px rgba(62,47,37,.14); display: flex; flex-direction: column; gap: 18px" dir="rtl">
+    <div style="position: relative"><img class="grey" src="EDIT-product.jpg" alt="" style="width: 100%; height: 470px; object-fit: cover; border-radius: 12px; display: block"><span style="position: absolute; top: 14px; right: 14px; padding: 8px 18px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 22px">ככה משווים</span></div>
+    <div style="display: flex; justify-content: space-between; font-size: 26px; color: #6E6660"><span>EDIT: שם גנרי · 30ml</span><strong style="color: #2E2A27">₪000</strong></div>
+  </div>
+
+  <!-- proof mechanic 2 · the hidden logo (delete mechanic 1 when using this)
+  <div class="hp" style="position: absolute; top: 640px; left: 190px; width: 700px; height: 820px; border-radius: 24px; overflow: hidden">
+    <img class="cover" src="EDIT-product-with-logo.jpg" alt="">
+    <div class="hbar" style="position: absolute; left: 20%; right: 20%; top: 46%; height: 90px; background: var(--s-copper); border-radius: 8px"></div>
+  </div> -->
+
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1690 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1690 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג NN</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">EDIT: ההבטחה במשפט</span></div>
+    <div class="stack" data-show="9.9,14.7" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · The Visual World</span><span style="font-size: 22px; color: var(--s-ink)">EDIT</span></div>
+    <div class="stack" data-show="14.7,18.7" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · The Narrative</span><span style="font-size: 22px; color: var(--s-ink)">EDIT</span></div>
+    <div class="stack" data-show="18.7,22.7" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · Live Site</span><span style="font-size: 22px; color: var(--s-ink)">EDIT</span></div>
+    <div class="stack" data-show="22.7,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">EDIT</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

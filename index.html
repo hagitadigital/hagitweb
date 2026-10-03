@@ -2315,7 +2315,7 @@ document.addEventListener('DOMContentLoaded', function () {
           document.getElementById('lwName').textContent = b.dataset.name; document.getElementById('lwNo').textContent = b.dataset.no;
           document.getElementById('lwLine').textContent = b.dataset.line;
           var go = document.getElementById('lwGo'); go.href = k + '/'; go.textContent = 'להיכנס לעולם \u2066' + b.dataset.name + '\u2069 ←';
-          v.poster = 'images/home-worlds/live/films/' + k + '.jpg'; v.src = 'images/home-worlds/live/films/' + k + '.mp4';
+          v.poster = 'images/home-worlds/live/films/' + k + '.jpg?v=20261003'; v.src = 'images/home-worlds/live/films/' + k + '.mp4?v=20261003';
           dlg.showModal(); var p = v.play(); if (p && p.catch) p.catch(function () {});
           if (window.gtag) gtag('event', 'world_film_open', { world: k });
         });
