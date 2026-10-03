@@ -30,7 +30,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -42,8 +42,8 @@
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
             --color-dark: #3D3530;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -443,6 +443,10 @@
                 gap: 16px;
             }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
     <script type="application/ld+json">
     {
@@ -541,7 +545,7 @@
                 <p class="hero__subtitle">יצירת תוכן ויזואלי מבוסס AI - מתמונות מוצר ותדמית ועד סרטונים וקמפיינים שלמים.</p>
             </div>
             <div class="hero__image">
-                <img src="cube_ai1.jpg" alt="AI Visuals">
+                <img width="1657" height="1536" src="cube_ai1.jpg" alt="AI Visuals">
             </div>
         </div>
     </section>
@@ -595,13 +599,13 @@
             </div>
             <div class="gallery__grid">
                 <div class="gallery__item">
-                    <img src="world-frite.jpg" alt="LE FRITE">
+                    <img width="1340" height="2000" src="world-frite.jpg" alt="LE FRITE">
                 </div>
                 <div class="gallery__item">
-                    <img src="world-popcorn.jpg" alt="CINEMA SKIN">
+                    <img width="1340" height="2000" src="world-popcorn.jpg" alt="CINEMA SKIN">
                 </div>
                 <div class="gallery__item">
-                    <img src="world-noodles.jpg" alt="SKIN NOODLES">
+                    <img width="1024" height="1024" src="world-noodles.jpg" alt="SKIN NOODLES">
                 </div>
             </div>
         </div>

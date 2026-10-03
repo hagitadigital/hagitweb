@@ -29,7 +29,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -41,8 +41,8 @@
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
             --color-dark: #3D3530;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -416,6 +416,10 @@
         .answer a, .compare a, .bridge a, .faq a, .services__card a, .process a { color: var(--color-copper); text-decoration: underline; text-decoration-color: var(--color-light-taupe); text-underline-offset: 3px; }
         .cta__btn { font-family: var(--font-body-he); font-size: 1rem; letter-spacing: 0; text-transform: none; }
         .cta__btn svg { transform: scaleX(-1); }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
   <!-- Schema: Service -->
@@ -478,7 +482,7 @@
   <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"WebPage","@id":"https://hagitantebi.co.il/brand-architecture.html",
   "name":"ארכיטקטורת מותג ושפה מותגית","inLanguage":"he-IL",
-  "datePublished":"2026-03-01","dateModified":"2026-09-08",
+  "datePublished":"2026-03-01T09:00:00+02:00","dateModified":"2026-09-08T09:00:00+03:00",
   "author":{"@type":"Person","@id":"https://hagitantebi.co.il/about.html#hagit"},
   "citation":[
     {"@type":"CreativeWork","name":"Lucidpress (Marq), The State of Brand Consistency, 2019","url":"https://www.prnewswire.com/news-releases/study-finds-companies-with-consistent-branding-can-see-up-to-33-increase-in-revenue-300967219.html"},
@@ -514,7 +518,7 @@
                 <p class="hero__subtitle">התשתית שמתחת לעולם המותג: אסטרטגיה, זהות, שפה ו-Guidelines. מהליבה ועד לכל נקודת מגע.</p>
             </div>
             <div class="hero__image">
-                <img src="cubestarg.jpg" alt="ארכיטקטורת מותג: קוביות שנבנות לתשתית אחת">
+                <img width="1770" height="1536" src="cubestarg.jpg" alt="ארכיטקטורת מותג: קוביות שנבנות לתשתית אחת">
             </div>
         </div>
     </section>

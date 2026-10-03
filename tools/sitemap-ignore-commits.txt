@@ -1,0 +1,17 @@
+# Commits that touched many pages without changing what a reader gets.
+# tools/build-sitemap.py skips them when it looks for a page's lastmod.
+# Format: <sha> [!path ...]  # reason
+#   !path = the commit still counts for that page (it made a real change there).
+# Most cosmetic sweeps (tracking tags, scripts, footer links, href swaps) are already
+# invisible to the content fingerprint; list a commit here only when it also touched copy.
+
+8a40ec2 !en/about.html          # 5.9 entity sweep: name form + "15+ years" on 83 pages (created en/about.html)
+84d62a1                         # 5.9 entity sweep: 70 self-descriptions, labels, footers
+1d84315                         # 1.9 GA4 tag on all 121 pages
+17dbee5                         # 31.8 Meta pixel + world signals on 25 pages
+0c95db6 !links.html             # 10.9 GA4 live-only guard on all pages (links.html rebuilt as IG landing)
+69b8eb0 !terms.html !accessibility.html  # 10.9 legal links on all worlds (terms + statement really changed)
+0c7e105                         # 15.9 studio contact chip on 29 world pages
+659e8bc                         # 2.10 broken internal link fixes
+4c36fdc                         # 2.10 internal-linking pass (in-text links, guides strip, complementary guides list)
+655f7c1                         # 2.10 ARCO° card removed from the homepage rail

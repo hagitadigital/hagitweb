@@ -17,6 +17,7 @@
   <meta property="og:title" content="הפסקתי לבקש מ-AI לכתוב עברית — וככה פתרתי את זה">
   <meta property="og:description" content="הסקיל החדש שלי לקרוסלות מפריד תפקידים: AI מייצר רקע, HTML/CSS מרכיב טיפוגרפיה. רנדור עברית 100% מדויק עם Brand DNA פר-לקוח.">
   <meta property="og:image" content="https://hagitantebi.co.il/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png">
+  <meta property="og:image:alt" content="מניפה של שבעה כרטיסים לבנים, על כל אחד אובייקט — כדור נחושת, קובייה, טבעת">
   <meta property="og:url" content="https://hagitantebi.co.il/carousel-skill-html-rendering.html">
   <meta property="og:site_name" content="חגית אנטבי — Brand Worlds Studio">
   <meta property="article:author" content="חגית אנטבי">
@@ -27,11 +28,12 @@
   <meta name="twitter:title" content="הפסקתי לבקש מ-AI לכתוב עברית — וככה פתרתי את זה">
   <meta name="twitter:description" content="Claude Skill לקרוסלות עם רנדור HTML/CSS. case study אמיתי מ-Brand Worlds Studio.">
   <meta name="twitter:image" content="https://hagitantebi.co.il/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png">
+  <meta name="twitter:image:alt" content="מניפה של שבעה כרטיסים לבנים, על כל אחד אובייקט — כדור נחושת, קובייה, טבעת">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Schema: Article -->
   <script type="application/ld+json">
@@ -47,8 +49,8 @@
     "url": "https://hagitantebi.co.il",
     "jobTitle": "אסטרטגית מותג ומייסדת Brand Worlds Studio, מפתחת BrandOS"
   },
-  "datePublished": "2026-05-05",
-  "dateModified": "2026-06-04",
+  "datePublished": "2026-05-05T09:00:00+03:00",
+  "dateModified": "2026-06-04T09:00:00+03:00",
   "publisher": {
     "@type": "Organization",
     "name": "Brand Worlds Studio",
@@ -160,8 +162,8 @@
       --color-light-taupe: #D4C9BC;
       --color-text-deep: #4F372C;
 
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body-en: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+      --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
       --font-body-he: 'Heebo', sans-serif;
       --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -690,7 +692,11 @@
       .article-header { padding-top: 110px; }
       .article-body p, .article-body li { font-size: 1rem; }
     }
-  </style>
+  
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    </style>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -730,7 +736,7 @@
 
   <!-- Hero Image -->
   <div class="hero-img">
-    <img src="/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png" alt="קומפוזיציית 7 קלפים אנכיים בגווני קרם ונחושת — מטאפורה לקרוסלה כסדרת דפי נחיתה במידות 1080×1350" loading="eager">
+    <img width="1376" height="768" src="/carousel-skill-html-rendering/HERO-carousel-skill-html-rendering.png" alt="קומפוזיציית 7 קלפים אנכיים בגווני קרם ונחושת — מטאפורה לקרוסלה כסדרת דפי נחיתה במידות 1080×1350" loading="eager">
   </div>
 
   <!-- Article Body -->
@@ -749,11 +755,11 @@
 
     <div class="pair">
       <figure>
-        <img src="/carousel-skill-html-rendering/old-approach-bg.png" alt="רקע מ-AI image — אובייקט פיסולי, רקע נקי, בלי טקסט">
+        <img width="1080" height="1350" src="/carousel-skill-html-rendering/old-approach-bg.png" alt="רקע מ-AI image — אובייקט פיסולי, רקע נקי, בלי טקסט">
         <figcaption>הרקע מ-AI</figcaption>
       </figure>
       <figure>
-        <img src="/carousel-skill-html-rendering/old-approach-final.png" alt="תוצר סופי מהסקיל הישן — רקע יפה אבל טקסט עברית עם שגיאות אותיות">
+        <img width="1080" height="1350" src="/carousel-skill-html-rendering/old-approach-final.png" alt="תוצר סופי מהסקיל הישן — רקע יפה אבל טקסט עברית עם שגיאות אותיות">
         <figcaption>התוצר הסופי</figcaption>
       </figure>
     </div>
@@ -861,7 +867,7 @@
     <p>לא כל קרוסלה מסתפקת באובייקטים פיסוליים מ-CSS. לפעמים צריך תמונה אמיתית — צילום מוצר, פורטרט לקוח, screenshot של עבודה, mockup. הסקיל תומך בזה בכל טיפוס שקף שמאפשר ויזואל: התמונה נשמרת ב-<code>images/slide-N-description.jpg</code>, מצויינת ב-<code>content.json</code> תחת השדה <code>image</code>, וה-HTML מציג אותה במקום האלמנט הפיסולי.</p>
 
     <div class="inline-img">
-      <img src="/carousel-skill-html-rendering/spectra-slide-4.png" alt="שקף מקרוסלת Spectra AI שמשלב 3 תמונות אמיתיות של עבודות — film, keynote, landing — בתוך גריד מעוצב">
+      <img width="2160" height="2700" src="/carousel-skill-html-rendering/spectra-slide-4.png" alt="שקף מקרוסלת Spectra AI שמשלב 3 תמונות אמיתיות של עבודות — film, keynote, landing — בתוך גריד מעוצב">
       <p class="caption">שקף מקרוסלת Spectra AI עם שילוב של 3 תמונות אמיתיות בגריד. הטיפוגרפיה ממשיכה להיכתב ב-HTML על גבי הגריד.</p>
     </div>
 
@@ -873,22 +879,22 @@
 
     <div class="gallery">
       <div class="gallery-item">
-        <img src="/carousel-skill-html-rendering/manifesto-slide-3.png" alt="שקף 3 מקרוסלת Brand Worlds Manifesto — concept-with-visual עם פיסול CSS וטיפוגרפיה בעברית" loading="lazy">
+        <img width="2160" height="2700" src="/carousel-skill-html-rendering/manifesto-slide-3.png" alt="שקף 3 מקרוסלת Brand Worlds Manifesto — concept-with-visual עם פיסול CSS וטיפוגרפיה בעברית" loading="lazy">
         <h4>Brand Worlds Manifesto</h4>
         <p>המניפסט של הסטודיו ב-7 שקפים. סיגנייצ'ר Brand Worlds — קרם, נחושת, פיסולי CSS.</p>
       </div>
       <div class="gallery-item">
-        <img src="/carousel-skill-html-rendering/spectra-slide-1.png" alt="שקף פתיחה מקרוסלת Spectra AI — opening עם ליבה זוהרת וטיפוגרפיה בכחול עמוק" loading="lazy">
+        <img width="2160" height="2700" src="/carousel-skill-html-rendering/spectra-slide-1.png" alt="שקף פתיחה מקרוסלת Spectra AI — opening עם ליבה זוהרת וטיפוגרפיה בכחול עמוק" loading="lazy">
         <h4>Spectra AI</h4>
         <p>קרוסלה ל-case study של Spectra. פלטה כחולה-זהובה, שילוב של 3 תמונות עבודה אמיתיות.</p>
       </div>
       <div class="gallery-item">
-        <img src="/carousel-skill-html-rendering/strawberry-slide-1.png" alt="שקף פתיחה מקרוסלת Strawberry Symphony — opening עם פלטת ורוד-בורגונדי" loading="lazy">
+        <img width="2160" height="2700" src="/carousel-skill-html-rendering/strawberry-slide-1.png" alt="שקף פתיחה מקרוסלת Strawberry Symphony — opening עם פלטת ורוד-בורגונדי" loading="lazy">
         <h4>Strawberry Symphony</h4>
         <p>קרוסלה לפרויקט קונספט שוקולד. Brand DNA נפרד — ורוד-בורגונדי, פונטים אחרים, תחושה אחרת.</p>
       </div>
       <div class="gallery-item">
-        <img src="/carousel-skill-html-rendering/aivideolab-slide-1.png" alt="שקף פתיחה מקרוסלת AI Video Lab — opening עם פלטת אינדיגו וזהב" loading="lazy">
+        <img width="2160" height="2700" src="/carousel-skill-html-rendering/aivideolab-slide-1.png" alt="שקף פתיחה מקרוסלת AI Video Lab — opening עם פלטת אינדיגו וזהב" loading="lazy">
         <h4>AI Video Lab</h4>
         <p>קרוסלה ל-hub של מעבדת הווידאו. פלטה כהה, אווירה קולנועית, שילוב כותרים באנגלית.</p>
       </div>

@@ -73,7 +73,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -84,8 +84,8 @@
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
             --color-pink: #FFB5C5;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -415,6 +415,10 @@
             .content__list li { flex-direction: column; gap: 4px; }
             .content__list strong { min-width: auto; }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
 <!-- GEO: FAQPage -->
@@ -466,7 +470,7 @@
     </nav>
 
     <section class="hero">
-        <img src="frost.png" alt="FROST Brand World" class="hero__image">
+        <img width="2000" height="1211" src="frost.png" alt="FROST Brand World" class="hero__image">
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <p class="hero__category">Beauty & Lifestyle</p>
@@ -555,16 +559,16 @@
         <div class="gallery__inner">
             <div class="gallery__grid">
                 <div class="gallery__item gallery__item--wide">
-                    <img src="frost-website.png" alt="FROST Website">
+                    <img width="1024" height="565" src="frost-website.png" alt="FROST Website">
                 </div>
                 <div class="gallery__item">
-                    <img src="frost-beach.png" alt="FROST Beach">
+                    <img width="1024" height="565" src="frost-beach.png" alt="FROST Beach">
                 </div>
                 <div class="gallery__item">
-                    <img src="frost-tower.png" alt="FROST Products">
+                    <img width="1024" height="565" src="frost-tower.png" alt="FROST Products">
                 </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="frost-paris.png" alt="FROST Paris">
+                    <img width="1024" height="559" src="frost-paris.png" alt="FROST Paris">
                 </div>
             </div>
         </div>

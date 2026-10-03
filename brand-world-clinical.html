@@ -55,19 +55,21 @@
     <meta property="og:title" content="מותג בגובה של מי שבנה אותו. עולם מותג אחד.">
     <meta property="og:description" content="לרופאי עור, מומחי אסתטיקה ומייסדי מותגי טיפוח. אני מאחדת את האתר, התוכן והווידאו לעולם מותג אחד — DNA אחד, שפה אחת. אבחון פער המותג · ללא עלות.">
     <meta property="og:image" content="https://hagitantebi.co.il/basalt/og.jpg">
+    <meta property="og:image:alt" content="בקבוק כהה של BASALT על רקע כחול-לילה, עם הכיתוב Resurface. Quietly.">
     <meta property="og:locale" content="he_IL">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="מותג בגובה של מי שבנה אותו. עולם מותג אחד.">
     <meta name="twitter:description" content="רפואת עור, אסתטיקה ומותגי טיפוח — אתר, תוכן ווידאו בעולם אחד עם DNA אחד. אבחון פער המותג · ללא עלות.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/basalt/og.jpg">
+    <meta name="twitter:image:alt" content="בקבוק כהה של BASALT על רקע כחול-לילה, עם הכיתוב Resurface. Quietly.">
 
     <!-- LCP: paint the hero poster as early as possible -->
     <link rel="preload" as="image" href="basalt/assets/shot-sm.webp" fetchpriority="high">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -81,8 +83,8 @@
             --color-light-taupe: #D4C9BC;
             --color-dark-bg: #1A1612;
             --color-dark-bg-2: #0F0D0B;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
             --container-max: 1400px;
             --container-padding: clamp(24px, 5vw, 80px);
@@ -383,6 +385,8 @@
             .nav-minimal__logo { font-size: 1.2rem; }
             .nav-minimal__cta { padding: 8px 15px; font-size: 0.8125rem; white-space: nowrap; }
         }
+    
+        :where(img[width][height]){height:auto}
     </style>
 
     <!-- ===== New carousel hero (scoped under .bw-hero) ===== -->
@@ -507,6 +511,8 @@
     .ugc-card.playing .ugc-card__sound{ background:var(--color-copper); border-color:var(--color-copper); }
     .ugc-card.playing .ugc-card__sound .i-on{ display:block; }
     .ugc-card.playing .ugc-card__sound .i-mute{ display:none; }
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
     <script type="application/ld+json">
@@ -791,11 +797,11 @@
               <span class="bw-mark">BASALT</span>
               <div class="wset">
                 <div class="t">
-                  <img src="basalt/assets/shot-sm.webp" alt="BASALT — אתר מותג חי" loading="lazy" style="object-position:50% 40%">
+                  <img width="720" height="899" src="basalt/assets/shot-sm.webp" alt="BASALT — אתר מותג חי" loading="lazy" style="object-position:50% 40%">
                   <span class="world__live">Live</span>
                 </div>
-                <div class="t"><img src="basalt/assets/line-sm.webp" alt="BASALT — קו המוצרים" loading="lazy"></div>
-                <div class="t"><img src="basalt/assets/clinic.jpg" alt="BASALT — הקליניקה" loading="lazy" style="object-position:50% 40%"></div>
+                <div class="t"><img width="640" height="800" src="basalt/assets/line-sm.webp" alt="BASALT — קו המוצרים" loading="lazy"></div>
+                <div class="t"><img width="1200" height="1490" src="basalt/assets/clinic.jpg" alt="BASALT — הקליניקה" loading="lazy" style="object-position:50% 40%"></div>
                 <div class="t t--agent"><span>"שאל אותי<br>על BASALT"</span></div>
               </div>
             </div>
@@ -850,7 +856,7 @@
             </div>
             <div class="worlds-grid">
                 <a href="basalt/" class="world-card reveal" target="_blank" rel="noopener">
-                    <img class="world-card__media" src="basalt/assets/shot-sm.webp" alt="BASALT — עולם מותג לרפואת עור ואסתטיקה" loading="lazy">
+                    <img width="720" height="899" class="world-card__media" src="basalt/assets/shot-sm.webp" alt="BASALT — עולם מותג לרפואת עור ואסתטיקה" loading="lazy">
                     <span class="world-card__live">Live</span>
                     <div class="world-card__overlay">
                         <span class="world-card__name">BASALT</span>
@@ -868,7 +874,7 @@
                     </div>
                 </a>
                 <a href="soluna.html" class="world-card reveal" target="_blank" rel="noopener">
-                    <img class="world-card__media" src="brand-worlds/card-soluna.jpg" alt="SOLUNA — עולם מותג Wellness" loading="lazy">
+                    <img width="1000" height="1250" class="world-card__media" src="brand-worlds/card-soluna.jpg" alt="SOLUNA — עולם מותג Wellness" loading="lazy">
                     <span class="world-card__live">Live</span>
                     <div class="world-card__overlay">
                         <span class="world-card__name">SOLUNA</span>
@@ -908,7 +914,7 @@
                     <span class="ugc-card__tag">AURELLE</span>
                 </div>
                 <div class="ugc-card">
-                    <img src="basalt/assets/model-sm.webp" alt="BASALT — תוכן ממותג" loading="lazy">
+                    <img width="640" height="853" src="basalt/assets/model-sm.webp" alt="BASALT — תוכן ממותג" loading="lazy">
                     <span class="ugc-card__tag">BASALT</span>
                 </div>
                 <div class="ugc-card">

@@ -20,16 +20,18 @@
     <meta property="og:title" content="BrandOS Custom — מערכת מותג חכמה בהתאמה אישית">
     <meta property="og:description" content="ה־Operating System של המותג שלך. שירות הדגל של Brand Worlds Studio — סטודיו של אחת + מערך סוכני AI.">
     <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta property="og:image:alt" content="כדור זכוכית חלבי מרחף מעל תשע קוביות אבן טרוורטין — Brand Worlds Studio">
     <meta property="og:locale" content="he_IL">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BrandOS Custom | Brand Worlds Studio">
     <meta name="twitter:description" content="מערכת מותג חכמה בהתאמה אישית — שירות הדגל של Brand Worlds Studio.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta name="twitter:image:alt" content="כדור זכוכית חלבי מרחף מעל תשע קוביות אבן טרוורטין — Brand Worlds Studio">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -43,8 +45,8 @@
             --color-light-taupe: #D4C9BC;
             --color-dark-bg: #1A1612;
             --color-dark-bg-2: #0F0D0B;
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
             --container-max: 1400px;
             --container-padding: clamp(24px, 5vw, 80px);
@@ -199,6 +201,19 @@
             color: var(--color-chocolate);
         }
         .section--dark .section-lede { color: rgba(250, 248, 243, 0.85); }
+
+        /* What is a brand OS (merged from what-is-brand-os) */
+        .brand-os-def { max-width: 820px; margin: 0 auto; font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.9; color: var(--color-ink); }
+        .brand-os-def p { margin-bottom: 24px; }
+        .brand-os-def a { color: #A45839; }
+        .brand-os-def .section-label { color: #A45839; }
+        .brand-os-compare { width: 100%; border-collapse: collapse; margin: 8px 0 40px; font-size: 0.95rem; }
+        .brand-os-compare th, .brand-os-compare td { padding: 14px 12px; text-align: right; border-bottom: 1px solid var(--color-light-taupe); vertical-align: top; }
+        .brand-os-compare thead th { font-weight: 600; color: var(--color-ink); border-bottom: 2px solid var(--color-copper); }
+        .brand-os-compare td:first-child { font-weight: 500; }
+        .brand-os-compare td:nth-child(2) { color: #7A6349; }
+        .brand-os-faq h3 { font-family: var(--font-body-he); font-size: 1.125rem; font-weight: 600; margin: 32px 0 8px; color: var(--color-ink); }
+        @media (max-width: 600px) { .brand-os-compare { font-size: 0.875rem; } .brand-os-compare th, .brand-os-compare td { padding: 10px 6px; } }
 
         /* WhyNotAnotherAI */
         .why-not__copy {
@@ -776,6 +791,8 @@
             .hero-ctas { flex-direction: column; }
             .hero-ctas a { width: 100%; justify-content: center; }
         }
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
     <script type="application/ld+json">
@@ -864,6 +881,22 @@
   "@type": "FAQPage",
   "@id": "https://hagitantebi.co.il/brandos-custom.html#faq",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "מה זה מערכת הפעלה למותגים?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "מערכת AI שנבנית סביב ה-Brand DNA של העסק: תוכן, ויזואל, סוכני AI, אוטומציות ואתר — הכול נגזר מאותה ליבה ומדבר בשפה אחת. בניגוד לכלי AI גנרי שמתחיל מאפס בכל פעם, מערכת הפעלה למותגים מכירה את המותג ומפעילה אותו."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מהו Brand DNA ולמה הוא הבסיס לכל דבר?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brand DNA הוא הפרופיל הגנטי של המותג: המהות, הקול, מה הוא לא אומר, התחושה שהוא משדר ולמי הוא מדבר. הוא נכתב בשיחה אישית ונשמר כ-Skill שכלי ה-AI קוראים בכל יצירה. בלי DNA, כל כלי AI ייצר תוכן שנשמע כמו כולם."
+      }
+    },
     {
       "@type": "Question",
       "name": "מה זה BrandOS Custom ובמה הוא שונה מכלי AI רגיל?",
@@ -958,6 +991,39 @@
                 <p>כל עסק היום מוצף בכלים. ChatGPT, Midjourney, Canva, אוטומציות. הבעיה היא לא הכלים — הבעיה היא שאף אחד מהם לא יודע מי אתם.</p>
                 <p>BrandOS Custom פותר את זה. אני בונה לעסק שלך מערכת מותג חכמה שמרכזת את הידע, השפה, המסרים, הקהל, השירותים והתהליכים — ואז מחברת את זה לנכסים ולכלים שאתם באמת צריכים. כל כלי בינה מלאכותית שתשתמשו בו אחרי זה — יודע מי אתם, מה אתם אומרים, ואיך אתם נשמעים. והמערכת עצמה לא שכורה ולא במנוי: היא נכס דיגיטלי שנשאר בבעלות העסק.</p>
                 <span class="why-not__pull">השם נשאר BrandOS. הביצוע משתנה לפי העסק.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is a brand OS — merged from what-is-brand-os.html -->
+    <section class="section" id="what-is-brand-os">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label" style="color:#A45839">Brand Operating System</p>
+                <h2 class="section-title">מה זה מערכת הפעלה למותגים — ולמה העסק שלך צריך אחת?</h2>
+            </div>
+            <div class="brand-os-def reveal">
+                <p><strong>מערכת הפעלה למותגים (Brand Operating System) היא מערכת AI שנבנית סביב ה-Brand DNA של העסק</strong> — כך שהתוכן, הוויזואל, האתר, הסרטונים ואפילו הסוכן שעונה ללקוחות נגזרים כולם מאותה ליבה, ומדברים בשפה אחת. המותג לא צריך רק אסטרטגיה — הוא צריך מנוע שיודע להפעיל אותה.</p>
+                <p>כל פעם שפותחים כלי AI גנרי, מתחילים מאפס: הטון משתנה, הצבעים לא עקביים, והמותג לא מתחזק עם הזמן — הוא מידלדל. זו לא בעיה של הכלים; זו בעיה של ארכיטקטורה. כלי בלי זיכרון מותגי לא יכול לייצר עקביות מותגית, לא משנה כמה הפרומפט טוב. את העיקרון המושגי מאחורי זה פירטתי ב<a href="brand-as-os.html">המותג שלך כ-OS: האדריכלות הפנימית של מותג</a>.</p>
+                <table class="brand-os-compare">
+                    <caption class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">השוואה בין כלי AI גנריים למערכת הפעלה למותגים</caption>
+                    <thead><tr><th scope="col"></th><th scope="col">ChatGPT / Canva</th><th scope="col">מערכת הפעלה למותגים</th></tr></thead>
+                    <tbody>
+                        <tr><td>מכיר את המותג</td><td>מתחיל מאפס כל פעם</td><td>Brand DNA מובנה</td></tr>
+                        <tr><td>עקביות</td><td>כל פוסט נשמע אחרת</td><td>קול אחיד תמיד</td></tr>
+                        <tr><td>תמונות</td><td>תמונות גנריות</td><td>סגנון ויזואלי מותאם</td></tr>
+                        <tr><td>עברית</td><td>טיפוגרפיה עברית שבורה</td><td>נבנתה לעברית מהיסוד</td></tr>
+                        <tr><td>סוכן AI ללקוחות</td><td>בוט גנרי, אם בכלל</td><td>עונה בשפת המותג, מחובר ל-CRM</td></tr>
+                        <tr><td>אתר, תוכן ווידאו</td><td>כלי נפרד לכל דבר</td><td>מערכת אחת, DNA אחד</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>זה לא קונספט על נייר — זה רץ אצלי בפרודקשן.</strong> הסוכן שעונה לפניות בעסק שלי, מערכת ההצעות החתומות דיגיטלית, הקרוסלות והסרטונים בפיד — כולם מודולים של BrandOS שרצים אצלי כל יום. גם <a href="brand-worlds/">עולמות המותג החיים</a> באתר נבנו באותה שיטה: Brand DNA קודם, ביצוע אחר כך. ואת ההבדל בין <a href="ai-agent-vs-chatbot-vs-automation.html">סוכן AI אמיתי לבין צ'אטבוט</a> אפשר לחוות, לא רק לקרוא עליו.</p>
+                <div class="brand-os-faq">
+                    <h3>מה זה מערכת הפעלה למותגים?</h3>
+                    <p>מערכת AI שנבנית סביב ה-Brand DNA של העסק: תוכן, ויזואל, סוכני AI, אוטומציות ואתר — הכול נגזר מאותה ליבה ומדבר בשפה אחת. בניגוד לכלי AI גנרי שמתחיל מאפס בכל פעם, מערכת הפעלה למותגים מכירה את המותג ומפעילה אותו.</p>
+                    <h3>מהו Brand DNA ולמה הוא הבסיס לכל דבר?</h3>
+                    <p>Brand DNA הוא הפרופיל הגנטי של המותג: המהות, הקול, מה הוא לא אומר, התחושה שהוא משדר ולמי הוא מדבר. הוא נכתב בשיחה אישית ונשמר כ-Skill שכלי ה-AI קוראים בכל יצירה — <a href="brand-dna-as-skill.html">המדריך המלא ל-Brand DNA כ-Skill</a>. בלי DNA, כל כלי AI ייצר תוכן שנשמע כמו כולם.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1364,6 +1430,32 @@
                     <p>אני <strong>אסטרטגית מותג ומייסדת Brand Worlds Studio</strong> — Brand Worlds Architect — ומפתחת <strong>BrandOS</strong>. בניתי את הסטודיו כדי לעזור לעסקים לבנות מותגים שעובדים בעידן ה־AI: מותגים שלא רק נראים טוב, אלא רצים — אוטומציות, סוכנים, תוכן וחוויות שמופעלים על תשתית אחת.</p>
                     <p>יש לי תואר שני באסטרטגיה דיגיטלית, רקע של 15+ שנים בשיווק ובניית מותגים, וניסיון מעמיק עם כל כלי ה־AI המתקדמים — Midjourney, Runway, Kling, Seedance, Veo, CapCut, Suno, Claude, Gemini.</p>
                     <p><strong>BrandOS</strong> היא הפלטפורמה שאני בניתי. <strong>Custom</strong> היא הדרך שבה אני עוזרת לעסקים מבוססים לקבל את ההתאמה המלאה — <em style="color: var(--color-copper); font-style: normal;">Built to Strategy. Run by AI.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (visible copy of the FAQPage schema; the first two answers live in #what-is-brand-os) -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label" style="color:#A45839">שאלות נפוצות</p>
+                <h2 class="section-title">מה עוד שואלים על BrandOS Custom</h2>
+            </div>
+            <div class="brand-os-def">
+                <div class="brand-os-faq">
+                    <h3>מה זה BrandOS Custom ובמה הוא שונה מכלי AI רגיל?</h3>
+                    <p>BrandOS Custom הוא שירות הדגל של Brand Worlds Studio: מערכת מותג שלמה שנבנית מאפס לעסק ספציפי ומופעלת ב-AI. ההבדל מכלי AI גנרי כמו ChatGPT או Midjourney הוא שהכלים האלה לא יודעים מי אתם — הם מתחילים מאפס בכל פעם. BrandOS Custom מרכז את הידע, השפה, המסרים, הקהל, השירותים והתהליכים של העסק לתוך Brand DNA מתועד, ואז מחבר אותו לנכסים ולכלים. כל כלי AI שתשתמשו בו אחרי זה יודע מי אתם ואיך אתם נשמעים.</p>
+                    <h3>מאילו מודולים מורכבת מערכת BrandOS Custom?</h3>
+                    <p>המערכת מורכבת מתת-קבוצה של שישה מודולים, שנבחרים בשיחת האפיון לפי הצורך של העסק: Brand DNA Foundation (הליבה — כלול בכל חבילה ולא אופציונלי), Content Engine (פלטפורמת BrandOS עם סוכן AI מובנה, יצירת תמונות, הנפשות ויומן תוכן), Content Repurposing (המרת סרטונים למאמרי SEO/GEO ממותגים), Brand Worlds (אתרים מונפשים ודפי נחיתה חיים), סוכני AI ואוטומציות, ומאגרי ידע ותסריטי מכירה. השם נשאר BrandOS — הביצוע משתנה לפי הלקוח.</p>
+                    <h3>איך מתנהל התהליך וכמה זמן הוא לוקח?</h3>
+                    <p>התהליך בנוי מארבעה שלבים. שלב 01 — אפיון עומק: שיחות עומק, איסוף חומרים וניתוח שוק ומתחרים, 1–2 שבועות. שלב 02 — בניית Brand DNA, המסמך המרכזי שכולל Essence, Promise, קול, אישיות, ערכים, מסרים ופלטה ויזואלית, 1–2 שבועות. שלב 03 — הרכבת המעטפת ובניית המודולים שנבחרו, 3–6 שבועות לפי היקף. שלב 04 — ליווי והפעלה שוטפים, מתמשך.</p>
+                    <h3>מי מבצע את העבודה בפועל?</h3>
+                    <p>Brand Worlds Studio פועל במודל של סטודיו של אחת בתוספת מערך סוכני AI — Built to Strategy. Run by AI. חגית אנטבי, אסטרטגית מותג ומייסדת Brand Worlds Studio, עם 15+ שנות ניסיון בבניית מותגים דיגיטליים, עומדת בראש הסטודיו ומובילה כל פרויקט. מערך סוכני ה-AI מבצע את העבודה התפעולית תחת שיפוט מקצועי שלה. הלקוח עובד ישירות עם האסטרטגית הראשית — בלי שכבות ובלי העברה לעובד זוטר אחרי החתימה.</p>
+                    <h3>מה קורה למערכת אם מפסיקים את ההתקשרות?</h3>
+                    <p>המערכת נשארת אצל הלקוח. ה-Brand DNA, האוטומציות והנכסים כולם מתועדים ושייכים לעסק. גם אם הקשר נפסק, המערכת ממשיכה לעבוד.</p>
+                    <h3>כמה עולה BrandOS Custom?</h3>
+                    <p>ההשקעה נקבעת לפי היקף — אין שתי מערכות BrandOS זהות, ולכן אין מחירון אחיד. ההיקף נקבע בשיחת אפיון של 30 דקות, שבה מחליטים יחד אילו מהמודולים נכנסים למערכת שלכם.</p>
                 </div>
             </div>
         </div>

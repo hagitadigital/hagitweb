@@ -1150,7 +1150,11 @@ a { color: inherit; }
   .step { grid-template-columns: 1fr; gap: 8px; }
   .cta { padding: 42px 24px; }
 }
-</style>
+
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    </style>
 </head>
 <body>
 <nav class="nav" aria-label="ניווט ראשי">
@@ -1181,7 +1185,7 @@ a { color: inherit; }
       </div>
       <div class="hero__visual" aria-label="קולאז' של עבודות מהמעבדה">
         <figure class="hero-card hero-card--main">
-          <img src="ai-visual-lab-hero-collage.png" alt="קולאז' ויזואלי אחיד של עולמות מותג, מוצר, חלל וחומריות" fetchpriority="high" loading="eager">
+          <img width="1672" height="941" src="ai-visual-lab-hero-collage.png" alt="קולאז' ויזואלי אחיד של עולמות מותג, מוצר, חלל וחומריות" fetchpriority="high" loading="eager">
         </figure>
       </div>
     </div>
@@ -1277,15 +1281,15 @@ a { color: inherit; }
               <p>אותו DNA של גלוס יוקרתי, זוהר ועדין: שפה רכה, טון נשי־מדויק, אישיות שמרגישה מבריקה אבל לא צעקנית.</p>
             </div>
             <div class="brand-carousel__track" aria-label="קרוסלת Glosséa">
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (1).png" alt="Glosséa שקף פתיחה לקרוסלה"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (2).png" alt="Glosséa שקף מוצר שני"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (3).png" alt="Glosséa שקף שפה ויזואלית"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (4).png" alt="Glosséa שקף קמפיין"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (5).png" alt="Glosséa שקף פרטי מותג"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (6).png" alt="Glosséa שקף המשך סדרה"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_48 PM (7).png" alt="Glosséa שקף סושיאל"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_50 PM (8).png" alt="Glosséa שקף רילס"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_39_23 PM.png" alt="Glosséa מערכת תוכן מלאה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (1).png" alt="Glosséa שקף פתיחה לקרוסלה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (2).png" alt="Glosséa שקף מוצר שני"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_46 PM (3).png" alt="Glosséa שקף שפה ויזואלית"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (4).png" alt="Glosséa שקף קמפיין"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (5).png" alt="Glosséa שקף פרטי מותג"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_47 PM (6).png" alt="Glosséa שקף המשך סדרה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_48 PM (7).png" alt="Glosséa שקף סושיאל"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_32_50 PM (8).png" alt="Glosséa שקף רילס"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_39_23 PM.png" alt="Glosséa מערכת תוכן מלאה"></figure>
             </div>
           </article>
 
@@ -1298,14 +1302,14 @@ a { color: inherit; }
               <p>מותג בושם חדשני שמתרגם DNA של אוויר, שכבות וריח־עור למוצר, אייקונים, קמפיין ושפה מכירתית אחת.</p>
             </div>
             <div class="brand-carousel__track" aria-label="קרוסלת Aeréa">
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (1).png" alt="Aeréa שקף פתיחה לקרוסלה"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (2).png" alt="Aeréa שקף מוצר"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (3).png" alt="Aeréa שקף יתרונות"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (4).png" alt="Aeréa שקף קוד ויזואלי"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (5).png" alt="Aeréa שקף סדרת נכסים"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (7).png" alt="Aeréa שקף המשך"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_38 PM (8).png" alt="Aeréa שקף סושיאל"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_38 PM (9).png" alt="Aeréa שקף סיום"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (1).png" alt="Aeréa שקף פתיחה לקרוסלה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (2).png" alt="Aeréa שקף מוצר"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_36 PM (3).png" alt="Aeréa שקף יתרונות"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (4).png" alt="Aeréa שקף קוד ויזואלי"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (5).png" alt="Aeréa שקף סדרת נכסים"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_37 PM (7).png" alt="Aeréa שקף המשך"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_38 PM (8).png" alt="Aeréa שקף סושיאל"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_07_38 PM (9).png" alt="Aeréa שקף סיום"></figure>
             </div>
           </article>
 
@@ -1318,14 +1322,14 @@ a { color: inherit; }
               <p>עולם שוקולד פרימיום שמחבר חושניות, חומריות וטון אלגנטי: מהמוצר והאריזה ועד קמפיין, סושיאל ומסר.</p>
             </div>
             <div class="brand-carousel__track" aria-label="קרוסלת Melté">
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_33 PM (1).png" alt="Melté שקף פתיחה לקרוסלה"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (2).png" alt="Melté שקף מוצר"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (3).png" alt="Melté שקף שפה"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (4).png" alt="Melté שקף קמפיין"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (5).png" alt="Melté שקף חומריות"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (6).png" alt="Melté שקף סושיאל"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (7).png" alt="Melté שקף מערכת מותג"></figure>
-              <figure class="brand-slide"><img src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (8).png" alt="Melté שקף סיום"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_33 PM (1).png" alt="Melté שקף פתיחה לקרוסלה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (2).png" alt="Melté שקף מוצר"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (3).png" alt="Melté שקף שפה"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (4).png" alt="Melté שקף קמפיין"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_34 PM (5).png" alt="Melté שקף חומריות"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (6).png" alt="Melté שקף סושיאל"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (7).png" alt="Melté שקף מערכת מותג"></figure>
+              <figure class="brand-slide"><img width="1122" height="1402" src="IMAGES-visual-system/ChatGPT Image May 22, 2026, 12_23_35 PM (8).png" alt="Melté שקף סיום"></figure>
             </div>
           </article>
         </div>
@@ -1353,12 +1357,12 @@ a { color: inherit; }
 
       <div class="visual-system__layout">
         <figure class="visual-system__feature">
-          <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (1).png" alt="מערכת ויזואלית ממותגת של Luneia עם לוגו על מוצרי טיפוח">
+          <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (1).png" alt="מערכת ויזואלית ממותגת של Luneia עם לוגו על מוצרי טיפוח">
         </figure>
 
         <div class="asset-grid">
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (2).png" alt="דימוי מוצר ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (2).png" alt="דימוי מוצר ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Product</span>
               <h3>מוצר</h3>
@@ -1366,7 +1370,7 @@ a { color: inherit; }
             </div>
           </article>
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (3).png" alt="דימוי קמפיין ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_47 PM (3).png" alt="דימוי קמפיין ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Campaign</span>
               <h3>קמפיין</h3>
@@ -1374,7 +1378,7 @@ a { color: inherit; }
             </div>
           </article>
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (4).png" alt="דימוי סושיאל ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (4).png" alt="דימוי סושיאל ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Social</span>
               <h3>פוסט וסטורי</h3>
@@ -1382,7 +1386,7 @@ a { color: inherit; }
             </div>
           </article>
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (5).png" alt="פרט ויזואלי ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (5).png" alt="פרט ויזואלי ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Detail</span>
               <h3>פרטים</h3>
@@ -1390,7 +1394,7 @@ a { color: inherit; }
             </div>
           </article>
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (6).png" alt="דימוי תנועה ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_48 PM (6).png" alt="דימוי תנועה ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Motion</span>
               <h3>תנועה</h3>
@@ -1398,7 +1402,7 @@ a { color: inherit; }
             </div>
           </article>
           <article class="asset-card">
-            <img src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_49 PM (7).png" alt="שקף פרזנטציה ממותג של Luneia עם לוגו">
+            <img width="1448" height="1086" src="IMAGES-visual-system/ChatGPT Image May 21, 2026, 04_27_49 PM (7).png" alt="שקף פרזנטציה ממותג של Luneia עם לוגו">
             <div class="asset-card__body">
               <span class="asset-card__label">Presentation</span>
               <h3>פרזנטציה</h3>
@@ -1445,7 +1449,7 @@ a { color: inherit; }
       <div class="worlds">
         <a class="world-card" href="aurelle/">
           <div class="world-card__image">
-            <img src="aurelle/HERO.png" alt="Aurelle skincare campaign visual">
+            <img width="1672" height="941" src="aurelle/HERO.png" alt="Aurelle skincare campaign visual">
           </div>
           <div class="world-card__body">
             <span class="world-card__tag">Luxury Beauty</span>
@@ -1461,7 +1465,7 @@ a { color: inherit; }
 
         <a class="world-card" href="maison/">
           <div class="world-card__image">
-            <img src="maison/maison-pastry-flatlay.jpg" alt="Maison de l'Heure patisserie brand world">
+            <img width="960" height="1200" src="maison/maison-pastry-flatlay.jpg" alt="Maison de l'Heure patisserie brand world">
           </div>
           <div class="world-card__body">
             <span class="world-card__tag">Hospitality World</span>
@@ -1477,7 +1481,7 @@ a { color: inherit; }
 
         <a class="world-card" href="mora.html">
           <div class="world-card__image">
-            <img src="mora-products.png" alt="Mora dark wellness product world">
+            <img width="2000" height="1090" src="mora-products.png" alt="Mora dark wellness product world">
           </div>
           <div class="world-card__body">
             <span class="world-card__tag">Dark Wellness</span>
@@ -1506,7 +1510,7 @@ a { color: inherit; }
         </div>
         <div class="lab-strip__grid">
           <figure class="lab-shot">
-            <img src="aurelle/Eye Elixir.png" alt="Aurelle eye elixir product visual">
+            <img width="1122" height="1402" src="aurelle/Eye Elixir.png" alt="Aurelle eye elixir product visual">
             <figcaption>
               <strong>Product Hero</strong>
               <span>דימוי מוצר נקי שאפשר להניח באתר, במודעה או בפרזנטציה בלי שירגיש כמו ניסוי.</span>
@@ -1514,7 +1518,7 @@ a { color: inherit; }
             </figcaption>
           </figure>
           <figure class="lab-shot">
-            <img src="maison/maison-menu-detail.jpg" alt="Maison menu detail visual">
+            <img width="960" height="1200" src="maison/maison-menu-detail.jpg" alt="Maison menu detail visual">
             <figcaption>
               <strong>Brand Detail</strong>
               <span>רגע קטן שמחזיק שפה: חומר, אור, טקסטורה, טיפוגרפיה ואווירה.</span>
@@ -1522,7 +1526,7 @@ a { color: inherit; }
             </figcaption>
           </figure>
           <figure class="lab-shot">
-            <img src="mora-store.png" alt="Mora retail interior visual">
+            <img width="1917" height="1464" src="mora-store.png" alt="Mora retail interior visual">
             <figcaption>
               <strong>Spatial Mood</strong>
               <span>מרחב מותגי שמייצר תחושה לפני שהוא מסביר. מתאים לאתר, קייס סטאדי או השקה.</span>
