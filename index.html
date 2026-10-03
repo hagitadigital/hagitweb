@@ -16,6 +16,7 @@
     <meta property="og:title" content="Hagit Antebi | Brand Strategist, Founder of Brand Worlds Studio — מפתחת BrandOS">
     <meta property="og:description" content="בונה עולמות מותג ומפתחת BrandOS — מערכת AI ליצירת תוכן ממותג. אסטרטגיה, ויזואל ו-AI למותגי יוקרה וטכנולוגיה.">
     <meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta property="og:image:alt" content="כדור זכוכית חלבי מרחף מעל תשע קוביות אבן טרוורטין — Brand Worlds Studio, חגית אנטבי">
     <meta property="og:locale" content="he_IL">
     <script>
       // Remove index.html from URL
@@ -37,6 +38,7 @@
     <meta name="twitter:title" content="Hagit Antebi | Brand Strategist, Founder of Brand Worlds Studio">
     <meta name="twitter:description" content="בונה עולמות מותג מלאים - Brand Architect שמשלבת אסטרטגיה, נרטיב ויצירה ויזואלית עם AI.">
     <meta name="twitter:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+    <meta name="twitter:image:alt" content="כדור זכוכית חלבי מרחף מעל תשע קוביות אבן טרוורטין — Brand Worlds Studio, חגית אנטבי">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -94,7 +96,8 @@
         "sameAs": [
             "https://www.linkedin.com/in/hagit-antebi-rasuli",
             "https://www.instagram.com/hagit_antebi/",
-            "https://www.facebook.com/hagit.antebirasuli"
+            "https://www.facebook.com/hagit.antebirasuli",
+            "https://www.youtube.com/@hagita.digital"
         ],
         "worksFor": {
             "@type": "Organization",
@@ -261,8 +264,8 @@
             --color-taupe: #B8A89A;
             --color-light-taupe: #D4C9BC;
 
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body-en: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+            --font-body-en: 'Plus Jakarta Sans', 'Heebo', sans-serif;
             --font-body-he: 'Heebo', sans-serif;
 
             --section-padding: clamp(80px, 12vw, 160px);
@@ -646,7 +649,7 @@
         /* שורת הרגעה מתחת ל-CTA — 30 דקות, בלי עלות */
         .hero__cta-note {
             margin-top: 4px;
-            font-family: var(--font-body); font-size: 0.84rem; letter-spacing: 0.02em;
+            font-family: var(--font-body-he); font-size: 0.84rem; letter-spacing: 0.02em;
             color: var(--color-taupe);
         }
         @media (max-width: 480px) {
@@ -1436,6 +1439,7 @@
         .method__card-image {
             width: 100%;
             max-width: 200px;
+            height: auto;
             aspect-ratio: 1;
             object-fit: cover;
             margin: 0 auto 28px;
@@ -2123,7 +2127,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </style>
 
     <section class="hero">
-        <img src="hero-bg.png" alt="" class="hero__bg-image" fetchpriority="high" decoding="async">
+        <img src="hero-bg.png" alt="" class="hero__bg-image" width="2000" height="1154" fetchpriority="high" decoding="async">
         <div class="hero__bg-element hero__bg-element--1"></div>
         <div class="hero__bg-element hero__bg-element--2"></div>
         <div class="hero__bg-element hero__bg-element--3"></div>
@@ -2799,7 +2803,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="method__grid">
                 <div class="method__card reveal">
-                    <img src="cube1.jpg" alt="The Core" class="method__card-image">
+                    <img src="cube1.jpg" alt="The Core" class="method__card-image" width="942" height="949" loading="lazy">
                     <div class="method__number">01</div>
                     <h3 class="method__card-title" dir="ltr">The Core</h3>
                     <p class="method__card-subtitle" dir="ltr">The inner logic.</p>
@@ -2807,7 +2811,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
 
                 <div class="method__card reveal">
-                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image">
+                    <img src="cube2.jpg" alt="The Narrative" class="method__card-image" width="910" height="949" loading="lazy">
                     <div class="method__number">02</div>
                     <h3 class="method__card-title" dir="ltr">The Narrative</h3>
                     <p class="method__card-subtitle" dir="ltr">The story.</p>
@@ -2815,7 +2819,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
 
                 <div class="method__card reveal">
-                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image">
+                    <img src="cube3.jpg" alt="The Visual World" class="method__card-image" width="936" height="949" loading="lazy">
                     <div class="method__number">03</div>
                     <h3 class="method__card-title" dir="ltr">The Visual World</h3>
                     <p class="method__card-subtitle" dir="ltr">The space.</p>
@@ -2823,7 +2827,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
 
                 <div class="method__card reveal">
-                    <img src="sphere-outcome.png" alt="BrandOS" class="method__card-image">
+                    <img src="sphere-outcome.png" alt="BrandOS" class="method__card-image" width="2000" height="1090" loading="lazy">
                     <div class="method__number">04</div>
                     <h3 class="method__card-title" dir="ltr">BrandOS</h3>
                     <p class="method__card-subtitle">הפעלה</p>
@@ -2864,7 +2868,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="intro__visual reveal">
                 <div class="intro__bg-shape"></div>
                 <div class="intro__image-frame">
-                    <img src="hagit-portrait-2026.png" alt="חגית אנטבי — אסטרטגית מותג ומייסדת Brand Worlds Studio" class="intro__image">
+                    <img src="hagit-portrait-2026.png" alt="חגית אנטבי — אסטרטגית מותג ומייסדת Brand Worlds Studio" class="intro__image" width="1122" height="1402" loading="lazy">
                 </div>
                 <div class="intro__float-tag">
                     <p class="intro__float-label" dir="ltr">Brand Worlds Studio</p>
