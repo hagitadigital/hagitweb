@@ -163,33 +163,78 @@
         .nav-minimal__cta { font-family: var(--font-body-he); font-size: 0.875rem; font-weight: 500; color: var(--color-cream); text-decoration: none; padding: 9px 18px; border: 1px solid rgba(250,248,243,0.4); border-radius: 999px; transition: all .3s; }
         .nav-minimal__cta:hover { background: var(--color-copper); border-color: var(--color-copper); }
 
-        /* Hero */
-        .hero { padding: clamp(120px, 16vw, 180px) 0 clamp(40px, 6vw, 72px); text-align: center; }
-        .kicker { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.4rem); color: var(--color-copper); letter-spacing: 0.02em; }
-        .hero h1 { font-family: var(--font-body-he); font-weight: 300; font-size: clamp(2.1rem, 5.2vw, 4rem); line-height: 1.12; margin: 14px auto 18px; max-width: 18ch; color: var(--color-ink); }
-        .hero__lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); font-weight: 300; max-width: 58ch; margin: 0 auto; color: #4A3D33; }
-        .hero__how { display: inline-flex; gap: 22px; margin-top: 30px; font-size: 0.9rem; color: var(--color-chocolate); }
-        .hero__how span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-copper); margin-inline-end: 8px; vertical-align: middle; }
+        /* Rooms: the page takes the colour of the world on screen */
+        body { transition: background-color 1s var(--transition-smooth); }
+        html.rooms .station, html.rooms .hero, html.rooms .yours, html.rooms .section--beige { background: transparent; }
 
-        /* Stations */
-        .station { padding: clamp(36px, 6vw, 72px) 0; }
-        .station:nth-of-type(even) { background: var(--color-warm-beige); }
+        /* Hero */
+        .hero { padding: clamp(120px, 16vw, 180px) 0 clamp(48px, 7vw, 88px); text-align: center; background: var(--color-cream); }
+        .kicker { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.4rem); color: var(--color-copper); letter-spacing: 0.02em; }
+        .hero h1 { font-family: var(--font-body-he); font-weight: 300; font-size: clamp(2.2rem, 5.6vw, 4.3rem); line-height: 1.1; margin: 14px auto 20px; color: var(--color-ink); }
+        .hero h1 em { font-style: normal; font-family: 'Frank Ruhl Libre', serif; font-weight: 500; color: var(--color-copper-deep); }
+        .hero__lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); font-weight: 300; max-width: 60ch; margin: 0 auto; color: #4A3D33; }
+        .chain { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); max-width: 940px; margin: clamp(36px, 5vw, 56px) auto 0; text-align: start; counter-reset: c; }
+        .chain li { position: relative; padding: 18px 18px 4px; border-top: 1px solid var(--color-light-taupe); }
+        .chain li::before { content: ""; position: absolute; top: -4px; inset-inline-start: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-copper); }
+        .chain li + li::after { content: ""; position: absolute; top: -1px; inset-inline-start: -10px; width: 20px; height: 1px; background: var(--color-copper); }
+        .chain__n { display: block; font-family: var(--font-body-en); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--color-copper); margin-bottom: 4px; }
+        .chain strong { display: block; font-weight: 500; font-size: 1.1rem; color: var(--color-ink); }
+        .chain li > span:last-child { display: block; font-size: 0.9rem; font-weight: 300; color: var(--color-chocolate); line-height: 1.5; margin-top: 2px; }
+        .worlds-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: clamp(30px, 4vw, 44px); }
+        .worlds-index a { display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px 8px 14px; border: 1px solid var(--color-light-taupe); border-radius: 999px; text-decoration: none; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.08em; color: var(--color-ink); background: rgba(255,255,255,0.5); transition: border-color .3s, transform .3s; }
+        .worlds-index a:hover { border-color: var(--color-copper); transform: translateY(-2px); }
+        .worlds-index i { width: 12px; height: 12px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgba(42,32,26,0.25); }
+
+        /* Stations — each one is a room in its world's colours */
+        .station { --bg: #FAF8F3; --ink: #2A201A; --soft: #4A3D33; --accent: #A85F44; --line: rgba(42,32,26,0.14); --stage-a: #FFFDF8; --stage-b: #ECE4D6; --chip: rgba(255,255,255,0.86);
+                   padding: clamp(56px, 8vw, 110px) 0; background: var(--bg); color: var(--ink); }
+        #melte  { --bg: #241610; --ink: #F5EDE2; --soft: rgba(245,237,226,0.78); --accent: #CFA978; --line: rgba(245,237,226,0.16); --stage-a: #6A4632; --stage-b: #1E120C; --chip: rgba(36,22,16,0.72); }
+        #velune { --bg: #DCE3EB; --ink: #1E2A38; --soft: #44566B; --accent: #8E1E44; --line: rgba(30,42,56,0.16); --stage-a: #F4F7FA; --stage-b: #B9C9DA; }
+        #petale { --bg: #FBEDE7; --ink: #3A2438; --soft: #6A5066; --accent: #B8296A; --line: rgba(58,36,56,0.14); --stage-a: #FFFAF7; --stage-b: #F2D6CC; }
+        #miel   { --bg: #F3E4DF; --ink: #4A2C24; --soft: #6E4E44; --accent: #8A5E33; --line: rgba(74,44,36,0.15); --stage-a: #FDF6F2; --stage-b: #E7CBC3; }
+        #oreva  { --bg: #F6EFE7; --ink: #3A2E29; --soft: #6E5E55; --accent: #8F5A3C; --line: rgba(58,46,41,0.14); --stage-a: #FFFCF8; --stage-b: #EFCDBF; }
         .station__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
         .station:nth-of-type(even) .station__grid { direction: ltr; }
         .station:nth-of-type(even) .station__text { direction: rtl; }
-        .stage { position: relative; border-radius: 22px; overflow: hidden; background: radial-gradient(ellipse at 50% 72%, #FFFDF8 0%, #F5F1E8 58%, #ECE4D6 100%); border: 1px solid rgba(139,115,85,0.14); box-shadow: 0 40px 70px -50px rgba(42,32,26,0.45); }
-        model-viewer { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.05; background: transparent; --poster-color: transparent; --progress-bar-color: var(--color-copper); --progress-bar-height: 2px; touch-action: pan-y; outline: none; }
-        .stage__hint { position: absolute; top: 16px; left: 16px; font-size: 0.78rem; color: var(--color-chocolate); background: rgba(255,255,255,0.78); padding: 5px 11px; border-radius: 999px; pointer-events: none; transition: opacity .6s; display: flex; align-items: center; gap: 7px; }
+        .stage { position: relative; border-radius: 22px; overflow: hidden; background: radial-gradient(ellipse at 50% 64%, var(--stage-a) 0%, var(--stage-b) 100%); border: 1px solid var(--line); box-shadow: 0 50px 80px -56px rgba(20,12,8,0.55); }
+        model-viewer { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1.05; background: transparent; --poster-color: transparent; --progress-bar-color: var(--accent); --progress-bar-height: 2px; touch-action: pan-y; outline: none; direction: ltr; }
+        .stage__hint { position: absolute; top: 16px; left: 16px; font-size: 0.78rem; color: var(--ink); background: var(--chip); padding: 5px 11px; border-radius: 999px; pointer-events: none; transition: opacity .6s; display: flex; align-items: center; gap: 7px; }
         .stage__hint svg { width: 14px; height: 14px; }
         .stage.touched .stage__hint { opacity: 0; }
-        .stage__num { position: absolute; bottom: 14px; right: 18px; font-family: var(--font-body-en); font-size: 0.72rem; letter-spacing: 0.22em; color: var(--color-taupe); pointer-events: none; }
-        .station__text .kicker { font-size: 1.05rem; }
-        .station__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: 0.12em; line-height: 1; margin: 8px 0 6px; color: var(--color-ink); }
-        .station__sub { font-family: var(--font-body-en); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-chocolate); margin-bottom: 20px; }
-        .station__body { font-size: clamp(1.02rem, 1.35vw, 1.15rem); font-weight: 300; color: #3E3229; max-width: 46ch; }
-        .station__body strong { font-weight: 500; color: var(--color-ink); }
-        .station__cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 1rem; font-weight: 500; color: var(--color-copper); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, gap .3s; }
-        .station__cta:hover { border-color: var(--color-copper); gap: 14px; }
+        .stage__step, .stage__num { position: absolute; bottom: 14px; font-family: var(--font-body-en); font-size: 0.72rem; letter-spacing: 0.22em; color: var(--soft); opacity: .8; pointer-events: none; }
+        .stage__num { right: 18px; }
+        .stage__step { left: 18px; font-family: var(--font-body-he); letter-spacing: 0.08em; }
+
+        /* Hotspots: the codes, pinned to the object */
+        .hs { --s: 30px; display: block; width: var(--s); height: var(--s); padding: 0; border: 0; background: none; cursor: pointer; position: relative; transition: opacity .4s; }
+        .hs:not([data-visible]) { opacity: 0.25; }
+        .hs__dot { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--bg); font-family: var(--font-body-en); font-size: 0.8rem; font-weight: 500; box-shadow: 0 0 0 4px color-mix(in srgb, var(--bg) 70%, transparent), 0 6px 16px rgba(0,0,0,0.25); }
+        .hs__dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--accent); animation: hs-pulse 2.4s ease-out infinite; }
+        .hs__label { direction: rtl; position: absolute; top: 50%; right: calc(100% + 10px); transform: translate(6px, -50%); white-space: nowrap; font-family: var(--font-body-he); font-size: 0.85rem; font-weight: 500; color: var(--ink); background: var(--chip); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 5px 12px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .35s, transform .35s var(--transition-smooth); }
+        .hs.is-active .hs__label, .hs:hover .hs__label, .hs:focus-visible .hs__label { opacity: 1; transform: translate(0, -50%); }
+        .hs.is-active .hs__dot { transform: scale(1.12); }
+        .hs.is-active .hs__dot::after { animation: none; inset: -7px; }
+        .stage[data-open="1"] .hs[data-when="closed"], .stage:not([data-open="1"]) .hs[data-when="open"] { opacity: 0; pointer-events: none; }
+        @keyframes hs-pulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.8); opacity: 0; } }
+
+        /* Station text: decision → codes → world */
+        .station__text .kicker { font-size: 1.05rem; color: var(--accent); }
+        .station__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: 0.12em; line-height: 1; margin: 8px 0 6px; color: var(--ink); }
+        .station__sub { font-family: var(--font-body-en); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft); margin-bottom: 26px; }
+        .step { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--line); max-width: 48ch; }
+        .step--decision { border-top: 0; padding-top: 0; margin-top: 0; }
+        .step__label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
+        .step__label span { font-weight: 300; letter-spacing: 0; color: var(--soft); margin-inline-start: 8px; }
+        .decision { font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: clamp(1.6rem, 2.7vw, 2.15rem); line-height: 1.25; color: var(--ink); }
+        .codes { list-style: none; display: grid; gap: 4px; }
+        .code { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: start; padding: 9px 10px; margin-inline: -10px; border: 0; border-radius: 12px; background: transparent; color: var(--soft); font: inherit; font-size: 0.98rem; font-weight: 300; line-height: 1.6; cursor: pointer; transition: background .3s, color .3s; }
+        .code:hover, .code.is-active { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--ink); }
+        .code__n { flex: none; width: 24px; height: 24px; margin-top: 2px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-body-en); font-size: 0.75rem; font-weight: 500; color: var(--accent); border: 1px solid var(--accent); transition: background .3s, color .3s; }
+        .code.is-active .code__n { background: var(--accent); color: var(--bg); }
+        .code__body strong { display: block; font-weight: 500; color: var(--ink); }
+        .world-line { font-size: 1.02rem; font-weight: 300; color: var(--soft); }
+        .station__cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 1rem; font-weight: 500; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, gap .3s; }
+        .station__cta:hover { border-color: var(--accent); gap: 14px; }
         .station__cta svg { width: 18px; height: 18px; }
 
         /* Your product */
@@ -227,18 +272,21 @@
         @media (max-width: 860px) {
             .station__grid, .yours__grid { grid-template-columns: 1fr; }
             .station:nth-of-type(even) .station__grid { direction: rtl; }
-            .station__text { text-align: center; }
-            .station__body { margin: 0 auto; }
+            .station__text { text-align: start; }
+            .step { max-width: none; }
+            .chain { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+            .chain li + li::after { display: none; }
             .stage { max-width: 520px; margin: 0 auto; width: 100%; }
             model-viewer { aspect-ratio: 1 / 1; }
             .nav-minimal { padding: 13px 0; }
             .nav-minimal__logo { font-size: 1.2rem; }
             .nav-minimal__cta { padding: 8px 15px; font-size: 0.8125rem; white-space: nowrap; }
-            .hero__how { flex-direction: column; gap: 8px; }
             .yours h2 { max-width: none; }
         }
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1; transform: none; transition: none; }
+            body { transition: none; }
+            .hs__dot::after { animation: none; }
         }
     </style>
 </head>
@@ -251,114 +299,226 @@
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero" data-room="#FAF8F3">
         <div class="container">
             <p class="kicker">La Vitrine · Brand Worlds Studio</p>
-            <h1>המוצרים שלא קיימים, ביד שלך.</h1>
-            <p class="hero__lede">כל עולם מותג בסטודיו מתחיל ממוצר אחד. חמישה מהם עומדים כאן בתלת-ממד אמיתי, לא בסרטון: אפשר לסובב, לפתוח, ולהיכנס לעולם שנבנה סביבם.</p>
-            <p class="hero__how"><span>גררי כדי לסובב</span><span>לחצי על השם כדי להיכנס לעולם</span></p>
+            <h1>המוצרים לא קיימים.<br><em>ההחלטות כן.</em></h1>
+            <p class="hero__lede">כל עולם מותג בסטודיו מתחיל במשפט אחד: מה המותג מבטיח. ממנו נגזרים הקודים, הקודים נבנים לתוך המוצר, והמוצר הופך לעולם שלם. חמישה מוצרים כאן בתלת-ממד אמיתי. סובבי אותם, לחצי על הנקודות, ותראי איפה ההחלטה יושבת.</p>
+            <ol class="chain" aria-label="השיטה">
+                <li><span class="chain__n">01</span><strong>ההחלטה</strong><span>מה המותג מבטיח, במשפט אחד</span></li>
+                <li><span class="chain__n">02</span><strong>הקודים</strong><span>צבע, צורה, חומר ומילה שנגזרים ממנו</span></li>
+                <li><span class="chain__n">03</span><strong>המוצר</strong><span>החפץ שמחזיק את הקודים ביד</span></li>
+                <li><span class="chain__n">04</span><strong>העולם</strong><span>האתר, האריזה והתוכן שנבנים סביבו</span></li>
+            </ol>
+            <nav class="worlds-index" aria-label="העולמות בוויטרינה">
+                <a href="#melte" style="--sw:#241610"><i></i>MELTÉ°</a>
+                <a href="#velune" style="--sw:#DCE3EB"><i></i>VELUNE°</a>
+                <a href="#petale" style="--sw:#FBEDE7"><i></i>Pétale°</a>
+                <a href="#miel" style="--sw:#F3E4DF"><i></i>MIEL°</a>
+                <a href="#oreva" style="--sw:#F6EFE7"><i></i>ORÉVA°</a>
+            </nav>
         </div>
     </header>
 
     <main>
 
-        <!-- 01 · MELTÉ -->
-        <section class="station" id="melte">
+        <!-- 01 · MELTÉ° -->
+        <section class="station station--dark" id="melte" data-room="#241610">
             <div class="container station__grid">
                 <div class="stage reveal">
-                    <model-viewer src="models/melte.glb" poster="posters/melte.webp" alt="MELTÉ° — כוס שוקולד Dark Velvet בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="16deg" autoplay animation-name="MELTE cup turntable" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="eager" reveal="auto"></model-viewer>
+                    <model-viewer src="models/melte.glb" poster="posters/melte.webp" alt="MELTÉ° — כוס שוקולד Dark Velvet בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="16deg" camera-orbit="0deg 75deg auto" loading="eager" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto">
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-1" data-position="-0.0027m 0.1147m 0.0601m" data-normal="-0.016m -0.127m 0.992m" data-theta="-2" aria-label="קוד 1: השוקולד שגולש"><span class="hs__dot">1</span><span class="hs__label">השוקולד שגולש</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-2" data-position="0m 0.0806m 0.0546m" data-normal="0.022m -0.071m 0.997m" data-theta="0" aria-label="קוד 2: השם בפויל"><span class="hs__dot">2</span><span class="hs__label">השם בפויל</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-3" data-position="-0.0196m 0.0280m 0.0470m" data-normal="-0.403m -0.071m 0.913m" data-theta="-24" aria-label="קוד 3: היהלומים המובלטים"><span class="hs__dot">3</span><span class="hs__label">היהלומים המובלטים</span></button>
+                    </model-viewer>
                     <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__step">03 · המוצר</span>
                     <span class="stage__num">No.05</span>
                 </div>
                 <div class="station__text reveal">
                     <p class="kicker">Dark Velvet Chocolate</p>
                     <h2 class="station__name">MELTÉ°</h2>
                     <p class="station__sub">Brand World No.05</p>
-                    <p class="station__body">כוס שוקולד שנמסה מלמעלה. בעולם של MELTÉ° קליק אחד מחליף טעם, והחדר כולו מתחלף איתו. כאן היא עומדת לבד: <strong>האותיות בפויל, היהלומים המובלטים על הנייר, והשוקולד שגולש על השפה</strong>. סובבי אותה ותראי שהשם לא מודבק עליה. הוא בנוי לתוכה.</p>
+                    <div class="step step--decision">
+                        <p class="step__label">01 · ההחלטה</p>
+                        <p class="decision">אותו DNA, בכל טעם.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">02 · הקודים <span>לחצי כדי לראות על המוצר</span></p>
+                        <ol class="codes">
+                        <li><button type="button" class="code" data-hs="1"><span class="code__n">1</span><span class="code__body"><strong>השוקולד שגולש</strong>הנזילה היא החתימה. היא חוזרת בכל חמש הכוסות, כל פעם בצבע של הטעם.</span></button></li>
+                        <li><button type="button" class="code" data-hs="2"><span class="code__n">2</span><span class="code__body"><strong>השם בפויל</strong>זהב על חום מריר. השם בנוי לתוך הכוס, ולא מודבק עליה.</span></button></li>
+                        <li><button type="button" class="code" data-hs="3"><span class="code__n">3</span><span class="code__body"><strong>היהלומים המובלטים</strong>התבנית שלא משתנה. הצבע מתחלף עם הטעם, המבנה נשאר, ולכן מזהים את הכוס גם בלי לוגו.</span></button></li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">04 · העולם</p>
+                        <p class="world-line">באתר, קליק אחד מחליף טעם והחדר כולו מתחלף איתו. הכוס נשארת, והעולם משתנה סביבה.</p>
+                    </div>
                     <a class="station__cta" href="/melte.html">להיכנס לעולם MELTÉ° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
                 </div>
             </div>
         </section>
 
-        <!-- 02 · VELUNE -->
-        <section class="station" id="velune">
+        <!-- 02 · VELUNE° -->
+        <section class="station" id="velune" data-room="#DCE3EB">
             <div class="container station__grid">
                 <div class="stage reveal">
-                    <model-viewer src="models/velune.glb" poster="posters/velune.webp" alt="VELUNE° — דלת ובקבוק בושם בתלת-ממד" camera-controls autoplay animation-name="Doors" camera-orbit="-26deg 78deg auto" interpolation-decay="600" data-sway="26" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
-                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <model-viewer src="models/velune.glb" poster="posters/velune.webp" alt="VELUNE° — דלת ובקבוק בושם בתלת-ממד" camera-controls camera-orbit="-26deg 78deg 112%" interpolation-decay="600" data-sway="26" data-lid="Doors" data-lid-open="0.5" data-auto-open="1" loading="lazy" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto">
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-1" data-position="0.0139m 0.2192m 0.0310m" data-normal="0m 0m 1m" data-when="closed" data-theta="-10" aria-label="קוד 1: הקשת"><span class="hs__dot">1</span><span class="hs__label">הקשת</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-2" data-position="-0.0716m 0.0733m -0.0100m" data-normal="0m 0m 1m" data-when="open" data-theta="-22" aria-label="קוד 2: הדלת"><span class="hs__dot">2</span><span class="hs__label">הדלת</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-3" data-position="-0.0207m 0.2452m 0.0227m" data-normal="-0.401m 0.172m 0.900m" data-when="open" data-theta="-22" aria-label="קוד 3: הפקק בפטל"><span class="hs__dot">3</span><span class="hs__label">הפקק בפטל</span></button>
+                    </model-viewer>
+                    <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב · לחצי לפתיחה</span>
+                    <span class="stage__step">03 · המוצר</span>
                     <span class="stage__num">No.25</span>
                 </div>
                 <div class="station__text reveal">
                     <p class="kicker">Maison de Parfum</p>
                     <h2 class="station__name">VELUNE°</h2>
                     <p class="station__sub">Brand World No.25</p>
-                    <p class="station__body">בושם הוא לא ריח. הוא מקום. בעולם של VELUNE° הדלת נפתחת עם הגלילה. כאן היא נפתחת מעצמה, שוב ושוב: <strong>שתי כנפיים בכחול אבקה, קטיפה בפנים, והבקבוק עם הפקק בצבע פטל</strong>. חכי שתיסגר, ותראי את הקשת המובלטת עם השם משני צידיה.</p>
+                    <div class="step step--decision">
+                        <p class="step__label">01 · ההחלטה</p>
+                        <p class="decision">בושם הוא לא ריח. הוא מקום.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">02 · הקודים <span>לחצי כדי לראות על המוצר</span></p>
+                        <ol class="codes">
+                        <li><button type="button" class="code" data-hs="1"><span class="code__n">1</span><span class="code__body"><strong>הקשת</strong>חוזרת שלוש פעמים: בקיר, בקופסה ובבוטיק. מה שחוזר שלוש פעמים כבר לא קישוט. זה קוד.</span></button></li>
+                        <li><button type="button" class="code" data-hs="2"><span class="code__n">2</span><span class="code__body"><strong>הדלת</strong>אם בושם הוא מקום, נכנסים אליו. לכן לא מסירים עטיפה. פותחים דלת, וקטיפה מחכה בפנים.</span></button></li>
+                        <li><button type="button" class="code" data-hs="3"><span class="code__n">3</span><span class="code__body"><strong>הפקק בפטל</strong>כחול אבקה בחוץ, פטל בפנים. הצבע שמחכה מאחורי הדלת הוא הגן שהבושם מבטיח.</span></button></li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">04 · העולם</p>
+                        <p class="world-line">באתר, הדלת נפתחת עם הגלילה, ממשיכה לגן, לפרי ולבקבוק, וחוזרת לדלת בבוטיק.</p>
+                    </div>
                     <a class="station__cta" href="/velune/">להיכנס לעולם VELUNE° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
                 </div>
             </div>
         </section>
 
-        <!-- 03 · Pétale -->
-        <section class="station" id="petale">
+        <!-- 03 · Pétale° -->
+        <section class="station" id="petale" data-room="#FBEDE7">
             <div class="container station__grid">
                 <div class="stage reveal">
-                    <model-viewer src="models/petale.glb" poster="posters/petale.webp" alt="Pétale° — קופסת מקרונים עם מכסה שנפתח בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="30deg 64deg 128%" min-camera-orbit="auto auto 60%" camera-target="auto 3% auto" data-lid="LID - open close" data-lid-open="0.22" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <model-viewer src="models/petale.glb" poster="posters/petale.webp" alt="Pétale° — קופסת מקרונים עם מכסה שנפתח בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="30deg 64deg 128%" min-camera-orbit="auto auto 60%" camera-target="auto 3% auto" data-lid="LID - open close" data-lid-open="0.22" loading="lazy" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto">
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-1" data-position="0.0028m 0.0963m 0.0048m" data-normal="-0.207m 0.972m 0.109m" data-when="closed" data-theta="30" aria-label="קוד 1: סרט האורגנזה"><span class="hs__dot">1</span><span class="hs__label">סרט האורגנזה</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-2" data-position="0.0070m 0.0479m 0.0909m" data-normal="0.092m 0.984m 0.150m" data-when="open" data-theta="20" aria-label="קוד 2: שבעה טעמי פסטל"><span class="hs__dot">2</span><span class="hs__label">שבעה טעמי פסטל</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-3" data-position="0.0717m 0.0234m 0.1243m" data-normal="0.707m 0m 0.707m" data-theta="40" aria-label="קוד 3: הקופסה המתומנת"><span class="hs__dot">3</span><span class="hs__label">הקופסה המתומנת</span></button>
+                    </model-viewer>
                     <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב · לחצי לפתיחה</span>
+                    <span class="stage__step">03 · המוצר</span>
                     <span class="stage__num">No.01</span>
                 </div>
                 <div class="station__text reveal">
                     <p class="kicker">Maison de Macarons</p>
                     <h2 class="station__name">Pétale°</h2>
-                    <p class="station__sub">Brand World No.01</p>
-                    <p class="station__body">הקופסה שממנה התחיל הסטודיו. Pétale° הוא העולם הראשון שבניתי, וזה המוצר הראשון שלו: <strong>שבעה מקרונים, סרט אורגנזה קשור, ומכסה שנפתח</strong>. לחצי על הקופסה כדי לפתוח אותה, וסובבי כדי לראות איך הסרט נופל על הצדדים.</p>
+                    <p class="station__sub">Brand World No.01 · העולם הראשון</p>
+                    <div class="step step--decision">
+                        <p class="step__label">01 · ההחלטה</p>
+                        <p class="decision">קופסה היא אחר-צהריים.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">02 · הקודים <span>לחצי כדי לראות על המוצר</span></p>
+                        <ol class="codes">
+                        <li><button type="button" class="code" data-hs="1"><span class="code__n">1</span><span class="code__body"><strong>סרט האורגנזה</strong>בסרט של העולם הקופסה נקשרת ועוברת לידיים. הרגע של המתנה הוא המוצר, לא העוגייה.</span></button></li>
+                        <li><button type="button" class="code" data-hs="2"><span class="code__n">2</span><span class="code__body"><strong>שבעה טעמי פסטל</strong>כל צבע הוא טעם. באתר הלקוחה בונה קופסה משלה, ומה שהיא בוחרת נראה בדיוק ככה.</span></button></li>
+                        <li><button type="button" class="code" data-hs="3"><span class="code__n">3</span><span class="code__body"><strong>הקופסה המתומנת</strong>אותה קופסה מהסרט עומדת על השולחן בסלון, על שיש ורוד ונחושת. מהמסך לחדר, בלי להחליף צורה.</span></button></li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">04 · העולם</p>
+                        <p class="world-line">באתר: סרט פתיחה בשלושה פרקים, האטלייה, הסלון, ובניית קופסת מתנה משבעה טעמים.</p>
+                    </div>
                     <a class="station__cta" href="/petale.html">להיכנס לעולם Pétale° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
                 </div>
             </div>
         </section>
 
-        <!-- 04 · MIEL -->
-        <section class="station" id="miel">
+        <!-- 04 · MIEL° -->
+        <section class="station" id="miel" data-room="#F3E4DF">
             <div class="container station__grid">
                 <div class="stage reveal">
-                    <model-viewer src="models/miel.glb" poster="posters/miel.webp" alt="MIEL° — עוגה רומנטית על מגש ממותג בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="12deg" camera-orbit="-20deg 72deg 70%" min-camera-orbit="auto auto 40%" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <model-viewer src="models/miel.glb" poster="posters/miel.webp" alt="MIEL° — עוגה רומנטית על מגש ממותג בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="12deg" camera-orbit="-20deg 72deg 70%" min-camera-orbit="auto auto 40%" loading="lazy" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto">
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-1" data-position="-0.0486m 0.1730m 0.0863m" data-normal="0.439m -0.336m 0.833m" data-theta="-10" aria-label="קוד 1: הזר"><span class="hs__dot">1</span><span class="hs__label">הזר</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-2" data-position="-0.0419m 0.1082m 0.1155m" data-normal="-0.339m -0.004m 0.941m" data-theta="-20" aria-label="קוד 2: הפרוסה"><span class="hs__dot">2</span><span class="hs__label">הפרוסה</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-3" data-position="-0.0795m 0.0116m 0.0939m" data-normal="-0.661m 0.055m 0.748m" data-theta="-30" aria-label="קוד 3: זהב צהוב"><span class="hs__dot">3</span><span class="hs__label">זהב צהוב</span></button>
+                    </model-viewer>
                     <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__step">03 · המוצר</span>
                     <span class="stage__num">No.27</span>
                 </div>
                 <div class="station__text reveal">
                     <p class="kicker">Maison Miel Pâtisserie</p>
                     <h2 class="station__name">MIEL°</h2>
                     <p class="station__sub">Brand World No.27</p>
-                    <p class="station__body">בעולם של MIEL° העוגה נבנית בגלילה, שכבה אחרי שכבה, וטאפ אחד חותך אותה ומראה מה בפנים. כאן היא שלמה: <strong>ורדים מקרם, מקרונים, מרנגים ופטל, על מגש עם השם</strong>. סובבי ותראי שאין לה צד קדמי. כל צד הוא הצד היפה.</p>
+                    <div class="step step--decision">
+                        <p class="step__label">01 · ההחלטה</p>
+                        <p class="decision">רומנטיקה מתחילה מבפנים.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">02 · הקודים <span>לחצי כדי לראות על המוצר</span></p>
+                        <ol class="codes">
+                        <li><button type="button" class="code" data-hs="1"><span class="code__n">1</span><span class="code__body"><strong>הזר</strong>מה שרואים מבחוץ. באתר הוא נוחת על העוגה רק בסוף הבנייה, כמו חתימה.</span></button></li>
+                        <li><button type="button" class="code" data-hs="2"><span class="code__n">2</span><span class="code__body"><strong>הפרוסה</strong>האלמנט שנגזר מההבטחה מסתתר מאחורי הדופן: ביסקוויט, לב, ביסקוויט, לב. באתר, טאפ אחד חותך ומראה.</span></button></li>
+                        <li><button type="button" class="code" data-hs="3"><span class="code__n">3</span><span class="code__body"><strong>זהב צהוב</strong>הבסיס בזהב צהוב, לא בנחושת. ההבדל הקטן הזה הוא מה שמפריד את MIEL° מהעולם השכן ÉTAGE°.</span></button></li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">04 · העולם</p>
+                        <p class="world-line">באתר, הגלילה בונה את העוגה שכבה אחרי שכבה, הלקוחה בוחרת את השכבות, וטאפ אחד חותך.</p>
+                    </div>
                     <a class="station__cta" href="/miel/">להיכנס לעולם MIEL° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
                 </div>
             </div>
         </section>
 
-        <!-- 05 · ORÉVA -->
-        <section class="station" id="oreva">
+        <!-- 05 · ORÉVA° -->
+        <section class="station" id="oreva" data-room="#F6EFE7">
             <div class="container station__grid">
                 <div class="stage reveal">
-                    <model-viewer src="models/oreva.glb" poster="posters/oreva.webp" alt="ORÉVA° — בקבוק סרום GLOW עם משאבה בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="-15deg 84deg 108%" min-camera-orbit="auto auto 40%" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+                    <model-viewer src="models/oreva.glb" poster="posters/oreva.webp" alt="ORÉVA° — בקבוק סרום GLOW עם משאבה בתלת-ממד" camera-controls auto-rotate auto-rotate-delay="4000" rotation-per-second="14deg" camera-orbit="-15deg 84deg 108%" min-camera-orbit="auto auto 40%" loading="lazy" disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto">
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-1" data-position="-0.0037m 0.0839m 0.0140m" data-normal="-0.228m 0m 0.974m" data-theta="-12" aria-label="קוד 1: המשאבה בנחושת"><span class="hs__dot">1</span><span class="hs__label">המשאבה בנחושת</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-2" data-position="-0.0146m 0.0285m 0.0151m" data-normal="-0.683m 0m 0.730m" data-theta="-30" aria-label="קוד 2: מה שכתוב על הבקבוק"><span class="hs__dot">2</span><span class="hs__label">מה שכתוב על הבקבוק</span></button>
+                        <button type="button" class="hs" data-visibility-attribute="visible" slot="hotspot-3" data-position="-0.0054m 0.0065m 0.0203m" data-normal="-0.228m 0m 0.974m" data-theta="-12" aria-label="קוד 3: זכוכית חלבית"><span class="hs__dot">3</span><span class="hs__label">זכוכית חלבית</span></button>
+                    </model-viewer>
                     <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3M18.5 2v3.7h-3.7M5.5 22v-3.7h3.7"/></svg>גררי לסיבוב</span>
+                    <span class="stage__step">03 · המוצר</span>
                     <span class="stage__num">No.24</span>
                 </div>
                 <div class="station__text reveal">
                     <p class="kicker">Skin Studio</p>
                     <h2 class="station__name">ORÉVA°</h2>
                     <p class="station__sub">Brand World No.24</p>
-                    <p class="station__body">סרום GLOW של קוסמטיקאית שיצאה מחדר הטיפולים עם ליין משלה. <strong>זכוכית חלבית, סרום ורדרד בפנים, משאבה בנחושת</strong>, והשם כתוב על הבקבוק ולא מודבק עליו. זה המוצר שהכי קרוב לאמיתי, ולכן הוא סוגר את הוויטרינה.</p>
+                    <div class="step step--decision">
+                        <p class="step__label">01 · ההחלטה</p>
+                        <p class="decision">קודם הידיים. אחר כך הבקבוק.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">02 · הקודים <span>לחצי כדי לראות על המוצר</span></p>
+                        <ol class="codes">
+                        <li><button type="button" class="code" data-hs="1"><span class="code__n">1</span><span class="code__body"><strong>המשאבה בנחושת</strong>נחושת היא הקו של העולם: סרט אחד שמתחיל ביד של המייסדת. על הבקבוק הוא עוצר כאן.</span></button></li>
+                        <li><button type="button" class="code" data-hs="2"><span class="code__n">2</span><span class="code__body"><strong>מה שכתוב על הבקבוק</strong>כל מה שכתוב עליו עומד מאחוריו. האחוזים על התווית, לא בפרסומת.</span></button></li>
+                        <li><button type="button" class="code" data-hs="3"><span class="code__n">3</span><span class="code__body"><strong>זכוכית חלבית</strong>סרום ורדרד מאחורי זכוכית חלבית: זוהר, לא נצנוץ. הצבע של עור אחרי טיפול, לא של מוצר על מדף.</span></button></li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <p class="step__label">04 · העולם</p>
+                        <p class="world-line">באתר, היא לפני הבקבוק, הסיפור לפני החנות, והאבחון לפני המכירה.</p>
+                    </div>
                     <a class="station__cta" href="/oreva/">להיכנס לעולם ORÉVA° <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
                 </div>
             </div>
         </section>
 
         <!-- Your product -->
-        <section class="yours" id="yours">
+        <section class="yours" id="yours" data-room="#1A1612">
             <div class="container yours__grid">
                 <div class="reveal">
                     <p class="kicker">ככה זה נראה עם המוצר שלך</p>
                     <h2>המוצר שלך, <em>ביד של הלקוחה</em>, עוד לפני שהיא הזמינה.</h2>
-                    <p class="yours__lead">חמשת המוצרים כאן שייכים למותגים שלא קיימים. עם מוצר אמיתי זה עובד אותו דבר, ואפילו מדויק יותר, כי יש לך משהו שלמותג פיקטיבי אין: קובץ התווית המקורי. המוצר נבנה מחדש כגיאומטריה על בסיס תצלומים והתווית, השם נשאר חד מכל זווית, והמוצר עומד בעמוד המוצר ומחכה שיסובבו אותו.</p>
+                    <p class="yours__lead">חמשת המוצרים כאן שייכים למותגים שלא קיימים. עם מותג אמיתי הסדר לא משתנה: קודם ההחלטה, אחר כך הקודים, ורק בסוף המוצר. וזה עובד אפילו מדויק יותר, ואפילו מדויק יותר, כי יש לך משהו שלמותג פיקטיבי אין: קובץ התווית המקורי. המוצר נבנה מחדש כגיאומטריה על בסיס תצלומים והתווית, השם נשאר חד מכל זווית, והמוצר עומד בעמוד המוצר ומחכה שיסובבו אותו.</p>
                     <div class="yours__cta">
                         <a class="btn btn-primary" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%95%D7%95%D7%99%D7%98%D7%A8%D7%99%D7%A0%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92" target="_blank" rel="noopener">לאבחון פער המותג</a>
                         <a class="btn btn-ghost" href="/brand-world.html">מה זה עולם מותג</a>
@@ -375,7 +535,7 @@
         </section>
 
         <!-- Studio note -->
-        <section class="section--beige">
+        <section class="section--beige" data-room="#F5F1E8">
             <div class="container">
                 <div class="studio-note reveal">
                     <p class="studio-note__label">הערת סטודיו</p>
@@ -406,48 +566,98 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
+        // Rooms: the page background follows the world in the middle of the screen
+        var rooms = document.querySelectorAll('[data-room]');
+        if ('IntersectionObserver' in window) {
+            document.documentElement.classList.add('rooms');
+            document.body.style.backgroundColor = rooms[0].dataset.room;
+            var rio = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) { if (e.isIntersecting) document.body.style.backgroundColor = e.target.dataset.room; });
+            }, { rootMargin: '-48% 0px -48% 0px' });
+            rooms.forEach(function (el) { rio.observe(el); });
+        }
+
         var viewers = document.querySelectorAll('model-viewer');
 
         // Only the object on screen turns; the rest rest.
         var vio = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
-                var mv = e.target;
-                if (e.isIntersecting) { mv.dataset.onscreen = '1'; if (mv.dataset.rotate) mv.setAttribute('auto-rotate', ''); if (mv.dataset.anim) mv.play && mv.play(); }
-                else { delete mv.dataset.onscreen; if (mv.hasAttribute('auto-rotate')) { mv.dataset.rotate = '1'; mv.removeAttribute('auto-rotate'); } if (mv.hasAttribute('autoplay')) { mv.dataset.anim = '1'; mv.pause && mv.pause(); } }
+                var mv = e.target, stage = mv.closest('.stage');
+                if (e.isIntersecting) { mv.dataset.onscreen = '1'; if (mv.dataset.rotate && !stage.classList.contains('touched')) mv.setAttribute('auto-rotate', ''); if (mv.onShow) mv.onShow(); }
+                else { delete mv.dataset.onscreen; if (mv.hasAttribute('auto-rotate')) { mv.dataset.rotate = '1'; mv.removeAttribute('auto-rotate'); } }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.35 });
 
         viewers.forEach(function (mv) {
             var stage = mv.closest('.stage');
+            var station = mv.closest('.station');
+            var codes = station.querySelectorAll('.code');
+            var spots = mv.querySelectorAll('.hs');
+            var loaded = false;
             vio.observe(mv);
-            ['pointerdown', 'touchstart'].forEach(function (ev) { mv.addEventListener(ev, function () { stage.classList.add('touched'); }, { passive: true }); });
+
+            function touch() {
+                stage.classList.add('touched');
+                if (mv.hasAttribute('auto-rotate')) mv.removeAttribute('auto-rotate');
+                delete mv.dataset.rotate;
+            }
+            ['pointerdown', 'touchstart'].forEach(function (ev) { mv.addEventListener(ev, touch, { passive: true }); });
+            mv.addEventListener('load', function () { loaded = true; if (mv.dataset.onscreen && mv.onShow) mv.onShow(); });
 
             // VELUNE reads best from the front: a slow sway instead of a full turn
             if (mv.dataset.sway) {
                 var amp = +mv.dataset.sway, dir = 1;
                 mv.addEventListener('load', function () {
-                    setInterval(function () { if (!mv.dataset.onscreen || stage.classList.contains('touched')) return; dir = -dir; mv.cameraOrbit = (dir * amp) + 'deg 78deg auto'; }, 3400);
+                    setInterval(function () { if (!mv.dataset.onscreen || stage.classList.contains('touched')) return; dir = -dir; mv.cameraOrbit = (dir * amp) + 'deg 78deg 112%'; }, 3400);
                 });
             }
 
-            // Pétale: the lid opens on a click, not on a loop
+            // Lid / doors: open on a click, not on a loop
+            var open = false;
+            function setOpen(want) {
+                if (!mv.dataset.lid || want === open || !loaded) return;
+                open = want;
+                stage.dataset.open = open ? '1' : '';
+                var dur = mv.duration || 2, t0 = performance.now(), from = mv.currentTime;
+                var to = open ? dur * (+mv.dataset.lidOpen || 0.5) : 0;
+                (function step(now) {
+                    var k = Math.min(1, (now - t0) / 1100), ease = 1 - Math.pow(1 - k, 3);
+                    mv.currentTime = from + (to - from) * ease;
+                    if (k < 1) requestAnimationFrame(step);
+                })(t0);
+            }
             if (mv.dataset.lid) {
-                var open = false, sx, sy, moved;
+                var sx, sy, moved;
                 mv.addEventListener('load', function () { mv.animationName = mv.dataset.lid; mv.pause(); mv.currentTime = 0; });
                 mv.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; moved = false; });
                 mv.addEventListener('pointermove', function (e) { if (Math.abs(e.clientX - sx) > 6 || Math.abs(e.clientY - sy) > 6) moved = true; });
-                mv.addEventListener('pointerup', function () {
-                    if (moved) return;
-                    open = !open;
-                    var dur = mv.duration || 2; var t0 = performance.now(); var from = mv.currentTime;
-                    var to = open ? dur * (+mv.dataset.lidOpen || 0.5) : 0;
-                    (function step(now) {
-                        var k = Math.min(1, (now - t0) / 900); var ease = 1 - Math.pow(1 - k, 3);
-                        mv.currentTime = from + (to - from) * ease;
-                        if (k < 1) requestAnimationFrame(step);
-                    })(t0);
-                });
+                mv.addEventListener('pointerup', function (e) { if (moved || (e.target.closest && e.target.closest('.hs'))) return; setOpen(!open); });
+                // VELUNE: the door opens by itself the first time it is seen
+                if (mv.dataset.autoOpen) mv.onShow = function () {
+                    if (!loaded || mv.dataset.autoOpened) return;
+                    mv.dataset.autoOpened = '1';
+                    setTimeout(function () { if (!stage.classList.contains('touched')) setOpen(true); }, 1400);
+                };
             }
+
+            // Codes ↔ hotspots: a code in the text turns the object to where it lives
+            function activate(n) {
+                touch();
+                var hs = mv.querySelector('[slot="hotspot-' + n + '"]');
+                if (!hs) return;
+                if (hs.dataset.when) setOpen(hs.dataset.when === 'open');
+                var orbit = mv.getCameraOrbit();
+                mv.cameraOrbit = (+hs.dataset.theta) + 'deg ' + orbit.phi + 'rad ' + orbit.radius + 'm';
+                spots.forEach(function (s) { s.classList.toggle('is-active', s === hs); });
+                codes.forEach(function (c) { c.classList.toggle('is-active', c.dataset.hs === String(n)); });
+            }
+            codes.forEach(function (c) { c.addEventListener('click', function () {
+                activate(+c.dataset.hs);
+                // On a phone the object sits above the list: bring it back into view
+                var r = stage.getBoundingClientRect();
+                if (r.top < 0 || r.bottom > window.innerHeight) stage.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+            }); });
+            spots.forEach(function (s, i) { s.addEventListener('click', function () { activate(i + 1); }); });
         });
     })();
     </script>
@@ -471,6 +681,8 @@
       if(a)gtag('event','whatsapp_click',{link_url:a.href,page_path:location.pathname});
       var w=t&&t.closest?t.closest('a.station__cta'):null;
       if(w)gtag('event','vitrine_enter_world',{world:w.closest('.station').id,page_path:location.pathname});
+      var c=t&&t.closest?t.closest('.code,.hs'):null;
+      if(c)gtag('event','vitrine_code',{world:c.closest('.station').id,page_path:location.pathname});
     },true);
   })();
   </script>
