@@ -10,6 +10,7 @@
 <meta property="og:title" content="CHASEN° — Le matcha ne se commande pas. Il se compose. · Brand Worlds Studio">
 <meta property="og:description" content="עולם מותג אינטראקטיבי לבר מאצ'ה: בוחרים טעם, מוסיפים קצפת ושוקולד, ואותה כוס הופכת למשקה עם שם משלו. חמישה טעמים, שכבות אמיתיות, כרטיס שנולד מהבחירה.">
 <meta property="og:image" content="https://hagitantebi.co.il/chasen-og.png">
+<meta property="og:image:alt" content="כוס מאצ׳ה לאטה קרה עם קרח, בכותרת CHASEN° Bar à Matcha">
 <meta property="og:url" content="https://hagitantebi.co.il/chasen/">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -283,7 +284,9 @@ b{font-weight:600}
 footer{position:relative;z-index:5;border-top:1px solid var(--line);padding:30px min(8vw,110px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-3)}
 footer a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--matcha);border-color:var(--matcha)}
-</style>
+
+        :where(img[width][height]){height:auto}
+    </style>
 
 <!-- BWS World Signals -->
 <script>
@@ -369,8 +372,8 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="stage" id="stage" aria-label="הכוס שלך">
         <img class="glass on" id="glassA" src="img/glass_classic.webp" alt="כוס מאצ'ה לאטה קרה על חלב" width="852" height="1820">
         <img class="glass" id="glassB" src="" alt="" width="852" height="1820">
-        <img class="layer choco" id="lChoco" src="img/layer_choco.webp" alt="" loading="lazy">
-        <img class="layer cream" id="lCream" src="img/layer_cream.webp" alt="" loading="lazy">
+        <img width="512" height="1169" class="layer choco" id="lChoco" src="img/layer_choco.webp" alt="" loading="lazy">
+        <img width="552" height="719" class="layer cream" id="lCream" src="img/layer_cream.webp" alt="" loading="lazy">
       </div>
       <aside class="panel">
         <div>
@@ -440,15 +443,15 @@ document.addEventListener('DOMContentLoaded', function () {
   <h2>עולמות קרובים מהסטודיו</h2>
   <div class="voisins-grid">
     <a class="voisin" href="https://hagitantebi.co.il/crema.html">
-      <img src="../brand-worlds/thumbs/crema.webp" alt="CREMA° — עולם מותג לקפה" loading="lazy">
+      <img width="720" height="378" src="../brand-worlds/thumbs/crema.webp" alt="CREMA° — עולם מותג לקפה" loading="lazy">
       <div class="v-meta"><div class="v-name">CREMA°</div><div class="v-he">קפה, מזיגה אחת</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/petale.html">
-      <img src="../brand-worlds/thumbs/petale.webp" alt="PÉTALE — עולם מותג למקרונים" loading="lazy">
+      <img width="720" height="378" src="../brand-worlds/thumbs/petale.webp" alt="PÉTALE — עולם מותג למקרונים" loading="lazy">
       <div class="v-meta"><div class="v-name">PÉTALE</div><div class="v-he">מקרונים, קופסה שבונים</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/signe/">
-      <img src="../brand-worlds/thumbs/signe.webp" alt="SIGNÉ° — עולם מותג לבית קינוחים" loading="lazy">
+      <img width="800" height="450" src="../brand-worlds/thumbs/signe.webp" alt="SIGNÉ° — עולם מותג לבית קינוחים" loading="lazy">
       <div class="v-meta"><div class="v-name">SIGNÉ°</div><div class="v-he">קינוחים חתומים ביד</div></div>
     </a>
   </div>

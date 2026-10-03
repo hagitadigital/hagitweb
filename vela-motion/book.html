@@ -10,7 +10,7 @@
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Heebo:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Heebo:wght@200;300;400;500&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ─────────────────────────────────────────────
@@ -32,7 +32,7 @@
   --hairline:     rgba(31, 37, 43, 0.18);
   --hairline-soft: rgba(31, 37, 43, 0.10);
 
-  --display:  'Playfair Display', 'Cormorant Garamond', serif;
+  --display:  'Playfair Display', 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
   --sans:     'Montserrat', system-ui, sans-serif;
   --hebrew:   'Heebo', system-ui, sans-serif;
 }
@@ -1839,14 +1839,18 @@ body::before {
   .reveal { opacity: 1; transform: none; }
   .marquee__track { animation: none; }
 }
-</style>
+
+        :where(img[width][height]){height:auto}
+    </style>
 <meta property="og:image" content="https://hagitantebi.co.il/vela-motion/og.jpg">
+<meta property="og:image:alt" content="חנות VELA Motion עם נעליים ותיקים על במות שיש מתחת לקשתות">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="VELA MOTION — Lookbook 01 · Move beautifully. Stay unmistakable.">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://hagitantebi.co.il/vela-motion/og.jpg">
+<meta name="twitter:image:alt" content="חנות VELA Motion עם נעליים ותיקים על במות שיש מתחת לקשתות">
 </head>
 <body>
 
@@ -1906,7 +1910,7 @@ body::before {
       <div class="plate__source">— Photographed for VELA</div>
     </div>
     <figure class="plate__frame">
-      <img class="plate__image" src="HERO.png" alt="VELA MOTION — The Cover Image" />
+      <img width="1672" height="941" class="plate__image" src="HERO.png" alt="VELA MOTION — The Cover Image" />
     </figure>
     <div class="plate__caption-bottom">
       <div>
@@ -1943,7 +1947,7 @@ body::before {
       </ul>
     </div>
     <figure class="cover__photo reveal">
-      <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(5).png" alt="VELA MOTION cover — model with the collection" />
+      <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(5).png" alt="VELA MOTION cover — model with the collection" />
       <figcaption>Cover · The Look · Photographed in Studio</figcaption>
     </figure>
   </div>
@@ -2009,7 +2013,7 @@ body::before {
           הדבר הכי מודרני שאישה יכולה לעשות הוא לזוז מהר — בלי להפסיק להיראות כמו עצמה.
         </div>
         <figure>
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_01_32%20PM.png" alt="VELA MOTION full collection" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_01_32%20PM.png" alt="VELA MOTION full collection" />
           <figcaption>Plate I · The Edit — six pieces, one rhythm.</figcaption>
         </figure>
       </aside>
@@ -2104,15 +2108,15 @@ body::before {
       <div class="product-marquee__track">
         <!-- Set 1 -->
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="City Bag" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="City Bag" /></div>
           <div class="nº">Look 01</div><div class="name">City Bag</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Motion Sneakers" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Motion Sneakers" /></div>
           <div class="nº">Look 02</div><div class="name">Motion Sneakers</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Soft Shades" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Soft Shades" /></div>
           <div class="nº">Look 03</div><div class="name">Soft Shades</div>
         </div>
         <div class="product-marquee__card">
@@ -2122,7 +2126,7 @@ body::before {
           <div class="nº">Look 04</div><div class="name">Silk Scarf</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Travel Pouch" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Travel Pouch" /></div>
           <div class="nº">Look 05</div><div class="name">Travel Pouch</div>
         </div>
         <div class="product-marquee__card">
@@ -2133,15 +2137,15 @@ body::before {
         </div>
         <!-- Set 2 (duplicate for seamless loop) -->
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="" /></div>
           <div class="nº">Look 01</div><div class="name">City Bag</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="" /></div>
           <div class="nº">Look 02</div><div class="name">Motion Sneakers</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="" /></div>
           <div class="nº">Look 03</div><div class="name">Soft Shades</div>
         </div>
         <div class="product-marquee__card">
@@ -2151,7 +2155,7 @@ body::before {
           <div class="nº">Look 04</div><div class="name">Silk Scarf</div>
         </div>
         <div class="product-marquee__card">
-          <div class="pic"><img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="" /></div>
+          <div class="pic"><img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="" /></div>
           <div class="nº">Look 05</div><div class="name">Travel Pouch</div>
         </div>
         <div class="product-marquee__card">
@@ -2166,7 +2170,7 @@ body::before {
     <div class="edit">
       <article class="edit-piece reveal">
         <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="Vela City Bag" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_33%20PM%20(1).png" alt="Vela City Bag" />
         </figure>
         <div class="edit-piece__copy">
           <div class="edit-piece__nº">
@@ -2186,7 +2190,7 @@ body::before {
 
       <article class="edit-piece edit-piece--reverse reveal">
         <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Vela Motion Sneakers" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(2).png" alt="Vela Motion Sneakers" />
         </figure>
         <div class="edit-piece__copy">
           <div class="edit-piece__nº">
@@ -2206,7 +2210,7 @@ body::before {
 
       <article class="edit-piece reveal">
         <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Vela Soft Shades" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(3).png" alt="Vela Soft Shades" />
         </figure>
         <div class="edit-piece__copy">
           <div class="edit-piece__nº">
@@ -2250,7 +2254,7 @@ body::before {
 
       <article class="edit-piece reveal">
         <figure class="edit-piece__media">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Vela Travel Pouch" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_34%20PM%20(4).png" alt="Vela Travel Pouch" />
         </figure>
         <div class="edit-piece__copy">
           <div class="edit-piece__nº">
@@ -2317,7 +2321,7 @@ body::before {
         <p class="motion-body-he" lang="he">היא נושאת את התיק לפגישה אחת ואת הצעיף לפגישה הבאה. הסניקרס לוקחות אותה מהסטודיו לבית הקפה; המשקפיים מובילות אותה מהצהריים אל הדבר הבא. שום דבר שהיא לובשת לא מאיט אותה. כל דבר שהיא לובשת — נשאר בבירור שלה.</p>
       </div>
       <figure class="motion-image">
-        <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(6).png" alt="In motion — model with the collection" />
+        <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2003_51_38%20PM%20(6).png" alt="In motion — model with the collection" />
         <figcaption>
           <strong>Plate II</strong>The Look, photographed in studio. Move beautifully. Stay unmistakable.
         </figcaption>
@@ -2376,28 +2380,28 @@ body::before {
       <div class="codex-page">
         <div class="codex-page__nº">Nº 01</div>
         <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_14%20PM%20(1).png" alt="Color System brand book page" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_14%20PM%20(1).png" alt="Color System brand book page" />
         </div>
         <div class="codex-page__label"><span>Color System</span><em>Plate I</em></div>
       </div>
       <div class="codex-page">
         <div class="codex-page__nº">Nº 02</div>
         <div class="codex-page__frame">
-          <img src="THE-BRAND-LOGO-NEW.png" alt="Logo and Typography brand book page" />
+          <img width="1122" height="1402" src="THE-BRAND-LOGO-NEW.png" alt="Logo and Typography brand book page" />
         </div>
         <div class="codex-page__label"><span>Logo &amp; Type</span><em>Plate II</em></div>
       </div>
       <div class="codex-page">
         <div class="codex-page__nº">Nº 03</div>
         <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_15%20PM%20(3).png" alt="Brand Language page" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_15%20PM%20(3).png" alt="Brand Language page" />
         </div>
         <div class="codex-page__label"><span>Language</span><em>Plate III</em></div>
       </div>
       <div class="codex-page">
         <div class="codex-page__nº">Nº 04</div>
         <div class="codex-page__frame">
-          <img src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_16%20PM%20(4).png" alt="Brand Voice page" />
+          <img width="1122" height="1402" src="ChatGPT%20Image%20May%2010%2C%202026%2C%2004_08_16%20PM%20(4).png" alt="Brand Voice page" />
         </div>
         <div class="codex-page__label"><span>Voice</span><em>Plate IV</em></div>
       </div>
@@ -2465,7 +2469,7 @@ body::before {
     <div class="colophon__top">
       <div class="colophon__edge-l">— A Brand World</div>
       <div class="colophon__center">
-        <div class="colophon__seal"><img src="LOGO.png" alt="VELA MOTION seal" /></div>
+        <div class="colophon__seal"><img width="1254" height="1254" src="LOGO.png" alt="VELA MOTION seal" /></div>
         <div class="mark">VELA</div>
         <div class="submark-mini">— Motion —</div>
         <div class="tag">Move beautifully. <em>Stay unmistakable.</em></div>

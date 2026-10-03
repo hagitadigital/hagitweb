@@ -10,6 +10,7 @@
 <meta property="og:title" content="VELUNE° Maison de Parfum — בושם הוא לא ריח. הוא מקום. · Brand Worlds Studio">
 <meta property="og:description" content="עולם מותג קונספט לבושם: דלת שנפתחת עם הגלילה, פרי שנפתח לטיפה, ובקבוק אחד בשלוש שעות ביום.">
 <meta property="og:image" content="https://hagitantebi.co.il/velune-og.jpg">
+<meta property="og:image:alt" content="בקבוק בושם VELUNE° עם פקק פוקסיה מעל מים — בושם הוא לא ריח, הוא מקום">
 <meta property="og:url" content="https://hagitantebi.co.il/velune/">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -363,7 +364,9 @@ document.addEventListener('DOMContentLoaded', function () {
   .cart .thanks h4{font-size:24px;margin-bottom:10px}
   .cart .thanks a{color:var(--litchi)}
   .cart .btn:disabled{opacity:.4;cursor:default}
-</style>
+
+        :where(img[width][height]){height:auto}
+    </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-motion');</script>
@@ -407,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- 01 · LE SEUIL — the door opens with the scroll -->
 <section class="scroller" id="seuil" aria-label="הסף">
   <div class="stage" id="seuilStage">
-    <img class="layer" src="assets/03-porte-closed-trees.webp" alt="דלת קשת סגורה בקיר אבקה כחול, עצי פרי אדומים משני הצדדים" fetchpriority="high">
+    <img width="1920" height="1081" class="layer" src="assets/03-porte-closed-trees.webp" alt="דלת קשת סגורה בקיר אבקה כחול, עצי פרי אדומים משני הצדדים" fetchpriority="high">
     <canvas id="seuilCanvas" aria-label="הדלת נפתחת מהאמצע פנימה והמצלמה נכנסת לגן"></canvas>
     <div class="hero-copy" id="heroCopy">
       <div class="veil"></div>
@@ -421,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- 02 · L'ALLÉE — the promise -->
 <section id="allee" aria-label="הגן">
-  <img class="bg" id="alleeBg" src="assets/05-allee-garden-water.webp" alt="שדרת עצי פרי אדומים בין בריכות מים ורצפת שיש, קשת בקצה">
+  <img width="1920" height="1081" class="bg" id="alleeBg" src="assets/05-allee-garden-water.webp" alt="שדרת עצי פרי אדומים בין בריכות מים ורצפת שיש, קשת בקצה">
   <div class="wrap">
     <div class="panel reveal">
       <span class="eyebrow">La Promesse</span>
@@ -452,9 +455,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- 04 · LES HEURES — one bottle, three lights, a sun arc -->
 <section class="scroller" id="heures" aria-label="השעות">
   <div class="stage" id="heuresStage">
-    <picture><source media="(max-width:680px)" srcset="assets/10-bottle-aube-day-m.webp"><img class="layer" id="hAube" src="assets/10-bottle-aube-day.webp" alt="בקבוק VELUNE שקוף על שיש כחלחל באור בוקר, קשת מאחור"></picture>
-    <picture><source media="(max-width:680px)" srcset="assets/11-bottle-floraison-blush-m.webp"><img class="layer" id="hFloraison" src="assets/11-bottle-floraison-blush.webp" alt="" style="opacity:0"></picture>
-    <picture><source media="(max-width:680px)" srcset="assets/12-bottle-crepuscule-dusk-m.webp"><img class="layer" id="hCrep" src="assets/12-bottle-crepuscule-dusk.webp" alt="" style="opacity:0"></picture>
+    <picture><source media="(max-width:680px)" srcset="assets/10-bottle-aube-day-m.webp"><img width="1920" height="1081" class="layer" id="hAube" src="assets/10-bottle-aube-day.webp" alt="בקבוק VELUNE שקוף על שיש כחלחל באור בוקר, קשת מאחור"></picture>
+    <picture><source media="(max-width:680px)" srcset="assets/11-bottle-floraison-blush-m.webp"><img width="1920" height="1081" class="layer" id="hFloraison" src="assets/11-bottle-floraison-blush.webp" alt="" style="opacity:0"></picture>
+    <picture><source media="(max-width:680px)" srcset="assets/12-bottle-crepuscule-dusk-m.webp"><img width="1920" height="1081" class="layer" id="hCrep" src="assets/12-bottle-crepuscule-dusk.webp" alt="" style="opacity:0"></picture>
     <div class="hpanel">
       <div class="edition" id="edition">
         <div class="name" id="edName">AUBE</div>
@@ -462,9 +465,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="when" id="edWhen">בוקר · הבקבוק השקוף</div>
         <div class="notes">
           <div class="inset">
-            <img src="assets/13-notes-aube-bergamot-tea-m.webp" alt="ברגמוט, תה לבן ועלים כסופים על שיש" class="on" data-h="0">
-            <img src="assets/14-notes-floraison-rose-peony-m.webp" alt="ורד, אדמונית והפרי על שיש" data-h="1">
-            <img src="assets/15-notes-crepuscule-iris-oud-m.webp" alt="איריס, עוד, פאלו סנטו וענבר בדמדומים" data-h="2">
+            <img width="900" height="1125" src="assets/13-notes-aube-bergamot-tea-m.webp" alt="ברגמוט, תה לבן ועלים כסופים על שיש" class="on" data-h="0">
+            <img width="900" height="1125" src="assets/14-notes-floraison-rose-peony-m.webp" alt="ורד, אדמונית והפרי על שיש" data-h="1">
+            <img width="900" height="1125" src="assets/15-notes-crepuscule-iris-oud-m.webp" alt="איריס, עוד, פאלו סנטו וענבר בדמדומים" data-h="2">
           </div>
           <ul id="edNotes"><li>ברגמוט</li><li>תה לבן</li><li>עלים כסופים</li></ul>
         </div>
@@ -496,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div><span class="en">Crépuscule</span><span>דמדומים. איריס, עוד, פאלו סנטו, ענבר. הבקבוק הכהה.</span></div>
       </div>
     </div>
-    <img src="assets/01-lineup-three-editions-arch.webp" alt="שלושת בקבוקי VELUNE, שקוף, ורוד וכהה, עם מכסה בורדו זהה, מול קשת" loading="lazy" class="reveal">
+    <img width="1920" height="1280" src="assets/01-lineup-three-editions-arch.webp" alt="שלושת בקבוקי VELUNE, שקוף, ורוד וכהה, עם מכסה בורדו זהה, מול קשת" loading="lazy" class="reveal">
   </div>
 </section>
 
@@ -509,9 +512,9 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </div>
   <div class="strip" id="strip">
-    <figure><img src="assets/17-muse-touching-fruit.webp" alt="אישה בשמלה כחולה נוגעת בפרי אדום על ענף, קשת וגן מטושטשים מאחור" loading="lazy"><figcaption>Le Fruit</figcaption></figure>
-    <figure><img src="assets/16-muse-holding-bottle.webp" alt="אישה מחזיקה בקבוק VELUNE ורוד ליד הפנים, מבט ישיר" loading="lazy"><figcaption>Le Flacon</figcaption></figure>
-    <figure id="sprayFig"><img src="assets/18-muse-spray.webp" alt="אישה בעיניים עצומות מתיזה VELUNE על הצוואר, גן כחול מאחור" loading="lazy"><canvas id="mist"></canvas><figcaption>Le Geste</figcaption></figure>
+    <figure><img width="1920" height="1081" src="assets/17-muse-touching-fruit.webp" alt="אישה בשמלה כחולה נוגעת בפרי אדום על ענף, קשת וגן מטושטשים מאחור" loading="lazy"><figcaption>Le Fruit</figcaption></figure>
+    <figure><img width="1920" height="1081" src="assets/16-muse-holding-bottle.webp" alt="אישה מחזיקה בקבוק VELUNE ורוד ליד הפנים, מבט ישיר" loading="lazy"><figcaption>Le Flacon</figcaption></figure>
+    <figure id="sprayFig"><img width="1920" height="1081" src="assets/18-muse-spray.webp" alt="אישה בעיניים עצומות מתיזה VELUNE על הצוואר, גן כחול מאחור" loading="lazy"><canvas id="mist"></canvas><figcaption>Le Geste</figcaption></figure>
   </div>
 </section>
 
@@ -519,9 +522,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <section class="scroller" id="ecrin" aria-label="הקופסה">
   <div class="stage">
     <div class="fitbox" id="ecrinFit" data-ratio="1.7762">
-      <img src="assets/20-ecrin-box-open.webp" alt="קופסת VELUNE פתוחה, קטיפה בורדו ובתוכה הבקבוק הוורוד" loading="lazy">
-      <div class="boxleaf l" id="boxL"><img src="assets/19-ecrin-box-closed.webp" alt="" loading="lazy"></div>
-      <div class="boxleaf r" id="boxR"><img src="assets/19-ecrin-box-closed.webp" alt="" loading="lazy"></div>
+      <img width="1920" height="1081" src="assets/20-ecrin-box-open.webp" alt="קופסת VELUNE פתוחה, קטיפה בורדו ובתוכה הבקבוק הוורוד" loading="lazy">
+      <div class="boxleaf l" id="boxL"><img width="1920" height="1081" src="assets/19-ecrin-box-closed.webp" alt="" loading="lazy"></div>
+      <div class="boxleaf r" id="boxR"><img width="1920" height="1081" src="assets/19-ecrin-box-closed.webp" alt="" loading="lazy"></div>
     </div>
     <div class="beats">
       <div class="beat on"><span class="eyebrow">L'Écrin</span><h3>הדלת חוזרת.<br>הפעם בקופסה.</h3><p>קופסת אבן כחולה עם קשת מוטבעת. שתי דלתות, קטיפה בצבע הפרי, ובפנים הבקבוק, כמו בסוף הגן.</p></div>
@@ -531,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- 07 · LA BOUTIQUE -->
 <section id="boutique" aria-label="הבוטיק">
-  <img class="bg" src="assets/21-boutique-interior.webp" alt="" loading="lazy">
+  <img width="1920" height="1081" class="bg" src="assets/21-boutique-interior.webp" alt="" loading="lazy">
   <div class="bg-veil"></div>
   <div class="wrap">
     <div class="reveal">
@@ -541,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="shelf">
       <article class="p-card" data-id="aube" data-name="AUBE · 50ml" data-price="520" data-img="assets/bottle-aube.webp" data-h="0">
-        <div class="pic"><img src="assets/bottle-aube.webp" alt="בקבוק VELUNE AUBE שקוף עם מכסה בורדו" loading="lazy"></div>
+        <div class="pic"><img width="329" height="680" src="assets/bottle-aube.webp" alt="בקבוק VELUNE AUBE שקוף עם מכסה בורדו" loading="lazy"></div>
         <h3>AUBE</h3>
         <div class="he">שחר · 50 מ״ל</div>
         <p class="role">ברגמוט, תה לבן, עלים כסופים. השעה שבה הגן עוד רטוב.</p>
@@ -549,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <button class="btn add" type="button">הוספה לסל</button>
       </article>
       <article class="p-card" data-id="floraison" data-name="FLORAISON · 50ml" data-price="520" data-img="assets/bottle-floraison.webp" data-h="1">
-        <div class="pic"><img src="assets/bottle-floraison.webp" alt="בקבוק VELUNE FLORAISON ורוד עם מכסה בורדו" loading="lazy"></div>
+        <div class="pic"><img width="329" height="683" src="assets/bottle-floraison.webp" alt="בקבוק VELUNE FLORAISON ורוד עם מכסה בורדו" loading="lazy"></div>
         <h3>FLORAISON</h3>
         <div class="he">פריחה · 50 מ״ל</div>
         <p class="role">ורד, אדמונית, הפרי. השעה שבה הכל פתוח.</p>
@@ -557,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <button class="btn add" type="button">הוספה לסל</button>
       </article>
       <article class="p-card" data-id="crepuscule" data-name="CRÉPUSCULE · 50ml" data-price="560" data-img="assets/bottle-crepuscule.webp" data-h="2">
-        <div class="pic"><img src="assets/bottle-crepuscule.webp" alt="בקבוק VELUNE CRÉPUSCULE כהה עם מכסה בורדו" loading="lazy"></div>
+        <div class="pic"><img width="336" height="686" src="assets/bottle-crepuscule.webp" alt="בקבוק VELUNE CRÉPUSCULE כהה עם מכסה בורדו" loading="lazy"></div>
         <h3>CRÉPUSCULE</h3>
         <div class="he">דמדומים · 50 מ״ל</div>
         <p class="role">איריס, עוד, פאלו סנטו, ענבר. השעה שנשארת על העור.</p>
@@ -565,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <button class="btn add" type="button">הוספה לסל</button>
       </article>
       <article class="p-card" data-id="coffret" data-name="LE COFFRET DES TROIS HEURES · 3×15ml" data-price="690" data-img="assets/22-boutique-counter-three-m.webp" data-h="1">
-        <div class="pic set"><img src="assets/22-boutique-counter-three.webp" alt="שלושת בקבוקי VELUNE על דלפק שיש בבוטיק" loading="lazy"></div>
+        <div class="pic set"><img width="1920" height="1081" src="assets/22-boutique-counter-three.webp" alt="שלושת בקבוקי VELUNE על דלפק שיש בבוטיק" loading="lazy"></div>
         <h3>LE COFFRET</h3>
         <div class="he">שלוש השעות · 3 × 15 מ״ל</div>
         <p class="role">שחר, פריחה ודמדומים במארז אחד. יום שלם בגן.</p>
@@ -628,15 +631,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2>עולמות קרובים מהסטודיו</h2>
     <div class="voisins-grid">
       <a class="voisin" href="https://hagitantebi.co.il/aerea.html">
-        <img src="../brand-worlds/thumbs/aerea.webp" alt="AERÉA — עולם מותג לבושם עם חמישה ניחוחות" loading="lazy">
+        <img width="720" height="450" src="../brand-worlds/thumbs/aerea.webp" alt="AERÉA — עולם מותג לבושם עם חמישה ניחוחות" loading="lazy">
         <div class="v-meta"><div class="v-name">AERÉA°</div><div class="v-he">חמישה ניחוחות, בקבוק שנוסע בין הסקשנים</div></div>
       </a>
       <a class="voisin" href="https://hagitantebi.co.il/rosee/">
-        <img src="../brand-worlds/thumbs/rosee.webp" alt="ROSÉE° — עולם מותג לסרום טל" loading="lazy">
+        <img width="720" height="378" src="../brand-worlds/thumbs/rosee.webp" alt="ROSÉE° — עולם מותג לסרום טל" loading="lazy">
         <div class="v-meta"><div class="v-name">ROSÉE°</div><div class="v-he">טיפת טל אחת שמגלגלת עולם</div></div>
       </a>
       <a class="voisin" href="https://hagitantebi.co.il/oreva/">
-        <img src="../brand-worlds/thumbs/oreva.webp" alt="ORÉVA° — עולם מותג לקוסמטיקאית עם ליין משלה" loading="lazy">
+        <img width="1200" height="630" src="../brand-worlds/thumbs/oreva.webp" alt="ORÉVA° — עולם מותג לקוסמטיקאית עם ליין משלה" loading="lazy">
         <div class="v-meta"><div class="v-name">ORÉVA°</div><div class="v-he">קודם הידיים, אחר כך הבקבוק</div></div>
       </a>
     </div>

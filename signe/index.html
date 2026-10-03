@@ -10,6 +10,7 @@
 <meta property="og:title" content="SIGNÉ° — Chaque dessert est signé · Brand Worlds Studio">
 <meta property="og:description" content="עולם מותג קונספט לבית קינוחים: הגלילה מוזגת שוקולד על כדור וניל, הכדור נופל אל קערת הטעמים — והתפריט קם לחיים, קינוח אחר קופץ ממנו בכל פעם.">
 <meta property="og:image" content="https://hagitantebi.co.il/signe-og.png">
+<meta property="og:image:alt" content="שוקולד מותך נשפך על כדור לבן על רקע כהה — SIGNÉ°">
 <meta property="og:url" content="https://hagitantebi.co.il/signe/">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -565,7 +566,9 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   footer a{color:var(--cream-dim);text-decoration:none;border-bottom:1px solid rgba(240,227,206,.25)}
   footer a:hover{color:var(--gold);border-color:var(--gold)}
 @media (prefers-reduced-motion:reduce){video{display:none}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style>
+
+        :where(img[width][height]){height:auto}
+    </style>
 
 <!-- BWS World Signals -->
 <script>
@@ -612,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- falling scoop (travels hero → coupe) -->
-<img id="fall-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
+<img width="800" height="787" id="fall-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
 
 <!-- ======================= 01 · LA COUPE ======================= -->
 <section class="chapter" id="coupe">
@@ -621,8 +624,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <h2 class="ch-title reveal">חמישה טעמים בקערה.<br><b>השישי — בדרך אלייך.</b></h2>
   <p class="ch-body reveal">כל טעם בקערה חתום: וניל, פיסטוק, פטל, שוקולד וקרמל. הכדור שנמזג למעלה משלים את הסט — ישר מהמזיגה אל הקערה.</p>
   <div class="bowl-wrap reveal">
-    <img class="bowl" src="assets/coupe-bowl2.webp" alt="צלחת הטעמים של SIGNÉ° מלמעלה — חמישה כדורי ג'לטו סביב במה ריקה במרכז" id="bowl-img">
-    <img id="landed-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
+    <img width="1200" height="1200" class="bowl" src="assets/coupe-bowl2.webp" alt="צלחת הטעמים של SIGNÉ° מלמעלה — חמישה כדורי ג'לטו סביב במה ריקה במרכז" id="bowl-img">
+    <img width="800" height="787" id="landed-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
     <div id="splash"></div>
   </div>
   <div class="flavors reveal">
@@ -677,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <p class="ch-body reveal">בכל בוקר, לפני שהדלת נפתחת, כל קינוח עובר תחת המזלף — פס קרם אחד רציף, מזולף ביד חופשית. אין שניים זהים, ואין קיצורי דרך: אם היד רעדה, הקינוח נשאר מאחור. החתימה היא לא קישוט. היא ההבטחה — מישהו עמד מאחורי הקינוח הזה, והסכים לחתום עליו.</p>
       </div>
       <figure>
-        <div class="promesse-img reveal"><img src="assets/piping-signature.webp" alt="יד מזלפת קו קרם רציף על משטח צפחה כהה — החתימה של SIGNÉ°" loading="lazy"></div>
+        <div class="promesse-img reveal"><img width="1600" height="1067" src="assets/piping-signature.webp" alt="יד מזלפת קו קרם רציף על משטח צפחה כהה — החתימה של SIGNÉ°" loading="lazy"></div>
         <figcaption class="img-caption">La signature — un seul trait.</figcaption>
       </figure>
     </div>
@@ -716,7 +719,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="ch-tag reveal">Les Éditions Signées</p>
     <h2 class="ch-title reveal">ארבע מהדורות אקלר.<br><b>חתימה אחת.</b></h2>
     <div class="editions-banner reveal">
-      <img src="assets/hero-eclair.webp" alt="אקלר Le Noir מרחף עם חתימת קרם מוזלפת — מהדורת הדגל של SIGNÉ°" loading="lazy">
+      <img width="1920" height="1080" src="assets/hero-eclair.webp" alt="אקלר Le Noir מרחף עם חתימת קרם מוזלפת — מהדורת הדגל של SIGNÉ°" loading="lazy">
       <div class="cap">L'édition signature — Le Noir.</div>
     </div>
   </section>
@@ -732,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="wagon-chip">שוקולד 70% · עלי זהב</div>
             <p class="wagon-he">המהדורה שפתחה את הבית. גלזורת מראה כהה על קרם שוקולד עמוק, ועלה זהב אחד בדיוק — כי חתימה אמיתית לא צריכה יותר מזה.</p>
           </div>
-          <div class="wagon-img"><img src="assets/coll-noir.webp" alt="Le Noir — אקלר שוקולד 70% בגלזורת מראה עם עלי זהב"></div>
+          <div class="wagon-img"><img width="900" height="1200" src="assets/coll-noir.webp" alt="Le Noir — אקלר שוקולד 70% בגלזורת מראה עם עלי זהב"></div>
         </article>
         <article class="wagon">
           <div class="wagon-copy">
@@ -741,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="wagon-chip">פיסטוק סיציליאני</div>
             <p class="wagon-he">פיסטוק מברונטה שנטחן במקום, לא תמצית. ציפוי מט, לב חמאתי, וקצה מצופה פיסטוקים גרוסים — ירוק שמרגישים עוד לפני שטועמים.</p>
           </div>
-          <div class="wagon-img"><img src="assets/coll-pistache.webp" alt="La Pistache — אקלר פיסטוק סיציליאני"></div>
+          <div class="wagon-img"><img width="900" height="1200" src="assets/coll-pistache.webp" alt="La Pistache — אקלר פיסטוק סיציליאני"></div>
         </article>
         <article class="wagon">
           <div class="wagon-copy">
@@ -750,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="wagon-chip">פטל · פנינות סוכר</div>
             <p class="wagon-he">גלזורת בורדו על קרם וניל, פטל אחד טרי ופנינות סוכר. החמיצות המדויקת שמחזירה את האיזון אחרי כל השוקולד.</p>
           </div>
-          <div class="wagon-img"><img src="assets/coll-framboise.webp" alt="La Framboise — אקלר פטל עם פנינות סוכר"></div>
+          <div class="wagon-img"><img width="900" height="1200" src="assets/coll-framboise.webp" alt="La Framboise — אקלר פטל עם פנינות סוכר"></div>
         </article>
         <article class="wagon">
           <div class="wagon-copy">
@@ -759,7 +762,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="wagon-chip">וניל מדגסקר</div>
             <p class="wagon-he">הפשוט ביותר — ולכן הקשה ביותר. מקל וניל שלם, קרם שנמזלף ברגע ההזמנה, ואפס מקומות להסתתר בהם.</p>
           </div>
-          <div class="wagon-img"><img src="assets/coll-vanille.webp" alt="La Vanille — אקלר וניל מדגסקר"></div>
+          <div class="wagon-img"><img width="900" height="1200" src="assets/coll-vanille.webp" alt="La Vanille — אקלר וניל מדגסקר"></div>
         </article>
       </div>
       <div class="train-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
@@ -783,7 +786,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="ch-tag reveal">La Maison</p>
     <h2 class="ch-title reveal">דלפק אחד מואר.<br><b>שורה אחת של קינוחים.</b></h2>
     <div class="maison-grid">
-      <div class="maison-img reveal"><img src="assets/boutique.webp" alt="הבוטיק של SIGNÉ° בלילה — ויטרינה מוארת אחת בחלל כהה" loading="lazy"></div>
+      <div class="maison-img reveal"><img width="1600" height="900" src="assets/boutique.webp" alt="הבוטיק של SIGNÉ° בלילה — ויטרינה מוארת אחת בחלל כהה" loading="lazy"></div>
       <div>
         <ul class="maison-list reveal">
           <li><span class="fr">La Carte</span><span class="he">מתחלפת כל עונה</span></li>
@@ -823,15 +826,15 @@ document.addEventListener('DOMContentLoaded', function () {
   <h2>עולמות קרובים מהסטודיו</h2>
   <div class="voisins-grid">
     <a class="voisin" href="https://hagitantebi.co.il/etage/">
-      <img src="../brand-worlds/thumbs/etage.webp" alt="ÉTAGE° — עולם מותג לעוגות חתונה" loading="lazy">
+      <img width="720" height="378" src="../brand-worlds/thumbs/etage.webp" alt="ÉTAGE° — עולם מותג לעוגות חתונה" loading="lazy">
       <div class="v-meta"><div class="v-name">ÉTAGE°</div><div class="v-he">עוגות חתונה קוטור</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/miel/">
-      <img src="../brand-worlds/thumbs/miel.webp" alt="MIEL° — עולם מותג לבייקרי רומנטי" loading="lazy">
+      <img width="1200" height="630" src="../brand-worlds/thumbs/miel.webp" alt="MIEL° — עולם מותג לבייקרי רומנטי" loading="lazy">
       <div class="v-meta"><div class="v-name">MIEL°</div><div class="v-he">רומנטיקה מתחילה מבפנים</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/pancakerie/">
-      <img src="../brand-worlds/thumbs/pancakerie.webp" alt="PANCAKERIE° — עולם מותג לפנקייקרי עם בנאי מנה" loading="lazy">
+      <img width="1200" height="630" src="../brand-worlds/thumbs/pancakerie.webp" alt="PANCAKERIE° — עולם מותג לפנקייקרי עם בנאי מנה" loading="lazy">
       <div class="v-meta"><div class="v-name">PANCAKERIE°</div><div class="v-he">טעם שרואים לפני שטועמים</div></div>
     </a>
   </div>

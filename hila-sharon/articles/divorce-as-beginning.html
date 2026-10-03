@@ -46,12 +46,16 @@ footer{background:var(--ink);color:var(--cream);padding:50px 20px 30px;text-alig
 footer .f-name{font-family:var(--display);font-size:1.4rem;margin-bottom:6px}
 footer .f-role{color:rgba(246,238,228,.6);font-size:.9rem}
 footer .f-bottom{border-top:1px solid rgba(246,238,228,.12);padding-top:20px;margin-top:20px;color:rgba(246,238,228,.45);font-size:.82rem}
-</style>
+
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <header>
-  <a href="../index.html" class="brand"><img src="../assets/images/logo.png" alt="לוגו הילה שרון">הילה שרון</a>
+  <a href="../index.html" class="brand"><img width="500" height="500" src="../assets/images/logo.png" alt="לוגו הילה שרון">הילה שרון</a>
   <a href="https://wa.me/972526146082" class="nav-cta" target="_blank" rel="noopener">לתיאום פגישה</a>
 </header>
 
@@ -60,7 +64,7 @@ footer .f-bottom{border-top:1px solid rgba(246,238,228,.12);padding-top:20px;mar
   <span class="cat">גירושין</span>
   <h1>גירושין הם לא הסוף — הם תחילתו של פרק ב'</h1>
   <div class="meta">
-    <img src="../assets/images/hila-portrait.jpeg" alt="הילה שרון">
+    <img width="1080" height="1304" src="../assets/images/hila-portrait.jpeg" alt="הילה שרון">
     <div><strong>הילה שרון</strong> · פסיכותרפיסטית MA · 5 דקות קריאה</div>
   </div>
 

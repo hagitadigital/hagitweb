@@ -14,6 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hagitantebi.co.il/brand-os.html" />
   <meta property="og:image" content="https://hagitantebi.co.il/og-brand-os.jpg" />
+  <meta property="og:image:alt" content="פרח חרסינה לבן משחרר סרט נחושת אל מניפת כרטיסים">
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="he_IL" />
@@ -24,6 +25,7 @@
   <meta name="twitter:title" content="BrandOS — Content Engine | מנוע תוכן ממותג של BrandOS Custom" />
   <meta name="twitter:description" content="סוכן AI שמכיר את המותג שלך. תוכן + תמונות + הנפשות + עמודים ממותגים — הכל דרך שיחה, בדקות." />
   <meta name="twitter:image" content="https://hagitantebi.co.il/og-brand-os.jpg" />
+  <meta name="twitter:image:alt" content="פרח חרסינה לבן משחרר סרט נחושת אל מניפת כרטיסים">
   
   <!-- Schema: SoftwareApplication -->
   <script type="application/ld+json">
@@ -428,7 +430,11 @@
       .hero-visual img { max-width: 280px; }
       .agent-showcase { grid-template-columns: 1fr; gap: 24px; }
     }
-  </style>
+  
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    </style>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -477,7 +483,7 @@
         </div>
 
         <div class="hero-visual">
-          <img src="brand-os/images/kintsugi.png" alt="BrandOS — Brand DNA Core" />
+          <img width="1024" height="1024" src="brand-os/images/kintsugi.png" alt="BrandOS — Brand DNA Core" />
         </div>
       </div>
     </div>
@@ -544,28 +550,28 @@
 
       <div class="showcase-grid">
         <div class="showcase-item fade-in">
-          <img src="brand-os/images/brandos-dashboard.png" alt="BrandOS — דאשבורד ממותג" loading="lazy" />
+          <img width="1860" height="819" src="brand-os/images/brandos-dashboard.png" alt="BrandOS — דאשבורד ממותג" loading="lazy" />
           <div class="showcase-label">
             <strong>דאשבורד ממותג</strong>
             צבעים, לוגו, סטטיסטיקות — הכל אישי
           </div>
         </div>
         <div class="showcase-item fade-in">
-          <img src="brand-os/images/brandos-create.png" alt="BrandOS — יצירת תוכן" loading="lazy" />
+          <img width="1899" height="845" src="brand-os/images/brandos-create.png" alt="BrandOS — יצירת תוכן" loading="lazy" />
           <div class="showcase-label">
             <strong>יצירת תוכן</strong>
             בוחרים סוג, נושא, טון — והמערכת כותבת
           </div>
         </div>
         <div class="showcase-item fade-in">
-          <img src="brand-os/images/brandos-reference.png" alt="BrandOS — תמונת רפרנס" loading="lazy" />
+          <img width="1631" height="793" src="brand-os/images/brandos-reference.png" alt="BrandOS — תמונת רפרנס" loading="lazy" />
           <div class="showcase-label">
             <strong>תמונה מרפרנס</strong>
             מעלים השראה — המערכת יוצרת בסגנון המותג
           </div>
         </div>
         <div class="showcase-item fade-in">
-          <img src="brand-os/images/brandos-result.png" alt="BrandOS — תוצאה עם כיתוב עברי" loading="lazy" />
+          <img width="1819" height="843" src="brand-os/images/brandos-result.png" alt="BrandOS — תוצאה עם כיתוב עברי" loading="lazy" />
           <div class="showcase-label">
             <strong>תוצאה מוכנה</strong>
             תמונה + כיתוב עברי + שם מותג — מוכנה לפרסום
@@ -604,7 +610,7 @@
         </div>
         <div class="fade-in">
           <div class="animation-screenshot">
-            <img src="brand-os/images/brandos-animation.png" alt="BrandOS — ממשק הנפשה" loading="lazy" />
+            <img width="667" height="822" src="brand-os/images/brandos-animation.png" alt="BrandOS — ממשק הנפשה" loading="lazy" />
           </div>
           <div class="animation-info" style="margin-top: 24px;">
             <h3>מתמונה סטטית → סרטון ממותג</h3>
@@ -626,7 +632,7 @@
 
       <div class="calendar-showcase">
         <div class="calendar-image fade-in">
-          <img src="brand-os/images/brandos-calendar.png" alt="BrandOS — יומן תוכן חודשי" loading="lazy" />
+          <img width="1215" height="545" src="brand-os/images/brandos-calendar.png" alt="BrandOS — יומן תוכן חודשי" loading="lazy" />
         </div>
         <div class="calendar-info fade-in">
           <h3>תכנון תוכן חכם — בתוך המערכת</h3>

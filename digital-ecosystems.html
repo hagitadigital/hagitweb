@@ -383,6 +383,10 @@
                 gap: 16px;
             }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
   <!-- Schema: Service -->
@@ -468,7 +472,7 @@
                 <p class="hero__subtitle">אני חגית אנטבי, אסטרטגית מותג ומייסדת Brand Worlds Studio. אני בונה לעסקים אתרי תדמית, אתרי פרימיום ואתרי איקומרס ממותגים — כולם נגזרים מה-DNA של המותג, לא מתבנית. לבעלות מותגי מוצר, קליניקות ועסקי בוטיק שרוצות אתר שמרגיש כמוהן.</p>
             </div>
             <div class="hero__image">
-                <img src="cubedigital1.jpg" alt="Digital Ecosystems">
+                <img width="1674" height="1536" src="cubedigital1.jpg" alt="Digital Ecosystems">
             </div>
         </div>
     </section>

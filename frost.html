@@ -415,6 +415,10 @@
             .content__list li { flex-direction: column; gap: 4px; }
             .content__list strong { min-width: auto; }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
 <!-- GEO: FAQPage -->
@@ -466,7 +470,7 @@
     </nav>
 
     <section class="hero">
-        <img src="frost.png" alt="FROST Brand World" class="hero__image">
+        <img width="2000" height="1211" src="frost.png" alt="FROST Brand World" class="hero__image">
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <p class="hero__category">Beauty & Lifestyle</p>
@@ -555,16 +559,16 @@
         <div class="gallery__inner">
             <div class="gallery__grid">
                 <div class="gallery__item gallery__item--wide">
-                    <img src="frost-website.png" alt="FROST Website">
+                    <img width="1024" height="565" src="frost-website.png" alt="FROST Website">
                 </div>
                 <div class="gallery__item">
-                    <img src="frost-beach.png" alt="FROST Beach">
+                    <img width="1024" height="565" src="frost-beach.png" alt="FROST Beach">
                 </div>
                 <div class="gallery__item">
-                    <img src="frost-tower.png" alt="FROST Products">
+                    <img width="1024" height="565" src="frost-tower.png" alt="FROST Products">
                 </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="frost-paris.png" alt="FROST Paris">
+                    <img width="1024" height="559" src="frost-paris.png" alt="FROST Paris">
                 </div>
             </div>
         </div>

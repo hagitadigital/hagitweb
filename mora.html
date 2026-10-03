@@ -406,6 +406,10 @@
             .content__list li { flex-direction: column; gap: 4px; }
             .content__list strong { min-width: auto; }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
 <!-- GEO: FAQPage -->
@@ -457,7 +461,7 @@
     </nav>
 
     <section class="hero">
-        <img src="mora.png" alt="MORA Sanctuary Brand World" class="hero__image">
+        <img width="2000" height="1090" src="mora.png" alt="MORA Sanctuary Brand World" class="hero__image">
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <p class="hero__category">Beauty & Wellness</p>
@@ -549,19 +553,19 @@
         <div class="gallery__inner">
             <div class="gallery__grid">
                 <div class="gallery__item gallery__item--wide">
-                    <img src="mora-products.png" alt="MORA Products">
+                    <img width="2000" height="1090" src="mora-products.png" alt="MORA Products">
                 </div>
                 <div class="gallery__item">
-                    <img src="mora-alchemist.png" alt="MORA Alchemist">
+                    <img width="928" height="1152" src="mora-alchemist.png" alt="MORA Alchemist">
                 </div>
                 <div class="gallery__item">
-                    <img src="mora-store.png" alt="MORA Store">
+                    <img width="1917" height="1464" src="mora-store.png" alt="MORA Store">
                 </div>
                 <div class="gallery__item">
-                    <img src="mora-bag.png" alt="MORA Packaging">
+                    <img width="1611" height="2000" src="mora-bag.png" alt="MORA Packaging">
                 </div>
                 <div class="gallery__item">
-                    <img src="mora-website.png" alt="MORA Website">
+                    <img width="2000" height="1090" src="mora-website.png" alt="MORA Website">
                 </div>
             </div>
         </div>

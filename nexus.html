@@ -446,6 +446,10 @@
         @media (max-width: 768px) {
             .hero__meta { flex-direction: column; gap: 16px; }
         }
+    
+        :where(img[width][height]){height:auto}
+    
+        @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     </style>
 
 <!-- GEO: FAQPage -->
@@ -497,7 +501,7 @@
     </nav>
 
     <section class="hero">
-        <img src="nexus.png" alt="NEXUS Brand World" class="hero__image">
+        <img width="1408" height="768" src="nexus.png" alt="NEXUS Brand World" class="hero__image">
         <div class="hero__overlay"></div>
         <div class="hero__content">
             <p class="hero__category">Gaming & Technology</p>
@@ -585,16 +589,16 @@
         <div class="gallery__inner">
             <div class="gallery__grid">
                 <div class="gallery__item gallery__item--wide">
-                    <img src="nexus-store.png" alt="NEXUS Store">
+                    <img width="1408" height="768" src="nexus-store.png" alt="NEXUS Store">
                 </div>
                 <div class="gallery__item">
-                    <img src="nexus-avatar.png" alt="NEXUS Avatar">
+                    <img width="2000" height="1116" src="nexus-avatar.png" alt="NEXUS Avatar">
                 </div>
                 <div class="gallery__item">
-                    <img src="nexus-gear.png" alt="NEXUS Gear">
+                    <img width="1024" height="1024" src="nexus-gear.png" alt="NEXUS Gear">
                 </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="nexus-website.png" alt="NEXUS Website">
+                    <img width="2000" height="1116" src="nexus-website.png" alt="NEXUS Website">
                 </div>
             </div>
         </div>
