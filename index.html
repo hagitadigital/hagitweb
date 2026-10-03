@@ -2643,10 +2643,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="vitrine-teaser__hint">גררי לסיבוב</span>
                 </div>
                 <div>
-                    <p class="vitrine-teaser__label" dir="ltr">La Vitrine · New</p>
+                    <p class="vitrine-teaser__label" dir="ltr">Brand Worlds Museum · Night Wing</p>
                     <h3 class="vitrine-teaser__title">המוצרים שלא קיימים, ביד שלך.</h3>
-                    <p class="vitrine-teaser__sub">חמישה מוצרים מהעולמות בתלת-ממד אמיתי, לא בסרטון. לסובב, לפתוח, ולהיכנס לעולם. וככה זה נראה גם עם המוצר שלך.</p>
-                    <a class="vitrine-teaser__link" href="/vitrine/">לוויטרינה <span aria-hidden="true">←</span></a>
+                    <p class="vitrine-teaser__sub">חמישה מוצרים מהעולמות בתלת-ממד אמיתי, באגף הלילה של המוזיאון. מוצאים אותם בחושך עם פנס, מסובבים, ונכנסים לעולם. וככה זה נראה גם עם המוצר שלך.</p>
+                    <a class="vitrine-teaser__link" href="/brand-worlds-museum.html#night">לאגף הלילה <span aria-hidden="true">←</span></a>
                 </div>
             </div>
         </div>
@@ -2666,7 +2666,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var sx,sy,moved;
                     mv.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY;moved=false;stage.classList.add('touched');});
                     mv.addEventListener('pointermove',function(e){ if(Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6) moved=true; });
-                    mv.addEventListener('pointerup',function(){ if(!moved) location.href='/vitrine/'; });
+                    mv.addEventListener('pointerup',function(){ if(!moved) location.href='/brand-worlds-museum.html#night'; });
                     stage.insertBefore(mv, stage.firstChild);
                 }).catch(function(){});
             }
