@@ -84,6 +84,7 @@ img{display:block;max-width:100%;height:auto}
 .wm i{font-style:normal;color:var(--rose-deep)}
 .hr{font-family:var(--serif);letter-spacing:.22em;font-variant-numeric:lining-nums tabular-nums;direction:ltr;unicode-bidi:isolate;white-space:nowrap;color:var(--copper-text)}
 .fr{font-family:var(--serif);letter-spacing:.06em;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.nw{white-space:nowrap}
 .ltr{direction:ltr;unicode-bidi:isolate}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 .eyebrow{font-size:.84rem;letter-spacing:.14em;font-weight:600;color:var(--rose-text)}
@@ -129,7 +130,7 @@ section{padding:clamp(72px,10vw,140px) 0}
 .chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--copper)}
 .chain > div{padding:30px 26px 10px 26px;border-inline-start:1px solid rgba(194,138,90,.45)}
 .chain > div:first-child{border-inline-start:0;padding-inline-start:0}
-.chain .n{font-family:var(--serif);font-size:1rem;letter-spacing:.16em;color:var(--copper-text);font-weight:500}
+.chain .n{font-variant-numeric:lining-nums tabular-nums;font-family:var(--serif);font-size:1rem;letter-spacing:.16em;color:var(--copper-text);font-weight:500}
 .chain h3{font-weight:300;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.25;margin:10px 0 12px}
 .chain h3 b{font-weight:600}
 .chain p{color:var(--ink-soft)}
@@ -139,7 +140,7 @@ section{padding:clamp(72px,10vw,140px) 0}
 .codes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .code{background:var(--linen);padding:26px 22px;display:flex;flex-direction:column;gap:18px;border:1px solid rgba(194,138,90,.22)}
 .code .top-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.code .top-row .n{font-family:var(--serif);color:var(--copper-text);font-size:1rem;letter-spacing:.16em}
+.code .top-row .n{font-variant-numeric:lining-nums tabular-nums;font-family:var(--serif);color:var(--copper-text);font-size:1rem;letter-spacing:.16em}
 .code h3{font-weight:600;font-size:1.35rem}
 .code .vis{height:190px;display:flex;align-items:center;justify-content:center}
 .code .vis .cad{width:170px;height:170px}
@@ -178,7 +179,7 @@ section{padding:clamp(72px,10vw,140px) 0}
 .type .plate .tag{font-family:var(--serif);font-size:clamp(.9rem,1.4vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;direction:ltr;unicode-bidi:isolate;color:#574349}
 .specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
 .specs small{display:block;color:var(--copper-text);font-size:.86rem;font-weight:600}
-.specs b{display:block;font-family:var(--serif);font-weight:500;font-size:1.7rem;direction:ltr;text-align:right}
+.specs b{font-variant-numeric:lining-nums tabular-nums;display:block;font-family:var(--serif);font-weight:500;font-size:1.7rem;direction:ltr;text-align:right}
 .specs span{font-size:.88rem;color:var(--ink-soft)}
 .samples{display:flex;flex-direction:column;gap:26px}
 .samples .s{display:flex;flex-direction:column;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(194,138,90,.45)}
@@ -260,7 +261,7 @@ footer.studio a{color:var(--rose)}
 <section class="hero" aria-labelledby="h-title">
   <div class="wrap">
     <div>
-      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">ROSÉE°</span> · עולם קונספט בדיוני מס׳&nbsp;15</p>
+      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">ROSÉE°</span> · <span class="nw">עולם קונספט בדיוני מס׳&nbsp;15</span></p>
       <h1 id="h-title">לא מוכרים סרום.<br><b>מוכרים בוקר.</b></h1>
       <p>לכל מוצר של <span class="ltr">ROSÉE°</span> יש שעה של בוקר, והשעה באה לפני השם. לכן הקולקציה היא שעון: חמישה מוצרים על היקף אחד, שמיים שמתבהרים משזיף לשמנת, וטיפה אחת שפותחת את הכול. הספר הזה מראה איך החלטה אחת מחזיקה את כל העולם, מהטיפה הראשונה ועד העגלה.</p>
     </div>

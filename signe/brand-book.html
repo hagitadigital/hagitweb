@@ -20,7 +20,9 @@
 <meta property="og:url" content="https://hagitantebi.co.il/signe/brand-book.html">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:alt" content="קו של שוקולד נשפך על כדור לבן שעומד על עמוד שיש, על רקע שחור">
 <meta name="twitter:image" content="https://hagitantebi.co.il/signe-og.png">
+<meta name="twitter:image:alt" content="קו של שוקולד נשפך על כדור לבן שעומד על עמוד שיש, על רקע שחור">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -68,14 +70,14 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   --vanille:#EFE3CB; --pistache:#97A96B; --framboise:#6E2436; --chocolat:#3B2417; --caramel:#C98F45;
   /* studio note paper, used here for the rules */
   --paper:#F2EBDC; --paper-ink:#15202E; --gold-deep:#7A5C2A;
-  --serif:'Cormorant Garamond',serif;
+  --serif:'Cormorant Garamond','Assistant',serif;
   --script:'Italianno',cursive;
   --sans:'Assistant',sans-serif;
   --gutter:clamp(18px,5vw,88px);
   --max:1240px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--noir);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--gold);color:var(--noir)}
 a{color:var(--gold)}
@@ -85,6 +87,7 @@ img{display:block;max-width:100%;height:auto}
 .wm sup{font-size:.38em;vertical-align:.9em;color:var(--gold)}
 .script{font-family:var(--script);font-weight:400;color:var(--gold);line-height:1.05;direction:ltr;unicode-bidi:isolate}
 .fr{font-family:var(--serif);letter-spacing:.04em;direction:ltr;unicode-bidi:isolate}
+.nw{white-space:nowrap}
 .ltr{direction:ltr;unicode-bidi:isolate}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 .eyebrow{font-size:.84rem;letter-spacing:.16em;font-weight:400;color:var(--gold)}
@@ -266,7 +269,7 @@ footer.studio a{color:var(--gold)}
 <section class="hero" aria-labelledby="h-title">
   <div class="wrap">
     <div>
-      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">SIGNÉ°</span> · עולם מס׳ 17</p>
+      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">SIGNÉ°</span> · <span class="nw">עולם קונספט בדיוני מס׳&nbsp;17</span></p>
       <h1 id="h-title">קו אחד.<br><b>ביד אחת.</b></h1>
       <p class="body">ב־<span class="ltr">SIGNÉ°</span> כל קינוח עובר תחת המזלף לפני שהדלת נפתחת: פס קרם אחד, רציף, ביד חופשית. אין שניים זהים, ולכן המותג לא צריך עוד סמל. החתימה היא הסמל. הספר הזה מראה איך קו אחד מחזיק את כל העולם, מהמזלף בבוקר ועד הוויטרינה המוארת בלילה.</p>
     </div>
