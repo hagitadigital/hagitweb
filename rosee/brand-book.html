@@ -20,7 +20,9 @@
 <meta property="og:url" content="https://hagitantebi.co.il/rosee/brand-book.html">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:alt" content="חמשת מוצרי ROSÉE° בזכוכית ורודה עם מכסי נחושת, באור נמוך של לפנות בוקר">
 <meta name="twitter:image" content="https://hagitantebi.co.il/rosee-og.jpg">
+<meta name="twitter:image:alt" content="חמשת מוצרי ROSÉE° בזכוכית ורודה עם מכסי נחושת, באור נמוך של לפנות בוקר">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -66,13 +68,13 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   --ink:#3B2E33; --ink-soft:#6E5A61;
   /* text-safe deepenings for small type on cream and dawn (book only) */
   --copper-text:#6E4A2A; --rose-text:#7A3E48; --night:#2A1F24;
-  --serif:'Cormorant Garamond',serif;
+  --serif:'Cormorant Garamond','Assistant',serif;
   --sans:'Assistant',-apple-system,'Segoe UI',sans-serif;
   --gutter:clamp(18px,5vw,88px);
   --max:1240px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--rose);color:var(--ink)}
 a{color:var(--rose-text)}
@@ -112,7 +114,6 @@ section{padding:clamp(72px,10vw,140px) 0}
 .cad-center::before{content:"";position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:130%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(244,230,228,.96) 0%,rgba(240,222,222,.85) 34%,rgba(232,180,184,.12) 52%,transparent 68%);z-index:-1}
 .cad-center .fr{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:500;letter-spacing:.1em}
 .cad-center b{font-weight:600;font-size:clamp(.95rem,1.4vw,1.1rem)}
-.cad-center small{font-size:clamp(.88rem,1.2vw,1rem);color:#574349}
 .hours-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:clamp(56px,7vw,96px)}
 .hours-strip > div{padding:20px clamp(14px,2.4vw,34px) 22px;display:flex;align-items:center;gap:14px}
 .hours-strip img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid rgba(194,138,90,.55);flex:none}
@@ -259,7 +260,7 @@ footer.studio a{color:var(--rose)}
 <section class="hero" aria-labelledby="h-title">
   <div class="wrap">
     <div>
-      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">ROSÉE°</span> · עולם&nbsp;מס׳&nbsp;15</p>
+      <p class="eyebrow">ספר מותג מקוצר · <span class="ltr">ROSÉE°</span> · עולם קונספט בדיוני מס׳&nbsp;15</p>
       <h1 id="h-title">לא מוכרים סרום.<br><b>מוכרים בוקר.</b></h1>
       <p>לכל מוצר של <span class="ltr">ROSÉE°</span> יש שעה של בוקר, והשעה באה לפני השם. לכן הקולקציה היא שעון: חמישה מוצרים על היקף אחד, שמיים שמתבהרים משזיף לשמנת, וטיפה אחת שפותחת את הכול. הספר הזה מראה איך החלטה אחת מחזיקה את כל העולם, מהטיפה הראשונה ועד העגלה.</p>
     </div>
@@ -367,7 +368,7 @@ footer.studio a{color:var(--rose)}
     <div class="head rv">
       <p class="eyebrow">מבחן הכיסוי</p>
       <h2 class="sec" id="cover-title">מכסים את השם. <b>עדיין <span class="ltr">ROSÉE°</span>.</b></h2>
-      <p class="lead">אם צריך את הלוגו כדי לזהות חפץ, המערכת לא עובדת. על אף אחד מהפריטים האלה לא מופיע השם, ובכל זאת ברור מיד של מי הם.</p>
+      <p class="lead">אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. על אף אחד מהפריטים האלה לא מופיע השם, ובכל זאת ברור מיד של מי הם.</p>
     </div>
     <div class="tiles rv">
       <div class="tile" style="background:linear-gradient(180deg,var(--dawn),var(--cream))">
