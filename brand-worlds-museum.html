@@ -82,6 +82,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Frank+Ruhl+Libre:wght@400;500;600&family=Heebo:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -301,6 +302,109 @@ a.enter{text-decoration:none}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition-duration:.01s!important;transition-delay:0s!important}
 }
+
+/* ---------- the night wing ---------- */
+.night{position:relative;background:#0D0A08;color:#EDE3D3;overflow:hidden}
+.night__intro{max-width:760px;margin:0 auto;padding:clamp(72px,12vh,128px) clamp(16px,4vw,64px) clamp(24px,4vh,40px);text-align:center;display:grid;gap:16px}
+.night__tag{font-family:var(--font-body-en);font-size:.72rem;letter-spacing:.28em;color:#C9A57A}
+.night h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.12;color:#F6EEE2}
+.night h2 em{font-family:'Frank Ruhl Libre',serif;font-style:normal;color:#E0B07E}
+.night__intro p:last-child{font-size:1.04rem;line-height:1.85;color:rgba(237,227,211,.78)}
+.room{position:relative;height:clamp(520px,78vh,760px);cursor:none;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.room__floor{position:absolute;inset:auto 0 0 0;height:34%;background:linear-gradient(180deg,#17110D 0%,#0D0A08 100%);border-top:1px solid rgba(201,165,122,.12)}
+.room__dark{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;transition:opacity 1.2s var(--ease)}
+.night:not(.on) .room__dark{opacity:.55}
+.night.on .room__dark{animation:lights-out 1.4s steps(1,end) both}
+.night.lit .room__dark{opacity:0;animation:none}
+@keyframes lights-out{0%{opacity:.55}18%{opacity:1}24%{opacity:.35}30%{opacity:1}38%{opacity:.6}46%,100%{opacity:1}}
+.cases{position:absolute;inset:0;max-width:1400px;margin:0 auto;display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,3vw,48px);padding:0 clamp(16px,4vw,64px) 9%}
+.case{--w:clamp(150px,15vw,214px);position:relative;width:var(--w);display:flex;flex-direction:column;align-items:center;background:none;border:0;padding:0;cursor:none;color:inherit;font:inherit}
+.case__glass{position:relative;display:block;width:100%;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.18);border-bottom:0;
+  background:linear-gradient(115deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 28%,rgba(255,255,255,0) 45%,rgba(255,255,255,.06) 70%,rgba(255,255,255,.01) 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),inset 0 -40px 60px -40px color-mix(in srgb,var(--glow) 30%,transparent);
+  transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.case__glass::before{content:"";position:absolute;inset:-1px -1px auto;height:10px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);border-bottom:0}
+/* model-viewer shares one renderer: its canvas can be larger than the case, and must hang from the left */
+.case model-viewer,.out__mv{direction:ltr}
+.case model-viewer{position:absolute;inset:8% 6% 0;width:88%;height:92%;background:transparent;--poster-color:transparent;pointer-events:none}
+.case__plinth{display:block;width:112%;height:var(--plinth);background:linear-gradient(90deg,#211914 0%,#2E241D 45%,#1A1410 100%);border-top:2px solid #3A2E25;position:relative;box-shadow:0 30px 40px -20px rgba(0,0,0,.7)}
+.case__plate{position:absolute;top:18px;inset-inline:12%;padding:8px 10px;text-align:center;border:1px solid rgba(201,165,122,.35);background:linear-gradient(180deg,#2B2119,#211912);transition:border-color .5s,box-shadow .5s}
+.case__plate b{display:block;font-family:var(--font-display);font-weight:500;font-size:1.15rem;letter-spacing:.1em;color:#E8D3B5;direction:ltr}
+.case__plate i{display:block;font-style:normal;font-size:.74rem;line-height:1.45;color:rgba(232,211,181,.7);margin-top:2px}
+.case__cone{position:absolute;bottom:calc(var(--plinth) + 2px);left:50%;width:170%;height:150%;transform:translateX(-50%);pointer-events:none;opacity:0;transition:opacity .7s var(--ease);
+  background:radial-gradient(ellipse 50% 100% at 50% 0%,color-mix(in srgb,var(--glow) 34%,transparent),transparent 72%);
+  clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);z-index:-1}
+.case.is-lit .case__cone,.case.is-found .case__cone,.night.lit .case__cone{opacity:1}
+.case.is-found:not(.is-lit) .case__cone{opacity:.45}
+.case.is-lit .case__plate{border-color:color-mix(in srgb,var(--glow) 80%,#fff);box-shadow:0 0 24px -6px var(--glow)}
+.case:focus-visible{outline:2px solid #E0B07E;outline-offset:8px}
+.case.lifting .case__glass{transform:translateY(-14%);opacity:.0}
+.room__hud{position:absolute;z-index:4;top:18px;inset-inline:clamp(16px,4vw,64px);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;pointer-events:none;font-size:.86rem;color:rgba(237,227,211,.82)}
+.room__hud>*{pointer-events:auto}
+.room__count b{font-family:var(--font-body-en);font-weight:500;color:#E0B07E}
+.room__lights{background:none;border:1px solid rgba(237,227,211,.35);color:#EDE3D3;border-radius:999px;padding:7px 15px;font:inherit;cursor:pointer}
+.room__lights:hover{border-color:#E0B07E;color:#E0B07E}
+.hint-touch{display:none}
+@media (hover:none){.hint-mouse{display:none}.hint-touch{display:inline}.room,.case{cursor:auto}}
+.room__done{position:absolute;z-index:4;inset:auto 0 18px;margin:0 auto;max-width:620px;padding:0 20px;text-align:center;font-family:'Frank Ruhl Libre',serif;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.6;color:#F6EEE2;opacity:0;transform:translateY(10px);transition:opacity 1s var(--ease),transform 1s var(--ease);pointer-events:none}
+.night.all .room__done{opacity:1;transform:none}
+
+/* ---------- the product, out of its case ---------- */
+.out{position:fixed;inset:0;z-index:60;color:var(--o-ink);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(20px,4vw,64px);padding:clamp(56px,8vh,90px) clamp(16px,5vw,80px);overflow-y:auto}
+.out[hidden]{display:none}
+.out__bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 70% at 30% 55%,var(--o-a),var(--o-bg) 55%,var(--o-b));clip-path:circle(0 at var(--cx) var(--cy));transition:clip-path .9s var(--ease)}
+.out.open .out__bg{clip-path:circle(150vmax at var(--cx) var(--cy))}
+.out__stage{position:relative;aspect-ratio:1/1.02;max-height:78vh;width:100%;transform-origin:0 0;transition:transform .9s var(--ease);order:2;direction:ltr}
+.out__mv{width:100%;height:100%;background:transparent;--poster-color:transparent;--progress-bar-height:0px;touch-action:pan-y}
+.out__text{order:1;max-width:520px;opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease) .35s,transform .6s var(--ease) .35s}
+.out.open .out__text{opacity:1;transform:none}
+.out__no{font-family:var(--font-body-en);font-size:.74rem;letter-spacing:.22em;color:var(--o-soft)}
+.out__name{font-family:var(--font-display);font-weight:500;font-size:clamp(2.6rem,5vw,4rem);letter-spacing:.12em;line-height:1;margin:6px 0 22px;direction:ltr;text-align:right}
+.out__label{font-size:.78rem;font-weight:500;letter-spacing:.08em;color:var(--o-accent);margin:18px 0 6px;padding-top:14px;border-top:1px solid color-mix(in srgb,var(--o-ink) 14%,transparent)}
+.out__label--first{border-top:0;padding-top:0;margin-top:0}
+.out__label span{font-weight:300;letter-spacing:0;color:var(--o-soft);margin-inline-start:8px}
+.out__decision{font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.25}
+.out__codes{list-style:none;display:grid;gap:2px}
+.out__codes button{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:start;padding:8px 10px;margin-inline:-10px;border:0;border-radius:12px;background:transparent;color:var(--o-soft);font:inherit;font-size:.96rem;font-weight:300;line-height:1.6;cursor:pointer;transition:background .3s,color .3s}
+.out__codes button:hover,.out__codes button.is-active{background:color-mix(in srgb,var(--o-accent) 11%,transparent);color:var(--o-ink)}
+.out__codes .n{flex:none;width:24px;height:24px;margin-top:2px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-body-en);font-size:.75rem;color:var(--o-accent);border:1px solid var(--o-accent)}
+.out__codes button.is-active .n{background:var(--o-accent);color:var(--o-bg)}
+.out__codes strong{display:block;font-weight:500;color:var(--o-ink)}
+.out__world{font-size:1rem;font-weight:300;line-height:1.7;color:var(--o-soft)}
+.out__cta{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:24px}
+.out__go{display:inline-block;padding:13px 24px;background:var(--o-accent);color:var(--o-bg);text-decoration:none;font-size:.98rem}
+.out__vit{color:var(--o-accent);font-size:.92rem}
+.out__close{position:fixed;top:18px;left:18px;z-index:2;display:inline-flex;gap:8px;align-items:center;background:color-mix(in srgb,var(--o-bg) 80%,transparent);color:var(--o-ink);border:1px solid color-mix(in srgb,var(--o-ink) 25%,transparent);border-radius:999px;padding:8px 16px;font:inherit;font-size:.9rem;cursor:pointer;opacity:0;transition:opacity .4s .5s}
+.out.open .out__close{opacity:1}
+.out .hs{--s:28px;display:block;width:var(--s);height:var(--s);padding:0;border:0;background:none;cursor:pointer;position:relative;transition:opacity .4s}
+.out .hs:not([data-visible]){opacity:.25}
+.out .hs i{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;background:var(--o-accent);color:var(--o-bg);font:500 .78rem var(--font-body-en);font-style:normal;box-shadow:0 0 0 4px color-mix(in srgb,var(--o-bg) 70%,transparent),0 6px 16px rgba(0,0,0,.25)}
+.out .hs i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--o-accent);animation:hs-pulse 2.4s ease-out infinite}
+.out .hs.is-active i::after{animation:none;inset:-7px}
+.out__stage[data-open="1"] .hs[data-when="closed"],.out__stage:not([data-open="1"]) .hs[data-when="open"]{opacity:0;pointer-events:none}
+@keyframes hs-pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+html.out-open{overflow:hidden}
+
+@media (max-width:820px){
+  .room{height:auto;min-height:0;cursor:auto}
+  .cases{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:46px 18px;padding:70px 16px 120px}
+  .case{--w:100%;cursor:auto}
+  .case:last-child{grid-column:1/-1;width:50%;justify-self:center}
+  .case__plinth{--plinth:84px;height:84px}
+  .case__cone{bottom:86px}
+  .room__floor{display:none}
+  .room__hud{top:14px;font-size:.8rem}
+  .room__hint{display:none}
+  .room__done{position:relative;inset:auto;padding:0 20px 48px}
+  .out{grid-template-columns:1fr;align-content:start;padding:64px 18px 40px}
+  .out__stage{order:1;max-height:52vh;aspect-ratio:auto;height:52vh}
+  .out__text{order:2}
+}
+@media (prefers-reduced-motion:reduce){
+  .night.on .room__dark{animation:none}
+  .out__bg,.out__stage,.out__text{transition:none}
+  .out .hs i::after{animation:none}
+}
 </style>
 
 <!-- GEO: FAQPage -->
@@ -504,6 +608,81 @@ document.addEventListener('DOMContentLoaded', function () {
 
   </div>
 </main>
+
+<!-- ---------- the night wing: the products, in the dark ---------- -->
+<section class="night" id="night" aria-labelledby="nightTitle">
+  <div class="night__intro">
+    <p class="night__tag">LA VITRINE DE NUIT · אגף הלילה</p>
+    <h2 id="nightTitle">כשהאור כבה, <em>המוצרים יוצאים מהמסגרת.</em></h2>
+    <p>על הקיר כל עולם שובר את המסגרת שלו. כאן, באגף הלילה, המוצרים עצמם יוצאים ממנה: חמישה מוצרים מהעולמות, בתלת־ממד אמיתי, בוויטרינות זכוכית. קחי את הפנס, מצאי אותם בחושך, ולחצי על ויטרינה כדי להוציא את המוצר החוצה.</p>
+  </div>
+  <div class="room">
+    <div class="room__floor" aria-hidden="true"></div>
+    <div class="cases">
+    <button type="button" class="case" data-w="melte" style="--glow:#E2A86A;--plinth:118px" aria-label="להוציא את המוצר של MELTÉ° מהוויטרינה">
+      <span class="case__cone" aria-hidden="true"></span>
+      <span class="case__glass">
+        <model-viewer src="vitrine/models/melte.glb" poster="vitrine/posters/melte.webp" alt="" camera-orbit="0deg 75deg auto" rotation-per-second="26deg" disable-zoom interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.9" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+      </span>
+      <span class="case__plinth"><span class="case__plate"><b>MELTÉ°</b><i>אותו DNA, בכל טעם.</i></span></span>
+    </button>
+    <button type="button" class="case" data-w="velune" style="--glow:#9FB8D6;--plinth:150px" aria-label="להוציא את המוצר של VELUNE° מהוויטרינה">
+      <span class="case__cone" aria-hidden="true"></span>
+      <span class="case__glass">
+        <model-viewer src="vitrine/models/velune.glb" poster="vitrine/posters/velune.webp" alt="" camera-orbit="-26deg 78deg auto" rotation-per-second="26deg" disable-zoom interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.9" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+      </span>
+      <span class="case__plinth"><span class="case__plate"><b>VELUNE°</b><i>בושם הוא לא ריח. הוא מקום.</i></span></span>
+    </button>
+    <button type="button" class="case" data-w="petale" style="--glow:#F2A3BF;--plinth:96px" aria-label="להוציא את המוצר של Pétale° מהוויטרינה">
+      <span class="case__cone" aria-hidden="true"></span>
+      <span class="case__glass">
+        <model-viewer src="vitrine/models/petale.glb" poster="vitrine/posters/petale.webp" alt="" camera-orbit="30deg 64deg 128%" camera-target="auto 3% auto" rotation-per-second="26deg" disable-zoom interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.9" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+      </span>
+      <span class="case__plinth"><span class="case__plate"><b>Pétale°</b><i>קופסה היא אחר-צהריים.</i></span></span>
+    </button>
+    <button type="button" class="case" data-w="miel" style="--glow:#E9B9AE;--plinth:132px" aria-label="להוציא את המוצר של MIEL° מהוויטרינה">
+      <span class="case__cone" aria-hidden="true"></span>
+      <span class="case__glass">
+        <model-viewer src="vitrine/models/miel.glb" poster="vitrine/posters/miel.webp" alt="" camera-orbit="-20deg 72deg 70%" rotation-per-second="26deg" disable-zoom interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.9" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+      </span>
+      <span class="case__plinth"><span class="case__plate"><b>MIEL°</b><i>רומנטיקה מתחילה מבפנים.</i></span></span>
+    </button>
+    <button type="button" class="case" data-w="oreva" style="--glow:#E6B394;--plinth:164px" aria-label="להוציא את המוצר של ORÉVA° מהוויטרינה">
+      <span class="case__cone" aria-hidden="true"></span>
+      <span class="case__glass">
+        <model-viewer src="vitrine/models/oreva.glb" poster="vitrine/posters/oreva.webp" alt="" camera-orbit="-15deg 84deg 108%" rotation-per-second="26deg" disable-zoom interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.9" exposure="1.05" environment-image="neutral" loading="lazy" reveal="auto"></model-viewer>
+      </span>
+      <span class="case__plinth"><span class="case__plate"><b>ORÉVA°</b><i>קודם הידיים. אחר כך הבקבוק.</i></span></span>
+    </button>
+    </div>
+    <canvas class="room__dark" aria-hidden="true"></canvas>
+    <div class="room__hud">
+      <span class="room__hint"><span class="hint-mouse">הזיזי את העכבר. הוא הפנס.</span><span class="hint-touch">גררי את האצבע. היא הפנס.</span></span>
+      <span class="room__count" aria-live="polite">נמצאו <b>0</b> מתוך 5</span>
+      <button type="button" class="room__lights" aria-pressed="false">להדליק את האור</button>
+    </div>
+    <p class="room__done" aria-live="polite">מצאת את כל החמישה. שמת לב? זיהית כל מוצר לפי הצורה והצבע, עוד לפני שקראת את השם. ככה עובד עולם מותג: מזהים אותו גם בחושך.</p>
+  </div>
+</section>
+
+<div class="out" role="dialog" aria-modal="true" aria-labelledby="outName" hidden>
+  <div class="out__bg"></div>
+  <div class="out__stage">
+    <model-viewer class="out__mv" camera-controls disable-zoom disable-pan interaction-prompt="none" shadow-intensity="0.9" shadow-softness="0.8" exposure="1.05" environment-image="neutral" reveal="auto"></model-viewer>
+  </div>
+  <div class="out__text">
+    <p class="out__no"></p>
+    <h2 class="out__name" id="outName"></h2>
+    <p class="out__label out__label--first">ההחלטה</p>
+    <p class="out__decision"></p>
+    <p class="out__label">הקודים <span>לחצי כדי לראות על המוצר</span></p>
+    <ol class="out__codes"></ol>
+    <p class="out__label">העולם</p>
+    <p class="out__world"></p>
+    <div class="out__cta"><a class="out__go" href="#"></a><a class="out__vit" href="vitrine/">לכל המוצרים בוויטרינה</a></div>
+  </div>
+  <button type="button" class="out__close">להחזיר לוויטרינה <span aria-hidden="true">✕</span></button>
+</div>
 
 <section class="curator" aria-labelledby="curatorTitle">
   <div class="inner">
@@ -781,6 +960,198 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ removeEventListener('keydown',esc); var b=portal.querySelector('.out'); b && b.click(); } });
   }
+})();
+</script>
+
+<script>
+/* Night wing: a flashlight in the dark, five cases, and a product that steps out of its case */
+(function(){
+  var DATA = [{"id": "melte", "name": "MELTÉ°", "no": "05", "kicker": "Dark Velvet Chocolate", "href": "melte.html", "decision": "אותו DNA, בכל טעם.", "world": "באתר, קליק אחד מחליף טעם והחדר כולו מתחלף איתו. הכוס נשארת, והעולם משתנה סביבה.", "pal": {"bg": "#241610", "ink": "#F5EDE2", "soft": "rgba(245,237,226,.78)", "accent": "#CFA978", "a": "#6A4632", "b": "#1E120C", "glow": "#E2A86A"}, "src": "vitrine/models/melte.glb", "poster": "vitrine/posters/melte.webp", "orbit": "0deg 75deg auto", "target": "", "minOrbit": "", "lid": "", "lidOpen": 0.5, "autoOpen": false, "codes": [{"p": "-0.0027m 0.1147m 0.0601m", "n": "-0.016m -0.127m 0.992m", "when": "", "theta": -2.0, "t": "השוקולד שגולש", "d": "הנזילה היא החתימה. היא חוזרת בכל חמש הכוסות, כל פעם בצבע של הטעם."}, {"p": "0m 0.0806m 0.0546m", "n": "0.022m -0.071m 0.997m", "when": "", "theta": 0.0, "t": "השם בפויל", "d": "זהב על חום מריר. השם בנוי לתוך הכוס, ולא מודבק עליה."}, {"p": "-0.0196m 0.0280m 0.0470m", "n": "-0.403m -0.071m 0.913m", "when": "", "theta": -24.0, "t": "היהלומים המובלטים", "d": "התבנית שלא משתנה. הצבע מתחלף עם הטעם, המבנה נשאר, ולכן מזהים את הכוס גם בלי לוגו."}]}, {"id": "velune", "outOrbit": "-26deg 78deg 128%", "name": "VELUNE°", "no": "25", "kicker": "Maison de Parfum", "href": "velune/", "decision": "בושם הוא לא ריח. הוא מקום.", "world": "באתר, הדלת נפתחת עם הגלילה, ממשיכה לגן, לפרי ולבקבוק, וחוזרת לדלת בבוטיק.", "pal": {"bg": "#DCE3EB", "ink": "#1E2A38", "soft": "#44566B", "accent": "#8E1E44", "a": "#F4F7FA", "b": "#B9C9DA", "glow": "#9FB8D6"}, "src": "vitrine/models/velune.glb", "poster": "vitrine/posters/velune.webp", "orbit": "-26deg 78deg auto", "target": "", "minOrbit": "", "lid": "Doors", "lidOpen": 0.5, "autoOpen": true, "codes": [{"p": "0.0139m 0.2192m 0.0310m", "n": "0m 0m 1m", "when": "closed", "theta": -10.0, "t": "הקשת", "d": "חוזרת שלוש פעמים: בקיר, בקופסה ובבוטיק. מה שחוזר שלוש פעמים כבר לא קישוט. זה קוד."}, {"p": "-0.0716m 0.0733m -0.0100m", "n": "0m 0m 1m", "when": "open", "theta": -22.0, "t": "הדלת", "d": "אם בושם הוא מקום, נכנסים אליו. לכן לא מסירים עטיפה. פותחים דלת, וקטיפה מחכה בפנים."}, {"p": "-0.0207m 0.2452m 0.0227m", "n": "-0.401m 0.172m 0.900m", "when": "open", "theta": -22.0, "t": "הפקק בפטל", "d": "כחול אבקה בחוץ, פטל בפנים. הצבע שמחכה מאחורי הדלת הוא הגן שהבושם מבטיח."}]}, {"id": "petale", "name": "Pétale°", "no": "01", "kicker": "Maison de Macarons", "href": "petale.html", "decision": "קופסה היא אחר-צהריים.", "world": "באתר: סרט פתיחה בשלושה פרקים, האטלייה, הסלון, ובניית קופסת מתנה משבעה טעמים.", "pal": {"bg": "#FBEDE7", "ink": "#3A2438", "soft": "#6A5066", "accent": "#B8296A", "a": "#FFFAF7", "b": "#F2D6CC", "glow": "#F2A3BF"}, "src": "vitrine/models/petale.glb", "poster": "vitrine/posters/petale.webp", "orbit": "30deg 64deg 128%", "target": "auto 3% auto", "minOrbit": "auto auto 60%", "lid": "LID - open close", "lidOpen": 0.22, "autoOpen": false, "codes": [{"p": "0.0028m 0.0963m 0.0048m", "n": "-0.207m 0.972m 0.109m", "when": "closed", "theta": 30.0, "t": "סרט האורגנזה", "d": "בסרט של העולם הקופסה נקשרת ועוברת לידיים. הרגע של המתנה הוא המוצר, לא העוגייה."}, {"p": "0.0070m 0.0479m 0.0909m", "n": "0.092m 0.984m 0.150m", "when": "open", "theta": 20.0, "t": "שבעה טעמי פסטל", "d": "כל צבע הוא טעם. באתר הלקוחה בונה קופסה משלה, ומה שהיא בוחרת נראה בדיוק ככה."}, {"p": "0.0717m 0.0234m 0.1243m", "n": "0.707m 0m 0.707m", "when": "", "theta": 40.0, "t": "הקופסה המתומנת", "d": "אותה קופסה מהסרט עומדת על השולחן בסלון, על שיש ורוד ונחושת. מהמסך לחדר, בלי להחליף צורה."}]}, {"id": "miel", "name": "MIEL°", "no": "27", "kicker": "Maison Miel Pâtisserie", "href": "miel/", "decision": "רומנטיקה מתחילה מבפנים.", "world": "באתר, הגלילה בונה את העוגה שכבה אחרי שכבה, הלקוחה בוחרת את השכבות, וטאפ אחד חותך.", "pal": {"bg": "#F3E4DF", "ink": "#4A2C24", "soft": "#6E4E44", "accent": "#8A5E33", "a": "#FDF6F2", "b": "#E7CBC3", "glow": "#E9B9AE"}, "src": "vitrine/models/miel.glb", "poster": "vitrine/posters/miel.webp", "orbit": "-20deg 72deg 70%", "target": "", "minOrbit": "auto auto 40%", "lid": "", "lidOpen": 0.5, "autoOpen": false, "codes": [{"p": "-0.0486m 0.1730m 0.0863m", "n": "0.439m -0.336m 0.833m", "when": "", "theta": -10.0, "t": "הזר", "d": "מה שרואים מבחוץ. באתר הוא נוחת על העוגה רק בסוף הבנייה, כמו חתימה."}, {"p": "-0.0419m 0.1082m 0.1155m", "n": "-0.339m -0.004m 0.941m", "when": "", "theta": -20.0, "t": "הפרוסה", "d": "האלמנט שנגזר מההבטחה מסתתר מאחורי הדופן: ביסקוויט, לב, ביסקוויט, לב. באתר, טאפ אחד חותך ומראה."}, {"p": "-0.0795m 0.0116m 0.0939m", "n": "-0.661m 0.055m 0.748m", "when": "", "theta": -30.0, "t": "זהב צהוב", "d": "הבסיס בזהב צהוב, לא בנחושת. ההבדל הקטן הזה הוא מה שמפריד את MIEL° מהעולם השכן ÉTAGE°."}]}, {"id": "oreva", "name": "ORÉVA°", "no": "24", "kicker": "Skin Studio", "href": "oreva/", "decision": "קודם הידיים. אחר כך הבקבוק.", "world": "באתר, היא לפני הבקבוק, הסיפור לפני החנות, והאבחון לפני המכירה.", "pal": {"bg": "#F6EFE7", "ink": "#3A2E29", "soft": "#6E5E55", "accent": "#8F5A3C", "a": "#FFFCF8", "b": "#EFCDBF", "glow": "#E6B394"}, "src": "vitrine/models/oreva.glb", "poster": "vitrine/posters/oreva.webp", "orbit": "-15deg 84deg 108%", "target": "", "minOrbit": "auto auto 40%", "lid": "", "lidOpen": 0.5, "autoOpen": false, "codes": [{"p": "-0.0037m 0.0839m 0.0140m", "n": "-0.228m 0m 0.974m", "when": "", "theta": -12.0, "t": "המשאבה בנחושת", "d": "נחושת היא הקו של העולם: סרט אחד שמתחיל ביד של המייסדת. על הבקבוק הוא עוצר כאן."}, {"p": "-0.0146m 0.0285m 0.0151m", "n": "-0.683m 0m 0.730m", "when": "", "theta": -30.0, "t": "מה שכתוב על הבקבוק", "d": "כל מה שכתוב עליו עומד מאחוריו. האחוזים על התווית, לא בפרסומת."}, {"p": "-0.0054m 0.0065m 0.0203m", "n": "-0.228m 0m 0.974m", "when": "", "theta": -12.0, "t": "זכוכית חלבית", "d": "סרום ורדרד מאחורי זכוכית חלבית: זוהר, לא נצנוץ. הצבע של עור אחרי טיפול, לא של מוצר על מדף."}]}];
+  var BY = {}; DATA.forEach(function(d){ BY[d.id] = d; });
+  var night = document.getElementById('night'); if(!night) return;
+  var room = night.querySelector('.room'), cv = night.querySelector('.room__dark'), ctx = cv.getContext('2d');
+  var cases = [].slice.call(night.querySelectorAll('.case'));
+  var countEl = night.querySelector('.room__count b'), lightsBtn = night.querySelector('.room__lights');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touchOnly = matchMedia('(hover: none)').matches;
+  function track(name, params){ if(typeof gtag==='function') gtag('event', name, params||{}); }
+
+  // ---- the beam ----
+  var beam = {x:-999, y:-999, tx:-999, ty:-999}, user = 0, found = {}, nFound = 0, visible = false, raf = 0, sweepT = 0;
+  function size(){ var r = room.getBoundingClientRect(); cv.width = Math.round(r.width); cv.height = Math.round(r.height); }
+  addEventListener('resize', size); size();
+  if('ResizeObserver' in window) new ResizeObserver(size).observe(room);
+  function radius(){ return Math.max(110, Math.min(200, cv.width * (touchOnly ? .3 : .15))); }
+  function aim(x, y){ var r = room.getBoundingClientRect(); beam.tx = x - r.left; beam.ty = y - r.top; user = performance.now(); }
+  room.addEventListener('pointermove', function(e){ if(e.pointerType === 'mouse') aim(e.clientX, e.clientY); });
+  room.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') user = 0; });
+  room.addEventListener('touchstart', function(e){ var t = e.touches[0]; aim(t.clientX, t.clientY); }, {passive:true});
+  room.addEventListener('touchmove', function(e){ var t = e.touches[0]; aim(t.clientX, t.clientY); }, {passive:true});
+  cases.forEach(function(c){ c.addEventListener('focus', function(){ var r = c.getBoundingClientRect(); aim(r.left + r.width/2, r.top + r.height*.4); }); });
+
+  function draw(now){
+    raf = 0;
+    var W = cv.width, H = cv.height, R = radius(), idle = !user || now - user > 2600;
+    var rr = room.getBoundingClientRect();
+    if(idle){ // nobody holding the flashlight: it drifts on its own
+      sweepT += 1/60;
+      if(touchOnly){ // on a phone the scroll is the flashlight: it lights whatever sits mid-screen
+        beam.tx = W * (.5 + .26 * Math.sin(sweepT * .7));
+        beam.ty = innerHeight * .5 - rr.top;
+      } else {
+        beam.tx = W * (.5 + .38 * Math.sin(sweepT * .45));
+        beam.ty = H * (.5 + .12 * Math.sin(sweepT * .9));
+      }
+    }
+    if(beam.x < -900){ beam.x = beam.tx; beam.y = beam.ty; }
+    beam.x += (beam.tx - beam.x) * .14; beam.y += (beam.ty - beam.y) * .14;
+
+    cases.forEach(function(c){
+      var g = c.querySelector('.case__glass').getBoundingClientRect();
+      var cx = g.left - rr.left + g.width/2, cy = g.top - rr.top + g.height/2;
+      c._cx = cx; c._cy = cy; c._r = g.width * .62;
+      var lit = Math.hypot(beam.x - cx, beam.y - cy) < R * .8;
+      if(lit !== c._lit){
+        c._lit = lit; c.classList.toggle('is-lit', lit);
+        var mv = c.querySelector('model-viewer');
+        if(lit) mv.setAttribute('auto-rotate',''); else mv.removeAttribute('auto-rotate');
+      }
+      if(lit && (!idle || touchOnly) && !found[c.dataset.w]){
+        found[c.dataset.w] = 1; nFound++; c.classList.add('is-found');
+        countEl.textContent = nFound; track('museum_night_found', {world:c.dataset.w, n:nFound});
+        if(nFound === cases.length) night.classList.add('all');
+      }
+    });
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(8,6,5,.97)'; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'destination-out';
+    function hole(x, y, r, a){
+      var gr = ctx.createRadialGradient(x, y, 0, x, y, r);
+      gr.addColorStop(0, 'rgba(0,0,0,' + a + ')'); gr.addColorStop(.55, 'rgba(0,0,0,' + (a * .85) + ')'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = gr; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+    cases.forEach(function(c){ if(found[c.dataset.w]) hole(c._cx, c._cy + c._r * .3, c._r * 1.25, .62); });
+    hole(beam.x, beam.y, R, 1);
+    if(visible && !night.classList.contains('lit') && !document.documentElement.classList.contains('out-open')) raf = requestAnimationFrame(draw);
+  }
+  function kick(){ if(!raf) raf = requestAnimationFrame(draw); }
+
+  // the lights go out when the wing comes into view
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      visible = e.isIntersecting;
+      if(visible && !night.classList.contains('on')){ night.classList.add('on'); if(reduce) setLights(true); }
+      if(visible) kick();
+    });
+  }, {threshold:.3}).observe(room);
+
+  function setLights(on){
+    night.classList.toggle('lit', on);
+    lightsBtn.setAttribute('aria-pressed', on);
+    lightsBtn.textContent = on ? 'לכבות את האור' : 'להדליק את האור';
+    cases.forEach(function(c){ var mv = c.querySelector('model-viewer'); if(on) mv.setAttribute('auto-rotate',''); else { c._lit = null; } });
+    if(!on) kick();
+  }
+  lightsBtn.addEventListener('click', function(){ setLights(!night.classList.contains('lit')); });
+
+  // ---- the product steps out of its case ----
+  var out = document.querySelector('.out'), stage = out.querySelector('.out__stage'), omv = out.querySelector('.out__mv');
+  var codesEl = out.querySelector('.out__codes'), closeBtn = out.querySelector('.out__close');
+  var current = null, fromCase = null, open = false, loaded = false;
+
+  function setOpen(want){
+    if(!current || !current.lid || want === open || !loaded) return;
+    open = want; stage.dataset.open = open ? '1' : '';
+    var dur = omv.duration || 2, t0 = performance.now(), from = omv.currentTime, to = open ? dur * current.lidOpen : 0;
+    (function step(now){ var k = Math.min(1, (now - t0) / 1100), e = 1 - Math.pow(1 - k, 3); omv.currentTime = from + (to - from) * e; if(k < 1) requestAnimationFrame(step); })(t0);
+  }
+  omv.addEventListener('load', function(){
+    loaded = true;
+    if(current && current.lid){ omv.animationName = current.lid; omv.pause(); omv.currentTime = 0; open = false; stage.dataset.open = ''; if(current.autoOpen) setTimeout(function(){ if(!stage._touched) setOpen(true); }, 900); }
+  });
+  var sx, sy, moved;
+  omv.addEventListener('pointerdown', function(e){ stage._touched = true; omv.removeAttribute('auto-rotate'); sx = e.clientX; sy = e.clientY; moved = false; });
+  omv.addEventListener('pointermove', function(e){ if(Math.abs(e.clientX - sx) > 6 || Math.abs(e.clientY - sy) > 6) moved = true; });
+  omv.addEventListener('pointerup', function(e){ if(moved || (e.target.closest && e.target.closest('.hs'))) return; setOpen(!open); });
+
+  function activate(i){
+    var c = current.codes[i - 1], hs = omv.querySelector('[slot="hotspot-' + i + '"]');
+    stage._touched = true; omv.removeAttribute('auto-rotate');
+    if(c.when) setOpen(c.when === 'open');
+    var o = omv.getCameraOrbit(); omv.cameraOrbit = c.theta + 'deg ' + o.phi + 'rad ' + o.radius + 'm';
+    [].forEach.call(omv.querySelectorAll('.hs'), function(h){ h.classList.toggle('is-active', h === hs); });
+    [].forEach.call(codesEl.querySelectorAll('button'), function(b, j){ b.classList.toggle('is-active', j === i - 1); });
+    if(innerWidth <= 820) out.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  }
+
+  function fill(d){
+    var P = d.pal, st = out.style;
+    st.setProperty('--o-bg', P.bg); st.setProperty('--o-ink', P.ink); st.setProperty('--o-soft', P.soft);
+    st.setProperty('--o-accent', P.accent); st.setProperty('--o-a', P.a); st.setProperty('--o-b', P.b);
+    out.querySelector('.out__no').textContent = 'BRAND WORLD No.' + d.no + ' · ' + d.kicker.toUpperCase();
+    out.querySelector('.out__name').textContent = d.name;
+    out.querySelector('.out__decision').textContent = d.decision;
+    out.querySelector('.out__world').textContent = d.world;
+    var go = out.querySelector('.out__go'); go.href = d.href; go.textContent = 'להיכנס לעולם ' + d.name + ' ←';
+    out.querySelector('.out__vit').href = 'vitrine/#' + d.id;
+    codesEl.innerHTML = ''; [].slice.call(omv.querySelectorAll('.hs')).forEach(function(h){ h.remove(); });
+    d.codes.forEach(function(c, j){
+      var li = document.createElement('li'), b = document.createElement('button');
+      b.type = 'button'; b.innerHTML = '<span class="n">' + (j + 1) + '</span><span><strong></strong></span>';
+      b.querySelector('strong').textContent = c.t; b.lastChild.appendChild(document.createTextNode(c.d));
+      b.addEventListener('click', function(){ activate(j + 1); }); li.appendChild(b); codesEl.appendChild(li);
+      var h = document.createElement('button');
+      h.type = 'button'; h.className = 'hs'; h.slot = 'hotspot-' + (j + 1);
+      h.dataset.position = c.p; h.dataset.normal = c.n; h.dataset.visibilityAttribute = 'visible'; if(c.when) h.dataset.when = c.when;
+      h.setAttribute('aria-label', 'קוד ' + (j + 1) + ': ' + c.t); h.innerHTML = '<i>' + (j + 1) + '</i>';
+      h.addEventListener('click', function(){ activate(j + 1); }); omv.appendChild(h);
+    });
+    loaded = false; open = false; stage.dataset.open = ''; stage._touched = false;
+    omv.removeAttribute('camera-target'); omv.removeAttribute('min-camera-orbit');
+    if(d.target) omv.setAttribute('camera-target', d.target);
+    if(d.minOrbit) omv.setAttribute('min-camera-orbit', d.minOrbit);
+    omv.setAttribute('camera-orbit', d.outOrbit || d.orbit); omv.setAttribute('poster', d.poster);
+    omv.setAttribute('auto-rotate', ''); omv.setAttribute('auto-rotate-delay', '2500'); omv.setAttribute('rotation-per-second', '16deg');
+    if(d.lid) omv.removeAttribute('auto-rotate');
+    omv.setAttribute('alt', d.name + ' בתלת-ממד'); omv.setAttribute('src', d.src);
+  }
+
+  function flyFrom(c){ // the stage starts exactly where the product stood in its case
+    var g = c.querySelector('.case__glass').getBoundingClientRect(), s = stage.getBoundingClientRect();
+    return 'translate(' + (g.left - s.left) + 'px,' + (g.top - s.top) + 'px) scale(' + (g.width / s.width) + ',' + (g.height / s.height) + ')';
+  }
+  function show(c){
+    var d = BY[c.dataset.w]; current = d; fromCase = c;
+    track('museum_night_open', {world:d.id});
+    c.classList.add('lifting');
+    fill(d);
+    var g = c.getBoundingClientRect();
+    out.style.setProperty('--cx', (g.left + g.width/2) + 'px'); out.style.setProperty('--cy', (g.top + g.height*.4) + 'px');
+    out.hidden = false; document.documentElement.classList.add('out-open');
+    stage.style.transition = 'none'; stage.style.transform = flyFrom(c);
+    stage.getBoundingClientRect();
+    setTimeout(function(){
+      stage.style.transition = ''; stage.style.transform = '';
+      out.classList.add('open'); closeBtn.focus({preventScroll:true});
+    }, reduce ? 0 : 260);
+  }
+  function hide(){
+    if(!current) return;
+    var c = fromCase;
+    out.classList.remove('open');
+    stage.style.transform = flyFrom(c);
+    setTimeout(function(){
+      out.hidden = true; document.documentElement.classList.remove('out-open');
+      stage.style.transform = ''; c.classList.remove('lifting'); c.focus({preventScroll:true});
+      current = null; kick();
+    }, reduce ? 0 : 900);
+  }
+  cases.forEach(function(c){ c.addEventListener('click', function(){ show(c); }); });
+  closeBtn.addEventListener('click', hide);
+  addEventListener('keydown', function(e){ if(e.key === 'Escape' && !out.hidden) hide(); });
+  if(location.hash === '#night') night.scrollIntoView();
 })();
 </script>
 </body>
