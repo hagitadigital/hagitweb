@@ -1289,6 +1289,21 @@
     .how-keep__label{ text-align:center; font-size:.8rem; letter-spacing:.14em; color:var(--color-copper-deep); margin-bottom:18px; }
     .how-keep .layer{ padding:26px 24px; }
     .how-keep .layer__num{ letter-spacing:.14em; }
+    .how-film{ max-width:960px; margin:0 auto clamp(40px,6vw,64px); }
+    .how-film__frame{ position:relative; aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#EDE6DA; box-shadow:0 18px 50px -24px rgba(42,32,26,.35); }
+    .how-film__play{ all:unset; position:absolute; inset:0; cursor:pointer; display:block; }
+    .how-film__play img, .how-film__frame video{ width:100%; height:100%; object-fit:cover; display:block; }
+    .how-film__cta{ position:absolute; inset-inline-start:50%; bottom:clamp(16px,4%,28px); transform:translateX(50%); display:inline-flex; align-items:center; gap:10px; white-space:nowrap; padding:12px 22px 12px 16px; border-radius:999px; background:var(--color-ink); color:var(--color-cream); font-size:.95rem; font-weight:500; }
+    .how-film__icon{ width:28px; height:28px; border-radius:50%; background:var(--color-copper); display:inline-flex; align-items:center; justify-content:center; }
+    .how-film__play:focus-visible .how-film__cta{ outline:2px solid var(--color-copper); outline-offset:3px; }
+    @media (prefers-reduced-motion: no-preference){
+      .how-film__cta{ transition:background .25s ease; }
+      .how-film__play:hover .how-film__cta{ background:#000; }
+    }
+    @media (max-width:700px){
+      .how-film{ max-width:440px; }
+      .how-film__frame{ aspect-ratio:4/5; }
+    }
     </style>
     <section class="section section--beige">
         <div class="container">
@@ -1297,6 +1312,36 @@
                 <h2 class="section-title">לא מתחילות מעיצוב.<br>מתחילות מהסיבה לבחור.</h2>
                 <p class="section-lede">עולם מותג הוא לא עוד שכבת עיצוב. הוא המערכת שמתרגמת את הערך שלך לנוכחות: Brand DNA אחד, ומתוכו השפה, האתר, התוכן והווידאו. כל נכס עושה תפקיד אחר, וכולם בונים את אותה משמעות.</p>
             </div>
+            <figure class="how-film reveal">
+                <div class="how-film__frame">
+                    <button class="how-film__play" type="button" aria-label="צפי בתהליך על ORÉVA°, סרטון של דקה בלי קול">
+                        <picture>
+                            <source media="(max-width:700px)" srcset="videos/oreva-process/poster-4x5.webp" width="720" height="900">
+                            <img src="videos/oreva-process/poster-16x9.webp" width="1280" height="720" loading="lazy" alt="שלב 01, מגלות: שורת סרומים זהים בשוק, והפער ש-ORÉVA° נכנסת אליו">
+                        </picture>
+                        <span class="how-film__cta" aria-hidden="true"><span class="how-film__icon"><svg width="10" height="12" viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z" fill="#FAF8F3"/></svg></span>צפי בתהליך על <span dir="ltr">ORÉVA°</span>&lrm; · דקה</span>
+                    </button>
+                </div>
+            </figure>
+            <script>
+            (function () {
+              var btn = document.querySelector('.how-film__play');
+              if (!btn) return;
+              btn.addEventListener('click', function () {
+                var mobile = matchMedia('(max-width:700px)').matches, fmt = mobile ? '4x5' : '16x9';
+                var v = document.createElement('video');
+                v.src = 'videos/oreva-process/process-' + fmt + '.mp4';
+                v.poster = 'videos/oreva-process/poster-' + fmt + '.webp';
+                v.controls = true; v.muted = true; v.playsInline = true; v.autoplay = true;
+                v.setAttribute('aria-label', 'התהליך על ORÉVA°: מגלות, מנסחות, מתרגמות, בונות, מטמיעות');
+                v.addEventListener('ended', function () { if (window.gtag) gtag('event', 'process_video_complete', { format: fmt }); }, { once: true });
+                btn.replaceWith(v);
+                v.play().catch(function () {});
+                v.focus();
+                if (window.gtag) gtag('event', 'process_video_play', { format: fmt });
+              });
+            })();
+            </script>
             <div class="steps how-steps">
                 <article class="step reveal">
                     <span class="step__num">שלב 01</span>
