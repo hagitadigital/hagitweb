@@ -1139,7 +1139,7 @@
         }
 
         /* ============================================================
-           INSIDE-SECTION — 6 cards, anchor to maison sections
+           INSIDE-SECTION — 3 brand books + link to the method
            ============================================================ */
         .inside-section {
             background: var(--color-cream);
@@ -1190,8 +1190,7 @@
             padding: 0 var(--container-padding);
             direction: ltr;
         }
-        @media (max-width: 1024px) { .inside-section__grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px)  { .inside-section__grid { grid-template-columns: 1fr; } }
+        @media (max-width: 760px) { .inside-section__grid { grid-template-columns: 1fr; max-width: 460px; } }
 
         .inside {
             position: relative;
@@ -1211,9 +1210,6 @@
         .inside:nth-child(1) { transition-delay: 0s; }
         .inside:nth-child(2) { transition-delay: 0.08s; }
         .inside:nth-child(3) { transition-delay: 0.16s; }
-        .inside:nth-child(4) { transition-delay: 0.24s; }
-        .inside:nth-child(5) { transition-delay: 0.32s; }
-        .inside:nth-child(6) { transition-delay: 0.40s; }
 
         .inside__img-layer {
             position: absolute;
@@ -1271,16 +1267,13 @@
             font-family: var(--font-body-en);
             font-size: 9px; font-weight: 500;
             letter-spacing: .25em; text-transform: uppercase;
-            color: rgba(184,115,51,.85);
+            color: rgba(244,239,228,.92);
             padding: 5px 10px;
-            border: 1px solid rgba(184,115,51,.35);
+            border: 1px solid rgba(244,239,228,.35);
             border-radius: 1px;
-            background: rgba(43,31,24,0.25);
+            background: rgba(43,31,24,0.3);
             backdrop-filter: blur(2px);
-            opacity: 0; transform: translateY(-4px);
-            transition: opacity 0.6s var(--transition-smooth) 0.1s, transform 0.6s var(--transition-smooth) 0.1s;
         }
-        .inside:hover .inside__tag { opacity: 1; transform: translateY(0); }
 
         .inside__bottom {
             position: absolute; bottom: 0; left: 0; right: 0;
@@ -1288,7 +1281,7 @@
         }
         .inside__name {
             font-family: var(--font-display);
-            font-size: 1.375rem; font-weight: 400;
+            font-size: 1.75rem; font-weight: 400;
             color: rgba(244,239,228,1);
             letter-spacing: 0;
             margin-bottom: 4px;
@@ -1298,80 +1291,47 @@
         .inside:hover .inside__name { transform: translateY(-2px); }
         .inside__desc {
             font-family: var(--font-body-he);
-            font-size: 0.8125rem;
+            font-size: 1rem;
             font-weight: 300;
-            color: rgba(244,239,228,.78);
-            line-height: 1.55;
-            max-height: 0; overflow: hidden; opacity: 0;
-            transform: translateY(5px);
-            transition: max-height .6s var(--transition-smooth), opacity .6s var(--transition-smooth), transform .6s var(--transition-smooth);
+            color: rgba(244,239,228,.9);
+            line-height: 1.5;
             direction: rtl;
-            margin-top: 0;
-        }
-        .inside:hover .inside__desc {
-            max-height: 120px;
-            opacity: 1;
-            transform: translateY(0);
-            margin-top: 10px;
+            text-align: left;
+            margin-top: 8px;
         }
         .inside__spec {
             display: inline-flex; align-items: center; gap: 8px;
             font-family: var(--font-body-en);
-            font-size: 9px; font-weight: 500;
+            font-size: 10px; font-weight: 500;
             letter-spacing: .22em; text-transform: uppercase;
-            color: rgba(184,115,51,.95);
-            opacity: 0; transform: translateY(5px);
-            margin-top: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity .5s var(--transition-smooth) .15s, transform .5s var(--transition-smooth) .15s, max-height .5s var(--transition-smooth) .15s, margin-top .5s var(--transition-smooth) .15s;
+            color: rgba(244,239,228,.9);
+            margin-top: 14px;
+            transition: color .4s var(--transition-smooth);
         }
         .inside__spec::before {
             content: '';
             width: 16px; height: 1px;
-            background: rgba(184,115,51,.6);
+            background: currentColor;
+            transition: width .4s var(--transition-smooth);
         }
-        .inside:hover .inside__spec {
-            opacity: 1;
-            transform: translateY(0);
-            max-height: 20px;
-            margin-top: 14px;
-        }
+        .inside:hover .inside__spec::before { width: 28px; }
 
-        .inside-section__footer {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 36px;
-            margin-top: clamp(48px, 6vw, 64px);
-            margin-bottom: 36px;
-            flex-wrap: wrap;
+        .inside-section__method {
+            text-align: center;
+            margin: clamp(40px, 6vw, 56px) 0 32px;
             padding: 0 var(--container-padding);
         }
-        .inside-section__meta-line {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-        .inside-section__meta-label {
-            font-family: var(--font-body-en);
-            font-size: 0.6875rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--color-taupe-text);
-        }
-        .inside-section__meta-value {
+        .inside-section__method a {
             font-family: var(--font-display);
-            font-size: 1.375rem;
+            font-style: italic;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
             color: var(--color-chocolate-text);
-        }
-        .inside-section__meta-divider {
-            color: var(--color-light-taupe);
-            font-size: 1.25rem;
-            align-self: flex-end;
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-light-taupe);
             padding-bottom: 4px;
+            transition: border-color .3s var(--transition-smooth);
         }
+        .inside-section__method a:hover { border-bottom-color: var(--color-copper); }
 
         .inside-section__cta {
             text-align: center;
@@ -1977,12 +1937,8 @@
             .footer__bottom { flex-direction: column; gap: 24px; text-align: center; }
             .inside__top { padding: 12px 12px 0; }
             .inside__num { font-size: 1.25rem; }
-            .inside__tag { display: none; }
             .inside__bottom { padding: 14px 12px 14px; }
             .inside__name { font-size: 1.125rem; }
-            .inside__desc { display: none; }
-            .inside__spec { font-size: 8.5px; }
-            .inside__spec::before { width: 12px; }
         }
     </style>
 
@@ -2742,102 +2698,58 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <!-- ============================================================
-         03 · WHAT'S INSIDE — anchor links into Maison case-study
+         03 · WHAT'S INSIDE — three abridged brand books, then the method
          ============================================================ -->
     <section class="inside-section" id="whats-inside">
         <div class="container inside-section__header reveal">
             <p class="inside-section__label" dir="ltr">What You Actually Get</p>
             <h2 class="inside-section__title">What's Inside a Brand World</h2>
-            <p class="inside-section__subtitle">לא חבילה. עולם שלם — בנוי, מתועד, ומוכן להפעלה.</p>
+            <p class="inside-section__subtitle">לא חבילה. עולם שלם — בנוי, מתועד, ומוכן להפעלה.<br>שלושה ספרי מותג מתוך עולמות קונספט שבניתי.</p>
         </div>
 
         <div class="inside-section__grid" id="insideGrid">
 
-            <a href="maison/#brand-dna" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-01.jpg')"></div>
+            <a href="encore/brand-book.html" class="inside">
+                <div class="inside__img-layer" style="background-image:url('encore/assets/touchpoints/sign.webp')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">01</span><span class="inside__tag">Strategy</span></div>
+                <div class="inside__top"><span class="inside__num">01</span><span class="inside__tag">Jewelry</span></div>
                 <div class="inside__bottom">
-                    <p class="inside__name">Brand DNA Document</p>
-                    <p class="inside__desc">מסמך אסטרטגי מלא — ערכים, טון, קהל, פוזישנינג ובידול. הקבצים שמכל החלטה עתידה לצאת מהם.</p>
-                    <span class="inside__spec">See in Maison →</span>
+                    <p class="inside__name">ENCORE°</p>
+                    <p class="inside__desc">השעה היא הלוגו.</p>
+                    <span class="inside__spec">Brand Book →</span>
                 </div>
             </a>
 
-            <a href="maison/#identity" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-02.jpg')"></div>
+            <a href="rosee/brand-book.html" class="inside">
+                <div class="inside__img-layer" style="background-image:url('rosee/collection/boutique.webp')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">02</span><span class="inside__tag">Identity</span></div>
+                <div class="inside__top"><span class="inside__num">02</span><span class="inside__tag">Skincare</span></div>
                 <div class="inside__bottom">
-                    <p class="inside__name">Visual Identity System</p>
-                    <p class="inside__desc">לוגו, פלטת צבעים, טיפוגרפיה, גריד ואיקונוגרפיה — מערכת שמחזיקה כל נקודת מגע.</p>
-                    <span class="inside__spec">See in Maison →</span>
+                    <p class="inside__name">ROSÉE°</p>
+                    <p class="inside__desc">לא מוכרים סרום. מוכרים בוקר.</p>
+                    <span class="inside__spec">Brand Book →</span>
                 </div>
             </a>
 
-            <a href="maison/#brand-book" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-03.jpg')"></div>
+            <a href="signe/brand-book.html" class="inside">
+                <div class="inside__img-layer" style="background-image:url('signe/assets/piping-signature.webp')"></div>
                 <div class="inside__overlay"></div>
                 <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">03</span><span class="inside__tag">Guidelines</span></div>
+                <div class="inside__top"><span class="inside__num">03</span><span class="inside__tag">Pâtisserie</span></div>
                 <div class="inside__bottom">
-                    <p class="inside__name">Brand Book</p>
-                    <p class="inside__desc">ספר מותג מלא — שימור הזהות לאורך זמן, גם כשעובדים איתו צוות פנימי או ספקים חיצוניים.</p>
-                    <span class="inside__spec">See in Maison →</span>
-                </div>
-            </a>
-
-            <a href="maison/#tel-aviv" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-04.jpg')"></div>
-                <div class="inside__overlay"></div>
-                <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">04</span><span class="inside__tag">Digital</span></div>
-                <div class="inside__bottom">
-                    <p class="inside__name">Website &amp; Landing Pages</p>
-                    <p class="inside__desc">אתר תדמית או דפי נחיתה ממותגים — בנויים לפי ה-DNA, מותאמים למובייל ולמהירות טעינה.</p>
-                    <span class="inside__spec">See in Maison →</span>
-                </div>
-            </a>
-
-            <a href="maison/#cannele" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-05.jpg')"></div>
-                <div class="inside__overlay"></div>
-                <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">05</span><span class="inside__tag">Sales</span></div>
-                <div class="inside__bottom">
-                    <p class="inside__name">Sales &amp; Pitch Materials</p>
-                    <p class="inside__desc">הצעות מחיר ממותגות, מצגות ופיצ'ים — כל מסמך שיוצא מהמותג נראה ומרגיש כמוכם.</p>
-                    <span class="inside__spec">See in Maison →</span>
-                </div>
-            </a>
-
-            <a href="maison/#activation" class="inside">
-                <div class="inside__img-layer" style="background-image:url('inside-06.jpg')"></div>
-                <div class="inside__overlay"></div>
-                <div class="inside__frame"></div>
-                <div class="inside__top"><span class="inside__num">06</span><span class="inside__tag">Activation</span></div>
-                <div class="inside__bottom">
-                    <p class="inside__name">BrandOS Activation</p>
-                    <p class="inside__desc">הטמעת ה-DNA ב-BrandOS — מערכת ה-AI שמייצרת תוכן, תמונות ווידאו בקול של המותג, יום-יום.</p>
-                    <span class="inside__spec">See in Maison →</span>
+                    <p class="inside__name">SIGNÉ°</p>
+                    <p class="inside__desc">קו אחד, ביד אחת.</p>
+                    <span class="inside__spec">Brand Book →</span>
                 </div>
             </a>
 
         </div>
 
-        <div class="inside-section__footer reveal">
-            <div class="inside-section__meta-line">
-                <span class="inside-section__meta-label">Project Timeline</span>
-                <span class="inside-section__meta-value">6–8 שבועות</span>
-            </div>
-            <span class="inside-section__meta-divider">·</span>
-            <div class="inside-section__meta-line">
-                <span class="inside-section__meta-label">Investment</span>
-                <span class="inside-section__meta-value">השקעה לפי היקף</span>
-            </div>
-        </div>
+        <p class="inside-section__method reveal">
+            <a href="method.html">ככה נבנה כל עולם — מההחלטה האחת ועד הכללים ששומרים עליו <span aria-hidden="true">←</span></a>
+        </p>
 
         <div class="inside-section__cta reveal">
             <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="inside-section__cta-btn">
