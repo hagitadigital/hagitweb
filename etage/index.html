@@ -96,7 +96,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Assistant:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Assistant:wght@200;300;400;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#F5ECE1;
@@ -249,7 +249,7 @@
     margin-top:10px;letter-spacing:.04em;
   }
   .subline{
-    font-size:clamp(13px,1.4vw,15px);font-weight:300;
+    font-size:clamp(14px,1.4vw,15.5px);font-weight:400;
     color:var(--ink-soft);margin-top:14px;direction:rtl;
   }
   .copy--close .tagline{font-size:clamp(20px,2.4vw,30px);color:var(--ink)}
@@ -262,7 +262,7 @@
     color:var(--copper);direction:ltr;
   }
   .scroll-hint .promise{
-    margin-top:6px;font-size:14px;font-weight:300;color:var(--ink);direction:rtl;
+    margin-top:6px;font-size:14px;font-weight:400;color:var(--ink);direction:rtl;
   }
   /* soft floor halo — melts whatever is left of the plinth under the cue */
   .scroll-hint::before{
@@ -290,7 +290,7 @@
     display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
     font-size:clamp(19px,2.2vw,28px);color:var(--ink);direction:ltr;
   }
-  .cm-inner p{margin-top:8px;font-weight:300;font-size:13.5px;color:var(--ink-soft)}
+  .cm-inner p{margin-top:8px;font-weight:400;font-size:14.5px;color:var(--ink-soft)}
 
   /* ── section 2 · The Rosalie Cake ──────────── */
   .rosalie{
@@ -333,7 +333,7 @@
     width:200px;padding:12px 14px;
     background:rgba(245,236,225,.96);
     border:1px solid rgba(181,122,94,.35);
-    font-size:12.5px;font-weight:300;line-height:1.5;color:var(--ink);
+    font-size:12.5px;font-weight:400;line-height:1.5;color:var(--ink);
     opacity:0;pointer-events:none;transform:translateY(6px);
     transition:opacity .25s,transform .25s;
     direction:rtl;text-align:right;
@@ -358,14 +358,14 @@
   .spec li{
     list-style:none;display:flex;gap:14px;align-items:baseline;
     padding:11px 0;border-bottom:1px solid rgba(181,122,94,.25);
-    font-weight:300;font-size:15.5px;
+    font-weight:400;font-size:15.5px;
   }
   .spec li .n{
     font-size:10px;color:var(--copper);letter-spacing:.1em;
     font-weight:400;direction:ltr;
   }
   .spec-note{
-    margin-top:22px;font-size:12px;color:var(--ink-soft);font-weight:300;
+    margin-top:22px;font-size:13px;color:var(--ink-soft);font-weight:400;
   }
   .spec-kicker,.spec h2,.spec li,.spec-note{opacity:0}
 
@@ -399,7 +399,7 @@
   }
   .inside-title em{font-style:italic;color:var(--bordeaux)}
   .inside-sub{
-    margin-top:14px;font-weight:300;font-size:15px;color:var(--ink-soft);
+    margin-top:14px;font-weight:400;font-size:16px;color:var(--ink-soft);
   }
 
   .cut-wrap{
@@ -426,7 +426,7 @@
   }
   .steps li{
     display:flex;align-items:baseline;gap:8px;
-    font-weight:300;font-size:clamp(13px,1.5vw,16px);
+    font-weight:400;font-size:clamp(13px,1.5vw,16px);
     white-space:nowrap;
   }
   .steps li span{
@@ -474,7 +474,7 @@
     font-size:clamp(26px,3.4vw,46px);letter-spacing:.03em;direction:ltr;
     margin-top:14px;
   }
-  .coll-sub{margin-top:10px;font-weight:300;font-size:14px;color:var(--ink-soft)}
+  .coll-sub{margin-top:10px;font-weight:400;font-size:15px;color:var(--ink-soft)}
   .train{
     position:absolute;top:55%;transform:translateY(-50%);left:0;
     display:flex;gap:clamp(24px,4vw,64px);align-items:flex-start;
@@ -497,9 +497,9 @@
     font-size:clamp(17px,1.6vw,22px);letter-spacing:.08em;direction:ltr;
     margin-top:4px;
   }
-  .car-color{font-weight:300;font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+  .car-color{font-weight:400;font-size:13px;color:var(--ink-soft);margin-top:2px}
   .car-detail{
-    margin-top:8px;font-weight:300;font-size:12.5px;line-height:1.6;
+    margin-top:8px;font-weight:400;font-size:12.5px;line-height:1.6;
     color:var(--ink);opacity:0;transform:translateY(8px);
     transition:opacity .45s,transform .45s;
   }
@@ -511,47 +511,6 @@
   body.reduced .train{position:static;transform:none!important;width:max-content;padding:0 6vw}
   body.reduced .car-detail{opacity:1;transform:none}
 
-  /* ── section 5 · L'Atelier ─────────────────── */
-  .atelier{
-    padding:16vh 6vw 12vh;
-    max-width:1100px;margin:0 auto;
-    text-align:center;
-  }
-  .atelier-stage{
-    position:relative;
-    width:min(400px,78vw);aspect-ratio:3/4;
-    margin:7vh auto 0;
-  }
-  .combo-img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    opacity:0;transform:scale(1.045);
-    transition:opacity .8s ease,transform .9s ease;
-    -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 47%, #000 55%, transparent 84%);
-    mask-image:radial-gradient(ellipse 85% 75% at 50% 47%, #000 55%, transparent 84%);
-  }
-  .combo-img.active{opacity:1;transform:scale(1)}
-  .combo-specs{
-    display:flex;justify-content:center;gap:clamp(18px,4vw,54px);
-    flex-wrap:wrap;margin-top:4vh;
-  }
-  .cs{min-width:110px}
-  .cs span{
-    display:block;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;
-    color:var(--copper);margin-bottom:5px;
-  }
-  .cs b{font-weight:400;font-size:14.5px;color:var(--ink)}
-  .combo-chips{
-    display:flex;justify-content:center;gap:clamp(10px,2.5vw,26px);
-    flex-wrap:wrap;margin-top:5vh;direction:ltr;
-  }
-  .chip{
-    background:none;border:none;cursor:pointer;
-    font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.7vw,21px);
-    letter-spacing:.08em;color:var(--ink-soft);
-    padding:6px 2px;border-bottom:1px solid transparent;
-    transition:color .3s,border-color .3s;
-  }
-  .chip.active{color:var(--bordeaux);border-bottom-color:var(--copper)}
   .cta{
     display:inline-block;margin-top:7vh;
     padding:16px 44px;text-decoration:none;
@@ -564,6 +523,80 @@
   .cta span{
     display:block;margin-top:5px;font-size:11px;letter-spacing:.04em;
     text-transform:none;font-weight:300;opacity:.85;direction:rtl;
+  }
+
+  /* ── section 5 · La Robe — the dress becomes the cake, tier by tier, then the table ── */
+  .robe{position:relative;height:100vh;height:100svh;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:center;padding:4vh 6vw}
+  .robe .inside-head{margin-bottom:3.5vh}
+  .robe-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);
+    align-items:center;direction:ltr;max-width:1080px;width:100%;margin:0 auto}
+  .robe-stage{position:relative;height:min(66svh,620px);aspect-ratio:4/5;max-width:100%;margin:0 auto}
+  .robe-frame{position:absolute;inset:0;overflow:hidden;border-radius:2px;background:var(--cream);
+    -webkit-mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, #000 62%, transparent 92%);
+            mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, #000 62%, transparent 92%)}
+  .robe-set{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+  .robe-set.on{opacity:1}
+  .robe-set img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+  /* each tier rises in under a soft edge: --r is how far up the new layer has been stitched */
+  .robe-set .rs-st{opacity:1;--r:-12%;
+    -webkit-mask-image:linear-gradient(to top, #000 calc(var(--r) - 5%), transparent calc(var(--r) + 5%));
+            mask-image:linear-gradient(to top, #000 calc(var(--r) - 5%), transparent calc(var(--r) + 5%))}
+  .robe-thread{position:absolute;left:8%;right:8%;bottom:-2%;height:1px;opacity:0;pointer-events:none;
+    background:linear-gradient(90deg,transparent,var(--copper) 18%,var(--copper) 82%,transparent);
+    box-shadow:0 0 14px 3px rgba(255,248,240,.75)}
+  .robe-swatch{position:absolute;left:22%;top:20%;width:56%;aspect-ratio:1;border-radius:50%;overflow:hidden;z-index:2;
+    border:3px solid var(--cream);box-shadow:0 14px 40px rgba(61,43,42,.2)}
+  .robe-swatch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+  .robe-swatch img.on{opacity:1}
+  .robe-panel{direction:rtl;text-align:right;max-width:440px}
+  .robe-label{font-size:14px;color:var(--ink-soft);margin:0 0 12px}
+  .robe-label b{font-weight:600;color:var(--ink)}
+  .robe-dresses{display:flex;gap:12px;margin-bottom:4vh}
+  .dress{flex:1;display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;cursor:pointer;
+    background:transparent;border:1px solid rgba(181,122,94,.4);border-radius:40px;color:var(--ink);
+    font:inherit;text-align:right;transition:border-color .3s,background .3s}
+  .dress img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}
+  .dress .fr{display:block;font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:17px;line-height:1.1;direction:ltr;text-align:right}
+  .dress .he{display:block;font-size:13px;color:var(--ink-soft)}
+  .dress[aria-checked="true"]{border-color:var(--bordeaux);background:rgba(239,220,211,.55)}
+  .dress:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+  .robe-beats{list-style:none;margin:0;padding:0;border-inline-start:1px solid rgba(181,122,94,.3)}
+  .robe-beats li{position:relative;padding:7px 18px 7px 0;color:var(--ink-soft);font-size:14px;line-height:1.45;transition:color .4s}
+  .robe-beats li::before{content:'';position:absolute;right:-4px;top:15px;width:7px;height:7px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--copper);transition:background .4s,transform .4s}
+  .robe-beats .n{font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:15px;color:var(--ink-soft);margin-inline-end:6px;font-variant-numeric:lining-nums}
+  .robe-beats b{font-weight:600}
+  .robe-beats .d{display:block;font-size:13px;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .4s}
+  .robe-beats li.on{color:var(--ink)}
+  .robe-beats li.on::before{background:var(--bordeaux);border-color:var(--bordeaux);transform:scale(1.3)}
+  .robe-beats li.on .d{max-height:3em;opacity:1}
+  .robe-sum{margin-top:3vh;padding-top:16px;border-top:1px solid rgba(181,122,94,.3);
+    font-size:15px;line-height:1.6;color:var(--ink);min-height:3.2em}
+  .robe-sum b{font-weight:600;color:var(--bordeaux)}
+  .robe .cta{margin-top:2.5vh}
+  body.reduced .robe{height:auto;overflow:visible;padding:14vh 6vw}
+  body.reduced .robe-beats .d{max-height:none;opacity:1}
+  @media (max-width:820px){
+    /* phones: dresses on top, the cake in the middle, only the current beat under it */
+    .robe{padding:3svh 5vw;justify-content:flex-start;padding-top:max(64px,7svh)}
+    .robe .inside-head{margin-bottom:2svh}
+    .robe .inside-sub{font-size:14px;margin-top:6px}
+    .robe-grid{grid-template-columns:1fr;direction:rtl;gap:0}
+    .robe-panel{display:contents}
+    .robe-label{display:none}
+    .robe-dresses{order:1;margin:0 auto 1.6svh;width:100%;max-width:420px}
+    .dress{padding:5px 10px 5px 5px;gap:8px}
+    .dress img{width:34px;height:34px}
+    .robe-stage{order:2;height:min(44svh,440px)}
+    .robe-beats{order:3;border:0;margin:1.6svh auto 0;text-align:center;min-height:3.4em}
+    .robe-beats li{display:none;padding:0}
+    .robe-beats li::before{display:none}
+    .robe-beats li.on{display:block}
+    .robe-sum,.robe .cta{order:4}
+    .robe-sum{display:none}
+    .robe .cta{margin:1.4svh auto 0}
+    body.reduced .robe-beats li{display:block;margin-bottom:8px}
   }
 
   /* ── section 6 · finale ────────────────────── */
@@ -594,7 +627,7 @@
     margin-top:14px;text-shadow:0 2px 24px rgba(43,26,28,.55);
   }
   .finale-copy p{
-    margin-top:12px;font-weight:300;font-size:14.5px;opacity:.9;
+    margin-top:12px;font-weight:400;font-size:15.5px;opacity:.9;
   }
 
   /* ── mondes voisins — related worlds ───────── */
@@ -607,7 +640,7 @@
     font-size:clamp(26px,3.4vw,44px);letter-spacing:.04em;
   }
   .voisins h2 b{font-weight:600;color:var(--bordeaux)}
-  .voisins .sub{margin-top:12px;font-weight:300;font-size:15px;color:var(--ink-soft)}
+  .voisins .sub{margin-top:12px;font-weight:400;font-size:15px;color:var(--ink-soft)}
   .v-cards{
     display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,32px);
     max-width:1100px;margin:7vh auto 0;
@@ -633,7 +666,7 @@
     letter-spacing:.12em;direction:ltr;color:var(--bordeaux);
   }
   .v-card .he{font-weight:600;font-size:15px;margin-top:4px}
-  .v-card .note{font-weight:300;color:var(--ink-soft);font-size:14px;margin-top:8px;line-height:1.7}
+  .v-card .note{font-weight:400;color:var(--ink-soft);font-size:14px;margin-top:8px;line-height:1.7}
   .v-card .go{
     margin-top:16px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
     color:var(--copper);direction:ltr;
@@ -653,7 +686,7 @@
     text-align:center;margin:14px 0 5vh;
   }
   .studio-note p{
-    font-weight:300;font-size:15.5px;line-height:1.9;color:var(--ink);
+    font-weight:400;font-size:15.5px;line-height:1.9;color:var(--ink);
     margin-bottom:18px;
   }
   .studio-note a{color:var(--bordeaux);font-weight:600;text-decoration:none;border-bottom:1px solid var(--copper)}
@@ -672,7 +705,7 @@
 
   /* ── closing section ───────────────────────── */
   .after{
-    min-height:70vh;
+    min-height:48vh;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     gap:18px;text-align:center;padding:12vh 6vw;
     background:linear-gradient(var(--blush-deep), var(--blush));
@@ -682,7 +715,7 @@
     font-family:'Cormorant Garamond',serif;font-weight:500;
     font-size:clamp(24px,3.4vw,42px);letter-spacing:.06em;direction:ltr;
   }
-  .after p{max-width:520px;font-weight:300;color:var(--ink-soft);font-size:15px}
+  .after p{max-width:520px;font-weight:400;color:var(--ink-soft);font-size:15.5px}
   .after .tag{
     font-size:10px;letter-spacing:.28em;text-transform:uppercase;
     color:var(--copper);direction:ltr;margin-top:12px;
@@ -897,38 +930,82 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="car-color">בורדו עמוק</div>
       <div class="car-detail">יין אדום, דובדבן שחור ווניל · עד 130 אורחים<br><b>החל מ־₪3,200</b></div>
     </div>
+    <div class="car">
+      <img width="560" height="750" src="assets/combo-tour.webp" alt="La Tour — עוגה עגולה חמש קומות בשנהב ופנינים" loading="lazy">
+      <div class="car-name">La Tour</div>
+      <div class="car-color">שנהב ופנינה</div>
+      <div class="car-detail">וניל מדגסקר ומסקרפונה · עד 200 אורחים<br><b>החל מ־₪3,900</b></div>
+    </div>
+    <div class="car">
+      <img width="560" height="750" src="assets/combo-jardin.webp" alt="Le Jardin — עוגה שלוש קומות עם ורדי גן מעושנים" loading="lazy">
+      <div class="car-name">Le Jardin</div>
+      <div class="car-color">ורוד מעושן</div>
+      <div class="car-detail">פטל, ליצ׳י וורד · עד 110 אורחים<br><b>החל מ־₪3,100</b></div>
+    </div>
+    <div class="car">
+      <img width="560" height="750" src="assets/combo-moderne.webp" alt="La Moderne — עוגה משושה שתי קומות עם קו נחושת" loading="lazy">
+      <div class="car-name">La Moderne</div>
+      <div class="car-color">שנהב ונחושת</div>
+      <div class="car-detail">פיסטוק ושקד · עד 70 אורחים<br><b>החל מ־₪2,300</b></div>
+    </div>
+    <div class="car">
+      <img width="560" height="750" src="assets/combo-petite.webp" alt="La Petite — עוגת קומה אחת עם קשת גנאש ודובדבנים" loading="lazy">
+      <div class="car-name">La Petite</div>
+      <div class="car-color">שמנת חמה</div>
+      <div class="car-detail">שוקולד ודובדבן · עד 40 אורחים<br><b>החל מ־₪1,400</b></div>
+    </div>
   </div>
 </section>
 
-<section class="atelier" id="atelier">
+<section class="robe" id="robe" aria-label="La Robe — העוגה נתפרת מהשמלה">
   <header class="inside-head">
-    <div class="kicker">L'Atelier</div>
-    <h2 class="inside-title">Begin your <em>cake story</em>.</h2>
-    <p class="inside-sub">ארבעה סיפורים מוכנים — והסיפור החמישי הוא שלכם</p>
+    <div class="kicker">Chapter III · La Robe</div>
+    <h2 class="inside-title">The cake wears <em>your dress</em>.</h2>
+    <p class="inside-sub">בחרי שמלה וגללי. הבד הופך לקומה, הקומה לעוגה, והעוגה יוצאת לשולחן.</p>
   </header>
 
-  <div class="atelier-stage" id="atelierStage">
-    <img width="560" height="750" class="combo-img active" src="assets/combo-tour.webp"    alt="La Tour — עוגה עגולה חמש קומות בשנהב ופנינים">
-    <img width="560" height="750" class="combo-img" src="assets/combo-jardin.webp"  alt="Le Jardin — עוגה שלוש קומות עם ורדי גן מעושנים">
-    <img width="560" height="750" class="combo-img" src="assets/combo-moderne.webp" alt="La Moderne — עוגה משושה שתי קומות עם קו נחושת">
-    <img width="560" height="750" class="combo-img" src="assets/combo-petite.webp"  alt="La Petite — עוגת קומה אחת עם קשת גנאש ודובדבנים">
-  </div>
+  <div class="robe-grid">
+    <div class="robe-stage" id="robeStage">
+      <div class="robe-frame">
+        <div class="robe-set on" data-k="lace">
+          <img class="rs-1 rs-st" src="assets/robe/lace-1.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-2 rs-st" src="assets/robe/lace-2.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-3 rs-st" src="assets/robe/lace-3.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-t" src="assets/robe/lace-t.webp" alt="" width="880" height="1100" loading="lazy">
+        </div>
+        <div class="robe-set" data-k="pleat">
+          <img class="rs-1 rs-st" src="assets/robe/pleat-1.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-2 rs-st" src="assets/robe/pleat-2.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-3 rs-st" src="assets/robe/pleat-3.webp" alt="" width="880" height="1100" loading="lazy">
+          <img class="rs-t" src="assets/robe/pleat-t.webp" alt="" width="880" height="1100" loading="lazy">
+        </div>
+        <div class="robe-thread" id="robeThread"></div>
+      </div>
+      <div class="robe-swatch" id="robeSwatch" aria-hidden="true">
+        <img class="on" data-k="lace" src="assets/robe/fabric-lace.webp" alt="" width="480" height="480" loading="lazy">
+        <img data-k="pleat" src="assets/robe/fabric-pleat.webp" alt="" width="480" height="480" loading="lazy">
+      </div>
+    </div>
 
-  <div class="combo-specs">
-    <div class="cs"><span>La Forme · צורה</span><b id="csShape"></b></div>
-    <div class="cs"><span>La Palette · פלטה</span><b id="csPalette"></b></div>
-    <div class="cs"><span>Le Goût · טעמים</span><b id="csFlavor"></b></div>
-    <div class="cs"><span>Le Décor · קישוט</span><b id="csDecor"></b></div>
-  </div>
+    <div class="robe-panel">
+      <p class="robe-label"><b>בחרי שמלה</b></p>
+      <div class="robe-dresses" role="radiogroup" aria-label="השמלה">
+        <button class="dress" role="radio" aria-checked="true" data-k="lace"><img src="assets/robe/fabric-lace.webp" alt="" width="480" height="480" loading="lazy"><span><span class="fr">La Dentelle</span><span class="he">שמלת תחרה</span></span></button>
+        <button class="dress" role="radio" aria-checked="false" tabindex="-1" data-k="pleat"><img src="assets/robe/fabric-pleat.webp" alt="" width="480" height="480" loading="lazy"><span><span class="fr">Le Plissé</span><span class="he">שמלת קפלים</span></span></button>
+      </div>
 
-  <div class="combo-chips" id="comboChips">
-    <button class="chip active">La Tour</button>
-    <button class="chip">Le Jardin</button>
-    <button class="chip">La Moderne</button>
-    <button class="chip">La Petite</button>
-  </div>
+      <ol class="robe-beats" id="robeBeats">
+        <li class="on"><span class="n">01</span><b>הבד</b><span class="d" data-fabric></span></li>
+        <li><span class="n">02</span><b>קומה ראשונה</b><span class="d">הבד נתפר לסוכר · עד 40 אורחים</span></li>
+        <li><span class="n">03</span><b>שתי קומות</b><span class="d">אותה דוגמה, קומה מעל · עד 90 אורחים</span></li>
+        <li><span class="n">04</span><b>שלוש קומות</b><span class="d">השמלה כולה, בגובה מלא · עד 160 אורחים</span></li>
+        <li><span class="n">05</span><b>ישר לשולחן</b><span class="d">אותה עוגה, בערב של החתונה</span></li>
+      </ol>
 
-  <a class="cta" href="#finale">Begin your cake story<span>לקביעת פגישת טעימות ועיצוב</span></a>
+      <p class="robe-sum" id="robeSum" aria-live="polite"></p>
+      <a class="cta" href="#finale">Book your tasting<span>לקביעת טעימה עם העוגה הזאת</span></a>
+    </div>
+  </div>
 </section>
 
 <section class="finale" id="finale">
@@ -1187,8 +1264,11 @@ if (isDesktop){
 }
 tl2.to('body',{backgroundColor:'#E9CFC6',ease:'power1.inOut',duration:.30},0.06);
 
+/* on phones the sheet is a card: it arrives with its words, and sooner, so it never sits empty */
+const specAt = isDesktop ? 0.22 : 0.10, specStep = isDesktop ? 0.045 : 0.03;
+if (!isDesktop) tl2.fromTo('.spec',{opacity:0},{opacity:1,ease:'power2.out',duration:.06},specAt-0.02);
 gsap.utils.toArray('.spec-kicker,.spec h2,.spec li,.spec-note').forEach((el,i)=>{
-  tl2.fromTo(el,{opacity:0,x:40},{opacity:1,x:0,ease:'power2.out',duration:.08},0.22+i*0.045);
+  tl2.fromTo(el,{opacity:0,x:40},{opacity:1,x:0,ease:'power2.out',duration:.08},specAt+i*specStep);
 });
 
 /* hotspots wake up once the revolution completes (class toggled in onUpdate) */
@@ -1214,8 +1294,8 @@ gsap.fromTo('.cut-line',{top:'0%',opacity:1},
     onUpdate(self){ gsap.set('.cut-line',{opacity: self.progress > .96 ? 0 : 1}); }
   }});
 
-gsap.from('.inside-head > *',{opacity:0,y:28,stagger:.12,duration:.8,ease:'power2.out',
-  scrollTrigger:{trigger:'.inside-head',start:'top 82%'}});
+gsap.from('#inside .inside-head > *',{opacity:0,y:28,stagger:.12,duration:.8,ease:'power2.out',
+  scrollTrigger:{trigger:'#inside .inside-head',start:'top 82%'}});
 gsap.from('.steps li',{opacity:0,y:22,stagger:.09,duration:.6,ease:'power2.out',
   scrollTrigger:{trigger:'.steps',start:'top 85%'}});
 gsap.utils.toArray('.strip').forEach((s,i)=>{
@@ -1256,42 +1336,87 @@ gsap.to(train,{
   }
 });
 
-/* ═══ section 5 · L'Atelier — four ready stories ═══ */
-const COMBOS = [
-  {shape:'עגולה · 5 קומות', palette:'שנהב ופנינה',   flavor:'וניל מדגסקר ומסקרפונה', decor:'פנינים אכילות'},
-  {shape:'עגולה · 3 קומות', palette:'ורוד מעושן',    flavor:'פטל, ליצ׳י וורד',        decor:'פרחי גן מסוכר'},
-  {shape:'משושה · 2 קומות', palette:'שנהב ונחושת',   flavor:'פיסטוק ושקד',            decor:'קו נחושת מצויר ביד'},
-  {shape:'עגולה · קומה אחת',palette:'שמנת חמה',      flavor:'שוקולד ודובדבן',         decor:'קשת גנאש'}
+/* ═══ section 5 · La Robe — the dress becomes the cake, tier by tier, then the table ═══ */
+const ROBE = {
+  lace: {he:'תחרה',  fabric:'תחרה שנטית על טול, והזילוף מעתיק את הסלסול שלה', decor:'תחרת זילוף צרפתית'},
+  pleat:{he:'קפלים', fabric:'קרפ בקפלים אנכיים, וכל קפל נחתך בסוכר',          decor:'קפלי סוכר אנכיים'}
+};
+const ROBE_BEATS = [
+  {tiers:'הבד בלבד',     guests:''},
+  {tiers:'קומה אחת',     guests:'עד 40 אורחים'},
+  {tiers:'שתי קומות',    guests:'עד 90 אורחים'},
+  {tiers:'שלוש קומות',   guests:'עד 160 אורחים'},
+  {tiers:'שלוש קומות, על השולחן', guests:'עד 160 אורחים'}
 ];
-const comboImgs = gsap.utils.toArray('.combo-img');
-const chips = gsap.utils.toArray('#comboChips .chip');
-const csEls = {shape:csShape, palette:csPalette, flavor:csFlavor, decor:csDecor};
-let comboTimer = null;
-
-function setCombo(i){
-  comboImgs.forEach((im,j)=>im.classList.toggle('active',i===j));
-  chips.forEach((c,j)=>c.classList.toggle('active',i===j));
-  gsap.to('.combo-specs',{opacity:0,duration:.22,onComplete(){
-    const c=COMBOS[i];
-    csEls.shape.textContent=c.shape; csEls.palette.textContent=c.palette;
-    csEls.flavor.textContent=c.flavor; csEls.decor.textContent=c.decor;
-    gsap.to('.combo-specs',{opacity:1,duration:.35});
-  }});
+const dresses = gsap.utils.toArray('.dress');
+const robeSets = gsap.utils.toArray('.robe-set');
+const robeBeatEls = gsap.utils.toArray('#robeBeats li');
+const robeSum = document.getElementById('robeSum');
+let robeK = 'lace', robeBeat = 0;
+function robeRender(){
+  const f = ROBE[robeK], b = ROBE_BEATS[robeBeat];
+  robeBeatEls.forEach((li,i)=>li.classList.toggle('on', i===robeBeat));
+  document.querySelector('#robeBeats [data-fabric]').textContent = f.fabric;
+  robeSum.innerHTML = 'שמלת <b>'+f.he+'</b> · '+b.tiers+(b.guests ? ' · '+b.guests : '')+' · '+f.decor;
+  robeSets.forEach(s=>{
+    const on = s.dataset.k===robeK;
+    s.classList.toggle('on', on);
+    s.querySelectorAll('img').forEach(im=>{ im.alt = on && im.classList.contains(robeBeat>=4?'rs-t':'rs-'+Math.max(robeBeat,1))
+      ? 'עוגת ÉTAGE° ב'+f.decor+', '+b.tiers : ''; });
+  });
+  document.querySelectorAll('#robeSwatch img').forEach(im=>im.classList.toggle('on', im.dataset.k===robeK));
 }
-setCombo(0);
-chips.forEach((c,i)=>c.addEventListener('click',()=>{
-  clearInterval(comboTimer); comboTimer=null;
-  setCombo(i);
-}));
-/* gentle auto-tour until the visitor takes over */
-let comboIdx=0;
-ScrollTrigger.create({trigger:'#atelier',start:'top 65%',once:true,onEnter(){
-  if (reduced) return;
-  comboTimer=setInterval(()=>{ comboIdx=(comboIdx+1)%COMBOS.length; setCombo(comboIdx); },4200);
-}});
-gsap.from('.atelier .inside-head > *, .atelier-stage, .combo-specs, .combo-chips, .cta',
+function robePick(b){
+  dresses.forEach(x=>{ const on = x===b; x.setAttribute('aria-checked', on); x.tabIndex = on ? 0 : -1; });
+  robeK = b.dataset.k; robeRender();
+}
+dresses.forEach(b=>b.addEventListener('click',()=>robePick(b)));
+document.querySelector('.robe-dresses').addEventListener('keydown',e=>{
+  const i = dresses.indexOf(document.activeElement); if (i<0) return;
+  const d = e.key==='ArrowLeft' ? 1 : e.key==='ArrowRight' ? -1 : 0; if (!d) return;
+  e.preventDefault(); const nb = dresses[(i+d+dresses.length)%dresses.length]; nb.focus(); robePick(nb);
+});
+
+/* the swatch starts as the whole story, then shrinks to a pin on the cake's shoulder */
+const robeStage = document.getElementById('robeStage');
+const swatchPin = () => ({x: robeStage.clientWidth*.31, y: robeStage.clientHeight*.38});
+/* one tier is stitched up from the plate: the copper thread rides the edge of the reveal */
+function robeStitch(t, cls, at){
+  t.fromTo('.robe-set .'+cls,{'--r':'-12%'},{'--r':'112%',duration:1,ease:'power1.inOut'},at)
+   .fromTo('#robeThread',{bottom:'-12%'},{bottom:'112%',duration:1,ease:'power1.inOut'},at)
+   .fromTo('#robeThread',{opacity:0},{opacity:1,duration:.15},at)
+   .to('#robeThread',{opacity:0,duration:.15},at+.85);
+}
+const robeTl = gsap.timeline({
+  defaults:{ease:'none'},
+  scrollTrigger:{
+    trigger:'#robe', start:'top top', end:'+=380%', scrub:1, pin:true, anticipatePin:1, invalidateOnRefresh:true
+  },
+  /* beat = which tier the playhead has stitched; it rides the timeline, not the scroll,
+     so the list keeps up while scrub is still easing after the wheel stops */
+  onUpdate(){
+    const t = this.time(), b = t<1.1 ? 0 : t<2.6 ? 1 : t<4.1 ? 2 : t<5.6 ? 3 : 4;
+    if (b!==robeBeat){ robeBeat = b; robeRender(); }
+  }
+});
+robeTl
+  .to({}, {duration:.5})                                                    /* 0   the fabric, alone */
+  .to('#robeSwatch',{x:()=>swatchPin().x, y:()=>swatchPin().y, scale:.42, duration:1, ease:'power2.inOut'}, .5)
+  .set('.robe-set .rs-1',{opacity:1}, .5);
+robeStitch(robeTl,'rs-1',.6);                                              /* 1   first tier */
+robeTl.set('.robe-set .rs-2',{opacity:1}, 2.1);
+robeStitch(robeTl,'rs-2',2.1);                                             /* 2   second tier */
+robeTl.set('.robe-set .rs-3',{opacity:1}, 3.6);
+robeStitch(robeTl,'rs-3',3.6);                                             /* 3   third tier */
+robeTl                                                                     /* 4   straight to the table */
+  .fromTo('.robe-set .rs-t',{opacity:0,scale:1.1},{opacity:1,scale:1,duration:1.2,ease:'power2.out'}, 5.1)
+  .to('.robe-set .rs-3',{scale:.96,duration:1.2,ease:'power2.out'}, 5.1)
+  .to('#robeSwatch',{opacity:0,duration:.6}, 5.3)
+  .to({}, {duration:.6});
+robeRender();
+gsap.from('.robe .inside-head > *',
   {opacity:0,y:26,stagger:.1,duration:.7,ease:'power2.out',
-   scrollTrigger:{trigger:'.atelier',start:'top 75%'}});
+   scrollTrigger:{trigger:'.robe',start:'top 75%'}});
 
 /* ═══ section 6 · finale — the table ═══ */
 gsap.fromTo('#finaleBg',{yPercent:-6},{yPercent:6,ease:'none',
@@ -1321,7 +1446,9 @@ if (reduced){
   document.querySelectorAll('.dot').forEach(d=>d.classList.add('on'));
   document.body.classList.add('reduced');
   gsap.set('.train',{x:0});
-  gsap.set('.atelier .inside-head > *, .atelier-stage, .combo-specs, .combo-chips, .cta',{opacity:1,y:0});
+  robeTl.progress(1).kill();
+  gsap.set('.robe .inside-head > *',{opacity:1,y:0});
+  robeBeat = 4; robeRender();
   gsap.set('#finaleBg',{yPercent:0});
   gsap.set('.finale-copy > *',{opacity:1,y:0});
   gsap.set('.v-card',{opacity:1,y:0});
