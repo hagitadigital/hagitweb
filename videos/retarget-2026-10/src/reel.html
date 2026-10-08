@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>reel render</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Heebo:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap">
+<style>
+html,body{margin:0;background:#F2EBDC}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;background:#F2EBDC;font-family:'Heebo',sans-serif;color:#15202E}
+.layer{position:absolute;inset:0;background:#F2EBDC}
+.abs{position:absolute}
+.band{position:absolute;left:80px;top:980px;width:920px;height:260px}
+.band svg{position:absolute;left:0;top:0;overflow:visible}
+.ball{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:999px;background:radial-gradient(circle at 35% 30%,#F1D3B0,#C28A5A 55%,#8E5F36);box-shadow:0 0 0 10px rgba(217,174,133,.45),0 8px 18px rgba(20,30,45,.25);offset-rotate:0deg}
+.line{fill:none;stroke:#C28A5A;stroke-width:4px;stroke-linecap:round;stroke-linejoin:round}
+.circ{position:absolute;border-radius:999px;overflow:hidden;box-shadow:0 18px 40px rgba(20,30,45,.16)}
+.circ img,.cover{width:100%;height:100%;object-fit:cover;display:block}
+.mark{position:absolute;width:40px;height:40px;border:0 solid #F2EBDC}
+.h{margin:0;font-weight:600;font-size:84px;line-height:1.16;white-space:pre-line}
+.lab{font-family:'Plus Jakarta Sans','Heebo',sans-serif}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const Q = new URLSearchParams(location.search);
+const TRACK = Q.get('track') || 'general';
+const HOOK = Q.get('hook') || 'A';
+const COP = '#C28A5A';
+const general = [
+{ key:'velune', name:'VELUNE°', tag:'בושם הוא לא ריח. הוא מקום.', tint:'#DCE4EE', still:'velune.jpg', pos:'50% 55%', vo:0,
+d:'M920 200 H560 V90 A80 80 0 0 0 400 90 V200 H0', L:1231,
+f1:{ d:'M548 200 V92 A68 68 0 0 0 412 92 V200 Z', fill:'#D9AE85', a:4.6, b:5.6, max:0.6 },
+c:[{ cx:534, cy0:150, cy1:150, r:6, fill:COP, a:5.3, b:5.7 }] },
+{ key:'encore', name:'ENCORE°', tag:'השעה היא הלוגו.', tint:'#5A3A30', still:'encore.jpg', pos:'50% 40%', vo:0,
+d:'M920 200 H640 A180 180 0 0 0 280 200 H0', L:1126,
+c:[{ cx:616, cy0:110, cy1:110, r:10, fill:COP, a:4.5, b:4.8 },{ cx:522, cy0:31, cy1:31, r:10, fill:COP, a:4.8, b:5.1 },{ cx:398, cy0:31, cy1:31, r:10, fill:COP, a:5.1, b:5.4 },{ cx:304, cy0:110, cy1:110, r:10, fill:COP, a:5.4, b:5.7 }] },
+{ key:'miel', name:'MIEL°', tag:'רומנטיקה מתחילה מבפנים.', tint:'#C98A92', still:'miel.jpg', pos:'58% 60%', vo:2.2,
+d:'M920 200 H660 V150 H620 V100 H580 V50 H340 V100 H300 V150 H260 V200 H0', L:1220,
+f1:{ d:'M346 68 H574 V80 H346 Z', fill:'#B8545A', a:4.6, b:5.0, max:0.85 },
+f2:{ d:'M306 118 H614 V130 H306 Z', fill:'#B8545A', a:4.8, b:5.2, max:0.85 },
+f3:{ d:'M266 168 H654 V180 H266 Z', fill:'#B8545A', a:5.0, b:5.4, max:0.85 },
+s1:{ d:'M460 36 V214', L:178, a:5.5, b:6.1 } }
+];
+const beauty = [
+{ key:'oreva', name:'ORÉVA°', tag:'קודם הידיים. אחר כך הבקבוק.', tint:'#EBD3C3', still:'oreva.jpg', pos:'50% 45%', vo:0,
+d:'M920 200 H720 C660 200 640 120 690 100 C740 80 750 170 660 190 C600 205 520 200 470 200 V110 H455 V70 H435 V45 H405 V70 H385 V110 H370 V200 H0', L:1473,
+f1:{ d:'M468 198 V112 H372 V198 Z', fill:'#D9AE85', a:4.6, b:5.4, max:0.65 } },
+{ key:'rosee', name:'ROSÉE°', tag:'נולד עם שחר.', tint:'#F1D6C8', still:'rosee.jpg', pos:'50% 62%', vo:1.2,
+d:'M920 200 H460 C530 200 530 120 460 30 C390 120 390 200 460 200 H0', L:1351,
+f1:{ d:'M460 198 C526 198 526 122 460 34 C394 122 394 198 460 198 Z', fill:'#E9A9A9', a:4.4, b:5.0, max:0.6 },
+c:[{ cx:538, cy0:130, cy1:130, r:22, fill:'#E9A9A9', a:4.9, b:5.3 },{ cx:499, cy0:198, cy1:198, r:22, fill:'#E9A9A9', a:5.0, b:5.4 },{ cx:421, cy0:198, cy1:198, r:22, fill:'#E9A9A9', a:5.1, b:5.5 },{ cx:382, cy0:130, cy1:130, r:22, fill:'#E9A9A9', a:5.2, b:5.6 },{ cx:421, cy0:62, cy1:62, r:22, fill:'#E9A9A9', a:5.3, b:5.7 },{ cx:499, cy0:62, cy1:62, r:22, fill:'#E9A9A9', a:5.4, b:5.8 }] },
+{ key:'elvea', name:'ELVÉA°', tag:'עלה אוסף אור.', tint:'#E4E1D2', still:'elvea.jpg', pos:'55% 55%', vo:0,
+d:'M920 200 H640 C580 80 440 60 340 110 C440 180 560 205 640 200 H0', L:1587,
+f1:{ d:'M640 200 C580 80 440 60 340 110 C440 180 560 205 640 200 Z', fill:'#9FB58A', a:4.6, b:5.4, max:0.5 },
+s1:{ d:'M640 200 Q500 140 340 110', L:314, a:4.8, b:5.6 },
+c:[{ cx:340, cy0:-30, cy1:98, r:11, fill:COP, a:5.4, b:6.1 }] }
+];
+const W = TRACK === 'beauty' ? beauty : general;
+const FRAMES = window.FRAMES || {};
+const STARTS = [4, 11, 18];
+const hookText = HOOK === 'B' ? { pre:'איך יזהו ', acc:'שזו את,', post:'\nעוד לפני המחיר?' } : { pre:'אותו מוצר. אותו מחיר.\n', acc:'למה דווקא את?', post:'' };
+const outro = TRACK === 'beauty' ? ['הנוסחה שלך כבר עובדת.\n', 'בואי נבנה לה עולם.'] : ['העסק שלך כבר יפה.\n', 'בואי נבנה לו עולם.'];
+const ball = (id, d) => `<div class="ball" id="${id}" style="offset-path:path('${d}')"></div>`;
+let html = '';
+html += `<div class="layer" id="hk">
+<h1 class="h abs" id="hkT" style="top:130px;right:140px;left:140px">${hookText.pre}<span style="color:#C28A5A">${hookText.acc}</span>${hookText.post}</h1>
+<div class="circ" id="hkC1" style="top:470px;right:190px;width:300px;height:300px"><img src="${W[0].still}"></div>
+<div class="circ" id="hkC2" style="top:560px;left:170px;width:260px;height:260px"><img src="${W[1].still}"></div>
+<div class="circ" id="hkC3" style="top:760px;right:400px;width:280px;height:280px"><img src="${W[2].still}"></div>
+<div class="band"><svg width="920" height="260"><path class="line" id="hkLine" d="M920 200 H0" style="stroke-dasharray:920 920"></path></svg>${ball('hkBall', 'M920 200 H0')}</div>
+</div>`;
+W.forEach((w, i) => {
+const cs = [0,1,2,3,4,5].map(k => `<circle id="w${i}c${k}" cx="0" cy="0" r="0"></circle>`).join('');
+html += `<div class="layer" id="w${i}">
+<div class="abs" id="w${i}win" style="top:104px;right:80px;left:80px;height:800px;overflow:hidden;background:${w.tint};transform-origin:50% 100%">
+<img class="cover" id="w${i}img" src="frames/${w.key}/0001.jpg" style="object-position:${w.pos}">
+<div class="mark" style="top:18px;right:18px;border-top-width:3px;border-right-width:3px"></div>
+<div class="mark" style="top:18px;left:18px;border-top-width:3px;border-left-width:3px"></div>
+<div class="mark" style="bottom:18px;right:18px;border-bottom-width:3px;border-right-width:3px"></div>
+<div class="mark" style="bottom:18px;left:18px;border-bottom-width:3px;border-left-width:3px"></div>
+</div>
+<div class="abs" id="w${i}name" style="top:924px;right:140px;left:140px;display:flex;align-items:baseline;gap:26px"><div style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:60px;color:#C28A5A">${w.name}</div><div style="font-size:30px">${w.tag}</div></div>
+<div class="band"><svg width="920" height="260">
+<path id="w${i}f1" d="${(w.f1||{d:'M0 0'}).d}" style="fill:${(w.f1||{fill:'none'}).fill};opacity:0"></path>
+<path id="w${i}f2" d="${(w.f2||{d:'M0 0'}).d}" style="fill:${(w.f2||{fill:'none'}).fill};opacity:0"></path>
+<path id="w${i}f3" d="${(w.f3||{d:'M0 0'}).d}" style="fill:${(w.f3||{fill:'none'}).fill};opacity:0"></path>
+<path class="line" id="w${i}main" d="${w.d}" style="stroke-dasharray:${w.L} ${w.L}"></path>
+<path class="line" id="w${i}s1" d="${(w.s1||{d:'M0 0'}).d}" style="stroke-width:3px;stroke-dasharray:${(w.s1||{L:1}).L} ${(w.s1||{L:1}).L}"></path>
+${cs}</svg>${ball('w' + i + 'ball', w.d)}</div>
+</div>`;
+});
+html += `<div class="layer" id="o1">
+<h2 class="h abs" style="top:130px;right:140px;left:140px">שלושה עולמות.\nחוט אחד.</h2>
+<div class="abs" style="top:470px;right:140px;left:140px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px">
+${W.map((w, i) => `<div id="o1t${i}" style="display:flex;flex-direction:column;align-items:center;gap:14px"><div style="width:100%;height:340px;border-radius:6px;overflow:hidden;background:${w.tint};box-shadow:0 14px 30px rgba(20,30,45,.14)"><img class="cover" src="${w.still}" style="object-position:${w.pos}"></div><div style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:38px;color:#825630">${w.name}</div></div>`).join('')}
+</div>
+<div class="band"><svg width="920" height="260"><path class="line" d="M920 200 H0"></path>
+${[740,460,180].map((x, i) => `<circle id="o1d${i}" cx="${x}" cy="200" r="0" style="fill:${W[i].tint};stroke:#C28A5A;stroke-width:3px"></circle>`).join('')}</svg></div>
+</div>`;
+html += `<div class="layer" id="o2">
+<h2 class="h abs" style="top:280px;right:140px;left:140px;font-size:76px">${outro[0]}<span style="color:#C28A5A;font-weight:500">${outro[1]}</span></h2>
+<div class="abs" style="top:520px;right:140px;left:140px;font-size:34px;line-height:1.5;color:#3D4A5C">חוט אחד שחוזר בכל מקום, ומזהים אותו גם בלי הלוגו.</div>
+<div class="abs" id="o2cta" style="top:700px;right:140px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+<div style="background:#15202E;color:#F2EBDC;border-radius:12px;padding:24px 52px;font-size:38px;font-weight:600">אבחון פער המותג</div>
+<div style="font-size:28px;color:#3D4A5C">30 דק׳ · בלי עלות</div>
+<div class="lab" style="font-size:18px;letter-spacing:.3em;color:#3D4A5C">HAGITANTEBI.CO.IL</div></div>
+<div class="band"><svg width="920" height="260"><path class="line" d="M920 200 H0"></path></svg>${ball('o2ball', 'M920 200 H0')}</div>
+</div>
+<div class="abs" id="ring" style="border-radius:999px;border:3px solid #C28A5A;box-sizing:border-box;opacity:0"></div>
+<div class="abs" style="top:0;bottom:0;right:80px;width:1px;background:#D9AE85"></div>
+<div class="abs" style="top:0;bottom:0;left:80px;width:1px;background:#D9AE85"></div>
+<div class="abs lab" style="top:675px;right:40px;transform:translate(50%,-50%) rotate(90deg);font-size:16px;letter-spacing:.4em;color:#3D4A5C;white-space:nowrap">HAGITANTEBI.CO.IL</div>
+<div class="abs lab" style="top:675px;left:40px;transform:translate(-50%,-50%) rotate(-90deg);font-size:16px;letter-spacing:.4em;color:#3D4A5C;white-space:nowrap">BRAND WORLDS STUDIO</div>
+<div class="abs lab" style="top:56px;right:140px;left:140px;display:flex;justify-content:space-between;font-size:18px;letter-spacing:.22em;color:#825630;font-weight:600"><div id="headL"></div><div id="headN"></div></div>
+<div class="abs" style="bottom:44px;right:140px;left:140px;display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:17px;letter-spacing:.2em;color:#3D4A5C">עולמות מותג קונספט</div><div style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:28px">Brand Worlds Studio</div></div>
+<div class="abs" id="prog" style="bottom:0;right:0;height:6px;background:#C28A5A"></div>`;
+document.getElementById('stage').innerHTML = html;
+const $ = (id) => document.getElementById(id);
+const cl = (x) => Math.max(0, Math.min(1, x));
+const ez = (x) => 1 - Math.pow(1 - x, 3);
+const ezio = (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const NFR = { velune: 170, encore: 303, miel: 150, oreva: 144, rosee: 301, elvea: 180 };
+window.setT = async function (T) {
+const seg = (a, b) => ez(cl((T - a) / (b - a)));
+const segio = (a, b) => ezio(cl((T - a) / (b - a)));
+const vis = (el, on) => { el.style.visibility = on ? 'visible' : 'hidden'; };
+const portal = (a) => 1750 * segio(a, a + 0.9);
+// hook
+vis($('hk'), T < 4.95);
+const hp = segio(0.6, 3.7);
+$('hkT').style.opacity = seg(0.1, 0.8); $('hkT').style.transform = `translateY(${30 * (1 - seg(0.1, 0.8))}px)`;
+$('hkC1').style.transform = `scale(${seg(0.5, 1.1)})`; $('hkC2').style.transform = `scale(${seg(0.75, 1.35)})`; $('hkC3').style.transform = `scale(${seg(1.0, 1.6)})`;
+$('hkLine').style.strokeDashoffset = 920 * (1 - hp); $('hkBall').style.offsetDistance = (hp * 100) + '%';
+// worlds
+const waits = [];
+W.forEach((w, i) => {
+const s = STARTS[i];
+const on = T >= s && T < s + 7.95;
+const L = $('w' + i);
+vis(L, on);
+L.style.clipPath = `circle(${portal(s)}px at 80px 1180px)`;
+if (!on) return;
+$('w' + i + 'win').style.transform = `scale(${0.9 + 0.1 * segio(s + 0.3, s + 1.5)})`;
+const img = $('w' + i + 'img');
+img.style.transform = `scale(${1.08 - 0.08 * cl((T - s) / 8)})`;
+const n = NFR[w.key];
+const dur = n / 30;
+const rate = Math.max(0.5, Math.min(1, (dur - w.vo) / 7.6));
+const want = Math.min(dur - 0.04, w.vo + Math.max(0, T - s) * rate);
+const idx = Math.max(1, Math.min(n, Math.round(want * 30) + 1));
+const src = `frames/${w.key}/${String(idx).padStart(4, '0')}.jpg`;
+if (!img.src.endsWith(src)) { img.src = src; waits.push(img.decode().catch(() => {})); }
+$('w' + i + 'name').style.opacity = seg(s + 0.9, s + 1.5);
+const p = segio(s + 1.0, s + 4.6);
+$('w' + i + 'main').style.strokeDashoffset = w.L * (1 - p);
+$('w' + i + 'ball').style.offsetDistance = (p * 100) + '%';
+['f1', 'f2', 'f3'].forEach((k) => { const f = w[k]; if (f) $('w' + i + k).style.opacity = f.max * seg(s + f.a, s + f.b); });
+if (w.s1) $('w' + i + 's1').style.strokeDashoffset = w.s1.L * (1 - seg(s + w.s1.a, s + w.s1.b));
+(w.c || []).forEach((c, k) => {
+const kk = seg(s + c.a, s + c.b); const el = $('w' + i + 'c' + k);
+el.setAttribute('cx', c.cx); el.setAttribute('cy', c.cy0 + (c.cy1 - c.cy0) * kk); el.setAttribute('r', c.r * Math.min(1, kk * 2.5));
+el.style.fill = c.fill; el.style.opacity = kk > 0 ? 1 : 0;
+});
+});
+// outro 1
+vis($('o1'), T >= 25 && T < 28.2);
+$('o1').style.clipPath = `circle(${portal(25)}px at 80px 1180px)`;
+[0, 1, 2].forEach((i) => { const k = seg(25.5 + 0.25 * i, 26.1 + 0.25 * i); $('o1t' + i).style.transform = `scale(${k})`; $('o1t' + i).style.opacity = k; $('o1d' + i).setAttribute('r', 18 * seg(26.1 + 0.2 * i, 26.5 + 0.2 * i)); });
+// outro 2
+vis($('o2'), T >= 27.6); $('o2').style.opacity = seg(27.6, 28.1);
+$('o2cta').style.opacity = seg(28.3, 28.9);
+$('o2ball').style.offsetDistance = (100 * segio(27.8, 29.4)) + '%';
+// ring
+const ringAt = [4, 11, 18, 25].find((a) => T >= a && T < a + 1.1);
+const rk = ringAt === undefined ? 1 : cl((T - ringAt) / 1.1);
+const R = 44 + 1700 * ezio(rk);
+const ring = $('ring');
+Object.assign(ring.style, { left: (80 - R) + 'px', top: (1180 - R) + 'px', width: 2 * R + 'px', height: 2 * R + 'px', opacity: ringAt === undefined ? 0 : 1 - rk });
+// head
+let num, label;
+if (T < 4) { num = '01 / 05'; label = '3 עולמות · חוט אחד'; }
+else if (T < 25) { const i = T < 11 ? 0 : T < 18 ? 1 : 2; num = '0' + (i + 2) + ' / 05'; label = 'עולם מותג קונספט · ' + W[i].name; }
+else { num = '05 / 05'; label = '3 עולמות · חוט אחד'; }
+$('headN').textContent = num; $('headL').textContent = label;
+$('prog').style.width = (T / 30 * 100) + '%';
+await Promise.all(waits);
+};
+</script>
+</body>
+</html>
