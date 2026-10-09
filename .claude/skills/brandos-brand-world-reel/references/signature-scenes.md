@@ -27,7 +27,7 @@ What she called out as the best moments:
    | Inside / craft | build-up layer by layer, then a cut or a slice that reveals the inside | MIEL cake stand + La Coupe |
    | Variety / menu | swap: one item morphs or slides into the next in the same spot, label and colour change with it | Pancakerie swap, CREMA cup rims |
    | Meeting / formula | two paths that travel and meet at one point, the point opens into the product | ELVÉA leaf line + drop line, the campaign portal |
-   | Transformation | portal / reveal: before (grey, generic) becomes the world through a shaped opening | campaign before/after pairs |
+   | Transformation | portal / reveal: before (a generic no-name product, not the world's product greyed) becomes the world through a shaped opening | campaign before/after pairs |
 3. **Map the world's own elements onto it.** Use the site's real products, photos, SVGs and colours inside the mechanism
    (CREMA's capsules came straight from the site's code; ROSÉE's medallions are its product photos).
 4. **Add a state change on every step.** Each stop changes something besides position: background colour, light, time label,

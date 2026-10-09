@@ -7,6 +7,8 @@ then stack them into one contact sheet with ffmpeg (`hstack=12,scale=2400:-1`) a
 ## Every reel
 - [ ] There is a signature scene that does not exist on the site, with a visible state change on every step.
 - [ ] Hook readable in the first second; the question is the biggest thing on screen; the proof mechanic is visible by 1.2s.
+- [ ] Frame 0 already shows the question and the proof (it is the feed thumbnail); nothing builds in from an empty card.
+- [ ] Every "ככה משווים" card is a generic no-name product, not the world's product greyed out; no world logo is visible on it.
 - [ ] Hook → studio window transition is clean at 2.6–3.0s (no overlap of the hook question with "עולם מותג").
 - [ ] "עולם מותג NN" — correct number, Hebrew (not "Monde").
 - [ ] Inside the studio window (2.6–5.4s and 27–30s) the world shows something meaningful, not a blank background.

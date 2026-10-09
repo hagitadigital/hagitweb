@@ -28,7 +28,6 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 .stack{position:absolute;inset:0}
 .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .mask{overflow:hidden;display:block}
-.grey{filter:grayscale(1) contrast(.9) brightness(1.04)}
 .scene{position:absolute;inset:0;overflow:hidden}
 
 /* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
@@ -151,9 +150,10 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
   </div>
   <div class="hq" style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">EDIT: למה תמיד<br>משווים אותך <span style="color: var(--s-copper)">במחיר</span>?</div>
 
-  <!-- proof mechanic 1 · the price card ("ככה משווים") -->
+  <!-- proof mechanic 1 · the price card ("ככה משווים"). The image is a GENERIC no-name product of the same category
+       (blank label, catalogue light), e.g. images/bw-lp/generic-serum.jpg. Never the world's own product greyed out. -->
   <div class="hp" style="position: absolute; top: 640px; left: 260px; width: 560px; box-sizing: border-box; padding: 20px; background: #FFFFFF; border-radius: 20px; box-shadow: 0 24px 60px rgba(62,47,37,.14); display: flex; flex-direction: column; gap: 18px" dir="rtl">
-    <div style="position: relative"><img class="grey" src="EDIT-product.jpg" alt="" style="width: 100%; height: 470px; object-fit: cover; border-radius: 12px; display: block"><span style="position: absolute; top: 14px; right: 14px; padding: 8px 18px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 22px">ככה משווים</span></div>
+    <div style="position: relative"><img src="EDIT-generic-product.jpg" alt="" style="width: 100%; height: 470px; object-fit: cover; border-radius: 12px; display: block"><span style="position: absolute; top: 14px; right: 14px; padding: 8px 18px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 22px">ככה משווים</span></div>
     <div style="display: flex; justify-content: space-between; font-size: 26px; color: #6E6660"><span>EDIT: שם גנרי · 30ml</span><strong style="color: #2E2A27">₪000</strong></div>
   </div>
 

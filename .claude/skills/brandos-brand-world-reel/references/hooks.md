@@ -19,12 +19,18 @@ from one promise escapes that pain. Speak to "you" (feminine singular, as on the
 
 | Pain | Hook line | Visual proof in the hook | Outro answer (closes the loop) |
 |---|---|---|---|
-| Compared on price | למה תמיד משווים אותך במחיר? | Grey product card, price, "ככה משווים" tag (price-card mechanic) | "את BRAND° לא משווים. בוחרים." · "ואת העסק שלך?" |
+| Compared on price | למה תמיד משווים אותך במחיר? | Generic product card (no brand, blank label), price, "ככה משווים" tag (price-card mechanic) | "את BRAND° לא משווים. בוחרים." · "ואת העסק שלך?" |
 | Not recognisable | אם נסתיר את הלוגו, עדיין יזהו אותך? | The world's product with a copper bar sliding over the logo (hidden-logo mechanic) | "את BRAND° מזהים גם בלי הלוגו." · "ואת העסק שלך?" |
-| Interchangeable | אם המוצר שלך היה עומד ליד המתחרה, איך היו יודעים שהוא שלך? | Two grey near-identical cards side by side | "כי כל פרט יוצא מהבטחה אחת." |
-| "Too expensive" | למה אצלה זה "יקר", ואצלך שואלים אם יש הנחה? | Grey card with a discount sticker | "יקר זה מחיר בלי סיפור." |
-| Scroll-past | הלקוחה גוללת. מה יעצור אותה דווקא אצלך? | Fast grey scroll of generic product shots that freezes | "עולם שרוצים להיכנס אליו, ולהישאר." |
-| Good product, weak pull | יש לך מוצר מצוין. אז למה בוחרים במתחרה? | Grey card with ★★★★★ and an empty cart | "כי הבחירה לא מתחילה במוצר." |
+| Interchangeable | אם המוצר שלך היה עומד ליד המתחרה, איך היו יודעים שהוא שלך? | Two near-identical generic cards side by side | "כי כל פרט יוצא מהבטחה אחת." |
+| "Too expensive" | למה אצלה זה "יקר", ואצלך שואלים אם יש הנחה? | Generic card with a discount sticker | "יקר זה מחיר בלי סיפור." |
+| Scroll-past | הלקוחה גוללת. מה יעצור אותה דווקא אצלך? | Fast scroll of generic product shots that freezes | "עולם שרוצים להיכנס אליו, ולהישאר." |
+| Good product, weak pull | יש לך מוצר מצוין. אז למה בוחרים במתחרה? | Generic card with ★★★★★ and an empty cart | "כי הבחירה לא מתחילה במוצר." |
+
+**The "before" is a different, generic product, never the world's own product greyed out.** A greyed ORÉVA° bottle
+with its logo still on reads as "same brand, filter off", and the comparison collapses (Hagit, 9.10.2026, cold
+campaign). Use a no-name product of the same category: blank or plain label, white catalogue light, a price.
+Ready ones: `images/bw-lp/generic-serum.jpg`, `generic-perfume.jpg`, `generic-cake.jpg` (600×750). For another
+category, generate one in the same style before building.
 
 Pair the pain with the world's strongest proof:
 - Hidden-logo hook → worlds with a signature that is not the logo (ROSÉE's dial and drop, ELVÉA's leaf line, CREMA's colour-per-capsule, ENCORE's sundial, MIEL's slice).
