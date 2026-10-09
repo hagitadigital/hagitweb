@@ -27,6 +27,39 @@ const Q = new URLSearchParams(location.search);
 const TRACK = Q.get('track') || 'general';
 const HOOK = Q.get('hook') || 'A';
 const COP = '#C28A5A';
+const SITE = '../../../';
+const BEAUTY = TRACK === 'beauty';
+// ROSÉE Le Cadran de l'Aube — the five hours of dew, as on rosee/index.html
+const DIAL = [
+{ img:'brume', fr:'La Brume', he:'מי טל', hour:'05:30' },
+{ img:'reveil', fr:'Le Réveil', he:'סרום בוקר', hour:'06:15' },
+{ img:'voile', fr:'Le Voile', he:'קרם עיניים', hour:'07:00' },
+{ img:'lumiere', fr:'La Lumière', he:'קרם יום', hour:'07:45' },
+{ img:'nuit', fr:'La Nuit', he:'אליקסיר לילה', hour:'22:00' }];
+const SKY = [[75,52,65],[142,100,120],[229,196,203],[247,240,230],[92,62,78]];
+const dialHTML = (id, size, ps, cs) => `<div class="abs" id="${id}" style="left:50%;top:50%;width:${size}px;height:${size}px;margin:-${size/2}px 0 0 -${size/2}px">
+<div class="abs" style="inset:${ps/2}px;border-radius:999px;border:2px solid rgba(194,138,90,.55)"></div>
+<div class="abs" style="left:50%;top:-6px;width:0;height:0;margin-left:-9px;border:9px solid transparent;border-top:14px solid ${COP}"></div>
+${DIAL.map((d, k) => `<div class="circ" id="${id}p${k}" style="left:0;top:0;width:${ps}px;height:${ps}px;background:#F7F0E6"><img src="${SITE}rosee/collection/${d.img}.webp"></div>`).join('')}
+<div class="circ" style="left:50%;top:50%;width:${cs}px;height:${cs}px;margin:-${cs/2}px 0 0 -${cs/2}px;background:#F7F0E6;box-shadow:0 0 0 10px rgba(247,240,230,.35),0 18px 40px rgba(20,30,45,.2)">
+${DIAL.map((d, k) => `<img class="abs" id="${id}c${k}" src="${SITE}rosee/collection/${d.img}.webp" style="inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`).join('')}</div></div>`;
+// rot in degrees; product k sits at (rot - 72k), 0 = top; growing rot turns the dial clockwise
+const setDial = (id, size, ps, rot) => {
+const R = size / 2 - ps / 2;
+let best = 0, bf = -2;
+DIAL.forEach((d, k) => {
+const a = (rot - k * 72) * Math.PI / 180, f = Math.cos(a);
+const el = document.getElementById(id + 'p' + k);
+el.style.transform = `translate(${size / 2 + R * Math.sin(a) - ps / 2}px,${size / 2 - R * Math.cos(a) - ps / 2}px) scale(${0.78 + 0.5 * Math.pow(Math.max(0, f), 3)})`;
+el.style.opacity = 0.4 + 0.6 * Math.pow((f + 1) / 2, 2);
+el.style.zIndex = Math.round(10 + 10 * f);
+if (f > bf) { bf = f; best = k; }
+});
+DIAL.forEach((d, k) => { document.getElementById(id + 'c' + k).style.opacity = k === best ? 1 : 0; });
+return best;
+};
+const stepRot = (x) => { const n = Math.floor(x), t = x - n, D = 0.35, tt = t < D ? 0 : (t - D) / (1 - D); return (n + tt * tt * (3 - 2 * tt)) * 72; };
+const skyAt = (x) => { const n = Math.min(3, Math.floor(x)), t = Math.max(0, Math.min(1, x - n)); return SKY[n].map((v, i) => Math.round(v + (SKY[n + 1][i] - v) * t)); };
 const general = [
 { key:'velune', name:'VELUNE°', tag:'בושם הוא לא ריח. הוא מקום.', tint:'#DCE4EE', still:'velune.jpg', pos:'50% 55%', vo:0,
 d:'M920 200 H560 V90 A80 80 0 0 0 400 90 V200 H0', L:1231,
@@ -43,14 +76,14 @@ f3:{ d:'M266 168 H654 V180 H266 Z', fill:'#B8545A', a:5.0, b:5.4, max:0.85 },
 s1:{ d:'M460 36 V214', L:178, a:5.5, b:6.1 } }
 ];
 const beauty = [
-{ key:'oreva', name:'ORÉVA°', tag:'קודם הידיים. אחר כך הבקבוק.', tint:'#EBD3C3', still:'oreva.jpg', pos:'50% 45%', vo:0,
-d:'M920 200 H720 C660 200 640 120 690 100 C740 80 750 170 660 190 C600 205 520 200 470 200 V110 H455 V70 H435 V45 H405 V70 H385 V110 H370 V200 H0', L:1473,
-f1:{ d:'M468 198 V112 H372 V198 Z', fill:'#D9AE85', a:4.6, b:5.4, max:0.65 } },
-{ key:'rosee', name:'ROSÉE°', tag:'נולד עם שחר.', tint:'#F1D6C8', still:'rosee.jpg', pos:'50% 62%', vo:1.2,
+{ key:'rosee', name:'ROSÉE°', tag:'לא מוכרים סרום.\nמוכרים טיפוח בוקר שמחזיק יום שלם.', tint:'#F1D6C8', still:SITE+'rosee/collection/reveil.webp', scene:'dial', pos:'50% 62%', vo:1.2,
 d:'M920 200 H460 C530 200 530 120 460 30 C390 120 390 200 460 200 H0', L:1351,
 f1:{ d:'M460 198 C526 198 526 122 460 34 C394 122 394 198 460 198 Z', fill:'#E9A9A9', a:4.4, b:5.0, max:0.6 },
 c:[{ cx:538, cy0:130, cy1:130, r:22, fill:'#E9A9A9', a:4.9, b:5.3 },{ cx:499, cy0:198, cy1:198, r:22, fill:'#E9A9A9', a:5.0, b:5.4 },{ cx:421, cy0:198, cy1:198, r:22, fill:'#E9A9A9', a:5.1, b:5.5 },{ cx:382, cy0:130, cy1:130, r:22, fill:'#E9A9A9', a:5.2, b:5.6 },{ cx:421, cy0:62, cy1:62, r:22, fill:'#E9A9A9', a:5.3, b:5.7 },{ cx:499, cy0:62, cy1:62, r:22, fill:'#E9A9A9', a:5.4, b:5.8 }] },
-{ key:'elvea', name:'ELVÉA°', tag:'עלה אוסף אור.', tint:'#E4E1D2', still:'elvea.jpg', pos:'55% 55%', vo:0,
+{ key:'oreva', name:'ORÉVA°', tag:'הכל מתחיל מהידיים\nשמכירות את העור שלך.', tint:'#EBD3C3', still:SITE+'oreva/assets/bloom/f48.webp', scene:'hands', pos:'50% 45%', vo:0,
+d:'M920 200 H720 C660 200 640 120 690 100 C740 80 750 170 660 190 C600 205 520 200 470 200 V110 H455 V70 H435 V45 H405 V70 H385 V110 H370 V200 H0', L:1473,
+f1:{ d:'M468 198 V112 H372 V198 Z', fill:'#D9AE85', a:4.6, b:5.4, max:0.65 } },
+{ key:'elvea', name:'ELVÉA°', tag:'הטבע שנותן לך\nאת כל מה שאת צריכה.', tint:'#E4E1D2', still:SITE+'elvea/assets/seq/f_080.webp', scene:'dive', pos:'55% 55%', vo:0,
 d:'M920 200 H640 C580 80 440 60 340 110 C440 180 560 205 640 200 H0', L:1587,
 f1:{ d:'M640 200 C580 80 440 60 340 110 C440 180 560 205 640 200 Z', fill:'#9FB58A', a:4.6, b:5.4, max:0.5 },
 s1:{ d:'M640 200 Q500 140 340 110', L:314, a:4.8, b:5.6 },
@@ -65,22 +98,31 @@ const ball = (id, d) => `<div class="ball" id="${id}" style="offset-path:path('$
 let html = '';
 html += `<div class="layer" id="hk">
 <h1 class="h abs" id="hkT" style="top:130px;right:140px;left:140px">${hookText.pre}<span style="color:#C28A5A">${hookText.acc}</span>${hookText.post}</h1>
+${BEAUTY ? `
+<div class="circ" id="hkC1" style="top:420px;right:150px;width:430px;height:430px;background:radial-gradient(circle at 50% 35%,#F7F0E6,#E5C4CB 70%)">${dialHTML('hkD', 400, 96, 128)}</div>
+<div class="circ" id="hkC2" style="top:540px;left:160px;width:300px;height:300px;background:#EBD3C3"><img class="abs" id="hkO" src="${SITE}oreva/assets/bloom/f01.webp" style="inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 50%"><img class="abs" id="hkH" src="${SITE}oreva/assets/founder-facial-treatment.webp" style="inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 50%"></div>
+<div class="circ" id="hkC3" style="top:810px;right:470px;width:290px;height:290px;background:#E4E1D2"><img id="hkE" src="${SITE}elvea/assets/seq/f_001.webp" style="object-position:60% 50%"></div>
+${[['ROSÉE°', 'top:860px;right:150px;width:430px'], ['ORÉVA°', 'top:478px;left:160px;width:300px'], ['ELVÉA°', 'top:1106px;right:470px;width:290px']].map(([n, st], k) => `<div class="abs" id="hkN${k}" dir="ltr" style="${st};text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:#825630">${n}</div>`).join('')}` : `
 <div class="circ" id="hkC1" style="top:470px;right:190px;width:300px;height:300px"><img src="${W[0].still}"></div>
 <div class="circ" id="hkC2" style="top:560px;left:170px;width:260px;height:260px"><img src="${W[1].still}"></div>
-<div class="circ" id="hkC3" style="top:760px;right:400px;width:280px;height:280px"><img src="${W[2].still}"></div>
+<div class="circ" id="hkC3" style="top:760px;right:400px;width:280px;height:280px"><img src="${W[2].still}"></div>`}
 <div class="band"><svg width="920" height="260"><path class="line" id="hkLine" d="M920 200 H0" style="stroke-dasharray:920 920"></path></svg>${ball('hkBall', 'M920 200 H0')}</div>
 </div>`;
 W.forEach((w, i) => {
 const cs = [0,1,2,3,4,5].map(k => `<circle id="w${i}c${k}" cx="0" cy="0" r="0"></circle>`).join('');
 html += `<div class="layer" id="w${i}">
-<div class="abs" id="w${i}win" style="top:104px;right:80px;left:80px;height:800px;overflow:hidden;background:${w.tint};transform-origin:50% 100%">
-<img class="cover" id="w${i}img" src="frames/${w.key}/0001.jpg" style="object-position:${w.pos}">
+<div class="abs" id="w${i}win" style="top:104px;right:80px;left:80px;height:${BEAUTY ? 740 : 800}px;overflow:hidden;background:${w.tint};transform-origin:50% 100%">
+${w.scene === 'dial' ? `<div class="abs" id="w${i}sky" style="inset:0"></div>${dialHTML('w' + i + 'd', 560, 128, 220).replace('top:50%', 'top:44%')}
+<div class="abs" id="w${i}hr" style="left:0;right:0;bottom:56px;text-align:center"><div id="w${i}hrT" style="font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1"></div><div id="w${i}hrN" style="margin-top:6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px"></div></div>`
+: w.scene === 'hands' ? `<img class="cover" id="w${i}img" src="${SITE}oreva/assets/bloom/f08.webp" style="object-position:52% 50%"><img class="cover abs" id="w${i}hand" src="${SITE}oreva/assets/founder-facial-treatment.webp" style="inset:0;object-position:46% 50%">`
+: w.scene === 'dive' ? `<img class="cover" id="w${i}img" src="${SITE}elvea/assets/seq/f_001.webp" style="object-position:60% 50%">`
+: `<img class="cover" id="w${i}img" src="frames/${w.key}/0001.jpg" style="object-position:${w.pos}">`}
 <div class="mark" style="top:18px;right:18px;border-top-width:3px;border-right-width:3px"></div>
 <div class="mark" style="top:18px;left:18px;border-top-width:3px;border-left-width:3px"></div>
 <div class="mark" style="bottom:18px;right:18px;border-bottom-width:3px;border-right-width:3px"></div>
 <div class="mark" style="bottom:18px;left:18px;border-bottom-width:3px;border-left-width:3px"></div>
 </div>
-<div class="abs" id="w${i}name" style="top:924px;right:140px;left:140px;display:flex;align-items:baseline;gap:26px"><div style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:60px;color:#C28A5A">${w.name}</div><div style="font-size:30px">${w.tag}</div></div>
+<div class="abs" id="w${i}name" style="top:${BEAUTY ? 866 : 924}px;right:140px;left:140px;display:flex;align-items:${BEAUTY ? 'center' : 'baseline'};gap:30px"><div dir="ltr" style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:60px;color:#C28A5A;flex:none">${w.name}</div><div style="font-size:${BEAUTY ? 31 : 30}px;line-height:1.3;white-space:pre-line;font-weight:500">${w.tag}</div></div>
 <div class="band"><svg width="920" height="260">
 <path id="w${i}f1" d="${(w.f1||{d:'M0 0'}).d}" style="fill:${(w.f1||{fill:'none'}).fill};opacity:0"></path>
 <path id="w${i}f2" d="${(w.f2||{d:'M0 0'}).d}" style="fill:${(w.f2||{fill:'none'}).fill};opacity:0"></path>
@@ -93,7 +135,7 @@ ${cs}</svg>${ball('w' + i + 'ball', w.d)}</div>
 html += `<div class="layer" id="o1">
 <h2 class="h abs" style="top:130px;right:140px;left:140px">שלושה עולמות.\nחוט אחד.</h2>
 <div class="abs" style="top:470px;right:140px;left:140px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px">
-${W.map((w, i) => `<div id="o1t${i}" style="display:flex;flex-direction:column;align-items:center;gap:14px"><div style="width:100%;height:340px;border-radius:6px;overflow:hidden;background:${w.tint};box-shadow:0 14px 30px rgba(20,30,45,.14)"><img class="cover" src="${w.still}" style="object-position:${w.pos}"></div><div style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:38px;color:#825630">${w.name}</div></div>`).join('')}
+${W.map((w, i) => `<div id="o1t${i}" style="display:flex;flex-direction:column;align-items:center;gap:14px"><div style="width:100%;height:340px;border-radius:6px;overflow:hidden;background:${w.tint};box-shadow:0 14px 30px rgba(20,30,45,.14)"><img class="cover" src="${w.still}" style="object-position:${w.pos}"></div><div dir="ltr" style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:38px;color:#825630">${w.name}</div></div>`).join('')}
 </div>
 <div class="band"><svg width="920" height="260"><path class="line" d="M920 200 H0"></path>
 ${[740,460,180].map((x, i) => `<circle id="o1d${i}" cx="${x}" cy="200" r="0" style="fill:${W[i].tint};stroke:#C28A5A;stroke-width:3px"></circle>`).join('')}</svg></div>
@@ -127,13 +169,28 @@ const segio = (a, b) => ezio(cl((T - a) / (b - a)));
 const vis = (el, on) => { el.style.visibility = on ? 'visible' : 'hidden'; };
 const portal = (a) => 1750 * segio(a, a + 0.9);
 // hook
+const waits = [];
 vis($('hk'), T < 4.95);
 const hp = segio(0.6, 3.7);
-$('hkT').style.opacity = seg(0.1, 0.8); $('hkT').style.transform = `translateY(${30 * (1 - seg(0.1, 0.8))}px)`;
+// the message is on screen from frame 0 — the first frame is the thumbnail
+$('hkT').style.transform = `translateY(${12 * (1 - seg(0, 0.6))}px)`;
+const swapImg = (img, src) => { if (!img.src.endsWith(src.replace(SITE, ''))) { img.src = src; waits.push(img.decode().catch(() => {})); } };
+const bloom = (k) => `${SITE}oreva/assets/bloom/f${String(Math.max(1, Math.min(48, Math.round(k)))).padStart(2, '0')}.webp`;
+const eseq = (k) => `${SITE}elvea/assets/seq/f_${String(Math.max(1, Math.min(80, Math.round(k)))).padStart(3, '0')}.webp`;
+if (BEAUTY) {
+// ROSÉE leads: the dial is already turning clockwise; ORÉVA's hands give way to the serum; ELVÉA's flower becomes the bottle
+['hkC1', 'hkC2', 'hkC3'].forEach((id, k) => { $(id).style.transform = `scale(${0.9 + 0.1 * seg(0.1 * k, 0.5 + 0.1 * k)})`; });
+setDial('hkD', 400, 96, stepRot(T / 0.8 + 0.4));
+$('hkH').style.opacity = 1 - seg(1.3, 1.9);
+$('hkH').style.transform = `scale(${1.16 - 0.16 * seg(0, 1.9)}) translateX(${-14 + 14 * seg(0, 1.9)}px)`;
+swapImg($('hkO'), bloom(8 + 32 * cl((T - 1.3) / 2.6)));
+swapImg($('hkE'), eseq(1 + 79 * cl(T / 3.9)));
+$('hkE').style.transform = `scale(${1 + 0.3 * segio(0, 3.9)})`;
+} else {
 $('hkC1').style.transform = `scale(${seg(0.5, 1.1)})`; $('hkC2').style.transform = `scale(${seg(0.75, 1.35)})`; $('hkC3').style.transform = `scale(${seg(1.0, 1.6)})`;
+}
 $('hkLine').style.strokeDashoffset = 920 * (1 - hp); $('hkBall').style.offsetDistance = (hp * 100) + '%';
-// worlds
-const waits = [];
+
 W.forEach((w, i) => {
 const s = STARTS[i];
 const on = T >= s && T < s + 7.95;
@@ -143,6 +200,25 @@ L.style.clipPath = `circle(${portal(s)}px at 80px 1180px)`;
 if (!on) return;
 $('w' + i + 'win').style.transform = `scale(${0.9 + 0.1 * segio(s + 0.3, s + 1.5)})`;
 const img = $('w' + i + 'img');
+const t = T - s;
+if (w.scene === 'dial') {
+const x = Math.min(4, t / 1.35 + 0.35), rot = stepRot(x), sky = skyAt(rot / 72);
+$('w' + i + 'sky').style.background = `linear-gradient(180deg, rgb(${sky.join(',')}) 0%, #F7F0E6 92%)`;
+const k = setDial('w' + i + 'd', 560, 128, rot);
+$('w' + i + 'hrT').textContent = DIAL[k].hour; $('w' + i + 'hrN').textContent = DIAL[k].fr + ' · ' + DIAL[k].he;
+$('w' + i + 'hr').style.color = '#15202E';
+} else if (w.scene === 'hands') {
+const hd = $('w' + i + 'hand');
+hd.style.opacity = 1 - seg(s + 2.4, s + 3.2);
+hd.style.transform = `scale(${1.14 - 0.14 * seg(s, s + 3.2)}) translateX(${-24 + 24 * seg(s, s + 3.2)}px)`;
+swapImg(img, bloom(8 + 40 * cl((t - 2.4) / 5.1)));
+img.style.transform = `scale(${1.06 - 0.06 * cl(t / 8)})`;
+} else if (w.scene === 'dive') {
+swapImg(img, eseq(1 + 79 * cl(t / 6.5)));
+img.style.transformOrigin = '60% 55%';
+img.style.transform = `scale(${1 + 0.28 * segio(s, s + 7.6)})`;
+}
+if (!w.scene) {
 img.style.transform = `scale(${1.08 - 0.08 * cl((T - s) / 8)})`;
 const n = NFR[w.key];
 const dur = n / 30;
@@ -151,6 +227,7 @@ const want = Math.min(dur - 0.04, w.vo + Math.max(0, T - s) * rate);
 const idx = Math.max(1, Math.min(n, Math.round(want * 30) + 1));
 const src = `frames/${w.key}/${String(idx).padStart(4, '0')}.jpg`;
 if (!img.src.endsWith(src)) { img.src = src; waits.push(img.decode().catch(() => {})); }
+}
 $('w' + i + 'name').style.opacity = seg(s + 0.9, s + 1.5);
 const p = segio(s + 1.0, s + 4.6);
 $('w' + i + 'main').style.strokeDashoffset = w.L * (1 - p);
