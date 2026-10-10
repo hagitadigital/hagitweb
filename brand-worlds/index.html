@@ -1003,6 +1003,12 @@ body::before {
 .world-card--velune .world-card__media img { object-position: 50% 55%; }
 
 /* ENCORE° card */
+.world-card--pardon { background: #F3EDE2; color: #1E3A2B; }
+.world-card--pardon .world-card__name { font-family: 'Bodoni Moda', 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 400; letter-spacing: 0.24em; }
+.world-card--pardon .world-card__category,
+.world-card--pardon .world-card__issue { color: #9B1B47; }
+.world-card--pardon .world-card__tag { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; color: #1E3A2B; letter-spacing: 0.02em; }
+.world-card--pardon .world-card__media img { object-position: 50% 50%; }
 .world-card--encore { background: #241212; color: #F6EEE4; }
 .world-card--encore .world-card__name { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 500; letter-spacing: 0.22em; }
 .world-card--encore .world-card__category,
@@ -1855,6 +1861,24 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="worlds-grid reveal-stagger">
+      <div class="world-item reveal">
+        <a href="../pardon-me/" class="world-card world-card--pardon">
+          <div class="world-card__media">
+            <div class="world-card__nº">No. 29</div>
+            <div class="world-card__cta-corner">The Peek</div>
+            <img src="../images/home-worlds/pardon-me.webp" alt="PARDON ME° — ארבע קופסאות נרות בשרוולי שמנת עם חלון אליפטי, שדרכו מציצים פרינטים של לימון, תאנה, ורד ופירות יער" width="1200" height="630" loading="lazy" />
+            <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/pardon-me.mp4" aria-hidden="true"></video>
+          </div>
+          <div class="world-card__copy">
+            <div class="world-card__issue">Concept · Home &amp; Body · Packaging + Live Card</div>
+            <div class="world-card__name">PARDON ME°</div>
+            <div class="world-card__category">Candles · Home Scent · Body Care</div>
+            <div class="world-card__tag">I'm Not Sorry.</div>
+            <div class="world-card__tag-he" lang="he">מנומס מבחוץ, לא מתנצל מבפנים: שרוול שמנת עם חלון אליפטי אחד, גלילה שפותחת את החלון עד שהפרינט ממלא את המסך, ארבע קולקציות שמורידות את השרוול, ושולחן לא־התנצלויות שכותב כרטיס מתנה.</div>
+            <div class="world-card__cta"><span>Take a peek</span><span class="arr">→</span></div>
+          </div>
+        </a>
+      </div>
       <div class="world-item reveal">
         <a href="../encore/" class="world-card world-card--encore">
           <div class="world-card__media">
