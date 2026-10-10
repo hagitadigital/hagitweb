@@ -1,0 +1,359 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  Edit only the blocks marked -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>PARDON ME° · Brand World Reel · World 29</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700;900&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&amp;family=Frank+Ruhl+Libre:wght@400;500&amp;family=Archivo+Narrow:wght@700&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F3EDE2;      /* world background */
+  --w-ink:#1E3A2B;     /* world text */
+  --w-accent:#9B1B47;  /* world accent */
+  --w-display:'Bodoni Moda','Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,98.7%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,98.7%{opacity:1}100%{opacity:0}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,98.7%{opacity:1}100%{opacity:0}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes (generated by build.py) ── */
+
+.bod{font-family:'Bodoni Moda','Cormorant Garamond',serif}
+.frl{font-family:'Frank Ruhl Libre','Heebo',serif}
+.loud{font-family:'Archivo Narrow','Heebo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.005em}
+.wm{font-family:'Bodoni Moda',serif;letter-spacing:.28em;display:inline-flex;align-items:center;white-space:nowrap;color:#1E3A2B;direction:ltr}
+.wm .o{display:inline-block;width:.62em;height:.86em;border-radius:50%;border:.06em solid currentColor;background:url(../assets/print-bad-influence.webp) center/cover;margin:0 .02em}
+.ctr{position:absolute;left:0;right:0;text-align:center}
+.pill{display:inline-block;background:#F3EDE2;color:#1E3A2B;padding:14px 30px;border-radius:999px}
+.tTop{animation-name:tTop}@keyframes tTop{0%{transform:none}3.833%{transform:none}5.833%{transform:translateY(-1180px) rotate(-7deg)}100%{transform:translateY(-1180px) rotate(-7deg)}}
+.tBot{animation-name:tBot}@keyframes tBot{0%{transform:none}3.833%{transform:none}5.833%{transform:translateY(1180px) rotate(6deg)}100%{transform:translateY(1180px) rotate(6deg)}}
+.scis{animation-name:scis}@keyframes scis{0%{offset-distance:0%;opacity:0}1.667%{offset-distance:0%;opacity:0}1.833%{offset-distance:0%;opacity:1}3.833%{offset-distance:100%;opacity:1}4.333%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+.cutLine{animation-name:cutLine}@keyframes cutLine{0%{stroke-dashoffset:1}1.833%{stroke-dashoffset:1}3.833%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+.perf{animation-name:perf}@keyframes perf{0%{opacity:1}3.833%{opacity:1}4.500%{opacity:0}100%{opacity:0}}
+.tearPill{animation-name:tearPill}@keyframes tearPill{0%{opacity:1;transform:none}0.000%{opacity:1;transform:none}1.000%{opacity:1;transform:rotate(-4deg)}1.500%{opacity:1;transform:rotate(4deg)}1.833%{opacity:1;transform:none}2.333%{opacity:0;transform:none}100%{opacity:0;transform:none}}
+.burst{animation-name:burst}@keyframes burst{0%{opacity:0;transform:scale(1.3)}5.167%{opacity:0;transform:scale(1.3)}6.500%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.burstSub{animation-name:burstSub}@keyframes burstSub{0%{opacity:0;transform:translateY(20px)}6.167%{opacity:0;transform:translateY(20px)}7.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.burstImg{animation-name:burstImg}@keyframes burstImg{0%{transform:scale(1.14)}0.000%{transform:scale(1.14)}10.000%{transform:scale(1)}100%{transform:scale(1)}}
+.grow{animation-name:grow}@keyframes grow{0%{clip-path:ellipse(150px 225px at 540px 1090px)}22.667%{clip-path:ellipse(150px 225px at 540px 1090px)}28.000%{clip-path:ellipse(1500px 2100px at 540px 1090px)}100%{clip-path:ellipse(1500px 2100px at 540px 1090px)}}
+.ringA{animation-name:ringA}@keyframes ringA{0%{opacity:1}22.667%{opacity:1}24.000%{opacity:0}100%{opacity:0}}
+.notA{animation-name:notA}@keyframes notA{0%{opacity:0;transform:scale(1.15)}27.667%{opacity:0;transform:scale(1.15)}29.167%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.bgB{animation-name:bgB}@keyframes bgB{0%{background-color:#9B1B47}39.833%{background-color:#9B1B47}40.500%{background-color:#CFE06A}46.667%{background-color:#CFE06A}47.333%{background-color:#F2C4CE}100%{background-color:#F2C4CE}}
+.lens0{animation-name:lens0}@keyframes lens0{0%{clip-path:ellipse(0px 0px at 22% 82%)}33.833%{clip-path:ellipse(0px 0px at 22% 82%)}34.500%{clip-path:ellipse(115px 165px at 26% 80%)}36.000%{clip-path:ellipse(115px 165px at 50% 62%)}36.667%{clip-path:ellipse(115px 165px at 50% 62%)}38.000%{clip-path:ellipse(900px 1250px at 50% 55%)}100%{clip-path:ellipse(900px 1250px at 50% 55%)}}
+.lring0{animation-name:lring0}@keyframes lring0{0%{opacity:0;transform:translate(-30px,190px) scale(.2)}33.833%{opacity:0;transform:translate(-30px,190px) scale(.2)}34.500%{opacity:1;transform:translate(-182px,171px)}36.000%{opacity:1;transform:translate(0px,0px)}36.667%{opacity:1;transform:translate(0px,0px)}37.500%{opacity:0;transform:translate(0px,0px) scale(2.2)}100%{opacity:0;transform:translate(0px,0px) scale(2.2)}}
+.strike0{animation-name:strike0}@keyframes strike0{0%{transform:scaleX(0)}35.167%{transform:scaleX(0)}36.167%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.truthT0{animation-name:truthT0}@keyframes truthT0{0%{opacity:0;transform:translateY(24px)}37.500%{opacity:0;transform:translateY(24px)}38.500%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.lens1{animation-name:lens1}@keyframes lens1{0%{clip-path:ellipse(0px 0px at 22% 82%)}40.667%{clip-path:ellipse(0px 0px at 22% 82%)}41.333%{clip-path:ellipse(115px 165px at 26% 80%)}42.833%{clip-path:ellipse(115px 165px at 50% 62%)}43.500%{clip-path:ellipse(115px 165px at 50% 62%)}44.833%{clip-path:ellipse(900px 1250px at 50% 55%)}100%{clip-path:ellipse(900px 1250px at 50% 55%)}}
+.lring1{animation-name:lring1}@keyframes lring1{0%{opacity:0;transform:translate(-30px,190px) scale(.2)}40.667%{opacity:0;transform:translate(-30px,190px) scale(.2)}41.333%{opacity:1;transform:translate(-182px,171px)}42.833%{opacity:1;transform:translate(0px,0px)}43.500%{opacity:1;transform:translate(0px,0px)}44.333%{opacity:0;transform:translate(0px,0px) scale(2.2)}100%{opacity:0;transform:translate(0px,0px) scale(2.2)}}
+.strike1{animation-name:strike1}@keyframes strike1{0%{transform:scaleX(0)}42.000%{transform:scaleX(0)}43.000%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.truthT1{animation-name:truthT1}@keyframes truthT1{0%{opacity:0;transform:translateY(24px)}44.333%{opacity:0;transform:translateY(24px)}45.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.lens2{animation-name:lens2}@keyframes lens2{0%{clip-path:ellipse(0px 0px at 22% 82%)}47.500%{clip-path:ellipse(0px 0px at 22% 82%)}48.167%{clip-path:ellipse(115px 165px at 26% 80%)}49.667%{clip-path:ellipse(115px 165px at 50% 62%)}50.333%{clip-path:ellipse(115px 165px at 50% 62%)}51.667%{clip-path:ellipse(900px 1250px at 50% 55%)}100%{clip-path:ellipse(900px 1250px at 50% 55%)}}
+.lring2{animation-name:lring2}@keyframes lring2{0%{opacity:0;transform:translate(-30px,190px) scale(.2)}47.500%{opacity:0;transform:translate(-30px,190px) scale(.2)}48.167%{opacity:1;transform:translate(-182px,171px)}49.667%{opacity:1;transform:translate(0px,0px)}50.333%{opacity:1;transform:translate(0px,0px)}51.167%{opacity:0;transform:translate(0px,0px) scale(2.2)}100%{opacity:0;transform:translate(0px,0px) scale(2.2)}}
+.strike2{animation-name:strike2}@keyframes strike2{0%{transform:scaleX(0)}48.833%{transform:scaleX(0)}49.833%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.truthT2{animation-name:truthT2}@keyframes truthT2{0%{opacity:0;transform:translateY(24px)}51.167%{opacity:0;transform:translateY(24px)}52.167%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.bgC{animation-name:bgC}@keyframes bgC{0%{background-color:#B9D3E8}0.000%{background-color:#B9D3E8}57.333%{background-color:#B9D3E8}57.500%{background-color:#1E3A2B}61.167%{background-color:#1E3A2B}61.333%{background-color:#F2C4CE}65.000%{background-color:#F2C4CE}65.167%{background-color:#CFE06A}70.000%{background-color:#CFE06A}100%{background-color:#CFE06A}}
+.slv0{animation-name:slv0}@keyframes slv0{0%{transform:none}55.000%{transform:none}56.500%{transform:translateY(-915px)}100%{transform:translateY(-915px)}}
+.slv1{animation-name:slv1}@keyframes slv1{0%{transform:none}58.833%{transform:none}60.333%{transform:translateY(-915px)}100%{transform:translateY(-915px)}}
+.slv2{animation-name:slv2}@keyframes slv2{0%{transform:none}62.667%{transform:none}64.167%{transform:translateY(-915px)}100%{transform:translateY(-915px)}}
+.slv3{animation-name:slv3}@keyframes slv3{0%{transform:none}66.500%{transform:none}68.000%{transform:translateY(-915px)}100%{transform:translateY(-915px)}}
+.pushD{animation-name:pushD}@keyframes pushD{0%{transform:scale(1.08)}74.333%{transform:scale(1.08)}81.333%{transform:scale(1)}100%{transform:scale(1)}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">29</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">מנומס מבחוץ, לא מתנצל מבפנים.<br>שרוול שמנת אחד, חלון אחד, ומסיבה מאחוריו.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl"><span dir="ltr">PARDON ME°</span> · עולם מותג 29</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">את <span dir="ltr">PARDON ME°</span><br>לא שוכחים.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">ומה המותג שלך מסתיר<br>מאחורי החזית המנומסת?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+  <section class="scene" data-show="0,10.1">
+    <div class="stack" style="background:#F3EDE2"></div>
+    <div class="ctr" style="top:330px"><span class="wm" style="font-size:44px">PARD<span class="o"></span>N ME</span></div>
+    <div class="ctr bod" style="top:420px;font-style:italic;font-size:104px;line-height:1;color:#1E3A2B;direction:ltr">Nice on the outside.</div>
+    <div class="ctr frl" style="top:1400px;font-size:46px;line-height:1.4;color:#1E3A2B" dir="rtl">מותג עם נימוסים מצוינים<br>וכוונות לא כל כך תמימות.</div>
+    <div class="stack grow"><div class="stack" data-show="0,3.7" data-fade="0.3" style="background:url(../assets/print-well-hello.webp) center/cover"></div><div class="stack" data-show="3.7,4.9" data-fade="0.3" style="background:url(../assets/print-none-of-your-business.webp) center/cover"></div><div class="stack" data-show="4.9,6.1" data-fade="0.3" style="background:url(../assets/print-high-maintenance.webp) center/cover"></div><div class="stack" data-show="6.1,10.2" data-fade="0.3" style="background:url(../assets/print-bad-influence.webp) center/cover"></div></div>
+    <div class="ringA" style="position:absolute;left:390px;top:865px;width:300px;height:450px;border:2px solid #1E3A2B;border-radius:50%;box-sizing:border-box"></div>
+    <div class="ctr notA" style="top:760px;direction:ltr"><span class="loud" style="display:inline-block;font-size:150px;line-height:.9;color:#F3EDE2;background:#9B1B47;padding:10px 30px 2px">Not sorry<br>inside.</span></div>
+    <div class="ctr notA" style="top:1120px"><span class="frl" style="display:inline-block;font-size:50px;color:#1E3A2B;background:#CFE06A;padding:8px 30px" dir="rtl">מנומס מבחוץ. לא מתנצל מבפנים.</span></div>
+  </section>
+  <section class="scene" data-show="9.7,16.3">
+    <div class="stack bgB"></div>
+    <div class="ctr" style="top:236px;direction:ltr"><span class="loud" style="display:inline-block;font-size:104px;line-height:.92;color:#F3EDE2;background:#1E3A2B;padding:8px 22px 2px">Good manners.</span><br><span class="loud" style="display:inline-block;font-size:104px;line-height:.92;color:#9B1B47;background:#F3EDE2;padding:8px 22px 2px">Bad habits.</span></div>
+    <div class="stack" data-show="10.0,12.05" data-fade="0.2">
+      <div style="position:absolute;left:160px;top:470px;width:760px;height:950px;background:#F3EDE2;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.28)">
+        <div class="ctr" style="top:90px"><span class="wm" style="font-size:26px">PARD<span class="o"></span>N ME</span></div>
+        <div class="ctr" style="top:170px"><span class="bod" style="position:relative;display:inline-block;font-style:italic;font-size:62px;line-height:1.12;color:#1E3A2B;direction:ltr">A lovely candle<br>for a calm evening.<span class="strike0" style="position:absolute;left:-12px;right:-12px;top:50%;height:7px;background:#9B1B47;transform-origin:left"></span></span></div>
+        <div class="stack lens0"><img class="cover" src="../assets/ad-bad-decisions.webp" alt="">
+          <div class="ctr truthT0" style="top:70px;direction:ltr;padding:0 40px"><span class="loud" style="font-size:96px;line-height:1.02;color:#F3EDE2;background:#9B1B47;padding:0 14px;-webkit-box-decoration-break:clone;box-decoration-break:clone">Smells like<br>bad decisions.</span><br><span class="bod" style="display:inline-block;margin-top:18px;font-style:italic;font-size:46px;color:#1E3A2B;background:#CFE06A;padding:4px 22px">The good kind.</span></div>
+        </div>
+        <div class="lring0" style="position:absolute;left:265px;top:424px;width:230px;height:330px;border:3px solid #F3EDE2;border-radius:50%;box-sizing:border-box;box-shadow:0 0 0 2px rgba(30,58,43,.35)"></div>
+      </div>
+      <div class="ctr" style="top:1466px"><span class="pill frl" style="font-size:40px" dir="rtl">כתוב פעמיים · 1/3</span></div>
+    </div>
+    <div class="stack" data-show="12.05,14.100000000000001" data-fade="0.2">
+      <div style="position:absolute;left:160px;top:470px;width:760px;height:950px;background:#F3EDE2;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.28)">
+        <div class="ctr" style="top:90px"><span class="wm" style="font-size:26px">PARD<span class="o"></span>N ME</span></div>
+        <div class="ctr" style="top:170px"><span class="bod" style="position:relative;display:inline-block;font-style:italic;font-size:62px;line-height:1.12;color:#1E3A2B;direction:ltr">A nourishing<br>hand cream.<span class="strike1" style="position:absolute;left:-12px;right:-12px;top:50%;height:7px;background:#9B1B47;transform-origin:left"></span></span></div>
+        <div class="stack lens1"><img class="cover" src="../assets/ad-touch-yourself.webp" alt="">
+          <div class="ctr truthT1" style="top:70px;direction:ltr;padding:0 40px"><span class="loud" style="font-size:96px;line-height:1.02;color:#F3EDE2;background:#9B1B47;padding:0 14px;-webkit-box-decoration-break:clone;box-decoration-break:clone">Touch<br>yourself.</span><br><span class="bod" style="display:inline-block;margin-top:18px;font-style:italic;font-size:46px;color:#1E3A2B;background:#CFE06A;padding:4px 22px">It's skincare.</span></div>
+        </div>
+        <div class="lring1" style="position:absolute;left:265px;top:424px;width:230px;height:330px;border:3px solid #F3EDE2;border-radius:50%;box-sizing:border-box;box-shadow:0 0 0 2px rgba(30,58,43,.35)"></div>
+      </div>
+      <div class="ctr" style="top:1466px"><span class="pill frl" style="font-size:40px" dir="rtl">כתוב פעמיים · 2/3</span></div>
+    </div>
+    <div class="stack" data-show="14.1,16.25" data-fade="0.2">
+      <div style="position:absolute;left:160px;top:470px;width:760px;height:950px;background:#F3EDE2;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.28)">
+        <div class="ctr" style="top:90px"><span class="wm" style="font-size:26px">PARD<span class="o"></span>N ME</span></div>
+        <div class="ctr" style="top:170px"><span class="bod" style="position:relative;display:inline-block;font-style:italic;font-size:62px;line-height:1.12;color:#1E3A2B;direction:ltr">A thoughtful gift<br>for someone special.<span class="strike2" style="position:absolute;left:-12px;right:-12px;top:50%;height:7px;background:#9B1B47;transform-origin:left"></span></span></div>
+        <div class="stack lens2"><img class="cover" src="../assets/ad-i-kept-it.webp" alt="">
+          <div class="ctr truthT2" style="top:70px;direction:ltr;padding:0 40px"><span class="loud" style="font-size:96px;line-height:1.02;color:#F3EDE2;background:#9B1B47;padding:0 14px;-webkit-box-decoration-break:clone;box-decoration-break:clone">I bought you<br>something.</span><br><span class="bod" style="display:inline-block;margin-top:18px;font-style:italic;font-size:46px;color:#1E3A2B;background:#CFE06A;padding:4px 22px">I kept it.</span></div>
+        </div>
+        <div class="lring2" style="position:absolute;left:265px;top:424px;width:230px;height:330px;border:3px solid #F3EDE2;border-radius:50%;box-sizing:border-box;box-shadow:0 0 0 2px rgba(30,58,43,.35)"></div>
+      </div>
+      <div class="ctr" style="top:1466px"><span class="pill frl" style="font-size:40px" dir="rtl">כתוב פעמיים · 3/3</span></div>
+    </div>
+  </section>
+  <section class="scene" data-show="15.95,20.95">
+    <div class="stack bgC"></div>
+    <div class="ctr" style="top:236px"><span class="frl" style="display:inline-block;background:#F3EDE2;color:#1E3A2B;font-size:66px;line-height:1.2;padding:12px 34px;border-radius:16px" dir="rtl">ארבעה ריחות. אותו חוץ מנומס.</span></div>
+    <div class="stack" data-show="16.15,17.6" data-fade="0.25">
+      <div style="position:absolute;left:190px;top:430px;width:700px;height:875px;border-radius:350px 350px 26px 26px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.25)">
+        <img class="cover" src="../assets/well-hello.webp" alt="">
+        <div class="stack slv0" style="background:url(../assets/print-well-hello.webp) center/cover">
+          <div class="stack" style="background:#F3EDE2;-webkit-mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%);mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%)">
+            <div class="ctr" style="top:150px"><span class="wm" style="font-size:28px">PARD<span class="o"></span>N ME</span></div>
+            <div class="ctr bod" style="top:205px;font-style:italic;font-size:48px;color:#1E3A2B;direction:ltr">Well, Hello.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ctr" style="top:1345px"><div style="display:inline-block;background:#F3EDE2;padding:22px 46px;border-radius:18px"><div class="bod" style="font-style:italic;font-size:66px;line-height:1.1;color:#1E3A2B;direction:ltr">Well, Hello.</div><div style="margin-top:10px;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:#9B1B47;direction:ltr">Citrus · Blossom · Green Leaves</div></div></div>
+    </div>
+    <div class="stack" data-show="17.3,18.75" data-fade="0.25">
+      <div style="position:absolute;left:190px;top:430px;width:700px;height:875px;border-radius:350px 350px 26px 26px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.25)">
+        <img class="cover" src="../assets/none-of-your-business.webp" alt="">
+        <div class="stack slv1" style="background:url(../assets/print-none-of-your-business.webp) center/cover">
+          <div class="stack" style="background:#F3EDE2;-webkit-mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%);mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%)">
+            <div class="ctr" style="top:150px"><span class="wm" style="font-size:28px">PARD<span class="o"></span>N ME</span></div>
+            <div class="ctr bod" style="top:205px;font-style:italic;font-size:48px;color:#1E3A2B;direction:ltr">None of Your Business.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ctr" style="top:1345px"><div style="display:inline-block;background:#F3EDE2;padding:22px 46px;border-radius:18px"><div class="bod" style="font-style:italic;font-size:66px;line-height:1.1;color:#1E3A2B;direction:ltr">None of Your Business.</div><div style="margin-top:10px;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:#9B1B47;direction:ltr">Fig · Amber · Wood</div></div></div>
+    </div>
+    <div class="stack" data-show="18.45,19.9" data-fade="0.25">
+      <div style="position:absolute;left:190px;top:430px;width:700px;height:875px;border-radius:350px 350px 26px 26px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.25)">
+        <img class="cover" src="../assets/high-maintenance.webp" alt="">
+        <div class="stack slv2" style="background:url(../assets/print-high-maintenance.webp) center/cover">
+          <div class="stack" style="background:#F3EDE2;-webkit-mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%);mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%)">
+            <div class="ctr" style="top:150px"><span class="wm" style="font-size:28px">PARD<span class="o"></span>N ME</span></div>
+            <div class="ctr bod" style="top:205px;font-style:italic;font-size:48px;color:#1E3A2B;direction:ltr">High Maintenance.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ctr" style="top:1345px"><div style="display:inline-block;background:#F3EDE2;padding:22px 46px;border-radius:18px"><div class="bod" style="font-style:italic;font-size:66px;line-height:1.1;color:#1E3A2B;direction:ltr">High Maintenance.</div><div style="margin-top:10px;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:#9B1B47;direction:ltr">Rose · Musk · Vanilla</div></div></div>
+    </div>
+    <div class="stack" data-show="19.599999999999998,20.95" data-fade="0.25">
+      <div style="position:absolute;left:190px;top:430px;width:700px;height:875px;border-radius:350px 350px 26px 26px;overflow:hidden;box-shadow:0 40px 90px rgba(27,31,28,.25)">
+        <img class="cover" src="../assets/bad-influence.webp" alt="">
+        <div class="stack slv3" style="background:url(../assets/print-bad-influence.webp) center/cover">
+          <div class="stack" style="background:#F3EDE2;-webkit-mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%);mask-image:radial-gradient(130px 190px at 50% 60%,transparent 98%,#000 100%)">
+            <div class="ctr" style="top:150px"><span class="wm" style="font-size:28px">PARD<span class="o"></span>N ME</span></div>
+            <div class="ctr bod" style="top:205px;font-style:italic;font-size:48px;color:#1E3A2B;direction:ltr">Bad Influence.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ctr" style="top:1345px"><div style="display:inline-block;background:#F3EDE2;padding:22px 46px;border-radius:18px"><div class="bod" style="font-style:italic;font-size:66px;line-height:1.1;color:#1E3A2B;direction:ltr">Bad Influence.</div><div style="margin-top:10px;font-size:24px;letter-spacing:.24em;text-transform:uppercase;color:#9B1B47;direction:ltr">Berry · Pink Pepper · Blossom</div></div></div>
+    </div>
+  </section>
+  <section class="scene" data-show="20.6,24.45">
+    <div class="stack" style="background:#F2C4CE"></div>
+    <div class="stack" data-seq="seq/rv_%03d.jpg" data-from="1" data-to="33" data-by="1" data-start="20.75" data-step="0.05" data-fit="cover" data-pos="50% 50%"></div>
+    <div class="stack" data-show="22.35,23.75" data-fade="0.4" style="overflow:hidden"><img class="cover pushD" src="../assets/poster.webp" alt="" style="object-position:50% 45%"></div>
+    <div class="stack" data-show="23.45,24.45" data-fade="0.4" style="overflow:hidden"><img class="cover" src="../assets/bag.webp" alt="" style="object-position:50% 50%"></div>
+    <div class="stack" style="background:linear-gradient(180deg,transparent 70%,rgba(27,31,28,.35) 100%)"></div>
+    <div class="ctr" style="top:1660px"><span class="frl pill" style="font-size:50px" dir="rtl">חלון אחד, בכל מקום.</span></div>
+  </section>
+  <section class="scene" data-show="24.1,30">
+    <div class="stack" style="background:#F3EDE2"></div>
+    <div class="ctr" style="top:700px" data-in="23.85"><span class="wm" style="font-size:76px">PARD<span class="o"></span>N ME</span></div>
+    <div class="ctr bod" style="top:840px;font-style:italic;font-size:84px;line-height:1;color:#1E3A2B;direction:ltr" data-in="24.15">Nice on the outside.</div>
+    <div class="ctr" style="top:960px;direction:ltr" data-in="24.45"><span class="loud" style="display:inline-block;font-size:110px;line-height:.9;color:#F3EDE2;background:#9B1B47;padding:8px 24px 2px">Not sorry inside.</span></div>
+    <div class="ctr frl" style="top:1110px;font-size:46px;color:#1E3A2B" dir="rtl" data-in="24.75">I'm Not Sorry. מנומס מבחוץ, לא מתנצל מבפנים.</div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s): the polite sleeve gets cut and torn; NOT SORRY. bursts out. Frame 0 = question + sleeve + "Tear here". -->
+<div class="hook stack" style="background:#9B1B47">
+  <div class="stack" style="overflow:hidden"><img class="cover burstImg" src="../assets/ad-bad-decisions.webp" alt=""></div>
+  <div class="stack" style="background:linear-gradient(180deg,rgba(27,31,28,.0) 30%,rgba(155,27,71,.55) 100%)"></div>
+  <div class="ctr burst" style="top:1150px;direction:ltr"><span class="loud" style="display:inline-block;font-size:200px;line-height:.86;white-space:nowrap;color:#F3EDE2;background:#9B1B47;padding:12px 34px 4px">Not sorry.</span></div>
+  <div class="ctr burstSub" style="top:1400px;direction:ltr"><span class="bod" style="display:inline-block;font-style:italic;font-size:46px;color:#1E3A2B;background:#CFE06A;padding:6px 26px">Smells like bad decisions. The good kind.</span></div>
+
+  <div class="stack tTop" style="background:#F3EDE2;height:976px;bottom:auto;clip-path:polygon(0% 0%,100% 0%,100.00% calc(100% - 16px),97.92% calc(100% - 0px),95.83% calc(100% - 16px),93.75% calc(100% - 0px),91.67% calc(100% - 16px),89.58% calc(100% - 0px),87.50% calc(100% - 16px),85.42% calc(100% - 0px),83.33% calc(100% - 16px),81.25% calc(100% - 0px),79.17% calc(100% - 16px),77.08% calc(100% - 0px),75.00% calc(100% - 16px),72.92% calc(100% - 0px),70.83% calc(100% - 16px),68.75% calc(100% - 0px),66.67% calc(100% - 16px),64.58% calc(100% - 0px),62.50% calc(100% - 16px),60.42% calc(100% - 0px),58.33% calc(100% - 16px),56.25% calc(100% - 0px),54.17% calc(100% - 16px),52.08% calc(100% - 0px),50.00% calc(100% - 16px),47.92% calc(100% - 0px),45.83% calc(100% - 16px),43.75% calc(100% - 0px),41.67% calc(100% - 16px),39.58% calc(100% - 0px),37.50% calc(100% - 16px),35.42% calc(100% - 0px),33.33% calc(100% - 16px),31.25% calc(100% - 0px),29.17% calc(100% - 16px),27.08% calc(100% - 0px),25.00% calc(100% - 16px),22.92% calc(100% - 0px),20.83% calc(100% - 16px),18.75% calc(100% - 0px),16.67% calc(100% - 16px),14.58% calc(100% - 0px),12.50% calc(100% - 16px),10.42% calc(100% - 0px),8.33% calc(100% - 16px),6.25% calc(100% - 0px),4.17% calc(100% - 16px),2.08% calc(100% - 0px),0.00% calc(100% - 16px))">
+    <div class="ctr" style="top:640px"><span class="wm" style="font-size:34px">PARD<span class="o"></span>N ME</span></div>
+    <div class="ctr bod" style="top:710px;font-style:italic;font-size:92px;line-height:1;color:#1E3A2B;direction:ltr">Pardon the interruption.</div>
+  </div>
+  <div class="stack tBot" style="background:#F3EDE2;top:944px;clip-path:polygon(0% 100%,100% 100%,100.00% 16px,97.92% 0px,95.83% 16px,93.75% 0px,91.67% 16px,89.58% 0px,87.50% 16px,85.42% 0px,83.33% 16px,81.25% 0px,79.17% 16px,77.08% 0px,75.00% 16px,72.92% 0px,70.83% 16px,68.75% 0px,66.67% 16px,64.58% 0px,62.50% 16px,60.42% 0px,58.33% 16px,56.25% 0px,54.17% 16px,52.08% 0px,50.00% 16px,47.92% 0px,45.83% 16px,43.75% 0px,41.67% 16px,39.58% 0px,37.50% 16px,35.42% 0px,33.33% 16px,31.25% 0px,29.17% 16px,27.08% 0px,25.00% 16px,22.92% 0px,20.83% 16px,18.75% 0px,16.67% 16px,14.58% 0px,12.50% 16px,10.42% 0px,8.33% 16px,6.25% 0px,4.17% 16px,2.08% 0px,0.00% 16px)">
+    <div class="ctr frl" style="top:110px;font-size:44px;color:#1E3A2B" dir="rtl">סליחה על ההפרעה.</div>
+    <div class="ctr" style="top:780px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:#6B563F;direction:ltr">Brand Worlds Studio · Hagit Antebi</div>
+  </div>
+  <svg class="stack perf" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+    <line x1="0" y1="960" x2="1080" y2="960" stroke="#1E3A2B" stroke-opacity=".45" stroke-width="3" stroke-dasharray="14 12"/>
+    <path class="cutLine" d="M1040 960 H40" pathLength="1" stroke="#9B1B47" stroke-width="5" fill="none" stroke-dasharray="1 1"/>
+  </svg>
+  <div class="ctr tearPill" style="top:922px"><span class="loud" style="display:inline-block;background:#1E3A2B;color:#F3EDE2;font-size:34px;letter-spacing:.18em;padding:18px 40px;border-radius:999px;direction:ltr">✂ Tear here</span></div>
+  <div class="scis" style="position:absolute;left:0;top:0;offset-path:path('M1040 960 H40');offset-rotate:0deg;font-size:76px;color:#9B1B47;line-height:1;transform:scaleX(-1)">✂</div>
+
+  <!-- the question: sits on the sleeve at frame 0, stays on its own card after the tear -->
+  <div class="ctr" style="top:150px">
+    <div style="display:inline-block;background:#F3EDE2;padding:34px 60px 40px;border-radius:28px;box-shadow:0 24px 60px rgba(27,31,28,.18)" dir="rtl">
+      <div class="frl" style="font-size:96px;line-height:1.1;color:#1E3A2B;font-weight:500">המותג שלך<br><span style="color:#9B1B47">מנומס</span> מדי?</div>
+    </div>
+  </div>
+</div>
+
+<!-- STUDIO · layer tag -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג 29</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">מנומס מבחוץ, לא מתנצל מבפנים</span></div>
+    <div class="stack" data-show="9.9,16.2" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · The Visual World</span><span style="font-size: 22px; color: var(--s-ink)">כתוב פעמיים: בנימוס, ובאמת</span></div>
+    <div class="stack" data-show="16.2,20.8" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · The Element</span><span style="font-size: 22px; color: var(--s-ink)">השרוול יורד. לכל קולקציה סוד</span></div>
+    <div class="stack" data-show="20.8,24.1" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · Touchpoints</span><span style="font-size: 22px; color: var(--s-ink)">חלון אחד, בכל מקום</span></div>
+    <div class="stack" data-show="24.1,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">I'm Not Sorry.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
