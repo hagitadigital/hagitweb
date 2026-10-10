@@ -198,6 +198,60 @@ a{color:inherit}
 .coll .meta .tag{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--garden);direction:ltr;display:block;margin-top:6px}
 .hint{margin-top:22px;font-size:14px;color:var(--muted)}
 
+
+/* ---------- 3½ · PARDON THE INTERRUPTION (tear the sleeve) ---------- */
+.interrupt{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--berry)}
+.burst{position:absolute;inset:0}
+.burst img{width:100%;height:100%;object-fit:cover}
+.burst::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(155,27,71,.15),rgba(155,27,71,.55))}
+.burst .say{position:absolute;inset:auto 0 8% 0;z-index:1;text-align:center;direction:ltr;pointer-events:none}
+.burst .say b{display:inline-block;font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(54px,12vw,190px);line-height:.86;color:var(--porcelain);background:var(--berry);padding:.05em .14em .01em}
+.burst .say i{display:inline-block;margin-top:12px;font-family:var(--serif);font-size:clamp(22px,2.6vw,36px);color:var(--garden);background:var(--lime);padding:.05em .4em}
+.half{position:absolute;left:-2%;right:-2%;z-index:2;background:var(--porcelain);display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform 1.05s cubic-bezier(.7,0,.2,1);will-change:transform}
+.half::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 0%,rgba(255,255,255,.5),transparent 60%);pointer-events:none}
+.h-top{top:0;height:calc(50% + 14px);justify-content:flex-end;padding-bottom:46px}
+.h-bot{bottom:0;height:calc(50% + 14px);justify-content:flex-start;padding-top:46px}
+.h-top .wm{font-size:clamp(14px,1.6vw,19px)}
+.h-top .big{font-family:var(--serif);font-style:italic;font-size:clamp(36px,6.4vw,92px);line-height:1;color:var(--garden);margin-top:14px;direction:ltr}
+.h-bot p{font-family:var(--he-serif);font-size:clamp(18px,2vw,24px);color:var(--garden);max-width:560px;padding:0 20px}
+.perf{position:absolute;left:0;right:0;top:50%;height:0;border-top:2px dashed rgba(30,58,43,.45);z-index:3;transition:opacity .3s}
+.tear{position:absolute;z-index:4;top:50%;left:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:10px;background:var(--garden);color:var(--porcelain);border:0;border-radius:999px;padding:12px 22px;font:700 13px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;cursor:grab;touch-action:none;direction:ltr;transition:opacity .3s}
+.tear .sc{font-size:18px;letter-spacing:0}
+@media (prefers-reduced-motion:no-preference){.tear{animation:nudge 2.8s ease-in-out infinite}}
+@keyframes nudge{0%,70%,100%{transform:translate(-50%,-50%)}78%{transform:translate(calc(-50% - 6px),-50%) rotate(-3deg)}86%{transform:translate(calc(-50% + 6px),-50%) rotate(3deg)}}
+.interrupt.torn .h-top{transform:translateY(-108%) rotate(-5deg)}
+.interrupt.torn .h-bot{transform:translateY(108%) rotate(4deg)}
+.interrupt.torn .tear,.interrupt.torn .perf{opacity:0;pointer-events:none}
+.again{position:absolute;z-index:5;top:18px;left:18px;background:var(--porcelain);color:var(--garden);border:0;border-radius:999px;padding:8px 14px;font:500 13px/1 var(--sans);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s .8s}
+.interrupt.torn .again{opacity:1;pointer-events:auto}
+
+/* ---------- 3¾ · THE CAMPAIGN (peek cursor) ---------- */
+.campaign{background:var(--berry);color:var(--porcelain)}
+.campaign .eyebrow{color:var(--lime)}
+.campaign .shout2{font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(52px,10vw,150px);line-height:.86;direction:ltr;text-align:right;margin:14px 0 18px}
+.campaign .shout2 span{color:var(--lime)}
+.campaign .lead{color:rgba(243,237,226,.88)}
+.ads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,22px);margin-top:44px}
+@media(max-width:900px){.ads{grid-template-columns:1fr}}
+.ad{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:none;border:0;padding:0;background:#000;display:block;width:100%;font:inherit;color:inherit;text-align:center}
+@media (hover:none){.ad{cursor:pointer}}
+.ad .truth{position:absolute;inset:0}
+.ad .truth img{width:100%;height:100%;object-fit:cover}
+.ad .truth .t{position:absolute;inset:7% 0 auto 0;direction:ltr;padding:0 6%}
+.ad .truth .t b{display:inline;font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,60px);line-height:1.02;color:var(--porcelain);background:var(--berry);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ad .truth .t i{display:inline-block;margin-top:10px;font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);color:var(--garden);background:var(--lime);padding:.04em .4em}
+.ad .polite{position:absolute;inset:0;background:var(--porcelain);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:13% 8% 9%;gap:12px;
+  -webkit-mask-image:radial-gradient(var(--r,0px) calc(var(--r,0px)*1.4) at var(--x,50%) var(--y,50%),transparent 98%,#000 100%);
+          mask-image:radial-gradient(var(--r,0px) calc(var(--r,0px)*1.4) at var(--x,50%) var(--y,50%),transparent 98%,#000 100%)}
+.ad .polite .wm{font-size:12px}
+.ad .polite .pl{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,30px);line-height:1.2;color:var(--garden);direction:ltr}
+.ad .polite .ph{font-size:13px;color:var(--muted);margin-top:auto}
+.ad .lens{transition:width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1)}
+.ad .lens{position:absolute;width:calc(var(--r,0px)*2);height:calc(var(--r,0px)*2.8);left:var(--x,50%);top:var(--y,50%);transform:translate(-50%,-50%);border:1.5px solid var(--porcelain);border-radius:50%;pointer-events:none;box-shadow:0 0 0 1px rgba(30,58,43,.25)}
+.ad.bare .polite{-webkit-mask-image:none;mask-image:none;opacity:0;transition:opacity .5s}
+.ad.bare .lens{opacity:0}
+.campaign .hint{color:rgba(243,237,226,.75)}
+
 /* ---------- 4 · take it off (films) ---------- */
 .films{background:var(--petal)}
 .films .grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(14px,2vw,24px);margin-top:44px;align-items:end}
@@ -421,6 +475,48 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- ======================= 3½ · PARDON THE INTERRUPTION ======================= -->
+<section class="interrupt" id="interrupt" aria-label="סליחה על ההפרעה">
+  <div class="burst" aria-hidden="true">
+    <img src="assets/ad-bad-decisions.webp" width="1200" height="1500" loading="lazy" alt="">
+    <div class="say"><b>Not sorry.</b><br><i>Smells like bad decisions. The good kind.</i></div>
+  </div>
+  <div class="half h-top"><span class="wm">PARD<span class="o"></span>N ME</span><span class="big">Pardon the interruption.</span></div>
+  <div class="half h-bot"><p>סליחה על ההפרעה. מכאן והלאה, זה כבר פחות מנומס.</p></div>
+  <span class="perf" aria-hidden="true"></span>
+  <button class="tear" type="button" id="tear"><span class="sc" aria-hidden="true">✂</span> Tear here</button>
+  <button class="again" type="button" id="again">להחזיר את השרוול</button>
+</section>
+
+<!-- ======================= 3¾ · THE CAMPAIGN ======================= -->
+<section class="sec campaign" id="campaign">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">The Campaign</span>
+      <h2 class="shout2">Good manners.<br><span>Bad habits.</span></h2>
+      <p class="lead">כל מודעה של PARDON ME כתובה פעמיים: פעם בשביל מי שמסתכלת מהר, ופעם בשביל מי שמציצה. העבירי את העכבר על המודעות, והחלון יראה לך מה הן באמת אומרות.</p>
+    </div>
+    <div class="ads">
+      <button class="ad rv" type="button" aria-label="Smells like bad decisions. The good kind.">
+        <span class="truth"><img src="assets/ad-bad-decisions.webp" width="1200" height="1500" loading="lazy" alt="נר אדום דולק על שידה בשלוש בלילה, שתי כוסות יין, נעל עקב ורודה ופטל, בצילום פלאש"><span class="t"><b>Smells like bad decisions.</b><br><i>The good kind.</i></span></span>
+        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A lovely candle<br>for a calm evening.</span><span class="ph">נר נעים לערב רגוע.</span></span>
+        <span class="lens" aria-hidden="true"></span>
+      </button>
+      <button class="ad rv" type="button" aria-label="Touch yourself. It's skincare.">
+        <span class="truth"><img src="assets/ad-touch-yourself.webp" width="1200" height="1500" loading="lazy" alt="יד עם לק ברי לוחצת שפופרת קרם ידיים מודפסת בוורדים, וקרם לבן על קצות האצבעות, על רקע ליים"><span class="t"><b>Touch yourself.</b><br><i>It's skincare.</i></span></span>
+        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A nourishing<br>hand cream.</span><span class="ph">קרם ידיים מזין.</span></span>
+        <span class="lens" aria-hidden="true"></span>
+      </button>
+      <button class="ad rv" type="button" aria-label="I bought you something. I kept it.">
+        <span class="truth"><img src="assets/ad-i-kept-it.webp" width="1200" height="1500" loading="lazy" alt="אישה בחלוק רחצה לבן מחבקת קופסת מתנה פתוחה, עם נייר עטיפה קרוע וסרט ברי לרגליה, על רקע ורוד"><span class="t"><b>I bought you something.</b><br><i>I kept it.</i></span></span>
+        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A thoughtful gift<br>for someone special.</span><span class="ph">מתנה מתחשבת למישהי מיוחדת.</span></span>
+        <span class="lens" aria-hidden="true"></span>
+      </button>
+    </div>
+    <p class="hint">בטלפון: הקשה על מודעה מורידה את הנימוס.</p>
+  </div>
+</section>
+
 <!-- ======================= 4 · TAKE IT OFF ======================= -->
 <section class="sec films" id="films">
   <div class="wrap">
@@ -550,7 +646,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="tag">Studio Note · איך העולם הזה נבנה</p>
     <h2>מותג לא מתחיל מלוגו.<br>הוא מתחיל <b>מהבטחה שנגזרים ממנה האלמנטים.</b></h2>
     <p><span class="ltr">PARDON ME°</span> הוא עולם מותג קונספט: מותג בדיוני לנרות, ריחות לבית וטיפוח גוף, שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>מנומס מבחוץ, לא מתנצל מבפנים.</b> ממנה נגזר האלמנט, חלון אליפטי אחד, ומהחלון נגזר כל השאר: האות <span class="ltr">O</span> בשם, החיתוך בשרוול, השקית, השלט והמסכה שפותחת את האתר.</p>
-    <p><b>החלון:</b> הגלילה הראשונה מגדילה מסכה אליפטית על שרוול שמנת עד שהפרינט ממלא את המסך. <b>הקולקציות:</b> כל קופסה היא שרוול אמיתי ב-HTML, ומעבר עם העכבר מוריד אותו מעל צילום המוצר. <b>שולחן הלא־התנצלויות:</b> שלושה צבעי בחירה מרכיבים כרטיס מתנה חי. כל הצילומים והסרטים נוצרו ב-Higgsfield מבריף אחד, כך שהפלטה, השרוול והחלון חוזרים זהים בכל פריים.</p>
+    <p><b>החלון:</b> הגלילה הראשונה מגדילה מסכה אליפטית על שרוול שמנת עד שהפרינט ממלא את המסך. <b>הקולקציות:</b> כל קופסה היא שרוול אמיתי ב-HTML, ומעבר עם העכבר מוריד אותו מעל צילום המוצר. <b>ההפרעה:</b> באמצע העמוד שרוול שמנת חוסם את המסך, ורק קריעה שלו משחררת את הקמפיין. <b>הקמפיין:</b> כל מודעה כתובה פעמיים, בנימוס ובאמת, והסמן הוא החלון שמגלה את האמת. <b>שולחן הלא־התנצלויות:</b> שלושה צבעי בחירה מרכיבים כרטיס מתנה חי. כל הצילומים והסרטים נוצרו ב-Higgsfield מבריף אחד, כך שהפלטה, השרוול והחלון חוזרים זהים בכל פריים.</p>
     <p>ככה נראית עבודה של <b>Brand Worlds Studio</b>: לא עמוד יפה עם טקסטים, אלא עולם שלם שבו כל פרט — אריזה, תנועה, שפה, טיפוגרפיה — נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
     <a class="book-link" href="brand-book.html" style="display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:22px 26px;background:#fff;border:1px solid #D9CEC0;border-inline-start:3px solid #9B1B47;text-decoration:none;color:#1E3A2B" onclick="if(typeof fbq==='function')fbq('trackCustom','PardonMeBookOpen')">
       <span style="font-size:.8rem;letter-spacing:.16em;opacity:.8">ספר המותג המקוצר</span>
@@ -661,6 +757,43 @@ document.addEventListener('DOMContentLoaded', function () {
     else copied.textContent='לא הצלחנו להעתיק';
   });
   render(); card.classList.remove('bump');
+
+
+  /* ---- 3½ · tear the sleeve ---- */
+  var itr=document.getElementById('interrupt'), tearB=document.getElementById('tear');
+  (function zig(){ /* jagged paper edges */
+    var n=48, top=['0% 0%','100% 0%'], bot=[];
+    for(var k=n;k>=0;k--){ top.push((k/n*100)+'% calc(100% - '+(k%2?0:14)+'px)'); }
+    var b=['0% 100%','100% 100%'];
+    for(var k2=n;k2>=0;k2--){ b.push((k2/n*100)+'% '+(k2%2?0:14)+'px'); }
+    itr.querySelector('.h-top').style.clipPath='polygon('+top.join(',')+')';
+    itr.querySelector('.h-bot').style.clipPath='polygon('+b.join(',')+')';
+  })();
+  function rip(){ if(itr.classList.contains('torn'))return; itr.classList.add('torn'); if(typeof fbq==='function')fbq('trackCustom','PardonMeTear'); }
+  tearB.addEventListener('click',rip);
+  var sx=null; tearB.addEventListener('pointerdown',function(e){sx=e.clientX;tearB.setPointerCapture(e.pointerId)});
+  tearB.addEventListener('pointermove',function(e){ if(sx!==null&&Math.abs(e.clientX-sx)>40){sx=null;rip()} });
+  tearB.addEventListener('pointerup',function(){sx=null});
+  document.getElementById('again').addEventListener('click',function(){itr.classList.remove('torn')});
+
+  /* ---- 3¾ · the peek cursor ---- */
+  document.querySelectorAll('.ad').forEach(function(ad){
+    var R=function(){return Math.max(54,ad.clientWidth*.2)};
+    function rest(){ ad.style.setProperty('--x','50%'); ad.style.setProperty('--y','62%'); ad.style.setProperty('--r',(ad.clientWidth*.12)+'px'); }
+    rest(); addEventListener('resize',rest);
+    ad.addEventListener('pointermove',function(e){
+      if(e.pointerType!=='mouse')return;
+      var r=ad.getBoundingClientRect();
+      ad.style.setProperty('--x',(e.clientX-r.left)+'px'); ad.style.setProperty('--y',(e.clientY-r.top)+'px');
+      ad.style.setProperty('--r',R()+'px');
+    });
+    ad.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse')rest() });
+    ad.addEventListener('click',function(){ ad.classList.toggle('bare') });
+  });
+
+  /* ---- leaving? ---- */
+  var T=document.title;
+  document.addEventListener('visibilitychange',function(){ document.title=document.hidden?'Pardon me? Come back.':T; });
 
   /* ---- reveal on scroll ---- */
   var rv=document.querySelectorAll('.rv');
