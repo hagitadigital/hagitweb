@@ -203,6 +203,13 @@ h2.sec b{font-weight:500}
 .examples p small{display:block;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--muted);direction:rtl;margin-top:2px}
 .tone{margin-top:22px;font-size:15.5px;color:#33403A;max-width:760px}
 
+.twice{margin-top:34px;background:var(--berry);color:var(--porcelain);padding:clamp(20px,3vw,32px)}
+.twice-h{font-family:var(--he);font-size:clamp(20px,2.2vw,26px);margin-bottom:14px}
+.twice-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;direction:ltr;justify-content:flex-end;border-top:1px solid rgba(243,237,226,.25);padding:12px 0}
+.twice .pol{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.7vw,21px);color:rgba(243,237,226,.85)}
+.twice .arr{color:var(--lime);transform:scaleX(-1)}
+.twice .tru{font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(20px,2.4vw,30px);line-height:1;color:var(--berry);background:var(--lime);padding:.1em .3em}
+.twice-n{font-size:15px;color:rgba(243,237,226,.88);margin-top:12px}
 /* 7 cover */
 .cover{background:var(--garden);color:var(--porcelain)}
 .cover h2.sec{color:var(--porcelain)}
@@ -401,6 +408,13 @@ footer.studio a{text-decoration:none}
       <p>I bought you something. I kept it.<small>מארזי מתנה · הכרטיס</small></p>
       <p>Pardon me for burning the whole candle in one evening.<small>שולחן הלא־התנצלויות</small></p>
     </div>
+    <div class="twice rv">
+      <p class="twice-h">כל משפט נכתב פעמיים: פעם בנימוס, ופעם באמת.</p>
+      <div class="twice-row"><span class="pol">A lovely candle for a calm evening.</span><span class="arr" aria-hidden="true">←</span><span class="tru">Smells like bad decisions.</span></div>
+      <div class="twice-row"><span class="pol">A nourishing hand cream.</span><span class="arr" aria-hidden="true">←</span><span class="tru">Touch yourself. It's skincare.</span></div>
+      <div class="twice-row"><span class="pol">A thoughtful gift for someone special.</span><span class="arr" aria-hidden="true">←</span><span class="tru">I bought you something. I kept it.</span></div>
+      <p class="twice-n">הגרסה המנומסת יושבת על השמנת. האמת מופיעה רק דרך החלון: בקמפיין, בתחתית הקופסה, ברגע שקורעים את השרוול.</p>
+    </div>
     <p class="tone rv">הטון מנומס בצורה וחצוף בתוכן. הבדיחה תמיד חכמה ואף פעם לא ילדותית, הקריצה באה מהמשפט ולא מסימני קריאה, ואנחנו לא מתנצלות על הנאה. פונים ללקוחה בלשון נקבה, מדברים על הרגע שלה ולא על מה שחסר לה.</p>
   </div>
 </section>
@@ -433,7 +447,7 @@ footer.studio a{text-decoration:none}
     <div class="tp">
       <figure class="rv"><img src="assets/poster.webp" width="1000" height="1506" loading="lazy" style="object-position:50% 40%" alt="שלט חוצות שמנת כמעט ריק עם השורה Nice on the outside. וחלון אליפטי שממנו פורצים ורדים ופסים"><figcaption><b>השלט</b><p>כמעט ריק, חוץ מחלון אחד.</p><div class="chips"><span>החלון</span><span>השרוול המנומס</span><span>הפרינט שמבפנים</span></div></figcaption></figure>
       <figure class="rv"><img src="assets/hero.webp" width="2000" height="1328" loading="lazy" alt="ארבע קופסאות נרות בשרוולי שמנת עם חלונות, ואחת שלופה מהשרוול"><figcaption><b>המדף</b><p>ארבע קולקציות, אותו חוץ.</p><div class="chips"><span>החלון</span><span>השרוול המנומס</span><span>הפרינט שמבפנים</span></div></figcaption></figure>
-      <figure class="rv"><img src="assets/bag.webp" width="1200" height="1500" loading="lazy" style="object-position:50% 45%" alt="שקית נייר שמנת עם ידיות ירוקות וחלון אליפטי שממנו מציץ נייר משי בפסים"><figcaption><b>השקית</b><div class="chips"><span>החלון</span><span>ירוק גן</span></div></figcaption></figure>
+      <figure class="rv"><img src="assets/ad-bad-decisions.webp" width="1200" height="1500" loading="lazy" style="object-position:50% 45%" alt="מודעת פלאש: נר אדום דולק על שידה בשלוש בלילה, כוסות יין, נעל עקב ורודה ושרוול קרוע"><figcaption><b>הקמפיין</b><div class="chips"><span>החלון</span><span>השרוול המנומס</span><span>ברי</span></div></figcaption></figure>
       <figure class="rv"><img src="assets/gift.webp" width="1200" height="1500" loading="lazy" style="object-position:50% 40%" alt="מארז מתנה פתוח עם פנים מכסה מודפס, נר, קרם ידיים, סרט ברי וכרטיס"><figcaption><b>המארז</b><div class="chips"><span>הפרינט שמבפנים</span><span>ברי</span></div></figcaption></figure>
       <figure class="rv"><img src="assets/line.webp" width="1800" height="1195" loading="lazy" alt="קו Well, Hello.: נר, מפיץ, קרם גוף, סבון ידיים וקרם ידיים עם תוויות שמנת וחלון קטן"><figcaption><b>הקו</b><div class="chips"><span>החלון</span><span>השם עם הנקודה</span></div></figcaption></figure>
     </div>
@@ -450,7 +464,7 @@ footer.studio a{text-decoration:none}
     </div>
     <div class="rules rv">
       <article><h3>מה אף פעם לא משתנה: החוץ המנומס והחלון האחד.</h3><p>לפני כל תוכן שואלים: מה מנומס כאן, ומה מציץ מבפנים? אם אין תשובה לשתי השאלות, זה לא <span class="ltr">PARDON ME°</span>.</p></article>
-      <article><h3>מה מותר לשנות: כל מה שמבפנים.</h3><p>הריח, הפרינט, צבעי הקולקציה, המוצר, המשפט והקמפיין. הכל פתוח, כל עוד הוא גר מאחורי החלון.</p></article>
+      <article><h3>מה מותר לשנות: כל מה שמבפנים.</h3><p>הריח, הפרינט, צבעי הקולקציה, המוצר, המשפט והקמפיין. גם הנימוס עצמו מותר לקריעה: באתר, השרוול נקרע באמצע העמוד. הכל פתוח, כל עוד החוץ נשאר מנומס עד הרגע שקורעים אותו.</p></article>
       <article><h3>הטעות שהייתה שוברת את העולם.</h3><p>קמפיין חגים עם פרינט על כל החזית, זהב ושיש. כשהקופסה צועקת מבחוץ, אין מה לגלות דרך החלון, ו-<span class="ltr">PARDON ME°</span> חוזר להיות עוד נר בטבלת ההשוואה.</p></article>
     </div>
     <div class="dos rv">
