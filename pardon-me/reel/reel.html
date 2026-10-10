@@ -2,6 +2,7 @@
 <!--
   Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
   Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
   Edit only the blocks marked -->
 <html lang="he">
 <head>
@@ -33,9 +34,9 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 
 /* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
 .world{animation-name:world;transform-origin:50% 46%}
-@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,98.7%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(.5)}}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
 .marks{animation-name:marks}
-@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,98.7%{opacity:1}100%{opacity:0}}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
 .intro{animation-name:intro}
 @keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
 .i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
@@ -43,7 +44,7 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 @keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
 @keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
 .outro{animation-name:outro}
-@keyframes outro{0%,91%{opacity:0}93%,98.7%{opacity:1}100%{opacity:0}}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
 .o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
 @keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
 @keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
