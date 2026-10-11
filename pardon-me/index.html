@@ -231,8 +231,31 @@ a{color:inherit}
 .campaign .shout2{font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(52px,10vw,150px);line-height:.86;direction:ltr;text-align:right;margin:14px 0 18px}
 .campaign .shout2 span{color:var(--lime)}
 .campaign .lead{color:rgba(243,237,226,.88)}
-.ads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,22px);margin-top:44px}
-@media(max-width:900px){.ads{grid-template-columns:1fr}}
+/* the cascade: ads, prints and shouts fall on one diagonal. Moving, the plates slip out of register;
+   standing still, everything is polite again. --m (misregistration px) and --dr (extra tilt) come from scroll speed. */
+.ads{position:relative;height:clamp(620px,56vw,800px);margin-top:36px;--m:0;--dr:0;--t:0}
+.cc{position:absolute;left:var(--x);top:var(--y);width:var(--w);z-index:var(--z,1);
+  transform:translate(-50%,-50%) translate(calc(var(--t)*var(--k,0)*1px),calc(var(--t)*var(--k,0)*-.6px)) rotate(calc(var(--r)*1deg + var(--dr)*var(--sg,1)*1deg));
+  filter:drop-shadow(calc(var(--m)*1px) 0 0 rgba(207,224,106,.9)) drop-shadow(calc(var(--m)*-1px) calc(var(--m)*.4px) 0 rgba(185,211,232,.9)) drop-shadow(0 18px 22px rgba(40,6,20,.35));
+  will-change:transform,filter}
+.cc--ad{z-index:5}
+.cc:not(.cc--ad){pointer-events:none}
+.cc .card{display:block;aspect-ratio:var(--ar,4/5);overflow:hidden;position:relative}
+.cc .card img{width:100%;height:100%;object-fit:cover;display:block}
+.cc .yell{display:grid;place-items:center;text-align:center;direction:ltr;padding:10%;font-family:var(--loud);font-weight:700;text-transform:uppercase;line-height:.88;
+  font-size:clamp(30px,3.4vw,52px);text-shadow:calc(var(--m)*.6px) 0 0 rgba(185,211,232,.9),calc(var(--m)*-.6px) 0 0 rgba(207,224,106,.9)}
+.cc .yell--lime{background:var(--lime);color:var(--garden)}
+.cc .yell--porc{background:var(--porcelain);color:var(--berry)}
+.cc .yell--soft{background:var(--porcelain);color:var(--garden);font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;font-size:clamp(26px,2.6vw,40px);line-height:1.1}
+.cc .yell small{display:block;font-family:var(--sans);font-weight:500;text-transform:none;font-size:12px;letter-spacing:.18em;margin-top:12px;opacity:.75}
+@media(max-width:900px){
+  .ads{height:auto;display:flex;flex-direction:column;align-items:center;padding:10px 0 30px}
+  .cc{position:relative;left:auto;top:auto;width:var(--mw,58%);margin-top:var(--mt,-44px);margin-inline-start:var(--mx,0);
+    transform:translate(calc(var(--t)*var(--k,0)*.3px),0) rotate(calc(var(--r)*1deg + var(--dr)*var(--sg,1)*1deg))}
+  .cc:first-child{margin-top:0}
+  .cc--ad{--mw:84%}
+}
+@media (prefers-reduced-motion:reduce){.cc{filter:drop-shadow(0 18px 22px rgba(40,6,20,.35))}}
 .ad{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:none;border:0;padding:0;background:#000;display:block;width:100%;font:inherit;color:inherit;text-align:center}
 @media (hover:none){.ad{cursor:pointer}}
 .ad .truth{position:absolute;inset:0}
@@ -496,22 +519,46 @@ document.addEventListener('DOMContentLoaded', function () {
       <h2 class="shout2">Good manners.<br><span>Bad habits.</span></h2>
       <p class="lead">כל מודעה של PARDON ME כתובה פעמיים: פעם בשביל מי שמסתכלת מהר, ופעם בשביל מי שמציצה. העבירי את העכבר על המודעות, והחלון יראה לך מה הן באמת אומרות.</p>
     </div>
-    <div class="ads">
-      <button class="ad rv" type="button" aria-label="Smells like bad decisions. The good kind.">
-        <span class="truth"><img src="assets/ad-bad-decisions.webp" width="1200" height="1500" loading="lazy" alt="נר אדום דולק על שידה בשלוש בלילה, שתי כוסות יין, נעל עקב ורודה ופטל, בצילום פלאש"><span class="t"><b>Smells like bad decisions.</b><br><i>The good kind.</i></span></span>
-        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A lovely candle<br>for a calm evening.</span><span class="ph">נר נעים לערב רגוע.</span></span>
-        <span class="lens" aria-hidden="true"></span>
-      </button>
-      <button class="ad rv" type="button" aria-label="Touch yourself. It's skincare.">
-        <span class="truth"><img src="assets/ad-touch-yourself.webp" width="1200" height="1500" loading="lazy" alt="יד עם לק ברי לוחצת שפופרת קרם ידיים מודפסת בוורדים, וקרם לבן על קצות האצבעות, על רקע ליים"><span class="t"><b>Touch yourself.</b><br><i>It's skincare.</i></span></span>
-        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A nourishing<br>hand cream.</span><span class="ph">קרם ידיים מזין.</span></span>
-        <span class="lens" aria-hidden="true"></span>
-      </button>
-      <button class="ad rv" type="button" aria-label="I bought you something. I kept it.">
-        <span class="truth"><img src="assets/ad-i-kept-it.webp" width="1200" height="1500" loading="lazy" alt="אישה בחלוק רחצה לבן מחבקת קופסת מתנה פתוחה, עם נייר עטיפה קרוע וסרט ברי לרגליה, על רקע ורוד"><span class="t"><b>I bought you something.</b><br><i>I kept it.</i></span></span>
-        <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A thoughtful gift<br>for someone special.</span><span class="ph">מתנה מתחשבת למישהי מיוחדת.</span></span>
-        <span class="lens" aria-hidden="true"></span>
-      </button>
+    <div class="ads" id="ads">
+      <div class="cc" style="--x:90%;--y:10%;--w:14%;--r:-9;--sg:1;--k:40;--z:6;--mx:-34%;--mw:46%" aria-hidden="true">
+        <span class="card yell yell--lime" style="--ar:1/1">Not<br>sorry.</span>
+      </div>
+      <div class="cc" style="--x:86%;--y:36%;--w:15%;--r:8;--sg:-1;--k:-30;--z:2;--mx:30%;--mw:50%" aria-hidden="true">
+        <span class="card"><img src="../images/museum/pm-well-hello.webp" alt="" width="560" height="560" loading="lazy"></span>
+      </div>
+      <div class="cc cc--ad" style="--x:71%;--y:36%;--w:21%;--r:-3;--sg:1;--k:18;--mx:0">
+        <button class="ad rv" type="button" aria-label="Smells like bad decisions. The good kind.">
+          <span class="truth"><img src="assets/ad-bad-decisions.webp" width="1200" height="1500" loading="lazy" alt="נר אדום דולק על שידה בשלוש בלילה, שתי כוסות יין, נעל עקב ורודה ופטל, בצילום פלאש"><span class="t"><b>Smells like bad decisions.</b><br><i>The good kind.</i></span></span>
+          <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A lovely candle<br>for a calm evening.</span><span class="ph">נר נעים לערב רגוע.</span></span>
+          <span class="lens" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="cc" style="--x:52%;--y:15%;--w:13%;--r:10;--sg:-1;--k:-44;--z:6;--mx:-30%;--mw:44%" aria-hidden="true">
+        <span class="card yell yell--porc" style="--ar:3/4">Bad<br>habits.<small>since 2026</small></span>
+      </div>
+      <div class="cc cc--ad" style="--x:48%;--y:52%;--w:21%;--r:3;--sg:-1;--k:-14;--mx:0">
+        <button class="ad rv" type="button" aria-label="Touch yourself. It's skincare.">
+          <span class="truth"><img src="assets/ad-touch-yourself.webp" width="1200" height="1500" loading="lazy" alt="יד עם לק ברי לוחצת שפופרת קרם ידיים מודפסת בוורדים, וקרם לבן על קצות האצבעות, על רקע ליים"><span class="t"><b>Touch yourself.</b><br><i>It's skincare.</i></span></span>
+          <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A nourishing<br>hand cream.</span><span class="ph">קרם ידיים מזין.</span></span>
+          <span class="lens" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="cc" style="--x:63%;--y:78%;--w:14%;--r:-10;--sg:1;--k:36;--z:2;--mx:32%;--mw:48%" aria-hidden="true">
+        <span class="card"><img src="../images/museum/pm-high-maintenance.webp" alt="" width="560" height="560" loading="lazy"></span>
+      </div>
+      <div class="cc cc--ad" style="--x:25%;--y:66%;--w:21%;--r:-4;--sg:1;--k:22;--mx:0">
+        <button class="ad rv" type="button" aria-label="I bought you something. I kept it.">
+          <span class="truth"><img src="assets/ad-i-kept-it.webp" width="1200" height="1500" loading="lazy" alt="אישה בחלוק רחצה לבן מחבקת קופסת מתנה פתוחה, עם נייר עטיפה קרוע וסרט ברי לרגליה, על רקע ורוד"><span class="t"><b>I bought you something.</b><br><i>I kept it.</i></span></span>
+          <span class="polite" aria-hidden="true"><span class="wm">PARD<span class="o"></span>N ME</span><span class="pl">A thoughtful gift<br>for someone special.</span><span class="ph">מתנה מתחשבת למישהי מיוחדת.</span></span>
+          <span class="lens" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="cc" style="--x:11%;--y:38%;--w:14%;--r:8;--sg:-1;--k:-38;--z:2;--mx:-30%;--mw:46%" aria-hidden="true">
+        <span class="card"><img src="../images/museum/pm-bad-influence.webp" alt="" width="560" height="560" loading="lazy"></span>
+      </div>
+      <div class="cc" style="--x:37%;--y:90%;--w:14%;--r:-7;--sg:1;--k:30;--z:6;--mx:28%;--mw:50%" aria-hidden="true">
+        <span class="card yell yell--soft" style="--ar:1/1">Kind of.</span>
+      </div>
     </div>
     <p class="hint">בטלפון: הקשה על מודעה מורידה את הנימוס.</p>
   </div>
@@ -783,13 +830,33 @@ document.addEventListener('DOMContentLoaded', function () {
     rest(); addEventListener('resize',rest);
     ad.addEventListener('pointermove',function(e){
       if(e.pointerType!=='mouse')return;
-      var r=ad.getBoundingClientRect();
-      ad.style.setProperty('--x',(e.clientX-r.left)+'px'); ad.style.setProperty('--y',(e.clientY-r.top)+'px');
+      // the card may be tilted: turn the pointer back into the card's own (unrotated) coordinates
+      var r=ad.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+      var tf=getComputedStyle(ad.closest('.cc')||ad).transform, a=0;
+      if(tf&&tf!=='none'){ var mx=new DOMMatrix(tf); a=Math.atan2(mx.b,mx.a); }
+      var dx=e.clientX-cx, dy=e.clientY-cy, c=Math.cos(-a), sn=Math.sin(-a);
+      ad.style.setProperty('--x',(dx*c-dy*sn+ad.clientWidth/2)+'px'); ad.style.setProperty('--y',(dx*sn+dy*c+ad.clientHeight/2)+'px');
       ad.style.setProperty('--r',R()+'px');
     });
     ad.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse')rest() });
     ad.addEventListener('click',function(){ ad.classList.toggle('bare') });
   });
+
+  /* ---- the cascade: scroll speed pulls the plates out of register ---- */
+  (function(){
+    var box=document.getElementById('ads'); if(!box||reduce) return;
+    var lastY=scrollY, v=0, raf=0, on=false, cur={};
+    function set(k,val){ if(cur[k]!==val){ cur[k]=val; box.style.setProperty(k,val); } }   // only when it changes
+    function frame(){
+      var y=scrollY, dv=y-lastY; lastY=y;
+      v+= (dv - v)*.18;                                   // smoothed px per frame
+      var sp=Math.min(1,Math.abs(v)/40);
+      var r=box.getBoundingClientRect(), t=((innerHeight/2)-(r.top+r.height/2))/innerHeight;   // -1..1 around centre
+      set('--m',(sp*12).toFixed(1)); set('--dr',(Math.sign(v)*sp*6).toFixed(1)); set('--t',Math.max(-1.2,Math.min(1.2,t)).toFixed(3));
+      raf=on||Math.abs(v)>.05?requestAnimationFrame(frame):0;
+    }
+    new IntersectionObserver(function(es){ on=es[0].isIntersecting; if(on&&!raf){ lastY=scrollY; raf=requestAnimationFrame(frame); } }).observe(box);
+  })();
 
   /* ---- leaving? ---- */
   var T=document.title;
