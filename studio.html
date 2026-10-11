@@ -29,7 +29,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Heebo:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@400;500;600&family=Bodoni+Moda:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -409,6 +409,57 @@
         .book-card__go { font-size: 0.9rem; font-weight: 500; color: var(--bk-accent); margin-top: auto; padding-top: 6px; }
         @media (max-width: 800px) { .books__grid { grid-template-columns: 1fr; max-width: 520px; } }
 
+        /* Brand-book spiral — one book's system turning on one axis */
+        .spiral { margin: clamp(34px, 5vw, 54px) auto 0; max-width: 1060px; }
+        .spiral__tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .spiral__tab {
+            font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 0.18em; direction: ltr;
+            background: transparent; color: var(--color-chocolate); border: 1px solid var(--color-light-taupe);
+            padding: 7px 16px; cursor: pointer; transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .spiral__tab:hover { border-color: var(--color-copper); color: var(--color-copper); }
+        .spiral__tab[aria-pressed="true"] { background: var(--tab-bg, #241212); border-color: var(--tab-bg, #241212); color: var(--tab-fg, #D9B26A); }
+        .spiral__tab:focus-visible { outline: 1px solid var(--color-copper); outline-offset: 3px; }
+        .spiral__stage {
+            position: relative; height: clamp(460px, 62vw, 640px); margin-top: 10px;
+            overflow: hidden;
+            touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none;
+        }
+        .spiral__stage.is-dragging { cursor: grabbing; }
+        .spiral__axis { position: absolute; left: 50%; top: 50%; transition: opacity 0.45s; }
+        .spiral__axis.is-out { opacity: 0; }
+        .sp {
+            position: absolute; left: 0; top: 0; width: var(--w, 220px); height: var(--h, 160px);
+            margin: calc(var(--h, 160px) / -2) 0 0 calc(var(--w, 220px) / -2);
+            backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between; text-align: right;
+            padding: 12px 14px; color: var(--fg, #F6EEE4); background: var(--bg, #241212);
+            box-shadow: 0 18px 36px -22px rgba(36, 18, 18, 0.5); will-change: transform, opacity;
+        }
+        .sp__lbl { font-family: var(--font-body-he); font-size: 0.66rem; letter-spacing: 0.14em; opacity: 0.75; }
+        .sp.sp--img { padding: 0; }
+        .sp--img img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+        .sp--img .sp__lbl { position: absolute; top: 9px; right: 11px; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.45); opacity: 0.9; }
+        .sp__big { font-size: 1.9rem; line-height: 1; direction: ltr; text-align: left; }
+        .sp__word { font-size: 1.55rem; letter-spacing: 0.2em; direction: ltr; text-align: left; white-space: nowrap; }
+        .sp__dec { font-family: 'Frank Ruhl Libre', serif; font-size: 1.15rem; line-height: 1.3; }
+        .sp__no { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; line-height: 1; color: var(--ac, #D9B26A); direction: ltr; text-align: left; }
+        .sp__name { font-family: 'Frank Ruhl Libre', serif; font-size: 1.05rem; }
+        .sp__hex { font-family: var(--font-body-en); font-size: 0.72rem; letter-spacing: 0.16em; direction: ltr; text-align: left; }
+        .sp__aa { font-size: 3.4rem; line-height: 0.9; direction: ltr; text-align: left; }
+        .spiral__caption { margin-top: 6px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .spiral__line { font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--color-chocolate); }
+        .spiral__line b { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.16em; direction: ltr; unicode-bidi: isolate; }
+        .spiral__legend { font-size: 0.8rem; color: var(--color-taupe); letter-spacing: 0.04em; }
+        .spiral__go { font-size: 0.92rem; font-weight: 500; color: var(--color-copper); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+        @media (max-width: 700px) {
+            .spiral__tab { font-size: 0.86rem; padding: 6px 11px; letter-spacing: 0.12em; }
+            .sp { padding: 9px 10px; }
+            .sp__word { font-size: 1.05rem; } .sp__dec { font-size: 0.86rem; } .sp__no { font-size: 1.5rem; }
+            .sp__name { font-size: 0.82rem; } .sp__aa { font-size: 2.3rem; } .sp__lbl { font-size: 0.56rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .spiral__axis { transition: none; } }
+
         /* Extras Section */
         .studio-extras {
             padding: 0 0 clamp(80px, 12vw, 140px);
@@ -779,6 +830,18 @@
             <h2 class="worlds-proof__title">העולם הוא החוויה.<br><em>ספר המותג הוא החשיבה שמאחוריה.</em></h2>
             <p class="worlds-proof__deck">לכל עולם יש החלטה אחת שמחזיקה אותו. ספר המותג המקוצר מראה איך היא הופכת לקודים, לצבעים ולכללים, ואיך כל נקודת מגע מזוהה גם בלי לקרוא את השם.</p>
 
+            <div class="spiral" id="spiral">
+                <div class="spiral__tabs" role="group" aria-label="בחירת ספר מותג" id="spiralTabs"></div>
+                <div class="spiral__stage" id="spiralStage" role="img" aria-label="ספירלה של מערכת המותג: ההחלטה, הקודים, הצבעים, הטיפוגרפיה ונקודות המגע של הספר שנבחר">
+                    <div class="spiral__axis" id="spiralAxis"></div>
+                </div>
+                <div class="spiral__caption">
+                    <p class="spiral__line" id="spiralLine"></p>
+                    <p class="spiral__legend">החלטה אחת · קודים · צבעים · טיפוגרפיה · נקודות מגע. גוללים או גוררים כדי לסובב.</p>
+                    <a class="spiral__go" id="spiralGo" href="/encore/brand-book.html">לפתוח את ספר המותג ←</a>
+                </div>
+            </div>
+
             <div class="books__grid">
             <a class="book-card" href="/encore/brand-book.html" style="--bk:#241212;--bk-accent:#D9B26A">
                 <div class="book-card__ph">
@@ -906,6 +969,157 @@
     
     <p class="footer__legal" style="max-width:1400px;margin:16px auto 0;padding:0 clamp(24px,5vw,80px);font-size:.82em;opacity:.7;line-height:1.9;text-align:center"><a href="/privacy.html" style="color:inherit;text-decoration:none">מדיניות פרטיות</a> · <a href="/terms.html" style="color:inherit;text-decoration:none">תנאי שימוש</a> · <a href="/accessibility.html" style="color:inherit;text-decoration:none">הצהרת נגישות</a></p>
 </div>
+
+<script>
+/* Les Livres spiral: each brand book's system (name, decision, codes, colours, type, touchpoints)
+   on one helix. Scroll and drag turn it; the tabs swap the book. */
+(function () {
+  var stage = document.getElementById('spiralStage'), axis = document.getElementById('spiralAxis');
+  if (!stage || !axis) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CG = "'Cormorant Garamond', serif";
+  var BOOKS = [
+    { id: 'encore', name: 'ENCORE°', href: '/encore/brand-book.html', bg: '#241212', ac: '#D9B26A', paper: '#EFE8DD', font: CG, aa: '18:00',
+      decision: 'השעה היא הלוגו.', codes: ['החוגה', 'סימן השעה', 'חותמת השעה', 'המעלה', 'קו הזהב'],
+      colors: [['#241212', 'לילה · 00:00'], ['#6E4E4A', 'שחר · 06:00'], ['#34405A', 'צהריים · 12:00'], ['#853A26', 'שקיעה · 18:00']] },
+    { id: 'oreva', name: 'ORÉVA°', href: '/oreva/brand-book.html', bg: '#3A2E29', ac: '#D9A88A', paper: '#F6EFE7', font: CG, aa: 'Aa',
+      decision: 'קו אחד, מהיד עד הבקבוק.', codes: ['סרט הנחושת', 'משאבת הנחושת', 'החרוז', 'אבן הטרוורטין', 'השורה השנייה'],
+      colors: [['#B87A57', 'נחושת'], ['#F1D3A6', 'DEW'], ['#F0BFB0', 'GLOW'], ['#D9B8C0', 'CALM']] },
+    { id: 'signe', name: 'SIGNÉ°', href: '/signe/brand-book.html', bg: '#120E08', ac: '#C9A25E', paper: '#F0E3CE', font: CG, aa: 'Aa',
+      decision: 'קו אחד, ביד אחת.', codes: ['החתימה', 'כתב היד', 'אור אחד, במה אחת', 'שם בצרפתית, הסבר בעברית'],
+      colors: [['#120E08', 'נואר'], ['#F0E3CE', 'קרם'], ['#6E2436', ''], ['#C98F45', '']] },
+    { id: 'rosee', name: 'ROSÉE°', href: '/rosee/brand-book.html', bg: '#3B2E33', ac: '#E8B4B8', paper: '#FBF6EE', font: CG, aa: '05:30',
+      decision: 'לא מוכרים סרום. מוכרים בוקר.', codes: ['הטיפה', 'שעון השחר', 'השעה', 'קו הנחושת', 'הקול'],
+      colors: [['#E5C4CB', 'שזיף של לפנות בוקר'], ['#E8B4B8', 'זכוכית ורודה'], ['#C28A5A', 'נחושת'], ['#FBF6EE', '']] },
+    { id: 'pardon-me', name: 'PARDON ME°', href: '/pardon-me/brand-book.html', bg: '#1E3A2B', ac: '#CFE06A', paper: '#F3EDE2', font: "'Bodoni Moda', serif", aa: 'Aa',
+      decision: 'מנומס מבחוץ. לא מתנצל מבפנים.', codes: ['החלון', 'השרוול המנומס', 'הפרינט שמבפנים', 'השם עם הנקודה'],
+      colors: [['#F3EDE2', 'פורצלן'], ['#1E3A2B', 'ירוק גן'], ['#CFE06A', 'ליים'], ['#9B1B47', 'ברי'], ['#F2C4CE', 'עלה כותרת']] }
+  ];
+
+  function lum(hex) {
+    var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  }
+  function el(cls, html, vars) {
+    var d = document.createElement('div'); d.className = 'sp ' + cls; d.innerHTML = html;
+    Object.keys(vars || {}).forEach(function (k) { d.style.setProperty(k, vars[k]); });
+    return d;
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // Interleave the chapters so every turn of the helix shows a bit of everything.
+  function panels(b) {
+    var dark = { '--bg': b.bg, '--fg': '#F6EEE4', '--ac': b.ac }, paper = { '--bg': b.paper, '--fg': b.bg, '--ac': b.bg };
+    var img = function (i) { return el('sp--img', '<img src="/images/books-spiral/' + b.id + '-' + i + '.webp" alt="" loading="lazy" decoding="async"><span class="sp__lbl">נקודת מגע</span>', { '--w': '230px', '--h': '172px' }); };
+    var code = function (i) {
+      return el('sp--code', '<span class="sp__lbl">קוד</span><div><div class="sp__no">0' + (i + 1) + '</div><div class="sp__name">' + esc(b.codes[i]) + '</div></div>',
+        Object.assign({ '--w': '150px', '--h': '150px' }, dark));
+    };
+    var color = function (c) {
+      var fg = lum(c[0]) > 0.6 ? b.bg : '#F6EEE4';
+      return el('sp--color', '<span class="sp__lbl">צבע</span><div><div class="sp__name">' + esc(c[1]) + '</div><div class="sp__hex">' + c[0] + '</div></div>',
+        { '--bg': c[0], '--fg': fg, '--w': '132px', '--h': '170px' });
+    };
+    var out = [
+      el('sp--word', '<span class="sp__lbl">השם</span><div class="sp__word" style="font-family:' + b.font + ';color:' + b.ac + '">' + esc(b.name) + '</div>', Object.assign({ '--w': '250px', '--h': '120px' }, dark)),
+      img(1),
+      el('sp--dec', '<span class="sp__lbl">ההחלטה האחת</span><div class="sp__dec">' + esc(b.decision) + '</div>', Object.assign({ '--w': '210px', '--h': '150px' }, paper)),
+      el('sp--type', '<span class="sp__lbl">טיפוגרפיה</span><div class="sp__aa" style="font-family:' + b.font + '">' + esc(b.aa) + '</div>', Object.assign({ '--w': '170px', '--h': '170px' }, paper)),
+      img(2)
+    ];
+    var rest = [], k = Math.max(b.codes.length, b.colors.length);
+    for (var i = 0; i < k; i++) {
+      if (b.codes[i]) rest.push(code(i));
+      if (b.colors[i]) rest.push(color(b.colors[i]));
+      if (i === 1) rest.push(img(3));
+      if (i === 3) rest.push(img(4));
+    }
+    return out.concat(rest);
+  }
+
+  // Tabs
+  var tabs = document.getElementById('spiralTabs'), line = document.getElementById('spiralLine'), go = document.getElementById('spiralGo');
+  var nodes = [], n = 1, cur = -1, swapT = 0;
+  BOOKS.forEach(function (b, i) {
+    var t = document.createElement('button');
+    t.type = 'button'; t.className = 'spiral__tab'; t.textContent = b.name;
+    t.style.setProperty('--tab-bg', b.bg); t.style.setProperty('--tab-fg', b.ac);
+    t.addEventListener('click', function () { pick(i); });
+    tabs.appendChild(t);
+  });
+  function pick(i) {
+    if (i === cur) return;
+    var first = cur < 0; cur = i;
+    [].forEach.call(tabs.children, function (t, j) { t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    var b = BOOKS[i];
+    line.innerHTML = 'הספר של <b>' + esc(b.name) + '</b>: ' + esc(b.decision);
+    go.href = b.href; go.textContent = 'לפתוח את ספר המותג של ' + b.name + ' ←';
+    var build = function () {
+      axis.innerHTML = ''; nodes = panels(b); n = nodes.length;
+      nodes.forEach(function (p) { axis.appendChild(p); });
+      render(); axis.classList.remove('is-out');
+    };
+    clearTimeout(swapT);
+    if (first || reduce) build(); else { axis.classList.add('is-out'); swapT = setTimeout(build, 420); }
+  }
+
+  // Geometry: a screw of one turn; panels wrap around at the back, where they're hidden.
+  var R = 300, dy = 40, scale = 1, small = false;
+  function measure() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    small = w < 700;
+    scale = small ? 0.6 : 0.88;
+    R = Math.min(380, w * (small ? 0.36 : 0.34));
+    dy = (h * 0.95) / Math.max(n, 12);
+  }
+  var drift = 0, drag = 0, dragV = 0;
+  function scrollTurns() {
+    if (reduce) return 0;
+    var r = stage.getBoundingClientRect(), vh = window.innerHeight;
+    return ((vh - r.top) / (vh + r.height)) * 0.8;   // turns over the section's pass through the viewport
+  }
+  function render() {
+    if (!n) return;
+    var u0 = (scrollTurns() * n) + drift + drag;
+    dy = (stage.clientHeight * 1.5) / Math.max(n, 12);
+    for (var i = 0; i < n; i++) {
+      var u = (((i + u0) % n) + n) % n;              // 0..n
+      var a = Math.PI + (u / n) * Math.PI * 2;        // one turn: top and bottom at the back, the middle at the front
+      var x = R * Math.sin(a), z = R * Math.cos(a), y = (u - n / 2) * dy;
+      var edge = Math.min(1, Math.min(u, n - u) / 1.5);
+      var p = nodes[i];
+      p.style.transform = 'perspective(1500px) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateY(' + (a * 180 / Math.PI).toFixed(2) + 'deg) scale(' + scale + ')';
+      p.style.opacity = edge.toFixed(3);
+      p.style.zIndex = String(Math.round(z + R));
+    }
+  }
+
+  // Drag (horizontal) turns the helix; vertical swipes keep scrolling the page.
+  var sx = null, last = 0;
+  stage.addEventListener('pointerdown', function (e) { sx = e.clientX; last = e.clientX; stage.classList.add('is-dragging'); });
+  window.addEventListener('pointermove', function (e) {
+    if (sx === null) return;
+    var d = (e.clientX - last) / (R * 0.5); last = e.clientX;
+    drag += d; dragV = d;
+  });
+  window.addEventListener('pointerup', function () { sx = null; stage.classList.remove('is-dragging'); });
+  window.addEventListener('pointercancel', function () { sx = null; stage.classList.remove('is-dragging'); });
+
+  var raf = 0, visible = false, t0 = 0;
+  function loop(t) {
+    var dt = Math.min(0.05, (t - t0) / 1000 || 0); t0 = t;
+    if (!reduce && sx === null) { drift += dt * 0.35; drag += dragV; dragV *= 0.92; }
+    render();
+    raf = visible ? requestAnimationFrame(loop) : 0;
+  }
+  new IntersectionObserver(function (e) {
+    visible = e[0].isIntersecting;
+    if (visible && !raf) { t0 = performance.now(); raf = requestAnimationFrame(loop); }
+  }).observe(stage);
+  window.addEventListener('resize', function () { measure(); render(); }, { passive: true });
+  pick(0); measure(); render();
+})();
+</script>
 
   <!-- GA4 + WhatsApp click tracking (ga4-wa-tracking) -->
   <script>
