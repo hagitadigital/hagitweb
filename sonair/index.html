@@ -223,6 +223,39 @@ a.label-cta:hover{color:var(--copper);border-color:var(--copper)}
 @media (max-width:520px){.icons{grid-template-columns:repeat(2,1fr)}.parts{grid-template-columns:1fr}}
 
 /* ---------- RITUEL (configurator) ---------- */
+
+/* ============ SIGNATURES: three ways to listen, between the film and the ritual ============ */
+.sigs{position:relative;z-index:3;background:var(--bg);padding:clamp(60px,10vh,120px) 0 clamp(40px,7vh,80px);border-top:1px solid var(--line);overflow:hidden}
+.sigs .head{max-width:640px;margin-bottom:clamp(26px,5vh,48px)}
+.sigs .head .tag{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.sigs .head h2{font-weight:400;font-size:clamp(32px,4vw,58px);line-height:1.08;margin-top:8px}
+.sigs .head .he{font-size:clamp(19px,2vw,25px);font-weight:300;margin-top:12px}
+.sigs .head p{font-size:16.5px;line-height:1.8;color:var(--ink-2);margin-top:12px}
+.sig-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,34px);align-items:center}
+.sig{position:relative;border:0;padding:0;background:none;text-align:right;cursor:pointer;font-family:inherit;color:var(--ink);display:flex;flex-direction:column;gap:14px}
+.sig .frame{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:var(--pearl);box-shadow:0 30px 60px -36px rgba(28,31,36,.45);transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s}
+.sig canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sig .num{position:absolute;top:14px;left:16px;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.14em;color:rgba(28,31,36,.7);direction:ltr}
+.sig .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sig .name{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.2vw,32px);font-weight:500;direction:ltr}
+.sig .he{font-size:15px;color:var(--ink-2)}
+.sig .line{font-size:15px;line-height:1.7;color:var(--ink-2);min-height:3.4em}
+.sig .wave{width:100%;height:30px;display:block}
+.sig .wave path{fill:none;stroke:var(--ink);stroke-width:1.2;opacity:.55}
+.sig .pick{align-self:flex-start;font-size:13px;letter-spacing:.06em;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.sig:hover .frame,.sig:focus-visible .frame,.sig.is-on .frame{transform:translateY(-8px);box-shadow:0 44px 70px -38px rgba(28,31,36,.55)}
+.sig:focus-visible{outline:none}
+.sig:focus-visible .frame{outline:2px solid var(--ink);outline-offset:4px}
+.sig--mid .frame{transform:scale(1.04)}
+.sig--mid:hover .frame,.sig--mid.is-on .frame{transform:scale(1.04) translateY(-8px)}
+.sigs .hint{margin-top:22px;font-size:14px;color:var(--ink-3)}
+@media (max-width:900px){
+  .sig-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:6px 11vw 18px;margin:0 calc(-1 * min(6vw,72px));scrollbar-width:none}
+  .sig-row::-webkit-scrollbar{display:none}
+  .sig{flex:0 0 78vw;scroll-snap-align:center}
+  .sig--mid .frame{transform:none}
+}
+
 .rituel{position:relative;z-index:3;background:var(--bg-2);padding:clamp(60px,9vh,120px) 0;border-top:1px solid var(--line)}
 .rituel .head{max-width:640px;margin-bottom:clamp(28px,5vh,52px)}
 .rituel .head h2{font-weight:400;font-size:clamp(32px,4vw,58px);line-height:1.08}
@@ -544,6 +577,41 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- ======================= SIGNATURES — three ways to listen ======================= -->
+<section class="sigs" id="signatures" aria-labelledby="sigsTitle">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="tag en">Sound Signature</p>
+      <h2 class="en" id="sigsTitle">Three Ways to Listen</h2>
+      <p class="he">שלוש חתימות. אותו Sonair.</p>
+      <p>החתימה הצלילית היא הבחירה הראשונה. העבירי את העכבר על כרטיס כדי לראות איך הצליל יוצא ממנו, ובחרי אחד כדי להתחיל לבנות.</p>
+    </div>
+    <div class="sig-row">
+      <button type="button" class="sig reveal" data-sig="balanced" data-img="img/sig-balanced.webp" aria-label="לבחור את החתימה Balanced, מאוזן">
+        <span class="frame"><canvas aria-hidden="true"></canvas><span class="num">01</span></span>
+        <span class="meta"><span class="he">מאוזן</span><span class="name">Balanced</span></span>
+        <svg class="wave" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+        <span class="line">גלים רכים ושווים לשני הכיוונים. ה-Sonair כמו שהוא נולד.</span>
+        <span class="pick">לבחור ולהתחיל לבנות ←</span>
+      </button>
+      <button type="button" class="sig sig--mid reveal" data-sig="bass" data-img="img/sig-bass.webp" aria-label="לבחור את החתימה Deep Bass, בס עמוק">
+        <span class="frame"><canvas aria-hidden="true"></canvas><span class="num">02</span></span>
+        <span class="meta"><span class="he">בס עמוק</span><span class="name">Deep Bass</span></span>
+        <svg class="wave" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+        <span class="line">גל ארוך וכבד שיושב נמוך. מרגישים אותו בכתפיים לפני האוזניים.</span>
+        <span class="pick">לבחור ולהתחיל לבנות ←</span>
+      </button>
+      <button type="button" class="sig reveal" data-sig="vocal" data-img="img/sig-vocal.webp" aria-label="לבחור את החתימה Vocal Clarity, בהירות קולית">
+        <span class="frame"><canvas aria-hidden="true"></canvas><span class="num">03</span></span>
+        <span class="meta"><span class="he">בהירות קולית</span><span class="name">Vocal Clarity</span></span>
+        <svg class="wave" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+        <span class="line">קווים דקים וצפופים סביב הראש. כל מילה מגיעה לבד.</span>
+        <span class="pick">לבחור ולהתחיל לבנות ←</span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= LE RITUEL — configurator ======================= -->
 <section class="rituel" id="rituel" aria-label="הכיני את ה-Sonair שלך">
   <div class="wrap">
@@ -800,6 +868,109 @@ const FINISHES=[
     if(typeof fbq==='function') fbq('trackCustom','WorldRitualCreate',{world:'SONAIR'});
   });
   render();
+  // the signature cards above hand their choice to the builder
+  window.sonairPickSig=function(id){
+    if(!SIGS.some(x=>x.id===id)) return;
+    st.sig=id; st.created=false;
+    $('optSig').querySelectorAll('.pill').forEach(p=>p.setAttribute('aria-pressed',p.dataset.id===id));
+    render('sig');
+  };
+  window.sonairWave=wavePath; window.sonairSigs=SIGS;
+})();
+
+/* ============ SIGNATURES — the sound leaves the person; each signature smears differently ============ */
+(function(){
+  const cards=[...document.querySelectorAll('.sig')]; if(!cards.length) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // how the streaks move, per signature: rows they live in (fractions of the card), band height, wave
+  const LOOK={
+    balanced:{y0:.05, y1:.97, band:2, amp:5,  freq:.02,  speed:1.1, both:true, tint:'201,183,154'},
+    bass:    {y0:.42, y1:1.0, band:3, amp:12, freq:.009, speed:.6,  tint:'43,47,54'},
+    vocal:   {y0:.03, y1:.62, band:1, amp:3,  freq:.06,  speed:2.2, tint:'141,154,139'}
+  };
+  cards.forEach(c=>{ const w=window.sonairSigs&&window.sonairSigs.find(x=>x.id===c.dataset.sig); if(w&&window.sonairWave) c.querySelector('.wave path').setAttribute('d',window.sonairWave(w.wave)); });
+
+  // her silhouette, row by row: skin and hair are warm (R well above B), the studio is neutral silver
+  function edges(img){
+    const c=document.createElement('canvas'), w=c.width=img.naturalWidth, h=c.height=img.naturalHeight, x=c.getContext('2d');
+    x.drawImage(img,0,0); const d=x.getImageData(0,0,w,h).data, L=new Float32Array(h).fill(-1), R=new Float32Array(h).fill(-1);
+    const warm=(px,py)=>{ const i=(py*w+px)*4; return d[i]-d[i+2]>28; };
+    for(let y=0;y<h;y++){
+      for(let x0=0;x0<w-4;x0++) if(warm(x0,y)&&warm(x0+2,y)&&warm(x0+4,y)){ L[y]=x0/w; break; }
+      for(let x0=w-1;x0>4;x0--) if(warm(x0,y)&&warm(x0-2,y)&&warm(x0-4,y)){ R[y]=x0/w; break; }
+    }
+    const smooth=a=>a.map((v,y)=>{ let s=0,n=0; for(let k=-6;k<=6;k++){ const u=a[y+k]; if(u>=0){ s+=u; n++; } } return n>6?s/n:-1; });
+    return {L:smooth(L),R:smooth(R),h};
+  }
+
+  const S=cards.map(card=>{
+    const cv=card.querySelector('canvas'), ctx=cv.getContext('2d'), img=new Image(), off=document.createElement('canvas');
+    const o={card,cv,ctx,img,off,octx:off.getContext('2d'),L:LOOK[card.dataset.sig],k:.35,target:.35,px:.5,ready:false};
+    img.onload=()=>{ o.E=edges(img); o.ready=true; size(o); draw(o,0); }; img.src=card.dataset.img;
+    card.addEventListener('pointerenter',()=>{ o.target=1; });
+    card.addEventListener('pointerleave',()=>{ o.target=.35; o.px=.5; });
+    card.addEventListener('pointermove',e=>{ const r=cv.getBoundingClientRect(); o.px=Math.min(1,Math.max(0,(e.clientY-r.top)/r.height)); });
+    card.addEventListener('focus',()=>{ o.target=1; }); card.addEventListener('blur',()=>{ o.target=.35; });
+    card.addEventListener('click',()=>{
+      if(window.sonairPickSig) window.sonairPickSig(card.dataset.sig);
+      cards.forEach(x=>x.classList.toggle('is-on',x===card));
+      const r=document.getElementById('rituel'); if(r) r.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      if(typeof gtag==='function') gtag('event','world_interact',{world:'SONAIR',action:'signature_card',sig:card.dataset.sig});
+    });
+    return o;
+  });
+  function size(o){
+    const r=o.cv.getBoundingClientRect(), d=Math.min(2,devicePixelRatio||1);
+    o.cv.width=o.off.width=Math.round(r.width*d); o.cv.height=o.off.height=Math.round(r.height*d);
+  }
+  // one side: each row's slit sits just inside her edge and is stretched outward (dir -1 left, +1 right), fading
+  function streaks(o,t,dir){
+    const {octx:c,img,L,E}=o, W=o.cv.width, H=o.cv.height, sx=img.naturalWidth/W, sy=img.naturalHeight/H;
+    const band=Math.max(1,Math.round(L.band*W/400)), u=W/400, k=o.k, edge=dir<0?E.L:E.R;
+    c.clearRect(0,0,W,H);
+    for(let y=Math.round(L.y0*H); y<L.y1*H; y+=band){
+      const e=edge[Math.min(E.h-1,Math.round(y*sy))]; if(e<0) continue;
+      const v=y/H, focus=1-Math.min(1,Math.abs(v-o.px)*1.5);
+      // the slit stays on her edge (so it always carries her colour); the wave shapes each streak's length
+      const w01=((Math.sin(y*L.freq/u+t*L.speed)+.4*Math.sin(y*L.freq*2.7/u-t*L.speed*1.6))/1.4+1)/2;
+      const x0=e*W - dir*3*u + Math.sin(t*3+y*.2)*u*.6;
+      const room=dir<0?x0:W-x0, len=room*k*(.55+.45*focus)*(1-Math.min(1,L.amp/14)*.6*(1-w01));
+      if(len<2) continue;
+      c.globalAlpha=1;
+      if(dir<0) c.drawImage(img,x0*sx,y*sy,Math.max(1,sx),band*sy, x0-len,y,len,band);
+      else      c.drawImage(img,x0*sx,y*sy,Math.max(1,sx),band*sy, x0,y,len,band);
+      // each streak fades along its own length
+      const g=c.createLinearGradient(x0,0,x0+dir*len,0);
+      g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(.55,'rgba(0,0,0,.3)'); g.addColorStop(1,'rgba(0,0,0,1)');
+      c.globalCompositeOperation='destination-out'; c.fillStyle=g;              // erases only inside this row
+      c.fillRect(dir<0?x0-len:x0,y,len,band);
+      c.globalCompositeOperation='source-over';
+    }
+    c.globalCompositeOperation='source-atop'; c.fillStyle=`rgba(${L.tint},${.18*k})`; c.fillRect(0,0,W,H);
+    c.globalCompositeOperation='source-over';
+    o.ctx.drawImage(o.off,0,0);
+  }
+  function draw(o,t){
+    if(!o.ready) return;
+    o.ctx.drawImage(o.img,0,0,o.cv.width,o.cv.height);
+    streaks(o,t,-1);
+    if(o.L.both) streaks(o,t,1);
+  }
+  let raf=0, vis=false, t0=performance.now();
+  let fr=0;
+  function loop(now){
+    const t=(now-t0)/1000; fr++;
+    // the card in play redraws every frame; the resting ones every third
+    S.forEach(o=>{ o.k+=(o.target-o.k)*.06; if(o.k>.4||fr%3===0) draw(o,t); });
+    raf=vis&&!reduce?requestAnimationFrame(loop):0;
+  }
+  // phones have no hover: the card in the middle of the strip is the one that sings
+  if(matchMedia('(hover: none)').matches && 'IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{ const o=S.find(x=>x.card===e.target); if(o) o.target=e.isIntersecting?1:.3; }),{root:document.querySelector('.sig-row'),threshold:.75});
+    S.forEach(o=>io.observe(o.card));
+  }
+  new IntersectionObserver(es=>{ vis=es[0].isIntersecting; if(vis&&!raf&&!reduce) raf=requestAnimationFrame(loop); }).observe(document.getElementById('signatures'));
+  addEventListener('resize',()=>S.forEach(o=>{ size(o); draw(o,0); }),{passive:true});
 })();
 </script>
 
