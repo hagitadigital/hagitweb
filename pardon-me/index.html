@@ -234,7 +234,7 @@ a{color:inherit}
 /* the cascade: ads, prints and shouts fall on one diagonal. Moving, the plates slip out of register;
    standing still, everything is polite again. --m (misregistration px) and --dr (extra tilt) come from scroll speed. */
 .ads{position:relative;height:clamp(620px,56vw,800px);margin-top:36px;--m:0;--dr:0;--t:0}
-.cc{position:absolute;left:var(--x);top:var(--y);width:var(--w);z-index:var(--z,1);
+.cc{container-type:inline-size;position:absolute;left:var(--x);top:var(--y);width:var(--w);z-index:var(--z,1);
   transform:translate(-50%,-50%) translate(calc(var(--t)*var(--k,0)*1px),calc(var(--t)*var(--k,0)*-.6px)) rotate(calc(var(--r)*1deg + var(--dr)*var(--sg,1)*1deg));
   filter:drop-shadow(calc(var(--m)*1px) 0 0 rgba(207,224,106,.9)) drop-shadow(calc(var(--m)*-1px) calc(var(--m)*.4px) 0 rgba(185,211,232,.9)) drop-shadow(0 18px 22px rgba(40,6,20,.35));
   will-change:transform,filter}
@@ -243,11 +243,11 @@ a{color:inherit}
 .cc .card{display:block;aspect-ratio:var(--ar,4/5);overflow:hidden;position:relative}
 .cc .card img{width:100%;height:100%;object-fit:cover;display:block}
 .cc .yell{display:grid;place-items:center;text-align:center;direction:ltr;padding:10%;font-family:var(--loud);font-weight:700;text-transform:uppercase;line-height:.88;
-  font-size:clamp(30px,3.4vw,52px);text-shadow:calc(var(--m)*.6px) 0 0 rgba(185,211,232,.9),calc(var(--m)*-.6px) 0 0 rgba(207,224,106,.9)}
+  font-size:clamp(16px,20cqw,60px);text-shadow:calc(var(--m)*.6px) 0 0 rgba(185,211,232,.9),calc(var(--m)*-.6px) 0 0 rgba(207,224,106,.9)}
 .cc .yell--lime{background:var(--lime);color:var(--garden)}
 .cc .yell--porc{background:var(--porcelain);color:var(--berry)}
-.cc .yell--soft{background:var(--porcelain);color:var(--garden);font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;font-size:clamp(26px,2.6vw,40px);line-height:1.1}
-.cc .yell small{display:block;font-family:var(--sans);font-weight:500;text-transform:none;font-size:12px;letter-spacing:.18em;margin-top:12px;opacity:.75}
+.cc .yell--soft{background:var(--porcelain);color:var(--garden);font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;font-size:clamp(16px,18cqw,44px);line-height:1.1}
+.cc .yell small{display:block;font-family:var(--sans);font-weight:500;text-transform:none;font-size:clamp(9px,6cqw,12px);letter-spacing:.18em;margin-top:12px;opacity:.75}
 @media(max-width:900px){
   .ads{height:auto;display:flex;flex-direction:column;align-items:center;padding:10px 0 30px}
   .cc{position:relative;left:auto;top:auto;width:var(--mw,58%);margin-top:var(--mt,-44px);margin-inline-start:var(--mx,0);
@@ -256,13 +256,13 @@ a{color:inherit}
   .cc--ad{--mw:84%}
 }
 @media (prefers-reduced-motion:reduce){.cc{filter:drop-shadow(0 18px 22px rgba(40,6,20,.35))}}
-.ad{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:none;border:0;padding:0;background:#000;display:block;width:100%;font:inherit;color:inherit;text-align:center}
+.ad{container-type:inline-size;position:relative;aspect-ratio:4/5;overflow:hidden;cursor:none;border:0;padding:0;background:#000;display:block;width:100%;font:inherit;color:inherit;text-align:center}
 @media (hover:none){.ad{cursor:pointer}}
 .ad .truth{position:absolute;inset:0}
 .ad .truth img{width:100%;height:100%;object-fit:cover}
 .ad .truth .t{position:absolute;inset:7% 0 auto 0;direction:ltr;padding:0 6%}
-.ad .truth .t b{display:inline;font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,60px);line-height:1.02;color:var(--porcelain);background:var(--berry);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.ad .truth .t i{display:inline-block;margin-top:10px;font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);color:var(--garden);background:var(--lime);padding:.04em .4em}
+.ad .truth .t b{display:inline;font-family:var(--loud);font-weight:700;text-transform:uppercase;font-size:clamp(17px,9.5cqw,60px);line-height:1.02;color:var(--porcelain);background:var(--berry);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ad .truth .t i{display:inline-block;margin-top:8px;font-family:var(--serif);font-size:clamp(13px,6cqw,24px);color:var(--garden);background:var(--lime);padding:.04em .4em}
 .ad .polite{position:absolute;inset:0;background:var(--porcelain);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:13% 8% 9%;gap:12px;
   -webkit-mask-image:radial-gradient(var(--r,0px) calc(var(--r,0px)*1.4) at var(--x,50%) var(--y,50%),transparent 98%,#000 100%);
           mask-image:radial-gradient(var(--r,0px) calc(var(--r,0px)*1.4) at var(--x,50%) var(--y,50%),transparent 98%,#000 100%)}
@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="cc" style="--x:11%;--y:38%;--w:14%;--r:8;--sg:-1;--k:-38;--z:2;--mx:-30%;--mw:46%" aria-hidden="true">
         <span class="card"><img src="../images/museum/pm-bad-influence.webp" alt="" width="560" height="560" loading="lazy"></span>
       </div>
-      <div class="cc" style="--x:37%;--y:90%;--w:14%;--r:-7;--sg:1;--k:30;--z:6;--mx:28%;--mw:50%" aria-hidden="true">
+      <div class="cc" style="--x:45%;--y:89%;--w:13%;--r:-7;--sg:1;--k:30;--z:6;--mx:28%;--mw:50%" aria-hidden="true">
         <span class="card yell yell--soft" style="--ar:1/1">Kind of.</span>
       </div>
     </div>
