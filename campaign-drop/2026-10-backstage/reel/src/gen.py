@@ -188,10 +188,10 @@ for k, st in enumerate(STOPS):
 bubbles = ''
 for k, st in enumerate(STOPS):
     a = st[0] + .1 if k else 9.7
-    b = STOPS[k + 1][1] + .15 if k < n - 1 else 16.8
+    b = st[1] + .15 if k < n - 1 else 16.8
     if st[6] is None:
-        inner = f'<div style="text-align: center; {FR}; font-size: 60px; font-weight: 500; color: {INK}">{st[7]}</div><div style="text-align: center; font-size: 28px; color: {INK2}">ארבעים דקות של ידיים, אור טבעי ושאלות.</div>'
-        bubbles += f'<div class="stack" data-show="{a},{b}" data-fade="0.25" style="display: flex; flex-direction: column; justify-content: center; gap: 12px" dir="rtl">{inner}</div>'
+        inner = f'<div style="text-align: center; {FR}; font-size: 66px; font-weight: 500; line-height: 1.15; color: {INK}">{st[7]}</div><div style="text-align: center; font-size: 30px; line-height: 1.5; color: {INK2}">ארבעים דקות של ידיים, אור טבעי ושאלות.</div>'
+        bubbles += f'<div class="stack" data-show="{a},{b}" data-fade="0.25" style="display: flex; flex-direction: column; justify-content: center; gap: 22px" dir="rtl">{inner}</div>'
     else:
         bubbles += (f'<div class="stack" data-show="{a},{b}" data-fade="0.25" style="display: flex; align-items: center" dir="rtl">'
                     f'<div style="width: 100%; box-sizing: border-box; padding: 24px 30px; background: #FFFFFF; border-radius: 26px 26px 26px 8px; box-shadow: 0 18px 40px -22px rgba(0,0,0,.5); display: flex; flex-direction: column; gap: 6px">'
@@ -202,7 +202,7 @@ def strip(on):
 strips = ''
 for k, st in enumerate(STOPS):
     a = st[0] if k else 9.7
-    b = STOPS[k + 1][1] + .3 if k < n - 1 else 16.8
+    b = STOPS[k + 1][0] + .1 if k < n - 1 else 16.8
     strips += f'<div class="stack" data-show="{a},{b}" data-fade="0.2" style="display: flex; gap: 10px" dir="rtl">{strip(st[8])}</div>'
 
 DIAL = f'''
