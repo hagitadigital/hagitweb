@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="he"><head><meta charset="utf-8"><title>The Translation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+html,body{margin:0;background:#FAF8F3} body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#FAF8F3}
+.stack{position:absolute;inset:0} .mask{overflow:hidden;display:block}
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;animation-timing-function:linear}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg;animation-timing-function:linear}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.rl{position:absolute;inset:0;animation-timing-function:linear}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.film .gj{animation:gj .18s steps(2) infinite!important}@keyframes gj{0%{transform:translate(0,0)}50%{transform:translate(3px,-2px)}}
+.film .smx{animation:smx 1.1s ease-in-out infinite!important}@keyframes smx{0%,100%{transform:translateX(0)}50%{transform:translateX(-26px)}}
+.film .hx{animation:hx 3s linear infinite!important}@keyframes hx{to{transform:rotateY(360deg)}}
+.film .rgx{animation:rgx 4s linear infinite!important}@keyframes rgx{to{transform:rotate(360deg)}}
+@keyframes hook{0%,9.000%{opacity:1}10.000%,100%{opacity:0}}
+@keyframes rule{0%,9.000%{opacity:0}10.000%,16.000%{opacity:1}17.000%,100%{opacity:0}}
+@keyframes r1{0%,10.000%{transform:translateY(110%)}11.667%,100%{transform:none}}
+@keyframes r2{0%,11.333%{transform:translateY(110%)}13.000%,100%{transform:none}}
+@keyframes ln0{0%,10.000%{stroke-dashoffset:1}15.333%,100%{stroke-dashoffset:0}}
+@keyframes bl0{0%,9.833%{offset-distance:0%;opacity:0}10.000%{offset-distance:0%;opacity:1}15.333%,16.000%{offset-distance:100%;opacity:1}16.667%,100%{offset-distance:100%;opacity:0}}
+@keyframes rl0{0%,10.000%{transform:rotate(0)}15.333%,100%{transform:rotate(-400deg)}}
+@keyframes scpm{0%,15.833%{opacity:0}16.667%,32.833%{opacity:1}33.833%,100%{opacity:0}}
+@keyframes trpm{0%,17.000%{opacity:0;transform:translateY(30px)}18.333%,21.667%{opacity:1;transform:none}24.000%,100%{opacity:.9;transform:translate(290px,-40px) scale(.55)}}
+@keyframes stpm{0%,20.167%{transform:scaleX(0)}21.167%,100%{transform:scaleX(1)}}
+@keyframes prpm{0%,19.000%{transform:translateY(110%)}20.667%,100%{transform:none}}
+@keyframes phpm{0%,19.833%{opacity:0}21.333%,100%{opacity:1}}
+@keyframes ptpm{0%,22.667%{clip-path:circle(0px at 50% 50%)}25.333%,100%{clip-path:circle(120% at 50% 50%)}}
+@keyframes rgpm{0%,22.667%{transform:scale(0);opacity:0}22.833%{opacity:1}25.333%{transform:scale(1);opacity:1}26.333%,100%{transform:scale(1.05);opacity:0}}
+@keyframes c1pm{0%,24.333%{transform:translateY(110%)}26.000%,100%{transform:none}}
+@keyframes c2pm{0%,25.333%{transform:translateY(110%)}27.000%,100%{transform:none}}
+@keyframes lnpm{0%,20.667%{stroke-dashoffset:1}22.833%,100%{stroke-dashoffset:0}}
+@keyframes blpm{0%,20.500%{offset-distance:0%;opacity:0}20.667%{offset-distance:0%;opacity:1}22.833%{offset-distance:100%;opacity:1;transform:scale(1)}24.000%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+@keyframes rlpm{0%,20.667%{transform:rotate(0)}22.833%,100%{transform:rotate(-300deg)}}
+@keyframes scso{0%,32.167%{opacity:0}33.000%,49.167%{opacity:1}50.167%,100%{opacity:0}}
+@keyframes trso{0%,33.333%{opacity:0;transform:translateY(30px)}34.667%,38.000%{opacity:1;transform:none}40.333%,100%{opacity:.9;transform:translate(290px,-40px) scale(.55)}}
+@keyframes stso{0%,36.500%{transform:scaleX(0)}37.500%,100%{transform:scaleX(1)}}
+@keyframes prso{0%,35.333%{transform:translateY(110%)}37.000%,100%{transform:none}}
+@keyframes phso{0%,36.167%{opacity:0}37.667%,100%{opacity:1}}
+@keyframes ptso{0%,39.000%{clip-path:circle(0px at 50% 50%)}41.667%,100%{clip-path:circle(120% at 50% 50%)}}
+@keyframes rgso{0%,39.000%{transform:scale(0);opacity:0}39.167%{opacity:1}41.667%{transform:scale(1);opacity:1}42.667%,100%{transform:scale(1.05);opacity:0}}
+@keyframes c1so{0%,40.667%{transform:translateY(110%)}42.333%,100%{transform:none}}
+@keyframes c2so{0%,41.667%{transform:translateY(110%)}43.333%,100%{transform:none}}
+@keyframes lnso{0%,37.000%{stroke-dashoffset:1}39.167%,100%{stroke-dashoffset:0}}
+@keyframes blso{0%,36.833%{offset-distance:0%;opacity:0}37.000%{offset-distance:0%;opacity:1}39.167%{offset-distance:100%;opacity:1;transform:scale(1)}40.333%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+@keyframes rlso{0%,37.000%{transform:rotate(0)}39.167%,100%{transform:rotate(-300deg)}}
+@keyframes scsp{0%,48.500%{opacity:0}49.333%,65.500%{opacity:1}66.500%,100%{opacity:0}}
+@keyframes trsp{0%,49.667%{opacity:0;transform:translateY(30px)}51.000%,54.333%{opacity:1;transform:none}56.667%,100%{opacity:.9;transform:translate(290px,-40px) scale(.55)}}
+@keyframes stsp{0%,52.833%{transform:scaleX(0)}53.833%,100%{transform:scaleX(1)}}
+@keyframes prsp{0%,51.667%{transform:translateY(110%)}53.333%,100%{transform:none}}
+@keyframes phsp{0%,52.500%{opacity:0}54.000%,100%{opacity:1}}
+@keyframes ptsp{0%,55.333%{clip-path:circle(0px at 50% 50%)}58.000%,100%{clip-path:circle(120% at 50% 50%)}}
+@keyframes rgsp{0%,55.333%{transform:scale(0);opacity:0}55.500%{opacity:1}58.000%{transform:scale(1);opacity:1}59.000%,100%{transform:scale(1.05);opacity:0}}
+@keyframes c1sp{0%,57.000%{transform:translateY(110%)}58.667%,100%{transform:none}}
+@keyframes c2sp{0%,58.000%{transform:translateY(110%)}59.667%,100%{transform:none}}
+@keyframes lnsp{0%,53.333%{stroke-dashoffset:1}55.500%,100%{stroke-dashoffset:0}}
+@keyframes blsp{0%,53.167%{offset-distance:0%;opacity:0}53.333%{offset-distance:0%;opacity:1}55.500%{offset-distance:100%;opacity:1;transform:scale(1)}56.667%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+@keyframes rlsp{0%,53.333%{transform:rotate(0)}55.500%,100%{transform:rotate(-300deg)}}
+@keyframes scrg{0%,64.833%{opacity:0}65.667%,81.833%{opacity:1}82.833%,100%{opacity:0}}
+@keyframes trrg{0%,66.000%{opacity:0;transform:translateY(30px)}67.333%,70.667%{opacity:1;transform:none}73.000%,100%{opacity:.9;transform:translate(290px,-40px) scale(.55)}}
+@keyframes strg{0%,69.167%{transform:scaleX(0)}70.167%,100%{transform:scaleX(1)}}
+@keyframes prrg{0%,68.000%{transform:translateY(110%)}69.667%,100%{transform:none}}
+@keyframes phrg{0%,68.833%{opacity:0}70.333%,100%{opacity:1}}
+@keyframes ptrg{0%,71.667%{clip-path:circle(0px at 50% 50%)}74.333%,100%{clip-path:circle(120% at 50% 50%)}}
+@keyframes rgrg{0%,71.667%{transform:scale(0);opacity:0}71.833%{opacity:1}74.333%{transform:scale(1);opacity:1}75.333%,100%{transform:scale(1.05);opacity:0}}
+@keyframes c1rg{0%,73.333%{transform:translateY(110%)}75.000%,100%{transform:none}}
+@keyframes c2rg{0%,74.333%{transform:translateY(110%)}76.000%,100%{transform:none}}
+@keyframes lnrg{0%,69.667%{stroke-dashoffset:1}71.833%,100%{stroke-dashoffset:0}}
+@keyframes blrg{0%,69.500%{offset-distance:0%;opacity:0}69.667%{offset-distance:0%;opacity:1}71.833%{offset-distance:100%;opacity:1;transform:scale(1)}73.000%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+@keyframes rlrg{0%,69.667%{transform:rotate(0)}71.833%,100%{transform:rotate(-300deg)}}
+@keyframes ans{0%,81.667%{opacity:0}82.667%,91.000%{opacity:1}92.000%,100%{opacity:0}}
+@keyframes a1{0%,83.000%{transform:translateY(110%)}84.667%,100%{transform:none}}
+@keyframes a2{0%,84.333%{transform:translateY(110%)}86.000%,100%{transform:none}}
+@keyframes a3{0%,86.333%{transform:translateY(110%)}88.000%,100%{transform:none}}
+@keyframes a4{0%,87.667%{transform:translateY(110%)}89.333%,100%{transform:none}}
+@keyframes out{0%,91.000%{opacity:0}92.000%,100%{opacity:1}}
+@keyframes o1{0%,92.000%{opacity:0;transform:translateY(30px)}93.667%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,93.000%{opacity:0;transform:translateY(30px)}94.667%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.667%{opacity:0;transform:translateY(30px)}96.333%,100%{opacity:1;transform:none}}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+</style></head>
+<body data-duration="30"><div id="stage"><div class="film stack">
+
+<div class="stack" style="animation-name:rule;background:#FAF8F3">
+  <div style="position:absolute;top:560px;left:80px;right:80px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:r1;font-family:'Heebo',sans-serif;font-size:96px;font-weight:300;line-height:1.15;color:#6B563F">קודם ההבטחה.</span></span>
+    <span class="mask"><span style="display:block;animation-name:r2;font-family:'Heebo',sans-serif;font-size:96px;font-weight:600;line-height:1.15;color:#C4765A">אחר כך האפקט.</span></span>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920"><path class="line" style="animation-name:ln0" pathLength="1" d="M1140 1180 C 860 1180 760 1000 540 1000"/></svg>
+  <div class="ball" style="animation-name:bl0;offset-path:path('M1140 1180 C 860 1180 760 1000 540 1000')"><div class="halo"></div><div class="sph"><div class="rl" style="animation-name:rl0"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position:absolute;top:1360px;left:80px;right:80px;text-align:center;font-family:'Heebo',sans-serif;font-size:38px;line-height:1.5;color:#6B563F" dir="rtl">
+    ארבעה אפקטים מהרשת. ארבעה עולמות.<br>ככה כל אחד <b style="font-weight:600">תורגם</b>.</div>
+</div>
+<div class="stack" style="animation-name:scpm;background:#F4E6EA">
+  <div style="position:absolute;top:70px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline" dir="rtl">
+    <span style="font-family:'Heebo',sans-serif;font-size:34px;font-weight:500;color:#6B563F">PARDON ME° · עולם מותג 29</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:34px;color:#C4765A" dir="ltr">01 / 04</span>
+  </div>
+  <div style="position:absolute;top:150px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:14px;animation-name:trpm">
+    <div style="position:relative;padding:6px 22px;border-radius:999px;background:#1B1B1F;color:#fff;font-family:'Heebo',sans-serif;font-size:26px" dir="rtl">הטרנד: גליץ' בניאון
+      <span style="position:absolute;left:10px;right:10px;top:50%;height:4px;background:#C4765A;transform-origin:right;animation-name:stpm"></span></div>
+    <div style="transform:scale(1);transform-origin:50% 0"><div style="position:relative;width:320.0px;height:310.0px"><div style="position:absolute;left:20.0px;top:15.0px;width:75.0px;height:95.0px;transform:rotate(-12deg);background:linear-gradient(135deg,#FF2E88,#E8FF3A);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">NEW</span></div><div style="position:absolute;left:66.0px;top:50.0px;width:75.0px;height:95.0px;transform:rotate(8deg);background:linear-gradient(135deg,#2E5BFF,#2EFFC0);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">DROP</span></div><div style="position:absolute;left:112.0px;top:85.0px;width:75.0px;height:95.0px;transform:rotate(-6deg);background:linear-gradient(135deg,#E8FF3A,#B04CFF);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">00</span></div><div style="position:absolute;left:158.0px;top:120.0px;width:75.0px;height:95.0px;transform:rotate(10deg);background:linear-gradient(135deg,#2EFFC0,#FF7A1A);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">FLUX</span></div><div style="position:absolute;left:204.0px;top:155.0px;width:75.0px;height:95.0px;transform:rotate(-9deg);background:linear-gradient(135deg,#B04CFF,#FF2E88);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">NOW</span></div><div style="position:absolute;left:250.0px;top:190.0px;width:75.0px;height:95.0px;transform:rotate(6deg);background:linear-gradient(135deg,#FF7A1A,#2E5BFF);box-shadow:4.0px 0 0 rgba(255,0,80,.55),-4.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:5.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:19.0px;color:#111;text-shadow:2.0px 0 #FF0050,-2.0px 0 #00C8FF">V2</span></div></div></div>
+  </div>
+  <div style="position:absolute;top:470px;left:60px;right:60px;text-align:center">
+    <span class="mask"><span style="display:block;animation-name:prpm;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1.1;color:#3E2F25" dir="ltr">Polite outside. Not sorry inside.</span></span>
+    <div style="animation-name:phpm;margin-top:10px;font-family:'Heebo',sans-serif;font-size:32px;color:#6B563F" dir="rtl"><span style="color:#C4765A">נגזר מ־</span>מנומס מבחוץ. לא מתנצל מבפנים.</div>
+  </div>
+  <div style="position:absolute;left:40px;top:760px;width:1000px;height:651px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(40,26,18,.28);animation-name:ptpm">
+    <div class="stack" data-seq="seq/pm_%03d.jpg" data-from="1" data-to="54" data-start="6.90" data-step="0.0556" data-fit="cover"></div>
+  </div>
+  <div style="position:absolute;left:480px;top:1025px;width:120px;height:120px;border-radius:50%;border:3px solid #C4765A;animation-name:rgpm"></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920"><path class="line" style="animation-name:lnpm" pathLength="1" d="M540 640 C 540 680 540 720 540 1085"/></svg>
+  <div class="ball" style="animation-name:blpm;offset-path:path('M540 640 C 540 680 540 720 540 1085')"><div class="halo"></div><div class="sph"><div class="rl" style="animation-name:rlpm"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position:absolute;top:1455px;left:70px;right:70px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:c1pm;font-family:'Heebo',sans-serif;font-size:52px;font-weight:300;line-height:1.2;color:#6B563F">הגליץ' הפך להדפסה</span></span>
+    <span class="mask"><span style="display:block;animation-name:c2pm;font-family:'Heebo',sans-serif;font-size:52px;font-weight:600;line-height:1.2;color:#C4765A">שיוצאת מהרישום כשגוללים.</span></span>
+  </div>
+</div>
+<div class="stack" style="animation-name:scso;background:#ECEEF1">
+  <div style="position:absolute;top:70px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline" dir="rtl">
+    <span style="font-family:'Heebo',sans-serif;font-size:34px;font-weight:500;color:#6B563F">SONAIR° · עולם מותג 23</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:34px;color:#C4765A" dir="ltr">02 / 04</span>
+  </div>
+  <div style="position:absolute;top:150px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:14px;animation-name:trso">
+    <div style="position:relative;padding:6px 22px;border-radius:999px;background:#1B1B1F;color:#fff;font-family:'Heebo',sans-serif;font-size:26px" dir="rtl">הטרנד: מריחת תנועה
+      <span style="position:absolute;left:10px;right:10px;top:50%;height:4px;background:#C4765A;transform-origin:right;animation-name:stso"></span></div>
+    <div style="transform:scale(1.3);transform-origin:50% 0"><div style="position:relative;width:320px;height:240px"><div class="smx" style="position:absolute;right:150px;top:40px;height:12px;width:120px;border-radius:6px;background:linear-gradient(to left,#FF2E88,transparent);animation-delay:-0.00s"></div><div class="smx" style="position:absolute;right:150px;top:56px;height:12px;width:173px;border-radius:6px;background:linear-gradient(to left,#2E5BFF,transparent);animation-delay:-0.13s"></div><div class="smx" style="position:absolute;right:150px;top:72px;height:12px;width:136px;border-radius:6px;background:linear-gradient(to left,#E8FF3A,transparent);animation-delay:-0.26s"></div><div class="smx" style="position:absolute;right:150px;top:88px;height:12px;width:189px;border-radius:6px;background:linear-gradient(to left,#2EFFC0,transparent);animation-delay:-0.39s"></div><div class="smx" style="position:absolute;right:150px;top:104px;height:12px;width:152px;border-radius:6px;background:linear-gradient(to left,#B04CFF,transparent);animation-delay:-0.52s"></div><div class="smx" style="position:absolute;right:150px;top:120px;height:12px;width:205px;border-radius:6px;background:linear-gradient(to left,#FF7A1A,transparent);animation-delay:-0.65s"></div><div class="smx" style="position:absolute;right:150px;top:136px;height:12px;width:168px;border-radius:6px;background:linear-gradient(to left,#FF2E88,transparent);animation-delay:-0.78s"></div><div class="smx" style="position:absolute;right:150px;top:152px;height:12px;width:131px;border-radius:6px;background:linear-gradient(to left,#2E5BFF,transparent);animation-delay:-0.91s"></div><div class="smx" style="position:absolute;right:150px;top:168px;height:12px;width:184px;border-radius:6px;background:linear-gradient(to left,#E8FF3A,transparent);animation-delay:-1.04s"></div><div class="smx" style="position:absolute;right:150px;top:184px;height:12px;width:147px;border-radius:6px;background:linear-gradient(to left,#2EFFC0,transparent);animation-delay:-1.17s"></div><div style="position:absolute;right:70px;top:30px;width:110px;height:150px;border-radius:55px 55px 40px 40px;background:#9A9AA2"></div></div></div>
+  </div>
+  <div style="position:absolute;top:470px;left:60px;right:60px;text-align:center">
+    <span class="mask"><span style="display:block;animation-name:prso;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1.1;color:#3E2F25" dir="ltr">A more human sound.</span></span>
+    <div style="animation-name:phso;margin-top:10px;font-family:'Heebo',sans-serif;font-size:32px;color:#6B563F" dir="rtl"><span style="color:#C4765A">נגזר מ־</span>צליל אנושי יותר.</div>
+  </div>
+  <div style="position:absolute;left:40px;top:760px;width:1000px;height:500px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(40,26,18,.28);animation-name:ptso">
+    <div class="stack" data-seq="seq/so_%03d.jpg" data-from="1" data-to="60" data-start="11.80" data-step="0.0500" data-fit="cover"></div>
+  </div>
+  <div style="position:absolute;left:480px;top:950px;width:120px;height:120px;border-radius:50%;border:3px solid #C4765A;animation-name:rgso"></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920"><path class="line" style="animation-name:lnso" pathLength="1" d="M540 640 C 540 680 540 720 540 1010"/></svg>
+  <div class="ball" style="animation-name:blso;offset-path:path('M540 640 C 540 680 540 720 540 1010')"><div class="halo"></div><div class="sph"><div class="rl" style="animation-name:rlso"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position:absolute;top:1304px;left:70px;right:70px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:c1so;font-family:'Heebo',sans-serif;font-size:52px;font-weight:300;line-height:1.2;color:#6B563F">המריחה הפכה לצליל</span></span>
+    <span class="mask"><span style="display:block;animation-name:c2so;font-family:'Heebo',sans-serif;font-size:52px;font-weight:600;line-height:1.2;color:#C4765A">שיוצא ממנה. שלוש חתימות.</span></span>
+  </div>
+</div>
+<div class="stack" style="animation-name:scsp;background:#F3EEE6">
+  <div style="position:absolute;top:70px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline" dir="rtl">
+    <span style="font-family:'Heebo',sans-serif;font-size:34px;font-weight:500;color:#6B563F">ספרי המותג · Les Livres</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:34px;color:#C4765A" dir="ltr">03 / 04</span>
+  </div>
+  <div style="position:absolute;top:150px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:14px;animation-name:trsp">
+    <div style="position:relative;padding:6px 22px;border-radius:999px;background:#1B1B1F;color:#fff;font-family:'Heebo',sans-serif;font-size:26px" dir="rtl">הטרנד: ספירלה בתלת־ממד
+      <span style="position:absolute;left:10px;right:10px;top:50%;height:4px;background:#C4765A;transform-origin:right;animation-name:stsp"></span></div>
+    <div style="transform:scale(1.3);transform-origin:50% 0"><div style="position:relative;width:320px;height:240px;perspective:600px"><div class="hx" style="position:absolute;left:160px;top:120px;transform-style:preserve-3d"><div style="position:absolute;left:-40px;top:-70px;width:80px;height:56px;background:#FF2E88;transform:rotateY(0deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:-46px;width:80px;height:56px;background:#2E5BFF;transform:rotateY(55deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:-22px;width:80px;height:56px;background:#E8FF3A;transform:rotateY(110deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:2px;width:80px;height:56px;background:#2EFFC0;transform:rotateY(165deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:26px;width:80px;height:56px;background:#B04CFF;transform:rotateY(220deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:50px;width:80px;height:56px;background:#FF7A1A;transform:rotateY(275deg) translateZ(110px);backface-visibility:hidden"></div><div style="position:absolute;left:-40px;top:74px;width:80px;height:56px;background:#FF2E88;transform:rotateY(330deg) translateZ(110px);backface-visibility:hidden"></div></div></div></div>
+  </div>
+  <div style="position:absolute;top:470px;left:60px;right:60px;text-align:center">
+    <span class="mask"><span style="display:block;animation-name:prsp;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1.1;color:#3E2F25" dir="ltr">One decision holds a world.</span></span>
+    <div style="animation-name:phsp;margin-top:10px;font-family:'Heebo',sans-serif;font-size:32px;color:#6B563F" dir="rtl"><span style="color:#C4765A">נגזר מ־</span>לכל עולם החלטה אחת שמחזיקה אותו.</div>
+  </div>
+  <div style="position:absolute;left:40px;top:760px;width:1000px;height:748px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(40,26,18,.28);animation-name:ptsp">
+    <div class="stack" data-seq="seq/sp_%03d.jpg" data-from="1" data-to="60" data-start="16.70" data-step="0.0500" data-fit="cover"></div>
+  </div>
+  <div style="position:absolute;left:480px;top:1074px;width:120px;height:120px;border-radius:50%;border:3px solid #C4765A;animation-name:rgsp"></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920"><path class="line" style="animation-name:lnsp" pathLength="1" d="M540 640 C 540 680 540 720 540 1134"/></svg>
+  <div class="ball" style="animation-name:blsp;offset-path:path('M540 640 C 540 680 540 720 540 1134')"><div class="halo"></div><div class="sph"><div class="rl" style="animation-name:rlsp"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position:absolute;top:1552px;left:70px;right:70px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:c1sp;font-family:'Heebo',sans-serif;font-size:52px;font-weight:300;line-height:1.2;color:#6B563F">הספירלה הפכה לשיטה:</span></span>
+    <span class="mask"><span style="display:block;animation-name:c2sp;font-family:'Heebo',sans-serif;font-size:52px;font-weight:600;line-height:1.2;color:#C4765A">החלטה, קודים, צבעים, נקודות מגע.</span></span>
+  </div>
+</div>
+<div class="stack" style="animation-name:scrg;background:#F5F0E8">
+  <div style="position:absolute;top:70px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline" dir="rtl">
+    <span style="font-family:'Heebo',sans-serif;font-size:34px;font-weight:500;color:#6B563F">הגלריה · 29 עולמות</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:34px;color:#C4765A" dir="ltr">04 / 04</span>
+  </div>
+  <div style="position:absolute;top:150px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:14px;animation-name:trrg">
+    <div style="position:relative;padding:6px 22px;border-radius:999px;background:#1B1B1F;color:#fff;font-family:'Heebo',sans-serif;font-size:26px" dir="rtl">הטרנד: טבעת תמונות
+      <span style="position:absolute;left:10px;right:10px;top:50%;height:4px;background:#C4765A;transform-origin:right;animation-name:strg"></span></div>
+    <div style="transform:scale(1.3);transform-origin:50% 0"><div style="position:relative;width:320px;height:240px"><div class="rgx" style="position:absolute;left:160px;top:120px"><div style="position:absolute;left:-12px;top:-12px;width:24px;height:24px;background:#FF2E88;transform:rotate(0deg) translateY(-95px) rotate(-0deg)"></div><div style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;background:#2E5BFF;transform:rotate(30deg) translateY(-95px) rotate(-30deg)"></div><div style="position:absolute;left:-24px;top:-24px;width:48px;height:48px;background:#E8FF3A;transform:rotate(60deg) translateY(-95px) rotate(-60deg)"></div><div style="position:absolute;left:-12px;top:-12px;width:24px;height:24px;background:#2EFFC0;transform:rotate(90deg) translateY(-95px) rotate(-90deg)"></div><div style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;background:#B04CFF;transform:rotate(120deg) translateY(-95px) rotate(-120deg)"></div><div style="position:absolute;left:-24px;top:-24px;width:48px;height:48px;background:#FF7A1A;transform:rotate(150deg) translateY(-95px) rotate(-150deg)"></div><div style="position:absolute;left:-12px;top:-12px;width:24px;height:24px;background:#FF2E88;transform:rotate(180deg) translateY(-95px) rotate(-180deg)"></div><div style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;background:#2E5BFF;transform:rotate(210deg) translateY(-95px) rotate(-210deg)"></div><div style="position:absolute;left:-24px;top:-24px;width:48px;height:48px;background:#E8FF3A;transform:rotate(240deg) translateY(-95px) rotate(-240deg)"></div><div style="position:absolute;left:-12px;top:-12px;width:24px;height:24px;background:#2EFFC0;transform:rotate(270deg) translateY(-95px) rotate(-270deg)"></div><div style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;background:#B04CFF;transform:rotate(300deg) translateY(-95px) rotate(-300deg)"></div><div style="position:absolute;left:-24px;top:-24px;width:48px;height:48px;background:#FF7A1A;transform:rotate(330deg) translateY(-95px) rotate(-330deg)"></div></div></div></div>
+  </div>
+  <div style="position:absolute;top:470px;left:60px;right:60px;text-align:center">
+    <span class="mask"><span style="display:block;animation-name:prrg;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1.1;color:#3E2F25" dir="ltr">Brand worlds. One signature.</span></span>
+    <div style="animation-name:phrg;margin-top:10px;font-family:'Heebo',sans-serif;font-size:32px;color:#6B563F" dir="rtl"><span style="color:#C4765A">נגזר מ־</span>עולמות מותג. חתימה אחת.</div>
+  </div>
+  <div style="position:absolute;left:40px;top:700px;width:1000px;height:962px;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(40,26,18,.28);animation-name:ptrg">
+    <div class="stack" data-seq="seq/rg_%03d.jpg" data-from="1" data-to="60" data-start="21.60" data-step="0.0500" data-fit="cover"></div>
+  </div>
+  <div style="position:absolute;left:480px;top:1121px;width:120px;height:120px;border-radius:50%;border:3px solid #C4765A;animation-name:rgrg"></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920"><path class="line" style="animation-name:lnrg" pathLength="1" d="M540 640 C 540 680 540 660 540 1181"/></svg>
+  <div class="ball" style="animation-name:blrg;offset-path:path('M540 640 C 540 680 540 660 540 1181')"><div class="halo"></div><div class="sph"><div class="rl" style="animation-name:rlrg"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position:absolute;top:1706px;left:70px;right:70px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:c1rg;font-family:'Heebo',sans-serif;font-size:52px;font-weight:300;line-height:1.2;color:#6B563F">הטבעת הפכה לארכיון:</span></span>
+    <span class="mask"><span style="display:block;animation-name:c2rg;font-family:'Heebo',sans-serif;font-size:52px;font-weight:600;line-height:1.2;color:#C4765A">העולם שבחזית גדל ומציג את עצמו.</span></span>
+  </div>
+</div>
+<div class="stack" style="animation-name:ans;background:#FAF8F3">
+  <div style="position:absolute;top:300px;left:30px;right:30px;display:flex;justify-content:center;gap:16px"><img src="seq/pm_054.jpg" alt="" style="width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 16px 30px rgba(40,26,18,.2)"><img src="seq/so_060.jpg" alt="" style="width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 16px 30px rgba(40,26,18,.2)"><img src="seq/sp_060.jpg" alt="" style="width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 16px 30px rgba(40,26,18,.2)"><img src="seq/rg_060.jpg" alt="" style="width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 16px 30px rgba(40,26,18,.2)"></div>
+  <div style="position:absolute;top:720px;left:70px;right:70px;text-align:center" dir="rtl">
+    <span class="mask"><span style="display:block;animation-name:a1;font-family:'Heebo',sans-serif;font-size:66px;font-weight:300;line-height:1.2;color:#6B563F">אפקט שלא נגזר מההבטחה</span></span>
+    <span class="mask"><span style="display:block;animation-name:a2;font-family:'Heebo',sans-serif;font-size:66px;font-weight:600;line-height:1.2;color:#6B563F">הוא קישוט.</span></span>
+    <div style="height:46px"></div>
+    <span class="mask"><span style="display:block;animation-name:a3;font-family:'Heebo',sans-serif;font-size:66px;font-weight:300;line-height:1.2;color:#6B563F">אפקט שנגזר ממנה</span></span>
+    <span class="mask"><span style="display:block;animation-name:a4;font-family:'Heebo',sans-serif;font-size:86px;font-weight:600;line-height:1.2;color:#C4765A">הוא מותג.</span></span>
+  </div>
+</div>
+<div class="stack" style="animation-name:out;background:#FAF8F3">
+  <div style="position:absolute;top:120px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div>
+  <div style="position:absolute;top:470px;left:70px;right:70px;text-align:center;animation-name:o1" dir="rtl">
+    <div style="font-family:'Heebo',sans-serif;font-size:52px;font-weight:300;line-height:1.3;color:#6B563F">לפני שאת שומרת עוד אפקט,</div>
+    <div style="font-family:'Heebo',sans-serif;font-size:84px;font-weight:600;line-height:1.2;color:#C4765A;margin-top:10px">מה ההבטחה שלך?</div>
+  </div>
+  <div style="position:absolute;top:1080px;left:0;right:0;display:flex;justify-content:center;animation-name:o2">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:26px 64px;background:#6B563F;color:#FAF8F3;border-radius:14px" dir="rtl">
+      <span style="font-family:'Heebo',sans-serif;font-size:42px;font-weight:500">אבחון פער המותג</span><span style="font-family:'Heebo',sans-serif;font-size:26px;opacity:.85">30 דק׳ · בלי עלות</span></div>
+  </div>
+  <div style="position:absolute;top:1320px;left:0;right:0;text-align:center;animation-name:o3;font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+</div>
+<div class="stack" style="animation-name:hook;background:#EEE6D8">
+  <div style="position:absolute;top:84px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:230px;left:80px;right:80px;text-align:right;font-family:'Heebo',sans-serif;font-size:78px;font-weight:600;line-height:1.16;color:#3E2F25" dir="rtl">
+    ראית אפקט מהמם<br>אצל מישהו אחר.<br>לשים אותו גם <span style="color:#C4765A">אצלך</span>?</div>
+  <div style="position:absolute;top:760px;left:190px;width:700px;height:860px;border-radius:44px;background:#0E0E12;box-shadow:0 40px 90px rgba(40,26,18,.35);overflow:hidden">
+    <div style="position:absolute;inset:26px;border-radius:26px;overflow:hidden;background:#F2F2F4">
+      <div style="position:absolute;left:30px;top:90px"><div style="position:relative;width:640.0px;height:620.0px"><div style="position:absolute;left:40.0px;top:30.0px;width:150.0px;height:190.0px;transform:rotate(-12deg);background:linear-gradient(135deg,#FF2E88,#E8FF3A);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">NEW</span></div><div style="position:absolute;left:132.0px;top:100.0px;width:150.0px;height:190.0px;transform:rotate(8deg);background:linear-gradient(135deg,#2E5BFF,#2EFFC0);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">DROP</span></div><div style="position:absolute;left:224.0px;top:170.0px;width:150.0px;height:190.0px;transform:rotate(-6deg);background:linear-gradient(135deg,#E8FF3A,#B04CFF);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">00</span></div><div style="position:absolute;left:316.0px;top:240.0px;width:150.0px;height:190.0px;transform:rotate(10deg);background:linear-gradient(135deg,#2EFFC0,#FF7A1A);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">FLUX</span></div><div style="position:absolute;left:408.0px;top:310.0px;width:150.0px;height:190.0px;transform:rotate(-9deg);background:linear-gradient(135deg,#B04CFF,#FF2E88);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">NOW</span></div><div style="position:absolute;left:500.0px;top:380.0px;width:150.0px;height:190.0px;transform:rotate(6deg);background:linear-gradient(135deg,#FF7A1A,#2E5BFF);box-shadow:8.0px 0 0 rgba(255,0,80,.55),-8.0px 0 0 rgba(0,200,255,.55);display:flex;align-items:flex-end;padding:10.0px;box-sizing:border-box"><span class="gj" style="font-family:Arial Black,Heebo,sans-serif;font-weight:900;font-size:38.0px;color:#111;text-shadow:4.0px 0 #FF0050,-4.0px 0 #00C8FF">V2</span></div></div></div>
+      <div style="position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;align-items:center" dir="rtl">
+        <span style="padding:8px 18px;border-radius:999px;background:#111;color:#fff;font-size:22px;font-family:'Heebo',sans-serif">נשמר ✓</span>
+        <span style="font-family:'Heebo',sans-serif;font-size:22px;color:#555">השראה · אפקטים</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div style="height:6px;background:#C4765A;transform-origin:right;animation-name:prog;animation-timing-function:linear"></div></div>
+</div></div>
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body></html>
