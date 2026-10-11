@@ -15,10 +15,10 @@
 <meta property="og:url" content="https://hagitantebi.co.il/brand-worlds-museum.html">
 <meta property="og:title" content="מוזיאון עולמות המותג — מיתוג יוקרה בפעולה | חגית אנטבי">
 <meta property="og:description" content="תשעה עולמות מותג בדיוניים: קיר מסגרות באור, אגף לילה בחושך, ומוצרים בתלת-ממד שיוצאים מהוויטרינה עם ההחלטה שמאחוריהם.">
-<meta property="og:image" content="https://hagitantebi.co.il/brand-worlds-museum-og.jpg">
+<meta property="og:image" content="https://hagitantebi.co.il/brand-worlds-museum-og-7.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="קיר גלריה בגווני קרם עם שש מסגרות של עולמות מותג: תליון זהב, עוגה ורודה, דלת כחולה, תפריט קינוחים, טיפת סרום ובקבוק סרום">
+<meta property="og:image:alt" content="קיר גלריה בגווני קרם עם שבע מסגרות של עולמות מותג: חלון פתוח לפרינט לימונים עם מדבקת NOT SORRY, דלת כחולה, עוגה ורודה, תליון זהב, בקבוק סרום, טיפת סרום ותפריט קינוחים">
 <meta property="og:locale" content="he_IL">
 
 <!-- Twitter -->
@@ -26,8 +26,8 @@
 <meta name="twitter:url" content="https://hagitantebi.co.il/brand-worlds-museum.html">
 <meta name="twitter:title" content="מוזיאון עולמות המותג — מיתוג יוקרה בפעולה">
 <meta name="twitter:description" content="תשעה עולמות מותג בדיוניים: קיר מסגרות באור, ומוצרים בתלת-ממד בחושך.">
-<meta name="twitter:image" content="https://hagitantebi.co.il/brand-worlds-museum-og.jpg">
-<meta name="twitter:image:alt" content="קיר גלריה עם שש מסגרות של עולמות מותג מאת Brand Worlds Studio">
+<meta name="twitter:image" content="https://hagitantebi.co.il/brand-worlds-museum-og-7.jpg">
+<meta name="twitter:image:alt" content="קיר גלריה עם שבע מסגרות של עולמות מותג מאת Brand Worlds Studio">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -59,7 +59,7 @@
   "isPartOf": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" },
   "creator": { "@id": "https://hagitantebi.co.il/about.html#hagit" },
   "publisher": { "@id": "https://hagitantebi.co.il/#brand-worlds-studio" },
-  "image": "https://hagitantebi.co.il/brand-worlds-museum-og.jpg",
+  "image": "https://hagitantebi.co.il/brand-worlds-museum-og-7.jpg",
   "hasPart": [
     { "@type": "CreativeWork", "name": "VELUNE°", "about": "עולם מותג — בית בושם", "url": "https://hagitantebi.co.il/velune/" },
     { "@type": "CreativeWork", "name": "MIEL°", "about": "עולם מותג — פטיסרי רומנטי", "url": "https://hagitantebi.co.il/miel/" },
@@ -326,7 +326,8 @@ a.enter{text-decoration:none}
 .vault__head p{font-size:1.02rem;line-height:1.85;color:var(--text)}
 .vault__stage{position:relative;height:min(92vw,640px);max-width:1100px;margin:clamp(10px,2vh,24px) auto 0;display:grid;place-items:center}
 .vault__wheel{position:absolute;inset:0}
-.vault__tile{position:absolute;left:0;top:0;width:var(--vt,160px);aspect-ratio:1;margin:calc(var(--vt,160px)/-2) 0 0 calc(var(--vt,160px)/-2);
+/* sized in px each frame (not scaled), so small tiles stay sharp instead of shimmering */
+.vault__tile{position:absolute;left:0;top:0;width:160px;aspect-ratio:1;box-sizing:border-box;
   overflow:hidden;background:#E9E0D2;will-change:transform;cursor:pointer;
   border:4px solid #F7F1E6;outline:1px solid rgba(40,26,18,.55);box-shadow:0 18px 30px -18px rgba(40,26,18,.6);transition:filter .45s,outline-color .45s}
 .vault__tile img{width:100%;height:100%;object-fit:cover;display:block}
@@ -1486,7 +1487,6 @@ document.addEventListener('DOMContentLoaded', function () {
       W = stage.clientWidth; H = stage.clientHeight;
       var m = Math.min(W, H - 60);
       R = (m/2 - 6) / 1.26;
-      wheel.style.setProperty('--vt', (R*.52) + 'px');
     }
     // the newest archive world starts at the front (9 o'clock, the start of a Hebrew line)
     var start = Math.PI - (N-1)*step, offset = 0, target = 0, hover = -1, last = 0;
@@ -1503,8 +1503,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var rot = start + scrollAngle() + offset, front = frontIndex(rot), cx = W/2, cy = (H-60)/2;
       for(var i = 0; i < N; i++){
         var th = rot + i*step, k = Math.pow((1 - Math.cos(th))/2, 1.8), s = .14 + .86*k;   // biggest at 9 o'clock
-        var t = tiles[i];
-        t.style.transform = 'translate3d(' + (cx + R*Math.cos(th)).toFixed(1) + 'px,' + (cy + R*Math.sin(th)).toFixed(1) + 'px,0) scale(' + s.toFixed(3) + ')';
+        var t = tiles[i], size = Math.max(5, Math.round(R*.52*s));
+        if(t._size !== size){ t._size = size; t.style.width = size + 'px'; t.style.borderWidth = Math.max(1, Math.round(4*s)) + 'px'; }
+        t.style.transform = 'translate3d(' + (cx + R*Math.cos(th) - size/2).toFixed(2) + 'px,' + (cy + R*Math.sin(th) - size/2).toFixed(2) + 'px,0)';
         t.style.zIndex = String(Math.round(k*300));
         t.classList.toggle('is-front', i === front);
       }
