@@ -6,6 +6,8 @@
    …and including a honeypot field named "lead_hp".
    A checkbox may carry data-lead-label / data-lead-value to
    control how it appears in the lead summary (e.g. "דיוור: כן").
+   Optional data-lead-success-title / data-lead-success-text set
+   the form's own thank-you message.
    Submissions are sent to the leads system (agent_leads) and
    trigger a Telegram ping to Hagit. No page reload.
    ============================================================ */
@@ -126,8 +128,12 @@
     box.style.cssText = "text-align:center;padding:48px 24px;font-family:inherit;";
     box.innerHTML =
       '<div style="font-size:2.75rem;line-height:1;margin-bottom:14px;color:#C28A5A;">✓</div>' +
-      '<h3 style="font-size:1.5rem;margin:0 0 8px;font-weight:600;">תודה!</h3>' +
-      '<p style="margin:0;opacity:.7;">הפרטים התקבלו. אחזור אליכם בהקדם.</p>';
+      '<h3 style="font-size:1.5rem;margin:0 0 8px;font-weight:600;"></h3>' +
+      '<p style="margin:0;opacity:.7;"></p>';
+    // A form may set its own thank-you via data-lead-success-title / -text.
+    box.querySelector("h3").textContent = form.dataset.leadSuccessTitle || "תודה!";
+    box.querySelector("p").textContent =
+      form.dataset.leadSuccessText || "הפרטים התקבלו. אחזור אליכם בהקדם.";
     form.style.display = "none";
     form.parentNode.insertBefore(box, form.nextSibling);
     try {
@@ -137,7 +143,7 @@
     try {
       document.dispatchEvent(
         new CustomEvent("lead:intake:success", {
-          detail: { source: form.dataset.leadSource || "website" },
+          detail: { source: form.dataset.leadSource || "website", form: form },
         })
       );
     } catch (e) {}
