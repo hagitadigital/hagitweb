@@ -1,0 +1,260 @@
+<!doctype html>
+<!--
+  קיר העולמות — campaign reel «ככה בוחרים», 2026-10. 9:16, 1080×1920, 20s.
+  0.0–2.5  HOOK: the wall of live world phones, numbered, «איזה מהם הכי את?»
+  2.5–12.5 the wall breathes: six worlds step out to the centre in turn (copper ball on a 6-stop line)
+  12.5–16  pull back: 29 worlds as a grid, tile 30 waits for her business
+  16–20    outro: «איזה מספר הכי את?» + comment / DM CTA (holds to the last frame)
+  All motion is computed from one clock: window.setT(seconds). render.js steps it and seeks the videos.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>קיר העולמות</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--bg:#FAF8F3;--cream:#EEE6D8;--ink:#6B563F;--copper:#C4765A;--gold:#B8894A;--dark:#3E2F25}
+html,body{margin:0;background:var(--bg)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+.abs{position:absolute}
+.lat{font-family:'Cormorant Garamond',serif}
+
+/* phone */
+.phone{position:absolute;width:300px;height:580px;border-radius:46px;background:#1E1A17;box-shadow:0 30px 70px rgba(62,40,24,.22);transform-origin:50% 50%}
+.screen{position:absolute;left:9px;top:9px;right:9px;bottom:9px;border-radius:38px;overflow:hidden;display:flex;flex-direction:column}
+.notch{position:absolute;left:50%;top:9px;width:86px;height:22px;margin-left:-43px;border-radius:0 0 14px 14px;background:#1E1A17;z-index:3}
+.nav{height:62px;flex:none;display:flex;align-items:flex-end;justify-content:space-between;padding:0 18px 10px;box-sizing:border-box}
+.nav .nm{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;letter-spacing:.2em;white-space:nowrap}
+.nav .ham{width:18px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+.nav .bag{width:14px;height:14px;border:1.5px solid currentColor;border-radius:3px}
+.hero{width:282px;height:352px;flex:none;position:relative;overflow:hidden}
+.hero video{width:100%;height:100%;object-fit:cover;display:block}
+.copy{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:0 18px;text-align:center}
+.copy .t{font-size:19px;font-weight:500;line-height:1.3}
+.copy .b{font-size:13px;padding:7px 18px;border-radius:999px;border:1px solid currentColor;opacity:.85}
+.badge{position:absolute;top:-16px;right:-16px;width:74px;height:74px;border-radius:50%;background:var(--copper);color:#FFF8EF;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;box-shadow:0 8px 20px rgba(110,60,30,.35);border:3px solid var(--bg);z-index:4}
+
+/* copper ball (studio signature) */
+.ball{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:rgba(246,239,229,.7);border:1.5px solid #D8CCBD;box-shadow:0 8px 20px rgba(62,40,24,.28)}
+.ball i{position:absolute;left:8px;top:8px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.ball i:after{content:'';position:absolute;left:9px;top:8px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.8)}
+
+.tile{position:absolute;width:160px;height:160px;border-radius:18px;overflow:hidden;box-shadow:0 10px 24px rgba(62,40,24,.16)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .n{position:absolute;bottom:8px;right:8px;min-width:34px;height:34px;padding:0 6px;box-sizing:border-box;border-radius:17px;background:rgba(250,248,243,.94);color:var(--dark);font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.t30{background:var(--bg);border:3px dashed var(--copper);box-sizing:border-box;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--copper)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="wall" class="abs" style="inset:0"></div>
+  <div id="scrim" class="abs" style="inset:0;background:var(--bg);opacity:0"></div>
+  <div id="topfade" class="abs" style="left:0;right:0;top:0;height:560px;background:linear-gradient(var(--bg) 0%,var(--bg) 52%,rgba(250,248,243,0) 100%)"></div>
+  <div id="botfade" class="abs" style="left:0;right:0;bottom:0;height:200px;background:linear-gradient(rgba(250,248,243,0),rgba(250,248,243,.9))"></div>
+
+  <!-- HOOK -->
+  <div id="brand" class="abs" style="top:64px;left:0;right:0;text-align:center">
+    <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:500;letter-spacing:.32em;color:var(--copper)" dir="ltr">BRAND WORLDS STUDIO · HAGIT ANTEBI</span>
+  </div>
+  <div id="hq" class="abs" style="top:128px;left:40px;right:40px;text-align:center;font-size:112px;font-weight:700;line-height:1.08;color:var(--dark)" dir="rtl">איזה מהם<br>הכי <span style="color:var(--copper)">את</span>?</div>
+  <div id="hsub" class="abs" style="top:392px;left:0;right:0;text-align:center;font-size:34px;font-weight:500;color:var(--ink)" dir="rtl">כתבי את המספר בתגובות</div>
+
+  <!-- small question that stays during the features -->
+  <div id="hq2" class="abs" style="top:120px;left:0;right:0;text-align:center;font-size:62px;font-weight:700;color:var(--dark);opacity:0" dir="rtl">איזה מהם הכי <span style="color:var(--copper)">את</span>?</div>
+
+  <div id="feat" class="abs" style="inset:0"></div>
+  <svg id="steps" class="abs" width="1080" height="1920" viewBox="0 0 1080 1920" style="left:0;top:0;opacity:0"></svg>
+
+  <div id="grid" class="abs" style="inset:0"></div>
+  <div id="g1" class="abs" style="top:118px;left:0;right:0;text-align:center;opacity:0" dir="rtl">
+    <div style="font-size:72px;font-weight:700;color:var(--dark);line-height:1.1"><span class="lat" style="font-size:92px;font-weight:600;color:var(--copper)">29</span> עולמות מותג.</div>
+    <div style="font-size:38px;font-weight:400;color:var(--ink);margin-top:10px">כל אחד נבנה מהבטחה אחת.</div>
+  </div>
+  <div id="g2" class="abs" style="top:1450px;left:0;right:0;text-align:center;font-size:42px;font-weight:500;color:var(--copper);opacity:0" dir="rtl">ו־30 מחכה לעסק שלך.</div>
+
+  <!-- OUTRO -->
+  <div id="o1" class="abs" style="top:132px;left:0;right:0;text-align:center;font-size:84px;font-weight:700;color:var(--dark);opacity:0" dir="rtl">איזה מספר הכי <span style="color:var(--copper)">את</span>?</div>
+  <div id="o2" class="abs" style="top:1436px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:22px;opacity:0" dir="rtl">
+    <div style="padding:22px 54px;border-radius:14px;background:var(--ink);color:var(--bg);font-size:46px;font-weight:600">כתבי את המספר בתגובות</div>
+    <div style="font-size:33px;color:var(--ink);text-align:center;line-height:1.4">או שלחי לי <b style="color:var(--copper)">"עולם"</b> בהודעה,<br>ואראה לך איך העסק שלך היה נראה.</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355;margin-top:6px" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+
+  <div id="ball" class="ball" style="opacity:0"><i></i></div>
+  <div class="abs" style="left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div id="prog" style="height:6px;background:var(--copper);transform-origin:right;transform:scaleX(0)"></div></div>
+</div>
+
+<script>
+const D = 20;
+// world data: slug, number, name, bg, ink, short line from the world's own site, category (Hebrew)
+const W = {
+  'pardon-me': [29, 'PARDON ME°', '#F3EDE2', '#1E3A2B', 'מנומס מבחוץ, לא מתנצל מבפנים.', 'נרות · ריח לבית'],
+  'encore':    [28, 'ENCORE°',    '#241212', '#F6EEE4', 'תכשיט אחד. שנים עלייך.', 'תכשיטים'],
+  'miel':      [27, 'MIEL°',      '#F3E4DF', '#4A2C24', 'רומנטיקה מתחילה מבפנים.', 'קונדיטוריה'],
+  'pancakerie':[26, 'PANCAKERIE°','#EEE6DA', '#523726', 'טעם שרואים לפני שטועמים.', 'בית קפה'],
+  'velune':    [25, 'VELUNE°',    '#DCE3EB', '#1E2A38', 'בושם הוא לא ריח, הוא מקום.', 'בושם'],
+  'oreva':     [24, 'ORÉVA°',     '#F6EFE7', '#3A2E29', 'קודם הידיים, אחר כך הבקבוק.', 'קוסמטיקאית · מוצרים'],
+  'sonair':    [23, 'SONAIR°',    '#EEF0F2', '#1C1F24', 'A more human sound.', 'טכנולוגיה'],
+  'chasen':    [22, 'CHASEN°',    '#F4E7D5', '#1F2A1F', 'מאצ׳ה לא מזמינים. מרכיבים.', 'בר מאצ׳ה'],
+  'trame':     [21, 'TRAME°',     '#14110D', '#EDE6D8', 'כל שמלה מתחילה בחוט.', 'קוטור'],
+  'crema':     [20, 'CREMA°',     '#F4EBE0', '#2E1E16', 'Il Rito.', 'קפה'],
+  'melte':     [19, 'MELTÉ°',     '#F1E7D6', '#2B1A12', 'חמישה טעמים. שפה אחת.', 'שוקולד'],
+  'petale':    [18, 'PÉTALE°',    '#FDF6F0', '#3A2433', 'שבעה מקרונים, קופסה אחת.', 'מקרונים'],
+  'regard':    [16, 'REGARD°',    '#0C1420', '#F2EBDC', 'חמש מסגרות. חמישה מבטים.', 'אופטיקה'],
+  'rosee':     [15, 'ROSÉE°',     '#F7F0E6', '#3B2E33', 'נולד עם שחר.', 'טיפוח'],
+  'elvea':     [14, 'ELVÉA°',     '#F0EADD', '#2E3526', 'הטבע מתחיל את הסיפור.', 'סרומים'],
+  'etage':     [12, 'ÉTAGE°',     '#F5ECE1', '#3D2B2A', 'סיפור אהבה, בשכבות.', 'עוגות חתונה'],
+  'souffle':   [11, 'SOUFFLÉ°',   '#F8F0E4', '#4A2B3A', 'טקסטורה שמרגישים דרך המסך.', 'טיפוח גוף'],
+  'poppi':     [ 9, 'POPPI',      '#FDEEE9', '#2A0D24', 'סוכרייה קטנה. פופ ענק.', 'ממתקים'],
+};
+// wall columns, right → left (RTL reading starts on the right)
+const COLS = [
+  {x: 730, dir: -1, y0: 560,  list: ['pardon-me','velune','chasen','rosee','etage','poppi']},
+  {x: 390, dir:  1, y0: 470,  list: ['encore','oreva','crema','elvea','regard','souffle']},
+  {x:  50, dir: -1, y0: 620,  list: ['miel','pancakerie','petale','melte','trame','sonair']},
+];
+const FEAT = ['pardon-me','encore','miel','velune','oreva','rosee'];
+const F0 = 2.6, FS = 1.65;                 // features start, step
+const ROW = 640;
+
+const $ = id => document.getElementById(id);
+const clamp = (v, a=0, b=1) => Math.max(a, Math.min(b, v));
+const ease = x => { x = clamp(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const outE = x => 1 - Math.pow(1 - clamp(x), 3);
+const ramp = (t, a, b) => ease((t - a) / (b - a));      // 0 → 1 between a and b
+const win = (t, a, b, f=.3) => Math.min(ramp(t, a, a + f), 1 - ramp(t, b, b + f));
+
+function phone(slug, big) {
+  const [no, nm, bg, ink, line] = W[slug];
+  const p = document.createElement('div'); p.className = 'phone';
+  p.innerHTML = `<div class="screen" style="background:${bg};color:${ink}">
+      <div class="nav"><span class="bag"></span><span class="nm" dir="ltr">${nm}</span><span class="ham"></span></div>
+      <div class="hero"><video src="media/loops/${slug}.webm" muted playsinline preload="auto"></video></div>
+      <div class="copy" dir="rtl"><div class="t">${line}</div><div class="b">לכניסה לעולם</div></div>
+    </div><div class="notch"></div><div class="badge">${no}</div>`;
+  return p;
+}
+
+// build the wall
+const wallCols = COLS.map(c => {
+  const col = document.createElement('div'); col.className = 'abs'; col.style.left = c.x + 'px'; col.style.top = '0'; col.style.width = '300px';
+  c.list.forEach((s, i) => { const p = phone(s); p.style.top = (i * ROW) + 'px'; col.appendChild(p); });
+  $('wall').appendChild(col); return col;
+});
+
+// featured phones (scaled copies) + captions
+const feats = FEAT.map((s, i) => {
+  const g = document.createElement('div'); g.className = 'abs'; g.style.inset = '0';
+  const p = phone(s, true); p.style.left = '390px'; p.style.top = '540px'; g.appendChild(p);
+  const [no, nm, bg, ink, line, cat] = W[s];
+  const cap = document.createElement('div'); cap.className = 'abs';
+  cap.style.cssText = 'top:1388px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center';
+  cap.innerHTML = `<div style="font-size:28px;font-weight:500;color:var(--copper);letter-spacing:.04em" dir="rtl">עולם מותג <span class="lat" style="font-size:40px;font-weight:600">${no}</span> · ${cat}</div>
+     <div class="lat" style="font-size:76px;font-weight:600;letter-spacing:.12em;color:var(--dark);line-height:1.1" dir="ltr">${nm}</div>
+     <div style="font-size:40px;font-weight:500;color:var(--ink)" dir="rtl">${line}</div>`;
+  g.appendChild(cap); $('feat').appendChild(g);
+  return {g, p, cap, s};
+});
+
+// six-stop line for the features (right → left)
+const SX = i => 840 - i * 120, SY = 1792;
+$('steps').innerHTML = `<line x1="${SX(0)}" y1="${SY}" x2="${SX(5)}" y2="${SY}" stroke="#D8C6B4" stroke-width="3"/>
+  <line id="sline" x1="${SX(0)}" y1="${SY}" x2="${SX(0)}" y2="${SY}" stroke="#C4814F" stroke-width="4" stroke-linecap="round"/>` +
+  FEAT.map((s, i) => `<circle cx="${SX(i)}" cy="${SY}" r="9" fill="#FAF8F3" stroke="#C4814F" stroke-width="3"/>`).join('');
+
+// the 30-tile grid (ascending from top right; tile 30 is hers)
+const GX0 = 108, GY0 = 340, GT = 160, GG = 16;
+const tiles = [];
+for (let n = 1; n <= 30; n++) {
+  const k = n - 1, r = Math.floor(k / 5), c = k % 5;
+  const el = document.createElement('div'); el.className = 'tile' + (n === 30 ? ' t30' : '');
+  el.style.left = (GX0 + (4 - c) * (GT + GG)) + 'px'; el.style.top = (GY0 + r * (GT + GG)) + 'px';
+  const nn = String(n).padStart(2, '0');
+  el.innerHTML = n === 30
+    ? `<span class="lat" style="font-size:58px;font-weight:600;line-height:1">30</span><span style="font-size:24px;font-weight:600" dir="rtl">העולם שלך?</span>`
+    : `<img src="media/ring/${nn}.webp" alt=""><span class="n">${n}</span>`;
+  $('grid').appendChild(el); tiles.push(el);
+}
+const T30 = {x: GX0 + 6, y: GY0 + 5 * (GT + GG) + 154};
+
+window.setT = function (t) {
+  // wall drift (keeps moving the whole time)
+  COLS.forEach((c, i) => { wallCols[i].style.transform = `translateY(${c.y0 + c.dir * t * 26}px)`; });
+  const wallOut = ramp(t, 12.2, 12.8);
+  $('wall').style.opacity = 1 - wallOut;
+  $('scrim').style.opacity = .86 * ramp(t, 2.3, 2.8) * (1 - wallOut) + wallOut;
+  $('topfade').style.opacity = 1 - ramp(t, 2.3, 2.8);
+  $('botfade').style.opacity = 1 - ramp(t, 2.3, 2.8);
+
+  // hook text (visible on frame 0)
+  const hk = 1 - ramp(t, 2.25, 2.6);
+  $('hq').style.opacity = hk; $('hsub').style.opacity = hk; $('brand').style.opacity = hk;
+  $('hq').style.transform = `translateY(${-30 * ramp(t, 2.25, 2.6)}px)`;
+  $('hq2').style.opacity = win(t, 2.45, 12.3, .35);
+
+  // features
+  feats.forEach((f, i) => {
+    const a = F0 + i * FS, b = a + FS;
+    const inn = i === 0 ? outE((t - a + .05) / .45) : ease((t - a + .05) / .45), out = ease((t - b + .05) / .45);
+    const vis = (t >= a - .1 && t <= b + .45) ? 1 : 0;
+    f.g.style.display = vis ? 'block' : 'none';
+    if (!vis) return;
+    const x = (1 - inn) * 820 - out * 820;               // enter from the right, leave to the left
+    const sc = 1.62 * (.8 + .2 * inn) * (1 - .2 * out);
+    const rot = (1 - inn) * 6 - out * 6;
+    f.p.style.transform = `translate(${x}px,0) scale(${sc}) rotate(${rot}deg)`;
+    f.p.style.opacity = i === 0 ? clamp(inn * 2) : 1;
+    const ci = clamp((t - a - .15) / .35);
+    f.cap.style.opacity = Math.min(ci, 1 - ramp(t, b - .12, b + .12));
+    f.cap.style.transform = `translateY(${(1 - outE(ci)) * 30}px)`;
+  });
+  $('steps').style.opacity = win(t, 2.5, 12.3, .3);
+  // ball along the six stops
+  let bi = 0; for (let i = 0; i < 6; i++) if (t >= F0 + i * FS) bi = i;
+  const mv = clamp((t - (F0 + bi * FS)) / .5);
+  const prev = bi === 0 ? SX(0) + 140 : SX(bi - 1);
+  let bx = prev + (SX(bi) - prev) * ease(mv), by = SY;
+  $('sline').setAttribute('x2', bx);
+
+  // grid
+  tiles.forEach((el, k) => {
+    const a = 12.55 + k * .045, p = outE((t - a) / .35);
+    el.style.opacity = p; el.style.transform = `scale(${.6 + .4 * p})`;
+  });
+  $('g1').style.opacity = win(t, 12.6, 15.85, .35);
+  $('g2').style.opacity = win(t, 14.2, 15.85, .35);
+  const glow = ramp(t, 15.0, 15.4);
+  tiles[29].style.background = `rgba(196,118,90,${.12 * glow})`;
+  $('o1').style.opacity = ramp(t, 16.0, 16.4);
+  $('o2').style.opacity = ramp(t, 16.3, 16.8);
+  $('o2').style.transform = `translateY(${30 * (1 - ramp(t, 16.3, 16.8))}px)`;
+
+  // ball: rides the stops 2.6–12.4, then rolls into tile 30 and stays there
+  let bo = win(t, 2.6, 12.25, .25);
+  if (t > 12.6) {
+    const r = ramp(t, 14.3, 15.1);
+    bx = 1140 + (T30.x - 1140) * r; by = 1500 + (T30.y - 1500) * r;
+    bo = clamp((t - 14.3) / .15);
+  }
+  const ball = $('ball');
+  ball.style.left = bx + 'px'; ball.style.top = by + 'px'; ball.style.opacity = bo;
+  ball.style.transform = `rotate(${-t * 160}deg)`;
+
+  $('prog').style.transform = `scaleX(${t / D})`;
+};
+
+// which videos need seeking at t, and to what time
+window.videoTimes = function (t) {
+  const out = [];
+  document.querySelectorAll('video').forEach((v, i) => {
+    const d = v.duration || 4;
+    const visible = v.closest('#feat') ? v.closest('.abs').style.display !== 'none' : t < 12.9;
+    if (visible) out.push([i, ((t + i * .37) % d)]);
+  });
+  return out;
+};
+window.setT(0);
+</script>
+</body>
+</html>
