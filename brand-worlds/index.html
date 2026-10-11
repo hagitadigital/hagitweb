@@ -656,7 +656,7 @@ body::before {
 }
 .world-item > .world-card { flex: 1 1 auto; min-width: 0; }
 .world-item:hover > .world-card { transform: translateY(-8px); }
-.wc-film {
+.wc-film, .wc-backstage {
   position: absolute; z-index: 3;
   top: calc(125cqw - 62px); left: 50%;
   transform: translateX(-50%);
@@ -669,8 +669,10 @@ body::before {
   box-shadow: 0 10px 26px -12px rgba(43, 26, 18, 0.55);
   transition: background 0.3s, color 0.3s, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.world-item:hover .wc-film { transform: translate(-50%, -8px); }
+.world-item:hover .wc-film, .world-item:hover .wc-backstage { transform: translate(-50%, -8px); }
 .wc-film:hover, .wc-film:focus-visible { background: var(--gold); color: var(--cream); }
+.wc-backstage { top: calc(125cqw - 114px); text-decoration: none; background: rgba(58, 46, 41, 0.9); color: #F6EFE7; }
+.wc-backstage:hover, .wc-backstage:focus-visible { background: #8F5A3C; color: #F6EFE7; }
 .wc-dialog { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; overflow: hidden; }
 .wc-dialog::backdrop { background: rgba(20, 14, 10, 0.82); backdrop-filter: blur(4px); }
 .wc-dialog__in { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 56px 16px 20px; box-sizing: border-box; }
@@ -1660,6 +1662,7 @@ body::before {
   .worlds-grid { gap: 2rem; }
   .world-card, .world-item { flex-basis: calc(50% - 1rem); }
   .wc-film { top: calc(80cqw - 62px); }
+  .wc-backstage { top: calc(80cqw - 114px); }
   .world-card__media { aspect-ratio: 5/4; }
   .method-grid { grid-template-columns: repeat(2, 1fr); }
   .method-step { border-right: 0; border-bottom: 1px solid rgba(244, 239, 229, 0.18); }
@@ -1986,6 +1989,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
         </a>
         <button type="button" class="wc-film" data-film="oreva" data-href="../oreva/" data-name="ORÉVA°" data-no="עולם 24" data-line="קודם הידיים. אחר כך הבקבוק." aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 30 שניות</button>
+        <a class="wc-backstage" href="../oreva/backstage/">Backstage · העולם כשהוא עובד</a>
       </div>
       <a href="../sonair/" class="world-card world-card--sonair reveal">
         <div class="world-card__media">
