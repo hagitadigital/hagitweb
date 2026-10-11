@@ -77,7 +77,7 @@ body{font-family:'Heebo',sans-serif}
   <div id="o1" class="abs" style="top:132px;left:0;right:0;text-align:center;font-size:84px;font-weight:700;color:var(--dark);opacity:0" dir="rtl">איזה מספר הכי <span style="color:var(--copper)">את</span>?</div>
   <div id="o2" class="abs" style="top:1436px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:22px;opacity:0" dir="rtl">
     <div style="padding:22px 54px;border-radius:14px;background:var(--ink);color:var(--bg);font-size:46px;font-weight:600">כתבי את המספר בתגובות</div>
-    <div style="font-size:33px;color:var(--ink);text-align:center;line-height:1.4">או שלחי לי <b style="color:var(--copper)">"עולם"</b> בהודעה,<br>ואראה לך איך העסק שלך היה נראה.</div>
+    <div style="font-size:36px;color:var(--ink);text-align:center;line-height:1.45">ואם הגיע הזמן שהעסק שלך יהיה ה־30,<br>שלחי לי <b style="color:var(--copper);font-size:44px">"30"</b> בהודעה.</div>
     <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355;margin-top:6px" dir="ltr">HAGITANTEBI.CO.IL</div>
   </div>
 
@@ -225,7 +225,9 @@ window.setT = function (t) {
   $('g1').style.opacity = win(t, 12.6, 15.85, .35);
   $('g2').style.opacity = win(t, 14.2, 15.85, .35);
   const glow = ramp(t, 15.0, 15.4);
-  tiles[29].style.background = `rgba(196,118,90,${.12 * glow})`;
+  const pulse = t > 16.3 ? .5 + .5 * Math.sin((t - 16.3) * 4) : 0;
+  tiles[29].style.background = `rgba(196,118,90,${.12 * glow + .14 * ramp(t, 16.3, 16.8) * pulse})`;
+  tiles[29].style.transform = `scale(${1 + .06 * ramp(t, 16.3, 16.8)})`;
   $('o1').style.opacity = ramp(t, 16.0, 16.4);
   $('o2').style.opacity = ramp(t, 16.3, 16.8);
   $('o2').style.transform = `translateY(${30 * (1 - ramp(t, 16.3, 16.8))}px)`;
