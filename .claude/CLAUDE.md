@@ -23,3 +23,4 @@ Every new world (`<slug>/index.html`, next number in the gallery) is added in th
 - `index.html` — the worlds train (`#worldsTrain`): new `motion-card` first.
 - `sitemap.xml` — rebuild with `python tools/build-sitemap.py` after the commit.
 Card image: `images/home-worlds/<slug>.webp` (1200×630).
+The archive ring at the top of `brand-worlds/index.html` reads the grid by itself; run `python tools/build-ring-thumbs.py` to add the new world's square thumbnail (`brand-worlds/ring/<No>.webp`).
