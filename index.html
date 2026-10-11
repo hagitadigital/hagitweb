@@ -1813,6 +1813,30 @@
         .guides__card:hover, .guides__card:focus-visible { border-color: var(--color-copper); }
         .guides__card-title { font-family: 'Heebo', sans-serif; font-size: 17px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
         .guides__card-desc { font-family: 'Heebo', sans-serif; font-size: 14.5px; line-height: 1.7; color: #7A6349; }
+        /* OFFER — three doors (2026-10) */
+        .offer { padding: clamp(64px, 8vw, 104px) 0; }
+        .offer__header { text-align: center; max-width: 700px; margin: 0 auto clamp(36px, 5vw, 56px); padding: 0 var(--container-padding); }
+        .offer__label { font-family: var(--font-body-en); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-copper-text); font-weight: 600; margin-bottom: 16px; }
+        .offer__title { font-family: var(--font-display); font-size: clamp(32px, 4.4vw, 54px); font-weight: 500; color: var(--color-chocolate-text); line-height: 1.12; letter-spacing: -1px; margin-bottom: 14px; }
+        .offer__subtitle { font-size: clamp(15px, 1.5vw, 18px); color: var(--color-taupe-text); line-height: 1.75; }
+        .offer__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.2vw, 28px); max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); }
+        @media (max-width: 900px) { .offer__grid { grid-template-columns: 1fr; max-width: 520px; } }
+        .door { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--color-light-taupe); border-radius: 18px; padding: clamp(26px, 3vw, 36px); text-align: right; box-shadow: 0 18px 40px -30px rgba(43, 26, 18, 0.35); }
+        .door--core { border-color: var(--color-copper); }
+        .door__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+        .door__num { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-copper-text); }
+        .door__tier { font-family: var(--font-body-en); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-taupe-text); }
+        .door__title { font-family: var(--font-display); font-size: 30px; font-weight: 500; color: var(--color-chocolate-text); margin: 0 0 8px; }
+        .door__lead { font-size: 15.5px; line-height: 1.7; color: var(--color-chocolate-text); margin-bottom: 18px; }
+        .door__list { list-style: none; margin: 0 0 20px; padding: 18px 0 0; border-top: 1px solid var(--color-light-taupe); display: flex; flex-direction: column; gap: 10px; }
+        .door__list li { position: relative; padding-right: 20px; font-size: 14.5px; line-height: 1.6; color: var(--color-chocolate-text); }
+        .door__list li::before { content: ''; position: absolute; right: 0; top: 0.62em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-copper); }
+        .door__meta { margin-top: auto; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; line-height: 1.6; color: var(--color-taupe-text); }
+        .door__meta strong { color: var(--color-chocolate-text); font-weight: 600; }
+        .door__link { margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--color-copper-text); text-decoration: none; }
+        .door__link:hover { text-decoration: underline; }
+        .offer__note { max-width: 760px; margin: clamp(30px, 4vw, 44px) auto 0; padding: 0 var(--container-padding); text-align: center; font-size: clamp(15px, 1.5vw, 17px); line-height: 1.8; color: var(--color-chocolate-text); }
+        .offer__cta { text-align: center; margin-top: 24px; }
         .ways { background: var(--color-warm-beige); padding: clamp(60px, 8vw, 96px) 0; }
         .ways__header { text-align: center; max-width: 640px; margin: 0 auto clamp(34px, 4vw, 50px); padding: 0 var(--container-padding); }
         .ways__label { font-family: var(--font-body-en); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-copper-text); font-weight: 600; margin-bottom: 16px; }
@@ -2640,6 +2664,74 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- ============================================================
          THE AXIS — hinge between Act 1 (built) and Act 2 (BrandOS)
          ============================================================ -->
+    <!-- ============================================================
+         OFFER · three doors — what can be built together (2026-10)
+         The investment is set by scope after the diagnosis; no price list on purpose.
+         ============================================================ -->
+    <section class="offer" id="offer" aria-labelledby="offer-title">
+        <div class="offer__header reveal">
+            <p class="offer__label" dir="ltr">The Offer · Three Doors</p>
+            <h2 class="offer__title" id="offer-title">מה בונים איתי</h2>
+            <p class="offer__subtitle">שלוש דלתות, שנבנות זו על זו. אפשר להיכנס בכל אחת, ורוב העסקים מתחילים בעולם.</p>
+        </div>
+        <div class="offer__grid">
+            <article class="door door--core reveal">
+                <div class="door__top"><span class="door__num">01</span><span class="door__tier" dir="ltr">The World</span></div>
+                <h3 class="door__title">עולם מותג</h3>
+                <p class="door__lead">מיתוג ואתר שנבנים מהבטחה אחת, כדי שיבחרו בכם ולא ישוו אתכם במחיר.</p>
+                <ul class="door__list">
+                    <li>אסטרטגיה ו-Brand DNA: ההבטחה, הבידול, האישיות והקול</li>
+                    <li>שפה חזותית ומילולית: צבע, טיפוגרפיה, צילום, תנועה</li>
+                    <li>אתר-חוויה חי, דו-לשוני, בנוי SEO ו-GEO</li>
+                    <li>ספר מותג מקוצר ששומר על העולם גם אחר כך</li>
+                </ul>
+                <div class="door__meta">
+                    <span><strong>למי:</strong> עסק מבוסס שמשווים אותו במחיר</span>
+                    <span><strong>משך:</strong> כ-2 עד 4 חודשים, לפי ההיקף</span>
+                </div>
+                <a class="door__link" href="brand-world.html">איך נבנה עולם מותג ←</a>
+            </article>
+            <article class="door reveal">
+                <div class="door__top"><span class="door__num">02</span><span class="door__tier" dir="ltr">The System · BrandOS</span></div>
+                <h3 class="door__title">מערכת שמפעילה את המותג</h3>
+                <p class="door__lead">המותג ממשיך לעבוד אחרי ההשקה: לידים, מענה ותוכן, בקול אחד.</p>
+                <ul class="door__list">
+                    <li>סוכן AI שעונה ללקוחות בקול המותג</li>
+                    <li>ניהול לידים ואוטומציות לוואטסאפ וליומן</li>
+                    <li>מערכת תוכן ממותג שנשענת על ה-DNA</li>
+                    <li>שלוש רמות: Foundation, ‏Studio ו-Full Stack</li>
+                </ul>
+                <div class="door__meta">
+                    <span><strong>למי:</strong> עסק עם מותג שצריך שהוא ירוץ</span>
+                    <span><strong>ליווי:</strong> 3, 6 או 12 חודשים</span>
+                </div>
+                <a class="door__link" href="brandos-custom.html">לחבילות BrandOS Custom ←</a>
+            </article>
+            <article class="door reveal">
+                <div class="door__top"><span class="door__num">03</span><span class="door__tier" dir="ltr">The Voice · SEO + GEO</span></div>
+                <h3 class="door__title">תוכן שמוצאים</h3>
+                <p class="door__lead">שימצאו אתכם בגוגל, וגם כשמישהו שואל את ChatGPT או Gemini.</p>
+                <ul class="door__list">
+                    <li>מחקר מילות מפתח ומפת תוכן</li>
+                    <li>מאמרים בעברית שנבנים לדירוג בגוגל</li>
+                    <li>GEO: נוכחות בתשובות של מנועי ה-AI</li>
+                    <li>תוכן ממותג וסרטונים בשפה של העולם</li>
+                </ul>
+                <div class="door__meta">
+                    <span><strong>למי:</strong> עסק שרוצה שיגיעו אליו לבד</span>
+                </div>
+                <a class="door__link" href="geo-for-business.html">מה זה GEO ←</a>
+            </article>
+        </div>
+        <p class="offer__note reveal">כל פרויקט מתחיל באותה נקודה: <strong>אבחון פער המותג</strong>. 30 דקות, בלי עלות. אחריו ברור איזו דלת נכונה לכם, מה ההיקף וכמה זה משקיעים.</p>
+        <div class="offer__cta reveal">
+            <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="brandos-act__btn">
+                לתיאום אבחון פער המותג
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
     <section class="axis" aria-labelledby="axis-title">
         <div class="container axis__inner reveal">
             <p class="axis__label" dir="ltr">The Axis · Built to Strategy → Run by AI</p>
