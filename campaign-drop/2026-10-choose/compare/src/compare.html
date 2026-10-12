@@ -9,10 +9,11 @@
   9.6–14.4  VELUNE°: the door, then «היא לא מתיזה בושם. היא נכנסת אליו.»
   14.4–15.4 ככה משווים: cakes
   15.4–20.2 MIEL°: the cut, what's inside, the slices
-  20.2–22.6 the answer: «זה לא העיצוב.» — one promise, one voice, a language that repeats everywhere
-  22.6–24.4 the mirror: «ובעסק שלך?» on a generic card
-  24.4–27.2 the check as a deliverable: three WhatsApp messages
-  27.2–30   CTA (same words as page B), holds to the last frame
+  v2 (12.10, Hagit): no WhatsApp screen; every message holds longer. 0–2.8 hook · 2.8–4.1 serums · 4.1–9.1 ORÉVA° ·
+  9.1–10.4 perfumes · 10.4–15.4 VELUNE° · 15.4–16.7 cakes · 16.7–21.7 MIEL°
+  21.7–25.2 the answer: «זה לא העיצוב.» — one promise, one voice, a language that repeats everywhere
+  25.2–27.0 the mirror: «ובעסק שלך?» on a generic card
+  27.0–30   CTA (same words as page B), holds to the last frame
   One clock: window.setT(seconds); render.js seeks the videos via window.videoTimes(t).
 -->
 <html lang="he">
@@ -209,21 +210,21 @@ const win = (t, a, b, f = .25) => Math.min(ramp(t, a, a + f), 1 - ramp(t, b, b +
 
 // world shots: clip, start, end in the reel, clip time at start
 const SHOTS = [
-  {c: 'or-hands', a: 3.8,  b: 8.6,  from: 0},
-  {c: 've-a',     a: 9.6,  b: 11.0, from: .2},
-  {c: 've-woman', a: 11.0, b: 14.4, from: .1},
-  {c: 'mi-cut',   a: 15.4, b: 18.0, from: .1},
-  {c: 'mi-b',     a: 18.0, b: 20.2, from: .55},
+  {c: 'or-hands', a: 4.1,  b: 9.1,  from: 0},
+  {c: 've-a',     a: 10.4, b: 11.8, from: .2},
+  {c: 've-woman', a: 11.8, b: 15.4, from: .05},
+  {c: 'mi-cut',   a: 16.7, b: 19.3, from: .1},
+  {c: 'mi-b',     a: 19.3, b: 21.7, from: .55},
 ];
 const vids = [...document.querySelectorAll('#box video')];
 SHOTS.forEach(s => s.el = vids.find(v => v.dataset.c === s.c));
 // marketplace beats: [layer, start, end]
-const MK = [['m0', 2.6, 3.8], ['m1', 8.6, 9.6], ['m2', 14.4, 15.4]];
-const WORLD = [[3.8, 8.6], [9.6, 14.4], [15.4, 20.2]];
+const MK = [['m0', 2.8, 4.1], ['m1', 9.1, 10.4], ['m2', 15.4, 16.7]];
+const WORLD = [[4.1, 9.1], [10.4, 15.4], [16.7, 21.7]];
 
 window.setT = function (t) {
   // hook: holds, then slides up and away
-  const hk = ramp(t, 2.45, 2.75);
+  const hk = ramp(t, 2.65, 2.95);
   $('hook').style.opacity = 1 - hk; $('hook').style.transform = `translateY(${-80 * hk}px)`; $('hook').style.zIndex = 50;
 
   // marketplace beats: in hard on the cut, the strip covers the prices, then the question
@@ -254,7 +255,7 @@ window.setT = function (t) {
     w.style.opacity = Math.min(ramp(t, a + .5, a + .8), 1 - ramp(t, b - .2, b));
     w.style.transform = `translateY(${(1 - outE((t - a - .5) / .4)) * -30}px)`;
     w.querySelectorAll('.row').forEach((r, k) => {
-      const ra = a + .9 + k * .95;
+      const ra = a + .9 + k * 1.1;
       r.style.opacity = ramp(t, ra, ra + .3);
       r.style.transform = `translateX(${(1 - outE((t - ra) / .35)) * -40}px)`;
     });
@@ -262,19 +263,19 @@ window.setT = function (t) {
 
   // answer
   const an = $('answer');
-  an.style.opacity = t >= 20.2 && t < 22.75 ? ramp(t, 20.2, 20.35) : 0; an.style.zIndex = 40;
-  an.querySelector('.a1').style.opacity = ramp(t, 20.25, 20.55);
-  ['a2a', 'a2b', 'a2c'].forEach((c, k) => { const e = an.querySelector('.' + c); e.style.opacity = ramp(t, 20.85 + k * .35, 21.1 + k * .35); });
-  an.querySelector('.a3').style.opacity = ramp(t, 22.0, 22.25);
+  an.style.opacity = t >= 21.7 && t < 25.35 ? ramp(t, 21.7, 21.85) : 0; an.style.zIndex = 40;
+  an.querySelector('.a1').style.opacity = ramp(t, 21.75, 22.05);
+  ['a2a', 'a2b', 'a2c'].forEach((c, k) => { const e = an.querySelector('.' + c); e.style.opacity = ramp(t, 22.6 + k * .55, 22.85 + k * .55); });
+  an.querySelector('.a3').style.opacity = ramp(t, 24.35, 24.6);
 
   // mirror
   const mi = $('mirror');
-  mi.style.opacity = t >= 22.6 && t < 24.55 ? ramp(t, 22.6, 22.8) : 0; mi.style.zIndex = 41;
-  mi.querySelector('.card').style.transform = `scale(${.9 + .1 * outE((t - 22.6) / .5)})`;
+  mi.style.opacity = t >= 25.2 && t < 27.15 ? ramp(t, 25.2, 25.4) : 0; mi.style.zIndex = 41;
+  mi.querySelector('.card').style.transform = `scale(${.9 + .1 * outE((t - 25.2) / .5)})`;
 
   // whatsapp
   const wa = $('wa');
-  wa.style.opacity = t >= 24.4 && t < 27.35 ? ramp(t, 24.4, 24.6) : 0; wa.style.zIndex = 42;
+  wa.style.opacity = 0; wa.style.zIndex = 42;
   ['w0', 'w1', 'w2', 'w3'].forEach((id, k) => {
     const a = 24.6 + k * .6, e = $(id);
     e.style.opacity = ramp(t, a, a + .2);
@@ -283,7 +284,7 @@ window.setT = function (t) {
 
   // CTA (holds to the last frame)
   const c = $('cta');
-  c.style.opacity = ramp(t, 27.2, 27.45); c.style.zIndex = 60;
+  c.style.opacity = ramp(t, 27.0, 27.25); c.style.zIndex = 60;
   c.querySelector('.cb').style.transform = `scale(${1 + .04 * Math.max(0, Math.sin(clamp((t - 28) / .8) * Math.PI))})`;
 
   $('prog').style.transform = `scaleX(${t / D})`;
