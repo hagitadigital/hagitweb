@@ -1,0 +1,220 @@
+<!doctype html>
+<!--
+  «כמה זה עולה?» — cold Leads reel (direction B), 2026-10. 9:16, 1080×1920, 30s. Same CTA as landing page B.
+  No shame: the problem is the price conversation, not her; every line stays alone on screen for ~3s.
+  0.0–3.5   HOOK (frame 0): «אם כל שיחה מתחילה ב"כמה זה עולה?"…» + the bubbles (Instagram, WhatsApp, the site form)
+  3.5–6.5   the bubbles fold into one, a copper strip crosses it: «אולי המחיר הוא לא הבעיה.»
+  6.5–10    a generic marketplace, one card marked «את?»: «אולי עדיין לא נתת סיבה לבחור דווקא בך.»
+  10–24     the card opens into worlds: «מותג חזק לא רק מציג מוצר.» then «הוא בונה משמעות והעדפה.»
+            ORÉVA° the hands · VELUNE° the door, «היא לא מתיזה בושם» · MIEL° the cut, the slices
+  24–27     «אל תהיי המותג שמשווים. / תהיי המותג שבוחרים.»
+  27–30     CTA, holds to the last frame
+  One clock: window.setT(seconds); render.js seeks the videos via window.videoTimes(t).
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>כמה זה עולה?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=Frank+Ruhl+Libre:wght@500;700&amp;family=Heebo:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap">
+<style>
+:root{--bg:#FAF8F3;--ink:#2A201A;--deep:#4F372C;--muted:#7A6349;--copper:#C4765A;--copper-t:#A45839;--cl:#D78C70;
+  --cg:#EFE7DC;--ct:#2B2B2B;--cm:#6F665C;--cb:#222222}
+html,body{margin:0;background:var(--bg)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+.abs{position:absolute}
+.he{font-family:'Frank Ruhl Libre',serif}
+.layer{position:absolute;inset:0;opacity:0}
+
+/* bubbles */
+.bub{position:absolute;padding:30px 44px 26px;border-radius:40px 40px 40px 10px;background:#FFFFFF;box-shadow:0 18px 40px rgba(42,32,26,.12);display:flex;flex-direction:column;gap:8px}
+.bub .src{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:.12em;color:var(--muted)}
+.bub .q{font-size:62px;font-weight:700;color:var(--ink);line-height:1.1}
+
+/* marketplace (generic, no names) */
+.grid{display:grid;grid-template-columns:repeat(2,410px);gap:28px}
+.card{position:relative;background:#FFFFFF;border-radius:6px;padding:26px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.card .ph{width:100%;height:250px;background:#F3F1EE;border-radius:4px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px;box-sizing:border-box}
+.card .nm{font-size:28px;font-weight:500;color:var(--ct);align-self:stretch;text-align:right}
+.card .st{font-size:22px;color:#B9A27E;align-self:stretch;text-align:right;letter-spacing:.08em}
+.card .st small{color:var(--cm);letter-spacing:0;font-size:20px}
+.card .pr{align-self:stretch;text-align:right;font-size:40px;font-weight:700;color:var(--ct)}
+.card .bt{align-self:stretch;text-align:center;background:var(--cb);color:#FFFFFF;font-size:26px;font-weight:600;padding:14px 0;border-radius:5px}
+.s-bottle{width:86px;height:170px;background:#DCD6CE;border-radius:14px 14px 10px 10px;position:relative}
+.s-bottle:before{content:'';position:absolute;left:28px;top:-36px;width:30px;height:38px;background:#C9C2B8;border-radius:6px 6px 0 0}
+.ring{position:absolute;inset:-12px;border:6px solid var(--copper);border-radius:14px;opacity:0}
+.you{position:absolute;top:-34px;right:-20px;padding:10px 26px;border-radius:40px;background:var(--copper);color:#FFF8EF;font-size:34px;font-weight:700;opacity:0}
+
+/* worlds */
+#box{position:absolute;inset:0;overflow:hidden;background:#000}
+#box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.cap{position:absolute;top:150px;left:60px;right:60px;padding:36px 44px 40px;border-radius:24px;background:rgba(42,32,26,.9);color:#FAF8F3;display:flex;flex-direction:column;gap:16px}
+.cap .l1{font-size:52px;font-weight:600;line-height:1.2}
+.cap .l2{font-family:'Frank Ruhl Libre',serif;font-size:66px;font-weight:500;line-height:1.15;color:#E0A88E}
+.wtag{position:absolute;right:60px;padding:12px 26px;border-radius:40px;background:rgba(250,248,243,.94);color:var(--ink);display:flex;gap:14px;align-items:baseline;opacity:0}
+.wtag b{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;letter-spacing:.1em;direction:ltr}
+.wtag b i{font-style:normal;color:var(--copper)}
+.wtag span{font-size:28px;font-weight:500;color:var(--deep)}
+</style>
+</head>
+<body>
+<div id="stage" dir="rtl">
+
+  <!-- worlds (under everything) -->
+  <div id="box">
+    <video data-c="or-hands" src="media/clips/or-hands.webm" muted playsinline preload="auto"></video>
+    <video data-c="ve-a"     src="media/clips/ve-a.webm"     muted playsinline preload="auto"></video>
+    <video data-c="ve-woman" src="media/clips/ve-woman.webm" muted playsinline preload="auto"></video>
+    <video data-c="mi-cut"   src="media/clips/mi-cut.webm"   muted playsinline preload="auto"></video>
+    <video data-c="mi-b"     src="media/clips/mi-b.webm"     muted playsinline preload="auto"></video>
+    <div class="cap" id="cap" style="z-index:20">
+      <span class="l1">מותג חזק לא רק מציג מוצר.</span>
+      <span class="l2" id="l2" style="opacity:0">הוא בונה משמעות והעדפה.</span>
+    </div>
+    <div class="wtag" id="t0" style="z-index:21"><b>ORÉVA<i>°</i></b><span>קודם הידיים, אחר כך הבקבוק.</span></div>
+    <div class="wtag" id="t1" style="z-index:21"><b>VELUNE<i>°</i></b><span>בושם הוא לא ריח. הוא מקום.</span></div>
+    <div class="wtag" id="t2" style="z-index:21"><b>MIEL<i>°</i></b><span>רומנטיקה מתחילה מבפנים.</span></div>
+  </div>
+
+  <!-- 6.5–10: the marketplace -->
+  <div class="layer" id="market" style="background:var(--cg)">
+    <div class="abs he" id="mtx" style="top:120px;left:60px;right:60px;text-align:center;font-size:76px;font-weight:500;line-height:1.15;color:var(--ink)">אולי עדיין לא נתת<br>סיבה <span style="color:var(--copper-t)">לבחור דווקא בך.</span></div>
+    <div class="abs" style="top:540px;left:0;right:0;display:flex;justify-content:center">
+      <div class="grid" id="grid">
+        <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים מחדש · 30ml</span><span class="st">★★★★☆ <small>(212)</small></span><span class="pr">₪290</span><span class="bt">הזמיני עכשיו</span></div>
+        <div class="card" id="her"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים לחות · 30ml</span><span class="st">★★★★☆ <small>(97)</small></span><span class="pr">₪270</span><span class="bt">הזמיני עכשיו</span><i class="ring" id="ring"></i><span class="you" id="you">את?</span></div>
+        <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים זוהר · 30ml</span><span class="st">★★★★★ <small>(48)</small></span><span class="pr">₪310</span><span class="bt">הזמיני עכשיו</span></div>
+        <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים יומי · 30ml</span><span class="st">★★★★☆ <small>(156)</small></span><span class="pr">₪285</span><span class="bt">הזמיני עכשיו</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 0–6.5: the bubbles -->
+  <div class="layer" id="hook" style="opacity:1;background:var(--bg)">
+    <div class="abs" style="top:70px;left:0;right:0;text-align:center"><span dir="ltr" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:.3em;color:var(--muted)">BRAND · WORLDS · STUDIO</span></div>
+    <div class="abs he" id="htx" style="top:130px;left:50px;right:50px;text-align:center;font-size:84px;font-weight:500;line-height:1.16;color:var(--ink)">אם כל שיחה מתחילה<br>ב<span style="color:var(--copper-t);white-space:nowrap">«כמה זה עולה?»</span>…</div>
+    <div class="bub" id="b0" style="top:560px;right:90px"><span class="src" dir="ltr">INSTAGRAM · DM</span><span class="q">כמה זה עולה?</span></div>
+    <div class="bub" id="b1" style="top:850px;left:90px;border-radius:40px 40px 10px 40px"><span class="src" dir="ltr">WHATSAPP</span><span class="q">היי, כמה זה עולה?</span></div>
+    <div class="bub" id="b2" style="top:1150px;right:150px"><span class="src" dir="ltr">טופס באתר</span><span class="q">מה המחיר?</span></div>
+    <div class="bub" id="b3" style="top:1440px;left:150px;border-radius:40px 40px 10px 40px"><span class="src" dir="ltr">INSTAGRAM · COMMENT</span><span class="q">מחיר בפרטי 🙏</span></div>
+    <!-- 3.5–6.5 -->
+    <div class="abs" id="one" style="top:760px;left:0;right:0;display:flex;justify-content:center;opacity:0">
+      <div style="position:relative;padding:40px 70px;border-radius:50px 50px 50px 14px;background:#FFFFFF;box-shadow:0 18px 40px rgba(42,32,26,.12)">
+        <span style="font-size:96px;font-weight:700;color:var(--ink)">כמה זה עולה?</span>
+        <i id="strip" style="position:absolute;top:50%;right:50px;height:30px;margin-top:-10px;width:0;background:var(--copper);border-radius:6px"></i>
+      </div>
+    </div>
+    <div class="abs he" id="np" style="top:1180px;left:60px;right:60px;text-align:center;font-size:96px;font-weight:500;line-height:1.15;color:var(--ink);opacity:0">אולי המחיר<br>הוא <span style="color:var(--copper-t)">לא הבעיה.</span></div>
+  </div>
+
+  <!-- 24–27 -->
+  <div class="layer" id="close" style="background:var(--ink);color:#FAF8F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:70px;text-align:center">
+    <div class="he c1" style="font-size:96px;font-weight:500;line-height:1.15;color:#CDBFAE">אל תהיי המותג<br>שמשווים.</div>
+    <div class="he c2" style="font-size:112px;font-weight:500;line-height:1.12">תהיי המותג<br>ש<span style="color:var(--cl)">בוחרים</span>.</div>
+  </div>
+
+  <!-- 27–30 -->
+  <div class="layer" id="cta" style="background:var(--ink);color:#FAF8F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:50px;text-align:center">
+    <div class="he" style="font-size:94px;font-weight:500;line-height:1.12">שלחי לינק לעסק.</div>
+    <div style="font-size:54px;font-weight:600;line-height:1.35">תוך 48 שעות אחזיר לך<br><span style="color:var(--cl)">3 מקומות שבהם משווים אותך.</span></div>
+    <div class="cb" style="padding:28px 70px;border-radius:60px;background:var(--cl);color:var(--ink);font-size:52px;font-weight:700">לקבלת 3 הנקודות</div>
+    <div style="font-size:38px;color:#EFE7DC">בלי שיחה. בלי עלות.</div>
+    <div class="abs" style="bottom:90px;left:0;right:0;font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;letter-spacing:.3em;color:#CDBFAE" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+
+  <div class="abs" style="left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18);z-index:90"><div id="prog" style="height:6px;background:var(--copper);transform-origin:right;transform:scaleX(0)"></div></div>
+</div>
+
+<script>
+const D = 30;
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const outE = x => 1 - Math.pow(1 - clamp(x), 3);
+const ramp = (t, a, b) => ease((t - a) / (b - a));
+
+const SHOTS = [
+  {c: 'or-hands', a: 10.0, b: 14.5, from: 0},
+  {c: 've-a',     a: 14.5, b: 16.0, from: .2},
+  {c: 've-woman', a: 16.0, b: 19.2, from: .1},
+  {c: 'mi-cut',   a: 19.2, b: 21.8, from: .1},
+  {c: 'mi-b',     a: 21.8, b: 24.0, from: .55},
+];
+const vids = [...document.querySelectorAll('#box video')];
+SHOTS.forEach(s => s.el = vids.find(v => v.dataset.c === s.c));
+const TAGS = [[10.0, 14.5], [14.5, 19.2], [19.2, 24.0]];
+
+window.setT = function (t) {
+  // ---- hook: bubbles pile up (two already on frame 0), then fold into one
+  const fold = ramp(t, 3.4, 3.9);
+  ['b0', 'b1', 'b2', 'b3'].forEach((id, k) => {
+    const a = [-1, -1, .7, 1.5][k], e = $(id);
+    const p = a < 0 ? 1 : outE((t - a) / .35);
+    e.style.opacity = p * (1 - fold);
+    e.style.transform = `translateY(${(1 - p) * 40 + fold * (k % 2 ? -1 : 1) * 60}px) scale(${(.92 + .08 * p) * (1 - .15 * fold)})`;
+  });
+  $('htx').style.opacity = 1 - ramp(t, 3.3, 3.6);
+  $('one').style.opacity = ramp(t, 3.6, 3.9);
+  $('one').style.transform = `scale(${.85 + .15 * outE((t - 3.6) / .4)})`;
+  $('strip').style.width = (ramp(t, 4.0, 4.45) * 82) + '%';
+  $('np').style.opacity = ramp(t, 4.4, 4.75);
+  $('np').style.transform = `translateY(${(1 - outE((t - 4.4) / .4)) * 30}px)`;
+  const hk = ramp(t, 6.35, 6.6);
+  $('hook').style.opacity = 1 - hk; $('hook').style.zIndex = 50;
+
+  // ---- marketplace, «את?»
+  const m = $('market');
+  m.style.opacity = t >= 6.3 && t < 10.45 ? ramp(t, 6.35, 6.6) * (1 - ramp(t, 10.0, 10.4)) : 0; m.style.zIndex = 45;
+  $('mtx').style.opacity = ramp(t, 6.6, 6.95);
+  $('ring').style.opacity = ramp(t, 7.6, 7.9);
+  $('you').style.opacity = ramp(t, 7.8, 8.05);
+  $('you').style.transform = `scale(${.6 + .4 * outE((t - 7.8) / .3)})`;
+  $('grid').querySelectorAll('.card').forEach(c => { if (c.id !== 'her') c.style.opacity = 1 - .55 * ramp(t, 7.6, 8.0); });
+  const zoom = ramp(t, 9.4, 10.3);
+  $('her').style.transform = `scale(${1 + 2.4 * zoom})`; $('her').style.zIndex = 3;
+  $('her').style.transformOrigin = '50% 40%';
+
+  // ---- worlds
+  const inW = t >= 9.9 && t < 24.1;
+  $('box').style.visibility = inW ? 'visible' : 'hidden';
+  SHOTS.forEach((s, i) => {
+    const vis = t >= s.a - .1 && t < s.b + .15;
+    s.el.style.opacity = vis ? (i === 0 ? 1 : clamp((t - s.a) / .15)) : 0;
+    s.el.style.zIndex = i + 1;
+    const k = clamp((t - s.a) / (s.b - s.a));
+    s.el.style.transform = `scale(${1.05 - .05 * outE(k * 1.5)})`;
+  });
+  $('cap').style.opacity = ramp(t, 10.3, 10.6) * (1 - ramp(t, 23.8, 24.0));
+  $('cap').style.transform = `translateY(${(1 - outE((t - 10.3) / .4)) * -30}px)`;
+  $('l2').style.opacity = ramp(t, 13.0, 13.35);
+  TAGS.forEach(([a, b], i) => {
+    const e = $('t' + i);
+    e.style.top = '1640px';
+    e.style.opacity = Math.min(ramp(t, a + .6, a + .9), 1 - ramp(t, b - .25, b));
+    e.style.transform = `translateY(${(1 - outE((t - a - .6) / .35)) * 30}px)`;
+  });
+
+  // ---- close
+  const c = $('close');
+  c.style.opacity = t >= 23.9 && t < 27.3 ? ramp(t, 23.95, 24.15) : 0; c.style.zIndex = 55;
+  c.querySelector('.c1').style.opacity = ramp(t, 24.1, 24.4);
+  c.querySelector('.c2').style.opacity = ramp(t, 25.3, 25.6);
+  c.querySelector('.c2').style.transform = `translateY(${(1 - outE((t - 25.3) / .4)) * 30}px)`;
+
+  // ---- CTA (holds to the last frame)
+  const ct = $('cta');
+  ct.style.opacity = ramp(t, 27.1, 27.35); ct.style.zIndex = 60;
+  ct.querySelector('.cb').style.transform = `scale(${1 + .04 * Math.max(0, Math.sin(clamp((t - 28) / .8) * Math.PI))})`;
+
+  $('prog').style.transform = `scaleX(${t / D})`;
+};
+
+window.videoTimes = function (t) {
+  const all = [...document.querySelectorAll('video')], out = [];
+  SHOTS.forEach(s => { if (t >= s.a - .15 && t < s.b + .2) out.push([all.indexOf(s.el), Math.min(s.from + Math.max(0, t - s.a), (s.el.duration || 9) - .04)]); });
+  return out;
+};
+window.setT(0);
+</script>
+</body>
+</html>
