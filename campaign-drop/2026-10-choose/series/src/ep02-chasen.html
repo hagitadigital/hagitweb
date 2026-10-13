@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ככה בוחרים · פרק 02 · הבחירה</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;800&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap">
+<style>
+html,body{margin:0;background:#FAF8F3}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#FAF8F3}
+.film *{animation-duration:15s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.disp{font-family:'Frank Ruhl Libre',serif;font-weight:500}
+.lat{font-family:'Cormorant Garamond',serif}
+.pill{position:absolute;top:22px;right:22px;padding:9px 22px;border-radius:999px;font-size:26px;font-weight:500;z-index:5}
+@keyframes a50{0%{opacity:0;transform:scale(1.5)}15.000%{opacity:0;transform:scale(1.5)}16.333%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes a51{0%{opacity:0;transform:scale(1.5)}16.467%{opacity:0;transform:scale(1.5)}17.800%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes a52{0%{opacity:0;transform:scale(1.5)}17.933%{opacity:0;transform:scale(1.5)}19.267%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes a53{0%{opacity:0;transform:scale(1.5)}19.400%{opacity:0;transform:scale(1.5)}20.733%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes a54{0%{opacity:0;transform:scale(1.5)}20.867%{opacity:0;transform:scale(1.5)}22.200%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes a55{0%{opacity:0}0.000%{opacity:0}12.333%{opacity:0}13.333%{opacity:1}22.333%{opacity:1}23.333%{opacity:0}100%{opacity:0}}
+@keyframes a56{0%{opacity:0;transform:translateY(34px)}14.000%{opacity:0;transform:translateY(34px)}16.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a57{0%{transform:translate(1140px,1600px)}13.333%{transform:translate(1140px,1600px)}15.000%{transform:translate(220px,640px)}16.467%{transform:translate(220px,810px)}17.933%{transform:translate(220px,980px)}19.400%{transform:translate(220px,1150px)}20.867%{transform:translate(220px,1320px)}100%{transform:translate(220px,1320px)}}
+@keyframes a58{0%{opacity:0}0.000%{opacity:0}23.333%{opacity:0}25.333%{opacity:1}37.533%{opacity:1}39.533%{opacity:0}100%{opacity:0}}
+@keyframes a59{0%{opacity:0}0.000%{opacity:0}34.200%{opacity:0}36.200%{opacity:1}44.200%{opacity:1}46.200%{opacity:0}100%{opacity:0}}
+@keyframes a60{0%{opacity:0}0.000%{opacity:0}40.867%{opacity:0}42.867%{opacity:1}51.000%{opacity:1}53.000%{opacity:0}100%{opacity:0}}
+@keyframes a61{0%{opacity:0}0.000%{opacity:0}47.667%{opacity:0}49.667%{opacity:1}57.667%{opacity:1}59.667%{opacity:0}100%{opacity:0}}
+@keyframes a62{0%{opacity:0}0.000%{opacity:0}54.333%{opacity:0}56.333%{opacity:1}83.333%{opacity:1}85.333%{opacity:0}100%{opacity:0}}
+@keyframes a63{0%{clip-path:inset(100% 0 0 0)}36.867%{clip-path:inset(100% 0 0 0)}40.533%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a64{0%{clip-path:inset(100% 0 0 0)}43.533%{clip-path:inset(100% 0 0 0)}47.200%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a65{0%{clip-path:inset(100% 0 0 0)}50.333%{clip-path:inset(100% 0 0 0)}54.000%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a66{0%{clip-path:inset(100% 0 0 0)}57.000%{clip-path:inset(100% 0 0 0)}60.667%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a67{0%{opacity:0}0.000%{opacity:0}27.667%{opacity:0}28.667%{opacity:1}36.867%{opacity:1}37.867%{opacity:0}100%{opacity:0}}
+@keyframes a68{0%{opacity:0}0.000%{opacity:0}36.200%{opacity:0}37.200%{opacity:1}43.533%{opacity:1}44.533%{opacity:0}100%{opacity:0}}
+@keyframes a69{0%{opacity:0}0.000%{opacity:0}42.867%{opacity:0}43.867%{opacity:1}50.333%{opacity:1}51.333%{opacity:0}100%{opacity:0}}
+@keyframes a70{0%{opacity:0}0.000%{opacity:0}49.667%{opacity:0}50.667%{opacity:1}57.000%{opacity:1}58.000%{opacity:0}100%{opacity:0}}
+@keyframes a71{0%{opacity:0}0.000%{opacity:0}56.333%{opacity:0}57.333%{opacity:1}83.333%{opacity:1}84.333%{opacity:0}100%{opacity:0}}
+@keyframes a72{0%{clip-path:inset(100% 0 0 0)}62.333%{clip-path:inset(100% 0 0 0)}66.000%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a73{0%{clip-path:inset(0 0 100% 0)}65.667%{clip-path:inset(0 0 100% 0)}69.667%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes a74{0%{opacity:0}0.000%{opacity:0}24.267%{opacity:0}25.600%{opacity:1}81.333%{opacity:1}82.667%{opacity:0}100%{opacity:0}}
+@keyframes a75{0%{clip-path:circle(0px at 540px 960px)}25.600%{clip-path:circle(0px at 540px 960px)}29.267%{clip-path:circle(2300px at 540px 960px)}100%{clip-path:circle(2300px at 540px 960px)}}
+@keyframes a76{0%{opacity:0;transform:translateY(34px)}28.667%{opacity:0;transform:translateY(34px)}32.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a77{0%{stroke-dashoffset:1}26.667%{stroke-dashoffset:1}30.000%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a78{0%{opacity:0}0.000%{opacity:0}28.000%{opacity:0}29.333%{opacity:1}81.333%{opacity:1}82.667%{opacity:0}100%{opacity:0}}
+@keyframes a79{0%{opacity:0}0.000%{opacity:0}27.333%{opacity:0}28.667%{opacity:1}62.000%{opacity:1}63.333%{opacity:0}100%{opacity:0}}
+@keyframes a80{0%{opacity:0;transform:translateY(34px)}33.333%{opacity:0;transform:translateY(34px)}36.667%{opacity:1;transform:none}60.667%{opacity:1;transform:none}62.000%{opacity:0;transform:none}100%{opacity:0;transform:none}}
+@keyframes a81{0%{opacity:0}62.333%{opacity:0}63.667%{opacity:1}70.667%{opacity:1}72.000%{opacity:0}100%{opacity:0}}
+@keyframes a82{0%{transform:translate(540px,1700px)}25.600%{transform:translate(540px,1700px)}28.667%{transform:translate(540px,520px)}34.733%{transform:translate(540px,520px)}35.089%{transform:translate(631px,530px)}35.444%{transform:translate(719px,558px)}35.800%{transform:translate(799px,604px)}36.156%{transform:translate(867px,666px)}36.511%{transform:translate(921px,740px)}36.867%{transform:translate(958px,824px)}41.400%{transform:translate(958px,824px)}41.756%{transform:translate(978px,914px)}42.111%{transform:translate(978px,1006px)}42.467%{transform:translate(958px,1096px)}42.822%{transform:translate(921px,1180px)}43.178%{transform:translate(867px,1254px)}43.533%{transform:translate(799px,1316px)}48.200%{transform:translate(799px,1316px)}48.556%{transform:translate(719px,1362px)}48.911%{transform:translate(631px,1390px)}49.267%{transform:translate(540px,1400px)}49.622%{transform:translate(449px,1390px)}49.978%{transform:translate(361px,1362px)}50.333%{transform:translate(281px,1316px)}54.867%{transform:translate(281px,1316px)}55.222%{transform:translate(213px,1254px)}55.578%{transform:translate(159px,1180px)}55.933%{transform:translate(122px,1096px)}56.289%{transform:translate(102px,1006px)}56.644%{transform:translate(102px,914px)}57.000%{transform:translate(122px,824px)}60.000%{transform:translate(122px,824px)}62.333%{transform:translate(540px,1405px)}100%{transform:translate(540px,1405px)}}
+@keyframes a83{0%{opacity:0}0.000%{opacity:0}69.333%{opacity:0}70.667%{opacity:1}84.000%{opacity:1}85.333%{opacity:0}100%{opacity:0}}
+@keyframes a84{0%{stroke-dashoffset:1}71.000%{stroke-dashoffset:1}73.000%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a85{0%{transform:translate(540px,813px)}71.000%{transform:translate(540px,813px)}73.000%{transform:translate(640px,1010px)}100%{transform:translate(640px,1010px)}}
+@keyframes a86{0%{opacity:0;transform:translateY(80px) rotate(-3deg)}72.000%{opacity:0;transform:translateY(80px) rotate(-3deg)}74.667%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a87{0%{opacity:0;transform:translateY(34px)}74.000%{opacity:0;transform:translateY(34px)}77.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a88{0%{opacity:0}0.000%{opacity:0}20.333%{opacity:0}21.667%{opacity:1}28.000%{opacity:1}29.333%{opacity:0}100%{opacity:0}}
+@keyframes a89{0%{opacity:0}0.000%{opacity:0}21.000%{opacity:0}21.667%{opacity:1}27.000%{opacity:1}27.667%{opacity:0}100%{opacity:0}}
+@keyframes a90{0%{stroke-dashoffset:1}22.000%{stroke-dashoffset:1}25.600%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a91{0%{transform:translate(1140px,1700px)}22.000%{transform:translate(1140px,1700px)}23.333%{transform:translate(780px,1700px)}25.600%{transform:translate(540px,960px)}100%{transform:translate(540px,960px)}}
+@keyframes a92{0%{opacity:1}0.000%{opacity:1}13.667%{opacity:1}15.000%{opacity:0}100%{opacity:0}}
+@keyframes a93{0%{stroke-dashoffset:1}0.667%{stroke-dashoffset:1}10.667%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes a94{0%{transform:translate(1140px,915px)}0.667%{transform:translate(1140px,915px)}10.667%{transform:translate(540px,915px)}100%{transform:translate(540px,915px)}}
+@keyframes a95{0%{opacity:0}0.000%{opacity:0}81.000%{opacity:0}83.000%{opacity:1}100%{opacity:1}}
+@keyframes a96{0%{opacity:0;transform:translateY(34px)}84.333%{opacity:0;transform:translateY(34px)}87.667%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a97{0%{opacity:0;transform:translateY(34px)}85.667%{opacity:0;transform:translateY(34px)}89.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a98{0%{opacity:0;transform:translateY(34px)}89.000%{opacity:0;transform:translateY(34px)}92.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a99{0%{transform:translate(920px,1360px)}91.000%{transform:translate(920px,1360px)}95.667%{transform:translate(768px,1360px)}100%{transform:translate(768px,1360px)}}
+@keyframes a100{0%{opacity:0;transform:translateY(34px)}95.000%{opacity:0;transform:translateY(34px)}98.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes a101{0%{opacity:0;transform:translateY(34px)}95.667%{opacity:0;transform:translateY(34px)}99.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+</style>
+</head>
+<body data-duration="15">
+<div id="stage"><div class="film stack">
+
+<section class="stack" style="background: #EEE6D8; animation-name: a92" dir="rtl">
+  <div style="position: absolute; top: 84px; right: 80px; left: 80px; display: flex; justify-content: space-between; align-items: baseline">
+    <span dir="ltr" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: #3E2F25">Brand Worlds Studio</span>
+    <span style="font-size: 26px; letter-spacing: .14em; color: #8B7B6E">ככה בוחרים · פרק 02</span>
+  </div>
+  <div class="disp" style="position: absolute; top: 190px; right: 80px; left: 80px; font-size: 92px; line-height: 1.12; color: #3E2F25">למה מוצר אחד <span style="color: #C4765A">משווים,</span><br>ואת השני בוחרים?</div>
+  <div style="position: absolute; top: 470px; left: 110px; width: 860px; height: 400px; box-sizing: border-box; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(62,47,37,.16)"><div class="stack" style="background: #222222; padding: 80px 50px 0; box-sizing: border-box"><div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 2px dashed #555555; font-size: 34px; color: #DDDDDD"><span>מאצ'ה לאטה</span><b>₪22</b></div><div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 2px dashed #555555; font-size: 34px; color: #DDDDDD"><span>מאצ'ה תות</span><b>₪24</b></div><div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 2px dashed #555555; font-size: 34px; color: #DDDDDD"><span>הוג'יצ'ה</span><b>₪24</b></div><div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 2px dashed #555555; font-size: 34px; color: #DDDDDD"><span>מאצ'ה יוזו</span><b>₪26</b></div></div>
+    <span class="pill" style="background: #2E2A27; color: #F4F2EF">ככה משווים</span></div>
+  <div style="position: absolute; top: 960px; left: 110px; width: 860px; box-sizing: border-box; padding: 14px 14px 26px; background: #120D0A; border-radius: 20px; box-shadow: 0 30px 70px rgba(62,47,37,.24)">
+    <div style="position: relative; height: 452px; overflow: hidden; border-radius: 4px"><img class="cover" src="assets/chasen.webp" alt="">
+    <span class="pill" style="background: #C4765A; color: #FAF8F3">ככה בוחרים</span></div>
+  </div>
+  <div style="position: absolute; top: 1470px; left: 486px; width: 108px; height: 44px; background: #4F372C; clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%)"></div>
+  <svg width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true" style="position: absolute; inset: 0; z-index: 25"><path d="M1140 915 H60" pathLength="1" style="fill: none; stroke: #C4765A; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1 1; animation-name: a93; animation-timing-function: linear"></path></svg>
+  <div style="position: absolute; left: -42px; top: -42px; width: 84px; height: 84px; z-index: 30; animation-name: a94">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 11px; top: 11px; width: 62px; height: 62px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 22px; top: 37px; width: 11px; height: 11px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div>
+  <div style="position: absolute; top: 1600px; left: 0; right: 0; text-align: center; font-size: 30px; color: #8B7355">עולם מותג 22</div>
+</section>
+<section class="stack" style="background: #222222; animation-name: a55" dir="rtl">
+  <div style="position: absolute; top: 150px; right: 90px; left: 90px; display: flex; justify-content: space-between; align-items: center; font-size: 30px; color: #999999"><span style="padding: 10px 26px; border-radius: 999px; background: #F4F2EF; color: #2E2A27">ככה משווים</span><span>תפריט · משקאות קרים</span></div>
+  <div class="disp" style="position: absolute; top: 290px; right: 90px; left: 90px; font-size: 64px; line-height: 1.2; color: #F4F2EF; animation-name: a56">חמישה טעמים. חמש שורות, ומחיר.</div>
+  <div style="position: absolute; top: 570px; left: 90px; right: 90px; height: 140px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px dashed #555555" dir="rtl">
+      <span style="font-size: 56px; color: #E8E8E8">מאצ'ה לאטה</span>
+      <b style="position: relative; font-size: 58px; color: #FFFFFF">₪22<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: a50"></span></b></div><div style="position: absolute; top: 740px; left: 90px; right: 90px; height: 140px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px dashed #555555" dir="rtl">
+      <span style="font-size: 56px; color: #E8E8E8">מאצ'ה תות</span>
+      <b style="position: relative; font-size: 58px; color: #FFFFFF">₪24<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: a51"></span></b></div><div style="position: absolute; top: 910px; left: 90px; right: 90px; height: 140px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px dashed #555555" dir="rtl">
+      <span style="font-size: 56px; color: #E8E8E8">הוג'יצ'ה</span>
+      <b style="position: relative; font-size: 58px; color: #FFFFFF">₪24<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: a52"></span></b></div><div style="position: absolute; top: 1080px; left: 90px; right: 90px; height: 140px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px dashed #555555" dir="rtl">
+      <span style="font-size: 56px; color: #E8E8E8">מאצ'ה יוזו</span>
+      <b style="position: relative; font-size: 58px; color: #FFFFFF">₪26<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: a53"></span></b></div><div style="position: absolute; top: 1250px; left: 90px; right: 90px; height: 140px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px dashed #555555" dir="rtl">
+      <span style="font-size: 56px; color: #E8E8E8">מאצ'ה כחולה</span>
+      <b style="position: relative; font-size: 58px; color: #FFFFFF">₪26<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: a54"></span></b></div>
+  <div style="position: absolute; top: 1450px; right: 90px; left: 90px; display: flex; justify-content: space-between; font-size: 40px; color: #999999"><span>תוספת קצפת / שוקולד</span><b>₪4</b></div>
+  <div style="position: absolute; left: -42px; top: -42px; width: 84px; height: 84px; z-index: 30; animation-name: a57">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 11px; top: 11px; width: 62px; height: 62px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 22px; top: 37px; width: 11px; height: 11px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div>
+</section>
+<section class="stack" style="background: #FAF8F3; animation-name: a88" dir="rtl">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 16px">
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; color: #C4765A" dir="ltr">BRAND WORLDS STUDIO · HAGIT ANTEBI</div>
+    <div style="font-size: 100px; font-weight: 500; line-height: 1.05; color: #6B563F">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: #B8894A">22</em></div>
+  </div>
+  <div style="position: absolute; left: 240px; top: 412px; width: 44px; height: 44px; border-top: 3px solid #C4765A; border-left: 3px solid #C4765A"></div><div style="position: absolute; left: 796px; top: 412px; width: 44px; height: 44px; border-top: 3px solid #C4765A; border-right: 3px solid #C4765A"></div><div style="position: absolute; left: 240px; top: 1387px; width: 44px; height: 44px; border-bottom: 3px solid #C4765A; border-left: 3px solid #C4765A"></div><div style="position: absolute; left: 796px; top: 1387px; width: 44px; height: 44px; border-bottom: 3px solid #C4765A; border-right: 3px solid #C4765A"></div>
+  <div style="position: absolute; left: 270px; top: 442px; width: 540px; height: 960px; overflow: hidden; box-shadow: 0 50px 120px rgba(59,46,51,.26)"><div class="stack" style="background: #C9D1A8"><div style="position: absolute; left: 95px; top: 120px; width: 350px; height: 690px; border-radius: 175px 175px 30px 30px; overflow: hidden; background: #F2E8D5"><img src="assets/glass_classic.webp" alt="" style="position: absolute; left: 16px; top: 4px; width: 318px; height: 680px"></div></div></div>
+  <div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-size: 40px; color: #6B563F" dir="ltr">CHASEN° · Bar à Matcha</div>
+</section><div class="stack" style="z-index: 9; animation-name: a89"><svg width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true" style="position: absolute; inset: 0; z-index: 1"><path d="M1140 1700 H780 C 620 1700, 560 1300, 540 960" pathLength="1" style="fill: none; stroke: #C4765A; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 1; animation-name: a90; animation-timing-function: linear"></path></svg><div style="position: absolute; left: -42px; top: -42px; width: 84px; height: 84px; z-index: 30; animation-name: a91">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 11px; top: 11px; width: 62px; height: 62px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 22px; top: 37px; width: 11px; height: 11px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div></div>
+<section class="stack" style="animation-name: a74" dir="rtl">
+  <div class="stack" style="animation-name: a75">
+    <div class="stack" style="background: #C9D1A8; animation-name: a58"></div><div class="stack" style="background: #E6BFB4; animation-name: a59"></div><div class="stack" style="background: #D8BC98; animation-name: a60"></div><div class="stack" style="background: #EDD68E; animation-name: a61"></div><div class="stack" style="background: #B4C4E2; animation-name: a62"></div>
+    <div class="disp" style="position: absolute; top: 210px; left: 0; right: 0; text-align: center; font-size: 62px; color: #22301f; animation-name: a76">הכוס הזאת עוד לא קיימת.</div>
+    <svg width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true" style="position: absolute; inset: 0; z-index: 6"><circle cx="540" cy="960" r="440" style="fill: none; stroke: rgba(250,248,243,.0)"></circle><path d="M540 520 A440 440 0 0 1 540 1400 A440 440 0 0 1 540 520" pathLength="1" style="fill: none; stroke: #C4765A; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 1; animation-name: a77; animation-timing-function: linear"></path></svg>
+    <div class="stack" style="z-index: 21; animation-name: a78"><div style="position: absolute; left: 520px; top: 500px; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background: #4c6b33; border: 5px solid #FAF8F3; z-index: 21"></div><div style="position: absolute; left: 938px; top: 804px; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background: #C77B6E; border: 5px solid #FAF8F3; z-index: 21"></div><div style="position: absolute; left: 779px; top: 1296px; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background: #8A5A2B; border: 5px solid #FAF8F3; z-index: 21"></div><div style="position: absolute; left: 261px; top: 1296px; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background: #D9B23A; border: 5px solid #FAF8F3; z-index: 21"></div><div style="position: absolute; left: 102px; top: 804px; width: 40px; height: 40px; box-sizing: border-box; border-radius: 50%; background: #4A6BC4; border: 5px solid #FAF8F3; z-index: 21"></div></div>
+    <div style="position: absolute; left: 335px; top: 560px; width: 410px; height: 800px; border-radius: 205px 205px 34px 34px; overflow: hidden; background: #F2E8D5; z-index: 10; box-shadow: 0 30px 70px rgba(34,48,31,.18)">
+      <img src="assets/glass_classic.webp" alt="" style="position: absolute; left: 19px; top: 6px; width: 372px; height: 795px"><img src="assets/glass_fraise.webp" alt="" style="position: absolute; left: 19px; top: 6px; width: 372px; height: 795px; animation-name: a63"><img src="assets/glass_hojicha.webp" alt="" style="position: absolute; left: 19px; top: 6px; width: 372px; height: 795px; animation-name: a64"><img src="assets/glass_yuzu.webp" alt="" style="position: absolute; left: 19px; top: 6px; width: 372px; height: 795px; animation-name: a65"><img src="assets/glass_bleu.webp" alt="" style="position: absolute; left: 19px; top: 6px; width: 372px; height: 795px; animation-name: a66">
+      <img src="assets/layer_cream.webp" alt="" style="position: absolute; left: 84px; top: 75px; width: 241px; height: 314px; animation-name: a72">
+      <img src="assets/layer_choco.webp" alt="" style="position: absolute; left: 97px; top: 238px; width: 224px; height: 510px; animation-name: a73">
+    </div>
+    <div class="stack" style="z-index: 22; animation-name: a79"><div class="stack" style="animation-name: a67"><div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 84px; color: #22301f" dir="ltr">Matcha Classique</div></div><div class="stack" style="animation-name: a68"><div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 84px; color: #22301f" dir="ltr">Matcha Fraise</div></div><div class="stack" style="animation-name: a69"><div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 84px; color: #22301f" dir="ltr">Hōjicha</div></div><div class="stack" style="animation-name: a70"><div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 84px; color: #22301f" dir="ltr">Matcha Yuzu</div></div><div class="stack" style="animation-name: a71"><div style="position: absolute; top: 1500px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 84px; color: #22301f" dir="ltr">Matcha Bleu</div></div></div>
+    <div class="disp" style="position: absolute; top: 1640px; left: 0; right: 0; text-align: center; font-size: 56px; color: #22301f; z-index: 22; animation-name: a80">עד שאת מכינה אותה.</div>
+    <div style="position: absolute; top: 1640px; left: 0; right: 0; text-align: center; z-index: 22; animation-name: a81"><span style="font-size: 50px; color: #15202E">+ קצפת · + שוקולד על הדפנות</span></div>
+    <div style="position: absolute; left: -40px; top: -40px; width: 80px; height: 80px; z-index: 30; animation-name: a82">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 10px; top: 10px; width: 59px; height: 59px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 21px; top: 35px; width: 10px; height: 10px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div>
+  </div>
+</section>
+<section class="stack" style="background: #B4C4E2; animation-name: a83; z-index: 1" dir="rtl">
+  <div style="position: absolute; left: 370px; top: 150px; width: 340px; height: 663px; border-radius: 170px 170px 30px 30px; overflow: hidden; background: #F2E8D5">
+    <img src="assets/glass_bleu.webp" alt="" style="position: absolute; left: 16px; top: 5px; width: 310px; height: 662px">
+    <img src="assets/layer_cream.webp" alt="" style="position: absolute; left: 70px; top: 63px; width: 201px; height: 262px">
+    <img src="assets/layer_choco.webp" alt="" style="position: absolute; left: 81px; top: 199px; width: 186px; height: 425px">
+  </div>
+  <svg width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true" style="position: absolute; inset: 0; z-index: 6"><path d="M540 813 C 540 900, 700 900, 640 1010" pathLength="1" style="fill: none; stroke: #C4765A; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 1; animation-name: a84; animation-timing-function: linear"></path></svg>
+  <div style="position: absolute; left: -32px; top: -32px; width: 64px; height: 64px; z-index: 30; animation-name: a85">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 8px; top: 8px; width: 47px; height: 47px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 17px; top: 28px; width: 8px; height: 8px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div>
+  <div style="position: absolute; top: 1010px; left: 150px; right: 150px; padding: 46px 30px; box-sizing: border-box; background: #FAF8F3; border: 3px solid #C4765A; border-radius: 22px; text-align: center; box-shadow: 0 30px 70px rgba(21,32,46,.25); animation-name: a86">
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #C4765A" dir="ltr">CHASEN° · LA CARTE</div>
+    <div style="font-family: 'Cormorant Garamond', serif; font-size: 84px; line-height: 1.1; color: #15202E" dir="ltr">Matcha Bleu</div>
+    <div style="font-size: 34px; color: #4F372C">קצפת · שוקולד על הדפנות</div>
+    <div style="font-size: 32px; color: #7A6349; margin-top: 10px">המשקה שלך.</div>
+  </div>
+  <div class="disp" style="position: absolute; top: 1560px; left: 0; right: 0; text-align: center; font-size: 66px; line-height: 1.2; color: #15202E; animation-name: a87">אותה כוס. <em>שם משלה.</em></div>
+</section>
+<section class="stack" style="background: #FAF8F3; animation-name: a95" dir="rtl">
+  <div style="position: absolute; left: 240px; top: 110px; width: 44px; height: 44px; border-top: 3px solid #C4765A; border-left: 3px solid #C4765A"></div>
+  <div style="position: absolute; left: 796px; top: 110px; width: 44px; height: 44px; border-top: 3px solid #C4765A; border-right: 3px solid #C4765A"></div>
+  <div style="position: absolute; left: 240px; top: 790px; width: 44px; height: 44px; border-bottom: 3px solid #C4765A; border-left: 3px solid #C4765A"></div>
+  <div style="position: absolute; left: 796px; top: 790px; width: 44px; height: 44px; border-bottom: 3px solid #C4765A; border-right: 3px solid #C4765A"></div>
+  <div style="position: absolute; left: 270px; top: 140px; width: 540px; height: 664px; overflow: hidden; box-shadow: 0 40px 100px rgba(59,46,51,.22)"><div class="stack" style="background: #B4C4E2"><div style="position: absolute; left: 115px; top: 40px; width: 310px; height: 600px; border-radius: 155px 155px 26px 26px; overflow: hidden; background: #F2E8D5"><img src="assets/glass_bleu.webp" alt="" style="position: absolute; left: 14px; top: -20px; width: 282px; height: 602px"></div></div></div>
+  <div style="position: absolute; top: 880px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+    <div style="font-size: 30px; color: #C4765A; animation-name: a96">CHASEN° · עולם מותג 22</div>
+    <div class="disp" style="font-size: 50px; line-height: 1.25; color: #6B563F; animation-name: a97">מאצ'ה לא מזמינים. מרכיבים.</div>
+    <div class="disp" style="font-size: 120px; line-height: 1.05; font-style: italic; color: #C4765A; animation-name: a98">ככה בוחרים.</div>
+  </div>
+  <div style="position: absolute; left: 160px; top: 1359px; width: 760px; height: 3px; background: #C4765A"></div><div style="position: absolute; left: 908px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #C4765A; border: 3px solid #C4765A"></div><div style="position: absolute; left: 840px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #8B7355" dir="rtl">01 הצבע</div><div style="position: absolute; left: 756px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #FAF8F3; border: 3px solid #C4765A"></div><div style="position: absolute; left: 688px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #C4765A" dir="rtl">02 הבחירה</div><div style="position: absolute; left: 604px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #FAF8F3; border: 3px solid #C4765A"></div><div style="position: absolute; left: 536px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #8B7355" dir="rtl">03 מבפנים</div><div style="position: absolute; left: 452px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #FAF8F3; border: 3px solid #C4765A"></div><div style="position: absolute; left: 384px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #8B7355" dir="rtl">04 הסיפור</div><div style="position: absolute; left: 300px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #FAF8F3; border: 3px solid #C4765A"></div><div style="position: absolute; left: 232px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #8B7355" dir="rtl">05 האופי</div><div style="position: absolute; left: 148px; top: 1348px; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%; background: #FAF8F3; border: 3px solid #C4765A"></div><div style="position: absolute; left: 80px; top: 1386px; width: 160px; text-align: center; font-size: 24px; color: #8B7355" dir="rtl">06 הידיים</div><div style="position: absolute; left: -36px; top: -36px; width: 72px; height: 72px; z-index: 30; animation-name: a99">
+  <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(246,239,229,.55); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 26px rgba(62,40,24,.3)"></div>
+  <div style="position: absolute; left: 9px; top: 9px; width: 53px; height: 53px; border-radius: 50%; background: radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"></div>
+  <div style="position: absolute; left: 19px; top: 32px; width: 9px; height: 9px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div>
+</div>
+  <div style="position: absolute; top: 1460px; left: 80px; right: 80px; text-align: center; font-size: 30px; color: #8B7355; animation-name: a100">בפרק הבא: מבפנים · MIEL°</div>
+  <div style="position: absolute; top: 1560px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; animation-name: a101">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 60px; background: #6B563F; color: #FAF8F3; border-radius: 12px"><span style="font-size: 38px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 24px; opacity: .85">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</section>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: rgba(196,118,90,.2); z-index: 50"><div style="height: 8px; background: #C4765A; transform-origin: right; animation-name: a102; animation-timing-function: linear"></div></div>
+</div></div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  const name = el => { const k = 'k' + (n++); el.style.animationName = k; return k; };
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .3), k = name(el);
+    const s = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const e = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${s}${e}}`);
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(34px)}${P(t + .55)},100%{opacity:1;transform:none}}`);
+  });
+  /* data-wipe="t": reveal from the right edge leftwards over .55s (RTL reading direction) */
+  document.querySelectorAll('[data-wipe]').forEach(el => {
+    const t = +el.dataset.wipe, k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(t)}{clip-path:inset(0 0 0 100%)}${P(t + .55)},100%{clip-path:inset(0 0 0 0)}}`);
+  });
+  /* data-tf="a;b;from;to": one transform move between a and b seconds */
+  document.querySelectorAll('[data-tf]').forEach(el => {
+    const [a, b, f, t] = el.dataset.tf.split(';'), k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(+a)}{transform:${f}}${P(+b)},100%{transform:${t}}}`);
+  });
+  /* data-seq: each frame shows from its start until the next one starts; the last frame holds */
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const st = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block;animation-timing-function:linear`;
+    const frames = []; for (let f = from; f <= to; f += by) frames.push(f);
+    frames.forEach((f, i) => {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.style.cssText = st;
+      const k = 'k' + (n++); im.style.animationName = k;
+      const a = start + i * step, b = start + (i + 1) * step + .02, first = i === 0, last = i === frames.length - 1;
+      let kf;
+      if (first && last) kf = '0%,100%{opacity:1}';
+      else if (first) kf = `0%,${P(b)}{opacity:1}${P(b + .001)},100%{opacity:0}`;
+      else if (last) kf = `0%,${P(a - .001)}{opacity:0}${P(a)},100%{opacity:1}`;
+      else kf = `0%,${P(a - .001)}{opacity:0}${P(a)},${P(b)}{opacity:1}${P(b + .001)},100%{opacity:0}`;
+      css.push(`@keyframes ${k}{${kf}}`);
+      el.appendChild(im);
+    });
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
