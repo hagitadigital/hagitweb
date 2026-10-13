@@ -148,7 +148,10 @@ def close(ep, a, world_no, world_name, inner, world_line, nxt):
 
 
 def page(title, body):
-    js = (HERE.parent.parent / 'ux-reels' / 'src' / 'gen.py').read_text(encoding='utf8').split('JS = """')[1].split('"""')[0]
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('uxgen', HERE.parent.parent / 'ux-reels' / 'src' / 'gen.py')
+    ux = importlib.util.module_from_spec(spec); spec.loader.exec_module(ux)
+    js = ux.JS
     return f"""<!doctype html>
 <html lang="he">
 <head>
@@ -376,7 +379,81 @@ def ep02():
     return page('ככה בוחרים · פרק 02 · הבחירה', body)
 
 
+# ─────────────────────────── EPISODE 03 · MIEL · מבפנים ───────────────────────────
+# music ep03-15s.mp3 (0:04.95–0:19.95): quiet to 3.25 · chorus hits 3.25 · beats every 0.51s (6.47, 8.49, 9.0, 9.49, 10.0, 10.49, 11.49).
+# The thread is a straight line this time: the ball goes down through the cake and the line it leaves is the cut.
+def ep03():
+    _css.clear()
+    cakes = [('עוגת קרם וניל', '₪159'), ('עוגת פירות יער', '₪169'), ('עוגת שוקולד', '₪179'), ('עוגת יום הולדת', '₪189')]
+    cards = ''.join(f'<div style="flex: 1; display: flex; flex-direction: column; gap: 8px"><img src="assets/generic-cake.jpg" alt="" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px"><span style="font-size: 24px; color: #444444">{n}</span><b style="font-size: 30px; color: #222222">{p}</b></div>' for n, p in cakes[:3])
+    generic_small = f'<div class="stack" style="background: #FFFFFF; padding: 76px 30px 0; box-sizing: border-box; display: flex; gap: 22px">{cards}</div>'
+
+    ys = [640, 880, 1120, 1360]
+    rows = ''
+    for i, ((n, p), y) in enumerate(zip(cakes, ys)):
+        ring = anim([(2.25 + i * .25, 'opacity:0;transform:scale(1.5)'), (2.45 + i * .25, 'opacity:1;transform:scale(1)')])
+        rows += f"""<div style="position: absolute; top: {y - 100}px; left: 90px; right: 90px; height: 200px; display: flex; align-items: center; gap: 34px; border-bottom: 2px solid #EEEEEE" dir="rtl">
+      <img src="assets/generic-cake.jpg" alt="" style="width: 200px; height: 160px; object-fit: cover; border-radius: 10px">
+      <span style="flex-grow: 1; font-size: 44px; color: #444444">{n}</span>
+      <b style="position: relative; font-size: 54px; color: #222222">{p}<span style="position: absolute; inset: -14px -24px; border: 4px solid #C4765A; border-radius: 999px; animation-name: {ring}"></span></b></div>"""
+    compare = f"""
+<section class="stack" style="background: #FFFFFF; animation-name: {show(2.0, 3.4, .15)}" dir="rtl">
+  <div style="position: absolute; top: 150px; right: 90px; left: 90px; display: flex; justify-content: space-between; align-items: center; font-size: 30px; color: #777777"><span style="padding: 10px 26px; border-radius: 999px; background: #2E2A27; color: #F4F2EF">ככה משווים</span><span>עוגות · משלוח עד הבית</span></div>
+  <div class="disp" style="position: absolute; top: 290px; right: 90px; left: 90px; font-size: 64px; line-height: 1.2; color: #2E2A27; animation-name: {rise(2.1, .35)}">מבחוץ, כל העוגות נראות אותו דבר.</div>
+  {rows}
+  {ball([(2.0, 1140, 1600), (2.25, 220, ys[0]), (2.5, 220, ys[1]), (2.75, 220, ys[2]), (3.0, 220, ys[3])], 84)}
+</section>"""
+
+    # studio window: the site's hero plays inside it, the empty table fills with five slices
+    window_inner = ('<div class="stack" data-seq="assets/hero/f%03d.webp" data-from="1" data-to="41" data-start="3.3" data-step="0.028"></div>')
+    window = studio_window(3.2, 4.65, 27, window_inner, 'MIEL° · Maison Miel Pâtisserie') + \
+        f'<div class="stack" style="z-index: 9; animation-name: {show(3.2, 4.5, .1)}">{svg(thread("M1140 1700 H780 C 620 1700, 560 1200, 540 880", 3.25, 4.25, 5), 1)}{ball([(3.25, 1140, 1700), (3.55, 780, 1700), (4.25, 540, 880)], 84)}</div>'
+
+    # the cut: the ball goes down where the knife enters, the film follows its line
+    kx = 695
+    cut = f"""
+<section class="stack" style="background: #F3E3DE; animation-name: {show(4.45, 8.55, .2)}" dir="rtl">
+  <div class="stack" style="animation-name: {show(4.45, 6.5, .06)}"><div class="stack" data-seq="assets/coupe/c_%03d.jpg" data-from="1" data-to="14" data-start="4.5" data-step="0.14" data-pos="62% 40%"></div></div>
+  <div class="stack" style="animation-name: {show(6.45, 8.6, .05)}"><div class="stack" data-seq="assets/coupe/c_%03d.jpg" data-from="18" data-to="41" data-start="6.47" data-step="0.07" data-pos="62% 40%"></div></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(250,248,243,.92) 0%, rgba(250,248,243,0) 26%, rgba(250,248,243,0) 64%, rgba(250,248,243,.94) 86%)"></div>
+  <div class="stack" style="animation-name: {show(4.45, 6.55, .15)}">{svg(thread(f'M{kx} 470 V1310', 4.55, 6.4, 6), 20)}{ball([(4.5, kx, 470), (6.4, kx, 1310)], 80)}</div>
+  <div class="disp" style="position: absolute; top: 150px; right: 80px; left: 80px; font-size: 68px; line-height: 1.15; color: #4F372C; animation-name: {rise(4.7)}">כל בייקרי מראה<br>עוגה מבחוץ.</div>
+  <div class="disp" style="position: absolute; top: 1590px; right: 80px; left: 80px; font-size: 120px; line-height: 1; font-style: italic; color: #A45839; animation-name: {rise(6.5, .4)}">כאן חותכים.</div>
+</section>"""
+
+    # what's inside: the thread runs down the slice's face, the ball counts the layers, then the slice swaps on the beat
+    top = 420
+    lay = [('ביסקוויט', .40, False, 8.49), ('לב', .485, True, 9.0), ('ביסקוויט', .57, False, 9.49), ('לב', .65, True, 10.0)]
+    lx = 432
+    labels = ''
+    for n, fy, heart, t in lay:
+        y = round(top + fy * 810)
+        bg = '#A45839;color:#FAF8F3' if heart else 'rgba(250,248,243,.94);color:#4F372C'
+        labels += f'<div style="position: absolute; top: {y - 30}px; right: {1080 - lx + 70}px; padding: 8px 22px; border-radius: 8px; font-size: 36px; font-weight: 500; background: {bg}; animation-name: {anim([(t - .05, "opacity:0;transform:translateX(30px)"), (t + .2, "opacity:1;transform:none"), (10.4, "opacity:1;transform:none"), (10.55, "opacity:0;transform:none")])}">{n}</div>'
+    bst = [(8.4, lx, top + 230)]
+    for n, fy, heart, t in lay:
+        bst += [(t - .12, *bst[-1][1:]), (t, lx, round(top + fy * 810))]
+    swaps = [('41-slice-vanille-framboise-m', 8.4, 10.5), ('39-slice-chocolat-caramel-m', 10.49, 11.5), ('36-slice-vanille-caramel-m', 11.49, 11.8)]
+    slices = ''.join(f'<div class="stack" style="animation-name: {show(a, b, .1)}"><img src="assets/{img}.webp" alt="" style="position: absolute; top: {top}px; left: 0; width: 1080px; height: 810px; object-fit: cover"></div>' for img, a, b in swaps)
+    inside = f"""
+<section class="stack" style="background: #F3E3DE; animation-name: {show(8.4, 11.8, .2)}" dir="rtl">
+  {slices}
+  <div class="stack" style="background: linear-gradient(180deg, #F3E3DE 0%, #F3E3DE 21%, rgba(243,227,222,0) 24%, rgba(243,227,222,0) 60%, #F3E3DE 64%)"></div>
+  <div class="disp" style="position: absolute; top: 150px; right: 80px; left: 80px; font-size: 72px; line-height: 1.15; color: #4F372C; animation-name: {anim([(8.5, 'opacity:0;transform:translateY(30px)'), (8.9, 'opacity:1;transform:none'), (10.3, 'opacity:1;transform:none'), (10.5, 'opacity:0;transform:none')])}">שכבה. לב. שכבה. לב.</div>
+  <div class="disp" style="position: absolute; top: 150px; right: 80px; left: 80px; font-size: 72px; line-height: 1.15; color: #4F372C; animation-name: {rise(10.5, .35)}">72 עוגות. טאפ אחד חותך.</div>
+  <div class="stack" style="animation-name: {show(8.4, 10.55, .15)}">{svg(thread(f'M{lx} {top + 200} V{top + 600}', 8.4, 8.6, 5), 20)}{labels}{ball(bst, 64)}</div>
+  <div class="disp" style="position: absolute; top: 1330px; right: 80px; left: 80px; font-size: 64px; line-height: 1.2; color: #4F372C; animation-name: {rise(9.3)}">לא בוחרים גודל.</div>
+  <div class="disp" style="position: absolute; top: 1420px; right: 80px; left: 80px; font-size: 84px; line-height: 1.15; font-style: italic; color: #A45839; animation-name: {rise(10.0)}">בוחרים מה יהיה בפנים.</div>
+</section>"""
+
+    close_inner = '<img class="cover" src="assets/04-maison-cake-in-box-m.webp" alt="" style="object-position: 38% 50%">'
+    body = (hook(3, 27, generic_small, 'assets/hero/f041.webp') + compare + window + cut + inside
+            + close(3, 11.6, 27, 'MIEL°', close_inner, 'רומנטיקה מתחילה מבפנים.', 'בפרק הבא: הסיפור · ÉTAGE°'))
+    return page('ככה בוחרים · פרק 03 · מבפנים', body)
+
+
 if __name__ == '__main__':
     (HERE / 'ep01-pancakerie.html').write_text(ep01(), encoding='utf8')
     (HERE / 'ep02-chasen.html').write_text(ep02(), encoding='utf8')
+    (HERE / 'ep03-miel.html').write_text(ep03(), encoding='utf8')
     print('ok')

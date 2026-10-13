@@ -231,7 +231,7 @@ body{font-family:'Heebo',sans-serif}
   /* data-seq: each frame shows from its start until the next one starts; the last frame holds */
   document.querySelectorAll('[data-seq]').forEach(el => {
     const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
-    const pad = (s, i) => s.replace(/%0(\\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
     const st = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block;animation-timing-function:linear`;
     const frames = []; for (let f = from; f <= to; f += by) frames.push(f);
     frames.forEach((f, i) => {
@@ -247,7 +247,7 @@ body{font-family:'Heebo',sans-serif}
       el.appendChild(im);
     });
   });
-  const s = document.createElement('style'); s.textContent = css.join('\\n'); document.head.appendChild(s);
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
 })();
 </script>
 </body>
