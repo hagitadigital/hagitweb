@@ -4,6 +4,9 @@ Render: node <skill>/scripts/render.js ep01-pancakerie.html 15 ../ep01-silent.mp
 Every time is in seconds. anim() turns (t, css) stops into keyframes on the 15s timeline.
 """
 import math
+import sys
+
+sys.dont_write_bytecode = True   # the reel engine is imported from ../ux-reels; keep no __pycache__ in the repo
 from pathlib import Path
 
 D = 15
