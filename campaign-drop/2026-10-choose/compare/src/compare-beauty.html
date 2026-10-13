@@ -1,0 +1,302 @@
+<!doctype html>
+<!--
+  ככה משווים. ככה בוחרים. · BEAUTY (ORÉVA° · ROSÉE° · ELVÉA°) — cold Leads reel for the brand-gap check (landing page B), 2026-10. 9:16, 1080×1920, 30s.
+  The point: what gets her chosen is the promise, the voice and the brand language, not a pretty picture.
+  0.0–2.6   HOOK (frame 0): «אותו מוצר. אותו מחיר.» + «למה אחד משווים, ואת השני בוחרים?»; a marketplace row (generic, no names) over a world
+  2.6–3.8   ככה משווים: four near-identical serums, a copper strip covers the prices, «בלי המחיר, מה נשאר?»
+  3.8–8.6   ORÉVA°: the cosmetician's hands. Card: ההבטחה / הקול / המיתוג
+  8.6–9.6   ככה משווים: perfumes
+  9.6–14.4  VELUNE°: the door, then «היא לא מתיזה בושם. היא נכנסת אליו.»
+  14.4–15.4 ככה משווים: cakes
+  15.4–20.2 MIEL°: the cut, what's inside, the slices
+  v2 (12.10, Hagit): no WhatsApp screen; every message holds longer. 0–2.8 hook · 2.8–4.1 serums · 4.1–9.1 ORÉVA° ·
+  9.1–10.4 perfumes · 10.4–15.4 VELUNE° · 15.4–16.7 cakes · 16.7–21.7 MIEL°
+  21.7–25.2 the answer: «זה לא העיצוב.» — one promise, one voice, a language that repeats everywhere
+  25.2–27.0 the mirror: «ובעסק שלך?» on a generic card
+  27.0–30   CTA (same words as page B), holds to the last frame
+  One clock: window.setT(seconds); render.js seeks the videos via window.videoTimes(t).
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ככה משווים. ככה בוחרים. · ביוטי</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=Frank+Ruhl+Libre:wght@500;700&amp;family=Heebo:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap">
+<style>
+:root{--bg:#FAF8F3;--raised:#F5F1E8;--ink:#2A201A;--deep:#4F372C;--muted:#7A6349;--copper:#C4765A;--copper-t:#A45839;--cl:#D78C70;--action:#8A4A2F;
+  --cg:#EFE7DC;--ct:#2B2B2B;--cm:#6F665C;--cb:#222222}
+html,body{margin:0;background:var(--bg)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+.abs{position:absolute}
+.lat{font-family:'Cormorant Garamond',serif}
+.he{font-family:'Frank Ruhl Libre',serif}
+.layer{position:absolute;inset:0;opacity:0}
+
+/* marketplace (generic, no names) */
+.market{position:absolute;inset:0;background:var(--cg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.market .lbl{font-size:34px;font-weight:600;color:var(--cm);letter-spacing:.06em}
+.grid{display:grid;grid-template-columns:repeat(2,410px);gap:28px}
+.card{background:#FFFFFF;border-radius:6px;padding:26px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.card .ph{width:100%;height:270px;background:#F3F1EE;border-radius:4px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px;box-sizing:border-box}
+.card .nm{font-size:28px;font-weight:500;color:var(--ct);align-self:stretch;text-align:right}
+.card .st{font-size:22px;color:#B9A27E;align-self:stretch;text-align:right;letter-spacing:.08em}
+.card .st small{color:var(--cm);letter-spacing:0;font-size:20px}
+.card .pr{position:relative;align-self:stretch;text-align:right;font-size:40px;font-weight:700;color:var(--ct)}
+.card .strip{position:absolute;right:-6px;top:2px;height:52px;width:0;background:var(--copper);border-radius:5px}
+.card .bt{align-self:stretch;text-align:center;background:var(--cb);color:#FFFFFF;font-size:26px;font-weight:600;padding:14px 0;border-radius:5px}
+/* generic product shapes */
+.s-bottle{width:86px;height:180px;background:#DCD6CE;border-radius:14px 14px 10px 10px;position:relative}
+.s-bottle:before{content:'';position:absolute;left:28px;top:-36px;width:30px;height:38px;background:#C9C2B8;border-radius:6px 6px 0 0}
+.s-perf{width:150px;height:150px;background:#DCD6CE;border-radius:22px;position:relative}
+.s-perf:before{content:'';position:absolute;left:50px;top:-44px;width:50px;height:46px;background:#C9C2B8;border-radius:8px}
+.s-jar{width:170px;height:96px;background:#DCD6CE;border-radius:12px 12px 18px 18px;position:relative}
+.s-jar:before{content:'';position:absolute;left:-6px;right:-6px;top:-30px;height:32px;background:#C9C2B8;border-radius:8px}
+.s-drop{width:70px;height:150px;background:#DCD6CE;border-radius:12px;position:relative}
+.s-drop:before{content:'';position:absolute;left:22px;top:-58px;width:26px;height:60px;background:#C9C2B8;border-radius:13px 13px 4px 4px}
+.s-cake{width:200px;height:120px;background:#DCD6CE;border-radius:10px 10px 6px 6px;position:relative}
+.s-cake:before{content:'';position:absolute;left:-14px;right:-14px;bottom:-14px;height:14px;background:#C9C2B8;border-radius:4px}
+
+/* world */
+#box{position:absolute;inset:0;overflow:hidden;background:#000}
+#box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.why{position:absolute;top:150px;left:60px;right:60px;padding:34px 40px 38px;border-radius:22px;background:rgba(42,32,26,.9);color:#FAF8F3;display:flex;flex-direction:column;gap:20px;opacity:0}
+.why .hd{display:flex;justify-content:space-between;align-items:baseline}
+.why .hd .k{font-size:28px;font-weight:600;color:#E0A88E}
+.why .hd .w{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:600;letter-spacing:.1em;direction:ltr}
+.why .hd .w i{font-style:normal;color:var(--cl)}
+.row{display:flex;gap:22px;align-items:baseline;opacity:0}
+.row b{flex:none;width:150px;font-size:28px;font-weight:700;color:var(--cl)}
+.row span{font-size:38px;font-weight:500;line-height:1.3}
+
+/* whatsapp */
+.wa{position:absolute;inset:0;background:#EAE3D8;display:flex;flex-direction:column;padding:120px 56px 0;box-sizing:border-box;gap:26px}
+.wa .top{display:flex;align-items:center;gap:20px;justify-content:flex-start;padding-bottom:26px;border-bottom:1px solid rgba(42,32,26,.12)}
+.wa .av{width:84px;height:84px;border-radius:50%;background:var(--ink);color:var(--cl);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600}
+.wa .who{display:flex;flex-direction:column;gap:2px}
+.wa .who b{font-size:36px;font-weight:700;color:var(--ink)}
+.wa .who span{font-size:26px;color:var(--muted)}
+.msg{align-self:flex-start;max-width:86%;background:#FFFFFF;border-radius:22px 22px 22px 6px;padding:24px 30px;font-size:38px;line-height:1.4;color:var(--ink);box-shadow:0 2px 4px rgba(0,0,0,.06);opacity:0}
+.msg .n{color:var(--copper-t);font-weight:800}
+.msg .tm{display:block;text-align:left;font-size:20px;color:#9A8B7A;margin-top:6px}
+
+/* ball */
+.ball{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:rgba(246,239,229,.7);border:1.5px solid #D8CCBD;box-shadow:0 8px 20px rgba(62,40,24,.28)}
+.ball i{position:absolute;left:8px;top:8px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+</style>
+</head>
+<body>
+<div id="stage" dir="rtl">
+
+  <!-- world clips (under everything) -->
+  <div id="box">
+    <video data-c="or-hands" src="media/clips/or-hands.webm" muted playsinline preload="auto"></video>
+    <video data-c="ro-dial"   src="media/clips/ro-dial.webm"   muted playsinline preload="auto"></video>
+    <video data-c="el-bottle" src="media/clips/el-bottle.webm" muted playsinline preload="auto"></video>
+    <div id="choose" class="abs" style="top:56px;right:56px;padding:12px 26px;border-radius:40px;background:rgba(250,248,243,.94);color:var(--ink);font-size:30px;font-weight:700;opacity:0">ככה בוחרים</div>
+
+    <div class="why" id="why0">
+      <div class="hd"><span class="k">למה בוחרים בו</span><span class="w">ORÉVA<i>°</i></span></div>
+      <div class="row"><b>ההבטחה</b><span>קודם הידיים, אחר כך הבקבוק.</span></div>
+      <div class="row"><b>הקול</b><span>«העור שלך לא צריך עוד מוצר.»</span></div>
+      <div class="row"><b>המיתוג</b><span>חדר הטיפולים ממשיך בבית.</span></div>
+    </div>
+    <div class="why" id="why1">
+      <div class="hd"><span class="k">למה בוחרים בו</span><span class="w">ROSÉE<i>°</i></span></div>
+      <div class="row"><b>ההבטחה</b><span>נולד עם שחר.</span></div>
+      <div class="row"><b>הקול</b><span>«הבוקר הוא טקס.»</span></div>
+      <div class="row"><b>המיתוג</b><span>שעון שחר: כל מוצר בשעה שלו.</span></div>
+    </div>
+    <div class="why" id="why2">
+      <div class="hd"><span class="k">למה בוחרים בו</span><span class="w">ELVÉA<i>°</i></span></div>
+      <div class="row"><b>ההבטחה</b><span>הטבע מתחיל את הסיפור.</span></div>
+      <div class="row"><b>הקול</b><span>«לא עשרה שלבים.»</span></div>
+      <div class="row"><b>המיתוג</b><span>שני קווים, ומרכיבים שרואים בעין.</span></div>
+    </div>
+  </div>
+
+  <!-- marketplace layers -->
+  <div class="layer" id="m0"><div class="market">
+    <span class="lbl">ככה משווים</span>
+    <div class="grid">
+      <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים מחדש · 30ml</span><span class="st">★★★★☆ <small>(212)</small></span><span class="pr">₪290<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים לחות · 30ml</span><span class="st">★★★★☆ <small>(97)</small></span><span class="pr">₪270<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים זוהר · 30ml</span><span class="st">★★★★★ <small>(48)</small></span><span class="pr">₪310<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-bottle"></div></div><span class="nm">סרום פנים יומי · 30ml</span><span class="st">★★★★☆ <small>(156)</small></span><span class="pr">₪285<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+    </div>
+    <span class="q" style="font-size:52px;font-weight:700;color:var(--ink);opacity:0">בלי המחיר, מה נשאר?</span>
+  </div></div>
+  <div class="layer" id="m1"><div class="market">
+    <span class="lbl">ככה משווים</span>
+    <div class="grid">
+      <div class="card"><div class="ph"><div class="s-jar"></div></div><span class="nm">קרם פנים לחות · 50ml</span><span class="st">★★★★☆ <small>(341)</small></span><span class="pr">₪240<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-jar"></div></div><span class="nm">קרם לילה מזין · 50ml</span><span class="st">★★★★☆ <small>(88)</small></span><span class="pr">₪260<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-jar"></div></div><span class="nm">קרם יום SPF · 50ml</span><span class="st">★★★★★ <small>(52)</small></span><span class="pr">₪220<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-jar"></div></div><span class="nm">קרם פנים אנטי־אייג׳ · 50ml</span><span class="st">★★★★☆ <small>(203)</small></span><span class="pr">₪280<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+    </div>
+    <span class="q" style="font-size:52px;font-weight:700;color:var(--ink);opacity:0">בלי המחיר, מה נשאר?</span>
+  </div></div>
+  <div class="layer" id="m2"><div class="market">
+    <span class="lbl">ככה משווים</span>
+    <div class="grid">
+      <div class="card"><div class="ph"><div class="s-drop"></div></div><span class="nm">סרום בוטני · 30ml</span><span class="st">★★★★☆ <small>(64)</small></span><span class="pr">₪230<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-drop"></div></div><span class="nm">שמן פנים טבעי · 30ml</span><span class="st">★★★★☆ <small>(119)</small></span><span class="pr">₪210<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-drop"></div></div><span class="nm">סרום צמחי · 30ml</span><span class="st">★★★★★ <small>(37)</small></span><span class="pr">₪250<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+      <div class="card"><div class="ph"><div class="s-drop"></div></div><span class="nm">תמצית פנים · 30ml</span><span class="st">★★★★☆ <small>(90)</small></span><span class="pr">₪225<i class="strip"></i></span><span class="bt">הזמיני עכשיו</span></div>
+    </div>
+    <span class="q" style="font-size:52px;font-weight:700;color:var(--ink);opacity:0">בלי המחיר, מה נשאר?</span>
+  </div></div>
+
+  <!-- HOOK (frame 0): text on cream, a marketplace strip and the world under it -->
+  <div class="layer" id="hook" style="opacity:1;background:var(--bg)">
+    <div class="abs" style="top:70px;left:0;right:0;text-align:center"><span dir="ltr" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:.3em;color:var(--muted)">BRAND · WORLDS · STUDIO</span></div>
+    <div class="abs he" style="top:126px;left:40px;right:40px;text-align:center;font-size:104px;font-weight:500;line-height:1.08;color:var(--ink)">אותו מוצר.<br>אותו מחיר.</div>
+    <div class="abs" style="top:378px;left:40px;right:40px;text-align:center;font-size:46px;font-weight:500;color:var(--deep)">למה אחד <span style="font-weight:700">משווים</span>, ואת השני <span style="font-weight:700;color:var(--copper-t)">בוחרים</span>?</div>
+    <div class="abs" style="top:500px;left:0;right:0;height:640px;background:var(--cg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+      <span style="font-size:28px;font-weight:600;color:var(--cm)">ככה משווים</span>
+      <div style="display:flex;gap:22px">
+        <div class="card" style="width:300px;padding:18px"><div class="ph" style="height:250px"><div class="s-bottle"></div></div><span class="nm" style="font-size:24px">סרום פנים · 30ml</span><span class="pr" style="font-size:34px">₪290</span><span class="bt" style="font-size:22px;padding:10px 0">הזמיני עכשיו</span></div>
+        <div class="card" style="width:300px;padding:18px"><div class="ph" style="height:250px"><div class="s-bottle"></div></div><span class="nm" style="font-size:24px">סרום פנים · 30ml</span><span class="pr" style="font-size:34px">₪270</span><span class="bt" style="font-size:22px;padding:10px 0">הזמיני עכשיו</span></div>
+      </div>
+    </div>
+    <div class="abs" style="top:1140px;left:0;right:0;bottom:0;overflow:hidden">
+      <video id="hookv" src="media/clips/or-hands.webm" muted playsinline preload="auto" style="position:absolute;left:0;top:-560px;width:1080px;height:1920px;object-fit:cover"></video>
+      <div class="abs" style="top:28px;right:40px;padding:10px 24px;border-radius:40px;background:rgba(250,248,243,.94);color:var(--ink);font-size:28px;font-weight:700">ככה בוחרים</div>
+    </div>
+  </div>
+
+  <!-- ANSWER -->
+  <div class="layer" id="answer" style="background:var(--ink);color:#FAF8F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px;text-align:center">
+    <div class="he a1" style="font-size:120px;font-weight:500;line-height:1.05">זה לא<br>העיצוב.</div>
+    <div class="a2" style="display:flex;flex-direction:column;gap:22px;font-size:54px;font-weight:600;line-height:1.25">
+      <span class="a2a">הבטחה אחת.</span><span class="a2b">קול אחד.</span><span class="a2c">שפה שחוזרת בכל מקום.</span>
+    </div>
+    <div class="a3" style="font-size:46px;color:#E0A88E;font-weight:600">בגלל זה בוחרים.</div>
+  </div>
+
+  <!-- MIRROR -->
+  <div class="layer" id="mirror"><div class="market">
+    <span class="he" style="font-size:96px;font-weight:500;color:var(--ink)">ובעסק שלך?</span>
+    <div class="card" style="width:520px"><div class="ph" style="height:330px"><div class="s-bottle" style="opacity:.75"></div></div><span class="nm" style="font-size:34px;font-weight:700">המוצר שלך</span><span class="st">★★★★☆ <small>(?)</small></span><span class="pr">₪ ???</span><span class="bt">הזמיני עכשיו</span></div>
+    <span style="font-size:42px;color:var(--deep);font-weight:500">עוד כרטיס אחד בגלילה?</span>
+  </div></div>
+
+  <!-- WHATSAPP -->
+  <div class="layer" id="wa"><div class="wa">
+    <div class="top"><div class="av">H</div><div class="who"><b>חגית אנטבי · Brand Worlds Studio</b><span>3 המקומות שבהם משווים אותך</span></div></div>
+    <div class="msg" id="w0">היי 🤍 עברתי על העסק שלך. הנה 3 המקומות שבהם משווים אותך:<span class="tm">10:02</span></div>
+    <div class="msg" id="w1"><span class="n">1.</span> אין משפט אחד שאומר למה דווקא את. אז משווים מחיר.<span class="tm">10:02</span></div>
+    <div class="msg" id="w2"><span class="n">2.</span> הקול משתנה: באתר רשמי, באינסטגרם חברי, בדף המוצר טכני.<span class="tm">10:03</span></div>
+    <div class="msg" id="w3"><span class="n">3.</span> אם נסתיר את הלוגו, קשה לדעת שזה העסק שלך.<span class="tm">10:03</span></div>
+  </div></div>
+
+  <!-- CTA -->
+  <div class="layer" id="cta" style="background:var(--ink);color:#FAF8F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:50px;text-align:center">
+    <div class="he" style="font-size:94px;font-weight:500;line-height:1.12">שלחי לינק לעסק.</div>
+    <div style="font-size:54px;font-weight:600;line-height:1.35">תוך 48 שעות:<br><span style="color:var(--cl)">3 מקומות שבהם משווים אותך.</span></div>
+    <div class="cb" style="padding:28px 70px;border-radius:60px;background:var(--cl);color:var(--ink);font-size:52px;font-weight:700">לקבלת 3 הנקודות</div>
+    <div style="font-size:38px;color:#EFE7DC">בלי שיחה. בלי עלות.</div>
+    <div class="abs" style="bottom:90px;left:0;right:0;font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;letter-spacing:.3em;color:#CDBFAE" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+
+  <div class="abs" style="left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18);z-index:90"><div id="prog" style="height:6px;background:var(--copper);transform-origin:right;transform:scaleX(0)"></div></div>
+</div>
+
+<script>
+const D = 30;
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const outE = x => 1 - Math.pow(1 - clamp(x), 3);
+const ramp = (t, a, b) => ease((t - a) / (b - a));
+const win = (t, a, b, f = .25) => Math.min(ramp(t, a, a + f), 1 - ramp(t, b, b + f));
+
+// world shots: clip, start, end in the reel, clip time at start
+const SHOTS = [
+  {c: 'or-hands', a: 4.1,  b: 9.1,  from: 0},
+  {c: 'ro-dial',   a: 10.4, b: 15.4, from: .1},
+  {c: 'el-bottle', a: 16.7, b: 21.7, from: .1},
+];
+const vids = [...document.querySelectorAll('#box video')];
+SHOTS.forEach(s => s.el = vids.find(v => v.dataset.c === s.c));
+// marketplace beats: [layer, start, end]
+const MK = [['m0', 2.8, 4.1], ['m1', 9.1, 10.4], ['m2', 15.4, 16.7]];
+const WORLD = [[4.1, 9.1], [10.4, 15.4], [16.7, 21.7]];
+
+window.setT = function (t) {
+  // hook: holds, then slides up and away
+  const hk = ramp(t, 2.65, 2.95);
+  $('hook').style.opacity = 1 - hk; $('hook').style.transform = `translateY(${-80 * hk}px)`; $('hook').style.zIndex = 50;
+
+  // marketplace beats: in hard on the cut, the strip covers the prices, then the question
+  MK.forEach(([id, a, b], i) => {
+    const L = $(id);
+    L.style.opacity = t >= a - .25 && t < b ? (i === 0 ? ramp(t, a - .25, a) : 1) : 0;
+    L.style.zIndex = 30;
+    const s = ramp(t, a + .25, a + .6);
+    L.querySelectorAll('.strip').forEach((el, k) => { const sk = ramp(t, a + .22 + k * .05, a + .55 + k * .05); el.style.width = (sk * 112) + '%'; });
+    L.querySelector('.q').style.opacity = ramp(t, a + .55, a + .8);
+    L.querySelector('.grid').style.transform = `scale(${1 - .03 * s})`;
+  });
+
+  // worlds
+  const inWorld = WORLD.some(([a, b]) => t >= a - .01 && t < b);
+  $('box').style.visibility = inWorld ? 'visible' : 'hidden';
+  SHOTS.forEach((s, i) => {
+    const vis = t >= s.a - .001 && t < s.b + .15;
+    s.el.style.opacity = vis ? clamp((t - s.a) / .15 + (WORLD.some(([a]) => Math.abs(a - s.a) < .01) ? 1 : 0)) : 0;
+    s.el.style.zIndex = i + 1;
+    const k = clamp((t - s.a) / (s.b - s.a));
+    s.el.style.transform = `scale(${1.05 - .05 * outE(k * 1.5)})`;
+  });
+  $('choose').style.opacity = inWorld ? 1 : 0; $('choose').style.zIndex = 20;
+  WORLD.forEach(([a, b], i) => {
+    const w = $('why' + i);
+    w.style.zIndex = 21;
+    w.style.opacity = Math.min(ramp(t, a + .5, a + .8), 1 - ramp(t, b - .2, b));
+    w.style.transform = `translateY(${(1 - outE((t - a - .5) / .4)) * -30}px)`;
+    w.querySelectorAll('.row').forEach((r, k) => {
+      const ra = a + .9 + k * 1.1;
+      r.style.opacity = ramp(t, ra, ra + .3);
+      r.style.transform = `translateX(${(1 - outE((t - ra) / .35)) * -40}px)`;
+    });
+  });
+
+  // answer
+  const an = $('answer');
+  an.style.opacity = t >= 21.7 && t < 25.35 ? ramp(t, 21.7, 21.85) : 0; an.style.zIndex = 40;
+  an.querySelector('.a1').style.opacity = ramp(t, 21.75, 22.05);
+  ['a2a', 'a2b', 'a2c'].forEach((c, k) => { const e = an.querySelector('.' + c); e.style.opacity = ramp(t, 22.6 + k * .55, 22.85 + k * .55); });
+  an.querySelector('.a3').style.opacity = ramp(t, 24.35, 24.6);
+
+  // mirror
+  const mi = $('mirror');
+  mi.style.opacity = t >= 25.2 && t < 27.15 ? ramp(t, 25.2, 25.4) : 0; mi.style.zIndex = 41;
+  mi.querySelector('.card').style.transform = `scale(${.9 + .1 * outE((t - 25.2) / .5)})`;
+
+  // whatsapp
+  const wa = $('wa');
+  wa.style.opacity = 0; wa.style.zIndex = 42;
+  ['w0', 'w1', 'w2', 'w3'].forEach((id, k) => {
+    const a = 24.6 + k * .6, e = $(id);
+    e.style.opacity = ramp(t, a, a + .2);
+    e.style.transform = `translateY(${(1 - outE((t - a) / .3)) * 40}px)`;
+  });
+
+  // CTA (holds to the last frame)
+  const c = $('cta');
+  c.style.opacity = ramp(t, 27.0, 27.25); c.style.zIndex = 60;
+  c.querySelector('.cb').style.transform = `scale(${1 + .04 * Math.max(0, Math.sin(clamp((t - 28) / .8) * Math.PI))})`;
+
+  $('prog').style.transform = `scaleX(${t / D})`;
+};
+
+window.videoTimes = function (t) {
+  const all = [...document.querySelectorAll('video')], out = [];
+  SHOTS.forEach(s => { if (t >= s.a - .05 && t < s.b + .2) out.push([all.indexOf(s.el), Math.min(s.from + Math.max(0, t - s.a), (s.el.duration || 9) - .04)]); });
+  if (t < 2.8) out.push([all.indexOf($('hookv')), .8 + t * .5]);
+  return out;
+};
+window.setT(0);
+</script>
+</body>
+</html>
