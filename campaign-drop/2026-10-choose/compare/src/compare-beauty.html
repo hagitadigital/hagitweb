@@ -82,6 +82,7 @@ body{font-family:'Heebo',sans-serif}
 /* ball */
 .ball{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:rgba(246,239,229,.7);border:1.5px solid #D8CCBD;box-shadow:0 8px 20px rgba(62,40,24,.28)}
 .ball i{position:absolute;left:8px;top:8px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+#box video[data-c="ro-cadran"]{top:-44px;height:calc(100% + 44px)}
 </style>
 </head>
 <body>
@@ -90,7 +91,8 @@ body{font-family:'Heebo',sans-serif}
   <!-- world clips (under everything) -->
   <div id="box">
     <video data-c="or-hands" src="media/clips/or-hands.webm" muted playsinline preload="auto"></video>
-    <video data-c="ro-dial"   src="media/clips/ro-dial.webm"   muted playsinline preload="auto"></video>
+    <video data-c="or-bottle" src="media/clips/or-bottle.webm" muted playsinline preload="auto"></video>
+    <video data-c="ro-cadran" src="media/clips/ro-cadran.webm"   muted playsinline preload="auto"></video>
     <video data-c="el-bottle" src="media/clips/el-bottle.webm" muted playsinline preload="auto"></video>
     <div id="choose" class="abs" style="top:56px;right:56px;padding:12px 26px;border-radius:40px;background:rgba(250,248,243,.94);color:var(--ink);font-size:30px;font-weight:700;opacity:0">ככה בוחרים</div>
 
@@ -103,8 +105,8 @@ body{font-family:'Heebo',sans-serif}
     <div class="why" id="why1">
       <div class="hd"><span class="k">למה בוחרים בו</span><span class="w">ROSÉE<i>°</i></span></div>
       <div class="row"><b>ההבטחה</b><span>נולד עם שחר.</span></div>
-      <div class="row"><b>הקול</b><span>«הבוקר הוא טקס.»</span></div>
-      <div class="row"><b>המיתוג</b><span>שעון שחר: כל מוצר בשעה שלו.</span></div>
+      <div class="row"><b>הקול</b><span>«הבוקר הוא מעגל.»</span></div>
+      <div class="row"><b>המיתוג</b><span>גלגל הבוקר: כל מוצר בשעה שלו.</span></div>
     </div>
     <div class="why" id="why2">
       <div class="hd"><span class="k">למה בוחרים בו</span><span class="w">ELVÉA<i>°</i></span></div>
@@ -212,8 +214,9 @@ const win = (t, a, b, f = .25) => Math.min(ramp(t, a, a + f), 1 - ramp(t, b, b +
 
 // world shots: clip, start, end in the reel, clip time at start
 const SHOTS = [
-  {c: 'or-hands', a: 4.1,  b: 9.1,  from: 0},
-  {c: 'ro-dial',   a: 10.4, b: 15.4, from: .1},
+  {c: 'or-hands', a: 4.1,  b: 6.7,  from: 0},
+  {c: 'or-bottle', a: 6.7, b: 9.1,  from: .4},
+  {c: 'ro-cadran', a: 10.4, b: 15.4, from: .2},
   {c: 'el-bottle', a: 16.7, b: 21.7, from: .1},
 ];
 const vids = [...document.querySelectorAll('#box video')];
