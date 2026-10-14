@@ -115,7 +115,7 @@ WORD = f'<div style="{CG}; font-size: 104px; font-weight: 500; letter-spacing: .
 reveal('a-l1', 6.1)
 reveal('a-l2', 6.6)
 A = f"""<section class="scene" data-show="0,10.1">
-    {seq('t01', 31, 5.6, .12, 0, 10.2)}
+    {seq('t01', 41, 5.6, .09, 0, 10.2)}
     {GT}{GB}
     <div style="position: absolute; top: 200px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 12px">
       {WORD}
