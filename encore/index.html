@@ -319,6 +319,81 @@ footer.studio a{color:inherit}
   .titles h2,.subs p,.caption>div,.slice,.slot img,.set-final h3,.opt{transition:none}
   .clockface.done svg.face{animation:none}
 }
+/* ---- hors la boîte: the dial goes out to the street ---- */
+.hors{height:560vh;position:relative;background:#1E0F0E}
+.hx-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:clamp(24px,5vw,80px);
+  padding:clamp(56px,9vh,96px) var(--gutter) clamp(32px,6vh,64px);max-width:1320px;margin:0 auto}
+.hx-glow{position:absolute;inset:0;pointer-events:none;transition:background 1s ease;
+  background:radial-gradient(ellipse 55% 60% at 30% 55%,var(--hx-glow,rgba(133,58,38,.45)),transparent 70%)}
+.hx-copy{position:relative;z-index:2}
+.hx-copy .eyebrow{margin-bottom:14px}
+.hx-copy>h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.9rem,4vw,3.2rem);line-height:1.12}
+.hx-copy>p{margin-top:10px;color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:46ch}
+.hx-ch{display:grid;margin-top:clamp(22px,5vh,48px);padding-top:clamp(18px,3vh,28px);border-top:1px solid rgba(217,178,106,.28)}
+.hx-ch article{grid-area:1/1;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.hx-ch article.on{opacity:1;transform:none}
+.hx-n{font-family:var(--font-body-en);font-size:.72rem;letter-spacing:.3em;color:var(--gold)}
+.hx-ch h3{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(1.6rem,3vw,2.3rem);margin-top:6px}
+.hx-ch h3 span{font-family:var(--font-body-he);font-style:normal;font-size:.5em;color:var(--ink-soft);margin-inline-start:10px;letter-spacing:.02em}
+.hx-ch p{margin-top:8px;line-height:1.75;font-weight:300;max-width:44ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips span{font-size:.76rem;border:1px solid rgba(217,178,106,.45);color:var(--ink);border-radius:999px;padding:3px 10px}
+.hx-dial{position:relative;z-index:1;width:min(100%,62vh,560px);aspect-ratio:1;justify-self:center}
+.hx-win{position:absolute;inset:9%;border-radius:50%;overflow:hidden;background:#2A1413;
+  box-shadow:0 0 0 1px rgba(217,178,106,.55),0 40px 90px rgba(0,0,0,.45)}
+.hx-win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hx-win img+img{-webkit-mask-image:conic-gradient(#000 var(--a,0deg),transparent var(--a,0deg));mask-image:conic-gradient(#000 var(--a,0deg),transparent var(--a,0deg))}
+.hx-ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hx-ring .q{transition:opacity .6s ease}
+.hx-ring text{font-family:var(--font-body-en);font-size:4.6px;letter-spacing:.14em;fill:var(--ink-soft)}
+.hx-hand{position:absolute;inset:9%;pointer-events:none}
+.hx-hand i{position:absolute;left:50%;bottom:50%;width:1.5px;height:50%;margin-left:-.75px;background:linear-gradient(to top,var(--gold),rgba(217,178,106,0));transform-origin:50% 100%}
+.hx-hand b{position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:var(--gold)}
+@media (max-width:860px){
+  .hx-stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:center;gap:18px;padding-top:52px}
+  .hx-dial{grid-row:1;width:min(78vw,40svh)}
+  .hx-copy>h2{font-size:1.6rem}
+  .hx-copy>p{display:none}
+  .hx-ch{margin-top:12px;padding-top:12px}
+  .hx-ch p{font-size:.95rem;line-height:1.65}
+}
+
+/* ---- ailleurs: three more directions in the same language ---- */
+.ailleurs{background:#1E0F0E;padding:clamp(40px,8vh,96px) var(--gutter) clamp(80px,12vh,140px)}
+.ail-head{text-align:center;max-width:640px;margin:0 auto clamp(36px,6vh,60px)}
+.ail-head h2{font-family:var(--font-display);font-weight:500;text-wrap:balance;font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin-top:12px}
+.ail-head p{margin-top:12px;color:var(--ink-soft);font-weight:300;line-height:1.7}
+.ail-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,32px)}
+.ail{display:grid;grid-template-rows:auto 1fr;gap:16px}
+.ail .mock{aspect-ratio:4/5;border-radius:4px;position:relative;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(ellipse 80% 70% at 50% 40%,#3A1D1B,#241212);box-shadow:inset 0 0 0 1px rgba(217,178,106,.18)}
+.ail h3{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:1.6rem}
+.ail h3 span{font-family:var(--font-body-he);font-style:normal;font-size:.55em;color:var(--ink-soft);margin-inline-start:8px}
+.ail p{margin-top:6px;color:var(--ink-soft);font-weight:300;line-height:1.7;font-size:.95rem}
+/* certificate */
+.cert{width:72%;aspect-ratio:3/4;background:#F6EEE4;color:#2A1413;padding:9% 8%;display:grid;align-content:space-between;text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(-3deg);outline:1px solid #D9B26A;outline-offset:-7px}
+.cert .lg{font-family:var(--serif);letter-spacing:.32em;font-size:clamp(.8rem,1.3vw,1rem)}
+.cert .k{font-family:var(--font-body-en);font-size:.5rem;letter-spacing:.3em;color:#853A26;margin-top:4px}
+.cert svg{width:44%;margin:0 auto}
+.cert .nm{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem)}
+.cert .row{font-size:.66rem;line-height:1.7;border-top:1px solid rgba(42,20,19,.2);padding-top:8px}
+.cert .row b{font-family:var(--font-body-en);font-weight:500;letter-spacing:.08em}
+/* anniversary */
+.msg{width:78%;display:grid;gap:10px}
+.msg .bub{background:rgba(246,238,228,.08);border:1px solid rgba(246,238,228,.16);border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:.88rem;line-height:1.6}
+.msg .bub.me{justify-self:end;border-radius:16px 16px 4px 16px;background:#853A26;border-color:#853A26}
+.msg .from{font-family:var(--font-body-en);font-size:.6rem;letter-spacing:.3em;color:var(--gold)}
+.msg .date{font-family:var(--serif);font-size:1.5rem;letter-spacing:.06em;color:var(--ink);display:block;margin:4px 0 2px;direction:ltr;text-align:right}
+/* vitrine */
+.vit{width:78%;display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:6px;border:1px solid rgba(217,178,106,.45);border-radius:50% 50% 4px 4px/30% 30% 4px 4px;padding-top:22%}
+.vit div{aspect-ratio:1;display:grid;place-items:center;align-content:center;gap:4px;text-align:center;font-size:.72rem;color:var(--ink-soft);position:relative;transition:box-shadow .6s ease}
+.vit div b{font-family:var(--font-body-en);font-weight:500;font-size:.8rem;letter-spacing:.12em;color:var(--ink)}
+.vit div.now{box-shadow:0 0 0 1px var(--gold),0 0 30px rgba(217,178,106,.35)}
+.vit div.now::after{content:"עכשיו בחלון";position:absolute;top:6px;font-size:.58rem;color:var(--gold)}
+@media (max-width:860px){.ail-grid{grid-template-columns:minmax(0,1fr);max-width:440px}}
+@media (prefers-reduced-motion:reduce){.hx-ch article,.hx-ring .q,.hx-glow{transition:none}}
 .book-link{display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:22px 26px;background:#fff;border:1px solid #C9D2DC;border-inline-start:3px solid #853A26;text-decoration:none;color:#1E2A38;transition:border-color .3s,box-shadow .3s}
 .book-link:hover{border-color:#853A26;box-shadow:0 10px 28px rgba(30,42,56,.10)}
 .book-link .bl-k{font-size:.8rem;letter-spacing:.16em;color:#56697E}
@@ -426,13 +501,157 @@ footer.studio a{color:inherit}
   </div>
 </section>
 
+<section class="hors" id="hors" aria-labelledby="hx-title">
+  <div class="hx-glow" id="hxGlow"></div>
+  <div class="hx-stage">
+    <div class="hx-copy">
+      <div class="eyebrow">Hors la boîte · מחוץ לקופסה</div>
+      <h2 id="hx-title">השעון יוצא לרחוב.</h2>
+      <p>אותה חוגה, אותן ארבע שעות, בכל מקום שבו נוגעים במותג. לא צריך לקרוא את השם כדי לדעת שזה <span dir="ltr">ENCORE°</span>&lrm;.</p>
+      <div class="hx-ch" id="hxCh">
+        <article data-i="0" class="on">
+          <div class="hx-n" dir="ltr">01 / 05</div>
+          <h3 lang="fr">La Boîte ouverte<span>הקופסה, באמת</span></h3>
+          <p>ארבעה תאים, ארבע שעות, ותאריך חרוט בפנים המכסה. הקופסה שסגרת כאן למעלה, כשהיא נפתחת על השיש.</p>
+          <div class="chips"><span>ארבעה תאים, ארבע שעות</span><span>קו הזהב</span></div>
+        </article>
+        <article data-i="1">
+          <div class="hx-n" dir="ltr">02 / 05</div>
+          <h3 lang="fr">L'Étiquette<span>התווית</span></h3>
+          <p>על התווית אין מחיר. יש שעה ושם: <span dir="ltr">18:00 · Lave</span>. כל תכשיט יודע לאיזו שעה ביום הוא שייך.</p>
+          <div class="chips"><span>חותמת השעה</span><span>שם התכשיט</span></div>
+        </article>
+        <article data-i="2">
+          <div class="hx-n" dir="ltr">03 / 05</div>
+          <h3 lang="fr">Le Sac<span>השקית</span></h3>
+          <p>צמיד של שקיעה יוצא בשקית בצבע השקיעה, עם אותה חותמת. השעה ממשיכה מהתווית אל הרחוב.</p>
+          <div class="chips"><span>צבע השעה</span><span>חותמת השעה</span></div>
+        </article>
+        <article data-i="3">
+          <div class="hx-n" dir="ltr">04 / 05</div>
+          <h3 lang="fr">Les Quatre Heures<span>ארבע השעות</span></h3>
+          <p>ארבע שקיות הן כל הפלטה של המותג. מי שקונה סט שלם יוצאת עם יום שלם ביד, משחר עד לילה.</p>
+          <div class="chips"><span>צבע השעה</span><span>חותמת השעה</span><span>החוגה</span></div>
+        </article>
+        <article data-i="4">
+          <div class="hx-n" dir="ltr">05 / 05</div>
+          <h3 lang="fr">L'Enseigne<span>השלט</span></h3>
+          <p>בסמטה ביפו, השלט הוא שעון השמש עצמו. בלי מילה, רק ארבעה צבעים ושנתות זהב, וכבר יודעים לאן נכנסים.</p>
+          <div class="chips"><span>החוגה</span><span>קו הזהב</span></div>
+        </article>
+      </div>
+    </div>
+    <div class="hx-dial" id="hxDial">
+      <div class="hx-win" id="hxWin">
+        <img src="assets/touchpoints/box-open.webp" width="900" height="1125" loading="lazy" alt="קופסת ENCORE° עגולה פתוחה, ארבעה תאים עם ארבעה תכשיטים ותאריך חרוט במכסה" style="object-position:50% 58%">
+        <img src="assets/touchpoints/tag-cuff.webp" width="900" height="1125" loading="lazy" alt="תווית ENCORE° עם 18:00 Lave ליד צמיד זהב רחב על אבן" style="object-position:60% 60%">
+        <img src="assets/touchpoints/bag-street.webp" width="900" height="1125" loading="lazy" alt="יד מחזיקה שקית ENCORE° בצבע שקיעה עם חותמת 18:00 ברחוב בשעת זהב" style="object-position:50% 62%">
+        <img src="assets/touchpoints/bags-four.webp" width="900" height="1125" loading="lazy" alt="ארבע שקיות ENCORE° בארבעת צבעי השעות, 06:00, 12:00, 18:00, 00:00, וקופסה עגולה לפניהן" style="object-position:50% 52%">
+        <img src="assets/touchpoints/sign.webp" width="900" height="1125" loading="lazy" alt="שלט עגול של ENCORE° בסמטה ביפו העתיקה בשקיעה, ארבעת צבעי השעות ושנתות זהב" style="object-position:62% 40%">
+      </div>
+      <svg class="hx-ring" id="hxRing" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+      <div class="hx-hand" id="hxHand" aria-hidden="true"><i></i><b></b></div>
+    </div>
+  </div>
+</section>
+
+<section class="ailleurs" id="ailleurs" aria-labelledby="ail-title">
+  <div class="ail-head">
+    <div class="eyebrow">Ailleurs · עוד כיוונים</div>
+    <h2 id="ail-title">מה עוד אפשר לבנות מאותה שעה.</h2>
+    <p>שלושה כיוונים שעוד לא צולמו, באותה שפה בדיוק. כל אחד מהם עונה קודם על השאלה <span style="white-space:nowrap">״איזו שעה זו?״.</span></p>
+  </div>
+  <div class="ail-grid">
+    <article class="ail">
+      <div class="mock">
+        <div class="cert" aria-hidden="true">
+          <div><div class="lg" dir="ltr">ENCORE°</div><div class="k">CERTIFICAT D'HEURE</div></div>
+          <svg viewBox="-50 -50 100 100"><circle r="46" fill="none" stroke="#D9B26A" stroke-width="1"/><path d="M0 0 L0 -40 A40 40 0 0 1 40 0Z" fill="#241212" opacity=".3"/><path d="M0 0 L40 0 A40 40 0 0 1 0 40Z" fill="#6E4E4A" opacity=".3"/><path d="M0 0 L0 40 A40 40 0 0 1 -40 0Z" fill="#34405A" opacity=".3"/><path d="M0 0 L-40 0 A40 40 0 0 1 0 -40Z" fill="#853A26"/><circle r="3" fill="#D9B26A"/></svg>
+          <div class="nm" lang="fr">Marée</div>
+          <div class="row">צמיד גל כפול · זהב 18K<br>נענד לראשונה <b dir="ltr">18:00 · 26.09.2026</b></div>
+        </div>
+      </div>
+      <div><h3 lang="fr">Le Certificat<span>תעודת השעה</span></h3><p>תעודת האחריות רושמת את השעה שבה התכשיט נענד לראשונה, לא רק את התאריך. רבע אחד בחוגה מלא, והשאר מחכים לסט.</p></div>
+    </article>
+    <article class="ail">
+      <div class="mock">
+        <div class="msg" aria-hidden="true">
+          <div class="bub"><span class="from" dir="ltr">ENCORE°</span><span class="date">19.10.2027</span>שנה שהוא עלייך. הקופסה עוד זוכרת את <span dir="ltr">19.10.2026</span>. מחכה לך ליטוש של יום הולדת, בשעה שלו.</div>
+          <div class="bub me">הוא לא ירד ממני יום אחד.</div>
+        </div>
+      </div>
+      <div><h3 lang="fr">L'Anniversaire<span>שנה אחרי</span></h3><p>התאריך שנחרט בקופסה חוזר אחרי שנה בדיוק, כהזמנה לליטוש. המותג לא מוכר עוד תכשיט, הוא חוגג את הזמן שהראשון נשאר.</p></div>
+    </article>
+    <article class="ail">
+      <div class="mock">
+        <div class="vit" id="vit" aria-hidden="true">
+          <div style="background:#6E4E4A"><b>06:00</b>טבעות</div>
+          <div style="background:#34405A"><b>12:00</b>שרשראות</div>
+          <div style="background:#853A26"><b>18:00</b>צמידים</div>
+          <div style="background:#241212"><b>00:00</b>עגילים</div>
+        </div>
+      </div>
+      <div><h3 lang="fr">La Vitrine<span>חלון הראווה</span></h3><p>חלון הראווה מתחלף כל שש שעות, לפי השעה. מי שעוברת בבוקר ובערב רואה שתי חנויות אחרות, והחלון כאן מאיר את השעה שבה את קוראת.</p></div>
+    </article>
+  </div>
+</section>
+
+<script>
+// ---- hors la boîte: a clock hand sweeps each touchpoint into the dial ----
+(()=>{
+  const sec=document.getElementById('hors'), win=document.getElementById('hxWin');
+  const imgs=[...win.querySelectorAll('img')], arts=[...document.querySelectorAll('#hxCh article')];
+  const hand=document.querySelector('#hxHand i'), ring=document.getElementById('hxRing'), glow=document.getElementById('hxGlow');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // which hour each touchpoint lights: 0 dawn, 1 noon, 2 sunset, 3 night; all four where it carries the whole day
+  const HOURS=[[0,1,2,3],[2],[2],[0,1,2,3],[0,1,2,3]];
+  const GLOW=['rgba(217,178,106,.22)','rgba(255,150,80,.32)','rgba(255,150,80,.36)','rgba(190,170,220,.26)','rgba(255,170,140,.32)'];
+  const Q=[['#6E4E4A','06'],['#34405A','12'],['#853A26','18'],['#241212','00']];
+  // ring: four hour quadrants, sixty ticks, hour numerals (00 at the top, like the sign)
+  const arcP=(a0,a1,r)=>{const p=a=>[r*Math.sin(a*Math.PI/180),-r*Math.cos(a*Math.PI/180)];const[x0,y0]=p(a0),[x1,y1]=p(a1);return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`};
+  ring.innerHTML=`<circle r="95" fill="none" stroke="rgba(217,178,106,.16)" stroke-width="4.6"/>`+Q.map((q,i)=>`<path class="q" data-q="${i}" d="${arcP(i*90+90+3,i*90+180-3,95)}" fill="none" stroke="${q[0]}" stroke-width="4" stroke-linecap="round"/>`).join('')
+    +Array.from({length:60},(_,i)=>{const a=i*6*Math.PI/180,r0=i%15?89:86.5;return `<line x1="${(r0*Math.sin(a)).toFixed(2)}" y1="${(-r0*Math.cos(a)).toFixed(2)}" x2="${(91.5*Math.sin(a)).toFixed(2)}" y2="${(-91.5*Math.cos(a)).toFixed(2)}" stroke="rgba(217,178,106,${i%15?.35:.9})" stroke-width="${i%15?.4:.8}"/>`}).join('')
+    +Q.map((q,i)=>{const a=(i*90+90)*Math.PI/180;return `<text x="${(99.5*Math.sin(a)).toFixed(2)}" y="${(-99.5*Math.cos(a)).toFixed(2)}" text-anchor="middle" dominant-baseline="middle">${q[1]}</text>`}).join('');
+  const quads=[...ring.querySelectorAll('.q')];
+  const N=imgs.length;
+  let cur=0,target=0,last=-1;
+  function prog(){
+    const r=sec.getBoundingClientRect(), span=sec.offsetHeight-innerHeight;
+    const raw=Math.min(Math.max(-r.top/span,0),1)*(N-1);
+    const k=Math.min(Math.floor(raw),N-2), t=raw-k, tt=Math.min(Math.max((t-.2)/.6,0),1);
+    return k+tt*tt*(3-2*tt);                 // dwell on each touchpoint, sweep between them
+  }
+  function draw(){
+    cur+=reduce?(target-cur):(target-cur)*.12;
+    if(Math.abs(target-cur)<1e-4)cur=target;
+    imgs.forEach((im,i)=>{if(i){const a=Math.min(Math.max(cur-(i-1),0),1)*360;im.style.setProperty('--a',a+'deg');im.style.visibility=a>0?'visible':'hidden'}});
+    hand.style.transform=`rotate(${cur*360}deg)`;
+    const on=Math.round(cur);
+    if(on!==last){
+      last=on;
+      arts.forEach((a,i)=>a.classList.toggle('on',i===on));
+      quads.forEach((q,i)=>q.style.opacity=HOURS[on].includes(i)?1:.22);
+      glow.style.setProperty('--hx-glow',GLOW[on]);
+    }
+    if(cur!==target)requestAnimationFrame(draw); else running=false;
+  }
+  let running=false;
+  const kick=()=>{target=prog();if(!running){running=true;requestAnimationFrame(draw)}};
+  addEventListener('scroll',kick,{passive:true}); addEventListener('resize',kick);
+  target=cur=prog(); running=true; draw();
+  // la vitrine lights the hour the reader is in
+  const h=new Date().getHours(), cells=document.querySelectorAll('#vit div');
+  cells[h>=21||h<3?3:h<9?0:h<15?1:2].classList.add('now');
+})();
+</script>
+
 <footer class="brand" aria-label="ENCORE° footer">
   <div class="cols">
     <div>
       <a class="flogo" href="#hero" dir="ltr">ENCORE°<small>MAISON DE BIJOUX</small></a>
       <p class="fl"><span dir="ltr" lang="fr">Encore toi.</span> עוד את, תמיד את.<br>עשרים תכשיטים בזהב 18K, ארבע שעות, וסט אחד שלא יורד.</p>
     </div>
-    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li></ul></div>
+    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#hors">מחוץ לקופסה</a></li></ul></div>
     <div><h3>Le Jour</h3><ul><li><a href="#set"><i style="background:#6E4E4A"></i>06:00 · שחר · טבעות</a></li><li><a href="#set"><i style="background:#34405A"></i>12:00 · צהריים · שרשראות</a></li><li><a href="#set"><i style="background:#853A26"></i>18:00 · שקיעה · צמידים</a></li><li><a href="#set"><i style="background:#241212"></i>00:00 · לילה · עגילים</a></li></ul></div>
   </div>
   <div class="legal">
@@ -450,6 +669,7 @@ footer.studio a{color:inherit}
     <p><b>הטיפה שנוחתת:</b> העמוד נפתח בתליון אחד שמרחף באור של שחר. הגלילה מורידה אותו אל הצוואר, והשרשרת נסגרת. שני קטעי וידאו, ריחוף ונחיתה, מחוברים בחיתוך על התליון עצמו, כך שהוא נשאר באותה נקודה במסך כשהסצנה מתחלפת סביבו.</p>
     <p><b>השמש שמסתובבת:</b> עשרים תכשיטים, חמישה לכל שעה, יושבים על חצי שמש שמסתובבת עם הגלילה. הם עולים מימין, כמו שמש במזרח, ושוקעים משמאל, והרקע עובר משחר לצהריים, לשקיעה וללילה. גם הצבעים של המותג לא נבחרו כפלטה אחת. הם ארבע שעות.</p>
     <p><b>הסט והקופסה:</b> ב״הסט שלך״ בוחרים תכשיט אחד לכל שעה על שעון שמש, והסט נכנס לקופסה עגולה בתלת־ממד שהמכסה שלה הוא אותו שעון. היא נפתחת בסיבוב, וכשזו מתנה, התאריך נחרט בפנים המכסה. מי שקונה לעצמה ומי שקונה בשבילה עוברים באותו עולם, עם סיום אחר.</p>
+    <p><b>מחוץ לקופסה:</b> נקודות המגע, הקופסה, התווית, השקית, ארבע השעות והשלט ביפו, נכנסות לחלון עגול באותה חוגה, ומחוג זהב סוחף כל אחת מהן לתוך השעון. אחריהן שלושה כיוונים שעוד לא צולמו: תעודה שרושמת שעה, הודעה שחוזרת שנה אחרי התאריך החרוט, וחלון ראווה שמתחלף כל שש שעות. זה המבחן של שפה: היא ממשיכה לייצר כיוונים חדשים בלי להמציא את עצמה מחדש.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא קטלוג תכשיטים, אלא פעולה שהלקוחה עושה בעצמה: לסובב את היום, לבחור את השעה שלה, לסגור את הקופסה. מי שנכנסה פעם אחת לעולם הזה מזהה אותו בכל תוכן שיבוא אחריו, בפוסט, בשקית, בכרטיס. כולם ממשיכים את אותו יום, ולכן אף אחד מהם לא צריך להמציא את עצמו מחדש. וזה מה שמוציא מותג מטבלת ההשוואה: אי אפשר להשוות יום שלם למחיר של שרשרת.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
