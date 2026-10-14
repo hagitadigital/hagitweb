@@ -57,6 +57,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/"}
 }
 </script>
+<link rel="alternate" type="application/json" title="brand-book" href="brand-book.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
@@ -202,6 +203,46 @@ section{padding:clamp(72px,10vw,140px) 0}
 .dos p{font-size:.92rem;color:var(--muted)}
 @media (max-width:900px){.rules,.dos{grid-template-columns:1fr}}
 
+/* voice */
+.voice{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(30px,6vw,80px);align-items:start}
+.words{display:grid;gap:22px}
+.words b{display:block;font-weight:500;margin-bottom:10px}
+.words .chips span.x{color:#9A2B1F;border-color:rgba(154,43,31,.45);text-decoration:line-through;text-decoration-thickness:1px}
+.lines{display:flex;flex-direction:column}
+.lines p{font-family:var(--heb);font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.3;padding:18px 0;border-bottom:1px solid rgba(184,149,90,.5);display:flex;gap:18px;align-items:baseline}
+.lines p:first-child{padding-top:0}
+.lines .stamp{font-size:.95rem;color:var(--gold-text);flex:none}
+.tone{margin-top:22px;color:var(--muted);font-size:.98rem}
+@media (max-width:860px){.voice{grid-template-columns:1fr}}
+
+/* next directions */
+.dirs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.dir{background:var(--paper);display:flex;flex-direction:column}
+.dir .mock{aspect-ratio:5/4;display:grid;place-items:center;background:var(--h00);position:relative;overflow:hidden}
+.dir .body{padding:24px 22px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.dir h3{font-family:var(--heb);font-weight:500;font-size:1.4rem}
+.dir h3 i{font-family:var(--serif);font-weight:400;font-size:.85em;color:var(--gold-text);margin-inline-start:8px}
+.dir p{color:var(--muted);font-size:.96rem}
+.dir .chips{margin-top:auto;padding-top:6px}
+.m-cert{width:46%;aspect-ratio:3/4;background:var(--paper);outline:1px solid var(--gold-line);outline-offset:-5px;transform:rotate(-3deg);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8% 6%;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.m-cert .wm{font-size:.62rem;color:var(--ink)}
+.m-cert .nm{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink)}
+.m-cert .stamp{font-size:.56rem;color:var(--gold-text)}
+.m-msg{width:76%;display:flex;flex-direction:column;gap:8px}
+.m-msg div{background:rgba(246,238,228,.09);border:1px solid rgba(246,238,228,.18);color:var(--on-dark);border-radius:14px 14px 14px 3px;padding:10px 12px;font-size:.8rem;line-height:1.5}
+.m-msg .stamp{display:block;color:var(--gold-on-hour);font-size:1.05rem;margin-bottom:2px;text-align:right}
+.m-msg div.me{align-self:flex-end;background:var(--h18);border-color:var(--h18);border-radius:14px 14px 3px 14px}
+.m-vit{width:52%;display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:16% 5px 5px;border:1px solid var(--gold);border-radius:50% 50% 3px 3px/34% 34% 3px 3px}
+.m-vit span{aspect-ratio:1;display:grid;place-items:center;color:var(--gold-on-hour);font-size:.7rem}
+.m-vit span.now{box-shadow:0 0 0 1px var(--gold)}
+.next-test{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--gold-line)}
+.next-test div{padding:22px 22px 6px 22px;border-inline-start:1px solid rgba(184,149,90,.45)}
+.next-test div:first-child{border-inline-start:0;padding-inline-start:0}
+.next-test .stamp{color:var(--gold-text);font-size:.95rem}
+.next-test b{display:block;font-family:var(--heb);font-weight:500;font-size:1.25rem;margin:6px 0}
+.next-test p{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.dirs,.next-test{grid-template-columns:1fr}.next-test div{border-inline-start:0;padding-inline:0;border-bottom:1px solid rgba(184,149,90,.35);padding-bottom:18px}}
+
 /* close */
 .close{background:var(--h18);color:var(--on-dark);text-align:center}
 .close .wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
@@ -329,6 +370,28 @@ footer.studio a{color:var(--gold)}
   </div>
 </section>
 
+<section id="voice" aria-labelledby="voice-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">קול</p>
+      <h2 class="sec" id="voice-title">שקט, ובטוח בשעה שלו.</h2>
+      <p class="lead"><span class="ltr">ENCORE°</span> לא משכנע ולא ממהר. הוא מדבר אל הלקוחה בלשון נקבה, על הרגע שלה ביום, ולא על מה שחסר לה.</p>
+    </div>
+    <div class="voice rv">
+      <div class="words">
+        <div><b>מילים שלנו</b><div class="chips"><span>שעה</span><span>נשאר</span><span>יום</span><span>עונדת</span><span>שלך</span></div></div>
+        <div><b>מילים שלא</b><div class="chips"><span class="x">מבצע</span><span class="x">הכי זול</span><span class="x">טרנד</span><span class="x">״לקוחות יקרים״</span></div></div>
+        <p class="tone">בלי סימני קריאה ובלי דחיפות. מותג שמבטיח תכשיט שלא יורד לא צריך להרים את הקול, ו״מבצע״ הופך את היום שלה בחזרה למחיר של שרשרת.</p>
+      </div>
+      <div class="lines">
+        <p><span class="stamp">06:00</span>הדבר הראשון שאת עונדת בבוקר.</p>
+        <p><span class="stamp">18:00</span>צמיד שזוכר איפה היית.</p>
+        <p><span class="stamp">00:00</span>כשהיום נגמר, את נשארת.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cover" id="cover" aria-labelledby="cover-title">
   <div class="wrap">
     <div class="head rv">
@@ -371,7 +434,7 @@ footer.studio a{color:var(--gold)}
     <div class="head rv">
       <p class="eyebrow">נקודות מגע</p>
       <h2 class="sec" id="tp-title">מהסמטה ביפו עד המגירה בבית.</h2>
-      <p class="lead">חמש נקודות מגע, ומתחת לכל אחת: הקודים שעושים את העבודה.</p>
+      <p class="lead">חמש נקודות מגע, ומתחת לכל אחת: הקודים שעושים את העבודה. בעולם עצמו הן נכנסות אחת אחרי השנייה לחלון עגול באותה חוגה, בסקשן <a href="./#hors"><span class="ltr" lang="fr">Hors la boîte</span></a>.</p>
     </div>
     <div class="tp">
       <figure class="rv"><img src="assets/touchpoints/sign.webp" width="900" height="1125" loading="lazy" alt="שלט עגול של ENCORE° בסמטה ביפו העתיקה בשקיעה, ארבעת צבעי השעות ושנתות זהב"><figcaption><b>השלט</b><div class="chips"><span>החוגה</span><span>קו הזהב</span></div></figcaption></figure>
@@ -379,6 +442,35 @@ footer.studio a{color:var(--gold)}
       <figure class="rv"><img src="assets/touchpoints/bag-street.webp" width="900" height="1125" loading="lazy" alt="יד מחזיקה שקית ENCORE° בצבע שקיעה עם חותמת 18:00 ברחוב בשעת זהב"><figcaption><b>ברחוב</b><div class="chips"><span>צבע השעה</span><span>חותמת השעה</span></div></figcaption></figure>
       <figure class="rv"><img src="assets/touchpoints/tag-cuff.webp" width="900" height="1125" loading="lazy" alt="תווית ENCORE° עם 18:00 Lave ליד צמיד זהב רחב על אבן"><figcaption><b>התווית</b><div class="chips"><span>חותמת השעה</span><span>שם התכשיט</span></div></figcaption></figure>
       <figure class="rv"><img src="assets/touchpoints/box-open.webp" width="900" height="1125" loading="lazy" alt="קופסת ENCORE° עגולה פתוחה, ארבעה תאים עם ארבעה תכשיטים ותאריך חרוט במכסה"><figcaption><b>הקופסה</b><div class="chips"><span>ארבעה תאים, ארבע שעות</span><span>קו הזהב</span></div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="next" aria-labelledby="next-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">הכיוונים הבאים</p>
+      <h2 class="sec" id="next-title">שלושה כיוונים שעוד לא צולמו. אותו מבחן.</h2>
+      <p class="lead">שפה טובה ממשיכה לייצר נקודות מגע חדשות בלי להמציא את עצמה מחדש. שלושת הכיוונים האלה מופיעים בעולם, בסקשן <span class="ltr" lang="fr">Ailleurs</span>, וכל אחד מהם נבנה רק מהקודים שכבר יש.</p>
+    </div>
+    <div class="dirs">
+      <article class="dir rv">
+        <div class="mock" aria-hidden="true"><div class="m-cert"><span class="wm">ENCORE°</span><span class="d" data-mark="3" data-tone="dark" style="width:44px;height:44px"></span><span class="nm" lang="fr">Marée</span><span class="stamp">18:00 · 26.09.2026</span></div></div>
+        <div class="body"><h3>תעודת השעה<i lang="fr">Le Certificat</i></h3><p>תעודת האחריות רושמת את השעה שבה התכשיט נענד לראשונה, לא רק את התאריך. רבע אחד מואר, והשאר מחכים לסט.</p><div class="chips"><span>סימן השעה</span><span>חותמת השעה</span><span>קו הזהב</span></div></div>
+      </article>
+      <article class="dir rv">
+        <div class="mock" aria-hidden="true" style="background:var(--h00)"><div class="m-msg"><div><span class="stamp">19.10.2027</span>שנה שהוא עלייך. הקופסה עוד זוכרת את <span class="ltr">19.10.2026</span>.</div><div class="me">הוא לא ירד ממני יום אחד.</div></div></div>
+        <div class="body"><h3>שנה אחרי<i lang="fr">L'Anniversaire</i></h3><p>התאריך שנחרט בקופסה חוזר אחרי שנה בדיוק, כהזמנה לליטוש. המותג לא מוכר עוד תכשיט. הוא חוגג את הזמן שהראשון נשאר.</p><div class="chips"><span>חותמת השעה</span><span>שקיעה</span></div></div>
+      </article>
+      <article class="dir rv">
+        <div class="mock" aria-hidden="true"><div class="m-vit"><span style="background:var(--h06)" class="stamp">06:00</span><span style="background:var(--h12)" class="stamp">12:00</span><span style="background:var(--h18)" class="stamp now">18:00</span><span style="background:#3E2522" class="stamp">00:00</span></div></div>
+        <div class="body"><h3>חלון הראווה<i lang="fr">La Vitrine</i></h3><p>החלון מתחלף כל שש שעות, לפי השעה. מי שעוברת בבוקר ובערב רואה שתי חנויות אחרות, ורק שעה אחת מוארת בכל רגע.</p><div class="chips"><span>החוגה</span><span>קו הזהב</span><span>חותמת השעה</span></div></div>
+      </article>
+    </div>
+    <div class="next-test rv">
+      <div><span class="stamp">01</span><b>איזו שעה זו?</b><p>כל כיוון חדש מתחיל בשעה. אם אין לו שעה, הוא לא נכנס לעולם.</p></div>
+      <div><span class="stamp">02</span><b>איזה רבע נדלק?</b><p>רבע אחד לפריט אחד. כל ארבעת הרבעים רק כשהפריט מחזיק יום שלם: סט, קופסה, חלון.</p></div>
+      <div><span class="stamp">03</span><b>שלושה קודים, בלי השם.</b><p>מכסים את הלוגו. אם לא נשארים לפחות שלושה קודים, הכיוון עוד לא מוכן.</p></div>
     </div>
   </div>
 </section>

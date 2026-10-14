@@ -1,0 +1,318 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>REGARD° reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;family=Frank+Ruhl+Libre:wght@300;400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#0C1420;      /* world background */
+  --w-ink:#F2EBDC;     /* world text */
+  --w-accent:#C28A5A;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes · REGARD° ── */
+.a-out{animation-name:a-out}@keyframes a-out{0%,21.000%{transform:translateY(0)}22.667%,25.000%{transform:translateY(-270px)}26.667%,29.000%{transform:translateY(-540px)}30.667%,100%{transform:translateY(-810px)}}
+.a-in{animation-name:a-in}@keyframes a-in{0%,21.000%{transform:translateY(0)}22.667%,25.000%{transform:translateY(-460px)}26.667%,29.000%{transform:translateY(-920px)}30.667%,100%{transform:translateY(-1380px)}}
+.a-l1{animation-name:a-l1}@keyframes a-l1{0%,20.000%{transform:translateY(110%)}21.833%,100%{transform:none}}
+.a-l2{animation-name:a-l2}@keyframes a-l2{0%,21.667%{transform:translateY(110%)}23.500%,100%{transform:none}}
+.b-ring{animation-name:b-ring}@keyframes b-ring{0%,36.000%{transform:rotate(0deg)}37.500%,39.333%{transform:rotate(72deg)}40.833%,42.667%{transform:rotate(144deg)}44.167%,46.000%{transform:rotate(216deg)}47.500%,100%{transform:rotate(288deg)}}
+.b-cr{animation-name:b-cr}@keyframes b-cr{0%,36.000%{transform:rotate(0deg)}37.500%,39.333%{transform:rotate(-72deg)}40.833%,42.667%{transform:rotate(-144deg)}44.167%,46.000%{transform:rotate(-216deg)}47.500%,100%{transform:rotate(-288deg)}}
+.b-wash{animation-name:b-wash}@keyframes b-wash{0%,36.333%{background-color:#D9A8A2}37.833%,39.667%{background-color:#D6C7A9}41.167%,43.000%{background-color:#C89A6B}44.500%,46.333%{background-color:#8FA6C0}47.833%,100%{background-color:#C99A4F}}
+.b-ptr{animation-name:b-ptr}@keyframes b-ptr{0%,36.333%{border-top-color:#D9A8A2}37.833%,39.667%{border-top-color:#D6C7A9}41.167%,43.000%{border-top-color:#C89A6B}44.500%,46.333%{border-top-color:#8FA6C0}47.833%,100%{border-top-color:#C99A4F}}
+.b-l1{animation-name:b-l1}@keyframes b-l1{0%,33.000%{transform:translateY(110%)}34.833%,100%{transform:none}}
+.b-l2{animation-name:b-l2}@keyframes b-l2{0%,34.167%{transform:translateY(110%)}36.000%,100%{transform:none}}
+.c-th{animation-name:cth;animation-timing-function:linear}@keyframes cth{0%,51.667%{stroke-dashoffset:1}55.333%,100%{stroke-dashoffset:0}}
+.c-tr{animation-name:ctr;animation-timing-function:cubic-bezier(.45,0,.3,1)}@keyframes ctr{0%,52.333%{offset-distance:0%;opacity:0}52.667%{opacity:1}56.333%{offset-distance:100%;opacity:1}58.167%,100%{offset-distance:100%;opacity:0}}
+.c-sp{animation-name:csp;animation-timing-function:cubic-bezier(.45,0,.3,1)}@keyframes csp{0%,52.333%{transform:rotate(-200deg) scale(.55)}56.333%{transform:rotate(0deg) scale(1)}58.167%,100%{transform:scale(1.4)}}
+.c-face{animation-name:cface}@keyframes cface{0%,56.167%{filter:blur(16px) brightness(.38) saturate(.6);transform:scale(1.1)}58.667%,100%{filter:none;transform:none}}
+.c-l1{animation-name:c-l1}@keyframes c-l1{0%,51.667%{transform:translateY(110%)}53.500%,100%{transform:none}}
+.c-l2{animation-name:c-l2}@keyframes c-l2{0%,52.833%{transform:translateY(110%)}54.667%,100%{transform:none}}
+.d-fab{animation-name:dfab}@keyframes dfab{0%,71.333%{transform:scale(1)}72.000%{transform:scale(1.18)}72.833%,100%{transform:scale(1)}}
+.e-l1{animation-name:e-l1}@keyframes e-l1{0%,78.000%{transform:translateY(110%)}79.833%,100%{transform:none}}
+.e-l2{animation-name:e-l2}@keyframes e-l2{0%,79.333%{transform:translateY(110%)}81.167%,100%{transform:none}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">16</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">בית אופטיקה שבו העדשה לא זזה.<br>העולם שעובר דרכה מתחלף.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl"><span dir="ltr">REGARD°</span> · עולם מותג 16</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">כי היא לא בחרה משקפיים.<br>היא בחרה <span style="color: var(--s-copper)">מבט</span>.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">ואת העסק שלך?<br>מה בוחרים אצלך?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+<section class="scene" data-show="0,10.1">
+    <div class="stack" style="background: #0C1420; background-image: radial-gradient(900px 700px at 50% 52%, #1A2838 0%, #0C1420 70%)"></div>
+    <div style="position: absolute; left: 540px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, #C28A5A 20%, #C28A5A 80%, transparent); opacity: .45"></div>
+    <div class="stack a-out"><img src="img/f1.webp" alt="" style="position: absolute; left: 415px; top: 905px; width: 250px; opacity: .42"><img src="img/f2.webp" alt="" style="position: absolute; left: 415px; top: 1175px; width: 250px; opacity: .42"><img src="img/f3.webp" alt="" style="position: absolute; left: 415px; top: 1445px; width: 250px; opacity: .42"><img src="img/f4.webp" alt="" style="position: absolute; left: 415px; top: 1715px; width: 250px; opacity: .42"><img src="img/f5.webp" alt="" style="position: absolute; left: 415px; top: 1985px; width: 250px; opacity: .42"></div>
+    <div style="position: absolute; left: 250px; top: 670px; width: 580px; height: 580px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 40%, #243447, #101A27 72%)">
+      <div class="stack a-in"><img src="img/f1.webp" alt="" style="position: absolute; left: 55px; top: 190px; width: 470px; filter: drop-shadow(0 26px 34px rgba(0,0,0,.55))"><img src="img/f2.webp" alt="" style="position: absolute; left: 55px; top: 650px; width: 470px; filter: drop-shadow(0 26px 34px rgba(0,0,0,.55))"><img src="img/f3.webp" alt="" style="position: absolute; left: 55px; top: 1110px; width: 470px; filter: drop-shadow(0 26px 34px rgba(0,0,0,.55))"><img src="img/f4.webp" alt="" style="position: absolute; left: 55px; top: 1570px; width: 470px; filter: drop-shadow(0 26px 34px rgba(0,0,0,.55))"><img src="img/f5.webp" alt="" style="position: absolute; left: 55px; top: 2030px; width: 470px; filter: drop-shadow(0 26px 34px rgba(0,0,0,.55))"></div>
+    </div>
+    <div style="position: absolute; left: 236px; top: 656px; width: 608px; height: 608px; border-radius: 50%; box-shadow: 0 0 0 2px #C28A5A, 0 0 90px rgba(194,138,90,.28); pointer-events: none"></div><div style="position: absolute; left: 250px; top: 670px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.16), rgba(255,255,255,0) 34%); pointer-events: none"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(to bottom, rgba(12,20,32,.96) 40%, rgba(12,20,32,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 640px; background: linear-gradient(to top, rgba(12,20,32,.97) 46%, rgba(12,20,32,0))"></div>
+    <div style="position: absolute; top: 190px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 16px">
+      <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .42em; color: #C28A5A" dir="ltr">MAISON D'OPTIQUE · Nº 16</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 128px; font-weight: 400; line-height: 1; letter-spacing: .08em; color: #F2EBDC" dir="ltr">REGARD<sup style="font-size: .32em; vertical-align: 1.6em; color: #C28A5A">°</sup></div>
+    </div>
+    <div style="position: absolute; bottom: 230px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="a-l1" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 74px; font-weight: 300; line-height: 1.2; color: #F2EBDC">את לא מחליפה משקפיים.</span></span>
+      <span class="mask"><span class="a-l2" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 74px; font-weight: 500; line-height: 1.2; color: #C28A5A">את מחליפה את המבט.</span></span>
+      <div data-in="7.3" style="margin-top: 20px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: rgba(242,235,220,.66)">איך את רואה, ואיך רואים אותך.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,15.8">
+    <div class="stack" style="background: #0C1420; background-image: radial-gradient(900px 700px at 50% 52%, #1A2838 0%, #0C1420 70%)"></div>
+    <div class="stack b-wash" style="background-color: #D9A8A2; opacity: .30; -webkit-mask-image: radial-gradient(ellipse 62% 44% at 50% 53%, #000 0%, transparent 100%); mask-image: radial-gradient(ellipse 62% 44% at 50% 53%, #000 0%, transparent 100%)"></div>
+    <div style="position: absolute; left: 108px; top: 578px; width: 864px; height: 864px; border-radius: 50%; border: 1.5px dashed rgba(194,138,90,.5); box-sizing: border-box"></div>
+    <div style="position: absolute; left: 260px; top: 730px; width: 560px; height: 560px; border-radius: 50%; overflow: hidden; background: #121E2C"><div class="stack" data-show="9.70,11.15" data-fade="0.3"><img class="cover" src="../assets/portraits/01-la-muse.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div><div class="stack" data-show="11.15,12.15" data-fade="0.3"><img class="cover" src="../assets/portraits/02-licone.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div><div class="stack" data-show="12.15,13.15" data-fade="0.3"><img class="cover" src="../assets/portraits/03-la-poete.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div><div class="stack" data-show="13.15,14.15" data-fade="0.3"><img class="cover" src="../assets/portraits/04-la-directrice.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div><div class="stack" data-show="14.15,15.80" data-fade="0.3"><img class="cover" src="../assets/portraits/05-letoile.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div></div>
+    <div style="position: absolute; left: 246px; top: 716px; width: 588px; height: 588px; border-radius: 50%; box-shadow: 0 0 0 2px #C28A5A, 0 0 90px rgba(194,138,90,.28); pointer-events: none"></div><div style="position: absolute; left: 260px; top: 730px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.16), rgba(255,255,255,0) 34%); pointer-events: none"></div>
+    <div class="b-ring" style="position: absolute; left: 540px; top: 1010px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-432px) rotate(0deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f1.webp" alt="La Muse" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-72deg) translateY(-432px) rotate(72deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f2.webp" alt="L'Icône" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-144deg) translateY(-432px) rotate(144deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f3.webp" alt="La Poète" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-216deg) translateY(-432px) rotate(216deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f4.webp" alt="La Directrice" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-288deg) translateY(-432px) rotate(288deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f5.webp" alt="L'Étoile" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div></div>
+    <div class="b-ptr" style="position: absolute; top: 482px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #D9A8A2"></div>
+    <div style="position: absolute; top: 205px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="9.8" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C28A5A; margin-bottom: 6px" dir="ltr">La Lentille</div>
+      <span class="mask"><span class="b-l1" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 66px; font-weight: 300; line-height: 1.18; color: #F2EBDC">העדשה לא זזה.</span></span>
+      <span class="mask"><span class="b-l2" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 66px; font-weight: 500; line-height: 1.18; color: #C28A5A">העולם שעובר דרכה מתחלף.</span></span>
+    </div>
+    <div style="position: absolute; top: 1560px; left: 40px; right: 40px; height: 170px"><div class="stack" data-show="9.82,10.85" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 76px; line-height: 1; color: #D9A8A2" dir="ltr">La Muse</span><span style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 36px; font-weight: 300; color: #F2EBDC" dir="rtl">היא לא מחפשת את האור. האור מחפש אותה.</span></div><div class="stack" data-show="11.27,11.85" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 76px; line-height: 1; color: #D6C7A9" dir="ltr">L'Icône</span><span style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 36px; font-weight: 300; color: #F2EBDC" dir="rtl">נכנסת לחדר. השאר היסטוריה.</span></div><div class="stack" data-show="12.27,12.85" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 76px; line-height: 1; color: #C89A6B" dir="ltr">La Poète</span><span style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 36px; font-weight: 300; color: #F2EBDC" dir="rtl">רואה את מה שאחרים פספסו.</span></div><div class="stack" data-show="13.27,13.85" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 76px; line-height: 1; color: #8FA6C0" dir="ltr">La Directrice</span><span style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 36px; font-weight: 300; color: #F2EBDC" dir="rtl">ההחלטה כבר התקבלה. עכשיו רק מנסחים אותה.</span></div><div class="stack" data-show="14.27,15.80" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 76px; line-height: 1; color: #C99A4F" dir="ltr">L'Étoile</span><span style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 36px; font-weight: 300; color: #F2EBDC" dir="rtl">כשהיא מסתכלת עלייך — את מרגישה נבחרת.</span></div></div>
+  </section>
+  <section class="scene" data-show="15.5,19.6">
+    <div class="stack" style="background: #0C1420; background-image: radial-gradient(900px 700px at 50% 52%, #1A2838 0%, #0C1420 70%)"></div>
+    <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="c-th" pathLength="1" d="M 120 520 C 260 760, 640 640, 540 1060" fill="none" stroke="#C28A5A" stroke-width="3" stroke-dasharray="1 1" opacity=".75"/></svg>
+    <div style="position: absolute; left: 240px; top: 790px; width: 600px; height: 600px; border-radius: 50%; overflow: hidden; background: #121E2C">
+      <div class="stack c-face"><div class="stack" data-seq="seq/d_%03d.jpg" data-from="1" data-to="41" data-start="17.35" data-step="0.05" data-pos="50% 26%"></div></div>
+    </div>
+    <div style="position: absolute; left: 226px; top: 776px; width: 628px; height: 628px; border-radius: 50%; box-shadow: 0 0 0 2px #C28A5A, 0 0 90px rgba(194,138,90,.28); pointer-events: none"></div><div style="position: absolute; left: 240px; top: 790px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.16), rgba(255,255,255,0) 34%); pointer-events: none"></div>
+    <div class="c-tr" style="position: absolute; left: 0; top: 0; width: 444px; height: 160px; offset-path: path('M 120 520 C 260 760, 640 640, 540 1060'); offset-rotate: 0deg">
+      <img class="c-sp" src="img/f4.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 24px 30px rgba(0,0,0,.55))">
+    </div>
+    <div style="position: absolute; top: 205px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="15.5" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C28A5A; margin-bottom: 6px" dir="ltr">Le Fil</div>
+      <span class="mask"><span class="c-l1" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 62px; font-weight: 300; line-height: 1.2; color: #F2EBDC">מה משתנה כשהיא מרכיבה את</span></span>
+      <span class="mask"><span class="c-l2" style="display: block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 84px; line-height: 1.1; color: #8FA6C0" dir="ltr">La Directrice?</span></span>
+    </div>
+    <div data-in="17.6" style="position: absolute; top: 1470px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+      <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: rgba(242,235,220,.66)"><span dir="ltr">Nº 04</span> · ישרה, כתפיים פתוחות — סמכותית</div>
+      <div style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 48px; font-weight: 300; line-height: 1.3; color: #F2EBDC">ההחלטה כבר התקבלה.<br><b style="font-weight: 500; color: #8FA6C0">עכשיו רק מנסחים אותה.</b></div>
+    </div>
+  </section>
+  <section class="scene" data-show="19.3,23.3">
+    <div class="stack" style="background: #0C1420; background-image: radial-gradient(900px 700px at 50% 52%, #1A2838 0%, #0C1420 70%)"></div>
+    <div style="position: absolute; top: 205px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center" dir="rtl">
+      <div data-in="19.4" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C28A5A" dir="ltr">La Boutique</div>
+      <div data-in="19.55" style="font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 66px; font-weight: 300; line-height: 1.2; color: #F2EBDC">בחרי את המבט שלך.<br><b style="font-weight: 500; color: #C28A5A">קחי אותו איתך.</b></div>
+    </div>
+    <div data-in="19.55" style="position: absolute; left: 750px; top: 600px; width: 300px; box-sizing: border-box; padding: 30px 24px 26px; background: #121E2C; border: 1px solid rgba(242,235,220,.12); border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><div style="height: 120px; display: flex; align-items: center"><img src="img/f1.webp" alt="La Muse" style="width: 244px; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: .3em; color: #C28A5A; margin-top: 14px" dir="ltr">Nº 01</div><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; line-height: 1.1; color: #D9A8A2" dir="ltr">La Muse</div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 26px; color: #F2EBDC; margin-top: 6px" dir="ltr">€ 240</div><div style="position: relative; height: 54px; margin-top: 14px"><div class="stack" data-show="0,21.3" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(194,138,90,.7); border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #F2EBDC">הוספה לסל</div></div></div><div data-in="19.69" style="position: absolute; left: 390px; top: 600px; width: 300px; box-sizing: border-box; padding: 30px 24px 26px; background: #121E2C; border: 1px solid rgba(242,235,220,.12); border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><div style="height: 120px; display: flex; align-items: center"><img src="img/f2.webp" alt="L'Icône" style="width: 244px; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: .3em; color: #C28A5A; margin-top: 14px" dir="ltr">Nº 02</div><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; line-height: 1.1; color: #D6C7A9" dir="ltr">L'Icône</div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 26px; color: #F2EBDC; margin-top: 6px" dir="ltr">€ 280</div><div style="position: relative; height: 54px; margin-top: 14px"><div class="stack" data-show="0,21.3" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(194,138,90,.7); border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #F2EBDC">הוספה לסל</div></div></div><div data-in="19.83" style="position: absolute; left: 30px; top: 600px; width: 300px; box-sizing: border-box; padding: 30px 24px 26px; background: #121E2C; border: 1px solid rgba(242,235,220,.12); border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><div style="height: 120px; display: flex; align-items: center"><img src="img/f3.webp" alt="La Poète" style="width: 244px; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: .3em; color: #C28A5A; margin-top: 14px" dir="ltr">Nº 03</div><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; line-height: 1.1; color: #C89A6B" dir="ltr">La Poète</div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 26px; color: #F2EBDC; margin-top: 6px" dir="ltr">€ 260</div><div style="position: relative; height: 54px; margin-top: 14px"><div class="stack" data-show="0,21.3" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(194,138,90,.7); border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #F2EBDC">הוספה לסל</div></div></div><div data-in="19.97" style="position: absolute; left: 570px; top: 1080px; width: 300px; box-sizing: border-box; padding: 30px 24px 26px; background: #121E2C; border: 1px solid rgba(242,235,220,.12); border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><div style="height: 120px; display: flex; align-items: center"><img src="img/f4.webp" alt="La Directrice" style="width: 244px; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: .3em; color: #C28A5A; margin-top: 14px" dir="ltr">Nº 04</div><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; line-height: 1.1; color: #8FA6C0" dir="ltr">La Directrice</div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 26px; color: #F2EBDC; margin-top: 6px" dir="ltr">€ 250</div><div style="position: relative; height: 54px; margin-top: 14px"><div class="stack" data-show="0,21.3" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(194,138,90,.7); border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #F2EBDC">הוספה לסל</div><div class="stack" data-show="21.3,30" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; background: #C28A5A; border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #0C1420">נוסף לסל ✓</div></div></div><div data-in="20.11" style="position: absolute; left: 210px; top: 1080px; width: 300px; box-sizing: border-box; padding: 30px 24px 26px; background: #121E2C; border: 1px solid rgba(242,235,220,.12); border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><div style="height: 120px; display: flex; align-items: center"><img src="img/f5.webp" alt="L'Étoile" style="width: 244px; filter: drop-shadow(0 14px 18px rgba(0,0,0,.5))"></div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: .3em; color: #C28A5A; margin-top: 14px" dir="ltr">Nº 05</div><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; line-height: 1.1; color: #C99A4F" dir="ltr">L'Étoile</div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 26px; color: #F2EBDC; margin-top: 6px" dir="ltr">€ 320</div><div style="position: relative; height: 54px; margin-top: 14px"><div class="stack" data-show="0,21.3" data-fade="0.15" style="display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(194,138,90,.7); border-radius: 999px; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; color: #F2EBDC">הוספה לסל</div></div></div>
+    <div data-in="20.3" style="position: absolute; top: 1580px; left: 80px; right: 80px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 30px; font-weight: 300; color: rgba(242,235,220,.66)" dir="rtl">כל מסגרת מגיעה בקופסת נייבי עם חוט נחושת.</div>
+    <div class="d-fab" style="position: absolute; left: 70px; top: 1680px; width: 96px; height: 96px; border-radius: 50%; border: 1.5px solid #C28A5A; display: flex; align-items: center; justify-content: center">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F2EBDC" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1.4 11H6.4z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <div data-show="21.400000000000002,30" data-fade="0.15" style="position: absolute; top: -6px; right: -6px; width: 40px; height: 40px; border-radius: 50%; background: #C28A5A; color: #0C1420; font-family: 'Assistant', 'Heebo', sans-serif; font-weight: 700; font-size: 22px; line-height: 40px; text-align: center">1</div>
+    </div>
+  </section>
+  <section class="scene" data-show="23.0,30">
+    <div class="stack" style="background: #0C1420; background-image: radial-gradient(900px 700px at 50% 52%, #1A2838 0%, #0C1420 70%)"></div>
+    <div style="position: absolute; top: 205px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="23.1" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C28A5A; margin-bottom: 6px" dir="ltr">Cinq Regards</div>
+      <span class="mask"><span class="e-l1" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 76px; font-weight: 300; line-height: 1.18; color: #F2EBDC">אותם פנים. בדיוק.</span></span>
+      <span class="mask"><span class="e-l2" style="display: block; font-family: 'Frank Ruhl Libre', 'Heebo', serif; font-size: 76px; font-weight: 500; line-height: 1.18; color: #C28A5A">המבט הוא זה שמתחלף.</span></span>
+    </div>
+    <div data-in="23.46" style="position: absolute; left: 22px; top: 821px; width: 237px; height: 318px; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(242,235,220,.14); opacity: 0.92"><img class="cover" src="../assets/portraits/05-letoile.webp" alt="L'Étoile" style="object-position: 50% 30%"></div><div data-in="23.46" style="position: absolute; left: 822px; top: 821px; width: 237px; height: 318px; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(242,235,220,.14); opacity: 0.92"><img class="cover" src="../assets/portraits/04-la-directrice.webp" alt="La Directrice" style="object-position: 50% 30%"></div><div data-in="23.28" style="position: absolute; left: 196px; top: 788px; width: 288px; height: 385px; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(242,235,220,.14); opacity: 0.92"><img class="cover" src="../assets/portraits/03-la-poete.webp" alt="La Poète" style="object-position: 50% 30%"></div><div data-in="23.28" style="position: absolute; left: 596px; top: 788px; width: 288px; height: 385px; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(242,235,220,.14); opacity: 0.92"><img class="cover" src="../assets/portraits/02-licone.webp" alt="L'Icône" style="object-position: 50% 30%"></div><div data-in="23.10" style="position: absolute; left: 360px; top: 739px; width: 360px; height: 482px; border-radius: 8px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(242,235,220,.14); opacity: 1"><img class="cover" src="../assets/portraits/01-la-muse.webp" alt="La Muse" style="object-position: 50% 30%"></div>
+    <div data-in="24.6" style="position: absolute; top: 1330px; left: 40px; right: 40px; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 34px; line-height: 1.5; color: rgba(242,235,220,.66)" dir="ltr">La Muse · L'Icône · La Poète<br>La Directrice · L'Étoile</div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">חמש מסגרות על המדף.<br>למה היא יוצאת <span style="color: var(--s-copper)">בלי כלום</span>?</div>
+  <div style="position: absolute; top: 640px; left: 80px; width: 920px; box-sizing: border-box; padding: 34px 30px 40px; background: #FFFFFF; border-radius: 22px; box-shadow: 0 24px 60px rgba(62,47,37,.14)" dir="rtl">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px"><span style="padding: 8px 20px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 24px">ככה משווים</span><span style="font-size: 24px; color: #8A827B">מסגרות לנשים · 5 תוצאות</span></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 22px"><div style="position: relative; width: 254px; height: 250px; box-sizing: border-box; padding: 26px 18px 18px; background: #F7F6F4; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between">
+      <svg viewBox="0 0 200 84" width="218" height="92" fill="none" stroke="#3A3633" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="55" cy="42" r="30"/><circle cx="145" cy="42" r="30"/><path d="M85 40 Q100 30 115 40"/><path d="M25 38 L4 30 M175 38 L196 30"/></svg>
+      <div style="display: flex; justify-content: space-between; font-size: 23px; color: #6E6660" dir="rtl"><span>דגם 1042</span><strong style="color: #2E2A27">₪290</strong></div>
+      <div data-show="0.7,30" data-fade="0.18" style="position: absolute; inset: 0; border-radius: 12px; background: rgba(247,246,244,.72); display: flex; align-items: center; justify-content: center">
+        <span style="width: 74px; height: 74px; border-radius: 50%; background: #2E2A27; color: #F4F2EF; font-size: 40px; line-height: 74px; text-align: center">✕</span></div>
+    </div><div style="position: relative; width: 254px; height: 250px; box-sizing: border-box; padding: 26px 18px 18px; background: #F7F6F4; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between">
+      <svg viewBox="0 0 200 84" width="218" height="92" fill="none" stroke="#3A3633" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="16" y="18" width="74" height="48" rx="6"/><rect x="110" y="18" width="74" height="48" rx="6"/><path d="M90 34 H110"/><path d="M16 26 L2 22 M184 26 L198 22"/></svg>
+      <div style="display: flex; justify-content: space-between; font-size: 23px; color: #6E6660" dir="rtl"><span>דגם 2210</span><strong style="color: #2E2A27">₪340</strong></div>
+      <div data-show="1.05,30" data-fade="0.18" style="position: absolute; inset: 0; border-radius: 12px; background: rgba(247,246,244,.72); display: flex; align-items: center; justify-content: center">
+        <span style="width: 74px; height: 74px; border-radius: 50%; background: #2E2A27; color: #F4F2EF; font-size: 40px; line-height: 74px; text-align: center">✕</span></div>
+    </div><div style="position: relative; width: 254px; height: 250px; box-sizing: border-box; padding: 26px 18px 18px; background: #F7F6F4; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between">
+      <svg viewBox="0 0 200 84" width="218" height="92" fill="none" stroke="#3A3633" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 26 Q52 12 88 24 L84 56 Q52 70 24 58 Z"/><path d="M182 26 Q148 12 112 24 L116 56 Q148 70 176 58 Z"/><path d="M88 32 Q100 26 112 32"/></svg>
+      <div style="display: flex; justify-content: space-between; font-size: 23px; color: #6E6660" dir="rtl"><span>דגם 0871</span><strong style="color: #2E2A27">₪260</strong></div>
+      <div data-show="1.4,30" data-fade="0.18" style="position: absolute; inset: 0; border-radius: 12px; background: rgba(247,246,244,.72); display: flex; align-items: center; justify-content: center">
+        <span style="width: 74px; height: 74px; border-radius: 50%; background: #2E2A27; color: #F4F2EF; font-size: 40px; line-height: 74px; text-align: center">✕</span></div>
+    </div><div style="position: relative; width: 254px; height: 250px; box-sizing: border-box; padding: 26px 18px 18px; background: #F7F6F4; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between">
+      <svg viewBox="0 0 200 84" width="218" height="92" fill="none" stroke="#3A3633" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 22 H86 Q90 54 62 66 Q30 70 22 46 Z"/><path d="M180 22 H114 Q110 54 138 66 Q170 70 178 46 Z"/><path d="M86 26 H114 M86 34 H114"/></svg>
+      <div style="display: flex; justify-content: space-between; font-size: 23px; color: #6E6660" dir="rtl"><span>דגם 3305</span><strong style="color: #2E2A27">₪310</strong></div>
+      <div data-show="1.75,30" data-fade="0.18" style="position: absolute; inset: 0; border-radius: 12px; background: rgba(247,246,244,.72); display: flex; align-items: center; justify-content: center">
+        <span style="width: 74px; height: 74px; border-radius: 50%; background: #2E2A27; color: #F4F2EF; font-size: 40px; line-height: 74px; text-align: center">✕</span></div>
+    </div><div style="position: relative; width: 254px; height: 250px; box-sizing: border-box; padding: 26px 18px 18px; background: #F7F6F4; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between">
+      <svg viewBox="0 0 200 84" width="218" height="92" fill="none" stroke="#3A3633" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="14" width="78" height="56" rx="16"/><rect x="108" y="14" width="78" height="56" rx="16"/><path d="M92 36 Q100 30 108 36"/></svg>
+      <div style="display: flex; justify-content: space-between; font-size: 23px; color: #6E6660" dir="rtl"><span>דגם 1519</span><strong style="color: #2E2A27">₪280</strong></div>
+      <div data-show="2.1,30" data-fade="0.18" style="position: absolute; inset: 0; border-radius: 12px; background: rgba(247,246,244,.72); display: flex; align-items: center; justify-content: center">
+        <span style="width: 74px; height: 74px; border-radius: 50%; background: #2E2A27; color: #F4F2EF; font-size: 40px; line-height: 74px; text-align: center">✕</span></div>
+    </div></div>
+  </div>
+
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1690 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1690 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג 16</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">את מחליפה את המבט</span></div>
+    <div class="stack" data-show="9.9,15.6" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · La Lentille</span><span style="font-size: 22px; color: var(--s-ink)">עדשה אחת, חמישה מבטים</span></div>
+    <div class="stack" data-show="15.6,19.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · Le Fil</span><span style="font-size: 22px; color: var(--s-ink)">המסגרת נוחתת על הפנים</span></div>
+    <div class="stack" data-show="19.5,23.0" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · La Boutique</span><span style="font-size: 22px; color: var(--s-ink)">לקחת מבט הביתה</span></div>
+    <div class="stack" data-show="23.0,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">אותם פנים. המבט מתחלף.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

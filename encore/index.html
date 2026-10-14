@@ -566,7 +566,7 @@ footer.studio a{color:inherit}
       <div class="mock">
         <div class="cert" aria-hidden="true">
           <div><div class="lg" dir="ltr">ENCORE°</div><div class="k">CERTIFICAT D'HEURE</div></div>
-          <svg viewBox="-50 -50 100 100"><circle r="46" fill="none" stroke="#D9B26A" stroke-width="1"/><path d="M0 0 L0 -40 A40 40 0 0 1 40 0Z" fill="#241212" opacity=".3"/><path d="M0 0 L40 0 A40 40 0 0 1 0 40Z" fill="#6E4E4A" opacity=".3"/><path d="M0 0 L0 40 A40 40 0 0 1 -40 0Z" fill="#34405A" opacity=".3"/><path d="M0 0 L-40 0 A40 40 0 0 1 0 -40Z" fill="#853A26"/><circle r="3" fill="#D9B26A"/></svg>
+          <svg viewBox="-50 -50 100 100"><circle r="46" fill="none" stroke="#D9B26A" stroke-width="1"/><g transform="rotate(-45)"><path d="M0 0 L0 -40 A40 40 0 0 1 40 0Z" fill="#241212" opacity=".3"/><path d="M0 0 L40 0 A40 40 0 0 1 0 40Z" fill="#6E4E4A" opacity=".3"/><path d="M0 0 L0 40 A40 40 0 0 1 -40 0Z" fill="#34405A" opacity=".3"/><path d="M0 0 L-40 0 A40 40 0 0 1 0 -40Z" fill="#853A26"/></g><circle r="3" fill="#D9B26A"/></svg>
           <div class="nm" lang="fr">Marée</div>
           <div class="row">צמיד גל כפול · זהב 18K<br>נענד לראשונה <b dir="ltr">18:00 · 26.09.2026</b></div>
         </div>
@@ -607,11 +607,11 @@ footer.studio a{color:inherit}
   const HOURS=[[0,1,2,3],[2],[2],[0,1,2,3],[0,1,2,3]];
   const GLOW=['rgba(217,178,106,.22)','rgba(255,150,80,.32)','rgba(255,150,80,.36)','rgba(190,170,220,.26)','rgba(255,170,140,.32)'];
   const Q=[['#6E4E4A','06'],['#34405A','12'],['#853A26','18'],['#241212','00']];
-  // ring: four hour quadrants, sixty ticks, hour numerals (00 at the top, like the sign)
+  // ring: four hour quadrants centred on their numerals (night at the top, as the brand book rules), sixty ticks
   const arcP=(a0,a1,r)=>{const p=a=>[r*Math.sin(a*Math.PI/180),-r*Math.cos(a*Math.PI/180)];const[x0,y0]=p(a0),[x1,y1]=p(a1);return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`};
-  ring.innerHTML=`<circle r="95" fill="none" stroke="rgba(217,178,106,.16)" stroke-width="4.6"/>`+Q.map((q,i)=>`<path class="q" data-q="${i}" d="${arcP(i*90+90+3,i*90+180-3,95)}" fill="none" stroke="${q[0]}" stroke-width="4" stroke-linecap="round"/>`).join('')
+  ring.innerHTML=`<circle r="95" fill="none" stroke="rgba(217,178,106,.16)" stroke-width="4.6"/>`+Q.map((q,i)=>`<path class="q" data-q="${i}" d="${arcP(i*90+45+3,i*90+135-3,95)}" fill="none" stroke="${q[0]}" stroke-width="4" stroke-linecap="round"/>`).join('')
     +Array.from({length:60},(_,i)=>{const a=i*6*Math.PI/180,r0=i%15?89:86.5;return `<line x1="${(r0*Math.sin(a)).toFixed(2)}" y1="${(-r0*Math.cos(a)).toFixed(2)}" x2="${(91.5*Math.sin(a)).toFixed(2)}" y2="${(-91.5*Math.cos(a)).toFixed(2)}" stroke="rgba(217,178,106,${i%15?.35:.9})" stroke-width="${i%15?.4:.8}"/>`}).join('')
-    +Q.map((q,i)=>{const a=(i*90+90)*Math.PI/180;return `<text x="${(99.5*Math.sin(a)).toFixed(2)}" y="${(-99.5*Math.cos(a)).toFixed(2)}" text-anchor="middle" dominant-baseline="middle">${q[1]}</text>`}).join('');
+    +Q.map((q,i)=>{const a=(i*90+90)*Math.PI/180;return `<text x="${(102*Math.sin(a)).toFixed(2)}" y="${(-102*Math.cos(a)).toFixed(2)}" text-anchor="middle" dominant-baseline="middle">${q[1]}</text>`}).join('');
   const quads=[...ring.querySelectorAll('.q')];
   const N=imgs.length;
   let cur=0,target=0,last=-1;
