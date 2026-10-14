@@ -181,7 +181,7 @@ reveal('b-l2', 10.25)
 wins = [(9.7, STEPS[0] + .35)] + [(t + .35, (STEPS[k + 1] + .35) if k < 3 else 15.8) for k, t in enumerate(STEPS)]
 faces = ''.join(f'<div class="stack" data-show="{a:.2f},{b:.2f}" data-fade="0.3"><img class="cover" src="{PORT}{m[4]}.webp" alt="" style="object-position: 50% 30%; transform: scale(1.08)"></div>'
                 for m, (a, b) in zip(MODELS, wins))
-labels = ''.join(f"""<div class="stack" data-show="{a:.2f},{b:.2f}" data-fade="0.22" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="{CG}; font-style: italic; font-size: 76px; line-height: 1; color: {m[1]}" dir="ltr">{m[0]}</span><span style="{FR}; font-size: 36px; font-weight: 300; color: {CREAM}" dir="rtl">{m[2]}</span></div>"""
+labels = ''.join(f"""<div class="stack" data-show="{a + .12:.2f},{b - .3 if b < 15 else b:.2f}" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="{CG}; font-style: italic; font-size: 76px; line-height: 1; color: {m[1]}" dir="ltr">{m[0]}</span><span style="{FR}; font-size: 36px; font-weight: 300; color: {CREAM}" dir="rtl">{m[2]}</span></div>"""
                  for m, (a, b) in zip(MODELS, wins))
 medals = ''.join(f"""<div style="position: absolute; left: 0; top: 0; transform: rotate({-72 * i}deg) translateY(-{RR}px) rotate({72 * i}deg)"><div class="b-cr" style="position: absolute; left: -100px; top: -50px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center"><img src="img/f{i + 1}.webp" alt="{m[0]}" style="width: 196px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.5))"></div></div>"""
                  for i, m in enumerate(MODELS))
