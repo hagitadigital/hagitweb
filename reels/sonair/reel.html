@@ -1,0 +1,267 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SONAIR° reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Frank+Ruhl+Libre:wght@300;400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F2F2F0;      /* world background */
+  --w-ink:#23262B;     /* world text */
+  --w-accent:#8A93A0;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes · SONAIR° ── */
+.a-l1{animation-name:a-l1}@keyframes a-l1{0%,20.333%{transform:translateY(110%)}22.167%,100%{transform:none}}
+.a-l2{animation-name:a-l2}@keyframes a-l2{0%,22.000%{transform:translateY(110%)}23.833%,100%{transform:none}}
+.b-ring{animation-name:b-ring}@keyframes b-ring{0%{transform:rotate(0deg)}32.333%{transform:rotate(0deg)}35.667%{transform:rotate(0deg)}37.167%{transform:rotate(72deg)}39.000%{transform:rotate(72deg)}40.500%{transform:rotate(144deg)}42.333%{transform:rotate(144deg)}43.833%{transform:rotate(216deg)}45.667%{transform:rotate(216deg)}47.167%{transform:rotate(288deg)}100%{transform:rotate(288deg)}}
+.b-cr{animation-name:b-cr}@keyframes b-cr{0%{transform:rotate(0deg)}32.333%{transform:rotate(0deg)}35.667%{transform:rotate(0deg)}37.167%{transform:rotate(-72deg)}39.000%{transform:rotate(-72deg)}40.500%{transform:rotate(-144deg)}42.333%{transform:rotate(-144deg)}43.833%{transform:rotate(-216deg)}45.667%{transform:rotate(-216deg)}47.167%{transform:rotate(-288deg)}100%{transform:rotate(-288deg)}}
+.b-bg{animation-name:b-bg}@keyframes b-bg{0%{background-color:#E6E8EB}32.333%{background-color:#E6E8EB}35.667%{background-color:#E6E8EB}37.167%{background-color:#C9CBCF}39.000%{background-color:#C9CBCF}40.500%{background-color:#EFE4D3}42.333%{background-color:#EFE4D3}43.833%{background-color:#DDE4DA}45.667%{background-color:#DDE4DA}47.167%{background-color:#F3EEE6}100%{background-color:#F3EEE6}}
+.b-l1{animation-name:b-l1}@keyframes b-l1{0%,33.000%{transform:translateY(110%)}34.833%,100%{transform:none}}
+.c-l1{animation-name:c-l1}@keyframes c-l1{0%,52.333%{transform:translateY(110%)}54.167%,100%{transform:none}}
+.d-wave{animation-name:d-wave;animation-timing-function:linear}@keyframes d-wave{0%{stroke-dashoffset:1}71.333%{stroke-dashoffset:1}74.667%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+.e-l1{animation-name:e-l1}@keyframes e-l1{0%,78.333%{transform:translateY(110%)}80.167%,100%{transform:none}}
+.e-l2{animation-name:e-l2}@keyframes e-l2{0%,79.667%{transform:translateY(110%)}81.500%,100%{transform:none}}
+.e-push{animation-name:e-push;animation-timing-function:linear}@keyframes e-push{0%{transform:scale(1.08)}76.667%{transform:scale(1.08)}100.000%{transform:scale(1)}100%{transform:scale(1)}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">23</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">אוזניות פרימיום בעולם שמצולם מזווית אחת,<br>כסרט אחד שלא נחתך.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl"><span dir="ltr">SONAIR°</span> · עולם מותג 23</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">את <span dir="ltr">SONAIR°</span> לא משווים במפרט.<br><span style="color: var(--s-copper)">מרגישים</span>.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">ואת העסק שלך?<br>מה מרגישים אצלך?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+<section class="scene" data-show="0,10.1">
+    <div class="stack" data-show="0,10.2" data-fade="0.15"><div class="stack" data-seq="seq/t01_%03d.jpg" data-from="1" data-to="31" data-start="5.6" data-step="0.12"></div></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(to bottom, rgba(242,242,240,.94) 40%, rgba(242,242,240,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 640px; background: linear-gradient(to top, rgba(242,242,240,.96) 46%, rgba(242,242,240,0))"></div>
+    <div style="position: absolute; top: 200px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 12px">
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 104px; font-weight: 500; letter-spacing: .26em; color: #23262B; padding-left: .26em" dir="ltr">SONAIR<sup style="font-size: .36em; vertical-align: 1.3em">°</sup></div>
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 21px; font-weight: 500; letter-spacing: .42em; color: #5C6370" dir="ltr">PREMIUM WIRELESS EARBUDS</div>
+    </div>
+    <div style="position: absolute; bottom: 230px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <span class="mask"><span class="a-l1" style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 104px; font-weight: 400; line-height: 1.05; color: #23262B" dir="ltr">A More Human Sound</span></span>
+      <span class="mask"><span class="a-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 38px; font-weight: 300; line-height: 1.5; color: #5C6370; margin-top: 10px" dir="rtl">סאונד מדויק, נקי, ואנושי יותר.</span></span>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,15.8">
+    <div class="stack b-bg" style="background-color: #E6E8EB"></div>
+    <div style="position: absolute; left: 100px; top: 570px; width: 880px; height: 880px; border-radius: 50%; border: 2px dashed rgba(35,38,43,.25); box-sizing: border-box"></div>
+    <div style="position: absolute; left: 240px; top: 710px; width: 600px; height: 600px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 2px #fff, 0 30px 70px rgba(35,38,43,.25)"><div class="stack" data-show="9.70,11.00" data-fade="0.3"><img class="cover" src="../../sonair/img/c1-lunar-silver.webp" alt="" style="object-position: 62% 55%; transform: scale(1.25)"></div><div class="stack" data-show="11.00,12.00" data-fade="0.3"><img class="cover" src="../../sonair/img/c2-midnight-graphite.webp" alt="" style="object-position: 62% 55%; transform: scale(1.25)"></div><div class="stack" data-show="12.00,13.00" data-fade="0.3"><img class="cover" src="../../sonair/img/c3-soft-champagne.webp" alt="" style="object-position: 62% 55%; transform: scale(1.25)"></div><div class="stack" data-show="13.00,14.00" data-fade="0.3"><img class="cover" src="../../sonair/img/c4-sage-mist.webp" alt="" style="object-position: 62% 55%; transform: scale(1.25)"></div><div class="stack" data-show="14.00,15.80" data-fade="0.3"><img class="cover" src="../../sonair/img/c5-pearl-ivory.webp" alt="" style="object-position: 62% 55%; transform: scale(1.25)"></div></div>
+    <div class="b-ring" style="position: absolute; left: 540px; top: 1010px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-440px) rotate(0deg)"><div class="b-cr" style="position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0%, #C9CDD3 45%, #C9CDD3 70%, rgba(0,0,0,.25) 100%); box-shadow: 0 0 0 3px #fff, 0 12px 24px rgba(35,38,43,.25)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-72deg) translateY(-440px) rotate(72deg)"><div class="b-cr" style="position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0%, #3C3F45 45%, #3C3F45 70%, rgba(0,0,0,.25) 100%); box-shadow: 0 0 0 3px #fff, 0 12px 24px rgba(35,38,43,.25)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-144deg) translateY(-440px) rotate(144deg)"><div class="b-cr" style="position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0%, #D9C3A0 45%, #D9C3A0 70%, rgba(0,0,0,.25) 100%); box-shadow: 0 0 0 3px #fff, 0 12px 24px rgba(35,38,43,.25)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-216deg) translateY(-440px) rotate(216deg)"><div class="b-cr" style="position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0%, #A9B8A6 45%, #A9B8A6 70%, rgba(0,0,0,.25) 100%); box-shadow: 0 0 0 3px #fff, 0 12px 24px rgba(35,38,43,.25)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-288deg) translateY(-440px) rotate(288deg)"><div class="b-cr" style="position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0%, #ECE5D8 45%, #ECE5D8 70%, rgba(0,0,0,.25) 100%); box-shadow: 0 0 0 3px #fff, 0 12px 24px rgba(35,38,43,.25)"></div></div></div>
+    <div style="position: absolute; top: 478px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #23262B"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <span class="mask"><span class="b-l1" style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 80px; line-height: 1.05; color: #23262B" dir="ltr">A Finish for Every Story</span></span>
+      <div data-in="10.2" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #5C6370; margin-top: 10px" dir="rtl">גימור לכל סיפור. אותה תמונה, גימור אחר.</div>
+    </div>
+    <div style="position: absolute; top: 1580px; left: 40px; right: 40px; height: 160px"><div class="stack" data-show="9.80,10.70" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 72px; line-height: 1; color: #23262B" dir="ltr">Lunar Silver</span><span style="font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #5C6370" dir="rtl">כסף פנינתי</span></div><div class="stack" data-show="11.10,11.70" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 72px; line-height: 1; color: #23262B" dir="ltr">Midnight Graphite</span><span style="font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #5C6370" dir="rtl">גרפיט כהה</span></div><div class="stack" data-show="12.10,12.70" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 72px; line-height: 1; color: #23262B" dir="ltr">Soft Champagne</span><span style="font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #5C6370" dir="rtl">שמפניה רכה</span></div><div class="stack" data-show="13.10,13.70" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 72px; line-height: 1; color: #23262B" dir="ltr">Sage Mist</span><span style="font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #5C6370" dir="rtl">ירוק מרווה מעורפל</span></div><div class="stack" data-show="14.10,15.80" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 72px; line-height: 1; color: #23262B" dir="ltr">Pearl Ivory</span><span style="font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #5C6370" dir="rtl">שנהב פנינתי</span></div></div>
+  </section>
+  <section class="scene" data-show="15.5,19.7">
+    <div class="stack" data-show="15.5,17.45" data-fade="0.15"><div class="stack" data-seq="seq/t03_%03d.jpg" data-from="1" data-to="31" data-start="15.5" data-step="0.06"></div></div><div class="stack" data-show="17.35,19.8" data-fade="0.15"><div class="stack" data-seq="seq/t04_%03d.jpg" data-from="1" data-to="31" data-start="17.4" data-step="0.06"></div></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(to bottom, rgba(242,242,240,.94) 40%, rgba(242,242,240,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 640px; background: linear-gradient(to top, rgba(242,242,240,.96) 46%, rgba(242,242,240,0))"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <span class="mask"><span class="c-l1" style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 82px; line-height: 1.05; color: #23262B" dir="ltr">Inside the Extraordinary</span></span>
+      <div data-in="16.0" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #5C6370; margin-top: 10px" dir="rtl">אוזנייה אחת נשלפת, ונפתחת לרכיבים.</div>
+    </div>
+    <div data-in="17.8" style="position: absolute; bottom: 260px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 26px; letter-spacing: .3em; color: #5C6370" dir="ltr">DRIVER · ANC CHIP · SILICONE TIP</div>
+  </section>
+  <section class="scene" data-show="19.5,23.3">
+    <div class="stack"><img class="cover" src="../../sonair/img/s4a-presenter.webp" alt="" style="object-position: 72% 40%"></div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 1180px; background: linear-gradient(to top, rgba(242,242,240,.98) 62%, rgba(242,242,240,0))"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(to bottom, rgba(242,242,240,.94) 40%, rgba(242,242,240,0))"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; text-align: center">
+      <div data-in="19.6" style="font-family: 'Cormorant Garamond', serif; font-size: 80px; line-height: 1.05; color: #23262B" dir="ltr">Build Your Listening Ritual</div>
+    </div>
+    <div style="position: absolute; top: 1040px; left: 60px; right: 60px; display: flex; justify-content: space-between" dir="ltr"><div data-in="20.20" style="width: 270px; display: flex; flex-direction: column; align-items: center; gap: 12px"><div style="width: 270px; height: 360px; border-radius: 18px; overflow: hidden; box-shadow:  0 20px 40px rgba(35,38,43,.22)"><img src="../../sonair/img/sig-balanced.webp" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #23262B" dir="ltr">Balanced</span></div><div data-in="20.38" style="width: 270px; display: flex; flex-direction: column; align-items: center; gap: 12px"><div style="width: 270px; height: 360px; border-radius: 18px; overflow: hidden; box-shadow:  0 20px 40px rgba(35,38,43,.22)"><img src="../../sonair/img/sig-bass.webp" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #23262B" dir="ltr">Bass</span></div><div data-in="20.56" style="width: 270px; display: flex; flex-direction: column; align-items: center; gap: 12px"><div style="width: 270px; height: 360px; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 4px #23262B, 0 20px 40px rgba(35,38,43,.22)"><img src="../../sonair/img/sig-vocal.webp" alt="" style="width: 100%; height: 100%; object-fit: cover"></div><span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #23262B" dir="ltr">Vocal</span></div></div>
+    <div data-in="21.2" style="position: absolute; top: 1560px; left: 140px; right: 140px; display: flex; align-items: center; gap: 26px; padding: 22px 30px; background: #fff; border-radius: 22px; box-shadow: 0 18px 40px rgba(35,38,43,.15)" dir="rtl">
+      <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Heebo', sans-serif; font-size: 24px; color: #5C6370">הריטואל שלך</span><span style="font-family: 'Cormorant Garamond', serif; font-size: 44px; color: #23262B" dir="ltr">Vocal · ANC 70%</span></div>
+      <svg width="300" height="60" viewBox="0 0 300 60" aria-hidden="true"><path class="d-wave" pathLength="1" stroke-dasharray="1 1" d="M0 30 C25 5 50 55 75 30 S125 5 150 30 S200 55 225 30 S275 5 300 30" fill="none" stroke="#23262B" stroke-width="3"/></svg>
+    </div>
+  </section>
+  <section class="scene" data-show="23.0,30">
+    <div class="stack"><img class="cover e-push" src="../../sonair/img/s8-final.webp" alt="" style="object-position: 60% 50%"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(to bottom, rgba(242,242,240,.94) 40%, rgba(242,242,240,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 640px; background: linear-gradient(to top, rgba(242,242,240,.96) 46%, rgba(242,242,240,0))"></div>
+    <div style="position: absolute; top: 210px; left: 0; right: 0; display: flex; justify-content: center"><div data-in="23.1"><div style="font-family: 'Cormorant Garamond', serif; font-size: 104px; font-weight: 500; letter-spacing: .26em; color: #23262B; padding-left: .26em" dir="ltr">SONAIR<sup style="font-size: .36em; vertical-align: 1.3em">°</sup></div></div></div>
+    <div style="position: absolute; bottom: 250px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center">
+      <span class="mask"><span class="e-l1" style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 86px; line-height: 1.05; color: #23262B" dir="ltr">Ready for a Clearer Tomorrow?</span></span>
+      <span class="mask"><span class="e-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 38px; font-weight: 300; color: #5C6370; margin-top: 12px" dir="rtl">סאונד שמרגישים, לא רק שומעים.</span></span>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">למה תמיד משווים אותך<br><span style="color: var(--s-copper)">במפרט</span>?</div>
+  <div style="position: absolute; top: 650px; left: 80px; width: 920px; box-sizing: border-box; padding: 30px 30px 26px; background: #FFFFFF; border-radius: 22px; box-shadow: 0 24px 60px rgba(62,47,37,.14)" dir="rtl">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px"><span style="padding: 8px 20px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 24px">ככה משווים</span><span style="font-size: 24px; color: #8A827B">אוזניות אלחוטיות · 3 תוצאות</span></div>
+    <div style="position: relative">
+      <div style="display: flex; padding-right: 150px"><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 230px"><svg viewBox="0 0 120 90" width="150" height="112" fill="none" stroke="#3A3633" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 30 a16 16 0 1 1 30 8 l-6 40 a6 6 0 0 1 -12 0 l-2 -34"/><path d="M98 30 a16 16 0 1 0 -30 8 l6 40 a6 6 0 0 0 12 0 l2 -34"/></svg><div style="font-size: 24px; color: #6E6660">דגם A</div></div><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 230px"><svg viewBox="0 0 120 90" width="150" height="112" fill="none" stroke="#3A3633" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 30 a16 16 0 1 1 30 8 l-6 40 a6 6 0 0 1 -12 0 l-2 -34"/><path d="M98 30 a16 16 0 1 0 -30 8 l6 40 a6 6 0 0 0 12 0 l2 -34"/></svg><div style="font-size: 24px; color: #6E6660">דגם B</div></div><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 230px"><svg viewBox="0 0 120 90" width="150" height="112" fill="none" stroke="#3A3633" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 30 a16 16 0 1 1 30 8 l-6 40 a6 6 0 0 1 -12 0 l-2 -34"/><path d="M98 30 a16 16 0 1 0 -30 8 l6 40 a6 6 0 0 0 12 0 l2 -34"/></svg><div style="font-size: 24px; color: #6E6660">דגם C</div></div></div>
+      <div style="margin-top: 16px"><div style="display: flex; align-items: center; border-top: 1px solid #ECE8E4; height: 74px"><div style="width: 150px; font-size: 24px; color: #8A827B">ANC</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">✓</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">✓</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">✓</div></div><div style="display: flex; align-items: center; border-top: 1px solid #ECE8E4; height: 74px"><div style="width: 150px; font-size: 24px; color: #8A827B">סוללה</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">30 שעות</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">28 שעות</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">32 שעות</div></div><div style="display: flex; align-items: center; border-top: 1px solid #ECE8E4; height: 74px"><div style="width: 150px; font-size: 24px; color: #8A827B">Bluetooth</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">5.3</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">5.3</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 400">5.3</div></div><div style="display: flex; align-items: center; border-top: 1px solid #ECE8E4; height: 74px"><div style="width: 150px; font-size: 24px; color: #8A827B">מחיר</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 600">₪399</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 600">₪379</div><div style="width: 230px; text-align: center; font-size: 28px; color: #2E2A27; font-weight: 600">₪419</div></div></div>
+      <div class="stack" data-show="0.0,0.6" data-fade="0.08"><div style="position: absolute; left: 620px; top: -10px; width: 210px; bottom: -10px; border: 4px solid var(--s-copper); border-radius: 16px"></div></div><div class="stack" data-show="0.6,1.1" data-fade="0.08"><div style="position: absolute; left: 160px; top: -10px; width: 210px; bottom: -10px; border: 4px solid var(--s-copper); border-radius: 16px"></div></div><div class="stack" data-show="1.1,1.6" data-fade="0.08"><div style="position: absolute; left: 390px; top: -10px; width: 210px; bottom: -10px; border: 4px solid var(--s-copper); border-radius: 16px"></div></div><div class="stack" data-show="1.6,2.1" data-fade="0.08"><div style="position: absolute; left: 620px; top: -10px; width: 210px; bottom: -10px; border: 4px solid var(--s-copper); border-radius: 16px"></div></div><div class="stack" data-show="2.1,3.2" data-fade="0.08"><div style="position: absolute; left: 160px; top: -10px; width: 210px; bottom: -10px; border: 4px solid var(--s-copper); border-radius: 16px"></div></div>
+    </div>
+  </div>
+
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1690 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1690 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג 23</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">A More Human Sound</span></div>
+    <div class="stack" data-show="9.9,15.6" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · A Finish for Every Story</span><span style="font-size: 22px; color: var(--s-ink)">גימור לכל סיפור</span></div>
+    <div class="stack" data-show="15.6,19.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · Inside the Extraordinary</span><span style="font-size: 22px; color: var(--s-ink)">כל רכיב במקומו</span></div>
+    <div class="stack" data-show="19.5,23.1" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · The Listening Ritual</span><span style="font-size: 22px; color: var(--s-ink)">ריטואל האזנה אישי</span></div>
+    <div class="stack" data-show="23.1,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">סאונד אנושי יותר</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
