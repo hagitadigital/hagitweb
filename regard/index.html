@@ -375,7 +375,7 @@ body::after{
 /* ---------- RECEIVE ---------- */
 .receive{
   position:relative;
-  min-height:120vh;
+  min-height:100vh;
   padding:clamp(80px,14vh,160px) clamp(24px,6vw,96px) clamp(80px,12vh,140px);
   display:grid;
   grid-template-columns:minmax(280px,0.9fr) 1.1fr;
@@ -396,10 +396,12 @@ body::after{
 .landing{
   order:2;
   position:relative;z-index:3;
+  padding:36px 0 60px;flex-direction:column;
   display:flex;align-items:center;justify-content:center;
 }
 .landing-slot{
-  width:min(360px,80%);aspect-ratio:1;
+  --eye-y:45%;
+  width:min(440px,86%);aspect-ratio:1;
   border-radius:50%;
   border:1px solid var(--copper-soft);
   background:radial-gradient(circle at 50% 38%, rgba(255,255,255,.07), rgba(255,255,255,0) 70%);
@@ -408,18 +410,30 @@ body::after{
   position:relative;
 }
 .landing-slot::before{
-  content:'Nº ' attr(data-n);
-  position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  content:'Nº ' attr(data-n);z-index:3;
+  position:absolute;top:-30px;left:50%;transform:translateX(-50%);
   font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;
   color:var(--copper);direction:ltr;
 }
 .landing-slot img{
-  width:74%;height:74%;object-fit:contain;
+  position:absolute;left:13%;top:calc(var(--eye-y) - 37%);
+  width:74%;height:74%;object-fit:contain;z-index:2;
   filter:drop-shadow(0 30px 46px rgba(0,0,0,.55));
   opacity:0;transform:scale(.94);
   transition:opacity .3s var(--ease-ui), transform .3s var(--ease-ui);
 }
-.landing-slot.is-docked img{opacity:1;transform:scale(1)}
+/* the frame lands on her eyes and goes on: the cut-out dissolves, the face comes into focus */
+.landing-slot.is-docked img{opacity:0;transform:scale(1.45);transition:opacity .9s var(--ease-ui) .15s, transform 1.1s var(--ease-ui)}
+.slot-face{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:1}
+.slot-face video{width:100%;height:100%;object-fit:cover;object-position:50% 22%;
+  filter:blur(14px) brightness(.38) saturate(.6);transform:scale(1.12);
+  transition:filter 1.2s var(--ease-ui) .1s, transform 1.6s var(--ease-ui)}
+.landing-slot.is-docked .slot-face video{filter:none;transform:scale(1)}
+.landing-slot::after{content:'';position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;
+  box-shadow:inset 0 0 0 1px var(--copper-soft),inset 0 -40px 80px rgba(12,20,32,.55)}
+.landing-pose{margin-top:22px;text-align:center;min-height:1.6em;
+  font-size:clamp(13px,1.05vw,15px);color:var(--muted);opacity:0;transition:opacity .6s var(--ease-ui) .5s}
+.landing-slot.is-docked + .landing-pose{opacity:1}
 
 .story{order:1;position:relative;z-index:3}
 .story .eyebrow{margin-bottom:14px}
@@ -889,7 +903,11 @@ document.addEventListener('DOMContentLoaded', function () {
   <svg class="thread" aria-hidden="true" preserveAspectRatio="none"><path d=""/></svg>
 
   <div class="landing">
-    <div class="landing-slot" data-n="01"><img alt="המסגרת הנבחרת"></div>
+    <div class="landing-slot" data-n="01">
+      <div class="slot-face"><video muted loop playsinline preload="none" poster="assets/portraits/01-la-muse.webp" aria-hidden="true"></video></div>
+      <img alt="המסגרת הנבחרת">
+    </div>
+    <p class="landing-pose" data-story-pose aria-live="polite"></p>
   </div>
 
   <div class="story">
@@ -1019,6 +1037,9 @@ document.addEventListener('DOMContentLoaded', function () {
     <p>
       בהירו עומדת עדשה אחת שלא זזה, וגלגל של חמש מסגרות עובר דרכה. הגלגל מניע את עצמו —
       גלילה מעליו, גרירה, הקשה או מקלדת — והדגם שנבחר הוא זה שיורד בחוט הנחושת אל סקשן הסיפור.
+      שם הוא לא נוחת בעיגול ריק: הוא נוחת על הפנים שלה. עד הרגע הזה הפנים במראה מטושטשים וכהים, וכשהמסגרת
+      יושבת על קו העיניים הם מתחדדים והפורטרט של אותה מסגרת מתחיל לחיות. השאלה ״מה משתנה כשהיא מרכיבה אותה?״
+      מקבלת תשובה באותו פריים.
       כל מסגרת מקבלת שם, אקסנט צבע, שלושה צ'יפים וסיפור קצר: מה משתנה כשהיא מרכיבה אותה.
     </p>
     <p>
@@ -1174,6 +1195,7 @@ const travImg = traveler.querySelector('img');
 const receive = document.getElementById('look');
 const slot    = document.querySelector('.landing-slot');
 const slotImg = slot.querySelector('img');
+const slotVid = slot.querySelector('.slot-face video');
 const thread  = document.querySelector('.thread');
 const threadPath = thread.querySelector('path');
 
@@ -1300,6 +1322,13 @@ function setActive(idx){
 
   slot.dataset.n = m.n;
   slotImg.src = m.img;
+  if(slotVid.dataset.i !== String(idx)){
+    slotVid.dataset.i = idx;
+    slotVid.poster = PORTRAITS[idx].img;
+    if(reduceMotion) slotVid.removeAttribute('src'); else slotVid.src = PORTRAITS[idx].vid;
+    if(slot.classList.contains('is-docked') && !reduceMotion) slotVid.play().catch(()=>{});
+  }
+  document.querySelector('[data-story-pose]').textContent = `Nº ${m.n} · ${PORTRAITS[idx].pose}`;
   travImg.src = m.img;
   const sn = document.querySelector('[data-story-name]');
   sn.textContent = m.name; sn.style.color = m.accent;
@@ -1387,6 +1416,13 @@ if (reduceMotion){
     if(e.key==='ArrowUp'&&target>0){ e.preventDefault(); goTo(target-1); }
   });
 
+  /* docking puts the frame on: the face sharpens and her portrait starts to live */
+  function dock(on){
+    if(slot.classList.contains('is-docked') === on) return;
+    slot.classList.toggle('is-docked', on);
+    if(on) slotVid.play().catch(()=>{}); else slotVid.pause();
+  }
+
   /* ---------- handoff: the CHOSEN frame leaves the lens ---------- */
   function curvePoint(t, s, e){
     const cx = (s.x + e.x)/2 + (isMobile()? 0 : 90);
@@ -1401,11 +1437,11 @@ if (reduceMotion){
       const t = self.progress;
       if(t<=0.001){
         handoffActive=false; traveler.style.opacity=0;
-        slot.classList.remove('is-docked'); render(proxy.p); return;
+        dock(false); render(proxy.p); return;
       }
       const s = lensCenter();
       const r = slot.getBoundingClientRect();
-      const e = { x:r.left+r.width/2, y:r.top+r.height/2 };
+      const e = { x:r.left+r.width/2, y:r.top+r.height*0.45 };   /* her eye line */
       const pt = curvePoint(t, s, e);
       const startScale = ZOOM, endScale = (r.width*0.74)/(itemH()*1.2);
       /* the chosen frame swells mid-flight and makes one full turn
@@ -1418,14 +1454,14 @@ if (reduceMotion){
         handoffActive=true;
         traveler.style.opacity=1;
         lensItems[active].style.opacity=0;   /* the glass empties while it travels */
-        slot.classList.remove('is-docked');
+        dock(false);
       } else if (t>=0.97){
         traveler.style.opacity=0;
-        slot.classList.add('is-docked');
+        dock(true);
       }
     },
-    onLeave(){ traveler.style.opacity=0; slot.classList.add('is-docked'); },
-    onLeaveBack(){ handoffActive=false; traveler.style.opacity=0; slot.classList.remove('is-docked'); render(proxy.p); }
+    onLeave(){ traveler.style.opacity=0; dock(true); },
+    onLeaveBack(){ handoffActive=false; traveler.style.opacity=0; dock(false); render(proxy.p); }
   });
 
   /* copper thread drawn on scroll */
