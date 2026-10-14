@@ -324,6 +324,32 @@
   footer .f-disc a{color:rgba(242,235,220,.7);text-decoration:none;border-bottom:1px solid rgba(194,138,90,.5)}
 
   /* reveal */
+  /* LA MUSE — the copper rail: three looks hang on one rod; they arrive from the right, from above and from the left */
+  .hangers{position:relative;margin-top:8px;overflow-x:clip}
+  .hangers.rv{opacity:1;transform:none}
+  .hangers .rod{position:relative;height:4px;border-radius:4px;background:var(--copper);transform:scaleX(0);transform-origin:right center;transition:transform 1s cubic-bezier(.6,0,.2,1)}
+  .hangers .rod-ball{position:absolute;top:-9px;right:-4px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#F3D2AE 0,#D9A06C 30%,var(--copper) 58%,#8A5A33 100%);box-shadow:0 0 0 7px rgba(217,174,133,.3);opacity:0;transition:transform 1.4s cubic-bezier(.45,0,.2,1) .35s,opacity .3s .3s}
+  .hangers.in .rod{transform:scaleX(1)}
+  .hangers.in .rod-ball{opacity:1;transform:translateX(calc(-1 * var(--rod-w, 1000px) + 34px)) rotate(-720deg)}
+  .hangers .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,3.4vw,52px);padding-inline:clamp(4px,2vw,28px)}
+  .hanger{margin:0;transform-origin:50% 0;opacity:0}
+  .hangers.in .hanger{animation:hangIn 1.35s cubic-bezier(.3,0,.3,1) both}
+  .hangers.in .hanger:nth-child(1){--fx:70vw;--fy:0px;--sw:-7deg;animation-delay:.55s}
+  .hangers.in .hanger:nth-child(2){--fx:0px;--fy:-460px;--sw:4deg;animation-delay:.95s}
+  .hangers.in .hanger:nth-child(3){--fx:-70vw;--fy:0px;--sw:7deg;animation-delay:1.3s}
+  @keyframes hangIn{0%{opacity:0;transform:translate(var(--fx),var(--fy))}12%{opacity:1}62%{transform:translate(0,0) rotate(var(--sw))}80%{transform:rotate(calc(var(--sw) * -.45))}92%{transform:rotate(calc(var(--sw) * .18))}100%{opacity:1;transform:none}}
+  .hanger .hb{transform-origin:50% 0}
+  .hanger .hook{display:block;width:2px;height:clamp(30px,5vw,56px);margin:0 auto;background:var(--copper);position:relative}
+  .hanger .hook::before{content:"";position:absolute;top:-7px;left:50%;width:12px;height:12px;margin-left:-6px;border:2px solid var(--copper);border-bottom-color:transparent;border-radius:50%}
+  .hanger .ph{aspect-ratio:3/4;overflow:hidden;border-radius:10px;background:var(--cream);box-shadow:0 22px 40px rgba(20,30,45,.14)}
+  .hanger .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .hanger .n{margin-top:16px;text-align:center;font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.32em;color:var(--copper-deep)}
+  .hanger .nm{text-align:center;font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(1.05rem,2.2vw,1.5rem);color:var(--ink);line-height:1.2}
+  .hanger .dt{text-align:center;font-size:.9rem;color:var(--ink-soft);margin-top:2px}
+  @media (hover:hover){.hangers.in .hanger:hover .hb{animation:sway 1.6s ease-in-out}}
+  @keyframes sway{0%,100%{transform:none}30%{transform:rotate(3deg)}65%{transform:rotate(-2deg)}}
+  @media (max-width:560px){.hanger .n{font-size:.62rem;letter-spacing:.2em}.hanger .dt{display:none}}
+  @media (prefers-reduced-motion:reduce){.hangers .rod{transform:none;transition:none}.hangers .rod-ball{display:none}.hanger,.hangers.in .hanger{opacity:1;animation:none}.hangers.in .hanger:hover .hb{animation:none}}
   .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
   .rv.in{opacity:1;transform:none}
 
@@ -521,6 +547,25 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
   </nav>
+
+  <!-- LA MUSE — three looks on one copper rail -->
+  <section class="shop-sec" id="muse" aria-label="La Muse — שלושה לוקים על אותה מוזה">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="sec-eyebrow">La Muse · Trois Looks</div>
+        <h2 class="sec-title">שלושה לוקים. <em>מוזה אחת.</em></h2>
+        <p class="sec-lede">אותם פנים, אותו אור, אותה חתימה. שלושה לוקים על אותו מוט, וכולם מאותו עולם.</p>
+      </div>
+    </div>
+    <div class="hangers rv" id="hangers">
+      <div class="rod"><span class="rod-ball"></span></div>
+      <div class="row">
+        <figure class="hanger"><div class="hb"><span class="hook"></span><div class="ph"><img src="ecru-media/look-shirt.jpg" alt="המוזה של ÉCRU בחולצה לבנה וג׳ינס בהיר" width="896" height="1200" loading="lazy"></div><figcaption><div class="n">LOOK 01</div><div class="nm">Clean &amp; Classic</div><div class="dt">חולצה לבנה · ג׳ינס בהיר</div></figcaption></div></figure>
+        <figure class="hanger"><div class="hb"><span class="hook"></span><div class="ph"><img src="ecru-media/look-vest.jpg" alt="המוזה של ÉCRU בווסט בז׳ ושכבות" width="896" height="1200" loading="lazy"></div><figcaption><div class="n">LOOK 02</div><div class="nm">Modern Layers</div><div class="dt">וסט בז׳ · שכבות</div></figcaption></div></figure>
+        <figure class="hanger"><div class="hb"><span class="hook"></span><div class="ph"><img src="ecru-media/look-blazer.jpg" alt="המוזה של ÉCRU בבלייזר שחור" width="896" height="1200" loading="lazy"></div><figcaption><div class="n">LOOK 03</div><div class="nm">Effortless Power</div><div class="dt">בלייזר שחור · אלגנטי</div></figcaption></div></figure>
+      </div>
+    </div>
+  </section>
 
   <!-- NEW IN -->
   <section class="shop-sec" id="new">
@@ -952,6 +997,9 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
 },{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* the copper ball rolls the full length of the rod */
+(function(){ const h=document.getElementById('hangers'); if(!h) return;
+  const fit=()=>h.style.setProperty('--rod-w', h.querySelector('.rod').offsetWidth+'px'); fit(); addEventListener('resize', fit); })();
 
 /* loader off */
 window.addEventListener('load', ()=> setTimeout(()=>document.getElementById('loader').classList.add('done'), 600));
