@@ -178,7 +178,6 @@ section{position:relative}
   padding:34px 30px;min-height:220px;
   display:flex;flex-direction:column;justify-content:flex-end;
   transition:box-shadow .5s ease,border-color .5s ease;
-  backdrop-filter:blur(3px);
 }
 .cube:hover{border-color:rgba(192,138,90,.5);box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .cube__no{font-family:var(--en);font-weight:300;font-size:.72rem;letter-spacing:.34em;color:var(--copper)}
@@ -721,6 +720,11 @@ document.addEventListener('DOMContentLoaded', function () {
     setPos(e.clientX - r.left, e.clientY - r.top);
   });
   hero.addEventListener('pointerleave', ()=>{ idle = true; });
+  let visible = true;
+  new IntersectionObserver(es=>{
+    visible = es[0].isIntersecting;
+    if(visible && !raf) loop();
+  }).observe(hero);
   // idle sweep so the effect lives on mobile / before first move
   function loop(){
     if(idle){
@@ -730,7 +734,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const y = r.height*(0.42 + 0.05*Math.cos(t*0.8));
       setPos(x,y);
     }
-    raf = requestAnimationFrame(loop);
+    raf = visible ? requestAnimationFrame(loop) : 0;
   }
   loop();
 })();
@@ -789,14 +793,14 @@ window.addEventListener('load', ()=>{
       y:()=>window.innerHeight*0.16, scale:0.82
     });
     gsap.to(bottle, {
-      opacity:0, ease:'none',
-      scrollTrigger:{ trigger:'#cubes', start:'top bottom', end:'top 68%', scrub:true }
+      autoAlpha:0, ease:'none',
+      scrollTrigger:{ trigger:'#cubes', start:'top 72%', end:'top 54%', scrub:true }
     });
   });
 
   // cubes open as the bottle settles into the section
   ScrollTrigger.batch('#cubes .cube', {
-    start:'top 66%',
+    start:'top 60%',
     onEnter: batch => gsap.to(batch, {opacity:1, y:0, scale:1, stagger:0.16, duration:.7, ease:'power2.out',
       onStart:()=>batch.forEach(b=>b.classList.add('in'))})
   });
