@@ -1,3 +1,11 @@
+# Briefs, specs and client files — NOT in this repo
+
+This repo is public (GitHub Pages). Briefs, specs, campaign docs, SEO plans, keyword registry and the site audit
+live in the **private** repo `hagitadigital/brandos`, folder `briefs/` (index: `briefs/README.md`;
+the work plan after the Oct 2026 audit: `briefs/site-audit-2026-10/SPEC.md`).
+Hila Sharon's client site is there too: `clients/hila-sharon/`.
+Read and write briefs there (in a cloud session, attach the repo with add_repo); never add `.briefs/` or client files back here.
+
 # Campaign & ad work (paid ads, retargeting reels, ad recuts)
 
 Applies to every session, local or cloud (claude.ai/code).
@@ -10,7 +18,7 @@ Applies to every session, local or cloud (claude.ai/code).
 - **Local session:** campaign files live in `brandworld_ad/<YYYY-MM-campaign>/` (local only, gitignored).
   Before any campaign/ad work, run `python -I brandworld_ad/_tools/sync-branches.py` and pull what's new,
   then read `brandworld_ad/INDEX.md`. Add a row to INDEX.md for every creative you make.
-- Meta setup docs stay in `.briefs/campaign-sep2026/` (or the current campaign's `.briefs/` folder).
+- Meta setup docs go in the private repo `hagitadigital/brandos` under `briefs/<campaign>/` (see below).
 - Creative rules: frame 0 already shows the hook question and its proof (it is the feed thumbnail);
   a "ככה משווים" card is a generic no-name product, never the world's product greyed out.
 
