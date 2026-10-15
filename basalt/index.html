@@ -23,6 +23,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* hidden-until-revealed states apply only when GSAP loaded and motion is welcome;
+   otherwise (blocked CDN, slow network, reduced motion) the whole page shows as is */
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches)
+  document.documentElement.classList.add('motion');
+</script>
 
 <style>
 :root{
@@ -68,7 +74,7 @@ section{position:relative}
 .hero{
   height:100vh;min-height:640px;
   display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  text-align:center;position:relative;overflow:hidden;padding:12vh 0 16vh;
+  text-align:center;position:relative;overflow:hidden;padding:12vh 0 calc(9vh + 44px);
   background:
     radial-gradient(120% 80% at 50% 8%, #20262e 0%, #12161b 46%, #0b0e12 100%);
 }
@@ -124,18 +130,18 @@ section{position:relative}
 /* the floating bottle that descends into the materials section */
 .floating-bottle{
   position:fixed;left:50%;top:0;height:100vh;width:100%;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;padding-bottom:8vh;
   transform:translateX(-50%);pointer-events:none;z-index:1;
   will-change:transform,opacity;
 }
 .floating-bottle img{
-  height:min(66vh,620px);width:auto;
+  height:min(54vh,520px);width:auto;
   filter:drop-shadow(0 40px 70px rgba(0,0,0,.6));
 }
 /* static hero bottle for mobile (position:fixed is unreliable on mobile browsers) */
 .hero__bottle-m{
   display:none;position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-45%);height:min(48vh,400px);width:auto;z-index:1;
+  transform:translate(-50%,-50%);height:min(46vh,400px);width:auto;z-index:1;
   pointer-events:none;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));
 }
 /* back-to-worlds nav */
@@ -171,7 +177,6 @@ section{position:relative}
   background:linear-gradient(160deg,rgba(30,35,43,.7),rgba(16,20,25,.55));
   padding:34px 30px;min-height:220px;
   display:flex;flex-direction:column;justify-content:flex-end;
-  opacity:0;transform:translateY(40px) scale(.97);
   transition:box-shadow .5s ease,border-color .5s ease;
   backdrop-filter:blur(3px);
 }
@@ -181,9 +186,11 @@ section{position:relative}
   font-size:1.04rem;color:var(--stone-light);margin-top:16px}
 .cube__he{font-family:var(--serif-he);font-weight:500;font-size:1.28rem;color:var(--stone-light);margin-top:6px}
 .cube__desc{color:rgba(233,229,222,.62);font-size:.98rem;line-height:1.7;margin-top:12px}
-.cube__line{width:34px;height:2px;background:var(--copper);margin-top:20px;transform-origin:right;transform:scaleX(0);transition:transform .6s ease .2s}
-.cube.in{opacity:1;transform:none}
-.cube.in .cube__line{transform:scaleX(1)}
+.cube__line{width:34px;height:2px;background:var(--copper);margin-top:20px;transform-origin:right;transition:transform .6s ease .2s}
+.motion .cube{opacity:0;transform:translateY(40px) scale(.97)}
+.motion .cube.in{opacity:1;transform:none}
+.motion .cube__line{transform:scaleX(0)}
+.motion .cube.in .cube__line{transform:scaleX(1)}
 
 /* ============ PROTOCOL / RANGE (capabilities) ============ */
 .protocol,.clinic,.language,.studio,.cta-sec,footer{position:relative;z-index:2}
@@ -193,15 +200,50 @@ section{position:relative}
   font-size:clamp(1.9rem,4.6vw,3.1rem);margin-top:18px}
 .protocol__copy p{margin-top:20px;color:rgba(233,229,222,.68);font-size:clamp(1rem,2vw,1.12rem)}
 .protocol__media img{border-radius:16px;width:100%}
-.range{margin-top:12vh}
-.range__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:44px}
-.range__item{background:var(--graphite);padding:34px 26px;transition:background .4s ease}
-.range__item:hover{background:var(--graphite-2)}
-.range__item .n{font-family:var(--en);font-weight:300;font-size:.7rem;letter-spacing:.3em;color:var(--copper)}
-.range__item .t{font-family:var(--en);font-weight:400;letter-spacing:.1em;text-transform:uppercase;
-  font-size:1rem;margin-top:14px;color:var(--stone-light)}
-.range__item .d{color:rgba(233,229,222,.58);font-size:.92rem;margin-top:8px}
+/* ---- YOUR PROTOCOL: pick what bothers you, the shelf drops the rest ---- */
+.mine{margin-top:16vh;text-align:center}
+.mine__head h2{font-family:var(--serif-he);font-weight:700;line-height:1.1;
+  font-size:clamp(1.9rem,4.6vw,3.1rem);margin-top:18px}
+.mine__head p{margin-top:16px;color:rgba(233,229,222,.68);font-size:clamp(1rem,2vw,1.12rem)}
+.mine__chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
+.chip{font-family:var(--he);font-weight:400;font-size:.98rem;color:rgba(233,229,222,.78);
+  background:transparent;border:1px solid rgba(233,229,222,.24);border-radius:40px;padding:12px 22px;
+  cursor:pointer;transition:background .35s ease,border-color .35s ease,color .35s ease}
+.chip:hover{border-color:rgba(192,138,90,.6);color:var(--stone-light)}
+.chip[aria-pressed="true"]{background:rgba(192,138,90,.16);border-color:var(--copper);color:var(--stone-light)}
+.chip:focus-visible,.mine__next:focus-visible{outline:2px solid var(--copper-lt);outline-offset:3px}
+.shelf{list-style:none;display:flex;justify-content:center;align-items:flex-start;gap:14px;margin-top:54px;
+  position:relative;padding-bottom:4px}
+.shelf__item{flex:0 1 200px;min-width:0;text-align:right;
+  transition:flex-basis .75s cubic-bezier(.2,.7,.2,1),opacity .6s ease,filter .6s ease}
+.shelf__fig{height:min(357px,48vw);border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  border-bottom:2px solid rgba(192,138,90,.35);transition:border-color .5s ease}
+.shelf__fig img{width:100%;height:100%;object-fit:cover}
+.shelf__meta{padding-top:16px;transition:opacity .4s ease}
+.shelf__item .n{font-family:var(--en);font-weight:300;font-size:.7rem;letter-spacing:.3em;color:var(--copper);display:block}
+.shelf__item .t{font-family:var(--en);font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.92rem;margin-top:10px;color:var(--stone-light);line-height:1.4}
+.shelf__item .d{color:rgba(233,229,222,.58);font-size:.9rem;margin-top:6px;display:block}
+.shelf.is-cut .shelf__item.off{flex-basis:56px;opacity:.28;filter:grayscale(1) brightness(.7)}
+.shelf.is-cut .shelf__item.off .shelf__meta{opacity:0;max-height:0;overflow:hidden;padding:0}
+.shelf.is-cut .shelf__item.on .shelf__fig{border-color:rgba(192,138,90,.55);border-bottom-color:var(--copper)}
+.mine__sum{margin-top:44px;font-size:clamp(1.02rem,2vw,1.16rem);color:rgba(233,229,222,.7);min-height:1.8em}
+.mine__sum b{font-family:var(--en);font-weight:400;letter-spacing:.06em;color:var(--stone-light)}
+.mine__next{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:.98rem;
+  color:var(--copper-lt);border-bottom:1px solid rgba(192,138,90,.4);padding-bottom:4px}
+.mine__next svg{width:16px;height:16px}
+@media(max-width:820px){
+  .shelf{flex-direction:column;align-items:stretch;gap:10px;margin-top:40px}
+  .shelf__item{flex:none;display:flex;align-items:center;gap:18px;
+    transition:opacity .6s ease,filter .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .shelf__fig{flex:0 0 64px;height:114px}
+  .shelf__meta{padding-top:0}
+  .shelf.is-cut .shelf__item.off{transform:translateX(-26px)}
+  .shelf.is-cut .shelf__item.off .shelf__meta{opacity:.9;max-height:none}
+  .shelf.is-cut .shelf__item.off .shelf__fig{flex-basis:40px;height:70px}
+  .shelf.is-cut .shelf__item.off .n{display:none}
+}
+@media (prefers-reduced-motion:reduce){.shelf__item,.shelf__meta{transition:none}}
 
 /* ============ CLINIC ============ */
 .clinic{padding:16vh 0;background:linear-gradient(180deg,#0d1116,#12161b)}
@@ -238,7 +280,6 @@ section{position:relative}
 @keyframes filmdrift{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){
   .film__track{animation:none}
-  .v-card{opacity:1 !important;transform:none !important}
 }
 
 /* ============ WORLDS NEARBY — related brand worlds ============ */
@@ -253,9 +294,9 @@ section{position:relative}
 .v-card{
   display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;
   background:linear-gradient(160deg,rgba(30,35,43,.7),rgba(16,20,25,.55));
-  opacity:0;transform:translateY(30px);
   transition:border-color .5s ease,box-shadow .5s ease;
 }
+.motion .v-card{opacity:0;transform:translateY(30px)}
 .v-card:hover{border-color:rgba(192,138,90,.5);box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .v-card .ph{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
 .v-card .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);
@@ -276,6 +317,7 @@ section{position:relative}
 .studio .eyebrow{color:#8a6a44}
 .studio h2{font-family:var(--serif-he);font-weight:700;font-size:clamp(1.7rem,4vw,2.6rem);margin-top:18px;line-height:1.2;color:#171b21}
 .studio p{margin-top:22px;color:#42474d;font-size:clamp(1rem,2vw,1.14rem)}
+.studio p strong{font-weight:500;color:#171b21}
 .studio p a{color:#8a6a44;border-bottom:1px solid rgba(138,106,68,.4)}
 
 /* ============ CTA ============ */
@@ -296,8 +338,11 @@ footer .mark{font-family:var(--en);font-weight:300;letter-spacing:.4em;font-size
 footer .sig{font-family:var(--en);font-weight:300;letter-spacing:.14em;font-size:.76rem;color:rgba(233,229,222,.4);margin-top:14px}
 
 /* reveal util */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
-.reveal.in{opacity:1;transform:none}
+.motion .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.motion .reveal.in{opacity:1;transform:none}
+
+html:not(.motion) .floating-bottle{display:none}
+html:not(.motion) .hero__bottle-m{display:block}
 
 @media(max-width:820px){
   .split{grid-template-columns:1fr}
@@ -366,12 +411,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- floating product that descends from hero into the materials section (desktop) -->
 <div class="floating-bottle" id="floatBottle" aria-hidden="true">
-  <img width="1122" height="1402" src="assets/BAZALT.png" alt="BASALT — סרום טיפוח לגברים">
+  <img width="1122" height="1402" src="assets/bottle.webp" alt="BASALT — סרום טיפוח לגברים">
 </div>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="hero">
-  <img width="1122" height="1402" class="hero__bottle-m" src="assets/BAZALT.png" alt="BASALT — סרום טיפוח לגברים" aria-hidden="true">
+  <img width="1122" height="1402" class="hero__bottle-m" src="assets/bottle.webp" alt="BASALT — סרום טיפוח לגברים" aria-hidden="true">
   <div class="hero__top">
     <p class="eyebrow hero__eyebrow">MEN'S DERMATOLOGY &amp; AESTHETICS</p>
     <div class="wordmark" id="wordmark" dir="ltr">
@@ -432,27 +477,56 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="protocol__copy reveal">
         <p class="eyebrow">PROTOCOL 01 — RESURFACE</p>
         <h2>פרוטוקול אחד.<br>חמישה צעדים.</h2>
-        <p>מ־Clarifying Cleanser ועד Eye Renewal — כל מוצר מדבר באותה שפה: אותו זכוכית מט, אותו קו נחושת, אותה הבטחה. זה מה שהופך אוסף מוצרים למערכת.</p>
+        <p>מ־Clarifying Cleanser ועד Eye Renewal, כל מוצר מדבר באותה שפה: אותה זכוכית מט, אותו קו נחושת, אותה הבטחה. זה מה שהופך אוסף מוצרים למערכת. אבל אף גבר לא צריך את כל החמישה בכל בוקר.</p>
       </div>
       <div class="protocol__media reveal">
         <img width="1400" height="1749" src="assets/line.jpg" alt="BASALT — קו הטיפוח המלא לגברים, פרוטוקול RESURFACE" loading="lazy">
       </div>
     </div>
 
-    <div class="range">
-      <div class="range__grid">
-        <div class="range__item"><span class="n">STEP 01</span><div class="t">Clarifying Cleanser</div><p class="d">ניקוי יומי מזכך</p></div>
-        <div class="range__item"><span class="n">STEP 02</span><div class="t">Balancing Toner</div><p class="d">איזון ומרקם</p></div>
-        <div class="range__item"><span class="n">STEP 03</span><div class="t">Refining Serum</div><p class="d">הסרום המרכזי</p></div>
-        <div class="range__item"><span class="n">STEP 04</span><div class="t">Daily Moisturizer</div><p class="d">לחות מגינה</p></div>
-        <div class="range__item"><span class="n">STEP 05</span><div class="t">Eye Renewal</div><p class="d">טיפול ממוקד</p></div>
+    <div class="mine" id="mine">
+      <div class="mine__head reveal">
+        <p class="eyebrow">YOUR PROTOCOL · הפרוטוקול שלך</p>
+        <h2>הפרוטוקול שלך.</h2>
+        <p>מה מציק לך? בחר אחד או שניים. את השאר נוריד.</p>
       </div>
+      <div class="mine__chips" role="group" aria-label="מה מציק לך">
+        <button type="button" class="chip" data-c="shave" aria-pressed="false">גירוי אחרי גילוח</button>
+        <button type="button" class="chip" data-c="oily" aria-pressed="false">עור שומני ונקבוביות</button>
+        <button type="button" class="chip" data-c="tired" aria-pressed="false">מבט עייף</button>
+        <button type="button" class="chip" data-c="lines" aria-pressed="false">קמטים ראשונים</button>
+      </div>
+      <ol class="shelf" id="shelf" aria-label="חמשת המוצרים של Protocol 01">
+        <li class="shelf__item" data-s="cleanser">
+          <div class="shelf__fig"><img width="392" height="700" src="assets/step-cleanser.webp" alt="Clarifying Cleanser של BASALT" loading="lazy"></div>
+          <div class="shelf__meta"><span class="n">STEP 01</span><div class="t" dir="ltr">Clarifying Cleanser</div><span class="d">ניקוי יומי מזכך</span></div>
+        </li>
+        <li class="shelf__item" data-s="toner">
+          <div class="shelf__fig"><img width="392" height="700" src="assets/step-toner.webp" alt="Balancing Toner של BASALT" loading="lazy"></div>
+          <div class="shelf__meta"><span class="n">STEP 02</span><div class="t" dir="ltr">Balancing Toner</div><span class="d">איזון ומרקם</span></div>
+        </li>
+        <li class="shelf__item" data-s="serum">
+          <div class="shelf__fig"><img width="392" height="700" src="assets/step-serum.webp" alt="Refining Serum של BASALT" loading="lazy"></div>
+          <div class="shelf__meta"><span class="n">STEP 03</span><div class="t" dir="ltr">Refining Serum</div><span class="d">פפטידי נחושת, מוצקות</span></div>
+        </li>
+        <li class="shelf__item" data-s="moisturizer">
+          <div class="shelf__fig"><img width="392" height="700" src="assets/step-moisturizer.webp" alt="Daily Moisturizer של BASALT" loading="lazy"></div>
+          <div class="shelf__meta"><span class="n">STEP 04</span><div class="t" dir="ltr">Daily Moisturizer</div><span class="d">לחות מגינה</span></div>
+        </li>
+        <li class="shelf__item" data-s="eye">
+          <div class="shelf__fig"><img width="392" height="700" src="assets/step-eye.webp" alt="Eye Renewal של BASALT" loading="lazy"></div>
+          <div class="shelf__meta"><span class="n">STEP 05</span><div class="t" dir="ltr">Eye Renewal</div><span class="d">טיפול ממוקד לעיניים</span></div>
+        </li>
+      </ol>
+      <p class="mine__sum" id="mineSum" aria-live="polite"><b>5 צעדים · 3 דקות.</b> זה הפרוטוקול המלא.</p>
+      <a class="mine__next" href="#clinic">כשהבית כבר לא מספיק, אותו פרוטוקול ממשיך בקליניקה
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
     </div>
   </div>
 </section>
 
 <!-- ============ CLINIC ============ -->
-<section class="clinic">
+<section class="clinic" id="clinic">
   <div class="wrap">
     <div class="split">
       <div class="clinic__media reveal">
@@ -514,33 +588,33 @@ document.addEventListener('DOMContentLoaded', function () {
       <p class="sub">שלושה עולמות שכנים מארכיון הסטודיו — קרובים ברוח, שונים בסיפור.</p>
     </div>
     <div class="v-cards" id="vCards">
-      <a class="v-card" href="https://hagitantebi.co.il/soluna.html">
-        <div class="ph"><img src="../brand-worlds/thumbs/soluna.webp" width="720" height="900"
-          alt="SOLUNA — עולם מותג טיפוח של בית מרקחת עור" loading="lazy"></div>
+      <a class="v-card" href="https://hagitantebi.co.il/oreva/">
+        <div class="ph"><img src="../brand-worlds/thumbs/oreva.webp" width="1200" height="630"
+          alt="ORÉVA° — עולם מותג של סטודיו לעור" loading="lazy"></div>
         <div class="vbody">
-          <div class="fr">SOLUNA</div>
-          <div class="he">פורמולה אחת, כל הקצב של היום</div>
-          <div class="note">בית מרקחת עור — טיפוח מדויק שחי סביב השעון שלך.</div>
+          <div class="fr">ORÉVA°</div>
+          <div class="he">קודם הידיים, אחר כך הבקבוק</div>
+          <div class="note">סטודיו לעור שמעמיד את הקוסמטיקאית בפרונט, ושבעת המוצרים שלה אחריה.</div>
           <div class="go">Enter ↗</div>
         </div>
       </a>
-      <a class="v-card" href="https://hagitantebi.co.il/orea/">
-        <div class="ph"><img src="../brand-worlds/thumbs/orea.webp" width="720" height="900"
-          alt="ORÉA — עולם מותג ריהוט חוץ שחי בטבע" loading="lazy"></div>
+      <a class="v-card" href="https://hagitantebi.co.il/aurelle/">
+        <div class="ph"><img src="../brand-worlds/thumbs/aurelle.webp" width="720" height="378"
+          alt="AURELLE — עולם מותג טיפוח פרימיום לאריכות ימים של העור" loading="lazy"></div>
         <div class="vbody">
-          <div class="fr">ORÉA</div>
-          <div class="he">ריהוט שחי בטבע</div>
-          <div class="note">Furniture that lives in the wild — חוץ שמרגיש בית.</div>
+          <div class="fr">AURELLE</div>
+          <div class="he">יופי שקט. נוכחות שמרגישים.</div>
+          <div class="note">טיפוח לאריכות ימים של העור. אותו שקט, בקול אחר.</div>
           <div class="go">Enter ↗</div>
         </div>
       </a>
-      <a class="v-card" href="https://hagitantebi.co.il/orbe/">
-        <div class="ph"><img src="../brand-worlds/thumbs/orbe.webp" width="720" height="900"
-          alt="ORBE — עולם מותג בושם עגול ונוזלי" loading="lazy"></div>
+      <a class="v-card" href="https://hagitantebi.co.il/regard/">
+        <div class="ph"><img src="../brand-worlds/thumbs/regard.webp" width="720" height="450"
+          alt="REGARD° — עולם מותג של בית אופטיקה" loading="lazy"></div>
         <div class="vbody">
-          <div class="fr">ORBE</div>
-          <div class="he">טיפה אחת, עולם שלם</div>
-          <div class="note">בושם שנולד מטיפה — עולם עגול, נוזלי ומהפנט.</div>
+          <div class="fr">REGARD°</div>
+          <div class="he">חמש מסגרות. חמישה מבטים.</div>
+          <div class="note">בית אופטיקה שבו אותם פנים מחליפים מבט בכל דגם. אותו דיוק שקט.</div>
           <div class="go">Enter ↗</div>
         </div>
       </a>
@@ -551,9 +625,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- ============ STUDIO NOTE ============ -->
 <section class="studio">
   <div class="wrap">
-    <p class="eyebrow">STUDIO NOTE</p>
-    <h2>BASALT הוא עולם מותג הדגמה</h2>
-    <p>BASALT אינו מותג מסחרי — הוא הדגמה של <a href="/brand-world-clinical.html">Brand Worlds Studio</a>: איך נראה עולם שלם לגבר בתחומי רפואת עור, אסתטיקה וטיפוח, כשהכול נבנה מ־DNA אחד. המוצר, הקליניקה, הטקסטורה והשפה נבנו כאן מהיסוד — כדי להראות מה אפשר לבנות למותג אמיתי. אם יש לך מותג בעולם היופי או האסתטיקה לגברים, זה בדיוק מה ש<a href="/brand-world-clinical.html">חגית אנטבי</a> בונה.</p>
+    <p class="eyebrow">STUDIO NOTE · איך העולם הזה נבנה</p>
+    <h2>לגבר לא מוכרים ריטואל.<br>מוכרים לו פחות.</h2>
+    <p>BASALT הוא עולם מותג קונספט, מס׳ 10 בסדרה של <a href="/brand-world-clinical.html">Brand Worlds Studio</a>, לרפואת עור ואסתטיקה לגברים. ההבטחה נוסחה קודם: טיפוח שלא מרגיש כמו טקס. ממנה נגזר האלמנט: בזלת, אבן שנוצרת מלבה שהתקררה בשקט. ממנה באו הזכוכית המט, קו הנחושת והבטון של הקליניקה. כל מותג טיפוח מוסיף לך צעדים. BASALT מוריד אותם.</p>
+    <p><strong>הפרוטוקול שנחתך:</strong> חמישה מוצרים עומדים על המדף, והגבר בוחר רק מה מציק לו. גירוי אחרי גילוח, עור שומני, מבט עייף או קמטים ראשונים. מה שלא נבחר מתעמעם ונדחק הצידה, ומה שנשאר מסתדר בשורה, עם הזמן שזה ייקח לו בבוקר. ככה "Quietly" הוא לא רק מילה בכותרת. מרגישים אותו ביד.</p>
+    <p><strong>מהמדף לכיסא:</strong> אותו פרוטוקול ממשיך אל הקליניקה, באותה שפה. בזה BASALT שונה מ־ORÉVA ומ־ROSÉE, עולמות הטיפוח של הסדרה שבונים טקס של בוקר. BASALT מפרק אותו. אם יש לך מותג או קליניקה שמדברים אל גברים, זה בדיוק מה ש<a href="/brand-world-clinical.html">חגית אנטבי</a> בונה.</p>
   </div>
 </section>
 
@@ -614,15 +690,15 @@ document.addEventListener('DOMContentLoaded', function () {
       "name":"Mondes Voisins — עולמות מותג קרובים מהסטודיו",
       "itemListOrder":"https://schema.org/ItemListOrderAscending",
       "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"SOLUNA — פורמולה אחת, כל הקצב של היום","url":"https://hagitantebi.co.il/soluna.html"},
-        {"@type":"ListItem","position":2,"name":"ORÉA — ריהוט שחי בטבע","url":"https://hagitantebi.co.il/orea/"},
-        {"@type":"ListItem","position":3,"name":"ORBE — טיפה אחת, עולם שלם","url":"https://hagitantebi.co.il/orbe/"}
+        {"@type":"ListItem","position":1,"name":"ORÉVA° — קודם הידיים, אחר כך הבקבוק","url":"https://hagitantebi.co.il/oreva/"},
+        {"@type":"ListItem","position":2,"name":"AURELLE — יופי שקט. נוכחות שמרגישים.","url":"https://hagitantebi.co.il/aurelle/"},
+        {"@type":"ListItem","position":3,"name":"REGARD° — חמש מסגרות. חמישה מבטים.","url":"https://hagitantebi.co.il/regard/"}
       ]
     },
     {
       "@type":"FAQPage",
       "mainEntity":[
-        {"@type":"Question","name":"מה זה BASALT?","acceptedAnswer":{"@type":"Answer","text":"BASALT הוא עולם מותג הדגמה לרפואת עור, אסתטיקה וטיפוח לגברים, שנבנה על ידי Brand Worlds Studio כדי להראות איך נראה מותג שלם עם DNA אחד."}},
+        {"@type":"Question","name":"מה זה BASALT?","acceptedAnswer":{"@type":"Answer","text":"BASALT הוא עולם מותג קונספט לרפואת עור, אסתטיקה וטיפוח לגברים, שנבנה על ידי Brand Worlds Studio. ההבטחה שלו: טיפוח שלא מרגיש כמו טקס. הגבר בוחר מה מציק לו, והפרוטוקול מוריד את הצעדים שהוא לא צריך."}},
         {"@type":"Question","name":"למי הקו מיועד?","acceptedAnswer":{"@type":"Answer","text":"לגברים המחפשים טיפוח קליני פשוט ועמיד, ולבעלי קליניקות אסתטיקה ומותגי טיפוח שרוצים לפנות לקהל גברי."}},
         {"@type":"Question","name":"מי בנה את העולם הזה?","acceptedAnswer":{"@type":"Answer","text":"חגית אנטבי, Brand Worlds Studio — אסטרטגית מותג הבונה עולמות מותג שלמים מ־DNA אחד. לאבחון פער המותג ללא עלות ראו hagitantebi.co.il/brand-world."}}
       ]
@@ -659,9 +735,46 @@ document.addEventListener('DOMContentLoaded', function () {
   loop();
 })();
 
+/* ---------- your protocol: concerns -> the steps you actually need ---------- */
+(function(){
+  const shelf = document.getElementById('shelf');
+  const sum = document.getElementById('mineSum');
+  const chips = Array.from(document.querySelectorAll('#mine .chip'));
+  if(!shelf || !sum) return;
+  const ORDER = ['cleanser','toner','serum','moisturizer','eye'];
+  const NEEDS = { shave:['cleanser','moisturizer'], oily:['cleanser','toner','moisturizer'],
+                  tired:['cleanser','eye','moisturizer'], lines:['cleanser','serum','moisturizer'] };
+  const SECONDS = { cleanser:60, toner:20, serum:30, moisturizer:30, eye:20 };
+  let picked = [];
+  function render(){
+    const need = new Set(picked.flatMap(c => NEEDS[c]));
+    const cut = need.size > 0;
+    shelf.classList.toggle('is-cut', cut);
+    let step = 0, secs = 0;
+    ORDER.forEach(k => {
+      const li = shelf.querySelector('[data-s="'+k+'"]');
+      const on = !cut || need.has(k);
+      li.classList.toggle('on', cut && on);
+      li.classList.toggle('off', !on);
+      if(on){ step++; secs += SECONDS[k]; li.querySelector('.n').textContent = 'STEP 0'+step; }
+    });
+    chips.forEach(c => c.setAttribute('aria-pressed', picked.includes(c.dataset.c)));
+    const mins = Math.ceil(secs/60);
+    sum.innerHTML = cut
+      ? '<b>'+step+' צעדים · '+mins+' דקות בבוקר.</b> זה הכול.'
+      : '<b>5 צעדים · '+mins+' דקות.</b> זה הפרוטוקול המלא.';
+  }
+  chips.forEach(c => c.addEventListener('click', () => {
+    const k = c.dataset.c, i = picked.indexOf(k);
+    if(i > -1) picked.splice(i,1);
+    else { picked.push(k); if(picked.length > 2) picked.shift(); }
+    render();
+  }));
+})();
+
 /* ---------- GSAP scroll: bottle descends + cubes open + reveals ---------- */
 window.addEventListener('load', ()=>{
-  if(!window.gsap) return;
+  if(!document.documentElement.classList.contains('motion')) return;
   gsap.registerPlugin(ScrollTrigger);
 
   const bottle = document.getElementById('floatBottle');
@@ -677,7 +790,7 @@ window.addEventListener('load', ()=>{
     });
     gsap.to(bottle, {
       opacity:0, ease:'none',
-      scrollTrigger:{ trigger:'#materials', start:'center center', end:'bottom center', scrub:true }
+      scrollTrigger:{ trigger:'#cubes', start:'top bottom', end:'top 68%', scrub:true }
     });
   });
 
