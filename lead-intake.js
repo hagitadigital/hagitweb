@@ -20,6 +20,59 @@
   var NAME_FIELDS = ["name", "full_name", "fullname", "contact_name"];
   var SKIP_FIELDS = ["lead_hp", "_gotcha", "_subject", "_language", "terms"];
 
+  // Traffic attribution — so a paid lead can be told apart from an organic one.
+  // Captured on the visitor's first page of the session (where the ad's
+  // utm_* / fbclid land) and kept in sessionStorage across internal clicks.
+  var ATTR_KEY = "lead_attr";
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+
+  function readAttr() {
+    try {
+      var saved = sessionStorage.getItem(ATTR_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return null;
+  }
+
+  function captureAttr() {
+    var params = new URLSearchParams(location.search);
+    var paid = params.has("fbclid") || params.has("utm_source");
+    var current = readAttr();
+    // A new ad click overrides an earlier organic entry; otherwise keep the first.
+    if (current && !paid) return;
+    var attr = { landing: location.pathname, ref: "" };
+    UTM_KEYS.forEach(function (k) {
+      if (params.get(k)) attr[k] = params.get(k).slice(0, 80);
+    });
+    if (params.has("fbclid")) attr.fbclid = true;
+    try {
+      var host = document.referrer ? new URL(document.referrer).hostname : "";
+      if (host && host !== location.hostname) attr.ref = host;
+    } catch (e) {}
+    try {
+      sessionStorage.setItem(ATTR_KEY, JSON.stringify(attr));
+    } catch (e) {}
+  }
+
+  function attrLine() {
+    var a = readAttr() || { landing: location.pathname, ref: "" };
+    var origin;
+    if (a.utm_source || a.fbclid) {
+      origin =
+        "ממומן · " +
+        [a.utm_source || "facebook", a.utm_campaign, a.utm_content]
+          .filter(Boolean)
+          .join(" / ");
+    } else {
+      origin = "אורגני · " + (a.ref || "ישיר");
+    }
+    return (
+      "מקור תנועה: " + origin +
+      "\nדף נחיתה: " + a.landing +
+      "\nדף הטופס: " + location.pathname
+    );
+  }
+
   function clean(s) {
     return (s || "").replace(/\s+/g, " ").replace(/\*/g, "").trim();
   }
@@ -188,7 +241,7 @@
         name: data.name,
         contact: data.contact,
         contact_type: data.contactType,
-        summary: data.summary,
+        summary: (data.summary ? data.summary + "\n\n" : "") + attrLine(),
         hp: hp ? hp.value : "",
       };
 
@@ -215,6 +268,7 @@
   }
 
   function init() {
+    captureAttr();
     var forms = document.querySelectorAll("form[data-lead-source]");
     for (var i = 0; i < forms.length; i++) handle(forms[i]);
   }
