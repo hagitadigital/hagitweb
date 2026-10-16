@@ -338,8 +338,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .step{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(34px,5vh,60px) 0;border-top:1px solid var(--stone-2)}
   .step:nth-child(even) .img{order:2}
   .step .img{aspect-ratio:16/10;overflow:hidden;border-radius:4px}
-  .step .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-  .step:hover .img img{transform:scale(1.04)}
+  .step .img img,.step .img video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .step:hover .img img,.step:hover .img video{transform:scale(1.04)}
   .step .n{font-family:'Cormorant Garamond',serif;direction:ltr;text-align:right;letter-spacing:.3em;font-size:13px;color:var(--copper);margin-bottom:10px}
   .step h3{font-size:clamp(24px,2.6vw,34px);margin-bottom:12px}
   .step p{color:var(--ink-2);max-width:46ch;font-size:16.5px}
@@ -394,7 +394,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .story{background:var(--cream)}
   .story .grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(30px,6vw,90px);align-items:start}
   .story .portrait{position:sticky;top:110px;aspect-ratio:4/5;overflow:hidden;border-radius:4px}
-  .story .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .story .portrait img,.story .portrait video{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
   .story .text p{font-size:17px;color:var(--ink-2);max-width:60ch;margin-bottom:18px}
   .story .text p b{font-weight:500;color:var(--ink)}
   .story .text p.sig{font-family:'Cormorant Garamond',serif;direction:ltr;text-align:right;letter-spacing:.3em;font-size:14px;color:var(--copper-deep);margin-top:6px}
@@ -468,7 +468,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .js .reveal{opacity:1;transform:none;transition:none}
-    .p-card,.p-card .fig img,.step .img img,.voisin,.voisin img{transition:none}
+    .p-card,.p-card .fig img,.step .img img,.step .img video,.voisin,.voisin img{transition:none}
   }
 
         :where(img[width][height]){height:auto}
@@ -706,7 +706,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       <div><p class="n">01 · Diagnostic</p><h3>אבחון עור</h3><p>ארבעים דקות בלי מוצרים. רק העור שלך, אור טבעי, ושאלות. מה משתנה בין בוקר לערב, מה מגיב, מה נשאר. מכאן נבנה הכול.</p></div>
     </div>
     <div class="step reveal">
-      <div class="img"><img width="1600" height="900" src="assets/founder-facial-treatment.webp" alt="Or Éva מטפלת בפנים של לקוחה השוכבת על מיטת טיפולים" loading="lazy"></div>
+      <div class="img"><video class="hands-loop" src="assets/treatment-loop.mp4" poster="assets/treatment-loop.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="הידיים של Or Éva מחליקות על הפנים של לקוחה השוכבת על מיטת הטיפולים"></video></div>
       <div><p class="n">02 · Le soin</p><h3>טיפול בקליניקה</h3><p>הטיפול הוא המקום שבו הנוסחאות נולדו. כל מה שנמרח עלייך במיטה קיים גם בבקבוק, באותו ריכוז ובאותה טקסטורה.</p></div>
     </div>
     <div class="step reveal">
@@ -714,7 +714,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       <div><p class="n">03 · Le rituel</p><h3>פרוטוקול ביתי</h3><p>את יוצאת עם שלושה או ארבעה מוצרים, לא עם שבעה. ועם דף אחד שכתוב בכתב יד: מה, מתי, כמה. זה כל הפרוטוקול.</p></div>
     </div>
     <div class="step reveal">
-      <div class="img"><img width="1536" height="1024" src="assets/founder-client-bottle.webp" alt="Or Éva מראה ללקוחה בקבוק סרום ומסבירה עליו" loading="lazy"></div>
+      <div class="img"><video class="hands-loop" src="assets/pump-loop.mp4" poster="assets/pump-loop.webp" width="1280" height="854" muted loop playsinline preload="none" aria-label="Or Éva לוחצת על משאבת הנחושת לתוך כף היד ומראה ללקוחה את הסרום"></video></div>
       <div><p class="n">04 · Le suivi</p><h3>ליווי בין טיפולים</h3><p>אחרי שלושה שבועות היא שואלת מה השתנה. אם העור ביקש משהו אחר, מחליפים סרום. הליין נבנה כדי לזוז איתך.</p></div>
     </div>
   </div>
@@ -785,7 +785,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 <!-- 07 · STORY -->
 <section class="block story" id="story">
   <div class="inner grid">
-    <div class="portrait reveal"><img width="1600" height="900" src="assets/founder-cream-on-hand.webp" alt="Or Éva בודקת מרקם של קרם על גב היד ליד דלפק האבן" loading="lazy"></div>
+    <div class="portrait reveal"><video class="hands-loop" src="assets/hands-loop.mp4" poster="assets/hands-loop.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="Or Éva מורחת קרם על גב היד בתנועה עגולה ואיטית, ליד דלפק האבן"></video></div>
     <div class="text">
       <p class="eyebrow reveal">Son histoire · הסיפור של Or Éva</p>
       <h2 class="title reveal">לא פתחתי מותג.<br><b>פתחתי את הדלת של חדר הטיפולים.</b></h2>
@@ -1231,5 +1231,14 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 })();
 </script>
 <!-- /studio-contact-chip -->
+<script>
+// The hands move: the founder's loops play only while they are on screen, and never with reduced motion.
+(function(){
+  var vs=document.querySelectorAll('video.hands-loop');
+  if(!vs.length||document.documentElement.classList.contains('no-motion')||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.25});
+  vs.forEach(function(v){io.observe(v)});
+})();
+</script>
 </body>
 </html>
