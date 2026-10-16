@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ORÉVA° · Le Journal des mains — brand-mode reel (9:16, 30s). Builds reel.html next to this file.
 
-The hands move: three Kling clips (../kling/*.mp4) cut to 9:16 frame sequences by make_seq.sh.
+The hands move: two Kling clips (../kling/*.mp4) cut to 9:16 frame sequences by make_seq.sh; the bottle chapter plays
+the world's own bloom sequence (assets/bottle, cut from oreva/assets/bloom) — the bottle alone, no hands.
 Timeline (s): hook 0–3.0 · logo 3.0–4.4 · 01 the bed 4.4–9.6 · 02 the hand 9.6–13.6 · 03 the bottle 13.6–18.8 ·
 the ribbon (signature) 18.8–26.6 · outro 26.6–30 (holds to the last frame).
 """
@@ -47,7 +48,7 @@ def chapter(name, show, seq, start, frm, to, pos, opener, label, first, second, 
     return f'''
 <section class="scene" data-show="{a},{b}" style="background: {CREAM}">
   <div style="position: absolute; left: 0; right: 0; top: {PANEL}px; bottom: 0; overflow: hidden">
-    <div class="stack" data-seq="seq/{seq}/f_%03d.jpg" data-from="{frm}" data-to="{to}" data-by="1" data-start="{start}" data-step="{STEP:.4f}" data-fit="cover" data-pos="{pos}"></div>
+    <div class="stack" data-seq="{seq}" data-from="{frm}" data-to="{to}" data-by="1" data-start="{start}" data-step="{STEP:.4f}" data-fit="cover" data-pos="{pos}"></div>
   </div>
   <div style="position: absolute; left: 0; right: 0; top: 0; height: {PANEL}px; background: {CREAM}"></div>
   <div style="position: absolute; top: 150px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: flex-start; gap: 22px" dir="rtl">
@@ -94,12 +95,12 @@ logo = f'''
   <div data-in="3.3" style="position: absolute; top: 1220px; left: 0; right: 0; text-align: center; font-family: {SERIF}; font-style: italic; font-size: 54px; color: {INK}" dir="ltr">Le Journal des mains</div>
 </section>'''
 
-ch1 = chapter('1', (4.4, 9.6), 'b', 4.5, 1, 61, '50% 55%', 'Le soin · 01', 'המיטה',
+ch1 = chapter('1', (4.4, 9.6), 'seq/b/f_%03d.jpg', 4.5, 1, 61, '50% 55%', 'Le soin · 01', 'המיטה',
               'קודם על העור', 'של לקוחות הקליניקה.', 'חודשים לפני שיש לו שם.')
-ch2 = chapter('2', (9.6, 13.6), 'a', 9.7, 22, 61, '50% 100%', 'Le soin · 02', 'היד',
+ch2 = chapter('2', (9.6, 13.6), 'seq/a/f_%03d.jpg', 9.7, 22, 61, '50% 100%', 'Le soin · 02', 'היד',
               'קודם הידיים.', 'אחר כך הבקבוק.')
-ch3 = chapter('3', (13.6, 18.8), 'c', 13.7, 1, 61, '50% 55%', 'Le soin · 03', 'הבקבוק',
-              'שתי לחיצות,', 'בטפיחות.', 'משאבת נחושת. כל שבעת המוצרים.')
+ch3 = chapter('3', (13.6, 18.8), 'assets/bottle/f_%03d.jpg', 13.7, 1, 48, '50% 50%', 'Le soin · 03', 'הבקבוק',
+              'ורק אז,', 'הבקבוק.', 'זכוכית בגוון סומק, ונחושת בראש.')
 
 # ── THE RIBBON (18.8–26.6): one copper line from the bed, through the hand, to the bottle ──
 RIB = ('M 1040 380 L 1040 760 C 1040 812, 1012 831, 960 831 L 116 831 C 64 831, 36 858, 36 910 '
@@ -112,7 +113,7 @@ css.append('.rline{fill:none;stroke:%s;stroke-width:6;stroke-linecap:round;strok
 wins = [  # (still, x, y, label, opener, appears)
     ('founder-facial-treatment', 330, 400, 'המיטה', 'Le soin · 01', 19.0),
     ('founder-cream-on-hand', 70, 880, 'היד', 'Le soin · 02', 21.3),
-    ('founder-client-bottle', 330, 1360, 'הבקבוק', 'Le soin · 03', 23.3),
+    ('bottle-f48', 330, 1360, 'הבקבוק', 'Le soin · 03', 23.3),
 ]
 wh = ''
 for i, (img, x, y, lab, op, t) in enumerate(wins):
