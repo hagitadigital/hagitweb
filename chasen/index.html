@@ -187,6 +187,18 @@ b{font-weight:600}
 @media (max-width:860px){.ceremonie .row{grid-template-columns:1fr;gap:12px}.ceremonie figure{aspect-ratio:16/9}.ceremonie .line{grid-template-columns:1fr;gap:14px}}
 
 /* ---------- L'ATELIER ---------- */
+/* ---- LA MÉTAMORPHOSE: the reel, right above the atelier ---- */
+.meta-film{padding:clamp(60px,9vh,120px) 0 0;border-top:1px solid var(--line)}
+.meta-film .grid{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 6vw}
+.meta-film .copy{max-width:520px}
+.meta-film h2{font-weight:200;font-size:clamp(28px,3.6vw,46px);line-height:1.2;margin:10px 0 14px}
+.meta-film h2 b{font-weight:600}
+.meta-film p{font-size:17px;line-height:1.8;color:var(--ink-2)}
+.meta-film .go{display:inline-flex;gap:10px;align-items:center;margin-top:22px;color:var(--ink);font-weight:600;font-size:16px;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px}
+.meta-film .frame{position:relative;width:min(360px,34vw);aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#eadfcb;box-shadow:0 30px 60px -36px rgba(31,42,31,.45)}
+.meta-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.meta-film .snd{position:absolute;bottom:12px;left:12px;z-index:2;border:0;border-radius:999px;padding:8px 14px;background:rgba(244,231,213,.85);color:var(--ink);font:inherit;font-size:13px;cursor:pointer;backdrop-filter:blur(4px)}
+@media (max-width:860px){.meta-film .grid{grid-template-columns:1fr;gap:26px}.meta-film .frame{width:min(78vw,62svh*9/16);margin:0 auto}}
 .atelier{padding:clamp(60px,9vh,120px) 0 clamp(50px,8vh,100px);border-top:1px solid var(--line)}
 .atelier .head{max-width:640px;margin-bottom:clamp(28px,5vh,56px)}
 .atelier .head h2{font-weight:200;font-size:clamp(28px,3.6vw,46px);line-height:1.2;margin:10px 0 14px}
@@ -362,6 +374,26 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- ======================= LA MÉTAMORPHOSE ======================= -->
+<section class="meta-film" id="metamorphose" aria-label="La Métamorphose — אותה כוס, כל המשקאות">
+<div class="wrap">
+<div class="grid">
+<div class="copy reveal">
+<p class="tag fr">La Métamorphose</p>
+<h2>אותה כוס. חמישה טעמים.<br><b>קר או חם.</b></h2>
+<p>תות, הוג'יצ'ה, יוזו, כחול. קצפת ושוקולד. ואז הכוס הופכת לספל, ויד לוקחת אותו מהבר. ככה נראית מטרפה אחת שמכינה אינסוף משקאות.</p>
+<a class="go" href="#atelier">עכשיו תורך <span aria-hidden="true">↓</span></a>
+</div>
+<div class="frame reveal">
+<video id="metaVid" muted loop playsinline preload="none" poster="film/metamorphose.jpg" aria-label="סרטון: כוס מאצ'ה אחת שמתחלפת בין חמישה טעמים, מקבלת קצפת ושוקולד, הופכת לספל חם ונלקחת ביד">
+<source src="film/metamorphose.mp4" type="video/mp4">
+</video>
+<button class="snd" id="metaSnd" type="button" aria-pressed="false">♪ קול</button>
+</div>
+</div>
+</div>
+</section>
+
 <!-- ======================= L'ATELIER ======================= -->
 <section class="atelier" id="atelier" aria-label="האטלייה — הכיני את הכוס שלך">
   <div class="wrap">
@@ -498,6 +530,18 @@ document.addEventListener('DOMContentLoaded', function () {
   if(!('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('in')); return; }
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
   els.forEach(e=>io.observe(e));
+})();
+
+/* ============ LA MÉTAMORPHOSE — plays while on screen ============ */
+(function(){
+  const v=document.getElementById('metaVid'), b=document.getElementById('metaSnd');
+  if(!v) return;
+  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const play=()=>{ const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+  if('IntersectionObserver' in window && !still){
+    new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ if(v.preload!=='auto'){ v.preload='auto'; } play(); } else v.pause(); }),{threshold:.35}).observe(v);
+  } else { v.controls=true; }
+  b.addEventListener('click',()=>{ v.muted=!v.muted; b.setAttribute('aria-pressed',String(!v.muted)); b.textContent=v.muted?'♪ קול':'♪ השתק'; if(!v.muted) play(); });
 })();
 
 /* ============ L'ATELIER ============ */
