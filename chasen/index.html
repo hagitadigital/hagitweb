@@ -49,7 +49,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       "image":"https://hagitantebi.co.il/chasen-og.png",
       "inLanguage":"he",
       "genre":"Concept brand world · Interactive product configurator demonstration",
-      "description":"עולם מותג קונספט מס' 19 של Brand Worlds Studio: בר מאצ'ה בדיוני, והעולם הראשון בסטודיו שהוא אינטראקטיבי. סרט של שלושה פרקים (אבקה, מטרפה, מזיגה) פותח, ואחריו אטלייה שבו בוחרים אחד מחמישה טעמים, מוסיפים קצפת ושוקולד, ואותה כוס מצולמת הופכת למשקה עם שם משלו. כל התוספות הן שכבות שנוצרו על תמונת המאסטר עצמה.",
+      "description":"עולם מותג קונספט מס' 22 של Brand Worlds Studio: בר מאצ'ה בדיוני, והעולם הראשון בסטודיו שהוא אינטראקטיבי. סרט של שלושה פרקים (אבקה, מטרפה, מזיגה) פותח, ואחריו אטלייה שבו בוחרים אחד מחמישה טעמים, מוסיפים קצפת ושוקולד, ואותה כוס מצולמת הופכת למשקה עם שם משלו. כל התוספות הן שכבות שנוצרו על תמונת המאסטר עצמה.",
       "creator":{"@type":"Person","name":"Hagit Antebi","url":"https://hagitantebi.co.il/about.html"},
       "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/"},
       "isPartOf":{"@type":"CollectionPage","name":"Brand Worlds","url":"https://hagitantebi.co.il/brand-worlds/"}
@@ -143,7 +143,7 @@ b{font-weight:600}
 @media(max-width:680px){.topbar{font-size:10.5px;padding:0 14px}.topbar .bws{display:none}}
 
 /* ---------- topbar ---------- */
-.top{position:fixed;inset:34px 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;pointer-events:none;mix-blend-mode:multiply}
+.top{position:absolute;inset:34px 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;pointer-events:none;mix-blend-mode:multiply}
 .top .brand{font-size:21px;letter-spacing:.22em;font-weight:500;color:var(--ink)}
 .top .brand small{font-size:11px;letter-spacing:.3em;opacity:.55;margin-left:10px;font-weight:400}
 .top .no{font-size:11px;letter-spacing:.32em;color:var(--ink);opacity:.5}
@@ -196,9 +196,11 @@ b{font-weight:600}
 @media (max-width:860px){.atelier .grid{grid-template-columns:minmax(0,1fr);gap:26px}}
 
 .stage{position:relative;width:min(100%,78vh * var(--fw) / var(--fh),460px);aspect-ratio:var(--fw)/var(--fh);margin:0 auto;justify-self:center;isolation:isolate}
-@media (max-width:860px){.stage{width:min(78vw,60svh * var(--fw) / var(--fh))}}
+@media (max-width:860px){.stage{width:min(62vw,42svh * var(--fw) / var(--fh))}.atelier .grid{gap:18px}}
 .stage img{position:absolute;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
 .stage .glass{inset:0;width:100%;height:100%;opacity:0;transition:opacity .7s cubic-bezier(.4,0,.2,1)}
+/* feather the frame edge into the page so no photo rectangle shows */
+.stage .glass{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 4%,#000 96%,transparent);mask-composite:intersect}
 .stage .glass.on{opacity:1}
 .stage .glass.pour{animation:pour .9s cubic-bezier(.22,.61,.36,1) both}
 @keyframes pour{from{clip-path:inset(0 0 100% 0);opacity:1}to{clip-path:inset(0 0 0 0);opacity:1}}
@@ -385,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="toggles">
             <button class="tg" id="tgCream" aria-pressed="false"><span class="sw"></span>קצפת</button>
             <button class="tg" id="tgChoco" aria-pressed="false"><span class="sw"></span>שוקולד</button>
-            <button class="tg" id="tgHot" aria-pressed="false" disabled title="בקרוב"><span class="sw"></span>חם <small class="fr">BIENTÔT</small></button>
+            <button class="tg" id="tgHot" aria-pressed="false"><span class="sw"></span>חם</button>
           </div>
         </div>
         <div class="fiche" id="fiche" aria-live="polite">
@@ -404,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="wrap">
     <div class="head reveal">
       <h2>La Carte. <b>חמישה טעמים, אינסוף כוסות.</b></h2>
-      <p class="tag fr">Glacé · Crème · Cacao</p>
+      <p class="tag fr">Glacé · Chaud · Crème · Cacao</p>
     </div>
     <ol class="reveal">
       <li><span class="sw" style="background:#6f9a3f"></span><span class="fr">Matcha Classique</span><span class="he">מאצ'ה טקסית על חלב קר. ירוק עמוק, מריר-מתוק, כמו שהיא צריכה להיות.</span></li>
@@ -413,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <li><span class="sw" style="background:#e5c85a"></span><span class="fr">Matcha Yuzu</span><span class="he">הדר יפני חמצמץ על חלב קר. הכוס של הבוקר החם.</span></li>
       <li><span class="sw" style="background:#7f8fc9"></span><span class="fr">Matcha Bleu</span><span class="he">פרח האפונה הכחולה. צבע שמשנה את מצב הרוח לפני הלגימה הראשונה.</span></li>
     </ol>
-    <p class="supp reveal"><b>Les suppléments.</b> קצפת מוקצפת במקום, שוקולד מריר על הדפנות, קרח שקוף. וגרסה חמה בספל קרמיקה, בקרוב גם באטלייה.</p>
+    <p class="supp reveal"><b>Les suppléments.</b> קצפת מוקצפת במקום, שוקולד מריר על הדפנות, קרח שקוף. וגרסה חמה בספל קרמיקה, לכל חמשת הטעמים.</p>
   </div>
 </section>
 
@@ -447,8 +449,8 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="v-meta"><div class="v-name">CREMA°</div><div class="v-he">קפה, מזיגה אחת</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/petale.html">
-      <img width="720" height="378" src="../brand-worlds/thumbs/petale.webp" alt="PÉTALE — עולם מותג למקרונים" loading="lazy">
-      <div class="v-meta"><div class="v-name">PÉTALE</div><div class="v-he">מקרונים, קופסה שבונים</div></div>
+      <img width="720" height="378" src="../brand-worlds/thumbs/petale.webp" alt="PÉTALE° — עולם מותג למקרונים" loading="lazy">
+      <div class="v-meta"><div class="v-name">PÉTALE°</div><div class="v-he">מקרונים, קופסה שבונים</div></div>
     </a>
     <a class="voisin" href="https://hagitantebi.co.il/signe/">
       <img width="800" height="450" src="../brand-worlds/thumbs/signe.webp" alt="SIGNÉ° — עולם מותג לבית קינוחים" loading="lazy">
@@ -458,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <footer>
-  <span>CHASEN° הוא מותג קונספט בדיוני · עולם מס' 19 · © Brand Worlds Studio — חגית אנטבי</span>
+  <span>CHASEN° הוא מותג קונספט בדיוני · עולם מס' 22 · © Brand Worlds Studio — חגית אנטבי</span>
   <span><a href="https://hagitantebi.co.il/">hagitantebi.co.il</a> · <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds</a></span>
 </footer>
 
@@ -501,13 +503,13 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ============ L'ATELIER ============ */
 (function(){
   const FLAVORS = [
-    {id:'classic', fr:'Matcha Classique', he:'מאצ\'ה קלאסית', dot:'#6f9a3f', note:'ירוק עמוק, מריר-מתוק, כמו שהיא צריכה להיות.'},
-    {id:'fraise',  fr:'Matcha Fraise',    he:'תות',           dot:'#d98a95', note:'תות שדה בחלב קר, והמאצ\'ה מעליו.'},
-    {id:'hojicha', fr:'Hōjicha',          he:'הוג\'יצ\'ה',    dot:'#a8794f', note:'תה ירוק קלוי. קרמל, עשן קל, בלי מרירות.'},
-    {id:'yuzu',    fr:'Matcha Yuzu',      he:'יוזו',          dot:'#e5c85a', note:'הדר יפני חמצמץ מתחת לשכבת המאצ\'ה.'},
-    {id:'bleu',    fr:'Matcha Bleu',      he:'מאצ\'ה כחולה',  dot:'#7f8fc9', note:'פרח האפונה הכחולה. צבע שמשנה את מצב הרוח.'}
+    {id:'classic', fr:'Matcha Classique', he:'מאצ\'ה קלאסית', dot:'#6f9a3f', note:'ירוק עמוק, מריר-מתוק, כמו שהיא צריכה להיות.', hot:'מאצ\'ה טקסית על חלב חם, בספל קרמיקה.'},
+    {id:'fraise',  fr:'Matcha Fraise',    he:'תות',           dot:'#d98a95', note:'תות שדה בחלב קר, והמאצ\'ה מעליו.', hot:'תות ומאצ\'ה בחלב חם. הספל הוורוד של הבר.'},
+    {id:'hojicha', fr:'Hōjicha',          he:'הוג\'יצ\'ה',    dot:'#a8794f', note:'תה ירוק קלוי. קרמל, עשן קל, בלי מרירות.', hot:'תה ירוק קלוי בחלב חם. קרמל ועשן קל.'},
+    {id:'yuzu',    fr:'Matcha Yuzu',      he:'יוזו',          dot:'#e5c85a', note:'הדר יפני חמצמץ מתחת לשכבת המאצ\'ה.', hot:'יוזו ומאצ\'ה בחלב חם, עם קליפה דקה מעל.'},
+    {id:'bleu',    fr:'Matcha Bleu',      he:'מאצ\'ה כחולה',  dot:'#7f8fc9', note:'פרח האפונה הכחולה. צבע שמשנה את מצב הרוח.', hot:'פרח האפונה הכחולה בחלב חם. כחול שמחמם.'}
   ];
-  const state = {flavor:'classic', cream:false, choco:false, touched:false};
+  const state = {flavor:'classic', cream:false, choco:false, hot:false, touched:false};
   const $ = id => document.getElementById(id);
   const glassA=$('glassA'), glassB=$('glassB'), lCream=$('lCream'), lChoco=$('lChoco');
   let front = glassA;
@@ -537,13 +539,24 @@ document.addEventListener('DOMContentLoaded', function () {
     rail.appendChild(b);
   });
 
-  function track(action){ if(typeof gtag==='function') gtag('event','world_interact',{world:'CHASEN',action,flavor:state.flavor,cream:state.cream,choco:state.choco}); }
+  function track(action){ if(typeof gtag==='function') gtag('event','world_interact',{world:'CHASEN',action,flavor:state.flavor,cream:state.cream,choco:state.choco,hot:state.hot}); }
 
-  let seq=0;
-  function setFlavor(id){
-    if(id===state.flavor) return;
-    state.flavor=id; state.touched=true;
-    rail.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c.dataset.id===id));
+  // iced: one glass per flavour + cream/choco as cut-out layers on top.
+  // hot: an opaque mug hides the sides, so each state is a full frame, all edits of one master mug.
+  function frameSrc(){
+    if(!state.hot) return `img/glass_${state.flavor}.webp`;
+    if(state.cream) return state.choco ? 'img/hot_cream_choco.webp' : 'img/hot_cream.webp';
+    return `img/hot_${state.flavor}${state.choco?'_choco':''}.webp`;
+  }
+  function syncLayers(){
+    lCream.classList.toggle('on', state.cream && !state.hot);
+    lChoco.classList.toggle('on', state.choco && !state.hot);
+  }
+  let seq=0, shown=frameSrc();
+  function swap(){
+    const src=frameSrc();
+    if(src===shown) return;
+    shown=src;
     const back = front===glassA?glassB:glassA;
     const my=++seq;
     const go=()=>{
@@ -556,32 +569,45 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(()=>{ if(old!==front) old.classList.remove('on','pour'); }, 950);
     };
     back.onload=null;
-    back.src=`img/glass_${id}.webp`;
+    back.src=src;
     if(back.complete && back.naturalWidth) go(); else back.onload=go;
-    renderFiche(); track('flavor');
+  }
+  function setFlavor(id){
+    if(id===state.flavor) return;
+    state.flavor=id; state.touched=true;
+    rail.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c.dataset.id===id));
+    swap(); renderFiche(); track('flavor');
   }
 
-  function bindToggle(btn, key, el){
+  function bindToggle(btn, key){
     btn.addEventListener('click',()=>{
       state[key]=!state[key]; state.touched=true;
       btn.setAttribute('aria-pressed', state[key]);
-      el.classList.toggle('on', state[key]);
-      renderFiche(); track(key);
+      if(key==='hot' && state[key]) preloadHot();
+      syncLayers(); swap(); renderFiche(); track(key);
     });
   }
-  bindToggle($('tgCream'),'cream',lCream);
-  bindToggle($('tgChoco'),'choco',lChoco);
+  let hotLoaded=false;
+  function preloadHot(){
+    if(hotLoaded) return; hotLoaded=true;
+    const list=['hot_cream','hot_cream_choco'];
+    FLAVORS.forEach(f=>list.push('hot_'+f.id,'hot_'+f.id+'_choco'));
+    list.forEach(n=>{ const i=new Image(); i.src=`img/${n}.webp`; });
+  }
+  bindToggle($('tgCream'),'cream');
+  bindToggle($('tgChoco'),'choco');
+  bindToggle($('tgHot'),'hot');
 
   function renderFiche(){
     const f=FLAVORS.find(x=>x.id===state.flavor);
-    const parts=[f.fr,'glacé']; if(state.cream) parts.push('crème'); if(state.choco) parts.push('cacao');
+    const parts=[f.fr,state.hot?'chaud':'glacé']; if(state.cream) parts.push('crème'); if(state.choco) parts.push('cacao');
     $('fName').innerHTML = parts.map((p,i)=> (i?'<span class="sep">·</span>':'') + p).join('');
-    let he = f.note;
+    let he = state.hot ? f.hot : f.note;
     if(state.cream&&state.choco) he += ' קצפת ושוקולד, כי היום מגיע לך.';
     else if(state.cream) he += ' עם קצפת, לאט לאט.';
-    else if(state.choco) he += ' עם שוקולד מריר על הדפנות.';
+    else if(state.choco) he += state.hot ? ' עם שוקולד מריר מעל.' : ' עם שוקולד מריר על הדפנות.';
     $('fHe').textContent = he;
-    $('fMeta').innerHTML = `<span>N° ${String(FLAVORS.indexOf(f)+1).padStart(2,'0')}</span><span>GLACÉ</span><span>${[state.cream?'CRÈME':null,state.choco?'CACAO':null].filter(Boolean).join(' + ')||'PUR'}</span>`;
+    $('fMeta').innerHTML = `<span>N° ${String(FLAVORS.indexOf(f)+1).padStart(2,'0')}</span><span>${state.hot?'CHAUD':'GLACÉ'}</span><span>${[state.cream?'CRÈME':null,state.choco?'CACAO':null].filter(Boolean).join(' + ')||'PUR'}</span>`;
     $('fiche').classList.toggle('on', state.touched);
   }
 })();
