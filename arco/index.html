@@ -52,7 +52,7 @@
 
   /* ---------- scroll track + sticky stage ---------- */
   .seq-track{position:relative}
-  #homeTrack{height:520vh}
+  #homeTrack{height:600vh}
   #gardenTrack{height:460vh}
   .seq-stage{
     position:sticky;top:0;height:100vh;width:100%;
@@ -61,6 +61,13 @@
   .seq-stage canvas{
     position:absolute;inset:0;width:100%;height:100%;display:block;
   }
+
+  /* the designer's sketch the room starts from; dissolves into the empty room */
+  .sketch{
+    position:absolute;inset:0;pointer-events:none;
+    background:url('sketch-d.webp') center/cover no-repeat;
+  }
+  @media (max-width:768px){ .sketch{background-image:url('sketch-m.webp')} }
 
   /* ---------- overlay UI ---------- */
   .stage-ui{
@@ -373,6 +380,42 @@
   }
   .doors .hint span{color:var(--bronze)}
 
+  /* ---------- ACT V — touchpoints: how a client meets the brand ---------- */
+  .touch{
+    padding:clamp(80px,10vw,140px) 24px clamp(90px,11vw,140px);
+    text-align:center;background:#E8DFD1;
+  }
+  .touch .kicker{
+    font-size:12px;letter-spacing:.4em;font-weight:700;color:var(--bronze);
+    margin-bottom:26px;
+  }
+  .touch h2{
+    font-size:clamp(30px,4.4vw,58px);
+    font-weight:200;line-height:1.25;letter-spacing:.02em;
+  }
+  .touch .lede{
+    max-width:600px;margin:18px auto clamp(54px,7vw,84px);
+    font-size:clamp(15px,1.7vw,20px);font-weight:300;line-height:1.8;
+    color:rgba(51,48,43,.78);
+  }
+  .t-grid{
+    list-style:none;display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(22px,3.4vw,48px) clamp(18px,2.6vw,36px);
+    max-width:1120px;margin:0 auto;text-align:right;
+  }
+  .t-grid figure{margin:0}
+  .t-grid img{
+    display:block;width:100%;aspect-ratio:4/5;object-fit:cover;
+    border-radius:50% 50% 6px 6px / 26% 26% 3% 3%;
+    box-shadow:0 24px 50px -32px rgba(51,48,43,.5);
+  }
+  .t-grid figcaption{padding:20px 4px 0}
+  .t-grid .tn{font-size:11px;letter-spacing:.3em;font-weight:700;color:var(--bronze);direction:ltr;display:block;text-align:right}
+  .t-grid .tt{display:block;margin-top:8px;font-size:clamp(19px,1.9vw,24px);font-weight:300;letter-spacing:.02em}
+  .t-grid .td{display:block;margin-top:6px;font-size:15px;font-weight:300;line-height:1.75;color:rgba(51,48,43,.75)}
+  @media (max-width:860px){ .t-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .t-grid .td{font-size:14px} }
+
   /* ---------- ACT IV — the designer ---------- */
   .designer{
     padding:clamp(70px,9vw,120px) 24px clamp(90px,11vw,140px);
@@ -563,6 +606,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="seq-track" id="homeTrack">
   <div class="seq-stage">
     <canvas id="homeCanvas"></canvas>
+    <div class="sketch" id="homeSketch" aria-hidden="true"></div>
 
     <div class="loader" id="homeLoader">
       <div class="arch"></div>
@@ -581,7 +625,11 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="seq-caption cap-start visible" id="homeCapStart">
-      <div class="glow"><h2>כל בית מתחיל בחלל ריק.</h2></div>
+      <div class="glow"><h2>כל בית מתחיל בקו.</h2></div>
+    </div>
+
+    <div class="seq-caption cap-start" id="homeCapRoom">
+      <div class="glow"><h2>ואז בחלל ריק שמקשיבים לו.</h2></div>
     </div>
 
     <div class="seq-caption cap-end" id="homeCapEnd">
@@ -689,6 +737,39 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- ========== ACT V — touchpoints ========== -->
+<section class="touch" aria-label="נקודות המגע של המותג">
+  <div class="kicker"><span dir="ltr">ARCO°</span> · מחוץ לבית</div>
+  <h2>הלקוחה פוגשת את <span dir="ltr">ARCO°</span><br>הרבה לפני הבית.</h2>
+  <p class="lede">מהמצגת הראשונה ועד מסירת המפתח. שישה רגעים, שפה אחת: קשת, טיח ואלון.</p>
+  <ul class="t-grid">
+    <li><figure>
+      <img width="960" height="1200" src="touch/01.webp" alt="ספר קונספט פתוח של ARCO° עם דוגמאות טיח, אלון וטרוורטין מוצמדות לדף" loading="lazy">
+      <figcaption><span class="tn">N°01</span><span class="tt">המצגת</span><span class="td">הקונספט מגיע בספר, לא בקובץ. החומרים האמיתיים מוצמדים לדף.</span></figcaption>
+    </figure></li>
+    <li><figure>
+      <img width="960" height="1200" src="touch/02.webp" alt="קופסת דוגמאות חומרים של ARCO° עם מכסה בחיתוך קשת" loading="lazy">
+      <figcaption><span class="tn">N°02</span><span class="tt">קופסת החומרים</span><span class="td">שלושה לבנים של טיח, אלון, טרוורטין ופשתן, בקופסה שהמכסה שלה הוא קשת.</span></figcaption>
+    </figure></li>
+    <li><figure>
+      <img width="960" height="1200" src="touch/03.webp" alt="גדר אתר שיפוץ ממותגת ARCO° עם ציור קשת, מול בית בשיפוץ ועץ זית" loading="lazy">
+      <figcaption><span class="tn">N°03</span><span class="tt">הגדר באתר</span><span class="td">עוד בזמן השיפוץ, השכנים כבר יודעים שכאן מתעורר בית.</span></figcaption>
+    </figure></li>
+    <li><figure>
+      <img width="960" height="1200" src="touch/04.webp" alt="כרטיסי ביקור ומעטפה של ARCO° עם קשת מוטבעת" loading="lazy">
+      <figcaption><span class="tn">N°04</span><span class="tt">הכרטיס</span><span class="td">קשת מוטבעת על נייר כותנה. בלי סלוגן ובלי טלפון בגדול.</span></figcaption>
+    </figure></li>
+    <li><figure>
+      <img width="960" height="1200" src="touch/05.webp" alt="טלפון ביד עם פיד אינסטגרם של ARCO° בשפה אחידה של טיח, אלון וקשתות" loading="lazy">
+      <figcaption><span class="tn">N°05</span><span class="tt">הפיד</span><span class="td">תשעה ריבועים שנראים כמו חדר אחד.</span></figcaption>
+    </figure></li>
+    <li><figure>
+      <img width="960" height="1200" src="touch/06.webp" alt="מפתח בית עם תגית עור בצורת קשת של ARCO°, שקית פשתן ופתק" loading="lazy">
+      <figcaption><span class="tn">N°06</span><span class="tt">מסירת המפתח</span><span class="td">בסוף הפרויקט: מפתח, תגית בצורת קשת ופתק בכתב יד.</span></figcaption>
+    </figure></li>
+  </ul>
+</section>
+
 <!-- ========== after ========== -->
 <section class="after">
   <div class="after-inner">
@@ -788,7 +869,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       const p = Math.min(1, Math.max(0, -r.top / total));
-      currentFrame = Math.min(FRAME_COUNT-1, Math.floor(p * FRAME_COUNT));
+      // opts.lead: share of the track spent before the frames start (the sketch)
+      const fp = opts.lead ? Math.max(0, (p - opts.lead) / (1 - opts.lead)) : p;
+      currentFrame = Math.min(FRAME_COUNT-1, Math.floor(fp * FRAME_COUNT));
       if (opts.onProgress) opts.onProgress(p);
       requestAnimationFrame(draw);
     }
@@ -804,15 +887,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const gardenHint = document.getElementById('gardenHint');
   const homeCapStart = document.getElementById('homeCapStart');
   const homeCapEnd = document.getElementById('homeCapEnd');
+  const homeCapRoom = document.getElementById('homeCapRoom');
+  const homeSketch = document.getElementById('homeSketch');
   const gardenCapStart = document.getElementById('gardenCapStart');
   const gardenCapEnd = document.getElementById('gardenCapEnd');
 
   const home = makeScrub({
-    canvasId:'homeCanvas', trackId:'homeTrack', dir:'home',
+    canvasId:'homeCanvas', trackId:'homeTrack', dir:'home', lead:0.14,
     onFirstPass(){ homeLoader.classList.add('done'); },
     onProgress(p){
       homeHint.classList.toggle('hidden', p > 0.75);
-      homeCapStart.classList.toggle('visible', p < 0.05);
+      // sketch holds, then dissolves into the empty room before the furniture arrives
+      homeSketch.style.opacity = Math.min(1, Math.max(0, 1 - (p - 0.04) / 0.08));
+      homeCapStart.classList.toggle('visible', p < 0.04);
+      homeCapRoom.classList.toggle('visible', p > 0.12 && p < 0.2);
       homeCapEnd.classList.toggle('visible', p > 0.8);
     }
   });
