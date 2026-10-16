@@ -272,7 +272,7 @@ section{padding:clamp(72px,10vw,140px) 0}
 @media (max-width:760px){.c-arts{grid-template-columns:1fr}}
 .c-camp{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px}
 .c-card{background:var(--cream-2);border:1px solid var(--stone-2);display:flex;flex-direction:column}
-.c-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.c-card img,.c-card video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--stone-2)}
 .c-card .rb{display:flex;align-items:center}
 .c-card .rb span:first-child{flex:1;height:3px;background:var(--copper)}
 .c-card .tx{padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:14px;flex:1}
@@ -296,7 +296,7 @@ section{padding:clamp(72px,10vw,140px) 0}
 .c-ad{aspect-ratio:4/5;overflow:hidden;display:flex;flex-direction:column;color:var(--ink);box-shadow:0 18px 40px rgba(58,46,41,.14)}
 .c-ad .t{font-family:var(--heb);font-weight:500;line-height:1.2;font-size:clamp(1.3rem,2.2vw,1.7rem)}
 .c-ad .t b{font-weight:700;color:var(--copper-deep);display:block}
-.c-ad img{width:100%;height:56%;object-fit:cover}
+.c-ad img,.c-ad video{width:100%;height:56%;object-fit:cover;display:block;background:var(--stone-2)}
 .c-ad .rb{display:flex;align-items:center}
 .c-ad .rb span:first-child{flex:1;height:3px;background:var(--copper)}
 .c-ad .tx{flex:1;padding:16px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
@@ -314,6 +314,16 @@ section{padding:clamp(72px,10vw,140px) 0}
 .c-ad3 .btn-mock{background:var(--ink);color:var(--cream);padding:9px 18px;border-radius:10px;font-size:.95rem}
 .c-ads figcaption{font-size:.95rem;color:var(--ink-2);display:flex;flex-direction:column;gap:8px}
 @media (max-width:900px){.c-ads{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+.c-reel{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:start}
+.c-reel video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--stone-2);box-shadow:0 24px 60px rgba(58,46,41,.16)}
+.c-scenes{display:flex;flex-direction:column}
+.c-scenes div{display:grid;grid-template-columns:86px 130px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid rgba(184,122,87,.45);font-size:.98rem}
+.c-scenes div.sig{background:rgba(239,205,191,.35)}
+.c-scenes .tm{font-family:var(--serif);font-variant-numeric:lining-nums tabular-nums;direction:ltr;unicode-bidi:isolate;text-align:right;color:var(--ink)}
+.c-scenes b{font-weight:500}
+.c-scenes span:last-child{color:var(--ink-2)}
+@media (max-width:860px){.c-reel{grid-template-columns:1fr}.c-reel video{max-width:340px;margin-inline:auto}}
+@media (max-width:520px){.c-scenes div{grid-template-columns:72px minmax(0,1fr)}.c-scenes div span:last-child{grid-column:1/-1}}
 .c-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px}
 .c-vs figure{display:flex;flex-direction:column;gap:12px}
 .c-post{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:28px}
@@ -628,7 +638,7 @@ footer.studio a{color:var(--copper-light)}
     <div class="c-sub rv"><span class="n">02</span><h3>קמפיין: <b>יומן הידיים.</b></h3><p>הקמפיין שומר על הסדר של העולם: היא לפני הבקבוק, הסיפור לפני החנות, האבחון לפני המכירה.</p></div>
     <div class="c-camp">
       <div class="c-card rv">
-        <img src="assets/founder-cream-on-hand.webp" width="1600" height="900" loading="lazy" alt="הידיים של Or Éva מורחות קרם על כף יד, באור טבעי של הסטודיו">
+        <video class="hands" src="assets/hands-loop.mp4" poster="assets/hands-loop.webp" width="1280" height="720" autoplay muted loop playsinline preload="metadata" aria-label="הידיים של Or Éva מורחות קרם על גב כף היד בתנועה עגולה ואיטית, באור טבעי של הסטודיו"></video>
         <div class="rb" aria-hidden="true"><span></span><span class="c-bead" style="width:12px;height:12px"></span></div>
         <div class="tx">
           <span class="c-it" lang="fr">Le Journal des mains</span>
@@ -648,7 +658,7 @@ footer.studio a{color:var(--copper-light)}
     <div class="c-sub rv"><span class="n">03</span><h3>שלוש מודעות. <b>כל אחת נפתחת ביד.</b></h3><p>מתחת לכל מודעה: הקודים שעושים את העבודה, ומה נשאר כשמכסים את השם.</p></div>
     <div class="c-ads">
       <figure class="rv">
-        <div class="c-ad c-ad1"><img src="assets/founder-cream-on-hand.webp" width="1600" height="900" loading="lazy" alt="יד מורחת קרם על עור"><div class="rb" aria-hidden="true"><span></span><span class="c-bead" style="width:11px;height:11px"></span></div><div class="tx"><p class="t">קודם הידיים.<b>אחר כך הבקבוק.</b></p><span class="c-it" lang="fr" style="font-size:.95rem">Le Journal des mains · 01</span></div></div>
+        <div class="c-ad c-ad1"><video class="hands" src="assets/hands-loop.mp4" poster="assets/hands-loop.webp" width="1280" height="720" autoplay muted loop playsinline preload="metadata" aria-label="יד מורחת קרם על עור בתנועה איטית"></video><div class="rb" aria-hidden="true"><span></span><span class="c-bead" style="width:11px;height:11px"></span></div><div class="tx"><p class="t">קודם הידיים.<b>אחר כך הבקבוק.</b></p><span class="c-it" lang="fr" style="font-size:.95rem">Le Journal des mains · 01</span></div></div>
         <figcaption><div class="chips"><span>סרט הנחושת</span><span>החרוז</span><span>השורה השנייה</span></div>בלי השם: יד, קו נחושת שיוצא ממנה, ושורה שנייה בנחושת.</figcaption>
       </figure>
       <figure class="rv">
@@ -661,7 +671,21 @@ footer.studio a{color:var(--copper-light)}
       </figure>
     </div>
 
-    <div class="c-sub rv"><span class="n">04</span><h3>אותה בקשה. <b>שני מותגים.</b></h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
+    <div class="c-sub rv"><span class="n">04</span><h3>הריל. <b>הידיים זזות.</b></h3><p>30 שניות שבהן ההבטחה לא נאמרת, היא קורית: הידיים על המיטה, על העור ועל המשאבה, וסרט נחושת אחד שמחבר ביניהן.</p></div>
+    <div class="c-reel">
+      <video class="rv" src="journal-des-mains.mp4" poster="journal-des-mains.webp" width="1080" height="1920" controls muted playsinline loop preload="none" aria-label="ריל Le Journal des mains של ORÉVA°, 30 שניות"></video>
+      <div class="c-scenes rv">
+        <div><span class="tm">0–3</span><b>הוק</b><span>״מאיפה הסרום שלך הגיע?״ מעל יד שכבר מורחת קרם, ליד משאבת הנחושת.</span></div>
+        <div><span class="tm">3–4.4</span><b>הסימן</b><span><span class="ltr">ORÉVA°</span> <span class="ltr">SKIN STUDIO</span>, וסרט נחושת שנמשך עד החרוז.</span></div>
+        <div><span class="tm">4.4–9.6</span><b>המיטה</b><span>הידיים שלה על הפנים של לקוחה. קודם על העור של לקוחות הקליניקה.</span></div>
+        <div><span class="tm">9.6–13.6</span><b>היד</b><span>קרם על גב היד, בתנועה עגולה. קודם הידיים, אחר כך הבקבוק.</span></div>
+        <div><span class="tm">13.6–18.8</span><b>הבקבוק</b><span>שתי לחיצות על משאבת הנחושת, בטפיחות.</span></div>
+        <div class="sig"><span class="tm">18.8–26.6</span><b>הסרט</b><span>קו נחושת אחד עובר מהמיטה, דרך היד, ונגמר בבקבוק.</span></div>
+        <div><span class="tm">26.6–30</span><b>הסגירה</b><span>״כל מוצר בליין יצא קודם מהידיים שלי.״ ולקבוע אבחון.</span></div>
+      </div>
+    </div>
+
+    <div class="c-sub rv"><span class="n">05</span><h3>אותה בקשה. <b>שני מותגים.</b></h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
     <div class="c-vs">
       <figure class="rv"><div class="c-post gen" aria-label="פוסט גנרי: מבצע סוף שנה, 20% הנחה"><i></i><b>מבצע סוף שנה!</b><span>20% הנחה על כל הקולקציה</span><span class="buy">לקנייה עכשיו</span></div><figcaption><b>בלי עולם.</b> אין ידיים ואין סרט. נשאר רק המחיר, ולכן משווים.</figcaption></figure>
       <figure class="rv"><div class="c-post ours"><div style="display:flex;align-items:center;gap:10px"><span class="c-bead"></span><span class="c-it" lang="fr">Le soin · 05</span></div><p class="t">השנה של העור שלך<b>מתחילה בידיים.</b></p><p style="color:var(--ink-2)">אבחון ראשון של השנה. ארבעים דקות, אור טבעי, בלי מוצרים.</p><div class="line" aria-hidden="true"><span class="c-bead" style="width:10px;height:10px"></span><span></span></div></div><figcaption><b>מתוך העולם.</b> שורה שנייה בנחושת, חרוז וסרט. סוף השנה הוא אבחון, לא הנחה.</figcaption></figure>
@@ -691,6 +715,7 @@ footer.studio a{color:var(--copper-light)}
 
 <script>
 (function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('video.hands').forEach(function(v){v.removeAttribute('autoplay');v.pause()})}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
