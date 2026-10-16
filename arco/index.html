@@ -665,11 +665,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <section class="designer" aria-label="המעצבת">
   <div class="designer-inner">
     <div class="d-portrait">
-      <img width="800" height="1066" src="designer.webp" alt="ישראלה ישראלי — מעצבת הפנים והמייסדת של ARCO°" loading="lazy">
+      <img width="800" height="1066" src="designer.webp" alt="נועה קשת — מעצבת הפנים והמייסדת של ARCO°" loading="lazy">
     </div>
     <div class="d-text">
       <div class="kicker"><span dir="ltr">ARCO°</span> · המעצבת</div>
-      <h2>ישראלה ישראלי.</h2>
+      <h2>נועה קשת.</h2>
       <p class="d-role">מייסדת ARCO° · מעצבת פנים</p>
       <p class="d-lead">אני לא מגיעה עם קונספט מוכן.<br>אני מגיעה עם שאלות.</p>
       <ul class="d-steps">
@@ -837,27 +837,23 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 /* ========== ACT III — doors + portal ========== */
 (function(){
-  const isMobile = matchMedia('(max-width:768px)').matches;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const suffix = isMobile ? 'm' : 'd';
   const ARCH_RADIUS = '50% 50% 6px 6px / 34% 34% 3% 3%';
 
-  // door crops always use the desktop (landscape) frame so each arch
-  // shows a different vertical slice; the fullscreen portal uses the
-  // orientation-appropriate frame (already preloaded by the scrub).
+  // every arch opens onto its own project; the portal reuses the same image
   const projects = [
-    { n:'01', name:'בית הקשתות', meta:'מרחב מגורים · 2025',
-      line:'הסלון הזה לא עוצב סביב הרהיטים — הוא עוצב סביב האור של ארבע אחר הצהריים.',
-      crop:'home-d/f_061.webp',  pos:'58% 52%', full:'home',   fullPos:'50% 60%' },
+    { n:'01', name:'בית הקשתות', meta:'מטבח ופינת אוכל · 2025',
+      line:'השולחן הזה לא עוצב סביב הכיסאות. הוא עוצב סביב האור של ארבע אחר הצהריים.',
+      img:'projects/01.webp', pos:'44% 50%', fullPos:'44% 50%' },
     { n:'02', name:'המעבר', meta:'כניסה וגלריה · 2024',
       line:'קשת בתוך קשת. הכניסה שמלמדת את הבית את הקצב שלו.',
-      crop:'home-d/f_061.webp',  pos:'2% 55%',  full:'home',   fullPos:'30% 55%' },
+      img:'projects/02.webp', pos:'72% 50%', fullPos:'72% 50%' },
     { n:'03', name:'חצר הבריכה', meta:'עיצוב חוץ · 2025',
-      line:'המים לוקחים את הקו של הבית — וממשיכים אותו עד קצה המגרש.',
-      crop:'garden-d/f_061.webp', pos:'12% 55%', full:'garden', fullPos:'25% 55%' },
+      line:'המים לוקחים את הקו של הבית, וממשיכים אותו עד קצה המגרש.',
+      img:'projects/03.webp', pos:'40% 50%', fullPos:'40% 50%' },
     { n:'04', name:'פרגולת הזית', meta:'אירוח בגן · 2024',
       line:'תקרה של קנים, אור של שבע בערב. חדר שאין לו קירות.',
-      crop:'garden-d/f_061.webp', pos:'86% 50%', full:'garden', fullPos:'75% 50%' },
+      img:'projects/04.webp', pos:'74% 50%', fullPos:'74% 50%' },
   ];
 
   const wall = document.getElementById('doorsWall');
@@ -878,7 +874,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.setAttribute('aria-label','פרויקט '+p.n+' — '+p.name+'. לחיצה פותחת את הדלת.');
     btn.innerHTML = `
       <span class="recess">
-        <span class="photo" style="background-image:url('${p.crop}');background-position:${p.pos}"></span>
+        <span class="photo" style="background-image:url('${p.img}');background-position:${p.pos}"></span>
         <span class="cap">
           <span class="num">N°${p.n}</span>
           <span class="pname">${p.name}</span>
@@ -939,7 +935,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (portalOpen) return;
     portalOpen = true;
     lastBtn = btn;
-    pPhoto.style.backgroundImage = `url('${p.full}-${suffix}/f_061.webp')`;
+    pPhoto.style.backgroundImage = `url('${p.img}')`;
     pPhoto.style.backgroundPosition = p.fullPos;
     pNum.textContent = 'ARCO° · N°'+p.n;
     pName.textContent = p.name;
