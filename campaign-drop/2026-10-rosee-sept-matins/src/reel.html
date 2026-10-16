@@ -1,0 +1,413 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ROSÉE° · Sept Matins</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F7F0E6;      /* world background */
+  --w-ink:#3B2E33;     /* world text */
+  --w-accent:#C9878E;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+@keyframes hk{0%{opacity:1}0.000%{opacity:1}8.333%{opacity:1}9.333%{opacity:0}100%{opacity:0}}
+.hk{animation-name:hk}
+@keyframes d14{0%{opacity:1}0.000%{opacity:1}3.167%{opacity:1}3.667%{opacity:0}100%{opacity:0}}
+.d14{animation-name:d14}
+@keyframes d15{0%{opacity:0}0.000%{opacity:0}3.167%{opacity:0}3.667%{opacity:1}100%{opacity:1}}
+.d15{animation-name:d15}
+@keyframes hlit{0%{opacity:0}0.000%{opacity:0}3.167%{opacity:0}3.833%{opacity:1}100%{opacity:1}}
+.hlit{animation-name:hlit}
+@keyframes hfall{0%{transform:translateY(0);opacity:1}0.000%{transform:translateY(0);opacity:1}5.167%{transform:translateY(0);opacity:1}6.833%{transform:translateY(395px);opacity:1}7.000%{transform:translateY(400px);opacity:0}100%{transform:translateY(400px);opacity:0}}
+.hfall{animation-name:hfall}
+@keyframes hrip{0%{transform:scale(.3);opacity:0}0.000%{transform:scale(.3);opacity:0}6.833%{transform:scale(.3);opacity:0}7.167%{transform:scale(.5);opacity:1}9.000%{transform:scale(1.5);opacity:0}100%{transform:scale(1.5);opacity:0}}
+.hrip{animation-name:hrip}
+@keyframes hhalo{0%{transform:scale(.6);opacity:0}0.000%{transform:scale(.6);opacity:0}3.333%{transform:scale(.6);opacity:0}3.833%{transform:scale(1);opacity:.9}5.333%{transform:scale(1.9);opacity:0}100%{transform:scale(1.9);opacity:0}}
+.hhalo{animation-name:hhalo}
+@keyframes lgline{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}9.000%{transform:scaleX(0)}11.333%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.lgline{animation-name:lgline}
+@keyframes ring{0%{transform:rotate(0deg)}0.000%{transform:rotate(0deg)}33.500%{transform:rotate(0.000deg)}34.667%{transform:rotate(51.429deg)}36.167%{transform:rotate(51.429deg)}37.333%{transform:rotate(102.857deg)}38.833%{transform:rotate(102.857deg)}40.000%{transform:rotate(154.286deg)}41.500%{transform:rotate(154.286deg)}42.667%{transform:rotate(205.714deg)}44.167%{transform:rotate(205.714deg)}45.333%{transform:rotate(257.143deg)}46.833%{transform:rotate(257.143deg)}48.000%{transform:rotate(308.571deg)}100%{transform:rotate(308.571deg)}}
+.ring{animation-name:ring}
+@keyframes cring{0%{transform:rotate(-0deg)}0.000%{transform:rotate(-0deg)}33.500%{transform:rotate(-0.000deg)}34.667%{transform:rotate(-51.429deg)}36.167%{transform:rotate(-51.429deg)}37.333%{transform:rotate(-102.857deg)}38.833%{transform:rotate(-102.857deg)}40.000%{transform:rotate(-154.286deg)}41.500%{transform:rotate(-154.286deg)}42.667%{transform:rotate(-205.714deg)}44.167%{transform:rotate(-205.714deg)}45.333%{transform:rotate(-257.143deg)}46.833%{transform:rotate(-257.143deg)}48.000%{transform:rotate(-308.571deg)}100%{transform:rotate(-308.571deg)}}
+.cring{animation-name:cring}
+@keyframes sky{0%{background-color:#D9A8B3}0.000%{background-color:#D9A8B3}33.500%{background-color:#D9A8B3}34.667%{background-color:#DFB5BE}36.167%{background-color:#DFB5BE}37.333%{background-color:#E5C2C7}38.833%{background-color:#E5C2C7}40.000%{background-color:#EBCFCF}41.500%{background-color:#EBCFCF}42.667%{background-color:#F0DBD7}44.167%{background-color:#F0DBD7}45.333%{background-color:#F4E6DF}46.833%{background-color:#F4E6DF}48.000%{background-color:#F7F0E6}100%{background-color:#F7F0E6}}
+.sky{animation-name:sky}
+@keyframes dialin{0%{transform:scale(.85);opacity:0}0.000%{transform:scale(.85);opacity:0}30.333%{transform:scale(.85);opacity:0}32.000%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:1}}
+.dialin{animation-name:dialin}
+@keyframes lit0{0%{opacity:0}0.000%{opacity:0}31.933%{opacity:0}32.500%{opacity:1}100%{opacity:1}}
+.lit0{animation-name:lit0}
+@keyframes lit1{0%{opacity:0}0.000%{opacity:0}34.600%{opacity:0}35.167%{opacity:1}100%{opacity:1}}
+.lit1{animation-name:lit1}
+@keyframes lit2{0%{opacity:0}0.000%{opacity:0}37.267%{opacity:0}37.833%{opacity:1}100%{opacity:1}}
+.lit2{animation-name:lit2}
+@keyframes lit3{0%{opacity:0}0.000%{opacity:0}39.933%{opacity:0}40.500%{opacity:1}100%{opacity:1}}
+.lit3{animation-name:lit3}
+@keyframes lit4{0%{opacity:0}0.000%{opacity:0}42.600%{opacity:0}43.167%{opacity:1}100%{opacity:1}}
+.lit4{animation-name:lit4}
+@keyframes lit5{0%{opacity:0}0.000%{opacity:0}45.267%{opacity:0}45.833%{opacity:1}100%{opacity:1}}
+.lit5{animation-name:lit5}
+@keyframes lit6{0%{opacity:0}0.000%{opacity:0}47.933%{opacity:0}48.500%{opacity:1}100%{opacity:1}}
+.lit6{animation-name:lit6}
+@keyframes fall0{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}31.967%{transform:translateY(0);opacity:0}32.167%{transform:translateY(0);opacity:1}33.333%{transform:translateY(160px);opacity:1}33.500%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall0{animation-name:fall0}
+@keyframes rip0{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}33.267%{transform:scale(1);opacity:0}33.500%{transform:scale(1.02);opacity:.9}35.333%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip0{animation-name:rip0}
+@keyframes fall1{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}34.633%{transform:translateY(0);opacity:0}34.833%{transform:translateY(0);opacity:1}36.000%{transform:translateY(160px);opacity:1}36.167%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall1{animation-name:fall1}
+@keyframes rip1{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}35.933%{transform:scale(1);opacity:0}36.167%{transform:scale(1.02);opacity:.9}38.000%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip1{animation-name:rip1}
+@keyframes fall2{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}37.300%{transform:translateY(0);opacity:0}37.500%{transform:translateY(0);opacity:1}38.667%{transform:translateY(160px);opacity:1}38.833%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall2{animation-name:fall2}
+@keyframes rip2{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}38.600%{transform:scale(1);opacity:0}38.833%{transform:scale(1.02);opacity:.9}40.667%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip2{animation-name:rip2}
+@keyframes fall3{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}39.967%{transform:translateY(0);opacity:0}40.167%{transform:translateY(0);opacity:1}41.333%{transform:translateY(160px);opacity:1}41.500%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall3{animation-name:fall3}
+@keyframes rip3{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}41.267%{transform:scale(1);opacity:0}41.500%{transform:scale(1.02);opacity:.9}43.333%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip3{animation-name:rip3}
+@keyframes fall4{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}42.633%{transform:translateY(0);opacity:0}42.833%{transform:translateY(0);opacity:1}44.000%{transform:translateY(160px);opacity:1}44.167%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall4{animation-name:fall4}
+@keyframes rip4{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}43.933%{transform:scale(1);opacity:0}44.167%{transform:scale(1.02);opacity:.9}46.000%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip4{animation-name:rip4}
+@keyframes fall5{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}45.300%{transform:translateY(0);opacity:0}45.500%{transform:translateY(0);opacity:1}46.667%{transform:translateY(160px);opacity:1}46.833%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall5{animation-name:fall5}
+@keyframes rip5{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}46.600%{transform:scale(1);opacity:0}46.833%{transform:scale(1.02);opacity:.9}48.667%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip5{animation-name:rip5}
+@keyframes fall6{0%{transform:translateY(0);opacity:0}0.000%{transform:translateY(0);opacity:0}47.967%{transform:translateY(0);opacity:0}48.167%{transform:translateY(0);opacity:1}49.333%{transform:translateY(160px);opacity:1}49.500%{transform:translateY(170px);opacity:0}100%{transform:translateY(170px);opacity:0}}
+.fall6{animation-name:fall6}
+@keyframes rip6{0%{transform:scale(1);opacity:0}0.000%{transform:scale(1);opacity:0}49.267%{transform:scale(1);opacity:0}49.500%{transform:scale(1.02);opacity:.9}51.333%{transform:scale(1.32);opacity:0}100%{transform:scale(1.32);opacity:0}}
+.rip6{animation-name:rip6}
+@keyframes pay{0%{opacity:0;transform:translateY(30px)}0.000%{opacity:0;transform:translateY(30px)}48.333%{opacity:0;transform:translateY(30px)}50.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+.pay{animation-name:pay}
+@keyframes axis{0%{transform:scaleY(0)}0.000%{transform:scaleY(0)}54.667%{transform:scaleY(0)}62.000%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+.axis{animation-name:axis}
+@keyframes noon{0%{background-color:#E5C4CB}0.000%{background-color:#E5C4CB}81.000%{background-color:#E5C4CB}85.333%{background-color:#F7F0E6}100%{background-color:#F7F0E6}}
+.noon{animation-name:noon}
+@keyframes t745{0%{opacity:1}0.000%{opacity:1}82.500%{opacity:1}83.167%{opacity:0}100%{opacity:0}}
+.t745{animation-name:t745}
+@keyframes t800{0%{opacity:0}0.000%{opacity:0}82.500%{opacity:0}83.167%{opacity:1}100%{opacity:1}}
+.t800{animation-name:t800}
+@keyframes evap{0%{transform:scale(1);opacity:1}0.000%{transform:scale(1);opacity:1}83.333%{transform:scale(1);opacity:1}86.333%{transform:scale(.2) translateY(-40px);opacity:0}100%{transform:scale(.2) translateY(-40px);opacity:0}}
+.evap{animation-name:evap}
+@keyframes evhalo{0%{transform:scale(1);opacity:.8}0.000%{transform:scale(1);opacity:.8}83.333%{transform:scale(1);opacity:.8}86.333%{transform:scale(2.2);opacity:0}100%{transform:scale(2.2);opacity:0}}
+.evhalo{animation-name:evhalo}
+#stage{background:#F7F0E6}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<section class="scene" data-show="3.9,9.3">
+  <div class="stack" data-seq="assets/seq/f_%03d.webp" data-from="1" data-to="79" data-by="2" data-start="4.2" data-step="0.085" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(247,240,230,.95) 0px, rgba(247,240,230,.75) 560px, rgba(247,240,230,0) 820px)"></div>
+  <div style="position: absolute; top: 170px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; color: #3B2E33" dir="rtl">
+    <div data-in="4.2" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 56px; color: #6E4A2A" dir="ltr">La Goutte</div>
+    <div data-in="4.7" style="font-size: 76px; font-weight: 200; line-height: 1.15">הטל נוצר <span style="font-weight: 600">בלילה</span>.</div>
+    <div data-in="5.7" style="font-size: 76px; font-weight: 200; line-height: 1.15">זוהר עם <span style="font-weight: 600">שחר</span>.</div>
+    <div data-in="7.0" style="font-size: 48px; font-weight: 300; line-height: 1.3; color: #6E5A61">ונעלם עד הצהריים, אלא אם עוצרים אותו.</div>
+  </div>
+</section>
+
+<section class="scene" data-show="9.0,16.3">
+  <div class="sky stack"></div>
+  <div style="position: absolute; top: 180px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; color: #3B2E33">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 78px" dir="ltr">Sept Matins</div>
+    <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 44px; font-weight: 300; letter-spacing: .04em" dir="rtl">שבעה בקרים · 06:15</div>
+  </div>
+  <div class="dialin" style="position: absolute; left: 540px; top: 1010px; width: 0; height: 0">
+    <div style="position: absolute; left: -330px; top: -330px; width: 660px; height: 660px; box-sizing: border-box; border-radius: 999px; border: 2px solid #C28A5A"></div>
+    <div style="position: absolute; left: -2px; top: -422px; width: 4px; height: 38px; border-radius: 999px; background: #C28A5A"></div>
+    <div style="position: absolute; left: -190px; top: -190px; width: 380px; height: 380px; border-radius: 999px; background: #FBF6EE; box-shadow: 0 24px 60px rgba(59,46,51,.12)"></div>
+    
+    <div class="fall0" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip0" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall1" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip1" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall2" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip2" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall3" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip3" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall4" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip4" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall5" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip5" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div class="fall6" style="position: absolute; left: -16px; top: -290px"><div style="width: 32px; height: 32px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+    <div class="rip6" style="position: absolute; left: -200px; top: -200px; width: 400px; height: 400px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C9878E"></div>
+    <div style="position: absolute; left: -190px; top: -80px; width: 380px; height: 110px"><div class="stack" data-show="9.55,10.35" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 01</div><div class="stack" data-show="10.35,11.15" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 02</div><div class="stack" data-show="11.15,11.95" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 03</div><div class="stack" data-show="11.95,12.75" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 04</div><div class="stack" data-show="12.75,13.55" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 05</div><div class="stack" data-show="13.55,14.35" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 06</div><div class="stack" data-show="14.35,16.25" data-fade="0.18" style="display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 74px; color: #3B2E33" dir="ltr">Matin 07</div></div>
+    <div style="position: absolute; left: -190px; top: 34px; width: 380px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 52px; color: #6E4A2A" dir="ltr">06:15</div>
+    <div class="ring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(0.000deg) translateY(-330px) rotate(0.000deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit0" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">01</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-51.429deg) translateY(-330px) rotate(51.429deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit1" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">02</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-102.857deg) translateY(-330px) rotate(102.857deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit2" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">03</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-154.286deg) translateY(-330px) rotate(154.286deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit3" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">04</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-205.714deg) translateY(-330px) rotate(205.714deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit4" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">05</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-257.143deg) translateY(-330px) rotate(257.143deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit5" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">06</div>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 0; height: 0; transform: rotate(-308.571deg) translateY(-330px) rotate(308.571deg)">
+      <div class="cring" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+        <div style="position: absolute; left: -26px; top: -30px">
+          <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C28A5A; box-sizing: border-box; background: rgba(251,246,238,.55); "></div>
+          <div class="lit6" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 16px rgba(59,46,51,.2)"></div></div>
+        </div>
+        <div style="position: absolute; left: -40px; top: 34px; width: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 30px; color: #6E4A2A" dir="ltr">07</div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div style="position: absolute; top: 1470px; left: 60px; right: 60px; height: 90px; font-family: 'Assistant', 'Heebo', sans-serif; color: #3B2E33"><div class="stack" data-show="9.60,10.35" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>טיפה <span style="font-weight: 600">אחת</span>, לפני הקפה.</span></div><div class="stack" data-show="10.40,11.15" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>העור מתעורר <span style="font-weight: 600">לפנייך</span>.</span></div><div class="stack" data-show="11.20,11.95" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>הסרום נכנס כשהעור עוד <span style="font-weight: 600">לח</span>.</span></div><div class="stack" data-show="12.00,12.75" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>בוקר רביעי. <span style="font-weight: 600">כבר</span> הרגל.</span></div><div class="stack" data-show="12.80,13.55" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>עשר דקות שהן <span style="font-weight: 600">שלך</span>.</span></div><div class="stack" data-show="13.60,14.35" data-fade="0.18" style="display: flex; justify-content: center; font-size: 62px; font-weight: 300" dir="rtl"><span>הטל נשאר <span style="font-weight: 600">בפנים</span>.</span></div></div>
+  <div class="pay" style="position: absolute; top: 1450px; left: 60px; right: 60px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 92px; font-weight: 200; color: #3B2E33" dir="rtl">הבוקר כבר <span style="font-weight: 600">שלך</span>.</div>
+</section>
+
+<section class="scene" data-show="16.0,20.8" style="background: #F7F0E6">
+  <div style="position: absolute; top: 170px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #3B2E33">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 78px" dir="ltr">Le Rituel</div>
+    <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 64px; font-weight: 200" dir="rtl">שלושה צעדים. <span style="font-weight: 600">לפני</span> הקפה.</div>
+  </div>
+  <div class="axis" style="position: absolute; top: 640px; right: 228px; width: 3px; height: 760px; background: #C28A5A; transform-origin: top"></div>
+  <div style="position: absolute; top: 500px; right: 90px; left: 60px; display: flex; flex-direction: column; gap: 60px; font-family: 'Assistant', 'Heebo', sans-serif">
+    <div data-in="16.5" style="display: flex; align-items: center; gap: 44px; height: 300px" dir="rtl">
+      <img src="assets/p/brume.webp" alt="" style="width: 280px; height: 280px; border-radius: 999px; object-fit: cover; border: 3px solid #C28A5A; flex-shrink: 0; position: relative; z-index: 1">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="display: flex; gap: 20px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; color: #3B2E33">05:30</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 50px; color: #6E4A2A">La Brume</span></div>
+        <div style="font-size: 46px; font-weight: 600; color: #3B2E33">מעירים את העור</div>
+        <div style="font-size: 38px; font-weight: 300; color: #6E5A61">ענן של מי טל על פנים נקיות.</div>
+      </div>
+    </div>
+    <div data-in="17.3" style="display: flex; align-items: center; gap: 44px; height: 300px" dir="rtl">
+      <img src="assets/p/reveil.webp" alt="" style="width: 280px; height: 280px; border-radius: 999px; object-fit: cover; border: 3px solid #C28A5A; flex-shrink: 0; position: relative; z-index: 1">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="display: flex; gap: 20px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; color: #3B2E33">06:15</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 50px; color: #6E4A2A">Le Réveil</span></div>
+        <div style="font-size: 46px; font-weight: 600; color: #3B2E33">טיפה אחת</div>
+        <div style="font-size: 38px; font-weight: 300; color: #6E5A61">הסרום נכנס כשהעור עוד לח.</div>
+      </div>
+    </div>
+    <div data-in="18.1" style="display: flex; align-items: center; gap: 44px; height: 300px" dir="rtl">
+      <img src="assets/p/lumiere.webp" alt="" style="width: 280px; height: 280px; border-radius: 999px; object-fit: cover; border: 3px solid #C28A5A; flex-shrink: 0; position: relative; z-index: 1">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="display: flex; gap: 20px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; color: #3B2E33">07:45</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 50px; color: #6E4A2A">La Lumière</span></div>
+        <div style="font-size: 46px; font-weight: 600; color: #3B2E33">חותמים באור</div>
+        <div style="font-size: 38px; font-weight: 300; color: #6E5A61">מה שנכנס בבוקר נשאר עד הערב.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-show="20.5,24.3" style="background: linear-gradient(180deg, #E5C4CB 0%, #F7F0E6 70%)">
+  <div style="position: absolute; top: 170px; left: 70px; right: 70px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 64px; font-weight: 200; line-height: 1.2; color: #3B2E33" dir="rtl">כל מוצר נכנס<br>עם השעה <span style="font-weight: 600">שלו</span>.</div>
+  <div style="position: absolute; top: 470px; left: 90px; right: 90px; box-sizing: border-box; padding: 44px 40px; background: #FBF6EE; border-radius: 36px; box-shadow: 0 40px 100px rgba(59,46,51,.16); display: flex; flex-direction: column; gap: 22px; font-family: 'Assistant', 'Heebo', sans-serif">
+    <div style="display: flex; justify-content: space-between; align-items: baseline" dir="rtl">
+      <span style="font-size: 54px; font-weight: 600; color: #3B2E33">הריטואל שלי</span>
+      <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: #6E4A2A" dir="ltr">Matin 04</span>
+    </div>
+    <div style="height: 2px; background: #C28A5A"></div>
+      <div data-in="21.00" style="display: flex; align-items: center; gap: 30px; padding: 22px 26px; background: #F7F0E6; border-radius: 22px" dir="rtl">
+        <img src="assets/p/brume.webp" alt="" style="width: 150px; height: 150px; border-radius: 18px; object-fit: cover; flex-shrink: 0">
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+          <div style="display: flex; gap: 16px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 54px; color: #3B2E33">05:30</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #6E4A2A">La Brume</span></div>
+          <div style="font-size: 36px; font-weight: 300; color: #6E5A61">מי טל</div>
+        </div>
+      </div>
+      <div data-in="21.45" style="display: flex; align-items: center; gap: 30px; padding: 22px 26px; background: #F7F0E6; border-radius: 22px" dir="rtl">
+        <img src="assets/p/reveil.webp" alt="" style="width: 150px; height: 150px; border-radius: 18px; object-fit: cover; flex-shrink: 0">
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+          <div style="display: flex; gap: 16px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 54px; color: #3B2E33">06:15</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #6E4A2A">Le Réveil</span></div>
+          <div style="font-size: 36px; font-weight: 300; color: #6E5A61">סרום בוקר</div>
+        </div>
+      </div>
+      <div data-in="21.90" style="display: flex; align-items: center; gap: 30px; padding: 22px 26px; background: #F7F0E6; border-radius: 22px" dir="rtl">
+        <img src="assets/p/voile.webp" alt="" style="width: 150px; height: 150px; border-radius: 18px; object-fit: cover; flex-shrink: 0">
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+          <div style="display: flex; gap: 16px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 54px; color: #3B2E33">07:00</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #6E4A2A">Le Voile</span></div>
+          <div style="font-size: 36px; font-weight: 300; color: #6E5A61">קרם עיניים</div>
+        </div>
+      </div>
+      <div data-in="22.35" style="display: flex; align-items: center; gap: 30px; padding: 22px 26px; background: #F7F0E6; border-radius: 22px" dir="rtl">
+        <img src="assets/p/lumiere.webp" alt="" style="width: 150px; height: 150px; border-radius: 18px; object-fit: cover; flex-shrink: 0">
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+          <div style="display: flex; gap: 16px; align-items: baseline" dir="ltr"><span style="font-family: 'Cormorant Garamond', serif; font-size: 54px; color: #3B2E33">07:45</span><span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #6E4A2A">La Lumière</span></div>
+          <div style="font-size: 36px; font-weight: 300; color: #6E5A61">קרם יום</div>
+        </div>
+      </div>
+    <div data-in="22.9" style="margin-top: 10px; padding: 28px; border-radius: 16px; background: #3B2E33; color: #FBF6EE; text-align: center; font-size: 42px; font-weight: 600" dir="rtl">להמשיך את הבוקר</div>
+  </div>
+</section>
+
+<section class="scene" data-show="24.0,27.2">
+  <div class="noon stack"></div>
+  <div style="position: absolute; left: 110px; top: 820px; width: 860px; height: 430px; overflow: hidden">
+    <div style="position: absolute; left: 0; top: 0; width: 860px; height: 860px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C28A5A"></div>
+  </div>
+  <div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(-75deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(-50deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(-25deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(25deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(50deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1250px; width: 0; height: 0; transform: rotate(75deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div>
+  <div style="position: absolute; left: 80px; right: 80px; top: 1249px; height: 3px; background: #C28A5A; border-radius: 999px"></div>
+  <div style="position: absolute; top: 1030px; left: 0; right: 0; height: 170px; font-family: 'Cormorant Garamond', serif; font-size: 170px; line-height: 1; color: #3B2E33; text-align: center" dir="ltr">
+    <div class="t745 stack">07:45</div><div class="t800 stack">08:00</div>
+  </div>
+  <div style="position: absolute; left: 540px; top: 820px; width: 0; height: 0">
+    <div class="evhalo" style="position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 999px; background: rgba(232,180,184,.7)"></div>
+    <div class="evap" style="position: absolute; left: -26px; top: -30px"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; "></div></div>
+  </div>
+  <div style="position: absolute; top: 230px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; color: #3B2E33" dir="rtl">
+    <div data-in="24.3" style="font-size: 80px; font-weight: 200; line-height: 1.15">נעלם עד <span style="font-weight: 600">הצהריים</span>.</div>
+    <div data-in="25.6" style="font-size: 60px; font-weight: 300; line-height: 1.2; color: #6E5A61">מחר ב־06:15 הוא חוזר.</div>
+  </div>
+  <div data-in="25.0" style="position: absolute; top: 1380px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 50px; color: #6E4A2A" dir="ltr">avant 08:00 · chaque matin</div>
+</section>
+
+<section class="scene" data-show="27.0,30" style="background: linear-gradient(180deg, #E5C4CB 0%, #F7F0E6 62%)">
+  <div style="position: absolute; top: 300px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 26px">
+    <div data-in="27.0"><div style="width: 64px; height: 64px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 0 0 16px rgba(232,180,184,.5)"></div></div>
+    <div data-in="27.1" style="margin-top: 26px; font-family: 'Cormorant Garamond', serif; font-size: 120px; letter-spacing: .42em; padding-left: .42em; color: #3B2E33" dir="ltr">ROSÉE°</div>
+    <div data-in="27.2" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 52px; color: #6E4A2A" dir="ltr">Née à l'aube</div>
+  </div>
+  <div data-in="27.6" style="position: absolute; top: 880px; left: 60px; right: 60px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 96px; font-weight: 200; line-height: 1.16; color: #3B2E33" dir="rtl">שבעה בקרים.<br>טיפה <span style="font-weight: 600">אחת</span> בכל אחד.</div>
+  <div data-in="28.1" style="position: absolute; top: 1330px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 24px; font-family: 'Assistant', 'Heebo', sans-serif">
+    <div style="padding: 30px 64px; border-radius: 14px; background: #3B2E33; color: #FBF6EE; font-size: 46px; font-weight: 600" dir="rtl">להתחיל את הבוקר הראשון</div>
+    <div style="font-family: 'Cormorant Garamond', serif; font-size: 44px; letter-spacing: .12em; color: #6E4A2A" dir="ltr">Sept Matins · 06:15</div>
+  </div>
+</section>
+
+<section class="scene" data-show="2.4,4.1" style="background: #E5C4CB">
+  <div style="position: absolute; top: 760px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 30px">
+    <div data-in="2.5" style="font-family: 'Cormorant Garamond', serif; font-size: 132px; letter-spacing: .42em; padding-left: .42em; color: #3B2E33" dir="ltr">ROSÉE°</div>
+    <div class="lgline" style="width: 420px; height: 3px; background: #C28A5A; border-radius: 999px"></div>
+    <div data-in="2.9" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 60px; color: #6E4A2A" dir="ltr">Née à l'aube</div>
+  </div>
+</section>
+
+<div class="hk stack" style="background: linear-gradient(180deg, #E5C4CB 0%, #F7F0E6 88%)">
+  <div style="position: absolute; top: 96px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 34px; letter-spacing: .42em; color: #3B2E33" dir="ltr">ROSÉE°</div>
+  <div style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 92px; line-height: 1.16; font-weight: 200; color: #3B2E33" dir="rtl">מה את עושה<br><span style="font-weight: 600">בדקות</span> שלפני<br>הקפה?</div>
+  <div style="position: absolute; left: 110px; top: 870px; width: 860px; height: 430px; overflow: hidden">
+    <div style="position: absolute; left: 0; top: 0; width: 860px; height: 860px; box-sizing: border-box; border-radius: 999px; border: 3px solid #C28A5A"></div>
+  </div>
+  <div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(-75deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(-50deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(-25deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(25deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(50deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div><div style="position: absolute; left: 540px; top: 1300px; width: 0; height: 0; transform: rotate(75deg)"><div style="position: absolute; left: -6px; top: -436px; width: 12px; height: 12px; border-radius: 999px; background: #C28A5A"></div></div>
+  <div style="position: absolute; left: 80px; right: 80px; top: 1299px; height: 3px; background: #C28A5A; border-radius: 999px"></div>
+  <div style="position: absolute; top: 1080px; left: 0; right: 0; height: 170px; font-family: 'Cormorant Garamond', serif; font-size: 170px; line-height: 1; color: #3B2E33; text-align: center" dir="ltr">
+    <div class="d14 stack">06:14</div><div class="d15 stack">06:15</div>
+  </div>
+  <div style="position: absolute; left: 540px; top: 870px; width: 0; height: 0">
+    <div class="hhalo" style="position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 999px; background: rgba(232,180,184,.7)"></div>
+    <div class="hfall" style="position: absolute; left: -26px; top: -30px">
+      <div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); border: 3px solid #C9878E; box-sizing: border-box; background: rgba(251,246,238,.6); "></div>
+      <div class="hlit" style="position: absolute; inset: 0"><div style="width: 52px; height: 52px; border-radius: 50% 0 50% 50%; transform: rotate(-45deg); background: #C9878E; box-shadow: 0 6px 18px rgba(59,46,51,.18)"></div></div>
+    </div>
+  </div>
+  <div class="hrip" style="position: absolute; left: 400px; top: 1270px; width: 280px; height: 60px; box-sizing: border-box; border-radius: 50%; border: 3px solid #C9878E"></div>
+  <div style="position: absolute; top: 1400px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 14px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 54px; color: #3B2E33" dir="ltr">Sept Matins · Matin 01</div>
+    <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 40px; font-weight: 300; color: #6E5A61" dir="rtl">שבעה בקרים. טיפה אחת בכל אחד.</div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
