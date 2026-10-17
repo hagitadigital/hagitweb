@@ -150,15 +150,20 @@ C = f"""  <section class="scene" data-show="10.3,14.6">
   </section>
 """
 
-# D · La Boîte & Le Lieu
+# D · La Boîte — one box takes the colour of each signature, in the fan's order (box images: Kling, 17.10)
+BOX = [('pistache', 18.3, 19.6), ('fraise', 19.6, 20.9), ('noisette', 20.9, 22.2), ('citron', 22.2, 24.3)]
+boxes = ''.join(f'<div class="stack" data-show="{a},{b}" data-fade="0.3"><img src="kling-out/box-{n}.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; display: block"></div>'
+                for n, a, b in BOX)
+pills = ''.join(f'<div class="stack" data-show="{a + .1:.1f},{b - .15:.2f}" data-fade="0.2" style="display: flex; justify-content: center"><span style="padding: 14px 34px; border-radius: 999px; background: {d[5]}; color: {"#EEE6DA" if d[0] == "noisette" else "#402613"}; font-family: \'Plus Jakarta Sans\', sans-serif; font-size: 26px; font-weight: 500; letter-spacing: .28em" dir="ltr">{d[1]}</span></div>'
+                for (n, a, b), d in zip(BOX, D))
 Dsc = f"""  <section class="scene" data-show="18.3,24.3" style="background: var(--w-bg)">
-    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbD" src="kling-out/pancakerie-boxes-4.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 75% 50%; display: block"></div>
-    <div data-in="19.9" style="position: absolute; top: 870px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img src="{R}brand-storefront.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block"></div>
-    <div style="position: absolute; top: 1560px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center" dir="rtl">
-      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">La Boîte · Le Lieu</div>
-      <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--w-ink)">הצבע יוצא איתך.</div>
-      <div style="font-size: 34px; color: var(--w-ink2)">הקופסה, הכוס והשקית, בצבע של המנה.</div>
+    <div style="position: absolute; top: 220px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">La Boîte</div>
+      <div style="font-size: 72px; font-weight: 600; line-height: 1.15; color: var(--w-ink)">הצבע יוצא איתך.</div>
     </div>
+    <div style="position: absolute; top: 470px; left: 40px; width: 1000px; height: 750px; border-radius: 20px; box-shadow: 0 30px 70px rgba(20,30,45,.16)">{boxes}</div>
+    <div style="position: absolute; top: 1270px; left: 0; right: 0; height: 80px">{pills}</div>
+    <div style="position: absolute; top: 1400px; left: 70px; right: 70px; text-align: center; font-size: 38px; line-height: 1.4; color: var(--w-ink2)" dir="rtl">הקופסה, הכוס והשקית<br>יוצאים בצבע של המנה שבחרת.</div>
   </section>
 """
 
