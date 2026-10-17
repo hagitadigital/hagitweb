@@ -1,0 +1,216 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ORÉVA° · Le Journal des mains · v2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F7F0E6;      /* world background */
+  --w-ink:#3B2E33;     /* world text */
+  --w-accent:#C9878E;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+@keyframes hk{0%{opacity:1}0.000%{opacity:1}10.000%{opacity:1}11.000%{opacity:0}100%{opacity:0}}
+.hk{animation-name:hk}
+@keyframes lgrib{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}10.333%{transform:scaleX(0)}13.000%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.lgrib{animation-name:lgrib}
+@keyframes rbar{0%{opacity:0}0.000%{opacity:0}13.000%{opacity:0}14.333%{opacity:1}100%{opacity:1}}
+.rbar{animation-name:rbar}
+@keyframes rprog{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}28.333%{transform:scaleX(0.000)}30.333%{transform:scaleX(0.250)}43.667%{transform:scaleX(0.250)}45.667%{transform:scaleX(0.500)}55.000%{transform:scaleX(0.500)}57.000%{transform:scaleX(0.750)}69.667%{transform:scaleX(0.750)}71.667%{transform:scaleX(1.000)}100%{transform:scaleX(1.000)}}
+.rprog{animation-name:rprog}
+@keyframes bl0{0%{opacity:0;transform:scale(.4)}0.000%{opacity:0;transform:scale(.4)}14.000%{opacity:0;transform:scale(.4)}14.833%{opacity:1;transform:scale(1.25)}15.667%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+.bl0{animation-name:bl0}
+@keyframes lb0{0%{opacity:.55}0.000%{opacity:.55}14.000%{opacity:.55}15.000%{opacity:1}100%{opacity:1}}
+.lb0{animation-name:lb0}
+@keyframes bl1{0%{opacity:0;transform:scale(.4)}0.000%{opacity:0;transform:scale(.4)}30.000%{opacity:0;transform:scale(.4)}30.833%{opacity:1;transform:scale(1.25)}31.667%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+.bl1{animation-name:bl1}
+@keyframes lb1{0%{opacity:.55}0.000%{opacity:.55}30.000%{opacity:.55}31.000%{opacity:1}100%{opacity:1}}
+.lb1{animation-name:lb1}
+@keyframes bl2{0%{opacity:0;transform:scale(.4)}0.000%{opacity:0;transform:scale(.4)}45.333%{opacity:0;transform:scale(.4)}46.167%{opacity:1;transform:scale(1.25)}47.000%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+.bl2{animation-name:bl2}
+@keyframes lb2{0%{opacity:.55}0.000%{opacity:.55}45.333%{opacity:.55}46.333%{opacity:1}100%{opacity:1}}
+.lb2{animation-name:lb2}
+@keyframes bl3{0%{opacity:0;transform:scale(.4)}0.000%{opacity:0;transform:scale(.4)}56.667%{opacity:0;transform:scale(.4)}57.500%{opacity:1;transform:scale(1.25)}58.333%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+.bl3{animation-name:bl3}
+@keyframes lb3{0%{opacity:.55}0.000%{opacity:.55}56.667%{opacity:.55}57.667%{opacity:1}100%{opacity:1}}
+.lb3{animation-name:lb3}
+@keyframes bl4{0%{opacity:0;transform:scale(.4)}0.000%{opacity:0;transform:scale(.4)}71.333%{opacity:0;transform:scale(.4)}72.167%{opacity:1;transform:scale(1.25)}73.000%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+.bl4{animation-name:bl4}
+@keyframes lb4{0%{opacity:.55}0.000%{opacity:.55}71.333%{opacity:.55}72.333%{opacity:1}100%{opacity:1}}
+.lb4{animation-name:lb4}
+#stage{background:#F6EFE7}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<section class="scene" data-show="4.2,8.6" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/diag/f_%03d.jpg" data-from="1" data-to="53" data-by="1" data-start="4.25" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,0) 1120px, rgba(246,239,231,.9) 1480px, rgba(246,239,231,.97) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div data-in="4.4" style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #3A2E29" dir="ltr">Le soin · 01</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #8F5A3C">· האבחון</span></div>
+    <div data-in="4.55"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 80px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">ארבעים דקות<br><span style="font-weight: 700; color: #8F5A3C">בלי מוצרים.</span></div></div>
+    <div data-in="5.0" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">רק העור שלך, אור טבעי, ושאלות.</div>
+  </div>
+</section>
+<section class="scene" data-show="8.6,13.2" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/bed/f_%03d.jpg" data-from="1" data-to="61" data-by="1" data-start="8.65" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,0) 1120px, rgba(246,239,231,.9) 1480px, rgba(246,239,231,.97) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div data-in="8.8" style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #3A2E29" dir="ltr">Le soin · 02</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #8F5A3C">· המיטה</span></div>
+    <div data-in="8.95"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 80px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">קודם על העור<br><span style="font-weight: 700; color: #8F5A3C">של לקוחות הקליניקה.</span></div></div>
+    <div data-in="9.4" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">חודשים לפני שיש לו שם.</div>
+  </div>
+</section>
+<section class="scene" data-show="13.2,16.6" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/show/f_%03d.jpg" data-from="1" data-to="37" data-by="1" data-start="13.25" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,0) 1120px, rgba(246,239,231,.9) 1480px, rgba(246,239,231,.97) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div data-in="13.4" style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #3A2E29" dir="ltr">Le soin · 03</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #8F5A3C">· ההסבר</span></div>
+    <div data-in="13.55"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 80px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">שתי לחיצות,<br><span style="font-weight: 700; color: #8F5A3C">בטפיחות.</span></div></div>
+    <div data-in="14.0" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">מה, מתי, כמה.</div>
+  </div>
+</section>
+<section class="scene" data-show="16.6,21.0" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/kit/f_%03d.jpg" data-from="1" data-to="53" data-by="1" data-start="16.65" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,0) 1120px, rgba(246,239,231,.9) 1480px, rgba(246,239,231,.97) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div data-in="16.8" style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #3A2E29" dir="ltr">Le soin · 04</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #8F5A3C">· הקופסה</span></div>
+    <div data-in="16.95"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 80px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">שלושה או ארבעה מוצרים,<br><span style="font-weight: 700; color: #8F5A3C">לא שבעה.</span></div></div>
+    <div data-in="17.4" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">ודף אחד בכתב יד.</div>
+  </div>
+</section>
+<section class="scene" data-show="21.0,25.2" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/bottle/f_%03d.jpg" data-from="1" data-to="48" data-by="1" data-start="21.05" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,0) 1120px, rgba(246,239,231,.9) 1480px, rgba(246,239,231,.97) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div data-in="21.2" style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #3A2E29" dir="ltr">Le soin · 05</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #8F5A3C">· הבקבוק</span></div>
+    <div data-in="21.35"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 80px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">ורק אז,<br><span style="font-weight: 700; color: #8F5A3C">הבקבוק.</span></div></div>
+    <div data-in="21.8" style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">זכוכית בגוון סומק, ונחושת בראש.</div>
+  </div>
+</section>
+
+<section class="scene" data-show="25.2,30" style="background: radial-gradient(120% 60% at 80% 0%, #F5DED3 0%, #F6EFE7 58%)">
+  <div data-in="25.4" style="position: absolute; top: 420px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 14px">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-size: 120px; letter-spacing: .3em; padding-left: .3em; color: #3A2E29" dir="ltr">ORÉVA°</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 34px; letter-spacing: .42em; padding-left: .42em; color: #8F5A3C" dir="ltr">SKIN STUDIO</div>
+  </div>
+  <div data-in="25.8" style="position: absolute; top: 820px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 20px">
+    <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 84px; line-height: 1.12; font-weight: 500; color: #3A2E29; text-align: center" dir="rtl">כל מוצר בליין יצא<br><span style="font-weight: 700; color: #8F5A3C">קודם מהידיים שלי.</span></div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 46px; color: #6E5E55" dir="ltr">Or Éva</div>
+  </div>
+  <div data-in="26.6" style="position: absolute; top: 1330px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 22px">
+    <div style="padding: 30px 70px; border-radius: 14px; background: #3A2E29; color: #F6EFE7; font-family: 'Heebo', sans-serif; font-size: 46px; font-weight: 500" dir="rtl">לקבוע אבחון</div>
+    <div style="font-family: 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6E5E55" dir="rtl">ארבעים דקות · בלי מוצרים · רק העור שלך</div>
+  </div>
+</section>
+
+<div class="rbar stack" style="pointer-events: none">
+  <div style="position: absolute; left: 0; right: 0; top: 0; height: 330px; background: linear-gradient(180deg, rgba(246,239,231,.94) 0px, rgba(246,239,231,.8) 170px, rgba(246,239,231,0) 330px)"></div>
+  <div style="position: absolute; left: 80px; width: 920px; top: 149px; height: 3px; background: rgba(184,122,87,.35)"></div>
+  <div class="rprog" style="position: absolute; left: 80px; width: 920px; top: 148px; height: 5px; background: #B87A57; transform-origin: right"></div>
+  
+    <div style="position: absolute; left: 987px; top: 137px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B87A57; box-sizing: border-box; background: #F6EFE7"></div>
+    <div class="bl0" style="position: absolute; left: 985px; top: 135px"><span style="display: block; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+    <div class="lb0" style="position: absolute; left: 910px; width: 180px; top: 178px; text-align: center; font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 500; color: #3A2E29" dir="rtl">האבחון</div>
+    <div style="position: absolute; left: 757px; top: 137px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B87A57; box-sizing: border-box; background: #F6EFE7"></div>
+    <div class="bl1" style="position: absolute; left: 755px; top: 135px"><span style="display: block; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+    <div class="lb1" style="position: absolute; left: 680px; width: 180px; top: 178px; text-align: center; font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 500; color: #3A2E29" dir="rtl">המיטה</div>
+    <div style="position: absolute; left: 527px; top: 137px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B87A57; box-sizing: border-box; background: #F6EFE7"></div>
+    <div class="bl2" style="position: absolute; left: 525px; top: 135px"><span style="display: block; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+    <div class="lb2" style="position: absolute; left: 450px; width: 180px; top: 178px; text-align: center; font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 500; color: #3A2E29" dir="rtl">ההסבר</div>
+    <div style="position: absolute; left: 297px; top: 137px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B87A57; box-sizing: border-box; background: #F6EFE7"></div>
+    <div class="bl3" style="position: absolute; left: 295px; top: 135px"><span style="display: block; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+    <div class="lb3" style="position: absolute; left: 220px; width: 180px; top: 178px; text-align: center; font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 500; color: #3A2E29" dir="rtl">הקופסה</div>
+    <div style="position: absolute; left: 67px; top: 137px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #B87A57; box-sizing: border-box; background: #F6EFE7"></div>
+    <div class="bl4" style="position: absolute; left: 65px; top: 135px"><span style="display: block; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+    <div class="lb4" style="position: absolute; left: -10px; width: 180px; top: 178px; text-align: center; font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 500; color: #3A2E29" dir="rtl">הבקבוק</div>
+</div>
+
+<section class="scene" data-show="3.0,4.2" style="background: #F6EFE7">
+  <div style="position: absolute; top: 790px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-size: 136px; letter-spacing: .3em; padding-left: .3em; color: #3A2E29" dir="ltr">ORÉVA°</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 38px; letter-spacing: .42em; padding-left: .42em; color: #8F5A3C" dir="ltr">SKIN STUDIO</div>
+  </div>
+  <div style="position: absolute; left: 160px; right: 160px; top: 1130px; height: 0">
+    <div class="lgrib" style="position: absolute; left: 0; right: 0; height: 4px; background: #B87A57; transform-origin: right"></div>
+    <div style="position: absolute; left: -14px; top: -12px"><span style="display: block; width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span></div>
+  </div>
+  <div style="position: absolute; top: 1210px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 52px; color: #3A2E29" dir="ltr">Le Journal des mains</div>
+</section>
+
+<div class="hk stack" style="background: #F6EFE7">
+  <div class="stack" data-seq="seq2/hand/f_%03d.jpg" data-from="1" data-to="40" data-by="1" data-start="0" data-step="0.0833" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(246,239,231,.95) 0px, rgba(246,239,231,.82) 300px, rgba(246,239,231,0) 540px)"></div>
+  <div style="position: absolute; top: 80px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px" dir="rtl">
+    <div style="display: flex; align-items: center; gap: 14px"><span style="display: block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F6DCC9, #B87A57 55%, #6E4128); "></span><span style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-size: 38px; letter-spacing: .3em; color: #3A2E29" dir="ltr">ORÉVA°</span></div>
+    <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 92px; line-height: 1.12; font-weight: 500; color: #3A2E29; " dir="rtl">מאיפה הסרום<br><span style="font-weight: 700; color: #8F5A3C">שלך הגיע?</span></div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
