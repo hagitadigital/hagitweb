@@ -360,6 +360,12 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .boite .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,56px);align-items:center;margin-top:clamp(28px,4vh,44px)}
   .boite .still{border-radius:28px;overflow:hidden;border:1px solid var(--rule);background:var(--sable)}
   .boite .still img{width:100%;height:auto;aspect-ratio:1672/941;object-fit:cover}
+  /* La Boîte: the box photo follows the chosen dish (setWorld) or the picker below it */
+  .boite .boxes{position:relative;aspect-ratio:1448/1086}
+  .boite .boxes picture{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease)}
+  .boite .boxes picture.on{opacity:1}
+  .boite .boxes img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;display:block}
+  .boxpick{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .boite .txt{display:grid;gap:14px}
   .boite .txt h3{font-size:clamp(24px,2.6vw,36px);font-weight:700;line-height:1.15}
   .boite .txt p{color:var(--muted);max-width:44ch}
@@ -757,11 +763,31 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       <p class="it">המארז בצבע המנה. הפנקייק בתא שלו, הקרם והפרי בנפרד, מרכיבים בבית.</p>
     </div>
     <div class="grid">
-      <div class="still">
-        <picture>
-          <source media="(max-width:700px)" srcset="assets/brand-takeaway-m.webp">
-          <img src="assets/brand-takeaway.webp" alt="סט טייק-אוויי של Pancakerie: כוס וקופסה במרווה, קופסה ורודה ושקית נייר קרם על דלפק שיש" width="1672" height="941" loading="lazy">
+      <div>
+        <div class="still boxes" id="boxStill">
+        <picture data-box="pistache" class="on">
+          <source media="(max-width:700px)" srcset="assets/box-pistache-m.webp">
+          <img src="assets/box-pistache.webp" alt="מארז טייק-אוויי של Pancakerie בצבע מרווה, פתוח עם פנקייקים, פירות וקרם, ליד שקית נייר קרם" width="1448" height="1086" loading="lazy">
         </picture>
+        <picture data-box="fraise">
+          <source media="(max-width:700px)" srcset="assets/box-fraise-m.webp">
+          <img src="assets/box-fraise.webp" alt="מארז טייק-אוויי של Pancakerie בצבע ורודה, פתוח עם פנקייקים, פירות וקרם, ליד שקית נייר קרם" width="1448" height="1086" loading="lazy">
+        </picture>
+        <picture data-box="noisette">
+          <source media="(max-width:700px)" srcset="assets/box-noisette-m.webp">
+          <img src="assets/box-noisette.webp" alt="מארז טייק-אוויי של Pancakerie בצבע חומה, פתוח עם פנקייקים, פירות וקרם, ליד שקית נייר קרם" width="1448" height="1086" loading="lazy">
+        </picture>
+        <picture data-box="citron">
+          <source media="(max-width:700px)" srcset="assets/box-citron-m.webp">
+          <img src="assets/box-citron.webp" alt="מארז טייק-אוויי של Pancakerie בצבע צהובה, פתוח עם פנקייקים, פירות וקרם, ליד שקית נייר קרם" width="1448" height="1086" loading="lazy">
+        </picture>
+        </div>
+        <div class="boxpick" role="group" aria-label="צבע המארז">
+          <button class="chip c" type="button" data-box="0" aria-pressed="true" style="--c:#A5A57F;--on:#402613"><i></i>פיסטוק</button>
+          <button class="chip c" type="button" data-box="1" aria-pressed="false" style="--c:#D39483;--on:#402613"><i></i>תות</button>
+          <button class="chip c" type="button" data-box="2" aria-pressed="false" style="--c:#523726;--on:#EEE6DA"><i></i>אגוזי לוז</button>
+          <button class="chip c" type="button" data-box="3" aria-pressed="false" style="--c:#EEC376;--on:#402613"><i></i>לימון</button>
+        </div>
       </div>
       <div class="txt">
         <h3>שלושה תאים. שלושה שלבים.</h3>
@@ -931,7 +957,14 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   $$("a", mobileNav).forEach(function(a){ a.addEventListener("click", function(){ mobileNav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }); });
 
   /* ---------- world tokens ---------- */
+  var boxPics = $$("#boxStill picture"), boxBtns = $$(".boxpick .chip");
+  function showBox(key){
+    boxPics.forEach(function(p){ p.classList.toggle("on", p.dataset.box === key); });
+    boxBtns.forEach(function(b){ b.setAttribute("aria-pressed", String(WORLDS[+b.dataset.box].key === key)); });
+  }
+  boxBtns.forEach(function(b){ b.addEventListener("click", function(){ setWorld(WORLDS[+b.dataset.box]); }); });
   function setWorld(w){
+    showBox(w.key);
     root.style.setProperty("--world-light", w.light);
     root.style.setProperty("--world-mid", w.mid);
     root.style.setProperty("--world-deep", w.deep);
