@@ -243,6 +243,83 @@ section{padding:clamp(72px,10vw,140px) 0}
 .next-test p{color:var(--muted);font-size:.95rem}
 @media (max-width:900px){.dirs,.next-test{grid-template-columns:1fr}.next-test div{border-inline-start:0;padding-inline:0;border-bottom:1px solid rgba(184,149,90,.35);padding-bottom:18px}}
 
+
+/* the world continues: articles, campaign, ads, the same-brief test */
+.cont{background:var(--paper)}
+.c-sub{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:clamp(56px,7vw,96px) 0 26px;padding-top:22px;border-top:1px solid var(--gold-line)}
+.c-sub .stamp{color:var(--gold-text);font-size:1rem}
+.c-sub h3{font-family:var(--heb);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.2}
+.c-sub p{flex-basis:100%;color:var(--muted);max-width:720px}
+.c-arts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.c-art{background:var(--stone);display:flex;flex-direction:column}
+.c-art .band{color:var(--on-dark);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.c-art .band .stamp{font-size:1.15rem;color:var(--gold-on-hour);letter-spacing:.3em}
+.c-art .band i{font-family:var(--serif);font-size:1.1rem}
+.c-art .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.c-art h4{font-family:var(--heb);font-weight:500;font-size:1.4rem;line-height:1.3}
+.c-art .q{font-size:.88rem;color:var(--gold-text);font-weight:500}
+.c-art .a{color:var(--muted);font-size:.98rem}
+.c-art .open{margin-top:auto;padding-top:12px;border-top:1px solid var(--gold-line);font-family:var(--heb);font-size:1.1rem}
+@media (max-width:760px){.c-arts{grid-template-columns:1fr}}
+.c-camp{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px}
+.c-card{background:var(--h00);color:var(--on-dark);padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;gap:18px}
+.c-card i.fr{font-family:var(--serif);font-size:1.6rem;color:var(--gold)}
+.c-card h4{font-family:var(--heb);font-weight:500;font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1.06}
+.c-card p{color:rgba(246,238,228,.84)}
+.c-card .cert{margin-top:auto;border:1px solid var(--gold);padding:20px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.c-card .cert .stamp{font-size:2rem;color:var(--gold-on-hour);letter-spacing:.3em}
+.c-card .cert small{font-size:.86rem;opacity:.85}
+.c-steps{display:flex;flex-direction:column;gap:12px}
+.c-step{background:var(--stone);padding:18px 22px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 20px;align-items:start}
+.c-step .pill{display:inline-block;color:var(--on-dark);padding:4px 12px;font-size:1rem;letter-spacing:.14em}
+.c-step .fmt{display:block;font-size:.86rem;color:var(--gold-text);font-weight:500;margin-bottom:6px}
+.c-step b{font-family:var(--heb);font-weight:500;font-size:1.25rem}
+.c-step p{font-size:.96rem;color:var(--muted)}
+.c-step .chips{grid-column:2}
+@media (max-width:900px){.c-camp{grid-template-columns:1fr}}
+@media (max-width:480px){.c-step{grid-template-columns:1fr}.c-step .chips{grid-column:1}}
+.c-ads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.c-ads figure{display:flex;flex-direction:column;gap:12px}
+.c-ad{aspect-ratio:4/5;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 40px rgba(30,15,14,.14)}
+.c-ad .t{font-family:var(--heb);font-weight:500;line-height:1.25;font-size:clamp(1.3rem,2.2vw,1.7rem)}
+.c-ad1{background:var(--stone);padding:16px}
+.c-ad1 .in{flex:1;outline:1px solid var(--gold-line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:18px}
+.c-ad1 .stamp.big{font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:.28em;color:var(--ink)}
+.c-ad1 small{font-size:.86rem;color:var(--gold-text)}
+.c-ad2{background:var(--h06);color:var(--on-dark);align-items:center;justify-content:center;text-align:center;gap:16px;padding:24px}
+.c-ad2 i.fr{font-family:var(--serif);font-size:1.3rem;color:var(--gold-on-hour)}
+.c-ad2 .stamp{color:var(--gold-on-hour);font-size:.95rem;letter-spacing:.3em}
+.c-ad3{background:var(--h18);color:var(--on-dark)}
+.c-ad3 img{width:100%;height:58%;object-fit:cover}
+.c-ad3 .tx{flex:1;border-top:2px solid var(--gold);padding:18px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.c-ad3 .row{display:flex;justify-content:space-between;align-items:baseline}
+.c-ad3 .stamp{color:var(--gold-on-hour);font-size:1.05rem;letter-spacing:.3em}
+.c-ad3 i.fr{font-family:var(--serif);font-size:1.1rem}
+.c-ads figcaption{font-size:.95rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+@media (max-width:900px){.c-ads{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+.c-reel{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:start}
+.c-reel video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--h00);box-shadow:0 24px 60px rgba(30,15,14,.18)}
+.c-scenes{display:flex;flex-direction:column}
+.c-scenes div{display:grid;grid-template-columns:86px 140px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid rgba(184,149,90,.5);font-size:.98rem}
+.c-scenes div.sig{background:rgba(217,178,106,.18)}
+.c-scenes .stamp{color:var(--ink);font-size:1rem;text-align:right}
+.c-scenes b{font-family:var(--heb);font-weight:500}
+.c-scenes span:last-child{color:var(--muted)}
+@media (max-width:860px){.c-reel{grid-template-columns:1fr}.c-reel video{max-width:340px;margin-inline:auto}}
+@media (max-width:520px){.c-scenes div{grid-template-columns:72px minmax(0,1fr)}.c-scenes div span:last-child{grid-column:1/-1}}
+.c-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px}
+.c-vs figure{display:flex;flex-direction:column;gap:12px}
+.c-post{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:24px}
+.c-post.gen{background:#E4E2DE;color:#3F3F3F;font-family:Arial,'Heebo',sans-serif}
+.c-post.gen i{width:34%;aspect-ratio:1;background:#CFCCC7;border-radius:12px;display:block}
+.c-post.gen b{font-size:1.6rem;font-weight:700}
+.c-post.gen span.buy{font-size:.95rem;background:#BDBAB4;color:#2E2E2E;padding:6px 16px;border-radius:6px}
+.c-post.ours{background:var(--h00);color:var(--on-dark);outline:1px solid var(--gold);outline-offset:-14px}
+.c-post.ours .stamp.big{font-size:clamp(2rem,4vw,2.8rem);letter-spacing:.3em;color:var(--gold-on-hour)}
+.c-post.ours i.fr{font-family:var(--serif);font-size:1.2rem;color:var(--gold-on-hour)}
+.c-vs figcaption{font-size:.95rem;color:var(--muted)}
+.c-vs figcaption b{color:var(--ink);font-weight:500}
+@media (max-width:560px){.c-vs{grid-template-columns:1fr}}
 /* close */
 .close{background:var(--h18);color:var(--on-dark);text-align:center}
 .close .wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
@@ -267,9 +344,9 @@ footer.studio a{color:var(--gold)}
     <a href="./">← חזרה לעולם <span class="ltr">ENCORE°</span></a>
     <nav aria-label="ספר המותג">
       <a href="#codes">הקודים</a>
-      <a href="#hours">השעות</a>
       <a href="#cover">מבחן הכיסוי</a>
       <a href="#touchpoints">נקודות מגע</a>
+      <a href="#continues">העולם ממשיך</a>
     </nav>
   </div>
 </header>
@@ -491,6 +568,77 @@ footer.studio a{color:var(--gold)}
       <div><span class="yes">כן</span><b>הלילה תמיד למעלה.</b><p>החוגה לא מסתובבת. השקיעה משמאל, השחר מימין.</p><span class="no">לא</span><p>חוגה מסובבת כדי "שיתאים לעיצוב".</p></div>
       <div><span class="yes">כן</span><b>זהב הוא קו.</b><p>הטבעה דקה, מסגרת, שנתות.</p><span class="no">לא</span><p>רקע מלא של זהב מבריק.</p></div>
       <div><span class="yes">כן</span><b class="ltr" style="text-align:right">18:00</b><p>פורמט של 24 שעות הוא חלק מהחותמת.</p><span class="no">לא</span><p class="ltr" style="text-align:right">6 PM</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cont" id="continues" aria-labelledby="cont-title">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">העולם ממשיך · <span class="ltr" lang="fr">Le Monde continue</span></p>
+      <h2 class="sec" id="cont-title">שעה אחת. כל פיסת תוכן.</h2>
+      <p class="lead">העולם לא נגמר באתר. אותה החלטה כותבת את המאמרים, את הקמפיין ואת המודעות. לפני כל פיסה שואלים: איזו שעה זו? ואחריה בודקים: מכסים את השם, ונשארים לפחות שלושה קודים.</p>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">01</span><h3>ארבעה מאמרים. ארבע שעות.</h3><p>כל מאמר עונה על חיפוש אמיתי וקורה בשעה אחת בלבד. הצבע של המאמר הוא הצבע של השעה, והשעה מופיעה לפני הכותרת.</p></div>
+    <div class="c-arts">
+      <article class="c-art rv"><div class="band" style="background:var(--h06)"><span class="stamp">06:00</span><i lang="fr">Bague de l'aube</i></div><div class="body"><h4>הטבעת הראשונה של הבוקר: איך בוחרים טבעת ליום יום</h4><span class="q">חיפוש: טבעת זהב ליום יום · איך לבחור טבעת</span><p class="a">התכשיט הראשון שעונדים הוא החלטה, לא אביזר. מה עובר מקלחת, מקלדת וכוס קפה.</p><p class="open">״הדבר הראשון שאת עונדת בבוקר נשאר איתך עד הלילה.״</p></div></article>
+      <article class="c-art rv"><div class="band" style="background:var(--h12)"><span class="stamp">12:00</span><i lang="fr">Collier de midi</i></div><div class="body"><h4>שרשרת שעוברת פגישה, ארוחה וטלפון בלי להוריד</h4><span class="q">חיפוש: שרשרת לעבודה · שרשרת עדינה לכל יום</span><p class="a">אורך, משקל וסוגר, נבדקים מול שעה אחת של צהריים, לא מול תמונה בסטודיו.</p><p class="open">״בצהריים אף אחד לא מתלבש מחדש. מה שענדת, נשאר.״</p></div></article>
+      <article class="c-art rv"><div class="band" style="background:var(--h18)"><span class="stamp">18:00</span><i lang="fr">Bracelet du soir</i></div><div class="body"><h4>צמיד שזוכר איפה היית: מתנה שיש בה שעה</h4><span class="q">חיפוש: צמיד מתנה עם משמעות · חריטה על צמיד</span><p class="a">לא חורטים שם. חורטים את השעה שבה זה קרה, בפורמט של 24 שעות.</p><p class="open">״יש רגעים שאת זוכרת בדיוק את השעה שלהם.״</p></div></article>
+      <article class="c-art rv"><div class="band" style="background:var(--h00)"><span class="stamp">00:00</span><i lang="fr">Boucles de minuit</i></div><div class="body"><h4>העגילים שנשארים כשמורידים את כל השאר</h4><span class="q">חיפוש: עגילים שאפשר לישון איתם · עגילים צמודים</span><p class="a">התכשיט היחיד שעובר את הלילה. נוחות, סגירה, וזהב שלא מגרד.</p><p class="open">״כשהיום נגמר, את נשארת. וגם הם.״</p></div></article>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">02</span><h3>קמפיין: השעה הראשונה.</h3><p>הכיוון <span class="ltr" lang="fr">Le Certificat</span> מהסעיף הקודם, כשהוא יוצא לעולם. הקמפיין לא חוזר על ההבטחה. הוא מוכיח אותה.</p></div>
+    <div class="c-camp">
+      <div class="c-card rv">
+        <i class="fr" lang="fr">La Première Heure</i>
+        <h4>השעה<br>הראשונה.</h4>
+        <p>כל תכשיט שנמכר מקבל תעודה. היא לא רושמת רק תאריך, היא רושמת את השעה שבה ענדת אותו לראשונה. מהרגע הזה התכשיט שייך לשעה שלך.</p>
+        <div class="cert"><span class="wm" style="font-size:1rem">ENCORE°</span><small>תעודת שעה · נענד לראשונה</small><span class="stamp">06:14</span></div>
+      </div>
+      <div class="c-steps">
+        <div class="c-step rv"><div><span class="fmt">01 · ריל 9:16</span><span class="pill stamp" style="background:var(--h06)">06:00</span></div><div><b>באיזו שעה ענדת אותו לראשונה?</b><p>פריים 0: השאלה, ומתחתיה התעודה עם <span class="ltr">06:14</span>. יד נועלת טבעת, ורבע השחר נדלק.</p></div><div class="chips"><span>חותמת השעה</span><span>סימן השעה</span><span>שחר</span></div></div>
+        <div class="c-step rv"><div><span class="fmt">02 · קרוסלה 4:5</span><span class="pill stamp" style="background:var(--h12)">12:00</span></div><div><b>ארבע שעות, ארבע תעודות.</b><p>שקף לכל שעה, משטח אחד בצבע אחד. קו הזהב עובר בין השקפים כמו מחוג.</p></div><div class="chips"><span>קו הזהב</span><span>חותמת השעה</span></div></div>
+        <div class="c-step rv"><div><span class="fmt">03 · ריטרגט</span><span class="pill stamp" style="background:var(--h18)">18:00</span></div><div><b>הצמיד שראית עוד מחכה לשעה שלו.</b><p>למי שצפתה בריל. עולה בשקיעה בלבד, עם הצמיד שבו נעצרה, ובלי מחיר בפתיח.</p></div><div class="chips"><span>שקיעה</span><span>חותמת השעה</span><span>המעלה</span></div></div>
+        <div class="c-step rv"><div><span class="fmt">04 · שנה אחרי</span><span class="pill stamp" style="background:var(--h00)">00:00</span></div><div><b>שנה בדיוק. <span class="ltr">06:14</span>.</b><p>הודעה אישית באותה שעה שבתעודה, עם הזמנה לליטוש. הקמפיין ממשיך לבד, כמו הכיוון <span class="ltr" lang="fr">L'Anniversaire</span>.</p></div><div class="chips"><span>חותמת השעה</span><span>סימן השעה</span><span>קו הזהב</span></div></div>
+      </div>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">03</span><h3>שלוש מודעות. משטח אחד, שעה אחת.</h3><p>מתחת לכל מודעה: הקודים שעושים את העבודה, ומה נשאר כשמכסים את השם.</p></div>
+    <div class="c-ads">
+      <figure class="rv">
+        <div class="c-ad c-ad1"><div class="in"><span class="ltr" lang="fr" style="font-family:var(--serif);font-size:.95rem;letter-spacing:.24em;color:var(--gold-text)">La Première Heure</span><p class="t">באיזו שעה ענדת<br>אותו לראשונה?</p><span style="width:56px;height:1px;background:var(--gold-line)"></span><small>תעודת שעה · נענד לראשונה</small><span class="stamp big">06:14</span><span class="wm" style="font-size:.9rem;margin-top:6px">ENCORE°</span></div></div>
+        <figcaption><div class="chips"><span>חותמת השעה</span><span>קו הזהב</span><span>המעלה</span></div>בלי השם: מסגרת זהב דקה ושעה בריווח רחב.</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="c-ad c-ad2"><span class="stamp">06:00 · שחר</span><span class="d" data-mark="1" style="width:120px;height:120px"></span><p class="t">הדבר הראשון<br>שאת עונדת בבוקר.</p><i class="fr" lang="fr">Bague de l'aube</i></div>
+        <figcaption><div class="chips"><span>שחר</span><span>סימן השעה</span><span>חותמת השעה</span></div>בלי השם: רבע אחד מואר. שעה, ולא מוצר.</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="c-ad c-ad3"><img src="assets/touchpoints/bag-street.webp" width="900" height="1125" loading="lazy" alt="שקית של ENCORE° בצבע השקיעה ברחוב, באור של סוף היום"><div class="tx"><p class="t">כשהיום נגמר,<br>את נשארת.</p><div class="row"><span class="stamp">18:00</span><i class="fr" lang="fr">Bracelet du soir</i></div></div></div>
+        <figcaption><div class="chips"><span>שקיעה</span><span>חותמת השעה</span><span>קו הזהב</span></div>בלי השם: השקית בצבע השעה, והשעה מתחת לשם. ריטרגט לשלב 03.</figcaption>
+      </figure>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">04</span><h3>הריל. השעה נחתמת.</h3><p>30 שניות על רגע אחד: השרשרת נוחתת על הצוואר, והשעה נרשמת. שרשרת שייכת לצהריים, ולכן התעודה שלה היא <span class="ltr">12:14</span> בצבע הצהריים.</p></div>
+    <div class="c-reel">
+      <video class="rv" src="premiere-heure.mp4" poster="premiere-heure.webp" width="1080" height="1920" controls muted playsinline loop preload="none" aria-label="ריל La Première Heure של ENCORE°, 30 שניות"></video>
+      <div class="c-scenes rv">
+        <div><span class="stamp">0–2.5</span><b>הוק</b><span>״באיזו שעה ענדת אותו לראשונה?״ מעל השרשרת שמרחפת, והתעודה עוד ריקה.</span></div>
+        <div><span class="stamp">2.5–4</span><b>הסימן</b><span>החוגה, <span class="ltr">ENCORE°</span> בזהב ו־<span class="ltr" lang="fr">La Première Heure</span> על צבע הלילה.</span></div>
+        <div class="sig"><span class="stamp">4–10</span><b>החותמת</b><span>השרשרת נוחתת על הצוואר, השעון מתגלגל ל־<span class="ltr">12:14</span> ורבע הצהריים נדלק. התעודה נחתמת: <span class="ltr" lang="fr">Collier de midi</span>.</span></div>
+        <div><span class="stamp">10–15</span><b>ארבע תעודות</b><span>לכל שעה התכשיט שלה: טבעת, שרשרת, צמיד ועגילים, כל אחת בצבע השעה שלה.</span></div>
+        <div><span class="stamp">15–19</span><b>18:00</b><span>הצמיד והתווית בשקיעה. הצמיד שראית עוד מחכה לשעה שלו.</span></div>
+        <div><span class="stamp">19–24</span><b>שנה אחרי</b><span>הקופסה עם התאריך על המכסה. שנה בדיוק, אותה שעה.</span></div>
+        <div><span class="stamp">24–27</span><b>השלט</b><span>החוגה ברחוב. השעה היא הלוגו.</span></div>
+        <div><span class="stamp">27–30</span><b>הסגירה</b><span>״רשמנו את השעה שבה ענדת אותו לראשונה.״ ולבחור את השעה שלך.</span></div>
+      </div>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">05</span><h3>אותה בקשה. שני מותגים.</h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
+    <div class="c-vs">
+      <figure class="rv"><div class="c-post gen" aria-label="פוסט גנרי: מבצע סוף שנה, 20% הנחה"><i></i><b>מבצע סוף שנה!</b><span>20% הנחה על כל הקולקציה</span><span class="buy">לקנייה עכשיו</span></div><figcaption><b>בלי עולם.</b> אין שעה ואין קו זהב. נשאר רק המחיר, ולכן משווים.</figcaption></figure>
+      <figure class="rv"><div class="c-post ours"><span class="stamp big">00:00</span><span style="width:48px;height:1px;background:var(--gold)"></span><p class="t" style="font-family:var(--heb);font-size:clamp(1.4rem,2.6vw,1.8rem);line-height:1.3">השנה מתחלפת.<br>העגילים נשארים.</p><i class="fr" lang="fr">Boucles de minuit</i></div><figcaption><b>מתוך העולם.</b> חצות, צבע הלילה, קו זהב ושם בצרפתית. סוף השנה הוא שעה, לא הנחה.</figcaption></figure>
     </div>
   </div>
 </section>
