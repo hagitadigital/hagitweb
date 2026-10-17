@@ -110,6 +110,7 @@ css = f"""
 .s-l1{{animation-name:sl1}}@keyframes sl1{{0%,{p(15.4)}{{transform:translateY(110%)}}{p(15.9)},100%{{transform:none}}}}
 .s-l2{{animation-name:sl2}}@keyframes sl2{{0%,{p(15.7)}{{transform:translateY(110%)}}{p(16.2)},100%{{transform:none}}}}
 {''.join('.lift%d{{animation-name:lift%d}}@keyframes lift%d{{0%,{a}{{transform:none}}{b}{{transform:translateY(-34px)}}{c},100%{{transform:none}}}}'.format(i, i, i, a=p(20.6 + i * .5), b=p(20.9 + i * .5), c=p(21.3 + i * .5)) for i in range(5))}
+.ntile img{{border-radius:20px}}
 .w-push{{animation-name:wpush}}@keyframes wpush{{0%,{p(22.7)}{{transform:scale(1.1) rotate(-4deg)}}100%{{transform:none}}}}
 .w-l1{{animation-name:wl1}}@keyframes wl1{{0%,{p(23.3)}{{transform:translateY(110%)}}{p(23.9)},100%{{transform:none}}}}
 .w-l2{{animation-name:wl2}}@keyframes wl2{{0%,{p(23.7)}{{transform:translateY(110%)}}{p(24.3)},100%{{transform:none}}}}
@@ -158,20 +159,16 @@ B = f"""<section class="scene" data-show="9.7,15.6">
 
 CR = .4505
 C = f"""<section class="scene" data-show="15.3,19.6">
-    <div class="stack" style="background-color: {FL[4][3]}"></div>
+    <div class="stack" style="background: #F3E6D3"></div>
+    <div class="ntile" style="position: absolute; left: 215px; top: 470px; width: 650px; height: 1156px; border-radius: 20px; box-shadow: 0 30px 70px rgba(31,42,31,.18)"><div class="stack" data-seq="f/n_%03d.jpg" data-from="1" data-to="51" data-start="15.4" data-step="0.078" data-pos="50% 50%"></div></div>
     <div style="position: absolute; top: 200px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
       <div data-in="15.3" style="{K}; margin-bottom: 8px" dir="ltr">Les suppléments</div>
       <span class="mask"><span class="s-l1" style="display: block; {H}; font-size: 72px; font-weight: 300; line-height: 1.15; color: {INK}">אותה כוס.</span></span>
       <span class="mask"><span class="s-l2" style="display: block; {H}; font-size: 72px; font-weight: 600; line-height: 1.15; color: {MATCHA}">שם משלו.</span></span>
     </div>
-    <div style="position: absolute; left: {GX}px; top: {GY}px; width: {GW}px; height: {GH}px; border-radius: {GW // 2}px {GW // 2}px 26px 26px; overflow: hidden; background: {BG}; box-shadow: 0 30px 70px rgba(31,42,31,.18)">
-      {glass('bleu')}
-      <img class="choco" src="{R}chasen/img/layer_choco.webp" alt="" style="position: absolute; left: {178 * CR:.1f}px; top: {532 * CR:.1f}px; width: {512 * CR:.1f}px; height: {1169 * CR:.1f}px">
-      <img class="cream" src="{R}chasen/img/layer_cream.webp" alt="" style="position: absolute; left: {149 * CR:.1f}px; top: {159 * CR:.1f}px; width: {552 * CR:.1f}px; height: {719 * CR:.1f}px">
-    </div>
-    <div class="card" style="position: absolute; left: 250px; top: 1560px; width: 580px; box-sizing: border-box; padding: 26px 34px; background: #FBF6EC; border: 2px solid {MATCHA}; border-radius: 18px; box-shadow: 0 24px 50px rgba(31,42,31,.2); display: flex; flex-direction: column; align-items: center; gap: 6px">
+    <div class="card" style="position: absolute; left: 220px; top: 1580px; width: 640px; box-sizing: border-box; padding: 26px 34px; background: #FBF6EC; border: 2px solid {MATCHA}; border-radius: 18px; box-shadow: 0 24px 50px rgba(31,42,31,.2); display: flex; flex-direction: column; align-items: center; gap: 6px">
       <div style="font-family: 'Assistant', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .3em; color: {MATCHA}" dir="ltr">CHASEN° · N°22</div>
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 58px; line-height: 1; color: {INK}" dir="ltr">Bleu · Crème · Cacao</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; line-height: 1; color: {INK}" dir="ltr">Classique · Crème · Cacao</div>
       <div style="{H}; font-size: 28px; font-weight: 300; color: #4A5642" dir="rtl">זה הכרטיס שהמשקה שלך מקבל בבר.</div>
     </div>
   </section>"""
