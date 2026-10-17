@@ -270,18 +270,11 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     position:relative;width:min(560px,82vw);margin:44px auto 0;
   }
   .bowl-wrap img.bowl{width:100%;border-radius:8px}
-  #landed-scoop{
-    position:absolute;left:50.5%;top:47.5%;width:23%;
-    transform:translate(-50%,-50%);
-    opacity:0;pointer-events:none;
-    filter:drop-shadow(0 8px 16px rgba(0,0,0,.65));
+  #coupe-splash,#coupe-end{
+    position:absolute;inset:0;width:100%;height:100%;border-radius:8px;
+    object-fit:cover;opacity:0;pointer-events:none;
   }
-  #splash{
-    position:absolute;left:50.5%;top:47.5%;width:30%;aspect-ratio:1;
-    transform:translate(-50%,-50%) scale(.2);
-    border:3px solid rgba(240,227,206,.75);border-radius:50%;
-    opacity:0;pointer-events:none;
-  }
+  @media (prefers-reduced-motion:reduce){#coupe-end{opacity:1}#fall-scoop{display:none}}
   .flavors{
     display:flex;justify-content:center;gap:clamp(14px,3vw,34px);
     margin-top:30px;flex-wrap:wrap;
@@ -615,18 +608,18 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- falling scoop (travels hero → coupe) -->
-<img width="800" height="787" id="fall-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
+<img width="320" height="320" id="fall-scoop" src="assets/coupe/ball.webp" alt="" aria-hidden="true">
 
 <!-- ======================= 01 · LA COUPE ======================= -->
 <section class="chapter" id="coupe">
   <div class="num reveal">01</div>
   <p class="ch-tag reveal">La Coupe</p>
   <h2 class="ch-title reveal">חמישה טעמים בקערה.<br><b>השישי — בדרך אלייך.</b></h2>
-  <p class="ch-body reveal">כל טעם בקערה חתום: וניל, פיסטוק, פטל, שוקולד וקרמל. הכדור שנמזג למעלה משלים את הסט — ישר מהמזיגה אל הקערה.</p>
+  <p class="ch-body reveal">כל טעם בקערה חתום: וניל, פיסטוק, פטל, שוקולד וקרמל. הכדור שנמזג למעלה משלים את הסט — ישר מהמזיגה אל הקערה, והשוקולד ניתז סביבו.</p>
   <div class="bowl-wrap reveal">
-    <img width="1200" height="1200" class="bowl" src="assets/coupe-bowl2.webp" alt="צלחת הטעמים של SIGNÉ° מלמעלה — חמישה כדורי ג'לטו סביב במה ריקה במרכז" id="bowl-img">
-    <img width="800" height="787" id="landed-scoop" src="assets/cut-scoop-tight.webp" alt="" aria-hidden="true">
-    <div id="splash"></div>
+    <img width="1200" height="1200" class="bowl" src="assets/coupe-bowl2.webp" alt="צלחת הטעמים של SIGNÉ° מלמעלה — חמישה כדורי ג׳לטו סביב במה במרכז, שאליה נוחת הכדור המצופה שוקולד" id="bowl-img">
+    <video id="coupe-splash" src="assets/coupe/splash.mp4" poster="assets/coupe/splash-0.webp" muted playsinline preload="auto" aria-hidden="true"></video>
+    <img width="1200" height="1200" id="coupe-end" src="assets/coupe/splash-end.webp" alt="" aria-hidden="true" loading="lazy">
   </div>
   <div class="flavors reveal">
     <span><i style="background:#EFE3CB"></i>וניל</span>
@@ -786,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="ch-tag reveal">La Maison</p>
     <h2 class="ch-title reveal">דלפק אחד מואר.<br><b>שורה אחת של קינוחים.</b></h2>
     <div class="maison-grid">
-      <div class="maison-img reveal"><img width="1600" height="900" src="assets/boutique.webp" alt="הבוטיק של SIGNÉ° בלילה — ויטרינה מוארת אחת בחלל כהה" loading="lazy"></div>
+      <div class="maison-img reveal"><img width="1600" height="900" src="assets/boutique.webp" alt="הדלפק של SIGNÉ° בלילה — ויטרינה מוארת אחת ובה שורה אחת של הקינוחים: ארבעת האקלרים, השו, טארט הפטל וכיפת הפיסטוק" loading="lazy"></div>
       <div>
         <ul class="maison-list reveal">
           <li><span class="fr">La Carte</span><span class="he">מתחלפת כל עונה</span></li>
@@ -904,26 +897,30 @@ gsap.registerPlugin(ScrollTrigger);
   });
 })();
 
-/* ============ FALLING SCOOP — hero → coupe bowl ============ */
+/* ============ FALLING SCOOP — hero → coupe bowl, then the splash clip ============ */
 (function(){
   const scoop = document.getElementById('fall-scoop');
-  const landed = document.getElementById('landed-scoop');
-  const splash = document.getElementById('splash');
+  const clip = document.getElementById('coupe-splash');
   const bowl = document.getElementById('bowl-img');
-  if(!scoop || !bowl) return;
+  if(!scoop || !bowl || !clip) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const BALL = 0.313, BX = 0.5, BY = 0.27; /* the ball in the clip's first frame, as shares of the plate */
   let hasLanded = false;
 
   function land(){
     if(hasLanded) return;
     hasLanded = true;
     scoop.style.opacity = 0;
-    gsap.fromTo(landed,{opacity:0,scaleY:.55,scaleX:1.35},{opacity:1,scaleY:1,scaleX:1,duration:.55,ease:'elastic.out(1,.45)'});
-    gsap.fromTo(splash,{opacity:.8,scale:.25},{opacity:0,scale:1.15,duration:.7,ease:'power2.out'});
+    clip.style.opacity = 1;
+    try{ clip.currentTime = 0; }catch(e){}
+    const p = clip.play(); if(p && p.catch) p.catch(()=>{});
   }
   function unland(){
     if(!hasLanded) return;
     hasLanded = false;
-    gsap.set(landed,{opacity:0});
+    clip.pause();
+    clip.style.opacity = 0;
+    try{ clip.currentTime = 0; }catch(e){}
   }
 
   ScrollTrigger.create({
@@ -936,14 +933,15 @@ gsap.registerPlugin(ScrollTrigger);
       if(p>=0.985){ land(); return; }
       unland();
       const r = bowl.getBoundingClientRect();
-      const tx = r.left + r.width*0.505, ty = r.top + r.height*0.475;
+      const tx = r.left + r.width*BX, ty = r.top + r.height*BY;
       const sx = tx + Math.sin(p*Math.PI)*40;
       const sy = -140 + (ty+140)*(p*p*0.55 + p*0.45); /* ease-in fall */
-      const sc = 1 - 0.35*p;
+      const end = r.width*BALL/scoop.offsetWidth;
+      const sc = 1 + (end-1)*p;
       scoop.style.opacity = p>0.01 ? 1 : 0;
       scoop.style.left = sx+'px';
       scoop.style.top = sy+'px';
-      scoop.style.transform = `translate(-50%,-50%) scale(${sc}) rotate(${p*38}deg)`;
+      scoop.style.transform = `translate(-50%,-50%) scale(${sc})`;
     },
     onLeave(){ land(); },
     onLeaveBack(){ scoop.style.opacity=0; unland(); }
