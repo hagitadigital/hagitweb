@@ -1,0 +1,243 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ENCORE° · La Première Heure</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F7F0E6;      /* world background */
+  --w-ink:#3B2E33;     /* world text */
+  --w-accent:#C9878E;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+@keyframes hk{0%{opacity:1}0.000%{opacity:1}8.333%{opacity:1}9.333%{opacity:0}100%{opacity:0}}
+.hk{animation-name:hk}
+@keyframes lgline{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}9.000%{transform:scaleX(0)}11.667%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.lgline{animation-name:lgline}
+@keyframes m13{0%{transform:translateY(0);opacity:1}0.000%{transform:translateY(0);opacity:1}26.333%{transform:translateY(0);opacity:1}27.500%{transform:translateY(-100%);opacity:0}100%{transform:translateY(-100%);opacity:0}}
+.m13{animation-name:m13}
+@keyframes m14{0%{transform:translateY(100%);opacity:0}0.000%{transform:translateY(100%);opacity:0}26.333%{transform:translateY(100%);opacity:0}27.500%{transform:translateY(0);opacity:1}100%{transform:translateY(0);opacity:1}}
+.m14{animation-name:m14}
+@keyframes press{0%{transform:scale(1)}0.000%{transform:scale(1)}27.500%{transform:scale(1)}28.000%{transform:scale(1.08)}28.667%{transform:scale(1)}100%{transform:scale(1)}}
+.press{animation-name:press}
+@keyframes cert{0%{transform:translateY(1700px)}0.000%{transform:translateY(1700px)}28.333%{transform:translateY(1700px)}30.333%{transform:translateY(0)}100%{transform:translateY(0)}}
+.cert{animation-name:cert}
+@keyframes noon{0%{opacity:0}0.000%{opacity:0}28.000%{opacity:0}30.000%{opacity:1}100%{opacity:1}}
+.noon{animation-name:noon}
+@keyframes qlit{0%{opacity:0}0.000%{opacity:0}27.333%{opacity:0}28.333%{opacity:1}100%{opacity:1}}
+.qlit{animation-name:qlit}
+@keyframes hourbg{0%{background-color:#6E4E4A}0.000%{background-color:#6E4E4A}37.167%{background-color:#6E4E4A}38.000%{background-color:#34405A}41.167%{background-color:#34405A}42.000%{background-color:#853A26}45.167%{background-color:#853A26}46.000%{background-color:#241212}100%{background-color:#241212}}
+.hourbg{animation-name:hourbg}
+@keyframes pushs{0%{transform:scale(1.08)}0.000%{transform:scale(1.08)}50.000%{transform:scale(1.08)}65.000%{transform:scale(1)}100%{transform:scale(1)}}
+.pushs{animation-name:pushs}
+@keyframes pushy{0%{transform:scale(1.08)}0.000%{transform:scale(1.08)}63.333%{transform:scale(1.08)}81.667%{transform:scale(1)}100%{transform:scale(1)}}
+.pushy{animation-name:pushy}
+@keyframes pushg{0%{transform:scale(1.08)}0.000%{transform:scale(1.08)}80.000%{transform:scale(1.08)}91.667%{transform:scale(1)}100%{transform:scale(1)}}
+.pushg{animation-name:pushg}
+#stage{background:#EFE8DD}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<section class="scene" data-show="4.0,10.2" style="background: #EFE8DD">
+  <div class="stack" data-seq="seq/land/f_%03d.jpg" data-from="1" data-to="72" data-by="1" data-start="4.1" data-step="0.06" data-fit="cover" data-pos="50% 50%"></div>
+  <div class="stack" style="background: linear-gradient(180deg, rgba(239,232,221,.95) 0px, rgba(239,232,221,.8) 420px, rgba(239,232,221,0) 640px)"></div>
+  <div style="position: absolute; top: 110px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 4px">
+    <div data-in="4.3" style="font-family: 'Heebo', sans-serif; font-size: 30px; color: #7A5A2A" dir="rtl">תעודת שעה · נענד לראשונה</div>
+    <div class="press" style="position: relative; height: 150px; width: 640px; overflow: hidden">
+      <div class="m13" style="position: absolute; inset: 0; text-align: center; font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 136px; line-height: 150px; color: #1E0F0E" dir="ltr">12 : 13</div>
+      <div class="m14" style="position: absolute; inset: 0; text-align: center; font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 136px; line-height: 150px; color: #1E0F0E" dir="ltr">12 : 14</div>
+    </div>
+    <div style="position: relative; width: 70px; height: 70px">
+      <div style="position: absolute; inset: 0"><svg class="" viewBox="-52 -52 104 104" width="70" height="70" aria-hidden="true" style="display: block"><path d="M0 0L35.36 35.36A50 50 0 0 1 -35.36 35.36Z" fill="#B8955A"/><circle r="50" fill="none" stroke="#B8955A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#B8955A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#B8955A" stroke-width="1.4" opacity=".7"/></svg></div>
+    </div>
+  </div>
+  <div class="noon stack" style="background: #34405A"></div>
+  <div class="cert" style="position: absolute; left: 110px; right: 110px; top: 330px; height: 1260px; background: #34405A; outline: 2px solid #D9B26A; outline-offset: -26px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; color: #F6EEE4">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 54px; letter-spacing: .3em; color: #D9B26A" dir="ltr">ENCORE°</div>
+    <div class="qlit"><svg class="" viewBox="-52 -52 104 104" width="130" height="130" aria-hidden="true" style="display: block"><path d="M0 0L35.36 35.36A50 50 0 0 1 -35.36 35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg></div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 64px; color: #E8CD96" dir="ltr">Collier de midi</div>
+    <div style="width: 120px; height: 2px; background: #D9B26A"></div>
+    <div style="font-family: 'Heebo', sans-serif; font-size: 34px; letter-spacing: .06em" dir="rtl">תעודת שעה · נענד לראשונה</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 150px; color: #E8CD96" dir="ltr">12 : 14</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 40px; color: #F6EEE4; opacity: .85" dir="ltr">19 . 10 . 2026</div>
+  </div>
+  <div data-in="9.2" style="position: absolute; top: 120px; left: 0; right: 0; text-align: center"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.2; color: #F6EEE4; " dir="rtl">רשמנו את השעה.</div></div>
+</section>
+
+<section class="scene" data-show="10.0,15.2">
+  <div class="hourbg stack"></div>
+  <div style="position: absolute; top: 150px; left: 80px; right: 80px; text-align: center"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 84px; line-height: 1.2; color: #F6EEE4; " dir="rtl">לכל שעה,<br>התכשיט שלה.</div></div>
+  
+  <div class="stack" data-show="10.15,11.30" data-fade="0.2">
+    <div style="position: absolute; left: 150px; right: 150px; top: 560px; height: 1060px; background: rgba(0,0,0,.08); outline: 2px solid #D9B26A; outline-offset: -22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px">
+      <img src="pieces/rings-1.webp" alt="" style="height: 330px; width: auto; filter: drop-shadow(0 18px 24px rgba(0,0,0,.35))">
+      <svg class="" viewBox="-52 -52 104 104" width="90" height="90" aria-hidden="true" style="display: block"><path d="M0 0L35.36 -35.36A50 50 0 0 1 35.36 35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 56px; color: #E8CD96" dir="ltr">Bague de l'aube</div>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 96px; color: #E8CD96" dir="ltr">06 : 00</div>
+      <div style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #F6EEE4" dir="rtl">שחר · טבעות</div>
+    </div>
+  </div>
+  <div class="stack" data-show="11.35,12.50" data-fade="0.2">
+    <div style="position: absolute; left: 150px; right: 150px; top: 560px; height: 1060px; background: rgba(0,0,0,.08); outline: 2px solid #D9B26A; outline-offset: -22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px">
+      <img src="pieces/pendants-2.webp" alt="" style="height: 330px; width: auto; filter: drop-shadow(0 18px 24px rgba(0,0,0,.35))">
+      <svg class="" viewBox="-52 -52 104 104" width="90" height="90" aria-hidden="true" style="display: block"><path d="M0 0L35.36 35.36A50 50 0 0 1 -35.36 35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 56px; color: #E8CD96" dir="ltr">Collier de midi</div>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 96px; color: #E8CD96" dir="ltr">12 : 00</div>
+      <div style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #F6EEE4" dir="rtl">צהריים · שרשראות</div>
+    </div>
+  </div>
+  <div class="stack" data-show="12.55,13.70" data-fade="0.2">
+    <div style="position: absolute; left: 150px; right: 150px; top: 560px; height: 1060px; background: rgba(0,0,0,.08); outline: 2px solid #D9B26A; outline-offset: -22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px">
+      <img src="pieces/bracelets-1.webp" alt="" style="height: 330px; width: auto; filter: drop-shadow(0 18px 24px rgba(0,0,0,.35))">
+      <svg class="" viewBox="-52 -52 104 104" width="90" height="90" aria-hidden="true" style="display: block"><path d="M0 0L-35.36 35.36A50 50 0 0 1 -35.36 -35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 56px; color: #E8CD96" dir="ltr">Bracelet du soir</div>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 96px; color: #E8CD96" dir="ltr">18 : 00</div>
+      <div style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #F6EEE4" dir="rtl">שקיעה · צמידים</div>
+    </div>
+  </div>
+  <div class="stack" data-show="13.75,15.10" data-fade="0.2">
+    <div style="position: absolute; left: 150px; right: 150px; top: 560px; height: 1060px; background: rgba(0,0,0,.08); outline: 2px solid #D9B26A; outline-offset: -22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px">
+      <img src="pieces/earrings-3.webp" alt="" style="height: 330px; width: auto; filter: drop-shadow(0 18px 24px rgba(0,0,0,.35))">
+      <svg class="" viewBox="-52 -52 104 104" width="90" height="90" aria-hidden="true" style="display: block"><path d="M0 0L-35.36 -35.36A50 50 0 0 1 35.36 -35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 56px; color: #E8CD96" dir="ltr">Boucles de minuit</div>
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 96px; color: #E8CD96" dir="ltr">00 : 00</div>
+      <div style="font-family: 'Heebo', sans-serif; font-size: 32px; color: #F6EEE4" dir="rtl">לילה · עגילים</div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-show="15.0,19.2" style="background: #853A26">
+  <img class="pushs" src="tp/tag-cuff.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+  <div class="stack" style="background: linear-gradient(180deg, rgba(0,0,0,0) 900px, rgba(20,8,8,.55) 1350px, rgba(20,8,8,.82) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 140px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 56px; color: #E8CD96" dir="ltr">18 : 00</div>
+    <div data-in="15.3"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 80px; line-height: 1.2; color: #F6EEE4; " dir="rtl">הצמיד שראית<br>עוד מחכה לשעה שלו.</div></div>
+    <div data-in="15.8" style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 46px; color: #E8CD96" dir="ltr">Bracelet du soir</div>
+  </div>
+</section>
+
+<section class="scene" data-show="19.0,24.2" style="background: #241212">
+  <img class="pushy" src="tp/box-open.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+  <div class="stack" style="background: linear-gradient(180deg, rgba(0,0,0,0) 900px, rgba(20,8,8,.55) 1350px, rgba(20,8,8,.82) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 140px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 56px; color: #E8CD96" dir="ltr">12 : 14</div>
+    <div data-in="19.3"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 80px; line-height: 1.2; color: #F6EEE4; " dir="rtl">שנה בדיוק.<br>אותה שעה.</div></div>
+    <div data-in="19.8" style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 46px; color: #E8CD96" dir="ltr">L'Anniversaire</div>
+  </div>
+</section>
+
+<section class="scene" data-show="24.0,27.2" style="background: #241212">
+  <img class="pushg" src="tp/sign.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+  <div class="stack" style="background: linear-gradient(180deg, rgba(0,0,0,0) 900px, rgba(20,8,8,.55) 1350px, rgba(20,8,8,.82) 1920px)"></div>
+  <div style="position: absolute; left: 80px; right: 80px; bottom: 140px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    
+    <div data-in="24.3"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 80px; line-height: 1.2; color: #F6EEE4; " dir="rtl">השעה<br>היא הלוגו.</div></div>
+    <div data-in="24.8" style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 46px; color: #E8CD96" dir="ltr">ENCORE°</div>
+  </div>
+</section>
+
+<section class="scene" data-show="27.0,30" style="background: #EFE8DD">
+  <div data-in="27.1" style="position: absolute; left: 230px; right: 230px; top: 260px; padding: 40px 0 44px; background: #34405A; outline: 2px solid #D9B26A; outline-offset: -16px; display: flex; flex-direction: column; align-items: center; gap: 14px; color: #F6EEE4">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 34px; letter-spacing: .3em; color: #D9B26A" dir="ltr">ENCORE°</div>
+    <svg class="" viewBox="-52 -52 104 104" width="70" height="70" aria-hidden="true" style="display: block"><path d="M0 0L35.36 35.36A50 50 0 0 1 -35.36 35.36Z" fill="#D9B26A"/><circle r="50" fill="none" stroke="#D9B26A" stroke-width="2"/><line x1="-35.4" y1="-35.4" x2="35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/><line x1="35.4" y1="-35.4" x2="-35.4" y2="35.4" stroke="#D9B26A" stroke-width="1.4" opacity=".7"/></svg>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 40px; color: #E8CD96" dir="ltr">Collier de midi</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 96px; color: #E8CD96" dir="ltr">12 : 14</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 28px; opacity: .85" dir="ltr">19 . 10 . 2026</div>
+  </div>
+  <div data-in="27.5" style="position: absolute; top: 1020px; left: 80px; right: 80px; text-align: center"><div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 76px; line-height: 1.2; color: #1E0F0E; text-align: center" dir="rtl">רשמנו את השעה<br>שבה ענדת אותו לראשונה.</div></div>
+  <div data-in="28.0" style="position: absolute; top: 1380px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 26px">
+    <div style="padding: 30px 70px; background: #1E0F0E; color: #FBF7F0; font-family: 'Heebo', sans-serif; font-size: 46px; font-weight: 500" dir="rtl">לבחור את השעה שלך</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 40px; letter-spacing: .3em; color: #7A5A2A" dir="ltr">ENCORE°</div>
+  </div>
+</section>
+
+<section class="scene" data-show="2.5,4.0" style="background: #241212">
+  <div style="position: absolute; top: 560px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 40px">
+    <div data-in="2.5"><svg viewBox="-104 -104 208 208" width="260" height="260" aria-hidden="true" style="display: block"><path d="M0 0L-70.71 -70.71A100 100 0 0 1 70.71 -70.71Z" fill="#241212"/><path d="M0 0L70.71 -70.71A100 100 0 0 1 70.71 70.71Z" fill="#6E4E4A"/><path d="M0 0L70.71 70.71A100 100 0 0 1 -70.71 70.71Z" fill="#34405A"/><path d="M0 0L-70.71 70.71A100 100 0 0 1 -70.71 -70.71Z" fill="#853A26"/><circle r="100" fill="none" stroke="#D9B26A" stroke-width="3"/><circle r="92" fill="none" stroke="#E8CD96" stroke-width=".8" opacity=".8"/></svg></div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 120px; letter-spacing: .22em; padding-left: .22em; color: #D9B26A" dir="ltr">ENCORE°</div>
+    <div class="lgline" style="width: 420px; height: 2px; background: #D9B26A"></div>
+    <div data-in="2.9" style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 60px; color: #E8CD96" dir="ltr">La Première Heure</div>
+  </div>
+</section>
+
+<div class="hk stack" style="background: #EFE8DD">
+  <img src="seq/land/f_001.jpg" alt="" class="cover" style="object-position: 50% 50%">
+  <div class="stack" style="background: linear-gradient(180deg, rgba(239,232,221,.96) 0px, rgba(239,232,221,.85) 330px, rgba(239,232,221,0) 560px)"></div>
+  <div style="position: absolute; top: 120px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px" dir="rtl">
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 34px; letter-spacing: .3em; color: #7A5A2A" dir="ltr">ENCORE°</div>
+    <div style="font-family: 'Frank Ruhl Libre', serif; font-weight: 500; font-size: 92px; line-height: 1.2; color: #1E0F0E; " dir="rtl">באיזו שעה ענדת<br>אותו לראשונה?</div>
+  </div>
+  <div style="position: absolute; left: 230px; right: 230px; bottom: 120px; padding: 26px 0 30px; background: rgba(251,247,240,.94); outline: 1px solid #B8955A; outline-offset: -10px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+    <div style="font-family: 'Heebo', sans-serif; font-size: 26px; color: #7A5A2A" dir="rtl">תעודת שעה · נענד לראשונה</div>
+    <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: .18em; font-variant-numeric: lining-nums tabular-nums; font-size: 92px; color: #1E0F0E" dir="ltr">-- : --</div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
