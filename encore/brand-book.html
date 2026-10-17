@@ -297,6 +297,16 @@ section{padding:clamp(72px,10vw,140px) 0}
 .c-ad3 i.fr{font-family:var(--serif);font-size:1.1rem}
 .c-ads figcaption{font-size:.95rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
 @media (max-width:900px){.c-ads{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+.c-reel{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:start}
+.c-reel video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--h00);box-shadow:0 24px 60px rgba(30,15,14,.18)}
+.c-scenes{display:flex;flex-direction:column}
+.c-scenes div{display:grid;grid-template-columns:86px 140px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid rgba(184,149,90,.5);font-size:.98rem}
+.c-scenes div.sig{background:rgba(217,178,106,.18)}
+.c-scenes .stamp{color:var(--ink);font-size:1rem;text-align:right}
+.c-scenes b{font-family:var(--heb);font-weight:500}
+.c-scenes span:last-child{color:var(--muted)}
+@media (max-width:860px){.c-reel{grid-template-columns:1fr}.c-reel video{max-width:340px;margin-inline:auto}}
+@media (max-width:520px){.c-scenes div{grid-template-columns:72px minmax(0,1fr)}.c-scenes div span:last-child{grid-column:1/-1}}
 .c-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px}
 .c-vs figure{display:flex;flex-direction:column;gap:12px}
 .c-post{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:24px}
@@ -610,7 +620,22 @@ footer.studio a{color:var(--gold)}
       </figure>
     </div>
 
-    <div class="c-sub rv"><span class="stamp">04</span><h3>אותה בקשה. שני מותגים.</h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
+    <div class="c-sub rv"><span class="stamp">04</span><h3>הריל. השעה נחתמת.</h3><p>30 שניות על רגע אחד: השרשרת נוחתת על הצוואר, והשעה נרשמת. שרשרת שייכת לצהריים, ולכן התעודה שלה היא <span class="ltr">12:14</span> בצבע הצהריים.</p></div>
+    <div class="c-reel">
+      <video class="rv" src="premiere-heure.mp4" poster="premiere-heure.webp" width="1080" height="1920" controls muted playsinline loop preload="none" aria-label="ריל La Première Heure של ENCORE°, 30 שניות"></video>
+      <div class="c-scenes rv">
+        <div><span class="stamp">0–2.5</span><b>הוק</b><span>״באיזו שעה ענדת אותו לראשונה?״ מעל השרשרת שמרחפת, והתעודה עוד ריקה.</span></div>
+        <div><span class="stamp">2.5–4</span><b>הסימן</b><span>החוגה, <span class="ltr">ENCORE°</span> בזהב ו־<span class="ltr" lang="fr">La Première Heure</span> על צבע הלילה.</span></div>
+        <div class="sig"><span class="stamp">4–10</span><b>החותמת</b><span>השרשרת נוחתת על הצוואר, השעון מתגלגל ל־<span class="ltr">12:14</span> ורבע הצהריים נדלק. התעודה נחתמת: <span class="ltr" lang="fr">Collier de midi</span>.</span></div>
+        <div><span class="stamp">10–15</span><b>ארבע תעודות</b><span>לכל שעה התכשיט שלה: טבעת, שרשרת, צמיד ועגילים, כל אחת בצבע השעה שלה.</span></div>
+        <div><span class="stamp">15–19</span><b>18:00</b><span>הצמיד והתווית בשקיעה. הצמיד שראית עוד מחכה לשעה שלו.</span></div>
+        <div><span class="stamp">19–24</span><b>שנה אחרי</b><span>הקופסה עם התאריך על המכסה. שנה בדיוק, אותה שעה.</span></div>
+        <div><span class="stamp">24–27</span><b>השלט</b><span>החוגה ברחוב. השעה היא הלוגו.</span></div>
+        <div><span class="stamp">27–30</span><b>הסגירה</b><span>״רשמנו את השעה שבה ענדת אותו לראשונה.״ ולבחור את השעה שלך.</span></div>
+      </div>
+    </div>
+
+    <div class="c-sub rv"><span class="stamp">05</span><h3>אותה בקשה. שני מותגים.</h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
     <div class="c-vs">
       <figure class="rv"><div class="c-post gen" aria-label="פוסט גנרי: מבצע סוף שנה, 20% הנחה"><i></i><b>מבצע סוף שנה!</b><span>20% הנחה על כל הקולקציה</span><span class="buy">לקנייה עכשיו</span></div><figcaption><b>בלי עולם.</b> אין שעה ואין קו זהב. נשאר רק המחיר, ולכן משווים.</figcaption></figure>
       <figure class="rv"><div class="c-post ours"><span class="stamp big">00:00</span><span style="width:48px;height:1px;background:var(--gold)"></span><p class="t" style="font-family:var(--heb);font-size:clamp(1.4rem,2.6vw,1.8rem);line-height:1.3">השנה מתחלפת.<br>העגילים נשארים.</p><i class="fr" lang="fr">Boucles de minuit</i></div><figcaption><b>מתוך העולם.</b> חצות, צבע הלילה, קו זהב ושם בצרפתית. סוף השנה הוא שעה, לא הנחה.</figcaption></figure>
