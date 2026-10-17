@@ -31,7 +31,7 @@ i = s.index('<!-- proof mechanic 2'); j = s.index('-->', i) + 3; s = s[:i] + s[j
 
 # HUD
 tags = [('01 · The Core', 'מאצ\'ה לא מזמינים. מרכיבים.'), ("02 · L'Atelier", 'חוגת הטעמים: כוס אחת, חמישה טעמים'),
-        ('03 · Les Suppléments', 'קצפת עולה, שוקולד נוזל, שם משלו'), ('04 · La Carte', 'חמישה טעמים, אינסוף כוסות'),
+        ('03 · Les Suppléments', 'קצפת עולה, שוקולד נוזל, שם משלה'), ('04 · La Carte', 'חמישה טעמים, אינסוף כוסות'),
         ('05 · The Promise', 'המטרפה לא משתנה')]
 old = ['01 · The Core', '02 · The Visual World', '03 · The Narrative', '04 · Live Site', '05 · The Promise']
 for (name, line), o in zip(tags, old):
@@ -130,7 +130,7 @@ C = f"""<section class="scene" data-show="15.3,19.6">
     <div style="position: absolute; top: 200px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
       <div data-in="15.3" style="{K}; margin-bottom: 8px" dir="ltr">Les suppléments</div>
       <span class="mask"><span class="s-l1" style="display: block; {H}; font-size: 72px; font-weight: 300; line-height: 1.15; color: {INK}">אותה כוס.</span></span>
-      <span class="mask"><span class="s-l2" style="display: block; {H}; font-size: 72px; font-weight: 600; line-height: 1.15; color: {MATCHA}">שם משלו.</span></span>
+      <span class="mask"><span class="s-l2" style="display: block; {H}; font-size: 72px; font-weight: 600; line-height: 1.15; color: {MATCHA}">שם משלה.</span></span>
     </div>
     <div style="position: absolute; left: {GX}px; top: {GY}px; width: {GW}px; height: {GH}px; border-radius: {GW // 2}px {GW // 2}px 26px 26px; overflow: hidden; background: {BG}; box-shadow: 0 30px 70px rgba(31,42,31,.18)">
       {glass('bleu')}

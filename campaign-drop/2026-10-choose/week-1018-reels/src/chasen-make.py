@@ -63,7 +63,7 @@ s = s.replace('2px solid var(--s-copper)', '4px solid var(--s-copper)')
 
 # HUD
 tags = [('01 · The Core', 'מאצ\'ה לא מזמינים. מרכיבים.'), ("02 · L'Atelier", 'חוגת הטעמים: כוס אחת, חמישה טעמים'),
-        ('03 · Les Suppléments', 'קצפת עולה, שוקולד נוזל, שם משלו'), ('04 · La Métamorphose', 'אותה כוס, גם חמה'),
+        ('03 · Les Suppléments', 'קצפת עולה, שוקולד נוזל, שם משלה'), ('04 · La Métamorphose', 'אותה כוס, גם חמה'),
         ('05 · The Promise', 'המטרפה לא משתנה')]
 old = ['01 · The Core', '02 · The Visual World', '03 · The Narrative', '04 · Live Site', '05 · The Promise']
 for (name, line), o in zip(tags, old):
@@ -164,7 +164,7 @@ C = f"""<section class="scene" data-show="15.3,19.6">
     <div style="position: absolute; top: 200px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
       <div data-in="15.3" style="{K}; margin-bottom: 8px" dir="ltr">Les suppléments</div>
       <span class="mask"><span class="s-l1" style="display: block; {H}; font-size: 72px; font-weight: 300; line-height: 1.15; color: {INK}">אותה כוס.</span></span>
-      <span class="mask"><span class="s-l2" style="display: block; {H}; font-size: 72px; font-weight: 600; line-height: 1.15; color: {MATCHA}">שם משלו.</span></span>
+      <span class="mask"><span class="s-l2" style="display: block; {H}; font-size: 72px; font-weight: 600; line-height: 1.15; color: {MATCHA}">שם משלה.</span></span>
     </div>
     <div class="card" style="position: absolute; left: 220px; top: 1580px; width: 640px; box-sizing: border-box; padding: 26px 34px; background: #FBF6EC; border: 2px solid {MATCHA}; border-radius: 18px; box-shadow: 0 24px 50px rgba(31,42,31,.2); display: flex; flex-direction: column; align-items: center; gap: 6px">
       <div style="font-family: 'Assistant', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .3em; color: {MATCHA}" dir="ltr">CHASEN° · N°22</div>
