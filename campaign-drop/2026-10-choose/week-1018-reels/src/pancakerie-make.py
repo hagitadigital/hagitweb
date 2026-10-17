@@ -23,7 +23,7 @@ D = [('pistache', 'PISTACHE', 'פיסטוק', 'ירוק רך, מלוח-מתוק,
      ('fraise', 'FRAISE', 'תות', 'הקלאסיקה של שבת בבוקר.', '#E5C9BC', '#D39483', '#402613'),
      ('noisette', 'NOISETTE', 'אגוזי לוז', 'הכי כהה בתפריט. חם, עמוק, ולא מתנצל.', '#523726', '#523726', '#EEE6DA'),
      ('citron', 'CITRON', 'לימון', 'חמוץ שמעיר, מתוק שמרגיע. הבוקר בצהוב.', '#EEDAB7', '#EEC376', '#402613')]
-STEPS = [9.9, 11.3, 12.7, 14.1]            # each colour takes the top of the fan; the ring turns 90° clockwise between them
+STEPS = [2.6, 6.6, 8.0, 9.4]   # the fan opens the film right after the hook; pistache holds through the studio window            # each colour takes the top of the fan; the ring turns 90° clockwise between them
 FAN_CX, FAN_CY, FAN_R = 540, 1880, 330
 
 def kf(name, prop, vals, times, ease=.45):
@@ -45,7 +45,7 @@ for k in range(1, 4):
     fg += '%s,%s{color:%s}' % (p(STEPS[k]), end, D[k][6])
 
 # builder (C): base → cream → fruit → cream on top, each falls onto the plate
-LAY = [('layer-base', 15.5), ('layer-cream-pistache', 16.2), ('layer-fraises', 16.9), ('layer-chantilly', 17.6)]
+LAY = [('layer-base', 10.6), ('layer-cream-pistache', 11.3), ('layer-fraises', 12.0), ('layer-chantilly', 12.7)]
 drops = ''.join('.drop%d{animation-name:drop%d;animation-timing-function:cubic-bezier(.3,0,.25,1)}@keyframes drop%d{0%%,%s{opacity:0;transform:translateY(-220px)}%s{opacity:1}%s,100%%{opacity:1;transform:none}}'
                 % (i, i, i, p(t), p(t + .15), p(t + .5)) for i, (n, t) in enumerate(LAY))
 
@@ -55,9 +55,10 @@ scss = f"""
 .ffg{{animation-name:ffg}}@keyframes ffg{{{fg}}}
 .fring{{animation-name:fring;transform-origin:0 0}}@keyframes fring{{{ring}}}
 {drops}
-.cbg{{animation-name:cbg}}@keyframes cbg{{0%,{p(16.3)}{{background-color:#EEE6DA}}{p(16.7)},100%{{background-color:#D4CFBA}}}}
-.kbD{{animation-name:kbD;animation-timing-function:linear}}@keyframes kbD{{0%,{p(19.3)}{{transform:scale(1.04)}}{p(23.2)},100%{{transform:scale(1.14) translateX(-30px)}}}}
-.kbE{{animation-name:kbE;animation-timing-function:linear}}@keyframes kbE{{0%,{p(22.7)}{{transform:scale(1.02)}}100%{{transform:scale(1.14)}}}}
+.cbg{{animation-name:cbg}}@keyframes cbg{{0%,{p(11.4)}{{background-color:#EEE6DA}}{p(11.8)},100%{{background-color:#D4CFBA}}}}
+.kbD{{animation-name:kbD;animation-timing-function:linear}}@keyframes kbD{{0%,{p(18.3)}{{transform:scale(1.04)}}{p(24.3)},100%{{transform:scale(1.14) translateX(-30px)}}}}
+.tileimg img{{border-radius:20px}}
+.kbE{{animation-name:kbE;animation-timing-function:linear}}@keyframes kbE{{0%,{p(24.0)}{{transform:scale(1.02)}}100%{{transform:scale(1.14)}}}}
 """
 css = css.replace('/* E · slow push-in on the hands */\n.kbE{animation-name:kbE;animation-timing-function:linear}\n@keyframes kbE{0%,75%{transform:scale(1.02)}100%{transform:scale(1.12)}}\n', '')
 css += scss + '</style>\n</head>\n'
@@ -93,17 +94,17 @@ intro = f"""<!-- STUDIO · intro -->
 """
 
 # A · De la poêle — Verser, Retourner, Napper (the site's scroll film, as three runs)
-def run(letter, start, step, a, b):
+def run(letter, start, step, a, b, pos):
     return (f'<div class="stack" data-show="{a},{b}" data-fade="0.15"><div class="stack" data-seq="{R}poele/{letter}%02d.webp" data-from="1" data-to="40" data-by="2" '
-            f'data-start="{start}" data-step="{step}" data-pos="35% 50%"></div></div>')
+            f'data-start="{start}" data-step="{step}" data-pos="{pos} 50%"></div></div>')
 def cap(fr, he, a, b):
     return (f'<div class="stack" data-show="{a},{b}" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">'
             f'<div style="font-family: \'Cormorant Garamond\', serif; font-style: italic; font-size: 64px; line-height: 1; color: var(--w-ink)" dir="ltr">{fr}</div>'
             f'<div style="font-size: 44px; font-weight: 500; color: var(--w-ink2)" dir="rtl">{he}</div></div>')
-A = f"""  <section class="scene" data-show="0,10" style="background: var(--w-bg)">
-    <div style="{TILE}">{run('a', 2.7, .12, 0, 5.35)}{run('b', 5.3, .1, 5.2, 7.45)}{run('c', 7.4, .1, 7.3, 10)}</div>
+A = f"""  <section class="scene" data-show="14.3,18.6" style="background: var(--w-bg)">
+    <div class="tileimg" style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 1260px; border-radius: 20px; box-shadow: 0 30px 70px rgba(20,30,45,.16)">{run('a', 14.3, .07, 14.3, 15.75, '38%')}{run('b', 15.7, .07, 15.6, 17.15, '45%')}{run('c', 17.1, .07, 17.0, 18.6, '62%')}</div>
     <div style="position: absolute; top: 1530px; left: 80px; right: 80px; height: 180px">
-      {cap('Verser', 'מוזגים. בצק אחד, מהכד למחבת.', 2.6, 5.3)}{cap('Retourner', 'הופכים. פעם אחת.', 5.35, 7.35)}{cap('Napper', 'מזלפים. מכאן מתחיל הצבע.', 7.4, 10)}
+      {cap('Verser', 'מוזגים. בצק אחד, מהכד למחבת.', 14.3, 15.6)}{cap('Retourner', 'הופכים. פעם אחת.', 15.75, 16.95)}{cap('Napper', 'מזלפים. מכאן מתחיל הצבע.', 17.15, 18.6)}
     </div>
   </section>
 """
@@ -112,14 +113,14 @@ A = f"""  <section class="scene" data-show="0,10" style="background: var(--w-bg)
 discs = ''.join(f'<div style="position: absolute; left: 0; top: 0; transform: rotate({-90 * i}deg) translateY(-{FAN_R}px) rotate({90 * i}deg)">'
                 f'<div style="position: absolute; left: -92px; top: -92px; width: 184px; height: 184px; border-radius: 50%; background: {d[5]}; box-shadow: 0 0 0 6px #FFFFFF, 0 16px 34px rgba(20,30,45,.2)"></div></div>'
                 for i, d in enumerate(D))
-dishes = ''.join(f'<div class="stack" data-show="{STEPS[i] if i else 9.6},{STEPS[i + 1] if i < 3 else 15.6}" data-fade="0.3">'
+dishes = ''.join(f'<div class="stack" data-show="{STEPS[i] if i else 0},{STEPS[i + 1] if i < 3 else 10.6}" data-fade="0.3">'
                  f'<img src="{R}dish-{d[0]}.webp" alt="" style="position: absolute; left: 40px; top: 470px; width: 1000px; height: 750px; display: block"></div>'
                  for i, d in enumerate(D))
-names = ''.join(f'<div class="stack" data-show="{STEPS[i] + .15 if i else 9.7},{STEPS[i + 1] - .35 if i < 3 else 15.6}" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">'
+names = ''.join(f'<div class="stack" data-show="{STEPS[i] + .15 if i else 0},{STEPS[i + 1] - .35 if i < 3 else 10.6}" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">'
                 f'<div style="{FR}; font-size: 72px; font-weight: 600; letter-spacing: .08em; line-height: 1" dir="ltr">{d[1]}</div>'
                 f'<div style="font-size: 36px" dir="rtl">{d[2]} · {d[3]}</div></div>'
                 for i, d in enumerate(D))
-B = f"""  <section class="scene" data-show="9.7,15.6">
+B = f"""  <section class="scene" data-show="0,10.6">
     <div class="stack fbg"></div>
     <div class="ffg" style="position: absolute; top: 200px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center" dir="rtl">
       <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px" dir="ltr">Les Signatures</div>
@@ -137,7 +138,7 @@ chips = ''.join(f'<span data-in="{t:.1f}" style="padding: 14px 26px; border-radi
                 for lab, (n, t) in zip(['01 · הבסיס', '02 · הקרם', '03 · הפרי', '04 · התוספות'], LAY))
 layers = ''.join(f'<img class="drop{i}" src="{R}{n}.webp" alt="" style="position: absolute; left: 0; top: 0; width: 1000px; height: 750px; display: block">'
                  for i, (n, t) in enumerate(LAY))
-C = f"""  <section class="scene" data-show="15.3,19.6">
+C = f"""  <section class="scene" data-show="10.3,14.6">
     <div class="stack cbg"></div>
     <div style="position: absolute; top: 200px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center" dir="rtl">
       <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">L'Atelier</div>
@@ -145,14 +146,14 @@ C = f"""  <section class="scene" data-show="15.3,19.6">
     </div>
     <div style="position: absolute; left: 40px; top: 560px; width: 1000px; height: 750px">{layers}</div>
     <div style="position: absolute; top: 1420px; left: 50px; right: 50px; display: flex; justify-content: space-between" dir="rtl">{chips}</div>
-    <div data-in="17.9" style="position: absolute; top: 1580px; left: 70px; right: 70px; text-align: center; font-size: 40px; color: var(--w-ink2)" dir="rtl">הצבע של הקרם הוא הצבע של המנה.</div>
+    <div data-in="13.0" style="position: absolute; top: 1580px; left: 70px; right: 70px; text-align: center; font-size: 40px; color: var(--w-ink2)" dir="rtl">הצבע של הקרם הוא הצבע של המנה.</div>
   </section>
 """
 
 # D · La Boîte & Le Lieu
-Dsc = f"""  <section class="scene" data-show="19.3,23.2" style="background: var(--w-bg)">
+Dsc = f"""  <section class="scene" data-show="18.3,24.3" style="background: var(--w-bg)">
     <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbD" src="{R}brand-takeaway.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block"></div>
-    <div data-in="20.6" style="position: absolute; top: 870px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img src="{R}brand-storefront.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block"></div>
+    <div data-in="19.9" style="position: absolute; top: 870px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img src="{R}brand-storefront.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block"></div>
     <div style="position: absolute; top: 1560px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center" dir="rtl">
       <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">La Boîte · Le Lieu</div>
       <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--w-ink)">הצבע יוצא איתך.</div>
@@ -162,7 +163,7 @@ Dsc = f"""  <section class="scene" data-show="19.3,23.2" style="background: var(
 """
 
 # E · Le Moment — the promise
-E = f"""  <section class="scene" data-show="22.7,30" style="background: var(--w-bg)">
+E = f"""  <section class="scene" data-show="24.0,30" style="background: var(--w-bg)">
     <div style="{TILE}"><img class="kbE" src="{R}moment.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 48% 50%; display: block"></div>
     <div style="position: absolute; top: 1540px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
       <div style="font-size: 72px; font-weight: 600; line-height: 1.2; color: var(--w-ink)">טעם שרואים<br>לפני שטועמים.</div>
@@ -194,8 +195,8 @@ hook = f"""<!-- HOOK (0–2.8) -->
 
 """
 
-hudrows = [('01 · The Core', 'טעם שרואים לפני שטועמים.', 5.6, 9.9), ('02 · La Carte', 'ארבע מנות, ארבעה צבעים.', 9.9, 15.4),
-           ("03 · L'Atelier", 'בוחרים צבע. מקבלים מנה.', 15.4, 19.5), ('04 · La Boîte', 'הצבע יוצא איתך.', 19.5, 22.9), ('05 · The Promise', 'הבוקר שלך, בצבע שבחרת.', 22.9, 30)]
+hudrows = [('01 · La Carte', 'ארבע מנות, ארבעה צבעים.', 5.6, 10.4), ("02 · L'Atelier", 'בוחרים צבע. מקבלים מנה.', 10.4, 14.4),
+           ('03 · De la poêle', 'מוזגים, הופכים, מזלפים.', 14.4, 18.4), ('04 · La Boîte', 'הצבע יוצא איתך.', 18.4, 24.1), ('05 · The Promise', 'טעם שרואים לפני שטועמים.', 24.1, 30)]
 hud = ('<!-- STUDIO · layer tag -->\n<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 540px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(242,235,220,.94); border: 1px solid var(--s-copper-soft); display: flex; flex-direction: column; gap: 6px" dir="rtl">\n'
        '  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper-text)">Brand Worlds Studio · עולם מותג 26</div>\n  <div style="position: relative; flex-grow: 1">\n'
        + ''.join(f'    <div class="stack" data-show="{a},{b}" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: \'Cormorant Garamond\', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">{n}</span><span style="font-size: 22px; color: var(--s-ink)">{l}</span></div>\n' for n, l, a, b in hudrows)
