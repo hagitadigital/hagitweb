@@ -1,0 +1,297 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>CHASEN reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F4E7D5;      /* world background */
+  --w-ink:#1F2A1F;     /* world text */
+  --w-accent:#4C6B33;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#F2EBDC; --s-cream:#E7DEC9; --s-ink:#15202E; --s-copper:#C28A5A; --s-gold:#C28A5A; --s-dark:#15202E; --s-ctext:#825630; --s-isoft:#3D4A5C;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C28A5A;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(217,174,133,.45);border:1.5px solid #D9AE85;box-shadow:0 10px 28px rgba(20,30,45,.22)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes · CHASEN ── */
+.core-ttl{animation-name:corettl}@keyframes corettl{0%,19.333%{opacity:0;letter-spacing:.5em}22.667%,100%{opacity:1;letter-spacing:.18em}}
+.c-l1{animation-name:cl1}@keyframes cl1{0%,20.000%{transform:translateY(110%)}22.000%,100%{transform:none}}
+.c-l2{animation-name:cl2}@keyframes cl2{0%,21.667%{transform:translateY(110%)}23.667%,100%{transform:none}}
+.d-bg{animation-name:dbg}@keyframes dbg{0%,36.667%{background-color:#DDE5C7}38.333%{background-color:#F1D5D2}42.000%{background-color:#EAD7BF}45.667%{background-color:#F2E5B4}49.333%{background-color:#D5DCEF}100%{background-color:#D5DCEF}}
+.d-ring{animation-name:dring;transform-origin:0 0}@keyframes dring{0%,35.333%{transform:rotate(0deg)}37.000%,39.000%{transform:rotate(72deg)}40.667%,42.667%{transform:rotate(144deg)}44.333%,46.333%{transform:rotate(216deg)}48.000%,100%{transform:rotate(288deg)}}
+.d-cr{animation-name:dcr}@keyframes dcr{0%,35.333%{transform:rotate(0deg)}37.000%,39.000%{transform:rotate(-72deg)}40.667%,42.667%{transform:rotate(-144deg)}44.333%,46.333%{transform:rotate(-216deg)}48.000%,100%{transform:rotate(-288deg)}}
+.pour1{animation-name:pour1;animation-timing-function:cubic-bezier(.5,0,.3,1)}@keyframes pour1{0%,36.667%{clip-path:inset(100% 0 0 0)}38.500%,100%{clip-path:inset(0 0 0 0)}}.pour2{animation-name:pour2;animation-timing-function:cubic-bezier(.5,0,.3,1)}@keyframes pour2{0%,40.333%{clip-path:inset(100% 0 0 0)}42.167%,100%{clip-path:inset(0 0 0 0)}}.pour3{animation-name:pour3;animation-timing-function:cubic-bezier(.5,0,.3,1)}@keyframes pour3{0%,44.000%{clip-path:inset(100% 0 0 0)}45.833%,100%{clip-path:inset(0 0 0 0)}}.pour4{animation-name:pour4;animation-timing-function:cubic-bezier(.5,0,.3,1)}@keyframes pour4{0%,47.667%{clip-path:inset(100% 0 0 0)}49.500%,100%{clip-path:inset(0 0 0 0)}}
+.d-l1{animation-name:dl1}@keyframes dl1{0%,33.000%{transform:translateY(110%)}34.667%,100%{transform:none}}
+.d-l2{animation-name:dl2}@keyframes dl2{0%,34.000%{transform:translateY(110%)}35.667%,100%{transform:none}}
+.cream{animation-name:cream;animation-timing-function:cubic-bezier(.4,0,.2,1)}@keyframes cream{0%,52.333%{clip-path:inset(100% 0 0 0)}55.000%,100%{clip-path:inset(0 0 0 0)}}
+.choco{animation-name:choco;animation-timing-function:cubic-bezier(.5,0,.6,1)}@keyframes choco{0%,55.000%{clip-path:inset(0 0 100% 0)}58.000%,100%{clip-path:inset(0 0 0 0)}}
+.card{animation-name:card}@keyframes card{0%,57.667%{opacity:0;transform:translateY(60px) rotate(-3deg)}59.667%,100%{opacity:1;transform:rotate(-2deg)}}
+.s-l1{animation-name:sl1}@keyframes sl1{0%,51.333%{transform:translateY(110%)}53.000%,100%{transform:none}}
+.s-l2{animation-name:sl2}@keyframes sl2{0%,52.333%{transform:translateY(110%)}54.000%,100%{transform:none}}
+.lift%d{animation-name:lift%d}@keyframes lift%d{0%,68.667%{transform:none}69.667%{transform:translateY(-34px)}71.000%,100%{transform:none}}.lift%d{animation-name:lift%d}@keyframes lift%d{0%,70.333%{transform:none}71.333%{transform:translateY(-34px)}72.667%,100%{transform:none}}.lift%d{animation-name:lift%d}@keyframes lift%d{0%,72.000%{transform:none}73.000%{transform:translateY(-34px)}74.333%,100%{transform:none}}.lift%d{animation-name:lift%d}@keyframes lift%d{0%,73.667%{transform:none}74.667%{transform:translateY(-34px)}76.000%,100%{transform:none}}.lift%d{animation-name:lift%d}@keyframes lift%d{0%,75.333%{transform:none}76.333%{transform:translateY(-34px)}77.667%,100%{transform:none}}
+.w-push{animation-name:wpush}@keyframes wpush{0%,75.667%{transform:scale(1.1) rotate(-4deg)}100%{transform:none}}
+.w-l1{animation-name:wl1}@keyframes wl1{0%,77.667%{transform:translateY(110%)}79.667%,100%{transform:none}}
+.w-l2{animation-name:wl2}@keyframes wl2{0%,79.000%{transform:translateY(110%)}81.000%,100%{transform:none}}
+
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-ctext)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">22</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">בר מאצ'ה שבו הכוס לא קיימת עד שהיא שלך.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-ctext)" dir="rtl">CHASEN° · עולם מותג 22</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">כשהלקוחה מכינה,<br>היא נשארת.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-ctext)" dir="rtl">ומה הלקוחות שלך<br>עושות באתר שלך?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 26px">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: var(--s-isoft)" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+<section class="scene" data-show="0,10.1">
+    <div class="stack" data-show="0,6.9" data-fade="0.12"><div class="stack" data-seq="f/p_%03d.jpg" data-from="1" data-to="24" data-start="5.4" data-step="0.06" data-pos="50% 50%"></div></div><div class="stack" data-show="6.85,8.6" data-fade="0.12"><div class="stack" data-seq="f/c_%03d.jpg" data-from="1" data-to="28" data-start="6.9" data-step="0.06" data-pos="50% 50%"></div></div><div class="stack" data-show="8.55,10.2" data-fade="0.12"><div class="stack" data-seq="f/v_%03d.jpg" data-from="1" data-to="24" data-start="8.6" data-step="0.06" data-pos="50% 50%"></div></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 520px; background: linear-gradient(to bottom, rgba(244,231,213,.95) 38%, rgba(244,231,213,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 760px; background: linear-gradient(to top, rgba(244,231,213,.96) 45%, rgba(244,231,213,0))"></div>
+    <div style="position: absolute; top: 200px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 12px">
+      <div class="core-ttl" style="font-family: 'Cormorant Garamond', serif; font-size: 112px; font-weight: 500; line-height: 1; color: #1F2A1F" dir="ltr">CHASEN°</div>
+      <div data-in="6.4" style="font-family: 'Assistant', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .34em; color: #4C6B33" dir="ltr">BAR À MATCHA</div>
+    </div>
+    <div style="position: absolute; bottom: 210px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="c-l1" style="display: block; font-family: 'Heebo', sans-serif; font-size: 100px; font-weight: 300; line-height: 1.12; color: #1F2A1F">מאצ'ה לא מזמינים.</span></span>
+      <span class="mask"><span class="c-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 100px; font-weight: 600; line-height: 1.12; color: #4C6B33">מרכיבים.</span></span>
+      <div data-in="7.6" style="margin-top: 18px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: #5C6B52" dir="ltr">Le matcha ne se commande pas. Il se compose.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,15.6">
+    <div class="stack d-bg" style="background-color: #DDE5C7"></div>
+    <div style="position: absolute; top: 200px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="9.8" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #4C6B33; margin-bottom: 8px" dir="ltr">L'Atelier</div>
+      <span class="mask"><span class="d-l1" style="display: block; font-family: 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1.15; color: #1F2A1F">הכוס הזאת עוד לא קיימת.</span></span>
+      <span class="mask"><span class="d-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 72px; font-weight: 600; line-height: 1.15; color: #4C6B33">עד שאת מכינה אותה.</span></span>
+    </div>
+    <div style="position: absolute; left: 70px; top: 630px; width: 940px; height: 940px; border-radius: 50%; border: 2px dashed rgba(76,107,51,.45); box-sizing: border-box"></div>
+    <div style="position: absolute; left: 348px; top: 690px; width: 384px; height: 820px; border-radius: 192px 192px 26px 26px; overflow: hidden; background: #F4E7D5; box-shadow: 0 30px 70px rgba(31,42,31,.18)">
+      <img class="" src="../../../../chasen/img/glass_classic.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"><img class="pour1" src="../../../../chasen/img/glass_fraise.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"><img class="pour2" src="../../../../chasen/img/glass_hojicha.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"><img class="pour3" src="../../../../chasen/img/glass_yuzu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"><img class="pour4" src="../../../../chasen/img/glass_bleu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block">
+    </div>
+    <div class="d-ring" style="position: absolute; left: 540px; top: 1100px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-470px) rotate(0deg)"><div class="d-cr" style="position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; overflow: hidden; background: #F4E7D5; box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #4C6B33, 0 14px 30px rgba(31,42,31,.18)"><img src="../../../../chasen/img/glass_classic.webp" alt="Matcha Classique" style="position: absolute; left: -6px; top: -50px; width: 140px; height: 300px"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-72deg) translateY(-470px) rotate(72deg)"><div class="d-cr" style="position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; overflow: hidden; background: #F4E7D5; box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #4C6B33, 0 14px 30px rgba(31,42,31,.18)"><img src="../../../../chasen/img/glass_fraise.webp" alt="Matcha Fraise" style="position: absolute; left: -6px; top: -50px; width: 140px; height: 300px"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-144deg) translateY(-470px) rotate(144deg)"><div class="d-cr" style="position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; overflow: hidden; background: #F4E7D5; box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #4C6B33, 0 14px 30px rgba(31,42,31,.18)"><img src="../../../../chasen/img/glass_hojicha.webp" alt="Hōjicha" style="position: absolute; left: -6px; top: -50px; width: 140px; height: 300px"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-216deg) translateY(-470px) rotate(216deg)"><div class="d-cr" style="position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; overflow: hidden; background: #F4E7D5; box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #4C6B33, 0 14px 30px rgba(31,42,31,.18)"><img src="../../../../chasen/img/glass_yuzu.webp" alt="Matcha Yuzu" style="position: absolute; left: -6px; top: -50px; width: 140px; height: 300px"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-288deg) translateY(-470px) rotate(288deg)"><div class="d-cr" style="position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; overflow: hidden; background: #F4E7D5; box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #4C6B33, 0 14px 30px rgba(31,42,31,.18)"><img src="../../../../chasen/img/glass_bleu.webp" alt="Matcha Bleu" style="position: absolute; left: -6px; top: -50px; width: 140px; height: 300px"></div></div></div>
+    <div style="position: absolute; top: 520px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #4C6B33"></div>
+    <div style="position: absolute; top: 1680px; left: 40px; right: 40px; height: 120px"><div class="stack" data-show="10.00,11.10" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; color: #1F2A1F" dir="ltr">Matcha Classique</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: #4A5642" dir="rtl">ירוק עמוק, מריר-מתוק</span></div><div class="stack" data-show="11.10,12.20" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; color: #1F2A1F" dir="ltr">Matcha Fraise</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: #4A5642" dir="rtl">הכוס הוורודה של הבר</span></div><div class="stack" data-show="12.20,13.30" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; color: #1F2A1F" dir="ltr">Hōjicha</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: #4A5642" dir="rtl">קרמל, עשן קל, בלי מרירות</span></div><div class="stack" data-show="13.30,14.40" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; color: #1F2A1F" dir="ltr">Matcha Yuzu</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: #4A5642" dir="rtl">הכוס של הבוקר החם</span></div><div class="stack" data-show="14.40,15.60" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; color: #1F2A1F" dir="ltr">Matcha Bleu</span><span style="font-family: 'Heebo', sans-serif; font-size: 32px; font-weight: 300; color: #4A5642" dir="rtl">צבע שמשנה את מצב הרוח</span></div></div>
+  </section>
+  <section class="scene" data-show="15.3,19.6">
+    <div class="stack" style="background-color: #D5DCEF"></div>
+    <div style="position: absolute; top: 200px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="15.3" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #4C6B33; margin-bottom: 8px" dir="ltr">Les suppléments</div>
+      <span class="mask"><span class="s-l1" style="display: block; font-family: 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1.15; color: #1F2A1F">אותה כוס.</span></span>
+      <span class="mask"><span class="s-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 72px; font-weight: 600; line-height: 1.15; color: #4C6B33">שם משלו.</span></span>
+    </div>
+    <div style="position: absolute; left: 348px; top: 690px; width: 384px; height: 820px; border-radius: 192px 192px 26px 26px; overflow: hidden; background: #F4E7D5; box-shadow: 0 30px 70px rgba(31,42,31,.18)">
+      <img class="" src="../../../../chasen/img/glass_bleu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block">
+      <img class="choco" src="../../../../chasen/img/layer_choco.webp" alt="" style="position: absolute; left: 80.2px; top: 239.7px; width: 230.7px; height: 526.6px">
+      <img class="cream" src="../../../../chasen/img/layer_cream.webp" alt="" style="position: absolute; left: 67.1px; top: 71.6px; width: 248.7px; height: 323.9px">
+    </div>
+    <div class="card" style="position: absolute; left: 250px; top: 1560px; width: 580px; box-sizing: border-box; padding: 26px 34px; background: #FBF6EC; border: 2px solid #4C6B33; border-radius: 18px; box-shadow: 0 24px 50px rgba(31,42,31,.2); display: flex; flex-direction: column; align-items: center; gap: 6px">
+      <div style="font-family: 'Assistant', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .3em; color: #4C6B33" dir="ltr">CHASEN° · N°22</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 58px; line-height: 1; color: #1F2A1F" dir="ltr">Bleu · Crème · Cacao</div>
+      <div style="font-family: 'Heebo', sans-serif; font-size: 28px; font-weight: 300; color: #4A5642" dir="rtl">זה הכרטיס שהמשקה שלך מקבל בבר.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="19.3,23.2">
+    <div class="stack" style="background: #F3E6D3"></div>
+    <div class="stack" data-seq="f/m_%03d.jpg" data-from="1" data-to="60" data-start="19.3" data-step="0.062" data-pos="50% 40%"></div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 760px; background: linear-gradient(to top, rgba(244,231,213,.96) 45%, rgba(244,231,213,0))"></div>
+    <div style="position: absolute; bottom: 230px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="19.6" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #4C6B33; margin-bottom: 8px" dir="ltr">La Métamorphose</div>
+      <div data-in="19.9" style="font-family: 'Heebo', sans-serif; font-size: 76px; font-weight: 300; line-height: 1.15; color: #1F2A1F">אותה כוס.<br><b style="font-weight: 600; color: #4C6B33">גם חמה.</b></div>
+    </div>
+  </section>
+  <section class="scene" data-show="22.7,30">
+    <div class="stack" style="background: #F4E7D5"></div>
+    <div style="position: absolute; left: 60px; top: 520px; width: 960px; height: 720px; overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%)">
+      <img class="w-push" src="../../../../chasen/assets/chasen.webp" alt="The chasen whisk resting in the bowl" style="width: 100%; height: 100%; object-fit: cover; display: block">
+    </div>
+    <div data-in="23.0" style="position: absolute; top: 210px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 96px; font-weight: 500; line-height: 1; color: #1F2A1F" dir="ltr">CHASEN°</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #4C6B33; font-size: 36px" dir="ltr">Le Chasen · la promesse</div>
+    </div>
+    <div style="position: absolute; bottom: 260px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="w-l1" style="display: block; font-family: 'Heebo', sans-serif; font-size: 80px; font-weight: 300; line-height: 1.15; color: #1F2A1F">המטרפה היא הדבר היחיד</span></span>
+      <span class="mask"><span class="w-l2" style="display: block; font-family: 'Heebo', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.15; color: #4C6B33">שלא משתנה.</span></span>
+      <div data-in="24.8" style="margin-top: 18px; font-family: 'Heebo', sans-serif; font-size: 34px; font-weight: 300; color: #4A5642">כל השאר נבחר בכל פעם מחדש.</div>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: var(--s-isoft)">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 240px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">המוצר מצוין.<br>למה הן לא <span style="color: var(--s-copper)">נשארות</span><br>באתר?</div>
+
+  <div style="position: absolute; top: 600px; left: 270px; width: 540px; height: 820px; box-sizing: border-box; padding: 20px">
+    <div style="position: absolute; inset: 20px; border-radius: 20px; overflow: hidden; background: #F2E7D8; box-shadow: 0 24px 60px rgba(20,30,45,.14)"><img src="../../../../chasen/img/glass_classic.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%"></div>
+    <div style="position: absolute; top: 0; right: 0; width: 48px; height: 48px; border-top: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+    <div style="position: absolute; top: 0; left: 0; width: 48px; height: 48px; border-top: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+    <div style="position: absolute; bottom: 0; right: 0; width: 48px; height: 48px; border-bottom: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 48px; height: 48px; border-bottom: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  </div>
+  <div style="position: absolute; top: 1470px; left: 60px; right: 60px; height: 90px" dir="rtl">
+    <div style="position: absolute; left: 60px; right: 60px; top: 43px; height: 4px; border-radius: 2px; background: var(--s-copper)"></div>
+    <div style="position: relative; display: flex; justify-content: space-between">
+      <span style="padding: 16px 30px; border-radius: 999px; border: 3px solid var(--s-copper); background: var(--s-cream); font-size: 32px; font-weight: 600; color: var(--s-ink)">1 · טעם</span>
+      <span style="padding: 16px 30px; border-radius: 999px; border: 3px solid var(--s-copper); background: var(--s-cream); font-size: 32px; font-weight: 600; color: var(--s-ink)">2 · קצפת ושוקולד</span>
+      <span style="padding: 16px 30px; border-radius: 999px; border: 3px solid var(--s-copper); background: var(--s-bg); font-size: 32px; font-weight: 600; color: var(--s-ink)">3 · שם משלה</span>
+    </div>
+  </div>
+<svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1640 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1640 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(242,235,220,.94); border: 1px solid #D9AE85; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-ctext)">Brand Worlds Studio · עולם מותג 22</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">מאצ'ה לא מזמינים. מרכיבים.</span></div>
+    <div class="stack" data-show="9.9,15.3" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · L'Atelier</span><span style="font-size: 22px; color: var(--s-ink)">חוגת הטעמים: כוס אחת, חמישה טעמים</span></div>
+    <div class="stack" data-show="15.3,19.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · Les Suppléments</span><span style="font-size: 22px; color: var(--s-ink)">קצפת עולה, שוקולד נוזל, שם משלו</span></div>
+    <div class="stack" data-show="19.5,22.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · La Métamorphose</span><span style="font-size: 22px; color: var(--s-ink)">אותה כוס, גם חמה</span></div>
+    <div class="stack" data-show="22.9,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">המטרפה לא משתנה</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(194,138,90,.2)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
