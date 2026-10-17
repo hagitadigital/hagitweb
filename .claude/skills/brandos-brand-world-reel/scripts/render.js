@@ -33,6 +33,7 @@ const FPS = 30, W = 1080, H = +(process.env.REEL_H || 1920);
   if (broken.length) console.error('BROKEN IMAGES', [...new Set(broken)].slice(0, 8));
   const fonts = await tab.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family))]);
   console.error('fonts loaded:', fonts.join(', ') || 'NONE (check network/proxy)');
+  await tab.screenshot({ type: 'jpeg' }); // warm-up: the first capture can miss layers, and frame 0 is the feed thumbnail
   const frames = only ? only.split(',').map(Number) : [...Array(Math.round(+durS * FPS)).keys()];
   let ff = null;
   if (!only) ff = spawn(ffmpeg(), ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',

@@ -1,0 +1,297 @@
+<!doctype html>
+<!--
+  ORÉVA° · עולם מותג 24 — studio reel, Sunday 18.10 (campaign "ככה בוחרים").
+  Hook: "למה תמיד משווים אותך במחיר?" · frame 0 = the question + "ככה משווים" (generic no-name serum) vs "ככה בוחרים" (ORÉVA hands).
+  Built on brandos-brand-world-reel/assets/reel-template.html, with the studio colours from the Brand Worlds Studio design system
+  (cream #F2EBDC, cream-deep #E7DEC9, ink #15202E, copper #C28A5A, copper-text #825630).
+  Frames in f/ come from oreva/assets/*-loop.mp4 and texture.mp4 (scripts/video2seq.sh, every 2nd frame; texture every 3rd) — see build.sh.
+  Render: node .claude/skills/brandos-brand-world-reel/scripts/render.js oreva-price.html 30 ../oreva-24-price.mp4
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ORÉVA° · למה תמיד משווים אותך במחיר?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Frank+Ruhl+Libre:wght@400;500&amp;family=Heebo:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{
+  --w-bg:#F6EFE7; --w-ink:#3A2E29; --w-ink2:#6E5E55; --w-accent:#B87A57; --w-accent-text:#8F5A3C; --w-stone:#D9C7B3;
+  --s-bg:#F2EBDC; --s-cream:#E7DEC9; --s-ink:#15202E; --s-ink-soft:#3D4A5C; --s-copper:#C28A5A; --s-copper-soft:#D9AE85; --s-copper-text:#825630;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+.tile{position:absolute;top:210px;left:40px;width:1000px;height:1260px;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(20,30,45,.16)}
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* studio wrapper (template) */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* hook: question + proof are already on screen at frame 0 (it is the thumbnail); only the ball moves */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.line{fill:none;stroke:var(--s-copper);stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(217,174,133,.45);border:1.5px solid var(--s-copper-soft);box-shadow:0 10px 28px rgba(20,30,45,.22)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#EBC9A4 0%,#C28A5A 34%,#8A5A34 70%,#4E2F18 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* B · "אותן ידיים, ארבעה שלבים": stops at 9.7 · 11.4 · 13.0 · 14.6s; the ball rolls right→left node to node,
+   the copper line fills behind it and the ground warms one step per stop */
+.bgB{animation-name:bgB}
+@keyframes bgB{0%,36.667%{background-color:#F6EFE7}38%,42%{background-color:#F5DED3}43.333%,47.333%{background-color:#EFCDBF}48.667%,100%{background-color:#F0BFB0}}
+.ballB{animation-name:ballB}
+@keyframes ballB{0%,36.667%{transform:translateX(908px)}38%,42%{transform:translateX(641px)}43.333%,47.333%{transform:translateX(375px)}48.667%,100%{transform:translateX(108px)}}
+.rotB{position:absolute;inset:0;animation-name:rotB}
+@keyframes rotB{0%,36.667%{transform:rotate(0)}38%,42%{transform:rotate(-610deg)}43.333%,47.333%{transform:rotate(-1220deg)}48.667%,100%{transform:rotate(-1830deg)}}
+.fillB{animation-name:fillB;transform-origin:right}
+@keyframes fillB{0%,36.667%{transform:scaleX(0)}38%,42%{transform:scaleX(.3334)}43.333%,47.333%{transform:scaleX(.6667)}48.667%,100%{transform:scaleX(1)}}
+.node{position:absolute;top:1576px;width:32px;height:32px;margin-left:-16px;border-radius:50%;box-sizing:border-box;border:4px solid var(--w-accent);background:var(--w-bg)}
+.node i{position:absolute;inset:4px;border-radius:50%;background:var(--w-accent)}
+.nlab{position:absolute;top:1624px;width:200px;margin-left:-100px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--w-accent-text)}
+
+/* E · slow push-in on the hands */
+.kbE{animation-name:kbE;animation-timing-function:linear}
+@keyframes kbE{0%,75%{transform:scale(1.02)}100%{transform:scale(1.12)}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper-text)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-copper)">24</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 38px; line-height: 1.5; color: var(--s-ink-soft)">לקוסמטיקאית עם ליין משלה.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 100px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper-text)" dir="rtl">ORÉVA° · עולם מותג 24</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">כשיש עולם,<br>משווים אותך רק לעצמך.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1430px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper-text)" dir="rtl">ומה הלקוחות שלך רואות<br>לפני המחיר?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 38px; font-weight: 600">אבחון פער המותג</span><span style="font-size: 26px">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: var(--s-ink-soft)" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(20,30,45,.22)">
+
+  <!-- A · The Core (2.6–10): קודם הידיים — the hands loop at real speed -->
+  <section class="scene" data-show="0,10" style="background: var(--w-bg)">
+    <div class="tile"><div class="stack" data-seq="f/hands_%03d.jpg" data-from="1" data-to="89" data-by="1" data-start="2.6" data-step="0.0833" data-pos="10% 50%"></div></div>
+    <div style="position: absolute; top: 1530px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: var(--w-accent-text)" dir="ltr">Le soin · 01</div>
+      <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 66px; line-height: 1.2; color: var(--w-ink)">קודם הידיים.<br>אחר כך הבקבוק.</div>
+    </div>
+  </section>
+
+  <!-- B · The Visual World (9.7–16): אותן ידיים, ארבעה שלבים — ends on the bottle -->
+  <section class="scene" data-show="9.7,16">
+    <div class="stack bgB"></div>
+    <div class="tile">
+      <div class="stack" data-show="9.7,11.5"><div class="stack" data-seq="f/diagnosis_%03d.jpg" data-from="20" data-to="45" data-by="1" data-start="9.5" data-step="0.0833" data-pos="23% 50%"></div></div>
+      <div class="stack" data-show="11.4,13.0"><div class="stack" data-seq="f/treatment_%03d.jpg" data-from="10" data-to="34" data-by="1" data-start="11.2" data-step="0.0833" data-pos="5% 50%"></div></div>
+      <div class="stack" data-show="13.0,14.6"><div class="stack" data-seq="f/kit_%03d.jpg" data-from="10" data-to="34" data-by="1" data-start="12.8" data-step="0.0833" data-pos="10% 50%"></div></div>
+      <div class="stack" data-show="14.6,16"><div class="stack" data-seq="f/pump_%03d.jpg" data-from="1" data-to="24" data-by="1" data-start="14.4" data-step="0.0833" data-pos="22% 50%"></div></div>
+    </div>
+    <!-- the path: line, fill, four nodes, the ball -->
+    <div style="position: absolute; top: 1590px; left: 140px; width: 800px; height: 4px; border-radius: 2px; background: var(--s-copper-soft)"></div>
+    <div class="fillB" style="position: absolute; top: 1590px; left: 140px; width: 800px; height: 4px; border-radius: 2px; background: var(--w-accent)"></div>
+    <div class="node" style="left: 940px"><i data-show="9.8,30" data-fade="0.15"></i></div>
+    <div class="node" style="left: 673px"><i data-show="11.4,30" data-fade="0.15"></i></div>
+    <div class="node" style="left: 407px"><i data-show="13.0,30" data-fade="0.15"></i></div>
+    <div class="node" style="left: 140px"><i data-show="14.6,30" data-fade="0.15"></i></div>
+    <div class="nlab" style="left: 940px" dir="ltr">01 · Diagnostic</div>
+    <div class="nlab" style="left: 673px" dir="ltr">02 · Le soin</div>
+    <div class="nlab" style="left: 407px" dir="ltr">03 · Le rituel</div>
+    <div class="nlab" style="left: 140px" dir="ltr">04 · Le flacon</div>
+    <div class="ballB" style="position: absolute; top: 1560px; left: 0; width: 64px; height: 64px">
+      <div style="position: absolute; inset: -10px; border-radius: 50%; background: rgba(217,174,133,.5)"></div>
+      <div style="position: absolute; inset: 0; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 38% 30%,#EBC9A4 0%,#C28A5A 34%,#8A5A34 70%,#4E2F18 100%); box-shadow: 0 8px 18px rgba(20,30,45,.22)">
+        <div class="rotB"><div style="position: absolute; left: 10px; top: 36px; width: 10px; height: 10px; border-radius: 50%; background: #FFF4E6"></div><div style="position: absolute; left: 12px; top: 12px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(250,228,200,.6)"></div></div>
+      </div>
+    </div>
+    <!-- the stop's line, from the site's Le parcours -->
+    <div style="position: absolute; top: 1700px; left: 80px; right: 80px; height: 160px" dir="rtl">
+      <div class="stack" data-show="9.7,11.0" style="text-align: center"><div style="font-size: 58px; font-weight: 600; color: var(--w-ink)">אבחון עור</div><div style="font-size: 36px; color: var(--w-ink2)">ארבעים דקות בלי מוצרים. רק העור שלך.</div></div>
+      <div class="stack" data-show="11.4,12.6" style="text-align: center"><div style="font-size: 58px; font-weight: 600; color: var(--w-ink)">טיפול בקליניקה</div><div style="font-size: 36px; color: var(--w-ink2)">המקום שבו הנוסחאות נולדו.</div></div>
+      <div class="stack" data-show="13.0,14.2" style="text-align: center"><div style="font-size: 58px; font-weight: 600; color: var(--w-ink)">פרוטוקול ביתי</div><div style="font-size: 36px; color: var(--w-ink2)">שלושה או ארבעה מוצרים, לא שבעה.</div></div>
+      <div class="stack" data-show="14.6,16" style="text-align: center"><div style="font-size: 58px; font-weight: 600; color: var(--w-ink)">ואז הבקבוק.</div><div style="font-size: 36px; color: var(--w-ink2)">באותו ריכוז ובאותה טקסטורה.</div></div>
+    </div>
+  </section>
+
+  <!-- C · The Element (15.7–19.6): La texture -->
+  <section class="scene" data-show="15.7,19.6" style="background: var(--w-bg)">
+    <div class="tile"><div class="stack" data-seq="f/texture_%03d.jpg" data-from="1" data-to="41" data-by="1" data-start="15.8" data-step="0.085" data-pos="72% 50%"></div></div>
+    <div data-in="15.9" style="position: absolute; top: 1530px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: var(--w-accent-text)" dir="ltr">La texture · 03</div>
+      <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 58px; line-height: 1.25; color: var(--w-ink)">וכשהוא נפתח, הידיים שלה<br>ממשיכות בבית.</div>
+    </div>
+  </section>
+
+  <!-- D · Touchpoints (19.3–23): the boutique shelf — seven products, not seventy -->
+  <section class="scene" data-show="19.3,23" style="background: var(--w-bg)">
+    <div style="position: absolute; top: 230px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center" dir="rtl">
+      <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 72px; line-height: 1.15; color: var(--w-ink)">שבעה מוצרים, לא שבעים.</div>
+      <div style="font-size: 36px; color: var(--w-ink2)">כי זה מה שהעור באמת מבקש.</div>
+    </div>
+    <div style="position: absolute; top: 470px; left: 80px; right: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--w-accent-text)" dir="ltr">La trilogie</div>
+    <div style="position: absolute; top: 530px; left: 60px; right: 60px; height: 560px; display: flex; justify-content: center; align-items: flex-end; gap: 30px">
+      <img data-in="19.5" src="../../../../oreva/assets/p-dew.webp" alt="" style="height: 560px; display: block">
+      <img data-in="19.75" src="../../../../oreva/assets/p-glow.webp" alt="" style="height: 560px; display: block">
+      <img data-in="20.0" src="../../../../oreva/assets/p-calm.webp" alt="" style="height: 560px; display: block">
+    </div>
+    <div style="position: absolute; top: 1090px; left: 80px; right: 80px; height: 26px; border-radius: 6px; background: var(--w-stone); box-shadow: 0 14px 30px rgba(20,30,45,.12)"></div>
+    <div style="position: absolute; top: 1170px; left: 80px; right: 80px; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--w-accent-text)" dir="ltr">Le rituel complet</div>
+    <div style="position: absolute; top: 1230px; left: 60px; right: 60px; height: 400px; display: flex; justify-content: center; align-items: flex-end; gap: 18px">
+      <img data-in="20.6" src="../../../../oreva/assets/p-soft-cleanse.webp" alt="" style="height: 400px; display: block">
+      <img data-in="20.8" src="../../../../oreva/assets/p-dew-essence.webp" alt="" style="height: 400px; display: block">
+      <img data-in="21.0" src="../../../../oreva/assets/p-cocoon-cream.webp" alt="" style="height: 400px; display: block">
+      <img data-in="21.2" src="../../../../oreva/assets/p-eye-veil.webp" alt="" style="height: 400px; display: block">
+    </div>
+    <div style="position: absolute; top: 1630px; left: 80px; right: 80px; height: 26px; border-radius: 6px; background: var(--w-stone); box-shadow: 0 14px 30px rgba(20,30,45,.12)"></div>
+  </section>
+
+  <!-- E · The Promise (22.7–30): calm, stays inside the window in the outro -->
+  <section class="scene" data-show="22.7,30" style="background: var(--w-bg)">
+    <div class="tile"><div class="stack kbE"><div class="stack" data-seq="f/hands_%03d.jpg" data-from="90" data-to="121" data-by="1" data-start="22.7" data-step="0.0833" data-pos="10% 50%"></div></div></div>
+    <div style="position: absolute; top: 1540px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+      <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 72px; line-height: 1.2; color: var(--w-ink)">קודם הידיים.<br>אחר כך הבקבוק.</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40px; color: var(--w-accent-text)" dir="ltr">ORÉVA° Skin Studio</div>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8) — static at frame 0: question + both cards; the ball rolls in under them -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-ink)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 18px; letter-spacing: .3em; color: var(--s-ink-soft)">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 240px; left: 80px; right: 80px; text-align: right; font-size: 84px; font-weight: 600; line-height: 1.16; color: var(--s-ink)" dir="rtl">למה תמיד<br>משווים אותך <span style="color: var(--s-copper)">במחיר</span>?</div>
+
+  <div style="position: absolute; top: 560px; left: 80px; right: 80px; display: flex; flex-direction: row; gap: 40px" dir="rtl">
+    <!-- ככה בוחרים: the world -->
+    <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 16px">
+      <div style="font-size: 34px; font-weight: 600; color: var(--s-copper-text)">ככה בוחרים</div>
+      <div style="position: relative; height: 860px; padding: 18px; box-sizing: border-box">
+        <img src="f/hands_001.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 12% 50%; border-radius: 20px; display: block; box-shadow: 0 24px 60px rgba(20,30,45,.16)">
+        <div style="position: absolute; top: 0; right: 0; width: 48px; height: 48px; border-top: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+        <div style="position: absolute; top: 0; left: 0; width: 48px; height: 48px; border-top: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+        <div style="position: absolute; bottom: 0; right: 0; width: 48px; height: 48px; border-bottom: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+        <div style="position: absolute; bottom: 0; left: 0; width: 48px; height: 48px; border-bottom: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+      </div>
+    </div>
+    <!-- ככה משווים: a generic no-name serum -->
+    <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 16px">
+      <div style="font-size: 34px; font-weight: 600; color: var(--s-ink-soft)">ככה משווים</div>
+      <div style="height: 824px; margin-top: 18px; box-sizing: border-box; padding: 18px; background: #FFFFFF; border-radius: 20px; box-shadow: 0 24px 60px rgba(20,30,45,.12); display: flex; flex-direction: column; gap: 18px">
+        <img src="../../../../images/bw-lp/generic-serum.jpg" alt="" style="width: 100%; height: 640px; object-fit: cover; border-radius: 12px; display: block">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 6px"><span style="font-size: 30px; color: var(--s-ink-soft)">סרום פנים · 30ml</span><strong style="font-size: 48px; color: var(--s-ink)">₪89</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1640 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1640 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position: absolute; bottom: 110px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: var(--s-ink-soft)" dir="ltr">HAGITANTEBI.CO.IL</div>
+</div>
+
+<!-- STUDIO · layer tag -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 540px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(242,235,220,.94); border: 1px solid var(--s-copper-soft); display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper-text)">Brand Worlds Studio · עולם מותג 24</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">קודם הידיים. אחר כך הבקבוק.</span></div>
+    <div class="stack" data-show="9.9,15.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · The Visual World</span><span style="font-size: 22px; color: var(--s-ink)">אותן ידיים, ארבעה שלבים.</span></div>
+    <div class="stack" data-show="15.9,19.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · The Element</span><span style="font-size: 22px; color: var(--s-ink)">הטקסטורה של הטיפול, בבית.</span></div>
+    <div class="stack" data-show="19.5,22.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · Live Site</span><span style="font-size: 22px; color: var(--s-ink)">הבוטיק: שבעה מוצרים.</span></div>
+    <div class="stack" data-show="22.9,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">מה שקורה בחדר הטיפולים, קורה בבקבוק.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(194,138,90,.2)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js (from the template) — data-show / data-in / data-seq in seconds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
