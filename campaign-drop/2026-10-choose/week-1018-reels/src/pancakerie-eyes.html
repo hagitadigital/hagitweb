@@ -1,0 +1,225 @@
+<!doctype html>
+<!--
+  PANCAKERIE° · עולם מותג 26 — studio reel, Wednesday 21.10 (campaign "ככה בוחרים").
+  Hook: "למה תמיד משווים אותך במחיר?" · frame 0 = the question + "ככה משווים" (generic no-name serum) vs "ככה בוחרים" (ORÉVA hands).
+  Built on brandos-brand-world-reel/assets/reel-template.html, with the studio colours from the Brand Worlds Studio design system
+  (cream #F2EBDC, cream-deep #E7DEC9, ink #15202E, copper #C28A5A, copper-text #825630).
+  Frames in f/ come from oreva/assets/*-loop.mp4 and texture.mp4 (scripts/video2seq.sh, every 2nd frame; texture every 3rd) — see build.sh.
+  Render: node .claude/skills/brandos-brand-world-reel/scripts/render.js oreva-price.html 30 ../oreva-24-price.mp4
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>PANCAKERIE° · הלקוחה בוחרת בעיניים</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Heebo:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{
+  --w-bg:#EEE6DA; --w-ink:#402613; --w-ink2:#6B4E3A; --w-accent:#8C6A52; --w-accent-text:#6B4E3A; --w-stone:#E8D8C3;
+  --s-bg:#F2EBDC; --s-cream:#E7DEC9; --s-ink:#15202E; --s-ink-soft:#3D4A5C; --s-copper:#C28A5A; --s-copper-soft:#D9AE85; --s-copper-text:#825630;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+.tile{position:absolute;top:210px;left:40px;width:1000px;height:1260px;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(20,30,45,.16)}
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* studio wrapper (template) */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* hook: question + proof are already on screen at frame 0 (it is the thumbnail); only the ball moves */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.line{fill:none;stroke:var(--s-copper);stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(217,174,133,.45);border:1.5px solid var(--s-copper-soft);box-shadow:0 10px 28px rgba(20,30,45,.22)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#EBC9A4 0%,#C28A5A 34%,#8A5A34 70%,#4E2F18 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+
+/* B · La Carte: the fan turns, the plate swaps, the whole frame takes the colour */
+.fbg{animation-name:fbg}@keyframes fbg{0%,36.167%{background-color:#D4CFBA}37.667%,40.833%{background-color:#E5C9BC}42.333%,45.500%{background-color:#523726}47.000%,100%{background-color:#EEDAB7}}
+.ffg{animation-name:ffg}@keyframes ffg{0%,36.167%{color:#402613}37.667%,40.833%{color:#402613}42.333%,45.500%{color:#EEE6DA}47.000%,100%{color:#402613}}
+.fring{animation-name:fring;transform-origin:0 0}@keyframes fring{0%,36.167%{transform:rotate(0deg)}37.667%,40.833%{transform:rotate(90deg)}42.333%,45.500%{transform:rotate(180deg)}47.000%,100%{transform:rotate(270deg)}}
+.drop0{animation-name:drop0;animation-timing-function:cubic-bezier(.3,0,.25,1)}@keyframes drop0{0%,51.667%{opacity:0;transform:translateY(-220px)}52.167%{opacity:1}53.333%,100%{opacity:1;transform:none}}.drop1{animation-name:drop1;animation-timing-function:cubic-bezier(.3,0,.25,1)}@keyframes drop1{0%,54.000%{opacity:0;transform:translateY(-220px)}54.500%{opacity:1}55.667%,100%{opacity:1;transform:none}}.drop2{animation-name:drop2;animation-timing-function:cubic-bezier(.3,0,.25,1)}@keyframes drop2{0%,56.333%{opacity:0;transform:translateY(-220px)}56.833%{opacity:1}58.000%,100%{opacity:1;transform:none}}.drop3{animation-name:drop3;animation-timing-function:cubic-bezier(.3,0,.25,1)}@keyframes drop3{0%,58.667%{opacity:0;transform:translateY(-220px)}59.167%{opacity:1}60.333%,100%{opacity:1;transform:none}}
+.cbg{animation-name:cbg}@keyframes cbg{0%,54.333%{background-color:#EEE6DA}55.667%,100%{background-color:#D4CFBA}}
+.kbD{animation-name:kbD;animation-timing-function:linear}@keyframes kbD{0%,64.333%{transform:scale(1.04)}77.333%,100%{transform:scale(1.14) translateX(-30px)}}
+.kbE{animation-name:kbE;animation-timing-function:linear}@keyframes kbE{0%,75.667%{transform:scale(1.02)}100%{transform:scale(1.14)}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper-text)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-copper)">26</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 38px; line-height: 1.5; color: var(--s-ink-soft)">לפנקייקרי עם בנאי מנה.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 100px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper-text)" dir="rtl">PANCAKERIE° · עולם מותג 26</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">כשרואים את הטעם,<br>בוחרים בך.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1430px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper-text)" dir="rtl">ומה רואים אצלך<br>לפני הטעימה?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 38px; font-weight: 600">אבחון פער המותג</span><span style="font-size: 26px">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: var(--s-ink-soft)" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-left: 4px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 4px solid var(--s-copper); border-right: 4px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(20,30,45,.22)">
+  <section class="scene" data-show="0,10" style="background: var(--w-bg)">
+    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 1260px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><div class="stack" data-show="0,5.35" data-fade="0.15"><div class="stack" data-seq="../../../../pancakerie/assets/poele/a%02d.webp" data-from="1" data-to="40" data-by="2" data-start="2.7" data-step="0.12" data-pos="35% 50%"></div></div><div class="stack" data-show="5.2,7.45" data-fade="0.15"><div class="stack" data-seq="../../../../pancakerie/assets/poele/b%02d.webp" data-from="1" data-to="40" data-by="2" data-start="5.3" data-step="0.1" data-pos="35% 50%"></div></div><div class="stack" data-show="7.3,10" data-fade="0.15"><div class="stack" data-seq="../../../../pancakerie/assets/poele/c%02d.webp" data-from="1" data-to="40" data-by="2" data-start="7.4" data-step="0.1" data-pos="35% 50%"></div></div></div>
+    <div style="position: absolute; top: 1530px; left: 80px; right: 80px; height: 180px">
+      <div class="stack" data-show="2.6,5.3" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center"><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 64px; line-height: 1; color: var(--w-ink)" dir="ltr">Verser</div><div style="font-size: 44px; font-weight: 500; color: var(--w-ink2)" dir="rtl">מוזגים. בצק אחד, מהכד למחבת.</div></div><div class="stack" data-show="5.35,7.35" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center"><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 64px; line-height: 1; color: var(--w-ink)" dir="ltr">Retourner</div><div style="font-size: 44px; font-weight: 500; color: var(--w-ink2)" dir="rtl">הופכים. פעם אחת.</div></div><div class="stack" data-show="7.4,10" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center"><div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 64px; line-height: 1; color: var(--w-ink)" dir="ltr">Napper</div><div style="font-size: 44px; font-weight: 500; color: var(--w-ink2)" dir="rtl">מזלפים. מכאן מתחיל הצבע.</div></div>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,15.6">
+    <div class="stack fbg"></div>
+    <div class="ffg" style="position: absolute; top: 200px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px" dir="ltr">Les Signatures</div>
+      <div style="font-size: 68px; font-weight: 600; line-height: 1.15">ארבע מנות.<br>כל אחת בצבע שלה.</div>
+    </div>
+    <div class="stack" data-show="9.6,11.3" data-fade="0.3"><img src="../../../../pancakerie/assets/dish-pistache.webp" alt="" style="position: absolute; left: 40px; top: 470px; width: 1000px; height: 750px; display: block"></div><div class="stack" data-show="11.3,12.7" data-fade="0.3"><img src="../../../../pancakerie/assets/dish-fraise.webp" alt="" style="position: absolute; left: 40px; top: 470px; width: 1000px; height: 750px; display: block"></div><div class="stack" data-show="12.7,14.1" data-fade="0.3"><img src="../../../../pancakerie/assets/dish-noisette.webp" alt="" style="position: absolute; left: 40px; top: 470px; width: 1000px; height: 750px; display: block"></div><div class="stack" data-show="14.1,15.6" data-fade="0.3"><img src="../../../../pancakerie/assets/dish-citron.webp" alt="" style="position: absolute; left: 40px; top: 470px; width: 1000px; height: 750px; display: block"></div>
+    <div class="ffg" style="position: absolute; top: 1230px; left: 60px; right: 60px; height: 150px"><div class="stack" data-show="9.7,10.950000000000001" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center"><div style="font-family: 'Fraunces', 'Cormorant Garamond', serif; font-size: 72px; font-weight: 600; letter-spacing: .08em; line-height: 1" dir="ltr">PISTACHE</div><div style="font-size: 36px" dir="rtl">פיסטוק · ירוק רך, מלוח-מתוק, והקצפת מרגיעה את הכול.</div></div><div class="stack" data-show="11.450000000000001,12.35" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center"><div style="font-family: 'Fraunces', 'Cormorant Garamond', serif; font-size: 72px; font-weight: 600; letter-spacing: .08em; line-height: 1" dir="ltr">FRAISE</div><div style="font-size: 36px" dir="rtl">תות · הקלאסיקה של שבת בבוקר.</div></div><div class="stack" data-show="12.85,13.75" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center"><div style="font-family: 'Fraunces', 'Cormorant Garamond', serif; font-size: 72px; font-weight: 600; letter-spacing: .08em; line-height: 1" dir="ltr">NOISETTE</div><div style="font-size: 36px" dir="rtl">אגוזי לוז · הכי כהה בתפריט. חם, עמוק, ולא מתנצל.</div></div><div class="stack" data-show="14.25,15.6" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center"><div style="font-family: 'Fraunces', 'Cormorant Garamond', serif; font-size: 72px; font-weight: 600; letter-spacing: .08em; line-height: 1" dir="ltr">CITRON</div><div style="font-size: 36px" dir="rtl">לימון · חמוץ שמעיר, מתוק שמרגיע. הבוקר בצהוב.</div></div></div>
+    <div class="fring" style="position: absolute; left: 540px; top: 1880px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-330px) rotate(0deg)"><div style="position: absolute; left: -92px; top: -92px; width: 184px; height: 184px; border-radius: 50%; background: #A5A57F; box-shadow: 0 0 0 6px #FFFFFF, 0 16px 34px rgba(20,30,45,.2)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-90deg) translateY(-330px) rotate(90deg)"><div style="position: absolute; left: -92px; top: -92px; width: 184px; height: 184px; border-radius: 50%; background: #D39483; box-shadow: 0 0 0 6px #FFFFFF, 0 16px 34px rgba(20,30,45,.2)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-180deg) translateY(-330px) rotate(180deg)"><div style="position: absolute; left: -92px; top: -92px; width: 184px; height: 184px; border-radius: 50%; background: #523726; box-shadow: 0 0 0 6px #FFFFFF, 0 16px 34px rgba(20,30,45,.2)"></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-270deg) translateY(-330px) rotate(270deg)"><div style="position: absolute; left: -92px; top: -92px; width: 184px; height: 184px; border-radius: 50%; background: #EEC376; box-shadow: 0 0 0 6px #FFFFFF, 0 16px 34px rgba(20,30,45,.2)"></div></div></div>
+    <div style="position: absolute; left: 522px; top: 1418px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #FFFFFF"></div>
+  </section>
+  <section class="scene" data-show="15.3,19.6">
+    <div class="stack cbg"></div>
+    <div style="position: absolute; top: 200px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">L'Atelier</div>
+      <div style="font-size: 72px; font-weight: 600; line-height: 1.15; color: var(--w-ink)">בוחרים צבע.<br>מקבלים מנה.</div>
+    </div>
+    <div style="position: absolute; left: 40px; top: 560px; width: 1000px; height: 750px"><img class="drop0" src="../../../../pancakerie/assets/layer-base.webp" alt="" style="position: absolute; left: 0; top: 0; width: 1000px; height: 750px; display: block"><img class="drop1" src="../../../../pancakerie/assets/layer-cream-pistache.webp" alt="" style="position: absolute; left: 0; top: 0; width: 1000px; height: 750px; display: block"><img class="drop2" src="../../../../pancakerie/assets/layer-fraises.webp" alt="" style="position: absolute; left: 0; top: 0; width: 1000px; height: 750px; display: block"><img class="drop3" src="../../../../pancakerie/assets/layer-chantilly.webp" alt="" style="position: absolute; left: 0; top: 0; width: 1000px; height: 750px; display: block"></div>
+    <div style="position: absolute; top: 1420px; left: 50px; right: 50px; display: flex; justify-content: space-between" dir="rtl"><span data-in="15.5" style="padding: 14px 26px; border-radius: 999px; border: 3px solid var(--w-accent); background: #FFFFFF; font-size: 30px; font-weight: 600; color: var(--w-ink)">01 · הבסיס</span><span data-in="16.2" style="padding: 14px 26px; border-radius: 999px; border: 3px solid var(--w-accent); background: #FFFFFF; font-size: 30px; font-weight: 600; color: var(--w-ink)">02 · הקרם</span><span data-in="16.9" style="padding: 14px 26px; border-radius: 999px; border: 3px solid var(--w-accent); background: #FFFFFF; font-size: 30px; font-weight: 600; color: var(--w-ink)">03 · הפרי</span><span data-in="17.6" style="padding: 14px 26px; border-radius: 999px; border: 3px solid var(--w-accent); background: #FFFFFF; font-size: 30px; font-weight: 600; color: var(--w-ink)">04 · התוספות</span></div>
+    <div data-in="17.9" style="position: absolute; top: 1580px; left: 70px; right: 70px; text-align: center; font-size: 40px; color: var(--w-ink2)" dir="rtl">הצבע של הקרם הוא הצבע של המנה.</div>
+  </section>
+  <section class="scene" data-show="19.3,23.2" style="background: var(--w-bg)">
+    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbD" src="../../../../pancakerie/assets/brand-takeaway.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block"></div>
+    <div data-in="20.6" style="position: absolute; top: 870px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img src="../../../../pancakerie/assets/brand-storefront.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block"></div>
+    <div style="position: absolute; top: 1560px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center" dir="rtl">
+      <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">La Boîte · Le Lieu</div>
+      <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--w-ink)">הצבע יוצא איתך.</div>
+      <div style="font-size: 34px; color: var(--w-ink2)">הקופסה, הכוס והשקית, בצבע של המנה.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="22.7,30" style="background: var(--w-bg)">
+    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 1260px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbE" src="../../../../pancakerie/assets/moment.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 48% 50%; display: block"></div>
+    <div style="position: absolute; top: 1540px; left: 80px; right: 80px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+      <div style="font-size: 72px; font-weight: 600; line-height: 1.2; color: var(--w-ink)">טעם שרואים<br>לפני שטועמים.</div>
+      <div style="font-family: 'Fraunces', 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; letter-spacing: .06em; color: var(--w-accent-text)" dir="ltr">PANCAKERIE° · Morning Patisserie</div>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8) -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-ink)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 18px; letter-spacing: .3em; color: var(--s-ink-soft)">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 240px; left: 80px; right: 80px; text-align: right; font-size: 84px; font-weight: 600; line-height: 1.16; color: var(--s-ink)" dir="rtl">הלקוחה בוחרת<br>בעיניים. מה היא<br><span style="color: var(--s-copper)">רואה</span> אצלך?</div>
+  <div style="position: absolute; top: 640px; left: 80px; right: 80px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px"><div style="position: relative; height: 400px; border-radius: 20px; background: #D39483; overflow: hidden; box-shadow: 0 18px 40px rgba(20,30,45,.14)"><img src="../../../../pancakerie/assets/dish-fraise.webp" alt="" style="position: absolute; left: -10px; top: 10px; width: 460px; height: 345px"><div style="position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: #402613" dir="ltr">FRAISE</div></div><div style="position: relative; height: 400px; border-radius: 20px; background: #A5A57F; overflow: hidden; box-shadow: 0 18px 40px rgba(20,30,45,.14)"><img src="../../../../pancakerie/assets/dish-pistache.webp" alt="" style="position: absolute; left: -10px; top: 10px; width: 460px; height: 345px"><div style="position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: #402613" dir="ltr">PISTACHE</div></div><div style="position: relative; height: 400px; border-radius: 20px; background: #EEC376; overflow: hidden; box-shadow: 0 18px 40px rgba(20,30,45,.14)"><img src="../../../../pancakerie/assets/dish-citron.webp" alt="" style="position: absolute; left: -10px; top: 10px; width: 460px; height: 345px"><div style="position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: #402613" dir="ltr">CITRON</div></div><div style="position: relative; height: 400px; border-radius: 20px; background: #523726; overflow: hidden; box-shadow: 0 18px 40px rgba(20,30,45,.14)"><img src="../../../../pancakerie/assets/dish-noisette.webp" alt="" style="position: absolute; left: -10px; top: 10px; width: 460px; height: 345px"><div style="position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: #EEE6DA" dir="ltr">NOISETTE</div></div></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1610 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1610 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div style="position: absolute; bottom: 110px; left: 0; right: 0; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .3em; color: var(--s-ink-soft)" dir="ltr">HAGITANTEBI.CO.IL</div>
+</div>
+
+<!-- STUDIO · layer tag -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 540px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(242,235,220,.94); border: 1px solid var(--s-copper-soft); display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper-text)">Brand Worlds Studio · עולם מותג 26</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">טעם שרואים לפני שטועמים.</span></div>
+    <div class="stack" data-show="9.9,15.4" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · La Carte</span><span style="font-size: 22px; color: var(--s-ink)">ארבע מנות, ארבעה צבעים.</span></div>
+    <div class="stack" data-show="15.4,19.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · L'Atelier</span><span style="font-size: 22px; color: var(--s-ink)">בוחרים צבע. מקבלים מנה.</span></div>
+    <div class="stack" data-show="19.5,22.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · La Boîte</span><span style="font-size: 22px; color: var(--s-ink)">הצבע יוצא איתך.</span></div>
+    <div class="stack" data-show="22.9,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">הבוקר שלך, בצבע שבחרת.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(194,138,90,.2)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js (from the template) — data-show / data-in / data-seq in seconds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
