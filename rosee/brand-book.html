@@ -8,6 +8,7 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="Hagit Antebi · Brand Worlds Studio">
 <link rel="canonical" href="https://hagitantebi.co.il/rosee/brand-book.html">
+<link rel="alternate" type="application/json" title="brand-book" href="brand-book.json">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -83,7 +84,7 @@ img{display:block;max-width:100%;height:auto}
 .wm{font-family:var(--serif);font-weight:500;letter-spacing:.42em;white-space:nowrap;direction:ltr;unicode-bidi:isolate}
 .wm i{font-style:normal;color:var(--rose-deep)}
 .hr{font-family:var(--serif);letter-spacing:.22em;font-variant-numeric:lining-nums tabular-nums;direction:ltr;unicode-bidi:isolate;white-space:nowrap;color:var(--copper-text)}
-.fr{font-family:var(--serif);letter-spacing:.06em;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.fr{font-family:var(--serif);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.06em;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
 .nw{white-space:nowrap}
 .ltr{direction:ltr;unicode-bidi:isolate}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
@@ -226,6 +227,106 @@ section{padding:clamp(72px,10vw,140px) 0}
 .dos p{font-size:.95rem;color:#5E4047}
 @media (max-width:900px){.rules,.dos{grid-template-columns:1fr}}
 
+/* voice */
+.voice{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(30px,6vw,80px);align-items:start}
+.voice .tone-line{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:200;line-height:1.3}
+.voice .tone-line b{font-weight:600;color:var(--rose-text)}
+.words{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.words .chips span.not{color:var(--ink-soft);border-color:rgba(110,90,97,.45);text-decoration:line-through}
+.lines{display:flex;flex-direction:column}
+.lines p{font-size:clamp(1.3rem,2.2vw,1.75rem);font-weight:200;line-height:1.35;padding:20px 0;border-bottom:1px solid rgba(194,138,90,.45)}
+.lines p:first-child{padding-top:0}
+.lines p b{font-weight:600;color:var(--rose-text)}
+.lines small{display:block;font-size:.86rem;color:var(--copper-text);font-weight:600;margin-bottom:4px}
+@media (max-width:860px){.voice{grid-template-columns:1fr}}
+
+/* the world continues: articles, campaign, ads, reel, the generic test */
+.cont{background:linear-gradient(180deg,var(--dawn) 0%,var(--cream) 520px)}
+.sub{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:clamp(56px,7vw,96px) 0 26px;padding-top:22px;border-top:1px solid var(--copper)}
+.sub .n{font-family:var(--serif);font-variant-numeric:lining-nums tabular-nums;letter-spacing:.16em;color:var(--copper-text);font-weight:500}
+.sub h3{font-weight:300;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.2}
+.sub h3 b{font-weight:600;color:var(--rose-text)}
+.sub p{flex-basis:100%;color:var(--ink-soft);max-width:720px}
+.arts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.art{padding:24px 22px;display:flex;flex-direction:column;gap:12px;border:1px solid rgba(194,138,90,.25)}
+.art .when{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--copper);padding-bottom:10px}
+.art .when .hr{font-size:1.5rem;color:var(--ink)}
+.art .when .fr{font-style:italic;font-size:1.05rem}
+.art h4{font-weight:300;font-size:1.3rem;line-height:1.35}
+.art h4 b{font-weight:600}
+.art .q{font-size:.88rem;color:var(--copper-text);font-weight:600}
+.art .a{font-size:.98rem;color:#4E3B42}
+.art .open{margin-top:auto;background:var(--linen);padding:12px 14px;font-size:.98rem;line-height:1.55}
+@media (max-width:1100px){.arts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.arts{grid-template-columns:1fr}}
+.camp{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px}
+.camp .card{background:linear-gradient(180deg,var(--dawn) 0%,var(--cream) 85%);padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;gap:18px;border:1px solid rgba(194,138,90,.3)}
+.camp .card .fr{font-style:italic;font-size:1.6rem}
+.camp .card h4{font-weight:200;font-size:clamp(2rem,4vw,3rem);line-height:1.1}
+.camp .card h4 b{font-weight:600;color:var(--rose-text)}
+.camp .card .rule-box{background:var(--linen);padding:16px 18px;margin-top:auto}
+.camp .card .rule-box small{display:block;font-size:.84rem;font-weight:600;color:var(--copper-text)}
+.week{display:flex;justify-content:space-between;gap:6px;max-width:320px}
+.week i{width:18px;height:18px;border-radius:50% 0 50% 50%;transform:rotate(-45deg);background:var(--rose-deep);display:block}
+.week i.o{background:transparent;border:1.5px solid var(--copper)}
+.phases{display:flex;flex-direction:column;gap:12px}
+.phase{background:var(--linen);padding:18px 22px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 20px;align-items:start}
+.phase .hr{font-size:1.5rem;color:var(--ink)}
+.phase .fmt{font-size:.86rem;color:var(--copper-text);font-weight:600}
+.phase b{font-weight:600}
+.phase p{font-size:.98rem;color:var(--ink-soft)}
+.phase .chips{grid-column:2}
+@media (max-width:900px){.camp{grid-template-columns:1fr}}
+@media (max-width:480px){.phase{grid-template-columns:1fr}.phase .chips{grid-column:1}}
+.ads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.ads figure{display:flex;flex-direction:column;gap:12px}
+.ad{aspect-ratio:4/5;overflow:hidden;display:flex;flex-direction:column;color:var(--ink);box-shadow:0 18px 40px rgba(59,46,51,.12)}
+.ad .t{font-weight:200;line-height:1.2;font-size:clamp(1.3rem,2.2vw,1.75rem)}
+.ad .t b{font-weight:600}
+.ad1{background:linear-gradient(180deg,var(--dawn) 0%,var(--cream) 85%);align-items:center;justify-content:center;text-align:center;gap:14px;padding:24px}
+.ad1 .half{width:72%;aspect-ratio:2/1;border:2px solid var(--copper);border-bottom:0;border-radius:999px 999px 0 0;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.ad1 .half .hr{font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--ink);letter-spacing:.06em;margin-bottom:4px}
+.ad1 .half .dot{position:absolute;top:-10px;left:50%;margin-left:-9px;width:18px;height:18px;border-radius:50% 0 50% 50%;transform:rotate(-45deg);background:var(--rose-deep)}
+.ad1 .base-line{width:84%;height:2px;background:var(--copper);margin-top:-14px}
+.ad2{background:var(--cream)}
+.ad2 .ph{flex:1.3;background:linear-gradient(180deg,var(--dawn),var(--rose));display:flex;align-items:center;justify-content:center;min-height:0}
+.ad2 .ph img{height:92%;width:auto;mix-blend-mode:multiply}
+.ad2 .tx{flex:1;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.ad2 .tx .rw{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid var(--copper);padding-bottom:8px}
+.ad2 .tx .hr{font-size:1.4rem;color:var(--ink)}
+.ad3{background:var(--linen);padding:22px;gap:12px}
+.ad3 .lab{font-size:.84rem;font-weight:600;color:var(--copper-text)}
+.ad3 .row{display:flex;align-items:center;gap:12px;background:var(--cream);padding:8px 12px}
+.ad3 .row img{width:48px;height:48px;object-fit:cover}
+.ad3 .row .hr{font-size:1rem;color:var(--ink)}
+.ad3 .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--copper);padding-top:12px;font-weight:600}
+.ads figcaption{font-size:.95rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px}
+@media (max-width:900px){.ads{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+.reel{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:start}
+.reel video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--dawn);display:block;box-shadow:0 24px 60px rgba(59,46,51,.16)}
+.scenes{display:flex;flex-direction:column}
+.scenes div{display:grid;grid-template-columns:86px 130px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid rgba(194,138,90,.45);font-size:.98rem}
+.scenes div.sig{background:rgba(232,180,184,.28)}
+.scenes .hr{font-size:1rem;color:var(--ink)}
+.scenes b{font-weight:600}
+.scenes span:last-child{color:var(--ink-soft)}
+@media (max-width:860px){.reel{grid-template-columns:1fr}.reel video{max-width:340px;margin-inline:auto}}
+@media (max-width:520px){.scenes div{grid-template-columns:72px minmax(0,1fr)}.scenes div span:last-child{grid-column:1/-1}}
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px}
+.vs figure{display:flex;flex-direction:column;gap:12px}
+.post{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:24px}
+.post.gen{background:#E4E2DE;color:#3F3F3F;font-family:Arial,'Assistant',sans-serif}
+.post.gen i{width:34%;aspect-ratio:1;background:#CFCCC7;border-radius:12px;display:block}
+.post.gen b{font-size:1.6rem;font-weight:700}
+.post.gen span.price{font-size:1.1rem}
+.post.gen span.buy{font-size:.95rem;background:#BDBAB4;color:#2E2E2E;padding:6px 16px;border-radius:6px}
+.post.ours{background:linear-gradient(180deg,var(--dawn) 0%,var(--cream) 85%);color:var(--ink);border:1px solid rgba(194,138,90,.35)}
+.post.ours .drop{width:22px;height:22px;border-radius:50% 0 50% 50%;transform:rotate(-45deg);background:var(--rose-deep);box-shadow:0 0 0 10px rgba(232,180,184,.5);margin-bottom:8px}
+.post.ours .hr{font-size:1.6rem;color:var(--ink)}
+.vs figcaption{font-size:.95rem;color:var(--ink-soft)}
+.vs figcaption b{color:var(--ink);font-weight:600}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+
 /* close: on rose-deep, the colour of the bold word */
 .close{background:var(--rose-deep);color:var(--night);text-align:center}
 .close .wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
@@ -250,9 +351,9 @@ footer.studio a{color:var(--rose)}
     <a href="./">← חזרה לעולם <span class="ltr">ROSÉE°</span></a>
     <nav aria-label="ספר המותג">
       <a href="#codes">הקודים</a>
-      <a href="#palette">הפלטה</a>
       <a href="#cover">מבחן הכיסוי</a>
       <a href="#touchpoints">נקודות מגע</a>
+      <a href="#continues">העולם ממשיך</a>
     </nav>
   </div>
 </header>
@@ -364,6 +465,31 @@ footer.studio a{color:var(--rose)}
   </div>
 </section>
 
+<section id="voice" aria-labelledby="voice-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">קול</p>
+      <h2 class="sec" id="voice-title">כמו פתק <b>של קוסמטיקאית.</b></h2>
+    </div>
+    <div class="voice">
+      <div class="rv">
+        <p class="tone-line">שקט, קרוב, ובשעה מדויקת. משפט קצר, ומילה אחת <b>מודגשת.</b></p>
+        <div class="words">
+          <p class="eyebrow" style="color:var(--copper-text)">מילים שלנו</p>
+          <div class="chips"><span>בוקר</span><span>טיפה</span><span>טל</span><span>לפני הקפה</span><span>ריטואל</span><span>השעה שלך</span></div>
+          <p class="eyebrow" style="color:var(--copper-text)">מילים שלא</p>
+          <div class="chips"><span class="not">מבצע</span><span class="not">1+1</span><span class="not">הסרום הכי טוב</span><span class="not">אחוזים בפתיח</span><span class="not">סל קניות</span><span class="not">סימני קריאה</span></div>
+        </div>
+      </div>
+      <div class="lines rv">
+        <p><small>הריטואל</small>שלושה צעדים. <b>לפני</b> הקפה.</p>
+        <p><small>שורת מוצר</small>הסרום נכנס כשהעור עוד <b>לח</b>. ככה הוא מחזיק את הטל בפנים.</p>
+        <p><small>הסגירה</small>טיפה <b>אחת</b>, כל בוקר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cover" id="cover" aria-labelledby="cover-title">
   <div class="wrap">
     <div class="head rv">
@@ -435,6 +561,92 @@ footer.studio a{color:var(--rose)}
       <div><span class="yes">כן</span><b>״הריטואל שלי״.</b><p>העגלה ממיינת לפי שעות הבוקר, לא לפי סדר הלחיצה.</p><span class="no">לא</span><p>״סל קניות״.</p></div>
       <div><span class="yes">כן</span><b>הלילה בשוליים.</b><p><span class="ltr">La Nuit</span> הוא מוצר בקולקציה, לא כותרת.</p><span class="no">לא</span><p>מקטע לילה משלו, שמחליש את הבוקר.</p></div>
       <div><span class="yes">כן</span><b>בקצב של טיפה.</b><p>תנועה איטית ורכה, מצלמה נעולה.</p><span class="no">לא</span><p>חיתוכים מהירים וטקסט שקופץ.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cont" id="continues" aria-labelledby="cont-title">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">העולם ממשיך · <span class="ltr">Le Monde continue</span></p>
+      <h2 class="sec" id="cont-title">הבטחה אחת. <b>כל פיסת תוכן.</b></h2>
+      <p class="lead">העולם לא נגמר באתר. אותה החלטה כותבת את המאמרים, את הקמפיין, את המודעות ואת הריל. לפני כל פיסה שואלים שאלה אחת: איזה בוקר זה? ואחריה בודקים: מכסים את השם, ועדיין <span class="ltr">ROSÉE°</span>.</p>
+    </div>
+
+    <div class="sub rv"><span class="n">01</span><h3>ארבעה מאמרים. <b>בוקר אחד.</b></h3><p>כל מאמר עונה על חיפוש אמיתי וקורה בדקה אחת של שעון השחר. השעה לפני הכותרת, ואף מאמר לא משווה סרומים.</p></div>
+    <div class="arts">
+      <article class="art rv" style="background:#E5C4CB"><div class="when"><span class="hr">05:30</span><span class="fr">La Brume</span></div><h4>מתי מורחים סרום: <b>לפני</b> שהעור מתייבש</h4><span class="q">חיפוש: מתי למרוח סרום · סרום על עור לח</span><p class="a">התזמון חשוב יותר מהנוסחה. שלוש הדקות שאחרי המים.</p><p class="open">״הטל נוצר בלילה ונעלם עד הצהריים. אלא אם עוצרים אותו.״</p></article>
+      <article class="art rv" style="background:#ECD3D2"><div class="when"><span class="hr">06:15</span><span class="fr">Le Réveil</span></div><h4>שגרת בוקר בשלושה צעדים, <b>לפני</b> הקפה</h4><span class="q">חיפוש: שגרת טיפוח בוקר · סדר מריחת מוצרים</span><p class="a">לא רשימת מוצרים. ציר זמן של עשר דקות, עם שעה לכל צעד.</p><p class="open">״את עוד לא ערה. העור שלך כבר כן.״</p></article>
+      <article class="art rv" style="background:#F1E1DA"><div class="when"><span class="hr">07:00</span><span class="fr">Le Voile</span></div><h4>העיניים <b>מתעוררות</b> אחרונות</h4><span class="q">חיפוש: קרם עיניים בבוקר או בלילה</span><p class="a">למה בבוקר העור סביב העין צריך משהו אחר מהלילה.</p><p class="open">״שבע בבוקר. הפנים כבר ערות, העיניים עוד לא.״</p></article>
+      <article class="art rv" style="background:var(--linen)"><div class="when"><span class="hr">22:00</span><span class="fr">La Nuit</span></div><h4>הבוקר <b>מתחיל</b> בלילה</h4><span class="q">חיפוש: טיפוח לילה לפני שינה</span><p class="a">גם המוצר של הלילה נמדד לפי הבוקר שאחריו. הוא בשוליים, לא במרכז.</p><p class="open">״הטל של מחר נולד הלילה.״</p></article>
+    </div>
+
+    <div class="sub rv"><span class="n">02</span><h3>קמפיין: <b>שבעה בקרים.</b></h3><p>הקמפיין לא מוכר בקבוק. הוא בונה שגרת בוקר של שבוע, ורק אז מציע את מה שנכנס אליה.</p></div>
+    <div class="camp">
+      <div class="card rv">
+        <span class="fr">Sept Matins</span>
+        <h4>שבעה <b>בקרים.</b><br>טיפה אחת בכל אחד.</h4>
+        <p>שבוע אחד, שבעה בקרים. בכל בוקר ב־<span class="ltr">06:15</span> עולה סטורי אחד: טיפה, שעה ושורה אחת. בסוף השבוע הבוקר כבר שלה.</p>
+        <div class="week" role="img" aria-label="שבעה בקרים: שלושה כבר עברו, ארבעה עוד לפניה"><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div>
+        <div class="rule-box"><small>הכלל של הקמפיין</small>כל פיסה עולה לפני <span class="ltr">08:00</span>. הטל נעלם עד הצהריים, וגם הקמפיין.</div>
+      </div>
+      <div class="phases">
+        <div class="phase rv"><div><span class="hr">05:30</span><span class="fmt" style="display:block">01 · ריל 9:16</span></div><div><b>מה את עושה בדקות שלפני הקפה?</b><p>פריים 0: השאלה מעל שעון השחר ב־<span class="ltr">06:15</span>, וטיפה אחת שנופלת.</p></div><div class="chips"><span>הטיפה</span><span>שעון השחר</span><span>השעה</span></div></div>
+        <div class="phase rv"><div><span class="hr">06:15</span><span class="fmt" style="display:block">02 · שבעה סטוריז</span></div><div><b>Matin 03. העור עוד לח.</b><p>סטורי אחד בכל בוקר, באותה שעה בדיוק. מספר הבוקר בצרפתית, שורה אחת בעברית.</p></div><div class="chips"><span>השעה</span><span>הקול</span></div></div>
+        <div class="phase rv"><div><span class="hr">07:00</span><span class="fmt" style="display:block">03 · קרוסלה 4:5</span></div><div><b>Le Rituel. שלושה צעדים, עשר דקות.</b><p>קו נחושת עובר בין השקפים כמו ציר הריטואל, והשמיים מתבהרים משקף לשקף.</p></div><div class="chips"><span>קו הנחושת</span><span>שעון השחר</span><span>הקול</span></div></div>
+        <div class="phase rv"><div><span class="hr">07:45</span><span class="fmt" style="display:block">04 · ריטרגט</span></div><div><b>הבוקר הרביעי שלך מחכה.</b><p>למי שצפתה בשלושה סטוריז. עולה רק בבוקר, והעגלה ממוינת לפי שעות ולא לפי מחיר.</p></div><div class="chips"><span>השעה</span><span>הטיפה</span><span>קו הנחושת</span></div></div>
+      </div>
+    </div>
+
+    <div class="sub rv"><span class="n">03</span><h3>שלוש מודעות. <b>רק</b> באור של בוקר.</h3><p>מתחת לכל מודעה: הקודים שעושים את העבודה, ומה נשאר כשמכסים את השם.</p></div>
+    <div class="ads">
+      <figure class="rv">
+        <div class="ad ad1">
+          <p class="t">מה את עושה <b>בדקות</b><br>שלפני הקפה?</p>
+          <div class="half"><span class="dot" aria-hidden="true"></span><span class="hr">06:15</span></div>
+          <div class="base-line"></div>
+          <span class="fr" style="font-style:italic;font-size:1.1rem">Sept Matins · Matin 01</span>
+        </div>
+        <figcaption><div class="chips"><span>שעון השחר</span><span>הטיפה</span><span>השעה</span></div>בלי השם: חצי שעון נחושת ושעה של בוקר.</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="ad ad2">
+          <div class="ph"><img src="collection/reveil.webp" width="640" height="640" loading="lazy" alt="סרום הבוקר Le Réveil בבקבוק זכוכית ורודה עם מכסה נחושת"></div>
+          <div class="tx"><div class="rw"><span class="hr">06:15</span><span class="fr" style="font-style:italic;font-size:1.2rem">Le Réveil</span></div><p class="t" style="font-size:clamp(1.15rem,1.8vw,1.4rem)">הסרום נכנס כשהעור עוד <b>לח</b>.</p><p style="color:var(--ink-soft);font-size:.95rem">ככה הוא מחזיק את הטל בפנים.</p></div>
+        </div>
+        <figcaption><div class="chips"><span>השעה</span><span>זכוכית ורודה</span><span>קו הנחושת</span><span>הקול</span></div>בלי השם: שעה, שם צרפתי, ושורה אחת עם מילה מודגשת.</figcaption>
+      </figure>
+      <figure class="rv">
+        <div class="ad ad3">
+          <span class="lab">הריטואל שלי · בוקר 04</span>
+          <p class="t">הבוקר <b>הרביעי</b><br>שלך מחכה.</p>
+          <div class="row"><img src="collection/brume.webp" width="640" height="640" loading="lazy" alt="מי הטל La Brume"><span><span class="hr">05:30</span> <span class="fr">La Brume</span></span></div>
+          <div class="row"><img src="collection/reveil.webp" width="640" height="640" loading="lazy" alt="סרום הבוקר Le Réveil"><span><span class="hr">06:15</span> <span class="fr">Le Réveil</span></span></div>
+          <div class="cta"><span>להמשיך את הבוקר</span><span class="wm" style="font-size:.9rem">ROSÉE<i style="color:var(--rose-text)">°</i></span></div>
+        </div>
+        <figcaption><div class="chips"><span>השעה</span><span>ריטואל, לא סל</span><span>קו הנחושת</span></div>בלי השם: סל שהוא ריטואל, לא רשימת מחירים.</figcaption>
+      </figure>
+    </div>
+
+    <div class="sub rv"><span class="n">04</span><h3>הריל. <b>30 שניות</b> של בוקר.</h3><p>הוק בפריים הראשון, הטיפה מהאתר, וחוגה שסופרת שבעה בקרים במקום חמש שעות.</p></div>
+    <div class="reel">
+      <video class="rv" src="sept-matins.mp4" poster="sept-matins.webp" width="1080" height="1920" controls muted playsinline loop preload="none" aria-label="ריל Sept Matins של ROSÉE°, 30 שניות"></video>
+      <div class="scenes rv">
+        <div><span class="hr">0–2.5</span><b>הוק</b><span>חצי שעון שחר. <span class="ltr">06:14</span> עובר ל־<span class="ltr">06:15</span>, והטיפה נדלקת ונופלת לאופק.</span></div>
+        <div><span class="hr">2.5–4</span><b>הסימן</b><span><span class="ltr">ROSÉE°</span> על שזיף, קו נחושת, <span class="ltr">Née à l'aube</span>.</span></div>
+        <div><span class="hr">4–9</span><b>הטיפה</b><span>רצף הפתיח של העולם. הטל נוצר בלילה, זוהר עם שחר.</span></div>
+        <div class="sig"><span class="hr">9–16</span><b>חוגת השבוע</b><span>שבע טיפות על שעון שמסתובב עם הכיוון. בכל בוקר טיפה נדלקת והשמיים מתבהרים. בסוף: הבוקר כבר שלך.</span></div>
+        <div><span class="hr">16–20.5</span><b>הריטואל</b><span>שלושה צעדים על ציר נחושת, לפני הקפה.</span></div>
+        <div><span class="hr">20.5–24</span><b>הריטואל שלי</b><span>העגלה ממוינת לפי שעות הבוקר, בלי מחירים.</span></div>
+        <div><span class="hr">24–27</span><b>08:00</b><span>הטיפה מתאדה. מחר ב־<span class="ltr">06:15</span> היא חוזרת.</span></div>
+        <div><span class="hr">27–30</span><b>הסגירה</b><span>שבעה בקרים. טיפה אחת בכל אחד.</span></div>
+      </div>
+    </div>
+
+    <div class="sub rv"><span class="n">05</span><h3>אותה בקשה. <b>שני מותגים.</b></h3><p>הבקשה: פוסט לסוף השנה. מימין, מה שיוצא בלי עולם. משמאל, אותו פוסט כשההבטחה כותבת אותו.</p></div>
+    <div class="vs">
+      <figure class="rv"><div class="post gen" aria-label="פוסט גנרי: מבצע סוף שנה, 20% הנחה"><i></i><b>מבצע סוף שנה!</b><span class="price">20% הנחה על כל הקולקציה</span><span class="buy">לקנייה עכשיו</span></div><figcaption><b>בלי עולם.</b> אין שעה, אין טיפה. נשאר רק המחיר, ולכן משווים.</figcaption></figure>
+      <figure class="rv"><div class="post ours"><span class="drop" aria-hidden="true"></span><span><span class="hr">06:15</span>&nbsp; <span class="fr" style="font-style:italic;font-size:1.3rem">Le Réveil</span></span><p class="t" style="font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:200;line-height:1.25">השנה מתחילה<br>בטיפה <b style="font-weight:600">אחת</b>.</p><span style="color:var(--ink-soft)">הבוקר הראשון של השנה.</span></div><figcaption><b>מתוך העולם.</b> הטיפה, השמיים והשעה לפני השם. סוף השנה הוא בוקר, לא הנחה.</figcaption></figure>
     </div>
   </div>
 </section>
