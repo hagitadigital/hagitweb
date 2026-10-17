@@ -152,7 +152,7 @@ C = f"""  <section class="scene" data-show="10.3,14.6">
 
 # D · La Boîte & Le Lieu
 Dsc = f"""  <section class="scene" data-show="18.3,24.3" style="background: var(--w-bg)">
-    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbD" src="{R}brand-takeaway.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block"></div>
+    <div style="position: absolute; top: 210px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img class="kbD" src="kling-out/pancakerie-boxes-4.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 75% 50%; display: block"></div>
     <div data-in="19.9" style="position: absolute; top: 870px; left: 40px; width: 1000px; height: 620px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,30,45,.16)"><img src="{R}brand-storefront.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block"></div>
     <div style="position: absolute; top: 1560px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center" dir="rtl">
       <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--w-accent-text)" dir="ltr">La Boîte · Le Lieu</div>
