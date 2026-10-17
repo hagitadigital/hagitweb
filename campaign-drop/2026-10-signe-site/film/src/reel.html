@@ -80,11 +80,12 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 @keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
 
 /* ── WORLD scenes · SIGNÉ° ── */
-.m-l2{animation-name:ml2}@keyframes ml2{0%,75.167%{transform:translateY(110%)}76.833%,100%{transform:none}}
-.m-l1{animation-name:ml1}@keyframes ml1{0%,74.167%{transform:translateY(110%)}75.833%,100%{transform:none}}
+.m-l2{animation-name:ml2}@keyframes ml2{0%,76.167%{transform:translateY(110%)}77.833%,100%{transform:none}}
+.m-l1{animation-name:ml1}@keyframes ml1{0%,75.000%{transform:translateY(110%)}76.667%,100%{transform:none}}
 .h-l2{animation-name:hl2}@keyframes hl2{0%,66.500%{transform:translateY(110%)}68.167%,100%{transform:none}}
 .h-l1{animation-name:hl1}@keyframes hl1{0%,65.333%{transform:translateY(110%)}67.000%,100%{transform:none}}
 @property --g{syntax:"<color>";inherits:true;initial-value:#EFE3CB}
+.a-push{animation-name:apush;animation-timing-function:linear;transform-origin:50% 60%}@keyframes apush{0%,18.000%{transform:none}33.667%,100%{transform:scale(1.08)}}
 .core-ttl{animation-name:corettl}@keyframes corettl{0%,19.000%{opacity:0;letter-spacing:.3em}22.333%,100%{opacity:1;letter-spacing:.08em}}
 .c-sig{animation-name:csig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}@keyframes csig{0%,21.333%{clip-path:inset(0 100% 0 0)}26.333%,100%{clip-path:inset(0 0 0 0)}}
 .c-l1{animation-name:cl1}@keyframes cl1{0%,24.000%{transform:translateY(110%)}26.000%,100%{transform:none}}
@@ -97,10 +98,10 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 .e-line{animation-name:eline;animation-timing-function:cubic-bezier(.5,0,.4,1)}@keyframes eline{0%,55.667%{stroke-dashoffset:1}63.000%,100%{stroke-dashoffset:0}}
 .e-l1{animation-name:el1}@keyframes el1{0%,54.667%{transform:translateY(110%)}56.667%,100%{transform:none}}
 .e-l2{animation-name:el2}@keyframes el2{0%,56.000%{transform:translateY(110%)}58.000%,100%{transform:none}}
-.f-push{animation-name:fpush}@keyframes fpush{0%,73.667%{transform:scale(1.1)}78.667%,100%{transform:none}}
-.g-sig{animation-name:gsig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}@keyframes gsig{0%,84.667%{clip-path:inset(0 100% 0 0)}90.000%,100%{clip-path:inset(0 0 0 0)}}
-.g-l1{animation-name:gl1}@keyframes gl1{0%,78.333%{transform:translateY(110%)}80.333%,100%{transform:none}}
-.g-l2{animation-name:gl2}@keyframes gl2{0%,79.667%{transform:translateY(110%)}81.667%,100%{transform:none}}
+.f-push{animation-name:fpush}@keyframes fpush{0%,74.333%{transform:scale(1.1)}82.000%,100%{transform:none}}
+.g-sig{animation-name:gsig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}@keyframes gsig{0%,85.833%{clip-path:inset(0 100% 0 0)}89.667%,100%{clip-path:inset(0 0 0 0)}}
+.g-l1{animation-name:gl1}@keyframes gl1{0%,82.000%{transform:translateY(110%)}83.667%,100%{transform:none}}
+.g-l2{animation-name:gl2}@keyframes gl2{0%,83.000%{transform:translateY(110%)}84.667%,100%{transform:none}}
 
 </style>
 </head>
@@ -146,7 +147,7 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
 
 <section class="scene" data-show="0,10.1">
     <div class="stack" style="background: #120E08"></div>
-    <div class="stack" data-seq="a/pour/f_%03d.jpg" data-from="1" data-to="41" data-start="5.4" data-step="0.06"></div>
+    <div class="stack a-push"><div class="stack" data-seq="a/pour/f_%03d.jpg" data-from="1" data-to="41" data-start="5.4" data-step="0.103"></div></div>
     <div style="position: absolute; left: 0; right: 0; top: 0; height: 620px; background: linear-gradient(to bottom, rgba(18,14,8,.96) 40%, rgba(18,14,8,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 820px; background: linear-gradient(to top, rgba(18,14,8,.97) 45%, rgba(18,14,8,0))"></div>
     <div style="position: absolute; top: 190px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 0">
       <div class="core-ttl" style="font-family: 'Cormorant Garamond', serif; font-size: 150px; font-weight: 500; line-height: 1; color: #F0E3CE" dir="ltr">SIGNÉ<sup style="font-size: .38em; vertical-align: .9em; color: #C9A25E">°</sup></div>
@@ -191,24 +192,19 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
     <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="e-line" pathLength="1" d="M -40 1360 C 120 1300, 200 1420, 330 1350 S 520 1270, 600 1345 S 760 1430, 880 1340 S 1040 1300, 1130 1350" style="fill: none; stroke: #F0E3CE; stroke-width: 11; stroke-linecap: round; stroke-dasharray: 1 1; filter: drop-shadow(0 2px 8px rgba(240,227,206,.45))"></path></svg>
     <div data-in="17.6" style="position: absolute; bottom: 230px; left: 80px; right: 80px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 38px; font-weight: 300; line-height: 1.5; color: #BFAF95" dir="rtl">פס קרם אחד רציף, מזולף ביד חופשית.<br>אין שניים זהים.</div>
   </section>
-  <section class="scene" data-show="19.5,23.5">
+  <section class="scene" data-show="19.5,24.6">
     <div class="stack" style="background: #120E08"></div>
-    <div class="stack" data-show="19.5,22.3" data-fade="0.15">
-      <div class="stack" data-show="19.5,20.6" data-fade="0.1">
-      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/noir/f_%03d.jpg" data-from="4" data-to="36" data-by="3" data-start="19.5" data-step="0.09"></div>
+    <div class="stack" data-show="19.5,22.45" data-fade="0.2">
+      <div class="stack" data-show="19.5,21.05" data-fade="0.1">
+      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/noir/f_%03d.jpg" data-from="1" data-to="36" data-start="19.5" data-step="0.04"></div>
         <div style="position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, #120E08, rgba(18,14,8,0))"></div>
         <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 320px; background: linear-gradient(to top, #120E08, rgba(18,14,8,0))"></div></div>
       <div style="position: absolute; top: 1560px; left: 40px; right: 40px; display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; line-height: 1; color: #F0E3CE" dir="ltr">Le Noir</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; font-weight: 300; color: #BFAF95" dir="rtl">אקלר שוקולד 70% · עלי זהב</span></div>
-    </div><div class="stack" data-show="20.55,21.6" data-fade="0.1">
-      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/framboise/f_%03d.jpg" data-from="4" data-to="36" data-by="3" data-start="20.55" data-step="0.09"></div>
+    </div><div class="stack" data-show="21.0,22.45" data-fade="0.1">
+      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/framboise/f_%03d.jpg" data-from="1" data-to="36" data-start="21.0" data-step="0.04"></div>
         <div style="position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, #120E08, rgba(18,14,8,0))"></div>
         <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 320px; background: linear-gradient(to top, #120E08, rgba(18,14,8,0))"></div></div>
       <div style="position: absolute; top: 1560px; left: 40px; right: 40px; display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; line-height: 1; color: #F0E3CE" dir="ltr">La Tarte Framboise</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; font-weight: 300; color: #BFAF95" dir="rtl">פטל טרי על קרם פטיסייר</span></div>
-    </div><div class="stack" data-show="21.55,22.35" data-fade="0.1">
-      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/pistache/f_%03d.jpg" data-from="4" data-to="36" data-by="3" data-start="21.55" data-step="0.09"></div>
-        <div style="position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, #120E08, rgba(18,14,8,0))"></div>
-        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 320px; background: linear-gradient(to top, #120E08, rgba(18,14,8,0))"></div></div>
-      <div style="position: absolute; top: 1560px; left: 40px; right: 40px; display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 66px; line-height: 1; color: #F0E3CE" dir="ltr">Le Dôme Pistache</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; font-weight: 300; color: #BFAF95" dir="rtl">מוס פיסטוק · גלזורת מראה</span></div>
     </div>
       <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
       <div data-in="19.6" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E; margin-bottom: 10px" dir="ltr">La Carte Vivante</div>
@@ -216,32 +212,32 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
       <span class="mask"><span class="h-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 74px; font-weight: 600; line-height: 1.18; color: #F0E3CE">הוא חי.</span></span>
     </div>
     </div>
-    <div class="stack" data-show="22.2,23.5" data-fade="0.2">
+    <div class="stack" data-show="22.35,24.6" data-fade="0.25">
       <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
-      <div data-in="22.2" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E; margin-bottom: 10px" dir="ltr">La Maison</div>
+      <div data-in="22.4" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E; margin-bottom: 10px" dir="ltr">La Maison</div>
       <span class="mask"><span class="m-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 74px; font-weight: 200; line-height: 1.18; color: #F0E3CE">דלפק אחד מואר.</span></span>
       <span class="mask"><span class="m-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 74px; font-weight: 600; line-height: 1.18; color: #F0E3CE">שורה אחת של קינוחים.</span></span>
     </div>
       <div style="position: absolute; left: 0; top: 760px; width: 1080px; height: 720px; overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 66%, transparent 100%); mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 66%, transparent 100%)">
         <img class="f-push" src="a/boutique.jpg" alt="The SIGNÉ° counter at night: one lit case with one row of the desserts" style="width: 100%; height: 100%; object-fit: cover; display: block">
       </div>
-      <div data-in="22.6" style="position: absolute; top: 1560px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E" dir="ltr">— fermé quand c'est fini.</div>
+      <div data-in="23.1" style="position: absolute; top: 1560px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E" dir="ltr">— fermé quand c'est fini.</div>
     </div>
   </section>
-  <section class="scene" data-show="23.2,30">
+  <section class="scene" data-show="24.4,30">
     <div class="stack" style="background: #120E08"></div>
     <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
-      <div data-in="23.3" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E; margin-bottom: 10px" dir="ltr">Les Éditions Signées</div>
+      <div data-in="24.5" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: #C9A25E; margin-bottom: 10px" dir="ltr">Les Éditions Signées</div>
       <span class="mask"><span class="g-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 74px; font-weight: 200; line-height: 1.18; color: #F0E3CE">ארבע מהדורות אקלר.</span></span>
       <span class="mask"><span class="g-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 74px; font-weight: 600; line-height: 1.18; color: #F0E3CE">חתימה אחת.</span></span>
     </div>
-    <div data-in="23.70" style="position: absolute; left: 555px; top: 560px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+    <div data-in="24.80" style="position: absolute; left: 555px; top: 560px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
       <img src="a/ed-noir.jpg" alt="Le Noir éclair" style="width: 360px; height: 420px; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 24px 50px rgba(0,0,0,.5)">
-      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">Le Noir</span></div><div data-in="23.95" style="position: absolute; left: 165px; top: 560px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">Le Noir</span></div><div data-in="25.00" style="position: absolute; left: 165px; top: 560px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
       <img src="a/ed-pistache.jpg" alt="La Pistache éclair" style="width: 360px; height: 420px; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 24px 50px rgba(0,0,0,.5)">
-      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">La Pistache</span></div><div data-in="24.20" style="position: absolute; left: 555px; top: 1050px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">La Pistache</span></div><div data-in="25.20" style="position: absolute; left: 555px; top: 1050px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
       <img src="a/ed-framboise.jpg" alt="La Framboise éclair" style="width: 360px; height: 420px; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 24px 50px rgba(0,0,0,.5)">
-      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">La Framboise</span></div><div data-in="24.45" style="position: absolute; left: 165px; top: 1050px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">La Framboise</span></div><div data-in="25.40" style="position: absolute; left: 165px; top: 1050px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
       <img src="a/ed-vanille.jpg" alt="La Vanille éclair" style="width: 360px; height: 420px; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 24px 50px rgba(0,0,0,.5)">
       <span style="font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: #F0E3CE" dir="ltr">La Vanille</span></div>
     <div class="g-sig" style="position: absolute; top: 1600px; left: 0; right: 0; text-align: center; font-family: 'Italianno', cursive; color: #C9A25E; font-size: 112px; line-height: 1" dir="ltr">Chaque dessert est signé.</div>
@@ -274,8 +270,8 @@ body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
     <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">יש קינוחים שמוגשים. ויש שנחתמים.</span></div>
     <div class="stack" data-show="9.9,16.3" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · La Coupe</span><span style="font-size: 22px; color: var(--s-ink)">חמישה טעמים. השישי בדרך אלייך.</span></div>
     <div class="stack" data-show="16.3,19.7" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · La Promesse</span><span style="font-size: 22px; color: var(--s-ink)">פס קרם אחד, ביד חופשית</span></div>
-    <div class="stack" data-show="19.7,23.4" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · La Carte Vivante</span><span style="font-size: 22px; color: var(--s-ink)">התפריט לא מודפס. הוא חי.</span></div>
-    <div class="stack" data-show="23.4,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">ארבע מהדורות. חתימה אחת.</span></div>
+    <div class="stack" data-show="19.7,24.5" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · La Carte Vivante</span><span style="font-size: 22px; color: var(--s-ink)">התפריט לא מודפס. הוא חי.</span></div>
+    <div class="stack" data-show="24.5,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">ארבע מהדורות. חתימה אחת.</span></div>
   </div>
 </div>
 

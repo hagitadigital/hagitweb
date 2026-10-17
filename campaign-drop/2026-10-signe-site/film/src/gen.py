@@ -50,7 +50,7 @@ for (name, line), o in zip(tags, old):
     i = s.index('>' + o + '</span>'); s = s[:i + 1] + name + s[i + 1 + len(o):]
     k = s.index('EDIT', i); e = s.index('</span>', k); s = s[:k] + line + s[e:]
 for a, b in [('data-show="9.9,14.7"', 'data-show="9.9,16.3"'), ('data-show="14.7,18.7"', 'data-show="16.3,19.7"'),
-             ('data-show="18.7,22.7"', 'data-show="19.7,23.4"'), ('data-show="22.7,30"', 'data-show="23.4,30"')]:
+             ('data-show="18.7,22.7"', 'data-show="19.7,24.5"'), ('data-show="22.7,30"', 'data-show="24.5,30"')]:
     rep(a, b)
 
 # ── the coupe dial ──
@@ -74,6 +74,7 @@ wins = [(9.8, STEPS[0] + .25)] + [(t + .3, (STEPS[k + 1] + .25) if k < 3 else EN
 
 css = f"""
 @property --g{{syntax:"<color>";inherits:true;initial-value:#EFE3CB}}
+.a-push{{animation-name:apush;animation-timing-function:linear;transform-origin:50% 60%}}@keyframes apush{{0%,{p(5.4)}{{transform:none}}{p(10.1)},100%{{transform:scale(1.08)}}}}
 .core-ttl{{animation-name:corettl}}@keyframes corettl{{0%,{p(5.7)}{{opacity:0;letter-spacing:.3em}}{p(6.7)},100%{{opacity:1;letter-spacing:.08em}}}}
 .c-sig{{animation-name:csig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}}@keyframes csig{{0%,{p(6.4)}{{clip-path:inset(0 100% 0 0)}}{p(7.9)},100%{{clip-path:inset(0 0 0 0)}}}}
 .c-l1{{animation-name:cl1}}@keyframes cl1{{0%,{p(7.2)}{{transform:translateY(110%)}}{p(7.8)},100%{{transform:none}}}}
@@ -86,10 +87,10 @@ css = f"""
 .e-line{{animation-name:eline;animation-timing-function:cubic-bezier(.5,0,.4,1)}}@keyframes eline{{0%,{p(16.7)}{{stroke-dashoffset:1}}{p(18.9)},100%{{stroke-dashoffset:0}}}}
 .e-l1{{animation-name:el1}}@keyframes el1{{0%,{p(16.4)}{{transform:translateY(110%)}}{p(17.0)},100%{{transform:none}}}}
 .e-l2{{animation-name:el2}}@keyframes el2{{0%,{p(16.8)}{{transform:translateY(110%)}}{p(17.4)},100%{{transform:none}}}}
-.f-push{{animation-name:fpush}}@keyframes fpush{{0%,{p(22.1)}{{transform:scale(1.1)}}{p(23.6)},100%{{transform:none}}}}
-.g-sig{{animation-name:gsig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}}@keyframes gsig{{0%,{p(25.4)}{{clip-path:inset(0 100% 0 0)}}{p(27.0)},100%{{clip-path:inset(0 0 0 0)}}}}
-.g-l1{{animation-name:gl1}}@keyframes gl1{{0%,{p(23.5)}{{transform:translateY(110%)}}{p(24.1)},100%{{transform:none}}}}
-.g-l2{{animation-name:gl2}}@keyframes gl2{{0%,{p(23.9)}{{transform:translateY(110%)}}{p(24.5)},100%{{transform:none}}}}
+.f-push{{animation-name:fpush}}@keyframes fpush{{0%,{p(22.3)}{{transform:scale(1.1)}}{p(24.6)},100%{{transform:none}}}}
+.g-sig{{animation-name:gsig;animation-timing-function:cubic-bezier(.6,.05,.25,1)}}@keyframes gsig{{0%,{p(25.75)}{{clip-path:inset(0 100% 0 0)}}{p(26.9)},100%{{clip-path:inset(0 0 0 0)}}}}
+.g-l1{{animation-name:gl1}}@keyframes gl1{{0%,{p(24.6)}{{transform:translateY(110%)}}{p(25.1)},100%{{transform:none}}}}
+.g-l2{{animation-name:gl2}}@keyframes gl2{{0%,{p(24.9)}{{transform:translateY(110%)}}{p(25.4)},100%{{transform:none}}}}
 """
 rep("/* ── WORLD scenes: EDIT — add each scene's own motion here (percent = s/30*100) ── */", '/* ── WORLD scenes · SIGNÉ° ── */' + css)
 
@@ -104,7 +105,7 @@ def head(tag, l1, l2, c1, c2, t, top=190):
 
 A = f"""<section class="scene" data-show="0,10.1">
     <div class="stack" style="background: {NOIR}"></div>
-    <div class="stack" data-seq="a/pour/f_%03d.jpg" data-from="1" data-to="41" data-start="5.4" data-step="0.06"></div>
+    <div class="stack a-push"><div class="stack" data-seq="a/pour/f_%03d.jpg" data-from="1" data-to="41" data-start="5.4" data-step="0.103"></div></div>
     {GT(620)}{GB(820)}
     <div style="position: absolute; top: 190px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 0">
       <div class="core-ttl" style="{CG}; font-size: 150px; font-weight: 500; line-height: 1; color: {CREAM}" dir="ltr">{SIG}</div>
@@ -150,42 +151,41 @@ C = f"""<section class="scene" data-show="16.3,19.9">
     <div data-in="17.6" style="position: absolute; bottom: 230px; left: 80px; right: 80px; text-align: center; {H}; font-size: 38px; font-weight: 300; line-height: 1.5; color: {DIM}" dir="rtl">פס קרם אחד רציף, מזולף ביד חופשית.<br>אין שניים זהים.</div>
   </section>"""
 
-CARTE = [('noir', 'Le Noir', 'אקלר שוקולד 70% · עלי זהב'), ('framboise', 'La Tarte Framboise', 'פטל טרי על קרם פטיסייר'),
-         ('pistache', 'Le Dôme Pistache', 'מוס פיסטוק · גלזורת מראה')]
-CW = [(19.5, 20.6), (20.55, 21.6), (21.55, 22.35)]
+CARTE = [('noir', 'Le Noir', 'אקלר שוקולד 70% · עלי זהב'), ('framboise', 'La Tarte Framboise', 'פטל טרי על קרם פטיסייר')]
+CW = [(19.5, 21.05), (21.0, 22.45)]
 holos = ''
 for (n, fr, he), (a, b) in zip(CARTE, CW):
     holos += f"""<div class="stack" data-show="{a},{b}" data-fade="0.1">
-      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/{n}/f_%03d.jpg" data-from="4" data-to="36" data-by="3" data-start="{a}" data-step="0.09"></div>
+      <div style="position: absolute; left: 0; top: 400px; width: 1080px; height: 1280px"><div class="stack" data-seq="a/{n}/f_%03d.jpg" data-from="1" data-to="36" data-start="{a}" data-step="0.04"></div>
         <div style="position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(to bottom, {NOIR}, rgba(18,14,8,0))"></div>
         <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 320px; background: linear-gradient(to top, {NOIR}, rgba(18,14,8,0))"></div></div>
       <div style="position: absolute; top: 1560px; left: 40px; right: 40px; display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="{CG}; font-size: 66px; line-height: 1; color: {CREAM}" dir="ltr">{fr}</span><span style="{H}; font-size: 32px; font-weight: 300; color: {DIM}" dir="rtl">{he}</span></div>
     </div>"""
-D = f"""<section class="scene" data-show="19.5,23.5">
+D = f"""<section class="scene" data-show="19.5,24.6">
     <div class="stack" style="background: {NOIR}"></div>
-    <div class="stack" data-show="19.5,22.3" data-fade="0.15">
+    <div class="stack" data-show="19.5,22.45" data-fade="0.2">
       {holos}
       {head('La Carte Vivante', 'התפריט לא מודפס.', 'הוא חי.', 'h-l1', 'h-l2', 19.6)}
     </div>
-    <div class="stack" data-show="22.2,23.5" data-fade="0.2">
-      {head('La Maison', 'דלפק אחד מואר.', 'שורה אחת של קינוחים.', 'm-l1', 'm-l2', 22.2)}
+    <div class="stack" data-show="22.35,24.6" data-fade="0.25">
+      {head('La Maison', 'דלפק אחד מואר.', 'שורה אחת של קינוחים.', 'm-l1', 'm-l2', 22.4)}
       <div style="position: absolute; left: 0; top: 760px; width: 1080px; height: 720px; overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 66%, transparent 100%); mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 66%, transparent 100%)">
         <img class="f-push" src="a/boutique.jpg" alt="The SIGNÉ° counter at night: one lit case with one row of the desserts" style="width: 100%; height: 100%; object-fit: cover; display: block">
       </div>
-      <div data-in="22.6" style="position: absolute; top: 1560px; left: 0; right: 0; text-align: center; {CG}; font-style: italic; font-size: 44px; color: {GOLD}" dir="ltr">— fermé quand c'est fini.</div>
+      <div data-in="23.1" style="position: absolute; top: 1560px; left: 0; right: 0; text-align: center; {CG}; font-style: italic; font-size: 44px; color: {GOLD}" dir="ltr">— fermé quand c'est fini.</div>
     </div>
   </section>"""
 for c in ['h-l1', 'h-l2', 'm-l1', 'm-l2']:
-    t = {'h-l1': 19.6, 'h-l2': 19.95, 'm-l1': 22.25, 'm-l2': 22.55}[c]
+    t = {'h-l1': 19.6, 'h-l2': 19.95, 'm-l1': 22.5, 'm-l2': 22.85}[c]
     rep('/* ── WORLD scenes · SIGNÉ° ── */', '/* ── WORLD scenes · SIGNÉ° ── */\n.%s{animation-name:%s}@keyframes %s{0%%,%s{transform:translateY(110%%)}%s,100%%{transform:none}}' % (c, c.replace('-', ''), c.replace('-', ''), p(t), p(t + .5)))
 
 EDS = [('noir', 'Le Noir'), ('pistache', 'La Pistache'), ('framboise', 'La Framboise'), ('vanille', 'La Vanille')]
-eds = ''.join(f"""<div data-in="{23.7 + i * .25:.2f}" style="position: absolute; left: {[555, 165, 555, 165][i]}px; top: {[560, 560, 1050, 1050][i]}px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
+eds = ''.join(f"""<div data-in="{24.8 + i * .2:.2f}" style="position: absolute; left: {[555, 165, 555, 165][i]}px; top: {[560, 560, 1050, 1050][i]}px; width: 360px; display: flex; flex-direction: column; align-items: center; gap: 10px">
       <img src="a/ed-{n}.jpg" alt="{fr} éclair" style="width: 360px; height: 420px; object-fit: cover; border-radius: 6px; display: block; box-shadow: 0 24px 50px rgba(0,0,0,.5)">
       <span style="{CG}; font-size: 38px; line-height: 1; color: {CREAM}" dir="ltr">{fr}</span></div>""" for i, (n, fr) in enumerate(EDS))
-E = f"""<section class="scene" data-show="23.2,30">
+E = f"""<section class="scene" data-show="24.4,30">
     <div class="stack" style="background: {NOIR}"></div>
-    {head('Les Éditions Signées', 'ארבע מהדורות אקלר.', 'חתימה אחת.', 'g-l1', 'g-l2', 23.3)}
+    {head('Les Éditions Signées', 'ארבע מהדורות אקלר.', 'חתימה אחת.', 'g-l1', 'g-l2', 24.5)}
     {eds}
     <div class="g-sig" style="position: absolute; top: 1600px; left: 0; right: 0; text-align: center; {SC}; font-size: 112px; line-height: 1" dir="ltr">Chaque dessert est signé.</div>
   </section>"""
