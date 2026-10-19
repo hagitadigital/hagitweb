@@ -1,0 +1,210 @@
+<!doctype html>
+<!--
+  Explainer · ELVÉA° "הקו" — Hagit inside the world, no voice yet (9:16, 1080×1920, 31s).
+  Five generated stills of Hagit (stills/elvea-h1..h5) with slow camera moves, the ad itself frozen with a marker ring
+  on the code, a touchpoint grid of ad frames, and the ad's own CTA. Captions carry the story; the voice can be laid
+  under them later without retiming.
+  window.seek(t) draws one frame. Retime: edit only the SCENES / CAPS / MARKS block.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Explainer · ELVÉA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;family=Cormorant+Garamond:wght@500&amp;display=swap">
+<style>
+:root{--olive:#4A5A36;--olive-d:#2F3A22;--cream:#F6F0E2;--gold:#C9A45C;--red:#E5533D;--navy:#1E2A3A}
+html,body{margin:0;background:#000}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden}
+.layer .cam{position:absolute;inset:0;transform-origin:50% 50%}
+.layer img.full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.adbg{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(40px) brightness(.8)}
+.ad{position:absolute;left:0;top:285px;width:1080px;height:1350px;object-fit:cover}
+#chip{left:44px;top:150px;display:flex;align-items:center;gap:14px;padding:12px 22px 12px 16px;border-radius:999px;background:rgba(47,58,34,.82);
+  border:1.5px solid rgba(201,164,92,.6);color:var(--cream);font-family:'JetBrains Mono',monospace;font-size:21px;direction:ltr}
+#chip b{color:var(--gold)}
+#chip .dot{width:12px;height:12px;border-radius:50%;background:var(--red)}
+#cap{left:60px;right:60px;top:250px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 18px;direction:rtl}
+.cw{display:inline-block;font-weight:800;font-size:78px;line-height:1.2;color:#fff;padding:0 10px;border-radius:16px;
+  text-shadow:0 4px 0 rgba(0,0,0,.18),0 8px 30px rgba(40,30,10,.55)}
+.cw.key{background:var(--olive);text-shadow:none}
+.cw.br{flex-basis:100%;height:0;padding:0}
+.ring{overflow:visible}
+.note{font-weight:800;font-size:44px;color:#fff;background:var(--red);padding:8px 20px;border-radius:14px;direction:rtl;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.scrub{left:60px;right:60px;top:1560px;height:84px;border-radius:20px;background:rgba(20,16,14,.88);display:flex;align-items:center;gap:20px;padding:0 24px;direction:ltr}
+.scrub .pp{width:44px;height:44px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;gap:7px}
+.scrub .pp b{width:8px;height:22px;background:#2A211B;border-radius:2px}
+.scrub .tr{flex:1;height:10px;border-radius:5px;background:rgba(255,255,255,.2);position:relative}
+.scrub .tr u{position:absolute;left:0;top:0;bottom:0;width:18%;border-radius:5px;background:var(--gold)}
+.scrub .tr s{position:absolute;left:18%;top:-14px;width:6px;height:38px;border-radius:3px;background:#fff}
+.scrub .tc{font-family:'JetBrains Mono',monospace;font-size:24px;color:var(--cream)}
+.tick{width:74px;height:74px;border-radius:50%;background:var(--olive);border:5px solid #fff;color:#fff;font-size:40px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.card{border-radius:22px;overflow:hidden;border:6px solid #fff;box-shadow:0 24px 60px rgba(0,0,0,.45);background:#eee}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .lab{position:absolute;left:0;right:0;bottom:0;padding:30px 0 12px;text-align:center;color:#fff;font-weight:800;font-size:32px;background:linear-gradient(transparent,rgba(0,0,0,.65));direction:rtl}
+.card .tick{position:absolute;left:-14px;top:-14px;width:60px;height:60px;font-size:32px}
+#cta{left:200px;right:200px;top:1360px;padding:26px 40px;border-radius:18px;background:var(--navy);color:#fff;font-size:46px;font-weight:700;direction:rtl;
+  text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+#cta small{display:block;font-size:24px;font-weight:500;opacity:.75;margin-top:6px;font-family:'Cormorant Garamond',serif;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+/* ── SCENES / CAPS / MARKS: the only block to retime. Seconds. ─────────────────────────── */
+const DUR = 31;
+const ST = '../stills/', AD = '_build/ad/';
+const SCENES = [   // [id, from, to, kind, src, camera from [scale, x%, y%] → to]
+  ['hook',  0,    4.4,  'still', ST + 'elvea-h1-hook.jpg',    [1.02, 50, 50], [1.12, 58, 46]],
+  ['draw',  4.2,  9.6,  'still', ST + 'elvea-h2-drawing.jpg', [1.04, 50, 45], [1.22, 46, 70]],
+  ['freeze',9.4,  14.4, 'ad',    AD + 'elvea-4.6.jpg'],
+  ['wall',  14.2, 19.4, 'still', ST + 'elvea-h3-wall.jpg',    [1.04, 50, 50], [1.16, 66, 46]],
+  ['box',   19.2, 25.6, 'still', ST + 'elvea-h4-box.jpg',     [1.03, 50, 55], [1.14, 62, 66]],
+  ['end',   25.4, DUR,  'still', ST + 'elvea-h5-end.jpg',     [1.10, 52, 40], [1.02, 50, 45]],
+];
+const FADE = .35;
+const CAPS = [  // * olive keyword pill, | line break
+  [0,    2.6,  'אם נסתיר את הלוגו, | עדיין *יזהו אותך?'],          // frame 0 = thumbnail: already complete
+  [2.6,  4.4,  'בואי אראה לך | איך *בנינו את זה.'],
+  [4.6,  7.0,  'הכול מתחיל | משני *קווים.'],
+  [7.0,  9.5,  'ונקודת מפגש | *אחת.'],
+  [9.7,  14.2, 'זה *הקוד.'],
+  [14.5, 19.3, 'ואותו קו | חוזר *בכל מקום.'],
+  [19.5, 22.6, 'על הקופסה. | על *השקית.'],
+  [22.7, 25.4, 'בחנות. בפיד. | *באתר.'],
+  [25.7, DUR,  'זה לא קישוט. | זה *קוד.'],
+];
+const EFFECTS = [['Kinetic hook', 0], ['Ken Burns', 4.2], ['Freeze + ring', 9.4], ['Point', 14.2], ['Ticks', 19.2], ['Touchpoint grid', 22.6], ['CTA', 25.4]];
+// marker rings / ticks in the still's own frame (941×1672 px × 1.148 = stage px before the camera move);
+// they live inside the scene's camera, so they stay on the spot while it moves
+const MARKS = {
+  draw:  { ring: [505, 1452, 280, 180], at: 7.0 },          // where the two lines meet on the paper
+  wall:  { ring: [953, 893, 210, 190], at: 15.4 },           // her fingertip on the line
+  box:   { ticks: [[700, 1412, 20.0], [999, 1263, 20.6]] },  // box, bag
+};
+const GRID = [  // [ad frame, label, x, y, w, rot, at]
+  ['elvea-17.8', 'החנות', 50, 1090, 320, -4, 22.7], ['elvea-20.0', 'הפיד', 380, 1130, 320, 2, 23.1], ['elvea-9.0', 'האתר', 710, 1090, 320, 4, 23.5]];  // under the face
+
+/* ── helpers ─────────────────────────────────────────────────────────────────────────────── */
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeIn = x => x * x * x;
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const show = (el, on) => { el.style.display = on ? '' : 'none'; };
+const ringSvg = (w, h) => `<svg class="ring" width="${w}" height="${h}" aria-hidden="true">
+  <ellipse class="r1" cx="${w / 2}" cy="${h / 2}" rx="${w / 2}" ry="${h / 2}" fill="none" stroke="#E5533D" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="1" transform="rotate(-6 ${w / 2} ${h / 2})"/>
+  <ellipse class="r2" cx="${w / 2 + 8}" cy="${h / 2 - 6}" rx="${w / 2 - 6}" ry="${h / 2 + 4}" fill="none" stroke="#E5533D" stroke-width="6" opacity=".7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" transform="rotate(-2 ${w / 2} ${h / 2})"/></svg>`;
+
+/* ── build ───────────────────────────────────────────────────────────────────────────────── */
+const st = $('stage');
+const layers = SCENES.map(([id, a, b, kind, src, c0, c1]) => {
+  const d = document.createElement('div');
+  d.className = 'layer';
+  d.innerHTML = kind === 'ad' ? `<img class="adbg" src="${src}" alt=""><img class="ad" src="${src}" alt="">` : `<div class="cam"><img class="full" src="${src}" alt=""></div>`;
+  st.appendChild(d);
+  return { d, id, a, b, kind, img: d.querySelector('.cam'), c0, c1 };
+});
+st.insertAdjacentHTML('beforeend', `
+  <div id="ringDraw" class="abs"></div><div id="ringWall" class="abs"></div><div id="ringAd" class="abs"></div>
+  <div id="noteAd" class="note abs" style="left:560px;top:880px">קוד 01 · הקו</div>
+  <div id="scrub" class="scrub abs"><div class="pp"><b></b><b></b></div><div class="tr"><u></u><s></s></div><div class="tc">00:04 ⏸</div></div>
+  <div id="ticks"></div><div id="grid"></div>
+  <div id="chip" class="abs"><span class="dot"></span><b id="chipN"></b><span id="chipT"></span></div>
+  <div id="cap" class="abs"></div>
+  <div id="cta" class="abs">אבחון פער המותג<small>ELVÉA° · עולם מותג 14</small></div>`);
+const cam = id => layers.find(L => L.id === id).img;
+cam('draw').appendChild($('ringDraw')); cam('wall').appendChild($('ringWall')); cam('box').appendChild($('ticks'));
+const placeRing = (id, [x, y, w, h]) => { const e = $(id); e.style.left = x - w / 2 + 'px'; e.style.top = y - h / 2 + 'px'; e.innerHTML = ringSvg(w, h); return e; };
+placeRing('ringDraw', MARKS.draw.ring); placeRing('ringWall', MARKS.wall.ring); placeRing('ringAd', [380, 740, 360, 480]);
+const ticks = MARKS.box.ticks.map(([x, y, at]) => { const e = document.createElement('div'); e.className = 'tick abs'; e.textContent = '✓';
+  e.style.left = x - 37 + 'px'; e.style.top = y - 37 + 'px'; $('ticks').appendChild(e); return { e, at }; });
+const grid = GRID.map(([src, lab, x, y, w, r, at]) => { const e = document.createElement('div'); e.className = 'card abs';
+  Object.assign(e.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: w * 1.25 + 'px' });
+  e.innerHTML = `<img src="${AD + src}.jpg" alt=""><div class="lab">${lab}</div><div class="tick">✓</div>`; $('grid').appendChild(e); return { e, r, at }; });
+let capKey = '';
+const drawRing = (id, t, at) => {
+  const e = $(id), p = prog(t, at, at + .5), p2 = prog(t, at + .25, at + .7);
+  e.querySelector('.r1').setAttribute('stroke-dashoffset', 1 - easeOut(p));
+  e.querySelector('.r2').setAttribute('stroke-dashoffset', 1 - easeOut(p2));
+};
+
+/* ── draw one frame ──────────────────────────────────────────────────────────────────────── */
+function seek(t) {
+  // scenes: crossfade + slow camera
+  layers.forEach(L => {
+    const on = t >= L.a && t <= L.b;
+    show(L.d, on);
+    if (!on) return;
+    const first = L.a === 0;
+    L.d.style.opacity = first ? 1 : prog(t, L.a, L.a + FADE);
+    if (L.img) {
+      const p = ease(prog(t, L.a, L.b)), [s0, x0, y0] = L.c0, [s1, x1, y1] = L.c1;
+      const s = s0 + (s1 - s0) * p, x = x0 + (x1 - x0) * p, y = y0 + (y1 - y0) * p;
+      L.img.style.transformOrigin = `${x}% ${y}%`;
+      L.img.style.transform = `scale(${s})`;
+    } else {   // the ad: a small punch-in when it freezes
+      L.d.querySelector('.ad').style.transform = `scale(${1 + .04 * easeOut(prog(t, L.a, L.a + .5))})`;
+    }
+  });
+  // later layers sit on top, so a crossfade only needs the incoming one to fade in
+
+  // marker rings
+  show($('ringDraw'), t >= MARKS.draw.at && t < 9.6); drawRing('ringDraw', t, MARKS.draw.at);
+  show($('ringWall'), t >= MARKS.wall.at && t < 19.4); drawRing('ringWall', t, MARKS.wall.at);
+  show($('ringAd'), t >= 10.2 && t < 14.4); drawRing('ringAd', t, 10.2);
+  const np = prog(t, 10.9, 11.2);
+  show($('noteAd'), t >= 10.9 && t < 14.4); $('noteAd').style.transform = `scale(${back(np)}) rotate(-3deg)`;
+  const sc = prog(t, 9.6, 9.9);
+  show($('scrub'), t >= 9.6 && t < 14.4); $('scrub').style.opacity = sc; $('scrub').style.transform = `translateY(${(1 - easeOut(sc)) * 60}px)`;
+
+  // ticks on the box and the bag, then the touchpoint grid
+  ticks.forEach(({ e, at }) => { show(e, t >= at && t < 25.6); e.style.transform = `scale(${back(prog(t, at, at + .35))})`; });
+  grid.forEach(({ e, r, at }) => {
+    const p = prog(t, at, at + .4), o = prog(t, 25.2, 25.6);
+    show(e, t >= at && t < 25.6);
+    e.style.opacity = Math.min(p * 2, 1 - o);
+    e.style.transform = `translateY(${(1 - easeOut(p)) * 300}px) rotate(${r + (1 - p) * 10}deg) scale(${back(p)})`;
+  });
+
+  // chip
+  let cur = 0; EFFECTS.forEach(([, a], i) => { if (t >= a) cur = i; });
+  show($('chip'), t >= 2.6); $('chip').style.opacity = prog(t, 2.6, 2.9);
+  $('chipN').textContent = `0${cur + 1}/0${EFFECTS.length}`; $('chipT').textContent = EFFECTS[cur][0];
+
+  // captions
+  const c = CAPS.find(([a, b]) => t >= a && t < b);
+  const key = c ? c[2] : '';
+  if (key !== capKey) {
+    $('cap').innerHTML = c ? c[2].split(' ').map(w => w === '|' ? '<span class="cw br"></span>'
+      : w.startsWith('*') ? `<span class="cw key">${w.slice(1)}</span>` : `<span class="cw">${w}</span>`).join('') : '';
+    capKey = key;
+  }
+  if (c) {
+    const [a, b] = c, els = [...$('cap').querySelectorAll('.cw:not(.br)')];
+    els.forEach((e, i) => {
+      const s = a === 0 ? -1 : a + Math.min(1.2, (b - a) * .5) * i / els.length;
+      const p = prog(t, s, s + .18);
+      e.style.opacity = p * (b === DUR ? 1 : 1 - prog(t, b - .12, b));
+      e.style.transform = `translateY(${(1 - easeOut(p)) * 26}px) scale(${.85 + .15 * back(p)})`;
+    });
+  }
+  // CTA
+  const cp = prog(t, 27.4, 27.85);
+  show($('cta'), t >= 27.4); $('cta').style.opacity = Math.min(cp * 2, 1); $('cta').style.transform = `translateY(${(1 - back(cp)) * 200}px)`;
+}
+window.seek = seek;
+window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready,
+  ...['900 100px Heebo', '800 100px Heebo', '700 100px Heebo', '700 20px "JetBrains Mono"', '500 24px "Cormorant Garamond"'].map(f => document.fonts.load(f, 'אבג abc').catch(() => {})),
+  ...[...document.images].map(i => i.decode().catch(() => {}))]);
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; loop(); }
+else seek(0);
+</script>
+</body>
+</html>
