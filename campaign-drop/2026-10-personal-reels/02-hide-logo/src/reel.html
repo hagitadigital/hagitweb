@@ -1,0 +1,261 @@
+<!doctype html>
+<!--
+  Personal reel 02 · "אם אסתיר את הלוגו, עדיין יזהו אותך?" — motion over Hagit's talking head (9:16, 1080×1920, 22s).
+  Unlike reel 01 the take is INSIDE the page (one frame per seek, #bg), so the eyedropper grade really recolours her.
+  window.seek(t) draws one frame; render.js sets #bg to the take's frame first. No CSS animations, no clocks.
+  Retiming to the real take: edit only the BEATS / CAPS block below (seconds from the start of the take).
+  Text lives in the top band (captions, 280–480) and the lower band (props, 1000–1540); the face stays clear.
+  Preview in a browser: open reel.html?play — loops over the placeholder still.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Reel 02 · hide the logo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
+<style>
+:root{
+  --cream:#FAF8F3; --ink:#3E2F25; --copper:#C4765A; --gold:#B8894A; --dark:#2A211B;
+  --rosee:#E7B8A8; --rosee-ink:#8E4E46;
+}
+html,body{margin:0;background:#000}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.abs{position:absolute}
+#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#grade{position:absolute;inset:0;background:var(--rosee);mix-blend-mode:color}
+#warm{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 40%,rgba(255,226,214,.0),rgba(142,78,70,.35));mix-blend-mode:multiply}
+
+#chip{left:44px;top:190px;display:flex;align-items:center;gap:14px;padding:12px 22px 12px 16px;border-radius:999px;
+  background:rgba(42,33,27,.86);border:1.5px solid rgba(184,137,74,.55);color:#F4EBDD;font-family:'JetBrains Mono',monospace;font-size:21px;direction:ltr}
+#chip b{color:var(--gold);font-weight:700}
+#chip .dot{width:12px;height:12px;border-radius:50%;background:#E5533D;box-shadow:0 0 0 5px rgba(229,83,61,.25)}
+
+/* captions: top band, word by word, one keyword on a pill */
+#cap{left:60px;right:60px;top:290px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 18px;direction:rtl}
+.cw{display:inline-block;font-weight:800;font-size:80px;line-height:1.2;color:#fff;padding:0 10px;border-radius:16px;
+  text-shadow:0 4px 0 rgba(0,0,0,.2),0 8px 30px rgba(0,0,0,.55)}
+.cw.key{background:var(--copper);text-shadow:none}
+.cw.br{flex-basis:100%;height:0;padding:0}
+
+/* three generic no-name products — "ככה משווים" */
+#shelf{left:60px;right:60px;top:1110px;height:430px}
+#shelf .lbl{position:absolute;right:0;top:-58px;padding:8px 20px;border-radius:999px;background:var(--dark);color:#F4F2EF;font-size:26px;font-weight:500}
+.tile{position:absolute;top:0;width:290px;height:400px;border-radius:24px;background:#F3F2F0;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.tile svg{position:absolute;left:50%;top:34px;margin-left:-70px}
+.bar{position:absolute;left:66px;right:66px;top:214px;height:58px;border-radius:10px;background:#111;color:#F4F2EF;
+  font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.2em;display:flex;align-items:center;justify-content:center;direction:ltr}
+.q{position:absolute;left:50%;top:-110px;width:96px;height:96px;margin-left:-48px;border-radius:50%;background:#fff;color:var(--dark);
+  font-weight:900;font-size:66px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.tag{position:absolute;left:50%;bottom:22px;margin-left:-82px;width:164px;padding:10px 0;border-radius:14px;background:#fff;border:3px solid var(--dark);
+  text-align:center;font-weight:800;font-size:40px;color:var(--dark);direction:ltr}
+
+/* world film card with its name hidden */
+#world{left:340px;top:990px;width:400px;height:711px;border-radius:28px;overflow:hidden;border:6px solid #fff;box-shadow:0 30px 80px rgba(0,0,0,.45);background:#eee}
+#world img{width:100%;height:100%;object-fit:cover;display:block}
+#wbar{position:absolute;left:26px;right:26px;top:58px;height:96px;border-radius:12px;background:#111;color:#F4F2EF;
+  font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.2em;display:flex;align-items:center;justify-content:center;direction:ltr}
+
+/* eyedropper */
+#drop{left:0;top:0;width:150px;height:150px;transform-origin:18px 132px}
+#swatch{display:flex;align-items:center;gap:16px;padding:12px 22px 12px 12px;border-radius:999px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.35);direction:ltr}
+#swatch i{width:58px;height:58px;border-radius:50%;background:var(--rosee);border:3px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.08)}
+#swatch span{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--dark)}
+
+/* the closing line */
+#giant{left:0;right:0;top:930px;text-align:center;direction:rtl}
+#giant div{font-weight:900;font-size:150px;line-height:1.02;color:#fff;letter-spacing:-.02em;text-shadow:0 8px 0 rgba(0,0,0,.18),0 14px 50px rgba(0,0,0,.5)}
+#giant div.hl{color:#FFE3D8}
+#giant div.hl span{background:var(--rosee-ink);padding:0 26px;border-radius:30px;text-shadow:none}
+#cta{left:120px;right:120px;top:1420px;padding:20px 28px;border-radius:999px;background:rgba(255,253,247,.97);box-shadow:0 20px 50px rgba(0,0,0,.35);
+  text-align:center;font-size:40px;font-weight:700;color:var(--dark);direction:rtl}
+#cta em{font-style:normal;padding:0 12px;border-radius:10px;background:var(--copper);color:#fff}
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="bg" alt="">
+  <div id="grade"></div>
+  <div id="warm"></div>
+  <div id="chip" class="abs"><span class="dot"></span><b id="chipN"></b><span id="chipT"></span></div>
+  <div id="cap" class="abs"></div>
+  <div id="shelf" class="abs"><div class="lbl" id="shelfLbl">ככה משווים</div></div>
+  <div id="world" class="abs"><img id="wimg" alt=""><div id="wbar">LOGO</div></div>
+  <div id="drop" class="abs">
+    <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+      <path d="M104 14 a20 20 0 0 1 28 28 l-14 14 -28 -28 z" fill="#2A211B"/>
+      <path d="M84 34 l30 30 -10 10 -30 -30 z" fill="#5A4A3E"/>
+      <path d="M78 52 l18 18 -58 58 c-6 6 -14 8 -20 4 c-4 -6 -2 -14 4 -20 z" fill="#fff" stroke="#2A211B" stroke-width="5" stroke-linejoin="round"/>
+      <path id="dropFill" d="M60 88 l18 0 -48 48 c-4 2 -8 0 -8 -4 z" fill="#E7B8A8"/>
+    </svg>
+  </div>
+  <div id="swatch" class="abs"><i></i><span>#E7B8A8</span></div>
+  <div id="giant" class="abs"><div>צריך לוגו</div><div>כדי שיזהו?</div><div class="hl"><span>עוד לא מותג.</span></div></div>
+  <div id="cta" class="abs">כתבי <em>זיהוי</em> ואבדוק את המותג שלך</div>
+</div>
+
+<script>
+/* ── BEATS: the only block to retime. Seconds from the start of the take. ───────────────── */
+const DUR = 22;
+const EFFECTS = [  // [name, from] — the chip names the live one
+  ['Kinetic hook', 0], ['Censor bar', 2.7], ['Jiggle', 5.0], ['Price drop', 6.8], ['Video card', 9.2],
+  ['Eyedropper grade', 11.6], ['Logo reveal', 14.4], ['Giant captions', 16.8]];
+const BEATS = {
+  shelf:  [0, 9.6],     // on screen at frame 0: the hook's proof
+  ask:    [5.0, 6.9],   // "?" over each product + jiggle
+  prices: [7.4, 9.6],   // price tags drop in
+  world:  [9.2, 16.7],
+  pick:   [11.6, 12.6], // eyedropper travels to the card and samples
+  grade:  [12.8, 13.8], // the colour spreads from the sample point over the whole frame
+  reveal: [14.6, 15.2], // the bar slides off the name
+  giant:  [16.8, DUR],
+  cta:    [19.4, DUR],
+};
+const CAPS = [  // [start, end, words] — * keyword pill, | line break. Must match what Hagit says.
+  [0, 2.6, 'אם אסתיר לך את הלוגו, | עדיין *יזהו אותך?'],   // frame 0 = thumbnail: already complete
+  [2.7, 5.0, 'שלושה מוצרים. | *בלי לוגו.'],
+  [5.0, 6.8, 'מי זה *מי?'],
+  [6.8, 9.2, 'אין דרך לדעת. | אז משווים *במחיר.'],
+  [9.4, 11.6, 'עכשיו תסתכלי | *על זה.'],
+  [11.6, 14.3, 'צבע. מרקם. | *תחושה.'],
+  [14.4, 16.6, 'ידעת מי זה | עוד *לפני השם.'],
+];
+const PRICES = ['₪89', '₪94', '₪87'];
+const PICK = [520, 1330];          // where the eyedropper samples (on the card's cloud), stage px
+const FILM_FRAMES = 67, FILM_FPS = 15;
+
+/* ── helpers ─────────────────────────────────────────────────────────────────────────────── */
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeIn = x => x * x * x;
+const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c = 1.9; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const bounce = x => { const n = 7.5625, d = 2.75;
+  if (x < 1 / d) return n * x * x; if (x < 2 / d) return n * (x -= 1.5 / d) * x + .75;
+  if (x < 2.5 / d) return n * (x -= 2.25 / d) * x + .9375; return n * (x -= 2.625 / d) * x + .984375; };
+const show = (el, on) => { el.style.display = on ? '' : 'none'; };
+
+/* ── build ───────────────────────────────────────────────────────────────────────────────── */
+// one generic serum bottle, no name — the same shape three times, three greys
+const bottle = tone => `<svg width="140" height="300" viewBox="0 0 140 300" aria-hidden="true">
+  <rect x="52" y="0" width="36" height="46" rx="8" fill="#3A3633"/><rect x="44" y="40" width="52" height="26" rx="6" fill="#55504B"/>
+  <rect x="14" y="62" width="112" height="226" rx="26" fill="${tone}"/><rect x="26" y="78" width="12" height="190" rx="6" fill="#fff" opacity=".35"/></svg>`;
+const tiles = ['#CFC9C2', '#BDB7B0', '#D9D4CE'].map((tone, i) => {
+  const d = document.createElement('div');
+  d.className = 'tile'; d.style.left = i * 335 + 'px';
+  d.innerHTML = bottle(tone) + `<div class="bar">LOGO</div><div class="q">?</div><div class="tag">${PRICES[i]}</div>`;
+  $('shelf').appendChild(d);
+  return { d, q: d.querySelector('.q'), tag: d.querySelector('.tag'), i };
+});
+const preload = [];
+for (let k = 1; k <= FILM_FRAMES; k++) { const im = new Image(); im.src = `_build/films/rosee/${String(k).padStart(2, '0')}.jpg`; preload.push(im); }
+let capKey = '';
+
+/* ── draw one frame ──────────────────────────────────────────────────────────────────────── */
+function seek(t) {
+  let cur = 0; EFFECTS.forEach(([, a], i) => { if (t >= a) cur = i; });
+  show($('chip'), t >= 2.7);
+  $('chip').style.opacity = prog(t, 2.7, 3.0);
+  $('chipN').textContent = `0${cur + 1}/0${EFFECTS.length}`;
+  $('chipT').textContent = EFFECTS[cur][0];
+
+  // captions: frame 0 holds the whole hook; later lines pop in word by word
+  const c = CAPS.find(([a, b]) => t >= a && t < b);
+  const key = c ? c[2] : '';
+  if (key !== capKey) {
+    $('cap').innerHTML = c ? c[2].split(' ').map(w => w === '|' ? '<span class="cw br"></span>'
+      : w.startsWith('*') ? `<span class="cw key">${w.slice(1)}</span>` : `<span class="cw">${w}</span>`).join('') : '';
+    capKey = key;
+  }
+  if (c) {
+    const [a, b] = c, els = [...$('cap').querySelectorAll('.cw:not(.br)')];
+    els.forEach((e, i) => {
+      const s = a === 0 ? -1 : a + (b - a) * .65 * i / els.length;
+      const p = prog(t, s, s + .18);
+      e.style.opacity = p * (1 - prog(t, b - .12, b));
+      e.style.transform = `translateY(${(1 - easeOut(p)) * 26}px) scale(${.85 + .15 * back(p)})` + (a === 0 ? ` scale(${1 + .03 * Math.sin(t * 5 + i)})` : '');
+    });
+  }
+
+  // shelf: three logo-less products; "?" + jiggle, then the only thing left to compare — price
+  const [sa, sb] = BEATS.shelf;
+  const sOut = prog(t, sb - .45, sb);
+  show($('shelf'), t <= sb);
+  $('shelf').style.opacity = 1 - sOut;
+  $('shelf').style.transform = `translateY(${easeIn(sOut) * 260}px)`;
+  $('shelfLbl').style.opacity = prog(t, BEATS.prices[0] + .3, BEATS.prices[0] + .6);
+  tiles.forEach(({ d, q, tag, i }) => {
+    const [qa, qb] = BEATS.ask;
+    const jig = t > qa && t < qb + .2 ? Math.sin(t * 34 + i * 2) * 3 : 0;
+    d.style.transform = `rotate(${jig}deg)`;
+    const qp = prog(t, qa + i * .15, qa + .35 + i * .15);
+    show(q, t >= qa + i * .15 && t < BEATS.prices[0]);
+    q.style.transform = `scale(${back(qp) * (1 - prog(t, BEATS.prices[0] - .25, BEATS.prices[0]))})`;
+    const ta = BEATS.prices[0] + i * .22, tp = prog(t, ta, ta + .55);
+    show(tag, t >= ta);
+    tag.style.transform = `translateY(${(1 - bounce(tp)) * -420}px) rotate(${(1 - tp) * (i - 1) * 12}deg)`;
+  });
+
+  // world card: rises, plays the ROSÉE° film once and holds on the cloud, its name under a bar; bar slides off at the reveal
+  const [wa, wb] = BEATS.world;
+  const wIn = prog(t, wa, wa + .55), wOut = prog(t, wb - .4, wb);
+  show($('world'), t >= wa && t <= wb);
+  $('world').style.opacity = Math.min(wIn * 2, 1 - wOut);
+  $('world').style.transform = `translateY(${(1 - easeOut(wIn)) * 500 + easeIn(wOut) * 120}px) rotate(${(1 - easeOut(wIn)) * 8}deg) scale(${1 - .1 * wOut})`;
+  if (t >= wa && t <= wb) $('wimg').src = `_build/films/rosee/${String(Math.min(Math.floor((t - wa) * FILM_FPS), FILM_FRAMES - 1) + 1).padStart(2, '0')}.jpg`;
+  const [ra, rb] = BEATS.reveal, rp = easeInOut(prog(t, ra, rb));
+  $('wbar').style.transform = `translateX(${rp * 460}px)`;
+  $('wbar').style.opacity = 1 - prog(t, ra + .3, rb);
+
+  // eyedropper: flies in, dips, the swatch reads out the colour
+  const [pa, pb] = BEATS.pick, [gx, gy] = PICK;
+  const fly = easeInOut(prog(t, pa, pa + .6));
+  show($('drop'), t >= pa && t < BEATS.grade[1] + .3);
+  const dx = 980 + (gx - 980) * fly, dy = 760 + (gy - 760) * fly;
+  const dip = t > pa + .6 && t < pb ? Math.sin(prog(t, pa + .6, pb) * Math.PI) * 14 : 0;
+  $('drop').style.transform = `translate(${dx - 18}px, ${dy - 132 + dip}px) rotate(${(1 - fly) * -25}deg)`;
+  $('drop').style.opacity = Math.min(prog(t, pa, pa + .2), 1 - prog(t, BEATS.grade[1], BEATS.grade[1] + .3));
+  $('dropFill').style.opacity = prog(t, pa + .75, pb);
+  const sw = prog(t, pb - .1, pb + .25);
+  show($('swatch'), t >= pb - .1 && t < BEATS.reveal[0]);
+  $('swatch').style.transform = `translate(${gx + 30}px, ${gy - 250}px) scale(${back(sw)})`;
+  $('swatch').style.opacity = 1 - prog(t, BEATS.reveal[0] - .3, BEATS.reveal[0]);
+
+  // grade: a circle of the sampled colour opens from the sample point over the whole frame, and stays
+  const [ga, gb] = BEATS.grade, gp = easeInOut(prog(t, ga, gb));
+  const clip = `circle(${gp * 2300}px at ${gx}px ${gy}px)`;
+  ['grade', 'warm'].forEach(id => { show($(id), t >= ga); $(id).style.clipPath = clip; });
+  $('grade').style.opacity = .5;
+  $('bg').style.filter = t >= ga ? `saturate(${1 + .15 * gp}) brightness(${1 + .03 * gp})` : '';
+
+  // closing line + CTA
+  const [ia] = BEATS.giant;
+  [...$('giant').children].forEach((e, i) => {
+    const p = prog(t, ia + i * .55, ia + .25 + i * .55);
+    e.style.opacity = Math.min(p * 3, 1);
+    e.style.transform = `scale(${1.5 - .5 * easeOut(p)})`;
+  });
+  show($('giant'), t >= ia);
+  const cp = prog(t, BEATS.cta[0], BEATS.cta[0] + .45);
+  show($('cta'), t >= BEATS.cta[0]);
+  $('cta').style.opacity = Math.min(cp * 2, 1);
+  $('cta').style.transform = `translateY(${(1 - back(cp)) * 180}px)`;
+}
+
+window.seek = seek;
+window.DUR = DUR;
+window.setBg = src => new Promise(r => { const b = $('bg'); b.onload = () => b.decode().then(r, r); b.onerror = r; b.src = src; });
+const FONTS = ['900 100px Heebo', '800 100px Heebo', '700 100px Heebo', '500 100px Heebo', '700 20px "JetBrains Mono"'];
+window.ready = Promise.all([document.fonts.ready, ...FONTS.map(f => document.fonts.load(f, 'אבג abc').catch(() => {})),
+  ...preload.map(i => i.decode().catch(() => {}))]);
+
+if (location.search.includes('play')) {   // browser preview over the portrait
+  $('bg').src = '../../../../hagit-portrait-2026.png';
+  const t0 = performance.now();
+  const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); };
+  loop();
+} else seek(0);
+</script>
+</body>
+</html>
