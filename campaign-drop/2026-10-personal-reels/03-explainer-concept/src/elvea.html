@@ -66,6 +66,9 @@ const SCENES = [   // [id, from, to, kind, src, camera from [scale, x%, y%] → 
   ['end',   25.4, DUR,  'still', ST + 'elvea-h5-end.jpg',     [1.10, 52, 40], [1.02, 50, 45]],
 ];
 const FADE = .35;
+// Kling clips of each still (clips/*.mp4 → _build/clips/<id>/NNN.jpg via prep-clips.sh), stretched over the scene.
+// Open with ?stills to fall back to the still images.
+const CLIPS = location.search.includes('stills') ? {} : { hook: 150, draw: 150, wall: 150, box: 150, end: 150 };
 const CAPS = [  // * olive keyword pill, | line break
   [0,    2.6,  'אם נסתיר את הלוגו, | עדיין *יזהו אותך?'],          // frame 0 = thumbnail: already complete
   [2.6,  4.4,  'בואי אראה לך | איך *בנינו את זה.'],
@@ -108,7 +111,7 @@ const layers = SCENES.map(([id, a, b, kind, src, c0, c1]) => {
   d.className = 'layer';
   d.innerHTML = kind === 'ad' ? `<img class="adbg" src="${src}" alt=""><img class="ad" src="${src}" alt="">` : `<div class="cam"><img class="full" src="${src}" alt=""></div>`;
   st.appendChild(d);
-  return { d, id, a, b, kind, img: d.querySelector('.cam'), c0, c1 };
+  return { d, id, a, b, kind, img: d.querySelector('.cam'), pic: d.querySelector('.full'), n: CLIPS[id], frame: 0, c0, c1 };
 });
 st.insertAdjacentHTML('beforeend', `
   <div id="ringDraw" class="abs"></div><div id="ringWall" class="abs"></div><div id="ringAd" class="abs"></div>
@@ -136,7 +139,8 @@ const drawRing = (id, t, at) => {
 
 /* ── draw one frame ──────────────────────────────────────────────────────────────────────── */
 function seek(t) {
-  // scenes: crossfade + slow camera
+  const loading = [];
+  // scenes: crossfade + slow camera (+ the scene's clip frame)
   layers.forEach(L => {
     const on = t >= L.a && t <= L.b;
     show(L.d, on);
@@ -148,6 +152,10 @@ function seek(t) {
       const s = s0 + (s1 - s0) * p, x = x0 + (x1 - x0) * p, y = y0 + (y1 - y0) * p;
       L.img.style.transformOrigin = `${x}% ${y}%`;
       L.img.style.transform = `scale(${s})`;
+      if (L.n) {
+        const f = 1 + Math.min(L.n - 1, Math.floor(prog(t, L.a, L.b) * L.n));
+        if (f !== L.frame) { L.frame = f; L.pic.src = `_build/clips/${L.id}/${String(f).padStart(3, '0')}.jpg`; loading.push(L.pic.decode().catch(() => {})); }
+      }
     } else {   // the ad: a small punch-in when it freezes
       L.d.querySelector('.ad').style.transform = `scale(${1 + .04 * easeOut(prog(t, L.a, L.a + .5))})`;
     }
@@ -197,6 +205,7 @@ function seek(t) {
   // CTA
   const cp = prog(t, 27.4, 27.85);
   show($('cta'), t >= 27.4); $('cta').style.opacity = Math.min(cp * 2, 1); $('cta').style.transform = `translateY(${(1 - back(cp)) * 200}px)`;
+  return Promise.all(loading);
 }
 window.seek = seek;
 window.DUR = DUR;
