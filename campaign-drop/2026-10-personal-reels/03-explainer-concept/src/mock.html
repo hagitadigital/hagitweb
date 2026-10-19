@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+  Concept frames: Hagit explains a hidden-logo ad (ELVÉA° / the dessert worlds) — 9:16, 1080×1920.
+  Five layouts the explainer cuts between: hook (the ad's own frame 0 + Hagit in a bubble), host (Hagit full frame,
+  the ad as a floating card), breakdown (the ad frozen, a hand-drawn circle on the code), grid (one code on every
+  touchpoint), end (Hagit + the ad's CTA). window.show(i) draws FRAMES[i]; shoot.js screenshots them.
+  _build/ad/*.jpg are frames cut from the two ads (see shoot.js).
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Explainer concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;family=Caveat:wght@700&amp;display=swap">
+<style>
+:root{--cream:#FAF8F3;--ink:#3E2F25;--copper:#C4765A;--gold:#B8894A;--dark:#2A211B;--navy:#1E2A3A}
+html,body{margin:0;background:#000}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.abs{position:absolute}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.blur{filter:blur(40px) brightness(.85);transform:scale(1.15)}
+.dim{position:absolute;inset:0;background:rgba(20,14,10,.5)}
+.ad{position:absolute;left:0;top:285px;width:1080px;height:1350px;object-fit:cover}
+.bubble{width:290px;height:290px;border-radius:50%;border:7px solid #fff;box-shadow:0 20px 50px rgba(0,0,0,.4);
+  background:url(../../../../hagit-portrait-2026.png) 50% 22%/150% auto}
+.bubble i{position:absolute;right:6px;bottom:14px;width:30px;height:30px;border-radius:50%;background:#E5533D;border:5px solid #fff}
+.cap{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 18px;direction:rtl}
+.cw{display:inline-block;font-weight:800;font-size:76px;line-height:1.2;color:#fff;padding:0 10px;border-radius:16px;text-shadow:0 4px 0 rgba(0,0,0,.2),0 8px 30px rgba(0,0,0,.55)}
+.cw.key{background:var(--copper);text-shadow:none}
+.cw.br{flex-basis:100%;height:0;padding:0}
+.pill{padding:14px 26px;border-radius:999px;background:rgba(42,33,27,.9);color:#F4EBDD;font-size:34px;font-weight:700;direction:rtl;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.card{border-radius:24px;overflow:hidden;border:6px solid #fff;box-shadow:0 26px 60px rgba(0,0,0,.45);background:#eee}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.tick{position:absolute;left:-18px;top:-18px;width:66px;height:66px;border-radius:50%;background:#2F6B3F;border:5px solid #fff;color:#fff;font-size:36px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.lab{position:absolute;left:0;right:0;bottom:0;padding:34px 0 14px;text-align:center;color:#fff;font-weight:800;font-size:34px;background:linear-gradient(transparent,rgba(0,0,0,.65));direction:rtl}
+.scrub{left:60px;right:60px;top:1560px;height:84px;border-radius:20px;background:rgba(20,16,14,.88);display:flex;align-items:center;gap:20px;padding:0 24px;direction:ltr}
+.scrub .pp{width:44px;height:44px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;gap:7px}
+.scrub .pp b{width:8px;height:22px;background:var(--dark);border-radius:2px}
+.scrub .tr{flex:1;height:10px;border-radius:5px;background:rgba(255,255,255,.2);position:relative}
+.scrub .tr u{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--copper)}
+.scrub .tr s{position:absolute;top:-14px;width:6px;height:38px;border-radius:3px;background:#fff}
+.scrub .tc{font-family:'JetBrains Mono',monospace;font-size:24px;color:#F4EBDD}
+.note{font-family:'Caveat',cursive;font-size:64px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.6);direction:rtl;white-space:nowrap}
+.cta{padding:26px 46px;border-radius:18px;background:var(--navy);color:#fff;font-size:44px;font-weight:700;direction:rtl;box-shadow:0 20px 50px rgba(0,0,0,.4);text-align:center}
+.cta small{display:block;font-size:24px;font-weight:500;opacity:.75;margin-top:4px}
+.tag{padding:10px 22px;border-radius:12px;background:#fff;color:var(--dark);font-weight:800;font-size:32px;direction:rtl;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.14em;color:#F4EBDD;direction:ltr}
+#chip{left:44px;top:190px;display:flex;align-items:center;gap:14px;padding:12px 22px 12px 16px;border-radius:999px;background:rgba(42,33,27,.86);border:1.5px solid rgba(184,137,74,.55);color:#F4EBDD;font-family:'JetBrains Mono',monospace;font-size:21px;direction:ltr}
+#chip b{color:var(--gold)}
+#chip .dot{width:12px;height:12px;border-radius:50%;background:#E5533D}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const A = n => `_build/ad/${n}.jpg`;
+const HAGIT = '../../../../hagit-portrait-2026.png';
+const cap = (s, top) => `<div class="cap abs" style="left:60px;right:60px;top:${top}px">${s.split(' ').map(w => w === '|' ? '<span class="cw br"></span>'
+  : w.startsWith('*') ? `<span class="cw key">${w.slice(1)}</span>` : `<span class="cw">${w}</span>`).join('')}</div>`;
+const chip = (n, name) => `<div id="chip" class="abs"><span class="dot"></span><b>${n}</b><span>${name}</span></div>`;
+const bubble = (x, y) => `<div class="bubble abs" style="left:${x}px;top:${y}px"><i></i></div>`;
+const fullAd = src => `<img class="cover blur" src="${A(src)}" alt=""><img class="ad" src="${A(src)}" alt="">`;
+const host = (dim) => `<img class="cover" src="${HAGIT}" alt="" style="object-position:50% 20%">${dim ? '<div class="dim"></div>' : ''}`;
+const scrub = (p, tc) => `<div class="scrub abs"><div class="pp"><b></b><b></b></div><div class="tr"><u style="width:${p}%"></u><s style="left:${p}%"></s></div><div class="tc">${tc}</div></div>`;
+// hand-drawn ring: two slightly offset ellipses, like a marker going round twice
+const ring = (x, y, w, h, rot = -6) => `<svg class="abs" style="left:${x}px;top:${y}px;overflow:visible" width="${w}" height="${h}" aria-hidden="true">
+  <ellipse cx="${w / 2}" cy="${h / 2}" rx="${w / 2}" ry="${h / 2}" fill="none" stroke="#E5533D" stroke-width="10" stroke-linecap="round" transform="rotate(${rot} ${w / 2} ${h / 2})"/>
+  <ellipse cx="${w / 2 + 8}" cy="${h / 2 - 6}" rx="${w / 2 - 6}" ry="${h / 2 + 4}" fill="none" stroke="#E5533D" stroke-width="6" stroke-linecap="round" opacity=".7" transform="rotate(${rot + 4} ${w / 2} ${h / 2})"/></svg>`;
+const arrow = (x, y, d) => `<svg class="abs" style="left:${x}px;top:${y}px;overflow:visible" width="10" height="10" aria-hidden="true"><path d="${d}" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const card = (src, x, y, w, rot, extra = '') => `<div class="card abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w * 1.25}px;transform:rotate(${rot}deg)"><img src="${A(src)}" alt="">${extra}</div>`;
+const dropper = (x, y) => `<svg class="abs" style="left:${x - 18}px;top:${y - 132}px" width="150" height="150" viewBox="0 0 150 150" aria-hidden="true">
+  <path d="M104 14 a20 20 0 0 1 28 28 l-14 14 -28 -28 z" fill="#2A211B"/><path d="M84 34 l30 30 -10 10 -30 -30 z" fill="#5A4A3E"/>
+  <path d="M78 52 l18 18 -58 58 c-6 6 -14 8 -20 4 c-4 -6 -2 -14 4 -20 z" fill="#fff" stroke="#2A211B" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M60 88 l18 0 -48 48 c-4 2 -8 0 -8 -4 z" fill="#5B74C9"/></svg>`;
+
+const FRAMES = {
+  'elvea-1-hook': () => fullAd('elvea-0.3') + bubble(60, 1300) + `<div class="pill abs" style="left:370px;top:1400px">בואי אראה לך איך בנינו את זה ↓</div>`,
+  'elvea-2-host': () => host() + chip('02/05', 'Host + card') + cap('מותג שמזהים | *בלי השם.', 250) + card('elvea-6.8', 690, 1110, 340, 5),
+  'elvea-3-breakdown': () => fullAd('elvea-4.6') + chip('03/05', 'Freeze + ring') + ring(210, 500, 340, 470) + `<div class="note abs" style="left:560px;top:860px;color:#E5533D;text-shadow:none">קוד 01 · הקו</div>` + scrub(18, '00:04 ⏸') + bubble(740, 1250),
+  'elvea-4-grid': () => host(true) + chip('04/05', 'Touchpoint grid') + cap('אותו קו. | *בכל מקום.', 250)
+    + card('elvea-0.3', 90, 560, 420, -3, '<div class="tick">✓</div><div class="lab">הבקבוק</div>')
+    + card('elvea-13.2', 570, 600, 420, 3, '<div class="tick">✓</div><div class="lab">הקופסה</div>')
+    + card('elvea-17.8', 90, 1150, 300, 2, '<div class="tick">✓</div><div class="lab">החנות</div>')
+    + card('elvea-20.0', 430, 1150, 300, -2, '<div class="tick">✓</div><div class="lab">הפיד</div>')
+    + card('elvea-9.0', 770, 1150, 250, 4, '<div class="tick">✓</div><div class="lab">האתר</div>'),
+  'elvea-5-end': () => host() + chip('05/05', 'CTA') + cap('זה לא קישוט. | זה *קוד.', 1060)
+    + `<div class="cta abs" style="left:240px;right:240px;top:1330px">אבחון פער המותג<small>ELVÉA° · עולם מותג 14</small></div>`,
+
+  'desserts-1-hook': () => fullAd('desserts-0.3') + bubble(60, 1300) + `<div class="pill abs" style="left:370px;top:1400px">שלושה עולמות. אף לוגו. ↓</div>`,
+  'desserts-2-host': () => host() + chip('02/05', 'Card fan') + cap('כל עולם בחר | *דבר אחד.', 250) + card('desserts-4.0', 70, 1170, 280, -9) + card('desserts-20.0', 400, 1120, 280, 0) + card('desserts-31.5', 730, 1170, 280, 9),
+  'desserts-3-triptych': () => `<div class="abs" style="inset:0;display:flex">${[['desserts-12.0', 'CHASEN°', 'צבע'], ['desserts-20.0', 'MIEL°', 'הפנים'], ['desserts-31.5', 'PANCAKERIE°', 'הקופסה']]
+      .map(([s, n, c]) => `<div style="position:relative;flex:1;overflow:hidden;border-left:4px solid #fff"><img src="${A(s)}" alt="" style="position:absolute;left:50%;top:0;height:100%;transform:translateX(-50%)">
+        <div class="abs" style="left:0;right:0;top:1180px;display:flex;flex-direction:column;align-items:center;gap:12px"><div class="mono" style="color:#fff;background:rgba(0,0,0,.55);padding:6px 12px;border-radius:8px">${n}</div><div class="tag">${c}</div></div></div>`).join('')}</div><div class="abs" style="left:0;right:0;top:0;height:720px;background:linear-gradient(rgba(20,14,10,.94) 45%,rgba(20,14,10,0))"></div>`
+    + chip('03/05', 'Triptych') + cap('שלושה עולמות, | *שלושה קודים.', 250) + bubble(395, 1420),
+  'desserts-4-eyedropper': () => fullAd('desserts-12.0') + chip('04/05', 'Freeze + eyedropper') + dropper(560, 900)
+    + `<div class="abs" style="left:600px;top:700px;display:flex;align-items:center;gap:14px;padding:12px 22px 12px 12px;border-radius:999px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.35);direction:ltr"><i style="width:56px;height:56px;border-radius:50%;background:#5B74C9"></i><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:#2A211B">MATCHA BLEU</span></div>`
+    + `<div class="note abs" style="left:70px;top:1010px;color:#E5533D;text-shadow:none">כל טעם = צבע</div>` + scrub(26, '00:12 ⏸') + bubble(60, 1250),
+  'desserts-5-end': () => host() + chip('05/05', 'CTA') + cap('הטעם שלך | רואים *לפני שטועמים.', 1060)
+    + `<div class="cta abs" style="left:240px;right:240px;top:1330px">אבחון פער המותג<small>CHASEN° · MIEL° · PANCAKERIE°</small></div>`,
+};
+window.NAMES = Object.keys(FRAMES);
+window.show = name => {
+  document.getElementById('stage').innerHTML = FRAMES[name]();
+  return Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+};
+window.ready = Promise.all(['900 100px Heebo', '800 100px Heebo', '700 100px Heebo', '700 60px Caveat', '700 20px "JetBrains Mono"']
+  .map(f => document.fonts.load(f, 'אבג abc').catch(() => {})));
+const q = location.search.slice(1); if (q) window.show(q);
+</script>
+</body>
+</html>
