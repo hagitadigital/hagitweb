@@ -61,7 +61,7 @@ const SCENES = [   // [id, from, to, kind, src, camera from [scale, x%, y%] → 
   ['hook',  0,    4.4,  'still', ST + 'elvea-h1-hook.jpg',    [1.02, 50, 50], [1.12, 58, 46]],
   ['draw',  4.2,  9.6,  'still', ST + 'elvea-h2-drawing.jpg', [1.04, 50, 45], [1.22, 46, 70]],
   ['freeze',9.4,  14.4, 'ad',    AD + 'elvea-4.6.jpg'],
-  ['wall',  14.2, 19.4, 'still', ST + 'elvea-h3-wall.jpg',    [1.04, 50, 50], [1.16, 66, 46]],
+  ['wall',  14.2, 19.4, 'still', ST + 'elvea-h3-wall.jpg',    [1.42, 100, 28], [1.52, 100, 32]],   // tight: face, hand and the line on the wall
   ['box',   19.2, 25.6, 'still', ST + 'elvea-h4-box.jpg',     [1.03, 50, 55], [1.14, 62, 66]],
   ['end',   25.4, DUR,  'still', ST + 'elvea-h5-end.jpg',     [1.10, 52, 40], [1.02, 50, 45]],
 ];
@@ -81,9 +81,9 @@ const EFFECTS = [['Kinetic hook', 0], ['Ken Burns', 4.2], ['Freeze + ring', 9.4]
 // marker rings / ticks in the still's own frame (941×1672 px × 1.148 = stage px before the camera move);
 // they live inside the scene's camera, so they stay on the spot while it moves
 const MARKS = {
-  draw:  { ring: [505, 1452, 280, 180], at: 7.0 },          // where the two lines meet on the paper
-  wall:  { ring: [953, 893, 210, 190], at: 15.4 },           // her fingertip on the line
-  box:   { ticks: [[700, 1412, 20.0], [999, 1263, 20.6]] },  // box, bag
+  draw:  { ring: [540, 1380, 300, 170], at: 7.0 },          // where the two lines meet on the paper
+  wall:  { ring: [912, 800, 170, 170], at: 15.4 },           // her fingertip on the line
+  box:   { ticks: [[560, 1250, 20.0], [930, 1130, 20.6]] },  // box, bag
 };
 const GRID = [  // [ad frame, label, x, y, w, rot, at]
   ['elvea-17.8', 'החנות', 50, 1090, 320, -4, 22.7], ['elvea-20.0', 'הפיד', 380, 1130, 320, 2, 23.1], ['elvea-9.0', 'האתר', 710, 1090, 320, 4, 23.5]];  // under the face
