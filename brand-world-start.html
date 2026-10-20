@@ -183,8 +183,8 @@
         <p class="brandmark">BRAND · WORLDS · STUDIO</p>
         <div class="hero__grid">
           <div>
-            <p class="hero__eyebrow">אותו מוצר. אותו מחיר.</p>
-            <h1>למה מוצר אחד משווים, <em>ואת השני פשוט בוחרים?</em></h1>
+            <p class="hero__eyebrow" id="hero-eyebrow">אותו מוצר. אותו מחיר.</p>
+            <h1 id="hero-h1">למה מוצר אחד משווים, <em>ואת השני פשוט בוחרים?</em></h1>
             <p class="offer"><b>אבחון פער המותג</b><span>·</span>30 דק׳<span>·</span>בלי עלות</p>
             <div class="ctas">
               <a class="btn btn--wa" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%20%F0%9F%99%82%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%9E%D7%95%D7%93%D7%A2%D7%94%20%D7%B4%D7%9B%D7%9B%D7%94%20%D7%91%D7%95%D7%97%D7%A8%D7%99%D7%9D%D7%B4%20%E2%80%94%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%91%D7%97%D7%95%D7%9F%20%D7%A4%D7%A2%D7%A8%20%D7%94%D7%9E%D7%95%D7%AA%D7%92" target="_blank" rel="noopener">
@@ -193,7 +193,7 @@
               </a>
               <a class="btn btn--ghost" href="#audit" data-cta="hero_form">להשאיר מספר</a>
             </div>
-            <p class="ctas__note">שיחה אחת. נסתכל יחד איפה הלקוחה שלך משווה, ואיפה היא כבר בוחרת.</p>
+            <p class="ctas__note" id="hero-note">שיחה אחת. נסתכל יחד איפה הלקוחה שלך משווה, ואיפה היא כבר בוחרת.</p>
           </div>
 
           <div class="pair" aria-label="ככה משווים מול ככה בוחרים: אותו סרום">
@@ -217,6 +217,26 @@
         </div>
       </div>
     </section>
+    <script>
+    // Visitors from the "hidden logo" reels (utm_campaign=hidden-logo-oct26) meet the ad's own question
+    (function () {
+      if (!/[?&]utm_campaign=hidden-logo-oct26(&|$)/.test(location.search)) return;
+      document.getElementById('hero-eyebrow').textContent = "בלי שם. בלי לוגו.";
+      document.getElementById('hero-h1').innerHTML = "אם נסתיר את הלוגו, <em>עדיין יזהו אותך?</em>";
+      document.getElementById('hero-note').textContent = "שיחה אחת. נבדוק יחד מה אצלך כבר חוזר בכל מקום שפוגשים אותך, ומה עוד לא.";
+      var wa = "https://wa.me/972528351676?text=" + encodeURIComponent("היי חגית 🙂 הגעתי מהמודעה ״אם נסתיר את הלוגו״ — אשמח לתאם אבחון פער המותג");
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) { a.href = wa; });
+      window.__pageVariant = 'start-hidden-logo';
+      // the rest of the page (form, WA buttons below) isn't parsed yet
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) { a.href = wa; });
+        var f = document.getElementById('brand-world-form');
+        f.dataset.leadSource = "campaign-hidden-logo";
+        f.dataset.leadInterest = "אבחון פער המותג · מודעות ״אם נסתיר את הלוגו״";
+      });
+    })();
+    </script>
+
 
     <!-- 2 · THE THREE PAIRS (same as the ad, same order) -->
     <section class="proof" aria-labelledby="proof-title">
@@ -286,7 +306,7 @@
           </div>
 
           <div class="form">
-            <form id="brand-world-form" data-lead-source="campaign-brand-world-start" data-lead-interest="אבחון פער המותג · דף נחיתה קצר (A/B)">
+            <form id="brand-world-form" data-lead-source="campaign-brand-world-start" data-lead-success-text="הפרטים אצלי. אחזור אלייך בוואטסאפ." data-lead-interest="אבחון פער המותג · דף נחיתה קצר (A/B)">
               <h3>בואי נקבע</h3>
               <p class="form__sub">אחזור אלייך בוואטסאפ תוך 24 שעות.</p>
               <div class="field">
@@ -332,7 +352,7 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
-    gtag('config', GA4_ID, { page_variant: 'start' });
+    gtag('config', GA4_ID, { page_variant: window.__pageVariant || 'start' });
     (function () {
       var go = function () {
         if (go.done) return; go.done = true;
