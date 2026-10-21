@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>עולם במרכז · PARDON ME</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&amp;family=Cormorant+Garamond:ital,wght@0,400;1,400&amp;family=Archivo+Narrow:wght@700&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#F2EBDC}a:hover{color:#F2EBDC}
+@keyframes orbit{0.00%{transform:translate(455px,930px) scale(1.150);z-index:10}4.17%{transform:translate(354px,925px) scale(1.141);z-index:10}8.33%{transform:translate(260px,911px) scale(1.117);z-index:10}12.50%{transform:translate(179px,888px) scale(1.077);z-index:10}16.67%{transform:translate(117px,860px) scale(1.025);z-index:10}20.83%{transform:translate(78px,826px) scale(0.965);z-index:10}25.00%{transform:translate(65px,790px) scale(0.900);z-index:10}29.17%{transform:translate(78px,753px) scale(0.835);z-index:1}33.33%{transform:translate(117px,720px) scale(0.775);z-index:1}37.50%{transform:translate(179px,691px) scale(0.723);z-index:1}41.67%{transform:translate(259px,668px) scale(0.683);z-index:1}45.83%{transform:translate(354px,654px) scale(0.659);z-index:1}50.00%{transform:translate(454px,650px) scale(0.650);z-index:1}54.17%{transform:translate(555px,654px) scale(0.659);z-index:1}58.33%{transform:translate(650px,668px) scale(0.683);z-index:1}62.50%{transform:translate(730px,691px) scale(0.723);z-index:1}66.67%{transform:translate(792px,720px) scale(0.775);z-index:1}70.83%{transform:translate(831px,753px) scale(0.835);z-index:1}75.00%{transform:translate(845px,790px) scale(0.900);z-index:10}79.17%{transform:translate(831px,826px) scale(0.965);z-index:10}83.33%{transform:translate(792px,860px) scale(1.025);z-index:10}87.50%{transform:translate(730px,888px) scale(1.077);z-index:10}91.67%{transform:translate(649px,911px) scale(1.117);z-index:10}95.83%{transform:translate(555px,925px) scale(1.141);z-index:10}100.00%{transform:translate(455px,930px) scale(1.150);z-index:10}}
+@keyframes cardLife{0%,6.5%{opacity:0;transform:scale(0)}8.5%{opacity:1;transform:scale(1.2)}9.5%{transform:scale(1)}88.5%{opacity:1;transform:scale(1)}91%,100%{opacity:0;transform:scale(.1)}}
+@keyframes scene{0%,16%{opacity:1;transform:scale(1)}17.5%,87%{opacity:.18;transform:scale(.9)}88.5%,100%{opacity:1;transform:scale(1)}}
+@keyframes sph{0%{opacity:1;transform:scale(0)}2.2%{transform:scale(1.14)}3.4%{transform:scale(1)}88.5%{transform:scale(1)}90%{transform:scale(.85)}91.2%{opacity:1;transform:scale(1.35)}92.2%{opacity:0;transform:scale(2.2)}100%{opacity:0;transform:scale(0)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+@keyframes halo{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:.3}}
+@keyframes pstrip{0%,18%{transform:translateY(0)}25%,43%{transform:translateY(-290px)}50%,68%{transform:translateY(-580px)}75%,93%{transform:translateY(-870px)}100%{transform:translateY(-1160px)}}
+@keyframes wpulse{0%,74%{transform:scale(1)}86%{transform:scale(1.1,1.05)}100%{transform:scale(1)}}
+@keyframes ring{0%,6%{opacity:0;transform:scale(.2)}8%{opacity:1;transform:scale(1.06)}9%{transform:scale(1)}88.5%{opacity:1;transform:scale(1)}91%,100%{opacity:0;transform:scale(.2)}}
+@keyframes flash{0%,91.2%{opacity:0}92%{opacity:.95}94%,100%{opacity:0}}
+@keyframes t0{0%{opacity:0;transform:translateY(30px)}1.5%{opacity:1;transform:translateY(0)}16%{opacity:1;transform:translateY(0)}17%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes t0b{0%,7.5%{opacity:0;transform:scale(.6)}9%{opacity:1;transform:scale(1.08)}10%{transform:scale(1)}16%{opacity:1}17%,100%{opacity:0}}
+@keyframes t1{0%,16.5%{opacity:0;transform:translateY(30px)}18%{opacity:1;transform:translateY(0)}39%{opacity:1;transform:translateY(0)}40%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes t2{0%,40%{opacity:0;transform:translateY(30px)}41.5%{opacity:1;transform:translateY(0)}53.8%{opacity:1;transform:translateY(0)}55%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes t3{0%,55%{opacity:0;transform:translateY(30px)}56.5%{opacity:1;transform:translateY(0)}72.8%{opacity:1;transform:translateY(0)}74%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes t4{0%,74%{opacity:0;transform:translateY(30px)}75.5%{opacity:1;transform:translateY(0)}87%{opacity:1;transform:translateY(0)}88%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes p1{0%,16.5%{opacity:0;transform:scale(.2)}17.7%{opacity:1;transform:scale(1.04)}18.5%{transform:scale(1)}39%{opacity:1;transform:scale(1)}40%,100%{opacity:0;transform:scale(.2)}}
+@keyframes p2{0%,40%{opacity:0;transform:scale(.2)}41.2%{opacity:1;transform:scale(1.04)}42%{transform:scale(1)}53.8%{opacity:1;transform:scale(1)}55%,100%{opacity:0;transform:scale(.2)}}
+@keyframes p3{0%,55%{opacity:0;transform:scale(.2)}56.2%{opacity:1;transform:scale(1.04)}57%{transform:scale(1)}72.8%{opacity:1;transform:scale(1)}74%,100%{opacity:0;transform:scale(.2)}}
+@keyframes p4{0%,74%{opacity:0;transform:scale(.2)}75.2%{opacity:1;transform:scale(1.04)}76%{transform:scale(1)}87%{opacity:1;transform:scale(1)}88%,100%{opacity:0;transform:scale(.2)}}
+@keyframes c1{0%,31.5%{opacity:0;transform:scale(0)}32.5%{opacity:1;transform:scale(1.15)}33.1%{transform:scale(1)}39%{opacity:1;transform:scale(1)}40%,100%{opacity:0;transform:scale(.6)}}
+@keyframes c2{0%,45%{opacity:0;transform:scale(0)}46%{opacity:1;transform:scale(1.15)}46.6%{transform:scale(1)}53.8%{opacity:1;transform:scale(1)}55%,100%{opacity:0;transform:scale(.6)}}
+@keyframes c3{0%,60.5%{opacity:0;transform:scale(0)}61.5%{opacity:1;transform:scale(1.15)}62.1%{transform:scale(1)}72.8%{opacity:1;transform:scale(1)}74%,100%{opacity:0;transform:scale(.6)}}
+@keyframes c4{0%,84.5%{opacity:0;transform:scale(0)}85.5%{opacity:1;transform:scale(1.15)}86.1%{transform:scale(1)}87%{opacity:1;transform:scale(1)}88%,100%{opacity:0;transform:scale(.6)}}
+@keyframes ws{0%,19.5%{transform:translateY(0)}21%,22.5%{transform:translateY(-814px)}24%,100%{transform:translateY(-1628px)}}
+@keyframes tearIn{0%,26.6%{opacity:0;transform:scale(1.06)}27.6%,100%{opacity:1;transform:scale(1)}}
+@keyframes tpill{0%,27.8%{opacity:1;transform:translate(-50%,-50%) scale(1)}28.3%{transform:translate(-50%,-50%) scale(1.14)}28.8%{transform:translate(-50%,-50%) scale(1)}29.2%{opacity:1}29.6%,100%{opacity:0;transform:translate(-50%,-50%) scale(.8)}}
+@keyframes cut{0%,29.2%{transform:scaleX(0)}31.2%,100%{transform:scaleX(1)}}
+@keyframes scis{0%,29%{opacity:0;transform:translateX(0)}29.3%{opacity:1;transform:translateX(0)}31.2%{opacity:1;transform:translateX(-700px)}31.5%,100%{opacity:0;transform:translateX(-700px)}}
+@keyframes perf{0%,31.3%{opacity:1}31.5%,100%{opacity:0}}
+@keyframes htop{0%,31.3%{transform:translateY(0) rotate(0deg)}31.8%{transform:translateY(-14px) rotate(-1deg)}33.2%,100%{transform:translateY(-110%) rotate(-6deg)}}
+@keyframes hbot{0%,31.3%{transform:translateY(0) rotate(0deg)}31.8%{transform:translateY(14px) rotate(1deg)}33.2%,100%{transform:translateY(110%) rotate(5deg)}}
+@keyframes burst{0%,31.5%{transform:scale(1.18)}35%,100%{transform:scale(1)}}
+@keyframes say{0%,32.6%{opacity:0;transform:scale(.6)}33.4%{opacity:1;transform:scale(1.08)}33.9%,100%{opacity:1;transform:scale(1)}}
+@keyframes tile{0%,40.8%{opacity:0;transform:scale(.3)}41.6%{opacity:1;transform:scale(1.1)}42.1%,100%{opacity:1;transform:scale(1)}}
+@keyframes A0{0%,55.4%{opacity:0;transform:scale(.92)}56%{opacity:1;transform:scale(1.03)}56.5%{transform:scale(1)}61.4%{opacity:1;transform:scale(1)}61.8%,100%{opacity:0;transform:scale(1)}}
+@keyframes A1{0%,61.4%{opacity:0;transform:scale(.92)}62%{opacity:1;transform:scale(1.03)}62.5%{transform:scale(1)}67.4%{opacity:1;transform:scale(1)}67.8%,100%{opacity:0;transform:scale(1)}}
+@keyframes A2{0%,67.4%{opacity:0;transform:scale(.92)}68%{opacity:1;transform:scale(1.03)}68.5%,100%{opacity:1;transform:scale(1)}}
+@keyframes L0{0%,56.2%{transform:translate(0,0) scale(.12)}56.8%{transform:translate(-50px,40px) scale(1)}58%{transform:translate(40px,-30px) scale(1)}59.2%,100%{transform:translate(0,0) scale(9)}}
+@keyframes L1{0%,62.2%{transform:translate(0,0) scale(.12)}62.8%{transform:translate(-50px,40px) scale(1)}64%{transform:translate(40px,-30px) scale(1)}65.2%,100%{transform:translate(0,0) scale(9)}}
+@keyframes L2{0%,68.2%{transform:translate(0,0) scale(.12)}68.8%{transform:translate(-50px,40px) scale(1)}70%{transform:translate(40px,-30px) scale(1)}71.2%,100%{transform:translate(0,0) scale(9)}}
+@keyframes F0{0%,58.2%{opacity:1}58.8%,100%{opacity:0}}
+@keyframes F1{0%,64.2%{opacity:1}64.8%,100%{opacity:0}}
+@keyframes F2{0%,70.2%{opacity:1}70.8%,100%{opacity:0}}
+@keyframes S0{0%,59.2%{opacity:0;transform:translateY(30px) scale(.8)}59.8%{opacity:1;transform:translateY(0) scale(1.08)}60.1%,100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes S1{0%,65.2%{opacity:0;transform:translateY(30px) scale(.8)}65.8%{opacity:1;transform:translateY(0) scale(1.08)}66.1%,100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes S2{0%,71.2%{opacity:0;transform:translateY(30px) scale(.8)}71.8%{opacity:1;transform:translateY(0) scale(1.08)}72.1%,100%{opacity:1;transform:translateY(0) scale(1)}}
+.lens{position:absolute;left:50%;top:52%;width:120px;height:168px;margin:-84px 0 0 -60px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(243,237,226,.95),0 0 0 5000px #F3EDE2;will-change:transform}
+.truth{position:absolute;inset:0;overflow:hidden;background:#9B1B47}
+.truth img{width:100%;height:100%;object-fit:cover;display:block}
+.say{position:absolute;top:7%;left:6%;right:6%;direction:ltr;text-align:left;transform-origin:left top}
+.say b{display:inline;font-family:'Archivo Narrow','Heebo',Impact,sans-serif;font-weight:700;text-transform:uppercase;font-size:64px;line-height:1.02;color:#F3EDE2;background:#9B1B47;padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.say i{display:inline-block;margin-top:12px;font-family:'Bodoni Moda','Frank Ruhl Libre',serif;font-size:28px;color:#1E3A2B;background:#CFE06A;padding:.04em .4em}
+.pol{position:absolute;inset:0;overflow:hidden}
+.poltx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding:60px 40px 50px;box-sizing:border-box;gap:20px;text-align:center}
+@keyframes hero{0%,74%{opacity:1;transform:scale(1.14)}79%{opacity:1;transform:scale(1)}80%,100%{opacity:0;transform:scale(1)}}
+@keyframes lineup{0%,79%{opacity:0;transform:translateY(60px)}80.2%,100%{opacity:1;transform:translateY(0)}}
+@keyframes leave{0%,80.6%{opacity:1;transform:translateY(0)}81%,100%{opacity:0;transform:translateY(-40px)}}
+@keyframes bigIn{0%,80.6%{opacity:0;transform:translateY(560px) scale(.36)}81.8%{opacity:1;transform:translateY(-20px) scale(1.04)}82.4%,100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes sleeve{0%,83.4%{transform:translate(0,0) rotate(0deg)}84%{transform:translate(0,-14px) rotate(1deg)}84.4%{transform:translate(0,0) rotate(0deg)}85.8%,100%{transform:translate(-125%,-60px) rotate(-10deg)}}
+@keyframes seal{0%,85.6%{opacity:0;transform:scale(2.6) rotate(-34deg)}86.3%{opacity:1;transform:scale(.86) rotate(-12deg)}86.7%,100%{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes fin{0%,92.5%{opacity:0;transform:scale(.7)}93.6%{opacity:1;transform:scale(1.06)}94.2%{transform:scale(1)}99%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+@keyframes cta{0%,95%{opacity:0;transform:scale(.6)}96%{opacity:1;transform:scale(1.06)}96.5%{transform:scale(1)}99%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.orb{position:absolute;left:0;top:0;width:170px;height:220px;transform-origin:50% 50%;animation:orbit 2.4s linear infinite;will-change:transform}
+.life{width:100%;height:100%;animation:cardLife 40s cubic-bezier(.2,.9,.3,1.2) infinite both}
+.card{position:relative;width:100%;height:100%;border-radius:18px;overflow:hidden;background:#F3EDE2;box-shadow:0 18px 36px rgba(20,30,45,.22)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.cardlbl{position:absolute;left:10px;right:10px;bottom:10px;padding:6px 0;border-radius:999px;background:#F3EDE2;color:#1E3A2B;text-align:center;font-size:20px;font-weight:600}
+.panel{position:absolute;left:150px;top:470px;width:780px;height:1160px;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px rgba(20,30,45,.28)}
+.chip{position:absolute;top:1596px;left:0;right:0;display:flex;justify-content:center}
+.chip span{display:flex;align-items:center;gap:12px;padding:14px 32px;border-radius:999px;background:#1E3A2B;color:#F3EDE2;font-size:32px;font-weight:600;box-shadow:0 14px 30px rgba(20,30,45,.25)}
+.ttl{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px}
+.tile{width:100%;height:232px;object-fit:cover;display:block;animation:tile 40s cubic-bezier(.2,.9,.3,1.3) infinite both}
+.ps{width:150px;height:290px;object-fit:cover;display:block}
+.adw{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding-top:96px;gap:30px}
+.adbox{position:relative;width:640px;height:783px}
+.adbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mini{position:relative;width:150px;height:210px;border-radius:8px;background:#F3EDE2;box-shadow:0 14px 28px rgba(20,30,45,.2);display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:18px;box-sizing:border-box}
+.mini .w{width:58px;height:112px;border-radius:50%;overflow:hidden;box-shadow:inset 0 0 0 2px #1E3A2B}
+.mini .w img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+</head>
+<body>
+
+
+<div style="width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #F2EBDC; font-family: 'Heebo', sans-serif; color: #15202E" dir="rtl">
+  <div aria-hidden="true" style="position: absolute; top: 80px; bottom: 80px; left: 138px; width: 1px; background: #D9AE85"></div>
+  <div aria-hidden="true" style="position: absolute; top: 80px; bottom: 80px; right: 138px; width: 1px; background: #D9AE85"></div>
+  <div style="position: absolute; left: 56px; top: 0; bottom: 0; display: flex; align-items: center"><div style="writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: .42em; color: #3D4A5C">BRAND WORLDS STUDIO</div></div>
+  <div style="position: absolute; right: 56px; top: 0; bottom: 0; display: flex; align-items: center"><div style="writing-mode: vertical-rl; font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: .42em; color: #825630">HAGITANTEBI.CO.IL</div></div>
+
+  <div style="position: absolute; top: 90px; right: 162px; left: 162px; display: flex; justify-content: space-between; align-items: flex-end">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 34px; line-height: 1">Brand Worlds Studio</div>
+      <div style="font-size: 15px; letter-spacing: .3em; color: #3D4A5C">חגית אנטבי</div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px">
+      <div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 28px; letter-spacing: .24em; color: #1E3A2B">PARDON ME°</div>
+      <div style="font-size: 18px; color: #825630">עולם מותג קונספט</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 210px; right: 162px; left: 162px; height: 250px">
+    <div class="ttl" style="animation: t0 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <h1 style="margin: 0; font-size: 96px; line-height: 1.1; font-weight: 600; color: #15202E">היא לא קונה נר.<br>היא בוחרת <span style="color: #9B1B47">עולם</span>.</h1>
+    </div>
+    <div class="ttl" style="top: 230px; animation: t0b 40s cubic-bezier(.2,.9,.3,1.3) infinite both">
+      <div style="font-size: 30px; font-weight: 500; color: #3D4A5C">אתר · פיד · מודעה · אריזה</div>
+    </div>
+    <div class="ttl" style="animation: t1 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .2em; color: #825630">01 / 04</div>
+      <h2 style="margin: 0; font-size: 96px; line-height: 1.1; font-weight: 600">האתר.</h2>
+    </div>
+    <div class="ttl" style="animation: t2 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .2em; color: #825630">02 / 04</div>
+      <h2 style="margin: 0; font-size: 96px; line-height: 1.1; font-weight: 600">הפיד.</h2>
+    </div>
+    <div class="ttl" style="animation: t3 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .2em; color: #825630">03 / 04</div>
+      <h2 style="margin: 0; font-size: 96px; line-height: 1.1; font-weight: 600">המודעות.</h2>
+    </div>
+    <div class="ttl" style="animation: t4 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .2em; color: #825630">04 / 04</div>
+      <h2 style="margin: 0; font-size: 96px; line-height: 1.1; font-weight: 600">האריזה.</h2>
+    </div>
+  </div>
+
+  <div style="position: absolute; inset: 0; transform-origin: 540px 900px; animation: scene 40s ease-in-out infinite both">
+    <div aria-hidden="true" style="position: absolute; left: 150px; top: 760px; width: 780px; height: 280px; z-index: 3; animation: ring 40s cubic-bezier(.2,.9,.3,1.2) infinite both"><div style="width: 100%; height: 100%; box-sizing: border-box; border: 3px solid #C28A5A; border-radius: 50%; clip-path: inset(0 0 50% 0)"></div></div>
+    <div aria-hidden="true" style="position: absolute; left: 330px; top: 690px; width: 420px; height: 420px; z-index: 4; border-radius: 999px; background: #F2C4CE; animation: halo 2.4s ease-in-out infinite"></div>
+    <div style="position: absolute; left: 340px; top: 700px; width: 400px; height: 400px; z-index: 5; animation: sph 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="position: relative; width: 100%; height: 100%; border-radius: 999px; background: radial-gradient(circle at 34% 28%, #F3EDE2 0%, #EAE2D3 58%, #D8CCB6 100%); box-shadow: 0 30px 60px rgba(20,30,45,.22); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; animation: bob 3s ease-in-out infinite">
+        <div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 20px; letter-spacing: .3em; color: #1E3A2B">PARDON ME</div>
+        <div style="width: 150px; height: 290px; border-radius: 50%; overflow: hidden; box-shadow: inset 0 0 0 3px #1E3A2B; animation: wpulse .8s ease-out infinite">
+          <div style="animation: pstrip 3.2s cubic-bezier(.7,0,.2,1.15) infinite">
+            <img class="ps" src="media/print-well-hello.webp" alt="">
+            <img class="ps" src="media/print-none-of-your-business.webp" alt="">
+            <img class="ps" src="media/print-high-maintenance.webp" alt="">
+            <img class="ps" src="media/print-bad-influence.webp" alt="">
+            <img class="ps" src="media/print-well-hello.webp" alt="">
+          </div>
+        </div>
+        <div style="height: 20px"></div>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position: absolute; left: 150px; top: 760px; width: 780px; height: 280px; z-index: 7; animation: ring 40s cubic-bezier(.2,.9,.3,1.2) infinite both"><div style="width: 100%; height: 100%; box-sizing: border-box; border: 3px solid #C28A5A; border-radius: 50%; clip-path: inset(50% 0 0 0)"></div></div>
+
+    <div class="orb"><div class="life"><div class="card"><img src="media/site-phone.jpg" alt="אתר PARDON ME בטלפון"><div class="cardlbl">אתר</div></div></div></div>
+    <div class="orb" style="animation-delay: -.6s"><div class="life" style="animation-delay: .12s"><div class="card"><img src="media/print-high-maintenance.webp" alt="פרינט ורדים"><div class="cardlbl">פיד</div></div></div></div>
+    <div class="orb" style="animation-delay: -1.2s"><div class="life" style="animation-delay: .24s"><div class="card"><img src="media/ad-touch-yourself.webp" alt="מודעת קרם הידיים"><div class="cardlbl">מודעה</div></div></div></div>
+    <div class="orb" style="animation-delay: -1.8s"><div class="life" style="animation-delay: .36s"><div class="card"><img src="media/bag.webp" alt="שקית שמנת עם חלון"><div class="cardlbl">אריזה</div></div></div></div>
+  </div>
+
+  <div class="panel" style="background: #EAE2D3; animation: p1 40s cubic-bezier(.2,.9,.3,1.15) infinite both">
+    <div style="position: absolute; top: 40px; left: 0; right: 0; display: flex; justify-content: center"><span style="padding: 10px 24px; border-radius: 999px; background: #F3EDE2; font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 20px; font-weight: 500; color: #1E3A2B" dir="ltr">hagitantebi.co.il/pardon-me</span></div>
+    <div style="position: absolute; top: 140px; left: 190px; width: 400px; height: 838px; box-sizing: border-box; border: 12px solid #1E3A2B; border-radius: 56px; overflow: hidden; background: #9B1B47; box-shadow: 0 30px 60px rgba(20,30,45,.25)">
+      <img src="media/site-scroll.jpg" alt="גלילה באתר PARDON ME: החלון, הפרינט, הקולקציות" style="width: 376px; height: auto; display: block; animation: ws 40s cubic-bezier(.7,0,.2,1) infinite both">
+    </div>
+    <div style="position: absolute; bottom: 44px; left: 0; right: 0; text-align: center; font-size: 26px; color: #1E3A2B">הגלילה הראשונה מגדילה את החלון.</div>
+
+    <div style="position: absolute; inset: 0; overflow: hidden; background: #9B1B47; animation: tearIn 40s ease-out infinite both">
+      <div style="position: absolute; inset: 0; animation: burst 40s cubic-bezier(.2,.8,.2,1) infinite both">
+        <img src="media/ad-bad-decisions.webp" alt="נר אדום על שידת לילה, כוסות יין ונעל ורודה" style="width: 100%; height: 100%; object-fit: cover; display: block">
+      </div>
+      <div style="position: absolute; left: 40px; right: 40px; top: 400px; direction: ltr; text-align: center; animation: say 40s cubic-bezier(.2,.9,.3,1.3) infinite both">
+        <div style="display: inline; font-family: 'Archivo Narrow', 'Heebo', Impact, sans-serif; font-weight: 700; text-transform: uppercase; font-size: 150px; line-height: .95; color: #F3EDE2; background: #9B1B47; padding: 0 .1em">NOT SORRY.</div>
+        <div style="margin-top: 22px"><span style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 32px; color: #1E3A2B; background: #CFE06A; padding: .05em .4em">Smells like bad decisions. The good kind.</span></div>
+      </div>
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 580px; background: #F3EDE2; transform-origin: 20% 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 22px; padding-bottom: 70px; box-sizing: border-box; animation: htop 40s cubic-bezier(.6,0,.3,1) infinite both">
+        <div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 22px; letter-spacing: .34em; color: #1E3A2B">PARDON ME</div>
+        <div dir="ltr" style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 54px; color: #1E3A2B">Pardon the interruption.</div>
+      </div>
+      <div style="position: absolute; top: 580px; left: 0; right: 0; height: 580px; background: #F3EDE2; transform-origin: 80% 0%; display: flex; justify-content: center; padding-top: 70px; box-sizing: border-box; animation: hbot 40s cubic-bezier(.6,0,.3,1) infinite both">
+        <div style="font-size: 28px; color: #3D4A5C; text-align: center">סליחה על ההפרעה.<br>מכאן והלאה, זה כבר פחות מנומס.</div>
+      </div>
+      <div aria-hidden="true" style="position: absolute; top: 579px; left: 0; right: 0; height: 0; border-top: 3px dashed #1E3A2B; animation: perf 40s linear infinite both"></div>
+      <div aria-hidden="true" style="position: absolute; top: 578px; left: 0; right: 0; height: 5px; background: #9B1B47; transform-origin: right center; animation: cut 40s linear infinite both, perf 40s linear infinite both"></div>
+      <div aria-hidden="true" style="position: absolute; top: 552px; right: 24px; width: 56px; height: 56px; border-radius: 999px; background: #1E3A2B; display: flex; align-items: center; justify-content: center; animation: scis 40s linear infinite both">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F3EDE2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="M3.5 4.5 15.6 16.4"></path><path d="M3.5 19.5 15.6 7.6"></path></svg>
+      </div>
+      <div style="position: absolute; top: 580px; left: 50%; display: flex; align-items: center; gap: 12px; padding: 16px 30px; border-radius: 999px; background: #1E3A2B; color: #F3EDE2; font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .2em; white-space: nowrap; animation: tpill 40s ease-out infinite both" dir="ltr">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F3EDE2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20.5 4.5 8.4 16.4"></path><path d="M20.5 19.5 8.4 7.6"></path></svg>
+        TEAR HERE
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="background: #F3EDE2; box-sizing: border-box; padding: 34px; display: flex; flex-direction: column; gap: 30px; animation: p2 40s cubic-bezier(.2,.9,.3,1.15) infinite both">
+    <div style="display: flex; align-items: center; gap: 22px">
+      <div style="width: 96px; height: 96px; border-radius: 999px; background: #EAE2D3; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 3px #1E3A2B"><div style="width: 36px; height: 66px; border-radius: 50%; overflow: hidden"><img src="media/print-bad-influence.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div></div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div dir="ltr" style="text-align: right; font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 30px; font-weight: 600; color: #1E3A2B">pardonme.notsorry</div>
+        <div style="font-size: 20px; color: #3D4A5C">Candles · Home · Body · עולם מותג קונספט</div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+      <img class="tile" src="media/print-well-hello.webp" alt="Well, Hello. פרינט לימונים">
+      <img class="tile" src="media/well-hello.webp" alt="Well, Hello. קופסה ונר" style="animation-delay: .1s">
+      <img class="tile" src="media/line.webp" alt="קו המוצרים על כחול" style="animation-delay: .2s">
+      <img class="tile" src="media/print-none-of-your-business.webp" alt="None of Your Business. פרינט תאנים" style="animation-delay: .55s">
+      <img class="tile" src="media/none-of-your-business.webp" alt="None of Your Business. קופסה ונר" style="animation-delay: .65s">
+      <img class="tile" src="media/stationery.webp" alt="ניירת על ירוק עמוק" style="animation-delay: .75s">
+      <img class="tile" src="media/print-high-maintenance.webp" alt="High Maintenance. פרינט ורדים" style="animation-delay: 1.1s">
+      <img class="tile" src="media/high-maintenance.webp" alt="High Maintenance. קופסה ונר" style="animation-delay: 1.2s">
+      <img class="tile" src="media/ad-i-kept-it.webp" alt="מודעת המתנה על ורוד" style="animation-delay: 1.3s">
+      <img class="tile" src="media/print-bad-influence.webp" alt="Bad Influence. פרינט פירות יער" style="animation-delay: 1.65s">
+      <img class="tile" src="media/bad-influence.webp" alt="Bad Influence. קופסה ונר" style="animation-delay: 1.75s">
+      <img class="tile" src="media/ad-touch-yourself.webp" alt="מודעת קרם ידיים על ליים" style="animation-delay: 1.85s">
+    </div>
+  </div>
+
+  <div class="panel" style="background: #9B1B47; animation: p3 40s cubic-bezier(.2,.9,.3,1.15) infinite both">
+    <div class="adw" style="animation: A0 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div class="adbox" style="overflow: hidden; box-shadow: 0 30px 60px rgba(20,30,45,.3)">
+        <div class="truth"><img src="media/ad-bad-decisions.webp" alt="נר אדום על שידת לילה, כוסות יין ונעל ורודה"><div class="say" style="animation: S0 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><b>Smells like bad decisions.</b><br><i>The good kind.</i></div></div>
+        <div class="pol"><div class="lens" style="animation: L0 40s cubic-bezier(.6,0,.25,1) infinite both"></div>
+          <div class="poltx" style="animation: F0 40s linear infinite both"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 18px; letter-spacing: .34em; color: #1E3A2B">PARDON ME</div><div dir="ltr" style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 44px; line-height: 1.2; color: #1E3A2B">A lovely candle<br>for a calm evening.</div><div style="margin-top: auto; font-size: 22px; color: #3D4A5C">נר נעים לערב רגוע.</div></div>
+        </div>
+      </div>
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .2em; color: #CFE06A">01 / 03</div>
+    </div>
+    <div class="adw" style="animation: A1 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div class="adbox" style="overflow: hidden; box-shadow: 0 30px 60px rgba(20,30,45,.3)">
+        <div class="truth"><img src="media/ad-touch-yourself.webp" alt="יד עם לק ברי לוחצת שפופרת קרם ידיים"><div class="say" style="animation: S1 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><b>Touch yourself.</b><br><i>It's skincare.</i></div></div>
+        <div class="pol"><div class="lens" style="animation: L1 40s cubic-bezier(.6,0,.25,1) infinite both"></div>
+          <div class="poltx" style="animation: F1 40s linear infinite both"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 18px; letter-spacing: .34em; color: #1E3A2B">PARDON ME</div><div dir="ltr" style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 44px; line-height: 1.2; color: #1E3A2B">A nourishing<br>hand cream.</div><div style="margin-top: auto; font-size: 22px; color: #3D4A5C">קרם ידיים מזין.</div></div>
+        </div>
+      </div>
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .2em; color: #CFE06A">02 / 03</div>
+    </div>
+    <div class="adw" style="animation: A2 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div class="adbox" style="overflow: hidden; box-shadow: 0 30px 60px rgba(20,30,45,.3)">
+        <div class="truth"><img src="media/ad-i-kept-it.webp" alt="אישה בחלוק לבן מחבקת קופסת מתנה פתוחה"><div class="say" style="animation: S2 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><b>I bought you something.</b><br><i>I kept it.</i></div></div>
+        <div class="pol"><div class="lens" style="animation: L2 40s cubic-bezier(.6,0,.25,1) infinite both"></div>
+          <div class="poltx" style="animation: F2 40s linear infinite both"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 18px; letter-spacing: .34em; color: #1E3A2B">PARDON ME</div><div dir="ltr" style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 44px; line-height: 1.2; color: #1E3A2B">A thoughtful gift<br>for someone special.</div><div style="margin-top: auto; font-size: 22px; color: #3D4A5C">מתנה מתחשבת למישהי מיוחדת.</div></div>
+        </div>
+      </div>
+      <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .2em; color: #CFE06A">03 / 03</div>
+    </div>
+    <div style="position: absolute; bottom: 40px; left: 0; right: 0; text-align: center; font-size: 28px; color: #F3EDE2">פעם בשביל מי שמסתכלת מהר. ופעם בשביל מי שמציצה.</div>
+  </div>
+
+  <div class="panel" style="background: #F2C4CE; animation: p4 40s cubic-bezier(.2,.9,.3,1.15) infinite both">
+    <div style="position: absolute; bottom: 210px; left: 54px; width: 672px; display: flex; gap: 24px; animation: lineup 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div class="mini"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 11px; letter-spacing: .24em; color: #1E3A2B">PARDON ME</div><div class="w"><img src="media/print-well-hello.webp" alt=""></div></div>
+      <div class="mini"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 11px; letter-spacing: .24em; color: #1E3A2B">PARDON ME</div><div class="w"><img src="media/print-none-of-your-business.webp" alt=""></div></div>
+      <div class="mini" style="animation: leave 40s ease-out infinite both"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 11px; letter-spacing: .24em; color: #1E3A2B">PARDON ME</div><div class="w"><img src="media/print-high-maintenance.webp" alt=""></div></div>
+      <div class="mini"><div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 11px; letter-spacing: .24em; color: #1E3A2B">PARDON ME</div><div class="w"><img src="media/print-bad-influence.webp" alt=""></div></div>
+    </div>
+    <div style="position: absolute; top: 60px; left: 180px; width: 420px; height: 600px; animation: bigIn 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+      <div style="position: absolute; top: 10px; left: 10px; width: 400px; height: 580px; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 60px rgba(20,30,45,.25)"><img src="media/print-high-maintenance.webp" alt="קופסה עם פרינט ורדים על פסים" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+      <div style="position: absolute; top: 0; left: 0; width: 420px; height: 600px; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 48px rgba(20,30,45,.22); animation: sleeve 40s cubic-bezier(.6,0,.3,1) infinite both">
+        <div style="position: absolute; top: 140px; left: 128px; width: 164px; height: 320px; border-radius: 50%; box-shadow: 0 0 0 2px #1E3A2B, 0 0 0 800px #F3EDE2"></div>
+        <div style="position: absolute; top: 54px; left: 0; right: 0; text-align: center; font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 32px; letter-spacing: .3em; color: #1E3A2B">PARDON ME</div>
+        <div style="position: absolute; bottom: 64px; left: 0; right: 0; text-align: center; font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 30px; color: #1E3A2B">High Maintenance.</div>
+      </div>
+      <div style="position: absolute; top: -30px; left: 300px; width: 170px; height: 170px; border-radius: 999px; background: #9B1B47; color: #F3EDE2; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 34px; line-height: 1.05; box-shadow: 0 12px 24px rgba(20,30,45,.25); animation: seal 40s cubic-bezier(.2,.9,.3,1.2) infinite both">NOT<br>SORRY.</div>
+    </div>
+    <div style="position: absolute; right: 28px; left: 28px; bottom: 28px; padding: 22px 32px; border-radius: 20px; background: #F3EDE2; display: flex; flex-direction: column; gap: 4px">
+      <div dir="ltr" style="text-align: right; font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 44px; color: #1E3A2B">Take it off.</div>
+      <div style="font-size: 26px; color: #3D4A5C">ארבע קופסאות, אותו שרוול. כל אחת מספרת סוד אחר.</div>
+    </div>
+    <img src="media/hero.webp" alt="ארבע קופסאות בשרוולי שמנת עם חלון, אחת נשלפת" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; animation: hero 40s ease-out infinite both">
+  </div>
+
+  <div class="chip" style="animation: c1 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><span><span aria-hidden="true" style="width: 14px; height: 24px; padding: 0; border-radius: 50%; background: #9B1B47"></span>נגזר מהשרוול</span></div>
+  <div class="chip" style="animation: c2 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><span><span aria-hidden="true" style="width: 14px; height: 24px; padding: 0; border-radius: 50%; background: #9B1B47"></span>לכל קולקציה, צבע משלה</span></div>
+  <div class="chip" style="animation: c3 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><span><span aria-hidden="true" style="width: 14px; height: 24px; padding: 0; border-radius: 50%; background: #9B1B47"></span>החלון חושף את האמת</span></div>
+  <div class="chip" style="animation: c4 40s cubic-bezier(.2,.9,.3,1.3) infinite both"><span><span aria-hidden="true" style="width: 14px; height: 24px; padding: 0; border-radius: 50%; background: #9B1B47"></span>חלון אחד, בכל מקום</span></div>
+
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: #F2EBDC; animation: flash 40s linear infinite both"></div>
+
+  <div style="position: absolute; top: 600px; right: 162px; left: 162px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; animation: fin 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+    <div style="width: 96px; height: 180px; border-radius: 50%; overflow: hidden; box-shadow: inset 0 0 0 3px #1E3A2B"><img src="media/print-high-maintenance.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+    <div style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-size: 96px; letter-spacing: .12em; line-height: 1; color: #1E3A2B">PARDON ME°</div>
+    <div dir="ltr" style="font-family: 'Bodoni Moda', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 36px; color: #1E3A2B">Nice on the outside. Not sorry inside.</div>
+    <div style="margin-top: 26px; font-size: 64px; line-height: 1.2; font-weight: 600; color: #15202E">עולם שבוחרים בו.<br><span style="color: #9B1B47">בכל נקודת מגע.</span></div>
+  </div>
+
+  <div style="position: absolute; top: 1380px; right: 162px; left: 162px; display: flex; flex-direction: column; align-items: center; gap: 22px; animation: cta 40s cubic-bezier(.2,.9,.3,1.2) infinite both">
+    <div style="font-size: 28px; color: #3D4A5C; text-align: center">PARDON ME° הוא עולם מותג קונספט. העסק שלך אמיתי.</div>
+    <a href="https://hagitantebi.co.il" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 24px 70px; border-radius: 12px; background: #15202E; color: #F2EBDC; text-decoration: none; box-shadow: 0 18px 36px rgba(20,30,45,.22)">
+      <span style="font-size: 44px; font-weight: 600; line-height: 1.2">אבחון פער המותג</span>
+      <span style="font-size: 26px">30 דק׳ · בלי עלות</span>
+    </a>
+    <div style="font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .42em; color: #3D4A5C">HAGITANTEBI.CO.IL</div>
+  </div>
+
+  <div aria-hidden="true" style="position: absolute; bottom: 110px; right: 162px; left: 162px; height: 4px; border-radius: 999px; background: #E7DEC9; overflow: hidden">
+    <div style="width: 100%; height: 100%; background: #C28A5A; transform-origin: right center; animation: prog 40s linear infinite"></div>
+  </div>
+</div>
+
+
+</body>
+</html>
