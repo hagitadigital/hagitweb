@@ -1,12 +1,12 @@
 # PARDON ME° · world orbit — 25s studio reel, rebuilt from the 20.10 canvas artboard (PM-Orbit.dc.html).
 # hook (her line, the sleeve with its oval window) → studio "עולם מותג 29" → four cards orbit the window
 # (site · feed · ads · packaging), each plays the world's own mechanic at the front → the ring closes → outro.
-# REEL=long builds the 40s cut (reel-long.html): longer holds, three ads, two boxes.
+# REEL=long builds the long cut (reel-long.html): at each stop the front card opens to a full window and the site itself plays
+# (clips recorded by record-site.js, laid over the render by build-long.sh from the schedule in long-overlays.json).
 # Writes reel.html next to this file. Every time is in seconds; P() turns it into a keyframe percentage.
 import math, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 LONG = os.environ.get('REEL') == 'long'
-D = 40.0 if LONG else 25.0
 def P(t): return '%.3f%%' % (max(0, min(D, t)) / D * 100)
 
 # PARDON ME palette (pardon-me/index.html :root)
@@ -23,11 +23,26 @@ R, KY = 380, 1.08           # orbit radius, vertical stretch (front card sits lo
 CW, CH = 340, 450           # card size
 N = 4
 STEP = 360 / N
-STOPS = [5.4, 12.6, 19.8, 27.0] if LONG else [5.4, 9.4, 13.4, 17.4]   # card k reaches the front at STOPS[k]
+STOPS = [5.4, 9.4, 13.4, 17.4]   # card k reaches the front at STOPS[k]
 TURN = .7
-FIN = (33.6, 34.4) if LONG else (20.9, 21.7)         # last turn: back to the site
-OUT = 36.6 if LONG else 22.0                 # world shrinks into the studio window
+FIN = (20.9, 21.7)         # last turn: back to the site
+OUT = 22.0                 # world shrinks into the studio window
 HOLD_END = [STOPS[1] - TURN, STOPS[2] - TURN, STOPS[3] - TURN, FIN[0]]
+D = 25.0
+# long cut: (clips, seconds in the full window) per card; a card opens .5s after it lands, .6s each way
+CHAPTERS = [(['peek'], 6.0), ([], 4.2), (['tear', 'ads'], 7.8), (['colls'], 6.4)]
+CLIP_LEN = {'peek': 6.0, 'tear': 3.6, 'ads': 4.2, 'colls': 6.4}
+OPEN = []
+if LONG:
+    STOPS, HOLD_END = [5.4], []
+    for k, (clips, L) in enumerate(CHAPTERS):
+        o = STOPS[k] + .5
+        OPEN.append((o, o + .6, o + .6 + L, o + 1.2 + L))   # opening, full, closing, closed
+        HOLD_END.append(o + 1.2 + L + .2)
+        if k < N - 1: STOPS.append(HOLD_END[-1] + TURN)
+    FIN = (HOLD_END[-1], HOLD_END[-1] + .8)
+    OUT = FIN[1] + .4
+    D = round(OUT + 3.2, 1)
 
 def ease(u): u = max(0, min(1, u)); return u * u * (3 - 2 * u)
 def theta(t):
@@ -122,7 +137,7 @@ F_FEED = f'''<div style="{face}; background: #FFFFFF; display: flex; flex-direct
 # 03 · the ads: the polite card, and the oval lens that opens on the truth (the site's three ads; the short cut plays one)
 ADS = [('ad-bad-decisions', 'A lovely candle<br>for a calm evening.', 'נר נעים לערב רגוע.', 'Smells like<br>bad decisions.', 'The good kind.'),
        ('ad-touch-yourself', 'A nourishing<br>hand cream.', 'קרם ידיים מזין.', 'Touch<br>yourself.', "It's skincare."),
-       ('ad-i-kept-it', 'A thoughtful gift<br>for someone special.', 'מתנה מתחשבת למישהי מיוחדת.', 'I bought you<br>something.', 'I kept it.')][:3 if LONG else 1]
+       ('ad-i-kept-it', 'A thoughtful gift<br>for someone special.', 'מתנה מתחשבת למישהי מיוחדת.', 'I bought you<br>something.', 'I kept it.')][:1]
 h0, h1 = STOPS[2], HOLD_END[2]
 Lc = (h1 - h0) / len(ADS)
 ad_layers = ''
@@ -146,7 +161,7 @@ F_ADS = f'''<div style="{face}; background: {BERRY}">
   <div style="position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; {HE}; font-size: 16px; color: {PORC}" dir="rtl">פעם בשביל מי שמסתכלת מהר. ופעם בשביל מי שמציצה.</div></div>'''
 
 # 04 · the packaging: "Take it off." — the sleeve slides up off the printed box (the long cut opens two boxes)
-BOXES = [('print-high-maintenance', 'High Maintenance'), ('print-none-of-your-business', 'None of Your Business')][:2 if LONG else 1]
+BOXES = [('print-high-maintenance', 'High Maintenance'), ('print-none-of-your-business', 'None of Your Business')][:1]
 h0, h1 = STOPS[3], HOLD_END[3]
 Lc = (h1 - h0) / len(BOXES)
 kf = '0%%,%s{transform:none}' % P(h0 + .35)
@@ -199,12 +214,52 @@ CENTRE = f'''<div style="position: absolute; left: {CX - RC}px; top: {CY - RC}px
     <div style="position: absolute; inset: -10px; border-radius: 50%; border: 3px solid {BERRY}; {anim(show(4.1, D, .4))}"></div>
   </div>'''
 
+# ── long cut: the front card opens to a full window. Site clips are laid over the render by ffmpeg while the window is full;
+# the opening and closing moves show the clip's first and last frame, so the cut into the video is seamless.
+FRONT = (CY + R * KY, 1.3)                        # the front card's centre y and scale while it holds
+fy, fs = FRONT
+fw, fh = CW * fs / 2, CH * fs / 2
+card_rect = 'inset(%.0fpx %.0fpx %.0fpx %.0fpx round 29px)' % (fy - fh, 540 - fw, 1920 - fy - fh, 540 - fw)
+feed_tiles = ['print-high-maintenance', 'ad-touch-yourself', 'well-hello', 'stationery', 'print-none-of-your-business', 'ad-bad-decisions',
+              'bag', 'ad-i-kept-it', 'print-bad-influence', 'hero', 'high-maintenance', 'print-well-hello', 'reveal', 'none-of-your-business',
+              'line', 'bad-influence', 'print-high-maintenance', 'ad-touch-yourself']
+def full_feed(a, b):
+    scroll = anim('0%%,%s{transform:translateY(0)}%s,100%%{transform:translateY(-760px)}' % (P(a + .4), P(b - .3)), 'animation-timing-function:cubic-bezier(.45,0,.3,1)')
+    tiles = ''.join(f'<div style="aspect-ratio: 1; overflow: hidden"><img src="media/{t}.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>' for t in feed_tiles)
+    return f'''<div style="position: absolute; inset: 0; background: #FFFFFF">
+      <div style="height: 120px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 18px; box-sizing: border-box; {JK}; font-size: 34px; font-weight: 700; color: {INK}" dir="ltr">pardonme.studio</div>
+      <div style="position: absolute; top: 120px; left: 0; right: 0; bottom: 0; overflow: hidden"><div style="{scroll}">
+        <div style="display: flex; align-items: center; gap: 44px; padding: 26px 44px" dir="ltr"><span style="width: 170px; height: 170px; flex: none; border-radius: 50%; background: {PORC}; border: 4px solid {BERRY}; display: flex; align-items: center; justify-content: center"><i style="width: 48px; height: 80px; border-radius: 50%; background: {BERRY}"></i></span>
+          <span style="display: flex; gap: 60px; {JK}; font-size: 26px; color: {MUTED}; text-align: center"><span><b style="display: block; font-size: 38px; color: {INK}">48</b>posts</span><span><b style="display: block; font-size: 38px; color: {INK}">12.4k</b>followers</span><span><b style="display: block; font-size: 38px; color: {INK}">1</b>window</span></span></div>
+        <div style="padding: 0 44px 26px" dir="ltr"><div style="{BO}; font-size: 30px; color: {INK}">PARDON ME°</div><div style="{BO}; font-style: italic; font-size: 30px; color: {GARDEN}">Nice on the outside. <span style="color: {BERRY}">Not sorry inside.</span></div><div style="margin-top: 6px; {HE}; font-size: 26px; color: {MUTED}" dir="rtl">טיפוח, ריח לבית ומתנות · מנומס מבחוץ, לא מתנצל מבפנים.</div></div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px">{tiles}</div></div></div></div>'''
+def chip(k, top=200):   # the site clips keep the site's own header clear; the feed puts its label at the bottom
+    CHIP_CSS = f"position: absolute; top: {top}px; left: 0; right: 0; display: flex; justify-content: center"
+    n, h, sub = LABELS[k]
+    return f'''<div style="{CHIP_CSS}"><div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 40px 16px; border-radius: 22px; background: rgba(27,31,28,.82); color: {PORC}" dir="rtl"><span style="{HE}; font-size: 46px; font-weight: 700; line-height: 1.1"><span style="font-weight: 300; color: {PETAL}">{n}</span> · {h}</span><span style="{HE}; font-size: 24px; font-weight: 300; opacity: .9">{sub}</span></div></div>'''
+WINDOWS, OVERLAYS = '', []
+for k, (clips, L) in enumerate(CHAPTERS if LONG else []):
+    o0, o1, o2, o3 = OPEN[k]
+    clip_kf = '0%%,%s{clip-path:%s}%s,%s{clip-path:inset(0px 0px 0px 0px round 0px)}%s,100%%{clip-path:%s}' % (P(o0), card_rect, P(o1), P(o2), P(o3), card_rect)
+    if clips:
+        inner = (f'<img src="media/clips/{clips[-1]}-last.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">'
+                 f'<img src="media/clips/{clips[0]}-first.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; {windows([(0, o1 + .2)], .01)}">')
+        t = o1
+        for c in clips:
+            OVERLAYS.append({'clip': c, 'start': round(t, 3), 'dur': CLIP_LEN[c], 'chip': k})
+            t += CLIP_LEN[c]
+    else:
+        inner = full_feed(o1, o2)
+    WINDOWS += f'''<div style="position: absolute; inset: 0; z-index: 120; {windows([(o0, o3)], .01)}"><div style="position: absolute; inset: 0; {anim(clip_kf, 'animation-timing-function:cubic-bezier(.7,0,.2,1)')}">{inner}
+    <div style="position: absolute; inset: 0; {anim(show(o1 - .1, o2, .2))}">{chip(k, 200 if clips else 1660)}</div></div></div>'''
+
 WORLD = f'''<div style="position: absolute; inset: 0; overflow: hidden; background: radial-gradient(ellipse 70% 45% at 50% 46%, {PORC} 0%, #EFE6D6 75%); box-shadow: 0 50px 140px rgba(27,31,28,.26)">
   <svg style="position: absolute; inset: 0" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
     <ellipse cx="{CX}" cy="{CY}" rx="{R}" ry="{R * KY:.0f}" fill="none" stroke="#D9AE85" stroke-width="2" stroke-dasharray="3 10" style="{anim(show(4.9, D, .5))}"/>
     <path d="M{CX} {CY + R * KY:.0f} A{R} {R * KY:.0f} 0 0 1 {CX} {CY - R * KY:.0f} A{R} {R * KY:.0f} 0 0 1 {CX} {CY + R * KY:.0f}" pathLength="1" fill="none" stroke="{BERRY}" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 1" style="{anim(ring, 'animation-timing-function:linear')}"/>
   </svg>
   {CENTRE}
+  {WINDOWS}
   <div style="position: absolute; left: 0; top: 0; z-index: 60; {anim(show(4.3, D, .2))}">{cards}</div>
   <div style="position: absolute; top: 120px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 95; {anim(rise(4.4))}">
     <div style="{BO}; font-style: italic; font-size: 40px; color: {GARDEN}" dir="ltr">Nice on the outside. <span style="color: {BERRY}">Not sorry inside.</span></div>
@@ -229,7 +284,7 @@ HOOK = f'''<div style="position: absolute; inset: 0; background: #EEE6D8; z-inde
   <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
     <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: #3E2F25" dir="ltr">Brand Worlds Studio</div>
     <div style="{HE}; font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div></div>
-  <div style="position: absolute; top: 250px; left: 70px; right: 70px; text-align: right; {HE}; font-size: 92px; font-weight: 700; line-height: 1.14; color: {INK}" dir="rtl">היא לא קונה נר.<br>היא בוחרת <span style="color: {BERRY}">עולם</span>.</div>
+  <div style="position: absolute; top: 250px; left: 70px; right: 70px; text-align: right; {HE}; font-size: 84px; font-weight: 700; line-height: 1.14; color: {INK}" dir="rtl">היא לא קונה מוצר טיפוח.<br>היא בוחרת <span style="color: {BERRY}">עולם</span>.</div>
   <div style="position: absolute; left: 300px; top: 620px; width: 480px; height: 700px; {anim('0%{transform:none}' + P(2.5) + '{transform:scale(1.04)}100%{transform:scale(1.04)}', 'animation-timing-function:linear')}">
     <div style="position: absolute; inset: 0; overflow: hidden; border-radius: 6px; box-shadow: 0 34px 70px rgba(27,31,28,.24)">
       <img src="media/print-high-maintenance.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; {anim('0%{transform:scale(1.15)}' + P(2.6) + ',100%{transform:scale(1)}', 'animation-timing-function:linear')}">
@@ -250,7 +305,7 @@ INTRO = f'''<div style="position: absolute; inset: 0; z-index: 150; pointer-even
   <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; {anim(show(2.65, 4.05, .3))}">
     <div style="{JK}; font-size: 22px; font-weight: 500; letter-spacing: .32em; color: #C4765A" dir="ltr">BRAND WORLDS STUDIO · HAGIT ANTEBI</div>
     <div style="{HE}; font-size: 96px; font-weight: 500; line-height: 1.05; color: #6B563F" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: #B8894A">29</em></div></div>
-  <div style="position: absolute; top: 1480px; left: 80px; right: 80px; text-align: center; {HE}; font-size: 44px; line-height: 1.35; color: #6B563F; {anim(show(2.8, 4.05, .3))}" dir="rtl">נרות, ריח לבית וטיפוח.<br>שרוול מנומס עם חלון אחד.</div>
+  <div style="position: absolute; top: 1480px; left: 80px; right: 80px; text-align: center; {HE}; font-size: 44px; line-height: 1.35; color: #6B563F; {anim(show(2.8, 4.05, .3))}" dir="rtl">טיפוח, ריח לבית ומתנות.<br>שרוול מנומס עם חלון אחד.</div>
   <svg style="position: absolute; inset: 0" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
     <g style="{anim(show(2.6, 4.0, .3))}"><path class="line" pathLength="1" d="{INTRO_LINE}" style="{anim('0%,' + P(2.75) + '{stroke-dashoffset:1}' + P(3.55) + ',100%{stroke-dashoffset:0}', 'animation-timing-function:cubic-bezier(.4,0,.3,1)')}"/></g>
     <circle cx="{CX}" cy="{CY}" r="40" fill="none" stroke="#C4765A" stroke-width="3" style="transform-origin: {CX}px {CY}px; {anim('0%,' + P(3.5) + '{opacity:0;transform:scale(1)}' + P(3.6) + '{opacity:1}' + P(4.3) + ',100%{opacity:0;transform:scale(7)}')}"/>
@@ -291,4 +346,9 @@ html,body{{margin:0;background:#FAF8F3}}
 </div></div></body></html>'''
 html = html.replace('{CSS}', '\n'.join(CSS))
 open(os.path.join(HERE, 'reel-long.html' if LONG else 'reel.html'), 'w').write(html)
+if LONG:   # the schedule build-long.sh lays the site clips by, and one transparent chip page per card
+    import json
+    json.dump({'duration': D, 'overlays': OVERLAYS}, open(os.path.join(HERE, 'long-overlays.json'), 'w'), indent=1)
+    for k in range(N):
+        open(os.path.join(HERE, 'f', 'chip-%d.html' % k), 'w').write(f'''<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&amp;display=swap"><style>html,body{{margin:0;background:transparent}}</style></head><body><div style="position: relative; width: 1080px; height: 1920px">{chip(k)}</div></body></html>''')
 print('ok', len(html))

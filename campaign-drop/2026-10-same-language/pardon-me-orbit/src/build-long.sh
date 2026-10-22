@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
-# PARDON ME° orbit, long cut (40s): reel-long.html → ../pardon-me-29-orbit-long.mp4 (+ soundtrack) and the 4:5 feed version.
+# PARDON ME° orbit, long cut: each card opens to a full window and PARDON ME's own site plays in it.
 # Run from this folder. Intermediate files go to f/ (gitignored).
+#   1. (once, or after the site changes) node record-site.js ../../../../pardon-me/index.html media/clips
+#   2. bash build-long.sh
 set -euo pipefail
 SK=../../../../.claude/skills/brandos-brand-world-reel/scripts
-OUT=../pardon-me-29-orbit-long
 mkdir -p f
+for c in peek tear ads colls; do
+  ffmpeg -y -loglevel error -i media/clips/$c.mp4 -frames:v 1 -q:v 3 media/clips/$c-first.jpg
+  ffmpeg -y -loglevel error -sseof -0.05 -i media/clips/$c.mp4 -frames:v 1 -q:v 3 media/clips/$c-last.jpg
+done
 REEL=long python3 make.py
-node $SK/render.js reel-long.html 40 f/silent.mp4
-# Arrête Chic (the campaign's soundtrack), extended to 40s by crossfading a second pass from 0:06, soft in, fade out over the last 1.5s
-ffmpeg -y -loglevel error -i f/silent.mp4 -i media/arrete-chic-30.m4a -i media/arrete-chic-30.m4a -filter_complex "[2:a]atrim=start=6,asetpts=PTS-STARTPTS[b];[1:a][b]acrossfade=d=2.5[x];[x]atrim=0:40,afade=t=in:d=0.3,afade=t=out:st=38.2:d=1.8[a]" \
-  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart $OUT.mp4
+D=$(python3 -c 'import json;print(json.load(open("long-overlays.json"))["duration"])')
 node -e '
   const p=require("path");let pw;for(const n of ["playwright","/opt/node22/lib/node_modules/playwright"]){try{pw=require(n);break}catch(e){}}
   (async()=>{const proxy=process.env.HTTPS_PROXY?{server:process.env.HTTPS_PROXY}:undefined;
-    const b=await pw.chromium.launch({proxy,args:["--ignore-certificate-errors"]});const t=await b.newPage({viewport:{width:1080,height:1350}});
-    await t.goto("file://"+p.resolve("frame-4x5.html"),{waitUntil:"networkidle"});await t.evaluate(()=>document.fonts.ready);
-    await t.screenshot({path:"f/frame-4x5.png",omitBackground:true});await b.close();})();'
-ffmpeg -y -loglevel error -i $OUT.mp4 -i f/frame-4x5.png -filter_complex \
-  "color=c=0xFAF8F3:s=1080x1350:r=30[bg];[0:v]scale=760:1350:flags=lanczos[v];[bg][v]overlay=160:0:shortest=1[a];[a][1:v]overlay=0:0,format=yuv420p[o]" \
-  -map "[o]" -map 0:a -c:v libx264 -crf 18 -preset medium -c:a copy -movflags +faststart $OUT-4x5.mp4
-echo "wrote $OUT.mp4 and $OUT-4x5.mp4"
+    const b=await pw.chromium.launch({proxy,args:["--ignore-certificate-errors"]});
+    for(const [src,out,w,h] of [["frame-4x5.html","f/frame-4x5.png",1080,1350],...[0,1,2,3].map(k=>["f/chip-"+k+".html","f/chip-"+k+".png",1080,1920])]){
+      const t=await b.newPage({viewport:{width:w,height:h}});await t.goto("file://"+p.resolve(src),{waitUntil:"networkidle"});
+      await t.evaluate(()=>document.fonts.ready);await t.screenshot({path:out,omitBackground:true});await t.close();}
+    await b.close();})();'
+node $SK/render.js reel-long.html $D f/silent-long.mp4
+python3 compose-long.py f/silent-long.mp4 ../pardon-me-29-orbit-long
