@@ -1,10 +1,12 @@
 # PARDON ME° · world orbit — 25s studio reel, rebuilt from the 20.10 canvas artboard (PM-Orbit.dc.html).
 # hook (her line, the sleeve with its oval window) → studio "עולם מותג 29" → four cards orbit the window
 # (site · feed · ads · packaging), each plays the world's own mechanic at the front → the ring closes → outro.
+# REEL=long builds the 40s cut (reel-long.html): longer holds, three ads, two boxes.
 # Writes reel.html next to this file. Every time is in seconds; P() turns it into a keyframe percentage.
 import math, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
-D = 25.0
+LONG = os.environ.get('REEL') == 'long'
+D = 40.0 if LONG else 25.0
 def P(t): return '%.3f%%' % (max(0, min(D, t)) / D * 100)
 
 # PARDON ME palette (pardon-me/index.html :root)
@@ -21,10 +23,10 @@ R, KY = 380, 1.08           # orbit radius, vertical stretch (front card sits lo
 CW, CH = 340, 450           # card size
 N = 4
 STEP = 360 / N
-STOPS = [5.4, 9.4, 13.4, 17.4]   # card k reaches the front at STOPS[k]
+STOPS = [5.4, 12.6, 19.8, 27.0] if LONG else [5.4, 9.4, 13.4, 17.4]   # card k reaches the front at STOPS[k]
 TURN = .7
-FIN = (20.9, 21.7)          # last turn: back to the site
-OUT = 22.0                  # world shrinks into the studio window
+FIN = (33.6, 34.4) if LONG else (20.9, 21.7)         # last turn: back to the site
+OUT = 36.6 if LONG else 22.0                 # world shrinks into the studio window
 HOLD_END = [STOPS[1] - TURN, STOPS[2] - TURN, STOPS[3] - TURN, FIN[0]]
 
 def ease(u): u = max(0, min(1, u)); return u * u * (3 - 2 * u)
@@ -67,6 +69,16 @@ def show(a, b, f=.3):
     e = '100%{opacity:1}' if b >= D else '%s{opacity:1}%s,100%%{opacity:0}' % (P(b), P(b + f))
     return s + e
 def rise(t, dy=30): return '0%%,%s{opacity:0;transform:translateY(%dpx)}%s,100%%{opacity:1;transform:none}' % (P(t), dy, P(t + .5))
+def windows(segs, f=.15):   # opacity on during each (a, b) segment, quick fades between
+    pts = []
+    for a, b in segs:
+        pts += [(a - f, 0), (a, 1), (b, 1), (b + f, 0)]
+    kf, last = '', None
+    for t, o in sorted((max(0, min(D, t)), o) for t, o in pts):
+        kf += '%s{opacity:%d}' % (P(t), o)
+    first = 1 if segs[0][0] <= 0 else 0
+    lastv = 1 if segs[-1][1] >= D else 0
+    return anim('0%%{opacity:%d}%s100%%{opacity:%d}' % (first, kf, lastv))
 def steps(prop, pts, extra=''):   # pts: [(t, value)], held between
     kf = '0%%{%s:%s}' % (prop, pts[0][1]) + ''.join('%s{%s:%s}' % (P(t), prop, v) for t, v in pts) + '100%%{%s:%s}' % (prop, pts[-1][1])
     return anim(kf, extra)
@@ -85,7 +97,7 @@ def oval_hole(rx, ry, cy='50%'):   # a porcelain sleeve with PARDON ME's oval wi
 # 01 · the site: a phone scrolling the real site (hero window → NOT SORRY → the collections)
 h0, h1 = STOPS[0], HOLD_END[0]
 site_scroll = anim('0%%,%s{transform:translateY(0)}%s,%s{transform:translateY(-433px)}%s,%s{transform:translateY(-866px)}%s,100%%{transform:translateY(0)}'
-                   % (P(h0 + .3), P(h0 + .9), P(h0 + 1.7), P(h0 + 2.3), P(h1 + .4), P(h1 + 1.0)), 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
+                   % (P(h0 + .3), P(h0 + .9), P(h0 + .3 + (h1 - h0 - .6) / 2), P(h0 + .9 + (h1 - h0 - .6) / 2), P(h1 + .4), P(h1 + 1.0)), 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
 F_SITE = f'''<div style="{face}; background: {PORC2}">
   <div style="position: absolute; top: 12px; left: 0; right: 0; display: flex; justify-content: center"><span style="padding: 4px 14px; border-radius: 999px; background: {PORC}; {JK}; font-size: 13px; font-weight: 500; color: {GARDEN}" dir="ltr">hagitantebi.co.il/pardon-me</span></div>
   <div style="position: absolute; left: 60px; top: 42px; width: 220px; height: 400px; box-sizing: border-box; border: 10px solid {GARDEN}; border-radius: 34px; overflow: hidden; background: {PORC}">
@@ -95,36 +107,68 @@ F_SITE = f'''<div style="{face}; background: {PORC2}">
 tiles = ['print-high-maintenance.webp', 'ad-touch-yourself.webp', 'well-hello.webp', 'stationery.webp', 'print-none-of-your-business.webp',
          'ad-bad-decisions.webp', 'bag.webp', 'ad-i-kept-it.webp', 'print-bad-influence.webp']
 h0 = STOPS[1]
-grid = ''.join(f'''<div style="width: 104px; height: 104px; overflow: hidden; {anim('0%%,%s{transform:none}%s{transform:scale(.55);opacity:.2}%s,100%%{transform:none;opacity:1}' % (P(h0 - .1 + j * .09), P(h0 + j * .09), P(h0 + .45 + j * .09)), 'animation-timing-function:cubic-bezier(.2,.9,.3,1.3)')}"><img src="media/{f}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>''' for j, f in enumerate(tiles))
+pops = [h0] + ([h0 + (HOLD_END[1] - h0) / 2] if LONG else [])   # the long cut refreshes the grid halfway through the hold
+def pop(j):
+    kf = '0%{transform:none;opacity:1}'
+    for t0 in pops:
+        kf += '%s{transform:none;opacity:1}%s{transform:scale(.55);opacity:.2}%s{transform:none;opacity:1}' % (P(t0 - .1 + j * .09), P(t0 + j * .09), P(t0 + .45 + j * .09))
+    return anim(kf + '100%{transform:none;opacity:1}', 'animation-timing-function:cubic-bezier(.2,.9,.3,1.3)')
+grid = ''.join(f'''<div style="width: 104px; height: 104px; overflow: hidden; {pop(j)}"><img src="media/{f}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>''' for j, f in enumerate(tiles))
 F_FEED = f'''<div style="{face}; background: #FFFFFF; display: flex; flex-direction: column">
   <div style="height: 62px; display: flex; align-items: center; gap: 10px; padding: 0 14px" dir="ltr"><span style="width: 36px; height: 36px; border-radius: 50%; background: {PORC}; border: 2px solid {BERRY}; display: flex; align-items: center; justify-content: center"><i style="width: 10px; height: 17px; border-radius: 50%; background: {BERRY}"></i></span><span style="display: flex; flex-direction: column"><b style="{JK}; font-size: 16px; color: {INK}">pardonme.studio</b><span style="{JK}; font-size: 12px; color: {MUTED}">Nice on the outside.</span></span></div>
   <div style="display: grid; grid-template-columns: repeat(3, 104px); gap: 4px; justify-content: center">{grid}</div>
   <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; gap: 30px; {JK}; font-size: 13px; color: {MUTED}" dir="ltr"><span><b style="color: {INK}">48</b> posts</span><span><b style="color: {INK}">1</b> window</span></div></div>'''
 
-# 03 · the ads: the polite card, and the oval lens that opens on the truth
-h0 = STOPS[2]
-lens = anim('0%%,%s{clip-path:ellipse(26px 42px at 50%% 56%%)}%s,%s{clip-path:ellipse(260px 330px at 50%% 52%%)}%s,100%%{clip-path:ellipse(26px 42px at 50%% 56%%)}'
-            % (P(h0 + .25), P(h0 + 1.05), P(HOLD_END[2] + .2), P(HOLD_END[2] + .8)), 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
-F_ADS = f'''<div style="{face}; background: {BERRY}">
-  <div style="position: absolute; left: 22px; top: 22px; width: 296px; height: 360px; background: {PORC}; overflow: hidden">
+# 03 · the ads: the polite card, and the oval lens that opens on the truth (the site's three ads; the short cut plays one)
+ADS = [('ad-bad-decisions', 'A lovely candle<br>for a calm evening.', 'נר נעים לערב רגוע.', 'Smells like<br>bad decisions.', 'The good kind.'),
+       ('ad-touch-yourself', 'A nourishing<br>hand cream.', 'קרם ידיים מזין.', 'Touch<br>yourself.', "It's skincare."),
+       ('ad-i-kept-it', 'A thoughtful gift<br>for someone special.', 'מתנה מתחשבת למישהי מיוחדת.', 'I bought you<br>something.', 'I kept it.')][:3 if LONG else 1]
+h0, h1 = STOPS[2], HOLD_END[2]
+Lc = (h1 - h0) / len(ADS)
+ad_layers = ''
+for c, (img, pl, ph, loud, small) in enumerate(ADS):
+    c0, c1 = h0 + c * Lc, h0 + (c + 1) * Lc
+    last = c == len(ADS) - 1
+    shut, closed = (h1 + .2, h1 + .8) if last else (c1 - .6, c1)
+    lens = anim('0%%,%s{clip-path:ellipse(26px 42px at 50%% 56%%)}%s,%s{clip-path:ellipse(260px 330px at 50%% 52%%)}%s,100%%{clip-path:ellipse(26px 42px at 50%% 56%%)}'
+                % (P(c0 + .25), P(c0 + 1.05), P(shut), P(closed)), 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
+    if len(ADS) == 1: vis = ''
+    elif c == 0: vis = windows([(0, c1), (h1 + .8, D)])
+    else: vis = windows([(c0, closed)])
+    ad_layers += f'''<div style="position: absolute; inset: 0; background: {PORC}; {vis}">
     <div style="position: absolute; top: 34px; left: 0; right: 0; text-align: center; {BO}; font-size: 15px; letter-spacing: .34em; color: {GARDEN}" dir="ltr">PARDON ME</div>
-    <div style="position: absolute; top: 74px; left: 0; right: 0; text-align: center; {BO}; font-style: italic; font-size: 26px; line-height: 1.2; color: {GARDEN}" dir="ltr">A lovely candle<br>for a calm evening.</div>
-    <div style="position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; {HE}; font-size: 15px; color: {MUTED}" dir="rtl">נר נעים לערב רגוע.</div>
-    <div style="position: absolute; inset: 0; {lens}"><img src="media/ad-bad-decisions.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block">
-      <div style="position: absolute; left: 14px; top: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; {anim(show(h0 + .9, HOLD_END[2], .2))}" dir="ltr"><span style="padding: 2px 8px; background: {BERRY}; color: #FFFFFF; {LOUD}; font-size: 26px; line-height: 1.05">Smells like<br>bad decisions.</span><span style="padding: 2px 8px; background: {LIME}; color: {GARDEN}; {BO}; font-style: italic; font-size: 15px">The good kind.</span></div></div>
-  </div>
+    <div style="position: absolute; top: 74px; left: 0; right: 0; text-align: center; {BO}; font-style: italic; font-size: 26px; line-height: 1.2; color: {GARDEN}" dir="ltr">{pl}</div>
+    <div style="position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; {HE}; font-size: 15px; color: {MUTED}" dir="rtl">{ph}</div>
+    <div style="position: absolute; inset: 0; {lens}"><img src="media/{img}.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block">
+      <div style="position: absolute; left: 14px; top: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; {anim(show(c0 + .9, shut, .2))}" dir="ltr"><span style="padding: 2px 8px; background: {BERRY}; color: #FFFFFF; {LOUD}; font-size: 26px; line-height: 1.05">{loud}</span><span style="padding: 2px 8px; background: {LIME}; color: {GARDEN}; {BO}; font-style: italic; font-size: 15px">{small}</span></div></div></div>'''
+F_ADS = f'''<div style="{face}; background: {BERRY}">
+  <div style="position: absolute; left: 22px; top: 22px; width: 296px; height: 360px; background: {PORC}; overflow: hidden">{ad_layers}</div>
   <div style="position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; {HE}; font-size: 16px; color: {PORC}" dir="rtl">פעם בשביל מי שמסתכלת מהר. ופעם בשביל מי שמציצה.</div></div>'''
 
-# 04 · the packaging: "Take it off." — the sleeve slides up off the printed box
-h0 = STOPS[3]
-sleeve = anim('0%%,%s{transform:none}%s,%s{transform:translateY(-104%%)}%s,100%%{transform:none}' % (P(h0 + .35), P(h0 + 1.2), P(HOLD_END[3] + .1), P(HOLD_END[3] + .8)), 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
+# 04 · the packaging: "Take it off." — the sleeve slides up off the printed box (the long cut opens two boxes)
+BOXES = [('print-high-maintenance', 'High Maintenance'), ('print-none-of-your-business', 'None of Your Business')][:2 if LONG else 1]
+h0, h1 = STOPS[3], HOLD_END[3]
+Lc = (h1 - h0) / len(BOXES)
+kf = '0%%,%s{transform:none}' % P(h0 + .35)
+for c in range(len(BOXES)):
+    c0, c1 = h0 + c * Lc, h0 + (c + 1) * Lc
+    last = c == len(BOXES) - 1
+    kf += '%s,%s{transform:translateY(-104%%)}%s{transform:none}' % (P(c0 + 1.2), P(h1 + .1 if last else c1 - .7), P(h1 + .8 if last else c1))
+    if not last: kf += '%s{transform:none}' % P(c1 + .35)
+sleeve = anim(kf + '100%{transform:none}', 'animation-timing-function:cubic-bezier(.7,0,.2,1)')
+def box_vis(c):
+    if len(BOXES) == 1: return ''
+    c1 = h0 + (c + 1) * Lc
+    return windows([(0, c1), (h1 + .8, D)]) if c == 0 else windows([(h0 + c * Lc, h1 + .8)], .01)
+box_imgs = ''.join(f'<img src="media/{p}.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; {box_vis(c)}">' for c, (p, n) in enumerate(BOXES))
+box_names = ''.join(f'<div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; {BO}; font-style: italic; font-size: 17px; color: {GARDEN}; {box_vis(c)}" dir="ltr">{n}</div>' for c, (p, n) in enumerate(BOXES))
 F_PACK = f'''<div style="{face}; background: {PETAL}">
   <div style="position: absolute; left: 60px; top: 30px; width: 220px; height: 330px; overflow: hidden; border-radius: 4px; box-shadow: 0 16px 30px rgba(27,31,28,.22)">
-    <img src="media/print-high-maintenance.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block">
+    {box_imgs}
     <div style="position: absolute; inset: 0; {sleeve}"><div style="position: absolute; inset: 0; background: {PORC}; {oval_hole(52, 92, '52%')}"></div>
       <div style="position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(30,58,43,.12)"></div>
       <div style="position: absolute; top: 22px; left: 0; right: 0; text-align: center; {BO}; font-size: 14px; letter-spacing: .32em; color: {GARDEN}" dir="ltr">PARDON ME</div>
-      <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; {BO}; font-style: italic; font-size: 17px; color: {GARDEN}" dir="ltr">High Maintenance</div></div></div>
+      {box_names}</div></div>
   <div style="position: absolute; left: 22px; right: 22px; bottom: 20px; padding: 10px 14px; background: {PORC}; border-radius: 8px; display: flex; flex-direction: column; gap: 2px; text-align: right">
     <div style="{BO}; font-style: italic; font-size: 22px; color: {GARDEN}" dir="ltr">Take it off.</div>
     <div style="{HE}; font-size: 14px; color: {MUTED}" dir="rtl">ארבע קופסאות, אותו שרוול. כל אחת מספרת סוד אחר.</div></div></div>'''
@@ -246,5 +290,5 @@ html,body{{margin:0;background:#FAF8F3}}
 <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18); z-index: 300"><div style="height: 6px; background: #C4765A; transform-origin: right; {anim('0%{transform:scaleX(0)}100%{transform:scaleX(1)}', 'animation-timing-function:linear')}"></div></div>
 </div></div></body></html>'''
 html = html.replace('{CSS}', '\n'.join(CSS))
-open(os.path.join(HERE, 'reel.html'), 'w').write(html)
+open(os.path.join(HERE, 'reel-long.html' if LONG else 'reel.html'), 'w').write(html)
 print('ok', len(html))

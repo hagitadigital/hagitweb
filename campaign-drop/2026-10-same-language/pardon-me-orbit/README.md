@@ -2,6 +2,9 @@
 
 - `pardon-me-29-orbit.mp4` — 9:16 (Reels / Stories), with Arrête Chic soundtrack
 - `pardon-me-29-orbit-4x5.mp4` — 4:5 (feed, LinkedIn)
+- `pardon-me-29-orbit-long.mp4` / `-long-4x5.mp4` — the 40s cut: ~6.5s per card, all three ads in the lens
+  (Smells like bad decisions · Touch yourself · I bought you something), two boxes out of the sleeve
+  (High Maintenance · None of Your Business), the feed refreshes halfway; music extended by a crossfaded second pass
 
 Rebuilt from the 20.10 Design-canvas artboard (`src/PM-Orbit.dc.html`; `src/port.py` renders the original as is).
 0–2.6 hook "היא לא קונה נר. היא בוחרת עולם." over the sleeve with its oval window · 2.6–4.3 studio "עולם מותג 29",
@@ -10,4 +13,4 @@ the copper line opens the centre · 4.3–21 four cards orbit the oval window, e
 04 האריזה (Take it off: the sleeve slides up); the print in the centre window changes with each stop and the berry
 line closes a quarter per stop · 22–25 outro: "עולם שבוחרים בו. בכל נקודת מגע." + אבחון פער המותג.
 
-Rebuild: `cd src && bash build.sh` (timings and copy in `make.py`).
+Rebuild: `cd src && bash build.sh` (25s) or `bash build-long.sh` (40s); timings and copy in `make.py` (`REEL=long` for the long cut).
