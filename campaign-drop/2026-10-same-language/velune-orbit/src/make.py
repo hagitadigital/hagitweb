@@ -1,5 +1,5 @@
 # VELUNE° · world orbit — 25s studio reel, rebuilt from the 20.10 canvas artboard (VE-Orbit.dc.html), same engine as PARDON ME°.
-# hook (her line, the red fruit under VELUNE's arch) → studio "עולם מותג 25" → four cards orbit the fruit
+# hook ("היא לא קונה ריח. היא נכנסת למקום.", the red fruit under VELUNE's arch) → studio "עולם מותג 25" → four cards orbit the fruit
 # (site · feed · ad · packaging), each plays the world's own mechanic at the front → the ring closes → outro.
 # REEL=long builds the long cut (reel-long.html): at each stop the front card opens to a full window and the site itself plays
 # (clips recorded by record-site.js, laid over the render by build-long.sh from the schedule in long-overlays.json).
@@ -269,7 +269,7 @@ HOOK = f'''<div style="position: absolute; inset: 0; background: #EEE6D8; z-inde
   <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
     <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: #3E2F25" dir="ltr">Brand Worlds Studio</div>
     <div style="{HE}; font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div></div>
-  <div style="position: absolute; top: 250px; left: 70px; right: 70px; text-align: right; {HE}; font-size: 92px; font-weight: 700; line-height: 1.12; color: {INK}" dir="rtl">הכל מסתובב<br>סביב <span style="color: {LITCHI}">דבר אחד</span>.</div>
+  <div style="position: absolute; top: 250px; left: 70px; right: 70px; text-align: right; {HE}; font-size: 88px; font-weight: 700; line-height: 1.14; color: {INK}" dir="rtl">היא לא קונה ריח.<br>היא נכנסת <span style="color: {LITCHI}">למקום</span>.</div>
   <div style="position: absolute; left: 290px; top: 600px; width: 500px; height: 760px; {anim('0%{transform:none}' + P(2.5) + '{transform:scale(1.04)}100%{transform:scale(1.04)}', 'animation-timing-function:linear')}">
     <div style="position: absolute; inset: 0; overflow: hidden; border-radius: 6px; background: {POUDRE}; box-shadow: 0 34px 70px rgba(30,42,56,.24)">
       <div style="position: absolute; left: 70px; top: 120px; width: 360px; height: 520px; overflow: hidden; {ARCH}; box-shadow: 0 0 0 3px {NUIT}">
@@ -279,7 +279,7 @@ HOOK = f'''<div style="position: absolute; inset: 0; background: #EEE6D8; z-inde
   </div>
   <svg style="position: absolute; inset: 0" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line" pathLength="1" d="{HOOK_LINE}" style="{anim('0%,' + P(.2) + '{stroke-dashoffset:1}' + P(2.2) + ',100%{stroke-dashoffset:0}', 'animation-timing-function:linear')}"/></svg>
   {ball(HOOK_LINE, .2, 2.2)}
-  <div style="position: absolute; top: 1760px; left: 0; right: 0; text-align: center; {HE}; font-size: 34px; font-weight: 300; color: #6B563F; {anim('0%,' + P(.9) + '{opacity:0}' + P(1.3) + ',100%{opacity:1}')}" dir="rtl">פרי אחד. ועולם שלם סביבו.</div>
+  <div style="position: absolute; top: 1760px; left: 0; right: 0; text-align: center; {HE}; font-size: 34px; font-weight: 300; color: #6B563F; {anim('0%,' + P(.9) + '{opacity:0}' + P(1.3) + ',100%{opacity:1}')}" dir="rtl">מאחורי הדלת יש גן. בגן פרי אחד.</div>
 </div>'''
 
 # ── studio intro (2.6–4.3): the copper line runs into the centre and opens the circle ──
@@ -303,7 +303,7 @@ OUTRO = f'''<div style="position: absolute; inset: 0; z-index: 150; pointer-even
     <div style="{HE}; font-size: 28px; font-weight: 500; letter-spacing: .06em; color: #C4765A; {anim(rise(OUT + .3, 20))}" dir="rtl"><span dir="ltr">VELUNE°</span> · עולם מותג 25</div>
     <div style="{HE}; font-size: 64px; font-weight: 700; line-height: 1.18; color: {INK}; {anim(rise(OUT + .5))}" dir="rtl">עולם מותג אחד.<br><span style="color: {LITCHI}">כל נקודות המגע.</span></div></div>
   <div style="position: absolute; top: 1470px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; {anim(rise(OUT + 1.0))}">
-    <div style="{HE}; font-size: 44px; font-weight: 500; line-height: 1.3; color: #C4765A" dir="rtl">ואצלך, מה הדבר האחד<br>שהכל מסתובב סביבו?</div>
+    <div style="{HE}; font-size: 44px; font-weight: 500; line-height: 1.3; color: #C4765A" dir="rtl">ואצלך, קונים ריח<br>או נכנסים למקום?</div>
     <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 20px 56px; background: #6B563F; color: #FAF8F3; border-radius: 12px" dir="rtl"><span style="{HE}; font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="{HE}; font-size: 22px; opacity: .85">30 דק׳ · בלי עלות</span></div>
     <div style="{JK}; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div></div>
 </div>'''
