@@ -3,13 +3,13 @@
 //   tear     — "Pardon the interruption": Tear here, the sleeve rips, the ad bursts through
 //   ads      — the campaign: the oval lens follows the pointer over a polite ad, a tap strips it bare
 //   colls    — the collections: a tap on the oval takes the sleeve off and shows the product
-// CSS transitions run at RATE (slowed through CDP), every frame is stamped with its content time and resampled to 30fps,
-// so the clips play at the site's real speed. Scroll and pointer moves are driven from the same content clock.
+// Recorded frame by frame: each frame sets the scroll and the pointer for its time, then pauses every CSS animation and
+// transition and seeks it to that time, so the clips play at the site's real speed with no dropped or doubled frames.
 // Usage: node record-site.js <repo>/pardon-me/index.html <outdir>   → <outdir>/<clip>.mp4
 const path = require('path'), fs = require('fs'), { execFileSync } = require('child_process');
 let pw; for (const n of ['playwright', '/opt/node22/lib/node_modules/playwright']) { try { pw = require(n); break } catch (e) {} }
 const [, , SITE, OUT, ONLY] = process.argv;   // ONLY: a comma list of clips to re-record
-const RATE = .1, FPS = 30, W = 432, H = 768, DPR = 2.5;
+const FPS = 30, W = 432, H = 768, DPR = 2.5;
 const ease = u => { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u) };
 
 (async () => {
@@ -23,37 +23,36 @@ const ease = u => { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u) 
     await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
     for (let k = 1; k < 2000; k++) clearInterval(k);           // the peek's print cycle is driven from the clip clock instead
   });
-  const cdp = await page.context().newCDPSession(page);
-  await cdp.send('Animation.enable');
   const top = sel => page.evaluate(s => { const e = document.querySelector(s); return e.getBoundingClientRect().top + scrollY }, sel);
-  const scrollTo = y => page.evaluate(v => window.scrollTo(0, v), y);
+  // scroll, then make sure the site's own scroll handler has drawn this position before the frame is taken
+  const scrollTo = async y => { await page.evaluate(v => { window.scrollTo(0, v); dispatchEvent(new Event('scroll')) }, y); await raf(); };
   const raf = () => page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
 
-  async function clip(name, dur, setup, step, rate = RATE) {
+  async function clip(name, dur, setup, step) {
     if (ONLY && !ONLY.split(',').includes(name)) return;
     await page.mouse.move(2, 2);
-    await cdp.send('Animation.setPlaybackRate', { playbackRate: 1 });
     await setup(); await page.waitForTimeout(1200); await raf();
-    await cdp.send('Animation.setPlaybackRate', { playbackRate: rate });
-    const frames = [], fired = new Set(), t0 = Date.now();
-    for (;;) {
-      const ct = (Date.now() - t0) / 1000 * rate;
-      if (ct > dur + .05) break;
+    await page.evaluate(() => { window.__st = new Map() });
+    const dir = path.join(OUT, 'tmp-' + name); fs.mkdirSync(dir, { recursive: true });
+    const fired = new Set(), n = Math.round(dur * FPS);
+    for (let f = 0; f < n; f++) {                      // frame by frame on the clip's own clock
+      const ct = f / FPS;
       await step(ct, k => { if (fired.has(k)) return false; fired.add(k); return true });
       await raf();
-      frames.push([(Date.now() - t0) / 1000 * rate, await page.screenshot({ type: 'jpeg', quality: 92 })]);
-    }
-    const dir = path.join(OUT, 'tmp-' + name); fs.mkdirSync(dir, { recursive: true });
-    const n = Math.round(dur * FPS);
-    for (let f = 0, j = 0; f < n; f++) {               // nearest captured frame at or before each output time
-      const t = f / FPS;
-      while (j + 1 < frames.length && frames[j + 1][0] <= t) j++;
-      fs.writeFileSync(path.join(dir, `f_${String(f + 1).padStart(4, '0')}.jpg`), frames[j][1]);
+      // every CSS animation and transition is paused and seeked to the clip clock (counted from when it first appears)
+      await page.evaluate(ct => {
+        for (const a of document.getAnimations()) {
+          if (!__st.has(a)) { __st.set(a, ct - (a.currentTime || 0) / 1000); a.pause(); }
+          a.currentTime = Math.max(0, (ct - __st.get(a)) * 1000);
+        }
+      }, ct);
+      await raf();
+      fs.writeFileSync(path.join(dir, `f_${String(f + 1).padStart(4, '0')}.jpg`), await page.screenshot({ type: 'jpeg', quality: 92 }));
     }
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, 'f_%04d.jpg'),
       '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '20', '-movflags', '+faststart', path.join(OUT, name + '.mp4')]);
     fs.rmSync(dir, { recursive: true });
-    console.error(name, frames.length, 'captures →', n, 'frames');
+    console.error(name, n, 'frames');
   }
 
   // peek: hold on the small window, then scroll the whole pinned section; the print behind the window changes twice
@@ -87,7 +86,7 @@ const ease = u => { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u) 
       await page.mouse.move(r.x + r.w * (.5 + .22 * Math.sin(a)), r.y + r.h * (.55 - .2 * Math.sin(a) * Math.cos(a) * 1.6));
     }
     if (ct > 2.9 && once('tap')) await page.mouse.click(r.x + r.w * .5, r.y + r.h * .55);
-  }, .012);   // every pointer move repaints the cascade's filters, so this one runs slower to keep 30fps
+  });
 
   // collections: tap the first box's oval, glide to the second, tap it
   const boxes = await page.evaluate(() => [...document.querySelectorAll('.coll .box')].map(b => b.getBoundingClientRect().top + scrollY));
