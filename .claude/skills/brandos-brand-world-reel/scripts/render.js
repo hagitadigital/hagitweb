@@ -33,6 +33,10 @@ const FPS = 30, W = 1080, H = +(process.env.REEL_H || 1920);
   if (broken.length) console.error('BROKEN IMAGES', [...new Set(broken)].slice(0, 8));
   const fonts = await tab.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family))]);
   console.error('fonts loaded:', fonts.join(', ') || 'NONE (check network/proxy)');
+  // warm-up: the first screenshot after pausing can miss layers (frame 0 lost the hook question). Shoot one throwaway frame.
+  await tab.evaluate(() => document.getAnimations().forEach(a => { a.currentTime = 0; }));
+  await tab.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await tab.screenshot({ type: 'jpeg', quality: 50 });
   const frames = only ? only.split(',').map(Number) : [...Array(Math.round(+durS * FPS)).keys()];
   let ff = null;
   if (!only) ff = spawn(ffmpeg(), ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
