@@ -521,6 +521,56 @@
   .cart-veil.on{opacity:1;pointer-events:auto}
 
   /* ═══════════ LE FILM ═══════════ */
+  /* ---- sans le nom: the cover test ---- */
+  .sans{background:var(--cream);padding:110px 24px 100px;color:var(--ink)}
+  .sn-head{text-align:center;max-width:660px;margin:0 auto}
+  .sn-head .kicker{margin-bottom:14px}
+  .sn-head h2{font-size:clamp(26px,3vw,40px);font-weight:200}
+  .sn-head h2 b{font-weight:600;color:var(--rose-deep)}
+  .sn-head p{margin-top:14px;color:var(--ink-soft);font-weight:300;line-height:1.8}
+  .sn-ctl{display:flex;flex-direction:column;align-items:center;gap:12px;margin:30px auto 44px}
+  .sn-btn{display:inline-flex;align-items:center;gap:12px;font-family:'Assistant',sans-serif;font-size:15px;font-weight:600;color:var(--ink);background:var(--linen);border:1px solid #E5C4CB;border-radius:999px;padding:10px 22px 10px 14px;cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+  .sn-btn:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px}
+  .sn-sw{width:42px;height:22px;border-radius:999px;background:#EADCD2;position:relative;flex:none;transition:background .4s}
+  .sn-sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--ink);transition:inset-inline-start .4s cubic-bezier(.6,0,.2,1),background .4s}
+  .sn-btn[aria-pressed="true"]{background:var(--ink);color:var(--linen);border-color:var(--ink)}
+  .sn-btn[aria-pressed="true"] .sn-sw{background:var(--copper)}
+  .sn-btn[aria-pressed="true"] .sn-sw::after{inset-inline-start:23px;background:var(--linen)}
+  .sn-status{font-size:16px;font-weight:300;min-height:1.8em;text-align:center;max-width:52ch;line-height:1.8}
+  .sn-status b{font-weight:600;color:var(--rose-deep)}
+  .sn-grid{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
+  .sn-tile{flex:0 0 calc((100% - 56px)/3);margin:0;display:grid;gap:12px;align-content:start}
+  .sn-pic{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--linen)}
+  .sn-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .sn-pic img.sn-off{opacity:0;transition:opacity .8s ease .4s}
+  .sn-veil{position:absolute;left:var(--x);top:var(--y);width:var(--w,30%);height:7%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;
+    background:radial-gradient(closest-side,rgba(251,246,238,.95),rgba(232,180,184,.4) 60%,transparent);filter:blur(2px)}
+  .sans.is-off .sn-pic img.sn-off{opacity:1}
+  .sans.is-off .sn-veil{animation:snVeil 1.3s ease both}
+  .sans .sn-tile:nth-child(2) *{transition-delay:.55s;animation-delay:.15s}
+  .sans .sn-tile:nth-child(3) *{transition-delay:.7s;animation-delay:.3s}
+  .sans .sn-tile:nth-child(4) *{transition-delay:.85s;animation-delay:.45s}
+  .sans .sn-tile:nth-child(5) *{transition-delay:1s;animation-delay:.6s}
+  .sans:not(.is-off) .sn-tile *{transition-delay:0s}
+  @keyframes snVeil{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.3)}40%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.1)}}
+  .sn-tile h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px;direction:rtl}
+  .sn-tile h3 span{font-family:'Assistant',sans-serif;font-style:normal;font-size:14px;font-weight:600;color:var(--rose-deep);margin-inline-start:8px}
+  .sn-tile .codes{display:flex;flex-wrap:wrap;gap:6px}
+  .sn-tile .codes span{font-size:13px;border:1px solid #E5C4CB;border-radius:999px;padding:3px 11px;transition:background .5s ease,border-color .5s ease}
+  .sans.is-off .sn-tile .codes span{background:rgba(232,180,184,.28);border-color:var(--copper)}
+  .sn-foot{max-width:640px;margin:52px auto 0;text-align:center;padding-top:30px;border-top:1px solid #E5C4CB}
+  .sn-foot p{font-weight:300;line-height:1.85}
+  .sn-foot p b{font-weight:600}
+  .sn-foot a{display:inline-block;margin-top:16px;color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--copper);padding-bottom:2px}
+  @media (max-width:860px){
+    .sn-grid{gap:14px}
+    .sn-tile{flex-basis:calc((100% - 14px)/2)}
+    .sn-tile:last-child{flex-basis:100%}
+    .sn-tile:last-child .sn-pic{aspect-ratio:4/3}
+    .sn-tile h3{font-size:20px}
+    .sn-tile .codes span{font-size:12px;padding:2px 8px}
+  }
+  @media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}.sans.is-off .sn-veil{animation:none}}
   .film{position:relative;min-height:88svh;overflow:hidden;display:grid;place-items:end center}
   .film video,.film .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .film .f-copy{
@@ -812,6 +862,85 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="shelf" id="shelf"><!-- items injected --></div>
 </section>
 
+<!-- ═══════════ SANS LE NOM: the cover test ═══════════ -->
+<section class="sans" id="sans" aria-labelledby="sn-title">
+  <div class="sn-head">
+    <div class="kicker">Sans le nom</div>
+    <h2 id="sn-title">מכסים את השם. <b>הבוקר נשאר.</b></h2>
+    <p>אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מהקופסה, מהשקית, מהמדף, מהערכה ומהמילוי, ובדקי מה עוד אומר <span dir="ltr">ROSÉE°</span>&lrm;.</p>
+  </div>
+  <div class="sn-ctl">
+    <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
+    <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל חמש נקודות המגע.</p>
+  </div>
+  <div class="sn-grid" id="snGrid">
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/box-card.webp" width="1024" height="1536" loading="lazy" alt="קופסת סרום של ROSÉE° וכרטיס הריטואל, עם חצי שעון שחר בנחושת" style="object-position:50% 50%">
+        <img class="sn-off" src="assets/touchpoints/box-card-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה קופסה וכרטיס בלי השם: חצי שעון השחר והשעות של הבוקר" style="object-position:50% 50%">
+        <i class="sn-veil" style="--x:33%;--y:45%;--w:30%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">La Boîte<span>הקופסה והכרטיס</span></h3><div class="codes"><span>שעון השחר</span><span>השעה</span><span>קו הנחושת</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/bag.webp" width="1024" height="1536" loading="lazy" alt="שקית ROSÉE° בגרדיאנט שחר על אדן חלון" style="object-position:50% 50%">
+        <img class="sn-off" src="assets/touchpoints/bag-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה שקית בלי השם: גרדיאנט של שמי שחר, חצי שעון וידיות נחושת" style="object-position:50% 50%">
+        <i class="sn-veil" style="--x:54%;--y:57%;--w:30%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">Le Sac<span>השקית</span></h3><div class="codes"><span>שעון השחר</span><span>צבעי השחר</span><span>ידיות נחושת</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/shelf.webp" width="1024" height="1536" loading="lazy" alt="שלושה בקבוקי ROSÉE° על מגש נחושת באמבטיה, בשש בבוקר" style="object-position:50% 50%">
+        <img class="sn-off" src="assets/touchpoints/shelf-sans.webp" width="1024" height="1536" loading="lazy" alt="אותו מדף בלי השם: שלוש שעות של בוקר על התוויות" style="object-position:50% 50%">
+        <i class="sn-veil" style="--x:46%;--y:51%;--w:58%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">L'Étagère<span>המדף בבית</span></h3><div class="codes"><span>השעה</span><span>מכסי נחושת</span><span>הטיפה</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/trousse.webp" width="1024" height="1536" loading="lazy" alt="נרתיק פשתן ורוד עם שלושה בקבוקי ROSÉE° קטנים" style="object-position:50% 45%">
+        <img class="sn-off" src="assets/touchpoints/trousse-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה ערכה בלי השם: שלוש שעות בשורה, משחר ועד הבוקר" style="object-position:50% 45%">
+        <i class="sn-veil" style="--x:48%;--y:48.5%;--w:50%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">La Trousse<span>ערכת הנסיעה</span></h3><div class="codes"><span>שלוש שעות בשורה</span><span>זכוכית ורודה</span><span>רוכסן נחושת</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/refill.webp" width="1024" height="1536" loading="lazy" alt="שקית מילוי ובקבוק של ROSÉE° Le Réveil" style="object-position:50% 50%">
+        <img class="sn-off" src="assets/touchpoints/refill-sans.webp" width="1024" height="1536" loading="lazy" alt="אותו מילוי בלי השם: השעה 06:15 על שניהם" style="object-position:50% 50%">
+        <i class="sn-veil" style="--x:54%;--y:49.5%;--w:70%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">La Recharge<span>המילוי</span></h3><div class="codes"><span>השעה</span><span>זכוכית ורודה</span><span>מכסה נחושת</span></div></figcaption>
+    </figure>
+  </div>
+  <div class="sn-foot">
+    <p>הכלל מספר המותג: <b>מכסים את השם, ונשארים לפחות שני קודים.</b> מה שמזהה את <span dir="ltr">ROSÉE°</span>&lrm; הוא השעה. היא באה לפני השם, ולכן היא נשארת גם כשהשם יורד.</p>
+    <a href="https://hagitantebi.co.il/brand-world-logo.html?utm_source=rosee&amp;utm_medium=world&amp;utm_campaign=cover-test" onclick="if(typeof fbq==='function')fbq('trackCustom','RoseeCoverToLogo')">ואצלך? אם נסתיר את הלוגו, עדיין יזהו אותך? ←</a>
+  </div>
+</section>
+
+<script>
+// ---- sans le nom: the name comes off, the hour stays ----
+(()=>{
+  const sec=document.getElementById('sans'), btn=document.getElementById('snBtn'), lbl=document.getElementById('snLbl'), st=document.getElementById('snStatus');
+  const codes=sec.querySelectorAll('.sn-tile .codes span').length;
+  let touched=false;
+  function set(off){
+    sec.classList.toggle('is-off',off);
+    btn.setAttribute('aria-pressed',off);
+    lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
+    st.innerHTML=off?`השם ירד מכל חמש נקודות המגע. נשארו <b>${codes}</b> קודים, והשעה נשארה בכולן.`:'השם מופיע על כל חמש נקודות המגע.';
+  }
+  btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','RoseeCoverTest')});
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{rootMargin:'0px 0px -35% 0px'});
+    io.observe(document.getElementById('snGrid'));
+  }
+})();
+</script>
+
 <!-- ═══════════ LE FILM ═══════════ -->
 <section class="film" id="film" aria-label="הסרט של ROSÉE — הטיפה">
   <video id="filmVid" src="film.mp4" muted loop playsinline preload="none" poster="frames-desktop/f_040.webp"></video>
@@ -900,6 +1029,7 @@ document.addEventListener('DOMContentLoaded', function () {
       כל פוסט הוא עוד בוקר, ולכן אף אחד מהם לא צריך להמציא את עצמו מחדש. וזה מה שמוציא מותג מטבלת ההשוואה:
       אי אפשר להשוות בוקר שלם למחיר של סרום.
     </p>
+    <p><strong>מבחן הכיסוי:</strong> אחרי החנות, הקופסה, השקית, המדף בבית, ערכת הנסיעה והמילוי יוצאים מהעולם, ואז מורידים מהם את השם. מה שנשאר בכל אחד הוא השעה, חצי שעון השחר וקו הנחושת. זה מה שספר המותג מבטיח: הבוקר מזוהה בלי לקרוא את השם.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
       <p><strong>מה אף פעם לא משתנה: הטיפה והשחר.</strong> כל תוכן של <span dir="ltr">ROSÉE°</span>&lrm; מתחיל בטיפה אחת באור של לפנות בוקר: בפוסט, בתווית, בסטורי. וכל מוצר מגיע עם שעת הבוקר שלו, ולכן העגלה נקראת ״הריטואל שלי״ ולא סל.</p>
