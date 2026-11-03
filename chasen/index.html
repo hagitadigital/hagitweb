@@ -298,6 +298,7 @@ b{font-weight:600}
 .sans .sn-tile:nth-child(3) *{transition-delay:.7s;animation-delay:.3s}
 .sans .sn-tile:nth-child(4) *{transition-delay:.85s;animation-delay:.45s}
 .sans .sn-tile:nth-child(5) *{transition-delay:1s;animation-delay:.6s}
+.sans .sn-tile:nth-child(6) *{transition-delay:1.15s;animation-delay:.75s}
 .sans:not(.is-off) .sn-tile *{transition-delay:0s}
 @keyframes snVeil{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.3)}40%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.1)}}
 .sn-tile h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px}
@@ -311,8 +312,6 @@ b{font-weight:600}
 @media (max-width:860px){
   .sn-grid{gap:14px}
   .sn-tile{flex-basis:calc((100% - 14px)/2)}
-  .sn-tile:last-child{flex-basis:100%}
-  .sn-tile:last-child .sn-pic{aspect-ratio:4/3}
   .sn-tile h3{font-size:20px}
   .sn-tile .codes span{font-size:12px;padding:2px 8px}
 }
@@ -505,13 +504,21 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="sn-head">
       <p class="tag fr">Sans le nom</p>
       <h2 id="sn-title">מכסים את השם. <b>המטרפה נשארת.</b></h2>
-      <p>אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מהערכה, מהקיר, מהכוס, מהשקית ומהכוס ברחוב, ובדקי מה עוד אומר <span dir="ltr">CHASEN°</span>&lrm;.</p>
+      <p>אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מחמש הכוסות, מהערכה, מהקיר, מהכוס, מהשקית ומהכוס ברחוב, ובדקי מה עוד אומר <span dir="ltr">CHASEN°</span>&lrm;.</p>
     </div>
     <div class="sn-ctl">
       <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
-      <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל חמש נקודות המגע.</p>
+      <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל שש נקודות המגע.</p>
     </div>
     <div class="sn-grid" id="snGrid">
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/five.webp" width="1024" height="1536" loading="lazy" alt="חמש כוסות מאצ'ה של CHASEN° בשורה, שרוול בצבע של כל טעם והשם על כל שרוול" style="object-position:50% 50%">
+          <img class="sn-off" src="assets/touchpoints/five-sans.webp" width="1024" height="1536" loading="lazy" alt="אותן חמש כוסות בלי השם: חמישה צבעי שרוול וסימן המטרפה על כולם" style="object-position:50% 50%">
+          <i class="sn-veil" style="--x:50%;--y:61%;--w:92%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Les Cinq<span>חמש הכוסות</span></h3><div class="codes"><span>חמשת צבעי הטעמים</span><span>סימן המטרפה</span><span>הכוס השכבתית</span></div></figcaption>
+      </figure>
       <figure class="sn-tile">
         <div class="sn-pic">
           <img src="assets/touchpoints/kit.webp" width="1024" height="1536" loading="lazy" alt="ערכת הבית של CHASEN°: מטרפה, קערה, פחית וחמש שקיות טעם, והשם בפנים המכסה" style="object-position:50% 0%">
@@ -570,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sec.classList.toggle('is-off',off);
     btn.setAttribute('aria-pressed',off);
     lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
-    st.innerHTML=off?`השם ירד מכל חמש נקודות המגע. נשארו <b>${codes}</b> קודים, והמטרפה בכולן.`:'השם מופיע על כל חמש נקודות המגע.';
+    st.innerHTML=off?`השם ירד מכל שש נקודות המגע. נשארו <b>${codes}</b> קודים, והמטרפה בכולן.`:'השם מופיע על כל שש נקודות המגע.';
   }
   btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','ChasenCoverTest')});
   if('IntersectionObserver' in window){
@@ -588,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p>CHASEN° הוא עולם מותג קונספט, בר מאצ'ה בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>כאן לא מזמינים מאצ'ה, מרכיבים אותה.</b> ממנה נגזר הכל: השם (המטרפה היפנית שבה מקציפים), הסרט של שלושה פרקים, האטלייה האינטראקטיבי, והכרטיס שכל משקה מקבל בסוף.</p>
     <p><b>האטלייה:</b> ההחלטה החשובה הייתה מה לא לעשות. לא ארבעים תמונות מוכנות של כל צירוף, כי ארבעים כוסות שנוצרו בנפרד הן ארבעים כוסות שונות במעט, וברגע שהכוס זזה פיקסל האשליה נשברת. במקום זה צולמה כוס אחת. חמשת הטעמים נוצרו כעריכה על אותה תמונה בדיוק. הקצפת והשוקולד נוצרו גם הם על תמונת המאסטר ואז נחתכו כשכבות שקופות, ולכן הם יושבים נכון על כל טעם. בדף אין חישובי צבע ואין פיזיקה של נוזלים: החלפת טעם היא מזיגה של פריים חדש, הקצפת נכנסת מלמטה למעלה, השוקולד נוזל מלמעלה למטה. כל האטלייה שוקל פחות מחצי מגה.</p>
     <p><b>הסרט:</b> שלושה פרקים שנוצרו בווידאו AI מפריים פתיחה אחד לכל פרק, על אותו סט ואותו אור כמו הכוס. הפרק השלישי נגמר בכוס שדומה לכוס של האטלייה, וזה הגשר: מהצפייה להכנה.</p>
-    <p><b>מבחן הכיסוי:</b> אחרי התפריט הבר יוצא מהמסך: ערכה לבית, קיר המטרפות, כוס עם כרטיס, שקית שקשורה אליה מטרפה אמיתית, וכוס ברחוב. אחר כך מורידים מכולן את השם. מה שנשאר הוא המטרפה, חמשת צבעי הטעמים והכוס השכבתית. ככה ההבטחה «מעבירים ללקוחה את המטרפה» הופכת מחוויה במסך לחפץ שיוצא איתה מהבר.</p>
+    <p><b>מבחן הכיסוי:</b> אחרי התפריט הבר יוצא מהמסך: חמש כוסות בחמישה צבעי שרוול, ערכה לבית, קיר המטרפות, כוס עם כרטיס, שקית שקשורה אליה מטרפה אמיתית, וכוס ברחוב. אחר כך מורידים מכולן את השם. מה שנשאר הוא המטרפה, חמשת צבעי הטעמים והכוס השכבתית. ככה ההבטחה «מעבירים ללקוחה את המטרפה» הופכת מחוויה במסך לחפץ שיוצא איתה מהבר.</p>
     <p><b>למה זה משנה למותג אמיתי:</b> אותם חמישה טעמים בלי מותג הם תפריט. עם מותג הם שם, כרטיס ורגע שהלקוחה זוכרת. האטלייה לא מוכר מאצ'ה, הוא מוכיח שמותג שנבנה מהבטחה אחת יכול להפוך גם בחירה קטנה לחוויה שנבחרת ולא מושווית למחיר. ככה נראית עבודה של <b>Brand Worlds Studio</b>: עולם שלם שבו כל פרט, תנועה, שפה, תפריט, אינטראקציה, נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>
