@@ -1,5 +1,5 @@
 # TROIS MONDES — one serum, three brand worlds (ROSÉE° 15 · ELVÉA° 14 · ORÉVA° 24).
-# Campaign film, 9:16, 30s. Hook → ONE bottle dressed by each world (what it IS there + who chooses it, why) → La Prisme (same bottle, one word per face) → triptych → outro.
+# Campaign film, 9:16, 30s. Hook → each world from its own site, then the same frame: what the serum IS there + who chooses it and why → La Prisme (real products, one word per face) → triptych → outro.
 # python3 gen.py  →  reel.html (next to ./a/ assets). Render: node <skill>/scripts/render.js reel.html 30 out.mp4
 import os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -93,194 +93,154 @@ HOOK = f'''
   <div class="ball hball" style="offset-path:path('{LINE}')"><div class="hbs" style="position:absolute;inset:0"><div class="halo"></div><div class="sph"><div class="hroll" style="position:absolute;inset:0"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;{CG};font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div></div>
 </div>'''
 
-# ════════ THE BOTTLE — one shape for every world; only glass tint, rubber, collar and label change ════════
-BX, BY = 360, 640           # bottle box on the stage (360×720); label centre on stage = (540, 1145)
-_uid = [0]
-
-
-def bottle_svg(glass, bulb, collar):
-    _uid[0] += 1
-    u = 'b%d' % _uid[0]
-    return f'''<svg width="360" height="720" viewBox="0 0 360 720" style="position:absolute;left:0;top:0" aria-hidden="true"><defs>
-<linearGradient id="{u}g" x1="0" x2="1"><stop offset="0" stop-color="{glass[0]}"/><stop offset=".45" stop-color="{glass[1]}"/><stop offset="1" stop-color="{glass[2]}"/></linearGradient>
-<linearGradient id="{u}b" x1="0" x2="1"><stop offset="0" stop-color="{bulb[0]}"/><stop offset=".4" stop-color="{bulb[1]}"/><stop offset="1" stop-color="{bulb[2]}"/></linearGradient>
-<linearGradient id="{u}c" x1="0" x2="1"><stop offset="0" stop-color="{collar[0]}"/><stop offset=".35" stop-color="{collar[1]}"/><stop offset=".7" stop-color="{collar[0]}"/><stop offset="1" stop-color="{collar[2]}"/></linearGradient></defs>
-<path d="M142 150 V64 Q142 2 180 2 Q218 2 218 64 V150 Z" fill="url(#{u}b)"/>
-<rect x="150" y="214" width="60" height="26" fill="{glass[2]}"/>
-<path d="M40 334 Q40 238 140 238 H220 Q320 238 320 334 V680 Q320 716 284 716 H76 Q40 716 40 680 Z" fill="url(#{u}g)"/>
-<rect x="118" y="140" width="124" height="82" rx="10" fill="url(#{u}c)"/>
-<rect x="118" y="196" width="124" height="4" fill="rgba(0,0,0,.12)"/>
-<rect x="64" y="300" width="22" height="380" rx="11" fill="rgba(255,255,255,.42)"/>
-<rect x="292" y="320" width="12" height="360" rx="6" fill="rgba(0,0,0,.06)"/></svg>'''
-
-
-def label_box(bg, inner, cls=''):
-    return (f'<div class="{cls}" style="position:absolute;left:82px;top:380px;width:196px;height:250px;box-sizing:border-box;background:{bg};'
-            f'border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;'
-            f'box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)">{inner}</div>')
-
-
-LEAF = '<svg width="74" height="74" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 86 C30 60 46 40 80 16 M34 64 C40 48 38 34 30 22 C46 30 50 46 44 60 M50 46 C62 44 74 48 84 58 C68 62 56 58 50 46" fill="none" stroke="#55613F" stroke-width="2.4" stroke-linecap="round"/></svg>'
-DRESS = {
-    'g': dict(glass=('#FFFFFF', '#F1F1EE', '#D6D6D1'), bulb=('#3A3A3A', '#1C1C1C', '#0E0E0E'), collar=('#2E2E2E', '#4A4A4A', '#161616'),
-              label=label_box('#FFFFFF', '')),
-    'r': dict(glass=('#FCE7E3', '#F2C6C3', '#D99A9F'), bulb=('#E7AEB2', '#D3949A', '#A96C74'), collar=('#B9774D', '#F0C39C', '#7E4A2C'),
-              label=label_box('#FBF1EC', f'<div style="{CG};font-style:italic;font-size:46px;line-height:1;color:{R["ink"]}" dir="ltr">ROSÉE°</div>'
-                              f'<div style="width:60px;height:1px;background:{R["deep"]}"></div>'
-                              f'<div style="{CG};font-size:19px;letter-spacing:.24em;color:{R["soft"]}" dir="ltr">SÉRUM DE L’AUBE</div>'
-                              f'<div style="{CG};font-size:22px;color:{R["deep"]}" dir="ltr">06:14</div>')),
-    'e': dict(glass=('#FBF6EA', '#EDE2C8', '#CDBF9E'), bulb=('#66724F', '#4A5638', '#2F3824'), collar=('#4A5638', '#5E6A48', '#2F3824'),
-              label=label_box('#F6F0E2', LEAF + f'<div style="{CG};font-weight:500;font-size:28px;letter-spacing:.16em;color:{E["deep"]}" dir="ltr">ELVÉA°</div>'
-                              f'<div style="{CG};font-size:16px;letter-spacing:.2em;color:{E["soft"]}" dir="ltr">BOTANICAL SERUM</div>')),
-    'o': dict(glass=('#FCEBE2', '#F1C7B4', '#D69C84'), bulb=('#C98A63', '#B87A57', '#7E4A2C'), collar=('#A86A43', '#EDB990', '#6E3F24'),
-              label=label_box('#FBF3EC', f'<div style="{CG};font-size:31px;letter-spacing:.24em;color:{O["ink"]}" dir="ltr">ORÉVA</div>'
-                              f'<div style="{CG};font-size:12px;letter-spacing:.3em;color:{O["cop"]}" dir="ltr">SKIN STUDIO</div>'
-                              f'<div style="width:40px;height:1px;background:{O["cop"]};margin:6px 0"></div>'
-                              f'<div style="{CG};font-size:30px;letter-spacing:.1em;color:{O["deep"]}" dir="ltr">GLOW</div>'
-                              f'<div style="{CG};font-size:14px;letter-spacing:.2em;color:{O["ink"]}" dir="ltr">DAILY SERUM</div>')),
-}
-
-
-def bottle(k, dress_t=None, left=BX, top=BY, scale=1, rise=None):
-    """The same bottle. With dress_t it starts generic and gets dressed in world k: glass/rubber fade, then the label wipes down."""
-    g, d = DRESS['g'], DRESS[k]
-    shadow = '<div style="position:absolute;left:40px;top:690px;width:280px;height:50px;border-radius:50%;background:radial-gradient(rgba(60,40,30,.28),rgba(60,40,30,0) 70%)"></div>'
-    if dress_t is None:
-        body = shadow + bottle_svg(d['glass'], d['bulb'], d['collar']) + d['label']
-    else:
-        c = 'dr-' + k
-        kf(c + '-glass', [(dress_t, 'opacity:0'), (dress_t + .7, 'opacity:1')])
-        kf(c + '-lab', [(dress_t + .45, 'clip-path:inset(0 0 100% 0)'), (dress_t + 1.05, 'clip-path:inset(0 0 0% 0)')], tf='cubic-bezier(.6,0,.3,1)')
-        kf(c + '-flash', [(dress_t + .4, 'opacity:0;transform:translateY(-200px)'), (dress_t + .7, 'opacity:.9'), (dress_t + 1.1, 'opacity:0;transform:translateY(220px)')])
-        body = (shadow + bottle_svg(g['glass'], g['bulb'], g['collar']) + g['label'] +
-                f'<div class="{c}-glass" style="position:absolute;inset:0">' + bottle_svg(d['glass'], d['bulb'], d['collar']) + '</div>' +
-                f'<div class="{c}-lab" style="position:absolute;inset:0">' + d['label'] + '</div>' +
-                f'<div style="position:absolute;left:40px;top:238px;width:280px;height:478px;overflow:hidden;border-radius:60px 60px 36px 36px">'
-                f'<div class="{c}-flash" style="position:absolute;left:0;right:0;top:200px;height:90px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0))"></div></div>')
-    inner = f'<div style="position:absolute;left:0;top:0;width:360px;height:720px;transform:scale({scale});transform-origin:0 0">{body}</div>'
-    cls = f' class="{rise}"' if rise else ''
-    return f'<div{cls} style="position:absolute;left:{left}px;top:{top}px;width:{int(360 * scale)}px;height:{int(720 * scale)}px">{inner}</div>'
-
-
-def say(prefix, t, eyebrow, l1, l2, proof, chooser, fx):
-    """The fixed frame every world answers in: what the serum IS here (l1/l2) and who chooses it, and why."""
-    fade_in(prefix + '-eb', t, .5, 16); fade_in(prefix + '-l1', t + .2); fade_in(prefix + '-l2', t + .45, .55, 40)
-    fade_in(prefix + '-pf', t + 1.2); fade_in(prefix + '-ch', t + 1.7)
-    return f'''
-  <div class="{prefix}-eb" style="position:absolute;top:150px;left:0;right:0;text-align:center;{fx['eb']}" dir="ltr">{eyebrow}</div>
-  <div class="{prefix}-l1" style="position:absolute;top:212px;left:0;right:0;text-align:center;{fx['l1']}" dir="rtl">{l1}</div>
-  <div class="{prefix}-l2" style="position:absolute;top:296px;left:0;right:0;text-align:center;line-height:1.05;{fx['l2']}" dir="rtl">{l2}</div>
-  <div class="{prefix}-pf" style="position:absolute;top:1400px;left:0;right:0;height:90px;text-align:center">{proof}</div>
-  <div class="{prefix}-ch" style="position:absolute;top:1510px;left:110px;right:110px;text-align:center;line-height:1.3;{fx['ch']}" dir="rtl">{chooser}</div>'''
-
-
 def nm(n):
     return f'<bdi dir="ltr" style="unicode-bidi:isolate">{n}</bdi>'
 
 
-# ════════ WORLD 1 · ROSÉE° — "הבוקר שלה" (4.2–10.2) ════════
-T1 = 4.2
-portal('w1', T1, 540, 1004)
-kf('r-sky', [(T1 + .9, 'background-color:#EBCFD3'), (T1 + 2.4, 'background-color:#F0C9C3'), (T1 + 3.9, 'background-color:#F8E7D9')])
-kf('r-sun', [(T1 + 1.2, 'offset-distance:0%'), (T1 + 5.2, 'offset-distance:100%')], tf='cubic-bezier(.45,0,.4,1)')
-kf('r-arc', [(T1 + 1.2, 'stroke-dashoffset:1'), (T1 + 5.2, 'stroke-dashoffset:0')], tf='cubic-bezier(.45,0,.4,1)')
-window('r-h1', T1 + 1.2, T1 + 2.3, .12); window('r-h2', T1 + 2.45, T1 + 3.6, .12); kf('r-h3', [(T1 + 3.6, 'opacity:0'), (T1 + 3.72, 'opacity:1')])
-ARC = 'M110 1000 A430 430 0 0 1 970 1000'
-FX_R = dict(eb=f"{CG};font-style:italic;font-size:38px;color:{R['soft']}", l1=f"{AS};font-weight:400;font-size:60px;color:{R['ink']}",
-            l2=f"{AS};font-weight:300;font-size:120px;color:{R['deep']}", ch=f"{AS};font-weight:400;font-size:42px;color:{R['ink']}")
+def meaning(prefix, t, l1, l2, fx):
+    """The frame every world answers in (same place, same order): what the serum IS here."""
+    fade_in(prefix + '-l1', t); fade_in(prefix + '-l2', t + .25, .55, 40)
+    return f'''
+    <div class="{prefix}-l1" style="position:absolute;top:150px;left:0;right:0;text-align:center;{fx['l1']}" dir="rtl">{l1}</div>
+    <div class="{prefix}-l2" style="position:absolute;top:228px;left:0;right:0;text-align:center;line-height:1.05;{fx['l2']}" dir="rtl">{l2}</div>'''
+
+
+def chooser(prefix, t, text, fx):
+    """…and who chooses it, and why — always at the bottom."""
+    fade_in(prefix + '-ch', t)
+    return f'''
+    <div class="{prefix}-ch" style="position:absolute;top:1630px;left:90px;right:90px;text-align:center;line-height:1.3;{fx['ch']}" dir="rtl">{text}</div>'''
+
+
+# ════════ WORLD 1 · ROSÉE° 4.2–9.9 — "הבוקר שלה" ════════
+portal('w1', 4.2, 540, 1004)
+fade_in('r-t1', 5.0); fade_in('r-t2', 5.3)
+kf('r-a', [(6.7, 'opacity:0'), (7.1, 'opacity:1')])
+kf('r-sky', [(7.0, 'background-color:#E3AEB2'), (8.1, 'background-color:#F0CFCB'), (9.2, 'background-color:#F7EBE3')])
+kf('r-arch', [(6.9, 'transform:translateY(70px) scale(.94)'), (7.6, 'transform:none')])
+kf('r-sun', [(7.1, 'offset-distance:0%'), (9.4, 'offset-distance:100%')], tf='cubic-bezier(.45,0,.4,1)')
+kf('r-arc', [(7.1, 'stroke-dashoffset:1'), (9.4, 'stroke-dashoffset:0')], tf='cubic-bezier(.45,0,.4,1)')
+window('r-h1', 7.1, 7.9, .12); window('r-h2', 8.05, 8.7, .12); kf('r-h3', [(8.7, 'opacity:0'), (8.82, 'opacity:1')])
+fade_in('r-pf', 7.9)
+ARC = 'M210 820 A330 330 0 0 1 870 820'
+FX_R = dict(l1=f"{AS};font-weight:400;font-size:58px;color:{R['ink']}", l2=f"{AS};font-weight:300;font-size:118px;color:{R['deep']}",
+            ch=f"{AS};font-weight:400;font-size:42px;color:{R['ink']}")
 W1 = f'''
-<section class="w1 stack">
-  <div class="r-sky stack"></div>
-  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
-    <path d="{ARC}" fill="none" stroke="rgba(59,46,51,.16)" stroke-width="2"></path>
-    <path class="r-arc" d="{ARC}" pathLength="1" fill="none" stroke="{R['deep']}" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 1"></path>
-  </svg>
-  <div class="r-sun" style="position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;offset-path:path('{ARC}');offset-rotate:0deg;background:radial-gradient(circle at 40% 35%,#FFF4E6,#F1B98F 60%,#D98C6E);box-shadow:0 0 34px 12px rgba(255,214,180,.75)"></div>
-  {bottle('r', T1 + .8)}
-  {say('r', T1 + .9, 'ROSÉE° · née à l’aube', 'ב־' + nm('ROSÉE°') + ' הוא', 'הבוקר שלה.',
-       f'<div style="position:relative;height:90px;{CG};font-size:84px;line-height:1;color:{R["ink"]}" dir="ltr"><div class="r-h1" style="position:absolute;inset:0">05:42</div><div class="r-h2" style="position:absolute;inset:0">06:00</div><div class="r-h3" style="position:absolute;inset:0">06:14</div></div>',
-       'בוחרת בו מי שהבוקר הוא<br>הרגע היחיד שלה, לפני כולם.', FX_R)}
+<section class="w1 stack" style="background:{R['bg']}">
+  <div class="stack" data-seq="a/rosee/f_%03d.webp" data-from="1" data-to="79" data-by="2" data-start="4.8" data-step="0.05" data-pos="50% 50%"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient({R['bg']} 35%,rgba(247,240,230,0))"></div>
+  <div class="r-t1" style="position:absolute;top:190px;left:0;right:0;text-align:center;{CG};font-style:italic;font-weight:400;font-size:170px;line-height:1;color:{R['ink']}" dir="ltr">ROSÉE°</div>
+  <div class="r-t2" style="position:absolute;top:390px;left:0;right:0;text-align:center;{AS};font-weight:300;font-size:52px;color:{R['soft']}" dir="rtl">נולד עם שחר</div>
+  <div class="r-a stack">
+    <div class="r-sky stack"></div>
+    <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+      <path d="{ARC}" fill="none" stroke="rgba(59,46,51,.18)" stroke-width="2"></path>
+      <path class="r-arc" d="{ARC}" pathLength="1" fill="none" stroke="{R['deep']}" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 1"></path>
+    </svg>
+    <div class="r-sun" style="position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;offset-path:path('{ARC}');offset-rotate:0deg;background:radial-gradient(circle at 40% 35%,#FFF4E6,#F1B98F 60%,#D98C6E);box-shadow:0 0 30px 10px rgba(255,214,180,.7)"></div>
+    <div class="r-arch" style="position:absolute;left:300px;top:580px;width:480px;height:680px;border-radius:240px 240px 24px 24px;overflow:hidden;box-shadow:0 40px 90px rgba(59,46,51,.22)">
+      <img src="a/reveil.webp" alt="" class="cover" style="object-position:50% 60%;transform:scale(1.25);transform-origin:50% 62%">
+    </div>
+    <div style="position:absolute;top:1300px;left:0;right:0;height:110px;{CG};font-size:100px;line-height:1;color:{R['ink']}" dir="ltr">
+      <div class="r-h1" style="position:absolute;inset:0;text-align:center">05:42</div>
+      <div class="r-h2" style="position:absolute;inset:0;text-align:center">06:00</div>
+      <div class="r-h3" style="position:absolute;inset:0;text-align:center">06:14</div>
+    </div>
+    <div class="r-pf" style="position:absolute;top:1440px;left:0;right:0;text-align:center;{AS};font-weight:300;font-size:44px;color:{R['soft']}" dir="rtl">טיפה אחת, כל בוקר.</div>
+    {meaning('r', 7.2, 'ב־' + nm('ROSÉE°') + ' הוא', 'הבוקר שלה.', FX_R)}
+    {chooser('r', 8.1, 'בוחרת בו מי שהבוקר הוא<br>הרגע היחיד שלה, לפני כולם.', FX_R)}
+  </div>
 </section>{ring_svg('w1', 540, 1004)}'''
 
-# ════════ WORLD 2 · ELVÉA° — "הוכחה" (9.9–15.4) ════════
-T2 = 9.9
-portal('w2', T2, 540, 1145)
-L1 = 'M-40 560 C220 640 300 1080 540 1145'
-L2 = 'M1120 760 C880 820 760 1110 540 1145'
-kf('e-l1', [(T2 + 1.1, 'stroke-dashoffset:1'), (T2 + 2.3, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
-kf('e-l2', [(T2 + 1.3, 'stroke-dashoffset:1'), (T2 + 2.3, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
-kf('e-glow', [(T2 + 2.2, 'opacity:0;transform:scale(.3)'), (T2 + 2.6, 'opacity:1;transform:scale(1)'), (T2 + 3.4, 'opacity:.7;transform:scale(1.2)')])
-FX_E = dict(eb=f"{CG};font-weight:500;font-size:34px;letter-spacing:.16em;color:{E['soft']}", l1=f"{AS};font-weight:400;font-size:60px;color:{E['ink']}",
-            l2=f"{AS};font-weight:600;font-size:120px;color:{E['olive']}", ch=f"{AS};font-weight:400;font-size:42px;color:{E['ink']}")
+# ════════ WORLD 2 · ELVÉA° 9.7–14.9 — "הוכחה" ════════
+SQT, SQH = 470, 1150                  # sequence band: bottle ≈ 642–1482, label centre ≈ (540, 1010)
+portal('w2', 9.7, 540, 1010)
+fade_in('e-t1', 10.1); fade_in('e-t2', 10.4)
+kf('e-ta', [(11.8, 'opacity:1;transform:none'), (12.1, 'opacity:0;transform:translateY(-40px)')])
+L1 = 'M-40 1500 C200 1420 300 1060 540 1010'
+L2 = 'M1120 1260 C900 1230 760 990 540 1010'
+kf('e-l1', [(11.9, 'stroke-dashoffset:1'), (13.0, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
+kf('e-l2', [(12.1, 'stroke-dashoffset:1'), (13.0, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
+kf('e-glow', [(12.9, 'opacity:0;transform:scale(.3)'), (13.3, 'opacity:1;transform:scale(1)'), (14.4, 'opacity:.8;transform:scale(1.15)')])
+fade_in('e-pf', 12.9)
+FX_E = dict(l1=f"{AS};font-weight:400;font-size:58px;color:{E['ink']}", l2=f"{AS};font-weight:600;font-size:118px;color:{E['olive']}",
+            ch=f"{AS};font-weight:400;font-size:42px;color:{E['ink']}")
 W2 = f'''
-<section class="w2 stack" style="background:radial-gradient(circle at 12% 18%,#C9D1B0 0,rgba(201,209,176,0) 48%),radial-gradient(circle at 92% 70%,#E3E5D0 0,rgba(227,229,208,0) 40%),{E['bg']}">
-  {bottle('e', T2 + .6)}
+<section class="w2 stack" style="background:{E['bg']}">
+  <div style="position:absolute;left:0;right:0;top:{SQT}px;height:{SQH}px" data-seq="a/elvea/f_%03d.webp" data-from="1" data-to="79" data-by="2" data-start="9.9" data-step="0.05" data-pos="86% 50%"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:{SQT + 300}px;background:linear-gradient({E['bg']} 58%,rgba(240,234,221,.85) 68%,rgba(240,234,221,0))"></div>
+  <div style="position:absolute;left:0;right:0;top:{SQT + SQH - 180}px;height:200px;background:linear-gradient(rgba(240,234,221,0),{E['bg']} 85%)"></div>
+  <div class="e-ta stack">
+    <div class="e-t1" style="position:absolute;top:170px;left:0;right:0;text-align:center;{CG};font-weight:500;font-size:132px;letter-spacing:.12em;line-height:1;color:{E['deep']}" dir="ltr">ELVÉA°</div>
+    <div class="e-t2" style="position:absolute;top:340px;left:0;right:0;text-align:center;{AS};font-weight:300;font-size:50px;color:{E['soft']}" dir="rtl">שני קווים. נקודת מפגש אחת.</div>
+  </div>
+  {meaning('e', 12.0, 'ב־' + nm('ELVÉA°') + ' הוא', 'הוכחה.', FX_E)}
   <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
     <path class="e-l1" d="{L1}" pathLength="1" fill="none" stroke="{E['olive']}" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 1"></path>
     <path class="e-l2" d="{L2}" pathLength="1" fill="none" stroke="{E['olive']}" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 1"></path>
   </svg>
-  <div class="e-glow" style="position:absolute;left:460px;top:1065px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,250,232,.9) 0%,rgba(233,218,188,.45) 40%,rgba(233,218,188,0) 70%)"></div>
-  {say('e', T2 + .7, 'ELVÉA° · BOTANICAL SKIN SCIENCE', 'ב־' + nm('ELVÉA°') + ' הוא', 'הוכחה.',
-       f'<div style="{AS};font-weight:300;font-size:44px;line-height:90px;color:{E["olive"]}" dir="rtl">טבע ומדע. נקודת מפגש אחת.</div>',
-       'בוחרת בו מי שרוצה טבע,<br>רק כשהמדע חתום עליו.', FX_E)}
-</section>{ring_svg('w2', 540, 1145)}'''
+  <div class="e-glow" style="position:absolute;left:470px;top:940px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,250,232,.95) 0%,rgba(233,218,188,.55) 40%,rgba(233,218,188,0) 70%)"></div>
+  <div class="e-pf" style="position:absolute;top:1530px;left:0;right:0;text-align:center;{AS};font-weight:300;font-size:44px;color:{E['olive']}" dir="rtl">טבע ומדע. נקודת מפגש אחת.</div>
+  {chooser('e', 13.3, 'בוחרת בו מי שרוצה טבע,<br>רק כשהמדע חתום עליו.', FX_E)}
+</section>{ring_svg('w2', 540, 1010)}'''
 
-# ════════ WORLD 3 · ORÉVA° — "הידיים שלה" (15.1–20.5) ════════
-T3 = 15.1
-portal('w3', T3, 540, 1145)
-kf('o-pan', [(T3, 'transform:translateX(-200px) scale(1.06)'), (T3 + 1.6, 'transform:translateX(-330px) scale(1)')], tf='linear', origin='0 60%')
-fade_in('o-first', T3 + .5)
-kf('o-hands', [(T3 + 1.5, 'opacity:1'), (T3 + 1.9, 'opacity:0')])
-kf('o-rise', [(T3 + 1.6, 'opacity:0;transform:translateY(140px)'), (T3 + 2.2, 'opacity:1;transform:none')], tf='cubic-bezier(.2,.7,.2,1)')
-kf('o-rib', [(T3 + 1.8, 'stroke-dashoffset:1'), (T3 + 3.2, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
-RIB = 'M-60 940 C200 1140 360 720 520 820 C700 930 840 660 1140 740'
-FX_O = dict(eb=f"{CG};font-size:34px;letter-spacing:.3em;color:{O['cop']}", l1=f"{FR};font-weight:400;font-size:58px;color:{O['ink']}",
-            l2=f"{FR};font-weight:500;font-size:112px;color:{O['deep']}", ch=f"{HB};font-weight:300;font-size:42px;color:{O['ink']}")
+# ════════ WORLD 3 · ORÉVA° 14.9–20.3 — "הידיים שלה" ════════
+portal('w3', 14.9, 540, 960)
+kf('o-pan', [(15.2, 'transform:translateX(-300px)'), (16.8, 'transform:translateX(-1040px)')], tf='cubic-bezier(.5,0,.3,1)')
+fade_in('o-t1', 15.1); fade_in('o-t2', 15.4); fade_in('o-t3', 16.3)
+kf('o-b', [(16.9, 'opacity:0'), (17.3, 'opacity:1')])
+kf('o-bottle', [(17.0, 'opacity:0;transform:translateY(160px)'), (17.8, 'opacity:1;transform:none')], tf='cubic-bezier(.2,.7,.2,1)')
+kf('o-rib', [(17.1, 'stroke-dashoffset:1'), (18.4, 'stroke-dashoffset:0')], tf='cubic-bezier(.5,0,.3,1)')
+fade_in('o-pf', 18.1)
+RIB = 'M-60 1200 C200 1400 400 900 560 980 C720 1060 860 820 1140 860'
+FX_O = dict(l1=f"{FR};font-weight:400;font-size:56px;color:{O['ink']}", l2=f"{FR};font-weight:500;font-size:110px;color:{O['deep']}",
+            ch=f"{HB};font-weight:300;font-size:42px;color:{O['ink']}")
 W3 = f'''
-<section class="w3 stack" style="background:radial-gradient(ellipse at 50% 60%,#FBF3EC 0%,{O['blush']} 62%,#E2B6A2 100%)">
-  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="o-rib" d="{RIB}" pathLength="1" fill="none" stroke="{O['cop']}" stroke-width="12" stroke-linecap="round" stroke-dasharray="1 1" opacity=".7"></path></svg>
-  {bottle('o', T3 + 2.3, rise='o-rise')}
-  {say('o', T3 + 2.3, 'ORÉVA° · SKIN STUDIO', 'ב־' + nm('ORÉVA°') + ' הוא', 'הידיים שלה.',
-       f'<div style="{FR};font-weight:400;font-size:44px;line-height:90px;color:{O["cop"]}" dir="rtl">קודם הידיים. אחר כך הבקבוק.</div>',
-       'בוחרת בו מי שסומכת על הקוסמטיקאית שלה,<br>גם כשהיא בבית.', FX_O)}
-  <div class="o-hands stack">
-    <div class="o-pan" style="position:absolute;left:0;top:0;width:3413px;height:1920px"><img src="a/founder-cream-on-hand.webp" alt="" style="width:100%;height:100%;display:block"></div>
-    <div style="position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(rgba(246,239,231,.95) 35%,rgba(246,239,231,0))"></div>
-    <div class="o-first" style="position:absolute;top:200px;left:0;right:0;text-align:center;{FR};font-weight:500;font-size:96px;color:{O['ink']}" dir="rtl">קודם הידיים.</div>
+<section class="w3 stack" style="background:{O['bg']}">
+  <div class="o-pan" style="position:absolute;left:0;top:0;width:3413px;height:1920px"><img src="a/founder-cream-on-hand.webp" alt="" style="width:100%;height:100%;display:block"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:620px;background:linear-gradient(rgba(246,239,231,.96) 30%,rgba(246,239,231,0))"></div>
+  <div class="o-t1" style="position:absolute;top:150px;left:0;right:0;text-align:center;{CG};font-weight:400;font-size:104px;letter-spacing:.22em;line-height:1;color:{O['ink']}" dir="ltr">ORÉVA°</div>
+  <div class="o-t2" style="position:absolute;top:290px;right:110px;{FR};font-weight:500;font-size:76px;color:{O['ink']}" dir="rtl">קודם הידיים.</div>
+  <div class="o-t3" style="position:absolute;top:390px;left:110px;{FR};font-weight:500;font-size:76px;color:{O['deep']}" dir="rtl">אחר כך הבקבוק.</div>
+  <div class="o-b stack" style="background:radial-gradient(ellipse at 50% 55%,#FBF3EC 0%,{O['blush']} 62%,#E2B6A2 100%)">
+    <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="o-rib" d="{RIB}" pathLength="1" fill="none" stroke="{O['cop']}" stroke-width="14" stroke-linecap="round" stroke-dasharray="1 1" opacity=".75"></path></svg>
+    <div style="position:absolute;left:350px;top:1350px;width:380px;height:56px;border-radius:50%;background:radial-gradient(rgba(143,90,60,.35),rgba(143,90,60,0) 70%)"></div>
+    <div class="o-bottle" style="position:absolute;left:335px;top:470px;width:411px;height:900px"><img src="a/p-glow.webp" alt="" style="width:100%;height:100%;display:block"></div>
+    <div class="o-pf" style="position:absolute;top:1460px;left:0;right:0;text-align:center;{FR};font-weight:400;font-size:42px;color:{O['cop']}" dir="rtl">מה שקורה בחדר הטיפולים, קורה בבקבוק.</div>
+    {meaning('o', 17.3, 'ב־' + nm('ORÉVA°') + ' הוא', 'הידיים שלה.', FX_O)}
+    {chooser('o', 18.4, 'בוחרת בו מי שסומכת על הקוסמטיקאית שלה,<br>גם כשהיא בבית.', FX_O)}
   </div>
-</section>{ring_svg('w3', 540, 1145)}'''
+</section>{ring_svg('w3', 540, 960)}'''
 
-# HUD over the three worlds
-window('hud', 5.2, 20.0, .35)
+# HUD over the three worlds (name · number · the shared price)
+window('hud', 5.0, 20.0, .35)
 HUD = f'''
 <div class="hud stack">
   <div style="position:absolute;top:44px;right:44px;height:64px;padding:0 26px;box-sizing:border-box;background:rgba(250,248,243,.9);border:1px solid #D4C9BC;border-radius:999px;display:flex;align-items:center;gap:14px" dir="rtl">
-    <span style="font-size:22px;font-weight:500;color:{S_COP}">עולם</span>
-    <span style="position:relative;width:420px;height:40px;display:block">
-      <span class="hu1" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600">1/3</b> · <span dir="ltr">ROSÉE°</span> · עולם מותג 15</span>
-      <span class="hu2" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600">2/3</b> · <span dir="ltr">ELVÉA°</span> · עולם מותג 14</span>
-      <span class="hu3" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600">3/3</b> · <span dir="ltr">ORÉVA°</span> · עולם מותג 24</span>
+    <span style="position:relative;width:560px;height:40px;display:block">
+      <span class="hu1" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600;color:{S_COP}">1/3</b> · {nm('ROSÉE°')} · עולם מותג 15 · אותו סרום, ₪189</span>
+      <span class="hu2" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600;color:{S_COP}">2/3</b> · {nm('ELVÉA°')} · עולם מותג 14 · אותו סרום, ₪189</span>
+      <span class="hu3" style="position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:24px;color:{S_INK}"><b style="font-weight:600;color:{S_COP}">3/3</b> · {nm('ORÉVA°')} · עולם מותג 24 · אותו סרום, ₪189</span>
     </span>
   </div>
-  <div style="position:absolute;bottom:64px;left:0;right:0;margin:0 auto;width:max-content;padding:16px 34px;background:rgba(250,248,243,.92);border:1px solid #D4C9BC;border-radius:999px;font-size:28px;color:{S_INK}" dir="rtl">אותו סרום · 30ml · <b style="color:{S_DARK}">₪189</b></div>
 </div>'''
-window('hu1', 5.2, 9.9 + .6, .2); window('hu2', 10.7, 15.1 + .6, .2); window('hu3', 15.9, 20.3, .2)
+window('hu1', 5.0, 10.2, .2); window('hu2', 10.4, 15.4, .2); window('hu3', 15.6, 20.2, .2)
 
-# ════════ LA PRISME 20.3–25.6: the same bottle on every face, one word under it ════════
+# ════════ LA PRISME 20.3–25.6 — the real products, one word per face ════════
 FACES = [  # front order: ORÉVA → ROSÉE → ELVÉA
-    dict(k='o', word='הידיים', wst=f"{FR};font-weight:500;font-size:104px", name='ORÉVA°', nst=f"{CG};font-size:40px;letter-spacing:.24em",
-         top=f"radial-gradient(ellipse at 50% 60%,#FBF3EC,{O['blush']} 75%)", panel=O['cop'], ink='#FBF1E8', sub='#F6DCCB'),
-    dict(k='r', word='הבוקר', wst=f"{AS};font-weight:300;font-size:112px", name='ROSÉE°', nst=f"{CG};font-style:italic;font-size:48px",
-         top='linear-gradient(#EBCFD3,#F8E7D9)', panel=R['ink'], ink='#F7E3E1', sub=R['rose']),
-    dict(k='e', word='ההוכחה', wst=f"{AS};font-weight:600;font-size:100px", name='ELVÉA°', nst=f"{CG};font-weight:500;font-size:42px;letter-spacing:.16em",
-         top=f"radial-gradient(circle at 15% 15%,#C9D1B0 0,rgba(201,209,176,0) 55%),{E['bg']}", panel=E['deep'], ink=E['nectar'], sub=E['sage']),
+    dict(k='o', word='הידיים', wst=f"{FR};font-weight:500;font-size:100px", name='ORÉVA°', nst=f"{CG};font-size:40px;letter-spacing:.22em", panel=O['cop'], ink='#FBF1E8', sub='#FBE6D8',
+         photo=f'<div class="stack" style="background:radial-gradient(ellipse at 50% 60%,#FBF3EC,{O["blush"]} 70%)"></div><img src="a/p-glow.webp" alt="" style="position:absolute;left:186px;top:40px;width:268px;height:587px">'),
+    dict(k='r', word='הבוקר', wst=f"{AS};font-weight:300;font-size:108px", name='ROSÉE°', nst=f"{CG};font-style:italic;font-size:50px", panel=R['ink'], ink='#F7E3E1', sub=R['rose'],
+         photo='<img src="a/reveil.webp" alt="" class="cover" style="object-position:50% 60%">'),
+    dict(k='e', word='ההוכחה', wst=f"{AS};font-weight:600;font-size:98px", name='ELVÉA°', nst=f"{CG};font-weight:500;font-size:42px;letter-spacing:.12em", panel=E['deep'], ink=E['nectar'], sub='#E4E8D2',
+         photo='<img src="a/hero-5-bottle.webp" alt="" class="cover" style="object-position:83% 50%">'),
 ]
 
 
 def face(f):
     return f'''<div style="position:absolute;inset:0;border-radius:6px;overflow:hidden;background:{f['panel']}">
-      <div style="position:absolute;left:0;top:0;width:640px;height:720px;background:{f['top']}">{bottle(f['k'], None, left=185, top=60, scale=.75)}</div>
-      <div style="position:absolute;left:0;right:0;top:720px;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
+      <div style="position:absolute;left:0;top:0;width:640px;height:700px;overflow:hidden">{f['photo']}</div>
+      <div style="position:absolute;left:0;right:0;top:700px;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center">
         <div style="{f['wst']};line-height:1;color:{f['sub']}" dir="rtl">{f['word']}</div>
         <div style="{f['nst']};line-height:1;color:{f['ink']}" dir="ltr">{f['name']}</div>
         <div style="{HB};font-size:24px;letter-spacing:.14em;color:{f['ink']};opacity:.7" dir="rtl">30ml · ₪189</div>
