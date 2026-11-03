@@ -392,6 +392,57 @@ footer.studio a{color:inherit}
 .vit div b{font-family:var(--font-body-en);font-weight:500;font-size:.8rem;letter-spacing:.12em;color:var(--ink)}
 .vit div.now{box-shadow:0 0 0 1px var(--gold),0 0 30px rgba(217,178,106,.35)}
 .vit div.now::after{content:"עכשיו בחלון";position:absolute;top:6px;font-size:.58rem;color:var(--gold)}
+/* ---- sans le nom: the cover test, the name comes off every touchpoint ---- */
+.sans{background:#1E0F0E;padding:clamp(56px,10vh,120px) var(--gutter) clamp(24px,4vh,48px);border-top:1px solid rgba(217,178,106,.14)}
+.sn-head{text-align:center;max-width:660px;margin:0 auto}
+.sn-head h2{font-family:var(--font-display);font-weight:500;text-wrap:balance;font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin-top:12px}
+.sn-head h2 .g{color:var(--gold)}
+.sn-head p{margin-top:12px;color:var(--ink-soft);font-weight:300;line-height:1.7}
+.sn-ctl{display:flex;flex-direction:column;align-items:center;gap:12px;margin:clamp(22px,4vh,36px) auto clamp(28px,5vh,48px)}
+.sn-btn{display:inline-flex;align-items:center;gap:12px;font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:1px solid rgba(217,178,106,.6);border-radius:999px;padding:10px 22px 10px 14px;cursor:pointer;transition:background .4s,border-color .4s}
+.sn-btn:hover{border-color:var(--gold)}
+.sn-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sn-sw{width:42px;height:22px;border-radius:999px;background:rgba(246,238,228,.14);position:relative;flex:none;transition:background .4s}
+.sn-sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--ink);transition:inset-inline-start .4s cubic-bezier(.6,0,.2,1),background .4s}
+.sn-btn[aria-pressed="true"]{background:rgba(217,178,106,.1)}
+.sn-btn[aria-pressed="true"] .sn-sw{background:var(--gold)}
+.sn-btn[aria-pressed="true"] .sn-sw::after{inset-inline-start:23px;background:#1E0F0E}
+.sn-status{font-size:.92rem;color:var(--ink-soft);font-weight:300;min-height:1.6em;text-align:center}
+.sn-status b{font-family:var(--font-body-en);font-weight:500;color:var(--gold);letter-spacing:.06em}
+.sn-grid{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,2.4vw,32px)}
+.sn-tile{flex:0 0 calc((100% - 2*clamp(18px,2.4vw,32px))/3);display:grid;gap:12px;margin:0}
+.sn-pic{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#2A1413;box-shadow:inset 0 0 0 1px rgba(217,178,106,.18)}
+.sn-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sn-pic img.sn-off{opacity:0;transition:opacity .7s ease .35s}
+.sn-pic .sn-veil{position:absolute;left:var(--x);top:var(--y);width:var(--w,34%);height:9%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(217,178,106,.75),rgba(217,178,106,.25) 60%,transparent);filter:blur(2px)}
+.sans.is-off .sn-pic img.sn-off{opacity:1}
+.sans.is-off .sn-veil{animation:snVeil 1.2s ease both}
+.sans .sn-tile:nth-child(2) *{transition-delay:.5s;animation-delay:.15s}
+.sans .sn-tile:nth-child(3) *{transition-delay:.65s;animation-delay:.3s}
+.sans .sn-tile:nth-child(4) *{transition-delay:.8s;animation-delay:.45s}
+.sans .sn-tile:nth-child(5) *{transition-delay:.95s;animation-delay:.6s}
+.sans:not(.is-off) .sn-tile *{transition-delay:0s}
+@keyframes snVeil{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.3)}40%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.15)}}
+.sn-tile h3{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:1.45rem}
+.sn-tile h3 span{font-family:var(--font-body-he);font-style:normal;font-size:.58em;color:var(--ink-soft);margin-inline-start:8px}
+.sn-tile .chips{margin-top:6px}
+.sn-tile .chips span{transition:background .5s ease,color .5s ease,border-color .5s ease}
+.sans.is-off .sn-tile .chips span{background:rgba(217,178,106,.16);border-color:var(--gold)}
+.sn-foot{max-width:640px;margin:clamp(36px,6vh,56px) auto 0;text-align:center;padding-top:clamp(22px,4vh,32px);border-top:1px solid rgba(217,178,106,.28)}
+.sn-foot p{color:var(--ink-soft);font-weight:300;line-height:1.75}
+.sn-foot p b{color:var(--ink);font-weight:500}
+.sn-foot a{display:inline-block;margin-top:14px;color:var(--gold);font-size:.98rem;text-decoration:none;border-bottom:1px solid rgba(217,178,106,.5);padding-bottom:2px}
+.sn-foot a:hover{border-color:var(--gold)}
+@media (max-width:860px){
+  .sn-grid{gap:14px}
+  .sn-tile{flex-basis:calc((100% - 14px)/2)}
+  .sn-tile:last-child{flex-basis:100%}
+  .sn-tile:last-child .sn-pic{aspect-ratio:16/11}
+  .sn-tile h3{font-size:1.2rem}
+  .sn-tile .chips span{font-size:.7rem;padding:2px 8px}
+}
+@media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-tile .chips span,.sn-sw,.sn-sw::after{transition:none}.sans.is-off .sn-veil{animation:none}}
 @media (max-width:860px){.ail-grid{grid-template-columns:minmax(0,1fr);max-width:440px}}
 @media (prefers-reduced-motion:reduce){.hx-ch article,.hx-ring .q,.hx-glow{transition:none}}
 .book-link{display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:22px 26px;background:#fff;border:1px solid #C9D2DC;border-inline-start:3px solid #853A26;text-decoration:none;color:#1E2A38;transition:border-color .3s,box-shadow .3s}
@@ -536,7 +587,7 @@ footer.studio a{color:inherit}
         <article data-i="4">
           <div class="hx-n" dir="ltr">05 / 05</div>
           <h3 lang="fr">L'Enseigne<span>השלט</span></h3>
-          <p>בסמטה ביפו, השלט הוא שעון השמש עצמו. בלי מילה, רק ארבעה צבעים ושנתות זהב, וכבר יודעים לאן נכנסים.</p>
+          <p>בסמטה ביפו, השלט הוא שעון השמש עצמו. ארבעה צבעים ושנתות זהב, וכבר יודעים לאן נכנסים, עוד לפני שקוראים את השם.</p>
           <div class="chips"><span>החוגה</span><span>קו הזהב</span></div>
         </article>
       </div>
@@ -554,6 +605,85 @@ footer.studio a{color:inherit}
     </div>
   </div>
 </section>
+
+<section class="sans" id="sans" aria-labelledby="sn-title">
+  <div class="sn-head">
+    <div class="eyebrow">Sans le nom · מבחן הכיסוי</div>
+    <h2 id="sn-title">מכסים את השם. <span class="g">עדיין <span dir="ltr">ENCORE°</span>&lrm;.</span></h2>
+    <p>אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מכל חמש נקודות המגע, ובדקי מה נשאר.</p>
+  </div>
+  <div class="sn-ctl">
+    <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
+    <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל חמש נקודות המגע.</p>
+  </div>
+  <div class="sn-grid" id="snGrid">
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/box-open.webp" width="900" height="1125" loading="lazy" alt="קופסת ENCORE° עגולה פתוחה, השם מוטבע בפנים המכסה">
+        <img class="sn-off" src="assets/touchpoints/box-open-sans.webp" width="900" height="1125" loading="lazy" alt="אותה קופסה בלי השם: ארבעה תאים, קו זהב ותאריך חרוט">
+        <i class="sn-veil" style="--x:50.8%;--y:15.3%;--w:26%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">La Boîte<span>הקופסה</span></h3><div class="chips"><span>ארבעה תאים, ארבע שעות</span><span>קו הזהב</span><span>התאריך החרוט</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/tag-cuff.webp" width="900" height="1125" loading="lazy" alt="תווית ENCORE° ליד צמיד זהב רחב">
+        <img class="sn-off" src="assets/touchpoints/tag-cuff-sans.webp" width="900" height="1125" loading="lazy" alt="אותה תווית בלי השם: רק 18:00 · Lave על נייר בצבע השקיעה">
+        <i class="sn-veil" style="--x:33.6%;--y:61.5%;--w:34%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">L'Étiquette<span>התווית</span></h3><div class="chips"><span>חותמת השעה</span><span>צבע השעה</span><span>שם התכשיט</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/bag-street.webp" width="900" height="1125" loading="lazy" alt="שקית ENCORE° בצבע שקיעה ברחוב">
+        <img class="sn-off" src="assets/touchpoints/bag-street-sans.webp" width="900" height="1125" loading="lazy" alt="אותה שקית בלי השם: צבע השקיעה וחותמת 18:00">
+        <i class="sn-veil" style="--x:55.6%;--y:61.2%;--w:26%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">Le Sac<span>השקית</span></h3><div class="chips"><span>צבע השעה</span><span>חותמת השעה</span><span>ידית הזהב</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/bags-four.webp" width="900" height="1125" loading="lazy" alt="ארבע שקיות ENCORE° בארבעת צבעי השעות וקופסה עגולה">
+        <img class="sn-off" src="assets/touchpoints/bags-four-sans.webp" width="900" height="1125" loading="lazy" alt="ארבע השקיות והקופסה בלי השם: ארבעה צבעים וארבע שעות">
+        <i class="sn-veil" style="--x:50%;--y:52%;--w:92%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">Les Quatre Heures<span>ארבע השעות</span></h3><div class="chips"><span>ארבעה צבעי השעות</span><span>חותמת השעה</span><span>החוגה</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <img src="assets/touchpoints/sign.webp" width="900" height="1125" loading="lazy" style="object-position:60% 22%" alt="שלט ENCORE° עגול בסמטה ביפו">
+        <img class="sn-off" src="assets/touchpoints/sign-sans.webp" width="900" height="1125" loading="lazy" style="object-position:60% 22%" alt="אותו שלט בלי השם: חוגה בארבעה צבעים ושנתות זהב">
+        <i class="sn-veil" style="--x:60%;--y:25.2%;--w:30%" aria-hidden="true"></i>
+      </div>
+      <figcaption><h3 lang="fr">L'Enseigne<span>השלט</span></h3><div class="chips"><span>החוגה</span><span>ארבעה צבעי השעות</span><span>שנתות הזהב</span></div></figcaption>
+    </figure>
+  </div>
+  <div class="sn-foot">
+    <p>הכלל מספר המותג: <b>מכסים את השם, ונשארים לפחות שלושה קודים.</b> מה שמזהה את <span dir="ltr">ENCORE°</span>&lrm; הוא לא הלוגו. זו השעה, שחוזרת בצבע, בחותמת ובחוגה.</p>
+    <a href="https://hagitantebi.co.il/brand-world-logo.html?utm_source=encore&amp;utm_medium=world&amp;utm_campaign=cover-test" onclick="if(typeof fbq==='function')fbq('trackCustom','EncoreCoverToLogo')">ואצלך? אם נסתיר את הלוגו, עדיין יזהו אותך? ←</a>
+  </div>
+</section>
+
+<script>
+// ---- sans le nom: the name comes off every touchpoint, the codes stay ----
+(()=>{
+  const sec=document.getElementById('sans'), btn=document.getElementById('snBtn'), lbl=document.getElementById('snLbl'), st=document.getElementById('snStatus');
+  const codes=sec.querySelectorAll('.sn-tile .chips span').length;
+  let touched=false;
+  function set(off){
+    sec.classList.toggle('is-off',off);
+    btn.setAttribute('aria-pressed',off);
+    lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
+    st.innerHTML=off?`השם ירד מכל חמש נקודות המגע. נשארו <b>${codes}</b> קודים, ועדיין ברור של מי הם.`:'השם מופיע על כל חמש נקודות המגע.';
+  }
+  btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','EncoreCoverTest')});
+  // the first time the grid is in view, the test runs by itself once
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{threshold:.25});
+    io.observe(document.getElementById('snGrid'));
+  }
+})();
+</script>
 
 <section class="ailleurs" id="ailleurs" aria-labelledby="ail-title">
   <div class="ail-head">
@@ -651,7 +781,7 @@ footer.studio a{color:inherit}
       <a class="flogo" href="#hero" dir="ltr">ENCORE°<small>MAISON DE BIJOUX</small></a>
       <p class="fl"><span dir="ltr" lang="fr">Encore toi.</span> עוד את, תמיד את.<br>עשרים תכשיטים בזהב 18K, ארבע שעות, וסט אחד שלא יורד.</p>
     </div>
-    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#hors">מחוץ לקופסה</a></li></ul></div>
+    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#hors">מחוץ לקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li></ul></div>
     <div><h3>Le Jour</h3><ul><li><a href="#set"><i style="background:#6E4E4A"></i>06:00 · שחר · טבעות</a></li><li><a href="#set"><i style="background:#34405A"></i>12:00 · צהריים · שרשראות</a></li><li><a href="#set"><i style="background:#853A26"></i>18:00 · שקיעה · צמידים</a></li><li><a href="#set"><i style="background:#241212"></i>00:00 · לילה · עגילים</a></li></ul></div>
   </div>
   <div class="legal">
@@ -669,7 +799,7 @@ footer.studio a{color:inherit}
     <p><b>הטיפה שנוחתת:</b> העמוד נפתח בתליון אחד שמרחף באור של שחר. הגלילה מורידה אותו אל הצוואר, והשרשרת נסגרת. שני קטעי וידאו, ריחוף ונחיתה, מחוברים בחיתוך על התליון עצמו, כך שהוא נשאר באותה נקודה במסך כשהסצנה מתחלפת סביבו.</p>
     <p><b>השמש שמסתובבת:</b> עשרים תכשיטים, חמישה לכל שעה, יושבים על חצי שמש שמסתובבת עם הגלילה. הם עולים מימין, כמו שמש במזרח, ושוקעים משמאל, והרקע עובר משחר לצהריים, לשקיעה וללילה. גם הצבעים של המותג לא נבחרו כפלטה אחת. הם ארבע שעות.</p>
     <p><b>הסט והקופסה:</b> ב״הסט שלך״ בוחרים תכשיט אחד לכל שעה על שעון שמש, והסט נכנס לקופסה עגולה בתלת־ממד שהמכסה שלה הוא אותו שעון. היא נפתחת בסיבוב, וכשזו מתנה, התאריך נחרט בפנים המכסה. מי שקונה לעצמה ומי שקונה בשבילה עוברים באותו עולם, עם סיום אחר.</p>
-    <p><b>מחוץ לקופסה:</b> נקודות המגע, הקופסה, התווית, השקית, ארבע השעות והשלט ביפו, נכנסות לחלון עגול באותה חוגה, ומחוג זהב סוחף כל אחת מהן לתוך השעון. אחריהן שלושה כיוונים שעוד לא צולמו: תעודה שרושמת שעה, הודעה שחוזרת שנה אחרי התאריך החרוט, וחלון ראווה שמתחלף כל שש שעות. זה המבחן של שפה: היא ממשיכה לייצר כיוונים חדשים בלי להמציא את עצמה מחדש.</p>
+    <p><b>מחוץ לקופסה:</b> נקודות המגע, הקופסה, התווית, השקית, ארבע השעות והשלט ביפו, נכנסות לחלון עגול באותה חוגה, ומחוג זהב סוחף כל אחת מהן לתוך השעון. אחר כך מורידים את השם מכולן: מבחן הכיסוי מספר המותג, בעמוד עצמו. בכל אחת נשארים שלושה קודים, ואף אחת לא צריכה את הלוגו כדי שיזהו אותה. אחריהן שלושה כיוונים שעוד לא צולמו: תעודה שרושמת שעה, הודעה שחוזרת שנה אחרי התאריך החרוט, וחלון ראווה שמתחלף כל שש שעות. זה המבחן של שפה: היא ממשיכה לייצר כיוונים חדשים בלי להמציא את עצמה מחדש.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא קטלוג תכשיטים, אלא פעולה שהלקוחה עושה בעצמה: לסובב את היום, לבחור את השעה שלה, לסגור את הקופסה. מי שנכנסה פעם אחת לעולם הזה מזהה אותו בכל תוכן שיבוא אחריו, בפוסט, בשקית, בכרטיס. כולם ממשיכים את אותו יום, ולכן אף אחד מהם לא צריך להמציא את עצמו מחדש. וזה מה שמוציא מותג מטבלת ההשוואה: אי אפשר להשוות יום שלם למחיר של שרשרת.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
