@@ -351,6 +351,54 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   @media(max-width:800px){footer.brand .cols{grid-template-columns:1fr 1fr}}
 
   /* ---------- 07 · studio layer (studio palette, as on every world) ---------- */
+  /* ---- sans le nom: the cover test ---- */
+  #sans{background:var(--creme);color:var(--cacao);padding:clamp(70px,11vh,130px) var(--gutter) clamp(70px,11vh,130px)}
+  .sn-head{text-align:center;max-width:680px;margin:0 auto}
+  .sn-head h2{font-size:clamp(32px,4.2vw,58px);text-wrap:balance}
+  .sn-head h2 b{color:var(--rose);font-weight:inherit}
+  .sn-head .lead{margin:16px auto 0;max-width:46ch}
+  .sn-ctl{display:flex;flex-direction:column;align-items:center;gap:12px;margin:clamp(24px,4vh,38px) auto clamp(30px,5vh,52px)}
+  .sn-btn{display:inline-flex;align-items:center;gap:12px;font:inherit;font-weight:600;font-size:15px;color:var(--cacao);background:transparent;border:1px solid var(--cacao);border-radius:999px;padding:10px 22px 10px 14px;cursor:pointer;transition:background .4s,color .4s}
+  .sn-btn:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+  .sn-sw{width:42px;height:22px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .4s}
+  .sn-sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--cacao);transition:inset-inline-start .4s var(--ease),background .4s}
+  .sn-btn[aria-pressed="true"]{background:var(--cacao);color:var(--creme)}
+  .sn-btn[aria-pressed="true"] .sn-sw{background:var(--rose)}
+  .sn-btn[aria-pressed="true"] .sn-sw::after{inset-inline-start:23px;background:var(--creme)}
+  .sn-status{font-size:16px;min-height:1.7em;text-align:center;max-width:52ch;line-height:1.7}
+  .sn-status b{color:var(--rose)}
+  .sn-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.6vw,36px)}
+  .sn-tile{margin:0;display:grid;gap:12px;align-content:start}
+  .sn-pic{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:var(--poudre)}
+  .sn-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .sn-pic .sn-off img{opacity:0;transition:opacity .7s ease .35s}
+  .sn-veil{position:absolute;left:var(--x);top:var(--y);width:var(--w,30%);height:var(--h,12%);transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;
+    background:radial-gradient(closest-side,rgba(243,228,223,.95),rgba(201,137,137,.35) 60%,transparent);filter:blur(2px)}
+  .sn-badge{position:absolute;top:12px;inset-inline-start:12px;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--cacao);color:var(--creme);opacity:0;transform:translateY(-6px);transition:opacity .5s ease,transform .5s ease}
+  .sn-tile.fail .sn-badge{background:var(--creme);color:var(--cacao);border:1px dashed var(--cacao)}
+  #sans.is-off .sn-pic .sn-off img{opacity:1}
+  #sans.is-off .sn-veil{animation:snVeil 1.2s ease both}
+  #sans.is-off .sn-badge{opacity:1;transform:none;transition-delay:1.1s}
+  #sans .sn-tile:nth-child(2) *{transition-delay:.5s;animation-delay:.15s}
+  #sans .sn-tile:nth-child(3) *{transition-delay:.65s;animation-delay:.3s}
+  #sans .sn-tile:nth-child(4) *{transition-delay:.8s;animation-delay:.45s}
+  #sans.is-off .sn-tile:nth-child(n) .sn-badge{transition-delay:1s}
+  #sans:not(.is-off) .sn-tile *{transition-delay:0s}
+  @keyframes snVeil{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.3)}40%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.1)}}
+  .sn-tile h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:26px;margin:0}
+  .sn-tile h3 span{font-family:var(--ui);font-style:normal;font-size:15px;font-weight:600;color:var(--rose);margin-inline-start:8px}
+  .sn-tile .codes{display:flex;flex-wrap:wrap;gap:6px}
+  .sn-tile .codes span{font-size:13px;border:1px solid var(--or-soft);border-radius:999px;padding:3px 11px;transition:background .5s ease,border-color .5s ease,opacity .5s ease}
+  #sans.is-off .sn-tile:not(.fail) .codes span{background:rgba(201,137,137,.18);border-color:var(--rose)}
+  #sans.is-off .sn-tile.fail .codes span{opacity:.55;border-style:dashed}
+  .sn-tile .note{font-size:15px;line-height:1.65;margin:0;opacity:.85}
+  .sn-tile.fail .note{display:none}
+  #sans.is-off .sn-tile.fail .note{display:block}
+  .sn-foot{max-width:640px;margin:clamp(40px,7vh,64px) auto 0;text-align:center;padding-top:clamp(24px,4vh,34px);border-top:1px solid var(--line)}
+  .sn-foot p{margin:0;line-height:1.75;font-size:17px}
+  .sn-foot a{display:inline-block;margin-top:16px;color:var(--cacao);font-weight:600;text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px}
+  @media (max-width:760px){.sn-grid{grid-template-columns:minmax(0,1fr);max-width:480px}.sn-tile h3{font-size:22px}}
+  @media (prefers-reduced-motion:reduce){.sn-pic .sn-off img,.sn-badge,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}#sans.is-off .sn-veil{animation:none}}
   .studio-note{background:#F3F5F8;color:#1E2A38;padding:clamp(70px,10vh,120px) var(--gutter)}
   .studio-note .inner{max-width:760px;margin:0 auto;display:grid;gap:20px}
   .studio-note .tag,.voisins .tag{font-family:var(--serif);letter-spacing:.34em;font-size:12px;color:#56697E;direction:ltr;text-align:right}
@@ -708,13 +756,83 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- 06b · SANS LE NOM: the cover test -->
+<section id="sans" aria-labelledby="sn-title">
+  <div class="sn-head">
+    <p class="eyebrow">Sans le nom · מבחן הכיסוי</p>
+    <h2 id="sn-title">מכסים את השם.<br><b>מה שבפנים נשאר.</b></h2>
+    <p class="lead">אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מהחזית, מהוויטרינה ומהקופסאות, ובדקי מה עוד אומר <span dir="ltr">MIEL°</span>&lrm;.</p>
+  </div>
+  <div class="sn-ctl">
+    <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
+    <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע בחזית ועל הקופסאות.</p>
+  </div>
+  <div class="sn-grid" id="snGrid">
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <picture><source media="(max-width:700px)" srcset="assets/03-maison-storefront-m.webp"><img src="assets/03-maison-storefront.webp" alt="חזית החנות של MIEL° עם השם על השלט" width="1448" height="1086" loading="lazy"></picture>
+        <picture class="sn-off"><source media="(max-width:700px)" srcset="assets/03-maison-storefront-sans-m.webp"><img src="assets/03-maison-storefront-sans.webp" alt="אותה חזית בלי השם: סוכך בפס של שכבות עוגה, ופרוסות בחלונות" width="1448" height="1086" loading="lazy"></picture>
+        <i class="sn-veil" style="--x:50%;--y:16%;--w:40%;--h:14%" aria-hidden="true"></i>
+        <span class="sn-badge" aria-hidden="true">עדיין <span dir="ltr">MIEL°</span></span>
+      </div>
+      <figcaption><h3 lang="fr">La Façade<span>החזית</span></h3><div class="codes"><span>סוכך בפס השכבות</span><span>פרוסות בחלון</span><span>זהב צהוב</span></div></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <picture><source media="(max-width:700px)" srcset="assets/05-maison-interior-m.webp"><img src="assets/05-maison-interior.webp" alt="הוויטרינה: חמש פרוסות החתימה על מעמדי זהב, החתך פונה החוצה" width="1448" height="1086" loading="lazy"></picture>
+        <span class="sn-badge" aria-hidden="true">עדיין <span dir="ltr">MIEL°</span></span>
+      </div>
+      <figcaption><h3 lang="fr">La Vitrine<span>הוויטרינה</span></h3><div class="codes"><span>החתך פונה החוצה</span><span>חמש החתימות</span><span>מעמדי זהב</span></div><p class="note">כאן לא היה שם מלכתחילה.</p></figcaption>
+    </figure>
+    <figure class="sn-tile">
+      <div class="sn-pic">
+        <picture><source media="(max-width:700px)" srcset="assets/01-maison-counter-m.webp"><img src="assets/01-maison-counter.webp" alt="בדלפק: הקונדיטורית מגישה קופסה לבנה עם פס השכבות וסרט ורוד, ולידה פרוסה" width="1448" height="1086" loading="lazy"></picture>
+        <span class="sn-badge" aria-hidden="true">עדיין <span dir="ltr">MIEL°</span></span>
+      </div>
+      <figcaption><h3 lang="fr">La Boîte<span>הקופסה מהדלפק</span></h3><div class="codes"><span>פס השכבות על הקופסה</span><span>סרט בוורוד אבקה</span><span>פרוסה לידה</span></div><p class="note">גם עליה אין שם. השכבות הן השם.</p></figcaption>
+    </figure>
+    <figure class="sn-tile fail">
+      <div class="sn-pic">
+        <picture><source media="(max-width:700px)" srcset="assets/02-maison-giftbox-m.webp"><img src="assets/02-maison-giftbox.webp" alt="קופסת מתנה לבנה עם סרט ורוד והשם MAISON MIEL בזהב" width="1448" height="1086" loading="lazy"></picture>
+        <picture class="sn-off"><source media="(max-width:700px)" srcset="assets/02-maison-giftbox-sans-m.webp"><img src="assets/02-maison-giftbox-sans.webp" alt="אותה קופסה בלי השם: קופסה לבנה וסרט ורוד, בלי שום דבר מבפנים" width="1448" height="1086" loading="lazy"></picture>
+        <i class="sn-veil" style="--x:69%;--y:50%;--w:22%;--h:16%" aria-hidden="true"></i>
+        <span class="sn-badge" aria-hidden="true">של מי זה?</span>
+      </div>
+      <figcaption><h3 lang="fr">Le Premier Essai<span>הקופסה שלא יצאה</span></h3><div class="codes"><span>קופסה לבנה</span><span>סרט ורוד</span></div><p class="note">בלי השם, זו קופסה יפה של כל קונדיטוריה. נשארו שני קודים, ושניהם של כולם. לכן היא לא יצאה מהסטודיו, והקופסה שבדלפק קיבלה את פס השכבות: מה שבפנים, גם מבחוץ.</p></figcaption>
+    </figure>
+  </div>
+  <div class="sn-foot">
+    <p><b>הכלל:</b> מכסים את השם, ונשארים לפחות שלושה קודים. מבחן הכיסוי לא רק מראה מה עובד. הוא גם מגלה מה עוד לא מוכן, לפני שזה יוצא לדפוס.</p>
+    <a href="https://hagitantebi.co.il/brand-world-logo.html?utm_source=miel&amp;utm_medium=world&amp;utm_campaign=cover-test" onclick="if(typeof fbq==='function')fbq('trackCustom','MielCoverToLogo')">ואצלך? אם נסתיר את הלוגו, עדיין יזהו אותך? ←</a>
+  </div>
+</section>
+
+<script>
+// ---- sans le nom: the name comes off; three tiles stay MIEL°, one turns into anyone's box ----
+(()=>{
+  const sec=document.getElementById('sans'), btn=document.getElementById('snBtn'), lbl=document.getElementById('snLbl'), st=document.getElementById('snStatus');
+  let touched=false;
+  function set(off){
+    sec.classList.toggle('is-off',off);
+    btn.setAttribute('aria-pressed',off);
+    lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
+    st.innerHTML=off?'השם ירד. <b>שלוש מתוך ארבע</b> עדיין <span dir="ltr">MIEL°</span>&lrm;. הרביעית היא קופסה של כל קונדיטוריה.':'השם מופיע בחזית ועל הקופסאות.';
+  }
+  btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','MielCoverTest')});
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{rootMargin:'0px 0px -35% 0px'});
+    io.observe(document.getElementById('snGrid'));
+  }
+})();
+</script>
+
 <footer class="brand" aria-label="Maison Miel footer">
   <div class="cols">
     <div>
       <a class="flogo" href="#top">MAISON MIEL<span style="color:var(--or)">°</span><small>PÂTISSERIE</small></a>
       <p style="margin-top:16px;max-width:34ch;opacity:.85">רומנטיקה מתחילה מבפנים.<br>חמש חתימות, שבעים ושתיים עוגות, ואחת שאת בונה.</p>
     </div>
-    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li></ul></div>
     <div><h4>Les Signatures</h4><ul><li><a href="#signatures"><i style="background:#E7C0BD"></i>La Rose · הוורודה</a></li><li><a href="#signatures"><i style="background:#F2E7D8"></i>Les Fleurs · הפרחונית</a></li><li><a href="#signatures"><i style="background:#7A4734"></i>Le Cacao · השוקולדית</a></li><li><a href="#signatures"><i style="background:#F1E1A6"></i>Le Citron · הלימונית</a></li><li><a href="#signatures"><i style="background:#C9CCA3"></i>La Pistache · הפיסטוקית</a></li></ul></div>
     <div><h4>La Maison</h4><ul><li>שדרות רוטשילד 48, תל אביב</li><li>ראשון–חמישי 8:00–19:00</li><li>שישי 8:00–14:00</li><li>שבת סגור. העוגה בבית.</li></ul></div>
   </div>
@@ -732,6 +850,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <p><span dir="ltr">MIEL°</span> הוא עולם מותג קונספט, מס' 24 בסדרה של Brand Worlds Studio. ההבטחה נוסחה קודם: <b>רומנטיקה מתחילה מבפנים.</b> ממנה נגזר האלמנט: הפרוסה. לא העוגה, לא הוורד, לא הקופסה, אלא החתך, כי כל בייקרי רומנטי מראה עוגה מבחוץ, ורק מה שבפנים הוא מה שזוכרים. מהאלמנט נגזר הסדר של העמוד: לבנות, לבחור, לחתוך, להגיש, לקחת הביתה.</p>
     <p><b>במה אחת, שלושה מצבים:</b> הסטנד לא זז מהמסך. קודם הגלילה בונה את עוגת החתימה, ביסקוויט, לב, ביסקוויט, לב, ביסקוויט, ואז הרובּ עוטף מלמטה למעלה והזר נוחת. אחר כך אותה במה עוברת ללקוחה עם ארבעה צ'יפים: שני ביסקוויטים, שלושה לבבות, שלושה רובּים, ארבעה זרים, שבעים ושתיים עוגות. ואז טאפ אחד חותך. <b>החתך תמיד אמיתי:</b> לא ציירנו פרוסה. שישה צילומים, אחד לכל שילוב של ביסקוויט ולב, מתחלפים לפי הבחירה, והזר שנבחר מונח מעליהם. הרובּ נשאר על העוגה השלמה, כי בחתך השפה ניטרלית בכוונה.</p>
     <p><b>מה שהמצלמה עשתה:</b> חמישה קליפים קצרים נוצרו מסטילים מאושרים. השולחן שמתמלא בהירו, הזר שנוחת בסוף הבנייה, הוורד שמזולף מקרוב, החיתוך וההגשה. שלושה מהם נגללים כפריימים בקנבס, והגלילה היא שממלאת, מנחיתה ומזלפת. שניים מתנגנים פעם אחת, כי חיתוך הוא רגע ולא תהליך. הסטנד הריק, שלא היה באף תמונה, נוצר מתוך הסטיל של העוגה הוורודה, ועל הסטנד הזה נופל הסטנד של הווידאו בדיוק. <b>חצי הירח:</b> חמש החתימות עומדות על קשת, הפעילה מלפנים, וכל אחת מגיעה בתורה לקדמת הבמה. הזהב כאן צהוב, לא נחושת, וזה מה שמפריד את MIEL° מהעולם השכן ÉTAGE°: שם סרט, כאן ממשק.</p>
+    <p><b>מבחן הכיסוי:</b> אחרי הקופסה מורידים את השם מהחזית, מהוויטרינה ומהקופסאות. שלוש נשארות <span dir="ltr">MIEL°</span>&lrm; בזכות השכבות והחתך. הרביעית, קופסת מתנה לבנה עם סרט, הופכת לקופסה של כל קונדיטוריה. היא נשארה בעמוד בכוונה, כי היא מראה מה המבחן תופס.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא מותג של עוגות. מותג שנותן ללקוחה חוויה, לחתוך את הפרוסה שלה. ברגע שהיא נכנסה לעולם הזה, היא תזהה אותו בכל תוכן שיבוא אחריו: הפרוסה, החתך, מה שבפנים. זו העקביות שנשמרת, ולא צריך להמציא כל פוסט מחדש. כמו סרטון שנחשפים אליו שוב ושוב, ובכל פעם אותה פעולה נעימה. ככה נוצר מקום שזוכרים ומזהים.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>

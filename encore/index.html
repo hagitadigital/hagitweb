@@ -679,7 +679,7 @@ footer.studio a{color:inherit}
   btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','EncoreCoverTest')});
   // the first time the grid is in view, the test runs by itself once
   if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{threshold:.25});
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{rootMargin:'0px 0px -35% 0px'});
     io.observe(document.getElementById('snGrid'));
   }
 })();
