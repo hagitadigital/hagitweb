@@ -1,8 +1,10 @@
 # Briefs, specs and client files — NOT in this repo
 
-This repo is public (GitHub Pages). Briefs, specs, campaign docs, SEO plans, keyword registry and the site audit
-live in the **private** repo `hagitadigital/brandos`, folder `briefs/` (index: `briefs/README.md`;
-the work plan after the Oct 2026 audit: `briefs/site-audit-2026-10/SPEC.md`).
+This repo is public (GitHub Pages), and so is **every branch** in it. Briefs, specs, work plans, campaign docs
+(Meta setup, ad copy, comment replies), campaign analyses, campaign goals/KPIs, SEO plans, keyword registry and the
+site audit live **only** in the **private** repo `hagitadigital/brandos`, folder `briefs/` (index: `briefs/README.md`;
+the work plan after the Oct 2026 audit: `briefs/site-audit-2026-10/SPEC.md`). Not here, not on a `claude/*` branch,
+not inside `campaign-drop/`.
 Hila Sharon's client site is there too: `clients/hila-sharon/`.
 Read and write briefs there (in a cloud session, attach the repo with add_repo); never add `.briefs/` or client files back here.
 
@@ -12,6 +14,8 @@ Applies to every session, local or cloud (claude.ai/code).
 
 - **Cloud session:** put everything you make for a campaign under `campaign-drop/<YYYY-MM-campaign>/`
   (e.g. `campaign-drop/2026-10-choose/retarget/…`): renders (.mp4) plus their source (html/js) in `src/`.
+  `campaign-drop/` holds renders, their source and short technical render notes only. Ad copy, replies,
+  setup, analyses and goals for the campaign go to `brandos/briefs/<campaign>/`.
   Commit and push to your `claude/*` branch. **Never merge campaign work into main** — main is the public
   GitHub Pages site. Hagit's machine pulls the branch into `brandworld_ad/` with
   `brandworld_ad/_tools/sync-branches.py`.
