@@ -269,6 +269,54 @@ b{font-weight:600}
 /* ---------- STUDIO NOTE ---------- */
 .studio-note{position:relative;z-index:5;background:var(--studio-cream);color:var(--studio-ink);padding:clamp(80px,12vh,130px) min(8vw,110px)}
 .studio-note .inner{max-width:820px;margin:0 auto}
+/* ---- sans le nom: the cover test ---- */
+.sans{padding:clamp(60px,10vh,120px) 0;border-top:1px solid var(--line)}
+.sn-head{text-align:center;max-width:660px;margin:0 auto}
+.sn-head h2{font-weight:200;font-size:clamp(28px,3.6vw,46px);line-height:1.2;margin:10px 0 14px}
+.sn-head h2 b{color:var(--matcha)}
+.sn-head p{color:var(--ink-2);line-height:1.8;font-size:16.5px}
+.sn-ctl{display:flex;flex-direction:column;align-items:center;gap:12px;margin:30px auto 44px}
+.sn-btn{display:inline-flex;align-items:center;gap:12px;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);background:transparent;border:1px solid var(--ink-3);border-radius:999px;padding:10px 22px 10px 14px;cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+.sn-btn:focus-visible{outline:2px solid var(--matcha);outline-offset:3px}
+.sn-sw{width:42px;height:22px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .4s}
+.sn-sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--ink);transition:inset-inline-start .4s cubic-bezier(.6,0,.2,1),background .4s}
+.sn-btn[aria-pressed="true"]{background:var(--matcha-deep);color:var(--bg);border-color:var(--matcha-deep)}
+.sn-btn[aria-pressed="true"] .sn-sw{background:var(--matcha)}
+.sn-btn[aria-pressed="true"] .sn-sw::after{inset-inline-start:23px;background:var(--bg)}
+.sn-status{font-size:16px;min-height:1.8em;text-align:center;max-width:52ch;line-height:1.8;color:var(--ink-2)}
+.sn-status b{color:var(--matcha);font-weight:600}
+.sn-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:26px}
+.sn-tile{flex:0 0 calc((100% - 52px)/3);margin:0;display:grid;gap:12px;align-content:start}
+.sn-pic{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#eadbc6}
+.sn-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sn-pic img.sn-off{opacity:0;transition:opacity .8s ease .4s}
+.sn-veil{position:absolute;left:var(--x);top:var(--y);width:var(--w,30%);height:7%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(244,231,213,.95),rgba(76,107,51,.25) 60%,transparent);filter:blur(2px)}
+.sans.is-off .sn-pic img.sn-off{opacity:1}
+.sans.is-off .sn-veil{animation:snVeil 1.3s ease both}
+.sans .sn-tile:nth-child(2) *{transition-delay:.55s;animation-delay:.15s}
+.sans .sn-tile:nth-child(3) *{transition-delay:.7s;animation-delay:.3s}
+.sans .sn-tile:nth-child(4) *{transition-delay:.85s;animation-delay:.45s}
+.sans .sn-tile:nth-child(5) *{transition-delay:1s;animation-delay:.6s}
+.sans:not(.is-off) .sn-tile *{transition-delay:0s}
+@keyframes snVeil{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.3)}40%{opacity:1;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.1)}}
+.sn-tile h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px}
+.sn-tile h3 span{font-family:'Assistant',sans-serif;font-style:normal;font-size:14px;font-weight:600;color:var(--matcha);margin-inline-start:8px}
+.sn-tile .codes{display:flex;flex-wrap:wrap;gap:6px}
+.sn-tile .codes span{font-size:13px;border:1px solid var(--ink-3);border-radius:999px;padding:3px 11px;transition:background .5s ease,border-color .5s ease}
+.sans.is-off .sn-tile .codes span{background:rgba(76,107,51,.14);border-color:var(--matcha)}
+.sn-foot{max-width:640px;margin:52px auto 0;text-align:center;padding-top:30px;border-top:1px solid var(--line)}
+.sn-foot p{line-height:1.85;font-size:16.5px}
+.sn-foot a{display:inline-block;margin-top:16px;color:var(--matcha-deep);font-weight:600;text-decoration:none;border-bottom:1px solid var(--matcha);padding-bottom:2px}
+@media (max-width:860px){
+  .sn-grid{gap:14px}
+  .sn-tile{flex-basis:calc((100% - 14px)/2)}
+  .sn-tile:last-child{flex-basis:100%}
+  .sn-tile:last-child .sn-pic{aspect-ratio:4/3}
+  .sn-tile h3{font-size:20px}
+  .sn-tile .codes span{font-size:12px;padding:2px 8px}
+}
+@media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}.sans.is-off .sn-veil{animation:none}}
 .studio-note .tag{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:20px}
 .studio-note h2{font-size:clamp(26px,3.2vw,38px);font-weight:200;line-height:1.4;margin-bottom:20px}
 .studio-note p{font-size:17px;line-height:1.95;color:rgba(21,32,46,.82);margin-bottom:16px}
@@ -451,6 +499,87 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- ═══ SANS LE NOM: the cover test ═══ -->
+<section class="sans" id="sans" aria-labelledby="sn-title">
+  <div class="wrap">
+    <div class="sn-head">
+      <p class="tag fr">Sans le nom</p>
+      <h2 id="sn-title">מכסים את השם. <b>המטרפה נשארת.</b></h2>
+      <p>אם צריך את הלוגו כדי לזהות פריט, המערכת לא עובדת. הורידי את השם מהערכה, מהקיר, מהכוס, מהשקית ומהכוס ברחוב, ובדקי מה עוד אומר <span dir="ltr">CHASEN°</span>&lrm;.</p>
+    </div>
+    <div class="sn-ctl">
+      <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
+      <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל חמש נקודות המגע.</p>
+    </div>
+    <div class="sn-grid" id="snGrid">
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/kit.webp" width="1024" height="1536" loading="lazy" alt="ערכת הבית של CHASEN°: מטרפה, קערה, פחית וחמש שקיות טעם, והשם בפנים המכסה" style="object-position:50% 0%">
+          <img class="sn-off" src="assets/touchpoints/kit-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה ערכה בלי השם: המטרפה וחמשת צבעי הטעמים" style="object-position:50% 0%">
+          <i class="sn-veil" style="--x:50%;--y:16%;--w:44%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Le Coffret<span>ערכת הבית</span></h3><div class="codes"><span>המטרפה</span><span>חמשת צבעי הטעמים</span><span>קרם חם</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/wall.webp" width="1024" height="1536" loading="lazy" alt="קיר הבר של CHASEN°: השם, חמש מטרפות וחמש פחיות בצבעי הטעמים" style="object-position:50% 0%">
+          <img class="sn-off" src="assets/touchpoints/wall-sans.webp" width="1024" height="1536" loading="lazy" alt="אותו קיר בלי השם: חמש מטרפות וחמש פחיות בצבעים" style="object-position:50% 0%">
+          <i class="sn-veil" style="--x:50%;--y:17.5%;--w:52%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Le Mur<span>קיר המטרפות</span></h3><div class="codes"><span>המטרפה</span><span>חמשת צבעי הטעמים</span><span>קרם חם</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/card.webp" width="1024" height="1536" loading="lazy" alt="כוס מאצ'ה עם שרוול ירוק וכרטיס Matcha Classique, והשם על השרוול ועל הכרטיס" style="object-position:50% 50%">
+          <img class="sn-off" src="assets/touchpoints/card-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה כוס בלי השם: סימן המטרפה, השכבות, וכרטיס עם שם משלו" style="object-position:50% 50%">
+          <i class="sn-veil" style="--x:48.5%;--y:68.6%;--w:28%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">La Carte<span>הכרטיס</span></h3><div class="codes"><span>כרטיס עם שם משלו</span><span>סימן המטרפה</span><span>הכוס השכבתית</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/bag.webp" width="1024" height="1536" loading="lazy" alt="שקית קרם של CHASEN° עם מטרפה אמיתית קשורה לידית" style="object-position:50% 50%">
+          <img class="sn-off" src="assets/touchpoints/bag-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה שקית בלי השם: סימן המטרפה, והמטרפה עצמה קשורה לידית" style="object-position:50% 50%">
+          <i class="sn-veil" style="--x:49.7%;--y:68.4%;--w:26%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Le Sac<span>השקית</span></h3><div class="codes"><span>המטרפה, ביד</span><span>סימן המטרפה</span><span>קרם חם</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/hand.webp" width="1024" height="1536" loading="lazy" alt="יד מחזיקה כוס מאצ'ה של CHASEN° ברחוב" style="object-position:50% 50%">
+          <img class="sn-off" src="assets/touchpoints/hand-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה כוס בלי השם: שרוול בצבע הטעם וסימן המטרפה" style="object-position:50% 50%">
+          <i class="sn-veil" style="--x:51.6%;--y:61.7%;--w:26%" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">À emporter<span>לדרך</span></h3><div class="codes"><span>סימן המטרפה</span><span>צבע הטעם</span><span>הכוס השכבתית</span></div></figcaption>
+      </figure>
+    </div>
+    <div class="sn-foot">
+      <p><b>הכלל:</b> מכסים את השם, ונשארים לפחות שלושה קודים. מה שמזהה את <span dir="ltr">CHASEN°</span>&lrm; הוא לא השם. זו המטרפה: היא הדבר היחיד שלא משתנה בבר, ולכן היא נשארת גם כשהשם יורד.</p>
+      <a href="https://hagitantebi.co.il/brand-world-logo.html?utm_source=chasen&amp;utm_medium=world&amp;utm_campaign=cover-test" onclick="if(typeof fbq==='function')fbq('trackCustom','ChasenCoverToLogo')">ואצלך? אם נסתיר את הלוגו, עדיין יזהו אותך? ←</a>
+    </div>
+  </div>
+</section>
+
+<script>
+// ---- sans le nom: the name comes off, the whisk stays ----
+(()=>{
+  const sec=document.getElementById('sans'), btn=document.getElementById('snBtn'), lbl=document.getElementById('snLbl'), st=document.getElementById('snStatus');
+  const codes=sec.querySelectorAll('.sn-tile .codes span').length;
+  let touched=false;
+  function set(off){
+    sec.classList.toggle('is-off',off);
+    btn.setAttribute('aria-pressed',off);
+    lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
+    st.innerHTML=off?`השם ירד מכל חמש נקודות המגע. נשארו <b>${codes}</b> קודים, והמטרפה בכולן.`:'השם מופיע על כל חמש נקודות המגע.';
+  }
+  btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','ChasenCoverTest')});
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{rootMargin:'0px 0px -35% 0px'});
+    io.observe(document.getElementById('snGrid'));
+  }
+})();
+</script>
+
 <!-- ======================= STUDIO NOTE ======================= -->
 <section class="studio-note" id="studio-note">
   <div class="inner">
@@ -459,6 +588,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p>CHASEN° הוא עולם מותג קונספט, בר מאצ'ה בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>כאן לא מזמינים מאצ'ה, מרכיבים אותה.</b> ממנה נגזר הכל: השם (המטרפה היפנית שבה מקציפים), הסרט של שלושה פרקים, האטלייה האינטראקטיבי, והכרטיס שכל משקה מקבל בסוף.</p>
     <p><b>האטלייה:</b> ההחלטה החשובה הייתה מה לא לעשות. לא ארבעים תמונות מוכנות של כל צירוף, כי ארבעים כוסות שנוצרו בנפרד הן ארבעים כוסות שונות במעט, וברגע שהכוס זזה פיקסל האשליה נשברת. במקום זה צולמה כוס אחת. חמשת הטעמים נוצרו כעריכה על אותה תמונה בדיוק. הקצפת והשוקולד נוצרו גם הם על תמונת המאסטר ואז נחתכו כשכבות שקופות, ולכן הם יושבים נכון על כל טעם. בדף אין חישובי צבע ואין פיזיקה של נוזלים: החלפת טעם היא מזיגה של פריים חדש, הקצפת נכנסת מלמטה למעלה, השוקולד נוזל מלמעלה למטה. כל האטלייה שוקל פחות מחצי מגה.</p>
     <p><b>הסרט:</b> שלושה פרקים שנוצרו בווידאו AI מפריים פתיחה אחד לכל פרק, על אותו סט ואותו אור כמו הכוס. הפרק השלישי נגמר בכוס שדומה לכוס של האטלייה, וזה הגשר: מהצפייה להכנה.</p>
+    <p><b>מבחן הכיסוי:</b> אחרי התפריט הבר יוצא מהמסך: ערכה לבית, קיר המטרפות, כוס עם כרטיס, שקית שקשורה אליה מטרפה אמיתית, וכוס ברחוב. אחר כך מורידים מכולן את השם. מה שנשאר הוא המטרפה, חמשת צבעי הטעמים והכוס השכבתית. ככה ההבטחה «מעבירים ללקוחה את המטרפה» הופכת מחוויה במסך לחפץ שיוצא איתה מהבר.</p>
     <p><b>למה זה משנה למותג אמיתי:</b> אותם חמישה טעמים בלי מותג הם תפריט. עם מותג הם שם, כרטיס ורגע שהלקוחה זוכרת. האטלייה לא מוכר מאצ'ה, הוא מוכיח שמותג שנבנה מהבטחה אחת יכול להפוך גם בחירה קטנה לחוויה שנבחרת ולא מושווית למחיר. ככה נראית עבודה של <b>Brand Worlds Studio</b>: עולם שלם שבו כל פרט, תנועה, שפה, תפריט, אינטראקציה, נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>

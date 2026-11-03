@@ -488,6 +488,52 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     font-size:12px;letter-spacing:.3em;text-transform:uppercase;
     color:var(--copper);font-weight:600;margin-bottom:20px;
   }
+  /* ---- 07 le sceau: the cover test ---- */
+  #sceau .ch-body{margin-bottom:6px}
+  .sn-ctl{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin:30px 0 44px}
+  .sn-btn{display:inline-flex;align-items:center;gap:12px;font-family:inherit;font-size:15px;font-weight:600;color:var(--cream);background:transparent;border:1px solid var(--gold-dim);border-radius:999px;padding:10px 22px 10px 14px;cursor:pointer;transition:background .4s,border-color .4s}
+  .sn-btn:hover{border-color:var(--gold)}
+  .sn-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .sn-sw{width:42px;height:22px;border-radius:999px;background:rgba(240,227,206,.14);position:relative;flex:none;transition:background .4s}
+  .sn-sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--cream);transition:inset-inline-start .4s cubic-bezier(.6,0,.2,1),background .4s}
+  .sn-btn[aria-pressed="true"]{background:rgba(201,162,94,.12)}
+  .sn-btn[aria-pressed="true"] .sn-sw{background:var(--gold)}
+  .sn-btn[aria-pressed="true"] .sn-sw::after{inset-inline-start:23px;background:var(--noir)}
+  .sn-status{font-size:16px;font-weight:300;color:var(--cream-dim);min-height:1.8em;line-height:1.8}
+  .sn-status b{color:var(--gold);font-weight:600}
+  .sn-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+  .sn-tile{flex:0 0 calc((100% - 48px)/3);margin:0;display:grid;gap:12px;align-content:start}
+  .sn-pic{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--noir-card)}
+  .sn-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .sn-pic img.sn-off{opacity:0;transition:opacity .8s ease .4s}
+  .sn-veil{position:absolute;left:var(--x);top:var(--y);width:var(--w,30%);height:7%;transform:translate(-50%,-50%) rotate(var(--r,0deg));border-radius:50%;pointer-events:none;opacity:0;
+    background:radial-gradient(closest-side,rgba(240,227,206,.55),rgba(201,162,94,.25) 60%,transparent);filter:blur(3px)}
+  #sceau.is-off .sn-pic img.sn-off{opacity:1}
+  #sceau.is-off .sn-veil{animation:snVeil 1.3s ease both}
+  #sceau .sn-tile:nth-child(2) *{transition-delay:.55s;animation-delay:.15s}
+  #sceau .sn-tile:nth-child(3) *{transition-delay:.7s;animation-delay:.3s}
+  #sceau .sn-tile:nth-child(4) *{transition-delay:.85s;animation-delay:.45s}
+  #sceau .sn-tile:nth-child(5) *{transition-delay:1s;animation-delay:.6s}
+  #sceau:not(.is-off) .sn-tile *{transition-delay:0s}
+  @keyframes snVeil{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+  .sn-tile h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:24px;color:var(--cream)}
+  .sn-tile h3 span{font-family:'Assistant',sans-serif;font-style:normal;font-size:14px;font-weight:400;color:var(--gold);margin-inline-start:8px}
+  .sn-tile .codes{display:flex;flex-wrap:wrap;gap:6px}
+  .sn-tile .codes span{font-size:13px;color:var(--cream);border:1px solid var(--gold-dim);border-radius:999px;padding:3px 11px;transition:background .5s ease,border-color .5s ease}
+  #sceau.is-off .sn-tile .codes span{background:rgba(201,162,94,.16);border-color:var(--gold)}
+  .sn-foot{max-width:640px;margin:52px auto 0;text-align:center;padding-top:30px;border-top:1px solid var(--gold-dim)}
+  .sn-foot p{font-weight:300;line-height:1.85;color:var(--cream-dim)}
+  .sn-foot p b{font-weight:600;color:var(--cream)}
+  .sn-foot a{display:inline-block;margin-top:16px;color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px}
+  @media (max-width:860px){
+    .sn-grid{gap:14px}
+    .sn-tile{flex-basis:calc((100% - 14px)/2)}
+    .sn-tile:last-child{flex-basis:100%}
+    .sn-tile:last-child .sn-pic{aspect-ratio:4/3}
+    .sn-tile h3{font-size:20px}
+    .sn-tile .codes span{font-size:12px;padding:2px 8px}
+  }
+  @media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}#sceau.is-off .sn-veil{animation:none}}
   .studio-note h2{
     font-size:clamp(26px,3.2vw,38px);font-weight:200;line-height:1.4;margin-bottom:20px;
   }
@@ -792,6 +838,83 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </section>
 
+  <!-- 07 · LE SCEAU: the cover test -->
+  <section class="chapter" id="sceau" aria-labelledby="sn-title">
+    <div class="num reveal">07</div>
+    <p class="ch-tag reveal">Le Sceau · Sans le nom</p>
+    <h2 class="ch-title reveal" id="sn-title">מכסים את השם.<br><b>החתימה נשארת.</b></h2>
+    <p class="ch-body reveal">הקופסה של <span dir="ltr">SIGNÉ°</span>&lrm; נסגרת בקו קרם אחד, כמו הקו שהמזלף משאיר על הקינוח. כדי לפתוח אותה שוברים את החתימה, ואין שתי קופסאות עם אותו קו. עכשיו הורידי את השם מכל נקודות המגע, ובדקי אם עדיין ברור של מי הן.</p>
+    <div class="sn-ctl">
+      <button class="sn-btn" id="snBtn" type="button" aria-pressed="false" aria-controls="snGrid"><span class="sn-sw" aria-hidden="true"></span><span id="snLbl">לכסות את השם</span></button>
+      <p class="sn-status" id="snStatus" aria-live="polite">השם מופיע על כל חמש נקודות המגע.</p>
+    </div>
+    <div class="sn-grid" id="snGrid">
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/box.webp" width="1024" height="1536" loading="lazy" alt="קופסה שחורה של SIGNÉ° שנסגרת בקו קרם רציף אחד, תחת אלומה אחת" style="object-position:50% 55%">
+          <img class="sn-off" src="assets/touchpoints/box-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה קופסה בלי השם: קו קרם אחד שנגמר בחרוז, ועלה זהב אחד" style="object-position:50% 55%">
+          <i class="sn-veil" style="--x:44%;--y:66%;--w:30%;--r:-6deg" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Le Sceau<span>הקופסה החתומה</span></h3><div class="codes"><span>החתימה</span><span>עלה זהב אחד</span><span>אור אחד</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/box-open.webp" width="1024" height="1536" loading="lazy" alt="הקופסה פתוחה: הקו נשבר במקום שבו המכסה עלה, ובפנים אקלר חתום" style="object-position:50% 55%">
+          <img class="sn-off" src="assets/touchpoints/box-open-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה קופסה פתוחה בלי השם: הקו השבור והאקלר החתום" style="object-position:50% 55%">
+          <i class="sn-veil" style="--x:47%;--y:74%;--w:26%;--r:-11deg" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">L'Ouverture<span>החתימה נשברת</span></h3><div class="codes"><span>החתימה, שבורה</span><span>האקלר החתום</span><span>נואר</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/bag.webp" width="1024" height="1536" loading="lazy" alt="שקית שחורה של SIGNÉ° עם קו קרם שעוטף אותה, ברחוב בלילה" style="object-position:50% 50%">
+          <img class="sn-off" src="assets/touchpoints/bag-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה שקית בלי השם: קו קרם אחד וידיות קרם על שחור" style="object-position:50% 50%">
+          <i class="sn-veil" style="--x:50%;--y:45%;--w:32%;--r:0deg" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">Le Sac<span>השקית</span></h3><div class="codes"><span>החתימה</span><span>ידיות קרם</span><span>נואר</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/card.webp" width="1024" height="1536" loading="lazy" alt="כרטיס קרם ליד אקלר: Le Noir, כתב יד בזהב ושורה בעברית" style="object-position:45% 55%">
+          <img class="sn-off" src="assets/touchpoints/card-sans.webp" width="1024" height="1536" loading="lazy" alt="אותו כרטיס בלי השם: שם בצרפתית, כתב יד והסבר בעברית" style="object-position:45% 55%">
+          <i class="sn-veil" style="--x:36%;--y:78%;--w:18%;--r:-9deg" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">La Carte<span>הכרטיס</span></h3><div class="codes"><span>שם בצרפתית, הסבר בעברית</span><span>כתב היד</span><span>אור אחד</span></div></figcaption>
+      </figure>
+      <figure class="sn-tile">
+        <div class="sn-pic">
+          <img src="assets/touchpoints/night.webp" width="1024" height="1536" loading="lazy" alt="החזית של SIGNÉ° בלילה: שלט עם השם, ויטרינה אחת מוארת" style="object-position:50% 45%">
+          <img class="sn-off" src="assets/touchpoints/night-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה חזית בלי השם: ויטרינה אחת, שורה אחת, ואלומה מעל כל קינוח" style="object-position:50% 45%">
+          <i class="sn-veil" style="--x:51%;--y:26%;--w:46%;--r:0deg" aria-hidden="true"></i>
+        </div>
+        <figcaption><h3 lang="fr">La Nuit<span>החזית בלילה</span></h3><div class="codes"><span>אור אחד, במה אחת</span><span>כתב היד</span><span>נואר</span></div></figcaption>
+      </figure>
+    </div>
+    <div class="sn-foot">
+      <p>הכלל מספר המותג: <b>בכל נקודת מגע עובדים לפחות שני קודים.</b> מה שמזהה את <span dir="ltr">SIGNÉ°</span>&lrm; הוא לא השם. זו היד: קו אחד, רציף, שנגמר בחרוז.</p>
+      <a href="https://hagitantebi.co.il/brand-world-logo.html?utm_source=signe&amp;utm_medium=world&amp;utm_campaign=cover-test" onclick="if(typeof fbq==='function')fbq('trackCustom','SigneCoverToLogo')">ואצלך? אם נסתיר את הלוגו, עדיין יזהו אותך? ←</a>
+    </div>
+  </section>
+  <script>
+  // ---- le sceau: the name comes off, the signature stays ----
+  (()=>{
+    const sec=document.getElementById('sceau'), btn=document.getElementById('snBtn'), lbl=document.getElementById('snLbl'), st=document.getElementById('snStatus');
+    const codes=sec.querySelectorAll('.sn-tile .codes span').length;
+    let touched=false;
+    function set(off){
+      sec.classList.toggle('is-off',off);
+      btn.setAttribute('aria-pressed',off);
+      lbl.textContent=off?'להחזיר את השם':'לכסות את השם';
+      st.innerHTML=off?`השם ירד מכל חמש נקודות המגע. נשארו <b>${codes}</b> קודים, והחתימה בכולן.`:'השם מופיע על כל חמש נקודות המגע.';
+    }
+    btn.addEventListener('click',()=>{touched=true;set(!sec.classList.contains('is-off'));if(typeof fbq==='function')fbq('trackCustom','SigneCoverTest')});
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(()=>{if(!touched)set(true)},900)}})},{rootMargin:'0px 0px -35% 0px'});
+      io.observe(document.getElementById('snGrid'));
+    }
+  })();
+  </script>
+
 </main>
 
 <!-- ======================= STUDIO NOTE ======================= -->
@@ -801,6 +924,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2>מותג לא מתחיל מלוגו.<br>הוא מתחיל <b>מהבטחה שנגזרים ממנה האלמנטים.</b></h2>
     <p>SIGNÉ° הוא עולם מותג קונספט — Maison de Desserts בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>קינוח לא יוצא מהמטבח בלי חתימה ביד.</b> ממנה נגזר כל השאר: השם, המזלף שהוא כתב היד של הבית, ושלושת רגעי התנועה של האתר.</p>
     <p><b>המזיגה:</b> סטיל AI אחד של כדור וניל תחת זרם שוקולד הוזן למודל וידאו, ומהווידאו חולצו 41 פריימים שמנוגנים לפי מיקום הגלילה — הגלילה עצמה מוזגת את השוקולד. בסוף המזיגה הכדור משתחרר, נופל אל הסקשן הבא ונוחת בקערת הטעמים. <b>התפריט החי:</b> ארבעה סרטוני AI שבהם כל מנה עולה מדף התפריט כהולוגרמה נוצצת — שורות התפריט הן HTML אמיתי לצדם, וריחוף על שורה מזמן את המנה שלה. <b>קו הקרם:</b> חרוז קרם נוסע בראש קו שנמזלף לאורך העמוד וחותם כל פרק — הקו קיים רק היכן שהחרוז כבר עבר.</p>
+    <p><b>החותם:</b> בפרק השביעי הקינוח יוצא מהבית. הקופסה השחורה נסגרת בקו קרם אחד שנגמר בחרוז, וכדי לפתוח אותה שוברים את החתימה. אחר כך מורידים את השם מהקופסה, מהשקית, מהכרטיס ומהחזית. מה שנשאר בכולן הוא הקו, כתב היד והאלומה האחת, וזה מבחן הכיסוי מספר המותג, בתוך העמוד.</p>
     <p>ככה נראית עבודה של <b>Brand Worlds Studio</b>: לא עמוד יפה עם טקסטים, אלא עולם שלם שבו כל פרט — תנועה, שפה, תפריט, טיפוגרפיה — נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
     <a class="book-link" href="brand-book.html" style="display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:22px 26px;background:#fff;border:1px solid #D8CDB8;border-inline-start:3px solid #6E2436;text-decoration:none;color:#15202E" onclick="if(typeof fbq==='function')fbq('trackCustom','SigneBookOpen')">
       <span style="font-size:.8rem;letter-spacing:.16em;opacity:.8">ספר המותג המקוצר</span>
@@ -1061,7 +1185,8 @@ gsap.to('[data-parallax]',{
           book = q('#carte .book-stage'), edNum = q('#editions .num'),
           edTitle = q('#editions .ch-title'), banner = q('#editions .editions-banner'),
           train = q('#train'), coeur = q('#coeur'),
-          maisonTitle = q('#maison .ch-title'), maisonList = q('.maison-list');
+          maisonTitle = q('#maison .ch-title'), maisonList = q('.maison-list'),
+          sceauNum = q('#sceau .num'), sceauGrid = q('#snGrid'), sceauFoot = q('#sceau .sn-foot');
 
     const pts = [
       [88, 0],
@@ -1087,6 +1212,11 @@ gsap.to('[data-parallax]',{
       pt(18, maisonTitle, 0.45),
       pt(44, maisonList, 0.02),
       pt(44.5, maisonList, 0.72),
+      /* 07 · le sceau: the line steps out to the margin and runs past the touchpoints, ending under the grid */
+      pt(6, sceauNum, 0.2),
+      pt(3, sceauGrid, 0.05),
+      pt(3, sceauGrid, 0.95),
+      pt(30, sceauFoot, 1.6),
       [50, 100]
     ];
     /* Catmull-Rom → cubic bezier through the anchor points */
