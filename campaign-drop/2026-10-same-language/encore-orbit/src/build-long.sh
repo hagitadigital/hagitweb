@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# ELVÉA° orbit, long cut: each card opens to a full window and PARDON ME's own site plays in it.
+# ENCORE° orbit, long cut: each card opens to a full window and PARDON ME's own site plays in it.
 # Run from this folder. Intermediate files go to f/ (gitignored).
-#   1. (once, or after the site changes) node record-site.js ../../../../elvea/index.html media/clips
+#   1. (once, or after the site changes) node record-site.js ../../../../encore/index.html media/clips
 #   2. bash build-long.sh
 set -euo pipefail
 SK=../../../../.claude/skills/brandos-brand-world-reel/scripts
 mkdir -p f
-for c in rencontre symbole fil coffret; do
+for c in dial hors set boite; do
   ffmpeg -y -loglevel error -i media/clips/$c.mp4 -frames:v 1 -q:v 3 media/clips/$c-first.jpg
   ffmpeg -y -loglevel error -sseof -0.05 -i media/clips/$c.mp4 -frames:v 1 -q:v 3 media/clips/$c-last.jpg
 done
@@ -21,4 +21,4 @@ node -e '
       await t.evaluate(()=>document.fonts.ready);await t.screenshot({path:out,omitBackground:true});await t.close();}
     await b.close();})();'
 node $SK/render.js reel-long.html $D f/silent-long.mp4
-python3 compose-long.py f/silent-long.mp4 ../elvea-14-orbit-long
+python3 compose-long.py f/silent-long.mp4 ../encore-28-orbit-long

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# ELVÉA° orbit (25s): reel.html → ../elvea-14-orbit.mp4 (+ soundtrack) and the 4:5 feed version.
+# ENCORE° orbit (25s): reel.html → ../encore-28-orbit.mp4 (+ soundtrack) and the 4:5 feed version.
 # Run from this folder. Intermediate files go to f/ (gitignored).
 set -euo pipefail
 SK=../../../../.claude/skills/brandos-brand-world-reel/scripts
-OUT=../elvea-14-orbit
+OUT=../encore-28-orbit
 mkdir -p f
 python3 make.py
 node $SK/render.js reel.html 25 f/silent.mp4
