@@ -225,15 +225,17 @@ def full_feed(a, b):
           <span style="display: flex; gap: 60px; {JK}; font-size: 26px; color: #6B6B6B; text-align: center"><span><b style="display: block; font-size: 38px; color: #1B1B1B">24</b>posts</span><span><b style="display: block; font-size: 38px; color: #1B1B1B">14.6k</b>followers</span><span><b style="display: block; font-size: 38px; color: #1B1B1B">4</b>hours</span></span></div>
         <div style="padding: 0 44px 26px" dir="ltr"><div style="{CG}; font-size: 38px; font-weight: 500; letter-spacing: .08em; color: #1B1B1B">ENCORE° · Maison de Bijoux</div><div style="margin-top: 6px; {FR}; font-size: 30px; color: #3E2522" dir="rtl">תכשיט אחד. שנים עלייך.</div><div style="margin-top: 4px; {HE}; font-size: 25px; color: #6B6B6B" dir="rtl">06:00 · 12:00 · 18:00 · 00:00 · זהב 18K</div></div>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px">{tl}</div></div></div></div>'''
-def chip(k, top=330):   # the site clips keep the site's own bar clear; the feed puts its label at the bottom
+def chip(k, top=1660, thin=False):   # on the site clips a thin line at the very top, clear of the site's own headings; the feed's sits at the bottom
     CHIP_CSS = f"position: absolute; top: {top}px; left: 0; right: 0; display: flex; justify-content: center"
     n, h, sub = LABELS[k]
+    if thin:
+        return f'''<div style="{CHIP_CSS}"><div style="display: flex; align-items: center; gap: 14px; padding: 8px 26px; border-radius: 999px; background: rgba(18,9,9,.78); border: 1px solid rgba(217,178,106,.5); color: {INK}; {HE}; font-size: 30px; font-weight: 500" dir="rtl"><span style="{CG}; color: {GOLD}" dir="ltr">{n}</span><span>{h}</span></div></div>'''
     return f'''<div style="{CHIP_CSS}"><div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 40px 16px; border-radius: 22px; background: rgba(18,9,9,.82); border: 1px solid rgba(217,178,106,.5); color: {INK}" dir="rtl"><span style="{HE}; font-size: 46px; font-weight: 500; line-height: 1.1"><span style="{CG}; color: {GOLD}" dir="ltr">{n}</span> · {h}</span><span style="{HE}; font-size: 24px; font-weight: 300; opacity: .9">{sub}</span></div></div>'''
 WINDOWS, OVERLAYS = '', []
 for k, (clips, L) in enumerate(CHAPTERS if LONG else []):
     o0, o1, o2, o3 = OPEN[k]
     clip_kf = '0%%,%s{clip-path:%s}%s,%s{clip-path:inset(0px 0px 0px 0px round 0px)}%s,100%%{clip-path:%s}' % (P(o0), card_rect, P(o1), P(o2), P(o3), card_rect)
-    chip_top = 330
+    chip_top = 16
     if clips:
         inner = (f'<img src="media/clips/{clips[-1]}-last.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">'
                  f'<img src="media/clips/{clips[0]}-first.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; {windows([(0, o1 + .2)], .01)}">')
@@ -244,7 +246,7 @@ for k, (clips, L) in enumerate(CHAPTERS if LONG else []):
     else:
         inner, chip_top = full_feed(o1, o2), 1660
     WINDOWS += f'''<div style="position: absolute; inset: 0; z-index: 120; {windows([(o0, o3)], .01)}"><div style="position: absolute; inset: 0; {anim(clip_kf, 'animation-timing-function:cubic-bezier(.7,0,.2,1)')}">{inner}
-    <div style="position: absolute; inset: 0; {anim(show(o1 - .1, o2, .2))}">{chip(k, chip_top)}</div></div></div>'''
+    <div style="position: absolute; inset: 0; {anim(show(o1 - .1, o2, .2))}">{chip(k, chip_top, bool(clips))}</div></div></div>'''
 
 WORLD = f'''<div style="position: absolute; inset: 0; overflow: hidden; background-color: {HOURS[0][2]}; {anim(hk)}; box-shadow: 0 50px 140px rgba(0,0,0,.35)">
   <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 42% at 50% 46%, rgba(255,214,160,.22), transparent 70%)"></div>
@@ -344,7 +346,7 @@ if LONG:   # the schedule build-long.sh lays the site clips by, and one transpar
     import json
     json.dump({'duration': D, 'overlays': OVERLAYS}, open(os.path.join(HERE, 'long-overlays.json'), 'w'), indent=1)
     for k in range(N):
-        open(os.path.join(HERE, 'f', 'chip-%d.html' % k), 'w').write(f'''<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&amp;display=swap"><style>html,body{{margin:0;background:transparent}}</style></head><body><div style="position: relative; width: 1080px; height: 1920px">{chip(k)}</div></body></html>''')
+        open(os.path.join(HERE, 'f', 'chip-%d.html' % k), 'w').write(f'''<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&amp;display=swap"><style>html,body{{margin:0;background:transparent}}</style></head><body><div style="position: relative; width: 1080px; height: 1920px">{chip(k, 16, True)}</div></body></html>''')
 print('ok', len(html))
 
 
