@@ -571,6 +571,92 @@
     .sn-tile .codes span{font-size:12px;padding:2px 8px}
   }
   @media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}.sans.is-off .sn-veil{animation:none}}
+  /* ---- un matin: one morning with the brand ---- */
+  .journee{background:linear-gradient(180deg,#F1E1E3 0%,var(--cream) 22%,var(--linen) 100%);padding:110px 24px 100px;color:var(--ink)}
+  .jr-head{text-align:center;max-width:660px;margin:0 auto 64px}
+  .jr-head .kicker{margin-bottom:14px}
+  .jr-head h2{font-size:clamp(26px,3vw,40px);font-weight:200}
+  .jr-head h2 b{font-weight:600;color:var(--rose-deep)}
+  .jr-head p{margin-top:14px;color:var(--ink-soft);font-weight:300;line-height:1.8}
+  .jr-legend{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .jr-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;border:1px solid #E5C4CB;background:var(--linen);font-size:12.5px;font-weight:600;white-space:nowrap}
+  .jr-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--copper)}
+  .jr-tag.os{background:var(--ink);color:var(--linen);border-color:var(--ink)}
+  .jr-tag.os::before{background:var(--rose)}
+  .jr-line{position:relative;max-width:1080px;margin:0 auto;padding:10px 0}
+  /* the spine is the copper line of the dawn clock, with a drop that falls along it */
+  .jr-spine{position:absolute;top:0;bottom:0;inset-inline-start:50%;width:2px;margin-inline-start:-1px;background:rgba(194,138,90,.25)}
+  .jr-spine i{position:absolute;top:0;inset-inline:0;height:var(--p,0%);background:var(--copper)}
+  .jr-spine b{position:absolute;inset-inline-start:50%;top:var(--p,0%);width:12px;height:16px;margin:-14px 0 0 -6px;background:var(--rose);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;box-shadow:0 2px 6px rgba(201,135,142,.5)}
+  [dir="rtl"] .jr-spine b{margin:-14px -6px 0 0}
+  .jr-m{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,96px);align-items:center;margin:0 0 clamp(54px,9vh,96px);opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .jr-m.seen{opacity:1;transform:none}
+  .jr-m:last-child{margin-bottom:0}
+  .jr-day{grid-column:1/-1;justify-self:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--rose-deep);background:var(--linen);padding:4px 16px;border-radius:999px;border:1px solid #E5C4CB;position:relative;z-index:2;opacity:1;transform:none;margin:0 0 clamp(40px,7vh,72px)}
+  .jr-dot{position:absolute;inset-inline-start:50%;top:50%;width:18px;height:18px;margin-top:-9px;margin-inline-start:-9px;border-radius:50%;background:var(--linen);border:2px solid var(--copper);z-index:2;transition:background .4s,transform .4s}
+  .jr-m.on .jr-dot{background:var(--rose-deep);border-color:var(--rose-deep);transform:scale(1.15)}
+  .jr-txt{max-width:420px}
+  .jr-m:nth-of-type(even) .jr-txt{order:2}
+  .jr-m:nth-of-type(odd) .jr-txt{justify-self:end}
+  .jr-hour{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.4vw,56px);line-height:1;direction:ltr;unicode-bidi:isolate;display:block;color:var(--ink)}
+  .jr-hour small{font-family:'Assistant',sans-serif;font-size:13px;letter-spacing:.16em;margin-inline-start:10px;color:var(--copper);font-weight:600}
+  .jr-txt h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:26px;margin:12px 0 4px}
+  .jr-txt h3 span{font-family:'Assistant',sans-serif;font-style:normal;font-size:14px;font-weight:600;color:var(--rose-deep);margin-inline-start:8px}
+  .jr-txt p{margin:6px 0 14px;line-height:1.8;font-weight:300}
+  .jr-vis{position:relative;max-width:440px;width:100%}
+  .jr-m:nth-of-type(odd) .jr-vis{justify-self:start}
+  .jr-m:nth-of-type(even) .jr-vis{justify-self:end}
+  .jr-pic{width:100%;border-radius:4px;overflow:hidden;box-shadow:0 26px 50px -26px rgba(59,46,51,.35)}
+  .jr-pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+  .jr-pic.land img{aspect-ratio:4/3}
+  .ph{width:min(100%,320px);border-radius:30px;background:#fff;padding:11px;box-shadow:0 30px 60px -26px rgba(59,46,51,.4),0 0 0 1px rgba(59,46,51,.08);margin-inline:auto}
+  .ph-in{border-radius:20px;overflow:hidden;background:#fff;font-family:'Assistant',sans-serif}
+  .ig-top{display:flex;align-items:center;gap:9px;padding:10px 12px;font-size:13px;font-weight:600;direction:ltr}
+  .ig-av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--linen);font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--ink);box-shadow:0 0 0 1.5px var(--rose)}
+  .ig-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+  .ig-img{position:relative;aspect-ratio:1;overflow:hidden}.ig-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .ig-img .stamp{position:absolute;top:12px;right:12px;font-size:12px;letter-spacing:.12em;font-weight:600;color:#6E4A2A;background:rgba(251,246,238,.92);padding:4px 9px;border-radius:2px}
+  .ig-cap{padding:10px 14px 14px;font-size:13.5px;line-height:1.6}
+  .ig-cap b{direction:ltr;unicode-bidi:isolate}
+  .ig-act{display:flex;gap:14px;padding:10px 14px 0;font-size:18px;opacity:.7;direction:ltr}
+  .wa{background:#EFE7DE;padding:14px 12px 16px;min-height:320px;display:flex;flex-direction:column;gap:8px}
+  .wa-top{display:flex;align-items:center;gap:9px;background:#fff;margin:-14px -12px 6px;padding:10px 12px;font-size:13px;font-weight:600}
+  .wa-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+  .wa-b{max-width:88%;padding:9px 12px 18px;border-radius:12px;font-size:14px;line-height:1.55;position:relative;background:#fff;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+  .wa-b.me{align-self:flex-end;background:#F5E2E4}
+  .wa-b time{position:absolute;bottom:4px;inset-inline-end:9px;font-size:10.5px;opacity:.55;direction:ltr}
+  .wa-day{align-self:center;font-size:11px;background:#fff;border-radius:6px;padding:3px 10px;opacity:.75}
+  .wa-rit{display:grid;gap:4px;margin-top:6px;padding-top:6px;border-top:1px dashed #E5C4CB;font-size:13px}
+  .wa-rit span{display:flex;gap:10px}
+  .wa-rit b{font-weight:600;color:#6E4A2A;direction:ltr;min-width:40px}
+  .wa-qr{display:flex;gap:6px;flex-wrap:wrap;align-self:flex-start}
+  .wa-qr span{font-size:13px;border:1px solid var(--rose-deep);background:#fff;border-radius:999px;padding:4px 12px}
+  .story{position:relative;aspect-ratio:9/16;max-width:290px;border-radius:22px;overflow:hidden;margin-inline:auto;box-shadow:0 30px 60px -26px rgba(59,46,51,.45)}
+  .story img{width:100%;height:100%;object-fit:cover;display:block}
+  .story .bar{position:absolute;top:10px;inset-inline:12px;height:2.5px;border-radius:2px;background:rgba(255,255,255,.45)}
+  .story .bar::after{content:"";position:absolute;inset:0;width:40%;background:#fff;border-radius:2px}
+  .story .who{position:absolute;top:22px;inset-inline:12px;display:flex;align-items:center;gap:8px;color:#fff;font-size:12.5px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.35);font-family:'Assistant',sans-serif}
+  .story .who i{width:26px;height:26px;border-radius:50%;background:#F3D9D4;display:block;box-shadow:0 0 0 1.5px #fff}
+  .story .say{position:absolute;inset-inline:0;top:13%;text-align:center;font-family:'Assistant',sans-serif;font-size:20px;font-weight:600;line-height:1.6}
+  .story .say span{background:rgba(251,246,238,.92);color:var(--ink);padding:2px 10px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .story .mention{position:absolute;bottom:12%;left:50%;transform:translateX(-50%) rotate(-3deg);background:#fff;color:var(--ink);border-radius:8px;padding:6px 12px;font-family:'Assistant',sans-serif;font-weight:700;font-size:14px;direction:ltr;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .jr-end{max-width:760px;margin:clamp(64px,10vh,110px) auto 0;text-align:center;background:var(--linen);border:1px solid #E5C4CB;border-radius:6px;padding:clamp(28px,5vw,48px)}
+  .jr-end .count{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,6vw,72px);line-height:1;direction:ltr;color:var(--rose-deep)}
+  .jr-end h3{font-size:clamp(22px,2.6vw,30px);font-weight:300;margin:12px 0 10px}
+  .jr-end h3 b{font-weight:600}
+  .jr-end p{margin:0 auto;max-width:52ch;line-height:1.85;font-weight:300}
+  .jr-end p b{font-weight:600}
+  .jr-end a{display:inline-block;margin-top:22px;background:var(--ink);color:var(--linen);text-decoration:none;font-weight:600;padding:12px 26px;border-radius:999px}
+  @media (max-width:820px){
+    .jr-spine{inset-inline-start:12px;margin:0}
+    .jr-m{grid-template-columns:minmax(0,1fr);gap:18px;padding-inline-start:40px}
+    .jr-day{justify-self:start;margin-inline-start:0;position:relative;z-index:3}
+    .jr-dot{inset-inline-start:13px;top:20px;margin:0;margin-inline-start:-9px}
+    .jr-m:nth-of-type(n) .jr-txt{order:0;justify-self:start}
+    .jr-m:nth-of-type(n) .jr-vis{justify-self:stretch}
+    .ph,.story{margin-inline:0}
+  }
+  @media (prefers-reduced-motion:reduce){.jr-m{opacity:1;transform:none;transition:none}}
   .film{position:relative;min-height:88svh;overflow:hidden;display:grid;place-items:end center}
   .film video,.film .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .film .f-copy{
@@ -941,6 +1027,178 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
+<!-- ═══════════ UN MATIN: one morning with the brand ═══════════ -->
+<section class="journee" id="journee" aria-labelledby="jr-title">
+  <div class="jr-head">
+    <div class="kicker">Un matin</div>
+    <h2 id="jr-title">בוקר אחד, וכל אלה שאחריו. <b>שמונה רגעים.</b></h2>
+    <p><span dir="ltr">ROSÉE°</span>&lrm; לא מוכר סרום. הוא מוכר בוקר. ככה נראה הקשר עם לקוחה, מהפוסט שהיא רואה לפני הקפה ועד המילוי שמגיע בדיוק כשהבקבוק נגמר.</p>
+    <div class="jr-legend"><span class="jr-tag">העולם: חנות, שקית, קופסה, ערכה</span><span class="jr-tag os">BrandOS: פוסט, ריטואל, סטורי, מילוי</span></div>
+  </div>
+  <div class="jr-line" id="jrLine">
+    <div class="jr-spine" aria-hidden="true"><i></i><b></b></div>
+    <div class="jr-day">היום הראשון</div>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">06:15</span>
+        <h3 lang="fr">Le Fil<span>בפיד</span></h3>
+        <p>עוד לפני הקפה, בפיד שלה: טיפה אחת שפורחת בנוזל ורוד, והשעה כתובה עליה. הפוסט לא מוכר סרום. הוא שואל מה היא עושה בדקות שלפני הקפה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="פוסט של ROSÉE° בשש ורבע בבוקר: טיפה אחת שפורחת בנוזל ורוד">
+          <div class="ph-in">
+            <div class="ig-top"><span class="ig-av">R°</span><span>rosee.matin<small>Neve Tzedek, Tel Aviv</small></span></div>
+            <div class="ig-img"><img src="frames-desktop/f_040.webp" alt="" width="1920" height="1080" loading="lazy" style="object-position:50% 60%"><span class="stamp">06:15</span></div>
+            <div class="ig-act" aria-hidden="true">♡ ◌ ➤</div>
+            <div class="ig-cap"><b>rosee.matin</b> טיפה אחת, כשהעור עוד לח. ככה הוא מחזיק את הטל עד הערב.<br>מה את עושה בדקות שלפני הקפה?</div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">12:50</span>
+        <h3 lang="fr">La Boutique<span>חנות הדגל</span></h3>
+        <p>בצהריים היא נכנסת לחנות בנווה צדק. נישות קשת, מדפי זכוכית, ובקבוק אחד על פודיום באמצע. היא לא בוחרת מוצרים. היא בוחרת שעות.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic land"><img src="collection/boutique.webp" alt="חנות הדגל של ROSÉE°: נישות קשת ורודות ופודיום שמנת" width="1600" height="893" loading="lazy" style="object-position:50% 50%"></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:02</span>
+        <h3 lang="fr">Le Sac<span>השקית</span></h3>
+        <p>היא יוצאת עם שקית בצבעים של שמי שחר, וחצי שעון בנחושת. גם באמצע היום, מה שהיא מחזיקה הוא בוקר.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/bag.webp" alt="שקית ROSÉE° בגרדיאנט שחר על אדן חלון" width="1024" height="1536" loading="lazy" style="object-position:50% 50%"></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:06</span>
+        <h3 lang="fr">Le Rituel<span>ההודעה</span></h3>
+        <p>עוד לפני שחזרה למשרד מחכה לה הודעה. אין בה קבלה. יש בה הריטואל שלה, מסודר לפי השעון.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="הודעת וואטסאפ מ-ROSÉE° אחרי הקנייה: הריטואל שלה לפי שעות הבוקר">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av">R°</span><span>ROSÉE°<small>חשבון עסקי</small></span></div>
+              <div class="wa-b">זה הריטואל שלך. הוא מסודר לפי השעון, לא לפי הקבלה:<span class="wa-rit"><span><b>05:30</b>La Brume · מי טל על פנים נקיות</span><span><b>06:15</b>Le Réveil · טיפה אחת, כשהעור עוד לח</span><span><b>07:45</b>La Lumière · חותמים באור</span></span><time>13:06</time></div>
+              <div class="wa-b">מחר בבוקר ב־05:30 תקבלי ממני רק מילה אחת. אחר כך הבקרים שלך.<time>13:06</time></div>
+              <div class="wa-b me">איזה כיף, ממש מחכה למחר<time>13:15</time></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="jr-day">הבוקר שאחרי</div>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">05:30</span>
+        <h3 lang="fr">La Boîte<span>הקופסה</span></h3>
+        <p>היא פותחת את הקופסה בחושך של לפני השחר. הכרטיס שבפנים הוא אותו ריטואל, באותו סדר: 05:30, 06:15, 07:45.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/box-card.webp" alt="קופסת הסרום של ROSÉE° וכרטיס הריטואל" width="1024" height="1536" loading="lazy" style="object-position:45% 60%"></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">06:20</span>
+        <h3 lang="fr">Le Matin<span>הסטורי שלה</span></h3>
+        <p>שלושה בקבוקים על המדף, והשעות על התוויות. היא מצלמת בלי שאף אחד ביקש, כי זה כבר הבוקר שלה.</p>
+        <span class="jr-tag os">BrandOS משתפת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="story" aria-label="הסטורי שלה בבוקר שאחרי: שלושת הבקבוקים על המדף, עם תיוג של ROSÉE°">
+          <img src="assets/touchpoints/shelf.webp" alt="" width="1024" height="1536" loading="lazy" style="object-position:45% 55%">
+          <span class="bar"></span>
+          <span class="who"><i></i>maya.r · 06:20</span>
+          <span class="say"><span>בוקר ראשון.<br>לפני הקפה.</span></span>
+          <span class="mention">@rosee.matin</span>
+        </div>
+      </div>
+    </article>
+    <div class="jr-day">אחרי שבועיים</div>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">05:40</span>
+        <h3 lang="fr">La Trousse<span>ערכת הנסיעה</span></h3>
+        <p>בטיסה מוקדמת, שלוש השעות נוסעות איתה בנרתיק פשתן. הבוקר לא נשאר בבית.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/trousse.webp" alt="נרתיק פשתן ורוד עם שלושה בקבוקים קטנים של ROSÉE°" width="1024" height="1536" loading="lazy" style="object-position:50% 48%"></div>
+      </div>
+    </article>
+    <div class="jr-day">אחרי 30 בקרים</div>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">05:30</span>
+        <h3 lang="fr">La Recharge<span>המילוי</span></h3>
+        <p>ההודעה מגיעה בשעה של הטיפה הראשונה. המותג יודע כמה בקרים עברו, ולכן המילוי מגיע לפני שהבקבוק נגמר.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="הודעה מ-ROSÉE° אחרי חודש: הבקבוק של 06:15 מתקרב לסוף, והמילוי בדרך">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av">R°</span><span>ROSÉE°<small>חשבון עסקי</small></span></div>
+              <span class="wa-day">אחרי 30 בקרים</span>
+              <div class="wa-b">שלושים בקרים של 06:15. לפי הקצב שלך, ב־Le Réveil נשארו עוד חמש טיפות.<time>05:30</time></div>
+              <div class="wa-b">המילוי יכול להגיע אלייך מחר, לפני הבוקר הבא.<time>05:30</time></div>
+              <div class="wa-qr" aria-hidden="true"><span>לשלוח מילוי</span><span>עוד שבוע</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="jr-end">
+    <div class="count">4 / 8</div>
+    <h3>חצי מהבקרים האלה <b>לא מתחילים בחנות.</b></h3>
+    <p>הפוסט לפני הקפה, הריטואל אחרי הקנייה, הסטורי שהיא משתפת והמילוי שמגיע בזמן. את כולם <b>BrandOS</b> כותבת כל יום, בקול של <span dir="ltr">ROSÉE°</span>&lrm;, מתוך אותה שאלה אחת: איזה בוקר זה?</p>
+    <a href="https://hagitantebi.co.il/brand-os.html?utm_source=rosee&amp;utm_medium=world&amp;utm_campaign=une-journee" onclick="if(typeof fbq==='function')fbq('trackCustom','RoseeJourneeToBrandOS')">איך BrandOS מפעילה עולם ←</a>
+  </div>
+</section>
+
+<script>
+// ---- un matin: moments rise in, the copper line fills and the drop falls with the scroll ----
+(()=>{
+  const line=document.getElementById('jrLine'), sp=line.querySelector('.jr-spine'), ms=[...line.querySelectorAll('.jr-m')];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{rootMargin:'0px 0px -15% 0px'});
+    ms.forEach(m=>io.observe(m));
+  } else ms.forEach(m=>m.classList.add('seen'));
+  let raf=0;
+  function upd(){
+    raf=0;
+    const r=line.getBoundingClientRect(), mid=innerHeight*.55;
+    const p=Math.min(Math.max((mid-r.top)/r.height,0),1);
+    sp.style.setProperty('--p',(p*100).toFixed(2)+'%');
+    ms.forEach(m=>{const b=m.getBoundingClientRect();m.classList.toggle('on',b.top+b.height/2<mid)});
+  }
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+</script>
+
 <!-- ═══════════ LE FILM ═══════════ -->
 <section class="film" id="film" aria-label="הסרט של ROSÉE — הטיפה">
   <video id="filmVid" src="film.mp4" muted loop playsinline preload="none" poster="frames-desktop/f_040.webp"></video>
@@ -1030,6 +1288,7 @@ document.addEventListener('DOMContentLoaded', function () {
       אי אפשר להשוות בוקר שלם למחיר של סרום.
     </p>
     <p><strong>מבחן הכיסוי:</strong> אחרי החנות, הקופסה, השקית, המדף בבית, ערכת הנסיעה והמילוי יוצאים מהעולם, ואז מורידים מהם את השם. מה שנשאר בכל אחד הוא השעה, חצי שעון השחר וקו הנחושת. זה מה שספר המותג מבטיח: הבוקר מזוהה בלי לקרוא את השם.</p>
+    <p><strong>בוקר אחד:</strong> אחרי המבחן העולם יוצא מהעמוד, לקשר שלם עם לקוחה: הפוסט לפני הקפה, החנות והשקית בצהריים, הודעת הריטואל, הקופסה בבוקר שאחרי, הסטורי שלה, ערכת הנסיעה, והמילוי שמגיע אחרי שלושים בקרים. ארבעה מהרגעים הם חפצים ומקומות, וארבעה הם תוכן שנכתב כל יום. ציר הזמן הוא קו הנחושת של שעון השחר, וטיפה יורדת לאורכו עם הגלילה.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
       <p><strong>מה אף פעם לא משתנה: הטיפה והשחר.</strong> כל תוכן של <span dir="ltr">ROSÉE°</span>&lrm; מתחיל בטיפה אחת באור של לפנות בוקר: בפוסט, בתווית, בסטורי. וכל מוצר מגיע עם שעת הבוקר שלו, ולכן העגלה נקראת ״הריטואל שלי״ ולא סל.</p>
