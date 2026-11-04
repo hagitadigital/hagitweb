@@ -11,6 +11,8 @@ one and the counter climbs 3 → 6 → 9 → 12 → 15.
 | ROSÉE° | the dew drop from the site's opening; a rose ripple | the morning dial turns to the next hour (05:30 → 06:15 → 07:00 → 07:45 → 22:00) with that hour's product inside |
 | CHASEN° | the whisk zigzags across the name, the foam settles | the same atelier cup swaps flavour, pixel-aligned (Classique → Fraise → Hōjicha → Yuzu → Bleu) |
 
+ROSÉE° and CHASEN° use a 2:3 window (780×1170) so their 2:3 photos show whole; ENCORE° keeps the 4:5 window (920×1150).
+
 Timeline (s): hook 0–1.8 · window rises 1.8–2.2 · touchpoints 1.9 / 5.0 / 7.5 / 10.0 / 12.5 (transitions centred on 5.0, 7.5, 10.0, 12.5) ·
 outro 15.0–19.0 («השם ירד. עדיין ___. ואצלך?», the five touchpoints without the name, CTA «אבחון פער המותג · 30 דק׳ · בלי עלות»).
 The 3s hook clip is the first 3 seconds of the same page; the counter reaches 3 at 2.8s.

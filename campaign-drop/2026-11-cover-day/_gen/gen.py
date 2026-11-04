@@ -42,7 +42,15 @@ def chip_t(i, k):
     return F[i] + .4 + k * .15
 
 
-WW, WH = 920, 1150                        # the studio window (4:5), top 300, side margin 80
+WW, WH, WTOP = 920, 1150, 300              # the studio window: 4:5 for ENCORE° (its photos are 4:5), set per world in build()
+WIN_23 = (780, 1170, 288)                  # 2:3 for ROSÉE° and CHASEN°, whose photos are 2:3: the whole product shows, nothing is cropped
+
+
+def full(x, y, pos='50% 50%'):
+    """a point measured on the site's 4:5 tile (cover-cropped from a 2:3 photo) → the same point on the whole 2:3 photo."""
+    py = float(pos.split()[1].rstrip('%')) / 100
+    shown, cut = 1150 / 1380, (1380 - 1150) / 1380 * py
+    return x, f'{(float(y.rstrip("%")) / 100 * shown + cut) * 100:.1f}%'
 R0, RF = 229, 760                         # iris: the dial's radius, and a radius that clears the corners
 
 
@@ -102,11 +110,14 @@ def rosee(A):
              'trousse': [('28%', '46%', '14%'), ('47%', '49%', '14%'), ('66%', '50%', '14%')],
              'refill': [('35%', '50%', '24%'), ('72%', '49%', '20%')]}
     tps = [dict(on=A(f'{tp}{n}.webp'), off=A(f'{tp}{n}-sans.webp'), pos=pos, fr=fr, he=he, x=x, y=y, w=w, codes=c,
-                spots=spots.get(n, [(x, y, w)]),
+                spots=[(*full(sx, sy, pos), sw) for sx, sy, sw in spots.get(n, [(x, y, w)])],
                 hour=h, prod=A(f'rosee/collection/{p}.webp'), ang=ang,
                 eyebrow=f'<span dir="ltr">ROSÉE°</span>&lrm; · <span dir="ltr">{h}</span> · <span dir="ltr">{pn}</span>')
            for n, fr, he, pos, x, y, w, c, h, pn, p, ang in rows]
-    return dict(slug='rosee', name='ROSÉE°', tps=tps, mode='iris', ring=COPPER, winbg='#FBF6EE', proof='#C9878E',
+    for t in tps:
+        t['x'], t['y'] = full(t['x'], t['y'], t['pos']); t['w'] = f'{float(t["w"][:-1]) * 920 / 780:.0f}%'; t['pos'] = '50% 50%'
+        t['spots'] = [(sx, sy, f'{float(sw[:-1]) * 920 / 780:.0f}%') for sx, sy, sw in t['spots']]
+    return dict(slug='rosee', name='ROSÉE°', win=WIN_23, tps=tps, mode='iris', ring=COPPER, winbg='#FBF6EE', proof='#C9878E',
                 fx=fx_drop, off_at=(.45, 1.0), dial=dial_morning)
 
 
@@ -123,7 +134,9 @@ def chasen(A):
                 flav=fl, col=col, tint=tint, glass=A(f'chasen/img/glass_{g}.webp'),
                 eyebrow=f'<span dir="ltr">CHASEN°</span>&lrm; · {dot(col)} <span dir="ltr">{fl}</span>')
            for n, fr, he, pos, x, y, w, c, fl, col, tint, g in rows]
-    return dict(slug='chasen', name='CHASEN°', tps=tps, mode='swap', winbg='#F4E7D5', proof=COPPER,
+    for t in tps:
+        t['x'], t['y'] = full(t['x'], t['y'], t['pos']); t['w'] = f'{min(float(t["w"][:-1]) * 920 / 780, 96):.0f}%'; t['pos'] = '50% 50%'
+    return dict(slug='chasen', name='CHASEN°', win=WIN_23, tps=tps, mode='swap', winbg='#F4E7D5', proof=COPPER,
                 fx=fx_whisk, off_at=(.5, .75))
 
 
@@ -284,7 +297,7 @@ def window(fm, w):
                   f'border:4px dashed {w["proof"]};{fm.show(0, 1.75, .2)}"></div>')
     marks = ''.join(f'<div style="position:absolute;{v}:-24px;{h}:-24px;width:48px;height:48px;border-{v}:4px solid {COPPER};border-{h}:4px solid {COPPER}"></div>'
                     for v in ('top', 'bottom') for h in ('left', 'right'))
-    return (f'<div style="position:absolute;top:300px;left:80px;width:{WW}px;height:{WH}px;'
+    return (f'<div style="position:absolute;top:{WTOP}px;left:{(1080 - WW) // 2}px;width:{WW}px;height:{WH}px;'
             f'{fm.kf([(1.8, "transform:translateY(320px);opacity:1"), (2.25, "transform:none;opacity:1"), (END, "transform:none;opacity:1"), (END + .4, "transform:scale(.92);opacity:0")])}">'
             f'{marks}<div style="position:absolute;inset:0;border-radius:20px;overflow:hidden;background:{w["winbg"]};box-shadow:0 24px 60px rgba(20,30,45,.16)">'
             f'{"".join(layers)}{proof}</div></div>')
@@ -396,6 +409,8 @@ body{{font-family:'Heebo',sans-serif;font-variant-numeric:lining-nums}}
 def build(world):
     A = Assets(world)
     w = WORLDS[world](A)
+    global WW, WH, WTOP
+    WW, WH, WTOP = w.get('win', (920, 1150, 300))
     fm = Film(D)
     body = window(fm, w) + header(fm, w) + captions(fm, w) + hook(fm, w) + outro(fm, w)
     html = PAGE.format(title=f'{w["name"]} · מכסים את השם', fonts=FONTS.replace('&', '&amp;'), cream=CREAM, dur=D, css=fm.style(), body=body)
