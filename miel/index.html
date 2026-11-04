@@ -492,6 +492,48 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     .ph,.story{margin-inline:0}
   }
   @media (prefers-reduced-motion:reduce){.jr-m{opacity:1;transform:none;transition:none}}
+  /* ---- la voix: the brand's voice, same moment written twice ---- */
+  #voix{background:var(--creme);color:var(--cacao);padding:clamp(70px,11vh,130px) var(--gutter)}
+  .vx-head{text-align:center;max-width:680px;margin:0 auto}
+  .vx-head h2{font-size:clamp(32px,4.2vw,58px);text-wrap:balance}
+  .vx-head h2 b{color:var(--rose);font-weight:inherit}
+  .vx-head .lead{margin:16px auto 0;max-width:50ch}
+  .vx-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:clamp(26px,4vh,40px) auto clamp(28px,5vh,46px)}
+  .vx-tabs button{font:inherit;font-size:15px;font-weight:600;color:var(--cacao);background:transparent;border:1px solid var(--or-soft);border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+  .vx-tabs button[aria-selected="true"]{background:var(--cacao);color:var(--creme);border-color:var(--cacao)}
+  .vx-tabs button:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+  .vx-panel{max-width:1040px;margin:0 auto}
+  .vx-panel[hidden]{display:none}
+  .vx-ask{text-align:center;font-size:17px;margin:0 auto 26px;max-width:56ch;line-height:1.7}
+  .vx-ask b{display:block;font-family:var(--ui);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:6px}
+  .vx-pair{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
+  .vx-card{border-radius:14px;padding:22px 22px 18px;position:relative}
+  .vx-card .who{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;margin-bottom:14px}
+  .vx-card .who i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--serif);font-size:12px}
+  .vx-card .who small{display:block;font-weight:400;opacity:.65;font-size:12px}
+  .vx-card p{margin:0 0 10px;line-height:1.75;font-size:16.5px}
+  .vx-card p:last-of-type{margin-bottom:0}
+  .vx-gen{background:#F1EEEA;color:#5E5A57;border:1px dashed #C9C2BB}
+  .vx-gen .who i{background:#DDD7D1;color:#7A746E}
+  .vx-gen .lbl{position:absolute;top:-11px;inset-inline-start:18px;background:#F1EEEA;border:1px dashed #C9C2BB;border-radius:999px;font-size:12px;padding:2px 10px;font-weight:600}
+  .vx-miel{background:#fff;border:1px solid var(--or-soft);box-shadow:0 24px 50px -28px rgba(74,44,36,.35)}
+  .vx-miel .who i{background:var(--poudre);color:var(--cacao);box-shadow:0 0 0 1.5px var(--rose)}
+  .vx-miel .lbl{position:absolute;top:-11px;inset-inline-start:18px;background:var(--cacao);color:var(--creme);border-radius:999px;font-size:12px;padding:3px 11px;font-weight:600}
+  .vx-miel .lay{display:block;margin:8px 0 2px;padding:8px 0 0;border-top:1px dashed var(--line);font-size:15px}
+  .vx-why{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+  .vx-why span{font-size:13px;border:1px solid var(--rose);background:rgba(201,137,137,.12);border-radius:999px;padding:3px 11px}
+  .vx-rules{max-width:1040px;margin:clamp(48px,8vh,80px) auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+  .vx-rule{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px}
+  .vx-rule h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;margin:0 0 8px}
+  .vx-rule h3 span{font-family:var(--ui);font-style:normal;font-size:13px;font-weight:600;color:var(--rose);margin-inline-start:6px}
+  .vx-rule ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+  .vx-rule li{font-size:14px;border-radius:999px;padding:3px 11px;background:var(--poudre)}
+  .vx-rule.no li{background:#F1EEEA;color:#7A746E;text-decoration:line-through;text-decoration-color:rgba(122,116,110,.6)}
+  .vx-rule p{margin:0;font-size:15px;line-height:1.7}
+  .vx-end{max-width:720px;margin:clamp(44px,7vh,70px) auto 0;text-align:center}
+  .vx-end p{margin:0 auto;line-height:1.8;font-size:17px;max-width:54ch}
+  .vx-end a{display:inline-block;margin-top:20px}
+  @media (max-width:820px){.vx-pair{grid-template-columns:minmax(0,1fr)}.vx-gen{order:2}.vx-rules{grid-template-columns:minmax(0,1fr)}}
   .studio-note{background:#F3F5F8;color:#1E2A38;padding:clamp(70px,10vh,120px) var(--gutter)}
   .studio-note .inner{max-width:760px;margin:0 auto;display:grid;gap:20px}
   .studio-note .tag,.voisins .tag{font-family:var(--serif);letter-spacing:.34em;font-size:12px;color:#56697E;direction:ltr;text-align:right}
@@ -1110,13 +1152,79 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 })();
 </script>
 
+<!-- 06d · LA VOIX: the brand's voice -->
+<section id="voix" aria-labelledby="vx-title">
+  <div class="vx-head">
+    <p class="eyebrow">La Voix · הקול של המותג</p>
+    <h2 id="vx-title">אותו רגע, נכתב פעמיים.<br><b>רק אחד מהם נשמע כמו <span dir="ltr">MIEL°</span>&lrm;.</b></h2>
+    <p class="lead">עולם מותג לא נגמר באריזה. הוא ממשיך בכל הודעה, תגובה ופוסט. אותה שאלה, באותו יום: פעם כמו כל בייקרי, ופעם בקול של המותג.</p>
+  </div>
+  <div class="vx-tabs" role="tablist" aria-label="ארבעה רגעים"><button type="button" role="tab" id="vxt0" aria-controls="vxp0" aria-selected="true">שאלה בוואטסאפ</button><button type="button" role="tab" id="vxt1" aria-controls="vxp1" aria-selected="false" tabindex="-1">תגובה באינסטגרם</button><button type="button" role="tab" id="vxt2" aria-controls="vxp2" aria-selected="false" tabindex="-1">פוסט לחג</button><button type="button" role="tab" id="vxt3" aria-controls="vxp3" aria-selected="false" tabindex="-1">רגע קשה</button></div>
+  <div class="vx-panel" id="vxp0" role="tabpanel" aria-labelledby="vxt0">
+    <p class="vx-ask"><b>שאלה בוואטסאפ</b>לקוחה כותבת: «יש לכם עוגה ליום הולדת 40 של אחותי? משהו מיוחד»</p>
+    <div class="vx-pair">
+      <div class="vx-card vx-gen"><span class="lbl">ככה עונים כולם</span><div class="who"><i>B</i><span>בייקרי<small>בלי קול</small></span></div><p>היי! בטח 😊 יש לנו מגוון עוגות יום הולדת בכל הטעמים והגדלים!! מחירים החל מ־290 ₪. מוזמנת לקפוץ לחנות או להזמין באתר 🎂🎉</p></div>
+      <div class="vx-card vx-miel"><span class="lbl">ככה עונה <span dir="ltr">MIEL°</span></span><div class="who"><i>M°</i><span>MIEL° · Maison Miel<small>בקול של המותג</small></span></div><p>יש. אבל קודם שאלה אחת: מה אחותך אוהבת שיהיה בפנים?</p><p>אם היא של פטל, הייתי בונה לה ביסקוויט וניל ולב פטל, ורובּ ורוד־אומברה מבחוץ. ככה כשחותכים, כולם רואים את הפטל לפני שטועמים.</p><span class="lay">ביסקוויט וניל · לב פטל · רובּ ורוד־אומברה · זר ורדים<br>12 פרוסות · ₪ 290</span><div class="vx-why"><span>פותחת מבפנים</span><span>שכבות, לא תארים</span><span>שאלה אחת לפני מחיר</span></div></div>
+    </div>
+  </div>
+  <div class="vx-panel" id="vxp1" role="tabpanel" aria-labelledby="vxt1" hidden>
+    <p class="vx-ask"><b>תגובה באינסטגרם</b>מתחת לפוסט, מישהי כותבת: «כמה זה עולה?»</p>
+    <div class="vx-pair">
+      <div class="vx-card vx-gen"><span class="lbl">ככה עונים כולם</span><div class="who"><i>B</i><span>בייקרי<small>בלי קול</small></span></div><p>היי מאמי, שלחנו לך בפרטי 💕</p></div>
+      <div class="vx-card vx-miel"><span class="lbl">ככה עונה <span dir="ltr">MIEL°</span></span><div class="who"><i>M°</i><span>MIEL° · Maison Miel<small>בקול של המותג</small></span></div><p>העוגה בפוסט היא 12 פרוסות, ₪ 290. ובפנים: ביסקוויט וניל ולב פטל, כמו שרואים בחתך.</p><p>אפשר לבנות אחת כזאת באתר, שכבה אחרי שכבה.</p><div class="vx-why"><span>המחיר גלוי</span><span>מה בפנים, גם בתשובה קצרה</span><span>בלי «שלחנו בפרטי»</span></div></div>
+    </div>
+  </div>
+  <div class="vx-panel" id="vxp2" role="tabpanel" aria-labelledby="vxt2" hidden>
+    <p class="vx-ask"><b>פוסט לחג</b>פוסט לחנוכה. הבייקרי צריכה להופיע בפיד כמו כולם.</p>
+    <div class="vx-pair">
+      <div class="vx-card vx-gen"><span class="lbl">ככה עונים כולם</span><div class="who"><i>B</i><span>בייקרי<small>בלי קול</small></span></div><p>🕎✨ חג אורים שמח!! ✨🕎 רק השבוע: 1+1 על כל הסופגניות!! מהרו, הכמות מוגבלת!!! 🍩🔥</p></div>
+      <div class="vx-card vx-miel"><span class="lbl">ככה עונה <span dir="ltr">MIEL°</span></span><div class="who"><i>M°</i><span>MIEL° · Maison Miel<small>בקול של המותג</small></span></div><p><b>שמונה נרות. שמונה פרוסות.</b></p><p>בחנוכה הזה יש לנו עוגה אחת שנחתכת לשמונה, ובכל פרוסה לב אחר: ריבת חלב, פטל, קרמל, פיסטוק. מדליקים נר, חותכים פרוסה, ומגלים מה בפנים.</p><div class="vx-why"><span>החג נכנס לעולם, לא להפך</span><span>החתך הוא הסיפור</span><span>בלי מבצע ובלי סימני קריאה</span></div></div>
+    </div>
+  </div>
+  <div class="vx-panel" id="vxp3" role="tabpanel" aria-labelledby="vxt3" hidden>
+    <p class="vx-ask"><b>רגע קשה</b>עוגה לא תהיה מוכנה בזמן. צריך לכתוב ללקוחה.</p>
+    <div class="vx-pair">
+      <div class="vx-card vx-gen"><span class="lbl">ככה עונים כולם</span><div class="who"><i>B</i><span>בייקרי<small>בלי קול</small></span></div><p>היי, מצטערים מאוד על אי הנוחות 🙏 עקב עומס העוגה תתעכב. נעדכן בהקדם. תודה על הסבלנות!</p></div>
+      <div class="vx-card vx-miel"><span class="lbl">ככה עונה <span dir="ltr">MIEL°</span></span><div class="who"><i>M°</i><span>MIEL° · Maison Miel<small>בקול של המותג</small></span></div><p>העוגה שלך עוד לא מוכנה, ואני מעדיפה להגיד את זה עכשיו.</p><p>הלב צריך עוד שעה להתייצב בתוך הביסקוויט. אם נחתוך עכשיו, הפטל יברח לצדדים, ואת זה לא נגיש לאמא שלך. היא תחכה לך ב־17:00. ואם קשה לך להגיע, אנחנו נביא אותה אלייך.</p><div class="vx-why"><span>אומרת את האמת בגוף ראשון</span><span>מסבירה מה קורה בפנים</span><span>מציעה פתרון, לא התנצלות</span></div></div>
+    </div>
+  </div>
+  <div class="vx-rules">
+    <div class="vx-rule"><h3 lang="fr">On dit<span>אומרות</span></h3><ul><li>מה בפנים</li><li>שכבה</li><li>הלב</li><li>החתך</li><li>הפרוסה</li><li>לבנות</li></ul></div>
+    <div class="vx-rule no"><h3 lang="fr">On ne dit pas<span>לא אומרות</span></h3><ul><li>מבצע</li><li>1+1</li><li>«שלחנו בפרטי»</li><li>!!!</li><li>«הכי טעים בעיר»</li><li>אי נוחות</li></ul></div>
+    <div class="vx-rule"><h3 lang="fr">La règle<span>הכלל</span></h3><p>כל טקסט מתחיל מבפנים. קודם מה יש בעוגה, אחר כך איך היא נראית, ורק בסוף כמה היא עולה.</p></div>
+  </div>
+  <div class="vx-end">
+    <p>את כל אלה <b>BrandOS</b> כותבת כל יום: תשובות בוואטסאפ, תגובות, פוסטים לחגים, וגם את ההודעה הקשה. כולם יוצאים מאותו Brand DNA, ולכן כולם נשמעים כמו <span dir="ltr">MIEL°</span>&lrm; ולא כמו כל בייקרי.</p>
+    <a class="pill" href="https://hagitantebi.co.il/brand-os.html?utm_source=miel&amp;utm_medium=world&amp;utm_campaign=la-voix" onclick="if(typeof fbq==='function')fbq('trackCustom','MielVoixToBrandOS')">איך BrandOS כותבת בקול שלך ←</a>
+  </div>
+</section>
+
+<script>
+// ---- la voix: four moments, tabs with arrow-key support ----
+(()=>{
+  const tabs=[...document.querySelectorAll('#voix [role="tab"]')], panels=[...document.querySelectorAll('#voix [role="tabpanel"]')];
+  function sel(i,focus){
+    tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;panels[j].hidden=j!==i});
+    if(focus)tabs[i].focus();
+    if(typeof fbq==='function')fbq('trackCustom','MielVoixTab',{tab:i});
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>sel(i));
+    t.addEventListener('keydown',e=>{
+      const rtl=getComputedStyle(t).direction==='rtl';
+      if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const d=(e.key==='ArrowLeft')!==rtl?-1:1;sel((i+d+tabs.length)%tabs.length,true)}
+    });
+  });
+})();
+</script>
+
 <footer class="brand" aria-label="Maison Miel footer">
   <div class="cols">
     <div>
       <a class="flogo" href="#top">MAISON MIEL<span style="color:var(--or)">°</span><small>PÂTISSERIE</small></a>
       <p style="margin-top:16px;max-width:34ch;opacity:.85">רומנטיקה מתחילה מבפנים.<br>חמש חתימות, שבעים ושתיים עוגות, ואחת שאת בונה.</p>
     </div>
-    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li><li><a href="#journee">יום אחד</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li><li><a href="#journee">יום אחד</a></li><li><a href="#voix">הקול</a></li></ul></div>
     <div><h4>Les Signatures</h4><ul><li><a href="#signatures"><i style="background:#E7C0BD"></i>La Rose · הוורודה</a></li><li><a href="#signatures"><i style="background:#F2E7D8"></i>Les Fleurs · הפרחונית</a></li><li><a href="#signatures"><i style="background:#7A4734"></i>Le Cacao · השוקולדית</a></li><li><a href="#signatures"><i style="background:#F1E1A6"></i>Le Citron · הלימונית</a></li><li><a href="#signatures"><i style="background:#C9CCA3"></i>La Pistache · הפיסטוקית</a></li></ul></div>
     <div><h4>La Maison</h4><ul><li>שדרות רוטשילד 48, תל אביב</li><li>ראשון–חמישי 8:00–19:00</li><li>שישי 8:00–14:00</li><li>שבת סגור. העוגה בבית.</li></ul></div>
   </div>
@@ -1136,6 +1244,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <p><b>מה שהמצלמה עשתה:</b> חמישה קליפים קצרים נוצרו מסטילים מאושרים. השולחן שמתמלא בהירו, הזר שנוחת בסוף הבנייה, הוורד שמזולף מקרוב, החיתוך וההגשה. שלושה מהם נגללים כפריימים בקנבס, והגלילה היא שממלאת, מנחיתה ומזלפת. שניים מתנגנים פעם אחת, כי חיתוך הוא רגע ולא תהליך. הסטנד הריק, שלא היה באף תמונה, נוצר מתוך הסטיל של העוגה הוורודה, ועל הסטנד הזה נופל הסטנד של הווידאו בדיוק. <b>חצי הירח:</b> חמש החתימות עומדות על קשת, הפעילה מלפנים, וכל אחת מגיעה בתורה לקדמת הבמה. הזהב כאן צהוב, לא נחושת, וזה מה שמפריד את MIEL° מהעולם השכן ÉTAGE°: שם סרט, כאן ממשק.</p>
     <p><b>מבחן הכיסוי:</b> אחרי הקופסה מורידים את השם מכל מה שיוצא מהבית: קופסת המתנה, השקית והחותם, ומהחזית ומהדלפק. כולם נשארים <span dir="ltr">MIEL°</span>&lrm;, כי בכל אחד רואים מה שבפנים: פס שכבות, דופן בחתך או פרוסה בחותם. קופסת המתנה נכשלה במבחן בגרסה הראשונה, לבנה עם סרט ובלי שום דבר מבפנים, ולכן נוסף לה פס השכבות.</p>
     <p><b>יום אחד:</b> אחרי המבחן העולם יוצא מהעמוד. שמונה רגעים של יום אחד של לקוחה: הפוסט בבוקר, החזית, הוויטרינה, השקית, ההודעה אחרי הקנייה, החותם בערב, הסטורי שהיא משתפת וההודעה שחוזרת שנה אחרי. ארבעה מהם הם חפצים ומקומות, וארבעה הם תוכן שנכתב כל יום. השדרה של ציר הזמן היא פרוסה: ביסקוויט, קרם ופטל, והיא מתמלאת עם הגלילה.</p>
+    <p><b>הקול:</b> אחרי היום, אותם רגעים נכתבים פעמיים: שאלה בוואטסאפ, תגובה באינסטגרם, פוסט לחנוכה, והודעה על עוגה שמתעכבת. פעם כמו כל בייקרי, ופעם בקול של <span dir="ltr">MIEL°</span>&lrm;. הכלל אחד: כל טקסט מתחיל מבפנים, ורק בסוף מגיע המחיר.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא מותג של עוגות. מותג שנותן ללקוחה חוויה, לחתוך את הפרוסה שלה. ברגע שהיא נכנסה לעולם הזה, היא תזהה אותו בכל תוכן שיבוא אחריו: הפרוסה, החתך, מה שבפנים. זו העקביות שנשמרת, ולא צריך להמציא כל פוסט מחדש. כמו סרטון שנחשפים אליו שוב ושוב, ובכל פעם אותה פעולה נעימה. ככה נוצר מקום שזוכרים ומזהים.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
