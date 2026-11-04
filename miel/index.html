@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MIEL° Maison Miel Pâtisserie — רומנטיקה מתחילה מבפנים · עולם מותג No.27 · Brand Worlds Studio</title>
-<meta name="description" content="MIEL° — עולם מותג קונספט מס' 24 של Brand Worlds Studio: בייקרי רומנטי שבו הגלילה בונה את העוגה, הלקוחה בוחרת את השכבות, וטאפ אחד חותך ומראה מה שבפנים.">
+<meta name="description" content="MIEL° — עולם מותג קונספט מס' 27 של Brand Worlds Studio: בייקרי רומנטי שבו הגלילה בונה את העוגה, הלקוחה בוחרת את השכבות, וטאפ אחד חותך ומראה מה שבפנים.">
 <link rel="canonical" href="https://hagitantebi.co.il/miel/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MIEL° Maison Miel Pâtisserie — רומנטיקה מתחילה מבפנים · Brand Worlds Studio">
@@ -50,7 +50,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       "image":"https://hagitantebi.co.il/miel-og.jpg",
       "inLanguage":"he",
       "genre":"Concept brand world · Romantic pâtisserie · Interactive cake builder with a real cross-section reveal",
-      "description":"עולם מותג קונספט מס' 24 של Brand Worlds Studio: בייקרי רומנטי בדיוני שבו הגלילה בונה את עוגת החתימה שכבה אחר שכבה, הלקוחה בוחרת ביסקוויט, לב, רובּ וזר בבנאי, וטאפ אחד חותך את העוגה ומראה את החתך האמיתי של הבחירה שלה.",
+      "description":"עולם מותג קונספט מס' 27 של Brand Worlds Studio: בייקרי רומנטי בדיוני שבו הגלילה בונה את עוגת החתימה שכבה אחר שכבה, הלקוחה בוחרת ביסקוויט, לב, רובּ וזר בבנאי, וטאפ אחד חותך את העוגה ומראה את החתך האמיתי של הבחירה שלה.",
       "creator":{"@type":"Person","name":"Hagit Antebi","url":"https://hagitantebi.co.il/about.html"},
       "publisher":{"@type":"Organization","name":"Brand Worlds Studio","url":"https://hagitantebi.co.il/"},
       "isPartOf":{"@type":"CollectionPage","name":"Brand Worlds","url":"https://hagitantebi.co.il/brand-worlds/"}
@@ -402,6 +402,96 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .sn-foot a{display:inline-block;margin-top:16px;color:var(--cacao);font-weight:600;text-decoration:none;border-bottom:1px solid var(--rose);padding-bottom:2px}
   @media (max-width:760px){.sn-grid{grid-template-columns:minmax(0,1fr);max-width:480px}.sn-tile.vid .sn-pic{aspect-ratio:4/5}.sn-tile h3{font-size:22px}}
   @media (prefers-reduced-motion:reduce){.sn-pic .sn-off img,.sn-pic video.sn-off,.sn-badge,.sn-sw,.sn-sw::after,.sn-tile .codes span{transition:none}#sans.is-off .sn-veil{animation:none}}
+  /* ---- nav: back to all worlds ---- */
+  .nav-end{display:flex;align-items:center;gap:16px}
+  .nav-back{font-size:14px;color:var(--cacao);text-decoration:none;opacity:.75;border-bottom:1px solid var(--or-soft);padding-bottom:1px;white-space:nowrap}
+  .nav-back:hover{opacity:1}
+  @media (max-width:480px){.nav-end{gap:10px}.nav-back{font-size:13px}.nav .pill{padding:9px 14px;font-size:14px}}
+
+  /* ---- une journée: one day with the brand ---- */
+  #journee{background:var(--poudre);color:var(--cacao);padding:clamp(70px,11vh,130px) var(--gutter)}
+  .jr-head{text-align:center;max-width:680px;margin:0 auto clamp(40px,7vh,72px)}
+  .jr-head h2{font-size:clamp(32px,4.2vw,58px);text-wrap:balance}
+  .jr-head h2 b{color:var(--rose);font-weight:inherit}
+  .jr-head .lead{margin:16px auto 0;max-width:48ch}
+  .jr-legend{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:13px}
+  .jr-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;border:1px solid var(--or-soft);background:var(--creme);font-weight:600;font-size:12.5px;white-space:nowrap}
+  .jr-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--or)}
+  .jr-tag.os{background:var(--cacao);color:var(--creme);border-color:var(--cacao)}
+  .jr-tag.os::before{background:var(--rose)}
+  .jr-line{position:relative;max-width:1080px;margin:0 auto;padding:10px 0}
+  /* the spine is a slice of cake: biscuit, cream, raspberry, filling as you scroll */
+  .jr-spine{position:absolute;top:0;bottom:0;inset-inline-start:50%;width:14px;margin-inline-start:-7px;border-radius:7px;
+    background:repeating-linear-gradient(180deg,#EED9B8 0 26px,#F6EADF 26px 30px,#C2435A 30px 33px,#F6EADF 33px 37px);opacity:.35}
+  .jr-spine i{position:absolute;top:0;inset-inline:0;height:var(--p,0%);border-radius:7px;
+    background:repeating-linear-gradient(180deg,#E8C79A 0 26px,#FBF3EA 26px 30px,#B3243F 30px 33px,#FBF3EA 33px 37px);box-shadow:0 0 0 1px rgba(74,44,36,.08)}
+  .jr-m{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,96px);align-items:center;margin:0 0 clamp(54px,9vh,96px)}
+  .jr-m:last-child{margin-bottom:0}
+  .jr-m .jr-dot{position:absolute;inset-inline-start:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--creme);border:2px solid var(--or);z-index:2;transition:background .4s,border-color .4s,transform .4s}
+  [dir="rtl"] .jr-m .jr-dot{margin:-11px -11px 0 0}
+  .jr-m.on .jr-dot{background:var(--rose);border-color:var(--rose);transform:scale(1.15)}
+  .jr-txt{max-width:420px}
+  .jr-m:nth-child(even) .jr-txt{order:2}
+  .jr-m:nth-child(odd) .jr-txt{justify-self:end;text-align:start}
+  .jr-hour{font-family:var(--serif);font-size:clamp(38px,4.4vw,58px);line-height:1;direction:ltr;unicode-bidi:isolate;display:block;color:var(--cacao)}
+  .jr-hour small{font-family:var(--ui);font-size:14px;letter-spacing:.14em;margin-inline-start:10px;color:var(--or);font-weight:600}
+  .jr-txt h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:26px;margin:12px 0 4px}
+  .jr-txt h3 span{font-family:var(--ui);font-style:normal;font-size:15px;font-weight:600;color:var(--rose);margin-inline-start:8px}
+  .jr-txt p{margin:6px 0 12px;line-height:1.75;font-size:17px}
+  .jr-vis{position:relative;max-width:460px;width:100%}
+  .jr-m:nth-child(odd) .jr-vis{justify-self:start}
+  .jr-m:nth-child(even) .jr-vis{justify-self:end}
+  .jr-pic{border-radius:8px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(74,44,36,.35);background:var(--creme)}
+  .jr-pic img,.jr-pic video{display:block;width:100%;height:100%;object-fit:cover}
+  .jr-pic.land{aspect-ratio:4/3}.jr-pic.port{aspect-ratio:4/5;max-width:360px}
+  .jr-m:nth-child(even) .jr-pic.port{margin-inline-start:auto}
+  .jr-m{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .jr-m.seen{opacity:1;transform:none}
+  /* phone mocks: feed post, whatsapp, story */
+  .ph{width:min(100%,330px);border-radius:30px;background:#fff;padding:12px;box-shadow:0 30px 60px -26px rgba(74,44,36,.45),0 0 0 1px rgba(74,44,36,.08);margin-inline:auto}
+  .ph-in{border-radius:20px;overflow:hidden;background:#fff;font-family:var(--ui)}
+  .ig-top{display:flex;align-items:center;gap:9px;padding:10px 12px;font-size:13px;font-weight:600;direction:ltr}
+  .ig-av{width:30px;height:30px;border-radius:50%;background:var(--poudre);display:grid;place-items:center;font-family:var(--serif);font-size:11px;letter-spacing:.06em;box-shadow:0 0 0 1.5px var(--rose)}
+  .ig-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+  .ig-img{aspect-ratio:1;overflow:hidden}.ig-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .ig-cap{padding:10px 14px 14px;font-size:13.5px;line-height:1.6}
+  .ig-cap b{direction:ltr;unicode-bidi:isolate}
+  .ig-act{display:flex;gap:14px;padding:10px 14px 0;font-size:18px;opacity:.75;direction:ltr}
+  .wa{background:#EFE7DE;padding:14px 12px 16px;min-height:330px;display:flex;flex-direction:column;gap:8px}
+  .wa-top{display:flex;align-items:center;gap:9px;background:#fff;margin:-14px -12px 6px;padding:10px 12px;font-size:13px;font-weight:600}
+  .wa-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+  .wa-b{max-width:86%;padding:9px 12px 18px;border-radius:12px;font-size:14px;line-height:1.55;position:relative;background:#fff;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+  .wa-b.me{align-self:flex-end;background:#F6E3DF}
+  .wa-b time{position:absolute;bottom:4px;inset-inline-end:9px;font-size:10.5px;opacity:.55;direction:ltr}
+  .wa-b .lay{display:block;margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);font-size:13px}
+  .wa-day{align-self:center;font-size:11px;background:#fff;border-radius:6px;padding:3px 10px;opacity:.75}
+  .wa-qr{display:flex;gap:6px;flex-wrap:wrap;align-self:flex-start}
+  .wa-qr span{font-size:13px;border:1px solid var(--rose);color:var(--cacao);background:#fff;border-radius:999px;padding:4px 12px}
+  .story{position:relative;aspect-ratio:9/16;max-width:300px;border-radius:22px;overflow:hidden;margin-inline:auto;box-shadow:0 30px 60px -26px rgba(74,44,36,.45)}
+  .story img{width:100%;height:100%;object-fit:cover;display:block}
+  .story .bar{position:absolute;top:10px;inset-inline:12px;height:2.5px;border-radius:2px;background:rgba(255,255,255,.45)}
+  .story .bar::after{content:"";position:absolute;inset:0;width:62%;background:#fff;border-radius:2px}
+  .story .who{position:absolute;top:22px;inset-inline:12px;display:flex;align-items:center;gap:8px;color:#fff;font-size:12.5px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.35);font-family:var(--ui)}
+  .story .who i{width:26px;height:26px;border-radius:50%;background:#F3D9D4;display:block;box-shadow:0 0 0 1.5px #fff}
+  .story .say{position:absolute;inset-inline:0;top:11%;text-align:center;font-family:var(--heb);font-size:22px;font-weight:600;line-height:1.55}
+  .story .say span{background:rgba(255,255,255,.92);color:var(--cacao);padding:2px 10px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .story .mention{position:absolute;bottom:14%;left:50%;transform:translateX(-50%) rotate(-3deg);background:#fff;color:var(--cacao);border-radius:8px;padding:6px 12px;font-family:var(--ui);font-weight:700;font-size:14px;direction:ltr;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .jr-end{max-width:760px;margin:clamp(64px,10vh,110px) auto 0;text-align:center;background:var(--creme);border-radius:14px;padding:clamp(28px,5vw,48px)}
+  .jr-end .count{font-family:var(--serif);font-size:clamp(46px,6vw,76px);line-height:1;direction:ltr;color:var(--rose)}
+  .jr-end h3{font-size:clamp(24px,2.8vw,34px);margin:12px 0 10px}
+  .jr-end p{margin:0 auto;max-width:52ch;line-height:1.8;font-size:17px}
+  .jr-end .pill{display:inline-block;margin-top:22px}
+  @media (max-width:820px){
+    .jr-spine{inset-inline-start:14px;margin:0}
+    .jr-m{grid-template-columns:minmax(0,1fr);gap:18px;padding-inline-start:46px}
+    .jr-m .jr-dot{inset-inline-start:14px;top:22px;margin:0 0 0 -4px}
+    [dir="rtl"] .jr-m .jr-dot{margin:0 -4px 0 0}
+    .jr-m:nth-child(n) .jr-txt{order:0;justify-self:start}
+    .jr-m:nth-child(n) .jr-vis{justify-self:stretch}
+    .jr-m:nth-child(n) .jr-pic.port{margin-inline-start:0}
+    .ph,.story{margin-inline:0}
+  }
+  @media (prefers-reduced-motion:reduce){.jr-m{opacity:1;transform:none;transition:none}}
   .studio-note{background:#F3F5F8;color:#1E2A38;padding:clamp(70px,10vh,120px) var(--gutter)}
   .studio-note .inner{max-width:760px;margin:0 auto;display:grid;gap:20px}
   .studio-note .tag,.voisins .tag{font-family:var(--serif);letter-spacing:.34em;font-size:12px;color:#56697E;direction:ltr;text-align:right}
@@ -479,8 +569,9 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <li><a href="#depres">מקרוב</a></li>
     <li><a href="#signatures">החתימות</a></li>
     <li><a href="#maison">הבית</a></li>
+    <li><a href="#journee">יום אחד</a></li>
   </ul>
-  <a class="pill" href="#atelier">לבנות את שלי</a>
+  <div class="nav-end"><a class="nav-back" href="https://hagitantebi.co.il/brand-worlds/">כל העולמות</a><a class="pill" href="#atelier">לבנות את שלי</a></div>
 </nav>
 
 <main id="top">
@@ -850,13 +941,182 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 })();
 </script>
 
+<!-- 06c · UNE JOURNÉE: one day with the brand -->
+<section id="journee" aria-labelledby="jr-title">
+  <div class="jr-head">
+    <p class="eyebrow">Une journée · יום אחד עם <span dir="ltr">MIEL°</span></p>
+    <h2 id="jr-title">יום אחד, שמונה רגעים.<br><b>רק אחד מהם בחנות.</b></h2>
+    <p class="lead">עולם מותג לא נגמר בדלפק. ככה נראה יום אחד של לקוחה שקונה עוגת יום הולדת לאמא שלה, מהפוסט בבוקר ועד ההודעה שחוזרת אליה שנה אחרי.</p>
+    <div class="jr-legend"><span class="jr-tag">העולם: אריזה, חזית, ויטרינה</span><span class="jr-tag os">BrandOS: פוסט, הודעה, תזכורת</span></div>
+  </div>
+  <div class="jr-line" id="jrLine">
+    <div class="jr-spine" aria-hidden="true"><i id="jrFill"></i></div>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">07:40</span>
+        <h3 lang="fr">Le Fil<span>בפיד</span></h3>
+        <p>בדרך לעבודה עוצרת על פרוסה שנשלפת מעוגה ורודה. הפוסט לא מראה את העוגה. הוא מראה מה שבפנים.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="פוסט של MIEL° בפיד: פרוסה נשלפת מעוגה ורודה, והחתך מראה ביסקוויט וניל ולב פטל">
+          <div class="ph-in">
+            <div class="ig-top"><span class="ig-av">M°</span><span>maisonmiel<small>Rothschild 48, Tel Aviv</small></span></div>
+            <div class="ig-img"><img src="assets/07-still-cut-slice-lift.webp" alt="" width="1448" height="1086" loading="lazy" style="object-position:62% 50%"></div>
+            <div class="ig-act" aria-hidden="true">♡ ◌ ➤</div>
+            <div class="ig-cap"><b>maisonmiel</b> מה שבפנים: ביסקוויט וניל, לב פטל. מבחוץ היא רק ורודה.<br>היום בוויטרינה, עד שנגמר.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:05</span>
+        <h3 lang="fr">La Façade<span>החזית</span></h3>
+        <p>בהפסקת הצהריים היא עוברת ברוטשילד 48. הסוכך הוא פס של שכבות, ובחלון יש פרוסות ולא עוגות. היא מזהה את המקום מהפוסט, עוד לפני שקראה את השלט.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic land"><picture><source media="(max-width:700px)" srcset="assets/03-maison-storefront-m.webp"><img src="assets/03-maison-storefront.webp" alt="חזית MIEL°: סוכך בפס של שכבות עוגה ופרוסות בחלונות" width="1448" height="1086" loading="lazy"></picture></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:12</span>
+        <h3 lang="fr">La Vitrine<span>הוויטרינה</span></h3>
+        <p>חמש פרוסות על מעמדי זהב, החתך פונה אליה. היא לא בוחרת עוגה לפי איך שהיא נראית מבחוץ. היא בוחרת לפי מה שבפנים, ובונה את העוגה של אמא שלה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic land"><picture><source media="(max-width:700px)" srcset="assets/05-maison-interior-m.webp"><img src="assets/05-maison-interior.webp" alt="הוויטרינה: חמש פרוסות החתימה, החתך פונה החוצה" width="1448" height="1086" loading="lazy"></picture></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:22</span>
+        <h3 lang="fr">Le Sac<span>השקית</span></h3>
+        <p>היא יוצאת לרחוב, והדופן של השקית היא חתך של עוגה. מי שעוברת לידה כבר יודעת מאיפה היא יצאה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic port"><video src="assets/touchpoints/bag.mp4" poster="assets/touchpoints/bag.webp" muted loop playsinline autoplay preload="metadata" aria-label="יד מחזיקה את שקית MIEL°, הדופן שלה היא חתך של עוגה"></video></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">13:24</span>
+        <h3 lang="fr">Le Message<span>ההודעה</span></h3>
+        <p>עוד לפני שהגיעה לעבודה מחכה לה הודעה. אין בה «תודה על הקנייה». יש בה העוגה שלה, שכבה אחרי שכבה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="הודעת וואטסאפ מ-MIEL°: סיכום העוגה שנבחרה, מבפנים החוצה">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av">M°</span><span>MIEL° · Maison Miel<small>חשבון עסקי</small></span></div>
+              <div class="wa-b">תודה שבאת. זו העוגה של אמא שלך, מבפנים החוצה:<span class="lay">ביסקוויט וניל · לב פטל<br>רובּ ורוד־אומברה · זר ורדים</span><time>13:24</time></div>
+              <div class="wa-b">שתי שעות במקרר, וחצי שעה בחוץ לפני שחותכים. ככה הלב נשאר רך.<time>13:24</time></div>
+              <div class="wa-b me">רק שהיא לא תראה את החתך לפני הנרות<time>13:31</time></div>
+              <div class="wa-b">בגלל זה יש חותם על הקופסה.<time>13:32</time></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">19:30</span>
+        <h3 lang="fr">Le Sceau<span>החותם</span></h3>
+        <p>בערב, מול כל המשפחה, החותם עם הפרוסה נשבר. אף אחד לא ראה את העוגה לפני הרגע הזה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic port"><video src="assets/touchpoints/seal.mp4" poster="assets/touchpoints/seal.webp" muted loop playsinline autoplay preload="metadata" aria-label="החותם של MIEL° עם פרוסה, על נייר משי ורוד"></video></div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">20:05</span>
+        <h3 lang="fr">La Part<span>הפרוסה</span></h3>
+        <p>החתך הראשון. כולם מצלמים מבפנים, כי זה מה שהעולם הזה לימד אותם לצלם. התיוג הוא כבר שלה.</p>
+        <span class="jr-tag os">BrandOS משתפת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="story" aria-label="סטורי של הלקוחה: הפרוסה הראשונה על צלחת, עם תיוג של MIEL°">
+          <picture><source media="(max-width:700px)" srcset="assets/08-still-slice-pink-topper-m.webp"><img src="assets/08-still-slice-pink-topper.webp" alt="" width="1448" height="1086" loading="lazy" style="object-position:62% 50%"></picture>
+          <span class="bar"></span>
+          <span class="who"><i></i>noa.l · 20:05</span>
+          <span class="say"><span>החתך הראשון.<br>היא בכתה.</span></span>
+          <span class="mention">@maisonmiel</span>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">+1<small>שנה</small></span>
+        <h3 lang="fr">L'Anniversaire<span>שנה אחרי</span></h3>
+        <p>שבוע לפני יום ההולדת הבא מגיעה הודעה. המותג זוכר מה היה בפנים בשנה שעברה, ושואל מה יהיה השנה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="הודעת וואטסאפ מ-MIEL° שנה אחרי: תזכורת ליום ההולדת עם העוגה של השנה שעברה">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av">M°</span><span>MIEL° · Maison Miel<small>חשבון עסקי</small></span></div>
+              <span class="wa-day">שנה אחרי</span>
+              <div class="wa-b">בעוד שבוע יום ההולדת של אמא שלך. בשנה שעברה היה בפנים ביסקוויט וניל ולב פטל.<time>09:00</time></div>
+              <div class="wa-b">השנה לחזור על אותה עוגה, או לנסות את הלב בקרמל?<time>09:00</time></div>
+              <div class="wa-qr" aria-hidden="true"><span>אותה עוגה</span><span>לב קרמל</span><span>לבנות מחדש</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="jr-end">
+    <div class="count">4 / 8</div>
+    <h3>חצי מהרגעים האלה לא קורים בחנות.</h3>
+    <p>הפוסט בבוקר, ההודעה אחרי הקנייה, הסטורי שהיא משתפת וההודעה של שנה אחרי. את כולם <b>BrandOS</b> כותבת כל יום, בקול של <span dir="ltr">MIEL°</span>&lrm;, מתוך אותה החלטה אחת: מה שבפנים.</p>
+    <a class="pill" href="https://hagitantebi.co.il/brand-os.html?utm_source=miel&amp;utm_medium=world&amp;utm_campaign=une-journee" onclick="if(typeof fbq==='function')fbq('trackCustom','MielJourneeToBrandOS')">איך BrandOS מפעילה עולם ←</a>
+  </div>
+</section>
+
+<script>
+// ---- une journée: moments rise in, the cake spine fills with the day ----
+(()=>{
+  const line=document.getElementById('jrLine'), fill=document.getElementById('jrFill'), ms=[...line.querySelectorAll('.jr-m')];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{rootMargin:'0px 0px -15% 0px'});
+    ms.forEach(m=>io.observe(m));
+  } else ms.forEach(m=>m.classList.add('seen'));
+  let raf=0;
+  function upd(){
+    raf=0;
+    const r=line.getBoundingClientRect(), mid=innerHeight*.55;
+    const p=Math.min(Math.max((mid-r.top)/r.height,0),1);
+    fill.style.height=(p*100).toFixed(2)+'%';
+    ms.forEach(m=>{const b=m.getBoundingClientRect();m.classList.toggle('on',b.top+b.height/2<mid)});
+  }
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+</script>
+
 <footer class="brand" aria-label="Maison Miel footer">
   <div class="cols">
     <div>
       <a class="flogo" href="#top">MAISON MIEL<span style="color:var(--or)">°</span><small>PÂTISSERIE</small></a>
       <p style="margin-top:16px;max-width:34ch;opacity:.85">רומנטיקה מתחילה מבפנים.<br>חמש חתימות, שבעים ושתיים עוגות, ואחת שאת בונה.</p>
     </div>
-    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a href="#construction">הבנייה</a></li><li><a href="#atelier">האטלייה</a></li><li><a href="#coupeblock">החתך</a></li><li><a href="#depres">מקרוב</a></li><li><a href="#signatures">החתימות</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li><li><a href="#journee">יום אחד</a></li></ul></div>
     <div><h4>Les Signatures</h4><ul><li><a href="#signatures"><i style="background:#E7C0BD"></i>La Rose · הוורודה</a></li><li><a href="#signatures"><i style="background:#F2E7D8"></i>Les Fleurs · הפרחונית</a></li><li><a href="#signatures"><i style="background:#7A4734"></i>Le Cacao · השוקולדית</a></li><li><a href="#signatures"><i style="background:#F1E1A6"></i>Le Citron · הלימונית</a></li><li><a href="#signatures"><i style="background:#C9CCA3"></i>La Pistache · הפיסטוקית</a></li></ul></div>
     <div><h4>La Maison</h4><ul><li>שדרות רוטשילד 48, תל אביב</li><li>ראשון–חמישי 8:00–19:00</li><li>שישי 8:00–14:00</li><li>שבת סגור. העוגה בבית.</li></ul></div>
   </div>
@@ -871,10 +1131,11 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   <div class="inner">
     <p class="tag">Studio Note · איך העולם הזה נבנה</p>
     <h2>עוגה לא מוכרים מבחוץ.<br>מוכרים אותה <b>מבפנים.</b></h2>
-    <p><span dir="ltr">MIEL°</span> הוא עולם מותג קונספט, מס' 24 בסדרה של Brand Worlds Studio. ההבטחה נוסחה קודם: <b>רומנטיקה מתחילה מבפנים.</b> ממנה נגזר האלמנט: הפרוסה. לא העוגה, לא הוורד, לא הקופסה, אלא החתך, כי כל בייקרי רומנטי מראה עוגה מבחוץ, ורק מה שבפנים הוא מה שזוכרים. מהאלמנט נגזר הסדר של העמוד: לבנות, לבחור, לחתוך, להגיש, לקחת הביתה.</p>
+    <p><span dir="ltr">MIEL°</span> הוא עולם מותג קונספט, מס' 27 בסדרה של Brand Worlds Studio. ההבטחה נוסחה קודם: <b>רומנטיקה מתחילה מבפנים.</b> ממנה נגזר האלמנט: הפרוסה. לא העוגה, לא הוורד, לא הקופסה, אלא החתך, כי כל בייקרי רומנטי מראה עוגה מבחוץ, ורק מה שבפנים הוא מה שזוכרים. מהאלמנט נגזר הסדר של העמוד: לבנות, לבחור, לחתוך, להגיש, לקחת הביתה.</p>
     <p><b>במה אחת, שלושה מצבים:</b> הסטנד לא זז מהמסך. קודם הגלילה בונה את עוגת החתימה, ביסקוויט, לב, ביסקוויט, לב, ביסקוויט, ואז הרובּ עוטף מלמטה למעלה והזר נוחת. אחר כך אותה במה עוברת ללקוחה עם ארבעה צ'יפים: שני ביסקוויטים, שלושה לבבות, שלושה רובּים, ארבעה זרים, שבעים ושתיים עוגות. ואז טאפ אחד חותך. <b>החתך תמיד אמיתי:</b> לא ציירנו פרוסה. שישה צילומים, אחד לכל שילוב של ביסקוויט ולב, מתחלפים לפי הבחירה, והזר שנבחר מונח מעליהם. הרובּ נשאר על העוגה השלמה, כי בחתך השפה ניטרלית בכוונה.</p>
     <p><b>מה שהמצלמה עשתה:</b> חמישה קליפים קצרים נוצרו מסטילים מאושרים. השולחן שמתמלא בהירו, הזר שנוחת בסוף הבנייה, הוורד שמזולף מקרוב, החיתוך וההגשה. שלושה מהם נגללים כפריימים בקנבס, והגלילה היא שממלאת, מנחיתה ומזלפת. שניים מתנגנים פעם אחת, כי חיתוך הוא רגע ולא תהליך. הסטנד הריק, שלא היה באף תמונה, נוצר מתוך הסטיל של העוגה הוורודה, ועל הסטנד הזה נופל הסטנד של הווידאו בדיוק. <b>חצי הירח:</b> חמש החתימות עומדות על קשת, הפעילה מלפנים, וכל אחת מגיעה בתורה לקדמת הבמה. הזהב כאן צהוב, לא נחושת, וזה מה שמפריד את MIEL° מהעולם השכן ÉTAGE°: שם סרט, כאן ממשק.</p>
     <p><b>מבחן הכיסוי:</b> אחרי הקופסה מורידים את השם מכל מה שיוצא מהבית: קופסת המתנה, השקית והחותם, ומהחזית ומהדלפק. כולם נשארים <span dir="ltr">MIEL°</span>&lrm;, כי בכל אחד רואים מה שבפנים: פס שכבות, דופן בחתך או פרוסה בחותם. קופסת המתנה נכשלה במבחן בגרסה הראשונה, לבנה עם סרט ובלי שום דבר מבפנים, ולכן נוסף לה פס השכבות.</p>
+    <p><b>יום אחד:</b> אחרי המבחן העולם יוצא מהעמוד. שמונה רגעים של יום אחד של לקוחה: הפוסט בבוקר, החזית, הוויטרינה, השקית, ההודעה אחרי הקנייה, החותם בערב, הסטורי שהיא משתפת וההודעה שחוזרת שנה אחרי. ארבעה מהם הם חפצים ומקומות, וארבעה הם תוכן שנכתב כל יום. השדרה של ציר הזמן היא פרוסה: ביסקוויט, קרם ופטל, והיא מתמלאת עם הגלילה.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא מותג של עוגות. מותג שנותן ללקוחה חוויה, לחתוך את הפרוסה שלה. ברגע שהיא נכנסה לעולם הזה, היא תזהה אותו בכל תוכן שיבוא אחריו: הפרוסה, החתך, מה שבפנים. זו העקביות שנשמרת, ולא צריך להמציא כל פוסט מחדש. כמו סרטון שנחשפים אליו שוב ושוב, ובכל פעם אותה פעולה נעימה. ככה נוצר מקום שזוכרים ומזהים.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
@@ -929,7 +1190,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 </section>
 
 <footer class="studio">
-  <span><span dir="ltr">MIEL°</span> הוא מותג קונספט בדיוני · עולם מס' 24 · © Brand Worlds Studio — חגית אנטבי</span>
+  <span><span dir="ltr">MIEL°</span> הוא מותג קונספט בדיוני · עולם מס' 27 · © Brand Worlds Studio — חגית אנטבי</span>
   <span><a href="https://hagitantebi.co.il/">hagitantebi.co.il</a> · <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds</a></span>
 </footer>
 <p class="bws-legal" dir="rtl" style="margin:0;padding:18px 16px 24px;text-align:center;font:500 11px/1.8 Rubik,Assistant,system-ui,sans-serif;letter-spacing:.02em;opacity:.55;color:#1E2A38;background:#F3F5F8"><a href="/privacy.html" style="color:inherit;text-decoration:none">מדיניות פרטיות</a> · <a href="/terms.html" style="color:inherit;text-decoration:none">תנאי שימוש</a> · <a href="/accessibility.html" style="color:inherit;text-decoration:none">הצהרת נגישות</a> · <a href="https://hagitantebi.co.il/" style="color:inherit;text-decoration:none">Brand Worlds Studio · חגית אנטבי</a></p>
