@@ -96,12 +96,18 @@ def rosee(A):
         ('trousse', 'La Trousse', 'ערכת הנסיעה', '50% 45%', '48%', '48.5%', '50%', ['שלוש שעות בשורה', 'זכוכית ורודה', 'רוכסן נחושת'], '07:45', 'La Lumière', 'lumiere', 60),
         ('refill', 'La Recharge', 'המילוי', '50% 50%', '54%', '49.5%', '70%', ['השעה', 'זכוכית ורודה', 'מכסה נחושת'], '22:00', 'La Nuit', 'nuit', 150),
     ]
+    # every place the name sits (the box and the card; three bottles; two packs), measured from the -sans diff
+    spots = {'box-card': [('33%', '42%', '26%'), ('57%', '80%', '18%')],
+             'shelf': [('27%', '51%', '18%'), ('48%', '54%', '18%'), ('64%', '48%', '14%')],
+             'trousse': [('28%', '46%', '14%'), ('47%', '49%', '14%'), ('66%', '50%', '14%')],
+             'refill': [('35%', '50%', '24%'), ('72%', '49%', '20%')]}
     tps = [dict(on=A(f'{tp}{n}.webp'), off=A(f'{tp}{n}-sans.webp'), pos=pos, fr=fr, he=he, x=x, y=y, w=w, codes=c,
+                spots=spots.get(n, [(x, y, w)]),
                 hour=h, prod=A(f'rosee/collection/{p}.webp'), ang=ang,
                 eyebrow=f'<span dir="ltr">ROSÉE°</span>&lrm; · <span dir="ltr">{h}</span> · <span dir="ltr">{pn}</span>')
            for n, fr, he, pos, x, y, w, c, h, pn, p, ang in rows]
     return dict(slug='rosee', name='ROSÉE°', tps=tps, mode='iris', ring=COPPER, winbg='#FBF6EE', proof='#C9878E',
-                fx=fx_drop, off_at=(.4, .9), dial=dial_morning)
+                fx=fx_drop, off_at=(.45, 1.0), dial=dial_morning)
 
 
 def chasen(A):
@@ -134,8 +140,12 @@ def fx_veil(fm, t, f):
 
 
 def fx_drop(fm, t, f):
-    """ROSÉE°: the dew drop from the site's opening falls on the name; a rose ripple spreads and the letters melt."""
-    x, y, w = px(t['x'], WW), px(t['y'], WH), min(px(t['w'], WW), 700)
+    """ROSÉE°: a dew drop from the site's opening falls on every place the name sits; a rose ripple spreads and the letters melt."""
+    return ''.join(fx_drop1(fm, sx, sy, sw, f + k * .1) for k, (sx, sy, sw) in enumerate(t['spots']))
+
+
+def fx_drop1(fm, sx, sy, sw, f):
+    x, y, w = px(sx, WW), px(sy, WH), min(max(px(sw, WW), 150), 700)
     drop = (f'<div style="position:absolute;left:{x - 22:.0f}px;top:0;width:44px;height:58px;'
             f'{fm.kf([(f - .01, "opacity:0;transform:translateY(-60px)"), (f, "opacity:1;transform:translateY(-60px)"), (f + .36, f"opacity:1;transform:translateY({y - 50:.0f}px)"), (f + .4, f"opacity:0;transform:translateY({y - 40:.0f}px)")], "cubic-bezier(.55,0,1,.45)")}">'
             f'<div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;border:3px solid #FBF6EE;'
@@ -267,9 +277,11 @@ def window(fm, w):
         layers += [tp_layer(fm, w, i) for i in range(5)]
         layers += [swap(fm, w, i, E[i]) for i in range(4)]
     t0 = w['tps'][0]
-    rx, ry, rw = px(t0['x'], WW), px(t0['y'], WH), min(px(t0['w'], WW) + 60, 880)
-    proof = (f'<div style="position:absolute;left:{rx - rw / 2:.0f}px;top:{ry - 64:.0f}px;width:{rw:.0f}px;height:128px;border-radius:50%;'
-             f'border:4px dashed {w["proof"]};{fm.show(0, 1.75, .2)}"></div>')
+    proof = ''
+    for sx, sy, sw in t0.get('spots', [(t0['x'], t0['y'], t0['w'])]):
+        rx, ry, rw = px(sx, WW), px(sy, WH), min(max(px(sw, WW) + 60, 200), 880)
+        proof += (f'<div style="position:absolute;left:{rx - rw / 2:.0f}px;top:{ry - 64:.0f}px;width:{rw:.0f}px;height:128px;border-radius:50%;'
+                  f'border:4px dashed {w["proof"]};{fm.show(0, 1.75, .2)}"></div>')
     marks = ''.join(f'<div style="position:absolute;{v}:-24px;{h}:-24px;width:48px;height:48px;border-{v}:4px solid {COPPER};border-{h}:4px solid {COPPER}"></div>'
                     for v in ('top', 'bottom') for h in ('left', 'right'))
     return (f'<div style="position:absolute;top:300px;left:80px;width:{WW}px;height:{WH}px;'
