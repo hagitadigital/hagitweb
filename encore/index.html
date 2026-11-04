@@ -443,6 +443,86 @@ footer.studio a{color:inherit}
   .sn-tile .chips span{font-size:.7rem;padding:2px 8px}
 }
 @media (prefers-reduced-motion:reduce){.sn-pic img.sn-off,.sn-tile .chips span,.sn-sw,.sn-sw::after{transition:none}.sans.is-off .sn-veil{animation:none}}
+/* ---- une journée: one day with the brand, through the four hours ---- */
+.journee{position:relative;background:#1E0F0E;padding:clamp(70px,11vh,130px) var(--gutter);overflow:hidden;--hg:rgba(110,78,74,.35)}
+.journee::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 45% at 50% 0%,var(--hg),transparent 70%);transition:background 1.2s ease}
+.jr-head{position:relative;text-align:center;max-width:680px;margin:0 auto clamp(40px,7vh,72px)}
+.jr-head h2{font-family:var(--font-display);font-weight:500;text-wrap:balance;font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin-top:12px}
+.jr-head h2 .g{color:var(--gold)}
+.jr-head p{margin-top:12px;color:var(--ink-soft);font-weight:300;line-height:1.75}
+.jr-legend{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.jr-tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;border:1px solid rgba(217,178,106,.45);font-size:.78rem;white-space:nowrap;color:var(--ink)}
+.jr-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.jr-tag.os{background:var(--gold);color:#1E0F0E;border-color:var(--gold);font-weight:500}
+.jr-tag.os::before{background:#1E0F0E}
+.jr-line{position:relative;max-width:1080px;margin:0 auto;padding:10px 0}
+/* the spine is the day itself: dawn, noon, sunset, night, filling as you scroll */
+.jr-spine{position:absolute;top:0;bottom:0;inset-inline-start:50%;width:4px;margin-inline-start:-2px;border-radius:2px;background:rgba(217,178,106,.14)}
+.jr-spine i{position:absolute;top:0;inset-inline:0;height:var(--p,0%);border-radius:2px;background:linear-gradient(180deg,#B38A7F 0%,#6E7FA8 30%,#C4613F 62%,#4A2A28 88%,#D9B26A 100%);background-size:100% var(--full,1000px)}
+.jr-m{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,96px);align-items:center;margin:0 0 clamp(54px,9vh,96px);opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.jr-m.seen{opacity:1;transform:none}
+.jr-m:last-child{margin-bottom:0}
+.jr-dot{position:absolute;inset-inline-start:50%;top:50%;width:20px;height:20px;margin-top:-10px;margin-inline-start:-10px;border-radius:50%;background:#1E0F0E;border:2px solid var(--hc);z-index:2;transition:background .4s,transform .4s}
+.jr-m.on .jr-dot{background:var(--hc);transform:scale(1.2);box-shadow:0 0 0 6px rgba(217,178,106,.08)}
+.jr-txt{max-width:420px}
+.jr-m:nth-child(even) .jr-txt{order:2}
+.jr-m:nth-child(odd) .jr-txt{justify-self:end}
+.jr-hour{font-family:var(--font-display);font-size:clamp(2.4rem,4.4vw,3.6rem);line-height:1;direction:ltr;unicode-bidi:isolate;display:block}
+.jr-hour small{font-family:var(--font-body-en);font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;margin-inline-start:12px;color:var(--hc2,var(--gold))}
+.jr-txt h3{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:1.7rem;margin:12px 0 4px}
+.jr-txt h3 span{font-family:var(--font-body-he);font-style:normal;font-size:.55em;color:var(--ink-soft);margin-inline-start:8px}
+.jr-txt p{margin:6px 0 14px;line-height:1.75;font-weight:300;color:var(--ink-soft)}
+.jr-vis{position:relative;max-width:440px;width:100%}
+.jr-m:nth-child(odd) .jr-vis{justify-self:start}
+.jr-m:nth-child(even) .jr-vis{justify-self:end}
+.jr-pic{border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.7),inset 0 0 0 1px rgba(217,178,106,.2)}
+.jr-pic{width:100%}
+.jr-pic img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.jr-pic.round{border-radius:50%;aspect-ratio:1;max-width:400px;box-shadow:0 30px 60px -28px rgba(0,0,0,.7),0 0 0 1px var(--hc)}
+.jr-pic.round img{aspect-ratio:1}
+/* phone mocks */
+.ph{width:min(100%,320px);border-radius:30px;background:#2A1716;padding:11px;box-shadow:0 30px 60px -26px rgba(0,0,0,.75),inset 0 0 0 1px rgba(217,178,106,.25);margin-inline:auto}
+.ph-in{border-radius:20px;overflow:hidden;background:#fff;color:#2A1413;font-family:var(--font-body-he)}
+.ig-top{display:flex;align-items:center;gap:9px;padding:10px 12px;font-size:13px;font-weight:500;direction:ltr;font-family:var(--font-body-en)}
+.ig-av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:11px;color:#F6EEE4;background:conic-gradient(from -45deg,#241212 0 25%,#6E4E4A 0 50%,#34405A 0 75%,#853A26 0);box-shadow:0 0 0 1.5px #D9B26A}
+.ig-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+.ig-img{position:relative;aspect-ratio:1;overflow:hidden}.ig-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ig-img .stamp{position:absolute;top:12px;right:12px;font-family:var(--font-body-en);font-size:11px;letter-spacing:.22em;color:#F6EEE4;background:rgba(110,78,74,.85);padding:4px 9px;border-radius:2px}
+.ig-cap{padding:10px 14px 14px;font-size:13.5px;line-height:1.6}
+.ig-cap b{direction:ltr;unicode-bidi:isolate;font-weight:600}
+.ig-act{display:flex;gap:14px;padding:10px 14px 0;font-size:18px;opacity:.7;direction:ltr}
+.wa{background:#EFE7DE;padding:14px 12px 16px;min-height:320px;display:flex;flex-direction:column;gap:8px}
+.wa-top{display:flex;align-items:center;gap:9px;background:#fff;margin:-14px -12px 6px;padding:10px 12px;font-size:13px;font-weight:500}
+.wa-top small{display:block;font-weight:400;opacity:.6;font-size:11px}
+.wa-b{max-width:86%;padding:9px 12px 18px;border-radius:12px;font-size:14px;line-height:1.55;position:relative;background:#fff;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.wa-b.me{align-self:flex-end;background:#F3E3DA}
+.wa-b time{position:absolute;bottom:4px;inset-inline-end:9px;font-size:10.5px;opacity:.55;direction:ltr;font-family:var(--font-body-en)}
+.wa-day{align-self:center;font-size:11px;background:#fff;border-radius:6px;padding:3px 10px;opacity:.75}
+.wa-qr{display:flex;gap:6px;flex-wrap:wrap;align-self:flex-start}
+.wa-qr span{font-size:13px;border:1px solid #853A26;color:#2A1413;background:#fff;border-radius:999px;padding:4px 12px}
+.wa-cert{align-self:flex-start;width:88%;background:#F6EEE4;border-radius:10px;padding:14px 14px 18px;text-align:center;outline:1px solid #D9B26A;outline-offset:-6px;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.wa-cert .lg{font-family:var(--serif);letter-spacing:.32em;font-size:.82rem;direction:ltr}
+.wa-cert .k{font-family:var(--font-body-en);font-size:.55rem;letter-spacing:.3em;color:#853A26;margin-top:2px;direction:ltr}
+.wa-cert svg{width:62px;margin:10px auto 6px;display:block}
+.wa-cert .nm{font-family:var(--serif);font-style:italic;font-size:1.5rem;line-height:1.1}
+.wa-cert .row{font-size:.74rem;line-height:1.7;border-top:1px solid rgba(42,20,19,.2);margin-top:8px;padding-top:8px}
+.wa-cert .row b{font-family:var(--font-body-en);font-weight:500;letter-spacing:.08em;direction:ltr;unicode-bidi:isolate}
+.wa-cert time{position:absolute;bottom:4px;inset-inline-end:9px;font-size:10.5px;opacity:.55;direction:ltr}
+.jr-end{position:relative;max-width:760px;margin:clamp(64px,10vh,110px) auto 0;text-align:center;border:1px solid rgba(217,178,106,.3);border-radius:4px;padding:clamp(28px,5vw,48px);background:rgba(246,238,228,.03)}
+.jr-end .count{font-family:var(--font-display);font-size:clamp(3rem,6vw,4.6rem);line-height:1;direction:ltr;color:var(--gold)}
+.jr-end h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.6rem,2.8vw,2.2rem);margin:12px 0 10px}
+.jr-end p{margin:0 auto;max-width:52ch;line-height:1.8;font-weight:300;color:var(--ink-soft)}
+.jr-end p b{color:var(--ink);font-weight:500}
+.jr-end a{display:inline-block;margin-top:22px;background:var(--gold);color:#1E0F0E;text-decoration:none;font-weight:500;padding:12px 26px;border-radius:999px}
+@media (max-width:820px){
+  .jr-spine{inset-inline-start:12px;margin:0}
+  .jr-m{grid-template-columns:minmax(0,1fr);gap:18px;padding-inline-start:40px}
+  .jr-dot{inset-inline-start:13px;top:20px;margin:0;margin-inline-start:-9px}
+  .jr-m:nth-child(n) .jr-txt{order:0;justify-self:start}
+  .jr-m:nth-child(n) .jr-vis{justify-self:stretch}
+  .ph,.jr-pic.round{margin-inline:0}
+}
+@media (prefers-reduced-motion:reduce){.jr-m{opacity:1;transform:none;transition:none}.journee::before{transition:none}}
 @media (max-width:860px){.ail-grid{grid-template-columns:minmax(0,1fr);max-width:440px}}
 @media (prefers-reduced-motion:reduce){.hx-ch article,.hx-ring .q,.hx-glow{transition:none}}
 .book-link{display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:22px 26px;background:#fff;border:1px solid #C9D2DC;border-inline-start:3px solid #853A26;text-decoration:none;color:#1E2A38;transition:border-color .3s,box-shadow .3s}
@@ -726,6 +806,183 @@ footer.studio a{color:inherit}
   </div>
 </section>
 
+<section class="journee" id="journee" aria-labelledby="jr-title">
+  <div class="jr-head">
+    <div class="eyebrow">Une journée · יום אחד עם <span dir="ltr">ENCORE°</span></div>
+    <h2 id="jr-title">יום אחד, ארבע שעות. <span class="g">שמונה רגעים.</span></h2>
+    <p>התכשיט של <span dir="ltr">ENCORE°</span>&lrm; עובר יום שלם בלי לרדת. ככה נראה היום שבו לקוחה פוגשת אותו, מהפוסט בשחר ועד ההודעה שחוזרת אליה שנה אחרי, באותה דקה.</p>
+    <div class="jr-legend"><span class="jr-tag">העולם: שלט, תווית, שקית, קופסה</span><span class="jr-tag os">BrandOS: פוסט, הודעה, תעודה, תזכורת</span></div>
+  </div>
+  <div class="jr-line" id="jrLine">
+    <div class="jr-spine" aria-hidden="true"><i id="jrFill"></i></div>
+    <article class="jr-m" data-h="0" style="--hc:#B38A7F;--hc2:#B38A7F">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">06:00<small>Aube</small></span>
+        <h3 lang="fr">Le Fil<span>בפיד</span></h3>
+        <p>עוד לפני הקפה, בפיד שלה: תליון אחד באור של שחר, והשעה כתובה עליו. ENCORE° לא מפרסם תכשיט. הוא מפרסם שעה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="פוסט של ENCORE° בשש בבוקר: תליון הטיפה על הצוואר, באור של שחר">
+          <div class="ph-in">
+            <div class="ig-top"><span class="ig-av" aria-hidden="true"></span><span>encore.bijoux<small>Jaffa, Tel Aviv</small></span></div>
+            <div class="ig-img"><img src="assets/hero/landed.webp" alt="" width="1600" height="893" loading="lazy" style="object-position:30% 50%"><span class="stamp">06:00 · AUBE</span></div>
+            <div class="ig-act" aria-hidden="true">♡ ◌ ➤</div>
+            <div class="ig-cap"><b>encore.bijoux</b> הדבר הראשון שאת עונדת בבוקר. <span lang="fr">Larme</span>, תליון הטיפה, ונשאר עד הלילה.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="1" style="--hc:#7F93C4;--hc2:#7F93C4">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">12:31<small>Midi</small></span>
+        <h3 lang="fr">Le Message<span>ההודעה</span></h3>
+        <p>בהפסקת הצהריים היא שואלת על צמיד לערב. התשובה לא מתחילה במחיר. היא מתחילה בשעה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="שיחת וואטסאפ עם ENCORE° בצהריים: שאלה על צמיד לערב, והתשובה בשעה שלו">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av" aria-hidden="true"></span><span>ENCORE° Maison de Bijoux<small>חשבון עסקי</small></span></div>
+              <div class="wa-b me">ראיתי את התליון בבוקר. יש צמיד שלא צריך להוריד בערב?<time>12:31</time></div>
+              <div class="wa-b">יש אחד שנולד לערב. <span lang="fr">Lave</span>, צמיד רחב בזהב מותך, השעה שלו 18:00.<time>12:34</time></div>
+              <div class="wa-b">הוא מחכה לך בחנות ביפו. כדאי להגיע בשקיעה, ככה רואים אותו באור שלו.<time>12:34</time></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="2" style="--hc:#D27A52;--hc2:#D27A52">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">17:50<small>Couchant</small></span>
+        <h3 lang="fr">L'Enseigne<span>השלט</span></h3>
+        <p>בסמטה ביפו, השלט הוא שעון השמש עצמו. ארבעה צבעים ושנתות זהב, והיא יודעת לאן היא נכנסת לפני שקראה את השם.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic round"><img src="assets/touchpoints/sign.webp" alt="שלט עגול של ENCORE° בסמטה ביפו בשקיעה" width="900" height="1125" loading="lazy" style="object-position:62% 40%"></div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="2" style="--hc:#D27A52;--hc2:#D27A52">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">18:05<small>Couchant</small></span>
+        <h3 lang="fr">L'Étiquette<span>התווית</span></h3>
+        <p>על התווית של הצמיד אין מחיר. יש שעה ושם: 18:00 · Lave. הצמיד שייך לשעה שבה היא נכנסה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/tag-cuff.webp" alt="תווית ENCORE° עם 18:00 Lave ליד צמיד זהב רחב" width="900" height="1125" loading="lazy" style="object-position:60% 60%"></div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="2" style="--hc:#D27A52;--hc2:#D27A52">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">18:20<small>Couchant</small></span>
+        <h3 lang="fr">Le Sac<span>השקית</span></h3>
+        <p>היא יוצאת לרחוב עם שקית בצבע השקיעה. הצמיד כבר על היד, והשקית לוקחת את השעה הלאה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/bag-street.webp" alt="יד מחזיקה שקית ENCORE° בצבע שקיעה ברחוב" width="900" height="1125" loading="lazy" style="object-position:50% 62%"></div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="2" style="--hc:#D27A52;--hc2:#D27A52">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">18:21<small>Couchant</small></span>
+        <h3 lang="fr">Le Certificat<span>התעודה</span></h3>
+        <p>דקה אחרי מגיעה תעודה. היא לא רושמת רק תאריך. היא רושמת את הדקה שבה הצמיד נענד בפעם הראשונה.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="תעודת השעה בוואטסאפ: Lave, נענד לראשונה ב-18:21">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av" aria-hidden="true"></span><span>ENCORE° Maison de Bijoux<small>חשבון עסקי</small></span></div>
+              <div class="wa-b">זו תעודת השעה שלך. היא רושמת מתי ענדת אותו בפעם הראשונה.<time>18:22</time></div>
+              <div class="wa-cert">
+                <div class="lg">ENCORE°</div><div class="k">CERTIFICAT D'HEURE</div>
+                <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#D9B26A" stroke-width="1.2"/><g transform="rotate(-45)"><path d="M0 0 L0 -40 A40 40 0 0 1 40 0Z" fill="#241212" opacity=".25"/><path d="M0 0 L40 0 A40 40 0 0 1 0 40Z" fill="#6E4E4A" opacity=".25"/><path d="M0 0 L0 40 A40 40 0 0 1 -40 0Z" fill="#34405A" opacity=".25"/><path d="M0 0 L-40 0 A40 40 0 0 1 0 -40Z" fill="#853A26"/></g><circle r="3" fill="#D9B26A"/></svg>
+                <div class="nm" lang="fr">Lave</div>
+                <div class="row">צמיד רחב · זהב 18K<br>נענד לראשונה <b>18:21 · 19.10.2026</b></div>
+                <time>18:22</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="3" style="--hc:#B9A6D6;--hc2:#B9A6D6">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">23:50<small>Minuit</small></span>
+        <h3 lang="fr">La Boîte<span>הקופסה</span></h3>
+        <p>בלילה הקופסה נשארת על השידה, עם התאריך חרוט בפנים המכסה. הצמיד לא חוזר אליה. הוא נשאר עליה.</p>
+        <span class="jr-tag">העולם</span>
+      </div>
+      <div class="jr-vis">
+        <div class="jr-pic "><img src="assets/touchpoints/box-open.webp" alt="קופסת ENCORE° עגולה פתוחה, ארבעה תאים ותאריך חרוט במכסה" width="900" height="1125" loading="lazy" style="object-position:50% 58%"></div>
+      </div>
+    </article>
+    <article class="jr-m" data-h="2" style="--hc:#D27A52;--hc2:#D27A52">
+      <span class="jr-dot" aria-hidden="true"></span>
+      <div class="jr-txt">
+        <span class="jr-hour">+1<small>שנה</small></span>
+        <h3 lang="fr">L'Anniversaire<span>שנה אחרי</span></h3>
+        <p>בדיוק שנה אחרי, באותה דקה, מגיעה הודעה. המותג לא מוכר עוד תכשיט. הוא חוגג את הזמן שהראשון נשאר.</p>
+        <span class="jr-tag os">BrandOS כותבת</span>
+      </div>
+      <div class="jr-vis">
+        <div class="ph" aria-label="הודעה מ-ENCORE° שנה אחרי: הזמנה לליטוש בשעה שבה הצמיד נענד לראשונה">
+          <div class="ph-in">
+            <div class="wa">
+              <div class="wa-top"><span class="ig-av" aria-hidden="true"></span><span>ENCORE° Maison de Bijoux<small>חשבון עסקי</small></span></div>
+              <span class="wa-day">19.10.2027</span>
+              <div class="wa-b">שנה שהוא עלייך. ב־18:21 בדיוק, לפני שנה, ענדת את <span lang="fr">Lave</span> בפעם הראשונה.<time>18:21</time></div>
+              <div class="wa-b">מחכה לך ליטוש של יום הולדת, בשעה שלו. ורבע אחד בחוגה עדיין מלא לבד.<time>18:21</time></div>
+              <div class="wa-qr" aria-hidden="true"><span>לקבוע ליטוש</span><span>להוסיף את 06:00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="jr-end">
+    <div class="count">4 / 8</div>
+    <h3>חצי מהיום הזה לא קורה בחנות.</h3>
+    <p>הפוסט בשחר, התשובה בצהריים, תעודת השעה והודעת השנה אחרי. את כולם <b>BrandOS</b> כותבת כל יום, בקול של <span dir="ltr">ENCORE°</span>&lrm;, מתוך אותה שאלה אחת: איזו שעה זו?</p>
+    <a href="https://hagitantebi.co.il/brand-os.html?utm_source=encore&amp;utm_medium=world&amp;utm_campaign=une-journee" onclick="if(typeof fbq==='function')fbq('trackCustom','EncoreJourneeToBrandOS')">איך BrandOS מפעילה עולם ←</a>
+  </div>
+</section>
+
+<script>
+// ---- une journée: moments rise in, the spine fills from dawn to night, the sky takes the hour ----
+(()=>{
+  const sec=document.getElementById('journee'), line=document.getElementById('jrLine'), fill=document.getElementById('jrFill'), ms=[...line.querySelectorAll('.jr-m')];
+  const SKY=['rgba(179,138,127,.32)','rgba(110,128,180,.30)','rgba(210,122,82,.34)','rgba(120,96,160,.28)'];
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{rootMargin:'0px 0px -15% 0px'});
+    ms.forEach(m=>io.observe(m));
+  } else ms.forEach(m=>m.classList.add('seen'));
+  let raf=0;
+  function upd(){
+    raf=0;
+    const r=line.getBoundingClientRect(), mid=innerHeight*.55;
+    const p=Math.min(Math.max((mid-r.top)/r.height,0),1);
+    fill.style.height=(p*100).toFixed(2)+'%'; fill.style.setProperty('--full',r.height+'px');
+    let cur=-1; ms.forEach((m,i)=>{const b=m.getBoundingClientRect();const on=b.top+b.height/2<mid;m.classList.toggle('on',on);if(on)cur=i});
+    sec.style.setProperty('--hg',SKY[cur<0?0:+ms[cur].dataset.h]);
+  }
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+</script>
+
 <script>
 // ---- hors la boîte: a clock hand sweeps each touchpoint into the dial ----
 (()=>{
@@ -781,7 +1038,7 @@ footer.studio a{color:inherit}
       <a class="flogo" href="#hero" dir="ltr">ENCORE°<small>MAISON DE BIJOUX</small></a>
       <p class="fl"><span dir="ltr" lang="fr">Encore toi.</span> עוד את, תמיד את.<br>עשרים תכשיטים בזהב 18K, ארבע שעות, וסט אחד שלא יורד.</p>
     </div>
-    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#hors">מחוץ לקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li></ul></div>
+    <div><h3>Navigation</h3><ul><li><a href="#hero">הטיפה</a></li><li><a href="#dial">השמש</a></li><li><a href="#set">הסט שלך</a></li><li><a href="#boite">הקופסה</a></li><li><a href="#hors">מחוץ לקופסה</a></li><li><a href="#sans">מבחן הכיסוי</a></li><li><a href="#journee">יום אחד</a></li></ul></div>
     <div><h3>Le Jour</h3><ul><li><a href="#set"><i style="background:#6E4E4A"></i>06:00 · שחר · טבעות</a></li><li><a href="#set"><i style="background:#34405A"></i>12:00 · צהריים · שרשראות</a></li><li><a href="#set"><i style="background:#853A26"></i>18:00 · שקיעה · צמידים</a></li><li><a href="#set"><i style="background:#241212"></i>00:00 · לילה · עגילים</a></li></ul></div>
   </div>
   <div class="legal">
@@ -800,6 +1057,7 @@ footer.studio a{color:inherit}
     <p><b>השמש שמסתובבת:</b> עשרים תכשיטים, חמישה לכל שעה, יושבים על חצי שמש שמסתובבת עם הגלילה. הם עולים מימין, כמו שמש במזרח, ושוקעים משמאל, והרקע עובר משחר לצהריים, לשקיעה וללילה. גם הצבעים של המותג לא נבחרו כפלטה אחת. הם ארבע שעות.</p>
     <p><b>הסט והקופסה:</b> ב״הסט שלך״ בוחרים תכשיט אחד לכל שעה על שעון שמש, והסט נכנס לקופסה עגולה בתלת־ממד שהמכסה שלה הוא אותו שעון. היא נפתחת בסיבוב, וכשזו מתנה, התאריך נחרט בפנים המכסה. מי שקונה לעצמה ומי שקונה בשבילה עוברים באותו עולם, עם סיום אחר.</p>
     <p><b>מחוץ לקופסה:</b> נקודות המגע, הקופסה, התווית, השקית, ארבע השעות והשלט ביפו, נכנסות לחלון עגול באותה חוגה, ומחוג זהב סוחף כל אחת מהן לתוך השעון. אחר כך מורידים את השם מכולן: מבחן הכיסוי מספר המותג, בעמוד עצמו. בכל אחת נשארים שלושה קודים, ואף אחת לא צריכה את הלוגו כדי שיזהו אותה. אחריהן שלושה כיוונים שעוד לא צולמו: תעודה שרושמת שעה, הודעה שחוזרת שנה אחרי התאריך החרוט, וחלון ראווה שמתחלף כל שש שעות. זה המבחן של שפה: היא ממשיכה לייצר כיוונים חדשים בלי להמציא את עצמה מחדש.</p>
+    <p><b>יום אחד:</b> בסוף העמוד העולם יוצא מהמסך ליום אחד של לקוחה, לאורך ארבע השעות. שמונה רגעים, מהפוסט בשחר ועד ההודעה שחוזרת שנה אחרי באותה דקה. ארבעה מהם הם חפצים ומקומות, וארבעה הם תוכן שנכתב כל יום. השדרה של ציר הזמן היא היום עצמו: היא מתמלאת משחר ללילה, והשמיים מעל מקבלים את הצבע של השעה.</p>
     <p><b>מה בעצם נבנה כאן:</b> לא קטלוג תכשיטים, אלא פעולה שהלקוחה עושה בעצמה: לסובב את היום, לבחור את השעה שלה, לסגור את הקופסה. מי שנכנסה פעם אחת לעולם הזה מזהה אותו בכל תוכן שיבוא אחריו, בפוסט, בשקית, בכרטיס. כולם ממשיכים את אותו יום, ולכן אף אחד מהם לא צריך להמציא את עצמו מחדש. וזה מה שמוציא מותג מטבלת ההשוואה: אי אפשר להשוות יום שלם למחיר של שרשרת.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
