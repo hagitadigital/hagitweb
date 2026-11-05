@@ -596,89 +596,77 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   }
 
 
-  /* ---------- 05b · la vitrine ---------- */
+  /* ---------- 05b · la vitrine: choose by the slice, take the whole ---------- */
   #vitrine{padding:clamp(70px,12vh,140px) var(--gutter);background:linear-gradient(180deg,var(--creme),var(--poudre))}
-  .vt-head{max-width:1240px;margin:0 auto clamp(28px,5vh,52px);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+  #vitrine .fr,.vt-flip .d{font-variant-numeric:lining-nums}
+  .vt-head{max-width:1240px;margin:0 auto clamp(26px,4vh,44px)}
   .vt-head h2 b{font-weight:500;color:var(--rose)}
-  .vt-count{font-family:var(--serif);font-size:clamp(40px,5vw,72px);line-height:1;margin:0;direction:ltr;unicode-bidi:isolate;color:var(--or)}
-  .vt-count small{font-family:var(--ui);font-size:13px;letter-spacing:.16em;color:var(--cacao);opacity:.7}
-  .vt-stage{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:stretch}
-
-  .vt-case{position:relative;display:flex;flex-direction:column;justify-content:center;border:3px solid var(--or);border-radius:clamp(36px,6vw,90px) clamp(36px,6vw,90px) 18px 18px;padding:clamp(34px,5vw,64px) clamp(14px,2.2vw,30px) 16px;
-    background:repeating-linear-gradient(90deg,transparent 0 58px,rgba(184,149,106,.10) 58px 60px),linear-gradient(180deg,#F7E3DE,#EFCFCA 70%,#E8C2BC);
-    box-shadow:inset 0 0 0 8px rgba(255,255,255,.35),0 30px 60px -30px rgba(74,44,36,.35);overflow:hidden;isolation:isolate}
-  #vitrine .fr,.vt-count,.vt-flip .d{font-variant-numeric:lining-nums}
-  .vt-glass{position:absolute;inset:0;pointer-events:none;z-index:3;border-radius:inherit;
-    background:linear-gradient(112deg,transparent 0 9%,rgba(255,255,255,.38) 9% 13%,transparent 13% 16%,rgba(255,255,255,.22) 16% 17%,transparent 17% 78%,rgba(255,255,255,.18) 78% 82%,transparent 82%)}
-  .vt-shelf{position:relative;display:flex;justify-content:space-around;align-items:flex-end;gap:6px;padding:0 0 18px}
-  .vt-shelf::after{content:"";position:absolute;inset:auto -40px 0;height:12px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.25));border-top:1px solid rgba(255,255,255,.9);box-shadow:0 12px 18px -8px rgba(74,44,36,.28)}
-  .vt-shelf--low{margin-top:clamp(18px,3vw,34px);justify-content:center;gap:clamp(20px,6vw,90px)}
-  .vt-item{position:relative;z-index:1;background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--cacao);transition:transform .35s var(--ease)}
-  .vt-item img{height:clamp(96px,12vw,170px);width:auto;filter:drop-shadow(0 10px 10px rgba(74,44,36,.18));transition:transform .35s var(--ease)}
-  .vt-item--wide img{height:clamp(84px,10vw,140px)}
-  .vt-item:hover img,.vt-item:focus-visible img{transform:translateY(-6px) scale(1.04)}
-  .vt-item:focus-visible{outline:2px solid var(--rose);outline-offset:6px;border-radius:12px}
-  .vt-item.is-in .vt-tag{background:var(--cacao);color:var(--creme)}
-  .vt-item.is-in .vt-tag .fr{color:var(--creme)}
-  .vt-tag{position:relative;z-index:4;background:#FBF4EE;border:1px solid var(--or-soft);border-radius:8px;padding:3px 10px 4px;font-size:12px;line-height:1.25;text-align:center;white-space:nowrap;transition:background .3s,color .3s}
+  .vt-head .lead{max-width:52ch}
+  .vt-case{max-width:1240px;margin:0 auto}
+  .vt-scroll{border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(74,44,36,.45);border:2px solid var(--or-soft)}
+  .vt-photo{position:relative}
+  .vt-photo img{width:100%;height:auto}
+  .vt-spot{position:absolute;border:0;padding:0;background:transparent;border-radius:16px;transition:background .3s,box-shadow .3s}
+  .vt-spot::before{content:"";position:absolute;top:8%;inset-inline:0;margin:auto;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:vtPulse 2.4s infinite}
+  .vt-spot:hover,.vt-spot:focus-visible{background:rgba(255,255,255,.14);box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
+  .vt-spot:focus-visible{outline:2px solid var(--cacao);outline-offset:2px}
+  .vt-spot.on{background:rgba(255,255,255,.18);box-shadow:0 0 0 2px var(--or) inset}
+  .vt-spot.on::before{animation:none;background:var(--or)}
+  @keyframes vtPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.75)}70%{box-shadow:0 0 0 12px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+  .vt-tag{position:absolute;bottom:3%;inset-inline:0;margin:auto;width:max-content;max-width:120%;background:rgba(251,244,238,.94);border:1px solid var(--or-soft);border-radius:8px;padding:3px 10px 4px;font-size:12px;line-height:1.2;color:var(--cacao);text-align:center;transition:background .3s,color .3s}
   .vt-tag b{display:block;font-family:var(--serif);font-weight:600;font-size:14px;direction:ltr}
-  .vt-tag .fr{font-size:13px;color:var(--or)}
-  .vt-note{position:relative;z-index:4;text-align:center;font-size:13px;margin:14px 0 0;opacity:.72}
+  .vt-spot.on .vt-tag{background:var(--cacao);color:var(--creme)}
+  .vt-note{text-align:center;font-size:13px;margin:12px 0 0;opacity:.72}
+  .vt-swipe{display:none}
 
-  .vt-counter{display:grid;grid-template-rows:auto 1fr;gap:16px}
-  .vt-register{justify-self:start;width:min(230px,70%);position:relative}
-  .vt-screen{margin:0 auto -2px;width:62%;background:var(--cacao);border-radius:10px 10px 0 0;padding:6px 10px;text-align:center;box-shadow:inset 0 0 0 2px var(--or)}
-  .vt-screen .fr{color:#F5D9A8;font-size:24px;font-weight:600;letter-spacing:.06em;display:inline-block}
-  .vt-screen .fr.bump{animation:vtBump .45s var(--ease)}
-  @keyframes vtBump{0%{transform:translateY(-60%);opacity:0}100%{transform:none;opacity:1}}
-  .vt-keys{background:linear-gradient(180deg,#EBC3BE,#DFAFA9);border-radius:14px 14px 4px 4px;padding:12px 16px;display:grid;grid-template-columns:repeat(6,1fr);gap:7px;box-shadow:inset 0 -3px 0 rgba(74,44,36,.12)}
-  .vt-keys i{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFF8EE,#E9D8BE);box-shadow:0 2px 0 rgba(74,44,36,.25)}
-  .vt-drawer{background:#E2B6B0;border-radius:4px 4px 10px 10px;padding:6px;text-align:center;border-top:2px solid rgba(255,255,255,.4)}
-  .vt-drawer span{font-family:var(--serif);font-weight:600;letter-spacing:.24em;font-size:12px;color:var(--cacao);direction:ltr;display:inline-block}
+  .vt-counter{max-width:1240px;margin:clamp(22px,4vh,40px) auto 0;display:grid;grid-template-columns:minmax(120px,190px) auto minmax(150px,250px) minmax(0,1fr);gap:clamp(14px,2.4vw,34px);align-items:center;background:#FBF4EE;border:1px solid var(--or-soft);border-radius:26px;padding:clamp(18px,3vw,36px)}
+  .vt-counter figure{margin:0;text-align:center}
+  .vt-counter figcaption{font-size:12.5px;letter-spacing:.06em;color:var(--or);font-weight:600;margin-top:10px}
+  .vt-loupe img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--or-soft),0 16px 30px -18px rgba(74,44,36,.5)}
+  .vt-whole img{width:100%;height:auto;filter:drop-shadow(0 16px 16px rgba(74,44,36,.18))}
+  .vt-arrow{font-family:var(--serif);font-size:34px;color:var(--or)}
+  .vt-counter.swap .vt-loupe img,.vt-counter.swap .vt-whole img{animation:vtSwap .5s var(--ease)}
+  @keyframes vtSwap{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+  .vt-info{display:grid;grid-template-columns:1fr auto;grid-template-areas:"name bag" "line bag" "price bag" "btn bag";column-gap:20px;align-items:start}
+  .vt-name{grid-area:name;margin:0;font-family:var(--heb);font-size:clamp(28px,3vw,40px);line-height:1.1}
+  .vt-name small{font-size:.55em;color:var(--or)}
+  .vt-line{grid-area:line;margin:8px 0 0;font-size:15.5px;opacity:.85}
+  .vt-price{grid-area:price;margin:14px 0 0}
+  .vt-price .fr{font-size:28px;font-weight:600}
+  .vt-price small{font-size:13px;opacity:.7}
+  #vtPack{grid-area:btn;justify-self:start;margin-top:14px;padding:13px 26px;font-size:16px}
+  .vt-bagwrap{grid-area:bag;text-align:center;width:clamp(120px,13vw,175px)}
+  .vt-bag{direction:ltr;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 14px 14px rgba(74,44,36,.18))}
+  .vt-bag.bounce{animation:vtBounce .55s var(--ease)}
+  @keyframes vtBounce{0%{transform:none}35%{transform:translateY(6px) scaleY(.96)}70%{transform:translateY(-4px)}100%{transform:none}}
+  .vt-bagcap{font-size:12px;margin:6px 0 0;opacity:.72;line-height:1.4}
+  .vt-fly{position:fixed;z-index:120;pointer-events:none;filter:drop-shadow(0 12px 14px rgba(74,44,36,.25))}
 
-  .vt-box{background:#FBF4EE;border:1px solid var(--or-soft);border-radius:22px;padding:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 50px -30px rgba(74,44,36,.35)}
-  .vt-box-label{margin:0;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--or)}
-  .vt-box-label span{font-family:var(--ui);font-size:13px;color:var(--cacao);font-weight:600}
-  .vt-slots{list-style:none;margin:0;padding:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-radius:14px;
-    background:repeating-linear-gradient(45deg,rgba(201,137,137,.09) 0 10px,transparent 10px 20px),#F6E3DC;border:2px solid #E7BDB8}
-  .vt-slot{position:relative;aspect-ratio:1;border:1.5px dashed rgba(184,149,106,.55);border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.4)}
-  .vt-slot.full{border-style:solid;border-color:var(--or-soft);background:#FFF9F4}
-  .vt-slot img{width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 4px 4px rgba(74,44,36,.15))}
-  .vt-slot.land img{animation:vtLand .5s var(--ease)}
-  @keyframes vtLand{0%{transform:scale(.6)}60%{transform:scale(1.08)}100%{transform:none}}
-  .vt-slot .rm{position:absolute;top:-7px;inset-inline-end:-7px;width:24px;height:24px;border-radius:50%;border:0;background:var(--cacao);color:var(--creme);font-size:14px;line-height:24px;padding:0;opacity:0;transition:opacity .2s}
-  .vt-slot:hover .rm,.vt-slot .rm:focus-visible{opacity:1}
-  @media (hover:none){.vt-slot .rm{opacity:.85}}
-  .vt-extras{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .vt-extras p{width:100%;margin:0;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--or)}
-  .vt-extras p span{color:var(--cacao);font-weight:400}
-  .vt-jug{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 14px;font-size:14px;color:var(--cacao);transition:background .25s,border-color .25s}
-  .vt-jug i{width:16px;height:18px;border-radius:3px 3px 8px 8px;background:linear-gradient(180deg,#fff 0 30%,var(--j) 30%);border:1px solid rgba(74,44,36,.25)}
-  .vt-jug .fr{font-size:13px;opacity:.75}
-  .vt-jug[aria-pressed="true"]{background:var(--cacao);color:var(--creme);border-color:var(--cacao)}
-  .vt-bar{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 18px;padding-inline-start:18px;font-size:15px}
-  .vt-bar .fr{font-size:18px;font-weight:600}
-
-  .vt-fly{position:fixed;z-index:120;pointer-events:none;object-fit:contain;filter:drop-shadow(0 12px 14px rgba(74,44,36,.25))}
+  .vt-bar{position:sticky;bottom:16px;z-index:40;max-width:520px;margin:18px auto 0;display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 6px;padding-inline-start:20px;font-size:15px;box-shadow:0 16px 30px -18px rgba(74,44,36,.45)}
+  .vt-bar[hidden]{display:none}
+  .vt-bar .fr{font-weight:600;font-size:17px}
 
   .vt-modal{width:min(880px,calc(100vw - 32px));max-height:calc(100vh - 32px);border:0;border-radius:28px;padding:0;background:#FFFBF7;color:var(--cacao);box-shadow:0 40px 90px -30px rgba(74,44,36,.55);overflow:auto}
-  .vt-modal[open]{display:grid;grid-template-columns:.9fr 1.1fr;animation:vtIn .45s var(--ease)}
+  .vt-modal[open]{display:grid;grid-template-columns:.85fr 1.15fr;animation:vtIn .45s var(--ease)}
   .vt-modal::backdrop{background:rgba(243,228,223,.55);backdrop-filter:blur(8px)}
   @keyframes vtIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
   .vt-x{position:absolute;top:14px;inset-inline-end:14px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:var(--poudre);color:var(--cacao);font-size:22px;line-height:36px;padding:0}
-  .vt-bag{background:linear-gradient(180deg,#F7E3DE,#F0D5D0);display:grid;place-items:center;padding:30px}
-  .vt-bag svg{direction:ltr;width:min(240px,100%);height:auto;filter:drop-shadow(0 22px 22px rgba(74,44,36,.18))}
-  .vt-bow{transform-origin:110px 93px;transform:scale(0);transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
-  .vt-modal.tied .vt-bow{transform:none}
+  .vt-m-bags{background:linear-gradient(180deg,#F7E3DE,#F0D5D0);display:flex;justify-content:center;align-items:center;padding:40px 24px;direction:ltr}
+  .vt-m-bags svg{width:min(150px,40%);height:auto;margin-inline:-14px;filter:drop-shadow(0 18px 18px rgba(74,44,36,.18))}
+  .vt-m-bags svg:only-child{width:min(210px,70%)}
+  .vt-modal.ready .vt-m-bags svg{animation:vtBounce .6s var(--ease) both}
+  .vt-modal.ready .vt-m-bags svg:nth-child(2){animation-delay:.12s}
+  .vt-modal.ready .vt-m-bags svg:nth-child(3){animation-delay:.24s}
   .vt-m-body{padding:clamp(24px,4vw,44px)}
   .vt-m-body h3{font-size:clamp(28px,3vw,40px)}
   .vt-m-body h3 b{font-weight:500;color:var(--rose)}
-  .vt-m-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:8px;max-height:220px;overflow:auto}
-  .vt-m-list li{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:8px}
-  .vt-m-list img{width:40px;height:40px;object-fit:contain}
-  .vt-m-list b{font-family:var(--serif);font-weight:600;font-size:17px;direction:ltr;unicode-bidi:isolate}
+  .vt-m-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:8px;max-height:230px;overflow:auto}
+  .vt-m-list li{display:grid;grid-template-columns:44px 1fr auto auto;gap:12px;align-items:center;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .vt-m-list img{width:44px;height:44px;object-fit:cover;border-radius:50%}
+  .vt-m-list b{font-family:var(--heb);font-weight:500;font-size:18px}
   .vt-m-list small{display:block;font-size:12.5px;opacity:.7}
   .vt-m-list .fr{white-space:nowrap}
+  .vt-m-list .rm{width:26px;height:26px;border-radius:50%;border:0;background:var(--poudre);color:var(--cacao);padding:0;line-height:26px}
   .vt-m-tot{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 0;font-weight:600}
   .vt-m-tot .fr{font-size:28px}
   .vt-m-q{margin:22px 0 10px;font-family:var(--heb);font-size:20px}
@@ -697,20 +685,26 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .vt-m-fine{font-size:13px;opacity:.7;margin:10px 0 0;text-align:center}
 
   @media (max-width:900px){
-    .vt-head{grid-template-columns:1fr}
-    .vt-stage{grid-template-columns:1fr}
-    .vt-shelf--top{display:grid;grid-template-columns:repeat(3,1fr);row-gap:26px;justify-items:center}
-    .vt-shelf--top::before{content:"";position:absolute;inset:auto -40px auto;top:calc(50% - 6px);height:10px;background:rgba(255,255,255,.55);box-shadow:0 10px 14px -8px rgba(74,44,36,.24)}
-    .vt-item img{height:clamp(88px,24vw,140px)}
-    .vt-register{display:none}
-    .vt-counter{grid-template-rows:auto}
+    .vt-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+    .vt-scroll::-webkit-scrollbar{display:none}
+    .vt-photo{width:920px}
+    .vt-swipe{display:inline}
+    .vt-counter{grid-template-columns:1fr auto 1fr;row-gap:22px}
+    .vt-loupe,.vt-whole{max-width:170px;justify-self:center;width:100%}
+    .vt-info{grid-column:1/-1}
     .vt-modal[open]{grid-template-columns:1fr}
+    .vt-m-bags{padding:22px 18px 16px}
+    .vt-m-bags svg{width:min(96px,30%)}
+    .vt-m-bags svg:only-child{width:120px}
     .vt-m-list{max-height:none}
-    .vt-bag{padding:18px}
-    .vt-bag svg{width:120px}
   }
-  @media (max-width:420px){.vt-tag{font-size:11px;padding:2px 7px}.vt-tag b{font-size:12.5px}}
-  @media (prefers-reduced-motion:reduce){.vt-flip .d.flip,.vt-slot.land img,.vt-screen .fr.bump,.vt-modal[open]{animation:none}.vt-bow{transition:none}}
+  @media (max-width:480px){
+    .vt-info{grid-template-columns:1fr 96px;column-gap:14px}
+    .vt-bagwrap{width:96px}
+    #vtPack{grid-column:1/-1;width:100%}
+    .vt-info{grid-template-areas:"name bag" "line bag" "price bag" "btn btn"}
+  }
+  @media (prefers-reduced-motion:reduce){.vt-spot::before,.vt-flip .d.flip,.vt-modal[open],.vt-counter.swap img,.vt-bag.bounce,.vt-modal.ready .vt-m-bags svg{animation:none}}
         :where(img[width][height]){height:auto}
     </style>
 </head>
@@ -962,74 +956,60 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- 05b · LA VITRINE: the shop is the interface — shelf → box → register → ribbon -->
+<!-- 05b · LA VITRINE: choose by the slice, take home the whole cake — in a bag whose side is that slice -->
 <section id="vitrine" aria-labelledby="vt-title">
   <div class="vt-head">
-    <div>
-      <p class="eyebrow">La Vitrine · הוויטרינה</p>
-      <h2 id="vt-title">לא תפריט. <b>ויטרינה.</b></h2>
-      <p class="lead">לוחצים על מה שמאחורי הזכוכית, והוא עובר לקופסה. אותו דלפק, אותה קופסה, אותו סרט. החנות עצמה היא הממשק.</p>
-    </div>
-    <p class="vt-count" aria-live="polite"><span id="vtN">0</span>/6 <small>במארז</small></p>
+    <p class="eyebrow">La Vitrine · הוויטרינה</p>
+    <h2 id="vt-title">בוחרים לפי הפרוסה.<br><b>לוקחים את השלמה.</b></h2>
+    <p class="lead">בוויטרינה של MIEL° עומדות רק פרוסות, והחתך פונה החוצה. לוחצים על מה שרואים בפנים, והעוגה השלמה נארזת בשקית שהדופן שלה היא אותו חתך.</p>
   </div>
 
-  <div class="vt-stage">
-    <!-- the glass case -->
-    <div class="vt-case">
-      <div class="vt-glass" aria-hidden="true"></div>
-      <div class="vt-shelf vt-shelf--top" role="group" aria-label="המדף העליון: פרוסות מעוגות החתימה">
-        <button class="vt-item" type="button" data-id="rose"><img src="assets/sig-rose.webp" alt="" width="850" height="1070" loading="lazy"><span class="vt-tag"><b>La Rose</b><span class="fr">₪ 38</span></span></button>
-        <button class="vt-item" type="button" data-id="fleurs"><img src="assets/sig-fleurs.webp" alt="" width="850" height="1070" loading="lazy"><span class="vt-tag"><b>Les Fleurs</b><span class="fr">₪ 36</span></span></button>
-        <button class="vt-item" type="button" data-id="cacao"><img src="assets/sig-chocolat.webp" alt="" width="850" height="1070" loading="lazy"><span class="vt-tag"><b>Le Cacao</b><span class="fr">₪ 38</span></span></button>
-        <button class="vt-item" type="button" data-id="citron"><img src="assets/sig-citron.webp" alt="" width="850" height="1070" loading="lazy"><span class="vt-tag"><b>Le Citron</b><span class="fr">₪ 34</span></span></button>
-        <button class="vt-item" type="button" data-id="pistache"><img src="assets/sig-pistache.webp" alt="" width="850" height="1070" loading="lazy"><span class="vt-tag"><b>La Pistache</b><span class="fr">₪ 40</span></span></button>
+  <div class="vt-case">
+    <div class="vt-scroll" id="vtScroll">
+      <div class="vt-photo">
+        <img src="assets/vitrine-slices.webp" alt="הוויטרינה של MIEL°: חמש פרוסות החתימה על מעמדי זהב, החתך פונה החוצה" width="1448" height="540" loading="lazy">
+        <button class="vt-spot" type="button" data-id="rose"     style="left:6.6%;top:17.6%;width:15.5%;height:65.7%"><span class="vt-tag"><b>La Rose</b><span>הוורודה</span></span></button>
+        <button class="vt-spot" type="button" data-id="fleurs"   style="left:25.9%;top:16.7%;width:15.2%;height:62%"><span class="vt-tag"><b>Les Fleurs</b><span>הפרחונית</span></span></button>
+        <button class="vt-spot" type="button" data-id="cacao"    style="left:46.6%;top:14.8%;width:13.8%;height:59.3%"><span class="vt-tag"><b>Le Cacao</b><span>השוקולדית</span></span></button>
+        <button class="vt-spot" type="button" data-id="citron"   style="left:62.5%;top:13%;width:14.8%;height:56.5%"><span class="vt-tag"><b>Le Citron</b><span>הלימונית</span></span></button>
+        <button class="vt-spot" type="button" data-id="pistache" style="left:80.1%;top:13.9%;width:13.5%;height:50.9%"><span class="vt-tag"><b>La Pistache</b><span>הפיסטוקית</span></span></button>
       </div>
-      <div class="vt-shelf vt-shelf--low" role="group" aria-label="המדף התחתון: מקרונים ומרנגים">
-        <button class="vt-item vt-item--wide" type="button" data-id="macaron"><img src="assets/top-macarons.webp" alt="" width="1100" height="1100" loading="lazy"><span class="vt-tag"><b>Macaron</b><span class="fr">₪ 14</span></span></button>
-        <button class="vt-item vt-item--wide" type="button" data-id="meringue"><img src="assets/top-meringues.webp" alt="" width="1100" height="1100" loading="lazy"><span class="vt-tag"><b>Meringue</b><span class="fr">₪ 9</span></span></button>
-      </div>
-      <p class="vt-note">לחיצה על פריט מכניסה אותו לקופסה · פרוסה אחת מכל עוגה</p>
     </div>
+    <p class="vt-note"><span class="vt-swipe">החליקי לאורך הוויטרינה · </span>לחיצה על פרוסה מראה את העוגה שלה</p>
+  </div>
 
-    <!-- the counter: register · box · little extras -->
-    <div class="vt-counter">
-      <div class="vt-register" aria-hidden="true">
-        <div class="vt-screen"><span class="fr" id="vtScreen">₪ 0</span></div>
-        <div class="vt-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="vt-drawer"><span>MIEL°</span></div>
+  <!-- the counter: slice → whole cake → bag with the slice's code -->
+  <div class="vt-counter" id="vtCounter" aria-live="polite">
+    <figure class="vt-loupe">
+      <img id="vtSlice" src="assets/slice-rose.webp" alt="" width="225" height="265">
+      <figcaption>מה שבפנים</figcaption>
+    </figure>
+    <span class="vt-arrow" aria-hidden="true">←</span>
+    <figure class="vt-whole">
+      <img id="vtWhole" src="assets/sig-rose.webp" alt="" width="850" height="1070">
+      <figcaption>מה שיוצא מהבית</figcaption>
+    </figure>
+    <div class="vt-info">
+      <p class="vt-name"><span id="vtName">הוורודה</span> <small class="fr" id="vtFr">La Rose</small></p>
+      <p class="vt-line" id="vtLine">ביסקוויט וניל · לב פטל · רובּ ורוד־אומברה · זר מיקס</p>
+      <div class="vt-bagwrap">
+        <svg class="vt-bag" id="vtBag" viewBox="0 0 200 230" aria-hidden="true"></svg>
+        <p class="vt-bagcap">השקית שלה: הדופן היא החתך.</p>
       </div>
-
-      <div class="vt-box">
-        <p class="vt-box-label">La Boîte de six · <span>הקופסה שלך</span></p>
-        <ul class="vt-slots" id="vtSlots" aria-label="הקופסה: שישה מקומות"></ul>
-        <div class="vt-extras" role="group" aria-label="תוספת קטנה לצד">
-          <p>ליד הקופה · <span>תוספת קטנה לצד</span></p>
-          <button type="button" class="vt-jug" data-x="framboise" aria-pressed="false" style="--j:#C5293F"><i aria-hidden="true"></i>רוטב פטל <span class="fr">+₪ 6</span></button>
-          <button type="button" class="vt-jug" data-x="caramel" aria-pressed="false" style="--j:#CE9E6A"><i aria-hidden="true"></i>קרמל מלוח <span class="fr">+₪ 6</span></button>
-          <button type="button" class="vt-jug" data-x="pistache" aria-pressed="false" style="--j:#A9B57A"><i aria-hidden="true"></i>קרם פיסטוק <span class="fr">+₪ 8</span></button>
-        </div>
-        <div class="vt-bar">
-          <span><span id="vtBarN">0/6</span> · <span class="fr" id="vtBarT">₪ 0</span></span>
-          <button class="pill" type="button" id="vtCheckout" disabled>לקופה</button>
-        </div>
-      </div>
+      <p class="vt-price"><span class="fr">₪ 290</span> <small>עוגה שלמה · 10–12 פרוסות</small></p>
+      <button class="pill" type="button" id="vtPack">לארוז את השלמה</button>
     </div>
   </div>
 
-  <!-- checkout: the bag, the list, the moment -->
+  <div class="vt-bar" id="vtBar" hidden>
+    <span id="vtBarTxt"></span>
+    <button class="pill" type="button" id="vtCheckout">לקופה</button>
+  </div>
+
+  <!-- checkout: the bags, the list, the moment -->
   <dialog class="vt-modal" id="vtModal" aria-labelledby="vtMTitle">
     <button class="vt-x" type="button" id="vtClose" aria-label="סגירה">×</button>
-    <div class="vt-bag" aria-hidden="true">
-      <svg viewBox="0 0 220 260">
-        <path d="M78 70c0-30 14-46 32-46s32 16 32 46" fill="none" stroke="#B8956A" stroke-width="5" stroke-linecap="round"/>
-        <path d="M34 70h152l14 176H20z" fill="#F0CFCB"/>
-        <path d="M34 70h152l3 34H31z" fill="#E7BDB8"/>
-        <circle cx="110" cy="158" r="44" fill="#F6EADF" stroke="#B8956A" stroke-width="2"/>
-        <text x="110" y="156" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-weight="600" font-size="24" letter-spacing="3" fill="#4A2C24">MIEL°</text>
-        <text x="110" y="174" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="8" letter-spacing="3" fill="#B8956A">PÂTISSERIE</text>
-        <g class="vt-bow"><path d="M110 92c-18-20-44-14-34 4 6 10 22 8 34-4zm0 0c18-20 44-14 34 4-6 10-22 8-34-4z" fill="#C98989"/><path d="M106 94l-14 34 9-3 5 8 4-38zm8 0l14 34-9-3-5 8-4-38z" fill="#B57474"/><circle cx="110" cy="93" r="7" fill="#B57474"/></g>
-      </svg>
-    </div>
+    <div class="vt-m-bags" id="vtMBags" aria-hidden="true"></div>
     <div class="vt-m-body">
       <p class="eyebrow">Le Comptoir · בקופה</p>
       <h3 id="vtMTitle">רומנטיקה <b>יוצאת בשקית.</b></h3>
@@ -1042,12 +1022,11 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
         <button type="button" class="vt-step" id="vtEarlier" aria-label="רבע שעה מוקדם יותר">−</button>
         <small>MAISON MIEL · RETRAIT</small>
       </div>
-      <button class="pill vt-tie" type="button" id="vtTie">לקשור סרט</button>
+      <button class="pill vt-tie" type="button" id="vtTie">לשמור לאיסוף</button>
       <p class="vt-m-fine" id="vtFine">קונספט של עולם מותג. שום תשלום לא נגבה.</p>
     </div>
   </dialog>
 </section>
-
 
 <!-- 06 · LA MAISON & LA BOÎTE -->
 <section id="maison" aria-label="הבית והמארז">
@@ -1860,100 +1839,87 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 <!-- /studio-contact-chip -->
 
 <script>
-/* 05b · La Vitrine — shelf → box of six → register → bag & pickup time (concept, no payment) */
+/* 05b · La Vitrine — choose by the slice, take home the whole cake in a bag whose side is that slice (concept, no payment) */
 (function(){
   var root = document.getElementById("vitrine"); if (!root) return;
   var q = function(s){ return root.querySelector(s); }, qa = function(s){ return Array.prototype.slice.call(root.querySelectorAll(s)); };
   var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var MAX = 6;
-  var ITEMS = {
-    rose:    {fr:"La Rose",     he:"פרוסה · וניל, לב פטל",       p:38, img:"assets/sig-rose.webp"},
-    fleurs:  {fr:"Les Fleurs",  he:"פרוסה · וניל, קרם וניל",      p:36, img:"assets/sig-fleurs.webp"},
-    cacao:   {fr:"Le Cacao",    he:"פרוסה · שוקולד, לב קרמל",     p:38, img:"assets/sig-chocolat.webp"},
-    citron:  {fr:"Le Citron",   he:"פרוסה · וניל, קרם לימון",     p:34, img:"assets/sig-citron.webp"},
-    pistache:{fr:"La Pistache", he:"פרוסה · וניל, קרם פיסטוק",    p:40, img:"assets/sig-pistache.webp"},
-    macaron: {fr:"Macaron",     he:"מקרון אחד מהמגש",             p:14, img:"assets/top-macarons.webp"},
-    meringue:{fr:"Meringue",    he:"מרנג אחד מהמגש",              p:9,  img:"assets/top-meringues.webp"}
+  var PRICE = 290;
+  /* layer code of each signature: biscuit / heart / robe — the same stripes the bag carries on its side */
+  var CAKES = {
+    rose:    {he:"הוורודה",   fr:"La Rose",     line:"ביסקוויט וניל · לב פטל · רובּ ורוד־אומברה · זר מיקס",            whole:"sig-rose.webp",     code:{s:"#EBCB9C", h:"#B8243F", r:"#EDBABD"}},
+    fleurs:  {he:"הפרחונית",  fr:"Les Fleurs",  line:"ביסקוויט וניל · לב קרם וניל · רובּ שמנת · זר ורדים",            whole:"sig-fleurs.webp",   code:{s:"#EBCB9C", h:"#F7EEDC", r:"#F2E7D8"}},
+    cacao:   {he:"השוקולדית", fr:"Le Cacao",    line:"ביסקוויט שוקולד · לב קרמל · רובּ שוקולד · זר ורדים ומקרונים",   whole:"sig-chocolat.webp", code:{s:"#6B4231", h:"#C98A4B", r:"#4A2C24"}},
+    citron:  {he:"הלימונית",  fr:"Le Citron",   line:"ביסקוויט וניל · קרם לימון · רובּ לימון מסורק · זר מרנגים",      whole:"sig-citron.webp",   code:{s:"#EBCB9C", h:"#EFD77A", r:"#F1E1A6"}},
+    pistache:{he:"הפיסטוקית", fr:"La Pistache", line:"ביסקוויט וניל · קרם פיסטוק · רובּ פיסטוק · זר מקרונים",        whole:"sig-pistache.webp", code:{s:"#EBCB9C", h:"#A3B06E", r:"#C9CCA3"}}
   };
-  var EXTRA = {framboise:{he:"רוטב פטל",p:6}, caramel:{he:"קרמל מלוח",p:6}, pistache:{he:"קרם פיסטוק",p:8}};
-  var box = [], extras = {};
-  var slots = q("#vtSlots");
+  var cur = "rose", cart = [];
 
-  function total(){
-    var t = box.reduce(function(s,id){ return s + ITEMS[id].p; }, 0);
-    Object.keys(extras).forEach(function(k){ if (extras[k]) t += EXTRA[k].p; });
-    return t;
+  /* the MIEL° bag: cream front, gold name, raspberry ribbon handles, the side is the slice */
+  var uid = 0;
+  function bagSVG(id){
+    var c = CAKES[id].code, k = "vtc" + (uid++), y = 62, layers = "";
+    var seq = [["s",20],["h",5],["s",20],["h",5],["s",20],["h",5],["s",20],["h",5],["s",20],["h",5],["s",30]];
+    seq.forEach(function(l){ layers += '<rect x="138" y="' + y + '" width="44" height="' + (l[1] + .6) + '" fill="' + c[l[0]] + '"/>'; y += l[1]; });
+    return '<defs><clipPath id="' + k + '"><path d="M140 62 L178 50 L178 208 L140 222z"/></clipPath></defs>' +
+      '<path d="M50 64c0-36 12-52 26-52s26 16 26 52" fill="none" stroke="#C8344F" stroke-width="6" stroke-linecap="round"/>' +
+      '<path d="M88 64c0-36 12-52 26-52s26 16 26 52" fill="none" stroke="#B02A44" stroke-width="6" stroke-linecap="round"/>' +
+      '<path d="M20 62h120v160H20z" fill="#F4ECE0"/>' +
+      '<path d="M20 62h120v160H20z" fill="none" stroke="rgba(74,44,36,.10)"/>' +
+      '<g clip-path="url(#' + k + ')"><rect x="138" y="46" width="44" height="180" fill="' + c.r + '"/>' + layers + '<rect x="138" y="46" width="44" height="180" fill="rgba(0,0,0,.06)"/></g>' +
+      '<text x="80" y="148" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-weight="600" font-size="19" letter-spacing="4" fill="#B8956A">MIEL°</text>';
   }
-  function render(landIdx){
-    slots.innerHTML = "";
-    for (var i = 0; i < MAX; i++){
-      var li = document.createElement("li"); li.className = "vt-slot";
-      var id = box[i];
-      if (id){
-        li.className += " full" + (i === landIdx ? " land" : "");
-        li.innerHTML = '<img src="' + ITEMS[id].img + '" alt="' + ITEMS[id].fr + '"><button type="button" class="rm" data-i="' + i + '" aria-label="להוציא את ' + ITEMS[id].fr + ' מהקופסה">×</button>';
-      } else {
-        li.setAttribute("aria-label", "מקום פנוי");
-      }
-      slots.appendChild(li);
-    }
-    var n = box.length, t = total();
-    q("#vtN").textContent = n;
-    q("#vtBarN").textContent = n + "/6";
-    q("#vtBarT").textContent = "₪ " + t;
-    var scr = q("#vtScreen"); scr.textContent = "₪ " + t; scr.classList.remove("bump"); void scr.offsetWidth; scr.classList.add("bump");
-    q("#vtCheckout").disabled = !n;
-    qa(".vt-item").forEach(function(b){
-      var id = b.getAttribute("data-id"), c = box.filter(function(x){ return x === id; }).length;
-      b.classList.toggle("is-in", c > 0);
-      b.setAttribute("aria-label", "להוסיף לקופסה: " + ITEMS[id].fr + ", " + ITEMS[id].p + " שקלים" + (c ? " (" + c + " בקופסה)" : ""));
-      b.disabled = n >= MAX;
+
+  function select(id, focusAnim){
+    cur = id; var c = CAKES[id];
+    qa(".vt-spot").forEach(function(b){ var on = b.getAttribute("data-id") === id; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); });
+    q("#vtSlice").src = "assets/slice-" + id + ".webp"; q("#vtSlice").alt = "החתך של " + c.he + ": " + c.line;
+    q("#vtWhole").src = "assets/" + c.whole; q("#vtWhole").alt = c.he + " — העוגה השלמה";
+    q("#vtName").textContent = c.he; q("#vtFr").textContent = c.fr; q("#vtLine").textContent = c.line;
+    q("#vtBag").innerHTML = bagSVG(id);
+    if (focusAnim){ var ct = q("#vtCounter"); ct.classList.remove("swap"); void ct.offsetWidth; ct.classList.add("swap"); }
+  }
+  qa(".vt-spot").forEach(function(b){
+    var id = b.getAttribute("data-id");
+    b.setAttribute("aria-label", "הפרוסה של " + CAKES[id].he + " (" + CAKES[id].fr + "): " + CAKES[id].line);
+    b.addEventListener("click", function(){
+      select(id, true);
+      var ct = q("#vtCounter"), r = ct.getBoundingClientRect();
+      if (r.top > innerHeight - 120) ct.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"center"});
     });
+  });
+
+  function renderBar(){
+    var bar = q("#vtBar"); bar.hidden = !cart.length;
+    var n = cart.length;
+    q("#vtBarTxt").innerHTML = (n === 1 ? "עוגה אחת בשקית" : n + " עוגות בשקיות") + ' · <span class="fr">₪ ' + n*PRICE + '</span>';
   }
 
-  function fly(fromImg, toEl, done){
-    if (reduced || !fromImg.animate){ done(); return; }
-    var a = fromImg.getBoundingClientRect(), b = toEl.getBoundingClientRect();
-    var c = fromImg.cloneNode(); c.className = "vt-fly"; c.removeAttribute("loading");
+  q("#vtPack").addEventListener("click", function(){
+    var whole = q("#vtWhole"), bag = q("#vtBag"), id = cur;
+    function done(){
+      cart.push(id); renderBar();
+      bag.classList.remove("bounce"); void bag.getBoundingClientRect(); bag.classList.add("bounce");
+    }
+    if (reduced || !whole.animate){ done(); return; }
+    var a = whole.getBoundingClientRect(), b = bag.getBoundingClientRect();
+    var c = whole.cloneNode(); c.className = "vt-fly"; c.removeAttribute("id");
     c.style.left = a.left + "px"; c.style.top = a.top + "px"; c.style.width = a.width + "px"; c.style.height = a.height + "px";
     document.body.appendChild(c);
-    var dx = (b.left + b.width/2) - (a.left + a.width/2), dy = (b.top + b.height/2) - (a.top + a.height/2), s = Math.min(b.width*.84/a.width, b.height*.84/a.height);
-    var anim = c.animate([
-      {transform:"translate(0,0) scale(1)"},
-      {transform:"translate(" + dx*.5 + "px," + (dy*.5 - 80) + "px) scale(" + (1+s)/2 + ")", offset:.5},
-      {transform:"translate(" + dx + "px," + dy + "px) scale(" + s + ")"}
-    ], {duration:620, easing:"cubic-bezier(.3,.6,.3,1)"});
-    anim.onfinish = function(){ c.remove(); done(); };
-  }
-
-  qa(".vt-item").forEach(function(b){
-    b.addEventListener("click", function(){
-      if (box.length >= MAX) return;
-      var id = b.getAttribute("data-id"), idx = box.length;
-      var target = slots.children[idx];
-      box.push(id);
-      fly(b.querySelector("img"), target, function(){ render(idx); });
-      if (reduced || !b.querySelector("img").animate) return;
-      /* count + register update right away; the slot fills when the piece lands */
-      q("#vtN").textContent = box.length;
-    });
-  });
-  slots.addEventListener("click", function(e){
-    var rm = e.target.closest(".rm"); if (!rm) return;
-    box.splice(+rm.getAttribute("data-i"), 1); render();
-  });
-  qa(".vt-jug").forEach(function(j){
-    j.addEventListener("click", function(){
-      var k = j.getAttribute("data-x"); extras[k] = !extras[k];
-      j.setAttribute("aria-pressed", extras[k] ? "true" : "false"); render();
-    });
+    var s = (b.width * .55) / a.width;
+    var dx = (b.left + b.width*.4) - (a.left + a.width/2), dy = (b.top + b.height*.45) - (a.top + a.height/2);
+    c.animate([
+      {transform:"translate(0,0) scale(1)", opacity:1},
+      {transform:"translate(" + dx*.55 + "px," + (dy*.55 - 70) + "px) scale(" + (1+s)/2 + ")", opacity:1, offset:.55},
+      {transform:"translate(" + dx + "px," + dy + "px) scale(" + s + ")", opacity:0}
+    ], {duration:720, easing:"cubic-bezier(.3,.6,.3,1)"}).onfinish = function(){ c.remove(); done(); };
   });
 
   /* checkout */
   var modal = q("#vtModal"), flip = q("#vtFlip"), tie = q("#vtTie"), fine = q("#vtFine");
   var OPEN = 8*60, CLOSE = 19*60, mins;
   function firstSlot(){
-    var d = new Date(), m = d.getHours()*60 + d.getMinutes() + 30;
+    var d = new Date(), m = d.getHours()*60 + d.getMinutes() + 60;
     m = Math.ceil(m/15)*15;
     return (m < OPEN || m > CLOSE) ? 10*60 + 30 : m;
   }
@@ -1966,44 +1932,55 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     flip.setAttribute("aria-label", "איסוף בשעה " + s.slice(0,2) + ":" + s.slice(2));
   }
   function fillModal(){
+    var counts = {}, order = [];
+    cart.forEach(function(id){ if (!counts[id]){ counts[id] = 0; order.push(id); } counts[id]++; });
+    var bags = q("#vtMBags"); bags.innerHTML = "";
+    order.slice(0,3).forEach(function(id){
+      var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      svg.setAttribute("viewBox","0 0 200 230"); svg.innerHTML = bagSVG(id); bags.appendChild(svg);
+    });
     var ul = q("#vtMList"); ul.innerHTML = "";
-    var counts = {}; box.forEach(function(id){ counts[id] = (counts[id]||0) + 1; });
-    Object.keys(counts).forEach(function(id){
-      var it = ITEMS[id], li = document.createElement("li");
-      li.innerHTML = '<img src="' + it.img + '" alt=""><span><b>' + it.fr + (counts[id] > 1 ? " ×" + counts[id] : "") + '</b><small>' + it.he + '</small></span><span class="fr">₪ ' + it.p*counts[id] + '</span>';
+    order.forEach(function(id){
+      var c = CAKES[id], li = document.createElement("li");
+      li.innerHTML = '<img src="assets/slice-' + id + '.webp" alt=""><span><b>' + c.he + (counts[id] > 1 ? " ×" + counts[id] : "") + '</b><small>עוגה שלמה · השקית עם החתך שלה</small></span><span class="fr">₪ ' + PRICE*counts[id] + '</span><button type="button" class="rm" data-id="' + id + '" aria-label="להוציא את ' + c.he + '">×</button>';
       ul.appendChild(li);
     });
-    Object.keys(extras).forEach(function(k){
-      if (!extras[k]) return;
-      var li = document.createElement("li");
-      li.innerHTML = '<span></span><span>' + EXTRA[k].he + '<small>בכלי קטן, לצד הקופסה</small></span><span class="fr">₪ ' + EXTRA[k].p + '</span>';
-      ul.appendChild(li);
-    });
-    q("#vtMTot").textContent = "₪ " + total();
+    q("#vtMTot").textContent = "₪ " + cart.length*PRICE;
   }
+  q("#vtMList").addEventListener("click", function(e){
+    var rm = e.target.closest(".rm"); if (!rm) return;
+    var i = cart.lastIndexOf(rm.getAttribute("data-id")); if (i > -1) cart.splice(i, 1);
+    renderBar();
+    if (!cart.length){ modal.close ? modal.close() : modal.removeAttribute("open"); return; }
+    fillModal();
+  });
   q("#vtCheckout").addEventListener("click", function(){
-    if (!box.length) return;
+    if (!cart.length) return;
     fillModal(); mins = firstSlot(); drawClock();
-    modal.classList.remove("tied"); tie.disabled = false; tie.classList.remove("busy","done"); tie.textContent = "לקשור סרט";
+    modal.classList.remove("ready"); tie.disabled = false; tie.classList.remove("busy","done"); tie.textContent = "לשמור לאיסוף";
     fine.textContent = "קונספט של עולם מותג. שום תשלום לא נגבה.";
     if (modal.showModal) modal.showModal(); else modal.setAttribute("open", "");
   });
   q("#vtClose").addEventListener("click", function(){ modal.close ? modal.close() : modal.removeAttribute("open"); });
   modal.addEventListener("click", function(e){ if (e.target === modal && modal.close) modal.close(); });
-  q("#vtLater").addEventListener("click", function(){ if (mins + 15 <= CLOSE){ mins += 15; drawClock(); } });
-  q("#vtEarlier").addEventListener("click", function(){ if (mins - 15 >= OPEN){ mins -= 15; drawClock(); } });
+  q("#vtLater").addEventListener("click", function(){ if (!tie.classList.contains("done") && mins + 15 <= CLOSE){ mins += 15; drawClock(); } });
+  q("#vtEarlier").addEventListener("click", function(){ if (!tie.classList.contains("done") && mins - 15 >= OPEN){ mins -= 15; drawClock(); } });
   tie.addEventListener("click", function(){
     if (tie.disabled) return;
-    tie.disabled = true; tie.classList.add("busy"); tie.textContent = "קושרות את הסרט…";
+    tie.disabled = true; tie.classList.add("busy"); tie.textContent = "אורזות את השלמה…";
     setTimeout(function(){
-      modal.classList.add("tied");
+      modal.classList.add("ready");
       var t = pad(Math.floor(mins/60)) + ":" + pad(mins%60);
-      tie.classList.remove("busy"); tie.classList.add("done"); tie.textContent = "הקופסה מחכה לך ב-" + t;
-      fine.textContent = "שמורה על הדלפק, עם סרט. קונספט, לא הזמנה אמיתית.";
+      tie.classList.remove("busy"); tie.classList.add("done");
+      tie.textContent = (cart.length === 1 ? "השקית מחכה לך ב-" : "השקיות מחכות לך ב-") + t;
+      fine.textContent = "שמורה על הדלפק. קונספט, לא הזמנה אמיתית.";
     }, reduced ? 200 : 1300);
   });
 
-  render();
+  select(cur, false);
+  /* phones: the case scrolls sideways — open it in the middle */
+  var sc = q("#vtScroll");
+  if (sc.scrollWidth > sc.clientWidth){ var mid = (sc.scrollWidth - sc.clientWidth)/2; sc.scrollLeft = getComputedStyle(sc).direction === "rtl" ? -mid : mid; }
 })();
 </script>
 </body>
