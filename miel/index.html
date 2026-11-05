@@ -617,6 +617,20 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   .vt-tag b{display:block;font-family:var(--serif);font-weight:600;font-size:14px;direction:ltr}
   .vt-spot.on .vt-tag{background:var(--cacao);color:var(--creme)}
   .vt-note{text-align:center;font-size:13px;margin:12px 0 0;opacity:.72}
+  .vt-hint-t{display:none}
+  @media (hover:none){.vt-hint-d{display:none}.vt-hint-t{display:inline}}
+  .vt-spot{cursor:grab;touch-action:pan-x pan-y;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+  .vt-photo img{-webkit-user-drag:none;user-select:none}
+  html.vt-dragging,html.vt-dragging *{cursor:grabbing!important}
+  .vt-ghost{position:fixed;left:0;top:0;z-index:130;width:140px;height:160px;object-fit:contain;pointer-events:none;border-radius:18px;filter:drop-shadow(0 18px 18px rgba(74,44,36,.35));transition:width .2s,height .2s;will-change:transform}
+  .vt-ghost.whole{width:112px;height:128px;margin:-34px 0 0 14px;opacity:.95}
+  .vt-ghost:not(.whole){object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px var(--or-soft)}
+  .vt-dock{position:fixed;left:50%;bottom:0;z-index:125;transform:translate(-50%,110%);transition:transform .45s var(--ease);background:rgba(251,244,238,.96);border:1px solid var(--or-soft);border-bottom:0;border-radius:26px 26px 0 0;padding:16px 34px 12px;text-align:center;box-shadow:0 -20px 40px -24px rgba(74,44,36,.45);pointer-events:none}
+  .vt-dock.on{transform:translate(-50%,0)}
+  .vt-dock svg{direction:ltr;display:block;width:120px;height:auto;margin:0 auto;overflow:visible;transition:transform .25s var(--ease)}
+  .vt-dock.hot svg{transform:scale(1.12)}
+  .vt-dock span{display:block;font-size:13px;font-weight:600;color:var(--or);margin-top:4px}
+  .vt-dock svg.bounce{animation:vtBounce .55s var(--ease)}
   .vt-swipe{display:none}
 
   .vt-counter{max-width:1240px;margin:clamp(22px,4vh,40px) auto 0;display:grid;grid-template-columns:minmax(120px,190px) auto minmax(150px,250px) minmax(0,1fr);gap:clamp(14px,2.4vw,34px);align-items:center;background:#FBF4EE;border:1px solid var(--or-soft);border-radius:26px;padding:clamp(18px,3vw,36px)}
@@ -975,7 +989,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
         <button class="vt-spot" type="button" data-id="pistache" style="left:80.1%;top:13.9%;width:13.5%;height:50.9%"><span class="vt-tag"><b>La Pistache</b><span>הפיסטוקית</span></span></button>
       </div>
     </div>
-    <p class="vt-note"><span class="vt-swipe">החליקי לאורך הוויטרינה · </span>לחיצה על פרוסה מראה את העוגה שלה</p>
+    <p class="vt-note"><span class="vt-swipe">החליקי לאורך הוויטרינה · </span><span class="vt-hint-d">גררי פרוסה אל השקית, והעוגה השלמה נכנסת · או לחצי עליה</span><span class="vt-hint-t">לחיצה ארוכה על פרוסה וגרירה אל השקית · או לחיצה קצרה</span></p>
   </div>
 
   <!-- the counter: slice → whole cake → bag with the slice's code -->
@@ -1976,6 +1990,87 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       fine.textContent = "שמורה על הדלפק. קונספט, לא הזמנה אמיתית.";
     }, reduced ? 200 : 1300);
   });
+
+  /* ---------- drag: take the slice off the stand, drop it in the bag — the whole cake goes in ---------- */
+  var dock = document.createElement("div");
+  dock.className = "vt-dock"; dock.setAttribute("aria-hidden", "true");
+  dock.innerHTML = '<svg viewBox="0 0 200 230"></svg><span>שחררי לתוך השקית</span>';
+  document.body.appendChild(dock);
+  var drag = null, justDragged = false;
+  function overBag(x, y){
+    var t = [dock.querySelector("svg"), q("#vtBag")];
+    for (var i = 0; i < t.length; i++){
+      var r = t[i].getBoundingClientRect();
+      if (r.width && x > r.left - 30 && x < r.right + 30 && y > r.top - 30 && y < r.bottom + 30) return t[i];
+    }
+    return null;
+  }
+  function startDrag(d){
+    d.on = true; select(d.id, true);
+    var g = document.createElement("img");
+    g.className = "vt-ghost"; g.src = "assets/slice-" + d.id + ".webp"; g.alt = "";
+    document.body.appendChild(g); d.ghost = g;
+    dock.querySelector("svg").innerHTML = bagSVG(d.id);
+    dock.classList.add("on"); document.documentElement.classList.add("vt-dragging");
+    moveDrag(d, d.x, d.y);
+  }
+  function moveDrag(d, x, y){
+    d.x = x; d.y = y;
+    d.ghost.style.transform = "translate(" + (x - 70) + "px," + (y - 80) + "px)";
+    var hit = overBag(x, y);
+    if (!!hit !== !!d.hit){
+      d.ghost.src = hit ? "assets/" + CAKES[d.id].whole : "assets/slice-" + d.id + ".webp";
+      d.ghost.classList.toggle("whole", !!hit);
+      dock.classList.toggle("hot", !!hit);
+    }
+    d.hit = hit;
+  }
+  function endDrag(d, cancel){
+    document.documentElement.classList.remove("vt-dragging");
+    var g = d.ghost, hit = !cancel && overBag(d.x, d.y);
+    function finish(){ g.remove(); setTimeout(function(){ dock.classList.remove("on","hot"); }, hit ? 700 : 0); }
+    if (hit){
+      var r = hit.getBoundingClientRect();
+      var to = "translate(" + (r.left + r.width*.4 - 70) + "px," + (r.top + r.height*.45 - 80) + "px) scale(.25)";
+      cart.push(d.id); renderBar();
+      [dock.querySelector("svg"), q("#vtBag")].forEach(function(b){ b.classList.remove("bounce"); void b.getBoundingClientRect(); b.classList.add("bounce"); });
+      if (reduced || !g.animate){ finish(); return; }
+      g.animate([{transform:g.style.transform, opacity:1}, {transform:to, opacity:0}], {duration:380, easing:"cubic-bezier(.4,0,.6,1)"}).onfinish = finish;
+    } else {
+      if (reduced || !g.animate){ finish(); return; }
+      g.animate([{transform:g.style.transform, opacity:1}, {transform:"translate(" + (d.sx - 70) + "px," + (d.sy - 80) + "px) scale(.6)", opacity:0}], {duration:320, easing:"ease-out"}).onfinish = finish;
+    }
+  }
+  qa(".vt-spot").forEach(function(b){
+    b.addEventListener("dragstart", function(e){ e.preventDefault(); });
+    b.addEventListener("contextmenu", function(e){ if (drag) e.preventDefault(); });
+    b.addEventListener("pointerdown", function(e){
+      if (e.button) return;
+      var d = drag = {id:b.getAttribute("data-id"), x:e.clientX, y:e.clientY, sx:e.clientX, sy:e.clientY, on:false, touch:e.pointerType !== "mouse", pid:e.pointerId};
+      if (d.touch) d.timer = setTimeout(function(){ if (drag === d && !d.on){ try { b.setPointerCapture(d.pid); } catch(_){} startDrag(d); if (navigator.vibrate) navigator.vibrate(12); } }, 260);
+    });
+    b.addEventListener("pointermove", function(e){
+      var d = drag; if (!d || e.pointerId !== d.pid) return;
+      if (!d.on){
+        var moved = Math.abs(e.clientX - d.sx) + Math.abs(e.clientY - d.sy) > 7;
+        if (!moved) return;
+        if (d.touch){ clearTimeout(d.timer); drag = null; return; } /* a swipe is a scroll, not a drag */
+        try { b.setPointerCapture(d.pid); } catch(_){}
+        startDrag(d);
+      }
+      moveDrag(d, e.clientX, e.clientY);
+    });
+    function up(e, cancel){
+      var d = drag; if (!d || e.pointerId !== d.pid) return;
+      clearTimeout(d.timer); drag = null;
+      if (d.on){ justDragged = true; setTimeout(function(){ justDragged = false; }, 60); endDrag(d, cancel); }
+    }
+    b.addEventListener("pointerup", function(e){ up(e, false); });
+    b.addEventListener("pointercancel", function(e){ up(e, true); });
+    b.addEventListener("click", function(e){ if (justDragged){ e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+  });
+  /* while a slice is in hand, the finger moves it — the case doesn't scroll */
+  q("#vtScroll").addEventListener("touchmove", function(e){ if (drag && drag.on) e.preventDefault(); }, {passive:false});
 
   select(cur, false);
   /* phones: the case scrolls sideways — open it in the middle */
