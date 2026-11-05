@@ -1,0 +1,301 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ARCO reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@200;300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#EFE7DA;      /* world background */
+  --w-ink:#33302B;     /* world text */
+  --w-accent:#A87E52;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,.5%{opacity:0;transform:translateY(24px)}2.5%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes · ARCO ── */
+/* hook: the feed scrolls, then stops */
+.feed{animation-name:feed;animation-timing-function:cubic-bezier(.25,.6,.3,1)}
+@keyframes feed{0%,0.500%{transform:translateY(0)}5.833%,100%{transform:translateY(-756px)}}
+/* A · the line, the sketch, the empty room */
+.arch{fill:none;stroke:#A87E52;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 1;animation-name:arch;animation-timing-function:cubic-bezier(.5,0,.3,1)}
+@keyframes arch{0%,18.667%{stroke-dashoffset:1;opacity:1}23.000%,24.333%{stroke-dashoffset:0;opacity:1}26.667%,100%{stroke-dashoffset:0;opacity:0}}
+.wm{animation-name:wm}@keyframes wm{0%,18.667%{opacity:0;letter-spacing:.8em}22.000%,100%{opacity:1;letter-spacing:.42em}}
+.a-l1{animation-name:al1}@keyframes al1{0%,20.000%{transform:translateY(110%)}22.000%,100%{transform:none}}
+.a-l2{animation-name:al2}@keyframes al2{0%,25.333%{transform:translateY(110%)}27.333%,100%{transform:none}}
+/* B · the dial */
+.d-bg{animation-name:dbg}@keyframes dbg{0%,37.667%{background-color:#EFE7DA}39.333%,41.333%{background-color:#DCD2C0}43.000%,45.000%{background-color:#D3B68F}46.667%,48.667%{background-color:#E5D3B1}50.333%,100%{background-color:#F3EEE5}}
+.d-ring{animation-name:dring;transform-origin:0 0}@keyframes dring{0%,36.333%{transform:rotate(-40deg)}38.000%,40.000%{transform:rotate(0deg)}41.667%,43.667%{transform:rotate(40deg)}45.333%,47.333%{transform:rotate(80deg)}49.000%,100%{transform:rotate(120deg)}}
+.d-cr{animation-name:dcr}@keyframes dcr{0%,36.333%{transform:rotate(40deg)}38.000%,40.000%{transform:rotate(0deg)}41.667%,43.667%{transform:rotate(-40deg)}45.333%,47.333%{transform:rotate(-80deg)}49.000%,100%{transform:rotate(-120deg)}}
+.mg0{animation-name:mg0}@keyframes mg0{0%,37.333%{transform:scale(1)}38.167%,40.000%{transform:scale(1.22)}41.333%,100%{transform:scale(1)}}.mg1{animation-name:mg1}@keyframes mg1{0%,41.000%{transform:scale(1)}41.833%,43.667%{transform:scale(1.22)}45.000%,100%{transform:scale(1)}}.mg2{animation-name:mg2}@keyframes mg2{0%,44.667%{transform:scale(1)}45.500%,47.333%{transform:scale(1.22)}48.667%,100%{transform:scale(1)}}.mg3{animation-name:mg3}@keyframes mg3{0%,48.333%{transform:scale(1)}49.167%,100.000%{transform:scale(1.22)}100.000%,100%{transform:scale(1)}}
+.b-l1{animation-name:bl1}@keyframes bl1{0%,33.000%{transform:translateY(110%)}34.667%,100%{transform:none}}
+.b-l2{animation-name:bl2}@keyframes bl2{0%,34.000%{transform:translateY(110%)}35.667%,100%{transform:none}}
+/* C · garden */
+.c-l1{animation-name:cl1}@keyframes cl1{0%,54.667%{transform:translateY(110%)}56.667%,100%{transform:none}}
+.c-l2{animation-name:cl2}@keyframes cl2{0%,56.333%{transform:translateY(110%)}58.333%,100%{transform:none}}
+/* D · the arched door opens */
+.leaf{animation-name:leaf;transform-origin:0 50%;animation-timing-function:cubic-bezier(.55,0,.25,1)}
+@keyframes leaf{0%,65.833%{transform:rotateY(0deg)}68.167%,100%{transform:rotateY(-104deg)}}
+.dpush{animation-name:dpush}@keyframes dpush{0%,65.833%{transform:scale(1.1)}71.000%,100%{transform:scale(1)}}
+.dshade{animation-name:dshade}@keyframes dshade{0%,65.833%{opacity:1}68.667%,100%{opacity:0}}
+/* E · the promise */
+.epush{animation-name:epush;animation-timing-function:linear}@keyframes epush{0%,79.167%{transform:scale(1.1)}100%{transform:scale(1)}}
+.e-l1{animation-name:el1}@keyframes el1{0%,80.333%{transform:translateY(110%)}82.333%,100%{transform:none}}
+.e-l2{animation-name:el2}@keyframes el2{0%,82.000%{transform:translateY(110%)}84.000%,100%{transform:none}}
+
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">13</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">סטודיו לעיצוב פנים וחוץ.<br>הגלילה ממלאת את החלל, מחדר ריק לבית.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl"><span dir="ltr">ARCO°</span> · עולם מותג 13</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">את <span dir="ltr">ARCO°</span> מרגישים<br>עוד לפני הפגישה הראשונה.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">ואת העסק שלך?<br>מה מרגישים אצלך לפני הפגישה?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+<section class="scene" data-show="0,10.1">
+    <img src="../sketch-m.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
+    <div class="stack" data-show="7.2,30" data-fade="0.8"><img src="../home-m/f_001.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div>
+    <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="arch" pathLength="1" d="M300 1330 V880 A240 240 0 0 1 780 880 V1330"></path></svg>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 520px; background: linear-gradient(to bottom, rgba(239,231,218,.96) 40%, rgba(239,231,218,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 700px; background: linear-gradient(to top, rgba(239,231,218,.96) 42%, rgba(239,231,218,0))"></div>
+    <div class="wm" style="position: absolute; top: 230px; left: 0; right: 0; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 64px; font-weight: 600; letter-spacing: .42em; color: #33302B" dir="ltr">ARCO<span style="color: #A87E52">°</span></div>
+    <div data-in="6.2" style="position: absolute; top: 330px; left: 0; right: 0; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="rtl">מחלל. לבית.</div>
+    <div style="position: absolute; bottom: 230px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="a-l1" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 92px; font-weight: 200; line-height: 1.15; color: #33302B">כל בית מתחיל בקו.</span></span>
+      <span class="mask"><span class="a-l2" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 58px; font-weight: 300; line-height: 1.3; color: #6F6D4F">ואז בחלל ריק שמקשיבים לו.</span></span>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,16.4">
+    <div class="stack d-bg" style="background-color: #EFE7DA"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="b-l1" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 70px; font-weight: 200; line-height: 1.15; color: #33302B">חדר אחרי חדר,</span></span>
+      <span class="mask"><span class="b-l2" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 70px; font-weight: 600; line-height: 1.15; color: #33302B">פרט אחרי פרט.</span></span>
+    </div>
+    <div style="position: absolute; left: 70px; top: 710px; width: 940px; height: 940px; border-radius: 50%; border: 2px dashed rgba(168,126,82,.5); box-sizing: border-box"></div>
+    <div style="position: absolute; left: 290px; top: 830px; width: 500px; height: 700px; border-radius: 250px 250px 18px 18px; overflow: hidden; background: #EFE7DA; box-shadow: 0 0 0 10px #FBF8F2, 0 0 0 12px #A87E52, 0 36px 80px rgba(51,48,43,.24)">
+      <div class="stack" data-show="9.7,11.35" data-fade="0.08"><img src="../home-m/f_001.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="stack" data-show="11.28,12.45" data-fade="0.08"><div class="stack" data-seq="../home-m/f_%03d.webp" data-from="1" data-to="10" data-start="11.30" data-step="0.055" data-pos="50% 55%"></div></div><div class="stack" data-show="12.38,13.55" data-fade="0.08"><div class="stack" data-seq="../home-m/f_%03d.webp" data-from="10" data-to="16" data-start="12.40" data-step="0.055" data-pos="50% 55%"></div></div><div class="stack" data-show="13.48,14.65" data-fade="0.08"><div class="stack" data-seq="../home-m/f_%03d.webp" data-from="16" data-to="22" data-start="13.50" data-step="0.055" data-pos="50% 55%"></div></div><div class="stack" data-show="14.58,16.40" data-fade="0.08"><div class="stack" data-seq="../home-m/f_%03d.webp" data-from="22" data-to="40" data-start="14.60" data-step="0.055" data-pos="50% 55%"></div></div>
+    </div>
+    <div class="d-ring" style="position: absolute; left: 540px; top: 1180px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-470px) rotate(0deg)"><div class="d-cr" style="position: absolute; left: -66px; top: -66px; width: 132px; height: 132px"><div class="mg0" style="width: 132px; height: 132px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 4px #FBF8F2, 0 0 0 6px #A87E52, 0 14px 30px rgba(51,48,43,.22)"><img src="img/m_linen.jpg" alt="פשתן" style="width: 100%; height: 100%; display: block"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-40deg) translateY(-470px) rotate(40deg)"><div class="d-cr" style="position: absolute; left: -66px; top: -66px; width: 132px; height: 132px"><div class="mg1" style="width: 132px; height: 132px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 4px #FBF8F2, 0 0 0 6px #A87E52, 0 14px 30px rgba(51,48,43,.22)"><img src="img/m_oak.jpg" alt="אלון" style="width: 100%; height: 100%; display: block"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-80deg) translateY(-470px) rotate(80deg)"><div class="d-cr" style="position: absolute; left: -66px; top: -66px; width: 132px; height: 132px"><div class="mg2" style="width: 132px; height: 132px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 4px #FBF8F2, 0 0 0 6px #A87E52, 0 14px 30px rgba(51,48,43,.22)"><img src="img/m_trav.jpg" alt="טרוורטין" style="width: 100%; height: 100%; display: block"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-120deg) translateY(-470px) rotate(120deg)"><div class="d-cr" style="position: absolute; left: -66px; top: -66px; width: 132px; height: 132px"><div class="mg3" style="width: 132px; height: 132px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 4px #FBF8F2, 0 0 0 6px #A87E52, 0 14px 30px rgba(51,48,43,.22)"><img src="img/m_plaster.jpg" alt="טיח" style="width: 100%; height: 100%; display: block"></div></div></div></div>
+    <div style="position: absolute; top: 596px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 28px solid var(--s-copper)"></div>
+    <div style="position: absolute; top: 1716px; left: 40px; right: 40px; height: 150px"><div class="stack" data-show="9.9,11.4" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="rtl">קופסת החומרים</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 36px; font-weight: 300; line-height: 1.3; color: #33302B" dir="rtl">טיח, אלון, טרוורטין ופשתן.<br>כל חומר מוסיף לחדר.</span></div><div class="stack" data-show="11.40,12.50" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="ltr">LINEN</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1; color: #33302B" dir="rtl">פשתן <span style="color: #A87E52">←</span> הספה והשטיח</span></div><div class="stack" data-show="12.50,13.60" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="ltr">OAK</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1; color: #33302B" dir="rtl">אלון <span style="color: #A87E52">←</span> הכורסה</span></div><div class="stack" data-show="13.60,14.70" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="ltr">TRAVERTINE</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1; color: #33302B" dir="rtl">טרוורטין <span style="color: #A87E52">←</span> שולחן הסלון</span></div><div class="stack" data-show="14.70,15.10" data-fade="0.18" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="ltr">LIME PLASTER</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 72px; font-weight: 300; line-height: 1; color: #33302B" dir="rtl">טיח <span style="color: #A87E52">←</span> הקיר, האור והתמונה</span></div><div class="stack" data-show="15.1,30" data-fade="0.25" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center"><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="ltr">A R C O °</span><span style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 84px; font-weight: 600; line-height: 1; color: #33302B" dir="rtl">מחלל. לבית.</span></div></div>
+  </section>
+  <section class="scene" data-show="16.1,19.8">
+    <div class="stack" data-seq="../garden-m/f_%03d.webp" data-from="1" data-to="61" data-by="2" data-start="16.3" data-step="0.06" data-pos="50% 50%"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 620px; background: linear-gradient(to bottom, rgba(239,231,218,.96) 40%, rgba(239,231,218,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 520px; background: linear-gradient(to top, rgba(239,231,218,.96) 42%, rgba(239,231,218,0))"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="c-l1" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 62px; font-weight: 200; line-height: 1.2; color: #33302B">והבית לא נגמר בקיר האחרון —</span></span>
+      <span class="mask"><span class="c-l2" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 84px; font-weight: 600; line-height: 1.15; color: #33302B">הוא ממשיך החוצה.</span></span>
+    </div>
+    <div data-in="17.6" style="position: absolute; bottom: 220px; left: 0; right: 0; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 44px; font-weight: 300; color: #33302B" dir="rtl">הגינה היא עוד מרחב לאירוח.</div>
+  </section>
+  <section class="scene" data-show="19.4,24.1">
+    <div class="stack" style="background: #EFE7DA"></div>
+    <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px" dir="rtl">
+      <div data-in="19.5" style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 84px; font-weight: 600; line-height: 1.1; color: #33302B">כל קשת היא דלת.</div>
+      <div data-in="19.8" style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 40px; font-weight: 300; line-height: 1.35; color: #6F6D4F">מאחורי כל אחת — בית שכבר הקשבנו לו.</div>
+    </div>
+    <div style="position: absolute; left: 250px; top: 560px; width: 580px; height: 920px; perspective: 1800px">
+      <div style="position: absolute; inset: 0; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; background: #8D7B63; box-shadow: inset 0 8px 30px rgba(0,0,0,.42)">
+        <img class="dpush" src="../projects/01.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; object-position: 50% 50%">
+        <div class="dshade" style="position: absolute; inset: 0; background: linear-gradient(255deg, rgba(0,0,0,.45), rgba(0,0,0,0) 60%)"></div>
+      </div>
+      <div class="leaf" style="position: absolute; inset: 0; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; background: linear-gradient(100deg, #E6DBC8, #D3C3AA); box-shadow: inset 0 0 0 1px rgba(51,48,43,.12)">
+        <div style="position: absolute; left: 38px; right: 38px; top: 38px; bottom: 38px; border: 2px solid rgba(168,126,82,.55); border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%"></div>
+        <div style="position: absolute; right: 70px; top: 520px; width: 16px; height: 16px; border-radius: 50%; background: #A87E52"></div>
+      </div>
+      <div style="position: absolute; left: 8%; right: 8%; bottom: -28px; height: 28px; background: radial-gradient(60% 100% at 50% 0, rgba(51,48,43,.24), transparent 72%)"></div>
+    </div>
+    <div class="stack" data-show="21.35,30" data-fade="0.3" style="background: #EFE7DA">
+      <div style="position: absolute; top: 210px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px" dir="rtl">
+        <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 70px; font-weight: 200; line-height: 1.15; color: #33302B">שישה רגעים, שפה אחת:</div>
+        <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 70px; font-weight: 600; line-height: 1.15; color: #33302B">קשת, טיח ואלון.</div>
+      </div>
+      <div style="position: absolute; top: 520px; left: 80px; width: 920px; display: flex; flex-wrap: wrap; justify-content: space-between; row-gap: 46px" dir="rtl"><div data-in="21.45" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/01.webp" alt="המצגת" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°01</span> · המצגת</div></div><div data-in="21.57" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/02.webp" alt="קופסת החומרים" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°02</span> · קופסת החומרים</div></div><div data-in="21.69" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/03.webp" alt="הגדר באתר" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°03</span> · הגדר באתר</div></div><div data-in="21.81" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/04.webp" alt="הכרטיס" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°04</span> · הכרטיס</div></div><div data-in="21.93" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/05.webp" alt="הפיד" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°05</span> · הפיד</div></div><div data-in="22.05" style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 290px"><div style="width: 290px; height: 380px; border-radius: 50% 50% 8px 8px / 34% 34% 3% 3%; overflow: hidden; box-shadow: 0 18px 40px rgba(51,48,43,.18)"><img src="../touch/06.webp" alt="מסירת המפתח" style="width: 100%; height: 100%; object-fit: cover; display: block"></div><div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 28px; color: #33302B" dir="rtl"><span style="color: #A87E52; font-weight: 700" dir="ltr">N°06</span> · מסירת המפתח</div></div></div>
+      <div data-in="22.3" style="position: absolute; top: 1600px; left: 0; right: 0; text-align: center; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 36px; font-weight: 300; color: #6F6D4F" dir="rtl">מהמצגת הראשונה ועד מסירת המפתח.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="23.75,30">
+    <div class="stack" style="overflow: hidden"><img class="epush" src="../home-m/f_040.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 640px; background: linear-gradient(to bottom, rgba(239,231,218,.96) 40%, rgba(239,231,218,0))"></div><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 620px; background: linear-gradient(to top, rgba(239,231,218,.96) 42%, rgba(239,231,218,0))"></div>
+    <div style="position: absolute; top: 230px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="e-l1" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 76px; font-weight: 200; line-height: 1.18; color: #33302B">אנחנו לא ממלאים חדרים.</span></span>
+      <span class="mask"><span class="e-l2" style="display: block; font-family: 'Assistant', 'Heebo', sans-serif; font-size: 84px; font-weight: 600; line-height: 1.18; color: #33302B">אנחנו מעירים אותם.</span></span>
+    </div>
+    <div data-in="25.3" style="position: absolute; bottom: 230px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 12px">
+      <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 60px; font-weight: 600; letter-spacing: .42em; color: #33302B" dir="ltr">ARCO<span style="color: #A87E52">°</span></div>
+      <div style="font-family: 'Assistant', 'Heebo', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .4em; color: #A87E52" dir="rtl">עיצוב פנים וחוץ · מחלל. לבית.</div>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: var(--s-cream)">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">הלקוחה גוללת עוד<br>גלריית עבודות.<br>למה שתעצור <span style="color: var(--s-copper)">אצלך</span>?</div>
+  <div style="position: absolute; top: 610px; left: 150px; width: 780px; height: 900px; box-sizing: border-box; padding: 16px; background: #FFFFFF; border-radius: 24px; box-shadow: 0 24px 60px rgba(62,47,37,.14); display: flex; flex-direction: column; gap: 16px">
+    <div style="height: 56px; display: flex; align-items: center; gap: 14px; padding: 0 6px" dir="rtl"><span style="width: 52px; height: 52px; border-radius: 50%; background: #D9D9D9"></span><span style="display: flex; flex-direction: column"><b style="font-size: 24px; color: #2E2A27">עיצוב פנים · פרויקטים</b><span style="font-size: 19px; color: #8E8A86">128 פוסטים</span></span></div>
+    <div style="position: relative; flex-grow: 1; overflow: hidden; border-radius: 8px">
+      <div class="feed" style="display: grid; grid-template-columns: repeat(3, 244px); gap: 8px"><img src="img/g1.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g2.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g3.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g4.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g5.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g6.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g7.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g8.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g9.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g1.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g2.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g3.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g4.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g5.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g6.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g7.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g8.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"><img src="img/g9.jpg" alt="" style="width: 244px; height: 244px; object-fit: cover; display: block; border-radius: 4px"></div>
+      <span style="position: absolute; top: 14px; right: 14px; padding: 8px 18px; border-radius: 999px; background: #2E2A27; color: #F4F2EF; font-size: 22px" dir="rtl">ככה משווים</span>
+    </div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1690 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1690 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג 13</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">כל בית מתחיל בקו.</span></div>
+    <div class="stack" data-show="9.9,16.2" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · The Visual World</span><span style="font-size: 22px; color: var(--s-ink)">קופסת החומרים: כל חומר מוסיף לבית</span></div>
+    <div class="stack" data-show="16.2,19.6" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · The Narrative</span><span style="font-size: 22px; color: var(--s-ink)">הבית ממשיך החוצה</span></div>
+    <div class="stack" data-show="19.6,24.0" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · Touchpoints</span><span style="font-size: 22px; color: var(--s-ink)">כל קשת היא דלת</span></div>
+    <div class="stack" data-show="24.0,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">מחלל. לבית.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
