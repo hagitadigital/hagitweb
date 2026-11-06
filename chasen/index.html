@@ -346,6 +346,102 @@ footer{position:relative;z-index:5;border-top:1px solid var(--line);padding:30px
 footer a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--matcha);border-color:var(--matcha)}
 
+/* ---- LA LEÇON: the workshop, a host, a table, a place card ---- */
+.lecon{padding:clamp(60px,10vh,120px) 0;border-top:1px solid var(--line)}
+.lc-head{max-width:660px;margin-bottom:clamp(30px,5vh,56px)}
+.lc-head h2{font-weight:200;font-size:clamp(28px,3.6vw,46px);line-height:1.2;margin:10px 0 14px}
+.lc-head h2 b{font-weight:600;color:var(--matcha)}
+.lc-head p{font-size:17px;line-height:1.8;color:var(--ink-2)}
+.lc-host{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:clamp(26px,5vw,72px);align-items:center}
+.lc-portrait{position:relative;margin:0;border-radius:8px;overflow:hidden;aspect-ratio:4/5;background:#eadfcb;box-shadow:0 34px 70px -44px rgba(31,42,31,.5)}
+.lc-portrait img{width:100%;height:100%;object-fit:cover}
+.lc-portrait figcaption{position:absolute;inset:auto 0 0 0;padding:16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:linear-gradient(to top,rgba(244,231,213,.94),transparent);font-size:14px;color:var(--ink-2)}
+.lc-portrait figcaption .fr{font-size:20px;font-style:italic;color:var(--ink)}
+.lc-about blockquote{font-size:clamp(21px,2.3vw,28px);line-height:1.5;font-weight:300}
+.lc-sig{font-style:italic;font-size:19px;color:var(--ink-2);margin:12px 0 30px}
+.lc-steps{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.lc-steps li{display:grid;grid-template-columns:150px 1fr;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.7;color:var(--ink-2)}
+.lc-steps li .fr{grid-row:span 2;font-size:15px;letter-spacing:.06em;color:var(--matcha);padding-top:2px}
+.lc-steps li b{color:var(--ink)}
+.lc-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.lc-facts div{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:rgba(255,252,246,.35)}
+.lc-facts dt{font-size:12px;letter-spacing:.14em;color:var(--ink-3)}
+.lc-facts dd{font-size:15.5px;font-weight:600;margin-top:4px}
+@media (max-width:860px){.lc-host{grid-template-columns:1fr}.lc-portrait{max-width:520px}.lc-facts{grid-template-columns:repeat(2,1fr)}.lc-steps li{grid-template-columns:1fr}.lc-steps li .fr{grid-row:auto}}
+
+.lc-mosaic{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin:clamp(44px,8vh,90px) 0}
+.lc-mosaic figure{position:relative;margin:0;border-radius:6px;overflow:hidden;background:#eadfcb}
+.lc-mosaic .m-wide{aspect-ratio:auto}
+.lc-mosaic .m-tall{aspect-ratio:4/5}
+.lc-mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.lc-mosaic figure:hover img{transform:scale(1.04)}
+.lc-mosaic .lc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.lc-mosaic .lc-vid.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.lc-mosaic .lc-vid{display:none}}
+.lc-mosaic figcaption{position:absolute;top:12px;right:12px;font-size:14px;letter-spacing:.06em;background:rgba(244,231,213,.86);padding:4px 11px;border-radius:999px;backdrop-filter:blur(4px)}
+@media (max-width:860px){.lc-mosaic{grid-template-columns:1fr 1fr;gap:10px}.lc-mosaic .m-wide{grid-column:1/-1;aspect-ratio:3/2}}
+
+.lc-book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(26px,5vw,72px);align-items:start;position:relative}
+.lc-table img{border-radius:8px;width:100%;aspect-ratio:3/2;object-fit:cover}
+.lc-plan{margin-top:22px;display:grid;gap:10px;justify-items:center}
+.lc-row{display:flex;gap:clamp(18px,5vw,46px)}
+.lc-board{width:min(100%,360px);height:44px;border-radius:6px;background:linear-gradient(90deg,#dcc6a2,#e8d7ba 50%,#dcc6a2);display:grid;place-items:center;font-size:15px;letter-spacing:.14em;color:rgba(31,42,31,.55)}
+.seat{width:44px;height:44px;border-radius:50%;border:1px dashed var(--ink-3);display:grid;place-items:center;font-size:15px;font-weight:600;color:var(--bg);transition:background .45s,border-color .45s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.seat.taken{background:rgba(31,42,31,.13);border:1px solid transparent}
+.seat.mine{background:var(--matcha);border:1px solid var(--matcha);transform:scale(1.08)}
+.lc-left{text-align:center;margin-top:14px;font-size:15.5px;color:var(--ink-2);min-height:1.6em}
+.lc-left b{color:var(--matcha)}
+
+.lc-form{display:grid;gap:18px;border:1px solid var(--line);border-radius:12px;padding:clamp(22px,3vw,32px);background:rgba(255,252,246,.45)}
+.lc-form h3{font-weight:300;font-size:26px;line-height:1.25;margin-top:-8px}
+.lc-form fieldset{border:0;display:grid;gap:10px}
+.lc-form legend{font-size:13px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:10px}
+.lc-dates{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.lc-date{display:grid;gap:2px;text-align:right;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);font:inherit;cursor:pointer;transition:border-color .25s,background .25s}
+.lc-date .d{font-size:16px;font-weight:600}
+.lc-date .s{font-size:13px;color:var(--ink-2)}
+.lc-date[aria-checked="true"]{border-color:var(--ink);background:rgba(255,252,246,.85)}
+.lc-date[disabled]{opacity:.45;cursor:default}
+.lc-date[disabled] .s{text-decoration:line-through}
+.lc-count{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.lc-count button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;font:inherit;font-size:20px;color:var(--ink);cursor:pointer}
+.lc-count button:disabled{opacity:.3;cursor:default}
+.lc-count output{font-size:22px;font-weight:600;min-width:1.2em;text-align:center}
+.lc-hint{font-size:13.5px;color:var(--ink-3)}
+.lc-field{display:grid;gap:6px}
+.lc-field span{font-size:13px;letter-spacing:.14em;color:var(--ink-3)}
+.lc-field input{font:inherit;font-size:16px;color:var(--ink);padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,252,246,.7);outline:none;transition:border-color .25s}
+.lc-field input:focus{border-color:var(--matcha)}
+.lc-field input[aria-invalid="true"]{border-color:#b5573f}
+.lc-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px;font-size:15px;color:var(--ink-2)}
+.lc-total b{font-size:22px;color:var(--ink)}
+.lc-go{font:inherit;font-size:17px;font-weight:600;color:var(--bg);background:var(--matcha-deep);border:0;border-radius:999px;padding:15px 22px;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.lc-go:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(34,48,31,.6)}
+.lc-go:focus-visible,.lc-date:focus-visible,.lc-count button:focus-visible{outline:2px solid var(--matcha);outline-offset:3px}
+.lc-err{color:#b5573f;font-size:14px;min-height:1.2em;margin-top:-6px}
+.lc-note{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+
+.lc-ticket{display:grid;gap:16px;justify-items:center;align-content:start}
+.lc-ticket[hidden],.lc-form[hidden]{display:none}
+.lc-card{position:relative;width:min(100%,400px);background:#fbf6ec;border-radius:6px;padding:30px 30px 34px;box-shadow:0 30px 60px -34px rgba(31,42,31,.5),0 0 0 1px rgba(31,42,31,.06);color:var(--ink);animation:lcCard 1s cubic-bezier(.2,.7,.2,1) both;transform-origin:50% 100%}
+.lc-card::before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:var(--matcha);border-radius:6px 6px 0 0}
+@keyframes lcCard{from{opacity:0;transform:translateY(24px) rotateX(55deg)}to{opacity:1;transform:none}}
+.lc-brand{font-size:18px;letter-spacing:.2em;text-align:center}
+.lc-brand small{display:block;font-size:13px;letter-spacing:.3em;font-style:italic;color:var(--ink-2);margin-top:2px}
+.lc-tname{font-family:'Italianno','Assistant',cursive;font-weight:200;font-size:52px;line-height:1.1;text-align:center;color:var(--matcha-deep);margin:14px 0 18px;min-height:1em}
+.lc-card dl{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+.lc-card dt{font-size:11.5px;letter-spacing:.16em;color:var(--ink-3)}
+.lc-card dd{font-size:15.5px;font-weight:600;margin-top:2px}
+.lc-tline{text-align:center;margin-top:16px;font-size:15px;color:var(--ink-2)}
+.lc-whisk{position:absolute;left:18px;bottom:16px;width:22px;color:var(--matcha);opacity:.7}
+.lc-again{font:inherit;font-size:15px;color:var(--matcha-deep);background:transparent;border:0;border-bottom:1px solid var(--matcha);padding:2px 0;cursor:pointer}
+@media (max-width:860px){.lc-book{grid-template-columns:1fr}.seat{width:38px;height:38px}}
+
+.lc-foot{max-width:720px;margin:clamp(44px,7vh,80px) auto 0;padding-top:28px;border-top:1px solid var(--line);text-align:center}
+.lc-foot p{font-size:16.5px;line-height:1.85;color:var(--ink-2)}
+.lc-foot b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.lc-card{animation:none}.seat{transition:none}}
+
         :where(img[width][height]){height:auto}
     </style>
 
@@ -499,6 +595,187 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- ═══ SANS LE NOM: the cover test ═══ -->
+<!-- ======================= LA LEÇON — the workshop ======================= -->
+<section class="lecon" id="lecon" aria-labelledby="lc-title">
+  <div class="wrap">
+    <div class="lc-head reveal">
+      <p class="tag fr">La Leçon · Samedi matin · 6 places</p>
+      <h2 id="lc-title">את המטרפה לא קונים.<br><b>לומדים להחזיק אותה.</b></h2>
+      <p>סדנת מאצ'ה של תשעים דקות סביב שולחן אחד, שש משתתפות ומארחת אחת. מנפים, מקציפים, מוזגים, ויוצאות הביתה עם המטרפה שהקצפתן בה.</p>
+    </div>
+
+    <div class="lc-host">
+      <figure class="lc-portrait reveal">
+        <img src="assets/lecon/hote.webp" alt="מאיה, מארחת הסדנה, בסינר ירוק מאחורי הבר עם קערת מאצ'ה ומטרפת במבוק" width="1200" height="1500" loading="lazy">
+        <figcaption><span class="fr">Votre hôte</span><span>מאיה · המטרפה של CHASEN°</span></figcaption>
+      </figure>
+      <div class="lc-about reveal">
+        <blockquote>״אני לא מלמדת מתכון. אני מלמדת תנועה של יד. מי שמבינה למה הקצף נוצר, תכין כוס טובה בכל מטבח.״</blockquote>
+        <p class="lc-sig fr">— Maya, maîtresse du fouet</p>
+        <ol class="lc-steps">
+          <li><span class="fr">01 · La Poudre</span><b>לנפות.</b> למה מאצ'ה טקסית לא נשפכת לקערה כמו שהיא, ומה קורה לגושים.</li>
+          <li><span class="fr">02 · Le Chasen</span><b>להקציף.</b> תנועת ה-M מהשורש, בלי לגעת בתחתית. עשרים שניות, ולא יותר.</li>
+          <li><span class="fr">03 · Le Verre</span><b>למזוג ולבחור.</b> על חלב קר, ואז אחד מחמשת הטעמים. הכוס הראשונה שלך עם שם משלה.</li>
+        </ol>
+        <dl class="lc-facts">
+          <div><dt>משך</dt><dd>90 דקות</dd></div>
+          <div><dt>שולחן</dt><dd>6 משתתפות</dd></div>
+          <div><dt>הביתה</dt><dd>מטרפה, מקלון ופחית</dd></div>
+          <div><dt>מחיר</dt><dd>₪240</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lc-mosaic">
+      <figure class="m-wide reveal"><img src="assets/lecon/table.webp" alt="שש משתתפות סביב שולחן עץ ארוך מקציפות מאצ'ה, המארחת מדגימה בראש השולחן" width="1500" height="996" loading="lazy"><video class="lc-vid" data-src="assets/lecon/table.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="fr">10:00 · La table</figcaption></figure>
+      <figure class="m-tall reveal" style="transition-delay:.1s"><img src="assets/lecon/mains.webp" alt="משתתפת מקציפה מאצ'ה בקערה, יד אחת על המטרפה ויד אחת על הקערה, והמארחת מאחור מחייכת" width="1200" height="1500" loading="lazy"><video class="lc-vid" data-src="assets/lecon/mains.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="fr">10:40 · La main</figcaption></figure>
+      <figure class="m-tall reveal" style="transition-delay:.2s"><img src="assets/lecon/cadeau.webp" alt="המארחת מגישה למשתתפת קופסה קשורה בסרט ירוק ובה מטרפת במבוק" width="1200" height="1500" loading="lazy"><figcaption class="fr">11:30 · Le cadeau</figcaption></figure>
+    </div>
+
+    <!-- registration -->
+    <div class="lc-book" id="lcBook">
+      <div class="lc-table reveal">
+        <img src="assets/lecon/couvert.webp" alt="מקום מוכן לסדנה: קערה, מטרפה, מקלון, מסננת ופחית ירוקה על שולחן עץ" width="1500" height="996" loading="lazy">
+        <div class="lc-plan" aria-hidden="true">
+          <div class="lc-row" id="lcRowA"></div>
+          <div class="lc-board fr">La table · 6</div>
+          <div class="lc-row" id="lcRowB"></div>
+        </div>
+        <p class="lc-left" id="lcLeft" aria-live="polite"></p>
+      </div>
+
+      <form class="lc-form reveal" id="lcForm" novalidate>
+        <p class="tag fr">Réserver une place</p>
+        <h3>שמרי לך מקום ליד השולחן</h3>
+
+        <fieldset>
+          <legend>תאריך</legend>
+          <div class="lc-dates" id="lcDates" role="radiogroup" aria-label="תאריך הסדנה"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>כמה מקומות</legend>
+          <div class="lc-count">
+            <button type="button" id="lcMinus" aria-label="פחות מקום">−</button>
+            <output id="lcN" aria-live="polite">1</output>
+            <button type="button" id="lcPlus" aria-label="עוד מקום">+</button>
+            <span class="lc-hint" id="lcHint">מגיעה עם חברה? הוסיפי מקום.</span>
+          </div>
+        </fieldset>
+
+        <label class="lc-field"><span>שם</span><input id="lcName" name="name" autocomplete="name" required placeholder="איך לכתוב על כרטיס המקום"></label>
+        <label class="lc-field"><span>טלפון</span><input id="lcPhone" name="tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="05X-XXXXXXX" dir="ltr"></label>
+
+        <div class="lc-total"><span>סה״כ</span><b id="lcTotal">₪240</b></div>
+        <button class="lc-go" type="submit">לשמור את המקום</button>
+        <p class="lc-err" id="lcErr" role="alert"></p>
+        <p class="lc-note">הדגמה: CHASEN° הוא מותג קונספט. ההרשמה לא נשלחת לשום מקום.</p>
+      </form>
+
+      <div class="lc-ticket" id="lcTicket" hidden tabindex="-1" aria-live="polite">
+        <div class="lc-card">
+          <p class="fr lc-brand">CHASEN° <small>La Leçon</small></p>
+          <p class="lc-tname" id="tName"></p>
+          <dl>
+            <div><dt>תאריך</dt><dd id="tDate"></dd></div>
+            <div><dt>שעה</dt><dd>10:00–11:30</dd></div>
+            <div><dt>מקומות</dt><dd id="tSeats"></dd></div>
+            <div><dt>כיסא</dt><dd id="tChairs"></dd></div>
+          </dl>
+          <p class="lc-tline">המטרפה כבר מחכה על השולחן.</p>
+          <svg class="lc-whisk" viewBox="0 0 40 64" aria-hidden="true"><path d="M8 4c0 14 4 22 12 26 8-4 12-12 12-26M12 4c0 12 3 19 8 22 5-3 8-10 8-22M16 4c0 10 2 16 4 18 2-2 4-8 4-18M20 4v20" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M15 30h10v4H15zM16 34h8l-1 26h-6z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>
+        </div>
+        <button type="button" class="lc-again" id="lcAgain">להזמין תאריך נוסף</button>
+      </div>
+    </div>
+
+    <div class="lc-foot reveal">
+      <p><b>למי שבונה סדנה:</b> הסדנה היא המקום שבו הבטחת המותג עוברת מהקיר לידיים. כאן ההבטחה של CHASEN° («מאצ'ה לא מזמינים, מרכיבים») היא מבנה הסדנה עצמה: שלושה מהלכים כמו שלושת פרקי הסרט, מארחת אחת שהיא פנים של המותג, שולחן שמראה כמה מקומות נשארו, וכרטיס מקום שנולד מההרשמה. ככה נראה עמוד סדנה שמוכר חוויה, לא תאריך.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============ LA LEÇON — dates, seats at the table, place card ============ */
+(function(){
+  const PRICE=240, SIZE=6;
+  const datesEl=document.getElementById('lcDates'); if(!datesEl) return;
+  const rowA=document.getElementById('lcRowA'), rowB=document.getElementById('lcRowB');
+  const left=document.getElementById('lcLeft'), nOut=document.getElementById('lcN');
+  const minus=document.getElementById('lcMinus'), plus=document.getElementById('lcPlus');
+  const hint=document.getElementById('lcHint'), total=document.getElementById('lcTotal');
+  const form=document.getElementById('lcForm'), ticket=document.getElementById('lcTicket');
+  const nameI=document.getElementById('lcName'), telI=document.getElementById('lcPhone'), err=document.getElementById('lcErr');
+  const DAYS=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  /* the next four Saturdays; seats already taken are fixed per date so the page is the same on every visit */
+  const TAKEN=[4,2,6,1];
+  const dates=[]; const d=new Date(); d.setHours(0,0,0,0);
+  d.setDate(d.getDate()+((6-d.getDay()+7)%7||7));
+  for(let i=0;i<4;i++){ const x=new Date(d); x.setDate(d.getDate()+i*7); dates.push({date:x,taken:TAKEN[i]}); }
+  const fmt=x=>`${DAYS[x.getDay()]} ${x.getDate()}.${x.getMonth()+1}`;
+  const seats=[];
+  for(let i=0;i<SIZE;i++){ const s=document.createElement('span'); s.className='seat'; (i<3?rowA:rowB).appendChild(s); seats.push(s); }
+  /* chairs fill alternately across the table, like guests arriving: 1,4,2,5,3,6 */
+  const ORDER=[0,3,1,4,2,5];
+  let cur=dates.findIndex(x=>x.taken<SIZE), n=1;
+
+  dates.forEach((x,i)=>{
+    const free=SIZE-x.taken, b=document.createElement('button');
+    b.type='button'; b.className='lc-date'; b.setAttribute('role','radio');
+    b.innerHTML=`<span class="d">${fmt(x.date)}</span><span class="s">${free? (free===1?'נשאר מקום אחד':`נשארו ${free} מקומות`) : 'השולחן מלא'}</span>`;
+    if(!free) b.disabled=true;
+    b.addEventListener('click',()=>{ cur=i; n=Math.min(n,free); render(); track('date'); });
+    datesEl.appendChild(b);
+  });
+  minus.addEventListener('click',()=>{ if(n>1){n--;render();} });
+  plus.addEventListener('click',()=>{ if(n<SIZE-dates[cur].taken){n++;render();track('seat_add');} });
+
+  function render(){
+    const x=dates[cur], free=SIZE-x.taken;
+    [...datesEl.children].forEach((b,i)=>b.setAttribute('aria-checked',String(i===cur)));
+    seats.forEach(s=>{s.className='seat';s.textContent='';});
+    ORDER.forEach((k,j)=>{ if(j<x.taken) seats[k].classList.add('taken'); else if(j<x.taken+n){ seats[k].classList.add('mine'); seats[k].textContent=initial(); } });
+    nOut.textContent=n; minus.disabled=n<=1; plus.disabled=n>=free;
+    hint.textContent= n>=free ? 'אלה המקומות האחרונים בתאריך הזה.' : 'מגיעה עם חברה? הוסיפי מקום.';
+    total.textContent='₪'+(PRICE*n).toLocaleString('he-IL');
+    const after=free-n;
+    left.innerHTML = after ? `${fmt(x.date)}: אחרייך יישארו <b>${after}</b> ${after===1?'מקום':'מקומות'} ליד השולחן.` : `${fmt(x.date)}: איתך <b>השולחן מלא</b>.`;
+  }
+  function initial(){ const v=nameI.value.trim(); return v? v[0] : '';}
+  nameI.addEventListener('input',()=>{ nameI.removeAttribute('aria-invalid'); render(); });
+  telI.addEventListener('input',()=>telI.removeAttribute('aria-invalid'));
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault(); err.textContent='';
+    const name=nameI.value.trim(), tel=telI.value.replace(/[^\d]/g,'');
+    if(!name){ nameI.setAttribute('aria-invalid','true'); err.textContent='צריך שם לכרטיס המקום.'; nameI.focus(); return; }
+    if(!/^0\d{8,9}$/.test(tel)){ telI.setAttribute('aria-invalid','true'); err.textContent='מספר הטלפון לא נראה שלם.'; telI.focus(); return; }
+    const x=dates[cur], mine=ORDER.slice(x.taken,x.taken+n).map(k=>k+1).sort((a,b)=>a-b);
+    document.getElementById('tName').textContent=name;
+    document.getElementById('tDate').textContent=fmt(x.date);
+    document.getElementById('tSeats').textContent=n===1?'מקום אחד':`${n} מקומות`;
+    document.getElementById('tChairs').textContent=mine.join(' · ');
+    form.hidden=true; ticket.hidden=false; ticket.focus({preventScroll:true});
+    track('reserve');
+    if(typeof fbq==='function') fbq('trackCustom','WorldWorkshopReserve',{world:'CHASEN',seats:n});
+  });
+  document.getElementById('lcAgain').addEventListener('click',()=>{ ticket.hidden=true; form.hidden=false; form.reset(); n=1; render(); });
+  function track(action){ if(typeof gtag==='function') gtag('event','world_interact',{world:'CHASEN',section:'lecon',action,seats:n}); }
+  render();
+  /* the two moving frames: load and play only while on screen; the still stays underneath as the poster */
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const vio=new IntersectionObserver(es=>es.forEach(e=>{
+      const v=e.target;
+      if(e.isIntersecting){
+        if(!v.src){ v.src=v.dataset.src; v.addEventListener('playing',()=>v.classList.add('on'),{once:true}); }
+        const pr=v.play(); if(pr&&pr.catch) pr.catch(()=>{});
+      } else v.pause();
+    }),{threshold:.25});
+    document.querySelectorAll('.lc-vid').forEach(v=>vio.observe(v));
+  }
+})();
+</script>
+
 <section class="sans" id="sans" aria-labelledby="sn-title">
   <div class="wrap">
     <div class="sn-head">
@@ -596,6 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p><b>האטלייה:</b> ההחלטה החשובה הייתה מה לא לעשות. לא ארבעים תמונות מוכנות של כל צירוף, כי ארבעים כוסות שנוצרו בנפרד הן ארבעים כוסות שונות במעט, וברגע שהכוס זזה פיקסל האשליה נשברת. במקום זה צולמה כוס אחת. חמשת הטעמים נוצרו כעריכה על אותה תמונה בדיוק. הקצפת והשוקולד נוצרו גם הם על תמונת המאסטר ואז נחתכו כשכבות שקופות, ולכן הם יושבים נכון על כל טעם. בדף אין חישובי צבע ואין פיזיקה של נוזלים: החלפת טעם היא מזיגה של פריים חדש, הקצפת נכנסת מלמטה למעלה, השוקולד נוזל מלמעלה למטה. כל האטלייה שוקל פחות מחצי מגה.</p>
     <p><b>הסרט:</b> שלושה פרקים שנוצרו בווידאו AI מפריים פתיחה אחד לכל פרק, על אותו סט ואותו אור כמו הכוס. הפרק השלישי נגמר בכוס שדומה לכוס של האטלייה, וזה הגשר: מהצפייה להכנה.</p>
     <p><b>מבחן הכיסוי:</b> אחרי התפריט הבר יוצא מהמסך: חמש כוסות בחמישה צבעי שרוול, ערכה לבית, קיר המטרפות, כוס עם כרטיס, שקית שקשורה אליה מטרפה אמיתית, וכוס ברחוב. אחר כך מורידים מכולן את השם. מה שנשאר הוא המטרפה, חמשת צבעי הטעמים והכוס השכבתית. ככה ההבטחה «מעבירים ללקוחה את המטרפה» הופכת מחוויה במסך לחפץ שיוצא איתה מהבר.</p>
+    <p><b>La Leçon:</b> הסדנה היא אותה הבטחה בגוף ראשון. מארחת אחת שהיא הפנים של המותג נוצרה פעם אחת, וכל שאר התמונות נבנו ממנה, כדי שבכל פריים זו אותה אישה באותו בר. הסדנה בנויה משלושת פרקי הסרט (לנפות, להקציף, למזוג), השולחן מראה בזמן ההרשמה כמה כיסאות נשארו, ובסוף נולד כרטיס מקום עם השם. ככה עמוד סדנה מוכר חוויה, לא תאריך.</p>
     <p><b>למה זה משנה למותג אמיתי:</b> אותם חמישה טעמים בלי מותג הם תפריט. עם מותג הם שם, כרטיס ורגע שהלקוחה זוכרת. האטלייה לא מוכר מאצ'ה, הוא מוכיח שמותג שנבנה מהבטחה אחת יכול להפוך גם בחירה קטנה לחוויה שנבחרת ולא מושווית למחיר. ככה נראית עבודה של <b>Brand Worlds Studio</b>: עולם שלם שבו כל פרט, תנועה, שפה, תפריט, אינטראקציה, נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>
