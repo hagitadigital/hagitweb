@@ -371,7 +371,7 @@ img{{display:block}}
 
 /* overlay copy */
 .ov{{position:absolute;left:60px;right:60px;top:250px;text-align:center;animation-name:ov}}
-.ov .l{{font-size:104px;font-weight:700;line-height:1.05;color:var(--s-dark);letter-spacing:-.01em;text-shadow:0 2px 24px rgba(250,240,236,.6)}}
+.ov .l{{font-size:96px;white-space:nowrap;font-weight:700;line-height:1.05;color:var(--s-dark);letter-spacing:-.01em;text-shadow:0 2px 24px rgba(250,240,236,.6)}}
 .ov .s{{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;font-weight:500;color:#9A4E35;margin-bottom:18px}}
 .ov2{{position:absolute;left:60px;right:60px;top:500px;text-align:center;font-size:44px;font-weight:500;line-height:1.3;color:var(--s-dark);animation-name:ov2}}
 {chr(10).join(css)}
@@ -394,10 +394,10 @@ img{{display:block}}
 <div class="outro stack" style="background:var(--s-bg)">
   <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
     <div class="o1" style="font-size:28px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><bdi dir="ltr">MIEL°</bdi> · עולם מותג No.27</div>
-    <div class="o2" style="font-size:66px;font-weight:600;line-height:1.2;color:var(--s-ink)" dir="rtl">בוויטרינה של <bdi dir="ltr">MIEL°</bdi><br>לוקחים ביד.</div>
+    <div class="o2" style="font-size:66px;font-weight:600;line-height:1.2;color:var(--s-ink)" dir="rtl">מהוויטרינה של <bdi dir="ltr">MIEL°</bdi><br>ישר לשקית.</div>
   </div>
   <div class="o3" style="position:absolute;top:1430px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center">
-    <div style="font-size:50px;font-weight:500;line-height:1.3;color:var(--s-copper)" dir="rtl">ואת העסק שלך?</div>
+    <div style="font-size:50px;font-weight:500;line-height:1.3;color:var(--s-copper)" dir="rtl">בואי לחוות בעצמך.</div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:38px;font-weight:500">כתבי <b style="font-weight:700">ויטרינה</b> בתגובות</span><span style="font-size:24px;opacity:.85">ואשלח לך את הקישור לעולם</span></div>
     <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
   </div>
@@ -456,7 +456,7 @@ img{{display:block}}
 </div>
 
 <!-- overlay copy (like the reference's single big line) -->
-<div class="ov" dir="rtl"><div class="s" dir="ltr">MIEL° · LA VITRINE</div><div class="l">אתר שלוקחים ביד.</div></div>
+<div class="ov" dir="rtl"><div class="s" dir="ltr">MIEL° · LA VITRINE</div><div class="l">חוויית גרירה באתר.</div></div>
 <div class="ov2" dir="rtl">חמש עוגות. חמש שקיות.<br>כל דופן היא החתך שלה.</div>
 
 <!-- HOOK (frame 0 already shows the question and the generic shop) -->
