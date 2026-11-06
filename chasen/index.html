@@ -375,6 +375,9 @@ footer a:hover{color:var(--matcha);border-color:var(--matcha)}
 .lc-mosaic .m-tall{aspect-ratio:4/5}
 .lc-mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
 .lc-mosaic figure:hover img{transform:scale(1.04)}
+.lc-mosaic .lc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.lc-mosaic .lc-vid.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.lc-mosaic .lc-vid{display:none}}
 .lc-mosaic figcaption{position:absolute;top:12px;right:12px;font-size:14px;letter-spacing:.06em;background:rgba(244,231,213,.86);padding:4px 11px;border-radius:999px;backdrop-filter:blur(4px)}
 @media (max-width:860px){.lc-mosaic{grid-template-columns:1fr 1fr;gap:10px}.lc-mosaic .m-wide{grid-column:1/-1;aspect-ratio:3/2}}
 
@@ -624,8 +627,8 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="lc-mosaic">
-      <figure class="m-wide reveal"><img src="assets/lecon/table.webp" alt="שש משתתפות סביב שולחן עץ ארוך מקציפות מאצ'ה, המארחת מדגימה בראש השולחן" width="1500" height="996" loading="lazy"><figcaption class="fr">10:00 · La table</figcaption></figure>
-      <figure class="m-tall reveal" style="transition-delay:.1s"><img src="assets/lecon/mains.webp" alt="משתתפת מקציפה מאצ'ה בקערה, יד אחת על המטרפה ויד אחת על הקערה, והמארחת מאחור מחייכת" width="1200" height="1500" loading="lazy"><figcaption class="fr">10:40 · La main</figcaption></figure>
+      <figure class="m-wide reveal"><img src="assets/lecon/table.webp" alt="שש משתתפות סביב שולחן עץ ארוך מקציפות מאצ'ה, המארחת מדגימה בראש השולחן" width="1500" height="996" loading="lazy"><video class="lc-vid" data-src="assets/lecon/table.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="fr">10:00 · La table</figcaption></figure>
+      <figure class="m-tall reveal" style="transition-delay:.1s"><img src="assets/lecon/mains.webp" alt="משתתפת מקציפה מאצ'ה בקערה, יד אחת על המטרפה ויד אחת על הקערה, והמארחת מאחור מחייכת" width="1200" height="1500" loading="lazy"><video class="lc-vid" data-src="assets/lecon/mains.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="fr">10:40 · La main</figcaption></figure>
       <figure class="m-tall reveal" style="transition-delay:.2s"><img src="assets/lecon/cadeau.webp" alt="המארחת מגישה למשתתפת קופסה קשורה בסרט ירוק ובה מטרפת במבוק" width="1200" height="1500" loading="lazy"><figcaption class="fr">11:30 · Le cadeau</figcaption></figure>
     </div>
 
@@ -759,6 +762,17 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('lcAgain').addEventListener('click',()=>{ ticket.hidden=true; form.hidden=false; form.reset(); n=1; render(); });
   function track(action){ if(typeof gtag==='function') gtag('event','world_interact',{world:'CHASEN',section:'lecon',action,seats:n}); }
   render();
+  /* the two moving frames: load and play only while on screen; the still stays underneath as the poster */
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const vio=new IntersectionObserver(es=>es.forEach(e=>{
+      const v=e.target;
+      if(e.isIntersecting){
+        if(!v.src){ v.src=v.dataset.src; v.addEventListener('playing',()=>v.classList.add('on'),{once:true}); }
+        const pr=v.play(); if(pr&&pr.catch) pr.catch(()=>{});
+      } else v.pause();
+    }),{threshold:.25});
+    document.querySelectorAll('.lc-vid').forEach(v=>vio.observe(v));
+  }
 })();
 </script>
 
