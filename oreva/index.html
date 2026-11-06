@@ -472,6 +472,79 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   }
 
         :where(img[width][height]){height:auto}
+
+  /* ---------- le coffret: drag into the kit ---------- */
+  .coffret{background:linear-gradient(180deg,var(--cream),var(--blush-2) 140%);z-index:5}
+  .coffret .head{text-align:center;margin-bottom:clamp(26px,4vh,44px)}
+  .coffret .head .eyebrow{text-align:center}
+  .coffret .head .sub{margin:0 auto}
+  .coffret .note{margin-top:28px;font-size:13px;color:var(--ink-3);text-align:center}
+  .cf-stage{--ks:.2;--ss:.085;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+  .cf-shelf{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,2.2vw,30px);padding:18px 26px 0;width:100%;
+    border-bottom:10px solid transparent;border-image:linear-gradient(180deg,#E7DACB,#D3C0AC) 1;}
+  .cf-shelf::after{content:"";position:absolute;inset:auto 0 -22px;height:12px;background:radial-gradient(closest-side,rgba(58,46,41,.18),transparent)}
+  .cf-p{position:relative;border:0;background:none;padding:0 0 4px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;color:var(--ink-2);transition:opacity .3s,transform .3s}
+  .cf-p img{width:calc(var(--ow) * var(--ss) * 1px);height:calc(var(--oh) * var(--ss) * 1px);filter:drop-shadow(0 8px 8px rgba(58,46,41,.18));transition:transform .3s}
+  .cf-p span{font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;letter-spacing:.14em;direction:ltr;white-space:nowrap}
+  .cf-p:hover img{transform:translateY(-5px)}
+  .cf-p.in{opacity:.28}
+  .cf-p.in img{transform:none}
+  .cf-p.lift{opacity:0}
+  .cf-p.shake{animation:cfShake .45s}
+  @keyframes cfShake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+  .cf-hint{margin:30px 0 22px;font-size:13.5px;color:var(--ink-3)}
+  .cf-hint-t{display:none}
+  @media (hover:none){.cf-hint-d{display:none}.cf-hint-t{display:inline}}
+
+  .cf-kit{position:relative;width:min(760px,100%);padding-top:clamp(60px,9vw,96px)}
+  .cf-lid{position:absolute;left:3%;right:3%;top:0;height:clamp(110px,14vw,150px);border-radius:16px 16px 4px 4px;background:linear-gradient(180deg,#F3DCD0,#EBCBBB);box-shadow:inset 0 0 0 1px rgba(184,122,87,.35),0 -2px 0 rgba(255,255,255,.6) inset;transform:perspective(900px) rotateX(38deg);transform-origin:50% 100%;display:flex;align-items:flex-start;justify-content:center;padding-top:22px}
+  .cf-lid .en{font-size:12px;letter-spacing:.32em;color:var(--copper-deep)}
+  .cf-box{position:relative;border-radius:10px 10px 18px 18px;padding:14px;background:linear-gradient(180deg,#F5E2D8,#EDCFC1);box-shadow:inset 0 0 0 1px rgba(184,122,87,.4),0 34px 50px -30px rgba(58,46,41,.45);overflow:hidden}
+  .cf-insert{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(18px,4vw,46px);padding:30px 24px 38px;border-radius:6px;
+    background:radial-gradient(120% 90% at 50% 0%,#EADFD2,#DCCBB8);box-shadow:inset 0 3px 10px rgba(58,46,41,.14)}
+  .cf-insert::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:.35;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.2px),radial-gradient(rgba(120,90,70,.18) 1px,transparent 1.2px);background-size:7px 7px,11px 11px;background-position:0 0,3px 4px}
+  .cf-slot{position:relative;width:calc(var(--ow) * var(--ks) * 1px);height:calc(var(--oh) * var(--ks) * 1px);transition:transform .3s}
+  .cf-cut{position:absolute;inset:0;-webkit-mask:var(--m) center/100% 100% no-repeat;mask:var(--m) center/100% 100% no-repeat;background:linear-gradient(180deg,#B9A58F,#CDBAA4 60%,#C3AE97);transition:background .3s}
+  .cf-cut::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,46,41,.28),rgba(58,46,41,0) 22%)}
+  .cf-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%;filter:drop-shadow(0 3px 3px rgba(58,46,41,.2))}
+  .cf-slot.land img{animation:cfLand .4s cubic-bezier(.3,1.5,.5,1)}
+  @keyframes cfLand{0%{transform:translateY(-10px)}100%{transform:none}}
+  .cf-n{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:10px;white-space:nowrap;font-weight:500;font-size:12.5px;color:var(--ink-2)}
+  .cf-kit.dragging .cf-slot:not(.ok) .cf-cut{background:linear-gradient(180deg,#C9B8A5,#D5C4B1)}
+  .cf-kit.dragging .cf-slot.ok .cf-cut{background:linear-gradient(180deg,var(--copper),var(--copper-light))}
+  .cf-kit.dragging .cf-slot.ok.hot{transform:scale(1.06)}
+  .cf-sleeve{position:absolute;inset:0;border-radius:10px 10px 18px 18px;background:linear-gradient(180deg,#F5E2D8,#EDCDBF);box-shadow:inset 0 0 0 1px rgba(184,122,87,.45);transform:translateY(-102%);transition:transform .9s cubic-bezier(.6,0,.2,1);display:flex;align-items:center;justify-content:center}
+  .cf-band{position:absolute;top:0;bottom:0;left:50%;width:34px;margin-left:-17px;background:linear-gradient(90deg,var(--copper-deep),var(--copper-light) 45%,var(--copper) 60%,var(--copper-deep))}
+  .cf-card{position:relative;background:var(--cream-2);border:1px solid rgba(184,122,87,.45);border-radius:6px;padding:16px 26px;text-align:center;box-shadow:0 14px 26px -16px rgba(58,46,41,.5);transform:rotate(-2deg);max-width:80%}
+  .cf-card b{display:block;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:22px;color:var(--ink)}
+  .cf-card small{display:block;font-size:13px;color:var(--ink-2);margin-top:4px;line-height:1.6}
+  .cf-kit.closed .cf-sleeve{transform:none}
+  .cf-kit.closed .cf-lid{opacity:0;transition:opacity .4s .5s}
+  .cf-status{text-align:center;margin:44px 0 0;font-size:15px;color:var(--ink-2);min-height:1.7em}
+  .cf-bar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .cf-bar #cfTotal{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;color:var(--ink);font-variant-numeric:lining-nums}
+  .cf-bar [hidden]{display:none}
+  .cf-bar .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .cf-ghost{position:fixed;left:0;top:0;z-index:200;pointer-events:none;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(58,46,41,.3));will-change:transform}
+  .cf-toast{position:fixed;left:50%;bottom:28px;z-index:210;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--cream);border-radius:999px;padding:11px 22px;font-size:14.5px;transition:opacity .3s,transform .3s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+  .cf-toast.on{opacity:1;transform:translate(-50%,0)}
+  html.cf-dragging,html.cf-dragging *{cursor:grabbing!important}
+  @media(max-width:760px){
+    .cf-stage{--ks:.118;--ss:.058}
+    .cf-shelf{gap:9px;padding:8px 4px 0}
+    .cf-p span{display:none}
+    .cf-hint{margin:22px 0 12px}
+    .cf-kit{padding-top:44px}
+    .cf-lid{height:70px;padding-top:12px}
+    .cf-lid .en{font-size:9.5px;letter-spacing:.22em}
+    .cf-status{margin-top:38px}
+    .cf-insert{gap:14px;padding:22px 12px 34px}
+    .cf-n{font-size:11px}
+    .cf-card{padding:12px 16px}
+    .cf-card b{font-size:18px}
+  }
+  @media(prefers-reduced-motion:reduce){.cf-sleeve{transition:none}.cf-slot.land img,.cf-p.shake{animation:none}}
     </style>
 </head>
 <body>
@@ -488,6 +561,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     <a href="#line">הליין</a>
     <a href="#ba">לפני · אחרי</a>
     <a href="#steps">הטיפול</a>
+    <a href="#coffret">הערכה</a>
     <a href="#contact">הסטודיו</a>
   </nav>
   <div class="top-actions">
@@ -506,6 +580,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   <a href="#line">הליין</a>
   <a href="#ba">לפני · אחרי</a>
   <a href="#steps">הטיפול</a>
+  <a href="#coffret">הערכה</a>
   <a href="#contact">הסטודיו</a>
   <a href="#contact" style="color:var(--copper-deep)">לקבוע אבחון עור</a>
 </div>
@@ -717,6 +792,51 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
       <div class="img"><video class="hands-loop" src="assets/pump-loop.mp4" poster="assets/pump-loop.webp" width="1280" height="854" muted loop playsinline preload="none" aria-label="Or Éva לוחצת על משאבת הנחושת לתוך כף היד ומראה ללקוחה את הסרום"></video></div>
       <div><p class="n">04 · Le suivi</p><h3>ליווי בין טיפולים</h3><p>אחרי שלושה שבועות היא שואלת מה השתנה. אם העור ביקש משהו אחר, מחליפים סרום. הליין נבנה כדי לזוז איתך.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- 05b · LE COFFRET — drag from the shelf into the kit: every product has one place in the foam, in its exact shape -->
+<section class="block coffret" id="coffret" aria-labelledby="cf-title">
+  <div class="inner">
+    <div class="head">
+      <p class="eyebrow reveal">Le coffret · הערכה</p>
+      <h2 class="title reveal" id="cf-title">ארבעה מוצרים,<br><b>לא שבעה.</b></h2>
+      <p class="sub reveal">גררי מהמדף לערכה. לכל מוצר יש מקום אחד בקצף, בצורה המדויקת שלו. מה שלא שייך לשגרה של הבוקר, לא נכנס.</p>
+    </div>
+
+    <div class="cf-stage">
+      <div class="cf-shelf" role="group" aria-label="המדף: שבעת המוצרים של ORÉVA">
+        <button type="button" class="cf-p" data-id="cleanse"  style="--ow:430;--oh:1306"><img src="assets/kit/cleanse.webp" alt="" width="184" height="560" draggable="false"><span>SOFT CLEANSE</span></button>
+        <button type="button" class="cf-p" data-id="essence"  style="--ow:386;--oh:1370"><img src="assets/kit/essence.webp" alt="" width="158" height="560" draggable="false"><span>DEW ESSENCE</span></button>
+        <button type="button" class="cf-p" data-id="dew"      style="--ow:423;--oh:1260"><img src="assets/kit/dew.webp" alt="" width="188" height="560" draggable="false"><span>DEW</span></button>
+        <button type="button" class="cf-p" data-id="glow"     style="--ow:472;--oh:1308"><img src="assets/kit/glow.webp" alt="" width="202" height="560" draggable="false"><span>GLOW</span></button>
+        <button type="button" class="cf-p" data-id="calm"     style="--ow:467;--oh:1302"><img src="assets/kit/calm.webp" alt="" width="201" height="560" draggable="false"><span>CALM</span></button>
+        <button type="button" class="cf-p" data-id="eye"      style="--ow:438;--oh:1033"><img src="assets/kit/eye.webp" alt="" width="237" height="560" draggable="false"><span>EYE VEIL</span></button>
+        <button type="button" class="cf-p" data-id="cocoon"   style="--ow:851;--oh:636"><img src="assets/kit/cocoon.webp" alt="" width="560" height="419" draggable="false"><span>COCOON</span></button>
+      </div>
+      <p class="cf-hint"><span class="cf-hint-d">גררי מוצר אל הערכה · או לחצי עליו</span><span class="cf-hint-t">גררי מוצר אל הערכה · או הקישי עליו</span></p>
+
+      <div class="cf-kit" id="cfKit">
+        <div class="cf-lid" aria-hidden="true"><span class="en">ORÉVA° · Le rituel du matin</span></div>
+        <div class="cf-box">
+          <div class="cf-insert" id="cfInsert" role="group" aria-label="הערכה: ארבעה מקומות בקצף">
+            <div class="cf-slot" data-slot="cleanse" data-accepts="cleanse" style="--ow:430;--oh:1306;--m:url(assets/kit/cleanse.webp)"><i class="cf-cut" aria-hidden="true"></i><b class="cf-n">01 · ניקוי</b></div>
+            <div class="cf-slot" data-slot="serum" data-accepts="dew glow calm" style="--ow:472;--oh:1308;--m:url(assets/kit/dew.webp)"><i class="cf-cut" aria-hidden="true"></i><b class="cf-n">02 · סרום</b></div>
+            <div class="cf-slot" data-slot="eye" data-accepts="eye" style="--ow:438;--oh:1033;--m:url(assets/kit/eye.webp)"><i class="cf-cut" aria-hidden="true"></i><b class="cf-n">03 · עיניים</b></div>
+            <div class="cf-slot" data-slot="cocoon" data-accepts="cocoon" style="--ow:851;--oh:636;--m:url(assets/kit/cocoon.webp)"><i class="cf-cut" aria-hidden="true"></i><b class="cf-n">04 · קרם</b></div>
+          </div>
+          <div class="cf-sleeve" aria-hidden="true"><i class="cf-band"></i><span class="cf-card"><b>הפרוטוקול שלך</b><small id="cfCardTxt"></small></span></div>
+        </div>
+        <p class="cf-status" id="cfStatus" aria-live="polite"></p>
+      </div>
+
+      <div class="cf-bar">
+        <span id="cfTotal"></span>
+        <button type="button" class="btn ghost" id="cfReset" hidden>לפתוח שוב</button>
+        <button type="button" class="btn" id="cfAdd" disabled>הערכה לסל</button>
+      </div>
+    </div>
+    <p class="note">ORÉVA° הוא מותג קונספט. הסל עובד, התשלום לא. לא תחויבי בשקל.</p>
   </div>
 </section>
 
@@ -987,6 +1107,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   function openCart(){ cartEl.classList.add('open'); veil.classList.add('open'); cartLayer.classList.add('open'); cartEl.setAttribute('aria-hidden','false'); cartBtn.setAttribute('aria-expanded','true'); }
   function closeCart(){ cartEl.classList.remove('open'); veil.classList.remove('open'); cartLayer.classList.remove('open'); cartEl.setAttribute('aria-hidden','true'); cartBtn.setAttribute('aria-expanded','false'); }
   cartBtn.addEventListener('click', ()=> cartEl.classList.contains('open') ? closeCart() : openCart());
+  window.orevaAddKit = ids => { ids.forEach(id=>{ if(cardsById[id]) cart[id] = (cart[id]||0)+1; }); save(); render(); openCart(); if(typeof fbq==='function') fbq('trackCustom','OrevaAddKit',{items:ids.join(',')}); };
   document.getElementById('cartClose').addEventListener('click', closeCart);
   veil.addEventListener('click', closeCart);
   document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeCart(); mobileNav.classList.remove('open'); } });
@@ -1238,6 +1359,189 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
   if(!vs.length||document.documentElement.classList.contains('no-motion')||!('IntersectionObserver' in window))return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.25});
   vs.forEach(function(v){io.observe(v)});
+})();
+</script>
+<script>
+/* Le Coffret — drag from the shelf into the kit; each product fits one cut in the foam (concept, no payment) */
+(function(){
+  var root = document.getElementById('coffret'); if (!root) return;
+  var q = function(s){ return root.querySelector(s); }, qa = function(s){ return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var reduced = document.documentElement.classList.contains('no-motion') || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var P = {
+    cleanse:{n:'SOFT CLEANSE', he:'ניקוי', p:140}, essence:{n:'DEW ESSENCE', he:'אסנס', p:180},
+    dew:{n:'DEW', he:'סרום DEW', p:240}, glow:{n:'GLOW', he:'סרום GLOW', p:260}, calm:{n:'CALM', he:'סרום CALM', p:240},
+    eye:{n:'EYE VEIL', he:'עיניים', p:220}, cocoon:{n:'COCOON CREAM', he:'קרם', p:290}
+  };
+  var SLOT_HE = {cleanse:'ניקוי', serum:'סרום', eye:'עיניים', cocoon:'קרם'};
+  var kit = q('#cfKit'), slots = qa('.cf-slot'), shelf = qa('.cf-p'), status = q('#cfStatus');
+  var fill = {}; /* slot -> product id */
+  var toast = document.createElement('div'); toast.className = 'cf-toast'; toast.setAttribute('role','status'); document.body.appendChild(toast);
+  var tt = 0;
+  function say(t){ toast.textContent = t; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('on'); }, 2600); }
+  function slotFor(id){ for (var i = 0; i < slots.length; i++) if (slots[i].getAttribute('data-accepts').split(' ').indexOf(id) > -1) return slots[i]; return null; }
+  function btn(id){ return root.querySelector('.cf-p[data-id="' + id + '"]'); }
+
+  function render(landSlot){
+    slots.forEach(function(s){
+      var k = s.getAttribute('data-slot'), id = fill[k], img = s.querySelector('img');
+      if (id){
+        if (!img){ img = document.createElement('img'); img.alt = ''; s.appendChild(img); }
+        img.src = 'assets/kit/' + id + '.webp'; img.alt = P[id].n;
+        s.classList.toggle('land', s === landSlot);
+        if (s === landSlot){ img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
+        s.setAttribute('aria-label', SLOT_HE[k] + ': ' + P[id].n);
+      } else {
+        if (img) img.remove();
+        s.classList.remove('land');
+        s.setAttribute('aria-label', SLOT_HE[k] + ': מקום פנוי');
+      }
+    });
+    shelf.forEach(function(b){
+      var id = b.getAttribute('data-id'), inKit = Object.keys(fill).some(function(k){ return fill[k] === id; });
+      b.classList.toggle('in', inKit);
+      b.setAttribute('aria-pressed', inKit ? 'true' : 'false');
+      b.setAttribute('aria-label', P[id].n + (inKit ? ' — בערכה. לחיצה מוציאה' : ' — להכניס לערכה'));
+    });
+    var keys = Object.keys(fill), n = keys.length, tot = keys.reduce(function(a, k){ return a + P[fill[k]].p; }, 0);
+    var missing = slots.map(function(s){ return s.getAttribute('data-slot'); }).filter(function(k){ return !fill[k]; }).map(function(k){ return SLOT_HE[k]; });
+    q('#cfTotal').textContent = n ? '₪ ' + tot.toLocaleString('he-IL') : '';
+    status.textContent = n === 4 ? 'הערכה מלאה. ארבעה מוצרים, דף אחד, 28 ימים.' : (n ? n + '/4 · חסר: ' + missing.join(', ') : 'הערכה ריקה. ארבעה מקומות בקצף מחכים.');
+    q('#cfAdd').disabled = n < 4;
+    if (n === 4 && !kit.classList.contains('closed')){
+      q('#cfCardTxt').textContent = slots.map(function(s){ return P[fill[s.getAttribute('data-slot')]].n; }).join(' · ');
+      setTimeout(function(){ if (Object.keys(fill).length === 4){ kit.classList.add('closed'); q('#cfReset').hidden = false; } }, reduced ? 0 : 650);
+    }
+    if (n < 4 && kit.classList.contains('closed')){ kit.classList.remove('closed'); q('#cfReset').hidden = true; }
+  }
+
+  function place(id, landSlot){
+    var s = landSlot || slotFor(id);
+    if (!s){ return false; }
+    var k = s.getAttribute('data-slot'), prev = fill[k];
+    fill[k] = id; render(s);
+    if (prev && prev !== id) say(P[prev].n + ' חזר למדף. במקום של הסרום יש מקום לאחד.');
+    return true;
+  }
+  function refuse(id){
+    say(P[id].n + ' לא בערכה של הבוקר. ארבעה מוצרים, לא שבעה.');
+    var b = btn(id); b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake');
+  }
+  function removeFromKit(id){
+    Object.keys(fill).forEach(function(k){ if (fill[k] === id) delete fill[k]; }); render();
+  }
+
+  /* tap */
+  shelf.forEach(function(b){
+    b.addEventListener('click', function(e){
+      if (justDragged){ e.preventDefault(); return; }
+      var id = b.getAttribute('data-id');
+      if (b.classList.contains('in')){ removeFromKit(id); return; }
+      if (!slotFor(id)){ refuse(id); return; }
+      flyTo(b.querySelector('img'), slotFor(id), function(){ place(id); });
+    });
+  });
+  slots.forEach(function(s){
+    s.addEventListener('click', function(){ var k = s.getAttribute('data-slot'); if (fill[k] && !kit.classList.contains('closed')){ delete fill[k]; render(); } });
+  });
+
+  function flyTo(img, slot, done){
+    if (reduced || !img.animate){ done(); return; }
+    var a = img.getBoundingClientRect(), b = slot.getBoundingClientRect();
+    var g = img.cloneNode(); g.className = 'cf-ghost'; g.style.width = a.width + 'px'; g.style.height = a.height + 'px';
+    document.body.appendChild(g);
+    g.animate([{transform:'translate(' + a.left + 'px,' + a.top + 'px)'},
+               {transform:'translate(' + (a.left + b.left)/2 + 'px,' + (Math.min(a.top, b.top) - 60) + 'px) scale(' + ((1 + b.height/a.height)/2) + ')', offset:.5},
+               {transform:'translate(' + (b.left + (b.width - a.width)/2) + 'px,' + (b.top + (b.height - a.height)/2) + 'px) scale(' + (b.height/a.height) + ')'}],
+              {duration:560, easing:'cubic-bezier(.3,.6,.3,1)'}).onfinish = function(){ g.remove(); done(); };
+  }
+
+  /* drag */
+  var drag = null, justDragged = false;
+  function hitSlot(x, y){
+    for (var i = 0; i < slots.length; i++){
+      var r = slots[i].getBoundingClientRect(), pad = 34;
+      if (x > r.left - pad && x < r.right + pad && y > r.top - pad && y < r.bottom + pad) return slots[i];
+    }
+    var k = q('.cf-insert').getBoundingClientRect();
+    return (x > k.left && x < k.right && y > k.top && y < k.bottom) ? 'kit' : null;
+  }
+  function start(d){
+    d.on = true;
+    var img = d.b.querySelector('img'), r = img.getBoundingClientRect();
+    var g = img.cloneNode(); g.className = 'cf-ghost'; d.g = g; d.w = r.width; d.h = r.height; d.ox = d.sx - r.left; d.oy = d.sy - r.top;
+    var target = slotFor(d.id); d.target = target;
+    if (target){ var tr = target.getBoundingClientRect(); d.tw = tr.width; d.th = tr.height; }
+    g.style.width = r.width + 'px'; g.style.height = r.height + 'px';
+    document.body.appendChild(g);
+    d.b.classList.add('lift');
+    kit.classList.add('dragging'); document.documentElement.classList.add('cf-dragging');
+    slots.forEach(function(s){ s.classList.toggle('ok', s === target); });
+    move(d, d.x, d.y);
+  }
+  var edgeRaf = 0;
+  function edge(){ /* keep the kit reachable: scroll while the finger rests near the screen edge */
+    edgeRaf = 0; if (!drag || !drag.on) return;
+    var y = drag.y, h = window.innerHeight, v = y > h - 70 ? 10 : (y < 90 ? -10 : 0);
+    if (v){ window.scrollBy(0, v); move(drag, drag.x, drag.y); edgeRaf = requestAnimationFrame(edge); }
+  }
+  function move(d, x, y){
+    d.x = x; d.y = y;
+    if (!edgeRaf && (y > window.innerHeight - 70 || y < 90)) edgeRaf = requestAnimationFrame(edge);
+    var hit = hitSlot(x, y), near = d.target && hit === d.target;
+    slots.forEach(function(s){ s.classList.toggle('hot', near && s === d.target); });
+    /* the bottle grows to the size of its cut as it nears the kit */
+    var s = 1;
+    if (d.target){ var tr = d.target.getBoundingClientRect(), dist = Math.hypot(x - (tr.left + tr.width/2), y - (tr.top + tr.height/2)); s = 1 + (d.th/d.h - 1) * Math.max(0, Math.min(1, 1 - (dist - 40) / 260)); }
+    d.g.style.transform = 'translate(' + (x - d.ox * s) + 'px,' + (y - d.oy * s) + 'px) scale(' + s + ')';
+    d.g.style.transformOrigin = '0 0';
+  }
+  function end(d, cancel){
+    kit.classList.remove('dragging'); document.documentElement.classList.remove('cf-dragging');
+    slots.forEach(function(s){ s.classList.remove('ok', 'hot'); });
+    var hit = cancel ? null : hitSlot(d.x, d.y), g = d.g, b = d.b;
+    function cleanup(){ g.remove(); b.classList.remove('lift'); }
+    if (hit && hit === d.target){
+      var r = d.target.getBoundingClientRect();
+      if (reduced || !g.animate){ cleanup(); place(d.id, d.target); return; }
+      g.animate([{transform:g.style.transform}, {transform:'translate(' + r.left + 'px,' + r.top + 'px) scale(' + (r.height / d.h) + ')'}],
+                {duration:220, easing:'cubic-bezier(.3,.7,.3,1)'}).onfinish = function(){ cleanup(); place(d.id, d.target); };
+      return;
+    }
+    if (hit && !d.target){ refuse(d.id); }
+    else if (hit && hit !== d.target){ say(P[d.id].n + ' נכנס רק לצורה שלו. חפשי את ה' + SLOT_HE[d.target.getAttribute('data-slot')] + '.'); }
+    var br = b.querySelector('img').getBoundingClientRect();
+    if (reduced || !g.animate){ cleanup(); return; }
+    g.animate([{transform:g.style.transform}, {transform:'translate(' + br.left + 'px,' + br.top + 'px) scale(1)'}], {duration:320, easing:'ease-out'}).onfinish = cleanup;
+  }
+  shelf.forEach(function(b){
+    b.addEventListener('dragstart', function(e){ e.preventDefault(); });
+    b.addEventListener('pointerdown', function(e){
+      if (e.button || kit.classList.contains('closed') || b.classList.contains('in')) return;
+      drag = {b:b, id:b.getAttribute('data-id'), sx:e.clientX, sy:e.clientY, x:e.clientX, y:e.clientY, pid:e.pointerId, on:false};
+      try { b.setPointerCapture(e.pointerId); } catch(_){}
+    });
+    b.addEventListener('pointermove', function(e){
+      var d = drag; if (!d || d.b !== b || e.pointerId !== d.pid) return;
+      if (!d.on){ if (Math.abs(e.clientX - d.sx) + Math.abs(e.clientY - d.sy) < 6) return; start(d); }
+      e.preventDefault(); move(d, e.clientX, e.clientY);
+    });
+    function up(e, cancel){
+      var d = drag; if (!d || d.b !== b || e.pointerId !== d.pid) return;
+      drag = null;
+      if (d.on){ justDragged = true; setTimeout(function(){ justDragged = false; }, 60); end(d, cancel); }
+    }
+    b.addEventListener('pointerup', function(e){ up(e, false); });
+    b.addEventListener('pointercancel', function(e){ up(e, true); });
+  });
+
+  q('#cfReset').addEventListener('click', function(){ fill = {}; kit.classList.remove('closed'); q('#cfReset').hidden = true; render(); });
+  q('#cfAdd').addEventListener('click', function(){
+    var ids = slots.map(function(s){ return fill[s.getAttribute('data-slot')]; }).filter(Boolean);
+    if (ids.length < 4) return;
+    if (typeof window.orevaAddKit === 'function') window.orevaAddKit(ids);
+    else say('הערכה נשמרה. קונספט, לא הזמנה אמיתית.');
+  });
+  render();
 })();
 </script>
 </body>
