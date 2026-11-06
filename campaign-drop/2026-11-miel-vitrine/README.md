@@ -9,3 +9,7 @@ Studio mode, "live screen" format, 18s. Render notes only; caption/copy live in 
 Re-render: `cd src && python3 gen.py && node ../../../.claude/skills/brandos-brand-world-reel/scripts/render.js reel.html 18 ../out/MIEL-27-vitrine.mp4`
 then `bash ../../../.claude/skills/brandos-brand-world-reel/scripts/frame45.sh ../out/MIEL-27-vitrine.mp4 ../out/MIEL-27-vitrine-4x5.mp4`.
 No audio: add a trending sound in Instagram.
+
+## 30s cut
+- `out/MIEL-27-vitrine-30s.mp4` + `out/MIEL-27-vitrine-30s-4x5.mp4`
+- `src/mk30.py` builds `src/gen30.py` from `gen.py` (same hook/vitrine/checkout + big cake 8–11.3s, 3D bags 15.6–21.3s, promise 24.2s→outro); `python3 mk30.py && python3 gen30.py` → `reel30.html`, render with 30 instead of 18.
