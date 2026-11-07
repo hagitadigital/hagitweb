@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="he"><head><meta charset="utf-8"><title>One World · B</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+html,body{margin:0;background:#FAF8F3}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#FAF8F3}
+.film *{animation-duration:15s;animation-iteration-count:infinite;animation-fill-mode:both}
+.st{position:absolute;inset:0}
+.cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{display:block;overflow:hidden;padding-bottom:.08em}
+.mask>span{display:block}
+.lat{font-family:'Cormorant Garamond',serif}
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+@keyframes k1{0%{opacity:0;transform:translateY(40px)}79.333%{opacity:0;transform:translateY(40px)}82.667%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k2{0%{opacity:0;transform:translateY(40px)}80.133%{opacity:0;transform:translateY(40px)}83.467%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k3{0%{opacity:0;transform:translateY(40px)}80.933%{opacity:0;transform:translateY(40px)}84.267%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k4{0%{opacity:0;transform:translateY(40px)}81.733%{opacity:0;transform:translateY(40px)}85.067%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k5{0%{opacity:0}73.000%{opacity:0}76.000%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k6{0%{opacity:0;transform:translateY(20px)}77.333%{opacity:0;transform:translateY(20px)}80.667%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k7{0%{transform:translateY(110%)}78.667%{transform:translateY(110%)}83.333%{transform:none}100%{transform:none}}
+@keyframes k8{0%{transform:translateY(110%)}80.667%{transform:translateY(110%)}85.333%{transform:none}100%{transform:none}}
+@keyframes k9{0%{opacity:0;transform:translateY(30px)}85.333%{opacity:0;transform:translateY(30px)}89.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k10{0%{stroke-dashoffset:1}84.000%{stroke-dashoffset:1}93.333%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes k11{0%{offset-distance:0%;opacity:0}83.933%{offset-distance:0%;opacity:0}84.000%{offset-distance:0%;opacity:1}93.333%{offset-distance:100%;opacity:1}100%{offset-distance:100%;opacity:1}}
+@keyframes k12{0%{transform:rotate(0deg)}84.000%{transform:rotate(0deg)}93.333%{transform:rotate(-400deg)}100%{transform:rotate(-400deg)}}
+@keyframes k13{0%{transform:scale(1.1)}64.667%{transform:scale(1.1)}81.667%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k14{0%{opacity:0}64.667%{opacity:0}67.333%{opacity:1}79.000%{opacity:1}81.667%{opacity:0}100%{opacity:0}}
+@keyframes k15{0%{opacity:0;transform:translateY(20px)}68.000%{opacity:0;transform:translateY(20px)}71.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k16{0%{opacity:0;transform:translateY(20px)}69.000%{opacity:0;transform:translateY(20px)}72.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k17{0%{transform:scale(1.1)}54.667%{transform:scale(1.1)}70.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k18{0%{opacity:0}54.667%{opacity:0}57.333%{opacity:1}67.333%{opacity:1}70.000%{opacity:0}100%{opacity:0}}
+@keyframes k19{0%{opacity:0;transform:translateY(20px)}58.000%{opacity:0;transform:translateY(20px)}61.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k20{0%{opacity:0;transform:translateY(20px)}59.000%{opacity:0;transform:translateY(20px)}62.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k21{0%{transform:scale(1.1)}44.667%{transform:scale(1.1)}60.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k22{0%{opacity:0}44.667%{opacity:0}47.333%{opacity:1}57.333%{opacity:1}60.000%{opacity:0}100%{opacity:0}}
+@keyframes k23{0%{opacity:0;transform:translateY(20px)}48.000%{opacity:0;transform:translateY(20px)}51.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k24{0%{opacity:0;transform:translateY(20px)}49.000%{opacity:0;transform:translateY(20px)}52.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k25{0%{transform:scale(1.1)}34.667%{transform:scale(1.1)}50.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k26{0%{opacity:0}34.667%{opacity:0}37.333%{opacity:1}47.333%{opacity:1}50.000%{opacity:0}100%{opacity:0}}
+@keyframes k27{0%{opacity:0;transform:translateY(20px)}38.000%{opacity:0;transform:translateY(20px)}41.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k28{0%{opacity:0;transform:translateY(20px)}39.000%{opacity:0;transform:translateY(20px)}42.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k29{0%{transform:scale(1.1)}24.667%{transform:scale(1.1)}40.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k30{0%{opacity:0}24.667%{opacity:0}27.333%{opacity:1}37.333%{opacity:1}40.000%{opacity:0}100%{opacity:0}}
+@keyframes k31{0%{opacity:0;transform:translateY(20px)}28.000%{opacity:0;transform:translateY(20px)}31.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k32{0%{opacity:0;transform:translateY(20px)}29.000%{opacity:0;transform:translateY(20px)}32.333%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k33{0%{transform:scale(1.1)}12.333%{transform:scale(1.1)}27.667%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k34{0%{opacity:0}14.993%{opacity:0}15.000%{opacity:1}25.000%{opacity:1}25.007%{opacity:0}100%{opacity:0}}
+@keyframes k35{0%{opacity:0;transform:translateY(20px)}15.667%{opacity:0;transform:translateY(20px)}19.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k36{0%{opacity:0;transform:translateY(20px)}16.667%{opacity:0;transform:translateY(20px)}20.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k37{0%{clip-path:circle(0px at 540px 1700px)}15.333%{clip-path:circle(0px at 540px 1700px)}20.667%{clip-path:circle(2300px at 540px 1700px)}100%{clip-path:circle(2300px at 540px 1700px)}}
+@keyframes k38{0%{opacity:1}0.000%{opacity:1}20.667%{opacity:1}20.673%{opacity:0}100%{opacity:0}}
+@keyframes k39{0%{stroke-dashoffset:1}1.333%{stroke-dashoffset:1}15.333%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes k40{0%{offset-distance:0%;opacity:0}1.267%{offset-distance:0%;opacity:0}1.333%{offset-distance:0%;opacity:1}15.333%{offset-distance:100%;opacity:1}17.333%{offset-distance:100%;opacity:1}19.333%{offset-distance:100%;opacity:0}100%{offset-distance:100%;opacity:0}}
+@keyframes k41{0%{transform:rotate(0deg)}1.333%{transform:rotate(0deg)}15.333%{transform:rotate(-400deg)}100%{transform:rotate(-400deg)}}
+@keyframes k42{0%{r:44;opacity:1}15.333%{r:44;opacity:1}20.667%{r:1400;opacity:0}100%{r:1400;opacity:0}}
+@keyframes k43{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}100.000%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+</style></head>
+<body><div id="stage"><div class="film st">
+<section class="st" style="background:#FAF8F3;animation-name:k5;animation-timing-function:linear;">
+  <div style="position:absolute;top:84px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;z-index:5"><div class="lat" style="font-style:italic;font-size:36px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div><div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div></div>
+  <div style="position:absolute;top:270px;left:70px;right:70px;text-align:center;font-size:40px;font-weight:400;color:#A4927F;text-decoration:line-through;text-decoration-color:#C4765A;text-decoration-thickness:3px;animation-name:k6;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="rtl">אל תהיי המותג שמשווים.</div>
+  <div style="position:absolute;top:360px;left:50px;right:50px;text-align:center;font-size:104px;font-weight:600;line-height:1.12;color:#3E2F25" dir="rtl">
+    <span class="mask"><span style="animation-name:k7;animation-timing-function:cubic-bezier(.4,0,.2,1);">תהיי המותג</span></span>
+    <span class="mask"><span style="animation-name:k8;animation-timing-function:cubic-bezier(.4,0,.2,1);"><span style="color:#C4765A">שבוחרים.</span></span></span>
+  </div>
+  <div style="position:absolute;top:740px;left:0;right:0;display:flex;justify-content:center;gap:18px" dir="ltr"><div style="width:210px;height:280px;overflow:hidden;border-radius:6px;animation-name:k1;animation-timing-function:cubic-bezier(.4,0,.2,1);"><img src="a/12-bottle-crepuscule-dusk-m.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="width:210px;height:280px;overflow:hidden;border-radius:6px;animation-name:k2;animation-timing-function:cubic-bezier(.4,0,.2,1);"><img src="a/box-card.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="width:210px;height:280px;overflow:hidden;border-radius:6px;animation-name:k3;animation-timing-function:cubic-bezier(.4,0,.2,1);"><img src="a/bag-street.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="width:210px;height:280px;overflow:hidden;border-radius:6px;animation-name:k4;animation-timing-function:cubic-bezier(.4,0,.2,1);"><img src="a/cup-rosa-heart.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div></div>
+  <div style="position:absolute;top:1170px;left:0;right:0;animation-name:k9;animation-timing-function:cubic-bezier(.4,0,.2,1);"><div style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center" dir="rtl"><div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:30px 80px;background:#6B563F;color:#FAF8F3;border-radius:14px"><span style="font-size:54px;font-weight:500">אבחון פער המותג</span><span style="font-size:32px;opacity:.85">ללא עלות</span></div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div></div></div>
+  <svg class="st" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line" style="animation-name:k10;animation-timing-function:linear;" pathLength="1" d="M1140 1690 C900 1640 720 1660 540 1660"></path></svg><div class="ball" style="offset-path:path('M1140 1690 C900 1640 720 1660 540 1660');animation-name:k11;animation-timing-function:linear;"><div class="halo"></div><div class="sph"><div style="position:absolute;inset:0;animation-name:k12;animation-timing-function:linear;"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div class="lat" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</section>
+<div class="st" style="z-index:2"><section class="st" style="background:#EEE6D8;animation-name:k38;animation-timing-function:linear;">
+  <div style="position:absolute;top:84px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;z-index:5"><div class="lat" style="font-style:italic;font-size:36px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div><div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div></div>
+  <div style="position:absolute;top:250px;left:80px;right:80px;text-align:right;font-size:96px;font-weight:600;line-height:1.12;color:#3E2F25" dir="rtl">אל תהיי<br>המותג <span style="color:#C4765A">שמשווים.</span></div>
+  <div style="position:absolute;top:640px;left:0;right:0;display:flex;justify-content:center;gap:40px" dir="rtl">
+    <div style="width:430px;box-sizing:border-box;padding:16px;background:#FFF;border-radius:18px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:14px" dir="rtl"><div style="position:relative"><img src="a/generic-serum.jpg" alt="" style="width:100%;height:500px;object-fit:cover;border-radius:10px;display:block"><span style="position:absolute;top:12px;right:12px;padding:7px 16px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:20px">ככה משווים</span></div><div style="display:flex;justify-content:space-between;font-size:24px;color:#6E6660"><span>סרום · 30ml</span><strong style="color:#2E2A27">₪149</strong></div></div><div style="width:430px;box-sizing:border-box;padding:16px;background:#FFF;border-radius:18px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:14px" dir="rtl"><div style="position:relative"><img src="a/generic-perfume.jpg" alt="" style="width:100%;height:500px;object-fit:cover;border-radius:10px;display:block"><span style="position:absolute;top:12px;right:12px;padding:7px 16px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:20px">ככה משווים</span></div><div style="display:flex;justify-content:space-between;font-size:24px;color:#6E6660"><span>בושם · 50ml</span><strong style="color:#2E2A27">₪159</strong></div></div>
+  </div>
+  <div style="position:absolute;top:1340px;left:0;right:0;text-align:center;font-size:34px;color:#8B7B6E" dir="rtl">כשאין עולם, נשאר רק המחיר.</div>
+  <svg class="st" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line" style="animation-name:k39;animation-timing-function:linear;" pathLength="1" d="M1140 1700 H540"></path></svg><div class="ball" style="offset-path:path('M1140 1700 H540');animation-name:k40;animation-timing-function:linear;"><div class="halo"></div><div class="sph"><div style="position:absolute;inset:0;animation-name:k41;animation-timing-function:linear;"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div class="lat" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</section></div>
+<div class="st" style="z-index:3;animation-name:k37;animation-timing-function:cubic-bezier(.4,0,.2,1);"><section class="st" style="animation-name:k14;animation-timing-function:linear;">
+  <div class="st" style="background:#F0E6DA"></div><div class="st" style="animation-name:k13;animation-timing-function:linear;"><img class="cv" src="a/cup-rosa-heart.jpg" alt="" style="object-fit:contain;object-position:50% 50%"></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k15;animation-timing-function:cubic-bezier(.4,0,.2,1);">חוויה</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k16;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">Crema°</div>
+  </div>
+</section><section class="st" style="animation-name:k18;animation-timing-function:linear;">
+  <div class="st" style="background:#7A1E30"></div><div class="st" style="animation-name:k17;animation-timing-function:linear;"><img class="cv" src="a/20-ecrin-box-open-m.webp" alt="" style="object-fit:cover;object-position:50% 50%"></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k19;animation-timing-function:cubic-bezier(.4,0,.2,1);">אריזה</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k20;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">VELUNE°</div>
+  </div>
+</section><section class="st" style="animation-name:k22;animation-timing-function:linear;">
+  <div class="st" style="background:#3A2A20"></div><div class="st" style="animation-name:k21;animation-timing-function:linear;"><img class="cv" src="a/bag-street.webp" alt="" style="object-fit:cover;object-position:50% 50%"></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k23;animation-timing-function:cubic-bezier(.4,0,.2,1);">אווירה</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k24;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">ENCORE°</div>
+  </div>
+</section><section class="st" style="animation-name:k26;animation-timing-function:linear;">
+  <div class="st" style="background:linear-gradient(180deg,#F7E9E1,#EBCFC3)"></div><div class="st" style="animation-name:k25;animation-timing-function:linear;"><div style="position:absolute;left:250px;top:260px;width:580px;height:1256px;border-radius:64px;overflow:hidden;background:#F6EAE2;box-shadow:0 0 0 14px #2B2320,0 0 0 16px #5A4B42,0 60px 120px rgba(80,40,30,.35);"><img class="cv" src="a/rosee-site-5000.jpg" alt=""></div></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k27;animation-timing-function:cubic-bezier(.4,0,.2,1);">דיגיטל</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k28;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">ROSÉE°</div>
+  </div>
+</section><section class="st" style="animation-name:k30;animation-timing-function:linear;">
+  <div class="st" style="background:#F4E2D9"></div><div class="st" style="animation-name:k29;animation-timing-function:linear;"><img class="cv" src="a/box-card.webp" alt="" style="object-fit:cover;object-position:50% 40%"></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k31;animation-timing-function:cubic-bezier(.4,0,.2,1);">אריזה</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k32;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">ROSÉE°</div>
+  </div>
+</section><section class="st" style="animation-name:k34;animation-timing-function:linear;">
+  <div class="st" style="background:#1F2A44"></div><div class="st" style="animation-name:k33;animation-timing-function:linear;"><img class="cv" src="a/12-bottle-crepuscule-dusk-m.webp" alt="" style="object-fit:cover;object-position:50% 50%"></div>
+  <div class="st" style="background:linear-gradient(0deg,rgba(30,22,18,.55) 0%,rgba(30,22,18,0) 26%)"></div>
+  <div style="position:absolute;bottom:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end;color:#FFF8EE" dir="rtl">
+    <div style="font-size:58px;font-weight:500;animation-name:k35;animation-timing-function:cubic-bezier(.4,0,.2,1);">מוצר</div>
+    <div class="lat" style="font-size:40px;letter-spacing:.24em;animation-name:k36;animation-timing-function:cubic-bezier(.4,0,.2,1);" dir="ltr">VELUNE°</div>
+  </div>
+</section></div><svg class="st" style="z-index:4" width="1080" height="1920" viewBox="0 0 1080 1920"><circle cx="540" cy="1700" r="44" fill="none" stroke="#C4765A" stroke-width="5" style="animation-name:k42;animation-timing-function:cubic-bezier(.4,0,.2,1);"></circle></svg><div style="position:absolute;left:0;right:0;bottom:0;height:6px;z-index:9;background:rgba(196,118,90,.18)"><div style="height:6px;background:#C4765A;transform-origin:right;animation-name:k43;animation-timing-function:linear;"></div></div>
+</div></div></body></html>

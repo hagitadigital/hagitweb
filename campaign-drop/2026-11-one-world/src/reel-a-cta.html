@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="he"><head><meta charset="utf-8"><title>One World · A</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+html,body{margin:0;background:#FAF8F3}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#FAF8F3}
+.film *{animation-duration:20s;animation-iteration-count:infinite;animation-fill-mode:both}
+.st{position:absolute;inset:0}
+.cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{display:block;overflow:hidden;padding-bottom:.08em}
+.mask>span{display:block}
+.lat{font-family:'Cormorant Garamond',serif}
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+@keyframes k1{0%{opacity:0}74.500%{opacity:0}76.000%{opacity:1}80.500%{opacity:1}82.000%{opacity:0}100%{opacity:0}}
+@keyframes k2{0%{opacity:0}79.000%{opacity:0}80.500%{opacity:1}85.000%{opacity:1}86.500%{opacity:0}100%{opacity:0}}
+@keyframes k3{0%{opacity:0}83.500%{opacity:0}85.000%{opacity:1}89.500%{opacity:1}91.000%{opacity:0}100%{opacity:0}}
+@keyframes k4{0%{opacity:0}88.000%{opacity:0}89.500%{opacity:1}94.000%{opacity:1}95.500%{opacity:0}100%{opacity:0}}
+@keyframes k5{0%{opacity:0}92.500%{opacity:0}94.000%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k6{0%{transform:scale(1.08)}75.000%{transform:scale(1.08)}100.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k7{0%{opacity:0}72.750%{opacity:0}75.000%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k8{0%{transform:translateY(110%)}77.000%{transform:translateY(110%)}80.500%{transform:none}100%{transform:none}}
+@keyframes k9{0%{transform:translateY(110%)}78.750%{transform:translateY(110%)}82.250%{transform:none}100%{transform:none}}
+@keyframes k10{0%{opacity:0;transform:scale(.92)}75.000%{opacity:0;transform:scale(.92)}79.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k11{0%{opacity:0}77.500%{opacity:0}79.500%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k12{0%{opacity:0;transform:translateY(30px)}83.000%{opacity:0;transform:translateY(30px)}86.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k13{0%{stroke-dashoffset:1}80.000%{stroke-dashoffset:1}88.000%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes k14{0%{offset-distance:0%;opacity:0}79.950%{offset-distance:0%;opacity:0}80.000%{offset-distance:0%;opacity:1}88.000%{offset-distance:100%;opacity:1}100%{offset-distance:100%;opacity:1}}
+@keyframes k15{0%{transform:rotate(0deg)}80.000%{transform:rotate(0deg)}88.000%{transform:rotate(-400deg)}100%{transform:rotate(-400deg)}}
+@keyframes k16{0%{clip-path:inset(0px 0px 0px 0px round 0px)}51.500%{clip-path:inset(0px 0px 0px 0px round 0px)}55.500%{clip-path:inset(190px 240px 430px 240px round 64px)}100%{clip-path:inset(190px 240px 430px 240px round 64px)}}
+@keyframes k17{0%{transform:scale(1.12)}45.000%{transform:scale(1.12)}55.500%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k18{0%{opacity:0}51.500%{opacity:0}53.000%{opacity:1}61.250%{opacity:1}62.750%{opacity:0}100%{opacity:0}}
+@keyframes k19{0%{transform:translateY(70px)}61.000%{transform:translateY(70px)}64.500%{transform:none}100%{transform:none}}
+@keyframes k20{0%{opacity:0}59.500%{opacity:0}61.000%{opacity:1}67.750%{opacity:1}69.250%{opacity:0}100%{opacity:0}}
+@keyframes k21{0%{transform:translateY(70px)}67.500%{transform:translateY(70px)}71.000%{transform:none}100%{transform:none}}
+@keyframes k22{0%{opacity:0}66.000%{opacity:0}67.500%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k23{0%{opacity:0;transform:translateY(24px)}47.000%{opacity:0;transform:translateY(24px)}49.500%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k24{0%{opacity:0;transform:translateY(24px)}55.000%{opacity:0;transform:translateY(24px)}57.500%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k25{0%{opacity:0;transform:translateY(24px)}61.500%{opacity:0;transform:translateY(24px)}64.000%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k26{0%{opacity:0}44.995%{opacity:0}45.000%{opacity:1}75.000%{opacity:1}77.250%{opacity:0}100%{opacity:0}}
+@keyframes k27{0%{opacity:0}53.500%{opacity:0}55.000%{opacity:1}100.000%{opacity:1}100%{opacity:1}}
+@keyframes k28{0%{opacity:0;transform:translateY(30px)}68.500%{opacity:0;transform:translateY(30px)}71.500%{opacity:1;transform:none}100%{opacity:1;transform:none}}
+@keyframes k29{0%{opacity:0}43.500%{opacity:0}45.000%{opacity:1}54.000%{opacity:1}55.500%{opacity:0}100%{opacity:0}}
+@keyframes k30{0%{transform:scale(1.07)}40.000%{transform:scale(1.07)}44.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k31{0%{opacity:0}39.995%{opacity:0}40.000%{opacity:1}45.000%{opacity:1}45.005%{opacity:0}100%{opacity:0}}
+@keyframes k32{0%{transform:scale(1.07)}36.000%{transform:scale(1.07)}40.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k33{0%{opacity:0}35.995%{opacity:0}36.000%{opacity:1}40.000%{opacity:1}40.005%{opacity:0}100%{opacity:0}}
+@keyframes k34{0%{transform:scale(1.07)}32.000%{transform:scale(1.07)}36.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k35{0%{opacity:0}31.995%{opacity:0}32.000%{opacity:1}36.000%{opacity:1}36.005%{opacity:0}100%{opacity:0}}
+@keyframes k36{0%{transform:scale(1.07)}28.000%{transform:scale(1.07)}32.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k37{0%{opacity:0}27.995%{opacity:0}28.000%{opacity:1}32.000%{opacity:1}32.005%{opacity:0}100%{opacity:0}}
+@keyframes k38{0%{transform:scale(1.07)}24.000%{transform:scale(1.07)}28.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k39{0%{opacity:0}23.995%{opacity:0}24.000%{opacity:1}28.000%{opacity:1}28.005%{opacity:0}100%{opacity:0}}
+@keyframes k40{0%{transform:scale(1.07)}20.000%{transform:scale(1.07)}24.000%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes k41{0%{transform:translateY(110%)}20.750%{transform:translateY(110%)}24.250%{transform:none}100%{transform:none}}
+@keyframes k42{0%{transform:translateY(110%)}22.250%{transform:translateY(110%)}25.750%{transform:none}100%{transform:none}}
+@keyframes k43{0%{opacity:0}19.995%{opacity:0}20.000%{opacity:1}24.000%{opacity:1}24.005%{opacity:0}100%{opacity:0}}
+@keyframes k44{0%{transform:scale(1)}0.000%{transform:scale(1)}20.000%{transform:scale(1.07)}100%{transform:scale(1.07)}}
+@keyframes k45{0%{transform:translateX(-120%) skewX(-12deg)}1.500%{transform:translateX(-120%) skewX(-12deg)}13.000%{transform:translateX(120%) skewX(-12deg)}100%{transform:translateX(120%) skewX(-12deg)}}
+@keyframes k46{0%{opacity:1}0.000%{opacity:1}20.000%{opacity:1}20.005%{opacity:0}100%{opacity:0}}
+@keyframes k47{0%{stroke-dashoffset:1}1.000%{stroke-dashoffset:1}15.000%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes k48{0%{offset-distance:0%;opacity:0}0.950%{offset-distance:0%;opacity:0}1.000%{offset-distance:0%;opacity:1}15.000%{offset-distance:100%;opacity:1}100%{offset-distance:100%;opacity:1}}
+@keyframes k49{0%{transform:rotate(0deg)}1.000%{transform:rotate(0deg)}15.000%{transform:rotate(-400deg)}100%{transform:rotate(-400deg)}}
+@keyframes k50{0%{transform:scaleX(0)}0.000%{transform:scaleX(0)}100.000%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+</style></head>
+<body><div id="stage"><div class="film st">
+<section class="st" style="background:#FAF8F3;animation-name:k7;animation-timing-function:linear;">
+  <div style="position:absolute;top:84px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;z-index:5"><div class="lat" style="font-style:italic;font-size:36px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div><div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div></div>
+  <div style="position:absolute;top:230px;left:60px;right:60px;text-align:center;font-size:84px;font-weight:600;line-height:1.15;color:#3E2F25" dir="rtl">
+    <span class="mask"><span style="animation-name:k8;animation-timing-function:cubic-bezier(.4,0,.2,1);">בונים מותג</span></span>
+    <span class="mask"><span style="animation-name:k9;animation-timing-function:cubic-bezier(.4,0,.2,1);">עם נוכחות <span style="color:#C4765A">משלו.</span></span></span>
+  </div>
+  <div style="position:absolute;left:260px;top:520px;width:560px;height:700px;overflow:hidden;box-shadow:0 40px 100px rgba(62,47,37,.22);animation-name:k10;animation-timing-function:cubic-bezier(.4,0,.2,1);">
+    <div class="st" style="animation-name:k6;animation-timing-function:linear;"><img class="cv" src="a/09-bottle-blush-garden-m.webp" alt="" style="animation-name:k1;animation-timing-function:linear;"><img class="cv" src="a/shelf.webp" alt="" style="animation-name:k2;animation-timing-function:linear;"><img class="cv" src="a/cup-rosa-heart.jpg" alt="" style="animation-name:k3;animation-timing-function:linear;"><img class="cv" src="a/bag-street.webp" alt="" style="animation-name:k4;animation-timing-function:linear;"><img class="cv" src="a/20-ecrin-box-open-m.webp" alt="" style="animation-name:k5;animation-timing-function:linear;"></div>
+  </div>
+  <div class="st" style="animation-name:k11;animation-timing-function:linear;"><div style="position:absolute;left:238px;top:498px;width:44px;height:44px;border-top:2px solid #C4765A;border-left:2px solid #C4765A"></div><div style="position:absolute;left:798px;top:498px;width:44px;height:44px;border-top:2px solid #C4765A;border-right:2px solid #C4765A"></div><div style="position:absolute;left:238px;top:1198px;width:44px;height:44px;border-bottom:2px solid #C4765A;border-left:2px solid #C4765A"></div><div style="position:absolute;left:798px;top:1198px;width:44px;height:44px;border-bottom:2px solid #C4765A;border-right:2px solid #C4765A"></div></div>
+  <div style="position:absolute;top:1310px;left:0;right:0;animation-name:k12;animation-timing-function:cubic-bezier(.4,0,.2,1);"><div style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center" dir="rtl"><div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:30px 80px;background:#6B563F;color:#FAF8F3;border-radius:14px"><span style="font-size:54px;font-weight:500">אבחון פער המותג</span><span style="font-size:32px;opacity:.85">ללא עלות</span></div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div></div></div>
+  <svg class="st" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line" style="animation-name:k13;animation-timing-function:linear;" pathLength="1" d="M1140 1820 C900 1780 700 1800 540 1800"></path></svg><div class="ball" style="offset-path:path('M1140 1820 C900 1780 700 1800 540 1800');animation-name:k14;animation-timing-function:linear;"><div class="halo"></div><div class="sph"><div style="position:absolute;inset:0;animation-name:k15;animation-timing-function:linear;"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div class="lat" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</section>
+<section class="st" style="background:linear-gradient(180deg,#F7E9E1 0%,#EED6CB 100%);animation-name:k26;animation-timing-function:linear;">
+  <div class="st" style="animation-name:k16;animation-timing-function:cubic-bezier(.4,0,.2,1);">
+    <div class="st" style="animation-name:k17;animation-timing-function:cubic-bezier(.3,0,.3,1);"><img class="cv" src="a/box-card.webp" alt="" style="object-position:50% 40%"></div>
+    <div class="st" style="left:240px;top:190px;width:600px;height:1300px;right:auto;bottom:auto"><div class="st" style="animation-name:k18;animation-timing-function:linear;"><img class="cv" src="a/rosee-site-0.jpg" alt="" style=""></div><div class="st" style="animation-name:k20;animation-timing-function:linear;"><img class="cv" src="a/rosee-site-3600.jpg" alt="" style="animation-name:k19;animation-timing-function:cubic-bezier(.4,0,.2,1);"></div><div class="st" style="animation-name:k22;animation-timing-function:linear;"><img class="cv" src="a/rosee-site-5000.jpg" alt="" style="animation-name:k21;animation-timing-function:cubic-bezier(.4,0,.2,1);"></div></div>
+  </div>
+  <div style="position:absolute;left:240px;top:190px;width:600px;height:1300px;border-radius:64px;box-shadow:0 0 0 14px #2B2320,0 0 0 16px #5A4B42,0 60px 120px rgba(80,40,30,.35);animation-name:k27;animation-timing-function:linear;"></div>
+  <div class="st" style="background:linear-gradient(180deg,rgba(247,233,225,0) 62%,rgba(247,233,225,.92) 80%,#F4E2D9 100%)"></div>
+  <div style="position:absolute;top:1560px;left:40px;right:40px;text-align:center;color:#4A3530" dir="rtl">
+    <div style="font-size:62px;font-weight:600;line-height:1.2"><span style="display:inline-block;animation-name:k23;animation-timing-function:cubic-bezier(.4,0,.2,1);">אסטרטגיה.</span> <span style="display:inline-block;animation-name:k24;animation-timing-function:cubic-bezier(.4,0,.2,1);">זהות.</span> <span style="display:inline-block;animation-name:k25;animation-timing-function:cubic-bezier(.4,0,.2,1);">חוויה.</span></div>
+    <div style="font-size:92px;font-weight:700;line-height:1.25;color:#C4765A;animation-name:k28;animation-timing-function:cubic-bezier(.4,0,.2,1);">עולם אחד.</div>
+  </div>
+  <div class="lat" style="position:absolute;top:96px;left:0;right:0;text-align:center;font-size:30px;letter-spacing:.5em;color:#7A5A50;animation-name:k29;animation-timing-function:linear;" dir="ltr">ROSÉE°</div>
+</section>
+<section class="st" style="background:#F0E6DA;animation-name:k31;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/cup-viola-heart.jpg" alt="" style="animation-name:k30;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#3A2A22;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;text-shadow:none" dir="ltr">Crema°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#F0E6DA"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#3A2A22" dir="rtl"><span class="mask"><span style="">ויש מותגים</span></span><span class="mask"><span style="">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B5532F" dir="rtl">Caffè Torino · הבוקר שלך, בגוון שלך.</div>
+</section>
+<section class="st" style="background:#1F2A44;animation-name:k33;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/01-lineup-three-editions-arch-m.webp" alt="" style="animation-name:k32;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#FFFFFF;font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-weight:500;text-shadow:0 2px 18px rgba(20,25,45,.45)" dir="ltr">VELUNE°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#1F2A44"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#F3EEE6" dir="rtl"><span class="mask"><span style="">ויש מותגים</span></span><span class="mask"><span style="">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B9A9C9" dir="rtl">Maison de Parfum · בושם הוא לא ריח. הוא מקום.</div>
+</section>
+<section class="st" style="background:#F0E6DA;animation-name:k35;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/cup-foresta-rosetta.jpg" alt="" style="animation-name:k34;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#3A2A22;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;text-shadow:none" dir="ltr">Crema°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#F0E6DA"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#3A2A22" dir="rtl"><span class="mask"><span style="">ויש מותגים</span></span><span class="mask"><span style="">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B5532F" dir="rtl">Caffè Torino · הבוקר שלך, בגוון שלך.</div>
+</section>
+<section class="st" style="background:#1F2A44;animation-name:k37;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/20-ecrin-box-open-m.webp" alt="" style="animation-name:k36;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#FFFFFF;font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-weight:500;text-shadow:0 2px 18px rgba(20,25,45,.45)" dir="ltr">VELUNE°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#1F2A44"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#F3EEE6" dir="rtl"><span class="mask"><span style="">ויש מותגים</span></span><span class="mask"><span style="">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B9A9C9" dir="rtl">Maison de Parfum · בושם הוא לא ריח. הוא מקום.</div>
+</section>
+<section class="st" style="background:#F0E6DA;animation-name:k39;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/cup-rosa-heart.jpg" alt="" style="animation-name:k38;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#3A2A22;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;text-shadow:none" dir="ltr">Crema°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#F0E6DA"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#3A2A22" dir="rtl"><span class="mask"><span style="">ויש מותגים</span></span><span class="mask"><span style="">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B5532F" dir="rtl">Caffè Torino · הבוקר שלך, בגוון שלך.</div>
+</section>
+<section class="st" style="background:#1F2A44;animation-name:k43;animation-timing-function:linear;">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:hidden"><img class="cv" src="a/12-bottle-crepuscule-dusk-m.webp" alt="" style="animation-name:k40;animation-timing-function:linear;"></div>
+  <div style="position:absolute;top:70px;left:70px;font-size:46px;color:#FFFFFF;font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-weight:500;text-shadow:0 2px 18px rgba(20,25,45,.45)" dir="ltr">VELUNE°</div>
+  <div style="position:absolute;top:1350px;left:0;right:0;height:570px;background:#1F2A44"></div>
+  <div style="position:absolute;top:1420px;left:70px;right:70px;text-align:right;font-size:70px;font-weight:600;line-height:1.18;color:#F3EEE6" dir="rtl"><span class="mask"><span style="animation-name:k41;animation-timing-function:cubic-bezier(.4,0,.2,1);">ויש מותגים</span></span><span class="mask"><span style="animation-name:k42;animation-timing-function:cubic-bezier(.4,0,.2,1);">שאי אפשר להתבלבל ביניהם.</span></span></div>
+  <div style="position:absolute;top:1700px;left:70px;right:70px;text-align:right;font-size:26px;letter-spacing:.04em;color:#B9A9C9" dir="rtl">Maison de Parfum · בושם הוא לא ריח. הוא מקום.</div>
+</section>
+<section class="st" style="background:radial-gradient(ellipse at 50% 62%,#FBF7F1 0%,#EEE6D8 58%,#E2D6C4 100%);animation-name:k46;animation-timing-function:linear;">
+  <div style="position:absolute;top:84px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;z-index:5"><div class="lat" style="font-style:italic;font-size:36px;color:#3E2F25" dir="ltr">Brand Worlds Studio</div><div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div></div>
+  <div style="position:absolute;top:240px;left:80px;right:80px;text-align:right;font-size:96px;font-weight:600;line-height:1.12;color:#3E2F25" dir="rtl">יש עסקים<br><span style="color:#C4765A">שנראים טוב.</span></div>
+  <div style="position:absolute;left:130px;top:560px;width:820px;height:1025px">
+    <img src="a/generic-serum.jpg" alt="" style="width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:brightness(1.055) contrast(1.04);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%);display:block;animation-name:k44;animation-timing-function:linear;">
+    <div class="st" style="overflow:hidden;mix-blend-mode:screen"><div class="st" style="background:linear-gradient(90deg,transparent 30%,rgba(255,250,240,.55) 50%,transparent 70%);animation-name:k45;animation-timing-function:cubic-bezier(.5,0,.5,1);"></div></div>
+  </div>
+  <div style="position:absolute;left:0;right:0;top:1500px;height:30px;background:radial-gradient(ellipse at 50% 0%,rgba(80,60,40,.18),transparent 70%)"></div>
+  <svg class="st" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line" style="animation-name:k47;animation-timing-function:linear;" pathLength="1" d="M1140 1700 H540"></path></svg><div class="ball" style="offset-path:path('M1140 1700 H540');animation-name:k48;animation-timing-function:linear;"><div class="halo"></div><div class="sph"><div style="position:absolute;inset:0;animation-name:k49;animation-timing-function:linear;"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div class="lat" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;color:#F5DEC4" dir="ltr">BW</div><div style="position:absolute;left:12px;top:46px;width:14px;height:14px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</section>
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div style="height:6px;background:#C4765A;transform-origin:right;animation-name:k50;animation-timing-function:linear;"></div></div>
+</div></div></body></html>
