@@ -1,0 +1,339 @@
+<!doctype html>
+<!--
+  «נכנסים לעולם מותג» · Episode 2 · Crema° (No.20) · 1080×1920.
+  Arc: hook to camera (S6) → «בואי ניכנס» + board (S1–S4) → entry through the code panel → world: demo, problem (generic), proof, insight
+       → exit → S6: business line + question → signature + CTA (only at the very end).
+  window.seek(t) draws one frame; node render.js ep02.html out.mp4 (silent) → bash mux.sh (audio).
+  All times come from the TIMING block; VO times (v) are mapped to the final timeline by P1/P2/PQ below — keep mux.sh in step.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>EP02 · Crema°</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bebas+Neue&family=Playfair+Display:ital@1&display=swap">
+<style>
+:root{--brand:#87502C;--copper:#C28A5A;--cream:#F4EBE0;--cream2:#EADCC9;--ink:#2E1E16;--gold:#C9A45C;--olive:#55613F}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Heebo',sans-serif}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.panel{position:absolute;left:0;top:0;width:720px;height:700px;transform-origin:0 0;background:#F1E8DC;overflow:hidden}
+.panel .plab{position:absolute;top:24px;right:30px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8A7563;direction:rtl}
+.sw{position:absolute;top:92px;bottom:40px;width:84px;transform-origin:50% 100%;border-radius:4px}
+.sw i{position:absolute;bottom:20px;left:50%;transform:translateX(-50%) rotate(-90deg);transform-origin:50% 50%;white-space:nowrap;font:600 30px 'Cormorant Garamond',serif;font-style:normal;color:#fff;width:300px;text-align:left;margin-left:-6px}
+.panel .prod{position:absolute;left:110px;top:70px;width:500px;height:600px;object-fit:cover;border-radius:6px}
+.panel .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.panel svg{position:absolute;left:160px;top:70px;width:400px;height:430px;overflow:visible}
+.panel .codeline{position:absolute;bottom:36px;width:100%;text-align:center;font:500 32px Heebo;color:#4A3528;direction:rtl}
+.boardtag{position:absolute;display:flex;flex-direction:column;align-items:center;gap:2px;transform:translateX(-50%);white-space:nowrap}
+.boardtag .nm{font:600 62px 'Cormorant Garamond',serif;color:var(--ink);letter-spacing:.02em;line-height:1}
+.boardtag .no{font:500 19px 'JetBrains Mono',monospace;color:#6B5641;direction:rtl;background:rgba(244,235,224,.88);padding:4px 12px;border-radius:999px}
+.trace{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+/* world: full-bleed, no frames */
+#world{background:radial-gradient(90% 60% at 50% 45%,#F3E9DD 0%,#E9DCCB 60%,#DCCBB7 100%)}
+.wscene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.wscene canvas{position:absolute;inset:0;width:1080px;height:1920px}
+.cupwrap{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 900px}
+.cupwrap img{position:absolute;left:-60px;top:300px;width:1200px;height:1200px;-webkit-mask-image:radial-gradient(closest-side,#000 78%,transparent 100%);mask-image:radial-gradient(closest-side,#000 78%,transparent 100%)}
+.cupname{position:absolute;left:0;right:0;top:300px;text-align:center;direction:ltr}
+.cupname b{display:block;font:500 120px 'Cormorant Garamond',serif;color:var(--ink);line-height:1}
+.cupname span{display:inline-block;margin-top:14px;font:500 30px 'JetBrains Mono',monospace;color:#fff;padding:6px 18px;border-radius:999px;letter-spacing:.08em}
+#wlabel{left:50%;top:205px;transform:translateX(-50%);white-space:nowrap;font:500 25px 'JetBrains Mono',monospace;color:var(--cream);background:rgba(46,30,22,.72);
+  padding:10px 22px;border-radius:999px;direction:rtl;letter-spacing:.02em;opacity:0;z-index:5}
+.tag{position:absolute;left:50%;top:270px;transform:translateX(-50%);font:800 32px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap;z-index:3}
+/* before: generic cafe, pretty colours that say nothing */
+.gen{position:absolute;width:470px;height:600px;border-radius:26px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.18)}
+.gA{background:#F7CFE0}.gB{background:#5FC7C4}.gC{background:linear-gradient(135deg,#8E5BE8,#E85BC4)}.gD{background:#FF9A3C}
+.gA .cupc{position:absolute;left:135px;top:150px;width:200px;height:240px;border-radius:0 0 60px 60px;background:#fff;box-shadow:inset -18px 0 0 #F2B5CE}
+.gA .lid{position:absolute;left:120px;top:122px;width:230px;height:40px;border-radius:14px;background:#F49DC0}
+.gA .sl{position:absolute;left:135px;top:230px;width:200px;height:70px;background:#BFE3D0}
+.gB .bx{position:absolute;left:90px;top:170px;width:290px;height:230px;background:#FFE36E;border-radius:8px;transform:rotate(-6deg)}
+.gB .bt{position:absolute;left:90px;top:250px;width:290px;text-align:center;font:62px 'Bebas Neue';color:#0E5E5B;transform:rotate(-6deg)}
+.gC .t1{position:absolute;top:150px;width:100%;text-align:center;font:900 84px Heebo;color:#fff;direction:rtl;line-height:1.05}
+.gD .bar{position:absolute;left:0;right:0;top:0;height:46px;background:#222}
+.gD .bar i{position:absolute;top:15px;width:16px;height:16px;border-radius:50%;background:#666}
+.gD .wl{position:absolute;left:0;right:0;top:170px;text-align:center;font:italic 70px 'Playfair Display',serif;color:#fff}
+.gD .btn{position:absolute;left:150px;top:330px;width:170px;height:54px;border-radius:27px;background:#5A2CFF}
+.gen .tl{position:absolute;left:16px;bottom:16px;font:700 24px Heebo;color:#fff;background:rgba(0,0,0,.45);padding:4px 14px;border-radius:999px;direction:rtl}
+/* proof: seven cups in a row, panned; rings left alone at the end */
+#strip{position:absolute;left:0;top:0;height:700px;transform-origin:0 0}
+#strip .c{position:absolute;top:0;width:700px;height:700px}
+#strip .c img{width:100%;height:100%;-webkit-mask-image:radial-gradient(closest-side,#000 80%,transparent 100%);mask-image:radial-gradient(closest-side,#000 80%,transparent 100%)}
+#strip .c .n{position:absolute;left:0;right:0;bottom:-20px;text-align:center;font:500 54px 'Cormorant Garamond',serif;color:var(--ink);direction:ltr}
+#strip .c .n small{display:block;font:500 24px Heebo;color:#6B5641;direction:rtl;margin-top:4px}
+#strip .ring{position:absolute;border-radius:50%;border-style:solid;box-sizing:border-box;opacity:0}
+#hookrow{position:absolute;left:0;right:0;top:1190px;display:flex;justify-content:center;gap:16px;direction:ltr}
+#hookrow i{width:92px;height:92px;border-radius:50%;box-sizing:border-box;border:9px solid;background:radial-gradient(#C69B6D 0 45%,#7A4A2A 75%);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+/* captions */
+.capbox{position:absolute;display:flex;flex-wrap:wrap;gap:4px 14px;direction:rtl;opacity:0;z-index:6}
+.capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
+.capbox.low{left:50%;top:1340px;max-width:940px;width:max-content;justify-content:center;background:rgba(46,30,22,.62);padding:14px 20px;border-radius:26px}
+.capbox.hook{left:50%;top:1340px;max-width:980px;width:max-content;justify-content:center;background:rgba(46,30,22,.7);padding:18px 26px;border-radius:28px}
+.cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;
+  text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(30,25,10,.6)}
+.capbox.low .cw,.capbox.hook .cw{text-shadow:none}
+.capbox.hook .cw{font-size:74px}
+.cw.key{background:var(--copper);color:#fff;text-shadow:none}
+.capbox.low .cw.key,.capbox.hook .cw.key{background:var(--gold);color:var(--ink)}
+.cw.br{flex-basis:100%;height:0;padding:0}
+/* signature */
+#sig{opacity:0;z-index:7}
+#sig .dim{position:absolute;inset:0;background:rgba(20,14,10,.45)}
+#sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
+#sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:var(--cream);letter-spacing:.02em;white-space:nowrap}
+#sig .nm span{display:inline-block;white-space:pre}
+#sig .cta{position:absolute;left:50%;top:1110px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:18px;direction:rtl;padding:22px 44px;border-radius:999px;background:var(--olive);color:var(--cream);font:800 46px Heebo;box-shadow:0 18px 44px rgba(0,0,0,.35),inset 0 0 0 2px rgba(201,164,92,.7)}
+#sig .cta small{font:500 30px Heebo;opacity:.85}
+#sig .cta .ar{font-size:44px;color:var(--gold)}
+#sig .site{position:absolute;left:0;right:0;top:1250px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:var(--cream);letter-spacing:.12em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="config.js"></script>
+<script>
+/* ── TIMING ─────────────────────────────────────────────────────────────────────────────────────
+   HK = hook recording length, BZ = business-line recording length (0 = not recorded yet → slot skipped).
+   VO = ep02-vo-cartesia.wav. Part 1 (v 0–12.5) → T = A + v. Part 2 (v 12.5–30.6) → T = B + v. Question (v 30.6–) → T = Q + v. */
+const HK = window.HK ?? 0, BZ = window.BZ ?? 0;
+const A = HK ? HK + 0.6 : 0;          // hook + a beat of silence
+const B = A + 1.2;                     // room for the entry
+const W_END = B + 30.55;               // last world frame
+const EXIT = { at: W_END, zoomEnd: W_END + 0.7, toS6: W_END + 0.7 };
+const BIZ_T = EXIT.toS6 + 0.3;         // business line starts
+const Q = BIZ_T + (BZ ? BZ + 0.4 : 0) - 30.6;   // question part offset
+const SIG = Q + 35.04 + 0.35;
+const DUR = SIG + 3.6;
+const p1 = v => A + v, p2 = v => B + v, pq = v => Q + v;
+const SHOT = { HOOK: [0, A], S1: [A, p1(5.15)], S2: [p1(5.15), p1(7.7)], S3: [p1(7.7), p1(9.45)], S4: [p1(9.45), p1(13.9)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
+const ENTRY = { hero: p1(12.3), trace: p1(12.4), zoom: p1(12.65), zoomEnd: p1(13.65), world: p1(13.35) };
+const FILL = { top: p1(5.6), bot: p1(8.6), code: p1(9.9), codeEnd: p1(11.9) };
+const WORLD = [ ['wring', ENTRY.world, p2(15.55)], ['wcups', p2(15.45), p2(19.95)], ['wbefore', p2(19.85), p2(23.55)], ['wafter', p2(23.45), W_END + 0.4] ];
+const FILM = [ENTRY.world, p2(15.55)];         // capsule ring frames 1 → 180
+const CUPS_T = [p2(15.6), p2(19.9)];           // seven cups, one after another
+const BEFORE_POP = p2(20.0), PAN = [p2(23.6), p2(28.2)], RINGS_T = p2(28.3);
+const TALK = window.TALK_OFF ? [] : [
+  ...(HK ? [{ key: 'S6', n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []),
+  { key: 'S6', n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
+const C = (a, b, txt, st) => [a, b, txt, st];
+const CAPS = [
+  ...(HK ? [C(0, A - 0.1, 'הצבעים שלך יפים. | אבל מה הם *מספרים | עלייך?', 'hook')] : [C(0, 1.9, 'הצבעים שלך יפים. | אבל מה הם *מספרים?', 'hook')]),
+  C(p1(0.1), p1(1.8), 'בואי ניכנס | לעולם *מותג', 'right'),
+  C(p1(1.95), p1(4.75), 'זה *Crema° | עולם מותג | לבית קפה', 'right'),
+  C(p1(5.2), p1(7.6), 'למעלה, | שבעה *גוונים', 'right'),
+  C(p1(7.75), p1(9.45), 'למטה, | *המוצר', 'right'),
+  C(p1(9.5), p1(12.0), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
+  C(p1(12.0), p1(12.65), '*הקוד', 'right'),
+  C(p2(12.7), p2(14.15), 'צבע הוא | לא קישוט.', 'low'),
+  C(p2(14.15), p2(15.5), 'הוא *סיפור.', 'low'),
+  C(p2(15.6), p2(17.95), 'כל קלייה | מקבלת גוון *משלה', 'low'),
+  C(p2(17.95), p2(19.8), 'והגוון הופך | *לבוקר', 'low'),
+  C(p2(19.95), p2(21.35), 'ברוב המותגים,', 'low'),
+  C(p2(21.35), p2(23.35), 'הצבעים נבחרים | כי הם *יפים', 'low'),
+  C(p2(23.5), p2(24.15), 'כאן,', 'low'),
+  C(p2(24.15), p2(28.15), 'כל צבע אומר משהו: | איזה בוקר, *ושל מי', 'low'),
+  C(p2(28.2), p2(30.45), 'וככה הגוון לבד | כבר מספר את *הסיפור', 'low'),
+  ...(BZ ? [C(BIZ_T, BIZ_T + BZ * .38, 'כשהשפה של המותג שלך | *ברורה,', 'low'),
+            C(BIZ_T + BZ * .38, BIZ_T + BZ * .74, 'את לא צריכה להסביר | בכל פעם מחדש מי את', 'low'),
+            C(BIZ_T + BZ * .74, BIZ_T + BZ, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
+  C(pq(31.15), pq(32.65), 'המותג שלך | כבר *קיים.', 'low'),
+  C(pq(32.65), pq(34.75), 'השאלה היא: | מה הצבעים שלך | *מספרים?', 'low'),
+];
+/* ─────────────────────────────────────────────────────────────────────────────────────────────── */
+const ST = '../../studio/', CR = '../../../../images/crema/';
+const QUADS = {
+ S1: [[[48,288],[428,320],[436,667],[51,667]], [[53,686],[437,684],[443,1018],[57,1037]], [[60,1057],[445,1040],[452,1475],[70,1515]]],
+ S2: [[[48,293],[434,332],[436,712],[48,713]], [[52,732],[438,733],[443,1118],[54,1137]], [[54,1157],[446,1138],[450,1585],[56,1605]]],
+ S3: [[[40,290],[432,330],[436,713],[46,712]], [[48,733],[437,736],[443,1118],[50,1137]], [[52,1155],[446,1136],[450,1587],[55,1630]]],
+ S4: [[[50,348],[400,357],[410,693],[52,697]], [[56,712],[413,708],[428,1056],[68,1070]], [[70,1090],[430,1076],[447,1468],[88,1505]]] };
+const STILL = { S1: 'series-S1-open', S2: 'series-S2-top', S3: 'series-S3-bottom', S4: 'series-S4-middle', S6: 'series-S6-ask' };
+const SX = 1080 / 941, SY = 1920 / 1672;
+const ROAST = [['ristretto', 'Ristretto', '#D2382B', '06:10', 'עז ונועז'], ['arancia', 'Arancia', '#E07F2A', '06:40', 'רמז של תפוז'], ['miele', 'Miele', '#E3B23C', '07:05', 'דבש וחמאה'],
+  ['foresta', 'Foresta', '#4F9D58', '07:30', 'אגוזי לוז'], ['onda', 'Onda', '#3C84C2', '08:00', 'מאוזן וקטיפתי'], ['viola', 'Viola', '#7C5BAF', '08:45', 'עמוק ופרחוני'], ['rosa', 'Rosa', '#D24E86', '09:20', 'פירותי ועדין']];
+// rim of the cup in the 1024² photos: centre (0.497, 0.469) of the side, outer radius 0.223
+const RIM = { cx: .497, cy: .469, r: .223 };
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eout = x => 1 - Math.pow(1 - x, 3);
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+const stage = $('stage');
+function homo(w, h, q) {
+  const src = [[0, 0], [w, 0], [w, h], [0, h]], M = [], R = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = q[i];
+    M.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); R.push(u); M.push([0, 0, 0, x, y, 1, -v * x, -v * y]); R.push(v); }
+  for (let i = 0; i < 8; i++) { let p = i; for (let r = i + 1; r < 8; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
+    [M[i], M[p]] = [M[p], M[i]]; [R[i], R[p]] = [R[p], R[i]];
+    for (let r = 0; r < 8; r++) if (r !== i) { const f = M[r][i] / M[i][i]; for (let c = i; c < 8; c++) M[r][c] -= f * M[i][c]; R[r] -= f * R[i]; } }
+  const H = R.map((b, i) => b / M[i][i]);
+  return `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+}
+const sq = q => q.map(([x, y]) => [x * SX, y * SY]);
+
+/* studio */
+const L = {};
+function studio(key, img, board) {
+  const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
+  const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
+  const talk = el('canvas', 'full', cam); talk.width = 1080; talk.height = 1920; talk.style.display = 'none';
+  const o = { lay, cam, bg, talk };
+  if (board) {
+    const q = QUADS[img].map(sq); o.q = q;
+    o.top = el('div', 'panel', cam); o.top.style.transform = homo(720, 700, q[0]); el('div', 'plab', o.top, 'הצבעים');
+    o.sw = ROAST.map(([, n, h], i) => { const s = el('div', 'sw', o.top); s.style.right = (32 + i * 94) + 'px'; s.style.background = h; el('i', '', s, n); return s; });
+    o.mid = el('div', 'panel', cam); o.mid.style.transform = homo(720, 700, q[1]); el('div', 'plab', o.mid, 'הקוד');
+    o.mid.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 400 430"><g fill="none" stroke-linecap="round">
+      <circle class="saucer" cx="190" cy="215" r="185" stroke="#B9A48C" stroke-width="3"/>
+      <path class="handle" d="M 312 190 Q 372 190 372 215 Q 372 240 312 240" stroke="#B9A48C" stroke-width="3"/>
+      <circle class="cup" cx="190" cy="215" r="120" stroke="#8A7563" stroke-width="3"/>
+      <circle class="rim" cx="190" cy="215" r="112" stroke="#D2382B" stroke-width="16"/>
+      <circle class="crema" cx="190" cy="215" r="100" fill="#B98A5E" stroke="none" opacity="0"/></g></svg>`);
+    o.codeTxt = el('div', 'codeline', o.mid, 'הגוון של הקלייה · על שפת הכוס');
+    o.hero = el('img', 'hero', o.mid); o.hero.src = 'film-first.jpg';
+    o.hero2 = el('img', 'hero', o.mid); o.hero2.src = CR + 'cup-onda-heart.jpg';
+    o.bot = el('div', 'panel', cam); o.bot.style.transform = homo(720, 700, q[2]); el('div', 'plab', o.bot, 'המוצר');
+    o.prod = el('img', 'prod', o.bot); o.prod.src = CR + 'cup-foresta-heart.jpg';
+    el('img', 'full', cam).src = ST + 'fg/' + img + '.png';
+    const t = q[0], cx = (t[0][0] + t[1][0]) / 2, cy = Math.min(t[0][1], t[1][1]);
+    o.tag = el('div', 'boardtag', cam, `<div class="nm">Crema°</div><div class="no">עולם מותג קונספט No.20 · Brand Worlds Studio</div>`);
+    o.tag.style.left = cx + 'px'; o.tag.style.top = (cy - 116) + 'px';
+    const m = q[1];
+    cam.insertAdjacentHTML('beforeend', `<svg class="trace"><polygon points="${[m[1], m[2], m[3], m[0]].map(p => p.join(',')).join(' ')}" fill="none" stroke="#C9A45C" stroke-width="4" stroke-linejoin="round"/></svg>`);
+    o.trace = cam.lastElementChild.querySelector('polygon');
+    o.mc = [(m[0][0] + m[1][0] + m[2][0] + m[3][0]) / 4, (m[0][1] + m[1][1] + m[2][1] + m[3][1]) / 4];
+  }
+  L[key] = o; return o;
+}
+studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+const hookrow = el('div', 'abs', stage); hookrow.id = 'hookrow'; ROAST.forEach(r => { el('i', '', hookrow).style.borderColor = r[2]; });
+
+/* world */
+const W = el('div', 'layer', stage); W.id = 'world';
+const WS = {};
+{ const s = el('div', 'wscene', W); const cv = el('canvas', '', s); cv.width = 1080; cv.height = 1920; WS.wring = { s, cv }; }
+{ const s = el('div', 'wscene', W); const cups = ROAST.map(([k, n, h, tm]) => { const w = el('div', 'cupwrap', s); const i = el('img', '', w); i.src = CR + 'cup-' + k + '-heart.jpg';
+    const nm = el('div', 'cupname', w, `<b>${n}</b><span style="background:${h}">${tm}</span>`); return w; }); WS.wcups = { s, cups }; }
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'לפני · בית קפה גנרי').style.cssText += ';background:#fff;color:#222';
+  const pos = [[520, 380, -4], [70, 470, 5], [540, 1010, 3], [80, 1090, -6]];
+  const t = [['gA', 'כוס', '<div class="lid"></div><div class="cupc"></div><div class="sl"></div>'], ['gB', 'קופסה', '<div class="bx"></div><div class="bt">BEST COFFEE</div>'],
+    ['gC', 'פוסט', '<div class="t1">קפה | שאת | אוהבת ♡</div>'.replace(/ \| /g, '<br>')], ['gD', 'אתר', '<div class="bar"><i style="left:16px"></i><i style="left:40px"></i><i style="left:64px"></i></div><div class="wl">Fresh Brew</div><div class="btn"></div>']];
+  WS.wbefore = { s, tiles: t.map(([c, lab, h], i) => { const d = el('div', 'gen ' + c, s, h); el('div', 'tl', d, lab); d.style.left = pos[i][0] + 'px'; d.style.top = pos[i][1] + 'px'; d.dataset.r = pos[i][2]; return d; }) }; }
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'אחרי · <bdi dir="ltr">Crema°</bdi>').style.cssText += ';background:var(--brand);color:#fff';
+  const strip = el('div', '', s); strip.id = 'strip';
+  const cs = ROAST.map(([k, n, h, tm, d], i) => { const c = el('div', 'c', strip); c.style.left = (i * 640) + 'px'; const im = el('img', '', c); im.src = CR + 'cup-' + k + '-heart.jpg';
+    el('div', 'n', c, `${n}<small>${d}</small>`);
+    const r = el('div', 'ring', c); const R = RIM.r * 700; r.style.left = (RIM.cx * 700 - R) + 'px'; r.style.top = (RIM.cy * 700 - R) + 'px'; r.style.width = r.style.height = (2 * R) + 'px';
+    r.style.borderColor = h; r.style.borderWidth = '16px'; return { c, im, r }; });
+  WS.wafter = { s, strip, cs }; }
+const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.20 · Brand Worlds Studio'); wlabel.id = 'wlabel';
+
+/* signature */
+const SG = el('div', 'layer', stage); SG.id = 'sig';
+el('div', 'dim', SG); const gl = el('div', 'gl', SG);
+const nm = el('div', 'nm', SG); const letters = [...'Hagit Antebi | Brand Worlds Studio'].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const cta = el('div', 'cta', SG, 'אבחון פער המותג <small>· חינם</small> <span class="ar">←</span>');
+const site = el('div', 'site', SG, 'hagitantebi.co.il');
+
+/* captions */
+const capEls = CAPS.map(([a, b, txt, style]) => { const box = el('div', 'capbox ' + style, stage);
+  txt.split(' ').forEach(w => { if (w === '|') return el('span', 'cw br', box); const k = w.startsWith('*'), x = el('span', 'cw' + (k ? ' key' : ''), box, k ? w.slice(1) : w);
+    if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } }); return box; });
+
+/* frames */
+const filmImgs = []; for (let i = 1; i <= 180; i++) { const im = new Image(); im.src = '_build/film/f_' + String(i).padStart(3, '0') + '.jpg'; filmImgs.push(im); }
+const talkImgs = TALK.map(c => { const a = []; for (let i = 1; i <= c.n; i++) { const im = new Image(); im.src = '_build/talk-' + c.dir + '/f_' + String(i).padStart(4, '0') + '.jpg'; a.push(im); } return a; });
+function drawTalk(t) {
+  const o = L.S6, x = o.talk.getContext('2d'); let drawn = false;
+  TALK.forEach((c, j) => { const ims = talkImgs[j]; if (!ims.length) return; const next = TALK[j + 1];
+    if (t < c.t0 - 0.05 && j > 0) return; if (next && t >= next.t0 - 0.05) return;
+    const im = ims[clamp(Math.round((t - c.t0) * 30), 0, ims.length - 1)]; if (!im.naturalWidth) return;
+    x.clearRect(0, 0, 1080, 1920); x.drawImage(im, 0, 0, 1080, 1920); drawn = true; });
+  o.talk.style.display = drawn ? 'block' : 'none'; o.talk.style.filter = o.bg.style.filter;
+}
+
+let ready0 = false;
+function setup() {
+  ready0 = true;
+  for (const k of ['S1', 'S2', 'S3', 'S4']) { const o = L[k];
+    o.parts = ['saucer', 'handle', 'cup'].map(c => { const p = o.mid.querySelector('.' + c); const l = p.getTotalLength(); p.style.strokeDasharray = l; return [p, l]; });
+    o.rim = o.mid.querySelector('.rim'); o.rimL = o.rim.getTotalLength(); o.rim.style.strokeDasharray = o.rimL; o.crema = o.mid.querySelector('.crema');
+    o.tl = o.trace.getTotalLength(); o.trace.style.strokeDasharray = o.tl; }
+}
+function board(o, t, full) {
+  o.sw.forEach((s, i) => { const p = full ? 1 : eout(lin(t, FILL.top + i * .12, FILL.top + i * .12 + .35)); s.style.transform = `scaleY(${p})`; s.style.opacity = p > 0 ? 1 : 0; });
+  const pp = full ? 1 : eout(lin(t, FILL.bot, FILL.bot + .6)); o.prod.style.opacity = pp; o.prod.style.transform = `translateY(${(1 - pp) * 30}px)`;
+  o.parts.forEach(([p, l], i) => { const a = full ? 1 : lin(t, FILL.code + i * .25, FILL.code + i * .25 + .7); p.style.strokeDashoffset = l * (1 - ease(a)); });
+  const r = full ? 1 : lin(t, FILL.code + .9, FILL.code + 1.5); o.rim.style.strokeDashoffset = o.rimL * (1 - ease(r));
+  o.crema.setAttribute('opacity', full ? 1 : lin(t, FILL.code + 1.2, FILL.code + 1.6));
+  const k = Math.floor(Math.max(0, t - (full ? 0 : FILL.code + 1.5)) / 0.42) % 7; o.rim.setAttribute('stroke', ROAST[k][2]);
+  o.codeTxt.style.opacity = full ? 1 : lin(t, FILL.codeEnd - .4, FILL.codeEnd);
+}
+function seek(t) {
+  if (!ready0) setup();
+  // hook: S6 to camera, then the board shots
+  const inHook = t < SHOT.HOOK[1], inEnd = t >= SHOT.S6[0];
+  L.S6.lay.style.opacity = inHook ? 1 : inEnd ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
+  { const o = L.S6; const k = inHook ? 1.04 + .03 * lin(t, 0, A) : 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
+    o.bg.style.filter = `blur(${lin(t, SIG, SIG + .5) * 14}px)`; }
+  hookrow.style.opacity = HK ? 1 - lin(t, A - .5, A - .1) : 1 - lin(t, 1.7, 1.9);
+  hookrow.style.display = (HK ? t < A : t < 1.9) ? 'flex' : 'none';
+  const S1op = t >= SHOT.S1[0] && t < SHOT.S1[1] ? (HK ? lin(t, A, A + .25) : 1) : 0;
+  L.S1.lay.style.opacity = S1op;
+  { const o = L.S1; board(o, t, true); const k = 1.0 + .05 * lin(t, SHOT.S1[0], SHOT.S1[1]); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-700 * (k - 1)}px) scale(${k})`;
+    o.tag.style.opacity = lin(t, p1(1.9), p1(2.3)); o.trace.style.strokeDashoffset = o.tl; }
+  for (const k of ['S2', 'S3']) { const o = L[k]; o.lay.style.opacity = t >= SHOT[k][0] && t < SHOT[k][1] ? 1 : 0; board(o, t, false); o.trace.style.strokeDashoffset = o.tl;
+    const z = 1.02 + .03 * lin(t, SHOT[k][0], SHOT[k][1]); o.cam.style.transform = `translate(${-300 * (z - 1)}px,${-800 * (z - 1)}px) scale(${z})`; }
+  { const o = L.S4; const inA = t >= SHOT.S4[0] && t < SHOT.S4[1], inX = t >= SHOT.S4x[0] && t < SHOT.S4x[1];
+    o.lay.style.opacity = inA ? 1 : inX ? 1 - lin(t, EXIT.toS6, SHOT.S4x[1]) : 0; board(o, t, inX);
+    let z, heroOp, tr;
+    if (inX) { z = 1 - ease(lin(t, EXIT.at, EXIT.zoomEnd)); heroOp = 1; tr = 1; }
+    else { z = ease(lin(t, ENTRY.zoom, ENTRY.zoomEnd)); heroOp = lin(t, ENTRY.hero, ENTRY.hero + .35); tr = lin(t, ENTRY.trace, ENTRY.trace + .4); }
+    o.hero.style.opacity = inX ? 0 : heroOp; o.hero2.style.opacity = inX ? 1 : 0; o.trace.style.strokeDashoffset = o.tl * (1 - ease(tr));
+    const S = 1 + 4.6 * z, px = o.mc[0] + (540 - o.mc[0]) * z, py = o.mc[1] + (960 - o.mc[1]) * z, base = inX ? 1 : 1.02 + .02 * lin(t, SHOT.S4[0], ENTRY.zoom), s = S * base;
+    o.cam.style.transform = `translate(${px - o.mc[0] * s}px,${py - o.mc[1] * s}px) scale(${s})`; }
+  // world
+  const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .3);
+  W.style.opacity = t >= ENTRY.world && t < EXIT.at + .35 ? Math.min(wIn, wOut) : 0;
+  W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .35))})` : `scale(${1.25 - .25 * eout(wIn)})`;
+  wlabel.style.opacity = Math.min(lin(t, ENTRY.world + .4, ENTRY.world + .8), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  for (const [id, a, b] of WORLD) WS[id].s.style.opacity = lin(t, a, a + .3) * (1 - lin(t, b - .3, b));
+  // ring film: full-bleed, slow push into the cup
+  { const f = Math.round(179 * clamp(lin(t, FILM[0], FILM[1]))), im = filmImgs[f], x = WS.wring.cv.getContext('2d');
+    if (im.naturalWidth) { const z = 1.12 + .3 * ease(lin(t, FILM[0], FILM[1])), sw = 720 / z, sh = 1280 / z;   // z = zoom over fit-width
+      const sx = clamp(360 - sw / 2, 0, 720 - sw), sy = clamp(640 - sh / 2, 0, 1280 - sh);
+      x.drawImage(im, sx, sy, sw, sh, 0, 0, 1080, 1920); } }
+  // seven cups, one after another: push-in, cross-dissolve, name + hour
+  { const n = 7, d = (CUPS_T[1] - CUPS_T[0]) / n;
+    WS.wcups.cups.forEach((w, i) => { const a = CUPS_T[0] + i * d, op = i === 0 ? 1 - lin(t, a + d - .12, a + d + .12) : lin(t, a - .12, a + .12) * (i === n - 1 ? 1 : 1 - lin(t, a + d - .12, a + d + .12));
+      w.style.opacity = op; const k = 1.0 + .12 * lin(t, a - .15, a + d + .15); w.style.transform = `scale(${k}) rotate(${(i % 2 ? 1 : -1) * 4 * lin(t, a - .15, a + d + .15)}deg)`;
+      const nmEl = w.querySelector('.cupname'); nmEl.style.transform = `scale(${1 / k})`; nmEl.style.opacity = clamp((op - .55) / .45); }); }
+  // before: generic touchpoints pile in, crooked
+  WS.wbefore.tiles.forEach((d, i) => { const p = eout(lin(t, BEFORE_POP + i * .3, BEFORE_POP + i * .3 + .35)); d.style.opacity = p;
+    d.style.transform = `translateY(${(1 - p) * 80}px) scale(${.9 + .1 * p}) rotate(${d.dataset.r * p}deg)`; });
+  // after: pan along the seven cups, then pull back; the cups fade and only the rims stay
+  { const pz = ease(lin(t, PAN[0], PAN[1])), back = ease(lin(t, PAN[1], RINGS_T + .6)), ring = ease(lin(t, RINGS_T + .4, RINGS_T + 1.4));
+    const total = 6 * 640 + 700, sc0 = 1.25, sc1 = 1080 / (total + 80);
+    const sc = sc0 + (sc1 - sc0) * back, x0 = 540 - 350 * sc0, x1 = 540 - (6 * 640 + 350) * sc0;
+    const xPan = x0 + (x1 - x0) * pz, xFit = 40 * 1, x = xPan + (xFit - xPan) * back, y = 960 - 350 * sc - 60 * (1 - back);
+    WS.wafter.strip.style.transform = `translate(${x}px,${y}px) scale(${sc})`;
+    WS.wafter.cs.forEach(({ c, im, r }, i) => { im.style.opacity = 1 - ring; c.querySelector('.n').style.opacity = 1 - ring; r.style.opacity = lin(t, RINGS_T + .2 + i * .08, RINGS_T + .6 + i * .08); r.style.borderWidth = (16 + 40 * ring) + 'px'; }); }
+  drawTalk(t);
+  // signature + CTA, only at the very end
+  { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
+    gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
+    letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
+    const c = eout(lin(t, SIG + 1.7, SIG + 2.2)), tap = Math.sin(Math.PI * lin(t, SIG + 3.0, SIG + 3.35));
+    cta.style.opacity = c; cta.style.transform = `translateX(-50%) translateY(${(1 - c) * 30}px) scale(${1 - .06 * tap})`; site.style.opacity = lin(t, SIG + 2.1, SIG + 2.5); }
+  CAPS.forEach(([a, b, , st], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
+    const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = st === 'right' ? `translateY(${dy}px)` : `translate(-50%,${dy}px)`; });
+}
+window.seek = seek; window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...filmImgs, ...talkImgs.flat()].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
+</script>
+</body>
+</html>
