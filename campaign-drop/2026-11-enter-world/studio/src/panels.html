@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700&family=JetBrains+Mono:wght@500&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<style>body{margin:0}.p{width:720px;height:700px;background:#EFE6DA;position:relative;overflow:hidden;font-family:Heebo}
+.lab{position:absolute;top:26px;right:34px;font:500 26px 'JetBrains Mono';letter-spacing:.08em;color:#8A7F6E}
+.sw{position:absolute;top:96px;bottom:40px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 18px 0;width:116px}
+.sw b{font:500 18px 'JetBrains Mono';color:#fff;position:absolute;bottom:16px;left:0;right:0;text-align:center}
+</style></head><body>
+<div class=p id=top><div class=lab>הצבעים</div></div>
+<div class=p id=mid><div class=lab>הקוד</div>
+<svg viewBox="30 20 360 380" style="position:absolute;left:150px;top:90px;width:420px;height:440px"><g fill="none" stroke="#B8924A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M62,58 C152,50 196,118 201,198 C120,196 68,140 62,58 Z M74,70 C122,108 166,150 194,188"/><path d="M212,212 C244,252 266,282 266,312 A55,55 0 1 1 156,312 C156,282 178,252 212,212 Z"/></g><circle cx="206" cy="205" r="9" fill="#B8924A"/></svg>
+<div style="position:absolute;bottom:40px;width:100%;text-align:center;font:500 30px Heebo;color:#4A5236">עלה שפוגש טיפה</div></div>
+<div class=p id=bot><div class=lab>המוצר</div><img src="../../../../elvea/assets/img/hero-7-bottle.webp" style="position:absolute;left:110px;top:90px;width:500px;height:570px;object-fit:cover;border-radius:6px"></div>
+<script>
+const C=[['#55613F','זית'],['#B9C1A2','מרווה'],['#E9DABC','צוף'],['#F0EADD','שמנת'],['#2E3526','דיו']];
+const t=document.getElementById('top');C.forEach(([h,n],i)=>{const d=document.createElement('div');d.className='sw';d.style.right=(34+i*132)+'px';d.style.background=h;
+d.innerHTML='<div style="position:absolute;bottom:60px;width:100%;text-align:center;font:700 24px Heebo;color:'+(i==2||i==3?'#2E3526':'#fff')+'">'+n+'</div><b style="color:'+(i==2||i==3?'#2E3526':'#fff')+'">'+h+'</b>';t.appendChild(d)});
+</script></body></html>
