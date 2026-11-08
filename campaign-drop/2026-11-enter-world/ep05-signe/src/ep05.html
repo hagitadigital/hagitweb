@@ -1,0 +1,307 @@
+<!doctype html>
+<!--
+  «נכנסים לעולם מותג» · Episode 5 · SIGNÉ° (No.17) · a signature moment people remember · 1080×1920.
+  Arc: hook to camera (S6) → board → entry through the cream line → piping the signature → problem (a generic vitrine)
+       → the signed éclair → the box sealed with the signature, broken to open → «the moment» (zoom) → S6/S7: business line (zoom-ins,
+       side camera) + question → Hagit signs (S8) → signature + CTA.
+  Separate recordings in voice/; timeline formulas here and in src/mux.py must match.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>EP05 · SIGNÉ°</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@500;700&display=swap">
+<style>
+:root{--bg:#120E08;--card:#201810;--cream:#F0E3CE;--ink:#1B1509;--copper:#C28A5A;--gold:#C9A25E;--olive:#55613F;--matcha:#3A2A18;--deep:#1B1509}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Heebo',sans-serif}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.panel{position:absolute;left:0;top:0;width:720px;height:700px;transform-origin:0 0;background:#1B1509;overflow:hidden}
+.panel .plab{position:absolute;top:24px;right:30px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#C9A25E;direction:rtl}
+.sw{position:absolute;top:92px;bottom:40px;width:116px;transform-origin:50% 100%;border-radius:58px 58px 6px 6px}
+.sw{box-shadow:inset 0 0 0 2px rgba(201,162,94,.35)}
+.sw i{position:absolute;bottom:62px;left:0;right:0;text-align:center;font:600 26px 'Cormorant Garamond',serif;font-style:normal;color:#fff}
+.sw b{position:absolute;bottom:22px;left:0;right:0;text-align:center;font:500 17px 'JetBrains Mono',monospace;color:#fff}
+.panel .prod{position:absolute;left:170px;top:60px;width:380px;height:620px;object-fit:cover;object-position:50% 45%}
+.panel .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.panel svg{position:absolute;left:230px;top:70px;width:260px;height:440px;overflow:visible}
+.panel .codeline{position:absolute;bottom:34px;width:100%;text-align:center;font:700 34px 'Frank Ruhl Libre',serif;color:#F0E3CE;direction:rtl}
+.panel svg.sg{left:60px;top:140px;width:600px;height:360px}
+.boardtag{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateX(-50%);white-space:nowrap}
+.boardtag .nm{font:600 58px 'Cormorant Garamond',serif;color:var(--deep);letter-spacing:.12em;line-height:1}
+.boardtag .no{font:500 19px 'JetBrains Mono',monospace;color:#5A4E3E;direction:rtl;background:rgba(246,236,221,.9);padding:4px 12px;border-radius:999px}
+.trace{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+/* world */
+#world{background:var(--bg)}
+.wscene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.wscene canvas{position:absolute;inset:0;width:1080px;height:1920px}
+.big{position:absolute;left:0;right:0;text-align:center;direction:rtl;font:700 120px 'Frank Ruhl Libre',serif;color:var(--deep);line-height:1;opacity:0}
+#wlabel{left:50%;top:205px;transform:translateX(-50%);white-space:nowrap;font:500 25px 'JetBrains Mono',monospace;color:#F0E3CE;background:rgba(27,21,9,.8);
+  padding:10px 22px;border-radius:999px;direction:rtl;letter-spacing:.02em;opacity:0;z-index:5}
+.tag{position:absolute;left:50%;top:270px;transform:translateX(-50%);font:800 32px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap;z-index:3}
+/* before: a generic vitrine — desserts that are only served */
+#vit{position:absolute;left:60px;right:60px;top:430px;height:900px;background:linear-gradient(#FAFAFA,#ECECEC);border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+#vit .shelf{position:absolute;left:30px;right:30px;height:10px;background:#D9D9D9;border-radius:5px}
+#vit .d{position:absolute;width:190px;height:230px;opacity:0}
+#vit .plate{position:absolute;left:5px;bottom:0;width:180px;height:30px;border-radius:50%;background:#fff;box-shadow:0 6px 12px rgba(0,0,0,.12)}
+#vit .cake{position:absolute;left:35px;bottom:18px;width:120px;border-radius:14px 14px 6px 6px}
+#vit .price{position:absolute;right:-6px;top:0;font:700 30px Arial,sans-serif;color:#fff;background:#E53935;padding:4px 12px;border-radius:8px;transform:rotate(6deg)}
+.shot{position:absolute;inset:0;overflow:hidden}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.glint{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,236,190,.35) 50%,transparent 60%);mix-blend-mode:screen;opacity:0}
+#sign svg{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible}
+.ink{fill:none;stroke:#B8892F;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+/* captions */
+.capbox{position:absolute;display:flex;flex-wrap:wrap;gap:4px 14px;direction:rtl;opacity:0;z-index:6}
+.capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
+.capbox.low,.capbox.hook{left:50%;top:1340px;max-width:960px;width:max-content;justify-content:center;background:rgba(27,21,9,.74);padding:14px 22px;border-radius:26px;box-shadow:inset 0 0 0 1px rgba(201,162,94,.35)}
+.capbox.hooktop{left:50%;top:150px;max-width:980px;width:max-content;justify-content:center;background:rgba(27,21,9,.74);padding:16px 24px;border-radius:26px}
+.cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(20,20,20,.6)}
+.capbox.low .cw,.capbox.hook .cw,.capbox.hooktop .cw{text-shadow:none}
+.capbox.hook .cw{font-size:72px}
+.cw.key{background:var(--matcha);color:#fff;text-shadow:none}
+.capbox.low .cw.key,.capbox.hook .cw.key,.capbox.hooktop .cw.key{background:var(--gold);color:var(--ink)}
+.cw.br{flex-basis:100%;height:0;padding:0}
+/* signature */
+#sig{opacity:0;z-index:7}
+#sig .dim{position:absolute;inset:0;background:rgba(15,20,14,.45)}
+#sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
+#sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:#F4EFE6;letter-spacing:.02em;white-space:nowrap}
+#sig .nm span{display:inline-block;white-space:pre}
+#sig .cta{position:absolute;left:50%;top:1110px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:18px;direction:rtl;padding:22px 44px;border-radius:999px;background:var(--olive);color:#F0EADD;font:800 46px Heebo;box-shadow:0 18px 44px rgba(0,0,0,.35),inset 0 0 0 2px rgba(201,164,92,.7)}
+#sig .cta small{font:500 30px Heebo;opacity:.85}
+#sig .cta .ar{font-size:44px;color:var(--gold)}
+#sig .site{position:absolute;left:0;right:0;top:1250px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:#F4EFE6;letter-spacing:.12em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="config.js"></script>
+<script src="mode.js"></script>
+<script src="../../shared/cards.js"></script>
+<script>
+/* ── TIMING ── recordings in voice/: hook · studio · world · biz (shared) · ask-q. Sentence times inside each file come from its pauses.
+   S7 (side camera) and S8 (Hagit signs) are optional stills: window.HAS_S7 / HAS_S8 in config.js (mux.py config checks the studio folder). */
+const HK = window.HK ?? 0, SD = window.SD ?? 12.56, WD = window.WD ?? 15.36, BZ = window.BZ ?? 0, QD = window.QD ?? 3.76;
+const HAS_S7 = !!window.HAS_S7, HAS_S8 = !!window.HAS_S8;
+const A = HK ? HK + 0.6 : 0;
+const B = A + SD + 2.0;
+const W_END = B + WD + 0.5;                          // a beat on «the moment»
+const EXIT = { at: W_END, zoomEnd: W_END + 0.7, toS6: W_END + 0.7 };
+const BIZ_T = EXIT.toS6 + 0.3;
+const QT = BIZ_T + (BZ ? BZ + 0.4 : 0);
+const SIGN = QT + QD + 0.35, SIG = SIGN + (HAS_S8 ? 2.4 : 0), DUR = SIG + 3.6;   // S8: the hand signs, then the series signature
+const p1 = v => A + v, p2 = v => B + v, pq = v => QT + v;
+const SHOT = { HOOK: [0, A], S1: [A, p1(5.1)], S2: [p1(5.1), p1(6.95)], S3: [p1(6.95), p1(9.15)], S4: [p1(9.15), p1(14.3)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
+const SIDE = [BIZ_T + BZ * .30, BIZ_T + BZ * .76];   // S7 (side camera) on the middle phrase of the business line
+const PUNCH = [[BIZ_T + BZ * .22, BIZ_T + BZ * .30, 1.16], [BIZ_T + BZ * .84, QT - 0.1, 1.24], [pq(2.4), SIGN, 1.14]];   // zoom-ins [from, to, scale]
+const ENTRY = { hero: p1(11.6), trace: p1(11.7), zoom: p1(12.1), zoomEnd: p1(13.1), world: p1(12.8) };
+const FILL = { top: p1(5.6), bot: p1(8.0), code: p1(9.3), codeEnd: p1(12.0) };
+const WORLD = [['wpipe', ENTRY.world, p2(4.3)], ['wbefore', p2(4.2), p2(7.5)], ['weclair', p2(7.4), p2(9.75)], ['wbox', p2(9.65), p2(13.9)], ['wmoment', p2(13.8), W_END + 0.4]];
+const VIT_POP = p2(4.6), BOX_OPEN = [p2(12.0), p2(12.6)];
+const TALK = window.TALK_OFF ? [] : [ ...(HK ? [{ n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []), { n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
+const C = (a, b, txt, st) => [a, b, txt, st];
+const CAPS = [
+  ...(HK ? [C(0, A - 0.1, 'יש למותג שלך | רגע *שזוכרים?', 'hook')] : [C(0, 1.9, 'יש למותג שלך | רגע *שזוכרים?', 'hooktop')]),
+  C(p1(0.12), p1(1.75), 'בואי ניכנס | לעולם *מותג', 'right'),
+  C(p1(1.8), p1(5.1), 'זה *SIGNÉ° | עולם מותג | לבית קינוחים', 'right'),
+  C(p1(5.15), p1(6.95), 'למעלה, | *הצבעים', 'right'),
+  C(p1(7.0), p1(9.15), 'למטה, | *המוצר', 'right'),
+  C(p1(9.2), p1(11.75), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
+  C(p1(11.8), p1(12.5), '*הקוד', 'right'),
+  C(p2(0.12), p2(1.5), 'כאן הקוד | הוא *חתימה:', 'low'),
+  C(p2(1.6), p2(4.1), 'קו קרם אחד, | ביד *חופשית.', 'low'),
+  C(p2(4.5), p2(7.3), 'ברוב המותגים, | הקינוח פשוט *מוגש.', 'low'),
+  C(p2(7.45), p2(9.6), 'כאן, כל קינוח | *נחתם.', 'low'),
+  C(p2(9.65), p2(11.95), 'וגם הקופסה | נסגרת *בחתימה,', 'low'),
+  C(p2(11.95), p2(13.7), 'ששוברים | כדי *לפתוח.', 'low'),
+  C(p2(13.9), W_END, 'וזה הרגע | *שזוכרים.', 'low'),
+  ...(BZ ? [C(BIZ_T, BIZ_T + BZ * .30, 'כשהשפה של המותג שלך | *ברורה,', 'low'),
+            C(BIZ_T + BZ * .30, BIZ_T + BZ * .76, 'את לא צריכה להסביר | בכל פעם מחדש מי את', 'low'),
+            C(BIZ_T + BZ * .76, BIZ_T + BZ + .2, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
+  C(pq(0.05), pq(1.7), 'המותג שלך | כבר *קיים.', 'low'),
+  C(pq(1.75), pq(QD), 'השאלה היא: | מה *הרגע שלו?', 'low'),
+];
+/* ─────────────────────────────────────────────────────────────────────────────────────────────── */
+const ST = '../../studio/', SG_ = '../../../../signe/assets/';
+const QUADS = {
+ S1: [[[48,288],[428,320],[436,667],[51,667]], [[53,686],[437,684],[443,1018],[57,1037]], [[60,1057],[445,1040],[452,1475],[70,1515]]],
+ S2: [[[48,293],[434,332],[436,712],[48,713]], [[52,732],[438,733],[443,1118],[54,1137]], [[54,1157],[446,1138],[450,1585],[56,1605]]],
+ S3: [[[40,290],[432,330],[436,713],[46,712]], [[48,733],[437,736],[443,1118],[50,1137]], [[52,1155],[446,1136],[450,1587],[55,1630]]],
+ S4: [[[50,348],[400,357],[410,693],[52,697]], [[56,712],[413,708],[428,1056],[68,1070]], [[70,1090],[430,1076],[447,1468],[88,1505]]] };
+const STILL = { S1: 'series-S1-open', S2: 'series-S2-top', S3: 'series-S3-bottom', S4: 'series-S4-middle', S6: 'series-S6-ask', S7: 'series-S7-side', S8: 'series-S8-sign' };
+const SX = 1080 / 941, SY = 1920 / 1672;
+const PAL = [['#120E08', 'Noir'], ['#201810', 'Carte'], ['#C9A25E', 'Or'], ['#F0E3CE', 'Crème'], ['#C28A5A', 'Cuivre']];
+// the house signature: one free-hand cream line (as on the box), drawn left → right
+const SIGLINE = 'M20,250 C80,250 110,120 170,130 C230,140 170,300 240,290 C300,282 300,170 350,175 C400,180 360,280 420,270 C470,262 520,200 580,210';
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eout = x => 1 - Math.pow(1 - x, 3);
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+const stage = $('stage');
+function homo(w, h, q) {
+  const src = [[0, 0], [w, 0], [w, h], [0, h]], M = [], R = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = q[i]; M.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); R.push(u); M.push([0, 0, 0, x, y, 1, -v * x, -v * y]); R.push(v); }
+  for (let i = 0; i < 8; i++) { let p = i; for (let r = i + 1; r < 8; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
+    [M[i], M[p]] = [M[p], M[i]]; [R[i], R[p]] = [R[p], R[i]];
+    for (let r = 0; r < 8; r++) if (r !== i) { const f = M[r][i] / M[i][i]; for (let c = i; c < 8; c++) M[r][c] -= f * M[i][c]; R[r] -= f * R[i]; } }
+  const H = R.map((b, i) => b / M[i][i]);
+  return `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+}
+const sq = q => q.map(([x, y]) => [x * SX, y * SY]);
+
+/* studio */
+const L = {};
+function studio(key, img, board) {
+  const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
+  const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
+  const talk = el('canvas', 'full', cam); talk.width = 1080; talk.height = 1920; talk.style.display = 'none';
+  const o = { lay, cam, bg, talk };
+  if (board) {
+    const q = QUADS[img].map(sq); o.q = q;
+    o.top = el('div', 'panel', cam); o.top.style.transform = homo(720, 700, q[0]); el('div', 'plab', o.top, 'הצבעים');
+    o.sw = PAL.map(([h, n], i) => { const s = el('div', 'sw', o.top); s.style.right = (34 + i * 132) + 'px'; s.style.background = h; el('i', '', s, n); el('b', '', s, h); return s; });
+    o.mid = el('div', 'panel', cam); o.mid.style.transform = homo(720, 700, q[1]); el('div', 'plab', o.mid, 'הקוד');
+    o.mid.insertAdjacentHTML('beforeend', `<svg class="sg" viewBox="0 0 600 360"><path class="wk" d="${SIGLINE}" fill="none" stroke="#E9D3A6" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>`);
+    o.codeTxt = el('div', 'codeline', o.mid, 'כל קינוח נחתם');
+    o.hero = el('img', 'hero', o.mid); o.hero.src = SG_ + 'piping-signature.webp'; o.hero.style.objectPosition = '35% 60%';
+    o.hero2 = el('img', 'hero', o.mid); o.hero2.src = SG_ + 'touchpoints/box-open.webp'; o.hero2.style.objectPosition = '50% 45%';
+    o.bot = el('div', 'panel', cam); o.bot.style.transform = homo(720, 700, q[2]); el('div', 'plab', o.bot, 'המוצר');
+    o.prod = el('img', 'prod', o.bot); o.prod.src = SG_ + 'coll-noir.webp';
+    el('img', 'full', cam).src = ST + 'fg/' + img + '.png';
+    const t = q[0], cx = (t[0][0] + t[1][0]) / 2, cy = Math.min(t[0][1], t[1][1]);
+    o.tag = el('div', 'boardtag', cam, `<div class="nm">SIGNÉ°</div><div class="no">עולם מותג קונספט No.17 · Brand Worlds Studio</div>`);
+    o.tag.style.left = cx + 'px'; o.tag.style.top = (cy - 116) + 'px';
+    const m = q[1];
+    cam.insertAdjacentHTML('beforeend', `<svg class="trace"><polygon points="${[m[1], m[2], m[3], m[0]].map(p => p.join(',')).join(' ')}" fill="none" stroke="#C9A45C" stroke-width="4" stroke-linejoin="round"/></svg>`);
+    o.trace = cam.lastElementChild.querySelector('polygon');
+    o.mc = [(m[0][0] + m[1][0] + m[2][0] + m[3][0]) / 4, (m[0][1] + m[1][1] + m[2][1] + m[3][1]) / 4];
+  }
+  L[key] = o; return o;
+}
+studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+if (HAS_S7) studio('S7', 'S7', false);
+/* world cards around her in the to-camera parts (shared/cards.js; mode.js picks 'orbit' or 'seq') */
+const SEQ = (window.CARDS_MODE || 'orbit') === 'seq';
+const drawCards = makeCards(stage, SG_, {
+  hook: [['coll-noir.webp'], ['piping-signature.webp', '30% 50%'], ['touchpoints/box.webp']],
+  biz: [['touchpoints/box-open.webp'], ['touchpoints/card.webp'], ['hero-eclair.webp', '50% 50%'], ['touchpoints/bag.webp'], ['boutique.webp', '50% 50%'], ['touchpoints/night.webp']] });
+
+/* world */
+const W = el('div', 'layer', stage); W.id = 'world';
+const WS = {};
+const shot = (id, src, pos) => { const s = el('div', 'wscene', W); const sh = el('div', 'shot', s); const i = el('img', '', sh); i.src = SG_ + src; if (pos) i.style.objectPosition = pos;
+  const g = el('div', 'glint', sh); WS[id] = { s, i, g }; return WS[id]; };
+shot('wpipe', 'piping-signature.webp', '34% 55%');
+{ const s = el('div', 'wscene', W); s.style.background = '#2A2A2A'; el('div', 'tag', s, 'לפני · ויטרינה גנרית').style.cssText += ';background:#fff;color:#222';
+  const v = el('div', '', s); v.id = 'vit'; el('div', 'shelf', v).style.top = '420px'; el('div', 'shelf', v).style.top = '840px';
+  const ds = [[60, 190, '#F2B8C6', 150, '₪18'], [330, 190, '#8B5A3C', 110, '₪22'], [600, 190, '#F7E08B', 130, '₪16'], [190, 610, '#B5D99C', 140, '₪19'], [470, 610, '#E9E3D9', 120, '₪24']];
+  WS.wbefore = { s, ds: ds.map(([x, y, c, h, p]) => { const d = el('div', 'd', v, `<div class="plate"></div><div class="cake" style="background:${c};height:${h}px"></div><div class="price">${p}</div>`);
+    d.style.left = x + 'px'; d.style.top = y + 'px'; return d; }) }; }
+shot('weclair', 'hero-eclair.webp', '52% 50%');
+{ const o = shot('wbox', 'touchpoints/box.webp', '50% 50%'); const i2 = el('img', '', o.i.parentNode); i2.src = SG_ + 'touchpoints/box-open.webp'; i2.style.opacity = 0; o.i2 = i2;
+  el('div', 'tag', o.s, 'אחרי · <bdi dir="ltr">SIGNÉ°</bdi>').style.cssText += ';background:var(--gold);color:#1B1509'; }
+shot('wmoment', 'touchpoints/box-open.webp', '50% 34%');
+const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.17 · Brand Worlds Studio'); wlabel.id = 'wlabel';
+
+/* the hand signs (S8): ink drawn on the blank card up to the nib — card box in stage px, window.SIGNCARD overrides */
+const SIGNCARD = window.SIGNCARD || { x: 330, y: 1030, w: 520, h: 260 };
+const S8L = el('div', 'layer', stage); S8L.id = 'sign';
+let ink = null;
+if (HAS_S8) { const cam8 = el('div', 'cam', S8L); el('img', 'full', cam8).src = ST + STILL.S8 + '.webp';
+  cam8.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 1080 1920"><path class="ink" d="M${SIGNCARD.x},${SIGNCARD.y + SIGNCARD.h * .62} c40,-70 70,-110 85,-40 c10,45 -40,80 -25,20 c18,-70 60,-90 70,-30 c6,40 30,10 45,-20 c14,-28 30,10 50,-6 c25,-20 40,-40 70,-30 c30,10 60,-10 ${SIGNCARD.w - 345},-4"/></svg>`);
+  ink = cam8.querySelector('.ink'); S8L.cam = cam8; }
+/* signature */
+const SG = el('div', 'layer', stage); SG.id = 'sig';
+el('div', 'dim', SG); const gl = el('div', 'gl', SG);
+const nm = el('div', 'nm', SG); const letters = [...'Hagit Antebi | Brand Worlds Studio'].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const cta = el('div', 'cta', SG, 'אבחון פער המותג <small>· חינם</small> <span class="ar">←</span>');
+const site = el('div', 'site', SG, 'hagitantebi.co.il');
+
+const capEls = CAPS.map(([a, b, txt, style]) => { const box = el('div', 'capbox ' + style, stage);
+  txt.split(' ').forEach(w => { if (w === '|') return el('span', 'cw br', box); const k = w.startsWith('*'), x = el('span', 'cw' + (k ? ' key' : ''), box, k ? w.slice(1) : w);
+    if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } }); return box; });
+
+const talkImgs = TALK.map(c => { const a = []; for (let i = 1; i <= c.n; i++) { const im = new Image(); im.src = '_build/talk-' + c.dir + '/f_' + String(i).padStart(4, '0') + '.jpg'; a.push(im); } return a; });
+function drawTalk(t) {
+  const o = L.S6, x = o.talk.getContext('2d'); let drawn = false;
+  TALK.forEach((c, j) => { const ims = talkImgs[j]; if (!ims.length) return; const next = TALK[j + 1];
+    if (t < c.t0 - 0.05 && j > 0) return; if (next && t >= next.t0 - 0.05) return;
+    const im = ims[clamp(Math.round((t - c.t0) * 30), 0, ims.length - 1)]; if (!im.naturalWidth) return;
+    x.clearRect(0, 0, 1080, 1920); x.drawImage(im, 0, 0, 1080, 1920); drawn = true; });
+  o.talk.style.display = drawn ? 'block' : 'none'; o.talk.style.filter = o.bg.style.filter;
+}
+let ready0 = false;
+function setup() {
+  ready0 = true;
+  if (ink) { ink.L = ink.getTotalLength(); ink.style.strokeDasharray = ink.L; }
+  for (const k of ['S1', 'S2', 'S3', 'S4']) { const o = L[k]; o.wk = o.mid.querySelector('.wk'); o.wkL = o.wk.getTotalLength(); o.wk.style.strokeDasharray = o.wkL; o.tl = o.trace.getTotalLength(); o.trace.style.strokeDasharray = o.tl; }
+}
+function board(o, t, full) {
+  o.sw.forEach((s, i) => { const p = full ? 1 : eout(lin(t, FILL.top + i * .14, FILL.top + i * .14 + .4)); s.style.transform = `scaleY(${p})`; s.style.opacity = p > 0 ? 1 : 0; });
+  const pp = full ? 1 : eout(lin(t, FILL.bot, FILL.bot + .6)); o.prod.style.opacity = pp; o.prod.style.transform = `translateY(${(1 - pp) * 30}px)`;
+  o.wk.style.strokeDashoffset = o.wkL * (1 - ease(full ? 1 : lin(t, FILL.code, FILL.code + 2.2)));
+  o.codeTxt.style.opacity = full ? 1 : lin(t, FILL.codeEnd - .4, FILL.codeEnd);
+}
+function seek(t) {
+  if (!ready0) setup();
+  const inHook = t < SHOT.HOOK[1], inEnd = t >= SHOT.S6[0];
+  L.S6.lay.style.opacity = inHook ? 1 : inEnd ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
+  { const o = L.S6; let k = inHook ? 1.04 + .03 * lin(t, 0, A) : 1.0 + .04 * lin(t, SHOT.S6[0], SIG);
+    for (const [a, b, z] of PUNCH) k *= 1 + (z - 1) * (ease(lin(t, a, a + .14)) * (1 - ease(lin(t, b - .1, b + .1))));   // zoom-ins on the key words
+    o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-560 * (k - 1)}px) scale(${k})`;
+    o.bg.style.filter = `blur(${lin(t, SIG, SIG + .5) * 14}px)`; }
+  if (HAS_S7) { const o = L.S7, on = t >= SIDE[0] && t < SIDE[1]; o.lay.style.opacity = on ? 1 : 0;
+    const k = 1.03 + .05 * lin(t, SIDE[0], SIDE[1]); o.cam.style.transform = `translate(${-600 * (k - 1)}px,${-600 * (k - 1)}px) scale(${k})`; }
+  L.S1.lay.style.opacity = t >= SHOT.S1[0] && t < SHOT.S1[1] ? (HK ? lin(t, A, A + .25) : 1) : 0;
+  { const o = L.S1; board(o, t, true); const k = 1.0 + .05 * lin(t, SHOT.S1[0], SHOT.S1[1]); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-700 * (k - 1)}px) scale(${k})`;
+    o.tag.style.opacity = lin(t, p1(1.9), p1(2.3)); o.trace.style.strokeDashoffset = o.tl; }
+  for (const k of ['S2', 'S3']) { const o = L[k]; o.lay.style.opacity = t >= SHOT[k][0] && t < SHOT[k][1] ? 1 : 0; board(o, t, false); o.trace.style.strokeDashoffset = o.tl;
+    const z = 1.02 + .03 * lin(t, SHOT[k][0], SHOT[k][1]); o.cam.style.transform = `translate(${-300 * (z - 1)}px,${-800 * (z - 1)}px) scale(${z})`; }
+  { const o = L.S4; const inA = t >= SHOT.S4[0] && t < SHOT.S4[1], inX = t >= SHOT.S4x[0] && t < SHOT.S4x[1];
+    o.lay.style.opacity = inA ? 1 : inX ? 1 - lin(t, EXIT.toS6, SHOT.S4x[1]) : 0; board(o, t, inX);
+    let z, heroOp, tr;
+    if (inX) { z = 1 - ease(lin(t, EXIT.at, EXIT.zoomEnd)); heroOp = 1; tr = 1; }
+    else { z = ease(lin(t, ENTRY.zoom, ENTRY.zoomEnd)); heroOp = lin(t, ENTRY.hero, ENTRY.hero + .35); tr = lin(t, ENTRY.trace, ENTRY.trace + .4); }
+    o.hero.style.opacity = inX ? 0 : heroOp; o.hero2.style.opacity = inX ? 1 : 0; o.trace.style.strokeDashoffset = o.tl * (1 - ease(tr));
+    const S = 1 + 4.6 * z, px = o.mc[0] + (540 - o.mc[0]) * z, py = o.mc[1] + (960 - o.mc[1]) * z, base = inX ? 1 : 1.02 + .02 * lin(t, SHOT.S4[0], ENTRY.zoom), s = S * base;
+    o.cam.style.transform = `translate(${px - o.mc[0] * s}px,${py - o.mc[1] * s}px) scale(${s})`; }
+  // world
+  const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .3);
+  W.style.opacity = t >= ENTRY.world && t < EXIT.at + .35 ? Math.min(wIn, wOut) : 0;
+  W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .35))})` : 'none';
+  wlabel.style.opacity = Math.min(lin(t, p2(0.1), p2(0.5)), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  for (const [id, a, b] of WORLD) WS[id].s.style.opacity = lin(t, a, a + .3) * (1 - lin(t, b - .3, b));
+  { const k = 1.08 + .32 * ease(lin(t, ENTRY.world, p2(4.3))); WS.wpipe.i.style.transform = `scale(${k})`; WS.wpipe.i.style.transformOrigin = '30% 52%';
+    WS.wpipe.g.style.opacity = lin(t, p2(1.6), p2(2.0)) * (1 - lin(t, p2(3.6), p2(4.1))); WS.wpipe.g.style.transform = `translateX(${-900 + 1800 * lin(t, p2(1.6), p2(4.0))}px)`; }
+  WS.wbefore.ds.forEach((d, i) => { const p = eout(lin(t, VIT_POP + i * .22, VIT_POP + i * .22 + .3)); d.style.opacity = p; d.style.transform = `translateY(${(1 - p) * 40}px)`; });
+  { const k = 1.12 + .12 * ease(lin(t, p2(7.4), p2(9.75))); WS.weclair.i.style.transform = `scale(${k})`;
+    WS.weclair.g.style.opacity = lin(t, p2(8.2), p2(8.5)) * (1 - lin(t, p2(9.2), p2(9.6))); WS.weclair.g.style.transform = `translateX(${-900 + 1800 * lin(t, p2(8.2), p2(9.5))}px)`; }
+  { const o = WS.wbox, p = ease(lin(t, BOX_OPEN[0], BOX_OPEN[1])); o.i2.style.opacity = p; o.i.style.transform = o.i2.style.transform = `scale(${1.04 + .06 * lin(t, p2(9.65), p2(13.9))})`; }
+  { const k = 1.15 + .55 * ease(lin(t, p2(13.8), W_END)); WS.wmoment.i.style.transform = `scale(${k})`; WS.wmoment.i.style.transformOrigin = '50% 30%'; }
+  drawTalk(t);
+  if (HK) drawCards(t, 'hook', 0, HK ? A - .5 : 1.6, { still: true, beats: [0, (HK ? A : 2) * .33, (HK ? A : 2) * .62] });
+  drawCards(t, 'biz', BIZ_T, QT + 0.4, { beats: [0, .15, .30, .53, .76, .88].map(f => BIZ_T + f * BZ) });
+  if (HAS_S8) { const on = t >= SIGN && t < SIG + .5; S8L.style.opacity = on ? lin(t, SIGN, SIGN + .3) : 0;
+    const k = 1.0 + .08 * lin(t, SIGN, SIG + .5); S8L.cam.style.transform = `translate(${-SIGNCARD.x * (k - 1)}px,${-SIGNCARD.y * (k - 1)}px) scale(${k})`;
+    ink.style.strokeDashoffset = ink.L * (1 - ease(lin(t, SIGN + .35, SIGN + 1.9))); }
+  { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
+    gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
+    letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
+    const c = eout(lin(t, SIG + 1.7, SIG + 2.2)), tap = Math.sin(Math.PI * lin(t, SIG + 3.0, SIG + 3.35));
+    cta.style.opacity = c; cta.style.transform = `translateX(-50%) translateY(${(1 - c) * 30}px) scale(${1 - .06 * tap})`; site.style.opacity = lin(t, SIG + 2.1, SIG + 2.5); }
+  CAPS.forEach(([a, b, , st], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
+    const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = st === 'right' ? `translateY(${dy}px)` : `translate(-50%,${dy}px)`; });
+}
+window.seek = seek; window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...talkImgs.flat()].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
+</script>
+</body>
+</html>
