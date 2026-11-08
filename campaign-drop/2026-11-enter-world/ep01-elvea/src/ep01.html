@@ -101,6 +101,14 @@ const WORLD = [          // [id, from, to]
 const SEQ = [12.85, 15.1];         // hero image sequence f_001 → f_080
 const BEFORE_POP = 19.85, AFTER_POP = 24.1, ERASE = 27.75, RINGS = 28.1;
 const SIG = 34.75;
+// talking clips (lip-sync to the VO): frames cut by src/prep-talk.sh into src/_build/talk-<key>/f_0001.jpg …, 30fps, 1080×1920.
+// t0 = final-timeline time where the clip's audio starts; mask = [x0, x1] feather: clip shows only right of x0 (keeps the board still).
+const TALK = window.TALK_OFF ? [] : [
+  { key: 'S1', n: 151, t0: 0.0, mask: [560, 660] },
+  { key: 'S2', n: 121, t0: 4.55, mask: [540, 640] },
+  { key: 'S3', n: 121, t0: 6.45, mask: [540, 640] },
+  { key: 'S4', n: 121, t0: 8.2, mask: [520, 620] },
+  { key: 'S6', n: 151, t0: 30.16 } ];
 const CAPS = [   // [from, to, text, style]  * keyword pill · | line break
   [0, 2.0, 'אם נסתיר את השם, | עדיין *יזהו אותו?', 'hook'],
   [0.1, 1.95, 'בואי ניכנס | לעולם *מותג', 'right'],
@@ -160,7 +168,8 @@ const L = {};
 function studio(key, img, board) {
   const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
   const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
-  const o = { lay, cam, bg };
+  const talk = el('canvas', 'full', cam); talk.width = 1080; talk.height = 1920; talk.style.display = 'none';
+  const o = { lay, cam, bg, talk };
   if (board) {
     const q = QUADS[img].map(sq);
     o.q = q;
@@ -234,6 +243,17 @@ const capEls = CAPS.map(([a, b, txt, style]) => {
     if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } });
   return box; });
 
+const talkImgs = {};
+for (const c of TALK) { talkImgs[c.key] = []; for (let i = 1; i <= c.n; i++) { const im = new Image(); im.src = '_build/talk-' + c.key + '/f_' + String(i).padStart(4, '0') + '.jpg'; talkImgs[c.key].push(im); } }
+function drawTalk(t) {
+  for (const c of TALK) { const o = L[c.key], ims = talkImgs[c.key]; if (!ims.length) continue;
+    const f = clamp(Math.round((t - c.t0) * 30), 0, ims.length - 1), im = ims[f]; if (!im.naturalWidth) continue;
+    const x = o.talk.getContext('2d'); o.talk.style.display = 'block'; x.globalCompositeOperation = 'source-over'; x.clearRect(0, 0, 1080, 1920);
+    x.drawImage(im, 0, 0, 1080, 1920);
+    if (c.mask) { x.globalCompositeOperation = 'destination-in'; const g = x.createLinearGradient(c.mask[0], 0, c.mask[1], 0);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,1)'); x.fillStyle = g; x.fillRect(0, 0, 1080, 1920); x.globalCompositeOperation = 'source-over'; } }
+  if (L.S6.talk.style.display === 'block') L.S6.talk.style.filter = L.S6.bg.style.filter;
+}
 const seqImgs = []; for (let i = 1; i <= 80; i++) { const im = new Image(); im.src = EV + 'seq/f_' + String(i).padStart(3, '0') + '.webp'; seqImgs.push(im); }
 
 let lens = null;
@@ -299,6 +319,7 @@ function seek(t) {
   { const o = L.S6; o.lay.style.opacity = t >= SHOT.S6[0] ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
     const k = 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
     const sg = lin(t, SIG, SIG + .5); o.bg.style.filter = `blur(${sg * 14}px)`; }
+  drawTalk(t);
   // signature
   { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
     gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
@@ -311,7 +332,7 @@ function seek(t) {
     const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = CAPS[i][3] === 'low' ? `translate(-50%,${dy}px)` : `translateY(${dy}px)`; });
 }
 window.seek = seek; window.DUR = DUR;
-window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...seqImgs].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...seqImgs, ...Object.values(talkImgs).flat()].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
 if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
 </script>
 </body>
