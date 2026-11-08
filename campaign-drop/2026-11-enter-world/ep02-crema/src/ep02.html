@@ -73,10 +73,10 @@ html,body{margin:0;background:#000}
 .capbox.hook{left:50%;top:1340px;max-width:980px;width:max-content;justify-content:center;background:rgba(46,30,22,.7);padding:18px 26px;border-radius:28px}
 .cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;
   text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(30,25,10,.6)}
-.capbox.low .cw,.capbox.hooktop{left:50%;top:150px;max-width:980px;width:max-content;justify-content:center;background:rgba(30,30,36,.66);padding:16px 24px;border-radius:26px}
+.capbox.hooktop{left:50%;top:150px;max-width:980px;width:max-content;justify-content:center;background:rgba(30,30,36,.66);padding:16px 24px;border-radius:26px}
 .capbox.hooktop .cw{text-shadow:none;font-size:68px}
 .capbox.hooktop .cw.key{background:var(--gold);color:#222}
-.capbox.hook .cw{text-shadow:none}
+.capbox.low .cw,.capbox.hook .cw{text-shadow:none}
 .capbox.hook .cw{font-size:74px}
 .cw.key{background:var(--copper);color:#fff;text-shadow:none}
 .capbox.low .cw.key,.capbox.hook .cw.key{background:var(--gold);color:var(--ink)}
@@ -96,6 +96,8 @@ html,body{margin:0;background:#000}
 <body>
 <div id="stage"></div>
 <script src="config.js"></script>
+<script src="mode.js"></script>
+<script src="../../shared/cards.js"></script>
 <script>
 /* ── TIMING ─────────────────────────────────────────────────────────────────────────────────────
    HK = hook recording length, BZ = business-line recording length (0 = not recorded yet → slot skipped).
@@ -212,6 +214,10 @@ function studio(key, img, board) {
   L[key] = o; return o;
 }
 studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+/* world cards around her in the to-camera parts (shared/cards.js; mode.js picks 'orbit' or 'seq') */
+const drawCards = makeCards(stage, '../../../../images/', {
+  hook: [['crema/cup-ristretto-heart.jpg'], ['crema/cup-foresta-heart.jpg'], ['crema/cup-rosa-heart.jpg']],
+  biz: [['crema/cup-arancia-rosetta.jpg'], ['home-worlds/crema.webp', '30% 50%'], ['crema/cup-miele-heart.jpg'], ['crema/cup-onda-rosetta.jpg'], ['home-worlds/crema.webp', '75% 50%'], ['crema/cup-viola-heart.jpg']] });
 const hookrow = el('div', 'abs', stage); hookrow.id = 'hookrow'; ROAST.forEach(r => { el('i', '', hookrow).style.borderColor = r[2]; });
 
 /* world */
@@ -325,6 +331,8 @@ function seek(t) {
     WS.wafter.strip.style.transform = `translate(${x}px,${y}px) scale(${sc})`;
     WS.wafter.cs.forEach(({ c, im, r }, i) => { im.style.opacity = 1 - ring; c.querySelector('.n').style.opacity = 1 - ring; r.style.opacity = lin(t, RINGS_T + .2 + i * .08, RINGS_T + .6 + i * .08); r.style.borderWidth = (16 + 40 * ring) + 'px'; }); }
   drawTalk(t);
+  if (HK) drawCards(t, 'hook', 0, HK ? A - .5 : 1.6, { still: true, beats: [0, (HK ? A : 2) * .33, (HK ? A : 2) * .62] });
+  drawCards(t, 'biz', BIZ_T, Q + 30.6 + 0.4, { beats: [0, .15, .30, .53, .76, .88].map(f => BIZ_T + f * BZ) });
   // signature + CTA, only at the very end
   { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
     gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';

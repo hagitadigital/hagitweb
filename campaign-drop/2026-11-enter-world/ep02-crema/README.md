@@ -5,7 +5,7 @@ world: demo (capsule ring, seven cups), problem (generic café), proof (pan alon
 exit → S6: business line + question (lip-synced) → name + «אבחון פער המותג» CTA only at the very end.
 World scenes are full-bleed with camera moves, no framed cards.
 
-- `ep02-crema-v1.mp4` — with the business line (`../shared/biz.wav`) and the lip-synced close; hook text only (hook not recorded yet).
+- `ep02-crema-v2.mp4` — world cards beside Hagit in the business line (seq), caption CSS fixed; with the business line (`../shared/biz.wav`) and the lip-synced close; hook text only (hook not recorded yet).
 - Script, copy: `brandos/briefs/series-enter-world-2026-11/EP02-crema.md`.
 
 ## Build

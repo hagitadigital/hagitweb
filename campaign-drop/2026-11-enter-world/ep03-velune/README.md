@@ -4,7 +4,7 @@ Same arc as EP02. The entry is the world's own door: the code panel shows the cl
 and we walk into the garden (e01–e40). Proof: the arch traced in gold on the door, the box (which then opens) and the boutique;
 insight: the three arches alone.
 
-- `ep03-velune-v3-orbit.mp4` / `ep03-velune-v3-seq.mp4` — 51s, world cards around Hagit in the to-camera parts (`src/mode.js`: orbit | seq, `../shared/cards.js`). v2 (v2: «ולמקום נכנסים דרך דלת» cut from world.wav at 3.40–5.86; the full take is voice/world-take.wav): hook to camera (lip-synced) → board → door → world → business line + question (lip-synced) → CTA.
+- `ep03-velune-v4.mp4` — 51s, world cards presented one after another beside Hagit (caption CSS fixed in v4) in the to-camera parts (`src/mode.js`: orbit | seq, `../shared/cards.js`). v2 (v2: «ולמקום נכנסים דרך דלת» cut from world.wav at 3.40–5.86; the full take is voice/world-take.wav): hook to camera (lip-synced) → board → door → world → business line + question (lip-synced) → CTA.
 - Recordings are separate files in `voice/`: hook, studio, world, ask-q (+ `biz.wav` from `../shared/`). Sentence times inside each file come from its pauses (`src/align_text.py` + `src/script-*.txt`).
 - Script, copy: `brandos/briefs/series-enter-world-2026-11/EP03-velune.md`.
 
