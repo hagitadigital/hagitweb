@@ -89,48 +89,49 @@ html,body{margin:0;background:#000}
 <div id="stage"></div>
 <script src="config.js"></script>
 <script>
-/* ── TIMING ── HK / BZ = hook / business-line recording lengths (0 = slot skipped). VO = ep03-vo-cartesia.wav.
-   Part 1 v 0–12.2 → T = A + v · Part 2 v 12.2–35.75 → T = B + v · Question v 35.75– → T = Q + v */
-const HK = window.HK ?? 0, BZ = window.BZ ?? 0;
-const A = HK ? HK + 0.6 : 0;
-const B = A + 2.2;                                  // room for the door to open and the walk in
-const W_END = B + 35.6;
+/* ── TIMING ── separate recordings (voice/): hook.wav · studio.wav · world.wav · biz.wav (shared) · ask-q.wav.
+   Sentence times inside each file come from its pauses. HK, SD, WD, BZ, QD = their lengths (config.js, written by mux.py). */
+const HK = window.HK ?? 0, SD = window.SD ?? 11.76, WD = window.WD ?? 17.44, BZ = window.BZ ?? 0, QD = window.QD ?? 4.56;
+const A = HK ? HK + 0.6 : 0;                       // studio file starts
+const B = A + SD + 2.6;                             // world file starts (after the door opens and we walk in)
+const W_END = B + WD + 0.2;
 const EXIT = { at: W_END, zoomEnd: W_END + 0.7, toS6: W_END + 0.7 };
 const BIZ_T = EXIT.toS6 + 0.3;
-const Q = BIZ_T + (BZ ? BZ + 0.4 : 0) - 35.75;
-const SIG = Q + 43.44 + 0.3, DUR = SIG + 3.6;
-const p1 = v => A + v, p2 = v => B + v, pq = v => Q + v;
-const SHOT = { HOOK: [0, A], S1: [A, p1(5.2)], S2: [p1(5.2), p1(7.0)], S3: [p1(7.0), p1(8.7)], S4: [p1(8.7), p1(13.9)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
-const ENTRY = { hero: p1(11.5), trace: p1(11.6), zoom: p1(11.95), zoomEnd: p1(12.95), world: p1(12.65) };
-const DOOR = [p1(13.05), p2(12.55)];                // door opens (d01–d40) then the walk into the garden (e01–e40)
-const FILL = { top: p1(5.4), bot: p1(7.2), code: p1(9.0), codeEnd: p1(11.6) };
-const WORLD = [['wdoor', ENTRY.world, p2(12.75)], ['wgarden', p2(12.45), p2(18.3)], ['wopen', p2(18.2), p2(21.55)], ['wbefore', p2(21.45), p2(25.15)],
-  ['wporte', p2(25.05), p2(27.85)], ['wbox', p2(27.75), p2(28.85)], ['wbout', p2(28.75), p2(30.05)], ['wtrio', p2(29.95), W_END + 0.4]];
-const BEFORE_POP = p2(21.6), BOX_OPEN = [p2(28.2), p2(28.8)], TRIO = p2(30.05);
+const QT = BIZ_T + (BZ ? BZ + 0.4 : 0);             // question file starts
+const SIG = QT + QD + 0.35, DUR = SIG + 3.6;
+const p1 = v => A + v, p2 = v => B + v, pq = v => QT + v;
+const SHOT = { HOOK: [0, A], S1: [A, p1(5.2)], S2: [p1(5.2), p1(6.95)], S3: [p1(6.95), p1(8.8)], S4: [p1(8.8), p1(14.0)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
+const ENTRY = { hero: p1(11.2), trace: p1(11.3), zoom: p1(11.75), zoomEnd: p1(12.75), world: p1(12.45) };
+const DOOR = [p1(12.85), p2(0.15)];                 // door opens (d01–d40) then the walk into the garden (e01–e40)
+const FILL = { top: p1(5.45), bot: p1(7.9), code: p1(9.0), codeEnd: p1(11.45) };
+const WORLD = [['wdoor', ENTRY.world, p2(0.35)], ['wgarden', p2(0.25), p2(3.6)], ['wopen', p2(3.5), p2(5.95)], ['wbefore', p2(5.85), p2(9.35)],
+  ['wporte', p2(9.25), p2(12.85)], ['wbox', p2(12.75), p2(13.45)], ['wbout', p2(13.35), p2(14.45)], ['wtrio', p2(14.35), W_END + 0.4]];
+const BEFORE_POP = p2(6.05), BOX_OPEN = [p2(12.95), p2(13.4)], TRIO = p2(14.45);
 const TALK = window.TALK_OFF ? [] : [ ...(HK ? [{ n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []), { n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
 const C = (a, b, txt, st) => [a, b, txt, st];
 const CAPS = [
   ...(HK ? [C(0, A - 0.1, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')] : [C(0, 1.9, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hooktop')]),
-  C(p1(0.12), p1(1.85), 'בואי ניכנס | לעולם *מותג', 'right'),
-  C(p1(1.9), p1(5.1), 'זה *VELUNE° | עולם מותג | לבית בושם', 'right'),
-  C(p1(5.2), p1(6.95), 'למעלה, | *הצבעים', 'right'),
-  C(p1(7.0), p1(8.7), 'למטה, | *המוצר', 'right'),
-  C(p1(8.7), p1(11.0), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
-  C(p1(11.0), p1(11.95), '*הקוד', 'right'),
-  C(p2(12.55), p2(15.6), 'כאן ההבטחה היא:', 'low'),
-  C(p2(15.6), p2(18.1), 'בושם הוא לא ריח. | הוא *מקום.', 'low'),
-  C(p2(18.3), p2(21.4), 'ולמקום נכנסים | דרך *דלת.', 'low'),
-  C(p2(21.55), p2(22.4), 'ברוב המותגים,', 'low'),
-  C(p2(22.4), p2(25.0), 'ההבטחה כתובה | *רק בסלוגן.', 'low'),
-  C(p2(25.1), p2(27.7), 'כאן, הדלת | *חוזרת:', 'low'),
-  C(p2(27.75), p2(29.75), 'בכניסה, בקופסה, | *בבוטיק.', 'low'),
-  C(p2(29.85), p2(32.6), 'וככה ההבטחה | לא צריכה *מילים.', 'low'),
-  C(p2(33.0), p2(35.6), 'רואים *אותה.', 'low'),
+  C(p1(0.12), p1(1.75), 'בואי ניכנס | לעולם *מותג', 'right'),
+  C(p1(1.85), p1(5.1), 'זה *VELUNE° | עולם מותג | לבית בושם', 'right'),
+  C(p1(5.25), p1(6.95), 'למעלה, | *הצבעים', 'right'),
+  C(p1(7.0), p1(8.8), 'למטה, | *המוצר', 'right'),
+  C(p1(8.9), p1(11.3), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
+  C(p1(11.3), p1(12.0), '*הקוד', 'right'),
+  C(p2(0.15), p2(1.25), 'כאן ההבטחה היא:', 'low'),
+  C(p2(1.25), p2(2.4), 'בושם הוא | לא *ריח.', 'low'),
+  C(p2(2.4), p2(3.55), 'הוא *מקום.', 'low'),
+  C(p2(3.6), p2(5.85), 'ולמקום נכנסים | דרך *דלת.', 'low'),
+  C(p2(5.95), p2(7.15), 'ברוב המותגים,', 'low'),
+  C(p2(7.15), p2(9.3), 'ההבטחה כתובה | *רק בסלוגן.', 'low'),
+  C(p2(9.55), p2(12.15), 'כאן, הדלת | *חוזרת:', 'low'),
+  C(p2(12.2), p2(14.4), 'בכניסה, בקופסה, | *בבוטיק.', 'low'),
+  C(p2(14.45), p2(16.55), 'וככה ההבטחה | לא צריכה *מילים.', 'low'),
+  C(p2(16.6), W_END, 'רואים *אותה.', 'low'),
   ...(BZ ? [C(BIZ_T, BIZ_T + BZ * .30, 'כשהשפה של המותג שלך | *ברורה,', 'low'),
             C(BIZ_T + BZ * .30, BIZ_T + BZ * .76, 'את לא צריכה להסביר | בכל פעם מחדש מי את', 'low'),
-            C(BIZ_T + BZ * .76, BIZ_T + BZ, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
-  C(pq(35.9), pq(38.35), 'המותג שלך | כבר *קיים.', 'low'),
-  C(pq(38.5), pq(43.3), 'השאלה היא: | איפה רואים | את *ההבטחה שלך?', 'low'),
+            C(BIZ_T + BZ * .76, BIZ_T + BZ + .2, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
+  C(pq(0.0), pq(1.75), 'המותג שלך | כבר *קיים.', 'low'),
+  C(pq(1.8), pq(QD), 'השאלה היא: | איפה רואים | את *ההבטחה שלך?', 'low'),
 ];
 /* ─────────────────────────────────────────────────────────────────────────────────────────────── */
 const ST = '../../studio/', VA = '../../../../velune/assets/';
@@ -286,13 +287,13 @@ function seek(t) {
   const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .3);
   W.style.opacity = t >= ENTRY.world && t < EXIT.at + .35 ? Math.min(wIn, wOut) : 0;
   W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .35))})` : 'none';
-  wlabel.style.opacity = Math.min(lin(t, p2(12.5), p2(12.9)), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  wlabel.style.opacity = Math.min(lin(t, p2(0.2), p2(0.6)), 1 - lin(t, EXIT.at - .25, EXIT.at));
   for (const [id, a, b] of WORLD) WS[id].s.style.opacity = lin(t, a, a + .3) * (1 - lin(t, b - .3, b));
   // the door: opens and we walk through it (crop of the 1280×722 frames around the door)
   { const f = Math.round(79 * clamp(lin(t, DOOR[0], DOOR[1]))), im = doorImgs[f], x = WS.wdoor.cv.getContext('2d');
     if (im.naturalWidth) { const z = 1.0 + .08 * lin(t, ENTRY.world, DOOR[1]), sh = 722 / z, sw = sh * 1080 / 1920; x.drawImage(im, 640 - sw / 2, (722 - sh) / 2, sw, sh, 0, 0, 1080, 1920); } }
-  { const k = 1.0 + .14 * ease(lin(t, p2(12.45), p2(18.3))); WS.wgarden.i.style.transform = `scale(${k})`; }
-  { const k = 1.0 + .2 * ease(lin(t, p2(18.2), p2(21.55))); WS.wopen.i.style.transform = `scale(${k})`; }
+  { const k = 1.0 + .14 * ease(lin(t, p2(0.25), p2(3.6))); WS.wgarden.i.style.transform = `scale(${k})`; }
+  { const k = 1.0 + .2 * ease(lin(t, p2(3.5), p2(5.95))); WS.wopen.i.style.transform = `scale(${k})`; }
   WS.wbefore.tiles.forEach((d, i) => { const p = eout(lin(t, BEFORE_POP + i * .3, BEFORE_POP + i * .3 + .35)); d.style.opacity = p;
     d.style.transform = `translateY(${(1 - p) * 80}px) scale(${.9 + .1 * p}) rotate(${d.dataset.r * p}deg)`; });
   for (const [id, a, b] of WORLD.filter(w => SHOTS[w[0]])) { const o = WS[id]; const k = 1.06 - .06 * eout(lin(t, a, b)); o.box.style.transform = `scale(${k})`;

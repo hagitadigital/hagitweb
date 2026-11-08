@@ -1,2 +1,2 @@
-// written by src/mux.py — recording lengths (s) and talking-clip frame counts
-window.HK = 0.000; window.BZ = 0.000; window.HK_N = 0; window.Q_N = 0;
+// written by src/mux.py
+window.HK = 3.360; window.SD = 11.760; window.WD = 17.440; window.BZ = 7.600; window.QD = 4.560; window.HK_N = 120; window.Q_N = 390;
