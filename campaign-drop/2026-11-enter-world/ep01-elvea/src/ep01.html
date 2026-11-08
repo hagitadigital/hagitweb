@@ -104,10 +104,6 @@ const SIG = 34.75;
 // talking clips (lip-sync to the VO): frames cut by src/prep-talk.sh into src/_build/talk-<key>/f_0001.jpg …, 30fps, 1080×1920.
 // t0 = final-timeline time where the clip's audio starts; mask = [x0, x1] feather: clip shows only right of x0 (keeps the board still).
 const TALK = window.TALK_OFF ? [] : [
-  { key: 'S1', n: 150, t0: 0.0, mask: [560, 660] },
-  { key: 'S2', n: 120, t0: 4.55, mask: [540, 640] },
-  { key: 'S3', n: 120, t0: 6.45, mask: [540, 640] },
-  { key: 'S4', n: 120, t0: 8.2, mask: [520, 620] },
   { key: 'S6', n: 150, t0: 30.16 } ];
 const CAPS = [   // [from, to, text, style]  * keyword pill · | line break
   [0, 2.0, 'אם נסתיר את השם, | עדיין *יזהו אותו?', 'hook'],
