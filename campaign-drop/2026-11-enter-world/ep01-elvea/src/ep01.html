@@ -1,0 +1,307 @@
+<!doctype html>
+<!--
+  «נכנסים לעולם מותג» · Episode 1 · ELVÉA° (No.14) · 1080×1920.
+  window.seek(t) draws one frame; render with: node render.js ep01.html out.mp4 (silent; audio is muxed by mux.sh).
+  Retime: edit only the TIMING block (seconds on the final timeline; VO is shifted by mux.sh, see VO_SHIFT).
+  Board corners per still: ../../studio/quads.json (941×1672 px). Hands on top: ../../studio/fg/<S>.png (make_fg.py).
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>EP01 · ELVÉA°</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Pacifico&family=Bebas+Neue&display=swap">
+<style>
+:root{--olive:#55613F;--olive-d:#3E4930;--sage:#B9C1A2;--nectar:#E9DABC;--cream:#F0EADD;--ink:#2E3526;--gold:#C9A45C;--goldline:#B8924A}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Heebo',sans-serif}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.panel{position:absolute;left:0;top:0;width:720px;height:700px;transform-origin:0 0;background:#EEE6DA;overflow:hidden}
+.panel .plab{position:absolute;top:24px;right:30px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8A7F6E;direction:rtl}
+.sw{position:absolute;top:92px;bottom:40px;width:116px;transform-origin:50% 100%}
+.sw i{position:absolute;bottom:62px;left:0;right:0;text-align:center;font:700 25px Heebo;font-style:normal}
+.sw b{position:absolute;bottom:22px;left:0;right:0;text-align:center;font:500 17px 'JetBrains Mono',monospace}
+.panel .prod{position:absolute;left:96px;top:86px;width:528px;height:580px;object-fit:cover;object-position:62% 50%;border-radius:6px}
+.panel .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.panel svg{position:absolute;left:150px;top:80px;width:420px;height:450px;overflow:visible}
+.panel .codeline{position:absolute;bottom:36px;width:100%;text-align:center;font:500 32px Heebo;color:#4A5236;direction:rtl}
+.boardtag{position:absolute;display:flex;flex-direction:column;align-items:center;gap:2px;transform:translateX(-50%);white-space:nowrap}
+.boardtag .nm{font:600 58px 'Cormorant Garamond',serif;color:var(--ink);letter-spacing:.04em;line-height:1}
+.boardtag .no{font:500 19px 'JetBrains Mono',monospace;color:#6B624F;direction:rtl;background:rgba(240,234,221,.85);padding:4px 12px;border-radius:999px}
+.trace{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+/* world */
+#world{background:radial-gradient(120% 80% at 30% 20%,#F4EFE4 0%,#E9E1CF 55%,#D9D6BF 100%)}
+.wscene{position:absolute;inset:0;opacity:0}
+.card{position:absolute;left:50px;top:330px;width:980px;height:1225px;border-radius:30px;overflow:hidden;box-shadow:0 30px 80px rgba(46,53,38,.28)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(transparent,rgba(30,34,24,.55))}
+#wlabel{left:50%;top:205px;transform:translateX(-50%);white-space:nowrap;font:500 25px 'JetBrains Mono',monospace;color:var(--cream);background:rgba(46,53,38,.78);
+  padding:10px 22px;border-radius:999px;direction:rtl;letter-spacing:.02em;opacity:0}
+.grid{position:absolute;left:50px;top:330px;width:980px;height:1225px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:34px}
+.tile{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px rgba(46,53,38,.22);opacity:0}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile .tl{position:absolute;left:14px;bottom:14px;font:700 24px Heebo;color:#fff;background:rgba(0,0,0,.45);padding:4px 14px;border-radius:999px;direction:rtl}
+.tile .ring{position:absolute;inset:0;border-radius:24px;box-shadow:inset 0 0 0 6px var(--gold);opacity:0}
+.tag{position:absolute;left:50%;top:268px;transform:translateX(-50%);font:800 30px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap}
+/* generic no-name touchpoints */
+.gA{background:#F6C9DA}.gB{background:#D7E8F6}.gC{background:#E6FF3B}.gD{background:#ECECEC}
+.gA .bot{position:absolute;left:150px;top:120px;width:170px;height:290px;border-radius:40px 40px 26px 26px;background:linear-gradient(90deg,#fff,#FBE3EC);box-shadow:0 10px 30px rgba(120,40,70,.25)}
+.gA .cap{position:absolute;left:192px;top:78px;width:86px;height:54px;border-radius:10px;background:#E59AB8}
+.gA .sc{position:absolute;left:150px;top:230px;width:170px;text-align:center;font:34px Pacifico;color:#D0477E;transform:rotate(-8deg)}
+.gA .fl{position:absolute;width:46px;height:46px;border-radius:50%;background:radial-gradient(#FFD34E 22%,#FF7FAE 24%)}
+.gB .box{position:absolute;left:95px;top:150px;width:280px;height:220px;background:repeating-linear-gradient(45deg,#2F6FD1 0 22px,#fff 22px 44px);border:6px solid #1D3E7A}
+.gB .bx{position:absolute;left:95px;top:225px;width:292px;text-align:center;font:62px 'Bebas Neue';color:#1D3E7A;background:#fff;padding:2px 0}
+.gC .t1{position:absolute;top:120px;width:100%;text-align:center;font:900 92px Heebo;color:#111;direction:rtl;line-height:1}
+.gC .t2{position:absolute;top:235px;width:100%;text-align:center;font:900 150px Heebo;color:#FF2D55;line-height:1}
+.gD .bar{position:absolute;left:0;right:0;top:0;height:46px;background:#C9C9C9}
+.gD .bar i{position:absolute;top:15px;width:16px;height:16px;border-radius:50%;background:#fff}
+.gD .hero2{position:absolute;left:24px;right:24px;top:70px;height:300px;border-radius:8px;background:linear-gradient(135deg,#7B2FF7,#F107A3)}
+.gD .wl{position:absolute;left:24px;right:24px;top:150px;text-align:center;font:italic 64px 'Times New Roman',serif;color:#fff}
+.gD .btn{position:absolute;left:150px;top:400px;width:170px;height:50px;border-radius:25px;background:#FF8A00}
+/* captions */
+.capbox{position:absolute;display:flex;flex-wrap:wrap;gap:4px 14px;direction:rtl;opacity:0}
+.capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
+.capbox.low{left:50%;top:1330px;max-width:940px;width:max-content;justify-content:center;background:rgba(36,40,28,.62);padding:14px 20px;border-radius:26px}
+.capbox.hook{left:50px;right:50px;top:150px;justify-content:center}
+.cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;
+  text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(30,25,10,.6)}
+.hook .cw{font-size:70px;color:var(--ink);text-shadow:0 2px 14px rgba(255,250,240,.9)}
+.cw.key{background:var(--olive);color:#fff;text-shadow:none}
+.cw.br{flex-basis:100%;height:0;padding:0}
+.capbox.low .cw{text-shadow:none}
+.capbox.low .cw.key{background:var(--gold);color:var(--ink)}
+/* signature */
+#sig{opacity:0}
+#sig .dim{position:absolute;inset:0;background:rgba(20,18,14,.42)}
+#sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
+#sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:var(--cream);letter-spacing:.02em;white-space:nowrap}
+#sig .nm span{display:inline-block;white-space:pre}
+#sig .site{position:absolute;left:0;right:0;top:1030px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:var(--cream);letter-spacing:.12em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+/* ── TIMING (seconds, final timeline) ─────────────────────────────────────────────────────── */
+const DUR = 38.2;
+const SHOT = {           // studio shots [from, to]
+  S1: [0, 4.55], S2: [4.55, 6.45], S3: [6.45, 8.2], S4: [8.2, 12.95], S4x: [29.35, 30.3], S6: [30.0, DUR] };
+const ENTRY = { hero: 11.45, trace: 11.55, zoom: 11.85, zoomEnd: 12.85, world: 12.55 };
+const EXIT = { at: 29.35, zoomEnd: 30.0, toS6: 30.0 };
+const FILL = { top: 4.75, bot: 6.65, code: 9.7, codeEnd: 11.2 };
+const WORLD = [          // [id, from, to]
+  ['wseq', 12.55, 15.3], ['wfil', 15.25, 17.65], ['wmuse', 17.6, 19.7], ['wbefore', 19.65, 23.8], ['wafter', 23.75, 29.6] ];
+const SEQ = [12.85, 15.1];         // hero image sequence f_001 → f_080
+const BEFORE_POP = 19.85, AFTER_POP = 24.1, RINGS = 27.8;
+const SIG = 34.75;
+const CAPS = [   // [from, to, text, style]  * keyword pill · | line break
+  [0, 2.0, 'אם נסתיר את השם, | עדיין *יזהו אותו?', 'hook'],
+  [0.1, 1.95, 'בואי ניכנס | לעולם *מותג', 'right'],
+  [2.0, 4.45, 'זה *ELVÉA° | עולם מותג | שבניתי', 'right'],
+  [4.6, 6.4, 'למעלה, | *הצבעים', 'right'],
+  [6.5, 8.2, 'למטה, | *המוצר', 'right'],
+  [8.25, 10.5, 'ובאמצע, | מה שמחבר | ביניהם:', 'right'],
+  [10.5, 11.85, '*הקוד', 'right'],
+  [12.8, 14.2, 'מותג הוא | לא לוגו.', 'low'],
+  [14.2, 15.25, 'הוא *שפה.', 'low'],
+  [15.3, 17.6, 'קוד אחד | שחוזר *בכל מקום', 'low'],
+  [17.6, 19.45, 'עד שהוא הופך | *לתחושה', 'low'],
+  [19.7, 21.05, 'ברוב המותגים,', 'low'],
+  [21.05, 23.65, 'כל נקודת מגע | מדברת בשפה *אחרת', 'low'],
+  [24.05, 26.4, 'כאן, הכול מדבר | באותה *שפה', 'low'],
+  [26.6, 27.8, 'וככה מזהים אותו,', 'low'],
+  [27.8, 29.35, 'עוד לפני | שרואים את *השם', 'low'],
+  [30.2, 32.2, 'המותג שלך | כבר *קיים.', 'low'],
+  [32.2, 34.6, 'השאלה היא: | באיזו *שפה | הוא מדבר?', 'low'],
+];
+/* ───────────────────────────────────────────────────────────────────────────────────────────── */
+const ST = '../../studio/', EV = '../../../../elvea/assets/';
+const QUADS = {
+ S1: [[[48,288],[428,320],[436,667],[51,667]], [[53,686],[437,684],[443,1018],[57,1037]], [[60,1057],[445,1040],[452,1475],[70,1515]]],
+ S2: [[[48,293],[434,332],[436,712],[48,713]], [[52,732],[438,733],[443,1118],[54,1137]], [[54,1157],[446,1138],[450,1585],[56,1605]]],
+ S3: [[[40,290],[432,330],[436,713],[46,712]], [[48,733],[437,736],[443,1118],[50,1137]], [[52,1155],[446,1136],[450,1587],[55,1630]]],
+ S4: [[[50,348],[400,357],[410,693],[52,697]], [[56,712],[413,708],[428,1056],[68,1070]], [[70,1090],[430,1076],[447,1468],[88,1505]]] };
+const STILL = { S1: 'series-S1-open', S2: 'series-S2-top', S3: 'series-S3-bottom', S4: 'series-S4-middle', S6: 'series-S6-ask' };
+const SX = 1080 / 941, SY = 1920 / 1672;
+const PAL = [['#55613F', 'זית'], ['#B9C1A2', 'מרווה'], ['#E9DABC', 'צוף'], ['#F0EADD', 'שמנת'], ['#2E3526', 'דיו']];
+const LEAF = 'M62,58 C152,50 196,118 201,198 C120,196 68,140 62,58 Z M74,70 C122,108 166,150 194,188';
+const DROP = 'M212,212 C244,252 266,282 266,312 A55,55 0 1 1 156,312 C156,282 178,252 212,212 Z';
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eout = x => 1 - Math.pow(1 - x, 3);
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+const stage = $('stage');
+
+// homography: rect (0,0,w,h) → quad, as CSS matrix3d
+function homo(w, h, q) {
+  const src = [[0, 0], [w, 0], [w, h], [0, h]], A = [], B = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = q[i];
+    A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); B.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); B.push(v); }
+  for (let i = 0; i < 8; i++) { let p = i; for (let r = i + 1; r < 8; r++) if (Math.abs(A[r][i]) > Math.abs(A[p][i])) p = r;
+    [A[i], A[p]] = [A[p], A[i]]; [B[i], B[p]] = [B[p], B[i]];
+    for (let r = 0; r < 8; r++) if (r !== i) { const f = A[r][i] / A[i][i]; for (let c = i; c < 8; c++) A[r][c] -= f * A[i][c]; B[r] -= f * B[i]; } }
+  const H = B.map((b, i) => b / A[i][i]);
+  return `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+}
+const sq = q => q.map(([x, y]) => [x * SX, y * SY]);
+
+/* studio layers */
+const L = {};
+function studio(key, img, board) {
+  const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
+  const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
+  const o = { lay, cam, bg };
+  if (board) {
+    const q = QUADS[img].map(sq);
+    o.q = q;
+    o.top = el('div', 'panel', cam); o.top.style.transform = homo(720, 700, q[0]);
+    el('div', 'plab', o.top, 'הצבעים');
+    o.sw = PAL.map(([h, n], i) => { const s = el('div', 'sw', o.top); s.style.right = (34 + i * 132) + 'px'; s.style.background = h;
+      const c = (i === 2 || i === 3) ? '#2E3526' : '#fff'; el('i', '', s, n).style.color = c; el('b', '', s, h).style.color = c; return s; });
+    o.mid = el('div', 'panel', cam); o.mid.style.transform = homo(720, 700, q[1]);
+    el('div', 'plab', o.mid, 'הקוד');
+    o.mid.insertAdjacentHTML('beforeend', `<svg viewBox="30 20 360 380"><g fill="none" stroke="#B8924A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path class="pl" d="${LEAF}"/><path class="pd" d="${DROP}"/></g><circle class="pm" cx="206" cy="205" r="9" fill="#B8924A"/></svg>`);
+    o.codeTxt = el('div', 'codeline', o.mid, 'שפה אחת · בכל מקום');
+    o.hero = el('img', 'hero', o.mid); o.hero.src = EV + 'seq/f_001.webp';
+    o.hero2 = el('img', 'hero', o.mid); o.hero2.src = EV + 'img/gift-set.webp';
+    o.bot = el('div', 'panel', cam); o.bot.style.transform = homo(720, 700, q[2]);
+    el('div', 'plab', o.bot, 'המוצר');
+    o.prod = el('img', 'prod', o.bot); o.prod.src = EV + 'img/hero-7-bottle.webp';
+    const fg = el('img', 'full', cam); fg.src = ST + 'fg/' + img + '.png';
+    // name tag above the board
+    const t = q[0], cx = (t[0][0] + t[1][0]) / 2, cy = Math.min(t[0][1], t[1][1]);
+    o.tag = el('div', 'boardtag', cam, `<div class="nm">ELVÉA°</div><div class="no">עולם מותג קונספט No.14 · Brand Worlds Studio</div>`);
+    o.tag.style.left = cx + 'px'; o.tag.style.top = (cy - 112) + 'px';
+    // gold trace around the middle panel (entry)
+    const m = q[1];
+    cam.insertAdjacentHTML('beforeend', `<svg class="trace"><polygon points="${[m[1], m[2], m[3], m[0]].map(p => p.join(',')).join(' ')}" fill="none" stroke="#C9A45C" stroke-width="4" stroke-linejoin="round"/></svg>`);
+    o.trace = cam.lastElementChild.querySelector('polygon');
+    o.mc = [(m[0][0] + m[1][0] + m[2][0] + m[3][0]) / 4, (m[0][1] + m[1][1] + m[2][1] + m[3][1]) / 4];
+  }
+  L[key] = o; return o;
+}
+studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+
+/* world */
+const W = el('div', 'layer', stage); W.id = 'world';
+const WS = {};
+const wcard = (id, src, pos) => { const s = el('div', 'wscene', W); const c = el('div', 'card', s); const i = el('img', '', c); i.src = src; if (pos) i.style.objectPosition = pos; WS[id] = { s, i }; };
+{ const sc = el('div', 'wscene', W); const c = el('div', 'card', sc); const cv = el('canvas', '', c); cv.width = 980; cv.height = 1225;
+  cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%'; WS.wseq = { s: sc, cv }; }
+wcard('wfil', EV + 'img/fil-01.webp', '50% 40%');
+wcard('wmuse', EV + 'img/muse-bottle.webp', '58% 50%');
+// before: generic, no name
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'לפני · מותג גנרי').style.cssText += ';background:#fff;color:#222';
+  const g = el('div', 'grid', s);
+  const t = [
+    ['gA', 'בקבוק', '<div class="cap"></div><div class="bot"></div><div class="sc">serum</div><div class="fl" style="left:60px;top:80px"></div><div class="fl" style="left:360px;top:300px"></div><div class="fl" style="left:340px;top:90px"></div>'],
+    ['gB', 'קופסה', '<div class="box"></div><div class="bx">SKIN CARE</div>'],
+    ['gC', 'פוסט', '<div class="t1">מבצע!</div><div class="t2">30%</div>'],
+    ['gD', 'אתר', '<div class="bar"><i style="left:16px"></i><i style="left:40px"></i><i style="left:64px"></i></div><div class="hero2"></div><div class="wl">Welcome</div><div class="btn"></div>'] ];
+  WS.wbefore = { s, tiles: t.map(([c, lab, h]) => { const d = el('div', 'tile ' + c, g, h); el('div', 'tl', d, lab); return d; }) }; }
+// after: ELVÉA°
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'אחרי · <bdi dir="ltr">ELVÉA°</bdi>').style.cssText += ';background:var(--olive);color:#fff';
+  const g = el('div', 'grid', s);
+  const t = [['img/hero-7-bottle.webp', 'בקבוק', '64% 50%'], ['img/gift-set.webp', 'קופסה', '50% 50%'], ['img/boutique-bags.webp', 'שקית', '62% 50%'], ['img/fil-03.webp', 'פיד', '50% 40%']];
+  WS.wafter = { s, tiles: t.map(([src, lab, pos]) => { const d = el('div', 'tile', g); const i = el('img', '', d); i.src = EV + src; i.style.objectPosition = pos;
+    el('div', 'tl', d, lab); el('div', 'ring', d); return d; }) }; }
+const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.14 · Brand Worlds Studio'); wlabel.id = 'wlabel';
+
+/* signature */
+const SG = el('div', 'layer', stage); SG.id = 'sig';
+el('div', 'dim', SG); const gl = el('div', 'gl', SG);
+const nm = el('div', 'nm', SG); const NAME = 'Hagit Antebi | Brand Worlds Studio';
+const letters = [...NAME].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const site = el('div', 'site', SG, 'hagitantebi.co.il');
+
+/* captions */
+const capEls = CAPS.map(([a, b, txt, style]) => {
+  const box = el('div', 'capbox ' + style, stage);
+  txt.split(' ').forEach(w => { if (w === '|') return el('span', 'cw br', box);
+    const k = w.startsWith('*'), x = el('span', 'cw' + (k ? ' key' : ''), box, k ? w.slice(1) : w);
+    if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } });
+  return box; });
+
+const seqImgs = []; for (let i = 1; i <= 80; i++) { const im = new Image(); im.src = EV + 'seq/f_' + String(i).padStart(3, '0') + '.webp'; seqImgs.push(im); }
+
+let lens = null;
+function setup() {
+  lens = {};
+  for (const k of ['S1', 'S2', 'S3', 'S4']) { const o = L[k]; const pl = o.mid.querySelector('.pl'), pd = o.mid.querySelector('.pd');
+    o.pl = pl; o.pd = pd; o.pm = o.mid.querySelector('.pm'); o.lL = pl.getTotalLength(); o.lD = pd.getTotalLength();
+    pl.style.strokeDasharray = o.lL; pd.style.strokeDasharray = o.lD; const tl = o.trace.getTotalLength(); o.tl = tl; o.trace.style.strokeDasharray = tl; }
+}
+
+function board(o, t, mode) {
+  // mode 'full' = everything shown (frame-0 proof); 'build' = fills by FILL times
+  const full = mode === 'full';
+  o.sw.forEach((s, i) => { const p = full ? 1 : eout(lin(t, FILL.top + i * .14, FILL.top + i * .14 + .4)); s.style.transform = `scaleY(${p})`; s.style.opacity = p > 0 ? 1 : 0; });
+  const pp = full ? 1 : eout(lin(t, FILL.bot, FILL.bot + .6));
+  o.prod.style.opacity = pp; o.prod.style.transform = `translateY(${(1 - pp) * 30}px)`;
+  const a = full ? 1 : lin(t, FILL.code, FILL.code + .8), b = full ? 1 : lin(t, FILL.code + .7, FILL.codeEnd);
+  o.pl.style.strokeDashoffset = o.lL * (1 - ease(a)); o.pd.style.strokeDashoffset = o.lD * (1 - ease(b));
+  const m = full ? 1 : lin(t, FILL.codeEnd - .1, FILL.codeEnd + .2);
+  o.pm.setAttribute('r', 9 * m * (1 + .25 * Math.sin(Math.max(0, t - FILL.codeEnd) * 7) * (full ? 0 : 1)));
+  o.codeTxt.style.opacity = full ? 1 : lin(t, FILL.codeEnd, FILL.codeEnd + .4);
+}
+
+function seek(t) {
+  if (!lens) setup();
+  const vis = (k, a, b, fi = .0, fo = .0) => { const op = (fi ? lin(t, a, a + fi) : (t >= a ? 1 : 0)) * (fo ? 1 - lin(t, b - fo, b) : (t < b ? 1 : 0)); L[k].lay.style.opacity = op; return op; };
+  // S1: frame-0 proof, board complete; tag in from 2.0
+  vis('S1', ...SHOT.S1);
+  { const o = L.S1; board(o, t, 'full'); const k = 1.0 + .05 * lin(t, 0, SHOT.S1[1]); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-700 * (k - 1)}px) scale(${k})`;
+    o.tag.style.opacity = lin(t, 2.0, 2.4); o.trace.style.strokeDashoffset = o.tl; }
+  for (const k of ['S2', 'S3']) { const o = L[k]; vis(k, ...SHOT[k]); board(o, t, 'build'); o.trace.style.strokeDashoffset = o.tl;
+    const z = 1.02 + .03 * lin(t, SHOT[k][0], SHOT[k][1]); o.cam.style.transform = `translate(${-300 * (z - 1)}px,${-800 * (z - 1)}px) scale(${z})`; }
+  // S4: code draws, then entry through the middle panel; again at the exit
+  { const o = L.S4; const inA = t >= SHOT.S4[0] && t < SHOT.S4[1], inX = t >= SHOT.S4x[0] && t < SHOT.S4x[1];
+    o.lay.style.opacity = inA ? 1 : inX ? 1 - lin(t, EXIT.toS6, SHOT.S4x[1]) : 0;
+    board(o, t, inX ? 'full' : 'build');
+    let z, heroOp, tr;
+    if (inX) { const p = ease(lin(t, EXIT.at, EXIT.zoomEnd)); z = 1 - p; heroOp = 1; tr = 1;    // z: 1 = fully zoomed in
+      }
+    else { z = ease(lin(t, ENTRY.zoom, ENTRY.zoomEnd)); heroOp = lin(t, ENTRY.hero, ENTRY.hero + .35); tr = lin(t, ENTRY.trace, ENTRY.trace + .4);
+      }
+    o.hero.style.opacity = inX ? 0 : heroOp; o.hero2.style.opacity = inX ? 1 : 0; o.trace.style.strokeDashoffset = o.tl * (1 - ease(tr));
+    const S = 1 + 4.6 * z, px = o.mc[0] + (540 - o.mc[0]) * z, py = o.mc[1] + (960 - o.mc[1]) * z;
+    const base = inX ? 1 : 1.02 + .02 * lin(t, SHOT.S4[0], ENTRY.zoom);
+    const s = S * base; o.cam.style.transform = `translate(${px - o.mc[0] * s}px,${py - o.mc[1] * s}px) scale(${s})`; }
+  // world
+  const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .25);
+  W.style.opacity = t >= ENTRY.world && t < EXIT.at + .3 ? Math.min(wIn, wOut) : 0;
+  W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .3))})` : `scale(${1.25 - .25 * eout(wIn)})`;
+  wlabel.style.opacity = Math.min(lin(t, 12.9, 13.3), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  for (const [id, a, b] of WORLD) { const s = WS[id]; const op = lin(t, a, a + .3) * (1 - lin(t, b - .3, b)); s.s.style.opacity = op;
+    if (s.i) { const k = 1.0 + .07 * lin(t, a, b); s.i.style.transform = `scale(${k})`; } }
+  { const f = Math.round(79 * clamp(lin(t, SEQ[0], SEQ[1]))); const im = seqImgs[f], cv = WS.wseq.cv, x = cv.getContext('2d');
+    const k = 1.0 + .07 * lin(t, 12.55, 15.3); const sh = im.naturalHeight / k, sw = sh * 980 / 1225;   // cover-crop centred, slow push
+    if (im.naturalWidth) x.drawImage(im, (im.naturalWidth - sw) / 2, (im.naturalHeight - sh) / 2, sw, sh, 0, 0, 980, 1225); }
+  WS.wbefore.tiles.forEach((d, i) => { const p = eout(lin(t, BEFORE_POP + i * .28, BEFORE_POP + i * .28 + .35)); d.style.opacity = p; d.style.transform = `scale(${.86 + .14 * p}) rotate(${(i % 2 ? 2 : -2) * p}deg)`; });
+  WS.wafter.tiles.forEach((d, i) => { const p = eout(lin(t, AFTER_POP + i * .3, AFTER_POP + i * .3 + .35)); d.style.opacity = p; d.style.transform = `scale(${.86 + .14 * p})`;
+    d.querySelector('.ring').style.opacity = lin(t, RINGS + i * .15, RINGS + i * .15 + .3); });
+  // S6
+  { const o = L.S6; o.lay.style.opacity = t >= SHOT.S6[0] ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
+    const k = 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
+    const sg = lin(t, SIG, SIG + .5); o.bg.style.filter = `blur(${sg * 14}px)`; }
+  // signature
+  { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
+    gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
+    letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + .6 + i * .035 + .4)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
+    site.style.opacity = lin(t, SIG + 1.9, SIG + 2.3); }
+  // captions
+  CAPS.forEach(([a, b], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
+    const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = CAPS[i][3] === 'low' ? `translate(-50%,${dy}px)` : `translateY(${dy}px)`; });
+}
+window.seek = seek; window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...seqImgs].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
+</script>
+</body>
+</html>
