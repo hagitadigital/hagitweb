@@ -449,7 +449,7 @@ def ep03():
   <div class="disp" style="position: absolute; top: 1420px; right: 80px; left: 80px; font-size: 84px; line-height: 1.15; font-style: italic; color: #A45839; animation-name: {rise(10.0)}">בוחרים מה יהיה בפנים.</div>
 </section>"""
 
-    close_inner = '<img class="cover" src="assets/04-maison-cake-in-box-m.webp" alt="" style="object-position: 38% 50%">'
+    close_inner = '<img class="cover" src="assets/miel-box.webp" alt="" style="object-position: 50% 40%">'
     body = (hook(3, 27, generic_small, 'assets/hero/f041.webp') + compare + window + cut + inside
             + close(3, 11.6, 27, 'MIEL°', close_inner, 'רומנטיקה מתחילה מבפנים.', 'בפרק הבא: הסיפור · VELUNE°'))
     return page('ככה בוחרים · פרק 03 · מבפנים', body)
