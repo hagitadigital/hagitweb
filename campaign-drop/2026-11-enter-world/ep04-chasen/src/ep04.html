@@ -1,0 +1,300 @@
+<!doctype html>
+<!--
+  «נכנסים לעולם מותג» · Episode 4 · CHASEN° (No.22) · language: matcha isn't ordered, it's composed · 1080×1920.
+  Arc: hook to camera (S6) → board → entry through the whisk → the film (powder, whisk, pour) with the promise as type
+       → problem (a generic café menu) → proof (the glass answers each verb: choose a flavour, add cream, it gets a name)
+       → insight (the hands whisking at the workshop) → exit → S6: business line + question → signature + CTA.
+  Separate recordings in voice/; timeline formulas here and in src/mux.py must match.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>EP04 · CHASEN°</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@500;700&display=swap">
+<style>
+:root{--bg:#F4E7D5;--matcha:#4C6B33;--deep:#22301F;--ink:#1F2A1F;--copper:#C28A5A;--gold:#C9A45C;--olive:#55613F}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Heebo',sans-serif}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.panel{position:absolute;left:0;top:0;width:720px;height:700px;transform-origin:0 0;background:#F6ECDD;overflow:hidden}
+.panel .plab{position:absolute;top:24px;right:30px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#7A6A55;direction:rtl}
+.sw{position:absolute;top:92px;bottom:40px;width:116px;transform-origin:50% 100%;border-radius:58px 58px 6px 6px}
+.sw i{position:absolute;bottom:62px;left:0;right:0;text-align:center;font:600 26px 'Cormorant Garamond',serif;font-style:normal;color:#fff}
+.sw b{position:absolute;bottom:22px;left:0;right:0;text-align:center;font:500 17px 'JetBrains Mono',monospace;color:#fff}
+.panel .prod{position:absolute;left:180px;top:60px;width:360px;height:620px;object-fit:cover;object-position:50% 40%}
+.panel .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.panel svg{position:absolute;left:230px;top:70px;width:260px;height:440px;overflow:visible}
+.panel .codeline{position:absolute;bottom:34px;width:100%;text-align:center;font:700 34px 'Frank Ruhl Libre',serif;color:#22301F;direction:rtl}
+.boardtag{position:absolute;display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateX(-50%);white-space:nowrap}
+.boardtag .nm{font:600 58px 'Cormorant Garamond',serif;color:var(--deep);letter-spacing:.12em;line-height:1}
+.boardtag .no{font:500 19px 'JetBrains Mono',monospace;color:#5A4E3E;direction:rtl;background:rgba(246,236,221,.9);padding:4px 12px;border-radius:999px}
+.trace{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+/* world */
+#world{background:var(--bg)}
+.wscene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.wscene canvas{position:absolute;inset:0;width:1080px;height:1920px}
+.big{position:absolute;left:0;right:0;text-align:center;direction:rtl;font:700 120px 'Frank Ruhl Libre',serif;color:var(--deep);line-height:1;opacity:0}
+#wlabel{left:50%;top:205px;transform:translateX(-50%);white-space:nowrap;font:500 25px 'JetBrains Mono',monospace;color:#F4E7D5;background:rgba(34,48,31,.75);
+  padding:10px 22px;border-radius:999px;direction:rtl;letter-spacing:.02em;opacity:0;z-index:5}
+.tag{position:absolute;left:50%;top:270px;transform:translateX(-50%);font:800 32px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap;z-index:3}
+/* before: a generic café that talks like a menu */
+#menu{position:absolute;left:90px;right:90px;top:360px;transform:scale(1.12);transform-origin:50% 0;background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.12);padding:26px 30px;direction:rtl}
+#menu h4{margin:0 0 10px;font:800 40px Heebo;color:#222}
+#menu .row{display:flex;align-items:center;gap:20px;padding:30px 0;border-top:1px solid #eee;opacity:0}
+#menu .th{width:96px;height:96px;border-radius:14px;flex:none}
+#menu .nm{flex:1;font:600 36px Arial,sans-serif;color:#222}
+#menu .nm small{display:block;font:400 26px Arial,sans-serif;color:#888}
+#menu .pr{font:700 38px Arial,sans-serif;color:#222;direction:ltr}
+#menu .add{font:700 28px Arial,sans-serif;color:#fff;background:#2F80ED;padding:14px 20px;border-radius:12px;white-space:nowrap}
+/* proof: the glass answers the verbs */
+#glass{position:absolute;left:0;top:0;width:1080px;height:2307px}
+#glass img{position:absolute;left:0;top:0;width:1080px;height:2307px}
+#glass .cream{position:absolute;opacity:0}
+.verb{position:absolute;left:50%;top:400px;transform:translateX(-50%);white-space:nowrap;direction:rtl;font:800 64px Heebo;color:#fff;background:var(--matcha);padding:10px 30px;border-radius:999px;opacity:0;z-index:4;box-shadow:0 14px 30px rgba(34,48,31,.3)}
+#card{position:absolute;inset:0;opacity:0}
+#card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+/* captions */
+.capbox{position:absolute;display:flex;flex-wrap:wrap;gap:4px 14px;direction:rtl;opacity:0;z-index:6}
+.capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
+.capbox.low,.capbox.hook{left:50%;top:1340px;max-width:960px;width:max-content;justify-content:center;background:rgba(34,48,31,.68);padding:14px 22px;border-radius:26px}
+.capbox.hooktop{left:50%;top:150px;max-width:980px;width:max-content;justify-content:center;background:rgba(34,48,31,.68);padding:16px 24px;border-radius:26px}
+.cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(20,20,20,.6)}
+.capbox.low .cw,.capbox.hook .cw,.capbox.hooktop .cw{text-shadow:none}
+.capbox.hook .cw{font-size:72px}
+.cw.key{background:var(--matcha);color:#fff;text-shadow:none}
+.capbox.low .cw.key,.capbox.hook .cw.key,.capbox.hooktop .cw.key{background:var(--gold);color:var(--ink)}
+.cw.br{flex-basis:100%;height:0;padding:0}
+/* signature */
+#sig{opacity:0;z-index:7}
+#sig .dim{position:absolute;inset:0;background:rgba(15,20,14,.45)}
+#sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
+#sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:#F4EFE6;letter-spacing:.02em;white-space:nowrap}
+#sig .nm span{display:inline-block;white-space:pre}
+#sig .cta{position:absolute;left:50%;top:1110px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:18px;direction:rtl;padding:22px 44px;border-radius:999px;background:var(--olive);color:#F0EADD;font:800 46px Heebo;box-shadow:0 18px 44px rgba(0,0,0,.35),inset 0 0 0 2px rgba(201,164,92,.7)}
+#sig .cta small{font:500 30px Heebo;opacity:.85}
+#sig .cta .ar{font-size:44px;color:var(--gold)}
+#sig .site{position:absolute;left:0;right:0;top:1250px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:#F4EFE6;letter-spacing:.12em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="config.js"></script>
+<script>
+/* ── TIMING ── recordings in voice/: hook · studio · world · biz (shared) · ask-q. Sentence times inside each file come from its pauses. */
+const HK = window.HK ?? 0, SD = window.SD ?? 11.84, WD = window.WD ?? 20.08, BZ = window.BZ ?? 0, QD = window.QD ?? 3.84;
+const A = HK ? HK + 0.6 : 0;
+const B = A + SD + 2.0;
+const W_END = B + WD + 0.2;
+const EXIT = { at: W_END, zoomEnd: W_END + 0.7, toS6: W_END + 0.7 };
+const BIZ_T = EXIT.toS6 + 0.3;
+const QT = BIZ_T + (BZ ? BZ + 0.4 : 0);
+const SIG = QT + QD + 0.35, DUR = SIG + 3.6;
+const p1 = v => A + v, p2 = v => B + v, pq = v => QT + v;
+const SHOT = { HOOK: [0, A], S1: [A, p1(5.1)], S2: [p1(5.1), p1(6.9)], S3: [p1(6.9), p1(9.05)], S4: [p1(9.05), p1(13.6)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
+const ENTRY = { hero: p1(11.2), trace: p1(11.3), zoom: p1(11.75), zoomEnd: p1(12.75), world: p1(12.45) };
+const FILL = { top: p1(5.6), bot: p1(8.0), code: p1(9.2), codeEnd: p1(11.5) };
+const FILM = [['poudre', ENTRY.world, p2(1.5), 20], ['chasen', p2(1.5), p2(3.0), 10], ['verre', p2(3.0), p2(4.45), 25]];   // [clip, from, to, first frame]
+const WORLD = [['wfilm', ENTRY.world, p2(4.55)], ['wbefore', p2(4.45), p2(10.0)], ['wglass', p2(9.9), p2(16.7)], ['wmains', p2(16.6), W_END + 0.4]];
+const BIG = [[p2(1.75), p2(3.0), 'לא מזמינים.'], [p2(3.1), p2(4.45), 'מרכיבים.']];
+const MENU_POP = p2(4.6), FLAVOR = [p2(12.55), p2(12.9), p2(13.2)], CREAM = p2(13.4), CARD = [p2(14.85), p2(16.7)];
+const VERBS = [[p2(12.5), p2(13.3), 'בחרי טעם'], [p2(13.35), p2(14.6), 'הוסיפי קצפת'], [p2(14.9), p2(16.5), 'שם משלה']];
+const TALK = window.TALK_OFF ? [] : [ ...(HK ? [{ n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []), { n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
+const C = (a, b, txt, st) => [a, b, txt, st];
+const CAPS = [
+  ...(HK ? [C(0, A - 0.1, 'המותג שלך | מדבר *כמו תפריט?', 'hook')] : [C(0, 1.9, 'המותג שלך | מדבר *כמו תפריט?', 'hooktop')]),
+  C(p1(0.12), p1(1.75), 'בואי ניכנס | לעולם *מותג', 'right'),
+  C(p1(1.85), p1(4.95), 'זה *CHASEN° | עולם מותג | לבר מאצ\'ה', 'right'),
+  C(p1(5.15), p1(6.85), 'למעלה, | *הצבעים', 'right'),
+  C(p1(6.95), p1(9.05), 'למטה, | *המוצר', 'right'),
+  C(p1(9.1), p1(11.38), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
+  C(p1(11.38), p1(12.0), '*הקוד', 'right'),
+  C(p2(0.12), p2(1.6), 'כאן הקוד | הוא גם *שפה:', 'low'),
+  C(p2(4.45), p2(7.35), 'ברוב המותגים, | השפה היא *תפריט:', 'low'),
+  C(p2(7.45), p2(9.75), 'שם, מחיר, | *הוסיפי לסל.', 'low'),
+  C(p2(10.15), p2(12.5), 'כאן, כל מילה | היא *פעולה:', 'low'),
+  C(p2(12.5), p2(14.75), 'בחרי טעם, | *הוסיפי קצפת,', 'low'),
+  C(p2(14.8), p2(16.6), 'והכוס מקבלת | שם *משלה.', 'low'),
+  C(p2(16.85), p2(18.8), 'וככה הלקוחה | היא לא רק *קונה.', 'low'),
+  C(p2(18.85), W_END, 'היא זו *שמכינה.', 'low'),
+  ...(BZ ? [C(BIZ_T, BIZ_T + BZ * .30, 'כשהשפה של המותג שלך | *ברורה,', 'low'),
+            C(BIZ_T + BZ * .30, BIZ_T + BZ * .76, 'את לא צריכה להסביר | בכל פעם מחדש מי את', 'low'),
+            C(BIZ_T + BZ * .76, BIZ_T + BZ + .2, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
+  C(pq(0.05), pq(1.7), 'המותג שלך | כבר *קיים.', 'low'),
+  C(pq(1.75), pq(QD), 'השאלה היא: | איך הוא *מדבר?', 'low'),
+];
+/* ─────────────────────────────────────────────────────────────────────────────────────────────── */
+const ST = '../../studio/', CH = '../../../../chasen/';
+const QUADS = {
+ S1: [[[48,288],[428,320],[436,667],[51,667]], [[53,686],[437,684],[443,1018],[57,1037]], [[60,1057],[445,1040],[452,1475],[70,1515]]],
+ S2: [[[48,293],[434,332],[436,712],[48,713]], [[52,732],[438,733],[443,1118],[54,1137]], [[54,1157],[446,1138],[450,1585],[56,1605]]],
+ S3: [[[40,290],[432,330],[436,713],[46,712]], [[48,733],[437,736],[443,1118],[50,1137]], [[52,1155],[446,1136],[450,1587],[55,1630]]],
+ S4: [[[50,348],[400,357],[410,693],[52,697]], [[56,712],[413,708],[428,1056],[68,1070]], [[70,1090],[430,1076],[447,1468],[88,1505]]] };
+const STILL = { S1: 'series-S1-open', S2: 'series-S2-top', S3: 'series-S3-bottom', S4: 'series-S4-middle', S6: 'series-S6-ask' };
+const SX = 1080 / 941, SY = 1920 / 1672;
+const PAL = [['#6F9A3F', 'Classique'], ['#D98A95', 'Fraise'], ['#A8794F', 'Hōjicha'], ['#E5C85A', 'Yuzu'], ['#7F8FC9', 'Bleu']];
+// whisk: handle + a fan of tines
+const WHISK = 'M118,20 L142,20 L142,190 L118,190 Z M108,190 L152,190 L150,214 L110,214 Z ' +
+  [...Array(13)].map((_, i) => { const x = 40 + i * 15, c = 130; return `M${c + (x - c) * .12},214 Q${c + (x - c) * .55},270 ${x},420`; }).join(' ');
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eout = x => 1 - Math.pow(1 - x, 3);
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+const stage = $('stage');
+function homo(w, h, q) {
+  const src = [[0, 0], [w, 0], [w, h], [0, h]], M = [], R = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = q[i]; M.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); R.push(u); M.push([0, 0, 0, x, y, 1, -v * x, -v * y]); R.push(v); }
+  for (let i = 0; i < 8; i++) { let p = i; for (let r = i + 1; r < 8; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
+    [M[i], M[p]] = [M[p], M[i]]; [R[i], R[p]] = [R[p], R[i]];
+    for (let r = 0; r < 8; r++) if (r !== i) { const f = M[r][i] / M[i][i]; for (let c = i; c < 8; c++) M[r][c] -= f * M[i][c]; R[r] -= f * R[i]; } }
+  const H = R.map((b, i) => b / M[i][i]);
+  return `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+}
+const sq = q => q.map(([x, y]) => [x * SX, y * SY]);
+
+/* studio */
+const L = {};
+function studio(key, img, board) {
+  const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
+  const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
+  const talk = el('canvas', 'full', cam); talk.width = 1080; talk.height = 1920; talk.style.display = 'none';
+  const o = { lay, cam, bg, talk };
+  if (board) {
+    const q = QUADS[img].map(sq); o.q = q;
+    o.top = el('div', 'panel', cam); o.top.style.transform = homo(720, 700, q[0]); el('div', 'plab', o.top, 'הצבעים');
+    o.sw = PAL.map(([h, n], i) => { const s = el('div', 'sw', o.top); s.style.right = (34 + i * 132) + 'px'; s.style.background = h; el('i', '', s, n); el('b', '', s, h); return s; });
+    o.mid = el('div', 'panel', cam); o.mid.style.transform = homo(720, 700, q[1]); el('div', 'plab', o.mid, 'הקוד');
+    o.mid.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 260 440"><path class="wk" d="${WHISK}" fill="none" stroke="#4C6B33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`);
+    o.codeTxt = el('div', 'codeline', o.mid, 'לא מזמינים. מרכיבים.');
+    o.hero = el('img', 'hero', o.mid); o.hero.src = CH + 'assets/chasen.webp';
+    o.hero2 = el('img', 'hero', o.mid); o.hero2.src = CH + 'assets/touchpoints/card.webp'; o.hero2.style.objectPosition = '50% 40%';
+    o.bot = el('div', 'panel', cam); o.bot.style.transform = homo(720, 700, q[2]); el('div', 'plab', o.bot, 'המוצר');
+    o.prod = el('img', 'prod', o.bot); o.prod.src = CH + 'img/glass_classic.webp';
+    el('img', 'full', cam).src = ST + 'fg/' + img + '.png';
+    const t = q[0], cx = (t[0][0] + t[1][0]) / 2, cy = Math.min(t[0][1], t[1][1]);
+    o.tag = el('div', 'boardtag', cam, `<div class="nm">CHASEN°</div><div class="no">עולם מותג קונספט No.22 · Brand Worlds Studio</div>`);
+    o.tag.style.left = cx + 'px'; o.tag.style.top = (cy - 116) + 'px';
+    const m = q[1];
+    cam.insertAdjacentHTML('beforeend', `<svg class="trace"><polygon points="${[m[1], m[2], m[3], m[0]].map(p => p.join(',')).join(' ')}" fill="none" stroke="#C9A45C" stroke-width="4" stroke-linejoin="round"/></svg>`);
+    o.trace = cam.lastElementChild.querySelector('polygon');
+    o.mc = [(m[0][0] + m[1][0] + m[2][0] + m[3][0]) / 4, (m[0][1] + m[1][1] + m[2][1] + m[3][1]) / 4];
+  }
+  L[key] = o; return o;
+}
+studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+
+/* world */
+const W = el('div', 'layer', stage); W.id = 'world';
+const WS = {};
+const canvasScene = id => { const s = el('div', 'wscene', W); const cv = el('canvas', '', s); cv.width = 1080; cv.height = 1920; WS[id] = { s, cv }; return WS[id]; };
+canvasScene('wfilm'); WS.wfilm.big = BIG.map(([, , txt], i) => { const d = el('div', 'big', WS.wfilm.s, txt); d.style.top = (i ? 300 : 300) + 'px'; return d; });
+{ const s = el('div', 'wscene', W); s.style.background = '#F3F3F3'; el('div', 'tag', s, 'לפני · בית קפה גנרי').style.cssText += ';background:#fff;color:#222';
+  const m = el('div', '', s); m.id = 'menu'; el('h4', '', m, 'תפריט');
+  const items = [['#9BC27A', 'מאצ\'ה לאטה', 'קר / חם', '₪24'], ['#E9A3B0', 'מאצ\'ה תות', 'קר', '₪26'], ['#C49A6C', 'הוג\'יצ\'ה', 'חם', '₪22'], ['#8FA3E0', 'מאצ\'ה כחולה', 'קר', '₪26']];
+  WS.wbefore = { s, rows: items.map(([c, n, d, p]) => { const r = el('div', 'row', m, `<div class="th" style="background:${c}"></div><div class="nm">${n}<small>${d}</small></div><div class="pr">${p}</div><div class="add">+ הוסף לסל</div>`); return r; }) }; }
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'אחרי · <bdi dir="ltr">CHASEN°</bdi>').style.cssText += ';background:var(--matcha);color:#fff';
+  const g = el('div', '', s); g.id = 'glass';
+  const fl = ['classic', 'fraise', 'bleu'].map(k => { const i = el('img', '', g); i.src = CH + 'img/glass_' + k + '.webp'; return i; });
+  const k = 1080 / 852, cr = el('img', 'cream', g); cr.src = CH + 'img/layer_cream.webp';
+  cr.style.left = (149 * k) + 'px'; cr.style.top = (159 * k) + 'px'; cr.style.width = (552 * k) + 'px'; cr.style.height = (719 * k) + 'px';
+  const card = el('div', '', s); card.id = 'card'; el('img', '', card).src = CH + 'assets/touchpoints/card.webp';
+  const verbs = VERBS.map(([, , txt]) => el('div', 'verb', s, txt));
+  WS.wglass = { s, g, fl, cr, card, verbs }; }
+canvasScene('wmains');
+const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.22 · Brand Worlds Studio'); wlabel.id = 'wlabel';
+
+/* signature */
+const SG = el('div', 'layer', stage); SG.id = 'sig';
+el('div', 'dim', SG); const gl = el('div', 'gl', SG);
+const nm = el('div', 'nm', SG); const letters = [...'Hagit Antebi | Brand Worlds Studio'].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const cta = el('div', 'cta', SG, 'אבחון פער המותג <small>· חינם</small> <span class="ar">←</span>');
+const site = el('div', 'site', SG, 'hagitantebi.co.il');
+
+const capEls = CAPS.map(([a, b, txt, style]) => { const box = el('div', 'capbox ' + style, stage);
+  txt.split(' ').forEach(w => { if (w === '|') return el('span', 'cw br', box); const k = w.startsWith('*'), x = el('span', 'cw' + (k ? ' key' : ''), box, k ? w.slice(1) : w);
+    if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } }); return box; });
+
+const seq = {}; for (const [d, n] of [['poudre', 119], ['chasen', 119], ['verre', 90], ['mains', 68]]) { seq[d] = []; for (let i = 1; i <= n; i++) { const im = new Image(); im.src = '_build/' + d + '/f_' + String(i).padStart(3, '0') + '.jpg'; seq[d].push(im); } }
+const talkImgs = TALK.map(c => { const a = []; for (let i = 1; i <= c.n; i++) { const im = new Image(); im.src = '_build/talk-' + c.dir + '/f_' + String(i).padStart(4, '0') + '.jpg'; a.push(im); } return a; });
+function drawTalk(t) {
+  const o = L.S6, x = o.talk.getContext('2d'); let drawn = false;
+  TALK.forEach((c, j) => { const ims = talkImgs[j]; if (!ims.length) return; const next = TALK[j + 1];
+    if (t < c.t0 - 0.05 && j > 0) return; if (next && t >= next.t0 - 0.05) return;
+    const im = ims[clamp(Math.round((t - c.t0) * 30), 0, ims.length - 1)]; if (!im.naturalWidth) return;
+    x.clearRect(0, 0, 1080, 1920); x.drawImage(im, 0, 0, 1080, 1920); drawn = true; });
+  o.talk.style.display = drawn ? 'block' : 'none'; o.talk.style.filter = o.bg.style.filter;
+}
+// 720×900 clips on the cream ground: full width, soft fade into the background, slow push
+function drawClip(cv, im, k) {
+  const x = cv.getContext('2d'); x.fillStyle = '#F4E7D5'; x.fillRect(0, 0, 1080, 1920); if (!im || !im.naturalWidth) return;
+  const w = 1080 * k, h = w * im.naturalHeight / im.naturalWidth, x0 = (1080 - w) / 2, y0 = 960 - h / 2 + 40;
+  x.drawImage(im, x0, y0, w, h);
+  const g1 = x.createLinearGradient(0, y0, 0, y0 + 160); g1.addColorStop(0, '#F4E7D5'); g1.addColorStop(1, 'rgba(244,231,213,0)'); x.fillStyle = g1; x.fillRect(0, y0, 1080, 160);
+  const g2 = x.createLinearGradient(0, y0 + h - 160, 0, y0 + h); g2.addColorStop(0, 'rgba(244,231,213,0)'); g2.addColorStop(1, '#F4E7D5'); x.fillStyle = g2; x.fillRect(0, y0 + h - 160, 1080, 160);
+}
+let ready0 = false;
+function setup() {
+  ready0 = true;
+  for (const k of ['S1', 'S2', 'S3', 'S4']) { const o = L[k]; o.wk = o.mid.querySelector('.wk'); o.wkL = o.wk.getTotalLength(); o.wk.style.strokeDasharray = o.wkL; o.tl = o.trace.getTotalLength(); o.trace.style.strokeDasharray = o.tl; }
+}
+function board(o, t, full) {
+  o.sw.forEach((s, i) => { const p = full ? 1 : eout(lin(t, FILL.top + i * .14, FILL.top + i * .14 + .4)); s.style.transform = `scaleY(${p})`; s.style.opacity = p > 0 ? 1 : 0; });
+  const pp = full ? 1 : eout(lin(t, FILL.bot, FILL.bot + .6)); o.prod.style.opacity = pp; o.prod.style.transform = `translateY(${(1 - pp) * 30}px)`;
+  o.wk.style.strokeDashoffset = o.wkL * (1 - ease(full ? 1 : lin(t, FILL.code, FILL.code + 2.0)));
+  o.codeTxt.style.opacity = full ? 1 : lin(t, FILL.codeEnd - .4, FILL.codeEnd);
+}
+function seek(t) {
+  if (!ready0) setup();
+  const inHook = t < SHOT.HOOK[1], inEnd = t >= SHOT.S6[0];
+  L.S6.lay.style.opacity = inHook ? 1 : inEnd ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
+  { const o = L.S6; const k = inHook ? 1.04 + .03 * lin(t, 0, A) : 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
+    o.bg.style.filter = `blur(${lin(t, SIG, SIG + .5) * 14}px)`; }
+  L.S1.lay.style.opacity = t >= SHOT.S1[0] && t < SHOT.S1[1] ? (HK ? lin(t, A, A + .25) : 1) : 0;
+  { const o = L.S1; board(o, t, true); const k = 1.0 + .05 * lin(t, SHOT.S1[0], SHOT.S1[1]); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-700 * (k - 1)}px) scale(${k})`;
+    o.tag.style.opacity = lin(t, p1(1.9), p1(2.3)); o.trace.style.strokeDashoffset = o.tl; }
+  for (const k of ['S2', 'S3']) { const o = L[k]; o.lay.style.opacity = t >= SHOT[k][0] && t < SHOT[k][1] ? 1 : 0; board(o, t, false); o.trace.style.strokeDashoffset = o.tl;
+    const z = 1.02 + .03 * lin(t, SHOT[k][0], SHOT[k][1]); o.cam.style.transform = `translate(${-300 * (z - 1)}px,${-800 * (z - 1)}px) scale(${z})`; }
+  { const o = L.S4; const inA = t >= SHOT.S4[0] && t < SHOT.S4[1], inX = t >= SHOT.S4x[0] && t < SHOT.S4x[1];
+    o.lay.style.opacity = inA ? 1 : inX ? 1 - lin(t, EXIT.toS6, SHOT.S4x[1]) : 0; board(o, t, inX);
+    let z, heroOp, tr;
+    if (inX) { z = 1 - ease(lin(t, EXIT.at, EXIT.zoomEnd)); heroOp = 1; tr = 1; }
+    else { z = ease(lin(t, ENTRY.zoom, ENTRY.zoomEnd)); heroOp = lin(t, ENTRY.hero, ENTRY.hero + .35); tr = lin(t, ENTRY.trace, ENTRY.trace + .4); }
+    o.hero.style.opacity = inX ? 0 : heroOp; o.hero2.style.opacity = inX ? 1 : 0; o.trace.style.strokeDashoffset = o.tl * (1 - ease(tr));
+    const S = 1 + 4.6 * z, px = o.mc[0] + (540 - o.mc[0]) * z, py = o.mc[1] + (960 - o.mc[1]) * z, base = inX ? 1 : 1.02 + .02 * lin(t, SHOT.S4[0], ENTRY.zoom), s = S * base;
+    o.cam.style.transform = `translate(${px - o.mc[0] * s}px,${py - o.mc[1] * s}px) scale(${s})`; }
+  // world
+  const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .3);
+  W.style.opacity = t >= ENTRY.world && t < EXIT.at + .35 ? Math.min(wIn, wOut) : 0;
+  W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .35))})` : 'none';
+  wlabel.style.opacity = Math.min(lin(t, p2(0.1), p2(0.5)), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  for (const [id, a, b] of WORLD) WS[id].s.style.opacity = lin(t, a, a + .3) * (1 - lin(t, b - .3, b));
+  { const cur = FILM.find(([, a, b]) => t >= a && t < b) || FILM[FILM.length - 1]; const [d, a, b, f0] = cur, n = seq[d].length;
+    const f = Math.min(n - 1, f0 + Math.round((t - a) * 15)); drawClip(WS.wfilm.cv, seq[d][f], 1.06 + .05 * lin(t, a, b)); }
+  WS.wfilm.big.forEach((e, i) => { const [a, b] = BIG[i]; const p = lin(t, a, a + .3) * (1 - lin(t, b - .2, b)); e.style.opacity = p; e.style.transform = `translateY(${(1 - eout(lin(t, a, a + .4))) * 30}px)`; });
+  WS.wbefore.rows.forEach((r, i) => { const p = eout(lin(t, MENU_POP + i * .3, MENU_POP + i * .3 + .35)); r.style.opacity = p; r.style.transform = `translateX(${(1 - p) * -40}px)`; });
+  { const G = WS.wglass; const k = 1.0 + .06 * lin(t, p2(9.9), p2(16.7)); G.g.style.transform = `translateY(${-160 - 80 * lin(t, p2(9.9), p2(16.7))}px) scale(${k})`; G.g.style.transformOrigin = '540px 900px';
+    G.fl[1].style.opacity = lin(t, FLAVOR[0], FLAVOR[0] + .25); G.fl[2].style.opacity = lin(t, FLAVOR[1], FLAVOR[1] + .25);
+    const c = eout(lin(t, CREAM, CREAM + .6)); G.cr.style.opacity = c; G.cr.style.clipPath = `inset(${(1 - c) * 100}% 0 0 0)`;
+    G.card.style.opacity = lin(t, CARD[0], CARD[0] + .4); G.card.querySelector('img').style.transform = `scale(${1.08 - .08 * eout(lin(t, CARD[0], CARD[1]))})`;
+    G.verbs.forEach((e, i) => { const [a, b] = VERBS[i]; e.style.opacity = lin(t, a, a + .15) * (1 - lin(t, b - .15, b)); e.style.transform = `translateX(-50%) scale(${.9 + .1 * eout(lin(t, a, a + .25))})`; }); }
+  { const a = p2(16.6), f = Math.min(67, Math.round((t - a) * 15)); drawClip(WS.wmains.cv, seq.mains[Math.max(0, f)], 1.05 + .06 * lin(t, a, W_END)); }
+  drawTalk(t);
+  { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
+    gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
+    letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
+    const c = eout(lin(t, SIG + 1.7, SIG + 2.2)), tap = Math.sin(Math.PI * lin(t, SIG + 3.0, SIG + 3.35));
+    cta.style.opacity = c; cta.style.transform = `translateX(-50%) translateY(${(1 - c) * 30}px) scale(${1 - .06 * tap})`; site.style.opacity = lin(t, SIG + 2.1, SIG + 2.5); }
+  CAPS.forEach(([a, b, , st], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
+    const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = st === 'right' ? `translateY(${dy}px)` : `translate(-50%,${dy}px)`; });
+}
+window.seek = seek; window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...Object.values(seq).flat(), ...talkImgs.flat()].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
+</script>
+</body>
+</html>
