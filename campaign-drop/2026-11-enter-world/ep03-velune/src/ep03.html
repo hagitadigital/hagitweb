@@ -1,0 +1,313 @@
+<!doctype html>
+<!--
+  «נכנסים לעולם מותג» · Episode 3 · VELUNE° (No.25) · the promise, and the door that returns · 1080×1920.
+  Arc: hook to camera (S6) → «בואי ניכנס» + board → entry: the code panel IS the door — it opens and we walk into the garden
+       → promise → problem (generic slogans) → proof (the arch in the door, the box, the boutique) → insight (three arches alone)
+       → exit → S6: business line + question → signature + CTA.
+  Timeline formulas in the TIMING block and in src/mux.py must match.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>EP03 · VELUNE°</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Marcellus&family=Bebas+Neue&family=Great+Vibes&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<style>
+:root{--poudre:#C4D2E0;--marbre:#DCE3EB;--eau:#8FA9C2;--nuit:#232A3F;--litchi:#8E1E44;--ink:#1E2A38;--gold:#C9A45C;--olive:#55613F}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Heebo',sans-serif}
+.abs{position:absolute}
+.layer{position:absolute;inset:0;overflow:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.panel{position:absolute;left:0;top:0;width:720px;height:700px;transform-origin:0 0;background:#E6EBF1;overflow:hidden}
+.panel .plab{position:absolute;top:24px;right:30px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#6E8399;direction:rtl}
+.sw{position:absolute;top:92px;bottom:40px;width:116px;transform-origin:50% 100%}
+.sw i{position:absolute;bottom:62px;left:0;right:0;text-align:center;font:400 25px Marcellus;font-style:normal;letter-spacing:.06em}
+.sw b{position:absolute;bottom:22px;left:0;right:0;text-align:center;font:500 17px 'JetBrains Mono',monospace}
+.panel .prod{position:absolute;left:150px;top:70px;width:420px;height:600px;object-fit:cover;object-position:62% 45%}
+.panel .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.panel svg{position:absolute;left:210px;top:80px;width:300px;height:460px;overflow:visible}
+.panel .codeline{position:absolute;bottom:36px;width:100%;text-align:center;font:500 32px Heebo;color:#1E2A38;direction:rtl}
+.boardtag{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;transform:translateX(-50%);white-space:nowrap}
+.boardtag .nm{font:400 54px Marcellus;color:var(--ink);letter-spacing:.3em;line-height:1;margin-right:-.3em}
+.boardtag .no{font:500 19px 'JetBrains Mono',monospace;color:#3E4F63;direction:rtl;background:rgba(230,235,241,.9);padding:4px 12px;border-radius:999px}
+.trace{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+/* world */
+#world{background:var(--marbre)}
+.wscene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.wscene canvas{position:absolute;inset:0;width:1080px;height:1920px}
+.shot{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden}
+.shot .box{position:absolute;transform-origin:50% 50%}
+.shot .box img{position:absolute;inset:0;width:100%;height:100%}
+.shot .box svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.arch{fill:none;stroke:var(--gold);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(201,164,92,.55))}
+#wlabel{left:50%;top:205px;transform:translateX(-50%);white-space:nowrap;font:500 25px 'JetBrains Mono',monospace;color:#fff;background:rgba(35,42,63,.72);
+  padding:10px 22px;border-radius:999px;direction:rtl;letter-spacing:.02em;opacity:0;z-index:5}
+.tag{position:absolute;left:50%;top:270px;transform:translateX(-50%);font:800 32px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap;z-index:3}
+.where{position:absolute;left:50%;top:1215px;transform:translateX(-50%);font:400 44px Marcellus;letter-spacing:.24em;color:#fff;text-shadow:0 2px 16px rgba(20,30,50,.6);z-index:3;white-space:nowrap}
+/* before: a generic perfume brand that only writes its promise */
+.gen{position:absolute;width:470px;height:600px;border-radius:26px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.18)}
+.gen .bt{position:absolute;left:175px;top:300px;width:120px;height:170px;border-radius:18px 18px 26px 26px;background:rgba(255,255,255,.35);border:3px solid rgba(255,255,255,.7)}
+.gen .bt::before{content:'';position:absolute;left:38px;top:-40px;width:40px;height:40px;border-radius:6px;background:rgba(255,255,255,.7)}
+.gen .sl{position:absolute;left:24px;right:24px;top:90px;text-align:center;line-height:1.1}
+.gA{background:#111}.gA .sl{font:900 64px Heebo;color:#fff;direction:rtl}
+.gB{background:#F6B6D2}.gB .sl{font:72px 'Great Vibes',cursive;color:#B0175E}
+.gC{background:#1D2A5A}.gC .sl{font:500 56px 'Frank Ruhl Libre',serif;color:#E2C27A;direction:rtl}
+.gD{background:#7B3FE4}.gD .sl{font:84px 'Bebas Neue';color:#fff;letter-spacing:.04em}
+.gen .tl{position:absolute;left:16px;bottom:16px;font:700 24px Heebo;color:#fff;background:rgba(0,0,0,.45);padding:4px 14px;border-radius:999px;direction:rtl}
+/* insight: three arches alone */
+#trio{position:absolute;left:0;right:0;top:640px;display:flex;direction:rtl;justify-content:center;gap:60px}
+#trio .a{width:260px;display:flex;flex-direction:column;align-items:center;gap:22px}
+#trio svg{width:260px;height:420px;overflow:visible}
+#trio .lb{font:700 34px Heebo;color:var(--ink);direction:rtl}
+/* captions */
+.capbox{position:absolute;display:flex;flex-wrap:wrap;gap:4px 14px;direction:rtl;opacity:0;z-index:6}
+.capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
+.capbox.low,.capbox.hook{left:50%;top:1340px;max-width:960px;width:max-content;justify-content:center;background:rgba(30,42,56,.66);padding:14px 22px;border-radius:26px}
+.cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(20,20,30,.6)}
+.capbox.low .cw,.capbox.hook .cw{text-shadow:none}
+.capbox.hook .cw{font-size:72px}
+.cw.key{background:var(--litchi);color:#fff;text-shadow:none}
+.capbox.low .cw.key,.capbox.hook .cw.key{background:var(--gold);color:var(--ink)}
+.cw.br{flex-basis:100%;height:0;padding:0}
+/* signature */
+#sig{opacity:0;z-index:7}
+#sig .dim{position:absolute;inset:0;background:rgba(15,18,28,.45)}
+#sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
+#sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:#F4EFE6;letter-spacing:.02em;white-space:nowrap}
+#sig .nm span{display:inline-block;white-space:pre}
+#sig .cta{position:absolute;left:50%;top:1110px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:18px;direction:rtl;padding:22px 44px;border-radius:999px;background:var(--olive);color:#F0EADD;font:800 46px Heebo;box-shadow:0 18px 44px rgba(0,0,0,.35),inset 0 0 0 2px rgba(201,164,92,.7)}
+#sig .cta small{font:500 30px Heebo;opacity:.85}
+#sig .cta .ar{font-size:44px;color:var(--gold)}
+#sig .site{position:absolute;left:0;right:0;top:1250px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:#F4EFE6;letter-spacing:.12em}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="config.js"></script>
+<script>
+/* ── TIMING ── HK / BZ = hook / business-line recording lengths (0 = slot skipped). VO = ep03-vo-cartesia.wav.
+   Part 1 v 0–12.2 → T = A + v · Part 2 v 12.2–35.75 → T = B + v · Question v 35.75– → T = Q + v */
+const HK = window.HK ?? 0, BZ = window.BZ ?? 0;
+const A = HK ? HK + 0.6 : 0;
+const B = A + 2.2;                                  // room for the door to open and the walk in
+const W_END = B + 35.6;
+const EXIT = { at: W_END, zoomEnd: W_END + 0.7, toS6: W_END + 0.7 };
+const BIZ_T = EXIT.toS6 + 0.3;
+const Q = BIZ_T + (BZ ? BZ + 0.4 : 0) - 35.75;
+const SIG = Q + 43.44 + 0.3, DUR = SIG + 3.6;
+const p1 = v => A + v, p2 = v => B + v, pq = v => Q + v;
+const SHOT = { HOOK: [0, A], S1: [A, p1(5.2)], S2: [p1(5.2), p1(7.0)], S3: [p1(7.0), p1(8.7)], S4: [p1(8.7), p1(13.9)], S4x: [EXIT.at, EXIT.toS6 + 0.3], S6: [EXIT.toS6, DUR] };
+const ENTRY = { hero: p1(11.5), trace: p1(11.6), zoom: p1(11.95), zoomEnd: p1(12.95), world: p1(12.65) };
+const DOOR = [p1(13.05), p2(12.55)];                // door opens (d01–d40) then the walk into the garden (e01–e40)
+const FILL = { top: p1(5.4), bot: p1(7.2), code: p1(9.0), codeEnd: p1(11.6) };
+const WORLD = [['wdoor', ENTRY.world, p2(12.75)], ['wgarden', p2(12.45), p2(18.3)], ['wopen', p2(18.2), p2(21.55)], ['wbefore', p2(21.45), p2(25.15)],
+  ['wporte', p2(25.05), p2(27.85)], ['wbox', p2(27.75), p2(28.85)], ['wbout', p2(28.75), p2(30.05)], ['wtrio', p2(29.95), W_END + 0.4]];
+const BEFORE_POP = p2(21.6), BOX_OPEN = [p2(28.2), p2(28.8)], TRIO = p2(30.05);
+const TALK = window.TALK_OFF ? [] : [ ...(HK ? [{ n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []), { n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
+const C = (a, b, txt, st) => [a, b, txt, st];
+const CAPS = [
+  ...(HK ? [C(0, A - 0.1, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')] : [C(0, 1.9, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')]),
+  C(p1(0.12), p1(1.85), 'בואי ניכנס | לעולם *מותג', 'right'),
+  C(p1(1.9), p1(5.1), 'זה *VELUNE° | עולם מותג | לבית בושם', 'right'),
+  C(p1(5.2), p1(6.95), 'למעלה, | *הצבעים', 'right'),
+  C(p1(7.0), p1(8.7), 'למטה, | *המוצר', 'right'),
+  C(p1(8.7), p1(11.0), 'ובאמצע, | מה שמחבר | ביניהם:', 'right'),
+  C(p1(11.0), p1(11.95), '*הקוד', 'right'),
+  C(p2(12.55), p2(15.6), 'כאן ההבטחה היא:', 'low'),
+  C(p2(15.6), p2(18.1), 'בושם הוא לא ריח. | הוא *מקום.', 'low'),
+  C(p2(18.3), p2(21.4), 'ולמקום נכנסים | דרך *דלת.', 'low'),
+  C(p2(21.55), p2(22.4), 'ברוב המותגים,', 'low'),
+  C(p2(22.4), p2(25.0), 'ההבטחה כתובה | *רק בסלוגן.', 'low'),
+  C(p2(25.1), p2(27.7), 'כאן, הדלת | *חוזרת:', 'low'),
+  C(p2(27.75), p2(29.75), 'בכניסה, בקופסה, | *בבוטיק.', 'low'),
+  C(p2(29.85), p2(32.6), 'וככה ההבטחה | לא צריכה *מילים.', 'low'),
+  C(p2(33.0), p2(35.6), 'רואים *אותה.', 'low'),
+  ...(BZ ? [C(BIZ_T, BIZ_T + BZ * .38, 'כשהשפה של המותג שלך | *ברורה,', 'low'),
+            C(BIZ_T + BZ * .38, BIZ_T + BZ * .74, 'את לא צריכה להסביר | בכל פעם מחדש מי את', 'low'),
+            C(BIZ_T + BZ * .74, BIZ_T + BZ, 'ולמה לבחור | *דווקא בך.', 'low')] : []),
+  C(pq(35.9), pq(38.35), 'המותג שלך | כבר *קיים.', 'low'),
+  C(pq(38.5), pq(43.3), 'השאלה היא: | איפה רואים | את *ההבטחה שלך?', 'low'),
+];
+/* ─────────────────────────────────────────────────────────────────────────────────────────────── */
+const ST = '../../studio/', VA = '../../../../velune/assets/';
+const QUADS = {
+ S1: [[[48,288],[428,320],[436,667],[51,667]], [[53,686],[437,684],[443,1018],[57,1037]], [[60,1057],[445,1040],[452,1475],[70,1515]]],
+ S2: [[[48,293],[434,332],[436,712],[48,713]], [[52,732],[438,733],[443,1118],[54,1137]], [[54,1157],[446,1138],[450,1585],[56,1605]]],
+ S3: [[[40,290],[432,330],[436,713],[46,712]], [[48,733],[437,736],[443,1118],[50,1137]], [[52,1155],[446,1136],[450,1587],[55,1630]]],
+ S4: [[[50,348],[400,357],[410,693],[52,697]], [[56,712],[413,708],[428,1056],[68,1070]], [[70,1090],[430,1076],[447,1468],[88,1505]]] };
+const STILL = { S1: 'series-S1-open', S2: 'series-S2-top', S3: 'series-S3-bottom', S4: 'series-S4-middle', S6: 'series-S6-ask' };
+const SX = 1080 / 941, SY = 1920 / 1672;
+const PAL = [['#C4D2E0', 'Poudre', '#1E2A38'], ['#DCE3EB', 'Marbre', '#1E2A38'], ['#8FA9C2', 'Eau', '#fff'], ['#232A3F', 'Nuit', '#fff'], ['#8E1E44', 'Litchi', '#fff']];
+const ARCH = (l, r, top, bot) => { const rr = (r - l) / 2, sy = top + rr; return `M${l},${bot} L${l},${sy} A${rr},${rr} 0 0 1 ${r},${sy} L${r},${bot}`; };
+// world shots: -m stills 900×1125, cover 1080×1920 (scale 1.7067), ox = horizontal object-position; arch in image px
+const SHOTS = { wporte: { src: '03-porte-closed-trees-m.webp', ox: .5, arch: ARCH(200, 690, 110, 930), where: 'LA PORTE' },
+  wbox: { src: '19-ecrin-box-closed-m.webp', src2: '20-ecrin-box-open-m.webp', ox: .5, arch: ARCH(256, 620, 300, 960), where: "L'ÉCRIN" },
+  wbout: { src: '21-boutique-interior-m.webp', ox: .8, arch: ARCH(580, 800, 36, 470), where: 'LA BOUTIQUE' } };
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eout = x => 1 - Math.pow(1 - x, 3);
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
+const stage = $('stage');
+function homo(w, h, q) {
+  const src = [[0, 0], [w, 0], [w, h], [0, h]], M = [], R = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [u, v] = q[i]; M.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); R.push(u); M.push([0, 0, 0, x, y, 1, -v * x, -v * y]); R.push(v); }
+  for (let i = 0; i < 8; i++) { let p = i; for (let r = i + 1; r < 8; r++) if (Math.abs(M[r][i]) > Math.abs(M[p][i])) p = r;
+    [M[i], M[p]] = [M[p], M[i]]; [R[i], R[p]] = [R[p], R[i]];
+    for (let r = 0; r < 8; r++) if (r !== i) { const f = M[r][i] / M[i][i]; for (let c = i; c < 8; c++) M[r][c] -= f * M[i][c]; R[r] -= f * R[i]; } }
+  const H = R.map((b, i) => b / M[i][i]);
+  return `matrix3d(${H[0]},${H[3]},0,${H[6]},${H[1]},${H[4]},0,${H[7]},0,0,1,0,${H[2]},${H[5]},0,1)`;
+}
+const sq = q => q.map(([x, y]) => [x * SX, y * SY]);
+
+/* studio */
+const L = {};
+function studio(key, img, board) {
+  const lay = el('div', 'layer', stage), cam = el('div', 'cam', lay);
+  const bg = el('img', 'full', cam); bg.src = ST + STILL[img] + '.webp';
+  const talk = el('canvas', 'full', cam); talk.width = 1080; talk.height = 1920; talk.style.display = 'none';
+  const o = { lay, cam, bg, talk };
+  if (board) {
+    const q = QUADS[img].map(sq); o.q = q;
+    o.top = el('div', 'panel', cam); o.top.style.transform = homo(720, 700, q[0]); el('div', 'plab', o.top, 'הצבעים');
+    o.sw = PAL.map(([h, n, c], i) => { const s = el('div', 'sw', o.top); s.style.right = (34 + i * 132) + 'px'; s.style.background = h;
+      el('i', '', s, n).style.color = c; el('b', '', s, h).style.color = c; return s; });
+    o.mid = el('div', 'panel', cam); o.mid.style.transform = homo(720, 700, q[1]); el('div', 'plab', o.mid, 'הקוד');
+    o.mid.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 300 460"><path class="ar" d="${ARCH(20, 280, 10, 450)}" fill="none" stroke="#B8924A" stroke-width="6" stroke-linecap="round"/>
+      <path class="sp" d="M150,${10 + 130 + 30} L150,450" fill="none" stroke="#B8924A" stroke-width="3" stroke-linecap="round"/></svg>`);
+    o.codeTxt = el('div', 'codeline', o.mid, 'הדלת · חוזרת בכל מקום');
+    o.hero = el('img', 'hero', o.mid); o.hero.src = VA + 'porte/d01.webp'; o.hero.style.objectPosition = '50% 40%';
+    o.hero2 = el('img', 'hero', o.mid); o.hero2.src = VA + '20-ecrin-box-open-m.webp';
+    o.bot = el('div', 'panel', cam); o.bot.style.transform = homo(720, 700, q[2]); el('div', 'plab', o.bot, 'המוצר');
+    o.prod = el('img', 'prod', o.bot); o.prod.src = VA + '09-bottle-blush-garden-m.webp';
+    el('img', 'full', cam).src = ST + 'fg/' + img + '.png';
+    const t = q[0], cx = (t[0][0] + t[1][0]) / 2, cy = Math.min(t[0][1], t[1][1]);
+    o.tag = el('div', 'boardtag', cam, `<div class="nm">VELUNE°</div><div class="no">עולם מותג קונספט No.25 · Brand Worlds Studio</div>`);
+    o.tag.style.left = cx + 'px'; o.tag.style.top = (cy - 116) + 'px';
+    const m = q[1];
+    cam.insertAdjacentHTML('beforeend', `<svg class="trace"><polygon points="${[m[1], m[2], m[3], m[0]].map(p => p.join(',')).join(' ')}" fill="none" stroke="#C9A45C" stroke-width="4" stroke-linejoin="round"/></svg>`);
+    o.trace = cam.lastElementChild.querySelector('polygon');
+    o.mc = [(m[0][0] + m[1][0] + m[2][0] + m[3][0]) / 4, (m[0][1] + m[1][1] + m[2][1] + m[3][1]) / 4];
+  }
+  L[key] = o; return o;
+}
+studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+
+/* world */
+const W = el('div', 'layer', stage); W.id = 'world';
+const WS = {};
+{ const s = el('div', 'wscene', W); const cv = el('canvas', '', s); cv.width = 1080; cv.height = 1920; WS.wdoor = { s, cv }; }
+const still = (id, src, ox, oy) => { const s = el('div', 'wscene', W); const i = el('img', '', s); i.src = VA + src;
+  i.style.cssText = `position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${ox * 100}% ${oy * 100}%;transform-origin:50% 55%`; WS[id] = { s, i }; };
+still('wgarden', '05-allee-garden-water-m.webp', .5, .5); still('wopen', '04-porte-open-garden-m.webp', .5, .5);
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'לפני · מותג בושם גנרי').style.cssText += ';background:#fff;color:#222';
+  const pos = [[530, 380, -4], [70, 470, 5], [540, 1010, 3], [80, 1090, -6]];
+  const t = [['gA', 'בקבוק', 'ריח שלא<br>שוכחים'], ['gB', 'פוסט', 'Feel the magic'], ['gC', 'קופסה', 'הבושם שלך.<br>הסיפור שלך.'], ['gD', 'אתר', 'LUXURY SCENT']];
+  WS.wbefore = { s, tiles: t.map(([c, lab, sl], i) => { const d = el('div', 'gen ' + c, s, `<div class="sl">${sl}</div><div class="bt"></div>`); el('div', 'tl', d, lab);
+    d.style.left = pos[i][0] + 'px'; d.style.top = pos[i][1] + 'px'; d.dataset.r = pos[i][2]; return d; }) }; }
+for (const [id, sh] of Object.entries(SHOTS)) {
+  const s = el('div', 'wscene', W), wrap = el('div', 'shot', s), k = 1920 / 1125, bw = 900 * k, box = el('div', 'box', wrap);
+  box.style.width = bw + 'px'; box.style.height = '1920px'; box.style.left = (-(bw - 1080) * sh.ox) + 'px'; box.style.top = '0px';
+  const i1 = el('img', '', box); i1.src = VA + sh.src; let i2 = null; if (sh.src2) { i2 = el('img', '', box); i2.src = VA + sh.src2; i2.style.opacity = 0; }
+  box.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 900 1125" preserveAspectRatio="none"><path class="arch" d="${sh.arch}"/></svg>`);
+  const p = box.querySelector('path.arch'); el('div', 'where', s, sh.where).style.letterSpacing = '.24em';
+  WS[id] = { s, box, i1, i2, p };
+}
+el('div', 'tag', WS.wporte.s, 'אחרי · <bdi dir="ltr">VELUNE°</bdi>').style.cssText += ';background:var(--litchi);color:#fff';
+{ const s = el('div', 'wscene', W); s.style.background = 'linear-gradient(#DCE3EB,#C4D2E0)'; const trio = el('div', '', s); trio.id = 'trio';
+  const arches = ['כניסה', 'קופסה', 'בוטיק'].map(lb => { const a = el('div', 'a', trio); a.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 260 420"><path class="arch" d="${ARCH(14, 246, 8, 412)}"/></svg>`);
+    el('div', 'lb', a, lb); return a; });
+  WS.wtrio = { s, arches }; }
+const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.25 · Brand Worlds Studio'); wlabel.id = 'wlabel';
+
+/* signature */
+const SG = el('div', 'layer', stage); SG.id = 'sig';
+el('div', 'dim', SG); const gl = el('div', 'gl', SG);
+const nm = el('div', 'nm', SG); const letters = [...'Hagit Antebi | Brand Worlds Studio'].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const cta = el('div', 'cta', SG, 'אבחון פער המותג <small>· חינם</small> <span class="ar">←</span>');
+const site = el('div', 'site', SG, 'hagitantebi.co.il');
+
+const capEls = CAPS.map(([a, b, txt, style]) => { const box = el('div', 'capbox ' + style, stage);
+  txt.split(' ').forEach(w => { if (w === '|') return el('span', 'cw br', box); const k = w.startsWith('*'), x = el('span', 'cw' + (k ? ' key' : ''), box, k ? w.slice(1) : w);
+    if (/[A-Za-z]/.test(w)) { x.style.direction = 'ltr'; x.style.unicodeBidi = 'isolate'; } }); return box; });
+
+const doorImgs = []; for (let i = 1; i <= 80; i++) { const im = new Image(); im.src = '_build/door/f_' + String(i).padStart(3, '0') + '.jpg'; doorImgs.push(im); }
+const talkImgs = TALK.map(c => { const a = []; for (let i = 1; i <= c.n; i++) { const im = new Image(); im.src = '_build/talk-' + c.dir + '/f_' + String(i).padStart(4, '0') + '.jpg'; a.push(im); } return a; });
+function drawTalk(t) {
+  const o = L.S6, x = o.talk.getContext('2d'); let drawn = false;
+  TALK.forEach((c, j) => { const ims = talkImgs[j]; if (!ims.length) return; const next = TALK[j + 1];
+    if (t < c.t0 - 0.05 && j > 0) return; if (next && t >= next.t0 - 0.05) return;
+    const im = ims[clamp(Math.round((t - c.t0) * 30), 0, ims.length - 1)]; if (!im.naturalWidth) return;
+    x.clearRect(0, 0, 1080, 1920); x.drawImage(im, 0, 0, 1080, 1920); drawn = true; });
+  o.talk.style.display = drawn ? 'block' : 'none'; o.talk.style.filter = o.bg.style.filter;
+}
+let ready0 = false;
+function setup() {
+  ready0 = true;
+  for (const k of ['S1', 'S2', 'S3', 'S4']) { const o = L[k]; o.ar = o.mid.querySelector('.ar'); o.sp = o.mid.querySelector('.sp');
+    o.arL = o.ar.getTotalLength(); o.spL = o.sp.getTotalLength(); o.ar.style.strokeDasharray = o.arL; o.sp.style.strokeDasharray = o.spL;
+    o.tl = o.trace.getTotalLength(); o.trace.style.strokeDasharray = o.tl; }
+  for (const id of Object.keys(SHOTS)) { const p = WS[id].p; WS[id].pl = p.getTotalLength(); p.style.strokeDasharray = WS[id].pl; }
+  WS.wtrio.arches.forEach(a => { const p = a.querySelector('path'); a.pl = p.getTotalLength(); p.style.strokeDasharray = a.pl; a.p = p; });
+}
+function board(o, t, full) {
+  o.sw.forEach((s, i) => { const p = full ? 1 : eout(lin(t, FILL.top + i * .14, FILL.top + i * .14 + .4)); s.style.transform = `scaleY(${p})`; s.style.opacity = p > 0 ? 1 : 0; });
+  const pp = full ? 1 : eout(lin(t, FILL.bot, FILL.bot + .6)); o.prod.style.opacity = pp; o.prod.style.transform = `translateY(${(1 - pp) * 30}px)`;
+  o.ar.style.strokeDashoffset = o.arL * (1 - ease(full ? 1 : lin(t, FILL.code, FILL.code + 1.6)));
+  o.sp.style.strokeDashoffset = o.spL * (1 - ease(full ? 1 : lin(t, FILL.code + 1.4, FILL.code + 2.0)));
+  o.codeTxt.style.opacity = full ? 1 : lin(t, FILL.codeEnd - .4, FILL.codeEnd);
+}
+function seek(t) {
+  if (!ready0) setup();
+  const inHook = t < SHOT.HOOK[1], inEnd = t >= SHOT.S6[0];
+  L.S6.lay.style.opacity = inHook ? 1 : inEnd ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
+  { const o = L.S6; const k = inHook ? 1.04 + .03 * lin(t, 0, A) : 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
+    o.bg.style.filter = `blur(${lin(t, SIG, SIG + .5) * 14}px)`; }
+  L.S1.lay.style.opacity = t >= SHOT.S1[0] && t < SHOT.S1[1] ? (HK ? lin(t, A, A + .25) : 1) : 0;
+  { const o = L.S1; board(o, t, true); const k = 1.0 + .05 * lin(t, SHOT.S1[0], SHOT.S1[1]); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-700 * (k - 1)}px) scale(${k})`;
+    o.tag.style.opacity = lin(t, p1(1.9), p1(2.3)); o.trace.style.strokeDashoffset = o.tl; }
+  for (const k of ['S2', 'S3']) { const o = L[k]; o.lay.style.opacity = t >= SHOT[k][0] && t < SHOT[k][1] ? 1 : 0; board(o, t, false); o.trace.style.strokeDashoffset = o.tl;
+    const z = 1.02 + .03 * lin(t, SHOT[k][0], SHOT[k][1]); o.cam.style.transform = `translate(${-300 * (z - 1)}px,${-800 * (z - 1)}px) scale(${z})`; }
+  { const o = L.S4; const inA = t >= SHOT.S4[0] && t < SHOT.S4[1], inX = t >= SHOT.S4x[0] && t < SHOT.S4x[1];
+    o.lay.style.opacity = inA ? 1 : inX ? 1 - lin(t, EXIT.toS6, SHOT.S4x[1]) : 0; board(o, t, inX);
+    let z, heroOp, tr;
+    if (inX) { z = 1 - ease(lin(t, EXIT.at, EXIT.zoomEnd)); heroOp = 1; tr = 1; }
+    else { z = ease(lin(t, ENTRY.zoom, ENTRY.zoomEnd)); heroOp = lin(t, ENTRY.hero, ENTRY.hero + .35); tr = lin(t, ENTRY.trace, ENTRY.trace + .4); }
+    o.hero.style.opacity = inX ? 0 : heroOp; o.hero2.style.opacity = inX ? 1 : 0; o.trace.style.strokeDashoffset = o.tl * (1 - ease(tr));
+    const S = 1 + 4.6 * z, px = o.mc[0] + (540 - o.mc[0]) * z, py = o.mc[1] + (960 - o.mc[1]) * z, base = inX ? 1 : 1.02 + .02 * lin(t, SHOT.S4[0], ENTRY.zoom), s = S * base;
+    o.cam.style.transform = `translate(${px - o.mc[0] * s}px,${py - o.mc[1] * s}px) scale(${s})`; }
+  // world
+  const wIn = lin(t, ENTRY.world, ENTRY.world + .35), wOut = 1 - lin(t, EXIT.at, EXIT.at + .3);
+  W.style.opacity = t >= ENTRY.world && t < EXIT.at + .35 ? Math.min(wIn, wOut) : 0;
+  W.style.transform = t >= EXIT.at ? `scale(${1 - .55 * ease(lin(t, EXIT.at, EXIT.at + .35))})` : 'none';
+  wlabel.style.opacity = Math.min(lin(t, p2(12.5), p2(12.9)), 1 - lin(t, EXIT.at - .25, EXIT.at));
+  for (const [id, a, b] of WORLD) WS[id].s.style.opacity = lin(t, a, a + .3) * (1 - lin(t, b - .3, b));
+  // the door: opens and we walk through it (crop of the 1280×722 frames around the door)
+  { const f = Math.round(79 * clamp(lin(t, DOOR[0], DOOR[1]))), im = doorImgs[f], x = WS.wdoor.cv.getContext('2d');
+    if (im.naturalWidth) { const z = 1.0 + .08 * lin(t, ENTRY.world, DOOR[1]), sh = 722 / z, sw = sh * 1080 / 1920; x.drawImage(im, 640 - sw / 2, (722 - sh) / 2, sw, sh, 0, 0, 1080, 1920); } }
+  { const k = 1.0 + .14 * ease(lin(t, p2(12.45), p2(18.3))); WS.wgarden.i.style.transform = `scale(${k})`; }
+  { const k = 1.0 + .2 * ease(lin(t, p2(18.2), p2(21.55))); WS.wopen.i.style.transform = `scale(${k})`; }
+  WS.wbefore.tiles.forEach((d, i) => { const p = eout(lin(t, BEFORE_POP + i * .3, BEFORE_POP + i * .3 + .35)); d.style.opacity = p;
+    d.style.transform = `translateY(${(1 - p) * 80}px) scale(${.9 + .1 * p}) rotate(${d.dataset.r * p}deg)`; });
+  for (const [id, a, b] of WORLD.filter(w => SHOTS[w[0]])) { const o = WS[id]; const k = 1.06 - .06 * eout(lin(t, a, b)); o.box.style.transform = `scale(${k})`;
+    o.p.style.strokeDashoffset = o.pl * (1 - ease(lin(t, a + .25, a + .25 + Math.min(1.1, (b - a) * .55)))); }
+  { const o = WS.wbox; const p = ease(lin(t, BOX_OPEN[0], BOX_OPEN[1])); o.i2.style.opacity = p; o.p.style.opacity = 1 - p; }
+  WS.wtrio.arches.forEach((a, i) => { const q = lin(t, TRIO + .2 + i * .35, TRIO + 1.1 + i * .35); a.p.style.strokeDashoffset = a.pl * (1 - ease(q)); a.querySelector('.lb').style.opacity = lin(t, TRIO + .8 + i * .35, TRIO + 1.1 + i * .35); });
+  drawTalk(t);
+  { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
+    gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
+    letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
+    const c = eout(lin(t, SIG + 1.7, SIG + 2.2)), tap = Math.sin(Math.PI * lin(t, SIG + 3.0, SIG + 3.35));
+    cta.style.opacity = c; cta.style.transform = `translateX(-50%) translateY(${(1 - c) * 30}px) scale(${1 - .06 * tap})`; site.style.opacity = lin(t, SIG + 2.1, SIG + 2.5); }
+  CAPS.forEach(([a, b, , st], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
+    const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = st === 'right' ? `translateY(${dy}px)` : `translate(-50%,${dy}px)`; });
+}
+window.seek = seek; window.DUR = DUR;
+window.ready = Promise.all([document.fonts.ready, ...[...document.images, ...doorImgs, ...talkImgs.flat()].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))]).then(() => { seek(0); });
+if (location.search.includes('play')) { const t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); }; window.ready.then(loop); }
+</script>
+</body>
+</html>

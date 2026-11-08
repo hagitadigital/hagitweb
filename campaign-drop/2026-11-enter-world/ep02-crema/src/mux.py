@@ -23,7 +23,7 @@ elif cmd == 'audio':
     print('ask', round(dur(os.path.join(V, '_ask.wav')), 2))
 elif cmd == 'mux':
     silent, out = sys.argv[2], sys.argv[3]; ms = lambda x: int(round(x * 1000))
-    ins = ['-i', silent, '-i', vo, '-i', os.path.join(root, '..', 'ep01-elvea', 'voice', 'bed-piano-strings-v1.mp3'), '-f', 'lavfi', '-t', '0.9', '-i', 'anoisesrc=color=pink:amplitude=0.6:r=44100']
+    ins = ['-i', silent, '-i', vo, '-stream_loop', '-1', '-i', os.path.join(root, '..', 'ep01-elvea', 'voice', 'bed-piano-strings-v1.mp3'), '-f', 'lavfi', '-t', '0.9', '-i', 'anoisesrc=color=pink:amplitude=0.6:r=44100']
     fc = (f"[1:a]asplit=3[a][b][c];[a]atrim=0:12.5,asetpts=PTS-STARTPTS,adelay={ms(A)}|{ms(A)}[v1];"
           f"[b]atrim=12.5:30.6,asetpts=PTS-STARTPTS,adelay={ms(B + 12.5)}|{ms(B + 12.5)}[v2];[c]atrim=30.6,asetpts=PTS-STARTPTS,adelay={ms(Q + 30.6)}|{ms(Q + 30.6)}[v3];")
     vos = ['[v1]', '[v2]', '[v3]']; k = 4
