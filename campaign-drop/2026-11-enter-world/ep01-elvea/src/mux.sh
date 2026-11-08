@@ -3,7 +3,7 @@
 # VO_SHIFT: VO 0–11.9 → +0 · 11.9–28.76 → +0.6 · 28.76–end → +1.4   (matches the TIMING block in ep01.html)
 # usage: bash src/mux.sh <silent.mp4> <out.mp4>
 set -e; cd "$(dirname "$0")/.."
-V=voice/ep01-vo-cartesia.wav; M=voice/bed-piano-strings-v1.mp3; DUR=38.2
+V=voice/ep01-vo-cartesia.wav; M=voice/bed-piano-strings-v1.mp3; DUR=39.4
 ffmpeg -y -loglevel error -i "$1" -i $V -i $M -f lavfi -t 0.9 -i "anoisesrc=color=pink:amplitude=0.6:r=44100" -filter_complex "
 [1:a]asplit=3[a][b][c];
 [a]atrim=0:11.9,asetpts=PTS-STARTPTS[v1];

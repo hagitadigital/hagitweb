@@ -43,6 +43,8 @@ html,body{margin:0;background:#000}
 .tile{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px rgba(46,53,38,.22);opacity:0}
 .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .tile .tl{position:absolute;left:14px;bottom:14px;font:700 24px Heebo;color:#fff;background:rgba(0,0,0,.45);padding:4px 14px;border-radius:999px;direction:rtl}
+.tnm{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;max-width:190px}
+.tile .wm{position:absolute;left:0;right:0;top:46%;text-align:center;font:600 64px 'Cormorant Garamond',serif;color:#2E3526;letter-spacing:.06em;direction:ltr;text-shadow:0 0 18px rgba(255,250,240,.95),0 0 4px rgba(255,250,240,.9)}
 .tile .ring{position:absolute;inset:0;border-radius:24px;box-shadow:inset 0 0 0 6px var(--gold);opacity:0}
 .tag{position:absolute;left:50%;top:268px;transform:translateX(-50%);font:800 30px Heebo;direction:rtl;padding:6px 22px;border-radius:12px;white-space:nowrap}
 /* generic no-name touchpoints */
@@ -78,14 +80,17 @@ html,body{margin:0;background:#000}
 #sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
 #sig .nm{position:absolute;left:0;right:0;top:880px;text-align:center;font:500 66px 'Cormorant Garamond',serif;color:var(--cream);letter-spacing:.02em;white-space:nowrap}
 #sig .nm span{display:inline-block;white-space:pre}
-#sig .site{position:absolute;left:0;right:0;top:1030px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:var(--cream);letter-spacing:.12em}
+#sig .cta{position:absolute;left:50%;top:1110px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:18px;direction:rtl;padding:22px 44px;border-radius:999px;background:var(--olive);color:var(--cream);font:800 46px Heebo;box-shadow:0 18px 44px rgba(0,0,0,.35),inset 0 0 0 2px rgba(201,164,92,.7)}
+#sig .cta small{font:500 30px Heebo;opacity:.85}
+#sig .cta .ar{font-size:44px;color:var(--gold)}
+#sig .site{position:absolute;left:0;right:0;top:1250px;text-align:center;font:500 26px 'JetBrains Mono',monospace;color:var(--cream);letter-spacing:.12em}
 </style>
 </head>
 <body>
 <div id="stage"></div>
 <script>
 /* ── TIMING (seconds, final timeline) ─────────────────────────────────────────────────────── */
-const DUR = 38.2;
+const DUR = 39.4;
 const SHOT = {           // studio shots [from, to]
   S1: [0, 4.55], S2: [4.55, 6.45], S3: [6.45, 8.2], S4: [8.2, 12.95], S4x: [29.35, 30.3], S6: [30.0, DUR] };
 const ENTRY = { hero: 11.45, trace: 11.55, zoom: 11.85, zoomEnd: 12.85, world: 12.55 };
@@ -94,7 +99,7 @@ const FILL = { top: 4.75, bot: 6.65, code: 9.7, codeEnd: 11.2 };
 const WORLD = [          // [id, from, to]
   ['wseq', 12.55, 15.3], ['wfil', 15.25, 17.65], ['wmuse', 17.6, 19.7], ['wbefore', 19.65, 23.8], ['wafter', 23.75, 29.6] ];
 const SEQ = [12.85, 15.1];         // hero image sequence f_001 → f_080
-const BEFORE_POP = 19.85, AFTER_POP = 24.1, RINGS = 27.8;
+const BEFORE_POP = 19.85, AFTER_POP = 24.1, ERASE = 27.75, RINGS = 28.1;
 const SIG = 34.75;
 const CAPS = [   // [from, to, text, style]  * keyword pill · | line break
   [0, 2.0, 'אם נסתיר את השם, | עדיין *יזהו אותו?', 'hook'],
@@ -206,11 +211,11 @@ wcard('wmuse', EV + 'img/muse-bottle.webp', '58% 50%');
     ['gD', 'אתר', '<div class="bar"><i style="left:16px"></i><i style="left:40px"></i><i style="left:64px"></i></div><div class="hero2"></div><div class="wl">Welcome</div><div class="btn"></div>'] ];
   WS.wbefore = { s, tiles: t.map(([c, lab, h]) => { const d = el('div', 'tile ' + c, g, h); el('div', 'tl', d, lab); return d; }) }; }
 // after: ELVÉA°
-{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'אחרי · <bdi dir="ltr">ELVÉA°</bdi>').style.cssText += ';background:var(--olive);color:#fff';
+{ const s = el('div', 'wscene', W); el('div', 'tag', s, 'אחרי<span class="tnm"> · <bdi dir="ltr">ELVÉA°</bdi></span>').style.cssText += ';background:var(--olive);color:#fff';
   const g = el('div', 'grid', s);
   const t = [['img/hero-7-bottle.webp', 'בקבוק', '64% 50%'], ['img/gift-set.webp', 'קופסה', '50% 50%'], ['img/boutique-bags.webp', 'שקית', '62% 50%'], ['img/fil-03.webp', 'פיד', '50% 40%']];
   WS.wafter = { s, tiles: t.map(([src, lab, pos]) => { const d = el('div', 'tile', g); const i = el('img', '', d); i.src = EV + src; i.style.objectPosition = pos;
-    el('div', 'tl', d, lab); el('div', 'ring', d); return d; }) }; }
+    el('div', 'tl', d, lab); el('div', 'wm', d, 'ELVÉA°'); el('div', 'ring', d); return d; }) }; }
 const wlabel = el('div', 'abs', stage, 'עולם מותג קונספט No.14 · Brand Worlds Studio'); wlabel.id = 'wlabel';
 
 /* signature */
@@ -218,6 +223,7 @@ const SG = el('div', 'layer', stage); SG.id = 'sig';
 el('div', 'dim', SG); const gl = el('div', 'gl', SG);
 const nm = el('div', 'nm', SG); const NAME = 'Hagit Antebi | Brand Worlds Studio';
 const letters = [...NAME].map(ch => el('span', '', nm, ch === ' ' ? ' ' : ch));
+const cta = el('div', 'cta', SG, 'אבחון פער המותג <small>· חינם</small> <span class="ar">←</span>');
 const site = el('div', 'site', SG, 'hagitantebi.co.il');
 
 /* captions */
@@ -285,7 +291,10 @@ function seek(t) {
     if (im.naturalWidth) x.drawImage(im, (im.naturalWidth - sw) / 2, (im.naturalHeight - sh) / 2, sw, sh, 0, 0, 980, 1225); }
   WS.wbefore.tiles.forEach((d, i) => { const p = eout(lin(t, BEFORE_POP + i * .28, BEFORE_POP + i * .28 + .35)); d.style.opacity = p; d.style.transform = `scale(${.86 + .14 * p}) rotate(${(i % 2 ? 2 : -2) * p}deg)`; });
   WS.wafter.tiles.forEach((d, i) => { const p = eout(lin(t, AFTER_POP + i * .3, AFTER_POP + i * .3 + .35)); d.style.opacity = p; d.style.transform = `scale(${.86 + .14 * p})`;
-    d.querySelector('.ring').style.opacity = lin(t, RINGS + i * .15, RINGS + i * .15 + .3); });
+    d.querySelector('.ring').style.opacity = lin(t, RINGS + i * .15, RINGS + i * .15 + .3);
+    const e = lin(t, ERASE + i * .12, ERASE + i * .12 + .35), wm = d.querySelector('.wm');
+    wm.style.opacity = 1 - e; wm.style.filter = `blur(${e * 10}px)`; wm.style.transform = `scale(${1 + e * .15})`; });
+  { const e = lin(t, ERASE, ERASE + .4), tn = WS.wafter.s.querySelector('.tnm'); tn.style.opacity = 1 - e; tn.style.filter = `blur(${e * 6}px)`; tn.style.maxWidth = (190 * (1 - ease(lin(t, ERASE + .3, ERASE + .7)))) + 'px'; }
   // S6
   { const o = L.S6; o.lay.style.opacity = t >= SHOT.S6[0] ? lin(t, EXIT.toS6, EXIT.toS6 + .3) : 0;
     const k = 1.0 + .07 * lin(t, SHOT.S6[0], SIG); o.cam.style.transform = `translate(${-540 * (k - 1)}px,${-640 * (k - 1)}px) scale(${k})`;
@@ -294,7 +303,9 @@ function seek(t) {
   { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
     gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
     letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + .6 + i * .035 + .4)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
-    site.style.opacity = lin(t, SIG + 1.9, SIG + 2.3); }
+    const c = eout(lin(t, SIG + 1.7, SIG + 2.2)), tap = Math.sin(Math.PI * lin(t, SIG + 3.0, SIG + 3.35));
+    cta.style.opacity = c; cta.style.transform = `translateX(-50%) translateY(${(1 - c) * 30}px) scale(${1 - .06 * tap})`;
+    site.style.opacity = lin(t, SIG + 2.1, SIG + 2.5); }
   // captions
   CAPS.forEach(([a, b], i) => { const e = capEls[i]; const op = a === 0 ? 1 - lin(t, b - .15, b) : lin(t, a, a + .12) * (1 - lin(t, b - .12, b)); e.style.opacity = op;
     const dy = (1 - eout(lin(t, a, a + .2))) * (a === 0 ? 0 : 16); e.style.transform = CAPS[i][3] === 'low' ? `translate(-50%,${dy}px)` : `translateY(${dy}px)`; });
