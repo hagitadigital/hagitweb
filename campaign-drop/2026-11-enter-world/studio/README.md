@@ -9,7 +9,10 @@ Hagit's fixed studio stills for every episode (look א׳, black blazer). Brief a
 | `series-S2-top.webp` | points at the top panel (colours) |
 | `series-S3-bottom.webp` | points at the bottom panel (product) |
 | `series-S4-middle.webp` | points at the middle panel (code), entry shot |
-| S5 draw, S6 ask | to come |
+| `series-S5-draw.webp` | draws a line at the worktable |
+| `series-S6-ask.webp` | the question to the viewer, board soft behind |
+
+To redo so the board and room match S4 (easel, window, olive): S1 and S3.
 
 `test-board-elvea-S4.jpg` — board test: ELVÉA° colours / code / product warped onto S4, hand kept on top.
 `src/panels.html` renders the three panel faces (720×700), `src/warp.py <still> <out.jpg>` warps them onto the board
