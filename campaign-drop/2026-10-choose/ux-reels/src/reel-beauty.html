@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ריל ביוטי · קודם הידיים</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap">
+<style>
+:root{--cream:#FAF8F3;--beige:#F5F1E8;--ink:#2A201A;--deep:#4F372C;--copper:#C4765A;--copper-text:#A45839;--copper-light:#E0A88E;--grey:#6F665C;--choc:#7A6349}
+html,body{margin:0;background:var(--ink)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+.film *{animation-duration:25s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+.disp{font-family:'Frank Ruhl Libre',serif;font-weight:500}
+.lat{font-family:'Cormorant Garamond',serif}
+.eyebrow{position:absolute;top:150px;right:80px;left:80px;display:flex;align-items:center;gap:22px;font-size:34px;font-weight:500}
+.eyebrow .rule{width:90px;height:2px}
+.box{position:absolute;top:270px;left:60px;width:960px;height:1080px;border-radius:28px;overflow:hidden;border:2px solid var(--copper);box-shadow:0 40px 90px rgba(20,14,10,.28)}
+.pill{position:absolute;top:26px;right:26px;padding:10px 24px;border-radius:999px;font-size:28px;font-weight:500}
+.lines{position:absolute;top:1420px;right:80px;left:80px;display:flex;flex-direction:column;gap:14px;text-align:right}
+.l1{font-size:62px;line-height:1.2}
+.l2{font-size:74px;line-height:1.15;font-style:italic}
+.cap{position:absolute;top:1745px;right:80px;left:80px;font-size:28px;letter-spacing:.02em;text-align:right}
+.mark{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:.32em}
+.phone{position:absolute;top:270px;left:250px;width:580px;height:1090px;box-sizing:border-box;border:16px solid #1A1410;border-radius:76px;overflow:hidden;box-shadow:0 40px 90px rgba(20,14,10,.3)}
+.thumb{position:absolute;left:50%;margin-left:-44px;width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.42);border:3px solid rgba(255,255,255,.9)}
+.progress{transform-origin:right;animation-name:prog;animation-timing-function:linear}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:96px;height:96px}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.25);border:1.5px solid rgba(216,204,189,.7)}
+.sph{position:absolute;left:12px;top:12px;width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+</style>
+</head>
+<body data-duration="25">
+<div id="stage"><div class="film stack">
+
+<section class="scene" data-show="0,2.5" style="background: #2A201A" dir="rtl">
+  <div style="position: absolute; top: 96px; right: 80px; left: 80px; display: flex; justify-content: space-between; align-items: baseline">
+    <span class="lat" style="font-style: italic; font-size: 38px; color: #E0A88E" dir="ltr">Brand Worlds Studio</span>
+    <span style="font-size: 24px; letter-spacing: .3em; color: #CFC3B5">חגית אנטבי</span>
+  </div>
+  <div class="disp" style="position: absolute; top: 230px; right: 80px; left: 80px; font-size: 98px; line-height: 1.14; color: #FAF8F3">למה מוצר אחד <span style="color: #E0A88E">משווים,</span><br>ואת השני <em style="color: #E0A88E">בוחרים?</em></div>
+  <div style="position: absolute; top: 560px; right: 80px; left: 80px; height: 900px; display: flex; gap: 28px">
+    <div style="flex: 1; background: #FFFFFF; border-radius: 22px; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+      <div style="position: relative; flex-grow: 1; min-height: 0"><img class="cover" src="assets/generic-serum.jpg" alt="" style="object-fit: cover; border-radius: 12px"><span class="pill" style="top: 14px; right: 14px; background: #2E2A27; color: #F4F2EF; font-size: 26px">ככה משווים</span></div>
+      <div style="display: flex; justify-content: space-between; font-size: 32px; color: #6E6660"><span>סרום 30 מ״ל</span><b style="color: #2E2A27">₪89</b></div>
+    </div>
+    <div style="flex: 1; position: relative; border-radius: 22px; overflow: hidden; border: 2px solid #C4765A">
+      <img class="cover" src="assets/founder-cream-on-hand.webp" alt="" style="object-position: 34% 60%">
+      <span class="pill" style="top: 14px; right: 14px; background: #A45839; color: #FAF8F3; font-size: 26px">ככה בוחרים</span>
+      <span class="disp" style="position: absolute; bottom: 22px; right: 18px; left: 18px; padding: 12px 10px; background: rgba(250,248,243,.9); color: #2A201A; font-size: 44px; text-align: center">קודם הידיים.</span>
+    </div>
+  </div>
+  <style>
+.bl{animation-name:bl;animation-timing-function:linear}
+@keyframes bl{0%,1.00%{offset-distance:0%;opacity:0}1.40%{opacity:1}8.00%,100%{offset-distance:100%;opacity:1}}
+.ln{animation-name:ln;animation-timing-function:linear}
+@keyframes ln{0%,1.00%{stroke-dashoffset:1}8.00%,100%{stroke-dashoffset:0}}
+.rl{position:absolute;inset:0;animation-name:rl;animation-timing-function:linear}
+@keyframes rl{0%,1.00%{transform:rotate(0)}8.00%,100%{transform:rotate(-400deg)}}
+</style>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln" pathLength="1" d="M1160 1600 H540"></path></svg>
+  <div class="ball bl" style="offset-path: path('M1160 1600 H540')"><div class="halo"></div><div class="sph"><div class="rl"><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 10px; top: 42px; width: 13px; height: 13px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+  <div class="mark" style="position: absolute; top: 1760px; left: 0; right: 0; text-align: center; color: #E0A88E" dir="ltr">BRAND · WORLDS · STUDIO</div>
+</section>
+<section class="scene" data-show="2.5,7.5" style="background: #F5F1E8" dir="rtl">
+  <div class="eyebrow" data-in="2.55" style="color: #A45839"><span class="lat" style="font-size: 44px">01</span><span class="rule" style="background: #C4765A"></span><span style="color: #2A201A">המוצר</span></div>
+  
+  <div class="box">
+    <div class="stack" data-show="2.5,3.4" data-fade="0.25" style="background: #FFFFFF">
+      <img class="cover" src="assets/generic-serum.jpg" alt="" style="object-fit: contain; filter: grayscale(.35); padding: 90px 120px 200px; box-sizing: border-box">
+      <span class="pill" style="background: #2E2A27; color: #F4F2EF">ככה משווים</span>
+      <div style="position: absolute; left: 60px; right: 60px; bottom: 60px; display: flex; justify-content: space-between; font-size: 40px; color: #6E6660" dir="rtl"><span>סרום פנים · 30 מ״ל</span><b style="color: #2E2A27">₪89</b></div>
+    </div>
+    <div class="stack" data-wipe="3.25">
+      <div class="stack" data-show="3.25,5.75" data-fade="0.1"><div class="stack" data-tf="3.25;5.9;scale(1.14);scale(1.0)"><img class="cover" src="assets/founder-cream-on-hand.webp" alt="" style="object-position: 34% 60%"></div></div>
+      <div class="stack" data-show="5.6,7.9" data-fade="0.4"><div class="stack" data-tf="5.6;7.6;scale(1.0);scale(1.07)"><img class="cover" src="assets/founder-client-bottle.webp" alt="" style="object-position: 46% 50%"></div></div>
+      <span class="pill" style="background: #A45839; color: #FAF8F3">ככה בוחרים</span>
+    </div>
+  </div>
+  <div class="lines">
+    <div class="l1 disp" data-in="2.8" style="color: #6F665C">שם הבקבוק בפרונט.</div>
+    <div class="l2 disp" data-in="4.0" style="color: #A45839">כאן קודם הידיים.</div>
+  </div>
+  <div class="cap" data-in="4.2" style="color: #6F665C"><span dir="ltr">ORÉVA° · Les mains d'abord. Le flacon ensuite.</span></div>
+</section>
+<section class="scene" data-show="7.5,12.6" style="background: #2A201A" dir="rtl">
+  <div class="eyebrow" data-in="7.55" style="color: #E0A88E"><span class="lat" style="font-size: 44px">02</span><span class="rule" style="background: #E0A88E"></span><span style="color: #FAF8F3">הגלילה</span></div>
+  
+  <div class="phone" data-show="7.5,8.45" data-fade="0.25" style="background: #EFEFEF">
+      <div data-tf="7.5;8.45;translateY(0);translateY(-620px)" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 90px 18px"><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div><div style="height: 300px; background: #FFFFFF; border-radius: 8px; overflow: hidden"><img src="assets/generic-serum.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4)"></div></div>
+      <span class="pill" style="background: #2E2A27; color: #F4F2EF">ככה משווים</span>
+    </div>
+  <div class="phone" data-wipe="8.3" style="background: #F3E6E1">
+    <div class="stack" data-seq="assets/rosee/f_%03d.webp" data-from="1" data-to="80" data-by="2" data-start="8.35" data-step="0.088" data-pos="52% 50%"></div>
+    <div style="position: absolute; top: 70px; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 56px; letter-spacing: .14em; color: #6B3F3A" dir="ltr">ROSÉE°</div>
+  </div>
+  <div class="stack" data-show="8.4,12.0" style="pointer-events: none"><div data-tf="8.4;12.0;translateY(760px);translateY(300px)" style="position: absolute; top: 270px; left: 0; right: 0"><div class="thumb"></div></div></div>
+  <div class="lines">
+    <div class="l1 disp" data-in="7.7" style="color: #CFC3B5">שם גוללים עוד ריבועים.</div>
+    <div class="l2 disp" data-in="8.9" style="color: #E0A88E">כאן הטיפה נופלת ונפתחת.</div>
+  </div>
+  <div class="cap" data-in="9.1" style="color: #CFC3B5"><span dir="ltr">ROSÉE° · Née à l'aube</span></div>
+</section>
+<section class="scene" data-show="12.6,17.6" style="background: #F5F1E8" dir="rtl">
+  <div class="eyebrow" data-in="12.65" style="color: #A45839"><span class="lat" style="font-size: 44px">03</span><span class="rule" style="background: #C4765A"></span><span style="color: #2A201A">העיצוב</span></div>
+  
+  <div class="box" style="background: #EEEBE1">
+    <div class="stack" data-show="12.6,13.45" data-fade="0.25" style="background: #FFFFFF">
+      <img class="cover" src="assets/generic-serum.jpg" alt="" style="object-fit: contain; filter: grayscale(.35); padding: 90px 120px 200px; box-sizing: border-box">
+      <span class="pill" style="background: #2E2A27; color: #F4F2EF">ככה משווים</span>
+      <div style="position: absolute; left: 60px; right: 60px; bottom: 60px; display: flex; justify-content: space-between; font-size: 40px; color: #6E6660" dir="rtl"><span>תווית לבנה · מחיר</span><b style="color: #2E2A27">₪89</b></div>
+    </div>
+    <div class="stack" data-wipe="13.3" style="overflow: hidden">
+      <div data-tf="13.3;16.8;translateX(-382px);translateX(-737px)" style="position: absolute; top: 0; left: 0; width: 1916px; height: 1080px">
+        <div class="stack" data-seq="assets/elvea/f_%03d.webp" data-from="1" data-to="80" data-by="2" data-start="13.35" data-step="0.085"></div>
+      </div>
+      <span class="pill" style="background: #A45839; color: #FAF8F3">ככה בוחרים</span>
+    </div>
+  </div>
+  <div class="lines">
+    <div class="l1 disp" data-in="12.8" style="color: #6F665C">שם תווית ומחיר.</div>
+    <div class="l2 disp" data-in="14.0" style="color: #A45839">כאן פרח, טיפה, ואז בקבוק.</div>
+  </div>
+  <div class="cap" data-in="14.2" style="color: #6F665C">ELVÉA° · הטבע מתחיל את הסיפור. הפורמולה מסיימת אותו.</div>
+</section>
+<section class="scene" data-show="17.6,21.5" style="background: #2A201A" dir="rtl">
+  <div class="eyebrow" data-in="17.650000000000002" style="color: #E0A88E"><span class="lat" style="font-size: 44px">04</span><span class="rule" style="background: #E0A88E"></span><span style="color: #FAF8F3">נקודות המגע</span></div>
+  
+  <div style="position: absolute; top: 280px; left: 60px; width: 960px; box-sizing: border-box; padding: 14px 14px 26px; background: #120D0A; border-radius: 22px">
+    <div style="position: relative; height: 504px; overflow: hidden; border-radius: 6px">
+      <img class="cover" src="assets/elvea.webp" alt="">
+      <div data-tf="18.3;18.75;scaleX(0);scaleX(1)" style="position: absolute; left: 15.5%; width: 27%; top: 31%; height: 21%; background: #C4765A; border-radius: 6px; transform-origin: right"></div>
+    </div>
+  </div>
+  <div style="position: absolute; top: 880px; left: 60px; width: 960px; height: 470px; border-radius: 22px; overflow: hidden; border: 2px solid #C4765A">
+    <img class="cover" src="assets/boutique-bags-m.webp" alt="" style="object-position: 78% 60%">
+    <span class="pill" data-in="19.0" style="background: #A45839; color: #FAF8F3">גם על השקית אין שם</span>
+  </div>
+  <div class="lines">
+    <div class="l1 disp" data-in="18.0" style="color: #CFC3B5">הסתרנו את הלוגו.</div>
+    <div class="l2 disp" data-in="18.9" style="color: #E0A88E">עדיין יודעים של מי זה.</div>
+  </div>
+  <div class="cap" data-in="19.099999999999998" style="color: #CFC3B5">ELVÉA° · אתר, בוטיק, שקית</div>
+</section>
+<section class="scene" data-show="21.5,25" style="background: #2A201A" dir="rtl">
+  <div class="disp" style="position: absolute; top: 420px; right: 80px; left: 80px; font-size: 92px; line-height: 1.2; color: #FAF8F3"><span data-in="21.6" style="display: inline-block; margin-left: 22px">בידיים.</span><span data-in="22.1" style="display: inline-block; margin-left: 22px">בטיפה.</span><span data-in="22.6" style="display: inline-block; margin-left: 22px">בשפה.</span></div>
+  <div class="disp" data-in="23.4" style="position: absolute; top: 560px; right: 80px; left: 80px; font-size: 92px; line-height: 1.18; font-style: italic; color: #E0A88E">הבקבוק הוא רק<br>השכבה האחרונה.</div>
+  <div data-in="23.7" style="position: absolute; top: 1020px; right: 80px; left: 80px; display: flex; flex-direction: column; align-items: center; gap: 34px; text-align: center">
+    <div style="font-size: 44px; line-height: 1.35; color: #E8DDD0">מה קורה סביב<br>הבקבוק שלך?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 64px; background: #C4765A; color: #2A201A; border-radius: 4px"><span style="font-size: 42px; font-weight: 600">אבחון פער המותג</span><span style="font-size: 26px">30 דק׳ · בלי עלות</span></div>
+    <div class="mark" style="color: #E0A88E" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</section>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: rgba(196,118,90,.22)"><div class="progress" style="height: 8px; background: var(--copper)"></div></div>
+</div></div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  const name = el => { const k = 'k' + (n++); el.style.animationName = k; return k; };
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .3), k = name(el);
+    const s = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const e = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${s}${e}}`);
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(34px)}${P(t + .55)},100%{opacity:1;transform:none}}`);
+  });
+  /* data-wipe="t": reveal from the right edge leftwards over .55s (RTL reading direction) */
+  document.querySelectorAll('[data-wipe]').forEach(el => {
+    const t = +el.dataset.wipe, k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(t)}{clip-path:inset(0 0 0 100%)}${P(t + .55)},100%{clip-path:inset(0 0 0 0)}}`);
+  });
+  /* data-tf="a;b;from;to": one transform move between a and b seconds */
+  document.querySelectorAll('[data-tf]').forEach(el => {
+    const [a, b, f, t] = el.dataset.tf.split(';'), k = name(el);
+    css.push(`@keyframes ${k}{0%,${P(+a)}{transform:${f}}${P(+b)},100%{transform:${t}}}`);
+  });
+  /* data-seq: each frame shows from its start until the next one starts; the last frame holds */
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const st = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block;animation-timing-function:linear`;
+    const frames = []; for (let f = from; f <= to; f += by) frames.push(f);
+    frames.forEach((f, i) => {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.style.cssText = st;
+      const k = 'k' + (n++); im.style.animationName = k;
+      const a = start + i * step, b = start + (i + 1) * step + .02, first = i === 0, last = i === frames.length - 1;
+      let kf;
+      if (first && last) kf = '0%,100%{opacity:1}';
+      else if (first) kf = `0%,${P(b)}{opacity:1}${P(b + .001)},100%{opacity:0}`;
+      else if (last) kf = `0%,${P(a - .001)}{opacity:0}${P(a)},100%{opacity:1}`;
+      else kf = `0%,${P(a - .001)}{opacity:0}${P(a)},${P(b)}{opacity:1}${P(b + .001)},100%{opacity:0}`;
+      css.push(`@keyframes ${k}{${kf}}`);
+      el.appendChild(im);
+    });
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
