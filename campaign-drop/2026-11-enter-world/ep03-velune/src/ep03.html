@@ -65,7 +65,10 @@ html,body{margin:0;background:#000}
 .capbox.right{left:520px;right:30px;top:1330px;justify-content:center}
 .capbox.low,.capbox.hook{left:50%;top:1340px;max-width:960px;width:max-content;justify-content:center;background:rgba(30,42,56,.66);padding:14px 22px;border-radius:26px}
 .cw{display:inline-block;font-weight:800;font-size:66px;line-height:1.18;color:#fff;padding:0 10px;border-radius:14px;text-shadow:0 3px 0 rgba(0,0,0,.18),0 8px 28px rgba(20,20,30,.6)}
-.capbox.low .cw,.capbox.hook .cw{text-shadow:none}
+.capbox.low .cw,.capbox.hooktop{left:50%;top:150px;max-width:980px;width:max-content;justify-content:center;background:rgba(30,30,36,.66);padding:16px 24px;border-radius:26px}
+.capbox.hooktop .cw{text-shadow:none;font-size:68px}
+.capbox.hooktop .cw.key{background:var(--gold);color:#222}
+.capbox.hook .cw{text-shadow:none}
 .capbox.hook .cw{font-size:72px}
 .cw.key{background:var(--litchi);color:#fff;text-shadow:none}
 .capbox.low .cw.key,.capbox.hook .cw.key{background:var(--gold);color:var(--ink)}
@@ -107,7 +110,7 @@ const BEFORE_POP = p2(21.6), BOX_OPEN = [p2(28.2), p2(28.8)], TRIO = p2(30.05);
 const TALK = window.TALK_OFF ? [] : [ ...(HK ? [{ n: window.HK_N || 0, t0: 0, dir: 'hook' }] : []), { n: window.Q_N || 0, t0: BIZ_T, dir: 'ask' } ];
 const C = (a, b, txt, st) => [a, b, txt, st];
 const CAPS = [
-  ...(HK ? [C(0, A - 0.1, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')] : [C(0, 1.9, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')]),
+  ...(HK ? [C(0, A - 0.1, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hook')] : [C(0, 1.9, 'ההבטחה של המותג שלך | כתובה *רק בסלוגן?', 'hooktop')]),
   C(p1(0.12), p1(1.85), 'בואי ניכנס | לעולם *מותג', 'right'),
   C(p1(1.9), p1(5.1), 'זה *VELUNE° | עולם מותג | לבית בושם', 'right'),
   C(p1(5.2), p1(6.95), 'למעלה, | *הצבעים', 'right'),
