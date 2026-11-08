@@ -88,6 +88,8 @@ html,body{margin:0;background:#000}
 <body>
 <div id="stage"></div>
 <script src="config.js"></script>
+<script src="mode.js"></script>
+<script src="../../shared/cards.js"></script>
 <script>
 /* ── TIMING ── separate recordings (voice/): hook.wav · studio.wav · world.wav · biz.wav (shared) · ask-q.wav.
    Sentence times inside each file come from its pauses. HK, SD, WD, BZ, QD = their lengths (config.js, written by mux.py). */
@@ -198,6 +200,12 @@ function studio(key, img, board) {
   L[key] = o; return o;
 }
 studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
+/* world cards around her in the to-camera parts (shared/cards.js; mode.js picks 'orbit' or 'seq') */
+const SEQ = (window.CARDS_MODE || 'orbit') === 'seq';
+const drawCards = makeCards(stage, '../../../../velune/assets/', {
+  hook: (SEQ ? [['03-porte-closed-trees-m.webp'], ['20-ecrin-box-open-m.webp'], ['21-boutique-interior-m.webp', '75% 50%']]
+             : [['03-porte-closed-trees-m.webp'], ['10-bottle-aube-day-m.webp'], ['20-ecrin-box-open-m.webp'], ['11-bottle-floraison-blush-m.webp'], ['21-boutique-interior-m.webp', '75% 50%'], ['12-bottle-crepuscule-dusk-m.webp']]),
+  biz: [['04-porte-open-garden-m.webp'], ['01-lineup-three-editions-arch-m.webp'], ['19-ecrin-box-closed-m.webp'], ['16-muse-holding-bottle-m.webp'], ['22-boutique-counter-three-m.webp'], ['14-notes-floraison-rose-peony-m.webp']] });
 
 /* world */
 const W = el('div', 'layer', stage); W.id = 'world';
@@ -300,6 +308,8 @@ function seek(t) {
   { const o = WS.wbox; const p = ease(lin(t, BOX_OPEN[0], BOX_OPEN[1])); o.i2.style.opacity = p; o.p.style.opacity = 1 - p; }
   WS.wtrio.arches.forEach((a, i) => { const q = lin(t, TRIO + .2 + i * .35, TRIO + 1.1 + i * .35); a.p.style.strokeDashoffset = a.pl * (1 - ease(q)); a.querySelector('.lb').style.opacity = lin(t, TRIO + .8 + i * .35, TRIO + 1.1 + i * .35); });
   drawTalk(t);
+  drawCards(t, 'hook', 0, HK ? A - .5 : 1.6, { still: true, beats: [0, (HK ? A : 2) * .33, (HK ? A : 2) * .62] });
+  drawCards(t, 'biz', BIZ_T, QT + 0.4, { beats: [0, .15, .30, .53, .76, .88].map(f => BIZ_T + f * BZ) });
   { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
     gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
     letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });

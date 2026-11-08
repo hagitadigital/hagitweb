@@ -1,6 +1,6 @@
 # EP04 · CHASEN° (No.22) · שפה: לא מזמינים, מרכיבים
 
-- `ep04-chasen-v2.mp4` — 54s (v2: world cards orbit around Hagit in the to-camera parts — `ORBIT`/`OSETS` in ep04.html): hook to camera (lip-synced) → board → entry through the whisk → the film (powder, whisk, pour) with
+- `ep04-chasen-v2.mp4` (cards orbit) and `ep04-chasen-v2-seq.mp4` (cards presented one after another) — 54s; mode in `src/mode.js`, code in `../shared/cards.js`: hook to camera (lip-synced) → board → entry through the whisk → the film (powder, whisk, pour) with
   «לא מזמינים. / מרכיבים.» as type → generic café menu → the glass answers each verb (flavour swaps, cream layer, the named card)
   → workshop hands → business line + question (lip-synced) → CTA.
 - Recordings in `voice/` (hook, studio, world, ask-q + shared biz). Script: `brandos/briefs/series-enter-world-2026-11/EP04-chasen.md`.

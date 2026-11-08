@@ -68,11 +68,6 @@ html,body{margin:0;background:#000}
 .capbox.low .cw.key,.capbox.hook .cw.key,.capbox.hooktop .cw.key{background:var(--gold);color:var(--ink)}
 .cw.br{flex-basis:100%;height:0;padding:0}
 /* signature */
-/* world cards orbiting around Hagit while she talks to camera */
-#orbit{position:absolute;inset:0;pointer-events:none;z-index:4}
-.oc{position:absolute;left:0;top:0;width:240px;height:320px;margin:-160px 0 0 -120px;border-radius:22px;overflow:hidden;background:#fff;
-  box-shadow:0 22px 50px rgba(20,25,18,.38),0 0 0 7px #fff;opacity:0}
-.oc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #sig{opacity:0;z-index:7}
 #sig .dim{position:absolute;inset:0;background:rgba(15,20,14,.45)}
 #sig .gl{position:absolute;left:540px;top:1000px;height:3px;background:var(--gold);transform:translateX(-50%)}
@@ -87,6 +82,8 @@ html,body{margin:0;background:#000}
 <body>
 <div id="stage"></div>
 <script src="config.js"></script>
+<script src="mode.js"></script>
+<script src="../../shared/cards.js"></script>
 <script>
 /* ── TIMING ── recordings in voice/: hook · studio · world · biz (shared) · ask-q. Sentence times inside each file come from its pauses. */
 const HK = window.HK ?? 0, SD = window.SD ?? 11.84, WD = window.WD ?? 20.08, BZ = window.BZ ?? 0, QD = window.QD ?? 3.84;
@@ -192,25 +189,12 @@ function studio(key, img, board) {
   L[key] = o; return o;
 }
 studio('S1', 'S1', true); studio('S2', 'S2', true); studio('S3', 'S3', true); studio('S4', 'S4', true); studio('S6', 'S6', false);
-/* orbit: hook = the five cups + the whisk (frame-0 proof) · business line = the touchpoints · question = they drift away */
-const ORBIT = { cx: 540, cy: 700, rx: 420, ry: 480, speed: 0.16 };
-const OSETS = { hook: ['img/glass_classic.webp', 'img/glass_fraise.webp', 'img/glass_hojicha.webp', 'assets/chasen.webp', 'img/glass_yuzu.webp', 'img/glass_bleu.webp'],
-  biz: ['assets/touchpoints/five.webp', 'assets/touchpoints/kit.webp', 'assets/touchpoints/wall.webp', 'assets/touchpoints/card.webp', 'assets/touchpoints/bag.webp', 'assets/lecon/mains.webp'] };
-const orbitEl = el('div', '', stage); orbitEl.id = 'orbit';
-const OC = {}; for (const [k, list] of Object.entries(OSETS)) OC[k] = list.map((src, i) => { const c = el('div', 'oc', orbitEl); const im = el('img', '', c); im.src = '../../../../chasen/' + src;
-  if (/glass_/.test(src)) im.style.objectPosition = '50% 30%'; return c; });
-function orbit(t, set, t0, t1, mode) {
-  OC[set].forEach((c, i) => { const n = OC[set].length, inT = t >= t0 - .1 && t < t1 + .6;
-    if (!inT) { c.style.opacity = 0; return; }
-    const a = -Math.PI / 2 + i * 2 * Math.PI / n + (t - t0) * ORBIT.speed, depth = (Math.sin(a) + 1) / 2;
-    let x = ORBIT.cx + ORBIT.rx * Math.cos(a), y = ORBIT.cy + ORBIT.ry * Math.sin(a) + 14 * Math.sin(t * 1.3 + i);
-    let sc = .74 + .3 * depth, op = 1, rot = (i % 2 ? 5 : -6) + 3 * Math.sin(t * .9 + i * 1.7);
-    const pop = mode === 'still' ? 1 : eout(lin(t, t0 + i * .16, t0 + i * .16 + .45));
-    const out = ease(lin(t, t1, t1 + .6));                       // drift away from her at the end of the set
-    x += (x - ORBIT.cx) * .9 * out; y += (y - ORBIT.cy) * .9 * out; op = pop * (1 - out);
-    c.style.opacity = op; c.style.zIndex = Math.round(depth * 10);
-    c.style.transform = `translate(${x}px,${y}px) scale(${sc * (.6 + .4 * pop)}) rotate(${rot}deg)`; });
-}
+/* world cards around her in the to-camera parts (shared/cards.js; mode.js picks 'orbit' or 'seq') */
+const SEQ = (window.CARDS_MODE || 'orbit') === 'seq';
+const drawCards = makeCards(stage, '../../../../chasen/', {
+  hook: (SEQ ? [['img/glass_classic.webp', '50% 30%'], ['img/glass_fraise.webp', '50% 30%'], ['assets/chasen.webp']]
+             : [['img/glass_classic.webp', '50% 30%'], ['img/glass_fraise.webp', '50% 30%'], ['img/glass_hojicha.webp', '50% 30%'], ['assets/chasen.webp'], ['img/glass_yuzu.webp', '50% 30%'], ['img/glass_bleu.webp', '50% 30%']]),
+  biz: [['assets/touchpoints/five.webp'], ['assets/touchpoints/kit.webp'], ['assets/touchpoints/wall.webp'], ['assets/touchpoints/card.webp'], ['assets/touchpoints/bag.webp'], ['assets/lecon/mains.webp']] });
 
 /* world */
 const W = el('div', 'layer', stage); W.id = 'world';
@@ -308,8 +292,8 @@ function seek(t) {
     G.verbs.forEach((e, i) => { const [a, b] = VERBS[i]; e.style.opacity = lin(t, a, a + .15) * (1 - lin(t, b - .15, b)); e.style.transform = `translateX(-50%) scale(${.9 + .1 * eout(lin(t, a, a + .25))})`; }); }
   { const a = p2(16.6), f = Math.min(67, Math.round((t - a) * 15)); drawClip(WS.wmains.cv, seq.mains[Math.max(0, f)], 1.05 + .06 * lin(t, a, W_END)); }
   drawTalk(t);
-  orbit(t, 'hook', 0, HK ? A - .5 : 1.6, 'still');
-  orbit(t, 'biz', BIZ_T, QT + 0.4, 'pop');
+  drawCards(t, 'hook', 0, HK ? A - .5 : 1.6, { still: true, beats: [0, (HK ? A : 2) * .33, (HK ? A : 2) * .62] });
+  drawCards(t, 'biz', BIZ_T, QT + 0.4, { beats: [0, .15, .30, .53, .76, .88].map(f => BIZ_T + f * BZ) });
   { const p = lin(t, SIG, SIG + .5); SG.style.opacity = t >= SIG ? 1 : 0; SG.querySelector('.dim').style.opacity = p;
     gl.style.width = (620 * ease(lin(t, SIG + .3, SIG + 1.1))) + 'px';
     letters.forEach((s, i) => { const q = eout(lin(t, SIG + .6 + i * .035, SIG + 1.0 + i * .035)); s.style.opacity = q; s.style.transform = `translateY(${(1 - q) * 18}px)`; });
