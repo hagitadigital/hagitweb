@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Heebo:wght@300;400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2EADD;--ink:#2B2623;--soft:#7A6F66;--cu:#B07A55;--cu2:#D9A57E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:'Heebo',sans-serif;color:var(--ink)}
+.rule{position:absolute;top:0;bottom:0;width:1.5px;background:rgba(176,122,85,.45)}
+.vt{position:absolute;top:960px;font-family:'Inter',sans-serif;font-size:19px;letter-spacing:.42em;color:var(--soft);white-space:nowrap;direction:ltr}
+.vt.l{left:30px;transform:translate(-50%,-50%) rotate(-90deg);margin-left:0}
+.vt.r{left:1050px;transform:translate(-50%,-50%) rotate(90deg)}
+.meta{position:absolute;top:262px;left:100px;right:100px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:.06em;color:var(--soft)}
+.meta .n{font-family:'Inter',sans-serif;letter-spacing:.2em;direction:ltr}
+.meta bdi{font-family:'Cormorant Garamond',serif;font-size:27px;font-style:italic}
+.head{position:absolute;top:330px;left:100px;right:100px;text-align:center}
+.pre{font-size:38px;font-weight:300;color:var(--soft)}
+h1{font-size:92px;font-weight:700;line-height:1.08;margin-top:14px}
+h1 em{font-style:normal;color:var(--cu)}
+.win{position:absolute;background-repeat:no-repeat}
+.br{position:absolute;width:30px;height:30px;border:2px solid var(--cu)}
+.cap{position:absolute;left:100px;right:100px;text-align:center;font-size:40px;line-height:1.3}
+.cap em{font-style:normal;color:var(--cu)}
+.cap .ser{font-family:'Cormorant Garamond',serif;font-size:44px;letter-spacing:.18em;direction:ltr}
+svg{position:absolute;inset:0;overflow:visible}
+#ball{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;
+ background:radial-gradient(circle at 34% 30%,#FBE3CC 0,#E3AE84 22%,#B07A55 55%,#6E4229 100%);box-shadow:0 8px 14px rgba(80,45,25,.35)}
+#halo{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:radial-gradient(circle,rgba(217,165,126,.38),rgba(217,165,126,0) 70%)}
+.lab{position:absolute;text-align:center;transition:none}
+.lab b{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;letter-spacing:.2em;direction:ltr}
+.lab span{display:block;font-size:26px;color:var(--soft);margin-top:2px}
+.dim{position:absolute;background:var(--bg)}
+.guide{position:absolute;border:3px dashed var(--cu);border-radius:28px;display:none;align-items:center;justify-content:center;color:var(--cu);font-size:26px}
+.guides .guide{display:flex}
+</style></head><body>
+<div class="rule" style="left:70px"></div><div class="rule" style="left:1010px"></div>
+<div class="vt l">BRAND WORLDS STUDIO</div><div class="vt r">HAGITANTEBI.CO.IL</div>
+<div id="stage"></div>
+<svg width="1080" height="1920"><path id="track" fill="none" stroke="rgba(176,122,85,.22)" stroke-width="2.5"/><path id="line" fill="none" stroke="#B07A55" stroke-width="3" stroke-linecap="round"/></svg>
+<div id="halo"></div><div id="ball"></div>
+<script>
+const R='../../../../';
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const fade=(t,a,d=.5)=>clamp((t-a)/d);
+function corners(x,y,w,h){const s=[];const o=-12;
+ s.push(`<div class="br" style="left:${x+o}px;top:${y+o}px;border-width:2px 0 0 2px"></div>`);
+ s.push(`<div class="br" style="left:${x+w-30-o}px;top:${y+o}px;border-width:2px 2px 0 0"></div>`);
+ s.push(`<div class="br" style="left:${x+o}px;top:${y+h-30-o}px;border-width:0 0 2px 2px"></div>`);
+ s.push(`<div class="br" style="left:${x+w-30-o}px;top:${y+h-30-o}px;border-width:0 2px 2px 0"></div>`);return s.join('')}
+function arch(x,top,w,bottom,r,off){ // outline around an arched window, from right foot to left foot
+ const cx=x+w/2,cy=top+w/2,R2=w/2+off;return `V${cy} A${R2} ${R2} 0 0 0 ${cx-R2} ${cy} V${bottom}`}
+
+const S={
+e:{dur:9,n:'01 / 05',tag:'11.11 · יום הקניות',sw:7,pre:'11.11 · יום הקניות הגדול.',h:'היום כולם<br>מורידים <em>מחיר</em>.',
+ build(){return `<div class="cap" id="c1" style="top:1215px;opacity:0">ומותג שבוחרים בו, <em>לא צריך</em>.</div>
+  <div class="guide" style="top:1310px;left:200px;right:200px;height:140px">סקר: מורידה מחיר / לא, בוחרים בי</div>`},
+ path:'M70 1150 H296 V730 L236 790 L296 730 V1150 H436 V730 L376 790 L436 730 V1150 H644 V730 L584 790 L644 730 V1150 H784 V730 L724 790 L784 730 V1150 H1010 H540',
+ init(){const L=document.getElementById('line').getTotalLength();const pe=(L-470)/L;
+  this.keys=[[0,0],[.5,0],[5.4,pe],[5.8,pe],[6.8,1]];},
+ tick(t,p){document.getElementById('c1').style.opacity=fade(t,6.6,.6);}},
+
+f:{dur:10,n:'04 / 05',tag:'11.11 · יום של אחדים',pre:'11.11 · ארבעה אחדים, ואת בוחרת אחד:',h:'בלי הנחה,<br>מה היית <em>בוחרת</em>?',
+ build(){const W=195,H=400,y=690;let s='';
+  [[780,'encore/assets/touchpoints/bag-street.webp','ENCORE°','תכשיט','50% 55%'],[555,'miel/assets/touchpoints/box.webp','MIEL°','עוגה','40% 55%'],[330,'chasen/img/glass_fraise.webp','CHASEN°','מאצ\'ה','50% 45%'],[105,'velune/assets/10-bottle-aube-day-m.webp','VELUNE°','בושם','50% 60%']].forEach(([x,f,a,b,bp],i)=>{
+   s+=`<div class="win" style="left:${x}px;top:${y}px;width:${W}px;height:${H}px;border-radius:${W/2}px ${W/2}px 4px 4px;background-image:url(${R}${f});background-size:cover;background-position:${bp}"></div>
+   <div class="lab" id="l${i}" style="left:${x-10}px;width:${W+20}px;top:1108px;opacity:.35"><b style="font-size:24px;letter-spacing:.12em">${a}</b><span style="font-size:25px">${b}</span></div>`});
+  return s+`<div class="cap" id="c2" style="top:1225px;opacity:0">כשבוחרים בעולם, <em>המחיר בא אחר כך</em>.</div><div class="guide" style="top:1305px;left:200px;right:200px;height:150px">סקר: תכשיט / עוגה / מאצ'ה / בושם</div>`},
+ path:'M1010 1195 H987 '+arch(780,690,195,1195,97.5,12)+' H762 '+arch(555,690,195,1195,97.5,12)+' H537 '+arch(330,690,195,1195,97.5,12)+' H312 '+arch(105,690,195,1195,97.5,12)+' H70',
+ init(){const tops=[877,652,427,202].map(x=>this.at(x,true));const k=[[0,0],[.6,0]];let t=.6;
+  tops.forEach(p=>{k.push([t+1.05,p]);t+=1.05;k.push([t+.75,p]);t+=.75});k.push([t+1.0,1]);this.keys=k;this.tops=tops},
+ tick(t,p){[0,1,2,3].forEach(i=>{const tp=this.tops[i];document.getElementById('l'+i).style.opacity=(p>tp-.05&&p<tp+.08)||p>.98?1:.35});
+  document.getElementById('c2').style.opacity=fade(p,.95,.05);}}
+};
+
+const id=new URLSearchParams(location.search).get('s')||'e';const st=S[id];
+if(location.search.includes('guides'))document.body.classList.add('guides');
+document.getElementById('stage').innerHTML=`<div class="meta"><span class="n">${st.n}</span><span><bdi>${st.tag}</bdi></span></div>
+ <div class="head"><p class="pre">${st.pre}</p><h1>${st.h}</h1></div>`+st.build.call(st);
+const track=document.getElementById('track'),line=document.getElementById('line');
+if(st.sw){line.setAttribute('stroke-width',st.sw);track.setAttribute('stroke-width',st.sw-2)}
+track.setAttribute('d',st.path);line.setAttribute('d',st.path);const Ltot=line.getTotalLength();
+line.style.strokeDasharray=Ltot;
+st.at=function(x,top){ // fraction of length where path is at x (top: smallest y)
+ let best=0,bd=1e9;for(let i=0;i<=2000;i++){const q=line.getPointAtLength(Ltot*i/2000);const d=Math.abs(q.x-x)+(top?q.y*.02:0);if(d<bd){bd=d;best=i/2000}}return best};
+if(st.init)st.init();
+function prog(t){const k=st.keys;if(t<=k[0][0])return k[0][1];for(let i=1;i<k.length;i++){if(t<=k[i][0]){const[a,pa]=k[i-1],[b,pb]=k[i];return pa+(pb-pa)*ease((t-a)/(b-a))}}return k[k.length-1][1]}
+window.setT=function(t){const p=prog(t);const q=line.getPointAtLength(Ltot*p);
+ line.style.strokeDashoffset=Ltot*(1-p);
+ for(const e of ['ball','halo']){const el=document.getElementById(e);el.style.left=q.x+'px';el.style.top=q.y+'px'}
+ const pulse=1+.12*Math.sin(t*4);document.getElementById('halo').style.transform=`scale(${pulse})`;
+ st.tick&&st.tick(t,p,q)};
+window.DUR=st.dur;setT(0);
+</script></body></html>
