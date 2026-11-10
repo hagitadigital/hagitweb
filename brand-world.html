@@ -705,7 +705,7 @@
     <style>
     .lt{ background:#F1E3D8; padding:clamp(56px,8vw,104px) 0; font-family:'Heebo',sans-serif; color:#2A201A; }
     .lt__inner{ max-width:1080px; margin:0 auto; padding:0 clamp(16px,5vw,48px); display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
-      grid-template-areas:'head tiles' 'result tiles'; column-gap:clamp(28px,5vw,64px); align-items:center; align-content:center; }
+      grid-template-areas:'head tiles' 'result tiles' 'cover cover'; column-gap:clamp(28px,5vw,64px); align-items:center; align-content:center; }
     .lt__head{ grid-area:head; align-self:end; } .lt__tiles{ grid-area:tiles; } .lt__result{ grid-area:result; align-self:start; }
     .lt__label{ font-size:.78rem; font-weight:500; letter-spacing:.14em; color:#A45839; margin:0 0 14px; }
     .lt h2{ font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-weight:500; font-size:clamp(2rem,4.4vw,3.2rem); line-height:1.08; margin:0 0 14px; }
@@ -739,7 +739,45 @@
     .lt__cta:hover{ background:#8A4A2F; }
     .lt__more{ display:flex; gap:22px; flex-wrap:wrap; margin-top:14px; font-size:.9rem; }
     .lt__more a,.lt__more button{ color:#7E4129; background:none; border:none; padding:10px 0; font:inherit; cursor:pointer; text-decoration:underline; text-underline-offset:3px; text-decoration-color:#D4C9BC; }
-    @media (max-width:760px){ .lt__inner{ grid-template-columns:1fr; grid-template-areas:'head' 'tiles' 'result'; row-gap:22px; } .lt__grid{ gap:8px; } .lt__result{ margin-top:0; } }
+    /* the cover test from rosee/#sans: the name comes off, the codes stay */
+    .lt-cv{ grid-area:cover; margin-top:clamp(48px,7vw,84px); padding-top:clamp(36px,5vw,56px); border-top:1px solid #D9C3B4; text-align:center; }
+    .lt-cv__label{ font-size:.78rem; font-weight:500; letter-spacing:.14em; color:#A45839; margin:0 0 12px; }
+    .lt-cv h3{ font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-weight:500; font-size:clamp(1.7rem,3.4vw,2.5rem); line-height:1.1; margin:0 0 12px; }
+    .lt-cv h3 em{ font-style:normal; color:#A45839; }
+    .lt-cv__lead{ max-width:56ch; margin:0 auto; font-size:1rem; line-height:1.75; color:#4F372C; }
+    .lt-cv__ctl{ display:flex; flex-direction:column; align-items:center; gap:10px; margin:24px auto 30px; }
+    .lt-cv__btn{ display:inline-flex; align-items:center; gap:12px; font-family:'Heebo',sans-serif; font-size:.95rem; font-weight:600; color:#2A201A; background:#FAF8F3; border:1px solid #D9C3B4; border-radius:999px; padding:10px 22px 10px 14px; cursor:pointer; transition:background .4s,color .4s,border-color .4s; }
+    .lt-cv__btn:focus-visible{ outline:2px solid #A45839; outline-offset:3px; }
+    .lt-cv__sw{ width:42px; height:22px; border-radius:999px; background:#E6D6C8; position:relative; flex:none; transition:background .4s; }
+    .lt-cv__sw::after{ content:""; position:absolute; top:3px; inset-inline-start:3px; width:16px; height:16px; border-radius:50%; background:#2A201A; transition:inset-inline-start .4s cubic-bezier(.6,0,.2,1),background .4s; }
+    .lt-cv__btn[aria-pressed="true"]{ background:#2A201A; color:#FAF8F3; border-color:#2A201A; }
+    .lt-cv__btn[aria-pressed="true"] .lt-cv__sw{ background:#C4765A; }
+    .lt-cv__btn[aria-pressed="true"] .lt-cv__sw::after{ inset-inline-start:23px; background:#FAF8F3; }
+    .lt-cv__status{ margin:0; font-size:.95rem; line-height:1.7; min-height:1.7em; color:#4F372C; }
+    .lt-cv__status b{ font-weight:600; color:#A45839; }
+    .lt-cv__grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(10px,2vw,22px); text-align:start; }
+    .lt-cv__tile{ margin:0; display:grid; gap:10px; align-content:start; }
+    .lt-cv__pic{ position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:10px; background:#EFE3D6; }
+    .lt-cv__pic img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+    .lt-cv__pic img.off{ opacity:0; transition:opacity .8s ease .4s; }
+    .lt-cv__veil{ position:absolute; left:var(--x); top:var(--y); width:var(--w,30%); height:7%; transform:translate(-50%,-50%); border-radius:50%; pointer-events:none; opacity:0;
+      background:radial-gradient(closest-side,rgba(251,246,238,.95),rgba(232,180,184,.4) 60%,transparent); filter:blur(2px); }
+    .lt-cv.is-off .lt-cv__pic img.off{ opacity:1; }
+    .lt-cv.is-off .lt-cv__veil{ animation:ltVeil 1.3s ease both; }
+    .lt-cv .lt-cv__tile:nth-child(2) *{ transition-delay:.55s; animation-delay:.15s; }
+    .lt-cv .lt-cv__tile:nth-child(3) *{ transition-delay:.7s; animation-delay:.3s; }
+    .lt-cv:not(.is-off) .lt-cv__tile *{ transition-delay:0s; }
+    @keyframes ltVeil{ 0%{ opacity:0; transform:translate(-50%,-50%) scaleX(.3); } 40%{ opacity:1; transform:translate(-50%,-50%) scaleX(1); } 100%{ opacity:0; transform:translate(-50%,-50%) scaleX(1.1); } }
+    .lt-cv__tile h4{ margin:0; font-family:'Cormorant Garamond','Frank Ruhl Libre',serif; font-style:italic; font-weight:500; font-size:1.3rem; }
+    .lt-cv__tile h4 span{ font-family:'Heebo',sans-serif; font-style:normal; font-size:.85rem; font-weight:600; color:#A45839; margin-inline-start:8px; }
+    .lt-cv__codes{ display:flex; flex-wrap:wrap; gap:6px; }
+    .lt-cv__codes span{ font-size:.8rem; color:#4F372C; border:1px solid #D9C3B4; border-radius:999px; padding:3px 10px; transition:background .5s,border-color .5s; }
+    .lt-cv.is-off .lt-cv__codes span{ background:rgba(232,180,184,.3); border-color:#C4765A; }
+    .lt-cv__foot{ max-width:58ch; margin:30px auto 0; font-size:1rem; line-height:1.75; color:#4F372C; }
+    .lt-cv__foot a{ display:inline-block; margin-top:8px; color:#7E4129; font-weight:500; text-underline-offset:3px; text-decoration-color:#D4C9BC; }
+    @media (max-width:760px){ .lt-cv__grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } .lt-cv__tile:last-child{ grid-column:1/-1; } .lt-cv__tile:last-child .lt-cv__pic{ aspect-ratio:4/3; } .lt-cv__tile h4{ font-size:1.1rem; } .lt-cv__codes span{ font-size:.75rem; padding:2px 8px; } }
+    @media (prefers-reduced-motion:reduce){ .lt-cv__pic img.off,.lt-cv__sw,.lt-cv__sw::after,.lt-cv__codes span{ transition:none; } .lt-cv.is-off .lt-cv__veil{ animation:none; } }
+    @media (max-width:760px){ .lt__inner{ grid-template-columns:1fr; grid-template-areas:'head' 'tiles' 'result' 'cover'; row-gap:22px; } .lt__grid{ gap:8px; } .lt__result{ margin-top:0; } }
     </style>
     <section class="lt" id="logo-test" aria-labelledby="lt-title">
         <div class="lt__inner">
@@ -764,6 +802,42 @@
                 <a href="#audit" class="lt__cta">ומה מזהים אצלך? לאבחון פער המותג</a>
                 <div class="lt__more"><a href="rosee/" target="_blank" rel="noopener">להיכנס לעולם ROSÉE° ←</a><button type="button" id="lt-swap">לראות את הסרט של ROSÉE°</button><button type="button" id="lt-reset">לנסות שוב</button></div>
             </div>
+            <div class="lt-cv" id="lt-cover" role="group" aria-labelledby="lt-cv-title">
+                <p class="lt-cv__label">ועכשיו הפוך</p>
+                <h3 id="lt-cv-title">מכסים את השם. <em>הבוקר נשאר.</em></h3>
+                <p class="lt-cv__lead">אותו מנגנון כמו באתר של <span dir="ltr">ROSÉE°</span>&lrm;: מורידים את השם משלוש נקודות מגע, ובודקים מה עוד אומר שזה הוא.</p>
+                <div class="lt-cv__ctl">
+                    <button class="lt-cv__btn" id="lt-cv-btn" type="button" aria-pressed="false" aria-controls="lt-cv-grid"><span class="lt-cv__sw" aria-hidden="true"></span><span id="lt-cv-lbl">לכסות את השם</span></button>
+                    <p class="lt-cv__status" id="lt-cv-status" aria-live="polite">השם מופיע על שלוש נקודות המגע.</p>
+                </div>
+                <div class="lt-cv__grid" id="lt-cv-grid">
+                    <figure class="lt-cv__tile">
+                        <div class="lt-cv__pic">
+                            <img src="rosee/assets/touchpoints/box-card.webp" width="1024" height="1536" loading="lazy" alt="קופסת סרום של ROSÉE° וכרטיס הריטואל על כן נחושת לצידה">
+                            <img class="off" src="rosee/assets/touchpoints/box-card-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה קופסה וכרטיס בלי השם: חצי שעון השחר והשעות של הבוקר">
+                            <i class="lt-cv__veil" style="--x:23%;--y:46%;--w:26%" aria-hidden="true"></i>
+                        </div>
+                        <figcaption><h4 lang="fr">La Boîte<span>הקופסה והכרטיס</span></h4><div class="lt-cv__codes"><span>שעון השחר</span><span>השעה</span><span>קו הנחושת</span></div></figcaption>
+                    </figure>
+                    <figure class="lt-cv__tile">
+                        <div class="lt-cv__pic">
+                            <img src="rosee/assets/touchpoints/bag.webp" width="1024" height="1536" loading="lazy" alt="שקית ROSÉE° בגרדיאנט שחר על אדן חלון">
+                            <img class="off" src="rosee/assets/touchpoints/bag-sans.webp" width="1024" height="1536" loading="lazy" alt="אותה שקית בלי השם: גרדיאנט של שמי שחר, חצי שעון וידיות נחושת">
+                            <i class="lt-cv__veil" style="--x:54%;--y:57%;--w:30%" aria-hidden="true"></i>
+                        </div>
+                        <figcaption><h4 lang="fr">Le Sac<span>השקית</span></h4><div class="lt-cv__codes"><span>שעון השחר</span><span>צבעי השחר</span><span>ידיות נחושת</span></div></figcaption>
+                    </figure>
+                    <figure class="lt-cv__tile">
+                        <div class="lt-cv__pic">
+                            <img src="rosee/assets/touchpoints/shelf.webp" width="1024" height="1536" loading="lazy" alt="שלושה בקבוקי ROSÉE° על מגש נחושת באמבטיה">
+                            <img class="off" src="rosee/assets/touchpoints/shelf-sans.webp" width="1024" height="1536" loading="lazy" alt="אותו מדף בלי השם: שלוש שעות של בוקר על התוויות">
+                            <i class="lt-cv__veil" style="--x:46%;--y:51%;--w:58%" aria-hidden="true"></i>
+                        </div>
+                        <figcaption><h4 lang="fr">L’Étagère<span>המדף בבית</span></h4><div class="lt-cv__codes"><span>השעה</span><span>מכסי נחושת</span><span>הטיפה</span></div></figcaption>
+                    </figure>
+                </div>
+                <p class="lt-cv__foot">מה שמזהה את <span dir="ltr">ROSÉE°</span>&lrm; הוא השעה. היא באה לפני השם, ולכן היא נשארת גם כשהשם יורד. ככה נראית החלטה אחת שחוזרת בכל מקום.<br><a href="rosee/#sans" target="_blank" rel="noopener">לנסות את זה על כל חמש נקודות המגע, באתר של <span dir="ltr">ROSÉE°</span>&lrm; ←</a></p>
+            </div>
         </div>
     </section>
     <script>
@@ -787,6 +861,24 @@
         if (typeof fbq === 'function') fbq('trackCustom', 'LogoTest', { pick: t.dataset.id, correct: right });
         if (window.gtag) gtag('event', 'logo_test_pick', { pick: t.dataset.id, correct: right });
       });
+      // the cover test (same mechanism as rosee/#sans): the name comes off, the codes stay
+      (function(){
+        var cv = document.getElementById('lt-cover'); if (!cv) return;
+        var btn = document.getElementById('lt-cv-btn'), lbl = document.getElementById('lt-cv-lbl'), st = document.getElementById('lt-cv-status');
+        var codes = cv.querySelectorAll('.lt-cv__codes span').length, touched = false;
+        function set(off){
+          cv.classList.toggle('is-off', off); btn.setAttribute('aria-pressed', off);
+          lbl.textContent = off ? 'להחזיר את השם' : 'לכסות את השם';
+          st.innerHTML = off ? 'השם ירד משלוש נקודות המגע. נשארו <b>' + codes + '</b> קודים, והשעה נשארה בכולן.' : 'השם מופיע על שלוש נקודות המגע.';
+        }
+        btn.addEventListener('click', function(){ touched = true; var off = !cv.classList.contains('is-off'); set(off);
+          if (typeof fbq === 'function') fbq('trackCustom', 'LogoCoverTest', { off: off });
+          if (window.gtag) gtag('event', 'logo_cover_test', { off: off }); });
+        if ('IntersectionObserver' in window){
+          var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ io.disconnect(); setTimeout(function(){ if (!touched) set(true); }, 900); } }); }, { rootMargin:'0px 0px -35% 0px' });
+          io.observe(document.getElementById('lt-cv-grid'));
+        }
+      })();
       document.getElementById('lt-reset').addEventListener('click', function () { clearTimeout(filmT); film.pause(); sec.classList.remove('is-done', 'is-film'); document.getElementById('lt-swap').textContent = 'לראות את הסרט של ROSÉE°'; q.hidden = false; a.hidden = true; });
     })();
     </script>
