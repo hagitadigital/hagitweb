@@ -64,7 +64,7 @@ a:{dur:9.5,n:'01 / 04',tag:'שאלה לסטורי',pre:'משחק קטן:',h:'א�
  tick(t,p,b){const x=b.x;document.getElementById('logo').style.clipPath=`inset(0 0 0 ${clamp(x-110,0,860)}px)`;
   const f=fade(t,4.7,.6);document.getElementById('c1').style.opacity=1-f;document.getElementById('c2').style.opacity=f;}},
 
-b:{dur:10,n:'02 / 04',tag:'CHASEN° · חמש כוסות',pre:'לפני הכוס, היה משפט:',h:'איזו כוס<br>היא <em>את</em>?',
+b:{dur:10,n:'02 / 04',tag:'CHASEN° · חמישה טעמים',pre:'מאצ\'ה לא מזמינים. מרכיבים.',h:'איזה טעם<br><em>שלך</em>?',
  build(){const x=90,y=680,w=900,h=560;
   this.cx=[900,722,540,357,180];
   const L=[['BLEU','מאצ\'ה כחולה'],['YUZU','יוזו'],['HŌJICHA','הוג\'יצ\'ה'],['FRAISE','תות'],['CLASSIQUE','קלאסי']];
@@ -72,7 +72,7 @@ b:{dur:10,n:'02 / 04',tag:'CHASEN° · חמש כוסות',pre:'לפני הכוס
   this.cx.forEach((c,i)=>{s+=`<div class="dim" id="d${i}" style="left:${c-88}px;top:${y}px;width:176px;height:${h}px;opacity:0"></div>`});
   s+=corners(x,y,w,h);
   L.forEach((l,i)=>{s+=`<div class="lab" id="l${i}" style="left:240px;right:240px;top:1330px;opacity:0"><b>${l[0]}</b><span>${l[1]}</span></div>`});
-  s+=`<div class="cap" id="c2" style="top:1340px;opacity:0">חמישה צבעים. <em>אחד שלך.</em></div><div class="guide" style="top:1430px;left:250px;right:250px;height:100px">תיבת שאלה: איזה צבע את?</div>`;return s},
+  s+=`<div class="cap" id="c2" style="top:1325px;opacity:0;font-size:38px">בואי להרכיב בעצמך,<br>ולקבל <em>את המאצ'ה שלך</em> באתר.</div><div class="guide" style="top:1460px;left:270px;right:270px;height:90px">קישור: לבנאי המאצ'ה באתר</div>`;return s},
  path:'M1010 1285 H900 Q811 1235 722 1285 Q631 1235 540 1285 Q448 1235 357 1285 Q268 1235 180 1285 H70',
  keys:null,
  init(){ // stops under each glass
@@ -95,16 +95,17 @@ c:{dur:9,n:'03 / 04',tag:'VELUNE° · This or That',pre:'אותו בקבוק. ש
  tick(t,p){document.getElementById('l0').style.opacity=(p>.12&&p<.45)?1:.35;document.getElementById('l1').style.opacity=(p>.55&&p<.9)?1:.35;}},
 
 d:{dur:10,n:'04 / 04',tag:'MIEL° · עולם מותג',pre:'רגע לפני שטועמים:',h:'מה הלקוחה<br>רואה <em>קודם</em>?',
- build(){const W=250,H=380,y=700;let s='';
-  [[725,'03-maison-storefront','LA RUE','ברחוב'],[415,'02-maison-giftbox','LA BOÎTE','באריזה'],[105,'08-still-slice-pink-topper','LE SITE','באתר']].forEach(([x,f,a,b],i)=>{
-   s+=`<div class="win" style="left:${x}px;top:${y}px;width:${W}px;height:${H}px;border-radius:${W/2}px ${W/2}px 4px 4px;background-image:url(${R}miel/assets/${f}.webp);background-size:cover;background-position:50% 50%"></div>
-   <div class="lab" id="l${i}" style="left:${x-20}px;width:${W+40}px;top:1100px;opacity:.35"><b style="font-size:28px">${a}</b><span>${b}</span></div>`});
-  return s+`<div class="cap" id="c2" style="top:1225px;opacity:0">בכל מקום, רואים <em>את הפנים</em>.</div><div class="guide" style="top:1310px;left:220px;right:220px;height:120px">סקר: ברחוב / באריזה / באתר</div>`},
- path:'M1010 1190 H989 '+arch(725,700,250,1190,125,14)+' H679 '+arch(415,700,250,1190,125,14)+' H369 '+arch(105,700,250,1190,125,14)+' H70',
+ build(){const W=195,H=400,y=690;let s='';
+  this.X=[[780,'03-maison-storefront','LA RUE','ברחוב','50% 50%'],[555,'touchpoints/box','LA BOÎTE','באריזה','40% 55%'],[330,'touchpoints/bag','LE SAC','בשקית','62% 55%'],[105,'08-still-slice-pink-topper','LE SITE','באתר','50% 50%']];
+  this.X.forEach(([x,f,a,b,bp],i)=>{
+   s+=`<div class="win" style="left:${x}px;top:${y}px;width:${W}px;height:${H}px;border-radius:${W/2}px ${W/2}px 4px 4px;background-image:url(${R}miel/assets/${f}.webp);background-size:cover;background-position:${bp}"></div>
+   <div class="lab" id="l${i}" style="left:${x-10}px;width:${W+20}px;top:1108px;opacity:.35"><b style="font-size:24px;letter-spacing:.14em">${a}</b><span style="font-size:25px">${b}</span></div>`});
+  return s+`<div class="cap" id="c2" style="top:1225px;opacity:0">בכל מקום, רואים <em>את הפנים</em>.</div><div class="guide" style="top:1305px;left:200px;right:200px;height:150px">סקר: ברחוב / באריזה / בשקית / באתר</div>`},
+ path:'M1010 1195 H987 '+arch(780,690,195,1195,97.5,12)+' H762 '+arch(555,690,195,1195,97.5,12)+' H537 '+arch(330,690,195,1195,97.5,12)+' H312 '+arch(105,690,195,1195,97.5,12)+' H70',
  keys:null,
- init(){const tops=[850,540,230].map(x=>this.at(x,true));const k=[[0,0],[.6,0]];let t=.6;
-  tops.forEach(p=>{k.push([t+1.3,p]);t+=1.3;k.push([t+.9,p]);t+=.9});k.push([t+1.1,1]);this.keys=k;this.tops=tops},
- tick(t,p,b){[0,1,2].forEach(i=>{const tp=this.tops[i];document.getElementById('l'+i).style.opacity=(p>tp-.06&&p<tp+.1)||p>.98?1:.35});
+ init(){const tops=[877,652,427,202].map(x=>this.at(x,true));const k=[[0,0],[.6,0]];let t=.6;
+  tops.forEach(p=>{k.push([t+1.05,p]);t+=1.05;k.push([t+.75,p]);t+=.75});k.push([t+1.0,1]);this.keys=k;this.tops=tops},
+ tick(t,p,b){[0,1,2,3].forEach(i=>{const tp=this.tops[i];document.getElementById('l'+i).style.opacity=(p>tp-.05&&p<tp+.08)||p>.98?1:.35});
   document.getElementById('c2').style.opacity=fade(p,.95,.05);}}
 };
 
