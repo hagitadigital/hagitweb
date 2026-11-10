@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF7F2;--warm:#F4EFE6;--ink:#1A1614;--soft:#4A4340;--muted:#8A817A;--line:#E5DDD1;--gold:#B08D57;--gold2:#D4B896;
+--serif:'Cormorant Garamond',Georgia,serif;--he:'Frank Ruhl Libre',serif;--sans:'Heebo',sans-serif;--I:'../../../images/home-worlds/'}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ccc;font-family:var(--sans);color:var(--ink)}
+.s{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--bg);margin-bottom:40px}
+.kick{font-family:var(--serif);letter-spacing:.32em;text-transform:uppercase;font-size:26px;color:var(--gold);direction:ltr}
+.sig{position:absolute;bottom:150px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:26px;letter-spacing:.3em;color:var(--muted);direction:ltr;text-transform:uppercase}
+.sticker{border:2px dashed rgba(176,141,87,.55);border-radius:28px;display:flex;align-items:center;justify-content:center;color:rgba(176,141,87,.8);font-size:24px;letter-spacing:.06em}
+.hide-guides .sticker{border-color:transparent;color:transparent}
+.crop{background-size:cover;background-repeat:no-repeat}
+h1,h2{font-weight:500}
+.he{font-family:var(--he)}
+em.g{font-style:normal;color:var(--gold)}
+
+/* 1 — logo hidden */
+#s1 .head{position:absolute;top:240px;left:90px;right:90px;text-align:center}
+#s1 h1{font-family:var(--he);font-size:92px;line-height:1.08;margin-top:34px}
+#s1 .grid{position:absolute;top:660px;left:90px;right:90px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+#s1 .tile{height:430px;border-radius:6px;position:relative}
+#s1 .tile i{position:absolute;bottom:18px;right:18px;background:var(--bg);color:var(--ink);font-style:normal;font-family:var(--serif);font-size:22px;letter-spacing:.25em;padding:8px 16px;direction:ltr}
+#s1 .sticker{position:absolute;top:1600px;left:240px;right:240px;height:150px}
+
+/* 2 — spotlight */
+#s2{background:#1A1614;color:var(--bg)}
+#s2 .img{position:absolute;inset:0 0 auto 0;height:1250px;background-image:url(../../../images/home-worlds/pardon-me.webp);background-size:auto 1250px;background-position:52% 0}
+#s2 .img:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,22,20,.0) 55%,#1A1614 100%)}
+#s2 .tag{position:absolute;top:1060px;right:50%;transform:translateX(50%);background:var(--bg);color:var(--ink);font-family:var(--serif);letter-spacing:.3em;font-size:24px;padding:14px 26px;direction:ltr}
+#s2 .txt{position:absolute;top:1170px;left:90px;right:90px;text-align:center}
+#s2 .name{font-family:var(--serif);font-size:128px;letter-spacing:.06em;direction:ltr;line-height:1}
+#s2 .name small{display:block;font-style:italic;font-size:40px;letter-spacing:.08em;color:var(--gold2);margin-top:14px}
+#s2 p{font-family:var(--he);font-size:52px;line-height:1.3;margin-top:44px}
+#s2 .sticker{position:absolute;top:1620px;left:300px;right:300px;height:120px}
+#s2 .sig{color:#8A817A;bottom:90px}
+
+/* 3 — manifesto */
+#s3{background:var(--ink);color:var(--bg)}
+#s3 .frame{position:absolute;inset:130px 80px;border:1px solid rgba(212,184,150,.35)}
+#s3 .c{position:absolute;top:0;bottom:0;left:120px;right:120px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+#s3 .l1{font-family:var(--he);font-size:100px;line-height:1.15;color:rgba(250,247,242,.42)}
+#s3 .l1 s{text-decoration-thickness:4px;text-decoration-color:var(--gold)}
+#s3 .l2{font-family:var(--he);font-size:132px;line-height:1.1;margin-top:60px}
+#s3 .l3{font-family:var(--he);font-size:62px;line-height:1.35;margin-top:50px;color:var(--gold2)}
+#s3 .orn{font-family:var(--serif);font-size:60px;color:var(--gold);margin:70px 0 0}
+#s3 .sig{bottom:180px;color:rgba(212,184,150,.7)}
+
+/* 4 — price question */
+#s4{background:#141B2B;color:var(--bg)}
+#s4 .img{position:absolute;top:470px;left:0;right:0;height:920px;background-image:url(../../../card-same-product-different-price.jpg);background-size:auto 1100px;background-position:50% 40%}
+#s4 .head{position:absolute;top:200px;left:90px;right:90px;text-align:center}
+#s4 h1{font-family:var(--he);font-size:96px;line-height:1.1;margin-top:28px}
+#s4 .price,#s4 .price2,#s4 .price3{font-family:var(--sans)!important;font-weight:300}
+#s4 .price{position:absolute;top:560px;left:120px;font-family:var(--serif);font-size:54px;color:var(--gold2);direction:ltr}
+#s4 .price b{font-weight:500;text-decoration:line-through;text-decoration-color:#c9806a;text-decoration-thickness:3px}
+#s4 .price2{position:absolute;top:660px;left:150px;font-family:var(--serif);font-size:40px;color:rgba(212,184,150,.6);direction:ltr}
+#s4 .price3{position:absolute;top:740px;left:110px;font-family:var(--serif);font-size:32px;color:rgba(212,184,150,.4);direction:ltr}
+#s4 .ans{position:absolute;top:1400px;left:90px;right:90px;text-align:center;font-family:var(--he);font-size:54px;line-height:1.35}
+#s4 .ans em{font-style:normal;color:var(--gold2)}
+#s4 .sticker{position:absolute;top:1590px;left:170px;right:170px;height:150px}
+#s4 .sig{bottom:100px;color:rgba(212,184,150,.55)}
+
+/* 5 — method */
+#s5 .head{position:absolute;top:220px;left:90px;right:90px;text-align:center}
+#s5 h1{font-family:var(--he);font-size:84px;line-height:1.12;margin-top:30px}
+#s5 .steps{position:absolute;top:620px;left:90px;right:90px}
+#s5 .st{display:flex;gap:40px;align-items:center;padding:42px 0;border-top:1px solid var(--line)}
+#s5 .st:last-child{border-bottom:1px solid var(--line)}
+#s5 .n{font-family:var(--serif);font-style:italic;font-size:110px;color:var(--gold);width:110px;text-align:center;line-height:1}
+#s5 .lab{font-size:30px;letter-spacing:.12em;color:var(--muted)}
+#s5 .val{font-family:var(--he);font-size:58px;line-height:1.2;margin-top:8px}
+#s5 .ex{position:absolute;top:1520px;left:90px;right:90px;display:flex;align-items:center;gap:36px}
+#s5 .ex .t{width:260px;height:180px;background-image:url(../../../images/home-worlds/encore.webp);background-size:auto 180px;background-position:50% 50%;border-radius:4px}
+#s5 .ex p{font-size:32px;line-height:1.45;color:var(--soft)}
+#s5 .ex p b{font-family:var(--serif);font-weight:600;letter-spacing:.08em;color:var(--ink)}
+#s5 .sig{bottom:110px}
+
+/* 6 — archive mosaic */
+#s6 .mosaic{position:absolute;top:0;left:-60px;right:-60px;height:1140px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;transform:rotate(-4deg) translateY(-60px)}
+#s6 .mosaic div{height:270px;background-size:cover;background-position:center;border-radius:4px}
+#s6 .fade{position:absolute;top:700px;left:0;right:0;height:500px;background:linear-gradient(to bottom,rgba(250,247,242,0),var(--bg) 75%)}
+#s6 .txt{position:absolute;top:1080px;left:90px;right:90px;text-align:center}
+#s6 .big{font-family:var(--serif);font-size:250px;line-height:.9;color:var(--gold);direction:ltr}
+#s6 h1{font-family:var(--he);font-size:70px;line-height:1.2;margin-top:18px}
+#s6 .sticker{position:absolute;top:1530px;left:150px;right:150px;height:190px}
+#s6 .sig{bottom:110px}
+</style></head><body>
+
+<!-- 1. Poll: hidden logo -->
+<section class="s" id="s1">
+  <div class="head"><div class="kick">Brand Worlds Studio</div>
+  <h1>בלי לוגו.<br>עדיין <em class="g">יזהו</em> אותך?</h1></div>
+  <div class="grid">
+    <div class="tile crop" style="background-image:url(../../../images/home-worlds/crema-card.webp);background-size:auto 600px;background-position:50% 50%"><i>N°1</i></div>
+    <div class="tile crop" style="background-image:url(../../../images/home-worlds/miel.webp);background-size:auto 540px;background-position:50% 60%"><i>N°2</i></div>
+    <div class="tile crop" style="background-image:url(../../../images/home-worlds/pancakerie.webp);background-size:auto 620px;background-position:55% 18%"><i>N°3</i></div>
+    <div class="tile crop" style="background-image:url(../../../images/home-worlds/elvea.webp);background-size:auto 520px;background-position:76% 35%"><i>N°4</i></div>
+  </div>
+  <div class="sticker">סקר: כן, מיד / עוד לא</div>
+</section>
+
+<!-- 2. Spotlight: newest world -->
+<section class="s" id="s2">
+  <div class="img"></div>
+  <div class="tag">WORLD N°29 · NEW</div>
+  <div class="txt">
+    <div class="name">PARDON ME°<small>Home &amp; Body</small></div>
+    <p>מנומס מבחוץ.<br>לא מתנצל מבפנים.</p>
+  </div>
+  <div class="sticker">קישור לעולם</div>
+  <div class="sig">Brand Worlds Studio</div>
+</section>
+
+<!-- 3. Manifesto -->
+<section class="s" id="s3">
+  <div class="frame"></div>
+  <div class="c">
+    <div class="l1">מותג הוא <s>לא לוגו</s>.</div>
+    <div class="l2">מותג הוא<br>מקום.</div>
+    <div class="l3">מקום שנכנסים אליו,<br>ולא רוצים לצאת ממנו.</div>
+    <div class="orn">°</div>
+  </div>
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div>
+</section>
+
+<!-- 4. Price question + slider -->
+<section class="s" id="s4">
+  <div class="img"></div>
+  <div class="head"><div class="kick" style="color:var(--gold2)">Question N°1</div>
+  <h1>למה תמיד<br>משווים אותך <em class="g" style="color:var(--gold2)">במחיר</em>?</h1></div>
+  <div class="price">₪ <b>189</b></div>
+  <div class="price2">₪ 159 ?</div>
+  <div class="price3">₪ 129 ??</div>
+  <div class="ans">כשאין עולם, נשאר רק המספר.<br><em>וכשיש עולם, אף אחד לא משווה.</em></div>
+  <div class="sticker">סליידר: כמה זה קורה לך?</div>
+  <div class="sig">Brand Worlds Studio</div>
+</section>
+
+<!-- 5. Method -->
+<section class="s" id="s5">
+  <div class="head"><div class="kick">The Method</div>
+  <h1>כל עולם מתחיל<br>בהחלטה <em class="g">אחת</em>.</h1></div>
+  <div class="steps">
+    <div class="st"><div class="n">1</div><div><div class="lab">ההבטחה</div><div class="val">מה המותג מבטיח, במשפט אחד.</div></div></div>
+    <div class="st"><div class="n">2</div><div><div class="lab">האלמנט</div><div class="val">חפץ אחד שמחזיק את ההבטחה.</div></div></div>
+    <div class="st"><div class="n">3</div><div><div class="lab">התוצאה</div><div class="val">מה הלקוחה רואה, מרגישה, זוכרת.</div></div></div>
+  </div>
+  <div class="ex"><div class="t"></div><p><b>ENCORE°</b> · תכשיט שלא יורד.<br>שעון שמש, ותכשיט לכל שעה ביום.</p></div>
+  <div class="sig">Brand Worlds Studio</div>
+</section>
+
+<!-- 6. Archive + question box -->
+<section class="s" id="s6">
+  <div class="mosaic">
+    <div style="background-image:url(../../../images/home-worlds/oreva.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/melte.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/velune.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/encore.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/pardon-me.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/crema-card.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/petale-card.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/miel.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/elvea.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/trame.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/pancakerie.webp)"></div>
+    <div style="background-image:url(../../../images/home-worlds/sonair.webp)"></div>
+  </div>
+  <div class="fade"></div>
+  <div class="txt"><div class="big">29</div>
+  <h1>עולמות. ואף אחד<br>לא נראה כמו השני.</h1></div>
+  <div class="sticker">שאלה: איזה עולם לבנות הבא?</div>
+  <div class="sig">Brand Worlds Studio</div>
+</section>
+</body></html>
