@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Heebo:wght@300;400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2EADD;--ink:#2B2623;--soft:#7A6F66;--cu:#B07A55;--cu2:#D9A57E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:'Heebo',sans-serif;color:var(--ink)}
+.rule{position:absolute;top:0;bottom:0;width:1.5px;background:rgba(176,122,85,.45)}
+.vt{position:absolute;top:960px;font-family:'Inter',sans-serif;font-size:19px;letter-spacing:.42em;color:var(--soft);white-space:nowrap;direction:ltr}
+.vt.l{left:30px;transform:translate(-50%,-50%) rotate(-90deg);margin-left:0}
+.vt.r{left:1050px;transform:translate(-50%,-50%) rotate(90deg)}
+.meta{position:absolute;top:262px;left:100px;right:100px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:.06em;color:var(--soft)}
+.meta .n{font-family:'Inter',sans-serif;letter-spacing:.2em;direction:ltr}
+.meta bdi{font-family:'Cormorant Garamond',serif;font-size:27px;font-style:italic}
+.head{position:absolute;top:330px;left:100px;right:100px;text-align:center}
+.pre{font-size:38px;font-weight:300;color:var(--soft)}
+h1{font-size:92px;font-weight:700;line-height:1.08;margin-top:14px}
+h1 em{font-style:normal;color:var(--cu)}
+.win{position:absolute;background-repeat:no-repeat}
+.br{position:absolute;width:30px;height:30px;border:2px solid var(--cu)}
+.cap{position:absolute;left:100px;right:100px;text-align:center;font-size:40px;line-height:1.3}
+.cap em{font-style:normal;color:var(--cu)}
+.cap .ser{font-family:'Cormorant Garamond',serif;font-size:44px;letter-spacing:.18em;direction:ltr}
+svg{position:absolute;inset:0;overflow:visible}
+#ball{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;
+ background:radial-gradient(circle at 34% 30%,#FBE3CC 0,#E3AE84 22%,#B07A55 55%,#6E4229 100%);box-shadow:0 8px 14px rgba(80,45,25,.35)}
+#halo{position:absolute;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:radial-gradient(circle,rgba(217,165,126,.38),rgba(217,165,126,0) 70%)}
+.lab{position:absolute;text-align:center;transition:none}
+.lab b{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;letter-spacing:.2em;direction:ltr}
+.lab span{display:block;font-size:26px;color:var(--soft);margin-top:2px}
+.dim{position:absolute;background:var(--bg)}
+.guide{position:absolute;border:3px dashed var(--cu);border-radius:28px;display:none;align-items:center;justify-content:center;color:var(--cu);font-size:26px}
+.guides .guide{display:flex}
+</style></head><body>
+<div class="rule" style="left:70px"></div><div class="rule" style="left:1010px"></div>
+<div class="vt l">BRAND WORLDS STUDIO</div><div class="vt r">HAGITANTEBI.CO.IL</div>
+<div id="stage"></div>
+<svg width="1080" height="1920"><path id="track" fill="none" stroke="rgba(176,122,85,.22)" stroke-width="2.5"/><path id="line" fill="none" stroke="#B07A55" stroke-width="3" stroke-linecap="round"/></svg>
+<div id="halo"></div><div id="ball"></div>
+<script>
+const R='../../../../';
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const fade=(t,a,d=.5)=>clamp((t-a)/d);
+function corners(x,y,w,h){const s=[];const o=-12;
+ s.push(`<div class="br" style="left:${x+o}px;top:${y+o}px;border-width:2px 0 0 2px"></div>`);
+ s.push(`<div class="br" style="left:${x+w-30-o}px;top:${y+o}px;border-width:2px 2px 0 0"></div>`);
+ s.push(`<div class="br" style="left:${x+o}px;top:${y+h-30-o}px;border-width:0 0 2px 2px"></div>`);
+ s.push(`<div class="br" style="left:${x+w-30-o}px;top:${y+h-30-o}px;border-width:0 2px 2px 0"></div>`);return s.join('')}
+function arch(x,top,w,bottom,r,off){ // outline around an arched window, from right foot to left foot
+ const cx=x+w/2,cy=top+w/2,R2=w/2+off;return `V${cy} A${R2} ${R2} 0 0 0 ${cx-R2} ${cy} V${bottom}`}
+
+const S={
+a:{dur:9.5,n:'01 / 04',tag:'שאלה לסטורי',pre:'משחק קטן:',h:'אם נסתיר את הלוגו,<br>עדיין <em>יזהו</em> אותך?',
+ build(){const x=110,y=620,w=860,h=640,bp='-40px -329px',bs='940px auto';
+  return `<div class="win" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(${R}encore/assets/touchpoints/bags-four-sans.webp);background-size:${bs};background-position:${bp}"></div>
+  <div class="win" id="logo" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(${R}encore/assets/touchpoints/bags-four.webp);background-size:${bs};background-position:${bp};clip-path:inset(0 0 0 ${w}px)"></div>
+  ${corners(x,y,w,h)}
+  <div class="cap" id="c1" style="top:1290px">ארבע שקיות. <em>בלי שם.</em></div>
+  <div class="cap" id="c2" style="top:1290px;opacity:0">הצבעים אמרו את השם <em>קודם</em>.</div>
+  <div class="guide" style="top:1360px;left:250px;right:250px;height:100px">סקר: כן, מיד / עוד לא</div>`},
+ path:'M1010 975 H120 Q84 975 84 1011 V1452 Q84 1488 120 1488 H540',
+ keys:[[0,0],[.7,0],[4.6,.55],[5.2,.55],[6.6,1]],
+ tick(t,p,b){const x=b.x;document.getElementById('logo').style.clipPath=`inset(0 0 0 ${clamp(x-110,0,860)}px)`;
+  const f=fade(t,4.7,.6);document.getElementById('c1').style.opacity=1-f;document.getElementById('c2').style.opacity=f;}},
+
+b:{dur:10,n:'02 / 04',tag:'CHASEN° · חמש כוסות',pre:'לפני הכוס, היה משפט:',h:'איזו כוס<br>היא <em>את</em>?',
+ build(){const x=90,y=680,w=900,h=560;
+  this.cx=[900,722,540,357,180];
+  const L=[['BLEU','מאצ\'ה כחולה'],['YUZU','יוזו'],['HŌJICHA','הוג\'יצ\'ה'],['FRAISE','תות'],['CLASSIQUE','קלאסי']];
+  let s=`<div class="win" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(${R}chasen/assets/touchpoints/five-sans.webp);background-size:960px auto;background-position:-30px -480px"></div>`;
+  this.cx.forEach((c,i)=>{s+=`<div class="dim" id="d${i}" style="left:${c-88}px;top:${y}px;width:176px;height:${h}px;opacity:0"></div>`});
+  s+=corners(x,y,w,h);
+  L.forEach((l,i)=>{s+=`<div class="lab" id="l${i}" style="left:240px;right:240px;top:1330px;opacity:0"><b>${l[0]}</b><span>${l[1]}</span></div>`});
+  s+=`<div class="cap" id="c2" style="top:1340px;opacity:0">חמישה צבעים. <em>אחד שלך.</em></div><div class="guide" style="top:1430px;left:250px;right:250px;height:100px">תיבת שאלה: איזה צבע את?</div>`;return s},
+ path:'M1010 1285 H900 Q811 1235 722 1285 Q631 1235 540 1285 Q448 1235 357 1285 Q268 1235 180 1285 H70',
+ keys:null,
+ init(){ // stops under each glass
+  const L=this.L, pos=[900,722,540,357,180].map(x=>this.at(x));const k=[[0,0],[.6,pos[0]]];let t=.6;
+  for(let i=1;i<5;i++){k.push([t+1.05,pos[i-1]]);t+=1.05;k.push([t+.55,pos[i]]);t+=.55}
+  k.push([t+1.0,pos[4]]);k.push([t+1.6,1]);this.keys=k;this.stops=pos;},
+ tick(t,p,b){const end=fade(p,.9,.08);const near=Math.min(...this.cx.map(c=>Math.abs(b.x-c)));const any=1-clamp((near-40)/60);
+  this.cx.forEach((c,i)=>{const d=Math.abs(b.x-c);document.getElementById('d'+i).style.opacity=.55*clamp(d/70)*any*(1-end);
+   document.getElementById('l'+i).style.opacity=(1-clamp((d-10)/50))*(1-end)});
+  document.getElementById('c2').style.opacity=fade(p,.965,.03);}},
+
+c:{dur:9,n:'03 / 04',tag:'VELUNE° · This or That',pre:'אותו בקבוק. שני בקרים.',h:'איזה מהם<br><em>שלך</em>?',
+ build(){const W=380,H=520,y=690;let s='';
+  [[580,'10-bottle-aube-day-m','A · AUBE'],[120,'09-bottle-blush-garden-m','B · BLUSH']].forEach(([x,f,l],i)=>{
+   s+=`<div class="win" style="left:${x}px;top:${y}px;width:${W}px;height:${H}px;border-radius:${W/2}px ${W/2}px 6px 6px;background-image:url(${R}velune/assets/${f}.webp);background-size:cover;background-position:50% 60%"></div>
+   <div class="lab" id="l${i}" style="left:${x}px;width:${W}px;top:1228px;opacity:.35"><b>${l}</b></div>`});
+  return s+`<div class="guide" style="top:1360px;left:250px;right:250px;height:100px">סקר: Aube / Blush</div>`},
+ path:'M1010 1300 H976 '+arch(580,690,380,1300,190,16).replace(/^/,'')+' H516 '+arch(120,690,380,1300,190,16)+' H70',
+ keys:[[0,0],[.6,0],[2.6,.235],[3.6,.235],[5.6,.665],[6.5,.665],[7.6,1]],
+ tick(t,p){document.getElementById('l0').style.opacity=(p>.12&&p<.45)?1:.35;document.getElementById('l1').style.opacity=(p>.55&&p<.9)?1:.35;}},
+
+d:{dur:10,n:'04 / 04',tag:'MIEL° · עולם מותג',pre:'רגע לפני שטועמים:',h:'מה הלקוחה<br>רואה <em>קודם</em>?',
+ build(){const W=250,H=380,y=700;let s='';
+  [[725,'03-maison-storefront','LA RUE','ברחוב'],[415,'02-maison-giftbox','LA BOÎTE','באריזה'],[105,'08-still-slice-pink-topper','LE SITE','באתר']].forEach(([x,f,a,b],i)=>{
+   s+=`<div class="win" style="left:${x}px;top:${y}px;width:${W}px;height:${H}px;border-radius:${W/2}px ${W/2}px 4px 4px;background-image:url(${R}miel/assets/${f}.webp);background-size:cover;background-position:50% 50%"></div>
+   <div class="lab" id="l${i}" style="left:${x-20}px;width:${W+40}px;top:1100px;opacity:.35"><b style="font-size:28px">${a}</b><span>${b}</span></div>`});
+  return s+`<div class="cap" id="c2" style="top:1225px;opacity:0">בכל מקום, רואים <em>את הפנים</em>.</div><div class="guide" style="top:1310px;left:220px;right:220px;height:120px">סקר: ברחוב / באריזה / באתר</div>`},
+ path:'M1010 1190 H989 '+arch(725,700,250,1190,125,14)+' H679 '+arch(415,700,250,1190,125,14)+' H369 '+arch(105,700,250,1190,125,14)+' H70',
+ keys:null,
+ init(){const tops=[850,540,230].map(x=>this.at(x,true));const k=[[0,0],[.6,0]];let t=.6;
+  tops.forEach(p=>{k.push([t+1.3,p]);t+=1.3;k.push([t+.9,p]);t+=.9});k.push([t+1.1,1]);this.keys=k;this.tops=tops},
+ tick(t,p,b){[0,1,2].forEach(i=>{const tp=this.tops[i];document.getElementById('l'+i).style.opacity=(p>tp-.06&&p<tp+.1)||p>.98?1:.35});
+  document.getElementById('c2').style.opacity=fade(p,.95,.05);}}
+};
+
+const id=new URLSearchParams(location.search).get('s')||'a';const st=S[id];
+if(location.search.includes('guides'))document.body.classList.add('guides');
+document.getElementById('stage').innerHTML=`<div class="meta"><span class="n">${st.n}</span><span><bdi>${st.tag}</bdi></span></div>
+ <div class="head"><p class="pre">${st.pre}</p><h1>${st.h}</h1></div>`+st.build.call(st);
+const track=document.getElementById('track'),line=document.getElementById('line');
+track.setAttribute('d',st.path);line.setAttribute('d',st.path);const Ltot=line.getTotalLength();
+line.style.strokeDasharray=Ltot;
+st.at=function(x,top){ // fraction of length where path is at x (top: smallest y)
+ let best=0,bd=1e9;for(let i=0;i<=2000;i++){const q=line.getPointAtLength(Ltot*i/2000);const d=Math.abs(q.x-x)+(top?q.y*.02:0);if(d<bd){bd=d;best=i/2000}}return best};
+if(st.init)st.init();
+function prog(t){const k=st.keys;if(t<=k[0][0])return k[0][1];for(let i=1;i<k.length;i++){if(t<=k[i][0]){const[a,pa]=k[i-1],[b,pb]=k[i];return pa+(pb-pa)*ease((t-a)/(b-a))}}return k[k.length-1][1]}
+window.setT=function(t){const p=prog(t);const q=line.getPointAtLength(Ltot*p);
+ line.style.strokeDashoffset=Ltot*(1-p);
+ for(const e of ['ball','halo']){const el=document.getElementById(e);el.style.left=q.x+'px';el.style.top=q.y+'px'}
+ const pulse=1+.12*Math.sin(t*4);document.getElementById('halo').style.transform=`scale(${pulse})`;
+ st.tick&&st.tick(t,p,q)};
+window.DUR=st.dur;setT(0);
+</script></body></html>
