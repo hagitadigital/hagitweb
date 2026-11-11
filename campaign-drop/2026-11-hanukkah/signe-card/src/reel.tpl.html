@@ -1,0 +1,123 @@
+<!doctype html>
+<!-- SIGNÉ° · כרטיס החתימה — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py --html -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SIGNÉ carte de signature</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25;--cream:#F7EEDF;--cu:#E3A77C}
+html,body{margin:0;background:#0E0B08}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#FEFEFE}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 3px rgba(250,240,228,.55),0 8px 22px rgba(0,0,0,.4)}
+.cl{fill:none;stroke:#C98552;stroke-width:3;stroke-linecap:round;stroke-dasharray:1 1}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}.o4{animation-name:o4}
+@keyframes o1{0%,82.333%{opacity:0;transform:translateY(24px)}84.333%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,83%{opacity:0;transform:translateY(30px)}85.333%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,88.667%{opacity:0;transform:translateY(24px)}90.667%,100%{opacity:1;transform:none}}
+@keyframes o4{0%,90.667%{opacity:0;transform:translateY(24px)}92.667%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+{{CSS}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- HOOK · the catalogue -->
+<div class="stack" data-show="0,3.4" data-fade="0.1" style="background:#FEFEFE">
+  <img src="a/generic.webp" alt="A generic sufganiya on a white plate" style="position:absolute;left:130px;top:560px;width:820px;display:block">
+  <div style="position:absolute;top:110px;left:80px;right:80px;text-align:right;font-size:74px;font-weight:600;line-height:1.14;color:var(--s-dark)" dir="rtl">בחנוכה כולם<br>מוכרים סופגנייה.<br>מה כתוב <span style="color:var(--s-copper)">על הכרטיס שלך</span>?</div>
+  {{GREY}}
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+    <path d="{{HOOK_LINE}}" style="fill:none;stroke:#9C958E;stroke-width:2.5"></path>
+    <circle cx="600" cy="840" r="7" fill="#9C958E"></circle>
+    <path class="cl hl" pathLength="1" d="{{HOOK_LINE}}"></path>
+  </svg>
+  <div style="position:absolute;bottom:70px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;color:#8B7B6E" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+</div>
+
+<!-- SIGNÉ · opens from the ball -->
+<div class="stack portal" style="background:#0E0B08">
+  <video class="cover" src="a/spin.webm" data-vstart="{{SPIN_B}}" muted playsinline preload="auto"></video>
+  <div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 34%)"></div>
+  <div class="stack" data-show="4.4,16.6" data-fade="0.3">
+    <div class="stack" data-show="4.4,9.3" data-fade="0.3"><div style="position:absolute;top:1560px;left:70px;right:70px;text-align:center;font-size:54px;font-weight:500;line-height:1.24;color:var(--cream)" dir="rtl">במקום גרמים ומחיר:<br><span style="color:var(--cu)">מה בפנים, ומי חתם.</span></div></div>
+    <div class="stack" data-show="9.6,16.6" data-fade="0.3"><div style="position:absolute;top:1560px;left:70px;right:70px;text-align:center;font-size:54px;font-weight:500;line-height:1.24;color:var(--cream)" dir="rtl">שמונה לילות.<br><span style="color:var(--cu)">ארבע מהדורות חתומות.</span></div></div>
+    {{EDITIONS}}
+  </div>
+  <!-- 03 · the filling -->
+  <div class="stack" data-show="{{COEUR0}},{{COEUR1}}" data-fade="0.3" style="background:#0E0B08">
+    <video class="cover" src="a/coeur.webm" data-vstart="{{COEUR0}}" muted playsinline preload="auto"></video>
+    <div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.9) 0,rgba(14,11,8,0) 36%)"></div>
+    <div style="position:absolute;top:1520px;left:70px;right:70px;text-align:center;font-size:58px;font-weight:500;line-height:1.24;color:var(--cream)" dir="rtl">החתימה שרואים — בחוץ.<br><span style="color:var(--cu)">ההבטחה — בפנים.</span></div>
+  </div>
+  <!-- 04 · the coffret -->
+  <div class="stack" data-show="{{BOITE0}},{{BOITE1}}" data-fade="0.3" style="background:#0E0B08">
+    <video class="cover" src="a/boite.webm" data-vstart="{{BOITE0}}" muted playsinline preload="auto"></video>
+    <div class="stack" style="background:linear-gradient(to bottom,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 24%)"></div>
+    <div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 26%)"></div>
+    <div style="position:absolute;top:140px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:54px;color:var(--cu)" dir="ltr">Coffret des Lumières</div>
+      <div style="font-size:50px;font-weight:500;line-height:1.2;color:var(--cream)" dir="rtl">קופסת מתנה —<br>נחתמת מול העיניים.</div>
+    </div>
+    <div style="position:absolute;top:1640px;left:70px;right:70px;text-align:center;font-size:30px;color:#D9C8B4" dir="rtl">ארבע מהדורות · בלי מחיר על המכסה. רק חתימה.</div>
+  </div>
+  <!-- the copper line + ball pinned on the product -->
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl sl" pathLength="1" d="{{SIG_LINE}}"></path></svg>
+  <div class="stack hop"><div class="ball sb" style="offset-path:path('{{SIG_LINE}}')">{{BALL_S}}</div></div>
+  <!-- studio tag -->
+  <div class="stack" data-show="3.4,{{OUTRO}}" data-fade="0.3">
+    <div style="position:absolute;top:56px;right:56px;padding:12px 22px;border-radius:999px;background:rgba(250,248,243,.1);border:1px solid rgba(250,240,228,.28);color:#EADCC8;font-size:20px;letter-spacing:.04em" dir="rtl">Brand Worlds Studio · עולם מותג 17</div>
+    <div style="position:absolute;top:58px;left:64px;font-family:'Cormorant Garamond',serif;font-size:40px;letter-spacing:.18em;color:#F3E6D2" dir="ltr">SIGNÉ°</div>
+  </div>
+</div>
+<svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><circle class="pring" cx="600" cy="840" r="0" fill="none" stroke="#C98552" stroke-width="6"></circle></svg>
+<div class="ball hb" style="offset-path:path('{{HOOK_LINE}}')">{{BALL_H}}</div>
+
+<!-- OUTRO · the two cards -->
+<div class="stack" data-show="{{OUTRO}},30" data-fade="0.35" style="background:var(--s-bg)">
+  <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-size:26px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><span dir="ltr">SIGNÉ°</span> · עולם מותג 17</div>
+    <div class="o2" style="font-size:80px;font-weight:600;line-height:1.12;color:var(--s-dark)" dir="rtl">אותה סופגנייה?<br>לא אותו כרטיס.</div>
+  </div>
+  <div class="o2" style="position:absolute;top:500px;left:80px;right:80px;height:560px">
+    <div style="position:absolute;right:0;top:40px;width:420px">{{GREY_SMALL}}</div>
+    <div style="position:absolute;left:0;top:0;width:440px;box-sizing:border-box;padding:28px 30px 24px;border-radius:20px;background:linear-gradient(160deg,#2A2018,#14100C);box-shadow:0 30px 70px rgba(40,26,14,.35)" dir="rtl">{{NOIR_SMALL}}</div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl ol" pathLength="1" d="M790 870 C790 1060 300 1060 300 960" style="stroke-width:4"></path></svg>
+  <div class="ball ob" style="offset-path:path('M790 870 C790 1060 300 1060 300 960')">{{BALL_O}}</div>
+  <div class="o3" style="position:absolute;top:1130px;left:70px;right:70px;text-align:center;font-size:56px;font-weight:600;color:var(--s-copper)" dir="rtl">כי זה לא אותו עולם.</div>
+  <div class="o4" style="position:absolute;top:1330px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
+    <div style="font-size:42px;font-weight:500;line-height:1.3;color:var(--s-ink)" dir="rtl">מה כתוב על הכרטיס<br>של העסק שלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+<script>
+/* reel.js (from the reel skill): data-show → keyframes in seconds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
