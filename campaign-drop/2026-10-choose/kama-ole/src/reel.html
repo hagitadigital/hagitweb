@@ -1,0 +1,193 @@
+<!doctype html>
+<!--
+  «כמה עולה? ונעלמה» — cold ad for the «ככה בוחרים» campaign (9:16, 1080×1920, 17.5s, no audio).
+  Hash picks the end card: #b (LP B: send a link, 3 points) · #long (long LP: 30-min diagnosis).
+  Timing is set with animation-delay; render.js steps currentTime (delay included), so every value here is seconds on the reel.
+  0.0–3.4  chat: frame 0 already shows the question, the price, ✓✓ read and «נקראה. אין תשובה.»; then typing… appears and stops
+  3.4–6.4  chat list: three customers, three businesses, the same silence
+  6.4–11.0 generic serum (ככה משווים, ₪290) vs ORÉVA° (ככה בוחרים, ₪290) — the same pair as LP B's first screen
+  11.0–13.4 the turn: «כשהיא שואלת כמה עולה, היא עוד לא ראתה סיבה לבחור דווקא בך.»
+  13.4–17.5 end card, holds to the last frame
+-->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>כמה עולה? ונעלמה</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Heebo:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@500&display=swap">
+<style>
+:root{--bg:#FAF8F3;--cream:#EEE6D8;--ink:#3E2F25;--ink2:#6B563F;--copper:#C4765A;--btn:#6A553E}
+html,body{margin:0;background:var(--bg)}
+body{font-family:'Heebo',sans-serif;color:var(--ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+*{animation-timing-function:cubic-bezier(.4,0,.2,1)}
+.abs{position:absolute}
+.cu{color:var(--copper)}
+.sig{position:absolute;top:70px;right:80px;text-align:right}
+.sig b{display:block;font:italic 500 40px 'Cormorant Garamond',serif;color:var(--ink2)}
+.sig i{display:block;font:400 22px 'Heebo';font-style:normal;letter-spacing:.2em;color:var(--ink2);opacity:.8;margin-top:2px}
+.scene{position:absolute;inset:0}
+
+@keyframes inF{from{opacity:0}to{opacity:1}}
+@keyframes outF{from{opacity:1}to{opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes dimG{from{opacity:1;filter:none}to{opacity:.5;filter:grayscale(1)}}
+@keyframes ring{from{box-shadow:0 30px 70px rgba(62,47,37,.18)}to{box-shadow:0 0 0 7px var(--copper),0 40px 90px rgba(62,47,37,.28)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes blue{from{color:#9aa0a6}to{color:#34B7F1}}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+
+/* ── S1 chat (0–3.4) ── */
+#s1{animation:outF .3s 3.4s forwards}
+#s1 h1{position:absolute;top:180px;right:80px;left:80px;margin:0;font:800 118px/1.08 'Heebo';letter-spacing:-.01em}
+#s1 .kick{position:absolute;top:470px;right:84px;font:500 40px 'Heebo';color:var(--ink2)}
+.chat{position:absolute;top:600px;right:80px;width:920px;height:900px;border-radius:34px;overflow:hidden;background:#EFE7DC;box-shadow:0 30px 80px rgba(62,47,37,.2)}
+.chat .bar{height:150px;background:#F6F1EA;border-bottom:1px solid #e2d8cb;display:flex;align-items:center;gap:26px;padding:0 40px}
+.av{width:88px;height:88px;border-radius:50%;background:#d9cbbb;display:flex;align-items:center;justify-content:center;font:500 40px 'Heebo';color:#fff;flex:none}
+.who b{display:block;font:700 42px 'Heebo'}
+.who span{display:block;font:400 30px 'Heebo';color:#7d7468;height:40px;position:relative}
+.who span i{position:absolute;right:0;top:0;font-style:normal;white-space:nowrap}
+.st1{animation:outF .1s .6s forwards}
+.st2{opacity:0;color:#2a9d6a;animation:inF .1s .6s forwards,outF .1s 1.9s forwards}
+.st3{opacity:0;animation:inF .2s 1.95s forwards}
+.msgs{position:absolute;top:190px;right:40px;left:40px}
+.b{position:relative;max-width:700px;padding:24px 32px 50px;border-radius:24px;font:400 50px/1.35 'Heebo';margin-bottom:28px;box-shadow:0 2px 2px rgba(0,0,0,.06)}
+.b .t{position:absolute;bottom:12px;left:24px;font:400 24px 'Heebo';color:#8a8a8a;direction:ltr}
+.in{background:#fff;margin-left:auto}
+.outb{background:#DCF5C9;margin-right:auto}
+.ticks{font:700 28px 'Heebo';letter-spacing:-.25em;margin-left:6px;color:#34B7F1}
+.typing{display:inline-flex;gap:12px;padding:26px 34px;border-radius:24px;background:#fff;margin-left:auto;opacity:0;animation:inF .15s .6s forwards,outF .15s 1.85s forwards}
+.typing i{width:16px;height:16px;border-radius:50%;background:#9c9388;animation:blink .6s linear infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+.typing-row{display:flex}
+.none{position:absolute;bottom:56px;right:0;left:0;text-align:center;font:500 40px 'Heebo';color:var(--ink2);animation:outF .15s .6s forwards,inF .3s 2.0s forwards}
+.none span{display:inline-block;padding:14px 34px;border-radius:40px;background:rgba(255,255,255,.75)}
+
+/* ── S2 list (3.4–6.4) ── */
+#s2{opacity:0;animation:inF .3s 3.4s forwards,outF .3s 6.4s forwards}
+#s2 h2{position:absolute;top:250px;right:80px;left:80px;margin:0;font:800 96px/1.1 'Heebo'}
+.list{position:absolute;top:560px;right:80px;width:920px;border-radius:34px;overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(62,47,37,.16)}
+.row{display:flex;align-items:center;gap:28px;padding:34px 40px;border-bottom:1px solid #eee;opacity:0}
+.row:nth-child(1){animation:up .4s 3.7s both}.row:nth-child(2){animation:up .4s 4.2s both}.row:nth-child(3){animation:up .4s 4.7s both}
+.row .who{flex:1}
+.row .who>span{height:auto;color:#6f6a63;font-size:36px}
+.row .who .tk{display:inline}
+.row .when{font:400 28px 'Heebo';color:#9a948c;align-self:flex-start;margin-top:8px}
+.row .tk{color:#34B7F1;font-weight:700;letter-spacing:-.25em;margin-left:10px}
+#s2 .foot{position:absolute;top:1340px;right:80px;left:80px;font:500 52px/1.35 'Heebo';color:var(--ink2);opacity:0;animation:up .4s 5.3s both}
+
+/* ── S3 compare (6.4–11.0) ── */
+#s3{opacity:0;animation:inF .3s 6.4s forwards,outF .3s 11.0s forwards}
+#s3 h2{position:absolute;top:170px;right:80px;left:80px;margin:0;font:800 104px/1.1 'Heebo';animation:up .45s 6.5s both}
+.pair{position:absolute;top:440px;right:80px;left:80px;display:flex;gap:40px}
+.card{flex:1;border-radius:28px;overflow:hidden;background:#fff;position:relative;box-shadow:0 30px 70px rgba(62,47,37,.18)}
+.card .img{height:700px;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .cap{padding:24px 28px 28px}
+.card .cap span{display:block;font:400 34px 'Heebo';color:#7a7268}
+.card .cap b{display:block;font:800 64px 'Heebo';margin-top:6px}
+.tag{position:absolute;top:22px;right:22px;padding:12px 26px;border-radius:40px;font:700 34px 'Heebo';z-index:2}
+#cg{animation:up .45s 6.7s both}
+#cg .tag{background:#fff;color:#8a8a8a;border:2px solid #ddd}
+#cg .in2{animation:dimG .5s 9.0s both;height:100%}
+#cw{animation:up .45s 7.0s both,ring .5s 9.0s both}
+#cw .tag{background:var(--copper);color:#fff}
+#cw .img img{animation:zoom 4s 7s linear both}
+#s3 .line{position:absolute;top:1430px;right:80px;left:80px;font:700 70px/1.3 'Heebo'}
+#s3 .line .a{display:block;opacity:0;animation:up .4s 8.3s both}
+#s3 .line .bq{display:block;opacity:0;color:var(--copper);animation:up .4s 9.0s both}
+
+/* ── S4 turn (11.0–13.4) ── */
+#s4{opacity:0;background:var(--cream);animation:inF .3s 11.0s forwards,outF .3s 13.4s forwards}
+#s4 .q{position:absolute;top:620px;right:90px;left:90px;font:500 66px/1.35 'Heebo';color:var(--ink2);animation:up .45s 11.1s both}
+#s4 .a{position:absolute;top:800px;right:90px;left:90px;font:800 96px/1.2 'Heebo';animation:up .45s 11.6s both}
+
+/* ── S5 end (13.4–17.5), holds ── */
+#s5{opacity:0;animation:inF .3s 13.4s forwards}
+.end{display:none}
+.on{display:block}
+#s5 .me{position:absolute;top:330px;right:0;left:0;text-align:center;animation:up .45s 13.5s both}
+#s5 .me img{width:190px;height:190px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid #fff;box-shadow:0 10px 30px rgba(62,47,37,.18)}
+#s5 .me span{display:block;margin-top:18px;font:500 36px 'Heebo';color:var(--ink2)}
+#s5 .ask{position:absolute;top:660px;right:90px;left:90px;text-align:center;font:800 92px/1.15 'Heebo';animation:up .45s 13.8s both}
+#s5 .what{position:absolute;top:900px;right:110px;left:110px;text-align:center;font:400 52px/1.4 'Heebo';color:var(--ink2);animation:up .45s 14.2s both}
+#s5 .rule{position:absolute;top:1120px;right:390px;left:390px;height:2px;background:var(--copper);transform-origin:right;animation:grow .5s 14.4s both}
+#s5 .rule:after{content:'';position:absolute;left:-11px;top:-10px;width:22px;height:22px;border-radius:50%;background:var(--copper)}
+#s5 .btnw{position:absolute;top:1200px;right:0;left:0;text-align:center;animation:up .45s 14.6s both}
+.btn{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-sizing:border-box;min-width:452px;height:136px;padding:0 48px;border-radius:10px;background:var(--btn);color:#FAF8F3;font:700 38px/1.1 'Heebo'}
+.btn small{display:block;font:400 24px 'Heebo';opacity:.92}
+#s5 .fit{position:absolute;bottom:200px;right:0;left:0;text-align:center;font:500 34px 'Heebo';color:var(--ink2);animation:up .45s 15.0s both}
+#s5 .url{position:absolute;bottom:130px;right:0;left:0;text-align:center;font:500 28px 'Plus Jakarta Sans';letter-spacing:.32em;color:var(--copper)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <section class="scene" id="s1">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <h1>שאלה כמה עולה.<br><span class="cu">ונעלמה.</span></h1>
+    <div class="kick">לבעלות עסק: זה לא המחיר שלך.</div>
+    <div class="chat">
+      <div class="bar">
+        <div class="av">ל</div>
+        <div class="who"><b>לקוחה חדשה</b><span><i class="st1">מחוברת</i><i class="st2">מקלידה…</i><i class="st3">נראתה לאחרונה לפני 3 ימים</i></span></div>
+      </div>
+      <div class="msgs">
+        <div class="b in">היי, כמה עולה הסרום?<span class="t">10:42</span></div>
+        <div class="b outb">היי 🤍 הוא ₪290, 30 מ״ל.<br>אשמח לספר לך עליו עוד<span class="t">10:43 <span class="ticks">✓✓</span></span></div>
+        <div class="typing-row"><div class="typing"><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="none"><span>נקראה. אין תשובה.</span></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <h2>וזה לא קרה<br>רק פעם אחת.</h2>
+    <div class="list">
+      <div class="row"><div class="av" style="background:#cdb9a6">ש</div><div class="who"><b>לקוחה מאינסטגרם</b><span><span class="tk">✓✓</span>כמה עולה העוגה?</span></div><div class="when">אתמול</div></div>
+      <div class="row"><div class="av" style="background:#b9c2b0">מ</div><div class="who"><b>מיכל</b><span><span class="tk">✓✓</span>יש הנחה על הסט?</span></div><div class="when">שלישי</div></div>
+      <div class="row"><div class="av" style="background:#c9b2b4">ר</div><div class="who"><b>רוני</b><span><span class="tk">✓✓</span>ראיתי זול יותר אצל…</span></div><div class="when">שבוע שעבר</div></div>
+    </div>
+    <div class="foot">ענית. נתת מחיר.<br>והיא הלכה להשוות.</div>
+  </section>
+
+  <section class="scene" id="s3">
+    <h2>אותו סרום.<br>אותו מחיר.</h2>
+    <div class="pair">
+      <div class="card" id="cw"><span class="tag">ככה בוחרים</span><div class="img"><img src="assets/oreva-serum.jpg" alt=""></div><div class="cap"><span>ORÉVA° · Skin Studio</span><b>₪290</b></div></div>
+      <div class="card" id="cg"><div class="in2"><span class="tag">ככה משווים</span><div class="img"><img src="assets/generic-serum.jpg" alt=""></div><div class="cap"><span>סרום פנים · 30ml</span><b>₪290</b></div></div></div>
+    </div>
+    <div class="line"><span class="a">את האחד משווים.</span><span class="bq">את השני בוחרים.</span></div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="q">כשהיא שואלת כמה עולה,</div>
+    <div class="a">היא עוד לא ראתה סיבה לבחור <span class="cu">דווקא בך.</span></div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <div class="me"><img src="assets/hagit-portrait-232.webp" alt=""><span>חגית אנטבי · בונה עולמות מותג</span></div>
+    <div class="end" id="end-b">
+      <div class="ask">שלחי לי קישור לעסק.</div>
+      <div class="what">תוך 48 שעות תקבלי בוואטסאפ<br>3 מקומות שבהם משווים אותך.</div>
+      <div class="rule"></div>
+      <div class="btnw"><span class="btn">שולחת קישור<small>בוואטסאפ · בלי עלות</small></span></div>
+    </div>
+    <div class="end" id="end-long">
+      <div class="ask">איפה משווים אותך,<br>ואיך יוצאים מזה?</div>
+      <div class="rule" style="top:1000px"></div>
+      <div class="btnw" style="top:1080px"><span class="btn">אבחון פער המותג<small>30 דק׳ · בלי עלות</small></span></div>
+    </div>
+    <div class="fit">לעסקים מבוססים · ביוטי · אוכל בוטיק · אופנה · עיצוב פנים</div>
+    <div class="url">HAGITANTEBI.CO.IL</div>
+  </section>
+
+</div>
+<script>
+  document.getElementById('end-' + ((location.hash || '#b').slice(1))).classList.add('on');
+</script>
+</body>
+</html>
