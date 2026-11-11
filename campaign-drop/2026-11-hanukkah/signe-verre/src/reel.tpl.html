@@ -1,0 +1,105 @@
+<!doctype html>
+<!-- SIGNÉ° · רואים מה בפנים — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SIGNE verre</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25;--cream:#F7EEDF;--cu:#E3A77C}
+html,body{margin:0;background:#0E0B08}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-cream)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cl{fill:none;stroke:#C98552;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 3px rgba(250,240,228,.6),0 8px 20px rgba(0,0,0,.28)}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.3%{opacity:0;transform:translateY(24px)}93.3%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.3%{opacity:0;transform:translateY(24px)}94.6%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94%{opacity:0;transform:translateY(24px)}96.3%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+{{CSS}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- HOOK -->
+<div class="stack hk" style="background:var(--s-cream)">
+  <div style="position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:200px;left:80px;right:80px;text-align:right;font-size:76px;font-weight:600;line-height:1.16;color:var(--s-dark)" dir="rtl">בחנוכה כולם<br>מוכרים סופגנייה.<br>אף אחד לא מראה<br><span style="color:var(--s-copper)">מה בפנים</span>.</div>
+  <div style="position:absolute;top:740px;left:250px;width:580px;box-sizing:border-box;padding:20px;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:14px" dir="rtl">
+    <div style="position:relative"><img src="a/generic.webp" alt="A generic sufganiya" style="width:100%;height:520px;object-fit:cover;border-radius:12px;display:block"><span style="position:absolute;top:14px;right:14px;padding:8px 18px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:22px">ככה משווים</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:26px;color:#6E6660"><span>סופגנייה · 90 גר׳</span><strong style="color:#2E2A27">₪12</strong></div>
+    <div style="font-size:24px;color:#9A928B">מה בפנים? לא כתוב.</div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl hl" pathLength="1" d="M1140 1700 H540"></path></svg>
+</div>
+
+<!-- SIGNÉ's set -->
+<div class="stack portal" style="background:#0E0B08">
+  <img class="cover" src="a/empty.webp" alt="A hollow glass sufganiya on SIGNÉ's plinth">
+  <div class="stack" data-show="3.2,{{S0}}" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">אצל <span dir="ltr" style="font-family:'Cormorant Garamond',serif;letter-spacing:.12em">SIGNÉ°</span> — רואים.</div></div>
+  {{EDS}}
+  <!-- the coffret -->
+  <div class="stack" data-show="{{COFFRET}},{{OUTRO}}" data-fade="0.35" style="background:#0E0B08">
+    <img class="cover" src="a/coffret.webp" alt="Coffret des Lumières">
+    <div class="stack" style="background:linear-gradient(to bottom,rgba(14,11,8,.9) 0,rgba(14,11,8,0) 24%)"></div>
+    <div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 28%)"></div>
+    <div style="position:absolute;top:150px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;line-height:1.2;color:var(--cream)" dir="rtl">החתימה שרואים — בחוץ.<br><span style="color:var(--cu)">ההבטחה — בפנים.</span></div>
+    <div style="position:absolute;top:1640px;left:60px;right:60px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;color:var(--cu)" dir="ltr">Coffret des Lumières</div>
+  </div>
+  <div class="stack" data-show="3.4,{{OUTRO}}" data-fade="0.3">
+    <div style="position:absolute;top:56px;right:56px;padding:12px 22px;border-radius:999px;background:rgba(250,248,243,.1);border:1px solid rgba(250,240,228,.28);color:#EADCC8;font-size:20px" dir="rtl">Brand Worlds Studio · עולם מותג 17</div>
+    <div style="position:absolute;top:58px;left:64px;font-family:'Cormorant Garamond',serif;font-size:40px;letter-spacing:.18em;color:#F3E6D2" dir="ltr">SIGNÉ°</div>
+  </div>
+</div>
+<div class="ball hb" style="offset-path:path('M1140 1677 H540')"><div class="sph"><div class="hr" style="position:absolute;inset:0"><div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(250,228,200,.6)"></div><div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div></div></div></div>
+
+<!-- OUTRO (studio) -->
+<div class="stack" data-show="{{OUTRO}},30" data-fade="0.35" style="background:var(--s-bg)">
+  <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-size:26px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><span dir="ltr">SIGNÉ°</span> · עולם מותג 17</div>
+    <div class="o1" style="font-size:64px;font-weight:600;line-height:1.15;color:var(--s-dark)" dir="rtl">כולם מוכרים סופגנייה.</div>
+    <div class="o2" style="font-size:58px;font-weight:600;line-height:1.2;color:var(--s-copper)" dir="rtl"><span dir="ltr">SIGNÉ°</span> מראה<br>מה בפנים.</div>
+  </div>
+  <div class="o2" style="position:absolute;top:640px;left:0;right:0;display:flex;justify-content:center;gap:18px" dir="rtl">
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-noir.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-framboise.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-pistache.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-vanille.webp" alt=""></div>
+  </div>
+  <div class="o3" style="position:absolute;top:1080px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+    <div style="font-size:46px;font-weight:500;line-height:1.3;color:var(--s-ink)" dir="rtl">ומה יש בפנים<br>אצלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

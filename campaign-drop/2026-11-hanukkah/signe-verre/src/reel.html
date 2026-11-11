@@ -1,0 +1,117 @@
+<!doctype html>
+<!-- SIGNÉ° · רואים מה בפנים — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SIGNE verre</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25;--cream:#F7EEDF;--cu:#E3A77C}
+html,body{margin:0;background:#0E0B08}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-cream)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cl{fill:none;stroke:#C98552;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 3px rgba(250,240,228,.6),0 8px 20px rgba(0,0,0,.28)}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.3%{opacity:0;transform:translateY(24px)}93.3%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.3%{opacity:0;transform:translateY(24px)}94.6%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94%{opacity:0;transform:translateY(24px)}96.3%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.hk{animation-name:hk}@keyframes hk{0%,10.667%{opacity:1}10.833%,100%{opacity:0}}
+.hl{animation-name:hl;animation-timing-function:linear}@keyframes hl{0%{stroke-dashoffset:.86}7.667%,100%{stroke-dashoffset:0}}
+.hb{animation-name:hb;animation-timing-function:linear}@keyframes hb{0%{offset-distance:14%;opacity:1}7.667%{offset-distance:100%;opacity:1;transform:scale(1)}8.667%{opacity:1;transform:scale(1.5)}9.333%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+.hr{animation-name:hr;animation-timing-function:linear}@keyframes hr{0%{transform:rotate(0)}7.667%,100%{transform:rotate(-560deg)}}
+.portal{animation-name:portal;animation-timing-function:cubic-bezier(.55,0,.25,1)}@keyframes portal{0%,7.833%{clip-path:circle(0px at 540px 1700px)}10.667%,100%{clip-path:circle(2300px at 540px 1700px)}}
+.rl0{animation-name:rl0}@keyframes rl0{0%,24.667%{opacity:0;filter:brightness(1.6)}26.500%{opacity:1;filter:brightness(1.15)}27.667%,100%{opacity:1;filter:none}}
+.sw0{animation-name:sw0;animation-timing-function:ease-in-out}@keyframes sw0{0%,24.667%{transform:translateX(-120%) skewX(-18deg);opacity:0}24.833%{opacity:1}27.000%,100%{transform:translateX(160%) skewX(-18deg);opacity:0}}
+.rl1{animation-name:rl1}@keyframes rl1{0%,42.333%{opacity:0;filter:brightness(1.6)}44.167%{opacity:1;filter:brightness(1.15)}45.333%,100%{opacity:1;filter:none}}
+.sw1{animation-name:sw1;animation-timing-function:ease-in-out}@keyframes sw1{0%,42.333%{transform:translateX(-120%) skewX(-18deg);opacity:0}42.500%{opacity:1}44.667%,100%{transform:translateX(160%) skewX(-18deg);opacity:0}}
+.rl2{animation-name:rl2}@keyframes rl2{0%,60.000%{opacity:0;filter:brightness(1.6)}61.833%{opacity:1;filter:brightness(1.15)}63.000%,100%{opacity:1;filter:none}}
+.sw2{animation-name:sw2;animation-timing-function:ease-in-out}@keyframes sw2{0%,60.000%{transform:translateX(-120%) skewX(-18deg);opacity:0}60.167%{opacity:1}62.333%,100%{transform:translateX(160%) skewX(-18deg);opacity:0}}
+.rl3{animation-name:rl3}@keyframes rl3{0%,77.667%{opacity:0;filter:brightness(1.6)}79.500%{opacity:1;filter:brightness(1.15)}80.667%,100%{opacity:1;filter:none}}
+.sw3{animation-name:sw3;animation-timing-function:ease-in-out}@keyframes sw3{0%,77.667%{transform:translateX(-120%) skewX(-18deg);opacity:0}77.833%{opacity:1}80.000%,100%{transform:translateX(160%) skewX(-18deg);opacity:0}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- HOOK -->
+<div class="stack hk" style="background:var(--s-cream)">
+  <div style="position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:200px;left:80px;right:80px;text-align:right;font-size:76px;font-weight:600;line-height:1.16;color:var(--s-dark)" dir="rtl">בחנוכה כולם<br>מוכרים סופגנייה.<br>אף אחד לא מראה<br><span style="color:var(--s-copper)">מה בפנים</span>.</div>
+  <div style="position:absolute;top:740px;left:250px;width:580px;box-sizing:border-box;padding:20px;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:14px" dir="rtl">
+    <div style="position:relative"><img src="a/generic.webp" alt="A generic sufganiya" style="width:100%;height:520px;object-fit:cover;border-radius:12px;display:block"><span style="position:absolute;top:14px;right:14px;padding:8px 18px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:22px">ככה משווים</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:26px;color:#6E6660"><span>סופגנייה · 90 גר׳</span><strong style="color:#2E2A27">₪12</strong></div>
+    <div style="font-size:24px;color:#9A928B">מה בפנים? לא כתוב.</div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl hl" pathLength="1" d="M1140 1700 H540"></path></svg>
+</div>
+
+<!-- SIGNÉ's set -->
+<div class="stack portal" style="background:#0E0B08">
+  <img class="cover" src="a/empty.webp" alt="A hollow glass sufganiya on SIGNÉ's plinth">
+  <div class="stack" data-show="3.2,3.6" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">אצל <span dir="ltr" style="font-family:'Cormorant Garamond',serif;letter-spacing:.12em">SIGNÉ°</span> — רואים.</div></div>
+  <div class="stack" data-show="3.60,8.95" data-fade="0.12"><video class="cover" src="a/pour-noir.webm" data-vstart="3.60" muted playsinline preload="auto"></video><img class="cover rl0" src="a/real-noir.webp" alt="SIGNÉ Le Noir"><div class="stack" style="overflow:hidden;pointer-events:none"><div class="sw0" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,rgba(255,230,190,0),rgba(255,230,190,.28),rgba(255,230,190,0))"></div></div><div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 32%)"></div><div class="stack" data-show="3.90,8.75" data-fade="0.2"><div style="position:absolute;top:1450px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:.28em;color:#E3A77C" dir="ltr">N°1 · LES LUMIÈRES</div><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:84px;line-height:1;color:#FBF3E6" dir="ltr">Le Noir</div><div style="font-size:36px;color:#F1E4D2" dir="rtl">שוקולד 70% · עלי זהב</div></div></div><div class="stack" data-show="3.90,7.30" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">מה בפנים?</div></div><div class="stack" data-show="7.80,8.75" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#E3A77C" dir="rtl">ועכשיו — חתום.</div></div></div><div class="stack" data-show="8.90,14.25" data-fade="0.12"><video class="cover" src="a/pour-framboise.webm" data-vstart="8.90" muted playsinline preload="auto"></video><img class="cover rl1" src="a/real-framboise.webp" alt="SIGNÉ La Framboise"><div class="stack" style="overflow:hidden;pointer-events:none"><div class="sw1" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,rgba(255,230,190,0),rgba(255,230,190,.28),rgba(255,230,190,0))"></div></div><div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 32%)"></div><div class="stack" data-show="9.20,14.05" data-fade="0.2"><div style="position:absolute;top:1450px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:.28em;color:#E3A77C" dir="ltr">N°2 · LES LUMIÈRES</div><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:84px;line-height:1;color:#FBF3E6" dir="ltr">La Framboise</div><div style="font-size:36px;color:#F1E4D2" dir="rtl">פטל · קונפי בפנים</div></div></div><div class="stack" data-show="9.20,12.60" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">מה בפנים?</div></div><div class="stack" data-show="13.10,14.05" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#E3A77C" dir="rtl">ועכשיו — חתום.</div></div></div><div class="stack" data-show="14.20,19.55" data-fade="0.12"><video class="cover" src="a/pour-pistache.webm" data-vstart="14.20" muted playsinline preload="auto"></video><img class="cover rl2" src="a/real-pistache.webp" alt="SIGNÉ La Pistache"><div class="stack" style="overflow:hidden;pointer-events:none"><div class="sw2" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,rgba(255,230,190,0),rgba(255,230,190,.28),rgba(255,230,190,0))"></div></div><div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 32%)"></div><div class="stack" data-show="14.50,19.35" data-fade="0.2"><div style="position:absolute;top:1450px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:.28em;color:#E3A77C" dir="ltr">N°3 · LES LUMIÈRES</div><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:84px;line-height:1;color:#FBF3E6" dir="ltr">La Pistache</div><div style="font-size:36px;color:#F1E4D2" dir="rtl">פיסטוק סיציליאני</div></div></div><div class="stack" data-show="14.50,17.90" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">מה בפנים?</div></div><div class="stack" data-show="18.40,19.35" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#E3A77C" dir="rtl">ועכשיו — חתום.</div></div></div><div class="stack" data-show="19.50,25.30" data-fade="0.12"><video class="cover" src="a/pour-vanille.webm" data-vstart="19.50" muted playsinline preload="auto"></video><img class="cover rl3" src="a/real-vanille.webp" alt="SIGNÉ La Vanille"><div class="stack" style="overflow:hidden;pointer-events:none"><div class="sw3" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,rgba(255,230,190,0),rgba(255,230,190,.28),rgba(255,230,190,0))"></div></div><div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 32%)"></div><div class="stack" data-show="19.80,25.10" data-fade="0.2"><div style="position:absolute;top:1450px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:.28em;color:#E3A77C" dir="ltr">N°4 · LES LUMIÈRES</div><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:84px;line-height:1;color:#FBF3E6" dir="ltr">La Vanille</div><div style="font-size:36px;color:#F1E4D2" dir="rtl">וניל מדגסקר · סוכר שרוף</div></div></div><div class="stack" data-show="19.80,23.20" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#F7EEDF" dir="rtl">מה בפנים?</div></div><div class="stack" data-show="23.70,25.10" data-fade="0.2"><div style="position:absolute;top:250px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;color:#E3A77C" dir="rtl">ועכשיו — חתום.</div></div></div>
+  <!-- the coffret -->
+  <div class="stack" data-show="24.8,27.3" data-fade="0.35" style="background:#0E0B08">
+    <img class="cover" src="a/coffret.webp" alt="Coffret des Lumières">
+    <div class="stack" style="background:linear-gradient(to bottom,rgba(14,11,8,.9) 0,rgba(14,11,8,0) 24%)"></div>
+    <div class="stack" style="background:linear-gradient(to top,rgba(14,11,8,.92) 0,rgba(14,11,8,0) 28%)"></div>
+    <div style="position:absolute;top:150px;left:60px;right:60px;text-align:center;font-size:58px;font-weight:500;line-height:1.2;color:var(--cream)" dir="rtl">החתימה שרואים — בחוץ.<br><span style="color:var(--cu)">ההבטחה — בפנים.</span></div>
+    <div style="position:absolute;top:1640px;left:60px;right:60px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;color:var(--cu)" dir="ltr">Coffret des Lumières</div>
+  </div>
+  <div class="stack" data-show="3.4,27.3" data-fade="0.3">
+    <div style="position:absolute;top:56px;right:56px;padding:12px 22px;border-radius:999px;background:rgba(250,248,243,.1);border:1px solid rgba(250,240,228,.28);color:#EADCC8;font-size:20px" dir="rtl">Brand Worlds Studio · עולם מותג 17</div>
+    <div style="position:absolute;top:58px;left:64px;font-family:'Cormorant Garamond',serif;font-size:40px;letter-spacing:.18em;color:#F3E6D2" dir="ltr">SIGNÉ°</div>
+  </div>
+</div>
+<div class="ball hb" style="offset-path:path('M1140 1677 H540')"><div class="sph"><div class="hr" style="position:absolute;inset:0"><div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(250,228,200,.6)"></div><div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div></div></div></div>
+
+<!-- OUTRO (studio) -->
+<div class="stack" data-show="27.3,30" data-fade="0.35" style="background:var(--s-bg)">
+  <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-size:26px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><span dir="ltr">SIGNÉ°</span> · עולם מותג 17</div>
+    <div class="o1" style="font-size:64px;font-weight:600;line-height:1.15;color:var(--s-dark)" dir="rtl">כולם מוכרים סופגנייה.</div>
+    <div class="o2" style="font-size:58px;font-weight:600;line-height:1.2;color:var(--s-copper)" dir="rtl"><span dir="ltr">SIGNÉ°</span> מראה<br>מה בפנים.</div>
+  </div>
+  <div class="o2" style="position:absolute;top:640px;left:0;right:0;display:flex;justify-content:center;gap:18px" dir="rtl">
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-noir.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-framboise.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-pistache.webp" alt=""></div>
+    <div style="width:210px;height:300px;border-radius:16px;overflow:hidden"><img class="cover" style="position:static" src="a/real-vanille.webp" alt=""></div>
+  </div>
+  <div class="o3" style="position:absolute;top:1080px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+    <div style="font-size:46px;font-weight:500;line-height:1.3;color:var(--s-ink)" dir="rtl">ומה יש בפנים<br>אצלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
