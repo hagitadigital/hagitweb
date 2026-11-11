@@ -6,4 +6,5 @@
 - `miel-table/` — MIEL° "השולחן מתמלא" (brand mode): bubbles = 8 nights, each lands on the table as a slice and lights a candle.
 - `pardon-me/` — PARDON ME° "החנוכייה המנומסת": 9 windows on the sleeve, the ball becomes the shamash, the sleeve slides off.
 - `rosee/` — ROSÉE° "פך אחד. שמונה לילות.": one drop fills nine glass oil cups (Kling), the wicks light toward dawn.
+- `trio/` — SIGNÉ° + MIEL° + ROSÉE° in one fast 30s campaign film.
 - Next: SIGNÉ° transparent sufganiyot (pour the filling), ENCORE°.
