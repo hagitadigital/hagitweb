@@ -1,0 +1,132 @@
+<!doctype html>
+<!--
+  MIEL° vitrine ad v2 — the new scenes for the 18s recut (9:16, 1080×1920).
+  Pick the scene with the hash: #hook (3.0s) · #bridge (2.5s) · #end-b (4.5s, LP B) · #end-long (4.5s, long LP).
+  Rendered with .claude/skills/brandos-brand-world-reel/scripts/render.js; build.sh cuts the footage and joins everything.
+-->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>MIEL vitrine v2 scenes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Heebo:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@500&display=swap">
+<style>
+:root{--bg:#FAF8F3;--cream:#EEE6D8;--ink:#3E2F25;--ink2:#6B563F;--copper:#C4765A;--rose:#C98F94}
+html,body{margin:0;background:var(--bg)}
+body{font-family:'Heebo',sans-serif;color:var(--ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+.scene{position:absolute;inset:0;display:none}
+.on{display:block}
+*{animation-fill-mode:both;animation-timing-function:cubic-bezier(.4,0,.2,1)}
+.sig{position:absolute;top:70px;right:80px;text-align:right}
+.sig b{display:block;font:italic 500 40px 'Cormorant Garamond',serif;color:var(--ink2)}
+.sig i{display:block;font:400 22px 'Heebo';font-style:normal;letter-spacing:.2em;color:var(--ink2);opacity:.8;margin-top:2px}
+.cu{color:var(--copper)}
+
+/* ── HOOK 0–3.0s: the question + its proof already in frame 0 ── */
+#hook{background:linear-gradient(#F3ECE1,#EADFD0)}
+#hook h1{position:absolute;top:190px;right:80px;left:80px;margin:0;font:800 104px/1.12 'Heebo';letter-spacing:-.01em}
+#hook .for{position:absolute;top:452px;right:84px;font:400 36px 'Heebo';color:var(--ink2)}
+.card{position:absolute;right:90px;width:900px;border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 30px 70px rgba(62,47,37,.18)}
+.card img{display:block;width:100%}
+.tag{position:absolute;top:22px;left:22px;padding:12px 26px;border-radius:40px;font:700 34px 'Heebo';direction:rtl}
+.price{position:absolute;bottom:24px;left:24px;padding:10px 28px;border-radius:16px;font:800 64px 'Heebo';direction:rtl}
+#cg{top:540px}
+#cg .tag{background:#fff;color:#8a8a8a;border:2px solid #ddd}
+#cg .price{background:#fff;color:#555;border:2px solid #ddd}
+#cm{top:1262px}
+#cm .tag{background:var(--copper);color:#fff}
+#cm .price{background:var(--ink);color:#fff}
+.vs{position:absolute;top:1186px;right:0;left:0;text-align:center;font:500 38px 'Heebo';color:var(--ink2)}
+.vs:before,.vs:after{content:'';display:inline-block;width:150px;height:2px;background:var(--copper);vertical-align:middle;margin:0 24px;opacity:.6}
+.cursor{position:absolute;width:56px;height:56px;top:900px;left:600px;animation:cur 3s}
+@keyframes cur{0%{transform:translate(0,0)}25%{transform:translate(-220px,-120px)}50%{transform:translate(120px,-60px)}75%{transform:translate(-60px,40px)}100%{transform:translate(-160px,-20px)}}
+#cg{animation:dim 3s}
+@keyframes dim{0%,48%{opacity:1;filter:none}68%,100%{opacity:.55;filter:grayscale(1)}}
+#cm{animation:lift 3s}
+@keyframes lift{0%,48%{transform:none;box-shadow:0 30px 70px rgba(62,47,37,.18)}68%,100%{transform:scale(1.04);box-shadow:0 0 0 6px var(--copper),0 40px 90px rgba(62,47,37,.28)}}
+.dot{position:absolute;bottom:90px;width:22px;height:22px;border-radius:50%;background:var(--copper);right:90px;animation:roll 3s linear}
+@keyframes roll{0%{transform:translateX(0)}100%{transform:translateX(-878px)}}
+.rule{position:absolute;bottom:100px;right:90px;left:90px;height:2px;background:var(--copper);opacity:.35}
+
+/* ── BRIDGE 2.5s ── */
+#bridge{background:#E9CFCF url(assets/miel-bags.png) center bottom/100% auto no-repeat}
+#bridge .veil{position:absolute;inset:0;background:rgba(250,248,243,.82);backdrop-filter:blur(6px)}
+#bridge .t{position:absolute;right:80px;left:80px;text-align:center}
+#bridge .t1{top:640px;font:800 110px/1.1 'Heebo';animation:up 2.5s}
+#bridge .t2{top:880px;font:700 76px/1.3 'Heebo';color:var(--copper);animation:up2 2.5s}
+@keyframes up{0%{opacity:0;transform:translateY(30px)}14%,100%{opacity:1;transform:none}}
+@keyframes up2{0%,26%{opacity:0;transform:translateY(30px)}42%,100%{opacity:1;transform:none}}
+
+/* ── END 4.5s (holds to the last frame) ── */
+.end{background:var(--bg)}
+.end .l1{position:absolute;top:470px;right:80px;left:80px;text-align:center;font:500 76px 'Heebo';color:var(--ink2);animation:up 4.5s}
+.end .l2{position:absolute;top:580px;right:80px;left:80px;text-align:center;font:800 132px 'Heebo';animation:e2 4.5s}
+@keyframes e2{0%,10%{opacity:0;transform:translateY(30px)}22%,100%{opacity:1;transform:none}}
+.end .line{position:absolute;top:800px;right:340px;left:340px;height:2px;background:var(--copper);transform-origin:right;animation:ln 4.5s}
+.end .line:after{content:'';position:absolute;left:-11px;top:-10px;width:22px;height:22px;border-radius:50%;background:var(--copper)}
+@keyframes ln{0%,18%{transform:scaleX(0)}34%,100%{transform:scaleX(1)}}
+.cta{position:absolute;top:900px;right:110px;left:110px;text-align:center;animation:e3 4.5s}
+@keyframes e3{0%,30%{opacity:0;transform:translateY(30px)}44%,100%{opacity:1;transform:none}}
+.cta .ask{font:700 64px/1.25 'Heebo'}
+.cta .what{margin-top:26px;font:400 46px/1.4 'Heebo';color:var(--ink2)}
+.cta .btn{display:inline-block;margin-top:56px;padding:30px 60px;border-radius:60px;background:var(--ink);color:#fff;font:700 46px 'Heebo'}
+.cta .btn small{display:block;font:400 30px 'Heebo';opacity:.8;margin-top:4px}
+.who{position:absolute;bottom:200px;right:0;left:0;text-align:center;font:500 34px 'Heebo';color:var(--ink2);animation:e3 4.5s}
+.url{position:absolute;bottom:130px;right:0;left:0;text-align:center;font:500 28px 'Plus Jakarta Sans';letter-spacing:.32em;color:var(--copper)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <section class="scene" id="hook">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <h1>נכנסות לאתר שלך,<br>ולא <span class="cu">קונות?</span></h1>
+    <div class="for">לחנויות ועסקים בביוטי, אוכל ואופנה</div>
+    <div class="card" id="cg"><img src="assets/generic-grid.png" alt=""><span class="tag">ככה משווים</span><span class="price">₪290</span></div>
+    <div class="vs">אותו מחיר</div>
+    <div class="card" id="cm"><img src="assets/miel-vitrine.png" alt=""><span class="tag">ככה בוחרים · MIEL°</span><span class="price">₪290</span></div>
+    <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l15 10-7 1.4 4 7.6-2.6 1.4-4-7.7L4 19z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    <div class="rule"></div><div class="dot"></div>
+  </section>
+
+  <section class="scene" id="bridge">
+    <div class="veil"></div>
+    <div class="t t1">אותו מחיר. ₪290.</div>
+    <div class="t t2">אבל עכשיו יש סיבה<br>לקנות דווקא אצלך.</div>
+  </section>
+
+  <section class="scene end" id="end-b">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <div class="l1">MIEL° לא קיימת.</div>
+    <div class="l2">החנות שלך כן.</div>
+    <div class="line"></div>
+    <div class="cta">
+      <div class="ask">שלחי לי קישור לחנות שלך</div>
+      <div class="what">ותוך 48 שעות תקבלי בוואטסאפ<br>3 מקומות שבהם משווים אותך.</div>
+      <div class="btn">שולחת קישור<small>בוואטסאפ · בלי עלות</small></div>
+    </div>
+    <div class="who">לעסקים מבוססים · ביוטי · אוכל בוטיק · אופנה</div>
+    <div class="url">HAGITANTEBI.CO.IL</div>
+  </section>
+
+  <section class="scene end" id="end-long">
+    <div class="sig"><b>Brand Worlds Studio</b><i>חגית אנטבי</i></div>
+    <div class="l1">MIEL° לא קיימת.</div>
+    <div class="l2">החנות שלך כן.</div>
+    <div class="line"></div>
+    <div class="cta">
+      <div class="ask">איפה משווים אותך,<br>ואיך יוצאים מזה?</div>
+      <div class="btn">אבחון פער המותג<small>30 דק׳ · בלי עלות</small></div>
+    </div>
+    <div class="who">לעסקים מבוססים · ביוטי · אוכל בוטיק · אופנה</div>
+    <div class="url">HAGITANTEBI.CO.IL</div>
+  </section>
+
+</div>
+<script>
+  const id = (location.hash || '#hook').slice(1);
+  document.getElementById(id).classList.add('on');
+  // only the visible scene's animations should run; the others are display:none and never start
+</script>
+</body>
+</html>
