@@ -5,4 +5,5 @@
 - `signe-card/` — SIGNÉ° "כרטיס החתימה": the generic card vs the signature card (direction B).
 - `miel-table/` — MIEL° "השולחן מתמלא" (brand mode): bubbles = 8 nights, each lands on the table as a slice and lights a candle.
 - `pardon-me/` — PARDON ME° "החנוכייה המנומסת": 9 windows on the sleeve, the ball becomes the shamash, the sleeve slides off.
-- Next: ROSÉE°, ENCORE°.
+- `rosee/` — ROSÉE° "פך אחד. שמונה לילות.": one drop fills nine glass oil cups (Kling), the wicks light toward dawn.
+- Next: SIGNÉ° transparent sufganiyot (pour the filling), ENCORE°.

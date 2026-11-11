@@ -1,0 +1,125 @@
+<!doctype html>
+<!-- ROSÉE° · פך אחד. שמונה לילות. — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ROSEE Hanoukka</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Assistant:wght@200;300;400;600&amp;family=Heebo:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--cream:#F7F0E6;--ink:#3B2E33;--ink-soft:#6E5A61;--rose:#E8B4B8;--rose-deep:#C9878E;--copper:#C28A5A;--linen:#FBF6EE;--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25}
+html,body{margin:0;background:#2A1520}
+body{font-family:'Assistant',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-cream)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cl{fill:none;stroke:#C98552;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 3px rgba(250,240,228,.6),0 8px 20px rgba(0,0,0,.28)}
+.big{font-family:'Assistant',sans-serif;font-weight:300;color:#FBEFEA;text-align:center;line-height:1.1;text-shadow:0 2px 30px rgba(40,10,25,.5)}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,90%{opacity:0;transform:translateY(24px)}92%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,91%{opacity:0;transform:translateY(24px)}93.3%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,93%{opacity:0;transform:translateY(24px)}95.3%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.hk{animation-name:hk}@keyframes hk{0%,10.667%{opacity:1}10.833%,100%{opacity:0}}
+.hl{animation-name:hl;animation-timing-function:linear}@keyframes hl{0%{stroke-dashoffset:.86}7.667%,100%{stroke-dashoffset:0}}
+.hb{animation-name:hb;animation-timing-function:linear}@keyframes hb{0%{offset-distance:14%;opacity:1}7.667%{offset-distance:100%;opacity:1;transform:scale(1)}8.667%{opacity:1;transform:scale(1.5)}9.333%,100%{offset-distance:100%;opacity:0;transform:scale(1.5)}}
+.hr{animation-name:hr;animation-timing-function:linear}@keyframes hr{0%{transform:rotate(0)}7.667%,100%{transform:rotate(-560deg)}}
+.portal{animation-name:portal;animation-timing-function:cubic-bezier(.55,0,.25,1)}@keyframes portal{0%,7.833%{clip-path:circle(0px at 540px 1700px)}10.667%,100%{clip-path:circle(2300px at 540px 1700px)}}
+.fl0{animation-name:fl0}@keyframes fl0{0%,44.667%{opacity:0;transform:scale(0)}45.267%{opacity:1;transform:scale(1.4)}46.000%,100%{opacity:1;transform:scale(1)}}
+.fl1{animation-name:fl1}@keyframes fl1{0%,46.667%{opacity:0;transform:scale(0)}47.267%{opacity:1;transform:scale(1.4)}48.000%,100%{opacity:1;transform:scale(1)}}
+.fl2{animation-name:fl2}@keyframes fl2{0%,49.067%{opacity:0;transform:scale(0)}49.667%{opacity:1;transform:scale(1.4)}50.400%,100%{opacity:1;transform:scale(1)}}
+.fl3{animation-name:fl3}@keyframes fl3{0%,51.467%{opacity:0;transform:scale(0)}52.067%{opacity:1;transform:scale(1.4)}52.800%,100%{opacity:1;transform:scale(1)}}
+.fl4{animation-name:fl4}@keyframes fl4{0%,53.867%{opacity:0;transform:scale(0)}54.467%{opacity:1;transform:scale(1.4)}55.200%,100%{opacity:1;transform:scale(1)}}
+.fl5{animation-name:fl5}@keyframes fl5{0%,56.267%{opacity:0;transform:scale(0)}56.867%{opacity:1;transform:scale(1.4)}57.600%,100%{opacity:1;transform:scale(1)}}
+.fl6{animation-name:fl6}@keyframes fl6{0%,58.667%{opacity:0;transform:scale(0)}59.267%{opacity:1;transform:scale(1.4)}60.000%,100%{opacity:1;transform:scale(1)}}
+.fl7{animation-name:fl7}@keyframes fl7{0%,61.067%{opacity:0;transform:scale(0)}61.667%{opacity:1;transform:scale(1.4)}62.400%,100%{opacity:1;transform:scale(1)}}
+.fl8{animation-name:fl8}@keyframes fl8{0%,63.467%{opacity:0;transform:scale(0)}64.067%{opacity:1;transform:scale(1.4)}64.800%,100%{opacity:1;transform:scale(1)}}
+.flk{animation-name:flk;animation-duration:6s!important;animation-timing-function:ease-in-out!important}@keyframes flk{0.00%{transform:scaleY(1.074) scaleX(0.941) rotate(1.4deg)}2.50%{transform:scaleY(0.928) scaleX(1.039) rotate(-2.9deg)}5.00%{transform:scaleY(1.058) scaleX(1.008) rotate(2.1deg)}7.50%{transform:scaleY(1.080) scaleX(0.964) rotate(-1.0deg)}10.00%{transform:scaleY(1.027) scaleX(0.968) rotate(-1.4deg)}12.50%{transform:scaleY(0.941) scaleX(1.026) rotate(2.2deg)}15.00%{transform:scaleY(1.044) scaleX(0.962) rotate(2.5deg)}17.50%{transform:scaleY(0.992) scaleX(0.963) rotate(-0.3deg)}20.00%{transform:scaleY(0.976) scaleX(0.948) rotate(0.4deg)}22.50%{transform:scaleY(0.965) scaleX(0.997) rotate(2.6deg)}25.00%{transform:scaleY(1.016) scaleX(0.981) rotate(2.2deg)}27.50%{transform:scaleY(1.079) scaleX(0.989) rotate(2.7deg)}30.00%{transform:scaleY(0.903) scaleX(0.954) rotate(-2.0deg)}32.50%{transform:scaleY(1.069) scaleX(1.009) rotate(1.3deg)}35.00%{transform:scaleY(0.952) scaleX(0.989) rotate(2.3deg)}37.50%{transform:scaleY(0.918) scaleX(0.952) rotate(-2.7deg)}40.00%{transform:scaleY(0.984) scaleX(1.024) rotate(0.3deg)}42.50%{transform:scaleY(0.972) scaleX(0.990) rotate(-1.9deg)}45.00%{transform:scaleY(1.071) scaleX(0.975) rotate(-1.6deg)}47.50%{transform:scaleY(0.956) scaleX(1.022) rotate(-1.1deg)}50.00%{transform:scaleY(1.063) scaleX(0.974) rotate(-0.4deg)}52.50%{transform:scaleY(0.913) scaleX(1.031) rotate(1.8deg)}55.00%{transform:scaleY(0.985) scaleX(0.952) rotate(-0.0deg)}57.50%{transform:scaleY(0.968) scaleX(1.024) rotate(2.6deg)}60.00%{transform:scaleY(1.033) scaleX(0.969) rotate(-2.8deg)}62.50%{transform:scaleY(1.061) scaleX(1.034) rotate(-2.0deg)}65.00%{transform:scaleY(0.990) scaleX(0.988) rotate(2.9deg)}67.50%{transform:scaleY(0.908) scaleX(0.946) rotate(2.1deg)}70.00%{transform:scaleY(1.003) scaleX(0.986) rotate(1.7deg)}72.50%{transform:scaleY(1.007) scaleX(1.009) rotate(-1.5deg)}75.00%{transform:scaleY(0.915) scaleX(0.941) rotate(-1.0deg)}77.50%{transform:scaleY(1.017) scaleX(0.978) rotate(-0.9deg)}80.00%{transform:scaleY(1.011) scaleX(1.011) rotate(0.6deg)}82.50%{transform:scaleY(0.956) scaleX(1.022) rotate(1.8deg)}85.00%{transform:scaleY(1.061) scaleX(1.029) rotate(-2.9deg)}87.50%{transform:scaleY(1.020) scaleX(0.975) rotate(-0.7deg)}90.00%{transform:scaleY(0.993) scaleX(0.954) rotate(-1.5deg)}92.50%{transform:scaleY(1.078) scaleX(0.973) rotate(2.5deg)}95.00%{transform:scaleY(1.023) scaleX(0.971) rotate(-1.1deg)}97.50%{transform:scaleY(1.009) scaleX(1.010) rotate(-1.0deg)}100.00%{transform:scaleY(0.911) scaleX(0.957) rotate(2.2deg)}}
+.dawn{animation-name:dawn}@keyframes dawn{0%,44.667%{opacity:0}47.667%{opacity:0.09}50.067%{opacity:0.18}52.467%{opacity:0.27}54.867%{opacity:0.36}57.267%{opacity:0.45}59.667%{opacity:0.54}62.067%{opacity:0.63}64.467%{opacity:0.72}68.000%,100.000%{opacity:.85}}
+.glow{animation-name:glow}@keyframes glow{0%,44.667%{opacity:0}65.133%,100%{opacity:1}}
+.nz{animation-name:nz}@keyframes nz{0%,68.000%{transform:scale(.9)}80.667%,100%{transform:scale(1)}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- HOOK -->
+<div class="stack hk" style="background:var(--s-cream)">
+  <div style="position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:200px;left:80px;right:80px;text-align:right;font-family:'Heebo',sans-serif;font-size:76px;font-weight:600;line-height:1.16;color:var(--s-dark)" dir="rtl">נס פך השמן.<br>כל מותג טיפוח יעלה<br>עליו פוסט. <span style="color:var(--s-copper)">איך יזהו<br>את שלך?</span></div>
+  <div style="position:absolute;top:760px;left:270px;width:540px;box-sizing:border-box;padding:20px;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:16px;font-family:'Heebo',sans-serif" dir="rtl">
+    <div style="position:relative"><img src="a/generic-oil.webp" alt="A generic facial oil with a blank label" style="width:100%;height:560px;object-fit:cover;border-radius:12px;display:block"><span style="position:absolute;top:14px;right:14px;padding:8px 18px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:22px">ככה משווים</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:26px;color:#6E6660"><span>שמן פנים · 30 מ״ל</span><strong style="color:#2E2A27">₪89</strong></div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl hl" pathLength="1" d="M1140 1700 H540"></path></svg>
+</div>
+
+<!-- THE WORLD -->
+<div class="stack portal" style="background:#2A1520">
+  <video class="cover" src="a/pour.webm" data-vstart="5.0" muted playsinline preload="auto"></video>
+  <div class="stack dawn" style="background:linear-gradient(to top,rgba(255,196,170,.0) 40%,rgba(255,186,160,.42) 62%,rgba(255,214,190,.5) 100%);mix-blend-mode:screen"></div>
+  <div class="stack glow" style="background:radial-gradient(ellipse 70% 12% at 50% 50%,rgba(255,190,120,.35),rgba(255,190,120,0) 70%)"></div>
+  <div class="fl0" style="position:absolute;left:527.6px;top:868.6px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl1" style="position:absolute;left:987.1px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl2" style="position:absolute;left:869.4px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl3" style="position:absolute;left:758.8px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl4" style="position:absolute;left:651.1px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl5" style="position:absolute;left:404.1px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl6" style="position:absolute;left:297.8px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl7" style="position:absolute;left:186.5px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div><div class="fl8" style="position:absolute;left:70.1px;top:939.0px;width:22px;height:40px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-18px;top:-16px;width:58px;height:74px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,200,130,.6),rgba(255,170,90,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 32%,#F6A84B 66%,rgba(214,104,40,0) 100%)"></div></div></div>
+  <!-- texts -->
+  <div class="stack" data-show="3.3,5.2" data-fade="0.3"><div style="position:absolute;top:250px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:500;letter-spacing:.12em;color:#FBEFEA" dir="ltr">ROSÉE°</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:#F2C9B8" dir="ltr">Née à l'aube · Hanoukka</div>
+  </div></div>
+  <div class="stack" data-show="5.5,9.1" data-fade="0.3"><div class="big" style="position:absolute;top:250px;left:60px;right:60px;font-size:104px" dir="rtl">טיפה אחת.</div></div>
+  <div class="stack" data-show="9.4,13.2" data-fade="0.3"><div class="big" style="position:absolute;top:250px;left:60px;right:60px;font-size:92px" dir="rtl">והיא לא<br>נגמרת.</div></div>
+  <div style="position:absolute;top:240px;left:0;right:0;height:140px"><div class="stack" data-show="14.00,14.72" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">1</span></div><div class="stack" data-show="14.72,15.44" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">2</span></div><div class="stack" data-show="15.44,16.16" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">3</span></div><div class="stack" data-show="16.16,16.88" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">4</span></div><div class="stack" data-show="16.88,17.60" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">5</span></div><div class="stack" data-show="17.60,18.32" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">6</span></div><div class="stack" data-show="18.32,19.04" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">7</span></div><div class="stack" data-show="19.04,20.40" data-fade="0.08" style="display:flex;align-items:baseline;justify-content:center;gap:16px" dir="rtl"><span style="font-family:'Assistant',sans-serif;font-size:40px;font-weight:300;color:#F7E7E2">לילה</span><span style="font-family:'Cormorant Garamond',serif;font-size:96px;color:#F2C9B8">8</span></div></div>
+  <div class="stack" data-show="14.0,20.4" data-fade="0.3"><div style="position:absolute;top:1420px;left:60px;right:60px;text-align:center;font-family:'Assistant',sans-serif;font-size:60px;font-weight:400;line-height:1.2;color:var(--ink)" dir="rtl">נס פך השמן,<br>בשפה של <span dir="ltr" style="font-family:'Cormorant Garamond',serif;font-weight:600">ROSÉE°</span></div></div>
+  <!-- La Nuit -->
+  <div class="stack" data-show="20.4,24.2" data-fade="0.4" style="background:rgba(42,21,32,.78)">
+    <div class="nz" style="position:absolute;left:240px;top:330px;width:600px;height:600px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px rgba(242,201,184,.5),0 0 120px rgba(255,190,160,.35)"><img class="cover" src="a/nuit.webp" alt="ROSÉE La Nuit"></div>
+    <div style="position:absolute;top:1010px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+      <div style="font-family:'Assistant',sans-serif;font-size:58px;font-weight:300;color:#FBEFEA" dir="rtl">ובערב? <span dir="ltr" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#F2C9B8">La Nuit.</span></div>
+      <div style="font-family:'Assistant',sans-serif;font-size:76px;font-weight:300;line-height:1.15;color:#FBEFEA" dir="rtl">הטל של מחר<br>נולד הלילה.</div>
+    </div>
+  </div>
+  <div class="stack" data-show="24.2,27.0" data-fade="0.4"><div class="big" style="position:absolute;top:240px;left:60px;right:60px;font-size:96px" dir="rtl">טיפה אחת.<br><span style="color:#F2C9B8">שמונה בקרים.</span></div></div>
+  <!-- studio tag -->
+  <div class="stack" data-show="3.4,27.0" data-fade="0.3"><div style="position:absolute;top:56px;right:56px;padding:10px 20px;border-radius:999px;background:rgba(251,239,234,.1);border:1px solid rgba(251,239,234,.3);color:#F2E1DA;font-family:'Heebo',sans-serif;font-size:20px" dir="rtl">Brand Worlds Studio · עולם מותג 15</div></div>
+</div>
+<div class="ball hb" style="offset-path:path('M1140 1677 H540')"><div class="sph"><div class="hr" style="position:absolute;inset:0"><div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(250,228,200,.6)"></div><div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div></div></div></div>
+
+<!-- OUTRO (studio) -->
+<div class="stack" data-show="27.0,30" data-fade="0.35" style="background:var(--s-bg);font-family:'Heebo',sans-serif">
+  <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-size:26px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><span dir="ltr">ROSÉE°</span> · עולם מותג 15</div>
+    <div class="o1" style="font-size:66px;font-weight:600;line-height:1.15;color:var(--s-dark)" dir="rtl">נס פך השמן?<br>אצל <span dir="ltr">ROSÉE°</span><br>זו טיפה אחת.</div>
+  </div>
+  <div class="o2" style="position:absolute;left:340px;top:640px;width:400px;height:400px;border-radius:50%;overflow:hidden;box-shadow:0 30px 80px rgba(110,60,70,.25)"><img class="cover" src="a/full.webp" alt="" style="object-position:50% 47%;transform:scale(1.9);transform-origin:50% 47%"></div>
+  <div class="o3" style="position:absolute;top:1160px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+    <div style="font-size:44px;font-weight:500;line-height:1.3;color:var(--s-ink)" dir="rtl">ומה הנס<br>של העסק שלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
