@@ -1,8 +1,8 @@
 # MIEL° vitrine ad v2: render notes
 
-18.5s recut of `MIEL-vitrine-ad-v1-4x5.mp4` (32s). The v1 file is not in the repo; pass it to the build.
+18.5s recut of `MIEL-vitrine-ad-v1-9x16.mp4` (32s). The v1 file is not in the repo; pass it to the build.
 
-    bash src/build.sh <path/to/MIEL-vitrine-ad-v1-4x5.mp4> .
+    bash src/build.sh <path/to/MIEL-vitrine-ad-v1-9x16.mp4> .
 
 | Time | Scene | Source |
 |---|---|---|
@@ -17,5 +17,6 @@ Two end cards, one per landing page:
 - `-lpB`: «שלחי לי קישור לחנות שלך… 3 מקומות שבהם משווים אותך» → `brand-world-start-b.html`
 - `-lpLong`: «אבחון פער המותג · 30 דק׳» → `brand-world.html`
 
-v1 footage is taken from the 4:5 centre column (760×1350) and scaled to 1080×1920, so it is a bit softer than the new scenes.
+v1 footage comes from the 9:16 master; the 4:5 files are built from the 9:16 with the skill's frame45.sh.
+The end-card button copies the v1 CTA (`#6A553E`, radius 10px, 452×136).
 No audio (v1 has none). `assets/` are stills cropped from v1.
