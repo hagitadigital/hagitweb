@@ -1,0 +1,136 @@
+<!doctype html>
+<!-- Hanukkah 2026 · "8 לילות · 8 עולמות" — template filled by build.py (slots in double braces). Edit here, then python3 -I build.py --html -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>Hanukkah · 8 worlds</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25;--night:#17110C;--cream:#F7EEDF;--cu:#D99A6C}
+html,body{margin:0;background:var(--night)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--night)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.line{fill:none;stroke:#C98552;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1}
+.hook{animation-name:hook}
+@keyframes hook{0%,8.667%{opacity:1}10.667%,100%{opacity:0}}
+.intro{animation-name:intro}
+@keyframes intro{0%,10.667%{opacity:0;transform:translateY(24px)}12.667%,20.5%{opacity:1;transform:none}21.5%,100%{opacity:0;transform:none}}
+.wfr{animation-name:wfr}
+@keyframes wfr{0%,9%{opacity:0;transform:scale(.94)}11.333%,100%{opacity:1;transform:none}}
+.hdr{animation-name:hdr}
+@keyframes hdr{0%,10%{opacity:0}12%,100%{opacity:1}}
+.outro{animation-name:outro}
+@keyframes outro{0%,87.4%{opacity:0}89.4%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,88%{opacity:0;transform:translateY(24px)}90.3%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,89.7%{opacity:0;transform:translateY(24px)}92%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,91.3%{opacity:0;transform:translateY(24px)}93.6%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+/* the ball: a copper sufganiya */
+.ball{position:absolute;left:0;top:0;width:68px;height:68px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 40% 34%,#F4CFA2 0%,#D08E58 30%,#9A5A2E 66%,#5A311A 100%);box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.roll{position:absolute;inset:0}
+{{CSS}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- night + glow -->
+<div class="stack" style="background:radial-gradient(ellipse 90% 60% at 50% 40%,#21180F,#120D09 80%)"></div>
+<div class="stack glow" style="background:radial-gradient(ellipse 70% 30% at 50% 92%,rgba(232,150,80,.42),rgba(232,150,80,0) 72%)"></div>
+
+<!-- header -->
+<div class="hdr" style="position:absolute;top:58px;left:80px;right:80px;height:80px">
+  <div style="position:absolute;left:0;top:6px;display:flex;flex-direction:column;gap:2px">
+    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;color:#E9DCC8" dir="ltr">Brand Worlds Studio</span>
+    <span style="font-size:18px;letter-spacing:.24em;color:#A8968A" dir="rtl">8 לילות · 8 עולמות</span>
+  </div>
+  <div style="position:absolute;right:0;top:0;width:220px;height:80px">{{COUNTERS}}</div>
+</div>
+
+<!-- the world window -->
+<div class="wfr" style="position:absolute;left:{{WX}}px;top:{{WY}}px;width:{{WW}}px;height:{{WH}}px;border-radius:28px;overflow:hidden;background:#221911;box-shadow:0 40px 120px rgba(0,0,0,.5),inset 0 0 0 1px rgba(217,154,108,.35)">
+  <div class="stack intro" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:46px;color:var(--cu)" dir="ltr">Huit nuits. Huit mondes.</div>
+    <div style="font-size:104px;font-weight:600;line-height:1.02;color:var(--cream)" dir="rtl">8 לילות<br>8 עולמות</div>
+    <div style="font-size:40px;line-height:1.4;color:#D9CBB8" dir="rtl">חג אחד.<br>כל עסק בעולם שלו.</div>
+  </div>
+  {{WORLDS}}
+  <svg class="stack" width="{{WW}}" height="{{WH}}" viewBox="0 0 {{WW}} {{WH}}" aria-hidden="true">{{RINGS}}</svg>
+  <!-- outro inside the window -->
+  <div class="stack outro" style="background:#1E1610">
+    <div class="o1" style="position:absolute;top:32px;left:32px;right:32px;height:520px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:12px" dir="rtl">{{MOSAIC}}</div>
+    <div class="o2" style="position:absolute;top:600px;left:40px;right:40px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center" dir="rtl">
+      <div style="font-size:66px;font-weight:600;line-height:1.12;color:var(--cream)">אותו חג.<br>שמונה עולמות.</div>
+      <div style="font-size:34px;line-height:1.35;color:var(--cu)">ואף אחד מהם לא נראה<br>כמו הסופגנייה בפיד.</div>
+    </div>
+    <div class="o3" style="position:absolute;top:900px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:20px" dir="rtl">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:20px 58px;background:#F7EEDF;color:#3E2F25;border-radius:12px"><span style="font-size:36px;font-weight:600">אבחון פער המותג</span><span style="font-size:22px;opacity:.75">30 דק׳ · בלי עלות</span></div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:.3em;color:#B9A48E" dir="ltr">HAGITANTEBI.CO.IL</div>
+    </div>
+  </div>
+</div>
+
+<!-- text under the window -->
+<div style="position:absolute;top:1318px;left:60px;right:60px;height:200px">
+  {{TEXTS}}
+  <div class="stack" data-show="{{OUTRO}},30" data-fade="0.3" style="display:flex;align-items:center;justify-content:center;text-align:center" dir="rtl">
+    <div style="font-size:52px;font-weight:500;line-height:1.2;color:var(--cream)">ומה <span style="color:var(--cu)">העולם שלך</span><br>מדליק השנה?</div>
+  </div>
+</div>
+
+<!-- HOOK (0–2.9s): the generic Hanukkah feed -->
+<div class="hook stack" style="background:var(--s-cream)">
+  <div style="position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:200px;left:80px;right:80px;text-align:right;font-size:78px;font-weight:600;line-height:1.16;color:var(--s-dark)" dir="rtl">בחנוכה כל העסקים<br>מעלים את <span style="color:var(--s-copper)">אותו פוסט</span>.</div>
+  <div style="position:absolute;top:470px;left:70px;right:70px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px" dir="rtl">{{TILES}}</div>
+  <div style="position:absolute;top:452px;right:56px;padding:8px 20px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:22px" dir="rtl">ככה נראה הפיד</div>
+  <div style="position:absolute;top:1270px;left:80px;right:80px;text-align:center;line-height:1.35;font-size:44px;font-weight:500;color:var(--s-ink)" dir="rtl">אותה סופגנייה. שישה עסקים.<br><span style="color:var(--s-copper)">אי אפשר לדעת של מי.</span></div>
+</div>
+
+<!-- the hanukkiah: the hook's copper line is its base -->
+<svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+  <path class="line base" pathLength="1" d="{{BASEPATH}}"></path>
+  {{ARMS}}{{CUPS}}
+</svg>
+{{CANDLES}}
+<div class="ball bmove" style="offset-path:path('{{BALLPATH}}')"><div class="sph"><div class="roll broll">
+  <div style="position:absolute;left:-4px;top:-6px;width:76px;height:38px;border-radius:50% 50% 46% 54% / 100% 100% 30% 30%;background:radial-gradient(circle at 30% 60%,#FFFFFF 0 2px,transparent 3px),radial-gradient(circle at 70% 70%,#FFFFFF 0 2px,transparent 3px),linear-gradient(#FFFDF8,#F2E9DD);opacity:.95"></div>
+  <div style="position:absolute;left:28px;top:4px;width:13px;height:11px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#E0566A,#9E1E30)"></div>
+  <div style="position:absolute;left:14px;top:44px;width:40px;height:2px;border-radius:2px;background:rgba(255,236,210,.35)"></div>
+</div></div></div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js (from the reel skill): data-show / data-in → keyframes in seconds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
