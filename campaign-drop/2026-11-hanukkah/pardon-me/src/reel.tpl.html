@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- PARDON ME° · החנוכייה המנומסת — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>PARDON ME Hanukkah</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--porcelain:#F3EDE2;--garden:#1E3A2B;--lime:#CFE06A;--blue:#B9D3E8;--petal:#F2C4CE;--berry:#9B1B47;--ink:#1B1F1C;--muted:#5A6359;--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-dark:#3E2F25}
+html,body{margin:0;background:var(--porcelain)}
+body{font-family:'Heebo',sans-serif}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-cream)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cl{fill:none;stroke:#C98552;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 3px rgba(250,240,228,.6),0 8px 20px rgba(0,0,0,.28)}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,90%{opacity:0;transform:translateY(24px)}92%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,91%{opacity:0;transform:translateY(24px)}93.3%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,93%{opacity:0;transform:translateY(24px)}95.3%,100%{opacity:1;transform:none}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+{{CSS}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- HOOK -->
+<div class="stack hk" style="background:var(--s-cream)">
+  <div style="position:absolute;top:80px;right:80px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:30px;color:var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8B7B6E">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:210px;left:80px;right:80px;text-align:right;font-size:78px;font-weight:600;line-height:1.16;color:var(--s-dark)" dir="rtl">בחנוכה כולם<br>מדליקים נרות.<br>למה שידליקו <span style="color:var(--s-copper)">את שלך</span>?</div>
+  <div style="position:absolute;top:640px;left:250px;width:580px;box-sizing:border-box;padding:20px;background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(62,47,37,.14);display:flex;flex-direction:column;gap:16px" dir="rtl">
+    <div style="position:relative"><img src="a/generic-candle.webp" alt="A generic white candle with a blank label" style="width:100%;height:560px;object-fit:cover;border-radius:12px;display:block"><span style="position:absolute;top:14px;right:14px;padding:8px 18px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:22px">ככה משווים</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:26px;color:#6E6660"><span>נר ריחני · 200 גר׳</span><strong style="color:#2E2A27">₪49</strong></div>
+  </div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="cl hl" pathLength="1" d="M1140 1700 H540"></path></svg>
+</div>
+
+<!-- THE WORLD — opens as the brand's window -->
+<div class="stack portal">
+  <!-- behind the sleeve -->
+  <div class="stack" style="background:var(--garden)">
+    <div class="stack bh" style="background:url(a/prints.webp) center/1920px 1920px"></div>
+    <div class="stack" style="background:rgba(20,30,24,.18)"></div>
+    <div style="position:absolute;left:230px;top:300px;width:620px;height:1000px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 14px var(--porcelain),0 40px 90px rgba(0,0,0,.35)"><img class="cover" src="a/gift.webp" alt="PARDON ME gift box, open" style="object-position:50% 50%"></div>
+    <div class="seal" style="position:absolute;left:700px;top:1120px;width:250px;height:250px;border-radius:50%;background:var(--berry);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bodoni Moda',serif;font-size:44px;line-height:1.1;color:#F7EDEA;box-shadow:0 20px 40px rgba(0,0,0,.3)" dir="ltr">NOT<br>SORRY.</div>
+    <div style="position:absolute;left:70px;right:70px;top:1470px;padding:34px 30px;border-radius:24px;background:var(--porcelain);text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25)" dir="rtl">
+      <div style="font-family:'Frank Ruhl Libre',serif;font-size:38px;color:var(--muted)">בחוץ, תמיד מנומסים.</div>
+      <div style="font-family:'Frank Ruhl Libre',serif;font-size:64px;font-weight:500;line-height:1.12;color:var(--ink);margin-top:6px">בפנים, אף פעם<br>לא מתנצלים.</div>
+    </div>
+  </div>
+
+  <!-- the sleeve -->
+  <div class="stack slv" style="background:var(--porcelain);box-shadow:30px 0 60px rgba(0,0,0,.25)">
+    <div style="position:absolute;top:56px;right:56px;padding:10px 20px;border-radius:999px;border:1px solid rgba(30,58,43,.25);color:var(--muted);font-size:20px" dir="rtl">Brand Worlds Studio · עולם מותג 29</div>
+    <div style="position:absolute;top:56px;left:64px;width:200px;height:60px">{{COUNTERS}}</div>
+    <div style="position:absolute;top:200px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div style="font-family:'Bodoni Moda',serif;font-size:84px;letter-spacing:.14em;color:var(--garden)" dir="ltr">PARDON ME</div>
+      <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:40px;color:var(--muted)" dir="ltr">Nice on the outside. Hanukkah, politely.</div>
+    </div>
+    <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+      <path class="cl wl" pathLength="1" d="{{BASE}}"></path>
+      <path d="{{STEMS}}" style="fill:none;stroke:#C98552;stroke-width:4;stroke-linecap:round"></path>
+    </svg>
+    {{WINDOWS}}
+    {{SPARKS}}
+    <div class="ball wb" style="offset-path:path('{{BALLPATH}}')"><div class="sph"><div class="wr" style="position:absolute;inset:0"><div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(250,228,200,.6)"></div><div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div></div></div></div>
+    <div style="position:absolute;top:1190px;left:60px;right:60px;height:300px">
+      <div class="stack" data-show="3.6,{{T0}}" data-fade="0.3" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+        <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:40px;color:var(--berry)" dir="ltr">Huit nuits.</div>
+        <div style="font-family:'Frank Ruhl Libre',serif;font-size:66px;font-weight:500;line-height:1.12;color:var(--ink)" dir="rtl">שמונה חלונות.<br>שמונה וידויים.</div>
+      </div>
+      {{TEXTS}}
+    </div>
+    <div style="position:absolute;bottom:90px;left:0;right:0;text-align:center;font-family:'Bodoni Moda',serif;font-size:22px;letter-spacing:.3em;color:var(--muted)" dir="ltr">PARDON ME° · I'M NOT SORRY</div>
+  </div>
+</div>
+<div class="ball hb" style="offset-path:path('M1140 1677 H540')"><div class="sph"><div class="hr" style="position:absolute;inset:0"><div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(250,228,200,.6)"></div><div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div></div></div></div>
+
+<!-- OUTRO (studio) -->
+<div class="stack" data-show="{{OUTRO}},30" data-fade="0.35" style="background:var(--s-bg)">
+  <div style="position:absolute;top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-size:26px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)" dir="rtl"><span dir="ltr">PARDON ME°</span> · עולם מותג 29</div>
+    <div class="o1" style="font-size:66px;font-weight:600;line-height:1.15;color:var(--s-dark)" dir="rtl">בחנוכה כולם<br>מדליקים נרות.</div>
+    <div class="o2" style="font-size:54px;font-weight:600;line-height:1.2;color:var(--s-copper)" dir="rtl">את PARDON ME<br>מזהים מהחלון.</div>
+  </div>
+  <div class="o2" style="position:absolute;left:440px;top:760px;width:200px;height:330px;border-radius:50%;overflow:hidden;box-shadow:inset 0 3px 10px rgba(30,40,30,.2),0 0 0 2px rgba(30,58,43,.3)"><div class="stack" style="background:url(a/prints.webp) 0% 100%/900px 900px"></div></div>
+  <div class="o2" style="position:absolute;left:516px;top:684px;width:48px;height:80px;transform-origin:50% 90%"><div class="flk" style="position:absolute;inset:0;transform-origin:50% 90%"><div style="position:absolute;left:-30px;top:-28px;width:108px;height:136px;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,196,110,.5),rgba(255,160,70,0) 70%)"></div><div style="position:absolute;inset:0;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#FFFDF3 0%,#FFE7A6 30%,#F6A84B 64%,rgba(214,104,40,0) 100%)"></div></div></div>
+  <div class="o3" style="position:absolute;top:1200px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+    <div style="font-size:44px;font-weight:500;line-height:1.3;color:var(--s-ink)" dir="rtl">מה החלון<br>של העסק שלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px" dir="rtl"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div class="progress" style="height:6px;background:var(--s-copper)"></div></div>
+</div>
+</div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
