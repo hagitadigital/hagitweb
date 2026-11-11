@@ -3,4 +3,5 @@
 - `hero/` — "8 לילות · 8 עולמות", the campaign film (studio mode).
 - SIGNÉ° Les Lumières (the first film) lives on branch `claude/kind-cannon-nojzbs` in `campaign-drop/2026-11-signe-hanukkah/`.
 - `signe-card/` — SIGNÉ° "כרטיס החתימה": the generic card vs the signature card (direction B).
-- Next: per-world films (PARDON ME° → MIEL° → ROSÉE° → ENCORE°); direction A "השולחן מתמלא" waits for a choice of world + cut-outs.
+- `miel-table/` — MIEL° "השולחן מתמלא" (brand mode): bubbles = 8 nights, each lands on the table as a slice and lights a candle.
+- Next: PARDON ME° (the ball becomes a candle), ROSÉE°, ENCORE°.

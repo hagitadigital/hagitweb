@@ -1,0 +1,115 @@
+<!doctype html>
+<!-- MIEL° · השולחן מתמלא — filled by build.py (slots in double braces). Edit here, then: python3 -I build.py -->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>MIEL table Hanoukka</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Assistant:wght@400;600;700&amp;display=swap">
+<style>
+:root{--poudre:#F3E4DF;--creme:#F6EADF;--rose:#C98989;--cacao:#4A2C24;--or:#B8956A}
+html,body{margin:0;background:var(--poudre)}
+body{font-family:'Assistant',sans-serif;color:var(--cacao)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:linear-gradient(#FBF4F1,#F6E8E3)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.hd{animation-name:hd}
+@keyframes hd{0%,80.5%{opacity:1}82.5%,100%{opacity:0}}
+.hook{animation-name:hook}
+@keyframes hook{0%,13%{opacity:1;transform:none}15%,100%{opacity:0;transform:translateY(-20px)}}
+.oo{animation-name:oo}
+@keyframes oo{0%,80.8%{opacity:0}82.8%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,81.5%{opacity:0;transform:translateY(24px)}83.8%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,83%{opacity:0;transform:translateY(24px)}85.3%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,85.5%{opacity:0;transform:translateY(24px)}87.8%,100%{opacity:1;transform:none}}
+.gl{fill:none;stroke:#C9A57C;stroke-width:3;stroke-linecap:round;stroke-dasharray:1 1}
+.ball{position:absolute;left:0;top:0;width:46px;height:46px;offset-rotate:0deg}
+.sph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F6DDBF 0%,#D2A272 32%,#9C6B3E 68%,#5E3A1E 100%);box-shadow:0 0 0 3px rgba(251,244,241,.9),0 8px 20px rgba(74,44,36,.3)}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+{{CSS}}
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- profile header (MIEL's own design) -->
+<div class="hd" style="position:absolute;left:0;right:0;top:0;height:440px">
+  <div style="position:absolute;top:70px;right:70px;width:172px;height:172px;border-radius:50%;background:conic-gradient(from 200deg,#E7C0BD,#C98989,#B8956A,#E7C0BD)">
+    <div style="position:absolute;inset:6px;border-radius:50%;background:#FBF4F1"></div>
+    <div style="position:absolute;inset:12px;border-radius:50%;background:var(--poudre);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:66px;font-weight:600;color:var(--cacao)" dir="ltr">M°</div>
+  </div>
+  <div style="position:absolute;top:84px;right:280px;left:70px;display:flex;flex-direction:column;align-items:flex-start;gap:4px" dir="rtl">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;letter-spacing:.06em;line-height:1" dir="ltr">MIEL°</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--or)" dir="ltr">Maison Miel · Pâtisserie</div>
+    <div style="font-family:'Frank Ruhl Libre',serif;font-size:32px;margin-top:8px">רומנטיקה מתחילה מבפנים.</div>
+  </div>
+  <div style="position:absolute;top:290px;right:70px;left:70px;display:flex;justify-content:space-between;align-items:center" dir="rtl">
+    <div style="font-family:'Frank Ruhl Libre',serif;font-size:34px;font-weight:500">חנוכה · <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--rose)" dir="ltr">Huit nuits</span></div>
+    <div style="padding:12px 30px;border-radius:999px;background:var(--cacao);color:#FBF4F1;font-size:24px;font-weight:600">להזמנה</div>
+  </div>
+  <div style="position:absolute;top:378px;left:70px;right:70px;height:1px;background:rgba(74,44,36,.14)"></div>
+</div>
+
+<!-- highlights: the eight nights -->
+<div class="hd stack">
+  {{BUBBLES}}
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true">
+    <path d="{{LINE}}" style="fill:none;stroke:rgba(201,165,124,.28);stroke-width:3;stroke-linecap:round"></path>
+    <path class="gl ln" pathLength="1" d="{{LINE}}"></path>
+  </svg>
+  <div class="ball bm" style="offset-path:path('M1140 {{BALL_Y}} H20')"><div class="sph"><div class="br" style="position:absolute;inset:0">
+    <div style="position:absolute;left:9px;top:9px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,240,220,.65)"></div>
+    <div style="position:absolute;left:8px;top:24px;width:9px;height:9px;border-radius:50%;background:#FFF7EC;box-shadow:0 0 10px 3px rgba(255,240,215,.75)"></div>
+  </div></div></div>
+</div>
+
+<!-- the post: the Hanukkah table -->
+<div style="position:absolute;left:{{PX}}px;top:{{PY}}px;width:960px;height:1200px;border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(74,44,36,.16)">
+  <img class="stack" src="a/table.webp" alt="MIEL Hanukkah table with a gold hanukkiah" style="width:960px;height:1200px;display:block">
+  <div class="stack glow" style="background:radial-gradient(ellipse 60% 26% at 50% 14%,rgba(255,190,120,.38),rgba(255,190,120,0) 70%)"></div>
+  <div class="stack hook" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:560px;text-align:center" dir="rtl">
+    <div style="font-family:'Frank Ruhl Libre',serif;font-size:104px;font-weight:500;line-height:1.08;color:var(--cacao)">שמונה נרות.<br>שמונה פרוסות.</div>
+    <div style="font-family:'Assistant',sans-serif;font-size:34px;font-weight:600;color:var(--rose);margin-top:22px">כל לילה — לב אחר.</div>
+  </div>
+</div>
+<div class="stack" style="pointer-events:none">
+  {{FLAMES}}
+  {{RIPPLES}}
+  {{SLICES}}
+</div>
+<div style="position:absolute;left:60px;right:60px;top:1770px;height:70px">{{CAPS}}</div>
+
+<!-- outro over the header -->
+<div class="oo" style="position:absolute;left:0;right:0;top:0;height:660px;background:linear-gradient(#FBF4F1 82%,rgba(251,244,241,0))">
+  <div style="position:absolute;top:96px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="o1" style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;letter-spacing:.08em" dir="ltr">MIEL° <span style="font-style:italic;font-weight:500;color:var(--or);letter-spacing:0">· Hanoukka</span></div>
+    <div class="o2" style="font-family:'Frank Ruhl Libre',serif;font-size:76px;font-weight:500;line-height:1.12" dir="rtl">מדליקים נר.<br>חותכים פרוסה.</div>
+    <div class="o2" style="font-family:'Frank Ruhl Libre',serif;font-size:44px;color:var(--rose)" dir="rtl">ומגלים מה בפנים.</div>
+    <div class="o3" style="margin-top:14px;padding:18px 46px;border-radius:999px;background:var(--cacao);color:#FBF4F1;font-size:30px;font-weight:600" dir="rtl">להזמנת שמונה הפרוסות לחנוכה</div>
+  </div>
+</div>
+
+<!-- the flying bubbles, above everything -->
+{{FLYERS}}
+
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(201,137,137,.2)"><div class="progress" style="height:6px;background:var(--rose)"></div></div>
+</div>
+</div>
+<script>
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
