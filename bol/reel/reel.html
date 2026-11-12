@@ -1,0 +1,311 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>BOL° reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* EDIT: the world's palette and display font. The studio colours below never change. */
+:root{
+  --w-bg:#F7F5F0;      /* world background */
+  --w-ink:#1F1B3A;     /* world text */
+  --w-accent:#C8284F;  /* world accent */
+  --w-display:'Cormorant Garamond',serif;
+  /* studio — fixed across every reel */
+  --s-bg:#FAF8F3; --s-cream:#EEE6D8; --s-ink:#6B563F; --s-copper:#C4765A; --s-gold:#B8894A; --s-dark:#3E2F25;
+}
+html,body{margin:0;background:var(--s-bg)}
+body{font-family:'Heebo',sans-serif;color:var(--w-ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+.film *{animation-duration:30s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+
+/* image sequences: one visible window of ~0.1s per frame, placed by animation-delay (reel.js) */
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.36%{opacity:1}.37%,100%{opacity:0}}
+
+/* ── STUDIO wrapper (fixed) ─────────────────────────────────────────── */
+.world{animation-name:world;transform-origin:50% 46%}
+@keyframes world{0%,8.4%{opacity:0;transform:translateY(60px) scale(.5)}9.6%,15.3%{opacity:1;transform:scale(.5)}18%,90%{transform:scale(1)}93%,100%{opacity:1;transform:scale(.5)}}
+.marks{animation-name:marks}
+@keyframes marks{0%,9%{opacity:0}10.5%,15.3%{opacity:1}16.5%,92%{opacity:0}94%,100%{opacity:1}}
+.intro{animation-name:intro}
+@keyframes intro{0%,8.8%{opacity:0}10%,16.3%{opacity:1}17.5%,100%{opacity:0}}
+.i1{animation-name:i1}.i2{animation-name:i2}.i3{animation-name:i3}
+@keyframes i1{0%,9%{opacity:0;transform:translateY(20px)}11%,100%{opacity:1;transform:none}}
+@keyframes i2{0%,9.6%{opacity:0;transform:translateY(30px)}12%,100%{opacity:1;transform:none}}
+@keyframes i3{0%,11%{opacity:0;transform:translateY(30px)}13.5%,100%{opacity:1;transform:none}}
+.outro{animation-name:outro}
+@keyframes outro{0%,91%{opacity:0}93%,100%{opacity:1}}
+.o1{animation-name:o1}.o2{animation-name:o2}.o3{animation-name:o3}
+@keyframes o1{0%,91.5%{opacity:0;transform:translateY(20px)}93.5%,100%{opacity:1;transform:none}}
+@keyframes o2{0%,92.5%{opacity:0;transform:translateY(30px)}95%,100%{opacity:1;transform:none}}
+@keyframes o3{0%,94.5%{opacity:0;transform:translateY(30px)}97%,100%{opacity:1;transform:none}}
+.hud{animation-name:hud}
+@keyframes hud{0%,18%{opacity:0;transform:translateY(-16px)}19.5%,89%{opacity:1;transform:none}90%,100%{opacity:0}}
+.progress{animation-name:prog;animation-timing-function:linear;transform-origin:right}
+@keyframes prog{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+/* ── HOOK (0–2.8s) ─────────────────────────────────────────────────── */
+.hook{animation-name:hook}
+@keyframes hook{0%,9%{opacity:1}10.2%,100%{opacity:0}}
+.hq{animation-name:hq}
+@keyframes hq{0%,100%{opacity:1;transform:none}}
+.hp{animation-name:hp}
+@keyframes hp{0%,1.5%{opacity:0;transform:scale(.94)}3.5%,100%{opacity:1;transform:none}}
+/* logo-hidden mechanic: a copper bar slides over the logo */
+.hbar{animation-name:hbar;transform-origin:right}
+@keyframes hbar{0%,3%{transform:scaleX(0)}4.6%,100%{transform:scaleX(1)}}
+/* her copper ball rolling on its line under the question */
+.line{fill:none;stroke:#C4814F;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.ln0{animation-name:ln0;animation-timing-function:linear}
+@keyframes ln0{0%,2%{stroke-dashoffset:1}8.5%,100%{stroke-dashoffset:0}}
+.ball{position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+.bl0{animation-name:bl0;animation-timing-function:linear}
+@keyframes bl0{0%,1.7%{offset-distance:0%;opacity:0}2%{offset-distance:0%;opacity:1}8.5%,9.3%{offset-distance:100%;opacity:1}10%,100%{offset-distance:100%;opacity:0}}
+.rl0{position:absolute;inset:0;animation-name:rl0;animation-timing-function:linear}
+@keyframes rl0{0%,2%{transform:rotate(0deg)}8.5%,100%{transform:rotate(-400deg)}}
+
+/* ── WORLD scenes · BOL° ── */.hk0{animation-name:hk0}@keyframes hk0{0%{opacity:1;transform:none}2.000%{opacity:1;transform:none}3.833%,100%{opacity:0;transform:translateX(70%) rotate(150deg) scale(.72)}}.hk1{animation-name:hk1}@keyframes hk1{0%,2.000%{opacity:0;transform:translateX(-70%) rotate(-150deg) scale(.72)}4.000%{opacity:1;transform:none}5.000%{opacity:1;transform:none}6.833%,100%{opacity:0;transform:translateX(70%) rotate(150deg) scale(.72)}}.hk2{animation-name:hk2}@keyframes hk2{0%,5.000%{opacity:0;transform:translateX(-70%) rotate(-150deg) scale(.72)}7.000%{opacity:1;transform:none}7.400%{transform:scale(1.04)}8.000%,100%{opacity:1;transform:none}}.spin{animation-name:spin;animation-timing-function:linear}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(130deg)}}.core-ttl{animation-name:corettl}@keyframes corettl{0%,18.667%{opacity:0;letter-spacing:.3em}22.000%,100%{opacity:1;letter-spacing:.04em}}
+.c-l1{animation-name:cl1}@keyframes cl1{0%,20.000%{transform:translateY(110%)}22.000%,100%{transform:none}}
+.c-l2{animation-name:cl2}@keyframes cl2{0%,21.333%{transform:translateY(110%)}23.333%,100%{transform:none}}
+.cs0{animation-name:cs0}@keyframes cs0{0%,25.667%{opacity:1;transform:none}28.833%,100%{opacity:0;transform:translateX(70%) rotate(150deg) scale(.72)}}
+.cs1{animation-name:cs1}@keyframes cs1{0%,25.667%{opacity:0;transform:translateX(-70%) rotate(-150deg) scale(.72)}28.833%,100%{opacity:1;transform:none}}
+.qd0{animation-name:qd0}@keyframes qd0{0%,34.500%{transform:none;opacity:1}35.767%,100%{transform:translateY(340px) scale(.35);opacity:0}}.ql0{animation-name:ql0;transform-box:view-box;transform-origin:50px 50px}@keyframes ql0{0%,35.233%{opacity:0;transform:translate(0,-6px) scale(1.18)}36.567%,100%{opacity:1;transform:none}}.qd1{animation-name:qd1}@keyframes qd1{0%,39.167%{transform:none;opacity:1}40.433%,100%{transform:translateY(340px) scale(.35);opacity:0}}.ql1{animation-name:ql1;transform-box:view-box;transform-origin:50px 50px}@keyframes ql1{0%,39.900%{opacity:0;transform:translate(0,-6px) scale(1.18)}41.233%,100%{opacity:1;transform:none}}.qd2{animation-name:qd2}@keyframes qd2{0%,42.333%{transform:none;opacity:1}43.600%,100%{transform:translateY(340px) scale(.35);opacity:0}}.ql2{animation-name:ql2;transform-box:view-box;transform-origin:50px 50px}@keyframes ql2{0%,43.067%{opacity:0;transform:translate(0,-6px) scale(1.18)}44.400%,100%{opacity:1;transform:none}}.qd3{animation-name:qd3}@keyframes qd3{0%,45.500%{transform:none;opacity:1}46.767%,100%{transform:translateY(340px) scale(.35);opacity:0}}.ql3{animation-name:ql3;transform-box:view-box;transform-origin:50px 50px}@keyframes ql3{0%,46.233%{opacity:0;transform:translate(0,-6px) scale(1.18)}47.567%,100%{opacity:1;transform:none}}.qbg{animation-name:qbg}@keyframes qbg{0%,36.167%{background-color:#F7F5F0}37.000%,39.333%{background-color:#FBE6C0}40.167%,42.500%{background-color:#DADFF1}43.333%,45.667%{background-color:#EFE0CC}46.500%,47.667%{background-color:#E2EBCB}49.333%,100%{background-color:#F7F5F0}}
+.qturn{animation-name:qturn}@keyframes qturn{0%,37.667%{transform:rotate(0deg)}39.167%,40.833%{transform:rotate(90deg)}42.333%,44.000%{transform:rotate(180deg)}45.500%,100%{transform:rotate(270deg)}}
+.qring{animation-name:qring}@keyframes qring{0%,37.667%{transform:rotate(0deg)}39.167%,40.833%{transform:rotate(90deg)}42.333%,44.000%{transform:rotate(180deg)}45.500%,100%{transform:rotate(270deg)}}
+.qringf{animation-name:qringf}@keyframes qringf{0%,46.667%{opacity:1}47.667%,100%{opacity:0}}
+.qshrink{animation-name:qshrink;transform-origin:50% 50%}@keyframes qshrink{0%,47.667%{transform:none}49.667%,100%{transform:translateY(250px) scale(.6)}}
+.qcard{animation-name:qcard}@keyframes qcard{0%,47.833%{opacity:0;transform:scale(.7)}49.667%,100%{opacity:1;transform:none}}
+.qok{animation-name:qok}@keyframes qok{0%,49.667%{stroke-dashoffset:30}51.333%,100%{stroke-dashoffset:0}}
+.ql1a{animation-name:ql1a}@keyframes ql1a{0%,33.000%{transform:translateY(110%)}34.667%,100%{transform:none}}
+.ql2a{animation-name:ql2a}@keyframes ql2a{0%,34.000%{transform:translateY(110%)}35.667%,100%{transform:none}}
+.gw0{animation-name:gw0}@keyframes gw0{0%,57.167%{opacity:1;transform:none}58.667%,100%{opacity:0;transform:scale(.97)}}.gc0{animation-name:gc0}@keyframes gc0{0%,57.333%{opacity:0;transform:scale(1.05)}59.000%,100%{opacity:1;transform:none}}.gs0{animation-name:gs0}@keyframes gs0{0%,56.167%{height:0;opacity:0}56.200%{height:0;opacity:.9}57.333%{height:900px;opacity:.9}58.167%,100%{height:900px;opacity:0}}.gw1{animation-name:gw1}@keyframes gw1{0%,63.000%{opacity:1;transform:none}64.500%,100%{opacity:0;transform:scale(.97)}}.gc1{animation-name:gc1}@keyframes gc1{0%,63.167%{opacity:0;transform:scale(1.05)}64.833%,100%{opacity:1;transform:none}}.gs1{animation-name:gs1}@keyframes gs1{0%,62.000%{height:0;opacity:0}62.033%{height:0;opacity:.9}63.167%{height:900px;opacity:.9}64.000%,100%{height:900px;opacity:0}}.g-l1{animation-name:gl1}@keyframes gl1{0%,54.667%{transform:translateY(110%)}56.333%,100%{transform:none}}
+.g-l2{animation-name:gl2}@keyframes gl2{0%,55.667%{transform:translateY(110%)}57.333%,100%{transform:none}}
+.hd0{animation-name:hd0}@keyframes hd0{0%,66.500%{opacity:0;transform:translateY(-60px) scale(1.15)}67.667%,100%{opacity:1;transform:none}}.hf0{animation-name:hf0}@keyframes hf0{0%,66.833%{background-color:rgba(31,27,58,.12);box-shadow:none}67.667%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd1{animation-name:hd1}@keyframes hd1{0%,67.567%{opacity:0;transform:translateY(-60px) scale(1.15)}68.733%,100%{opacity:1;transform:none}}.hf1{animation-name:hf1}@keyframes hf1{0%,67.900%{background-color:rgba(31,27,58,.12);box-shadow:none}68.733%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd2{animation-name:hd2}@keyframes hd2{0%,68.633%{opacity:0;transform:translateY(-60px) scale(1.15)}69.800%,100%{opacity:1;transform:none}}.hf2{animation-name:hf2}@keyframes hf2{0%,68.967%{background-color:rgba(31,27,58,.12);box-shadow:none}69.800%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd3{animation-name:hd3}@keyframes hd3{0%,69.700%{opacity:0;transform:translateY(-60px) scale(1.15)}70.867%,100%{opacity:1;transform:none}}.hf3{animation-name:hf3}@keyframes hf3{0%,70.033%{background-color:rgba(31,27,58,.12);box-shadow:none}70.867%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd4{animation-name:hd4}@keyframes hd4{0%,70.767%{opacity:0;transform:translateY(-60px) scale(1.15)}71.933%,100%{opacity:1;transform:none}}.hf4{animation-name:hf4}@keyframes hf4{0%,71.100%{background-color:rgba(31,27,58,.12);box-shadow:none}71.933%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd5{animation-name:hd5}@keyframes hd5{0%,71.833%{opacity:0;transform:translateY(-60px) scale(1.15)}73.000%,100%{opacity:1;transform:none}}.hf5{animation-name:hf5}@keyframes hf5{0%,72.167%{background-color:rgba(31,27,58,.12);box-shadow:none}73.000%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd6{animation-name:hd6}@keyframes hd6{0%,72.900%{opacity:0;transform:translateY(-60px) scale(1.15)}74.067%,100%{opacity:1;transform:none}}.hf6{animation-name:hf6}@keyframes hf6{0%,73.233%{background-color:rgba(31,27,58,.12);box-shadow:none}74.067%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.hd7{animation-name:hd7}@keyframes hd7{0%,73.967%{opacity:0;transform:translateY(-60px) scale(1.15)}75.133%,100%{opacity:1;transform:none}}.hf7{animation-name:hf7}@keyframes hf7{0%,74.300%{background-color:rgba(31,27,58,.12);box-shadow:none}75.133%,100%{background-color:#F4A21C;box-shadow:0 0 16px 5px rgba(244,162,28,.5)}}.h-l1{animation-name:hl1}@keyframes hl1{0%,65.667%{transform:translateY(110%)}67.333%,100%{transform:none}}
+.h-l2{animation-name:hl2}@keyframes hl2{0%,66.667%{transform:translateY(110%)}68.333%,100%{transform:none}}
+.w-push{animation-name:wpush}@keyframes wpush{0%,76.667%{transform:scale(1.12)}100%{transform:none}}
+.w-l1{animation-name:wl1}@keyframes wl1{0%,78.333%{transform:translateY(110%)}80.333%,100%{transform:none}}
+.w-l2{animation-name:wl2}@keyframes wl2{0%,79.667%{transform:translateY(110%)}81.667%,100%{transform:none}}
+
+</style>
+</head>
+<body data-duration="30">
+<div id="stage">
+<div class="film stack">
+
+<!-- STUDIO · intro (EDIT: world number + one-line concept) -->
+<div class="intro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 120px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 18px">
+    <div class="i1" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div class="i2" style="font-size: 100px; font-weight: 500; line-height: 1.05; color: var(--s-ink)" dir="rtl">עולם מותג <em style="font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--s-gold)">09</em></div>
+  </div>
+  <div class="i3" style="position: absolute; top: 1470px; left: 90px; right: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center" dir="rtl">
+    <div style="font-size: 64px; font-weight: 600; line-height: 1.15; color: var(--s-ink)">עולם מותג קונספט</div>
+    <div style="font-size: 34px; line-height: 1.5; color: var(--s-ink)">בר קערות יוגורט שבו הקערה נבנית מול העיניים. בול מה שבחרת.</div>
+  </div>
+</div>
+
+<!-- STUDIO · outro (EDIT: the answer to the hook + CTA) -->
+<div class="outro stack" style="background: var(--s-bg)">
+  <div style="position: absolute; top: 110px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div class="o1" style="font-size: 28px; font-weight: 500; letter-spacing: .06em; color: var(--s-copper)" dir="rtl"><span dir="ltr">BOL°</span> · עולם מותג 09</div>
+    <div class="o2" style="font-size: 64px; font-weight: 600; line-height: 1.2; color: var(--s-ink)" dir="rtl">עולם שרוצים להיכנס אליו,<br>ולהישאר.</div>
+  </div>
+  <div class="o3" style="position: absolute; top: 1440px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center">
+    <div style="font-size: 46px; font-weight: 500; line-height: 1.3; color: var(--s-copper)" dir="rtl">ומה יעצור את הלקוחה<br>דווקא אצלך?</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 22px 56px; background: var(--s-ink); color: var(--s-bg); border-radius: 12px" dir="rtl"><span style="font-size: 36px; font-weight: 500">אבחון פער המותג</span><span style="font-size: 22px; opacity: .8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; letter-spacing: .3em; color: #8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<!-- STUDIO · crop marks (fixed) -->
+<div class="marks stack">
+  <div style="position: absolute; top: 412px; left: 240px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 412px; left: 796px; width: 44px; height: 44px; border-top: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 240px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-left: 2px solid var(--s-copper)"></div>
+  <div style="position: absolute; top: 1387px; left: 796px; width: 44px; height: 44px; border-bottom: 2px solid var(--s-copper); border-right: 2px solid var(--s-copper)"></div>
+</div>
+
+<!-- WORLD — everything inside scales with the studio window -->
+<div class="world stack" style="overflow: hidden; background: var(--w-bg); box-shadow: 0 50px 140px rgba(59,46,51,.26)">
+
+<section class="scene" data-show="0,10.2">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 12px">
+      <div class="core-ttl" style="font-family: 'Fraunces', serif; font-size: 150px; font-weight: 600; line-height: 1; color: #1F1B3A" dir="ltr">BOL<span style="color: #C8284F">°</span></div>
+      <div data-in="6.3" style="font-family: 'Assistant', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .34em; color: rgba(31,27,58,.55)" dir="ltr">BAR À YAOURT · TEL AVIV</div>
+    </div>
+    <div style="position: absolute; top: 500px; left: 180px; width: 720px; height: 720px"><div class="cs0" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-soleil.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div><div class="cs1" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-foret.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div></div>
+    <div style="position: absolute; top: 1250px; left: 0; right: 0; height: 80px">
+      <div class="stack" data-show="0,8.1" data-fade="0.25" style="display: flex; justify-content: center; gap: 22px; align-items: baseline"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; color: #1F1B3A" dir="ltr">Le Soleil</span><span style="font-family: 'Fraunces', serif; font-size: 40px; font-weight: 600; color: #C8284F" dir="ltr">₪38</span></div>
+      <div class="stack" data-show="8.4,30" data-fade="0.25" style="display: flex; justify-content: center; gap: 22px; align-items: baseline"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; color: #1F1B3A" dir="ltr">La Forêt</span><span style="font-family: 'Fraunces', serif; font-size: 40px; font-weight: 600; color: #C8284F" dir="ltr">₪36</span></div>
+    </div>
+    <div style="position: absolute; top: 1400px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="c-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 112px; font-weight: 200; line-height: 1.1; color: #1F1B3A">בול</span></span>
+      <span class="mask"><span class="c-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 112px; font-weight: 600; line-height: 1.1; color: #1F1B3A">מה שבחרת.</span></span>
+      <div data-in="7.2" style="margin-top: 16px; font-family: 'Assistant', sans-serif; font-size: 34px; font-weight: 300; color: rgba(31,27,58,.66)">יוגורט יווני סמיך, פרי שנחתך הבוקר.</div>
+    </div>
+  </section>
+  <section class="scene" data-show="9.7,16.5">
+    <div class="stack qbg" style="background-color: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="9.8" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 46px; color: #C8284F; margin-bottom: 6px" dir="ltr">L'Atelier</div>
+      <span class="mask"><span class="ql1a" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 200; line-height: 1.12; color: #1F1B3A">ארבעה רבעים.</span></span>
+      <span class="mask"><span class="ql2a" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.12; color: #1F1B3A">הקערה שלך.</span></span>
+    </div>
+    <div class="qringf" style="position: absolute; inset: 0">
+      <div style="position: absolute; left: 110px; top: 670px; width: 860px; height: 860px; border-radius: 50%; border: 2px dashed rgba(31,27,58,.22); box-sizing: border-box"></div>
+      <div style="position: absolute; top: 544px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #C8284F"></div>
+    </div>
+    <div class="qcard" style="position: absolute; left: 230px; top: 640px; width: 620px; height: 860px; border-radius: 40px; background: #1F1B3A; box-shadow: 0 40px 90px -30px rgba(31,27,58,.6); overflow: hidden">
+      <div style="position: absolute; top: 56px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #F7F5F0">
+        <div style="font-family: 'Fraunces', serif; font-size: 22px; letter-spacing: .3em; opacity: .6" dir="ltr">À PAYER</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 104px; font-weight: 300; line-height: 1" dir="ltr">₪47</div>
+        <div style="width: 74px; height: 74px; border-radius: 50%; border: 2px solid rgba(247,245,240,.5); display: flex; align-items: center; justify-content: center; margin-top: 8px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F7F5F0" stroke-width="2.2"><path class="qok" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-dasharray: 30"/></svg></div>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-size: 34px; opacity: .85; margin-top: 8px" dir="ltr">Mangue · Myrtilles · Granola · Kiwi</div>
+      </div>
+    </div>
+    <div class="qshrink" style="position: absolute; inset: 0">
+      <div class="qturn" style="position: absolute; left: 240px; top: 800px; width: 600px; height: 600px">
+        <img src="../assets/bowl-nu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))">
+        <svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible"><defs><filter id="soft" x="-15%" y="-15%" width="130%" height="130%" filterUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".6"/></filter>
+<filter id="pile" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy=".5" stdDeviation=".6" flood-color="#1F1B3A" flood-opacity=".22"/></filter>
+<radialGradient id="rimShade" cx="50%" cy="50%" r="50%"><stop offset="78%" stop-color="#1F1B3A" stop-opacity="0"/><stop offset="100%" stop-color="#1F1B3A" stop-opacity=".16"/></radialGradient><mask id="m0"><path d="M22.08 19.43 A41.4 41.4 0 0 1 77.92 19.43 L58.43 40.77 A12.5 12.5 0 0 0 41.57 40.77 Z" fill="#fff" filter="url(#soft)"/></mask><mask id="m1"><path d="M19.43 77.92 A41.4 41.4 0 0 1 19.43 22.08 L40.77 41.57 A12.5 12.5 0 0 0 40.77 58.43 Z" fill="#fff" filter="url(#soft)"/></mask><mask id="m2"><path d="M77.92 80.57 A41.4 41.4 0 0 1 22.08 80.57 L41.57 59.23 A12.5 12.5 0 0 0 58.43 59.23 Z" fill="#fff" filter="url(#soft)"/></mask><mask id="m3"><path d="M80.57 22.08 A41.4 41.4 0 0 1 80.57 77.92 L59.23 58.43 A12.5 12.5 0 0 0 59.23 41.57 Z" fill="#fff" filter="url(#soft)"/></mask></defs><g class="ql0"><g filter="url(#pile)"><g mask="url(#m0)"><image href="../assets/t-mangue.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(15 50 50)"/></g></g></g><g class="ql1"><g filter="url(#pile)"><g mask="url(#m1)"><image href="../assets/t-myrtille.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-75 50 50)"/></g></g></g><g class="ql2"><g filter="url(#pile)"><g mask="url(#m2)"><image href="../assets/t-granola.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-165 50 50)"/></g></g></g><g class="ql3"><g filter="url(#pile)"><g mask="url(#m3)"><image href="../assets/t-kiwi.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-255 50 50)"/></g></g></g><circle cx="50" cy="50" r="42.4" fill="url(#rimShade)"/></svg>
+      </div>
+      <div class="qring" style="position: absolute; left: 540px; top: 1100px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-430px)"><div class="qd0" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(../assets/t-mangue.webp) center/cover; transform: rotate(0deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-90deg) translateY(-430px)"><div class="qd1" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(../assets/t-myrtille.webp) center/cover; transform: rotate(90deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-180deg) translateY(-430px)"><div class="qd2" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(../assets/t-granola.webp) center/cover; transform: rotate(180deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-270deg) translateY(-430px)"><div class="qd3" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(../assets/t-kiwi.webp) center/cover; transform: rotate(270deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div></div>
+    </div>
+    <div class="qringf" style="position: absolute; top: 1640px; left: 40px; right: 40px; height: 140px"><div class="stack" data-show="9.7,10.85" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">Yaourt grec</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">קערה ריקה · <b style="color: #C8284F">₪24</b></span></div><div class="stack" data-show="10.85,12.25" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">+ Mangue</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">מנגו טרי בקוביות · <b style="color: #C8284F">₪30</b></span></div><div class="stack" data-show="12.25,13.20" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">+ Myrtilles</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">אוכמניות · <b style="color: #C8284F">₪37</b></span></div><div class="stack" data-show="13.20,14.15" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">+ Granola</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">גרנולה בדבש ושקדים · <b style="color: #C8284F">₪42</b></span></div><div class="stack" data-show="14.15,14.30" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">+ Kiwi</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">קיווי פרוס · <b style="color: #C8284F">₪47</b></span></div></div>
+  </section>
+  <section class="scene" data-show="16.3,19.9">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="16.3" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 46px; color: #C8284F; margin-bottom: 6px" dir="ltr">La Glacerie</div>
+      <span class="mask"><span class="g-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 200; line-height: 1.12; color: #1F1B3A">מבחוץ פרי.</span></span>
+      <span class="mask"><span class="g-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.12; color: #1F1B3A">מבפנים <span dir="ltr">BOL°</span>.</span></span>
+    </div>
+    <div class="stack" data-show="16.3,18.25" data-fade="0.3"><div style="position: absolute; top: 560px; left: 130px; width: 820px; height: 820px"><div class="gw0" style="position: absolute; inset: 0"><img src="../assets/gl-mangue-whole.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+      <div class="gc0" style="position: absolute; inset: 0"><img src="../assets/gl-mangue-cut.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+      <div class="gs0" style="position: absolute; left: 50%; top: -40px; width: 3px; background: #1F1B3A"></div></div></div>
+    <div class="stack" data-show="18.05,30" data-fade="0.3"><div style="position: absolute; top: 560px; left: 130px; width: 820px; height: 820px"><div class="gw1" style="position: absolute; inset: 0"><img src="../assets/gl-myrtille-whole.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+      <div class="gc1" style="position: absolute; inset: 0"><img src="../assets/gl-myrtille-cut.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+      <div class="gs1" style="position: absolute; left: 50%; top: -40px; width: 3px; background: #1F1B3A"></div></div></div>
+    <div style="position: absolute; top: 1450px; left: 40px; right: 40px; height: 140px">
+      <div class="stack" data-show="16.3,18.2" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">La Mangue</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">קליפת מנגו קפואה, ובפנים יוגורט לבן</span></div>
+      <div class="stack" data-show="18.2,30" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">La Myrtille</span><span style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">קליפת אוכמניות קפואה, ובפנים ריבה ויוגורט</span></div>
+    </div>
+  </section>
+  <section class="scene" data-show="19.5,23.4">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <div data-in="19.5" style="font-family: 'Assistant', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: .3em; color: #C8284F; margin-bottom: 14px" dir="ltr">ÉDITION LIMITÉE · HANOUCCA</div>
+      <span class="mask"><span class="h-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 200; line-height: 1.12; color: #1F1B3A">שמונה לילות.</span></span>
+      <span class="mask"><span class="h-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.12; color: #1F1B3A">שמונה מילויים.</span></span>
+    </div>
+    <div style="position: absolute; top: 640px; left: 0; right: 0; display: flex; justify-content: center; gap: 34px" dir="ltr"><i class="hf0" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf1" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf2" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf3" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf4" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf5" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf6" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i><i class="hf7" style="display: block; width: 16px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%"></i></div>
+    <div style="position: absolute; top: 720px; left: 50px; width: 980px; box-sizing: border-box; padding: 26px; border-radius: 28px; background: #F1EEE7; box-shadow: inset 0 3px 14px rgba(31,27,58,.08)">
+      <div style="display: grid; grid-template-columns: repeat(4, 206px); justify-content: space-between; row-gap: 22px" dir="ltr"><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה א׳</span><img class="hd0" src="../assets/sfg-foret-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ב׳</span><img class="hd1" src="../assets/sfg-framboise-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ג׳</span><img class="hd2" src="../assets/sfg-fraise-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ד׳</span><img class="hd3" src="../assets/sfg-cerise-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ה׳</span><img class="hd4" src="../assets/sfg-myrtille-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ו׳</span><img class="hd5" src="../assets/sfg-peche-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ז׳</span><img class="hd6" src="../assets/sfg-mangue-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div><div style="position: relative; width: 206px; height: 206px; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(31,27,58,.06), inset 0 8px 18px rgba(31,27,58,.07)"><span style="position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 18px; letter-spacing: .1em; color: rgba(31,27,58,.35)" dir="rtl">לילה ח׳</span><img class="hd7" src="../assets/sfg-kiwi-s.webp" alt="" style="position: absolute; left: 14px; top: 10px; width: 178px; height: 178px; filter: drop-shadow(0 8px 8px rgba(31,27,58,.2))"></div></div>
+    </div>
+    <div data-in="21.6" style="position: absolute; top: 1290px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 6px">
+      <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 58px; color: #1F1B3A" dir="ltr">La Boîte des Huit Nuits</div>
+      <div style="font-family: 'Assistant', sans-serif; font-size: 32px; color: rgba(31,27,58,.66)" dir="rtl">סופגניות יוגורט קפואות · <b style="color: #C8284F">₪99</b> לקופסה</div>
+    </div>
+  </section>
+  <section class="scene" data-show="23.1,30">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 470px; left: 190px; width: 700px; height: 700px"><div class="w-push" style="position: absolute; inset: 0"><div class="" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-miel.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div></div></div>
+    <div data-in="23.2" style="position: absolute; top: 190px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <div style="font-family: 'Fraunces', serif; font-size: 120px; font-weight: 600; line-height: 1; color: #1F1B3A" dir="ltr">BOL<span style="color: #C8284F">°</span></div>
+      <div style="font-family: 'Assistant', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: .34em; color: rgba(31,27,58,.55)" dir="ltr">NOTRE YAOURT</div>
+    </div>
+    <div style="position: absolute; top: 1260px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl">
+      <span class="mask"><span class="w-l1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 96px; font-weight: 200; line-height: 1.12; color: #1F1B3A">יוגורט לבן.</span></span>
+      <span class="mask"><span class="w-l2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 96px; font-weight: 600; line-height: 1.12; color: #1F1B3A">כל השאר פרי.</span></span>
+      <div data-in="24.9" style="margin-top: 18px; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 42px; color: #C8284F" dir="ltr">Le blanc d'abord. La couleur, c'est vous.</div>
+    </div>
+  </section>
+</div>
+
+<!-- HOOK (0–2.8s). EDIT the question; keep ONE proof mechanic (price card OR hidden logo) and delete the other. -->
+<div class="hook stack" style="background: #F7F5F0">
+  <div style="position: absolute; top: 88px; right: 80px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--s-dark)" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size: 17px; letter-spacing: .3em; color: #8B7B6E">חגית אנטבי</div>
+  </div>
+  <div class="hq" style="position: absolute; top: 250px; left: 80px; right: 80px; text-align: right; font-size: 76px; font-weight: 600; line-height: 1.18; color: var(--s-dark)" dir="rtl">הלקוחה גוללת.<br>מה יעצור אותה <span style="color: var(--s-copper)">דווקא אצלך</span>?</div>
+
+<div style="position: absolute; top: 600px; left: 160px; width: 760px; height: 760px"><div class="hk0" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-soleil.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div><div class="hk1" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-foret.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div><div class="hk2" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="../assets/bowl-soleil.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div></div>
+  <div style="position: absolute; top: 1385px; left: 0; right: 0; height: 80px"><div class="stack" data-show="0,0.55" data-fade="0.2" style="display: flex; justify-content: center; align-items: center"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 54px; color: #1F1B3A" dir="ltr">Le Soleil</span></div><div class="stack" data-show="0.85,1.45" data-fade="0.2" style="display: flex; justify-content: center; align-items: center"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 54px; color: #1F1B3A" dir="ltr">La Forêt</span></div><div class="stack" data-show="1.75,30" data-fade="0.2" style="display: flex; justify-content: center; align-items: center"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 54px; color: #1F1B3A" dir="ltr">Le Soleil</span></div></div>
+
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path class="line ln0" pathLength="1" d="M1140 1690 H540"></path></svg>
+  <div class="ball bl0" style="offset-path: path('M1140 1690 H540')"><div class="halo"></div><div class="sph"><div class="rl0"><div style="position: absolute; left: 13px; top: 13px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(250,228,200,.65)"></div><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #F5DEC4" dir="ltr">BW</div><div style="position: absolute; left: 12px; top: 46px; width: 14px; height: 14px; border-radius: 50%; background: #FFF7EC; box-shadow: 0 0 12px 4px rgba(255,240,215,.8)"></div></div></div></div>
+</div>
+
+<!-- STUDIO · layer tag (EDIT the five layer names; each tag's window is set by data-show) -->
+<div class="hud" style="position: absolute; top: 40px; right: 40px; width: 520px; height: 132px; box-sizing: border-box; padding: 18px 26px; background: rgba(250,248,243,.92); border: 1px solid #D4C9BC; display: flex; flex-direction: column; gap: 6px" dir="rtl">
+  <div style="font-size: 18px; font-weight: 500; letter-spacing: .04em; color: var(--s-copper)">Brand Worlds Studio · עולם מותג 09</div>
+  <div style="position: relative; flex-grow: 1">
+    <div class="stack" data-show="5.6,9.9" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">01 · The Core</span><span style="font-size: 22px; color: var(--s-ink)">בול מה שבחרת.</span></div>
+    <div class="stack" data-show="9.9,16.3" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">02 · Le Quart</span><span style="font-size: 22px; color: var(--s-ink)">ארבעה רבעים. הקערה שלך.</span></div>
+    <div class="stack" data-show="16.3,19.7" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">03 · La Glacerie</span><span style="font-size: 22px; color: var(--s-ink)">מבחוץ פרי. מבפנים <span dir="ltr">BOL°</span>.</span></div>
+    <div class="stack" data-show="19.7,23.1" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">04 · Édition Hanoucca</span><span style="font-size: 22px; color: var(--s-ink)">שמונה לילות. שמונה מילויים.</span></div>
+    <div class="stack" data-show="23.1,30" data-fade="0.2" style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: var(--s-ink)" dir="ltr">05 · The Promise</span><span style="font-size: 22px; color: var(--s-ink)">יוגורט לבן. כל השאר פרי.</span></div>
+  </div>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(196,118,90,.18)"><div class="progress" style="height: 6px; background: var(--s-copper)"></div></div>
+</div>
+</div>
+
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
