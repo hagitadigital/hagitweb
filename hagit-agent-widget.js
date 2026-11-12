@@ -303,7 +303,7 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
 
   // Per-page override: a page can set window.HAGIT_AGENT_WELCOME / _QUICK_REPLIES before this loads.
   const WELCOME = (typeof window !== "undefined" && window.HAGIT_AGENT_WELCOME) ||
-    "שלום! אני הסוכן של חגית 👋\nאיך אוכל לעזור לך היום? אפשר לשאול על BrandOS, שירותים, תיק עבודות או לתאם פגישה.";
+    "שלום! אני הסוכנת של חגית 👋\nאיך אוכל לעזור לך היום? אפשר לשאול על BrandOS, שירותים, תיק עבודות או לתאם פגישה.";
 
   const QUICK_REPLIES = (typeof window !== "undefined" && window.HAGIT_AGENT_QUICK_REPLIES) ||
     ["מה זה BrandOS?", "מה השירותים?", "כמה זה עולה?", "תיאום פגישה"];
@@ -341,7 +341,7 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
     // Create button
     const btn = document.createElement("button");
     btn.id = "hagit-agent-btn";
-    btn.setAttribute("aria-label", "פתח צ'אט");
+    btn.setAttribute("aria-label", "פתיחת צ'אט");
     btn.innerHTML = ICON_CHAT + ICON_CLOSE;
     btn.addEventListener("click", togglePanel);
     document.body.appendChild(btn);
@@ -350,7 +350,7 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
     const panel = document.createElement("div");
     panel.id = "hagit-agent-panel";
     panel.setAttribute("role", "dialog");
-    panel.setAttribute("aria-label", "צ'אט עם סוכן חגית");
+    panel.setAttribute("aria-label", "צ'אט עם הסוכנת של חגית");
     panel.innerHTML = `
       <div class="ha-header">
         <div class="ha-avatar">ח</div>
@@ -363,8 +363,8 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
       <div class="ha-messages" id="ha-messages"></div>
       <div class="ha-quick-replies" id="ha-quick-replies"></div>
       <div class="ha-input-row">
-        <button class="ha-send-btn" id="ha-send" aria-label="שלח">${ICON_SEND}</button>
-        <input class="ha-input" id="ha-input" type="text" placeholder="כתוב הודעה..." maxlength="300" />
+        <button class="ha-send-btn" id="ha-send" aria-label="שליחה">${ICON_SEND}</button>
+        <input class="ha-input" id="ha-input" type="text" placeholder="כתבי הודעה..." maxlength="300" />
       </div>
       <div class="ha-footer">BRAND WORLDS STUDIO · AI AGENT</div>
     `;
@@ -424,7 +424,7 @@ const AGENT_URL = "https://brandos.hagitantebi.co.il/api/hagit-agent";
   function renderLink(url, label) {
     const safeUrl = url.replace(/"/g, "");
     if (/wa\.me|whatsapp\.com|api\.whatsapp/.test(url)) {
-      const text = label && label !== url ? label : "פתח שיחת וואטסאפ";
+      const text = label && label !== url ? label : "לפתיחת שיחה בוואטסאפ";
       return `<a class="ha-cta-wa" href="${safeUrl}" target="_blank" rel="noopener">${WA_ICON}<span>${text}</span></a>`;
     }
     return `<a class="ha-link" href="${safeUrl}" target="_blank" rel="noopener">${label || url}</a>`;

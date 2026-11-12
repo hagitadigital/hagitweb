@@ -45,8 +45,7 @@
     <meta name="twitter:image" content="https://hagitantebi.co.il/aurelle/og.jpg">
     <meta name="twitter:image:alt" content="עולם מותג חי: אתר, תוכן ווידאו בשפה אחת, Brand Worlds Studio">
 
-    <link rel="preload" as="image" href="images/bw-lp/oreva-glow-still.webp" fetchpriority="high">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -94,15 +93,24 @@
     .card__row b{font-size:clamp(.78rem,3vw,.92rem);color:#111;direction:ltr;}
     .stage{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#EFE7DC;box-shadow:0 24px 50px -28px rgba(42,32,26,.55),0 0 0 1px rgba(196,118,90,.3);}
     .stage img,.stage video{width:100%;height:100%;object-fit:cover;}
-    .hero .stage img{object-position:50% 72%;}
-    .hero .card,.hero .stage{aspect-ratio:1/1;}
-    .hero .card img{height:80%;inset:0 0 20% 0;}
-    .pair__world{margin-top:6px;text-align:center;direction:ltr;font-family:var(--font-body-en);font-size:clamp(.6rem,2.4vw,.7rem);font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:var(--color-chocolate-text);}
+    /* the check: a preview of the 3 points, as they arrive on WhatsApp */
+    .check__tag{font-size:.85rem;font-weight:500;color:var(--color-copper-text);text-align:center;margin-bottom:8px;}
+    .chat{background:#EFE7DC;border-radius:16px;padding:12px 12px 14px;box-shadow:0 24px 50px -30px rgba(42,32,26,.55),0 0 0 1px rgba(139,115,85,.22);}
+    .chat__head{display:flex;align-items:center;gap:8px;padding:2px 4px 10px;border-bottom:1px solid rgba(139,115,85,.25);margin-bottom:10px;}
+    .chat__head img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+    .chat__head b{font-size:.92rem;color:var(--ink);}
+    .chat__head span{margin-inline-start:auto;font-size:.78rem;color:var(--color-chocolate-text);}
+    .msg{background:#fff;border-radius:4px 12px 12px 12px;padding:9px 12px;font-size:.88rem;line-height:1.5;color:var(--color-text-deep);margin-bottom:6px;max-width:94%;}
+    .msg b{color:var(--ink);}
+    .msg__do{display:block;margin-top:6px;padding-top:6px;border-top:1px dashed rgba(139,115,85,.35);}
+    .chat__rest{position:relative;}
+    .chat__rest .msg{filter:blur(4px);user-select:none;}
+    .chat__more{position:absolute;inset:0;display:grid;place-items:center;font-size:.95rem;font-weight:600;color:var(--ink);}
+    @media (max-width:859px){ .msg{font-size:.84rem;} }
     @media (min-width:860px){
       .hero{padding:40px 0 64px;}
       .hero__grid{grid-template-columns:1.1fr 1fr;grid-template-rows:auto 1fr;gap:20px 56px;}
       .hero h1{margin-bottom:4px;}
-      .hero .card,.hero .stage{aspect-ratio:4/5;}
       .hero__copy{grid-column:1;grid-row:1;}
       .hero__pair{grid-column:2;grid-row:1 / span 2;}
       .hero__ask{grid-column:1;grid-row:2;}
@@ -113,6 +121,18 @@
     .offer b{font-weight:700;}
     .offer small{display:block;font-size:.88rem;color:var(--color-chocolate-text);margin-top:4px;}
     .field{margin-bottom:12px;}
+    .age{border:0;margin:0 0 12px;padding:0;}
+    .age legend{font-size:.92rem;font-weight:500;margin-bottom:6px;color:var(--ink);}
+    .age__opts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+    .age__opts label{position:relative;}
+    .age__opts input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+    .age__opts span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:6px;font-size:.88rem;font-weight:500;color:var(--ink);background:#fff;border:1px solid rgba(42,32,26,.3);border-radius:3px;}
+    .age__opts input:checked + span{background:var(--color-copper-text);border-color:var(--color-copper-text);color:var(--color-cream);}
+    .age__opts input:focus-visible + span{outline:2px solid var(--color-copper-text);outline-offset:2px;}
+    .form--dark .age legend{color:var(--color-cream);}
+    .form--dark .age__opts span{background:transparent;color:var(--color-cream);border-color:rgba(250,248,243,.45);}
+    .form--dark .age__opts input:checked + span{background:var(--color-copper);border-color:var(--color-copper);color:var(--ink);}
+    @media (max-width:859px){ .hero__pair{max-width:420px;margin:8px auto 0;order:3;} .hero__ask{order:2;} }
     .field label{display:block;font-size:.92rem;font-weight:500;margin-bottom:6px;color:var(--ink);}
     .field input{width:100%;min-height:50px;padding:12px 14px;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid rgba(42,32,26,.3);border-radius:3px;}
     .field input:focus{outline:2px solid var(--color-copper-text);outline-offset:1px;border-color:transparent;}
@@ -148,6 +168,7 @@
     .pair__line{grid-column:1/-1;text-align:center;font-family:var(--font-display);font-size:clamp(1.35rem,4.4vw,1.75rem);font-weight:500;line-height:1.25;color:var(--ink);margin-top:8px;}
     .pair__line small{display:block;font-family:var(--font-body-he);font-size:.9rem;font-weight:500;color:var(--color-copper-text);margin-bottom:2px;}
     @media (min-width:860px){ .pairs{grid-template-columns:repeat(2,1fr);gap:56px;max-width:820px;margin:0 auto;} }
+    @media (min-width:1100px){ .pairs{grid-template-columns:repeat(3,1fr);gap:36px;max-width:1080px;} .pairs .card__row{font-size:.6rem;} .pairs .card__row b{font-size:.75rem;} }
     .proof__note{text-align:center;font-size:.85rem;color:var(--color-chocolate-text);margin-top:28px;}
 
     /* 4 · what you get, what happens after, the form again */
@@ -193,31 +214,36 @@
             <h1>למה מוצר אחד משווים, <em>ואת השני פשוט בוחרים?</em></h1>
           </div>
 
-          <div class="hero__pair pair" aria-label="ככה משווים מול ככה בוחרים: אותו סרום">
-            <div>
-              <p class="pair__tag pair__tag--cmp">ככה משווים</p>
-              <div class="card" aria-label="כרטיס מוצר רגיל: סרום פנים, ₪290">
-                <img src="images/bw-lp/generic-serum.jpg" width="600" height="750" alt="" loading="eager">
-                <div class="card__row"><span>סרום פנים · 30ml</span><b>₪290</b></div>
+          <div class="hero__pair check" aria-label="דוגמה ממיתוג קוסמטיקה: כך מגיעות 3 נקודות ההשוואה בוואטסאפ">
+            <p class="check__tag">דוגמה ממיתוג קוסמטיקה · כך מגיעות אלייך 3 הנקודות</p>
+            <div class="chat">
+              <div class="chat__head"><img src="hagit-portrait-232.webp" width="116" height="116" alt="" loading="eager"><b>חגית אנטבי</b><span>תוך 48 שעות</span></div>
+              <p class="msg">היי, עברתי על האינסטגרם והאתר של הסטודיו שלך. אלה 3 המקומות שבהם לקוחה חדשה משווה אותך:</p>
+              <p class="msg"><b>1 · הפיד.</b> 6 מתוך 9 הפוסטים האחרונים הם מוצר על רקע לבן, בדיוק כמו אצל שלוש המתחרות שלך. מכאן הלקוחה עוברת להשוות מחיר.<span class="msg__do"><b>מה לעשות:</b> לצלם את מה שקורה רק אצלך, את הידיים בזמן הטיפול, ולא עוד בקבוק.</span></p>
+              <div class="chat__rest">
+                <p class="msg" aria-hidden="true"><b>2 · האתר.</b> בעמוד הבית שלושה משפטים מתחילים ב״הכי״, ואף אחד מהם לא אומר למה דווקא את. הלקוחה גוללת למחירון.</p>
+                <p class="msg" aria-hidden="true"><b>3 · ההודעה הראשונה.</b> התשובה האוטומטית בוואטסאפ שולחת מחירון לפני שאלה אחת על העור שלה.</p>
+                <p class="chat__more">ועוד שתי נקודות, על העסק שלך</p>
               </div>
-            </div>
-            <div>
-              <p class="pair__tag pair__tag--world">ככה בוחרים</p>
-              <div class="stage">
-                <img src="images/bw-lp/oreva-glow-still.webp" width="540" height="960" alt="ORÉVA°: בקבוק סרום GLOW בתוך עולם המותג, עם השורה: העור שלך לא צריך עוד מוצר" loading="eager" fetchpriority="high">
-              </div>
-              <p class="pair__world">ORÉVA° · Skin Studio</p>
             </div>
           </div>
 
           <div class="hero__ask">
             <p class="pain">אם מבקשים ממך הנחה, משווים אותך למתחרה זולה יותר, או שואלים «כמה זה עולה?» ונעלמים, <b>הלקוחה עוד לא רואה סיבה לבחור דווקא בך.</b></p>
             <form class="lead" id="lead-hero" style="margin-top:14px" data-lead-source="campaign-brand-world-start-b" data-lead-interest="3 נקודות השוואה · דף נחיתה B" data-lead-success-title="קיבלתי!" data-lead-success-text="תוך 48 שעות תקבלי ממני בוואטסאפ את 3 הנקודות.">
-              <p class="offer"><b>שלחי לי קישור לאתר או לאינסטגרם.</b> תוך 48 שעות תקבלי בוואטסאפ 3 נקודות שבהן לקוחה משווה אותך, ומה לעשות עם כל אחת.<small>בלי שיחה, בלי עלות, בלי התחייבות.</small></p>
+              <p class="offer"><b>שלחי לי קישור לאתר או לאינסטגרם.</b> תוך 48 שעות תקבלי בוואטסאפ 3 נקודות שבהן לקוחה משווה אותך, ומה לעשות עם כל אחת.<small>בלי עלות ובלי התחייבות. אני עוברת על כל קישור אישית.</small></p>
               <div class="field">
                 <label for="h-link">קישור לאתר או לאינסטגרם</label>
                 <input type="text" id="h-link" name="link" required autocomplete="url" inputmode="url" placeholder="instagram.com/...">
               </div>
+              <fieldset class="age">
+                <legend>כמה זמן העסק פעיל?</legend>
+                <div class="age__opts">
+                  <label><input type="radio" name="business_age" value="בהקמה" required><span>בהקמה</span></label>
+                  <label><input type="radio" name="business_age" value="עד שנתיים"><span>עד שנתיים</span></label>
+                  <label><input type="radio" name="business_age" value="שנתיים ומעלה"><span>שנתיים ומעלה</span></label>
+                </div>
+              </fieldset>
               <div class="field">
                 <label for="h-phone">טלפון לוואטסאפ</label>
                 <input type="tel" id="h-phone" name="phone" required autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{9,15}" title="מספר טלפון תקין, למשל 050-0000000" placeholder="050-0000000">
@@ -242,7 +268,7 @@
         <p class="reviews__head"><span dir="ltr">★★★★★ 5.0</span> · ביקורות בגוגל</p>
         <div class="reviews">
           <figure class="review"><q>ההרגשה שהיא יודעת בדיוק מה שהיא עושה משרה ביטחון של ממש. והכי חשוב, יש תוצאות בהתאם!</q><p>Roza Kagner · Google</p></figure>
-          <figure class="review"><q>מקצועית ברמות. עושה לנו את השיווק הדיגיטלי ומיתגה לי את העסק עם לוגו משגע. תותחית!</q><p>Sheri Matatof · Google</p></figure>
+          <figure class="review"><q>אני עובדת עם חגית כבר מספר שנים. התשוקה והידע העצום שלה מטורפים. ממליצה מאוד.</q><p>Karin Cohen · Google</p></figure>
         </div>
       </div>
     </section>
@@ -250,10 +276,25 @@
     <!-- 3 · TWO MORE PAIRS — the films play here; no links out of the page -->
     <section class="proof" aria-labelledby="proof-title">
       <div class="wrap">
-        <p class="sec-label">ועוד שני מוצרים. שני עולמות.</p>
+        <p class="sec-label">שלושה מוצרים. שלושה עולמות.</p>
         <h2 class="sec-title" id="proof-title">הבחירה <em>לא מתחילה במוצר.</em></h2>
 
         <div class="pairs">
+          <article class="pair">
+            <div>
+              <p class="pair__tag pair__tag--cmp">ככה משווים</p>
+              <div class="card" aria-label="כרטיס מוצר רגיל: סרום פנים, ₪290">
+                <img src="images/bw-lp/generic-serum.jpg" width="600" height="750" alt="" loading="lazy">
+                <div class="card__row"><span>סרום פנים · 30ml</span><b>₪290</b></div>
+              </div>
+            </div>
+            <div>
+              <p class="pair__tag pair__tag--world">ככה בוחרים</p>
+              <div class="stage"><video muted loop playsinline preload="none" data-io data-film="oreva" poster="images/start/oreva/hands-film.webp" aria-label="ORÉVA°: קודם הידיים, אחר כך הבקבוק"><source src="images/start/oreva/hands-film.mp4" type="video/mp4"></video></div>
+            </div>
+            <p class="pair__line"><small>היא מתחילה בידיים שמכירות את העור שלה</small>קודם הידיים. אחר כך הבקבוק.</p>
+          </article>
+
           <article class="pair">
             <div>
               <p class="pair__tag pair__tag--cmp">ככה משווים</p>
@@ -284,7 +325,7 @@
             <p class="pair__line"><small>היא מתחילה במה שהיא זוכרת ממנו</small>מותג שבו היא בונה את הפרוסה.</p>
           </article>
         </div>
-        <p class="proof__note">ORÉVA°, VELUNE° ו-MIEL° הם עולמות שנבנו בסטודיו, כדי להראות את הפער על מוצר אחד.</p>
+        <p class="proof__note">שלושת העולמות בעמוד הם עולמות קונספט שנבנו בסטודיו, כדי להראות את הפער על מוצר אחד.</p>
       </div>
     </section>
 
@@ -298,7 +339,7 @@
               <li><b>את שולחת קישור.</b> לאתר, לאינסטגרם או לחנות.</li>
               <li><b>אני מסתכלת כמו לקוחה חדשה.</b> איפה היא משווה אותך למתחרות, ואיפה כבר יש סיבה לבחור בך.</li>
               <li><b>תוך 48 שעות מגיעות אלייך 3 נקודות בוואטסאפ,</b> ולכל אחת מה עושים איתה.</li>
-              <li><b>אם תרצי להמשיך, נקבע שיחה.</b> אם לא, הנקודות נשארות אצלך.</li>
+              <li><b>אם תרצי להמשיך, נקבע שיחה.</b> ההמשך יכול להיות צעד ממוקד אחד: מפת מותג, דף נחיתה או רילס, מ-₪1,900. או עולם מותג מלא, פרויקט של חודש עד שלושה חודשים, מ-₪8,000. אם לא, הנקודות נשארות אצלך.</li>
             </ol>
           </div>
 
@@ -309,6 +350,14 @@
                 <label for="b-link">קישור לאתר או לאינסטגרם</label>
                 <input type="text" id="b-link" name="link" required autocomplete="url" inputmode="url" placeholder="instagram.com/...">
               </div>
+              <fieldset class="age">
+                <legend>כמה זמן העסק פעיל?</legend>
+                <div class="age__opts">
+                  <label><input type="radio" name="business_age" value="בהקמה" required><span>בהקמה</span></label>
+                  <label><input type="radio" name="business_age" value="עד שנתיים"><span>עד שנתיים</span></label>
+                  <label><input type="radio" name="business_age" value="שנתיים ומעלה"><span>שנתיים ומעלה</span></label>
+                </div>
+              </fieldset>
               <div class="field">
                 <label for="b-phone">טלפון לוואטסאפ</label>
                 <input type="tel" id="b-phone" name="phone" required autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{9,15}" title="מספר טלפון תקין, למשל 050-0000000" placeholder="050-0000000">
