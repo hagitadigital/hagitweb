@@ -508,7 +508,7 @@ footer a{color:inherit}
           <p class="tag lim">Édition limitée · Hanoucca 5787</p>
           <h2>שמונה לילות.<br><b>שמונה מילויים.</b></h2>
         </div>
-        <p>בצק סופגנייה בסוכר גביש, ובפנים קרם יוגורט קפוא וריבת פרי. ציפוי פרי ופרי קפוא מלמעלה. חמישה טעמים, קופסה לשמונה הלילות, סופגנייה ללילה. רק עד סוף החג.</p>
+        <p>בצק סופגנייה בסוכר גביש, ובפנים קרם יוגורט קפוא וריבת פרי. ציפוי פרי ופרי קפוא מלמעלה. שמונה טעמים לשמונה לילות, סופגנייה ללילה. רק עד סוף החג.</p>
       </div>
       <div class="hgrid">
         <div class="feat reveal" aria-live="polite">
@@ -526,7 +526,7 @@ footer a{color:inherit}
           <div class="foot">
             <div class="tot">₪14 לסופגנייה · קופסה מלאה ₪99<b class="fr" id="bTot">₪0</b></div>
             <div class="acts">
-              <button class="link" type="button" id="bRand">למלא בהפתעה</button>
+              <button class="link" type="button" id="bRand">טעם אחר לכל לילה</button>
               <button class="btn pay" type="button" id="bClose" disabled>לסגור את הקופסה</button>
             </div>
           </div>
@@ -875,7 +875,10 @@ const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const F=[
     {id:'foret',     fr:'Fruits des Bois',     he:'פירות יער',   c:'#6B1E4A', d:'ריבת פירות יער, קרם יוגורט קפוא, ואוכמניות ופטל קפואים מלמעלה.', alt:'סופגניית פירות יער עם ציפוי ריבה, אוכמניות ופטל קפואים'},
     {id:'framboise', fr:'Framboise',           he:'פטל',         c:'#C8284F', d:'ריבת פטל, קרם יוגורט קפוא ושלוש פטל קפואות על הציפוי.', alt:'סופגניית פטל עם ציפוי ריבת פטל ופטל קפוא'},
+    {id:'fraise',    fr:'Fraise',              he:'תות',         c:'#E0303A', d:'ריבת תותים, קרם יוגורט קפוא וחצי תות עם העלים.', alt:'סופגניית תות עם ציפוי ריבת תותים וחצי תות'},
     {id:'cerise',    fr:'Cerise',              he:'דובדבן',      c:'#8E1630', d:'קומפוט דובדבנים, קרם יוגורט קפוא וחצי דובדבן עם הזנב.', alt:'סופגניית דובדבן עם ציפוי קומפוט וחצי דובדבן'},
+    {id:'myrtille',  fr:'Myrtille',            he:'אוכמניות',    c:'#3B3F7A', d:'ריבת אוכמניות, קרם יוגורט קפוא ושלוש אוכמניות קפואות.', alt:'סופגניית אוכמניות עם ציפוי ריבת אוכמניות ואוכמניות קפואות'},
+    {id:'peche',     fr:'Pêche',               he:'אפרסק',       c:'#F08A4B', d:'קונפי אפרסק, קרם יוגורט קפוא ופלחי אפרסק מלמעלה.', alt:'סופגניית אפרסק עם ציפוי אפרסק ופלחי אפרסק'},
     {id:'mangue',    fr:'Mangue',              he:'מנגו',        c:'#F4A21C', d:'קרם מנגו, קרם יוגורט קפוא, קוביות מנגו ועלה נענע.', alt:'סופגניית מנגו עם ציפוי מנגו, קוביות מנגו ונענע'},
     {id:'kiwi',      fr:'Kiwi & Citron vert',  he:'קיווי וליים', c:'#7FA93A', d:'ריבת קיווי, קרם יוגורט קפוא, גרידת ליים ופלח ליים.', alt:'סופגניית קיווי וליים עם פרוסות קיווי ופלח ליים'}
   ];
@@ -923,8 +926,8 @@ const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
   $('bRand').addEventListener('click',()=>{
     if(box.classList.contains('closed')) return;
-    let d=0; slots.forEach((s,i)=>{ if(!s){ setTimeout(()=>{ slots[i]=F[Math.floor(Math.random()*F.length)].id; render(i); }, d); d+=still?0:140; } });
-    track('box_random');
+    const left=F.map(f=>f.id).filter(id=>!slots.includes(id)); let d=0, k=0; slots.forEach((s,i)=>{ if(!s){ const id=left[k++]||F[Math.floor(Math.random()*F.length)].id; setTimeout(()=>{ slots[i]=id; feature(id); render(i); }, d); d+=still?0:160; } });
+    track('box_one_each');
   });
   $('bClose').addEventListener('click',()=>{
     const closed=box.classList.toggle('closed');
