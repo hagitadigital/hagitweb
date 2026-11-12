@@ -27,3 +27,9 @@ for end in b long; do
 done
 for f in "$OUT"/MIEL-vitrine-v2-*-9x16.mp4; do bash "$SK/frame45.sh" "$f" "${f%-9x16.mp4}-4x5.mp4"; done
 ls -la "$OUT"
+# Music: src/audio/miel-music.mp3 (ElevenLabs Music v2.5 via Higgsfield, instrumental, 19s). Trim to the video, fade the last 0.6s, -14 LUFS.
+for f in "$OUT"/MIEL-vitrine-v2-*.mp4; do
+  ffmpeg -y -loglevel error -i "$f" -i "$HERE/audio/miel-music.mp3" -map 0:v -map 1:a -c:v copy \
+    -af "atrim=0:18.5,afade=t=out:st=17.9:d=0.6,loudnorm=I=-14:TP=-1.5:LRA=7" -ar 48000 -c:a aac -b:a 192k -shortest -movflags +faststart "$f.tmp.mp4"
+  mv "$f.tmp.mp4" "$f"
+done

@@ -19,4 +19,4 @@ Two end cards, one per landing page:
 
 v1 footage comes from the 9:16 master; the 4:5 files are built from the 9:16 with the skill's frame45.sh.
 The end-card button copies the v1 CTA (`#6A553E`, radius 10px, 452×136).
-No audio (v1 has none). `assets/` are stills cropped from v1.
+Music: `audio/miel-music.mp3`, an original instrumental generated with ElevenLabs Music v2.5 (via Higgsfield), trimmed to 18.5s with a 0.6s fade, -14 LUFS. `assets/` are stills cropped from v1.
