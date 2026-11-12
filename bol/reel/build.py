@@ -25,7 +25,7 @@ rep("--w-bg:#F7F0E6;", f"--w-bg:{BG};"); rep("--w-ink:#3B2E33;", f"--w-ink:{INK}
 s = s.replace('<title>Brand World Reel</title>', '<title>BOL° reel</title>')
 rep('color: var(--s-gold)">NN</em>', 'color: var(--s-gold)">09</em>')
 rep('EDIT: משפט אחד על העולם, מתוך האתר.', 'בר קערות יוגורט שבו הקערה נבנית מול העיניים. בול מה שבחרת.')
-rep('BRAND° · עולם מותג NN', 'BOL° · עולם מותג 09')
+rep('BRAND° · עולם מותג NN', '<span dir="ltr">BOL°</span> · עולם מותג 09')
 rep('EDIT: התשובה להוק.<br>שורה שנייה.', 'עולם שרוצים להיכנס אליו,<br>ולהישאר.')
 rep('EDIT: שאלה חוזרת ללקוחה<br>על העסק שלה.', 'ומה יעצור את הלקוחה<br>דווקא אצלך?')
 s = s.replace('Brand Worlds Studio · עולם מותג NN', 'Brand Worlds Studio · עולם מותג 09')
@@ -58,7 +58,7 @@ rep('>EDIT: למה תמיד<br>משווים אותך <span style="color: var(--s
 
 # ── HUD ──
 tags = [('01 · The Core', 'בול מה שבחרת.'), ('02 · Le Quart', 'ארבעה רבעים. הקערה שלך.'),
-        ('03 · La Glacerie', 'מבחוץ פרי. מבפנים BOL°.'), ('04 · Édition Hanoucca', 'שמונה לילות. שמונה מילויים.'),
+        ('03 · La Glacerie', 'מבחוץ פרי. מבפנים <span dir="ltr">BOL°</span>.'), ('04 · Édition Hanoucca', 'שמונה לילות. שמונה מילויים.'),
         ('05 · The Promise', 'יוגורט לבן. כל השאר פרי.')]
 old = ['01 · The Core', '02 · The Visual World', '03 · The Narrative', '04 · Live Site', '05 · The Promise']
 for (name, line), o in zip(tags, old):
