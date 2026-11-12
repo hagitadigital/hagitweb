@@ -91,8 +91,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
         },
         {
           "@type":"Question",
-          "name":"למה הדף לבן?",
-          "acceptedAnswer":{"@type":"Answer","text":"כי בעסק של פרי, הפרי הוא המותג. אם האתר צבעוני, הפרי מתחרה בו. ב-BOL° יש רק צבע פעולה אחד, פטל, וכל שאר הצבע מגיע מהבחירה של הלקוחה."}
+          "name":"ממה עשוי היוגורט של BOL°?",
+          "acceptedAnswer":{"@type":"Answer","text":"יוגורט יווני שמסונן כל לילה עד שהוא סמיך, פרי שנחתך בבוקר וגרנולה שנקלית בדבש. הצבע בקערה מגיע רק מהפרי שבוחרים. BOL° הוא מותג קונספט בדיוני של Brand Worlds Studio."}
         },
         {
           "@type":"Question",
@@ -150,8 +150,17 @@ button{font:inherit;color:inherit}
 .top{position:absolute;inset:34px 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
 .top .brand{font-size:24px;letter-spacing:.06em;font-weight:600}
 .top .brand small{font-size:10.5px;letter-spacing:.32em;opacity:.5;margin-left:12px;font-weight:400;font-family:'Assistant',sans-serif}
-.top .no{font-size:11px;letter-spacing:.32em;opacity:.5}
-@media (max-width:700px){.top{padding:12px 16px}.top .brand{font-size:20px}.top .brand small{display:none}.top .no{font-size:9px;letter-spacing:.22em}}
+.menu{display:flex;align-items:center;gap:clamp(14px,2vw,28px);direction:ltr}
+.menu a{color:var(--ink);text-decoration:none;font-size:15px;opacity:.7;transition:opacity .3s}
+.menu a:hover{opacity:1}
+.menu a.order{opacity:1;font-family:'Assistant',sans-serif;font-weight:600;font-size:14px;background:var(--myrtille);color:var(--yaourt);padding:9px 18px;border-radius:999px;direction:rtl}
+.ed-off .ed-link-n{display:none}
+.hours{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 34px;margin:22px 0 26px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hours dt{font-size:13px;color:var(--ink-3)}
+.hours dd{font-size:18px;margin-top:4px}
+.go-o{display:inline-block;color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--framboise);padding-bottom:3px}
+@media (max-width:900px){.menu a:not(.order){display:none}}
+@media (max-width:700px){.top{padding:12px 16px}.top .brand{font-size:20px}.top .brand small{display:none}}
 
 /* ---------- LA CARTE (hero carousel) ---------- */
 .carte{position:relative;min-height:100svh;padding:96px 0 40px;display:grid;grid-template-columns:1fr minmax(0,auto) 1fr;align-items:center;gap:0 2vw;overflow:hidden}
@@ -159,6 +168,7 @@ button{font:inherit;color:inherit}
 .carte .hook h1{font-weight:200;font-size:clamp(34px,4.4vw,64px);line-height:1.08;letter-spacing:-.01em}
 .carte .hook h1 b{font-weight:600}
 .carte .hook p{margin-top:18px;font-size:17px;line-height:1.8;color:var(--ink-2);max-width:30ch}
+.carte .hook p.tag{font-size:11px;margin-top:0;max-width:none;color:var(--ink-3)}
 .carte .hook .go{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--framboise);color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:14px 28px;border-radius:999px;transition:transform .35s var(--ease),box-shadow .35s}
 .carte .hook .go:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(200,40,79,.6)}
 .stage{position:relative;width:min(62vh,46vw,640px);aspect-ratio:1}
@@ -208,11 +218,7 @@ button{font:inherit;color:inherit}
 .manifeste h2 b{font-weight:600}
 .manifeste .sig{font-size:clamp(20px,2.3vw,28px);font-style:italic;font-weight:300;color:var(--ink-2);margin-top:18px;text-align:right}
 .manifeste .lead{font-size:17.5px;line-height:1.85;color:var(--ink-2);max-width:42ch}
-.palette{display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin-top:clamp(40px,6vh,64px);border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.palette div{aspect-ratio:1/1.15;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;font-size:11px;letter-spacing:.08em}
-.palette div span{display:block;opacity:.75}
-.palette .fr{font-size:15px;letter-spacing:0;text-align:right;font-style:italic}
-@media (max-width:860px){.manifeste .grid{grid-template-columns:1fr;gap:22px}.palette{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:860px){.manifeste .grid{grid-template-columns:1fr;gap:22px}}
 
 /* ---------- L'ATELIER ---------- */
 .atelier{padding:clamp(70px,10vh,120px) 0}
@@ -380,18 +386,6 @@ button{font:inherit;color:inherit}
 @media (max-width:900px){.glacerie .head{flex-direction:column;align-items:flex-start;gap:12px}.fruits{grid-template-columns:repeat(2,1fr)}.fruit{padding:12px 12px 14px}.fruit .fr.nm{font-size:20px}.fruit .he{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.fruit .pic .spin{animation:none}.cell img{animation:fadeIn .3s both}.lid{transition:none}}
 
-/* ---------- LES CODES ---------- */
-.codes{padding:clamp(60px,9vh,110px) 0;border-top:1px solid var(--line)}
-.codes .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px)}
-.code .n{font-size:11px;letter-spacing:.32em;color:var(--framboise);font-weight:600;text-align:right}
-.code h3{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:32px;margin:10px 0 12px;text-align:right}
-.code p{font-size:16.5px;line-height:1.85;color:var(--ink-2)}
-.code .vis{aspect-ratio:1.6;border-radius:14px;background:var(--porcelaine);margin-bottom:20px;display:grid;place-items:center;border:1px solid var(--line);overflow:hidden}
-.code .vis svg{width:56%;height:auto}
-.code .vis .logo{font-family:'Fraunces',serif;font-size:clamp(46px,6vw,78px);font-weight:600;letter-spacing:.02em;direction:ltr}
-.code .vis .logo i{font-style:normal;color:var(--framboise)}
-@media (max-width:860px){.codes .grid{grid-template-columns:1fr}}
-
 /* ---------- LE COMPTOIR ---------- */
 .comptoir{padding:clamp(40px,7vh,90px) 0 clamp(70px,10vh,120px)}
 .comptoir .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,5vw,80px);align-items:center}
@@ -401,14 +395,6 @@ button{font:inherit;color:inherit}
 .comptoir h2 b{font-weight:600}
 .comptoir p{font-size:17px;line-height:1.9;color:var(--ink-2);margin-bottom:14px;max-width:46ch}
 @media (max-width:860px){.comptoir .grid{grid-template-columns:1fr}.comptoir figure{aspect-ratio:4/4.4}}
-
-/* ---------- STUDIO NOTE ---------- */
-.studio-note{background:var(--porcelaine);padding:clamp(70px,10vh,120px) 0;border-top:1px solid var(--line)}
-.studio-note .in{max-width:760px;margin:0 auto;padding:0 24px}
-.studio-note .tag{color:var(--framboise);font-weight:600;margin-bottom:18px}
-.studio-note h2{font-size:clamp(26px,3.2vw,38px);font-weight:200;line-height:1.4;margin-bottom:20px}
-.studio-note h2 b{font-weight:600}
-.studio-note p{font-size:17px;line-height:1.95;color:var(--ink-2);margin-bottom:16px}
 
 /* ---------- CTA ---------- */
 .cta{text-align:center;background:var(--myrtille);color:var(--yaourt);padding:clamp(90px,14vh,150px) 24px}
@@ -456,7 +442,10 @@ footer a{color:inherit}
 
 <header class="top">
   <div class="brand fr">BOL° <small>BAR À YAOURT</small></div>
-  <div class="no fr">MONDE No.09</div>
+  <nav class="menu" aria-label="ניווט באתר">
+    <a href="#carte" class="fr">La Carte</a><a href="#atelier" class="fr">L'Atelier</a><a href="#glacerie" class="fr">La Glacerie</a><a href="#hanoucca" class="fr ed-link-n">Hanoucca</a><a href="#comptoir" class="fr">Le Comptoir</a>
+    <a href="#atelier" class="order">להזמנה</a>
+  </nav>
 </header>
 
 <!-- ======================= LA CARTE ======================= -->
@@ -464,7 +453,7 @@ footer a{color:inherit}
   <div class="side hook">
     <p class="tag" style="margin-bottom:16px;white-space:nowrap">Bar à Yaourt · Tel Aviv</p>
     <h1>בול<br><b>מה שבחרת.</b></h1>
-    <p>הדף לבן. הצבע נכנס רק לקערה, וכל תוספת נוחתת ברבע משלה.</p>
+    <p>יוגורט יווני סמיך, פרי שנחתך הבוקר, ואת מה שעל הקערה בוחרים לבד. ארבעה רבעים, תוספת בכל רבע.</p>
     <a class="go" href="#atelier">להרכיב קערה <span aria-hidden="true">↓</span></a>
     <a class="ed-link" href="#hanoucca">Édition Hanoucca · מהדורת החנוכה</a>
   </div>
@@ -503,7 +492,7 @@ footer a{color:inherit}
           <p class="tag lim">Édition limitée · Hanoucca 5787</p>
           <h2>שמונה לילות.<br><b>שמונה מילויים.</b></h2>
         </div>
-        <p>סופגנייה של יוגורט קפוא, אבקת סוכר מלמעלה, ומילוי בצבע הפרי באמצע. מלמעלה היא עיגול עם נקודה, כמו ה-° שבלוגו. רק עד סוף החג.</p>
+        <p>סופגנייה של יוגורט קפוא, אבקת סוכר מלמעלה ומילוי פרי באמצע. ממלאים קופסה לשמונה הלילות, סופגנייה ללילה. רק עד סוף החג.</p>
       </div>
       <div class="hgrid">
         <figure class="reveal"><picture><source media="(max-width:700px)" srcset="assets/hanoucca-m.webp"><img src="assets/hanoucca.webp" width="896" height="1120" alt="קופסה לבנה פתוחה עם שמונה סופגניות יוגורט קפואות באבקת סוכר, מילוי פטל, מנגו, אוכמניות וקיווי, נרות לבנים ברקע" loading="lazy"></picture></figure>
@@ -530,25 +519,15 @@ footer a{color:inherit}
 </section>
 
 <!-- ======================= MANIFESTE ======================= -->
-<section class="manifeste">
+<section class="manifeste" id="yaourt">
   <div class="wrap">
     <div class="grid reveal">
       <div>
-        <p class="tag" style="margin-bottom:18px">01 · Le Manifeste</p>
-        <h2>הדף לבן.<br><b>הצבע רק בקערה.</b></h2>
+        <p class="tag" style="margin-bottom:18px">Notre Yaourt</p>
+        <h2>יוגורט לבן.<br><b>כל השאר פרי.</b></h2>
         <p class="sig fr">Le blanc d'abord. La couleur, c'est vous.</p>
       </div>
-      <p class="lead">BOL° הוא בר יוגורט בדיוני שבנוי על החלטה אחת: שום דבר באתר לא מתחרה בפרי. הרקע בצבע יוגורט, הטקסט בצבע אוכמנית עמוקה, ויש צבע פעולה אחד בלבד, פטל. כל צבע אחר נכנס רק כשבוחרים תוספת. ככל שהקערה מתמלאת, המסך נהיה צבעוני.</p>
-    </div>
-    <div class="palette reveal" aria-label="פלטת הצבעים של BOL°">
-      <div style="background:#F7F5F0;color:#1F1B3A"><b class="fr">Yaourt</b><span>#F7F5F0</span></div>
-      <div style="background:#FFFFFF;color:#1F1B3A"><b class="fr">Porcelaine</b><span>#FFFFFF</span></div>
-      <div style="background:#1F1B3A;color:#F7F5F0"><b class="fr">Myrtille</b><span>#1F1B3A</span></div>
-      <div style="background:#C8284F;color:#fff"><b class="fr">Framboise</b><span>#C8284F</span></div>
-      <div style="background:#F4A21C;color:#1F1B3A"><b class="fr">Mangue</b><span>#F4A21C</span></div>
-      <div style="background:#7FA93A;color:#1F1B3A"><b class="fr">Kiwi</b><span>#7FA93A</span></div>
-      <div style="background:#B07A44;color:#1F1B3A"><b class="fr">Granola</b><span>#B07A44</span></div>
-      <div style="background:#3B3F7A;color:#F7F5F0"><b class="fr">Myrtille claire</b><span>#3B3F7A</span></div>
+      <p class="lead">את היוגורט אנחנו מסננים כל לילה, עד שהוא סמיך מספיק כדי להחזיק כף עומדת. בבוקר חותכים פרי, קולים גרנולה בדבש, ומגישים בקערת פורצלן לבנה. בלי סירופים צבעוניים ובלי תוספות שלא צמחו על עץ. הצבע בקערה שלך מגיע רק מהפרי שבחרת.</p>
     </div>
   </div>
 </section>
@@ -558,7 +537,7 @@ footer a{color:inherit}
   <div class="wrap">
     <div class="head reveal">
       <div>
-        <p class="tag" style="margin-bottom:14px">02 · L'Atelier</p>
+        <p class="tag" style="margin-bottom:14px">L'Atelier</p>
         <h2>ארבעה רבעים.<br><b>הקערה שלך.</b></h2>
       </div>
       <p>בוחרים עד ארבע תוספות. כל אחת נוחתת ברבע משלה, והקערה מסתובבת כדי שהרבע הפנוי הבא יעמוד מול הכף.</p>
@@ -614,7 +593,7 @@ footer a{color:inherit}
           <div class="st"><h3>Bon appétit</h3><span class="cnt fr" id="ticket"></span></div>
           <div class="done-txt">
             <p class="big">בול<br><b>מה שבחרת.</b></p>
-            <p>הקערה התכווצה לכרטיס, אבל היא לא נעלמה. אותה קערה הייתה גיבורה, אחר כך רבעים, אחר כך שורה בהזמנה, ועכשיו כרטיס. זה כל המנגנון: המנה אף פעם לא יוצאת מהמסך, היא רק מחליפה מצב.</p>
+            <p>ההזמנה התקבלה. הקערה שלך מחכה על הדלפק בעוד כשבע דקות, עם המספר שעל הכרטיס. כף ומפית כבר בפנים.</p>
           </div>
           <div class="foot">
             <div class="tot">סה״כ<b class="fr" id="tot3">₪24</b></div>
@@ -634,61 +613,26 @@ footer a{color:inherit}
         <p class="tag">La Glacerie</p>
         <h2>מבחוץ פרי.<br><b>מבפנים BOL°.</b></h2>
       </div>
-      <p>קינוחי יוגורט קפוא בצורת פרי. מבחוץ הצבע, מבפנים יוגורט לבן ולב של קומפוט. המניפסט של העולם בתוך ביס אחד. נוגעים בפרי כדי לחתוך.</p>
+      <p>קינוחי יוגורט קפוא בצורת פרי. מבחוץ ציפוי של פרי אמיתי, מבפנים יוגורט לבן ולב של קומפוט. נגיעה בפרי מראה מה יש בפנים.</p>
     </div>
     <div class="fruits" id="fruits"></div>
   </div>
 </section>
 
-<!-- ======================= LES CODES ======================= -->
-<section class="codes">
-  <div class="wrap">
-    <p class="tag reveal" style="margin-bottom:30px">03 · Les Codes</p>
-    <div class="grid">
-      <div class="code reveal">
-        <div class="vis" style="background:#F7F5F0"><svg viewBox="0 0 100 60" aria-hidden="true"><rect x="8" y="10" width="84" height="40" rx="3" fill="#fff" stroke="rgba(31,27,58,.12)"/><circle cx="50" cy="30" r="13" fill="#F7F5F0" stroke="rgba(31,27,58,.14)"/><path d="M50 30 L50 19 A11 11 0 0 1 61 30 Z" fill="#F4A21C"/><rect x="16" y="40" width="14" height="4" rx="2" fill="#C8284F"/></svg></div>
-        <div class="n fr">01</div>
-        <h3 class="fr">Le Blanc</h3>
-        <p>הדף בצבע יוגורט, הטקסט באוכמנית, וכפתור אחד בפטל. אין צבע מותג שמתחרה בפרי. הצבע של BOL° הוא מה שהלקוחה בוחרת.</p>
-      </div>
-      <div class="code reveal">
-        <div class="vis"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="#F7F5F0" stroke="rgba(31,27,58,.14)"/><path d="M50 50 L50 8 A42 42 0 0 1 92 50 Z" fill="#F4A21C"/><path d="M50 50 L92 50 A42 42 0 0 1 50 92 Z" fill="#3B3F7A"/><path d="M50 50 L50 92 A42 42 0 0 1 8 50 Z" fill="#7FA93A"/><path d="M50 50 L8 50 A42 42 0 0 1 50 8 Z" fill="#B07A44"/><circle cx="50" cy="50" r="13" fill="#F7F5F0"/></svg></div>
-        <div class="n fr">02</div>
-        <h3 class="fr">Le Quart</h3>
-        <p>כל קערה מחולקת לארבעה רבעים סביב לב של יוגורט. רבע אחד, בחירה אחת. זה גם התפריט, גם הגריד של העיצוב, וגם הצורה של כל פוסט.</p>
-      </div>
-      <div class="code reveal">
-        <div class="vis"><span class="logo">BOL<i>°</i></span></div>
-        <div class="n fr">03</div>
-        <h3 class="fr">Le Tour</h3>
-        <p>הקערה לא נכנסת למסך, היא מסתובבת פנימה, כמו על פטיפון קרמיקה בבר. הסימן ° בלוגו הוא אותה קערה מלמעלה, וגם ה-O שבשם.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ======================= LE COMPTOIR ======================= -->
-<section class="comptoir">
+<section class="comptoir" id="comptoir">
   <div class="wrap">
     <div class="grid">
       <figure class="reveal"><picture><source media="(max-width:700px)" srcset="assets/comptoir-m.webp"><img src="assets/comptoir.webp" width="896" height="1120" alt="דלפק בהיר של בר יוגורט, ידיים מחזיקות קערה לבנה עם מנגו, אוכמניות וגרנולה" loading="lazy"></picture></figure>
       <div class="reveal">
-        <p class="tag">04 · Le Comptoir</p>
-        <h2>בבר, הקערה<br><b>מסתובבת מול העיניים.</b></h2>
-        <p>על הדלפק עומד פטיפון קרמיקה לבן. הקערה מונחת עליו ריקה, וכל תוספת שהלקוחה בוחרת נכנסת לרבע הבא בזמן שהקערה מסתובבת. מה שקורה באתר קורה גם בבר, באותו סדר ובאותו קצב.</p>
-        <p>בלי שלטים צבעוניים ובלי תמונות על הקיר. הצבע בחנות הוא הפרי שבויטרינה, ממש כמו באתר.</p>
+        <p class="tag">Le Comptoir</p>
+        <h2>בואו לראות<br><b>את הקערה נבנית.</b></h2>
+        <p>על הדלפק עומד פטיפון קרמיקה לבן. הקערה מונחת עליו ריקה, ומול העיניים שלך כל תוספת נכנסת לרבע משלה, בזמן שהקערה מסתובבת.</p>
+        <p>אפשר לשבת ליד החלון, לקחת קערה עם מכסה, או להזמין מראש ולאסוף בלי לחכות בתור.</p>
+        <dl class="hours"><div><dt>א׳–ה׳</dt><dd class="fr">07:30–19:00</dd></div><div><dt>ו׳ וערבי חג</dt><dd class="fr">07:30–15:00</dd></div><div><dt>שבת</dt><dd>סגור</dd></div></dl>
+        <a class="go-o" href="#atelier">להזמין מראש ולאסוף</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ======================= STUDIO NOTE ======================= -->
-<section class="studio-note">
-  <div class="in reveal">
-    <p class="tag">Note du Studio</p>
-    <h2>תפריט מראה מה יש.<br><b>בנאי מראה מה שלך.</b></h2>
-    <p>המנגנון של BOL° בנוי על רעיון אחד: המנה אף פעם לא נעלמת. היא נכנסת כגיבורה, מתפרקת לרבעים כשבוחרים, הופכת לשורה בהזמנה ומתכווצת לכרטיס התשלום. הלקוחה לא עוברת בין עמודים, היא מלווה קערה אחת מההתחלה ועד הסוף.</p>
-    <p>טכנית, קערה ריקה אחת צולמה פעם אחת מלמעלה, וכל תוספת צולמה כמרקם נפרד. הרבעים נגזרים מהמרקם בזמן אמת, ולכן הקערה לא זזה פיקסל בין בחירה לבחירה. עקביות היא המותג.</p>
   </div>
 </section>
 
