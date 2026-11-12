@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Brand Worlds Studio — A Gallery of Concept Brand Worlds | Hagit Antebi</title>
-<meta name="description" content="A gallery of concept brand worlds by Brand Worlds Studio · Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, POPPI and more, each built as a complete world, alongside interactive motion studies." />
+<meta name="description" content="A gallery of concept brand worlds by Brand Worlds Studio · Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, BOL° and more, each built as a complete world, alongside interactive motion studies." />
 <link rel="canonical" href="https://hagitantebi.co.il/brand-worlds/" />
 <link rel="alternate" hreflang="en" href="https://hagitantebi.co.il/brand-worlds/" />
 <link rel="alternate" hreflang="x-default" href="https://hagitantebi.co.il/" />
@@ -14,7 +14,7 @@
 <meta property="og:locale:alternate" content="he_IL" />
 <meta property="og:site_name" content="Brand Worlds Studio · Hagit Antebi" />
 <meta property="og:title" content="Brand Worlds Studio — A Gallery of Concept Brand Worlds" />
-<meta property="og:description" content="A gallery of concept brand worlds by Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, POPPI and more, each built as a complete world, alongside interactive motion studies." />
+<meta property="og:description" content="A gallery of concept brand worlds by Hagit Antebi — AURELLE, VELA MOTION, SOLARA WILD, BOL° and more, each built as a complete world, alongside interactive motion studies." />
 <meta property="og:image" content="https://hagitantebi.co.il/brand-worlds/og.jpg" />
 <meta property="og:image:alt" content="שלושה כרטיסי עולמות מותג: סרום AURELLE, נעלי VELA וקמפיין SOLARA WILD">
 <meta property="og:image:width" content="1200" />
@@ -52,7 +52,7 @@
       {"@type":"ListItem","position":6,"name":"ÉCRU","url":"https://hagitantebi.co.il/ecru.html"},
       {"@type":"ListItem","position":7,"name":"LUMÉRA — Jewelry of Light","url":"https://hagitantebi.co.il/lumera/"},
       {"@type":"ListItem","position":8,"name":"ORBE — Haute Parfumerie","url":"https://hagitantebi.co.il/orbe/"},
-      {"@type":"ListItem","position":9,"name":"POPPI — Candy / Playful CPG","url":"https://hagitantebi.co.il/poppi.html"},
+      {"@type":"ListItem","position":9,"name":"BOL° — Bar à Yaourt","url":"https://hagitantebi.co.il/bol/"},
       {"@type":"ListItem","position":10,"name":"BASALT — Men's Dermatology & Aesthetics","url":"https://hagitantebi.co.il/basalt/"},
       {"@type":"ListItem","position":11,"name":"SOUFFLÉ° — Gourmand Body Care","url":"https://hagitantebi.co.il/souffle.html"},
       {"@type":"ListItem","position":12,"name":"ÉTAGE° — Couture Wedding Cakes","url":"https://hagitantebi.co.il/etage/"},
@@ -1077,11 +1077,13 @@ body::before {
 .world-card--orbe .world-card__issue { color: #C28A5A; }
 .world-card--orbe .world-card__tag { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; }
 
-.world-card--poppi { background: #FDEEE9; color: #2A0D24; }
-.world-card--poppi .world-card__name { font-family: 'Fredoka', sans-serif; font-weight: 700; letter-spacing: 0.04em; color: #FF2C88; }
-.world-card--poppi .world-card__category,
-.world-card--poppi .world-card__issue { color: #FF7A00; }
-.world-card--poppi .world-card__tag { font-family: 'Fredoka', sans-serif; font-weight: 500; }
+.world-card--bol { background: #F7F5F0; color: #1F1B3A; }
+.world-card--bol .world-card__name { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 600; letter-spacing: 0.08em; }
+.world-card--bol .world-card__category,
+.world-card--bol .world-card__issue { color: #C8284F; }
+.world-card--bol .world-card__tag { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; }
+.world-card--bol .world-card__media img { object-position: 50% 50%; }
+.world-card--bol .world-card__nº { color: #1F1B3A; opacity: .7; }
 
 /* ─────────────────────────────────────────────
    INTERLUDE — MOTION STUDY (Pétale°)
@@ -2405,29 +2407,25 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
         </div>
       </a>
-      <div class="world-item reveal">
-        <!-- POPPI — candy concept · live -->
-        <a href="../poppi.html" class="world-card world-card--poppi">
-          <div class="world-card__media">
-            <div class="world-card__nº">No. 09</div>
-            <div class="world-card__cta-corner">Concept</div>
-            <img width="1122" height="1402" src="../POPPI%20Case%20Study/flavor-pink.jpg" alt="POPPI Pink Rush" />
-            <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/poppi.mp4" aria-hidden="true"></video>
+      <!-- BOL° — yogurt bowl bar · interactive (replaces POPPI in slot 09) -->
+      <a href="../bol/" class="world-card world-card--bol reveal">
+        <div class="world-card__media">
+          <div class="world-card__nº">No. 09</div>
+          <div class="world-card__cta-corner">Nouveau</div>
+          <img width="760" height="1018" src="card-bol.jpg" alt="BOL° — קערת יוגורט עם מנגו, פסיפלורה וקוקוס במבט מלמעלה" />
+        </div>
+        <div class="world-card__copy">
+          <div class="world-card__issue">New · Interactive world</div>
+          <div class="world-card__name">BOL°</div>
+          <div class="world-card__category">Bar à Yaourt · Bowl Builder</div>
+          <div class="world-card__tag">Le blanc d'abord. La couleur, c'est vous.</div>
+          <div class="world-card__tag-he" lang="he">בול מה שבחרת.</div>
+          <div class="world-card__cta">
+            <span>Enter the world</span>
+            <span class="arr">→</span>
           </div>
-          <div class="world-card__copy">
-            <div class="world-card__issue">Concept · Live site</div>
-            <div class="world-card__name">POPPI</div>
-            <div class="world-card__category">Candy · Playful CPG</div>
-            <div class="world-card__tag">Tiny candy. Big pop.</div>
-            <div class="world-card__tag-he" lang="he">סוכרייה קטנה. פופ ענק.</div>
-            <div class="world-card__cta">
-              <span>Visit the live site</span>
-              <span class="arr">→</span>
-            </div>
-          </div>
-        </a>
-        <button type="button" class="wc-film" data-film="poppi" data-href="../poppi.html" data-name="POPPI" data-no="עולם 9" data-line="Tiny candy. Big pop." data-wide="1" aria-haspopup="dialog"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>הסרט של העולם · 10 שניות</button>
-      </div>
+        </div>
+      </a>
       <!-- ORBE — concept · live -->
       <a href="../orbe/" class="world-card world-card--orbe reveal">
         <div class="world-card__media">
