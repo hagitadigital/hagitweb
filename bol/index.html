@@ -300,8 +300,16 @@ button{font:inherit;color:inherit}
 .hanoucca h2 b{font-weight:600}
 .hanoucca .head p{font-size:16.5px;line-height:1.8;color:var(--ink-2);max-width:40ch}
 .hgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,60px);align-items:center}
-.hgrid figure{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:#ece8e0}
-.hgrid figure img{width:100%;height:100%;object-fit:cover}
+.feat{position:relative;border-radius:22px;background:radial-gradient(120% 90% at 50% 38%,#fff 0%,#F7F5F0 62%);padding:clamp(18px,3vw,34px) clamp(18px,3vw,34px) 26px;border:1px solid var(--line);overflow:hidden}
+.fstage{position:relative;aspect-ratio:1;width:min(100%,460px);margin:0 auto}
+.fstage::after{content:"";position:absolute;left:14%;right:14%;bottom:3%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(31,27,58,.22),transparent);z-index:0}
+.fstage img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}
+.fstage img.in{animation:fIn .7s var(--ease) both}
+@keyframes fIn{from{opacity:0;transform:translateX(-14%) rotate(-10deg) scale(.9)}}
+.fmeta{text-align:center;margin-top:6px}
+.fmeta .fn{font-size:28px;font-style:italic;font-weight:300}
+.fmeta .fhe{font-size:15px;line-height:1.7;color:var(--ink-2);max-width:34ch;margin:6px auto 0}
+.fmeta .fp{color:var(--framboise);font-weight:600;font-size:18px;margin-top:8px}
 .boite{background:var(--porcelaine);border-radius:22px;padding:clamp(20px,3vw,32px);box-shadow:0 40px 80px -50px rgba(31,27,58,.35)}
 .boite .st{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:10px}
 .boite h3{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:26px}
@@ -313,7 +321,7 @@ button{font:inherit;color:inherit}
 .cells{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.4vw,14px);direction:ltr}
 .cell{position:relative;aspect-ratio:1;border-radius:12px;border:0;background:#fff;box-shadow:inset 0 0 0 1px rgba(31,27,58,.06),inset 0 6px 14px rgba(31,27,58,.07);cursor:pointer;padding:0;display:grid;place-items:center}
 .cell .nt{position:absolute;inset:auto 0 6px 0;text-align:center;font-size:10px;letter-spacing:.14em;color:var(--ink-3);direction:rtl}
-.cell img{position:absolute;inset:7%;width:86%;height:86%;filter:drop-shadow(0 8px 8px rgba(31,27,58,.18));animation:drop .55s var(--ease) both}
+.cell img{position:absolute;inset:6% 8% 12%;width:84%;height:82%;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(31,27,58,.2));animation:drop .55s var(--ease) both}
 @keyframes drop{0%{opacity:0;transform:translateY(-30%) scale(1.15)}70%{opacity:1}100%{transform:none}}
 .cell.filled .nt{opacity:0}
 .lid{position:absolute;inset:0;border-radius:14px;background:#FBFAF7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateY(-105%);transition:transform .9s var(--ease);box-shadow:0 10px 30px -10px rgba(31,27,58,.3)}
@@ -339,7 +347,7 @@ button{font:inherit;color:inherit}
 .hanoucca.folded .unfold{display:none}
 .hanoucca.folded .fold{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;width:100%;background:none;border:0;cursor:pointer;text-align:right}
 .hanoucca.folded .fold .l{display:flex;align-items:center;gap:14px;font-size:15px;color:var(--ink-2)}
-.hanoucca.folded .fold .l img{width:40px;height:40px;border-radius:50%}
+.hanoucca.folded .fold .l img{width:44px;height:44px;object-fit:contain}
 .hanoucca.folded .fold .r{font-size:13px;color:var(--framboise);font-weight:600;white-space:nowrap}
 .hanoucca.folded.open{padding-bottom:clamp(50px,8vh,90px)}
 .hanoucca.folded.open .unfold{display:block}
@@ -347,7 +355,7 @@ button{font:inherit;color:inherit}
 @media (max-width:900px){
   .hanoucca .head{flex-direction:column;align-items:flex-start;gap:12px}
   .hgrid{grid-template-columns:1fr}
-  .hgrid figure{aspect-ratio:4/3.4}
+  .fstage{width:min(78%,340px)}
 }
 .carte .hook .ed-link{display:inline-block;margin-top:16px;margin-inline-start:14px;font-size:14px;color:var(--framboise);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(200,40,79,.35);padding-bottom:2px}
 .ed-off .ed-link{display:none!important}
@@ -395,6 +403,14 @@ button{font:inherit;color:inherit}
 .comptoir h2 b{font-weight:600}
 .comptoir p{font-size:17px;line-height:1.9;color:var(--ink-2);margin-bottom:14px;max-width:46ch}
 @media (max-width:860px){.comptoir .grid{grid-template-columns:1fr}.comptoir figure{aspect-ratio:4/4.4}}
+
+/* ---------- STUDIO NOTE ---------- */
+.studio-note{background:var(--porcelaine);padding:clamp(70px,10vh,120px) 0;border-top:1px solid var(--line)}
+.studio-note .in{max-width:760px;margin:0 auto;padding:0 24px}
+.studio-note .tag{color:var(--framboise);font-weight:600;margin-bottom:18px}
+.studio-note h2{font-size:clamp(26px,3.2vw,38px);font-weight:200;line-height:1.4;margin-bottom:20px}
+.studio-note h2 b{font-weight:600}
+.studio-note p{font-size:17px;line-height:1.95;color:var(--ink-2);margin-bottom:16px}
 
 /* ---------- CTA ---------- */
 .cta{text-align:center;background:var(--myrtille);color:var(--yaourt);padding:clamp(90px,14vh,150px) 24px}
@@ -483,7 +499,7 @@ footer a{color:inherit}
 <section class="hanoucca" id="hanoucca" aria-label="Édition Hanoucca — מהדורת הסופגניות הקפואות">
   <div class="wrap">
     <button type="button" class="fold" id="hFold" aria-expanded="false" aria-controls="hBody">
-      <span class="l"><img src="assets/sf-framboise.webp" width="400" height="400" alt="" loading="lazy">Édition Hanoucca 5787 · מהדורת הסופגניות הקפואות שהייתה</span>
+      <span class="l"><img src="assets/sfg-framboise-s.webp" width="300" height="300" alt="" loading="lazy">Édition Hanoucca 5787 · מהדורת הסופגניות הקפואות שהייתה</span>
       <span class="r">לפתוח</span>
     </button>
     <div class="unfold" id="hBody">
@@ -492,10 +508,13 @@ footer a{color:inherit}
           <p class="tag lim">Édition limitée · Hanoucca 5787</p>
           <h2>שמונה לילות.<br><b>שמונה מילויים.</b></h2>
         </div>
-        <p>סופגנייה של יוגורט קפוא, אבקת סוכר מלמעלה ומילוי פרי באמצע. ממלאים קופסה לשמונה הלילות, סופגנייה ללילה. רק עד סוף החג.</p>
+        <p>בצק סופגנייה בסוכר גביש, ובפנים קרם יוגורט קפוא וריבת פרי. ציפוי פרי ופרי קפוא מלמעלה. שמונה טעמים לשמונה לילות, סופגנייה ללילה. רק עד סוף החג.</p>
       </div>
       <div class="hgrid">
-        <figure class="reveal"><picture><source media="(max-width:700px)" srcset="assets/hanoucca-m.webp"><img src="assets/hanoucca.webp" width="896" height="1120" alt="קופסה לבנה פתוחה עם שמונה סופגניות יוגורט קפואות באבקת סוכר, מילוי פטל, מנגו, אוכמניות וקיווי, נרות לבנים ברקע" loading="lazy"></picture></figure>
+        <div class="feat reveal" aria-live="polite">
+          <div class="fstage"><img id="fImg" src="assets/sfg-foret.webp" width="720" height="720" alt="סופגניית פירות יער: ציפוי ריבת פירות יער, אוכמניות ופטל קפואים, ובפנים קרם יוגורט וריבה"></div>
+          <div class="fmeta"><div class="fr fn" id="fName">Fruits des Bois</div><div class="fhe" id="fHe">ריבת פירות יער, קרם יוגורט קפוא, ואוכמניות ופטל קפואים מלמעלה.</div><div class="fr fp">₪14</div></div>
+        </div>
         <div class="boite reveal">
           <div class="st"><h3>La Boîte des Huit Nuits</h3><span class="cnt" id="bCnt">0 / 8 לילות</span></div>
           <div class="flames" id="flames" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -505,9 +524,9 @@ footer a{color:inherit}
           </div>
           <div class="chips" id="chips" role="group" aria-label="בחירת מילוי ללילה הבא"></div>
           <div class="foot">
-            <div class="tot">₪12 לסופגנייה · קופסה מלאה ₪88<b class="fr" id="bTot">₪0</b></div>
+            <div class="tot">₪14 לסופגנייה · קופסה מלאה ₪99<b class="fr" id="bTot">₪0</b></div>
             <div class="acts">
-              <button class="link" type="button" id="bRand">למלא בהפתעה</button>
+              <button class="link" type="button" id="bRand">טעם אחר לכל לילה</button>
               <button class="btn pay" type="button" id="bClose" disabled>לסגור את הקופסה</button>
             </div>
           </div>
@@ -613,7 +632,7 @@ footer a{color:inherit}
         <p class="tag">La Glacerie</p>
         <h2>מבחוץ פרי.<br><b>מבפנים BOL°.</b></h2>
       </div>
-      <p>קינוחי יוגורט קפוא בצורת פרי. מבחוץ ציפוי של פרי אמיתי, מבפנים יוגורט לבן ולב של קומפוט. נגיעה בפרי מראה מה יש בפנים.</p>
+      <p>קינוחי יוגורט קפוא בצורת פרי ענק. מבחוץ קליפה קפואה של פרי, מבפנים יוגורט לבן וריבה שנמסים החוצה בביס הראשון. נגיעה בפרי מראה מה יש בפנים.</p>
     </div>
     <div class="fruits" id="fruits"></div>
   </div>
@@ -633,6 +652,17 @@ footer a{color:inherit}
         <a class="go-o" href="#atelier">להזמין מראש ולאסוף</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ======================= STUDIO NOTE ======================= -->
+<section class="studio-note">
+  <div class="in reveal">
+    <p class="tag">Note du Studio</p>
+    <h2>תפריט מראה מה יש.<br><b>בנאי מראה מה שלך.</b></h2>
+    <p>המנגנון של BOL° בנוי על רעיון אחד: המנה אף פעם לא נעלמת. היא נכנסת כגיבורה, מתפרקת לרבעים כשבוחרים, הופכת לשורה בהזמנה ומתכווצת לכרטיס התשלום. הלקוחה לא עוברת בין עמודים, היא מלווה קערה אחת מההתחלה ועד הסוף.</p>
+    <p>אותו עיקרון ממשיך לשאר התפריט. בגלידריה הפרי נחתך מול העיניים ומגלה את הלבן מבפנים, ובמהדורת החנוכה הקופסה מתמלאת לילה אחרי לילה. בכל מקום, הלקוחה רואה את מה שהיא בוחרת לפני שהיא משלמת.</p>
+    <p>טכנית, קערה ריקה אחת צולמה פעם אחת מלמעלה, וכל תוספת צולמה כמרקם נפרד. הרבעים נגזרים מהמרקם בזמן אמת, ולכן הקערה לא זזה פיקסל בין בחירה לבחירה. עקביות היא המותג.</p>
   </div>
 </section>
 
@@ -843,11 +873,23 @@ const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     b.addEventListener('click',()=>{ const o=sec.classList.toggle('open'); b.setAttribute('aria-expanded',o); b.querySelector('.r').textContent=o?'לקפל':'לפתוח'; track('hanoucca_unfold'); });
   }
   const F=[
-    {id:'framboise', fr:'Framboise', he:'פטל',      c:'#C8284F'},
-    {id:'mangue',    fr:'Mangue',    he:'מנגו',     c:'#F4A21C'},
-    {id:'myrtille',  fr:'Myrtille',  he:'אוכמניות', c:'#3B3F7A'},
-    {id:'kiwi',      fr:'Kiwi',      he:'קיווי',    c:'#7FA93A'}
+    {id:'foret',     fr:'Fruits des Bois',     he:'פירות יער',   c:'#6B1E4A', d:'ריבת פירות יער, קרם יוגורט קפוא, ואוכמניות ופטל קפואים מלמעלה.', alt:'סופגניית פירות יער עם ציפוי ריבה, אוכמניות ופטל קפואים'},
+    {id:'framboise', fr:'Framboise',           he:'פטל',         c:'#C8284F', d:'ריבת פטל, קרם יוגורט קפוא ושלוש פטל קפואות על הציפוי.', alt:'סופגניית פטל עם ציפוי ריבת פטל ופטל קפוא'},
+    {id:'fraise',    fr:'Fraise',              he:'תות',         c:'#E0303A', d:'ריבת תותים, קרם יוגורט קפוא וחצי תות עם העלים.', alt:'סופגניית תות עם ציפוי ריבת תותים וחצי תות'},
+    {id:'cerise',    fr:'Cerise',              he:'דובדבן',      c:'#8E1630', d:'קומפוט דובדבנים, קרם יוגורט קפוא וחצי דובדבן עם הזנב.', alt:'סופגניית דובדבן עם ציפוי קומפוט וחצי דובדבן'},
+    {id:'myrtille',  fr:'Myrtille',            he:'אוכמניות',    c:'#3B3F7A', d:'ריבת אוכמניות, קרם יוגורט קפוא ושלוש אוכמניות קפואות.', alt:'סופגניית אוכמניות עם ציפוי ריבת אוכמניות ואוכמניות קפואות'},
+    {id:'peche',     fr:'Pêche',               he:'אפרסק',       c:'#F08A4B', d:'קונפי אפרסק, קרם יוגורט קפוא ופלחי אפרסק מלמעלה.', alt:'סופגניית אפרסק עם ציפוי אפרסק ופלחי אפרסק'},
+    {id:'mangue',    fr:'Mangue',              he:'מנגו',        c:'#F4A21C', d:'קרם מנגו, קרם יוגורט קפוא, קוביות מנגו ועלה נענע.', alt:'סופגניית מנגו עם ציפוי מנגו, קוביות מנגו ונענע'},
+    {id:'kiwi',      fr:'Kiwi & Citron vert',  he:'קיווי וליים', c:'#7FA93A', d:'ריבת קיווי, קרם יוגורט קפוא, גרידת ליים ופלח ליים.', alt:'סופגניית קיווי וליים עם פרוסות קיווי ופלח ליים'}
   ];
+  const fImg=document.getElementById('fImg');
+  function feature(id){
+    const f=F.find(x=>x.id===id); if(!f) return;
+    fImg.classList.remove('in'); void fImg.offsetWidth;
+    fImg.src=`assets/sfg-${id}.webp`; fImg.alt=f.alt; fImg.classList.add('in');
+    $('fName').textContent=f.fr; $('fHe').textContent=f.d;
+  }
+  F.forEach(f=>{ const i=new Image(); i.src=`assets/sfg-${f.id}-s.webp`; });
   const NIGHTS=['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ז׳','ח׳'];
   const $=id=>document.getElementById(id);
   const cells=$('cells'), chips=$('chips'), box=$('box'), flames=[...$('flames').children];
@@ -865,27 +907,27 @@ const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     b.addEventListener('click',()=>add(f.id));
     chips.appendChild(b);
   });
-  function add(id){ const k=slots.indexOf(null); if(k<0) return; slots[k]=id; render(k); track('box_add',{filling:id}); }
+  function add(id){ feature(id); const k=slots.indexOf(null); if(k<0) return; slots[k]=id; render(k); track('box_add',{filling:id}); }
   function render(fresh){
     [...cells.children].forEach((c,i)=>{
       const id=slots[i], had=c.querySelector('img');
       if(!id){ if(had) had.remove(); c.classList.remove('filled'); c.setAttribute('aria-label',`לילה ${NIGHTS[i]}: ריק`); return; }
       const f=F.find(x=>x.id===id);
-      if(!had || had.dataset.id!==id || i===fresh){ if(had) had.remove(); const im=new Image(); im.src=`assets/sf-${id}.webp`; im.alt=''; im.dataset.id=id; c.appendChild(im); }
+      if(!had || had.dataset.id!==id || i===fresh){ if(had) had.remove(); const im=new Image(); im.src=`assets/sfg-${id}-s.webp`; im.alt=''; im.dataset.id=id; c.appendChild(im); }
       c.classList.add('filled'); c.setAttribute('aria-label',`לילה ${NIGHTS[i]}: ${f.he}. נגיעה מרוקנת`);
     });
     const n=slots.filter(Boolean).length;
     flames.forEach((fl,i)=>fl.classList.toggle('on',i<n));
     $('bCnt').textContent=`${n} / 8 לילות`;
-    $('bTot').textContent='₪'+(n===8?88:n*12);
+    $('bTot').textContent='₪'+(n===8?99:n*14);
     chips.querySelectorAll('.chip').forEach(c=>c.disabled=n>=8);
     $('bClose').disabled=n<8;
     $('bNote').textContent = n>=8 ? 'שמונה לילות מלאים. אפשר לסגור את הקופסה.' : 'בוחרים מילוי, והוא נכנס ללילה הבא. נגיעה בתא מרוקנת אותו.';
   }
   $('bRand').addEventListener('click',()=>{
     if(box.classList.contains('closed')) return;
-    let d=0; slots.forEach((s,i)=>{ if(!s){ setTimeout(()=>{ slots[i]=F[Math.floor(Math.random()*F.length)].id; render(i); }, d); d+=still?0:140; } });
-    track('box_random');
+    const left=F.map(f=>f.id).filter(id=>!slots.includes(id)); let d=0, k=0; slots.forEach((s,i)=>{ if(!s){ const id=left[k++]||F[Math.floor(Math.random()*F.length)].id; setTimeout(()=>{ slots[i]=id; feature(id); render(i); }, d); d+=still?0:160; } });
+    track('box_one_each');
   });
   $('bClose').addEventListener('click',()=>{
     const closed=box.classList.toggle('closed');
@@ -900,10 +942,10 @@ const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ============ LA GLACERIE — tap to cut ============ */
 (function(){
   const G=[
-    {id:'mangue', fr:'La Mangue', he:'ציפוי מנגו, יוגורט לבן קפוא ולב של קומפוט מנגו.', p:22},
-    {id:'fraise', fr:'La Fraise', he:'ציפוי תות, קוליס תות ולב של קומפוט תותים.', p:22},
-    {id:'peche',  fr:'La Pêche',  he:'ציפוי אפרסק קטיפתי, יוגורט לבן ולב של אפרסק.', p:22},
-    {id:'citron', fr:'Le Citron', he:'ציפוי לימון, יוגורט לבן קפוא ולב של קרם לימון.', p:20}
+    {id:'myrtille',  fr:'La Myrtille',  he:'קליפת אוכמניות קפואה, ובפנים יוגורט לבן עם ריבת אוכמניות.', p:24},
+    {id:'mangue',    fr:'La Mangue',    he:'קליפת מנגו קפואה, ובפנים יוגורט לבן וקוביות מנגו.', p:24},
+    {id:'framboise', fr:'La Framboise', he:'פטל ענק קפוא, ובפנים יוגורט לבן עם ריבת פטל.', p:24},
+    {id:'fraise',    fr:'La Fraise',    he:'תות ענק קפוא, ובפנים יוגורט לבן וקוביות תות.', p:24}
   ];
   const wrap=document.getElementById('fruits'); if(!wrap) return;
   G.forEach(g=>{
