@@ -32,24 +32,24 @@ s = s.replace('Brand Worlds Studio · עולם מותג NN', 'Brand Worlds Studi
 
 # ── HOOK: the bowl swap from frame 0 (no generic card) ──
 i = s.index('  <!-- proof mechanic 1'); j = s.index('-->', s.index('<!-- proof mechanic 2')) + 3
-SW = [0.0, 0.62, 1.12, 1.52, 1.86]          # swap moments; the last one lands back on Le Soleil and stops
-HB = ['soleil', 'foret', 'jardin', 'miel', 'soleil']
+SW = [0.0, 0.6, 1.5]          # swap moments; the last one lands back on Le Soleil and stops
+HB = ['soleil', 'foret', 'soleil']
 hk_css = ''
 for k, b in enumerate(HB):
-    tin = SW[k]; d = 0.42 if k < 4 else 0.5
+    tin = SW[k]; d = 0.6
     tout = SW[k + 1] if k + 1 < len(SW) else None
     kf = ''
     if k == 0: kf += '0%{opacity:1;transform:none}'
     else: kf += f'0%,{p(tin)}{{opacity:0;transform:translateX(-70%) rotate(-150deg) scale(.72)}}{p(tin + d)}{{opacity:1;transform:none}}'
     if tout is not None:
-        kf += f'{p(tout)}{{opacity:1;transform:none}}{p(tout + .42)},100%{{opacity:0;transform:translateX(70%) rotate(150deg) scale(.72)}}'
+        kf += f'{p(tout)}{{opacity:1;transform:none}}{p(tout + .55)},100%{{opacity:0;transform:translateX(70%) rotate(150deg) scale(.72)}}'
     else:
         kf += f'{p(tin + d + .12)}{{transform:scale(1.04)}}{p(tin + d + .3)},100%{{opacity:1;transform:none}}'
     hk_css += f'.hk{k}{{animation-name:hk{k}}}@keyframes hk{k}{{{kf}}}'
 spin = '.spin{animation-name:spin;animation-timing-function:linear}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(130deg)}}'
 hbowls = ''.join(f'<div class="hk{k}" style="position: absolute; inset: 0"><div class="spin" style="position: absolute; inset: 0"><img src="{A_}bowl-{b}.webp" alt="" style="width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))"></div></div>' for k, b in enumerate(HB))
-hook_names = [('Le Soleil', 0, .5), ('La Forêt', .62, 1.0), ('Le Jardin', 1.12, 1.4), ('Le Miel', 1.52, 1.78), ('Le Soleil', 1.86, 30)]
-hlabels = ''.join(f'<div class="stack" data-show="{a},{b}" data-fade="0.08" style="display: flex; justify-content: center; align-items: center"><span style="{FR}; font-style: italic; font-weight: 300; font-size: 54px; color: {INK}" dir="ltr">{n}</span></div>' for n, a, b in hook_names)
+hook_names = [('Le Soleil', 0, .55), ('La Forêt', .85, 1.45), ('Le Soleil', 1.75, 30)]
+hlabels = ''.join(f'<div class="stack" data-show="{a},{b}" data-fade="0.2" style="display: flex; justify-content: center; align-items: center"><span style="{FR}; font-style: italic; font-weight: 300; font-size: 54px; color: {INK}" dir="ltr">{n}</span></div>' for n, a, b in hook_names)
 s = s[:i] + f'''<div style="position: absolute; top: 600px; left: 160px; width: 760px; height: 760px">{hbowls}</div>
   <div style="position: absolute; top: 1385px; left: 0; right: 0; height: 80px">{hlabels}</div>''' + s[j:]
 rep('<div class="hook stack" style="background: var(--s-cream)">', f'<div class="hook stack" style="background: {BG}">')
