@@ -1,0 +1,164 @@
+<!doctype html>
+<!--
+  Brand World Reel — studio mode template (9:16, 1080×1920, 30s).
+  Timeline:  0.0–2.8 HOOK · 2.6–5.4 studio window opens · 5.4–27.0 world (5 scenes + HUD) · 27.0–30.0 outro back to the window.
+  The outro holds to the very last frame (no fade-out): players show it as the poster and the loop cuts straight to the hook.
+  Edit only the blocks marked EDIT. Every time value is in seconds; reel.js turns data-* attributes into keyframes.
+  Custom motion: write @keyframes with percentages = seconds / 30 * 100 (helper: p(t) in your head or in a generator).
+  Rule that breaks reels: one animated class per element. Need two motions? Nest a child.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>BOL° ad 15s</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Heebo:wght@300;400;500;600&amp;family=Assistant:wght@300;400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+html,body{margin:0;background:#F7F5F0}
+body{font-family:'Assistant',sans-serif;color:#1F1B3A}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F7F5F0}
+.film *{animation-duration:15s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.mask{overflow:hidden;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+.spin{animation-name:spin;animation-timing-function:linear}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(64deg)}}
+.hm2{animation-name:hm2}@keyframes hm2{0%,2.667%{opacity:0;transform:translateY(-120px) scale(.8)}3.667%{opacity:1;transform:translateY(-60px) scale(1)}6.333%{opacity:1;transform:translateY(170px) scale(.55)}7.333%,100%{opacity:0;transform:translateY(190px) scale(.4)}}
+.hm3{animation-name:hm3}@keyframes hm3{0%,8.667%{opacity:0;transform:translateY(-120px) scale(.8)}9.667%{opacity:1;transform:translateY(-60px) scale(1)}12.333%{opacity:1;transform:translateY(170px) scale(.55)}13.333%,100%{opacity:0;transform:translateY(190px) scale(.4)}}
+.hturn{animation-name:hturn}@keyframes hturn{0%,2.333%{transform:rotate(90deg)}5.000%,8.333%{transform:rotate(180deg)}11.000%,100%{transform:rotate(270deg)}}
+.hq2{animation-name:hq2;transform-box:view-box;transform-origin:50px 50px}@keyframes hq2{0%,5.667%{opacity:0;transform:translate(0,-6px) scale(1.18)}8.333%,100%{opacity:1;transform:none}}
+.hq3{animation-name:hq3;transform-box:view-box;transform-origin:50px 50px}@keyframes hq3{0%,11.667%{opacity:0;transform:translate(0,-6px) scale(1.18)}14.333%,100%{opacity:1;transform:none}}
+.lg{animation-name:lg}@keyframes lg{0%,17.000%{opacity:0;letter-spacing:.3em}21.333%,100%{opacity:1;letter-spacing:.02em}}
+.lgd{animation-name:lgd}@keyframes lgd{0%,18.667%{opacity:0;transform:scale(.2) rotate(-200deg)}22.667%,100%{opacity:1;transform:none}}
+.qbg{animation-name:qbg}@keyframes qbg{0%,32.000%{background-color:#F7F5F0}33.667%,38.000%{background-color:#FBE6C0}39.667%,44.000%{background-color:#DADFF1}45.667%,50.000%{background-color:#EFE0CC}51.667%,53.000%{background-color:#E2EBCB}56.333%,100%{background-color:#F7F5F0}}
+.qring{animation-name:qring}@keyframes qring{0%,34.667%{transform:rotate(0deg)}37.667%,40.667%{transform:rotate(90deg)}43.667%,46.667%{transform:rotate(180deg)}49.667%,100%{transform:rotate(270deg)}}
+.qd0{animation-name:qd0}@keyframes qd0{0%,28.667%{transform:none;opacity:1}31.200%,100%{transform:translateY(340px) scale(.35);opacity:0}}
+.qd1{animation-name:qd1}@keyframes qd1{0%,37.667%{transform:none;opacity:1}40.200%,100%{transform:translateY(340px) scale(.35);opacity:0}}
+.qd2{animation-name:qd2}@keyframes qd2{0%,43.667%{transform:none;opacity:1}46.200%,100%{transform:translateY(340px) scale(.35);opacity:0}}
+.qd3{animation-name:qd3}@keyframes qd3{0%,49.667%{transform:none;opacity:1}52.200%,100%{transform:translateY(340px) scale(.35);opacity:0}}
+.qringf{animation-name:qringf}@keyframes qringf{0%,51.000%{opacity:1}53.000%,100%{opacity:0}}
+.qshrink{animation-name:qshrink;transform-origin:50% 50%}@keyframes qshrink{0%,53.000%{transform:none}57.000%,100%{transform:translateY(250px) scale(.6)}}
+.qcard{animation-name:qcard}@keyframes qcard{0%,53.333%{opacity:0;transform:scale(.7)}57.000%,100%{opacity:1;transform:none}}
+.qok{animation-name:qok}@keyframes qok{0%,57.000%{stroke-dashoffset:30}60.333%,100%{stroke-dashoffset:0}}
+.qa1{animation-name:qa1}@keyframes qa1{0%,26.667%{transform:translateY(110%)}30.000%,100%{transform:none}}
+.qa2{animation-name:qa2}@keyframes qa2{0%,28.667%{transform:translateY(110%)}32.000%,100%{transform:none}}
+.qturn{animation-name:qturn}@keyframes qturn{0%,34.667%{transform:rotate(0deg)}37.667%,40.667%{transform:rotate(90deg)}43.667%,46.667%{transform:rotate(180deg)}49.667%,100%{transform:rotate(270deg)}}
+.qq0{animation-name:qq0;transform-box:view-box;transform-origin:50px 50px}@keyframes qq0{0%,30.133%{opacity:0;transform:translate(0,-6px) scale(1.18)}32.800%,100%{opacity:1;transform:none}}
+.qq1{animation-name:qq1;transform-box:view-box;transform-origin:50px 50px}@keyframes qq1{0%,39.133%{opacity:0;transform:translate(0,-6px) scale(1.18)}41.800%,100%{opacity:1;transform:none}}
+.qq2{animation-name:qq2;transform-box:view-box;transform-origin:50px 50px}@keyframes qq2{0%,45.133%{opacity:0;transform:translate(0,-6px) scale(1.18)}47.800%,100%{opacity:1;transform:none}}
+.qq3{animation-name:qq3;transform-box:view-box;transform-origin:50px 50px}@keyframes qq3{0%,51.133%{opacity:0;transform:translate(0,-6px) scale(1.18)}53.800%,100%{opacity:1;transform:none}}
+.gw0{animation-name:gw0}@keyframes gw0{0%,75.333%{opacity:1;transform:none}78.333%,100%{opacity:0;transform:scale(.97)}}
+.gc0{animation-name:gc0}@keyframes gc0{0%,75.667%{opacity:0;transform:scale(1.05)}79.000%,100%{opacity:1;transform:none}}
+.gs0{animation-name:gs0}@keyframes gs0{0%,73.333%{height:0;opacity:0}73.400%{height:0;opacity:.9}75.667%{height:900px;opacity:.9}77.333%,100%{height:900px;opacity:0}}
+.ga1{animation-name:ga1}@keyframes ga1{0%,70.000%{transform:translateY(110%)}73.333%,100%{transform:none}}
+.ga2{animation-name:ga2}@keyframes ga2{0%,72.000%{transform:translateY(110%)}75.333%,100%{transform:none}}
+.ctl{animation-name:ctl}@keyframes ctl{0%,84.000%{opacity:0;transform:translateY(30px)}88.000%,100%{opacity:1;transform:none}}
+</style>
+</head>
+<body data-duration="15">
+<div id="stage"><div class="film stack">
+  <section class="scene" data-show="0,2.6">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 200px; left: 70px; right: 70px; text-align: center; font-family: 'Assistant', sans-serif; font-size: 104px; font-weight: 600; line-height: 1.1; color: #1F1B3A" dir="rtl">מה יש לך<br><span style="font-weight: 200">בקערה </span><span style="color: #C8284F">היום?</span></div>
+    <div style="position: absolute; top: 660px; left: 170px; width: 740px; height: 740px"><div class="hturn" style="position: absolute; inset: 0">
+          <img src="assets/bowl-nu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))">
+          <svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible"><defs><filter id="hsoft" x="-15%" y="-15%" width="130%" height="130%" filterUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".6"/></filter><filter id="hpile" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy=".5" stdDeviation=".6" flood-color="#1F1B3A" flood-opacity=".22"/></filter><radialGradient id="hrim" cx="50%" cy="50%" r="50%"><stop offset="78%" stop-color="#1F1B3A" stop-opacity="0"/><stop offset="100%" stop-color="#1F1B3A" stop-opacity=".16"/></radialGradient><mask id="hm0"><path d="M22.08 19.43 A41.4 41.4 0 0 1 77.92 19.43 L58.43 40.77 A12.5 12.5 0 0 0 41.57 40.77 Z" fill="#fff" filter="url(#hsoft)"/></mask><mask id="hm1"><path d="M19.43 77.92 A41.4 41.4 0 0 1 19.43 22.08 L40.77 41.57 A12.5 12.5 0 0 0 40.77 58.43 Z" fill="#fff" filter="url(#hsoft)"/></mask><mask id="hm2"><path d="M77.92 80.57 A41.4 41.4 0 0 1 22.08 80.57 L41.57 59.23 A12.5 12.5 0 0 0 58.43 59.23 Z" fill="#fff" filter="url(#hsoft)"/></mask><mask id="hm3"><path d="M80.57 22.08 A41.4 41.4 0 0 1 80.57 77.92 L59.23 58.43 A12.5 12.5 0 0 0 59.23 41.57 Z" fill="#fff" filter="url(#hsoft)"/></mask></defs><g class=""><g filter="url(#hpile)"><g mask="url(#hm0)"><image href="assets/t-mangue.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(15 50 50)"/></g></g></g><g class=""><g filter="url(#hpile)"><g mask="url(#hm1)"><image href="assets/t-myrtille.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-75 50 50)"/></g></g></g><g class="hq2"><g filter="url(#hpile)"><g mask="url(#hm2)"><image href="assets/t-granola.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-165 50 50)"/></g></g></g><g class="hq3"><g filter="url(#hpile)"><g mask="url(#hm3)"><image href="assets/t-kiwi.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-255 50 50)"/></g></g></g><circle cx="50" cy="50" r="42.4" fill="url(#hrim)"/></svg></div></div>
+    <div class="hm2" style="position: absolute; left: 458px; top: 520px; width: 164px; height: 164px; border-radius: 50%; background: url(assets/t-granola.webp) center/cover; box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div><div class="hm3" style="position: absolute; left: 458px; top: 520px; width: 164px; height: 164px; border-radius: 50%; background: url(assets/t-kiwi.webp) center/cover; box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div>
+    <div style="position: absolute; top: 1520px; left: 0; right: 0; text-align: center; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 50px; color: rgba(31,27,58,.7)" dir="ltr">Mangue · Myrtilles · Granola · Kiwi</div>
+  </section>
+  <section class="scene" data-show="2.5,3.9" data-fade="0.25">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 760px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 26px">
+      <div style="display: flex; align-items: flex-start; justify-content: center" dir="ltr"><span class="lg" style="font-family: 'Fraunces', serif; font-size: 230px; font-weight: 600; line-height: 1; color: #1F1B3A">BOL</span><span class="lgd" style="display: block; width: 96px; height: 96px; margin-left: 13px; margin-top: 4px"><span class="spin" style="display: block; width: 100%; height: 100%"><img src="assets/bowl-soleil.webp" alt="" style="width: 100%; height: 100%; display: block"></span></span></div>
+      <div data-in="3.1" style="font-family: 'Assistant', sans-serif; font-size: 30px; font-weight: 600; letter-spacing: .34em; color: rgba(31,27,58,.55)" dir="ltr">BAR À YAOURT · TEL AVIV</div>
+    </div>
+  </section>
+  <section class="scene" data-show="3.8,10.6">
+    <div class="stack qbg" style="background-color: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl"><div data-in="3.8" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 46px; color: #C8284F; margin-bottom: 6px" dir="ltr">L'Atelier</div>
+      <span class="mask"><span class="qa1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 200; line-height: 1.12; color: #1F1B3A">ארבעה רבעים.</span></span>
+      <span class="mask"><span class="qa2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.12; color: #1F1B3A">הקערה שלך.</span></span></div>
+    <div class="qringf" style="position: absolute; inset: 0">
+      <div style="position: absolute; left: 110px; top: 670px; width: 860px; height: 860px; border-radius: 50%; border: 2px dashed rgba(31,27,58,.22); box-sizing: border-box"></div>
+      <div style="position: absolute; top: 544px; left: 522px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 26px solid #C8284F"></div>
+    </div>
+    <div class="qcard" style="position: absolute; left: 230px; top: 640px; width: 620px; height: 860px; border-radius: 40px; background: #1F1B3A; box-shadow: 0 40px 90px -30px rgba(31,27,58,.6); overflow: hidden">
+      <div style="position: absolute; top: 56px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #F7F5F0">
+        <div style="font-family: 'Fraunces', serif; font-size: 22px; letter-spacing: .3em; opacity: .6" dir="ltr">À PAYER</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 104px; font-weight: 300; line-height: 1" dir="ltr">₪47</div>
+        <div style="width: 74px; height: 74px; border-radius: 50%; border: 2px solid rgba(247,245,240,.5); display: flex; align-items: center; justify-content: center; margin-top: 8px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F7F5F0" stroke-width="2.2"><path class="qok" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-dasharray: 30"/></svg></div>
+        <div style="font-family: 'Assistant', sans-serif; font-size: 34px; font-weight: 300; margin-top: 6px" dir="rtl">הקערה שלך מוכנה בעוד 7 דקות</div>
+      </div>
+    </div>
+    <div class="qshrink" style="position: absolute; inset: 0">
+      <div style="position: absolute; left: 240px; top: 800px; width: 600px; height: 600px"><div class="qturn" style="position: absolute; inset: 0">
+          <img src="assets/bowl-nu.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 34px 34px rgba(31,27,58,.18))">
+          <svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible"><defs><filter id="qsoft" x="-15%" y="-15%" width="130%" height="130%" filterUnits="userSpaceOnUse"><feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".6"/></filter><filter id="qpile" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy=".5" stdDeviation=".6" flood-color="#1F1B3A" flood-opacity=".22"/></filter><radialGradient id="qrim" cx="50%" cy="50%" r="50%"><stop offset="78%" stop-color="#1F1B3A" stop-opacity="0"/><stop offset="100%" stop-color="#1F1B3A" stop-opacity=".16"/></radialGradient><mask id="qm0"><path d="M22.08 19.43 A41.4 41.4 0 0 1 77.92 19.43 L58.43 40.77 A12.5 12.5 0 0 0 41.57 40.77 Z" fill="#fff" filter="url(#qsoft)"/></mask><mask id="qm1"><path d="M19.43 77.92 A41.4 41.4 0 0 1 19.43 22.08 L40.77 41.57 A12.5 12.5 0 0 0 40.77 58.43 Z" fill="#fff" filter="url(#qsoft)"/></mask><mask id="qm2"><path d="M77.92 80.57 A41.4 41.4 0 0 1 22.08 80.57 L41.57 59.23 A12.5 12.5 0 0 0 58.43 59.23 Z" fill="#fff" filter="url(#qsoft)"/></mask><mask id="qm3"><path d="M80.57 22.08 A41.4 41.4 0 0 1 80.57 77.92 L59.23 58.43 A12.5 12.5 0 0 0 59.23 41.57 Z" fill="#fff" filter="url(#qsoft)"/></mask></defs><g class="qq0"><g filter="url(#qpile)"><g mask="url(#qm0)"><image href="assets/t-mangue.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(15 50 50)"/></g></g></g><g class="qq1"><g filter="url(#qpile)"><g mask="url(#qm1)"><image href="assets/t-myrtille.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-75 50 50)"/></g></g></g><g class="qq2"><g filter="url(#qpile)"><g mask="url(#qm2)"><image href="assets/t-granola.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-165 50 50)"/></g></g></g><g class="qq3"><g filter="url(#qpile)"><g mask="url(#qm3)"><image href="assets/t-kiwi.webp" x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid slice" transform="rotate(-255 50 50)"/></g></g></g><circle cx="50" cy="50" r="42.4" fill="url(#qrim)"/></svg></div></div>
+      <div class="qring" style="position: absolute; left: 540px; top: 1100px; width: 0; height: 0"><div style="position: absolute; left: 0; top: 0; transform: rotate(0deg) translateY(-430px)"><div class="qd0" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(assets/t-mangue.webp) center/cover; transform: rotate(0deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-90deg) translateY(-430px)"><div class="qd1" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(assets/t-myrtille.webp) center/cover; transform: rotate(90deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-180deg) translateY(-430px)"><div class="qd2" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(assets/t-granola.webp) center/cover; transform: rotate(180deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div><div style="position: absolute; left: 0; top: 0; transform: rotate(-270deg) translateY(-430px)"><div class="qd3" style="position: absolute; left: -82px; top: -82px; width: 164px; height: 164px"><div style="width: 100%; height: 100%; border-radius: 50%; background: url(assets/t-kiwi.webp) center/cover; transform: rotate(270deg); box-shadow: 0 0 0 5px #FFFFFF, 0 16px 34px rgba(31,27,58,.22)"></div></div></div></div>
+    </div>
+    <div class="qringf" style="position: absolute; top: 1640px; left: 40px; right: 40px; height: 140px"><div class="stack" data-show="3.8,4.80" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">Yaourt grec</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">מתחילים מקערה לבנה · <b style="color: #C8284F">₪24</b></span></div><div class="stack" data-show="4.80,6.15" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">+ Mangue</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">מנגו טרי בקוביות · <b style="color: #C8284F">₪30</b></span></div><div class="stack" data-show="6.15,7.05" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">+ Myrtilles</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">אוכמניות · <b style="color: #C8284F">₪37</b></span></div><div class="stack" data-show="7.05,7.95" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">+ Granola</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">גרנולה בדבש ושקדים · <b style="color: #C8284F">₪42</b></span></div><div class="stack" data-show="7.95,7.95" data-fade="0.15" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 60px; color: #1F1B3A" dir="ltr">+ Kiwi</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">קיווי פרוס · <b style="color: #C8284F">₪47</b></span></div></div>
+  </section>
+  <section class="scene" data-show="10.4,12.7">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 190px; left: 60px; right: 60px; display: flex; flex-direction: column; align-items: center; text-align: center" dir="rtl"><div data-in="10.4" style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 46px; color: #C8284F; margin-bottom: 6px" dir="ltr">La Glacerie</div>
+      <span class="mask"><span class="ga1" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 200; line-height: 1.12; color: #1F1B3A">מבחוץ פרי.</span></span>
+      <span class="mask"><span class="ga2" style="display: block; font-family: 'Assistant', sans-serif; font-size: 80px; font-weight: 600; line-height: 1.12; color: #1F1B3A">מבפנים <span dir="ltr">BOL°</span>.</span></span></div>
+    <div class="stack" data-show="10.40,15.00" data-fade="0.3"><div style="position: absolute; top: 560px; left: 130px; width: 820px; height: 820px">
+        <div class="gw0" style="position: absolute; inset: 0"><img src="assets/gl-mangue-whole.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+        <div class="gc0" style="position: absolute; inset: 0"><img src="assets/gl-mangue-cut.webp" alt="" style="width: 100%; height: 100%; filter: drop-shadow(0 30px 30px rgba(31,27,58,.16))"></div>
+        <div class="gs0" style="position: absolute; left: 50%; top: -40px; width: 3px; background: #1F1B3A"></div></div></div>
+    <div style="position: absolute; top: 1450px; left: 40px; right: 40px; height: 140px"><div class="stack" data-show="10.40,15.00" data-fade="0.2" style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 62px; color: #1F1B3A" dir="ltr">La Mangue</span><span style="font-family: 'Assistant', sans-serif; font-size: 34px; color: rgba(31,27,58,.66)" dir="rtl">קליפת מנגו קפואה, ובפנים יוגורט לבן</span></div></div>
+  </section>
+  <section class="scene" data-show="12.5,15">
+    <div class="stack" style="background: #F7F5F0"></div>
+    <div style="position: absolute; top: 330px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 22px">
+      <div style="display: flex; align-items: flex-start; justify-content: center" dir="ltr"><span class="" style="font-family: 'Fraunces', serif; font-size: 210px; font-weight: 600; line-height: 1; color: #1F1B3A">BOL</span><span class="" style="display: block; width: 88px; height: 88px; margin-left: 12px; margin-top: 4px"><span class="spin" style="display: block; width: 100%; height: 100%"><img src="assets/bowl-soleil.webp" alt="" style="width: 100%; height: 100%; display: block"></span></span></div>
+      <div style="font-family: 'Assistant', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: .34em; color: rgba(31,27,58,.55)" dir="ltr">BAR À YAOURT · TEL AVIV</div>
+    </div>
+    <div class="ctl" style="position: absolute; top: 760px; left: 70px; right: 70px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 46px" dir="rtl">
+      <div style="font-family: 'Assistant', sans-serif; font-size: 116px; line-height: 1.08; color: #1F1B3A"><span style="font-weight: 200">בול</span><br><b style="font-weight: 600">מה שבחרת.</b></div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 22px">
+        <div style="padding: 30px 74px; border-radius: 999px; background: #C8284F; color: #FFFFFF; font-family: 'Assistant', sans-serif; font-size: 46px; font-weight: 600">להרכיב קערה</div>
+        <div style="font-family: 'Assistant', sans-serif; font-size: 34px; font-weight: 300; color: rgba(31,27,58,.7)">או להזמין מראש ולאסוף בלי תור</div>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 150px; left: 0; right: 0; text-align: center; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; color: #C8284F" dir="ltr">Le blanc d'abord. La couleur, c'est vous.</div>
+  </section>
+</div></div>
+<script>
+/* reel.js — turns data-* timing into keyframes, so scene timing is written in seconds, never in percentages.
+   data-show="a,b"  visible from a to b seconds (fade length data-fade, default .35s)
+   data-in="t"      enters at t (slides up 30px + fades), stays
+   data-seq="path/f_%03d.webp" data-from data-to data-by data-start data-step [data-fit data-pos]
+                    an image sequence: frame k is visible ~0.1s at start + k*step; the last frame holds */
+(function(){
+  const D = +document.body.dataset.duration || 30, css = [];
+  const P = t => (Math.max(0, Math.min(D, t)) / D * 100).toFixed(3) + '%';
+  let n = 0;
+  document.querySelectorAll('[data-show]').forEach(el => {
+    const [a, b] = el.dataset.show.split(',').map(Number), f = +(el.dataset.fade || .35), k = 'show' + (n++);
+    const start = a <= 0 ? '0%{opacity:1}' : `0%,${P(a - f)}{opacity:0}${P(a)}{opacity:1}`;
+    const end = b >= D ? '100%{opacity:1}' : `${P(b)}{opacity:1}${P(b + f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${start}${end}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-in]').forEach(el => {
+    const t = +el.dataset.in, k = 'in' + (n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t + .6)},100%{opacity:1;transform:none}}`); el.style.animationName = k;
+  });
+  document.querySelectorAll('[data-seq]').forEach(el => {
+    const d = el.dataset, from = +d.from, to = +d.to, by = +(d.by || 1), start = +d.start, step = +d.step;
+    const pad = (s, i) => s.replace(/%0(\d)d/, (_, w) => String(i).padStart(+w, '0'));
+    const style = `position:absolute;inset:0;width:100%;height:100%;object-fit:${d.fit || 'cover'};object-position:${d.pos || '50% 50%'};display:block`;
+    const base = document.createElement('img'); base.src = pad(d.seq, from); base.alt = ''; base.style.cssText = style; el.appendChild(base);
+    let i = 0, last = from;
+    for (let f = from; f <= to; f += by, i++) {
+      const im = document.createElement('img'); im.src = pad(d.seq, f); im.alt = ''; im.className = 'bf';
+      im.style.cssText = style + `;animation-delay:${(start + i * step).toFixed(3)}s`; el.appendChild(im); last = f;
+    }
+    const hold = document.createElement('img'), k = 'hold' + (n++), th = start + i * step;
+    hold.src = pad(d.seq, last); hold.alt = ''; hold.style.cssText = style + `;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th - .05)}{opacity:0}${P(th)},100%{opacity:1}}`); el.appendChild(hold);
+  });
+  const s = document.createElement('style'); s.textContent = css.join('\n'); document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
