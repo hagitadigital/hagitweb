@@ -10,10 +10,16 @@ def an(k, t, d=.6, e=EASE):
 
 BALL = f'width:44px;height:44px;border-radius:999px;background:{COPPER};box-shadow:0 0 0 10px {CSOFT},0 8px 18px rgba(20,30,45,.25)'
 
-def world(a, dur, img, no, nm, line, origin, z0, z1, dark=False, cut=False, pill_bg='rgba(242,235,220,.86)'):
+def seq(folder, n, t, fps=24):
+    # a video clip as stacked frames; each frame switches on at its time. Frames come from character/clips/*.mp4:
+    #   ffmpeg -i ../character/clips/walk.mp4 -vf colorchannelmixer=rr=1.0168:gg=1.0173:bb=1.0233 -q:v 2 src/assets/walk/f%03d.jpg
+    #   ffmpeg -i ../character/clips/taste.mp4 -q:v 2 src/assets/taste/f%03d.jpg
+    return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
+
+def world(a, dur, img, no, nm, line, origin, z0, z1, dark=False, cut=False, pill_bg='rgba(242,235,220,.86)', clip=None):
     fg = CREAM if dark else INK
     return f'''<section class="scene" style="animation:fade {'.01' if cut else '.3'}s linear {a}s both;overflow:hidden;background:{'#000' if dark else '#fff'}">
-<img src="assets/{img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.4}s cubic-bezier(.3,0,.3,1) {a}s both{',light 1s ease-out '+str(a+.15)+'s both' if dark else ''}">
+{f'<div style="position:absolute;inset:0;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.4}s cubic-bezier(.3,0,.3,1) {a}s both">{clip}</div>' if clip else f'''<img src="assets/{img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.4}s cubic-bezier(.3,0,.3,1) {a}s both{',light 1s ease-out '+str(a+.15)+'s both' if dark else ''}">'''}
 <div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
 <div style="padding:10px 28px;border:2px solid {CSOFT};border-radius:999px;background:{'rgba(12,9,7,.55)' if dark else pill_bg};font-size:28px;line-height:1.4;color:{CSOFT if dark else CTEXT};animation:{an('fade', a+.3, .4)}">עולם מותג קונספט · No.{no}</div>
 <div dir="ltr" style="align-self:flex-start;font-family:{DISP};font-size:100px;line-height:1.05;color:{fg};animation:{an('rise', a+.45)}">{nm}</div>
@@ -23,16 +29,13 @@ def world(a, dur, img, no, nm, line, origin, z0, z1, dark=False, cut=False, pill
 
 # ── 1 · HOOK 0–2.6: she is small, the dessert is huge; the question is on frame 0 ──
 hook = f'''<section class="scene" style="overflow:hidden">
-<img src="assets/bowl-foret.webp" style="position:absolute;width:1300px;height:1300px;left:230px;top:1290px;animation:spin 3s linear 0s both;--r0:-12deg;--r1:14deg">
+{seq('walk', 72, 0)}
 <h1 style="position:absolute;left:80px;right:80px;top:250px;margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:right">הקינוח שלך כבר עולם.<br><span style="color:{COPPER}">נכנסת אליו פעם?</span></h1>
-<div style="position:absolute;left:0;right:0;top:1178px;height:4px;background:{COPPER}"></div>
-<div style="position:absolute;left:0;top:628px;animation:walk 2.9s linear 0s both;--x0:70px;--x1:560px">
-<img src="assets/walk.webp" style="display:block;width:354px;height:560px;animation:bob .5s ease-in-out 0s 6 alternate">
-</div>
-<div style="position:absolute;left:0;top:1158px;{BALL};animation:walk 2.9s linear 0s both;--x0:520px;--x1:1010px"></div>
+<div style="position:absolute;left:0;right:0;top:1157px;height:4px;background:{COPPER}"></div>
+<div style="position:absolute;left:0;top:1137px;{BALL};animation:walk 3s linear 0s both;--x0:470px;--x1:960px"></div>
 </section>'''
 
-bol = world(2.6, 3.4, 'scene-bol.jpg', '09', 'BOL°', 'בול מה שבחרת.', '74% 36%', 1, 1.16)
+bol = world(2.6, 3.4, 'scene-bol.jpg', '09', 'BOL°', 'בול מה שבחרת.', '74% 36%', 1, 1.16, clip=seq('taste', 90, 2.6))
 miel = world(6.0, 3.5, 'scene-miel.jpg', '27', 'MIEL°', 'רומנטיקה מתחילה מבפנים.', '53% 60%', 1, 1.32, pill_bg='rgba(242,235,220,.7)')
 signe = world(9.5, 3.0, 'scene-signe.jpg', '17', 'SIGNÉ°', 'כל קינוח חתום.', '62% 58%', 1.12, 1, dark=True, cut=True)
 
@@ -66,6 +69,7 @@ html = f'''<!doctype html><html lang="he"><head><meta charset="utf-8"><title>Des
 html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:{CREAM}}}
 .scene{{position:absolute;inset:0;box-sizing:border-box;background:{CREAM};color:{INK};font-family:'Heebo',sans-serif;direction:rtl}}
 img{{display:block}}
+@keyframes on{{from{{visibility:hidden}}to{{visibility:visible}}}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 @keyframes rise{{from{{opacity:0;translate:0 40px}}to{{opacity:1;translate:0 0}}}}
 @keyframes pop{{0%{{opacity:0;scale:.55}}65%{{opacity:1;scale:1.05}}100%{{opacity:1;scale:1}}}}
