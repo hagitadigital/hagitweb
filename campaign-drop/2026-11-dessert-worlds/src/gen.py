@@ -33,27 +33,32 @@ def cap(a, h1, p, pre=''):
     return f'''{pre}<h1 style="margin:0;font-size:64px;line-height:1.2;font-weight:600;animation:{an('rise', a+1.5)}">{h1}</h1>
 <p style="margin:0;font-size:40px;line-height:1.5;color:{SOFT};animation:{an('rise', a+2.1)}">{p}</p>'''
 
-def name(a, txt, color=INK, ls='0'):
-    return f'<div dir="ltr" style="position:absolute;left:0;right:0;top:48px;text-align:center;font-family:{DISP};font-size:100px;line-height:1.05;letter-spacing:{ls};color:{color};animation:{an("rise", a+.5)}">{txt}</div>'
+def name(a, txt, color=INK, ls='0', pos='top:48px'):
+    return f'<div dir="ltr" style="position:absolute;left:0;right:0;{pos};text-align:center;font-family:{DISP};font-size:100px;line-height:1.05;letter-spacing:{ls};color:{color};animation:{an("rise", a+.5)}">{txt}</div>'
 
 def tile(bg, nm, img, color=INK, size=48):
     return f'''<div style="position:relative;overflow:hidden;border-radius:20px;background:{bg}">{img}
 <div dir="ltr" style="position:absolute;left:28px;top:22px;font-family:{DISP};font-size:{size}px;line-height:1.05;color:{color}">{nm}</div></div>'''
 
-# ── 1 · HOOK 0–3: the question and its proof are on frame 0 ──
+def seq(folder, n, t, step):
+    # a frame sequence: frames stack, each one switches on at its time
+    return ''.join(f'<img src="assets/{folder}/f{i:02d}.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover' + (f';animation:on .001s linear {t+(i-1)*step:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
+
+# ── 1 · HOOK 0–3: the question and its proof are on frame 0; four calm colour tiles, no labels ──
+def htile(bg, img):
+    return f'<div style="position:relative;overflow:hidden;border-radius:20px;background:{bg}">{img}</div>'
 hook = f'''<section class="scene" style="padding:40px;display:flex;flex-direction:column;gap:16px">
 <div style="flex:1 1 0;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
-{tile('#FFFFFF', 'BOL°', '<img src="assets/bowl-foret.webp" style="position:absolute;width:560px;height:560px;left:-40px;top:120px;animation:spin 3.4s linear 0s both;--r0:-40deg;--r1:20deg">', size=56)}
-{tile('#D9E2BF', 'Pancakerie°', f'<img src="assets/stack-pistache.webp" style="position:absolute;width:640px;height:480px;left:-70px;top:190px;animation:{an("zoom", 0, 3.2, "ease-out")}">', size=56)}
+{htile('#FFFFFF', '<img src="assets/bowl-foret.webp" style="position:absolute;width:440px;height:440px;left:26px;top:140px;animation:spin 3.4s linear 0s both;--r0:-30deg;--r1:10deg">')}
+{htile('#D4CFBA', f'<img src="assets/dish-pistache.webp" style="position:absolute;width:560px;height:420px;left:-34px;top:150px;animation:{an("zoom", 0, 3.2, "ease-out")}">')}
 </div>
 <div style="padding:56px 40px 48px;border-radius:20px;background:{DEEP};display:flex;flex-direction:column;align-items:center;gap:40px">
 <h1 style="margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:center">לקינוח שלך כבר יש צבע.<br><span style="color:{COPPER}">ולמותג?</span></h1>
 {ball(.15, 0, 876, 'width:100%').replace(' .9s ', ' 2.5s ')}
 </div>
-<div style="flex:1 1 0;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
-{tile('#E3AEB8', 'MIEL°', f'<img src="assets/miel-cake.webp" style="position:absolute;width:380px;height:478px;left:-28px;top:150px;animation:{an("zoom", 0, 3.2, "ease-out")}">')}
-{tile('#0C0907', 'SIGNÉ°', f'<img src="assets/signe-framboise.webp" style="position:absolute;width:100%;height:100%;left:0;top:40px;object-fit:cover;animation:{an("zoom", 0, 3.2, "ease-out")}">', CREAM)}
-{tile('#F6E38F', 'Pétale°', '<img src="assets/mac-framboise.webp" style="position:absolute;width:330px;height:380px;left:20px;top:190px;animation:spin 3.4s linear 0s both;--r0:-14deg;--r1:22deg">')}
+<div style="flex:1 1 0;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+{htile('#E3AEB8', f'<img src="assets/miel-cake.webp" style="position:absolute;width:400px;height:503px;left:46px;top:120px;animation:{an("zoom", 0, 3.2, "ease-out")}">')}
+{htile('#F6E38F', '<img src="assets/mac-framboise.webp" style="position:absolute;width:360px;height:415px;left:66px;top:150px;animation:spin 3.4s linear 0s both;--r0:-10deg;--r1:12deg">')}
 </div>
 </section>'''
 
@@ -65,38 +70,29 @@ bol = world(a, '09', name(a, 'BOL°') + f'''
 <img src="assets/bowl-foret.webp" style="position:absolute;width:600px;height:600px;left:160px;bottom:40px;animation:{an('pop', a+1.7, .8)},spin 5s linear {a+1.7}s both;--r0:-90deg;--r1:10deg">''',
             cap(a, 'הדף לבן.<br>הצבע נכנס רק לקערה.', 'בר קערות יוגורט שמזהים מרחוק.'), 60, 160, '#FFFFFF')
 
-# ── 3 · PANCAKERIE 9–14: the two flavours swap, and the colour swaps with them ──
-a = 9; sw = a + 2.9
-def half(c1, c2, i1, i2, l1, l2, t):
-    img = lambda s, extra: f'<img src="assets/stack-{s}.webp" style="position:absolute;width:600px;height:450px;left:160px;bottom:-6px;{extra}">'
-    lab = lambda s, extra: f'<div dir="ltr" style="position:absolute;left:40px;top:32px;font-family:{LAB};font-size:22px;font-weight:500;letter-spacing:.22em;color:{INK};{extra}">{s}</div>'
-    return f'''<div style="position:relative;overflow:hidden;background:{c1}">
-<div style="position:absolute;inset:0;background:{c2};animation:{an('fade', sw, .5)}"></div>
-{img(i1, f"animation:{an('pop', t, .7)},out .4s ease-in {sw}s forwards")}{img(i2, f"animation:{an('pop', sw+.15, .7)}")}
-{lab(l1, f"animation:{an('fade', t, .4)},out .3s linear {sw}s forwards")}{lab(l2, f"animation:{an('fade', sw+.2, .4)}")}
-</div>'''
-pan = world(a, '23', f'''<div style="position:absolute;inset:0;display:grid;grid-template-rows:repeat(2,minmax(0,1fr))">
-{half('#D9E2BF', '#F7E6A0', 'pistache', 'citron', 'PISTACHE', 'CITRON', a+.7)}
-{half('#F7E6A0', '#D9E2BF', 'citron', 'pistache', 'CITRON', 'PISTACHE', a+1.0)}</div>''',
-            cap(a, 'פה הטעם הוא צבע.', 'בוחרים טעם, וכל העמוד מתחלף איתו.',
+# ── 3 · PANCAKERIE 9–14: the site's fan. The hero dishes turn on an arc; the ground and the box follow the flavour ──
+a = 9; t1 = a + 2.0; t2 = a + 3.4
+dish = lambda f, k: f'<img src="assets/dish-{f}.webp" style="position:absolute;left:180px;top:60px;width:560px;height:420px;transform-origin:280px 910px;rotate:{k*34}deg">'
+box = lambda f, extra='': f'<img src="assets/box-{f}.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;{extra}">'
+pan = world(a, '23', f'''<div style="position:absolute;inset:0;background:#E5C9BC;animation:{an('fade', t1, .4, 'linear')}"></div>
+<div style="position:absolute;inset:0;background:#EEDAB7;animation:{an('fade', t2, .4, 'linear')}"></div>
+<div style="position:absolute;inset:0;animation:{an('pop', a+.6, .8)}"><div style="position:absolute;inset:0;transform-origin:460px 970px;animation:fan 5s cubic-bezier(.4,0,.2,1) {a}s both">
+{dish('noisette', -1)}{dish('pistache', 0)}{dish('fraise', 1)}{dish('citron', 2)}</div></div>
+<div style="position:absolute;left:210px;bottom:36px;width:500px;height:375px;overflow:hidden;border-radius:20px;box-shadow:0 18px 40px rgba(20,30,45,.2);animation:{an('rise', a+1.0, .7)}">
+{box('pistache')}{box('fraise', f"animation:{an('fade', t1, .4, 'linear')}")}{box('citron', f"animation:{an('fade', t2, .4, 'linear')}")}</div>''',
+            cap(a, 'פה הטעם הוא צבע.', 'בוחרים טעם, והעמוד והמארז מתחלפים איתו.',
                 f'<div dir="ltr" style="text-align:right;font-family:{DISP};font-style:italic;font-size:44px;line-height:1.2;color:{CTEXT};animation:{an("rise", a+1.2)}">Pancakerie°</div>'),
-            160, 330, '#D9E2BF')
+            160, 330, '#D4CFBA')
 
-# ── 4 · MIEL 14–19: one tap, and you see the inside ──
-a = 14; tap = a + 2.5
-miel = world(a, '27', f'''<div style="position:absolute;left:0;right:0;bottom:0;height:200px;background:#F3D9DC"></div>
-{name(a, 'MIEL°', ls='.12em')}
-<img src="assets/miel-cake.webp" style="position:absolute;width:620px;height:780px;left:150px;bottom:24px;animation:{an('riseBig', a+.7, .9)}">
-<div style="position:absolute;left:400px;top:480px;width:120px;height:120px;border-radius:999px;border:6px solid {COPPER};animation:ring .7s ease-out {tap-.5}s both"></div>
-<img src="assets/miel-slice.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%;animation:{an('fade', tap, .35, 'linear')},zoomIn 3s ease-out {tap}s both">''',
-             cap(a, 'טאפ אחד,<br>ורואים מה שבפנים.', 'הגלילה בונה את העוגה, הלקוחה בוחרת שכבות.'), 330, 500, '#E3AEB8')
+# ── 4 · MIEL 14–19: the promise is what is inside, so the scene is the cut itself ──
+a = 14
+miel = world(a, '27', seq('coupe', 61, a+.5, .06) + name(a, 'MIEL°', INK, '.12em', 'bottom:36px'),
+             cap(a, 'רומנטיקה מתחילה<br>מבפנים.', 'קודם רואים מה שבפנים. מזה נגזר כל המותג.'), 330, 500, '#E3AEB8')
 
-# ── 5 · SIGNÉ 19–23: hard cut to black, the spotlight comes on ──
+# ── 5 · SIGNÉ 19–23: hard cut to black; the dessert jumps out of the menu ──
 a = 19
-signe = world(a, '17', f'''<img src="assets/signe-framboise.webp" style="position:absolute;width:100%;height:100%;left:0;top:50px;object-fit:cover;animation:light 1.1s ease-out {a+.25}s both,zoomIn 4s ease-out {a}s both">
-{name(a, 'SIGNÉ°', CREAM, '.14em')}
-<div dir="ltr" style="position:absolute;left:0;right:0;bottom:48px;text-align:center;font-family:{DISP};font-style:italic;font-size:44px;line-height:1.2;color:{CSOFT};animation:{an('rise', a+1.2)}">Chaque dessert est signé</div>''',
-              cap(a, 'אותו פטל.<br>עולם אחר לגמרי.', 'בית קינוחים בשחור, והשוקולד נמזג בגלילה.').replace(f'{a+1.5}s', f'{a+1.0}s').replace(f'{a+2.1}s', f'{a+1.5}s'),
+signe = world(a, '17', seq('chou', 60, a+.2, .06) + name(a, 'SIGNÉ°', '#2A1C12', '.14em', 'bottom:36px'),
+              cap(a, 'תפריט שהקינוחים<br>קופצים ממנו.', 'בית קינוחים בשחור. כל קינוח חתום.').replace(f'{a+1.5}s', f'{a+1.0}s').replace(f'{a+2.1}s', f'{a+1.5}s'),
               500, 640, '#0C0907', cut=True, shadow=.28)
 
 # ── 6 · PÉTALE 23–26 ──
@@ -111,7 +107,7 @@ pet = world(a, '18', name(a, 'Pétale°') + f'''
 # ── 7 · THE TURN 26–29 ──
 a = 26
 tiles = [('#FFFFFF', '<img src="assets/bowl-foret.webp" style="position:absolute;width:190px;height:190px;left:-11px;top:35px">'),
-         ('#D9E2BF', '<img src="assets/stack-pistache.webp" style="position:absolute;width:240px;height:180px;left:-36px;top:46px">'),
+         ('#D4CFBA', '<img src="assets/dish-pistache.webp" style="position:absolute;width:240px;height:180px;left:-36px;top:46px">'),
          ('#E3AEB8', '<img src="assets/miel-cake.webp" style="position:absolute;width:190px;height:239px;left:-11px;top:18px">'),
          ('#0C0907', '<img src="assets/signe-framboise.webp" style="position:absolute;width:100%;height:100%;left:0;top:0;object-fit:cover">'),
          ('#F6E38F', '<img src="assets/mac-framboise.webp" style="position:absolute;width:150px;height:173px;left:9px;top:44px">')]
@@ -156,8 +152,11 @@ html = f'''<!doctype html><html lang="he"><head><meta charset="utf-8"><title>Des
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Heebo:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500&display=swap">
 <style>
 html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:{CREAM}}}
+.scene img:not([style*=animation]){{}}
 .scene{{position:absolute;inset:0;box-sizing:border-box;background:{CREAM};color:{INK};font-family:'Heebo',sans-serif;direction:rtl}}
 img{{display:block}}
+@keyframes on{{from{{opacity:0}}to{{opacity:1}}}}
+@keyframes fan{{0%,38%{{rotate:0deg}}46%,66%{{rotate:-34deg}}74%,100%{{rotate:-68deg}}}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 @keyframes out{{to{{opacity:0;scale:.8}}}}
 @keyframes rise{{from{{opacity:0;translate:0 40px}}to{{opacity:1;translate:0 0}}}}
