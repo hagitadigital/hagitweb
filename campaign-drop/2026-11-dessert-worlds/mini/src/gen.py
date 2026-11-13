@@ -16,14 +16,14 @@ def seq(folder, n, t, fps=24):
     #   ffmpeg -i ../character/clips/taste.mp4 -q:v 2 src/assets/taste/f%03d.jpg
     return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
 
-def world(a, dur, img, no, nm, line, origin, z0, z1, dark=False, cut=False, pill_bg='rgba(242,235,220,.86)', clip=None):
+def world(a, dur, img, no, nm, line, origin, z0, z1, dark=False, cut=False, pill_bg='rgba(242,235,220,.86)', clip=None, side='flex-start'):
     fg = CREAM if dark else INK
     return f'''<section class="scene" style="animation:fade {'.01' if cut else '.3'}s linear {a}s both;overflow:hidden;background:{'#000' if dark else '#fff'}">
 {f'<div style="position:absolute;inset:0;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.4}s cubic-bezier(.3,0,.3,1) {a}s both">{clip}</div>' if clip else f'''<img src="assets/{img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.4}s cubic-bezier(.3,0,.3,1) {a}s both{',light 1s ease-out '+str(a+.15)+'s both' if dark else ''}">'''}
-<div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+<div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:{side};gap:16px">
 <div style="padding:10px 28px;border:2px solid {CSOFT};border-radius:999px;background:{'rgba(12,9,7,.55)' if dark else pill_bg};font-size:28px;line-height:1.4;color:{CSOFT if dark else CTEXT};animation:{an('fade', a+.3, .4)}">עולם מותג קונספט · No.{no}</div>
-<div dir="ltr" style="align-self:flex-start;font-family:{DISP};font-size:100px;line-height:1.05;color:{fg};animation:{an('rise', a+.45)}">{nm}</div>
-<div style="padding:10px 28px;margin-right:-28px;border-radius:12px;background:{'rgba(12,9,7,.6)' if dark else 'rgba(242,235,220,.9)'};font-size:64px;line-height:1.2;font-weight:600;color:{fg};animation:{an('rise', a+.9)}">{line}</div>
+<div dir="ltr" style="font-family:{DISP};font-size:100px;line-height:1.05;color:{fg};animation:{an('rise', a+.45)}">{nm}</div>
+<div style="padding:10px 28px;margin-{'left' if side=='flex-end' else 'right'}:-28px;border-radius:12px;background:{'rgba(12,9,7,.6)' if dark else 'rgba(242,235,220,.9)'};font-size:64px;line-height:1.2;font-weight:600;color:{fg};animation:{an('rise', a+.9)}">{line}</div>
 </div>
 </section>'''
 
@@ -35,7 +35,7 @@ hook = f'''<section class="scene" style="overflow:hidden">
 <div style="position:absolute;left:0;top:1137px;{BALL};animation:walk 3s linear 0s both;--x0:470px;--x1:960px"></div>
 </section>'''
 
-bol = world(2.6, 3.4, 'scene-bol.jpg', '09', 'BOL°', 'בול מה שבחרת.', '74% 36%', 1, 1.16, clip=seq('taste', 90, 2.6))
+bol = world(2.6, 3.4, 'scene-bol.jpg', '09', 'BOL°', 'בול מה שבחרת.', '84% 32%', 1, 1.14, clip=seq('taste', 90, 2.6), side='flex-end')
 miel = world(6.0, 3.5, 'scene-miel.jpg', '27', 'MIEL°', 'רומנטיקה מתחילה מבפנים.', '53% 60%', 1, 1.32, pill_bg='rgba(242,235,220,.7)')
 signe = world(9.5, 3.0, 'scene-signe.jpg', '17', 'SIGNÉ°', 'כל קינוח חתום.', '62% 58%', 1.12, 1, dark=True, cut=True)
 
