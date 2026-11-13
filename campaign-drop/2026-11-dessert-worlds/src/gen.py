@@ -109,7 +109,7 @@ a = 26
 tiles = [('#FFFFFF', '<img src="assets/bowl-foret.webp" style="position:absolute;width:190px;height:190px;left:-11px;top:35px">'),
          ('#D4CFBA', '<img src="assets/dish-pistache.webp" style="position:absolute;width:240px;height:180px;left:-36px;top:46px">'),
          ('#E3AEB8', '<img src="assets/miel-cake.webp" style="position:absolute;width:190px;height:239px;left:-11px;top:18px">'),
-         ('#0C0907', '<img src="assets/signe-framboise.webp" style="position:absolute;width:100%;height:100%;left:0;top:0;object-fit:cover">'),
+         ('#0C0907', '<img src="assets/chou/f40.webp" style="position:absolute;width:100%;height:100%;left:0;top:0;object-fit:cover">'),
          ('#F6E38F', '<img src="assets/mac-framboise.webp" style="position:absolute;width:150px;height:173px;left:9px;top:44px">')]
 turn = f'''<section class="scene" style="animation:fade .35s linear {a}s both;padding:80px;display:flex;flex-direction:column;justify-content:center;gap:80px">
 <div style="display:flex;flex-direction:column;gap:24px">
@@ -155,7 +155,7 @@ html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:{CREAM
 .scene img:not([style*=animation]){{}}
 .scene{{position:absolute;inset:0;box-sizing:border-box;background:{CREAM};color:{INK};font-family:'Heebo',sans-serif;direction:rtl}}
 img{{display:block}}
-@keyframes on{{from{{opacity:0}}to{{opacity:1}}}}
+@keyframes on{{from{{visibility:hidden}}to{{visibility:visible}}}}
 @keyframes fan{{0%,38%{{rotate:0deg}}46%,66%{{rotate:-34deg}}74%,100%{{rotate:-68deg}}}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 @keyframes out{{to{{opacity:0;scale:.8}}}}
