@@ -1,0 +1,67 @@
+<!doctype html><html lang="he"><head><meta charset="utf-8"><title>Dessert worlds mini reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Heebo:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500&display=swap">
+<style>
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#F2EBDC}
+.scene{position:absolute;inset:0;box-sizing:border-box;background:#F2EBDC;color:#15202E;font-family:'Heebo',sans-serif;direction:rtl}
+img{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+@keyframes pop{0%{opacity:0;scale:.55}65%{opacity:1;scale:1.05}100%{opacity:1;scale:1}}
+@keyframes drop{0%{opacity:0;translate:0 -260px}70%{opacity:1;translate:0 10px}100%{opacity:1;translate:0 0}}
+@keyframes spin{from{rotate:var(--r0)}to{rotate:var(--r1)}}
+@keyframes walk{from{translate:var(--x0) 0}to{translate:var(--x1) 0}}
+@keyframes bob{from{translate:0 0}to{translate:0 -10px}}
+@keyframes push{from{scale:var(--z0)}to{scale:var(--z1)}}
+@keyframes light{from{filter:brightness(.1)}to{filter:brightness(1)}}
+</style></head><body>
+<section class="scene" style="overflow:hidden">
+<img src="assets/bowl-foret.webp" style="position:absolute;width:1300px;height:1300px;left:230px;top:1290px;animation:spin 3s linear 0s both;--r0:-12deg;--r1:14deg">
+<h1 style="position:absolute;left:80px;right:80px;top:250px;margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:right">הקינוח שלך כבר עולם.<br><span style="color:#C28A5A">נכנסת אליו פעם?</span></h1>
+<div style="position:absolute;left:0;right:0;top:1178px;height:4px;background:#C28A5A"></div>
+<div style="position:absolute;left:0;top:628px;animation:walk 2.9s linear 0s both;--x0:70px;--x1:560px">
+<img src="assets/walk.webp" style="display:block;width:354px;height:560px;animation:bob .5s ease-in-out 0s 6 alternate">
+</div>
+<div style="position:absolute;left:0;top:1158px;width:44px;height:44px;border-radius:999px;background:#C28A5A;box-shadow:0 0 0 10px #D9AE85,0 8px 18px rgba(20,30,45,.25);animation:walk 2.9s linear 0s both;--x0:520px;--x1:1010px"></div>
+</section><section class="scene" style="animation:fade .3s linear 2.6s both;overflow:hidden;background:#fff">
+<img src="assets/scene-bol.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:74% 36%;--z0:1;--z1:1.16;animation:push 3.8s cubic-bezier(.3,0,.3,1) 2.6s both">
+<div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+<div style="padding:10px 28px;border:2px solid #D9AE85;border-radius:999px;background:rgba(242,235,220,.86);font-size:28px;line-height:1.4;color:#825630;animation:fade 0.4s cubic-bezier(.2,.8,.2,1) 2.9s both">עולם מותג קונספט · No.09</div>
+<div dir="ltr" style="align-self:flex-start;font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:100px;line-height:1.05;color:#15202E;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 3.0500000000000003s both">BOL°</div>
+<div style="padding:10px 28px;margin-right:-28px;border-radius:12px;background:rgba(242,235,220,.9);font-size:64px;line-height:1.2;font-weight:600;color:#15202E;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 3.5s both">בול מה שבחרת.</div>
+</div>
+</section><section class="scene" style="animation:fade .3s linear 6.0s both;overflow:hidden;background:#fff">
+<img src="assets/scene-miel.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:53% 60%;--z0:1;--z1:1.32;animation:push 3.9s cubic-bezier(.3,0,.3,1) 6.0s both">
+<div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+<div style="padding:10px 28px;border:2px solid #D9AE85;border-radius:999px;background:rgba(242,235,220,.7);font-size:28px;line-height:1.4;color:#825630;animation:fade 0.4s cubic-bezier(.2,.8,.2,1) 6.3s both">עולם מותג קונספט · No.27</div>
+<div dir="ltr" style="align-self:flex-start;font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:100px;line-height:1.05;color:#15202E;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 6.45s both">MIEL°</div>
+<div style="padding:10px 28px;margin-right:-28px;border-radius:12px;background:rgba(242,235,220,.9);font-size:64px;line-height:1.2;font-weight:600;color:#15202E;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 6.9s both">רומנטיקה מתחילה מבפנים.</div>
+</div>
+</section><section class="scene" style="animation:fade .01s linear 9.5s both;overflow:hidden;background:#000">
+<img src="assets/scene-signe.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:62% 58%;--z0:1.12;--z1:1;animation:push 3.4s cubic-bezier(.3,0,.3,1) 9.5s both,light 1s ease-out 9.65s both">
+<div style="position:absolute;left:80px;right:80px;top:170px;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+<div style="padding:10px 28px;border:2px solid #D9AE85;border-radius:999px;background:rgba(12,9,7,.55);font-size:28px;line-height:1.4;color:#D9AE85;animation:fade 0.4s cubic-bezier(.2,.8,.2,1) 9.8s both">עולם מותג קונספט · No.17</div>
+<div dir="ltr" style="align-self:flex-start;font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-size:100px;line-height:1.05;color:#F2EBDC;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 9.95s both">SIGNÉ°</div>
+<div style="padding:10px 28px;margin-right:-28px;border-radius:12px;background:rgba(12,9,7,.6);font-size:64px;line-height:1.2;font-weight:600;color:#F2EBDC;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 10.4s both">כל קינוח חתום.</div>
+</div>
+</section><section class="scene" style="animation:fade .3s linear 12.5s both;padding:80px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:72px;text-align:center">
+<div style="display:flex;flex-direction:column;gap:8px;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 12.65s both">
+<div dir="ltr" style="font-family:'Cormorant Garamond','Frank Ruhl Libre',serif;font-style:italic;font-size:64px;line-height:1.2">Brand Worlds Studio</div>
+<div style="font-size:28px;line-height:1.4;letter-spacing:.3em;color:#3D4A5C">חגית אנטבי</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<h1 style="margin:0;font-size:96px;line-height:1.1;font-weight:600;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 12.85s both">הקינוח שלך<br>כבר שווה <span style="color:#C28A5A">עולם.</span></h1>
+<p style="margin:0;font-size:40px;line-height:1.5;color:#3D4A5C;animation:rise 0.6s cubic-bezier(.2,.8,.2,1) 13.1s both">בואי נראה מה חסר בין המוצר שלך<br>למותג שלך.</p>
+</div>
+<div style="position:relative;width:100%;height:44px">
+<div style="position:absolute;left:0;right:0;top:20px;height:4px;border-radius:999px;background:#C28A5A"></div>
+<div style="position:absolute;left:0;top:0;width:44px;height:44px;border-radius:999px;background:#C28A5A;box-shadow:0 0 0 10px #D9AE85,0 8px 18px rgba(20,30,45,.25);animation:walk 1.2s cubic-bezier(.4,0,.2,1) 12.7s both;--x0:0px;--x1:438px"></div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:150px">
+<div style="position:relative;width:760px;box-sizing:border-box;padding:36px 60px 36px 220px;border-radius:12px;background:#15202E;color:#F2EBDC;font-size:56px;line-height:1.2;font-weight:600;box-shadow:0 18px 40px rgba(20,30,45,.22);animation:pop 0.6s cubic-bezier(.2,.8,.2,1) 13.4s both">אבחון פער המותג
+<img src="assets/sit.webp" style="position:absolute;left:24px;top:-196px;width:178px;height:360px;animation:drop 0.6s cubic-bezier(.2,.8,.2,1) 13.8s both">
+</div>
+<div style="font-size:40px;line-height:1.5;animation:fade 0.4s cubic-bezier(.2,.8,.2,1) 13.7s both">30 דק׳ · בלי עלות</div>
+<div dir="ltr" style="font-family:'Plus Jakarta Sans','Heebo',sans-serif;font-size:22px;font-weight:500;letter-spacing:.3em;color:#3D4A5C;animation:fade 0.4s cubic-bezier(.2,.8,.2,1) 13.8s both">HAGITANTEBI.CO.IL</div>
+</div>
+</section>
+</body></html>
