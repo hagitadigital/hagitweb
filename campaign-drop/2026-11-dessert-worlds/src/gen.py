@@ -74,7 +74,7 @@ bol = world(a, '09', name(a, 'BOL°') + f'''
 a = 9; t1 = a + 2.0; t2 = a + 3.4
 dish = lambda f, k: f'<img src="assets/dish-{f}.webp" style="position:absolute;left:180px;top:60px;width:560px;height:420px;transform-origin:280px 910px;rotate:{k*34}deg">'
 box = lambda f, extra='': f'<img src="assets/box-{f}.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;{extra}">'
-pan = world(a, '23', f'''<div style="position:absolute;inset:0;background:#E5C9BC;animation:{an('fade', t1, .4, 'linear')}"></div>
+pan = world(a, '26', f'''<div style="position:absolute;inset:0;background:#E5C9BC;animation:{an('fade', t1, .4, 'linear')}"></div>
 <div style="position:absolute;inset:0;background:#EEDAB7;animation:{an('fade', t2, .4, 'linear')}"></div>
 <div style="position:absolute;inset:0;animation:{an('pop', a+.6, .8)}"><div style="position:absolute;inset:0;transform-origin:460px 970px;animation:fan 5s cubic-bezier(.4,0,.2,1) {a}s both">
 {dish('noisette', -1)}{dish('pistache', 0)}{dish('fraise', 1)}{dish('citron', 2)}</div></div>
