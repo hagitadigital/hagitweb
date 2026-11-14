@@ -39,7 +39,7 @@ def build(H):
     # ── 2 · MIEL 3–7: the same price, inside a world; she pulls her slice out of the vitrine ──
     a = 3.0
     vit = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#E3AEB8">
-{stage('scene-vitrine.jpg', a, 4.0, '22% 56%', 1, 1.22, price(31, 71.5, a+1.2))}
+{stage('scene-vitrine.jpg', a, 4.0, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
 <div style="position:absolute;left:80px;right:80px;top:{top}px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {pill('MIEL° · עולם מותג קונספט · No.27', a+.2)}
 {plate(f'אותו מחיר. <span style="color:{CTEXT}">עולם אחר.</span>', a+.5)}
