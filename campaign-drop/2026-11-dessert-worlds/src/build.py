@@ -1,18 +1,26 @@
-"""DESSERT WORLDS MINI v2 — 9:16, 1080x1920, 30fps, silent.
+"""DESSERT WORLDS MINI v3 — 1080x1920 (9x16) or 1080x1350 (4x5), 30fps, silent.
 Recut of DESSERT-WORLDS-MINI-9x16.mp4:
-  A  opening (walker on the line) kept; the bowl under the line is now the BOL° site bowl, turning
+  A  opening (walker on the line) kept; the bowl under the line is the BOL° site bowl, turning
   B  BOL°: two Kling clips (she turns the bowl) replace the "sitting in the bowl" shot
   C  CHASEN°: she walks the line under the five matcha glasses (replaces MIEL°)
-  D  SIGNÉ° + end card, untouched
-Run: node labels.js <work> ; python3 build.py <orig.mp4> <kling_berries.mp4> <kling_kiwi.mp4> <matcha.webp> <work> <out.mp4>
+  D  SIGNÉ°: Kling clip of the same frame, the chou turns and she stands still
+  E  end card, original frames
+4x5 is the same timeline; every scene is laid out for, then cut to, its own 1350px window.
+Run: node labels.js <work> ; python3 build.py <orig.mp4> <work> <out.mp4> <9x16|4x5>
 """
 import sys, os, subprocess, glob
 import numpy as np
 from PIL import Image, ImageFilter, ImageDraw
-ORIG, K1, K2, MATCHA, WORK, OUT = sys.argv[1:7]
+ORIG, WORK, OUT, FMT = sys.argv[1:5]
 HERE = os.path.dirname(os.path.abspath(__file__))
+IN = os.path.join(HERE, 'in') + '/'
+K1, K2, KS, MATCHA, CLEAN = IN + 'kling-bol-berries.mp4', IN + 'kling-bol-kiwi.mp4', IN + 'kling-signe-chou.mp4', IN + 'chasen-glasses.webp', IN + 'signe-still-clean.png'
 BOWL = os.path.join(HERE, '..', '..', '..', 'bol', 'assets', 'bowl-foret.webp')
 W, H, FPS = 1080, 1920, 30
+V = FMT == '4x5'; OH = 1350 if V else H
+# 4x5: top of each scene's window, and how far its label moves so it sits 62px under that top
+Y_A, Y_B, Y_C, Y_D, Y_E = (190, 425, 110, 250, 300) if V else (0, 0, 0, 0, 0)
+cut = lambda fr, y0: fr[y0:y0 + OH]
 BG = np.array([241, 234, 218], np.float32)          # opening cream
 ease = lambda x: x * x * (3 - 2 * x)
 clamp = lambda x: max(0.0, min(1.0, x))
@@ -26,8 +34,8 @@ def frames(src, name, vf=None):
 load = lambda p: np.asarray(Image.open(p).convert('RGB'), np.float32)
 
 of = frames(ORIG, 'of')
-KV = 'scale=1084:1922:flags=lanczos,crop=1080:1920,unsharp=5:5:0.5'
-k1 = frames(K1, 'k1', KV); k2 = frames(K2, 'k2', KV)      # 24fps frames played at 30fps (1.25x)
+KV = 'scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920,unsharp=5:5:0.5'
+k1 = frames(K1, 'k1', KV); k2 = frames(K2, 'k2', KV); ks = frames(KS, 'ks', KV)      # 24fps frames played at 30fps (1.25x)
 
 def over(base, rgba, x=0, y=0, a=1.0):
     """alpha-composite a float RGBA array onto base at (x, y)"""
@@ -42,16 +50,16 @@ def over(base, rgba, x=0, y=0, a=1.0):
 def label(name):
     im = np.asarray(Image.open(os.path.join(WORK, f'label-{name}.png')).convert('RGBA'), np.float32)
     return im[:352], im[352:]
-def put_label(fr, lab, t, t_out=None):
+def put_label(fr, lab, t, dy=0, t_out=None):
     top, tag = lab
     fo = 1 - clamp((t - t_out) / .25) if t_out is not None else 1
-    a = ease(clamp((t - .15) / .35)); over(fr, top, 0, int(round(14 * (1 - a))), a * fo)
-    a = ease(clamp((t - .55) / .35)); over(fr, tag, 0, 352 + int(round(14 * (1 - a))), a * fo)
+    a = ease(clamp((t - .15) / .35)); over(fr, top, 0, dy + int(round(14 * (1 - a))), a * fo)
+    a = ease(clamp((t - .55) / .35)); over(fr, tag, 0, dy + 352 + int(round(14 * (1 - a))), a * fo)
 L_BOL, L_CHA = label('bol'), label('chasen')
 
 # ── A: opening, bowl replaced by the turning site bowl ──
 NA = 78
-D = 1400; CX, CY = 935, 1985
+D = 1400; CX, CY = 935, 1985 - (70 if V else 0)
 bowl = Image.open(BOWL).convert('RGBA').resize((D, D), Image.LANCZOS)
 sh = Image.new('RGBA', (D + 240, D + 240), (0, 0, 0, 0))
 ImageDraw.Draw(sh).ellipse((120 + 14, 120 + 14, 120 + D - 14, 120 + D - 14), fill=(70, 50, 30, 80))
@@ -64,7 +72,7 @@ def scene_a(i):
     ang = 20 - 62 * (i / NA)                               # clockwise, steady
     b = np.asarray(bowl.rotate(ang, Image.BICUBIC), np.float32)
     over(fr, b, CX - D // 2, CY - D // 2)
-    return fr
+    return cut(fr, Y_A)
 
 # ── B: BOL°, the two Kling clips ──
 XF = 10; N1 = len(k1); N2 = 88
@@ -74,14 +82,14 @@ def scene_b(i):
     elif i < N1:
         a = ease((i - (N1 - XF) + 1) / (XF + 1)); fr = load(k1[i]) * (1 - a) + load(k2[i - (N1 - XF)]) * a
     else: fr = load(k2[i - (N1 - XF)])
-    put_label(fr, L_BOL, t)
-    return fr
+    put_label(fr, L_BOL, t, Y_B - 110 if V else 0)
+    return cut(fr, Y_B)
 NB = N1 - XF + N2
 
 # ── C: CHASEN°, the walker on the line under the matcha glasses ──
-S = 0.82; LY = 1570                                        # walker scale, line y
+S, LY = (0.78, 1400) if V else (0.82, 1570)                                        # walker scale, line y
 m = Image.open(MATCHA).convert('RGB'); mw = W; mh = round(m.height * W / m.width)
-m = m.resize((mw, mh), Image.LANCZOS); OY = -70
+m = m.resize((mw, mh), Image.LANCZOS); OY = -92 if V else -70
 cv = Image.new('RGB', (W, H)); cv.paste(m, (0, OY))
 edge = np.asarray(m, np.float32)[-30:].mean(0)             # extend the backdrop below the photo
 edge = np.asarray(Image.fromarray(edge[None].astype(np.uint8)).resize((6, 1), Image.BOX).resize((W, 1), Image.BICUBIC), np.float32)
@@ -113,24 +121,35 @@ def scene_c(i):
     cols = np.where((np.abs(band[:ORIG_LY - Y0 - 8] - BG).max(2) > 28).sum(0) > 6)[0]   # walker + the dot that leads her
     if len(cols): paste_cols(fr, to_c(band), cols.min() * S, cols.max() * S)
     put_label(fr, L_CHA, i / FPS)
-    return fr
+    return cut(fr, Y_C)
 
-# ── D: SIGNÉ° + end card from the original ──
-D0 = 286; ND = len(of) - D0
-scene_d = lambda i: load(of[D0 + i])
+# ── D: SIGNÉ°, the Kling clip of the original frame (chou turning), label lifted from the original ──
+ND = 88; LX0, LY0, LY1 = 530, 140, 490
+lab_s = np.clip(load(of[354])[LY0:LY1, LX0:] - load(CLEAN)[LY0:LY1, LX0:], 0, 255)
+def scene_d(i):
+    fr = load(ks[i]) * ease(clamp((i + 1) / 11))                     # up from black, as the original
+    dy = Y_D - 110 if V else 0
+    fr[LY0 + dy:LY1 + dy, LX0:] += lab_s * ease(clamp((i / FPS - .2) / .4))
+    return cut(fr, Y_D)
+
+# ── E: end card from the original ──
+E0 = 384; NE = len(of) - E0
+scene_e = lambda i: cut(load(of[E0 + i]), Y_E)
 
 # ── timeline ──
-XAB, XBC, FCD = 10, 9, 6
+XAB, XBC, FCD, XDE = 10, 9, 6, 10
 tl = []
 for i in range(NA - XAB): tl.append(('a', i))
 for j in range(XAB): tl.append(('ab', NA - XAB + j, j))
 for i in range(XAB, NB - XBC): tl.append(('b', i))
 for j in range(XBC): tl.append(('bc', NB - XBC + j, j))
 for i in range(XBC, NC): tl.append(('c', i))
-for i in range(ND): tl.append(('d', i))
+for i in range(ND - XDE): tl.append(('d', i))
+for j in range(XDE): tl.append(('de', ND - XDE + j, j))
+for i in range(XDE, NE): tl.append(('e', i))
 print(len(tl), 'frames', len(tl) / FPS, 's')
-only = [int(x) for x in sys.argv[7].split(',')] if len(sys.argv) > 7 else None
-ff = None if only else subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
+only = [int(x) for x in sys.argv[5].split(',')] if len(sys.argv) > 5 else None
+ff = None if only else subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{OH}', '-r', str(FPS), '-i', '-',
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', OUT], stdin=subprocess.PIPE)
 for n, e in enumerate(tl):
     if only and n not in only: continue
@@ -144,8 +163,11 @@ for n, e in enumerate(tl):
     elif k == 'c':
         fr = scene_c(e[1]); left = NC - 1 - e[1]
         if left < FCD: fr = fr * ((left + 1) / (FCD + 1))            # dip to black, as the original does before SIGNÉ°
-    else: fr = scene_d(e[1])
+    elif k == 'd': fr = scene_d(e[1])
+    elif k == 'de':
+        a = ease((e[2] + 1) / (XDE + 1)); fr = scene_d(e[1]) * (1 - a) + scene_e(e[2]) * a
+    else: fr = scene_e(e[1])
     out = np.clip(fr + .5, 0, 255).astype(np.uint8)
-    if only: Image.fromarray(out).save(os.path.join(WORK, f'chk-{n:04d}.png'))
+    if only: Image.fromarray(out).save(os.path.join(WORK, f'chk-{FMT}-{n:04d}.png'))
     else: ff.stdin.write(out.tobytes())
 if ff: ff.stdin.close(); ff.wait()
