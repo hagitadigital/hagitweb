@@ -5,3 +5,4 @@
 - `character/`: three scene stills generated with Higgsfield (gpt_image_2_6) from the character sheet and MIEL's own vitrine and bag images. The vitrine and bag scenes are 720p clips (seedance_2_5, 4s) in `character/clips/`; their frames are not in the repo: `ffmpeg -i character/clips/<name>.mp4 -q:v 2 src/assets/<name>/f%03d.jpg`.
 - The comparison card is a generic no-name product; price tags and the "ככה משווים" tag are drawn in CSS.
 - `source/drag.mp4` and `source/bags.mp4` are cut from the existing MIEL film (inner 9:16 reel, sped up); frames: `ffmpeg -i source/<name>.mp4 -q:v 2 src/assets/<name>/f%03d.jpg`.
+- `*-music.mp4`: the same renders with the music track of the existing MIEL film, trimmed to 17s with a 1.4s fade-out.
