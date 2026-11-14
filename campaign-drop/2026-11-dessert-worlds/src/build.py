@@ -124,8 +124,9 @@ def scene_c(i):
     return cut(fr, Y_C)
 
 # ── D: SIGNÉ°, the Kling clip of the original frame (chou turning), label lifted from the original ──
-ND = 88; LX0, LY0, LY1 = 530, 140, 490
+ND = 88; LX0, LY0, LY1 = 530, 140, 470
 lab_s = np.clip(load(of[354])[LY0:LY1, LX0:] - load(CLEAN)[LY0:LY1, LX0:], 0, 255)
+lab_s *= np.clip((LY1 - 6 - np.arange(LY0, LY1, dtype=np.float32)) / 10, 0, 1)[:, None, None]   # no seam under the tagline
 def scene_d(i):
     fr = load(ks[i]) * ease(clamp((i + 1) / 11))                     # up from black, as the original
     dy = Y_D - 110 if V else 0
