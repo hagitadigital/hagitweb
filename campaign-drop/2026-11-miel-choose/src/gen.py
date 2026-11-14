@@ -1,4 +1,4 @@
-# Generates reel-4x5.html (1080x1350) and reel-9x16.html (1080x1920): "same product, same price" MIEL ad, 14s.
+# Generates reel-4x5.html (1080x1350) and reel-9x16.html (1080x1920): "same product, same price" MIEL ad, 17s.
 # One CSS timeline; times in seconds. Scene images are 1080x1910 and sit centred, so 4:5 shows their middle band.
 import pathlib
 CREAM, DEEP, INK, SOFT, COPPER, CSOFT, CTEXT = '#F2EBDC', '#E7DEC9', '#15202E', '#3D4A5C', '#C28A5A', '#D9AE85', '#825630'
@@ -44,24 +44,42 @@ def build(H):
     # ── 2 · MIEL 3–7: the same price, inside a world; she pulls her slice out of the vitrine ──
     a = 3.0
     vit = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#E3AEB8">
-{stage('vitrine', a, 4.0, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
+{stage('vitrine', a, 3.2, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
 <div style="position:absolute;left:80px;right:80px;top:{top}px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {pill('MIEL° · עולם מותג קונספט · No.27', a+.2)}
 {plate(f'אותו מחיר. <span style="color:{CTEXT}">עולם אחר.</span>', a+.5)}
 </div>
 </section>'''
 
-    # ── 3 · THE BAG 7–10: the answer to the hook ──
-    a = 7.0
+    # ── 4 · THE BAG 10.8–13.4: the answer to the hook ──
+    # ── 3 · THE SITE 6.2–10.8: the drag into the bags and the five turning bags, cut from the existing MIEL film ──
+    def site(folder, n, a, cropY, bg, title, sub=''):
+        if H == 1920:   # the source is a 9:16 reel with its own headline: show it whole
+            return f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:{bg}">
+{''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover' + (f';animation:on .001s linear {a+(i-1)/30:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))}
+</section>'''
+        k = 1080 / 760   # 4:5: show the lower part of the source full width, with our own headline above it
+        return f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:{bg}">
+<div style="position:absolute;left:0;right:0;bottom:0;height:{(1350-cropY)*k:.0f}px;overflow:hidden">
+{''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;left:0;top:{-cropY*k:.0f}px;width:1080px;height:{1350*k:.0f}px' + (f';animation:on .001s linear {a+(i-1)/30:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))}
+</div>
+<div style="position:absolute;left:80px;right:80px;top:44px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+{plate(title, a+.2)}{f'<div style="padding:6px 28px;margin-right:-28px;border-radius:12px;background:rgba(242,235,220,.92);font-size:36px;line-height:1.4;color:{SOFT};animation:{an("rise", a+.4)}">{sub}</div>' if sub else ''}
+</div>
+</section>'''
+    drag = site('drag', 84, 6.2, 445, '#C78787', 'חוויית גרירה באתר.')
+    bags = site('bags', 54, 9.0, 540, '#C98989', 'חמש עוגות. חמש שקיות.', 'כל דופן היא החתך שלה.')
+
+    a = 10.8
     bag = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#D9A7AB">
-{stage('bag', a, 3.0, '70% 55%', 1.12, 1)}
+{stage('bag', a, 2.6, '70% 55%', 1.12, 1)}
 <div style="position:absolute;right:60px;top:{top}px;width:400px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {plate('עכשיו יש סיבה לבחור<br>דווקא בך.', a+.4, 58)}
 </div>
 </section>'''
 
     # ── 4 · CTA 10–14: the question, what the studio builds, then the button she sits on. Lands by 11.6, then holds ──
-    a = 10.0
+    a = 13.4
     gap = 34 if H == 1350 else 60
     cta = f'''<section class="scene" style="animation:fade .25s linear {a}s both;padding:70px 80px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:{gap}px;text-align:center">
 <div style="display:flex;flex-direction:column;gap:6px;animation:{an('rise', a+.1)}">
@@ -97,7 +115,7 @@ img{{display:block}}
 @keyframes walk{{from{{translate:var(--x0) 0}}to{{translate:var(--x1) 0}}}}
 @keyframes push{{from{{scale:var(--z0)}}to{{scale:var(--z1)}}}}
 </style></head><body>
-{hook}{vit}{bag}{cta}
+{hook}{vit}{drag}{bags}{bag}{cta}
 </body></html>'''
 
 here = pathlib.Path(__file__).parent
