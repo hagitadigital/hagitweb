@@ -14,9 +14,14 @@ def build(H):
     top = 60 if H == 1350 else 180          # first text line; 9:16 keeps clear of the app's top bar
     ioff = (H - 1910) // 2                   # the 1080x1910 image, centred
 
+    def frames(folder, t, n=97, fps=24):
+        # a 720p clip as stacked frames, each switching on at its time. Rebuild with:
+        #   ffmpeg -i character/clips/<folder>.mp4 -q:v 2 src/assets/<folder>/f%03d.jpg
+        return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;left:0;top:0;width:1080px;height:1910px;object-fit:cover' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
+
     def stage(img, a, dur, origin, z0, z1, overlays=''):
         return f'''<div style="position:absolute;left:0;top:{ioff}px;width:1080px;height:1910px;transform-origin:{origin};--z0:{z0};--z1:{z1};animation:push {dur+.3}s cubic-bezier(.3,0,.3,1) {a}s both">
-<img src="assets/{img}" style="width:1080px;height:1910px">{overlays}</div>'''
+{frames(img, a) if '.' not in img else f'<img src="assets/{img}" style="width:1080px;height:1910px">'}{overlays}</div>'''
 
     def price(x, y, t=None):
         anim = f';animation:{an("pop", t, .4)}' if t is not None else ''
@@ -39,7 +44,7 @@ def build(H):
     # ── 2 · MIEL 3–7: the same price, inside a world; she pulls her slice out of the vitrine ──
     a = 3.0
     vit = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#E3AEB8">
-{stage('scene-vitrine.jpg', a, 4.0, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
+{stage('vitrine', a, 4.0, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
 <div style="position:absolute;left:80px;right:80px;top:{top}px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {pill('MIEL° · עולם מותג קונספט · No.27', a+.2)}
 {plate(f'אותו מחיר. <span style="color:{CTEXT}">עולם אחר.</span>', a+.5)}
@@ -49,7 +54,7 @@ def build(H):
     # ── 3 · THE BAG 7–10: the answer to the hook ──
     a = 7.0
     bag = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#D9A7AB">
-{stage('scene-bag.jpg', a, 3.0, '70% 55%', 1.12, 1)}
+{stage('bag', a, 3.0, '70% 55%', 1.12, 1)}
 <div style="position:absolute;right:60px;top:{top}px;width:400px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {plate('עכשיו יש סיבה לבחור<br>דווקא בך.', a+.4, 58)}
 </div>
@@ -84,6 +89,7 @@ def build(H):
 html,body{{margin:0;width:1080px;height:{H}px;overflow:hidden;background:{CREAM}}}
 .scene{{position:absolute;inset:0;box-sizing:border-box;background:{CREAM};color:{INK};font-family:'Heebo',sans-serif;direction:rtl}}
 img{{display:block}}
+@keyframes on{{from{{visibility:hidden}}to{{visibility:visible}}}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 @keyframes rise{{from{{opacity:0;translate:0 40px}}to{{opacity:1;translate:0 0}}}}
 @keyframes pop{{0%{{opacity:0;scale:.55}}65%{{opacity:1;scale:1.05}}100%{{opacity:1;scale:1}}}}
