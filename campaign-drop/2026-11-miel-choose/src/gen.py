@@ -1,4 +1,4 @@
-# Generates reel-4x5.html (1080x1350) and reel-9x16.html (1080x1920): "same product, same price" MIEL ad, 17s.
+# Generates reel-4x5.html (1080x1350) and reel-9x16.html (1080x1920): "same product, same price" MIEL ad, 17.1s. Cuts sit on the beats of the music (116 BPM, one beat = 0.517s; the track starts at 13.03s).
 # One CSS timeline; times in seconds. Scene images are 1080x1910 and sit centred, so 4:5 shows their middle band.
 import pathlib
 CREAM, DEEP, INK, SOFT, COPPER, CSOFT, CTEXT = '#F2EBDC', '#E7DEC9', '#15202E', '#3D4A5C', '#C28A5A', '#D9AE85', '#825630'
@@ -32,7 +32,7 @@ def build(H):
 
     # ── 1 · HOOK 0–3: two identical no-name slices, the same price; she cannot decide. All of it is on frame 0 ──
     hook = f'''<section class="scene" style="overflow:hidden;background:#C9C4BE">
-{stage('scene-compare.jpg', 0, 3.0, '50% 58%', 1, 1.1,
+{stage('scene-compare.jpg', 0, 3.1, '50% 58%', 1, 1.1,
        f'<div style="position:absolute;left:50%;top:40.5%;translate:-50% -50%;padding:8px 26px;border-radius:999px;background:#2E2A27;color:#F4F2EF;font-size:30px;line-height:1.4">ככה משווים</div>' + price(24, 69.5) + price(77, 69.5))}
 <div style="position:absolute;left:60px;right:60px;top:{top}px;padding:28px 32px 26px;border-radius:20px;background:{DEEP};display:flex;flex-direction:column;align-items:center;gap:22px">
 <h1 style="margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:center">אותו מוצר. אותו מחיר.<br><span style="color:{COPPER}">למה שיבחרו דווקא בך?</span></h1>
@@ -42,9 +42,9 @@ def build(H):
 </section>'''
 
     # ── 2 · MIEL 3–7: the same price, inside a world; she pulls her slice out of the vitrine ──
-    a = 3.0
+    a = 3.10
     vit = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#E3AEB8">
-{stage('vitrine', a, 3.2, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
+{stage('vitrine', a, 3.62, '18% 56%', 1, 1.3, price(27, 68.5, a+1.2))}
 <div style="position:absolute;left:80px;right:80px;top:{top}px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {pill('MIEL° · עולם מותג קונספט · No.27', a+.2)}
 {plate(f'אותו מחיר. <span style="color:{CTEXT}">עולם אחר.</span>', a+.5)}
@@ -67,19 +67,19 @@ def build(H):
 {plate(title, a+.2)}{f'<div style="padding:6px 28px;margin-right:-28px;border-radius:12px;background:rgba(242,235,220,.92);font-size:36px;line-height:1.4;color:{SOFT};animation:{an("rise", a+.4)}">{sub}</div>' if sub else ''}
 </div>
 </section>'''
-    drag = site('drag', 84, 6.2, 445, '#C78787', 'חוויית גרירה באתר.')
-    bags = site('bags', 54, 9.0, 540, '#C98989', 'חמש עוגות. חמש שקיות.', 'כל דופן היא החתך שלה.')
+    drag = site('drag', 84, 6.72, 445, '#C78787', 'חוויית גרירה באתר.')
+    bags = site('bags', 54, 9.83, 540, '#C98989', 'חמש עוגות. חמש שקיות.', 'כל דופן היא החתך שלה.')
 
-    a = 10.8
+    a = 11.90
     bag = f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:#D9A7AB">
-{stage('bag', a, 2.6, '70% 55%', 1.12, 1)}
+{stage('bag', a, 2.07, '70% 55%', 1.12, 1)}
 <div style="position:absolute;right:60px;top:{top}px;width:400px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
 {plate('עכשיו יש סיבה לבחור<br>דווקא בך.', a+.4, 58)}
 </div>
 </section>'''
 
     # ── 4 · CTA 10–14: the question, what the studio builds, then the button she sits on. Lands by 11.6, then holds ──
-    a = 13.4
+    a = 13.97
     gap = 34 if H == 1350 else 60
     cta = f'''<section class="scene" style="animation:fade .25s linear {a}s both;padding:70px 80px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:{gap}px;text-align:center">
 <div style="display:flex;flex-direction:column;gap:6px;animation:{an('rise', a+.1)}">
