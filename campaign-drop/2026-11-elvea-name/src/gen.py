@@ -1,4 +1,4 @@
-# Generates reel.html (1080x1920): ELVÉA "if we hide the name" ad with the character, 15.5s.
+# Generates reel.html (1080x1920): ELVÉA "if we hide the name" ad with the character, 15.52s. Cuts sit on the beats of the music (116 BPM, one beat = 0.517s; the track starts at 17.17s, so its lift lands on the name).
 # One CSS timeline; times in seconds. The name stays hidden until the reveal scene, so no ELVÉA text before it.
 # Scenes are 720p clips shown as stacked frames. Rebuild the frames with:
 #   ffmpeg -i character/clips/<name>.mp4 -q:v 2 src/assets/<name>/f%03d.jpg
@@ -27,15 +27,15 @@ def stage(name, a, dur, origin, z0, z1, fps=24):
 pill = lambda txt, t: f'<div style="padding:10px 28px;border:2px solid {CSOFT};border-radius:999px;background:rgba(242,235,220,.86);font-size:28px;line-height:1.4;color:{CTEXT};animation:{an("fade", t, .35)}">{txt}</div>'
 plate = lambda txt, t, size=64: f'<div style="padding:10px 28px;margin-right:-28px;border-radius:12px;background:rgba(242,235,220,.92);font-size:{size}px;line-height:1.2;font-weight:600;animation:{an("rise", t)}">{txt}</div>'
 
-def world(name, a, dur, origin, z0, z1, text, bg):
+def world(name, a, dur, origin, z0, z1, text, bg, fps=24):
     return f'''<section class="scene" style="animation:fade .25s linear {a}s both;overflow:hidden;background:{bg}">
-{stage(name, a, dur, origin, z0, z1)}
+{stage(name, a, dur, origin, z0, z1, fps)}
 <div style="position:absolute;left:80px;right:80px;top:{TOP}px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">{text}</div>
 </section>'''
 
 # ── 1 · HOOK 0–3.2: she covers the name herself; question and proof are on frame 0 ──
 hook = f'''<section class="scene" style="overflow:hidden;background:#D8CCB8">
-{stage('hook', 0, 3.2, '50% 62%', 1, 1.08)}
+{stage('hook', 0, 3.1, '50% 62%', 1, 1.08)}
 <div style="position:absolute;left:60px;right:60px;top:150px;padding:28px 32px 26px;border-radius:20px;background:{DEEP};display:flex;flex-direction:column;align-items:center;gap:22px">
 <h1 style="margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:center">אם נסתיר את השם,<br><span style="color:{COPPER}">עדיין יזהו אותך?</span></h1>
 <div style="position:relative;width:100%;height:44px"><div style="position:absolute;left:0;right:0;top:20px;height:4px;border-radius:999px;background:{COPPER}"></div>
@@ -44,16 +44,16 @@ hook = f'''<section class="scene" style="overflow:hidden;background:#D8CCB8">
 </section>'''
 
 # ── 2 · THE BOX 3.2–6.0 and 3 · THE BAGS 6.0–8.8: no name anywhere, only the line ──
-box = world('box', 3.2, 2.8, '40% 55%', 1, 1.12,
-            pill('עולם מותג קונספט · No.14', 3.4) + plate('אותו קו. גם על הקופסה.', 3.7), '#D6CDB6')
-bags = world('bags', 6.0, 2.8, '55% 60%', 1, 1.1, plate('גם על השקית. גם בחנות.', 6.4), '#DCD2BF')
+box = world('box', 3.10, 2.59, '40% 55%', 1, 1.12,
+            pill('עולם מותג קונספט · No.14', 3.3) + plate('אותו קו. גם על הקופסה.', 3.5), '#D6CDB6')
+bags = world('bags', 5.69, 2.59, '55% 60%', 1, 1.1, plate('גם על השקית. גם בחנות.', 6.0), '#DCD2BF')
 
 # ── 4 · THE REVEAL 8.8–11.8: the sticker is off, the name is there; it answers the hook ──
-reveal = world('reveal', 8.8, 3.0, '48% 60%', 1, 1.14,
-               pill('ELVÉA° · עולם מותג קונספט', 9.4) + plate(f'<span style="color:{CTEXT}">יזהו אותך.</span>', 9.1, 84), '#D8CCB8')
+reveal = world('reveal', 8.28, 3.62, '48% 60%', 1, 1.14,
+               pill('ELVÉA° · עולם מותג קונספט', 10.1) + plate(f'<span style="color:{CTEXT}">יזהו אותך.</span>', 9.83, 84), '#D8CCB8', fps=35.6)
 
 # ── 5 · CTA 11.8–15.5: the question to her, what the studio builds, the button she sits on. Lands by 13.5, then holds ──
-a = 11.8
+a = 11.90
 cta = f'''<section class="scene" style="animation:fade .25s linear {a}s both;padding:70px 80px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:60px;text-align:center">
 <div style="display:flex;flex-direction:column;gap:6px;animation:{an('rise', a+.1)}">
 <div dir="ltr" style="font-family:{DISP};font-style:italic;font-size:52px;line-height:1.2">Brand Worlds Studio</div>
