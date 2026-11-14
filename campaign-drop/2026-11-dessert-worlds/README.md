@@ -11,10 +11,11 @@ Recut of `DESSERT-WORLDS-MINI-9x16.mp4` (the original is not in this folder; it 
 - 10.3-13.2s SIGNÉ°: `src/in/kling-signe-chou.mp4` (Kling 4.0 image-to-video of `src/in/signe-still-clean.png`, the original frame with its label removed); the label is lifted from the original frames
 - 12.9s-end end card, original frames
 
-4x5 uses the same timeline; each scene is laid out for its own 1350px window (see `Y_A..Y_E` in `build.py`).
+4x5 is the 9x16 reel, uncropped, between the studio side panels
+(`.claude/skills/brandos-brand-world-reel/scripts/frame45.sh`). The `4x5` mode of `build.py` (re-laid scenes) is not used.
 
 Render:
 
     node src/labels.js <work>
-    python3 src/build.py <orig.mp4> <work> <out.mp4> 9x16
-    python3 src/build.py <orig.mp4> <work> <out.mp4> 4x5
+    python3 src/build.py <orig.mp4> <work> DESSERT-WORLDS-MINI-v3-9x16.mp4 9x16
+    bash ../../.claude/skills/brandos-brand-world-reel/scripts/frame45.sh DESSERT-WORLDS-MINI-v3-9x16.mp4 DESSERT-WORLDS-MINI-v3-4x5.mp4
