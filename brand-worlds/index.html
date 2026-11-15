@@ -72,7 +72,8 @@
       {"@type":"ListItem","position":26,"name":"PANCAKERIE° Morning Patisserie — Pancakes + Dish Builder","url":"https://hagitantebi.co.il/pancakerie/"},
       {"@type":"ListItem","position":27,"name":"MIEL° Maison Miel Pâtisserie — Romantic Bakery + Cake Builder with a Real Cut","url":"https://hagitantebi.co.il/miel/"},
       {"@type":"ListItem","position":28,"name":"ENCORE° Maison de Bijoux — Fine Jewellery: a Sun Dial of Four Hours, a Set Builder and a 3D Twist-Open Box","url":"https://hagitantebi.co.il/encore/"},
-      {"@type":"ListItem","position":29,"name":"PARDON ME° — Candles, Home Scent & Body Care: a Polite Sleeve with One Oval Window","url":"https://hagitantebi.co.il/pardon-me/"}
+      {"@type":"ListItem","position":29,"name":"PARDON ME° — Candles, Home Scent & Body Care: a Polite Sleeve with One Oval Window","url":"https://hagitantebi.co.il/pardon-me/"},
+      {"@type":"ListItem","position":30,"name":"RUE° 14 — Urban Renewal: Same Address from 1964 to 2029, a Resident Apartment Picker and One Language for the Street","url":"https://hagitantebi.co.il/rue/"}
     ]
   },
   {
@@ -1005,6 +1006,14 @@ body::before {
 .world-card--velune .world-card__tag { font-family: 'Marcellus', 'Cormorant Garamond', 'Frank Ruhl Libre', serif; color: #8E1E44; letter-spacing: 0.06em; }
 .world-card--velune .world-card__media img { object-position: 50% 55%; }
 
+/* RUE° card */
+.world-card--rue { background: #EEEAE2; color: #23282B; }
+.world-card--rue .world-card__name { font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-weight: 600; letter-spacing: 0.2em; }
+.world-card--rue .world-card__category,
+.world-card--rue .world-card__issue { color: #7A5A36; }
+.world-card--rue .world-card__tag { font-family: 'Plus Jakarta Sans', 'Heebo', sans-serif; font-weight: 500; color: #23282B; letter-spacing: 0.02em; }
+.world-card--rue .world-card__media img { object-position: 30% 60%; }
+
 /* ENCORE° card */
 .world-card--pardon { background: #F3EDE2; color: #1E3A2B; }
 .world-card--pardon .world-card__name { font-family: 'Bodoni Moda', 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-weight: 400; letter-spacing: 0.24em; }
@@ -1925,7 +1934,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="ring__stage">
     <div class="ring__wheel" id="ringWheel" aria-hidden="true"></div>
     <div class="ring__corner ring__corner--tl">The <em>Archive</em></div>
-    <div class="ring__corner ring__corner--tr"><span id="ringCount">29</span> worlds · <em>one signature</em></div>
+    <div class="ring__corner ring__corner--tr"><span id="ringCount">30</span> worlds · <em>one signature</em></div>
     <p class="ring__corner ring__corner--bl" lang="he">גוללים כדי לסובב את הטבעת · לוחצים על עולם כדי להיכנס</p>
     <a class="ring__core" id="ringCore" href="#worlds">
       <div class="ring__no swap" id="ringNo">The 2026 Capsule</div>
@@ -1968,6 +1977,23 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="worlds-grid reveal-stagger">
+      <div class="world-item reveal">
+        <a href="../rue/" class="world-card world-card--rue">
+          <div class="world-card__media">
+            <div class="world-card__nº">No. 30</div>
+            <div class="world-card__cta-corner">La Rue</div>
+            <img src="../images/home-worlds/rue.webp" alt="RUE° 14 — אתר בנייה ברחוב הדקל 14: שלד ועגורן, ולפניו גדר מצוירת בחיי הדיירים, עם שם הפרויקט ושלט המספר" width="1200" height="630" loading="lazy" />
+          </div>
+          <div class="world-card__copy">
+            <div class="world-card__issue">Concept · Urban Renewal · Same Address + Apartment Picker</div>
+            <div class="world-card__name">RUE° 14</div>
+            <div class="world-card__category">Real Estate · Urban Renewal · Developers</div>
+            <div class="world-card__tag">Same address. New home.</div>
+            <div class="world-card__tag-he" lang="he">פרויקט התחדשות עירונית שבו הכתובת היא המותג: אותו רחוב מ-1964 דרך הגדר ועד 2029, דיירים שמוצאים את הדירה שלהם בבניין החדש, ושפה אחת לגדר, לשילוט ולעדכונים לשכנים.</div>
+            <div class="world-card__cta"><span>Walk the street</span><span class="arr">→</span></div>
+          </div>
+        </a>
+      </div>
       <div class="world-item reveal">
         <a href="../pardon-me/" class="world-card world-card--pardon">
           <div class="world-card__media">
