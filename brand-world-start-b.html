@@ -24,8 +24,8 @@
     src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
     /></noscript>
 
-    <title>איפה הלקוחה שלך משווה אותך? | Brand Worlds Studio</title>
-    <meta name="description" content="שלחי קישור לאתר או לאינסטגרם, ותוך 48 שעות תקבלי 3 נקודות שבהן לקוחה משווה אותך. בלי עלות ובלי התחייבות.">
+    <title>כל מה שהלקוחה פוגשת אצלך מדבר באותה שפה? | Brand Worlds Studio</title>
+    <meta name="description" content="שלחי קישור לאתר או לאינסטגרם, ותוך 48 שעות תקבלי בוואטסאפ 3 מקומות שבהם המותג שלך עוד לא מדבר באותה שפה, ומה לעשות עם כל אחד. בלי עלות ובלי התחייבות.">
     <!-- Variant B of brand-world-start.html (A/B test, Oct 2026): lower first step, proof by the ask, no exits — kept out of the index and the sitemap so it doesn't compete with it -->
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://hagitantebi.co.il/brand-world-start-b.html">
@@ -36,8 +36,8 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hagitantebi.co.il/brand-world-start-b.html">
-    <meta property="og:title" content="איפה הלקוחה שלך משווה אותך?">
-    <meta property="og:description" content="3 נקודות שבהן לקוחה משווה אותך · תוך 48 שעות · בלי עלות.">
+    <meta property="og:title" content="כל מה שהלקוחה פוגשת אצלך מדבר באותה שפה?">
+    <meta property="og:description" content="3 מקומות שבהם המותג שלך עוד לא מדבר באותה שפה · תוך 48 שעות · בלי עלות.">
     <meta property="og:image" content="https://hagitantebi.co.il/aurelle/og.jpg">
     <meta property="og:image:alt" content="עולם מותג חי: אתר, תוכן ווידאו בשפה אחת, Brand Worlds Studio">
     <meta property="og:locale" content="he_IL">
@@ -116,6 +116,7 @@
       .hero__ask{grid-column:1;grid-row:2;}
     }
 
+    .hero__copy h1{text-wrap:balance;}
     /* the offer + the form, light version (hero) */
     .offer{font-size:1rem;line-height:1.5;color:var(--ink);background:var(--color-warm-beige);border:1px solid rgba(139,115,85,.28);border-radius:8px;padding:12px 14px;margin-bottom:12px;}
     .offer b{font-weight:700;}
@@ -129,6 +130,10 @@
     .age__opts span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:6px;font-size:.88rem;font-weight:500;color:var(--ink);background:#fff;border:1px solid rgba(42,32,26,.3);border-radius:3px;}
     .age__opts input:checked + span{background:var(--color-copper-text);border-color:var(--color-copper-text);color:var(--color-cream);}
     .age__opts input:focus-visible + span{outline:2px solid var(--color-copper-text);outline-offset:2px;}
+    .build legend small{font-weight:400;color:var(--color-chocolate-text);}
+    .build .age__opts{grid-template-columns:1fr;}
+    .build .age__opts span{justify-content:flex-start;text-align:right;padding:8px 14px;line-height:1.35;}
+    .form--dark .build legend small{color:rgba(250,248,243,.85);}
     .form--dark .age legend{color:var(--color-cream);}
     .form--dark .age__opts span{background:transparent;color:var(--color-cream);border-color:rgba(250,248,243,.45);}
     .form--dark .age__opts input:checked + span{background:var(--color-copper);border-color:var(--color-copper);color:var(--ink);}
@@ -211,27 +216,27 @@
         <div class="hero__grid">
           <div class="hero__copy">
             <p class="hero__eyebrow">בדיקה אישית · בלי עלות</p>
-            <h1>איפה הלקוחה שלך <em>משווה אותך?</em></h1>
+            <h1>כל מה שהלקוחה פוגשת אצלך<br><em>מדבר באותה שפה?</em></h1>
           </div>
 
-          <div class="hero__pair check" aria-label="דוגמה ממיתוג קוסמטיקה: כך מגיעות 3 נקודות ההשוואה בוואטסאפ">
+          <div class="hero__pair check" aria-label="דוגמה ממיתוג קוסמטיקה: כך מגיעות 3 הנקודות בוואטסאפ">
             <p class="check__tag">דוגמה ממיתוג קוסמטיקה · כך מגיעות אלייך 3 הנקודות</p>
             <div class="chat">
               <div class="chat__head"><img src="hagit-portrait-232.webp" width="116" height="116" alt="" loading="eager"><b>חגית אנטבי</b><span>תוך 48 שעות</span></div>
-              <p class="msg">היי, עברתי על האינסטגרם והאתר של הסטודיו שלך. אלה 3 המקומות שבהם לקוחה חדשה משווה אותך:</p>
-              <p class="msg"><b>1 · הפיד.</b> 6 מתוך 9 הפוסטים האחרונים הם מוצר על רקע לבן, בדיוק כמו אצל שלוש המתחרות שלך. מכאן הלקוחה עוברת להשוות מחיר.<span class="msg__do"><b>מה לעשות:</b> לצלם את מה שקורה רק אצלך, את הידיים בזמן הטיפול, ולא עוד בקבוק.</span></p>
+              <p class="msg">היי, עברתי על האינסטגרם והאתר של הסטודיו שלך. אלה 3 המקומות שבהם המותג שלך עוד לא מדבר באותה שפה:</p>
+              <p class="msg"><b>1 · הפיד.</b> 6 מתוך 9 הפוסטים האחרונים הם מוצר על רקע לבן, בלי הצבעים והקו שיש על האריזה שלך. מי שמגיעה מהפיד לא מזהה את המוצר שקנתה.<span class="msg__do"><b>מה לעשות:</b> לצלם את מה שקורה רק אצלך, את הידיים בזמן הטיפול, ולא עוד בקבוק.</span></p>
               <div class="chat__rest">
-                <p class="msg" aria-hidden="true"><b>2 · האתר.</b> בעמוד הבית שלושה משפטים מתחילים ב״הכי״, ואף אחד מהם לא אומר למה דווקא את. הלקוחה גוללת למחירון.</p>
-                <p class="msg" aria-hidden="true"><b>3 · ההודעה הראשונה.</b> התשובה האוטומטית בוואטסאפ שולחת מחירון לפני שאלה אחת על העור שלה.</p>
+                <p class="msg" aria-hidden="true"><b>2 · האתר.</b> בעמוד הבית שלושה משפטים מתחילים ב״הכי״, ואף אחד מהם לא נשמע כמו האריזה או הפיד. הלקוחה גוללת למחירון.</p>
+                <p class="msg" aria-hidden="true"><b>3 · ההודעה הראשונה.</b> התשובה האוטומטית בוואטסאפ נשמעת כמו מוקד ולא כמו המותג: מחירון לפני שאלה אחת על העור שלה.</p>
                 <p class="chat__more">ועוד שתי נקודות, על העסק שלך</p>
               </div>
             </div>
           </div>
 
           <div class="hero__ask">
-            <p class="pain">אם מבקשים ממך הנחה, משווים אותך למתחרה זולה יותר, או שואלים «כמה זה עולה?» ונעלמים, <b>הלקוחה עוד לא רואה סיבה לבחור דווקא בך.</b></p>
+            <p class="pain">כשהאתר אומר דבר אחד, האינסטגרם דבר אחר והאריזה שלישי, <b>הלקוחה לא מרגישה מותג אחד. היא מרגישה עוד עסק.</b></p>
             <form class="lead" id="lead-hero" style="margin-top:14px" data-lead-source="campaign-brand-world-start-b" data-lead-interest="3 נקודות השוואה · דף נחיתה B" data-lead-success-title="קיבלתי!" data-lead-success-text="תוך 48 שעות תקבלי ממני בוואטסאפ את 3 הנקודות.">
-              <p class="offer"><b>שלחי לי קישור לאתר או לאינסטגרם.</b> תוך 48 שעות תקבלי בוואטסאפ 3 נקודות שבהן לקוחה משווה אותך, ומה לעשות עם כל אחת.<small>בלי עלות ובלי התחייבות. אני עוברת על כל קישור אישית.</small></p>
+              <p class="offer"><b>שלחי לי קישור לאתר או לאינסטגרם.</b> תוך 48 שעות תקבלי בוואטסאפ 3 מקומות שבהם המותג שלך עוד לא מדבר באותה שפה, ומה לעשות עם כל אחד.<small>בלי עלות ובלי התחייבות. אני עוברת על כל קישור אישית.</small></p>
               <div class="field">
                 <label for="h-link">קישור לאתר או לאינסטגרם</label>
                 <input type="text" id="h-link" name="link" required autocomplete="url" inputmode="url" placeholder="instagram.com/...">
@@ -242,6 +247,14 @@
                   <label><input type="radio" name="business_age" value="בהקמה" required><span>בהקמה</span></label>
                   <label><input type="radio" name="business_age" value="עד שנתיים"><span>עד שנתיים</span></label>
                   <label><input type="radio" name="business_age" value="שנתיים ומעלה"><span>שנתיים ומעלה</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="age build">
+                <legend>ואם כבר יש כיוון, מה תרצי לבנות? <small>(לא חובה)</small></legend>
+                <div class="age__opts">
+                  <label><input type="checkbox" name="build" value="אתר" data-lead-label="מה תרצי לבנות"><span>אתר שמשדר את הרמה שבה העסק שלך נמצא היום</span></label>
+                  <label><input type="checkbox" name="build" value="עמוד נחיתה" data-lead-label="מה תרצי לבנות"><span>עמוד נחיתה ממיר למוצר חדש או להשקה</span></label>
+                  <label><input type="checkbox" name="build" value="סרטוני מותג" data-lead-label="מה תרצי לבנות"><span>סרטוני מותג לאינסטגרם ולמודעות</span></label>
                 </div>
               </fieldset>
               <div class="field">
@@ -334,10 +347,10 @@
       <div class="wrap">
         <div class="audit__grid">
           <div>
-            <h2 id="audit-title">3 נקודות השוואה. <em>תוך 48 שעות, בלי עלות.</em></h2>
+            <h2 id="audit-title">3 מקומות לחזק. <em>תוך 48 שעות, בלי עלות.</em></h2>
             <ol class="steps">
               <li><b>את שולחת קישור.</b> לאתר, לאינסטגרם או לחנות.</li>
-              <li><b>אני מסתכלת כמו לקוחה חדשה.</b> איפה היא משווה אותך למתחרות, ואיפה כבר יש סיבה לבחור בך.</li>
+              <li><b>אני מסתכלת כמו לקוחה חדשה.</b> איפה האתר, האינסטגרם והאריזה מדברים באותה שפה, ואיפה כל אחד מספר סיפור אחר.</li>
               <li><b>תוך 48 שעות מגיעות אלייך 3 נקודות בוואטסאפ,</b> ולכל אחת מה עושים איתה.</li>
               <li><b>אם תרצי להמשיך, נקבע שיחה.</b> ההמשך יכול להיות צעד ממוקד אחד: מפת מותג, דף נחיתה או רילס, מ-₪1,900. או עולם מותג מלא, פרויקט של חודש עד שלושה חודשים, מ-₪8,000. אם לא, הנקודות נשארות אצלך.</li>
             </ol>
@@ -356,6 +369,14 @@
                   <label><input type="radio" name="business_age" value="בהקמה" required><span>בהקמה</span></label>
                   <label><input type="radio" name="business_age" value="עד שנתיים"><span>עד שנתיים</span></label>
                   <label><input type="radio" name="business_age" value="שנתיים ומעלה"><span>שנתיים ומעלה</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="age build">
+                <legend>ואם כבר יש כיוון, מה תרצי לבנות? <small>(לא חובה)</small></legend>
+                <div class="age__opts">
+                  <label><input type="checkbox" name="build" value="אתר" data-lead-label="מה תרצי לבנות"><span>אתר שמשדר את הרמה שבה העסק שלך נמצא היום</span></label>
+                  <label><input type="checkbox" name="build" value="עמוד נחיתה" data-lead-label="מה תרצי לבנות"><span>עמוד נחיתה ממיר למוצר חדש או להשקה</span></label>
+                  <label><input type="checkbox" name="build" value="סרטוני מותג" data-lead-label="מה תרצי לבנות"><span>סרטוני מותג לאינסטגרם ולמודעות</span></label>
                 </div>
               </fieldset>
               <div class="field">
