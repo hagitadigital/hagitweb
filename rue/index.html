@@ -135,7 +135,13 @@ h2.t em{font-style:normal;color:var(--peach)}
 .hero{position:relative;min-height:max(100svh,680px);display:flex;align-items:flex-end;overflow:hidden;background:var(--nuit)}
 .hero .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 1.4s var(--ease),transform 7s linear}
 .hero .shot.on{opacity:1;transform:scale(1)}
-.hero .shot:first-of-type{object-position:0% 50%}
+.hero .stage{inset:auto;left:0;top:50%;height:max(100%,calc(100vw / 1.7686));aspect-ratio:2400/1357;width:auto;max-width:none;transform:translateY(-50%)}
+.hero .stage.on{transform:translateY(-50%)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+/* nobody home yet: the same render, with the light taken out */
+.stage .dark{filter:brightness(.46) saturate(.42) contrast(1.06) hue-rotate(-8deg)}
+.stage .lit{-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.js .stage .lit.wait{opacity:0}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(to top,rgba(20,18,42,1) 0%,rgba(20,18,42,.7) 20%,rgba(20,18,42,.08) 52%,rgba(20,18,42,0) 66%),linear-gradient(to bottom,rgba(20,18,42,.6) 0%,rgba(20,18,42,0) 22%)}
 .hero-in{position:relative;z-index:2;width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-block:160px 64px}
@@ -145,6 +151,9 @@ h2.t em{font-style:normal;color:var(--peach)}
 .hero .go{margin-top:26px}
 .addr{flex:none;width:min(320px,100%);text-align:left;direction:ltr}
 .addr .big{font-family:var(--serif);font-weight:500;letter-spacing:0;font-size:clamp(64px,7vw,104px);border-width:2px;border-radius:16px;padding:.16em .34em .08em;min-width:1.9em;box-shadow:inset 0 0 0 5px rgba(20,18,42,.0),0 0 0 5px rgba(239,230,216,.12)}
+.addr .big{cursor:pointer;background:rgba(20,18,42,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--stone)}
+.addr .big.tick span{animation:tick .38s var(--ease)}
+@keyframes tick{from{transform:translateY(-.22em);opacity:.2}to{transform:none;opacity:1}}
 .addr .big span{display:inline-block;transition:opacity .35s,transform .35s var(--ease)}
 .addr .big.swap span{opacity:0;transform:translateY(10px)}
 .addr .name{direction:rtl;text-align:left;margin-top:16px;font-family:var(--serif);font-size:26px;line-height:1.2}
@@ -153,8 +162,6 @@ h2.t em{font-style:normal;color:var(--peach)}
 .tabs button{position:relative;cursor:pointer;font-size:17px;min-width:2.5em;padding:.42em .5em .34em;color:var(--stone-2);border-color:var(--hair);overflow:hidden;transition:color .3s,border-color .3s}
 .tabs button:hover{color:var(--stone)}
 .tabs button[aria-selected="true"]{color:var(--ink);background:var(--stone);border-color:var(--stone)}
-.tabs button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--apricot)}
-.tabs.run button[aria-selected="true"]::after{width:100%;transition:width 6.5s linear}
 
 /* ---------- 01 the street ---------- */
 .rue{padding-block:clamp(70px,8vw,120px) clamp(60px,7vw,110px);background:linear-gradient(to bottom,var(--nuit),#171433)}
@@ -253,6 +260,12 @@ form.talk{display:grid;gap:18px}
 .talk button{justify-self:start;cursor:pointer;margin-top:6px;padding:14px 26px;border:0;border-radius:9px;background:var(--ink);color:var(--stone);font:500 17px/1 var(--sans);display:inline-flex;gap:12px;align-items:center;transition:background .25s}
 .talk button:hover{background:#9A5325}
 .talk button:focus-visible{outline-color:var(--ink)}
+.mine{display:flex;align-items:center;gap:18px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(26,23,48,.18)}
+.mine .plate{font-family:var(--serif);font-weight:500;letter-spacing:0;font-size:56px;border-width:2px;border-radius:13px;padding:.14em .36em .06em;min-width:1.9em;color:var(--ink);box-shadow:0 0 0 4px rgba(26,23,48,.08)}
+.mine .plate.pop{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(.86) rotate(-3deg)}60%{transform:scale(1.05) rotate(1deg)}100%{transform:none}}
+.mine p{font-size:15px;font-weight:400;color:var(--ink-2);line-height:1.45}
+.mine p b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15;color:var(--ink)}
 .talk-note{display:none;padding:16px 18px;background:#E3D8C6;border-radius:9px;font-size:15.5px;font-weight:400}
 .talk-note.show{display:block}
 .talk-note a{font-weight:600}
@@ -326,7 +339,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   .logo .plate{font-size:22px}
   .hero-in{flex-direction:column;align-items:stretch;gap:30px;padding-block:130px 40px}
   .hero h1{font-size:clamp(50px,15vw,84px)}
-  .hero .shot:first-of-type{object-position:14% 50%}
+  .hero .stage,.hero .stage.on{transform:translate(calc(14vw - 14%),-50%)}
   .hero::after{background:linear-gradient(to top,rgba(20,18,42,1) 0%,rgba(20,18,42,.86) 40%,rgba(20,18,42,.15) 70%,rgba(20,18,42,0) 82%),linear-gradient(to bottom,rgba(20,18,42,.6) 0%,rgba(20,18,42,0) 22%)}
   .addr{width:100%;display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:center}
   .addr .big{font-size:52px;grid-row:span 2;border-radius:12px}
@@ -350,8 +363,9 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none;transition:none}
   .hero .shot{transition:opacity .3s;transform:none}
+  .hero .stage,.hero .stage.on{transform:translateY(-50%)}
+  .addr .big.tick span{animation:none}
   .lot img,.view img{transition:none}
-  .tabs.run button[aria-selected="true"]::after{transition:none;width:0}
 }
 </style>
 </head>
@@ -376,7 +390,10 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <main id="top">
 <!-- hero: five addresses, one street -->
 <section class="hero" id="hero" aria-label="RUE° — אותה כתובת, סטנדרט אחר">
-  <img class="shot on" src="assets/10-hero.webp" width="2400" height="1357" alt="הדקל 14 ברמת גן: בניין מגורים חדש בן שש קומות בשעת דמדומים, לצד עץ פיקוס ותיק" fetchpriority="high">
+  <div class="shot stage on" id="stage">
+    <img class="dark" src="assets/10-hero.webp" width="2400" height="1357" alt="הדקל 14 ברמת גן: בניין מגורים חדש בן שש קומות בשעת דמדומים, לצד עץ פיקוס ותיק" fetchpriority="high">
+    <img class="lit" id="lit" src="assets/10-hero.webp" width="2400" height="1357" alt="" aria-hidden="true">
+  </div>
   <img class="shot" data-src="assets/11-tower.webp" width="1400" height="1045" alt="החוף 3 בבת ים: מגדל מגורים מעל רחבה מגוננת, הים באופק">
   <img class="shot" data-src="assets/12-garden.webp" width="1400" height="1045" alt="האלון 7 ברחובות: שני בניינים סביב חצר עם עצי זית ותיקים">
   <img class="shot" data-src="assets/13-commerce.webp" width="1400" height="1045" alt="התמר 22 בכפר סבא: מרכז שכונתי עם חזיתות מסחר מוארות">
@@ -388,7 +405,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
       <a class="go" href="#rue">ללכת לאורך הרחוב <span aria-hidden="true">←</span></a>
     </div>
     <div class="addr" aria-live="polite">
-      <span class="plate big" id="hNo"><span>14</span></span>
+      <button class="plate big" id="hNo" type="button" aria-label="להדליק שוב את הדקל 14"><span>14</span></button>
       <p class="name" id="hName">הדקל 14, רמת גן</p>
       <p class="type" id="hType">התחדשות עירונית</p>
       <div class="tabs" id="tabs" role="tablist" aria-label="הכתובות של RUE°">
@@ -532,9 +549,10 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
         <p class="kick"><span class="plate">06</span>נדבר</p>
         <h2 class="t" id="parlonsTitle">מה המספר<br><em>של הבניין שלכם?</em></h2>
         <p class="lede">נציגות דיירים, בעלי קרקע או רוכשים: כתבו לנו את הכתובת, ונחזור אליכם לפגישת היכרות ברחוב שלכם.</p>
+        <div class="mine" aria-live="polite"><span class="plate" id="myNo">?</span><p><span id="myLab">הקלידו את הכתובת, והשלט יתמלא.</span><b id="myName"></b></p></div>
       </div>
       <form class="talk" id="talk" novalidate>
-        <label>כתובת הבניין<input type="text" name="address" autocomplete="street-address" placeholder="רחוב ומספר, עיר"></label>
+        <label>כתובת הבניין<input type="text" name="address" id="myAddr" autocomplete="street-address" placeholder="רחוב ומספר, עיר"></label>
         <label>שם מלא<input type="text" name="name" autocomplete="name" required></label>
         <label>טלפון<input type="tel" name="tel" autocomplete="tel" inputmode="tel" dir="ltr" style="text-align:right" required></label>
         <label>נושא הפנייה<select name="topic"><option>התחדשות עירונית בבניין שלנו</option><option>רכישת דירה</option><option>מסחר ומשרדים</option><option>שיתוף פעולה</option></select></label>
@@ -572,6 +590,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     <p><span dir="ltr">RUE°</span>&lrm; הוא עולם מותג קונספט בדיוני, מס' 07 בסדרה של Brand Worlds Studio, לחברת יזמות להתחדשות עירונית. ההבטחה נוסחה קודם: <b>אותה כתובת. סטנדרט אחר.</b> בפרויקט התחדשות משתנה הכול, הבניין, הקומות, הדירות. הדבר היחיד שנשאר הוא הכתובת, ולכן היא הנכס של המותג.</p>
     <p><b>האלמנט: שלט מספר הבית.</b> מההבטחה נגזרה צורה אחת, השלט שתלוי ליד כל דלת. הוא הלוגו, הוא הכפתורים שמחליפים בניין בהירו, הוא מספר הסקשן, והוא שם הפרויקט: הדקל 14, החוף 3, ביאליק 9. אין בעולם הזה "פארק" ואין "רזידנס".</p>
     <p><b>הצבע: שעה אחת.</b> כל ההדמיות מצולמות בדמדומים, בשעה שבה חוזרים הביתה והחלונות נדלקים. הפלטה נלקחה מהשמיים שלהן, והעמוד עצמו בנוי כמותם: למעלה כחול־לילה, ובסוף, ליד הטופס, האופק.</p>
+    <p><b>התנועה: חוזרים הביתה.</b> ההירו נפתח על הדקל 14 לפני שמישהו חזר: הבניין חשוך, השמיים כבר כחולים. הלובי נדלק ראשון, אחריו החלונות, אחד אחד, והשלט סופר את המשפחות שחזרו. כשהוא מגיע ל-12 כל הרחוב מתחמם, והשלט חוזר להיות מספר הבית. בטופס קורה ההפך: מי שמקלידה את הכתובת שלה רואה אותה הופכת לשלט של <span dir="ltr">RUE°</span>&lrm;.</p>
     <p><b>המבנה: רחוב.</b> הפרויקטים לא מסודרים בטבלה. הם עומדים זה ליד זה על קו מדרכה אחד, בגבהים שונים, והולכים לאורכם. אחריהם בא הלפני־ואחרי מאותה נקודה על המדרכה, ואחריו ההתחייבות, שמוצגת כמו מה שהיא: נספח להסכם, עם סעיפים וחתימה.</p>
     <div class="rules">
       <h3>שלושה כללים שמחזיקים את העולם</h3>
@@ -641,35 +660,72 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // hero: the number plates switch the building. Auto-walks the street until someone chooses.
+  // hero: Hadekel 14 comes home. The lobby lights first, then twelve homes one by one; the plate counts them.
   const hero = document.getElementById('hero'), shots = [...hero.querySelectorAll('.shot')];
   const tabsEl = document.getElementById('tabs'), tabs = [...tabsEl.querySelectorAll('button')];
-  const no = document.getElementById('hNo'), nm = document.getElementById('hName'), tp = document.getElementById('hType');
-  let cur = 0, timer = null, auto = !reduce;
+  const no = document.getElementById('hNo'), noTxt = no.firstElementChild, nm = document.getElementById('hName'), tp = document.getElementById('hType');
+  const lit = document.getElementById('lit');
+  // [x%, y%, rx%, ry%] in the image's own space
+  const COMMON = [[27, 80, 10, 14], [5, 90, 7, 7], [42, 91, 6, 6]];
+  const HOMES = [[16.5, 57, 5.5, 6.5], [28.5, 48.5, 3.2, 5.5], [32.5, 39, 3.2, 5.5], [19.5, 44.5, 4.2, 5], [28.5, 62, 3.2, 5.5], [31.5, 26.5, 3.2, 5],
+                 [19, 29.5, 3.6, 4.6], [32.5, 51, 3.2, 5.5], [19.5, 15, 3.6, 5.5], [32.5, 64, 3.2, 5.5], [28.5, 36, 3.2, 5.5], [28, 23.5, 3.2, 5]];
+  const T_LOBBY = 500, T_FIRST = 1500, GAP = 400, FADE = 750, T_ALL = T_FIRST + HOMES.length * GAP + 500, ALL_FADE = 1800;
+  const clamp = v => Math.max(0, Math.min(1, v));
+  // a lamp coming on: a short flicker, then it holds
+  const lamp = t => t <= 0 ? 0 : t < .14 ? t / .14 * .7 : t < .24 ? .3 : t < 1 ? .3 + .7 * (1 - Math.pow(1 - (t - .24) / .76, 3)) : 1;
+  const glow = (g, a) => `radial-gradient(ellipse ${g[2]}% ${g[3]}% at ${g[0]}% ${g[1]}%, rgba(0,0,0,${a.toFixed(3)}) 0%, rgba(0,0,0,${a.toFixed(3)}) 52%, rgba(0,0,0,0) 100%)`;
+  let raf = 0, t0 = 0, shown = -1, playing = false;
+  function setMask(str) { lit.style.webkitMaskImage = str; lit.style.maskImage = str; }
+  function label(n, done) {
+    no.classList.remove('tick'); void no.offsetWidth; no.classList.add('tick');
+    noTxt.textContent = done ? '14' : n;
+    nm.textContent = done ? 'הדקל 14, רמת גן' : n === 1 ? 'משפחה אחת חזרה הביתה' : n ? 'משפחות חזרו הביתה' : 'שעת הדמדומים';
+    tp.textContent = done ? 'התחדשות עירונית' : 'הדקל 14 · 12 משפחות';
+  }
+  function frame(now) {
+    const t = now - t0, parts = [];
+    const all = clamp((t - T_ALL) / ALL_FADE);
+    if (all > 0) parts.push(`linear-gradient(rgba(0,0,0,${(all * all * (3 - 2 * all)).toFixed(3)}),rgba(0,0,0,${(all * all * (3 - 2 * all)).toFixed(3)}))`);
+    const c = lamp((t - T_LOBBY) / 900);
+    if (c > 0) COMMON.forEach(g => parts.push(glow(g, c)));
+    let n = 0;
+    HOMES.forEach((g, i) => { const a = lamp((t - T_FIRST - i * GAP) / FADE); if (a > 0) { parts.push(glow(g, a)); n++; } });
+    if (n !== shown && all === 0) { shown = n; label(n, false); }
+    setMask(parts.length ? parts.join(',') : 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0))');
+    if (all < 1) raf = requestAnimationFrame(frame); else finish();
+  }
+  function finish() { cancelAnimationFrame(raf); playing = false; setMask('none'); lit.classList.remove('wait'); shown = -1; label(12, true); }
+  function play() {
+    if (reduce) return finish();
+    cancelAnimationFrame(raf); playing = true; shown = -1; t0 = performance.now();
+    setMask('linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0))'); lit.classList.remove('wait');
+    raf = requestAnimationFrame(frame);
+  }
+  if (!reduce) lit.classList.add('wait');
+
+  let cur = 0;
   const load = i => { const s = shots[i]; if (s && s.dataset.src) { s.src = s.dataset.src; delete s.dataset.src; } };
   function show(i) {
-    if (i === cur) return;
+    if (i === cur) { if (i === 0) play(); return; }
+    if (playing) finish();
     load(i); cur = i;
     shots.forEach((s, k) => s.classList.toggle('on', k === i));
     tabs.forEach((t, k) => t.setAttribute('aria-selected', k === i));
     no.classList.add('swap');
-    setTimeout(() => { no.firstElementChild.textContent = tabs[i].textContent; nm.textContent = tabs[i].dataset.name; tp.textContent = tabs[i].dataset.type; no.classList.remove('swap'); }, reduce ? 0 : 300);
+    setTimeout(() => { noTxt.textContent = tabs[i].textContent; nm.textContent = tabs[i].dataset.name; tp.textContent = tabs[i].dataset.type; no.classList.remove('swap'); if (i === 0) play(); }, reduce ? 0 : 300);
     load((i + 1) % shots.length);
   }
-  function tick() {
-    clearTimeout(timer); tabsEl.classList.remove('run');
-    if (!auto) return;
-    requestAnimationFrame(() => requestAnimationFrame(() => tabsEl.classList.add('run')));
-    timer = setTimeout(() => { show((cur + 1) % shots.length); tick(); }, 6500);
-  }
-  tabs.forEach((t, i) => t.addEventListener('click', () => { auto = false; tick(); show(i); }));
+  tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  no.addEventListener('click', () => show(0));
   tabsEl.addEventListener('keydown', e => {
     const d = { ArrowLeft: -1, ArrowRight: 1 }[e.key]; if (!d) return;
-    e.preventDefault(); auto = false; tick();
-    const n = (cur + d + tabs.length) % tabs.length; show(n); tabs[n].focus();
+    e.preventDefault(); const n = (cur + d + tabs.length) % tabs.length; show(n); tabs[n].focus();
   });
-  new IntersectionObserver(es => { const v = es[0].isIntersecting; if (v) tick(); else { clearTimeout(timer); tabsEl.classList.remove('run'); } }, { threshold: .3 }).observe(hero);
-  setTimeout(() => load(1), 1500);
+  // start when the building has loaded and is on screen
+  const dark = hero.querySelector('.dark');
+  const start = () => { if (scrollY < innerHeight * .5) play(); else finish(); };
+  if (dark.complete) start(); else dark.addEventListener('load', start, { once: true });
+  setTimeout(() => load(1), 9000);
 
   // the street: arrows, and drag with a mouse
   const st = document.getElementById('street');
@@ -694,6 +750,18 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     r.addEventListener('click', () => open(i));
     r.addEventListener('focus', () => open(i));
     if (matchMedia('(hover:hover)').matches) r.addEventListener('mouseenter', () => open(i));
+  });
+
+  // your own address becomes a RUE° plate (stays in the page: nothing is sent)
+  const myAddr = document.getElementById('myAddr'), myNo = document.getElementById('myNo'), myLab = document.getElementById('myLab'), myName = document.getElementById('myName');
+  myAddr.addEventListener('input', () => {
+    const v = myAddr.value.trim(), num = (v.match(/\d{1,4}/) || [''])[0];
+    const street = v.split(',')[0].replace(/\d+/g, '').replace(/\s+/g, ' ').replace(/^(רחוב|רח׳|רח')\s+/, '').trim();
+    const next = num || '?';
+    if (myNo.textContent !== next) { myNo.textContent = next; myNo.classList.remove('pop'); void myNo.offsetWidth; myNo.classList.add('pop'); }
+    if (street && num) { myLab.textContent = 'כך ייקרא הפרויקט שלכם:'; myName.textContent = street + ' ' + num; }
+    else if (street) { myLab.textContent = 'ומה המספר?'; myName.textContent = street; }
+    else { myLab.textContent = 'הקלידו את הכתובת, והשלט יתמלא.'; myName.textContent = ''; }
   });
 
   // the form is part of the fiction: nothing is sent or stored
