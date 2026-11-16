@@ -1,6 +1,12 @@
 # Hooks — the first 2.8 seconds
 
 A hook is one line plus one visual proof. Its only job is to make the viewer stop and recognise themself.
+
+**Open on the wow, not on the "before".** Frame 0 is the world's most striking image or motion (the building lighting up,
+the dial turning, the cake being cut) with the hook line over it. Do not open on a grey or generic "before" card: a dull
+first frame loses the viewer before the world arrives (Hagit, 16.11.2026, RUE° spec). The pain lives in the line; the
+picture is already the answer. The generic-product mechanics in the table below are for paid before/after ads and for
+a short contrast beat later in a reel, never for the first frame of a world reel.
 The rest of the reel is the answer; the outro closes the loop by answering the hook out loud.
 
 ## Contents
