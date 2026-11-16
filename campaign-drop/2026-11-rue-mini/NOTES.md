@@ -9,3 +9,4 @@
   - `ffmpeg -i character/clips/walk.mp4 -vf "colorchannelmixer=rr=1.0082:gg=1.0087:bb=1.0167,crop=720:800:0:0,scale=1080:1200:flags=lanczos" -q:v 2 src/assets/walk/f%03d.jpg`
   - `ffmpeg -i character/clips/<name>.mp4 -vf "select='gte(n\,S)',setpts=N/FRAME_RATE/TB,scale=1080:1920:flags=lanczos" -frames:v 63 -q:v 3 src/assets/<name>/f%03d.jpg` with S = 8 (model), 6 (plate), 10 (key)
 - 4:5: `src/frame-4x5.png` over a `#F2EBDC` ground (ffmpeg scale 760:1350, overlay 160:0).
+- 2026-11-16, later: stills and clips replaced with versions where she is truly miniature (the first set had her near human scale). Same Kling settings.
