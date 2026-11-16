@@ -123,7 +123,8 @@ h2.t em{font-style:normal;color:var(--peach)}
 .js .rv.in{opacity:1;transform:none}
 
 /* ---------- top ---------- */
-.strip{position:absolute;inset:0 0 auto 0;z-index:31;display:flex;justify-content:space-between;gap:16px;padding:8px clamp(20px,4.5vw,64px);font-size:12px;font-weight:400;letter-spacing:.03em;color:var(--stone-2)}
+.strip{position:absolute;inset:0 0 auto 0;z-index:31;display:flex;justify-content:space-between;gap:16px;padding:8px clamp(20px,4.5vw,64px);font-size:13.5px;font-weight:400;letter-spacing:.03em;color:var(--stone-2)}
+.strip span:last-child{color:var(--stone)}
 .strip a{text-decoration:none}
 .nav{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:40px clamp(20px,4.5vw,64px) 14px;transition:background .35s var(--ease),padding .35s var(--ease)}
 .nav.solid{background:rgba(20,18,42,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-block:12px}
@@ -137,7 +138,9 @@ h2.t em{font-style:normal;color:var(--peach)}
 .nav .go{font-size:16px}
 
 /* ---------- hero: a street of addresses ---------- */
-.hero{position:relative;min-height:max(100svh,680px);display:flex;align-items:flex-end;overflow:hidden;background:var(--nuit)}
+.js .hero-pin{height:calc(max(100svh,680px) + 85vh)}
+.js .hero-pin .hero{position:sticky;top:0}
+.hero{--p:0;position:relative;min-height:max(100svh,680px);display:flex;align-items:flex-end;overflow:hidden;background:var(--nuit)}
 .hero .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 1.4s var(--ease),transform 7s linear}
 .hero .shot.on{opacity:1;transform:scale(1)}
 .hero .stage{inset:auto;left:0;top:50%;height:max(100%,calc(100vw / 1.7686));aspect-ratio:2400/1357;width:auto;max-width:none;transform:translateY(-50%)}
@@ -441,10 +444,13 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 }
 @media (max-width:720px){
   body{font-size:17px}
-  .strip span:last-child{display:none}
+  .strip{font-size:13px}
+  .strip span:first-child{display:none}
   .logo small{display:none}
   .logo .plate{font-size:22px}
   .hero-in{flex-direction:column;align-items:stretch;gap:30px;padding-block:130px 40px}
+  .js .hero-in > div:first-child > p,.js .hero-in > div:first-child > .go{opacity:calc(1 - var(--p)*1.6)}
+  .js .hero::after{opacity:calc(1 - var(--p)*.5)}
   .hero h1{font-size:clamp(50px,15vw,84px)}
   .hero .stage,.hero .stage.on{transform:translate(calc(14vw - 14%),-50%)}
   .hero::after{background:linear-gradient(to top,rgba(20,18,42,1) 0%,rgba(20,18,42,.86) 40%,rgba(20,18,42,.15) 70%,rgba(20,18,42,0) 82%),linear-gradient(to bottom,rgba(20,18,42,.6) 0%,rgba(20,18,42,0) 22%)}
@@ -487,6 +493,8 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   .js .rv{opacity:1;transform:none;transition:none}
   .hero .shot{transition:opacity .3s;transform:none}
   .hero .stage,.hero .stage.on{transform:translateY(-50%)}
+  .js .hero-pin{height:auto}
+  .js .hero-pin .hero{position:relative}
   .addr .big.tick span{animation:none}
   .lot img,.view img{transition:none}
   .js .stair{opacity:1;transform:translateY(var(--lift));transition:none}
@@ -520,6 +528,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <main id="top">
 <!-- hero: five addresses, one street -->
+<div class="hero-pin" id="heroPin">
 <section class="hero" id="hero" aria-label="RUE° — אותה כתובת, סטנדרט אחר">
   <div class="shot stage on" id="stage">
     <img class="dark" src="assets/10-hero.webp" width="2400" height="1357" alt="הדקל 14 ברמת גן: בניין מגורים חדש בן שש קומות בשעת דמדומים, לצד עץ פיקוס ותיק" fetchpriority="high">
@@ -536,7 +545,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
       <a class="go" href="#rue">ללכת לאורך הרחוב <span aria-hidden="true">←</span></a>
     </div>
     <div class="addr" aria-live="polite">
-      <button class="plate big" id="hNo" type="button" aria-label="להדליק שוב את הדקל 14"><span>14</span></button>
+      <button class="plate big" id="hNo" type="button" aria-label="להדליק את הדקל 14"><span>14</span></button>
       <p class="name" id="hName">הדקל 14, רמת גן</p>
       <p class="type" id="hType">התחדשות עירונית</p>
       <div class="tabs" id="tabs" role="tablist" aria-label="הכתובות של RUE°">
@@ -549,6 +558,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     </div>
   </div>
 </section>
+</div>
 
 <!-- 01 · the street -->
 <section class="rue" id="rue" aria-labelledby="rueTitle">
@@ -892,7 +902,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     <p><span dir="ltr">RUE°</span>&lrm; הוא עולם מותג קונספט בדיוני, מס' 07 בסדרה של Brand Worlds Studio, לחברת יזמות להתחדשות עירונית. ההבטחה נוסחה קודם: <b>אותה כתובת. סטנדרט אחר.</b> בפרויקט התחדשות משתנה הכול, הבניין, הקומות, הדירות. הדבר היחיד שנשאר הוא הכתובת, ולכן היא הנכס של המותג.</p>
     <p><b>האלמנט: שלט מספר הבית.</b> מההבטחה נגזרה צורה אחת, השלט שתלוי ליד כל דלת. הוא הלוגו, הוא הכפתורים שמחליפים בניין בהירו, הוא מספר הסקשן, והוא שם הפרויקט: הדקל 14, החוף 3, ביאליק 9. אין בעולם הזה "פארק" ואין "רזידנס".</p>
     <p><b>הצבע: שעה אחת.</b> כל ההדמיות מצולמות בדמדומים, בשעה שבה חוזרים הביתה והחלונות נדלקים. הפלטה נלקחה מהשמיים שלהן, והעמוד עצמו בנוי כמותם: למעלה כחול־לילה, ובסוף, ליד הטופס, האופק.</p>
-    <p><b>התנועה: חוזרים הביתה.</b> ההירו נפתח על הדקל 14 לפני שמישהו חזר: הבניין חשוך, השמיים כבר כחולים. הלובי נדלק ראשון, אחריו החלונות, אחד אחד, והשלט סופר את המשפחות שחזרו. כשהוא מגיע ל-12 כל הרחוב מתחמם, והשלט חוזר להיות מספר הבית. בטופס קורה ההפך: מי שמקלידה את הכתובת שלה רואה אותה הופכת לשלט של <span dir="ltr">RUE°</span>&lrm;.</p>
+    <p><b>התנועה: חוזרים הביתה.</b> ההירו נפתח על הדקל 14 לפני שמישהו חזר: הבניין חשוך, השמיים כבר כחולים, ורק הלובי דולק. הגלילה מדליקה את החלונות, אחד אחד, והשלט סופר את המשפחות שחזרו. כשהוא מגיע ל-12 כל הרחוב מתחמם, והשלט חוזר להיות מספר הבית. בטופס קורה ההפך: מי שמקלידה את הכתובת שלה רואה אותה הופכת לשלט של <span dir="ltr">RUE°</span>&lrm;.</p>
     <p><b>המבנה: רחוב.</b> הפרויקטים לא מסודרים בטבלה. הם עומדים זה ליד זה על קו מדרכה אחד, בגבהים שונים, והולכים לאורכם. אחריהם בא הלפני־ואחרי מאותה נקודה על המדרכה, ואחריו ההתחייבות, שמוצגת כמו מה שהיא: נספח להסכם, עם סעיפים וחתימה.</p>
     <p><b>שלוש תמונות של אותה הבטחה.</b> התהליך בנוי כחמש מדרגות שעולות, והאחרונה נדלקת: היא נושאת את מספר הבית. במפת השכונה הסיכה היא השלט עצמו, והדרכים יוצאות ממנו אל המכולת, הגן והתחנה, כי מי שחוזר לאותה כתובת חוזר גם אליהם. והדירה נפתחת כמניפה מעל שמש שוקעת, מהרחוב ועד המרפסת, באותה שעה של כל העולם הזה.</p>
     <p><b>והאנגלית: תפאורה.</b> העולם מדבר עברית, אבל חברת יזמות נמדדת גם מול משקיעים ואדריכלים מחו״ל. לכן האנגלית לא מתרגמת את העמוד. היא עומדת מאחוריו באותיות קו גדולות, כמו שלט על חזית: Same address. Another standard. The future is already here.</p>
@@ -965,8 +975,9 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // hero: Hadekel 14 comes home. The lobby lights first, then twelve homes one by one; the plate counts them.
-  const hero = document.getElementById('hero'), shots = [...hero.querySelectorAll('.shot')];
+  // hero: Hadekel 14 comes home, on the scroll. The hero stays pinned for a short stretch and the scroll
+  // lights twelve homes one by one while the plate counts them. A fast scroll lights them fast, but nobody skips it.
+  const pin = document.getElementById('heroPin'), hero = document.getElementById('hero'), shots = [...hero.querySelectorAll('.shot')];
   const tabsEl = document.getElementById('tabs'), tabs = [...tabsEl.querySelectorAll('button')];
   const no = document.getElementById('hNo'), noTxt = no.firstElementChild, nm = document.getElementById('hName'), tp = document.getElementById('hType');
   const lit = document.getElementById('lit');
@@ -974,50 +985,54 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   const COMMON = [[27, 80, 10, 14], [5, 90, 7, 7], [42, 91, 6, 6]];
   const HOMES = [[16.5, 57, 5.5, 6.5], [28.5, 48.5, 3.2, 5.5], [32.5, 39, 3.2, 5.5], [19.5, 44.5, 4.2, 5], [28.5, 62, 3.2, 5.5], [31.5, 26.5, 3.2, 5],
                  [19, 29.5, 3.6, 4.6], [32.5, 51, 3.2, 5.5], [19.5, 15, 3.6, 5.5], [32.5, 64, 3.2, 5.5], [28.5, 36, 3.2, 5.5], [28, 23.5, 3.2, 5]];
-  const T_LOBBY = 500, T_FIRST = 1500, GAP = 400, FADE = 750, T_ALL = T_FIRST + HOMES.length * GAP + 500, ALL_FADE = 1800;
+  // one timeline, in "milliseconds" that the scroll walks through; T0 is where the page opens: lobby lit, no home yet
+  const T_LOBBY = 500, T_FIRST = 1500, GAP = 400, FADE = 750, T_ALL = T_FIRST + HOMES.length * GAP + 500, ALL_FADE = 1800, T0 = 1400, T_END = T_ALL + ALL_FADE;
   const clamp = v => Math.max(0, Math.min(1, v));
   // a lamp coming on: a short flicker, then it holds
   const lamp = t => t <= 0 ? 0 : t < .14 ? t / .14 * .7 : t < .24 ? .3 : t < 1 ? .3 + .7 * (1 - Math.pow(1 - (t - .24) / .76, 3)) : 1;
   const glow = (g, a) => `radial-gradient(ellipse ${g[2]}% ${g[3]}% at ${g[0]}% ${g[1]}%, rgba(0,0,0,${a.toFixed(3)}) 0%, rgba(0,0,0,${a.toFixed(3)}) 52%, rgba(0,0,0,0) 100%)`;
-  let raf = 0, t0 = 0, shown = -1, playing = false;
+  let shown = -2, wasDone = null, cur = 0, sraf = 0;
   function setMask(str) { lit.style.webkitMaskImage = str; lit.style.maskImage = str; }
   function label(n, done) {
     no.classList.remove('tick'); void no.offsetWidth; no.classList.add('tick');
     noTxt.textContent = done ? '14' : n;
     nm.textContent = done ? 'הדקל 14, רמת גן' : n === 1 ? 'משפחה אחת חזרה הביתה' : n ? 'משפחות חזרו הביתה' : 'שעת הדמדומים';
-    tp.textContent = done ? 'התחדשות עירונית' : 'הדקל 14 · 12 משפחות';
+    tp.textContent = done ? 'התחדשות עירונית' : n ? 'הדקל 14 · 12 משפחות' : 'גללו, והבניין יידלק';
   }
-  function frame(now) {
-    const t = now - t0, parts = [];
+  function render(t) {
     const all = clamp((t - T_ALL) / ALL_FADE);
-    if (all > 0) parts.push(`linear-gradient(rgba(0,0,0,${(all * all * (3 - 2 * all)).toFixed(3)}),rgba(0,0,0,${(all * all * (3 - 2 * all)).toFixed(3)}))`);
+    if (all >= 1) { if (wasDone !== true) { wasDone = true; shown = -2; setMask('none'); label(12, true); } return; }
+    const parts = [], e = all * all * (3 - 2 * all);
+    if (all > 0) parts.push(`linear-gradient(rgba(0,0,0,${e.toFixed(3)}),rgba(0,0,0,${e.toFixed(3)}))`);
     const c = lamp((t - T_LOBBY) / 900);
     if (c > 0) COMMON.forEach(g => parts.push(glow(g, c)));
     let n = 0;
     HOMES.forEach((g, i) => { const a = lamp((t - T_FIRST - i * GAP) / FADE); if (a > 0) { parts.push(glow(g, a)); n++; } });
-    if (n !== shown && all === 0) { shown = n; label(n, false); }
+    if (n !== shown || wasDone !== false) { shown = n; wasDone = false; label(n, false); }
     setMask(parts.length ? parts.join(',') : 'linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0))');
-    if (all < 1) raf = requestAnimationFrame(frame); else finish();
   }
-  function finish() { cancelAnimationFrame(raf); playing = false; setMask('none'); lit.classList.remove('wait'); shown = -1; label(12, true); }
-  function play() {
-    if (reduce) return finish();
-    cancelAnimationFrame(raf); playing = true; shown = -1; t0 = performance.now();
-    setMask('linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0))'); lit.classList.remove('wait');
-    raf = requestAnimationFrame(frame);
+  const pinLen = () => Math.max(1, pin.offsetHeight - hero.offsetHeight);
+  const prog = () => reduce ? 1 : clamp(scrollY / pinLen());
+  function sync() {
+    sraf = 0;
+    const p = prog(); hero.style.setProperty('--p', p.toFixed(3));
+    if (cur === 0) render(T0 + p * (T_END - T0));
   }
-  if (!reduce) lit.classList.add('wait');
+  addEventListener('scroll', () => { if (!sraf) sraf = requestAnimationFrame(sync); }, { passive: true });
+  addEventListener('resize', sync);
 
-  let cur = 0;
   const load = i => { const s = shots[i]; if (s && s.dataset.src) { s.src = s.dataset.src; delete s.dataset.src; } };
   function show(i) {
-    if (i === cur) { if (i === 0) play(); return; }
-    if (playing) finish();
+    if (i === cur) { if (i === 0 && prog() < 1) scrollTo({ top: pinLen(), behavior: reduce ? 'auto' : 'smooth' }); return; }
     load(i); cur = i;
     shots.forEach((s, k) => s.classList.toggle('on', k === i));
     tabs.forEach((t, k) => t.setAttribute('aria-selected', k === i));
     no.classList.add('swap');
-    setTimeout(() => { noTxt.textContent = tabs[i].textContent; nm.textContent = tabs[i].dataset.name; tp.textContent = tabs[i].dataset.type; no.classList.remove('swap'); if (i === 0) play(); }, reduce ? 0 : 300);
+    setTimeout(() => {
+      no.classList.remove('swap');
+      if (i === 0) { shown = -2; wasDone = null; sync(); }
+      else { noTxt.textContent = tabs[i].textContent; nm.textContent = tabs[i].dataset.name; tp.textContent = tabs[i].dataset.type; }
+    }, reduce ? 0 : 300);
     load((i + 1) % shots.length);
   }
   tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
@@ -1026,10 +1041,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     const d = { ArrowLeft: -1, ArrowRight: 1 }[e.key]; if (!d) return;
     e.preventDefault(); const n = (cur + d + tabs.length) % tabs.length; show(n); tabs[n].focus();
   });
-  // start when the building has loaded and is on screen
-  const dark = hero.querySelector('.dark');
-  const start = () => { if (scrollY < innerHeight * .5) play(); else finish(); };
-  if (dark.complete) start(); else dark.addEventListener('load', start, { once: true });
+  sync();
   setTimeout(() => load(1), 9000);
 
   // the street: arrows, and drag with a mouse
