@@ -51,7 +51,7 @@ If the request does not say, it is studio mode. Read `references/hooks.md` befor
 
 ### 2. Spec first — always, before building
 Send a short spec and wait for approval. The owner works "קודם איפיון, אחר כך יצירה". The spec has:
-1. **Three hook options**: the line, the visual proof, the outro that answers it. Recommend one, in one line.
+1. **Three hook options**: the line, the wow it opens on (from the world itself), the outro that answers it. Recommend one, in one line.
 2. **Two signature-scene concepts**: idea → mechanism → what changes on every step. Recommend one. It takes the centre of the reel.
 3. **A scene table** on the fixed timeline (time · scene · what is on screen · text), using the world's own moments.
 4. At most 2–3 open questions, each with a recommended default.
@@ -60,7 +60,7 @@ Fixed studio timeline (30s):
 
 | Time | Layer |
 |---|---|
-| 0.0–2.8 | HOOK: question + proof mechanic, copper ball rolling on its line |
+| 0.0–2.8 | HOOK: opens on the world's wow (its strongest image or motion, never a grey/generic "before"), the question over it, copper ball rolling on its line |
 | 2.6–5.4 | Studio window: "Brand Worlds Studio · עולם מותג NN", the world inside the window with crop marks, opens to full screen |
 | 5.4–10 | 01 The Core — the hero sequence and the promise |
 | 9.7–14.8 | 02 The Visual World — the signature scene (invented, beyond the site; may run longer and push the others) |
@@ -109,6 +109,8 @@ logo + CTA 27–30. Everything else — recipes, QA, render — is the same.
 - `scripts/video2seq.sh` — a site film (mp4) → an image sequence for `data-seq`.
 - `examples/chasen-gen.py` — a complete worked build (CHASEN°, World 19): fills the template from Python, flavour dial,
   pours, toppings, menu, promise. Start new worlds by copying its structure.
+- `examples/rue-gen.py` — RUE° (World 07): a hook that opens on the wow (the building lighting up window by window under the
+  question), a pinned-plate signature scene, a CSS fan of rooms. Use it as the model for wow-first hooks.
 - `references/signature-scenes.md` — how to invent the scene beyond the site, mechanisms per idea, ready concepts.
 - `references/hooks.md` — hook bank for both modes, writing rules, how to pick.
 - `references/motion-recipes.md` — sequences, pans, clockwise dials, 3D carousel, ball + portal, leaf lines, stirred cup, cut runs, text.
