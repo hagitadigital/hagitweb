@@ -60,7 +60,7 @@ hook = f'''<section class="scene" data-show="0,{T_DEC}" style="background:{CREAM
 IW, IH = 2418, 1360   # the 16:9 photo at the picture zone's height
 def cam(s, cx, cy): return 'transform:translate(%.1fpx,%.1fpx) scale(%.3f)' % (540 - s * cx * IW, 680 - s * cy * IH, s)
 pan = kf('0%%,%s{%s}%s{%s}%s,100%%{%s}' % (P(T_DEC), cam(1.42, .30, .52), P(T_LINE - .2), cam(1.22, .325, .6), P(T_LINE + 1.0), cam(1.0, .365, .5)))
-RIB = 'M462 668 C 520 742 610 778 664 716 C 722 650 652 566 704 524 C 728 506 750 512 756 532'
+RIB = 'M372 540 C 420 600 500 640 540 580 C 580 520 520 450 560 420 C 580 406 596 410 600 422'
 t0, t1 = T_LINE + 1.0, T_LINE + 3.4
 draw = kf('0%%,%s{stroke-dashoffset:1}%s,100%%{stroke-dashoffset:0}' % (P(t0), P(t1)))
 bead = kf('0%%,%s{opacity:0;transform:scale(.2)}%s{opacity:1;transform:scale(1.7)}%s,100%%{opacity:1;transform:scale(1)}' % (P(t1 - .1), P(t1 + .15), P(t1 + .45)))
@@ -68,15 +68,15 @@ dot0 = kf('0%%,%s{opacity:0}%s,100%%{opacity:1}' % (P(t0 - .3), P(t0)))
 story = f'''<section class="scene" data-show="{T_DEC},{T_PAL}" style="background:{CREAM}">
   <div style="position:absolute;top:310px;left:0;width:1080px;height:1360px;overflow:hidden;background:{STONE}">
     <div style="position:absolute;left:0;top:0;width:{IW}px;height:{IH}px;transform-origin:0 0;animation-name:{pan};animation-timing-function:cubic-bezier(.45,0,.2,1)">
-      <img src="a/founder-cream-on-hand.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
-      <svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" aria-hidden="true">
+      <div class="stack" data-seq="a/hands/h_%03d.webp" data-from="1" data-to="66" data-by="1" data-start="{T_DEC - .3}" data-step="0.0833"></div>
+      <svg viewBox="0 0 1280 720" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" aria-hidden="true">
         <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E6B899"/><stop offset=".5" stop-color="#B87A57"/><stop offset="1" stop-color="#8F5A3C"/></linearGradient>
         <radialGradient id="bg" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#F6DCC9"/><stop offset=".55" stop-color="#B87A57"/><stop offset="1" stop-color="#6E4128"/></radialGradient></defs>
-        <path pathLength="1" d="{RIB}" style="fill:none;stroke:rgba(110,65,40,.28);stroke-width:7;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)" transform="translate(0,3)"></path>
-        <path pathLength="1" d="{RIB}" style="fill:none;stroke:url(#rg);stroke-width:5.5;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
-        <path pathLength="1" d="{RIB}" style="fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
-        <circle cx="462" cy="668" r="6" fill="url(#bg)" style="animation-name:{dot0}"></circle>
-        <g transform="translate(756 532)"><circle r="11" fill="url(#bg)" style="animation-name:{bead}"></circle></g>
+        <path pathLength="1" d="{RIB}" style="fill:none;stroke:rgba(110,65,40,.28);stroke-width:5.6;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)" transform="translate(0,3)"></path>
+        <path pathLength="1" d="{RIB}" style="fill:none;stroke:url(#rg);stroke-width:4.4;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
+        <path pathLength="1" d="{RIB}" style="fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.1;stroke-linecap:round;stroke-dasharray:1 1;animation-name:{draw};animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
+        <circle cx="372" cy="540" r="5" fill="url(#bg)" style="animation-name:{dot0}"></circle>
+        <g transform="translate(600 422)"><circle r="9" fill="url(#bg)" style="animation-name:{bead}"></circle></g>
       </svg>
     </div>
     <div data-in="{t0 + .5}" style="position:absolute;left:44px;bottom:44px;padding:16px 26px;background:rgba(246,239,231,.94);border:1px solid {STONE};border-radius:14px;font-size:27px;color:{INK}" dir="rtl"><b style="color:{DEEP};font-weight:600">קוד 01 · סרט הנחושת</b><br>קו אחד, רציף. אף פעם לא קשת.</div>
@@ -135,21 +135,22 @@ lang = f'''<section class="scene" data-show="{T_LANG},{T_TOUCH}" style="backgrou
 </section>'''
 
 # ───────── 05 the identity: the board wakes up — from the box to the counter ─────────
-TP = [('packaging-set-ribbon.webp', '30% 50%', 'האריזה', 'סרט הנחושת · אבן הטרוורטין · סומק'),
-      ('lineup-three-serums-podiums.webp', '50% 50%', 'הפודיום', 'משאבת הנחושת · סרט הנחושת'),
-      ('studio-interior-reception.webp', '50% 50%', 'הסטודיו', 'אבן הטרוורטין · נחושת'),
+TP = [('kit/k_%03d.webp', '24% 50%', 'הקופסה', 'סרט הנחושת · סומק'),
+      ('consult/c_%03d.webp', '25% 50%', 'הייעוץ', 'משאבת הנחושת · אבן הטרוורטין'),
+      ('treat/t_%03d.webp', '35% 50%', 'חדר הטיפולים', 'קודם הידיים'),
       ('founder-counter-full-line.webp', '58% 50%', 'הדלפק', 'סרט הנחושת · משאבת הנחושת · אבן הטרוורטין')]
 STEP = 1.2
-push = kf('0%%,%s{transform:scale(1.1)}%s,100%%{transform:scale(1)}' % (P(T_TOUCH), P(T_OUT + .4)))
+push = kf('0%%,%s{transform:scale(1.08)}%s,100%%{transform:scale(1)}' % (P(T_TOUCH), P(T_OUT + .4)))
 tp = ''
 for i, (img, pos, nm, codes) in enumerate(TP):
-    a = T_TOUCH + i * STEP; b = D if i == 3 else a + STEP
+    a = T_TOUCH + i * STEP
     op = '' if i == 0 else f' data-show="{a:.2f},{D}" data-fade="0.42"'
-    tp += f'<div class="stack"{op}><img class="cover" src="a/{img}" alt="" style="object-position:{pos}"></div>'
+    inner = f'<div class="stack" data-seq="a/{img}" data-from="1" data-to="20" data-by="1" data-start="{a - .45:.2f}" data-step="0.0833" data-pos="{pos}"></div>' if '%' in img else f'<img class="cover" src="a/{img}" alt="" style="object-position:{pos}">'
+    tp += f'<div class="stack"{op}>{inner}</div>'
 tags = ''
 for i, (img, pos, nm, codes) in enumerate(TP):
     a = T_TOUCH + i * STEP - (.2 if i else -.1); b = D if i == 3 else T_TOUCH + (i + 1) * STEP - .4
-    tags += f'<div data-show="{a:.2f},{b:.2f}" data-fade="0.2" style="position:absolute;right:60px;top:1440px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:{SERIF};font-weight:500;font-size:46px;line-height:1.1;color:{INK}">{nm}</div><div style="margin-top:4px;font-size:23px;color:{DEEP}">{codes}</div></div>'
+    tags += f'<div data-show="{a:.2f},{b:.2f}" data-fade="0.2" style="position:absolute;left:60px;top:1470px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:{SERIF};font-weight:500;font-size:46px;line-height:1.1;color:{INK}">{nm}</div><div style="margin-top:4px;font-size:23px;color:{DEEP}">{codes}</div></div>'
 touch = f'''<section class="scene" data-show="{T_TOUCH},{D}" style="background:{STONE}">
   <div class="stack" style="animation-name:{push};animation-timing-function:linear">{tp}</div>
   <div style="position:absolute;top:0;left:0;right:0;height:560px;background:linear-gradient(to bottom,rgba(246,239,231,.97) 0,rgba(246,239,231,.9) 52%,rgba(246,239,231,0))"></div>
