@@ -320,7 +320,7 @@ h2.t em{font-style:normal;color:var(--peach)}
 .gain ul{list-style:none;margin-top:24px;border-top:1px solid var(--hair)}
 .gain li{display:grid;grid-template-columns:minmax(0,1fr) 4.2em 1.4em 8.2em;align-items:baseline;gap:10px;padding:13px 0;border-bottom:1px solid var(--hair);font-weight:400}
 .gain li.hd{padding:9px 0;font-size:13px;color:var(--stone-3)}
-.gain li.hd span:first-child{grid-column:2;text-align:left}.gain li.hd span:last-child{grid-column:4}
+.gain li.hd .h-was{text-align:left;white-space:nowrap;direction:rtl;justify-self:start}
 .gain .was{font-family:var(--num);font-size:22px;color:var(--stone-3);direction:ltr;text-align:right}
 .gain .to{color:var(--apricot);font-family:var(--num)}
 .gain .now{display:flex;align-items:baseline;gap:8px;font-size:13.5px;color:var(--stone-2)}
@@ -774,7 +774,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
           <h3>אותה כתובת, ו-25 מ״ר יותר.</h3>
           <p>מי שגר כאן שישים שנה חוזר לדירה שסוף סוף מתאימה לו: מעלית עד הדלת, מרפסת, ואור גם בצד השני של הבית.</p>
           <ul>
-            <li class="hd"><span>1964</span><span>2029</span></li>
+            <li class="hd"><span></span><span class="h-was">1964</span><span></span><span>2029</span></li>
             <li><span>שטח הדירה</span><span class="was">68</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="68" data-to="93">93</b>מ״ר</span></li>
             <li><span>מרפסת</span><span class="was">0</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="0" data-to="14">14</b>מ״ר</span></li>
             <li><span>שעות אור בסלון</span><span class="was">3</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="3" data-to="9">9</b>ביום</span></li>
@@ -786,7 +786,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
           <h3>דירה חדשה, ברחוב שכבר חי.</h3>
           <p>במגדל חדש כולם זרים ביום הראשון. כאן יש שכנים שיודעים איפה המכולת, מי משקה את הגינה, ומתי העץ פורח.</p>
           <ul>
-            <li class="hd"><span>בניין חדש רגיל</span><span>הדקל 14</span></li>
+            <li class="hd"><span></span><span class="h-was">בניין חדש רגיל</span><span></span><span>הדקל 14</span></li>
             <li><span>משפחות שכבר מכירות את הרחוב</span><span class="was">0</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="0" data-to="12">12</b>משפחות</span></li>
             <li><span>עץ בוגר בכניסה</span><span class="was">0</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="0" data-to="1">1</b>פיקוס בן 60</span></li>
             <li><span>דירות בקומה</span><span class="was">6</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="6" data-to="3">3</b>בקומה</span></li>
@@ -798,7 +798,7 @@ footer.studio{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
           <h3>רחוב ירוק יותר, ומואר יותר.</h3>
           <p>בניין אחד משנה את כל הרחוב: המכוניות יורדות לחניון, המדרכה מתרחבת, וקומת הקרקע נפתחת למכולת, לקפה ולמרפאה.</p>
           <ul>
-            <li class="hd"><span>היום</span><span>2029</span></li>
+            <li class="hd"><span></span><span class="h-was">היום</span><span></span><span>2029</span></li>
             <li><span>עצים ברחוב</span><span class="was">9</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="9" data-to="31">31</b>עצים</span></li>
             <li><span>מדרכה מוצלת</span><span class="was">40</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="40" data-to="180">180</b>מטר</span></li>
             <li><span>עסקים בקומת הקרקע</span><span class="was">0</span><span class="to" aria-hidden="true">←</span><span class="now"><b data-from="0" data-to="4">4</b>עסקים</span></li>
