@@ -30,9 +30,9 @@ def glow(g, t):
     m = 'radial-gradient(ellipse %s%% %s%% at %s%% %s%%,#000 0,#000 52%%,transparent 100%%)' % (g[2], g[3], g[0], g[1])
     a = '' if t <= 0 else f'animation:lamp .45s linear {t:.2f}s both;'
     return f'<div style="position:absolute;inset:0;background:url(assets/10-hero.webp) 0 0/100% 100%;-webkit-mask-image:{m};mask-image:{m};{a}"></div>'
-def seq(folder, n, t, fps=24):
+def seq(folder, n, t, fps=24, h=1200):
     # the clip of her walking the line, as stacked frames (from character/clips/walk.mp4, top 800px, see NOTES.md)
-    return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;left:0;top:0;width:1080px;height:1200px' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
+    return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;left:0;top:0;width:1080px;height:{h}px' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
 # the site, as the huge thing under the line: its hero at desktop proportions, lighting up
 SW, SH = 1010, 690
 site = f'<div style="position:absolute;left:{(1080-SW)//2}px;top:1238px;width:{SW}px;height:{SH}px;border-radius:26px 26px 0 0;overflow:hidden;background:{NUIT};box-shadow:0 -10px 60px rgba(20,30,45,.28)">'
@@ -51,59 +51,16 @@ hook = f"""<section class="scene" style="overflow:hidden">
 {site}
 </section>"""
 
-# ── 2 · 2.8–6.2: the street. Three addresses stand on one pavement line; she walks it ──
-a = 2.8
-lots = [('16-flagship.webp', 620, 840, '14', 'הדקל 14'), ('11-tower.webp', 520, 720, '3', 'החוף 3'), ('14-hotel.webp', 600, 600, '9', 'ביאליק 9')]
-track = ''
-for src, w, h, n, nm in lots:
-    track += f'<div style="flex:none;width:{w}px;margin:0 16px"><div style="height:{h}px;border-radius:14px 14px 0 0;overflow:hidden"><img src="assets/{src}" style="width:100%;height:100%;object-fit:cover"></div><div style="display:flex;align-items:center;gap:18px;padding-top:26px;direction:ltr"><span style="font-family:{SERIF};font-weight:500;font-size:60px;line-height:1;color:{PEACH};border:3px solid {PEACH};border-radius:12px;padding:.14em .36em .06em;min-width:1.7em;text-align:center">{n}</span><span style="font-family:{SERIF};font-size:50px;color:{STONE};direction:rtl">{nm}</span></div></div>'
-street = f'''<section class="scene" style="animation:fade .3s linear {a}s both;overflow:hidden;background:linear-gradient({NUIT},#1D1942);color:{STONE}">
-<div style="position:absolute;left:0;top:1610px;transform:translateY(-100%);display:flex;align-items:flex-end;direction:ltr;animation:walk 3.9s linear {a}s both;--x0:120px;--x1:-760px"><div style="display:flex;align-items:flex-start">{track}</div></div>
-<div style="position:absolute;left:0;right:0;top:0;height:760px;background:linear-gradient({NUIT} 55%,rgba(20,18,42,0))"></div>
-<div style="position:absolute;left:0;right:0;top:1487px;height:3px;background:rgba(239,230,216,.55)"></div>
-<img src="assets/sit.webp" style="position:absolute;left:150px;top:{1487-212}px;width:{round(370*988/2000)}px;height:370px;animation:{an('drop', a+.5, .6)};filter:drop-shadow(0 14px 18px rgba(10,8,25,.45))">
-{head(a, 'לפרויקט אין שם. יש לו כתובת.')}
-</section>'''
-# the lots sit with their image bottom on the line: shift the track so that captions fall below it
-street = street.replace('top:1610px;transform:translateY(-100%)', 'top:1487px;transform:translateY(calc(-100% + 113px))')
-
-# ── 3 · 6.2–9.7: the plate stays; the building behind it changes. She sits on it ──
-a = 6.2
-PW, PH, PT = 800, 430, 930
-plate = f'''<section class="scene" style="animation:fade .3s linear {a}s both;overflow:hidden;background:{NUIT};color:{STONE}">
-<img src="assets/01-old.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.6)">
-<div style="position:absolute;inset:0;animation:wipe .7s cubic-bezier(.6,0,.2,1) {a+1.5}s both"><img src="assets/16-flagship.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%"></div>
-<div style="position:absolute;inset:0;background:linear-gradient(rgba(20,18,42,.92) 0,rgba(20,18,42,.5) 36%,rgba(20,18,42,.25) 60%,rgba(20,18,42,.85))"></div>
-<div style="position:absolute;left:{(1080-PW)//2}px;top:{PT}px;width:{PW}px;height:{PH}px;border-radius:70px;background:{STONE};box-shadow:0 40px 90px rgba(10,8,25,.6);animation:{an('pop', a+.25, .6)}">
-<div style="position:absolute;left:70px;top:0;height:{PH}px;display:flex;align-items:center;font-family:{SERIF};font-weight:500;font-size:330px;line-height:1;color:{RINK};direction:ltr;padding-top:.06em">14</div>
-<div style="position:absolute;inset:0;border-radius:70px;animation:ringon .6s ease-out {a+2.3}s both"></div>
-</div>
-<img src="assets/sit.webp" style="position:absolute;left:{(1080-PW)//2+PW-250}px;top:{PT-258}px;width:{round(450*988/2000)}px;height:450px;animation:{an('drop', a+.95, .6)};filter:drop-shadow(0 16px 20px rgba(10,8,25,.4))">
-<div style="position:absolute;left:0;right:0;top:1500px;text-align:center;direction:ltr;font-family:{NUM};font-size:84px;color:{PEACH}"><span style="animation:fadeout .25s linear {a+1.5}s both">1964</span></div>
-<div style="position:absolute;left:0;right:0;top:1500px;text-align:center;direction:ltr;font-family:{NUM};font-size:84px;color:{PEACH};animation:{an('fade', a+1.75, .3)}">2029</div>
-{head(a, 'הבניין מתחלף. המספר נשאר.')}
-</section>'''
-
-# ── 4 · 9.7–12.6: inside. The rooms open as a fan over the sun; she stands on the horizon ──
-a = 9.7
-CX, CY, R, R0, W = 540, 1330, 500, 112, 36.0
-pt = lambda r, g: (R + r*math.cos(math.radians(g)), R - r*math.sin(math.radians(g)))
-sector = 'polygon(50% 50%,' + ','.join('%.2f%% %.2f%%' % (pt(R, .7 + k*(W-1.4)/12)[0]/10, pt(R, .7 + k*(W-1.4)/12)[1]/10) for k in range(13)) + ')'
-fan = ''
-for i, src in enumerate(['16-flagship.webp', '22-lobby.webp', '20-kitchen.webp', '23-living.webp', '21-balcony.webp']):
-    g = W*i
-    pts = [pt(R0, g), pt(R, g), pt(R, g+W), pt(R0, g+W)] + [pt(R, q) for q in (90,) if g < q < g+W]
-    xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
-    ko = kf('fo%d' % i, 'from{rotate:0deg}to{rotate:-%.1fdeg}' % g); ki = kf('fi%d' % i, 'from{rotate:0deg}to{rotate:%.1fdeg}' % g)
-    fan += f'<div style="position:absolute;inset:0;clip-path:{sector};animation:{ko} 1.3s cubic-bezier(.4,0,.2,1) {a+.35}s both"><div style="position:absolute;inset:0;animation:{ki} 1.3s cubic-bezier(.4,0,.2,1) {a+.35}s both"><img src="assets/{src}" style="position:absolute;left:{min(xs):.0f}px;top:{min(ys):.0f}px;width:{max(xs)-min(xs):.0f}px;height:{max(ys)-min(ys):.0f}px;object-fit:cover"></div></div>'
-inside = f'''<section class="scene" style="animation:fade .3s linear {a}s both;overflow:hidden;background:linear-gradient(#2F2659,#493873);color:{STONE}">
-<div style="position:absolute;left:{CX-R}px;top:{CY-R}px;width:{2*R}px;height:{R}px;overflow:hidden"><div style="position:absolute;left:0;top:0;width:{2*R}px;height:{2*R}px">{fan}
-<div style="position:absolute;left:{R-R0}px;top:{R-R0}px;width:{2*R0}px;height:{2*R0}px;border-radius:50%;background:#3F3270"></div>
-<div style="position:absolute;left:{R-R0+22}px;top:{R-R0+22}px;width:{2*R0-44}px;height:{2*R0-44}px;border-radius:50%;background:radial-gradient(circle,#F7C9A3 0,#F2A977 70%,#A8718F 100%)"></div></div></div>
-<div style="position:absolute;left:40px;right:40px;top:{CY}px;height:3px;background:rgba(239,230,216,.5)"></div>
-<div style="position:absolute;left:0;right:0;top:{CY+70}px;text-align:center;font-size:40px;color:rgba(239,230,216,.8);animation:{an('fade', a+1.5, .4)}">הרחוב · הלובי · המטבח · הסלון · המרפסת</div>
-{head(a, 'סטנדרט אחר מתחיל בפנים.')}
-</section>'''
+# ── 2–4 · three Kling clips of her inside the world (stills by Hagit, GPT Image 2.6; clips kling-video-v3_0_turbo, 5s, 1080p) ──
+def clip(a, folder, n, line):
+    return f"""<section class="scene" style="animation:fade .3s linear {a}s both;overflow:hidden;background:{NUIT};color:{STONE}">
+{seq(folder, n, a, h=1920)}
+<div style="position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient(rgba(20,18,42,.72),rgba(20,18,42,0))"></div>
+{head(a, line)}
+</section>"""
+model = clip(2.8, 'model', 80, 'אותה כתובת. סטנדרט אחר.')
+plate = clip(6.1, 'plate', 80, 'הבניין מתחלף. המספר נשאר.')
+key = clip(9.4, 'key', 78, 'חמש מדרגות, ואז מפתח.')
 
 # ── 5 · CTA 12.6–15.5: she sits on the button; everything has landed by 14.2, then it holds ──
 a = 12.6
@@ -148,6 +105,6 @@ img{{display:block}}
 @keyframes ringon{{from{{box-shadow:0 0 0 0 rgba(242,169,119,0)}}to{{box-shadow:0 0 0 14px rgba(242,169,119,.95),0 0 120px 30px rgba(242,169,119,.5)}}}}
 {chr(10).join(kfs)}
 </style></head><body>
-{hook}{street}{plate}{inside}{cta}
+{hook}{model}{plate}{key}{cta}
 </body></html>'''
 pathlib.Path(__file__).with_name('reel.html').write_text(html, encoding='utf-8')
