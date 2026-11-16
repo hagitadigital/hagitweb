@@ -30,16 +30,26 @@ def glow(g, t):
     m = 'radial-gradient(ellipse %s%% %s%% at %s%% %s%%,#000 0,#000 52%%,transparent 100%%)' % (g[2], g[3], g[0], g[1])
     a = '' if t <= 0 else f'animation:lamp .45s linear {t:.2f}s both;'
     return f'<div style="position:absolute;inset:0;background:url(assets/10-hero.webp) 0 0/100% 100%;-webkit-mask-image:{m};mask-image:{m};{a}"></div>'
-rig = '<div style="position:absolute;left:-139px;top:384px;width:2717px;height:1536px"><img src="assets/10-hero.webp" style="position:absolute;inset:0;width:100%;height:100%;filter:brightness(.46) saturate(.42) contrast(1.06) hue-rotate(-8deg)">'
-rig += ''.join(glow(g, 0) for g in COMMON) + ''.join(glow(g, -.42 + i*.21) for i, g in enumerate(HOMES)) + '</div>'
-rig += '<div style="position:absolute;left:0;right:0;top:0;height:560px;background:#1A202E;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)"></div>'
-hook = f'''<section class="scene" style="overflow:hidden;background:#1A202E">{rig}
-<div style="position:absolute;left:0;right:0;bottom:0;height:420px;background:linear-gradient(to top,rgba(20,18,42,.9),rgba(20,18,42,0))"></div>
-<h1 style="position:absolute;left:80px;right:80px;top:230px;margin:0;font-size:80px;line-height:1.16;font-weight:600;text-align:right;color:{STONE}">הפרויקט שלך כבר עולם.<br><span style="color:{PEACH}">נכנסת אליו פעם?</span></h1>
-<div style="position:absolute;left:0;right:0;top:1457px;height:4px;background:{COPPER}"></div>
-<div style="position:absolute;left:0;top:1437px;{BALL};animation:walk 3s linear 0s both;--x0:560px;--x1:1000px"></div>
-{she(360, 0, 1457-352, 0, walk=(150, 520, 3))}
-</section>'''
+def seq(folder, n, t, fps=24):
+    # the clip of her walking the line, as stacked frames (from character/clips/walk.mp4, top 800px, see NOTES.md)
+    return ''.join(f'<img src="assets/{folder}/f{i:03d}.jpg" style="position:absolute;left:0;top:0;width:1080px;height:1200px' + (f';animation:on .001s linear {t+(i-1)/fps:.3f}s both' if i > 1 else '') + '">' for i in range(1, n+1))
+# the site, as the huge thing under the line: its hero at desktop proportions, lighting up
+SW, SH = 1010, 690
+site = f'<div style="position:absolute;left:{(1080-SW)//2}px;top:1238px;width:{SW}px;height:{SH}px;border-radius:26px 26px 0 0;overflow:hidden;background:{NUIT};box-shadow:0 -10px 60px rgba(20,30,45,.28)">'
+site += f'<div style="position:absolute;left:0;top:0;width:{round(SH*2400/1357)}px;height:{SH}px"><img src="assets/10-hero.webp" style="position:absolute;inset:0;width:100%;height:100%;filter:brightness(.46) saturate(.42) contrast(1.06) hue-rotate(-8deg)">'
+site += ''.join(glow(g, 0) for g in COMMON) + ''.join(glow(g, -.42 + i*.21) for i, g in enumerate(HOMES))
+site += f'<img src="assets/10-hero.webp" style="position:absolute;inset:0;width:100%;height:100%;animation:fade .7s linear 2.15s both"></div>'
+site += f'<div style="position:absolute;left:0;right:0;top:0;height:90px;background:linear-gradient(rgba(20,18,42,.75),rgba(20,18,42,0))"></div>'
+site += f'<div style="position:absolute;right:34px;top:26px;font-family:{NUM};font-weight:500;font-size:30px;letter-spacing:.12em;color:{STONE};border:2px solid {STONE};border-radius:9px;padding:.28em .5em .2em .58em" dir="ltr">RUE<span style="color:{APR}">°</span></div>'
+site += f'<div style="position:absolute;left:36px;top:40px;display:flex;gap:26px;font-size:17px;color:rgba(239,230,216,.75);direction:rtl"><span>הכתובות</span><span>הדרך הביתה</span><span>השכונה</span><span>בפנים</span></div>'
+site += f'<div style="position:absolute;right:40px;top:250px;text-align:right;font-family:{SERIF};font-size:78px;line-height:1.04;color:{STONE}">אותה כתובת.<br><span style="color:{PEACH}">סטנדרט אחר.</span></div></div>'
+hook = f"""<section class="scene" style="overflow:hidden">
+{seq('walk', 72, 0)}
+<h1 style="position:absolute;left:80px;right:80px;top:250px;margin:0;font-size:76px;line-height:1.18;font-weight:600;text-align:right">הפרויקט שלך כבר עולם.<br><span style="color:{COPPER}">נכנסת אליו פעם?</span></h1>
+<div style="position:absolute;left:0;right:0;top:1157px;height:4px;background:{COPPER}"></div>
+<div style="position:absolute;left:0;top:1137px;{BALL};animation:walk 3s linear 0s both;--x0:470px;--x1:960px"></div>
+{site}
+</section>"""
 
 # ── 2 · 2.8–6.2: the street. Three addresses stand on one pavement line; she walks it ──
 a = 2.8
@@ -51,7 +61,7 @@ street = f'''<section class="scene" style="animation:fade .3s linear {a}s both;o
 <div style="position:absolute;left:0;top:1610px;transform:translateY(-100%);display:flex;align-items:flex-end;direction:ltr;animation:walk 3.9s linear {a}s both;--x0:120px;--x1:-760px"><div style="display:flex;align-items:flex-start">{track}</div></div>
 <div style="position:absolute;left:0;right:0;top:0;height:760px;background:linear-gradient({NUIT} 55%,rgba(20,18,42,0))"></div>
 <div style="position:absolute;left:0;right:0;top:1487px;height:3px;background:rgba(239,230,216,.55)"></div>
-{she(300, 330, 1487-293, a)}
+<img src="assets/sit.webp" style="position:absolute;left:150px;top:{1487-212}px;width:{round(370*988/2000)}px;height:370px;animation:{an('drop', a+.5, .6)};filter:drop-shadow(0 14px 18px rgba(10,8,25,.45))">
 {head(a, 'לפרויקט אין שם. יש לו כתובת.')}
 </section>'''
 # the lots sit with their image bottom on the line: shift the track so that captions fall below it
@@ -91,7 +101,6 @@ inside = f'''<section class="scene" style="animation:fade .3s linear {a}s both;o
 <div style="position:absolute;left:{R-R0}px;top:{R-R0}px;width:{2*R0}px;height:{2*R0}px;border-radius:50%;background:#3F3270"></div>
 <div style="position:absolute;left:{R-R0+22}px;top:{R-R0+22}px;width:{2*R0-44}px;height:{2*R0-44}px;border-radius:50%;background:radial-gradient(circle,#F7C9A3 0,#F2A977 70%,#A8718F 100%)"></div></div></div>
 <div style="position:absolute;left:40px;right:40px;top:{CY}px;height:3px;background:rgba(239,230,216,.5)"></div>
-{she(250, 0, CY-244, a+.2, walk=(60, 330, 2.7))}
 <div style="position:absolute;left:0;right:0;top:{CY+70}px;text-align:center;font-size:40px;color:rgba(239,230,216,.8);animation:{an('fade', a+1.5, .4)}">הרחוב · הלובי · המטבח · הסלון · המרפסת</div>
 {head(a, 'סטנדרט אחר מתחיל בפנים.')}
 </section>'''
@@ -126,6 +135,7 @@ html = f'''<!doctype html><html lang="he"><head><meta charset="utf-8"><title>RUE
 html,body{{margin:0;width:1080px;height:1920px;overflow:hidden;background:{CREAM}}}
 .scene{{position:absolute;inset:0;box-sizing:border-box;background:{CREAM};color:{INK};font-family:'Heebo',sans-serif;direction:rtl}}
 img{{display:block}}
+@keyframes on{{from{{visibility:hidden}}to{{visibility:visible}}}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 @keyframes fadeout{{from{{opacity:1}}to{{opacity:0}}}}
 @keyframes rise{{from{{opacity:0;translate:0 40px}}to{{opacity:1;translate:0 0}}}}
