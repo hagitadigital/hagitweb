@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="he"><head><meta charset="utf-8"><title>ORÉVA° — how the identity is built</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+html,body{margin:0;background:#F6EFE7}
+body{font-family:'Heebo',sans-serif;color:#3A2E29}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F6EFE7}
+.film *{animation-duration:34s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);animation-fill-mode:both}
+.stack{position:absolute;inset:0}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.scene{position:absolute;inset:0;overflow:hidden}
+.bf{animation-name:bf;animation-timing-function:linear}
+@keyframes bf{0%{opacity:0}.01%{opacity:1}.31%{opacity:1}.32%,100%{opacity:0}}
+@keyframes k1{0%,1.765%{stroke-dashoffset:1}10.588%,100%{stroke-dashoffset:0}}
+@keyframes k2{0%,1.471%{offset-distance:0%;opacity:0}1.765%{offset-distance:0%;opacity:1}10.588%,100%{offset-distance:100%;opacity:1}}
+@keyframes k3{0%,1.765%{transform:rotate(0deg)}10.588%,100%{transform:rotate(-400deg)}}
+@keyframes k4{0%,2.059%{opacity:0;transform:translateY(40px)}3.382%,100%{opacity:1;transform:none}}
+@keyframes k5{0%,3.824%{opacity:0;transform:translateY(40px)}5.147%,100%{opacity:1;transform:none}}
+@keyframes k6{0%,13.235%{transform:translate(-490.1px,-324.2px) scale(1.420)}28.529%{transform:translate(-418.7px,-315.5px) scale(1.220)}32.059%,100%{transform:translate(-342.6px,0.0px) scale(1.000)}}
+@keyframes k7{0%,32.059%{stroke-dashoffset:1}39.118%,100%{stroke-dashoffset:0}}
+@keyframes k8{0%,38.824%{opacity:0;transform:scale(.2)}39.559%{opacity:1;transform:scale(1.7)}40.441%,100%{opacity:1;transform:scale(1)}}
+@keyframes k9{0%,31.176%{opacity:0}32.059%,100%{opacity:1}}
+@keyframes k10{0%,44.265%{opacity:0;transform:translateY(90px)}45.882%,100%{opacity:1;transform:none}}
+@keyframes k11{0%,45.000%{opacity:0;transform:translateY(50px) scale(.94)}46.765%,100%{opacity:1;transform:none}}
+@keyframes k12{0%,51.176%{opacity:.0;transform:translateY(16px)}52.500%,100%{opacity:1;transform:none}}
+@keyframes k13{0%,51.176%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 0 rgba(184,122,87,0)}52.206%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 7px rgba(184,122,87,.9)}54.118%,100%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 3px rgba(184,122,87,.55)}}
+@keyframes k14{0%,45.882%{opacity:0;transform:translateY(90px)}47.500%,100%{opacity:1;transform:none}}
+@keyframes k15{0%,46.618%{opacity:0;transform:translateY(50px) scale(.94)}48.382%,100%{opacity:1;transform:none}}
+@keyframes k16{0%,53.529%{opacity:.0;transform:translateY(16px)}54.853%,100%{opacity:1;transform:none}}
+@keyframes k17{0%,53.529%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 0 rgba(184,122,87,0)}54.559%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 7px rgba(184,122,87,.9)}56.471%,100%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 3px rgba(184,122,87,.55)}}
+@keyframes k18{0%,47.500%{opacity:0;transform:translateY(90px)}49.118%,100%{opacity:1;transform:none}}
+@keyframes k19{0%,48.235%{opacity:0;transform:translateY(50px) scale(.94)}50.000%,100%{opacity:1;transform:none}}
+@keyframes k20{0%,55.882%{opacity:.0;transform:translateY(16px)}57.206%,100%{opacity:1;transform:none}}
+@keyframes k21{0%,55.882%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 0 rgba(184,122,87,0)}56.912%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 7px rgba(184,122,87,.9)}58.824%,100%{box-shadow:0 20px 50px rgba(143,90,60,.14),0 0 0 3px rgba(184,122,87,.55)}}
+@keyframes k22{0%,65.000%{letter-spacing:.02em;opacity:0}65.882%{opacity:1}68.529%,100%{letter-spacing:.3em;opacity:1}}
+@keyframes k23{0%,69.706%{transform:translateY(110%)}71.324%,100%{transform:none}}
+@keyframes k24{0%,74.118%{transform:scale(1.1)}89.412%,100%{transform:scale(1)}}
+@keyframes k25{0%,87.941%{opacity:0;transform:scale(1.9)}90.588%,100%{opacity:1;transform:scale(1)}}
+@keyframes k26{0%,89.118%{opacity:0;transform:translateY(28px)}90.735%,100%{opacity:1;transform:none}}
+@keyframes k27{0%,89.706%{opacity:0;transform:translateY(28px)}91.324%,100%{opacity:1;transform:none}}
+@keyframes k28{0%,92.059%{opacity:0;transform:translateY(28px)}93.676%,100%{opacity:1;transform:none}}
+@keyframes k29{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+</style></head>
+<body data-duration="34"><div id="stage"><div class="film stack">
+<section class="scene" data-show="0,4.5" style="background:#F6EFE7">
+  <div class="stack" data-seq="a/bloom/f%02d.webp" data-from="18" data-to="48" data-by="1" data-start="0.25" data-step="0.09" data-pos="66% 50%"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:760px;background:linear-gradient(to bottom,rgba(246,239,231,.97) 0,rgba(246,239,231,.9) 55%,rgba(246,239,231,0))"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:760px;background:linear-gradient(to top,rgba(246,239,231,.96) 0,rgba(246,239,231,.82) 50%,rgba(246,239,231,0))"></div>
+  <div style="position:absolute;top:84px;right:70px;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;color:#3A2E29" dir="ltr">Brand Worlds Studio</div>
+    <div style="font-size:17px;letter-spacing:.3em;color:#8F5A3C">חגית אנטבי</div>
+  </div>
+  <div style="position:absolute;top:226px;left:70px;right:70px;text-align:right;font-size:80px;font-weight:600;line-height:1.16;color:#3A2E29" dir="rtl">סרום כמו כל סרום.<br><span style="color:#8F5A3C">איך הופכים אותו למותג?</span></div>
+  <div style="position:absolute;top:1345px;left:70px;right:70px;display:flex;gap:30px;justify-content:flex-start" dir="rtl"><div style="width:170px;"><div style="height:160px;border-radius:22px;background:#F1D3A6;border:3px solid rgba(255,255,255,.85);box-shadow:0 18px 40px rgba(143,90,60,.25)"></div><div style="margin-top:12px;display:flex;justify-content:space-between;align-items:baseline;font-family:'Cormorant Garamond',serif;font-size:38px;color:#3A2E29" dir="ltr"><span>DEW</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;letter-spacing:.1em;color:#8F5A3C">#F1D3A6</span></div></div><div style="width:170px;animation-name:k4;"><div style="height:160px;border-radius:22px;background:#F0BFB0;border:3px solid rgba(255,255,255,.85);box-shadow:0 18px 40px rgba(143,90,60,.25)"></div><div style="margin-top:12px;display:flex;justify-content:space-between;align-items:baseline;font-family:'Cormorant Garamond',serif;font-size:38px;color:#3A2E29" dir="ltr"><span>GLOW</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;letter-spacing:.1em;color:#8F5A3C">#F0BFB0</span></div></div><div style="width:170px;animation-name:k5;"><div style="height:160px;border-radius:22px;background:#D9B8C0;border:3px solid rgba(255,255,255,.85);box-shadow:0 18px 40px rgba(143,90,60,.25)"></div><div style="margin-top:12px;display:flex;justify-content:space-between;align-items:baseline;font-family:'Cormorant Garamond',serif;font-size:38px;color:#3A2E29" dir="ltr"><span>CALM</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;letter-spacing:.1em;color:#8F5A3C">#D9B8C0</span></div></div></div>
+  <svg class="stack" width="1080" height="1920" viewBox="0 0 1080 1920" aria-hidden="true"><path pathLength="1" d="M1140 1590 H540" style="fill:none;stroke:#B87A57;stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1;animation-name:k1;animation-timing-function:linear"></path></svg>
+  <div style="position:absolute;left:0;top:0;width:104px;height:104px;offset-rotate:0deg;offset-path:path('M1140 1590 H540');animation-name:k2;animation-timing-function:linear"><div style="position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)"></div><div style="position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)"><div style="position:absolute;inset:0;animation-name:k3;animation-timing-function:linear"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:21px;color:#F5DEC4" dir="ltr">BW</div></div></div></div>
+</section>
+<section class="scene" data-show="4.5,14.6" style="background:#F6EFE7">
+  <div style="position:absolute;top:310px;left:0;width:1080px;height:1360px;overflow:hidden;background:#D9C7B3">
+    <div style="position:absolute;left:0;top:0;width:2418px;height:1360px;transform-origin:0 0;animation-name:k6;animation-timing-function:cubic-bezier(.45,0,.2,1)">
+      <img src="a/founder-cream-on-hand.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+      <svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" aria-hidden="true">
+        <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E6B899"/><stop offset=".5" stop-color="#B87A57"/><stop offset="1" stop-color="#8F5A3C"/></linearGradient>
+        <radialGradient id="bg" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#F6DCC9"/><stop offset=".55" stop-color="#B87A57"/><stop offset="1" stop-color="#6E4128"/></radialGradient></defs>
+        <path pathLength="1" d="M462 668 C 520 742 610 778 664 716 C 722 650 652 566 704 524 C 728 506 750 512 756 532" style="fill:none;stroke:rgba(110,65,40,.28);stroke-width:7;stroke-linecap:round;stroke-dasharray:1 1;animation-name:k7;animation-timing-function:cubic-bezier(.4,0,.3,1)" transform="translate(0,3)"></path>
+        <path pathLength="1" d="M462 668 C 520 742 610 778 664 716 C 722 650 652 566 704 524 C 728 506 750 512 756 532" style="fill:none;stroke:url(#rg);stroke-width:5.5;stroke-linecap:round;stroke-dasharray:1 1;animation-name:k7;animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
+        <path pathLength="1" d="M462 668 C 520 742 610 778 664 716 C 722 650 652 566 704 524 C 728 506 750 512 756 532" style="fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1 1;animation-name:k7;animation-timing-function:cubic-bezier(.4,0,.3,1)"></path>
+        <circle cx="462" cy="668" r="6" fill="url(#bg)" style="animation-name:k9"></circle>
+        <g transform="translate(756 532)"><circle r="11" fill="url(#bg)" style="animation-name:k8"></circle></g>
+      </svg>
+    </div>
+    <div data-in="11.4" style="position:absolute;left:44px;bottom:44px;padding:16px 26px;background:rgba(246,239,231,.94);border:1px solid #D9C7B3;border-radius:14px;font-size:27px;color:#3A2E29" dir="rtl"><b style="color:#8F5A3C;font-weight:600">קוד 01 · סרט הנחושת</b><br>קו אחד, רציף. אף פעם לא קשת.</div>
+  </div>
+  <div data-show="4.5,9.8" style="position:absolute;top:0;left:0;right:0;height:310px">
+  <div style="position:absolute;top:54px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline;font-size:24px;font-weight:500;color:#B87A57" dir="rtl"><span>01 · ההחלטה</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.24em" dir="ltr">BRAND WORLDS STUDIO · N°24</span></div>
+  <div style="position:absolute;top:112px;left:70px;right:70px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:78px;line-height:1.14;color:#3A2E29" dir="rtl">כל מוצר בליין<br><span style="color:#8F5A3C">יצא קודם מהידיים שלי.</span></div>
+</div>
+  <div data-show="10.15,14.6" style="position:absolute;top:0;left:0;right:0;height:310px">
+  <div style="position:absolute;top:54px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline;font-size:24px;font-weight:500;color:#B87A57" dir="rtl"><span>02 · האלמנט</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.24em" dir="ltr">BRAND WORLDS STUDIO · N°24</span></div>
+  <div style="position:absolute;top:112px;left:70px;right:70px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:78px;line-height:1.14;color:#3A2E29" dir="rtl">קו אחד,<br><span style="color:#8F5A3C">מהיד עד הבקבוק.</span></div>
+</div>
+</section>
+<section class="scene" data-show="14.6,20.4" style="background:#F6EFE7">
+  <div data-show="14.6,20.4" style="position:absolute;top:0;left:0;right:0;height:310px">
+  <div style="position:absolute;top:54px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline;font-size:24px;font-weight:500;color:#B87A57" dir="rtl"><span>03 · הצבעים</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.24em" dir="ltr">BRAND WORLDS STUDIO · N°24</span></div>
+  <div style="position:absolute;top:112px;left:70px;right:70px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:78px;line-height:1.14;color:#3A2E29" dir="rtl">שלושה גוונים,<br><span style="color:#8F5A3C">אחד לכל רגע של העור.</span></div>
+</div>
+  <div style="position:absolute;left:730px;top:350px;width:300px;height:1010px;animation-name:k10">
+  <div style="position:absolute;inset:0;border-radius:30px;background:#F1D3A6;animation-name:k13"></div>
+  <div style="position:absolute;top:34px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:66px;line-height:1;letter-spacing:.08em;color:#3A2E29" dir="ltr">DEW</div>
+  <div style="position:absolute;top:112px;left:0;right:0;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;letter-spacing:.22em;color:#8F5A3C" dir="ltr">#F1D3A6</div>
+  <div style="position:absolute;top:170px;left:0;right:0;height:600px;display:flex;align-items:flex-end;justify-content:center;animation-name:k11"><img src="a/p-dew.webp" alt="" style="width:205px;height:auto;display:block;filter:drop-shadow(0 18px 22px rgba(110,65,40,.25))"></div>
+  <div style="position:absolute;top:800px;left:14px;right:14px;text-align:center;animation-name:k12" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:50px;line-height:1.1;color:#3A2E29">בוקר</div><div style="margin-top:12px;font-size:25px;line-height:1.35;color:#8F5A3C">לחות שנשארת<br>עד הערב</div></div>
+</div><div style="position:absolute;left:390px;top:350px;width:300px;height:1010px;animation-name:k14">
+  <div style="position:absolute;inset:0;border-radius:30px;background:#F0BFB0;animation-name:k17"></div>
+  <div style="position:absolute;top:34px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:66px;line-height:1;letter-spacing:.08em;color:#3A2E29" dir="ltr">GLOW</div>
+  <div style="position:absolute;top:112px;left:0;right:0;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;letter-spacing:.22em;color:#8F5A3C" dir="ltr">#F0BFB0</div>
+  <div style="position:absolute;top:170px;left:0;right:0;height:600px;display:flex;align-items:flex-end;justify-content:center;animation-name:k15"><img src="a/p-glow.webp" alt="" style="width:262px;height:auto;display:block;filter:drop-shadow(0 18px 22px rgba(110,65,40,.25))"></div>
+  <div style="position:absolute;top:800px;left:14px;right:14px;text-align:center;animation-name:k16" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:50px;line-height:1.1;color:#3A2E29">ערב</div><div style="margin-top:12px;font-size:25px;line-height:1.35;color:#8F5A3C">זוהר שרואים<br>במראה</div></div>
+</div><div style="position:absolute;left:50px;top:350px;width:300px;height:1010px;animation-name:k18">
+  <div style="position:absolute;inset:0;border-radius:30px;background:#D9B8C0;animation-name:k21"></div>
+  <div style="position:absolute;top:34px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:66px;line-height:1;letter-spacing:.08em;color:#3A2E29" dir="ltr">CALM</div>
+  <div style="position:absolute;top:112px;left:0;right:0;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;letter-spacing:.22em;color:#8F5A3C" dir="ltr">#D9B8C0</div>
+  <div style="position:absolute;top:170px;left:0;right:0;height:600px;display:flex;align-items:flex-end;justify-content:center;animation-name:k19"><img src="a/p-calm.webp" alt="" style="width:296px;height:auto;display:block;filter:drop-shadow(0 18px 22px rgba(110,65,40,.25))"></div>
+  <div style="position:absolute;top:800px;left:14px;right:14px;text-align:center;animation-name:k20" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:40px;line-height:1.1;color:#3A2E29">כשהעור מבקש</div><div style="margin-top:12px;font-size:25px;line-height:1.35;color:#8F5A3C">הרגעה לעור<br>שמגיב</div></div>
+</div>
+  <div style="position:absolute;top:1420px;left:50px;right:50px;display:flex;justify-content:space-between" dir="rtl"><div data-in="16.90" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#F6EFE7;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">קרם</span></div><div data-in="16.99" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#D9C7B3;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">טרוורטין</span></div><div data-in="17.08" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#EFCDBF;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">סומק</span></div><div data-in="17.17" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#B87A57;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">נחושת</span></div><div data-in="17.26" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#8F5A3C;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">נחושת עמוקה</span></div><div data-in="17.35" style="width:136px;display:flex;flex-direction:column;align-items:center;gap:10px"><span style="width:92px;height:92px;border-radius:50%;background:#3A2E29;border:2px solid #fff;box-shadow:0 8px 20px rgba(143,90,60,.2)"></span><span style="font-size:21px;color:#3A2E29;white-space:nowrap">דיו</span></div></div>
+</section>
+<section class="scene" data-show="20.4,25.2" style="background:#F6EFE7">
+  <div data-show="20.4,25.2" style="position:absolute;top:0;left:0;right:0;height:310px">
+  <div style="position:absolute;top:54px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline;font-size:24px;font-weight:500;color:#B87A57" dir="rtl"><span>04 · השפה</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.24em" dir="ltr">BRAND WORLDS STUDIO · N°24</span></div>
+  <div style="position:absolute;top:112px;left:70px;right:70px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:78px;line-height:1.14;color:#3A2E29" dir="rtl">אבן מתחת לכל בקבוק.<br><span style="color:#8F5A3C">ושורה שנייה שסוגרת.</span></div>
+</div>
+  <div data-in="20.7" style="position:absolute;left:560px;top:340px;width:470px;height:520px;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px rgba(143,90,60,.16)"><img src="a/packaging-set-ribbon.webp" alt="" style="position:absolute;left:-150px;top:-360px;width:1320px;height:880px;display:block">
+  <span style="position:absolute;right:16px;bottom:16px;padding:9px 18px;border-radius:999px;background:rgba(246,239,231,.94);font-size:24px;color:#3A2E29" dir="rtl">אבן הטרוורטין</span></div>
+  <div data-in="21.299999999999997" style="position:absolute;left:50px;top:340px;width:470px;height:520px;border-radius:24px;overflow:hidden;box-shadow:0 18px 44px rgba(143,90,60,.16)"><div style="position:absolute;inset:0;background:#EFCDBF"></div><img src="a/p-glow.webp" alt="" style="position:absolute;left:-55px;top:40px;width:580px;height:auto;display:block">
+  <span style="position:absolute;right:16px;bottom:16px;padding:9px 18px;border-radius:999px;background:rgba(246,239,231,.94);font-size:24px;color:#3A2E29" dir="rtl">משאבת הנחושת</span></div>
+  <div style="position:absolute;top:900px;left:50px;right:50px;height:250px;border-radius:24px;background:#FBF7F1;border:1px solid #D9C7B3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px" data-in="21.9">
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:118px;line-height:1;color:#3A2E29;padding-left:.3em;animation-name:k22;animation-timing-function:cubic-bezier(.2,.7,.2,1)" dir="ltr">ORÉVA</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;letter-spacing:.42em;padding-left:.42em;color:#B87A57" dir="ltr">SKIN STUDIO</div>
+  </div>
+  <div style="position:absolute;top:1180px;left:50px;right:50px;height:330px;border-radius:24px;background:#FBF7F1;border:1px solid #D9C7B3" data-in="22.9">
+    <div style="position:absolute;top:26px;left:36px;right:36px;display:flex;justify-content:space-between;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;letter-spacing:.2em;color:#B87A57" dir="ltr"><span>FRANK RUHL LIBRE</span><span dir="rtl" style="font-family:'Heebo',sans-serif;letter-spacing:.04em;font-size:22px">קוד 05 · השורה השנייה</span></div>
+    <div style="position:absolute;top:84px;left:36px;right:36px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:92px;line-height:1.14;color:#3A2E29" dir="rtl">קודם הידיים.<br><span class="mask" style="display:inline-block;overflow:hidden;vertical-align:top"><span style="display:inline-block;color:#8F5A3C;animation-name:k23">אחר כך הבקבוק.</span></span></div>
+  </div>
+  <div data-in="24.299999999999997" style="position:absolute;top:1545px;left:50px;right:50px;height:96px;border-radius:18px;overflow:hidden;display:flex;border:1px solid #D9C7B3" dir="ltr"><span style="flex:1;background:#F1D3A6"></span><span style="flex:1;background:#F0BFB0"></span><span style="flex:1;background:#D9B8C0"></span><span style="flex:1;background:#F6EFE7"></span><span style="flex:1;background:#D9C7B3"></span><span style="flex:1;background:#EFCDBF"></span><span style="flex:1;background:#B87A57"></span><span style="flex:1;background:#8F5A3C"></span><span style="flex:1;background:#3A2E29"></span></div>
+</section>
+<section class="scene" data-show="25.2,34.0" style="background:#D9C7B3">
+  <div class="stack" style="animation-name:k24;animation-timing-function:linear"><div class="stack"><img class="cover" src="a/packaging-set-ribbon.webp" alt="" style="object-position:30% 50%"></div><div class="stack" data-show="26.40,34.0" data-fade="0.42"><img class="cover" src="a/lineup-three-serums-podiums.webp" alt="" style="object-position:50% 50%"></div><div class="stack" data-show="27.60,34.0" data-fade="0.42"><img class="cover" src="a/studio-interior-reception.webp" alt="" style="object-position:50% 50%"></div><div class="stack" data-show="28.80,34.0" data-fade="0.42"><img class="cover" src="a/founder-counter-full-line.webp" alt="" style="object-position:58% 50%"></div></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:560px;background:linear-gradient(to bottom,rgba(246,239,231,.97) 0,rgba(246,239,231,.9) 52%,rgba(246,239,231,0))"></div>
+  <div data-show="25.2,34.0" style="position:absolute;top:0;left:0;right:0;height:310px">
+  <div style="position:absolute;top:54px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:baseline;font-size:24px;font-weight:500;color:#B87A57" dir="rtl"><span>05 · הזהות</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.24em" dir="ltr">BRAND WORLDS STUDIO · N°24</span></div>
+  <div style="position:absolute;top:112px;left:70px;right:70px;text-align:right;font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:78px;line-height:1.14;color:#3A2E29" dir="rtl">מהקופסה<br><span style="color:#8F5A3C">ועד הדלפק.</span></div>
+</div>
+  <div data-show="25.30,26.00" data-fade="0.2" style="position:absolute;right:60px;top:1440px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:46px;line-height:1.1;color:#3A2E29">האריזה</div><div style="margin-top:4px;font-size:23px;color:#8F5A3C">סרט הנחושת · אבן הטרוורטין · סומק</div></div><div data-show="26.20,27.20" data-fade="0.2" style="position:absolute;right:60px;top:1440px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:46px;line-height:1.1;color:#3A2E29">הפודיום</div><div style="margin-top:4px;font-size:23px;color:#8F5A3C">משאבת הנחושת · סרט הנחושת</div></div><div data-show="27.40,28.40" data-fade="0.2" style="position:absolute;right:60px;top:1440px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:46px;line-height:1.1;color:#3A2E29">הסטודיו</div><div style="margin-top:4px;font-size:23px;color:#8F5A3C">אבן הטרוורטין · נחושת</div></div><div data-show="28.60,34.00" data-fade="0.2" style="position:absolute;right:60px;top:1440px;padding:16px 28px;background:rgba(246,239,231,.94);border-radius:14px;text-align:right" dir="rtl"><div style="font-family:'Frank Ruhl Libre',serif;font-weight:500;font-size:46px;line-height:1.1;color:#3A2E29">הדלפק</div><div style="margin-top:4px;font-size:23px;color:#8F5A3C">סרט הנחושת · משאבת הנחושת · אבן הטרוורטין</div></div>
+</section>
+<section class="scene" data-show="30.0,34.0" style="background:#FAF8F3">
+  <div style="position:absolute;top:96px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div style="font-size:28px;font-weight:500;letter-spacing:.06em;color:#C4765A;animation-name:k26;" dir="rtl">ORÉVA° · עולם מותג 24</div>
+    <div style="font-size:70px;font-weight:600;line-height:1.18;color:#6B563F;animation-name:k27;" dir="rtl">את ORÉVA° לא משווים.<br><span style="color:#C4765A">בוחרים.</span></div>
+  </div>
+  <div style="position:absolute;left:278px;top:440px;width:524px;height:880px;animation-name:k25;transform-origin:50% 50%">
+    <div style="position:absolute;inset:0;overflow:hidden;box-shadow:0 40px 110px rgba(59,46,51,.26)"><img class="cover" src="a/founder-counter-full-line.webp" alt="" style="object-position:58% 50%"></div>
+    <i style="position:absolute;left:-26px;top:-26px;width:40px;height:40px;border-top:2px solid #C4765A;border-left:2px solid #C4765A"></i><i style="position:absolute;right:-26px;top:-26px;width:40px;height:40px;border-top:2px solid #C4765A;border-right:2px solid #C4765A"></i>
+    <i style="position:absolute;left:-26px;bottom:-26px;width:40px;height:40px;border-bottom:2px solid #C4765A;border-left:2px solid #C4765A"></i><i style="position:absolute;right:-26px;bottom:-26px;width:40px;height:40px;border-bottom:2px solid #C4765A;border-right:2px solid #C4765A"></i>
+  </div>
+  <div style="position:absolute;top:1410px;left:60px;right:60px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;animation-name:k28;">
+    <div style="font-size:54px;font-weight:500;line-height:1.25;color:#C4765A" dir="rtl">ואת העסק שלך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:#6B563F;color:#FAF8F3;border-radius:12px" dir="rtl"><span style="font-size:38px;font-weight:500">אבחון פער המותג</span><span style="font-size:23px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</section>
+<div data-show="0.3,4.3" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">סרום בזכוכית חלבית שמבטיח זוהר.<br>יש אינסוף כאלה.</span></div><div data-show="4.6,9.6" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">אז התחלתי מהחלטה אחת:<br>כל מוצר יצא קודם מהידיים שלה.</span></div><div data-show="9.9,14.4" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">ממנה נולד קו נחושת אחד:<br>מתחיל ביד, נגמר בבקבוק.</span></div><div data-show="14.7,20.2" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">שלושה גוונים, אחד לכל רגע של העור:<br>בוקר, ערב, וכשהעור מבקש.</span></div><div data-show="20.5,25.0" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">אבן מתחת לכל בקבוק,<br>וכותרת שתמיד נסגרת בשורה שנייה.</span></div><div data-show="25.3,29.8" data-fade="0.18" style="position:absolute;left:0;right:0;bottom:104px;display:flex;justify-content:center"><span style="max-width:940px;padding:16px 34px;border-radius:16px;background:rgba(58,46,41,.9);color:#FBF6EE;font-size:39px;font-weight:500;line-height:1.32;text-align:center" dir="rtl">כך כל פרט, מהקופסה ועד הדלפק,<br>אומר אותו דבר.</span></div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(196,118,90,.18)"><div style="height:6px;background:#C4765A;transform-origin:right;animation-name:k29;animation-timing-function:linear"></div></div>
+</div></div>
+<script>(function(){
+  const D=+document.body.dataset.duration,css=[];const P=t=>(Math.max(0,Math.min(D,t))/D*100).toFixed(3)+'%';let n=0;
+  document.querySelectorAll('[data-show]').forEach(el=>{const [a,b]=el.dataset.show.split(',').map(Number),f=+(el.dataset.fade||.35),k='show'+(n++);
+    const s=a<=0?'0%{opacity:1}':`0%,${P(a-f)}{opacity:0}${P(a)}{opacity:1}`;const e=b>=D?'100%{opacity:1}':`${P(b)}{opacity:1}${P(b+f)},100%{opacity:0}`;
+    css.push(`@keyframes ${k}{${s}${e}}`);el.style.animationName=k;});
+  document.querySelectorAll('[data-in]').forEach(el=>{const t=+el.dataset.in,k='in'+(n++);
+    css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:translateY(30px)}${P(t+.6)},100%{opacity:1;transform:none}}`);el.style.animationName=k;});
+  document.querySelectorAll('[data-seq]').forEach(el=>{const d=el.dataset,from=+d.from,to=+d.to,by=+(d.by||1),start=+d.start,step=+d.step;
+    const pad=(s,i)=>s.replace(/%0(\d)d/,(_,w)=>String(i).padStart(+w,'0'));
+    const st=`position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${d.pos||'50% 50%'};display:block`;
+    const base=document.createElement('img');base.src=pad(d.seq,from);base.alt='';base.style.cssText=st;el.appendChild(base);
+    let i=0,last=from;for(let f=from;f<=to;f+=by,i++){const im=document.createElement('img');im.src=pad(d.seq,f);im.alt='';im.className='bf';im.style.cssText=st+`;animation-delay:${(start+i*step).toFixed(3)}s`;el.appendChild(im);last=f;}
+    const hold=document.createElement('img'),k='hold'+(n++),th=start+i*step;hold.src=pad(d.seq,last);hold.alt='';hold.style.cssText=st+`;animation-name:${k};animation-timing-function:linear`;
+    css.push(`@keyframes ${k}{0%,${P(th-.05)}{opacity:0}${P(th)},100%{opacity:1}}`);el.appendChild(hold);});
+  const s=document.createElement('style');s.textContent=css.join('\n');document.head.appendChild(s);
+})();</script></body></html>
