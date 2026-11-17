@@ -1,0 +1,81 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/local.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#F3EDE2}
+#st{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F3EDE2;color:#15202E;font-family:'Heebo',sans-serif}
+#st>*{position:absolute}
+.w{z-index:1;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#hd{z-index:6;top:230px;left:64px;right:64px;padding:26px 36px;border-radius:24px;background:#F2EBDC;font-size:64px;line-height:1.18;font-weight:600;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+.pill{z-index:6;right:64px;padding:8px 28px;border-radius:999px;background:#F2EBDC;font-size:30px;font-weight:600;color:#825630;box-shadow:0 10px 24px rgba(20,30,45,.18)}
+#mini{z-index:5;left:56px;top:960px;width:280px;height:400px;border-radius:50%;overflow:hidden;border:6px solid #1E3A2B;box-shadow:0 0 0 8px #F3EDE2,0 20px 44px rgba(20,30,45,.35)}
+#mini>*{position:absolute}
+.mb{inset:0;width:100%;height:100%;object-fit:cover}
+#me{width:390px;max-width:none;left:-55px;top:-88px}
+#cap{z-index:6;right:64px;left:64px;bottom:420px;padding:22px 32px;border-radius:24px;background:#F2EBDC;font-size:40px;line-height:1.35;font-weight:500;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+#cta{z-index:7;left:0;right:0;height:1920px;background:#F2EBDC;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:230px}
+.halo,.ball{position:absolute;border-radius:999px}
+.halo{width:80px;height:80px;top:-36px;background:#D9AE85}.ball{width:48px;height:48px;top:-20px;background:#C28A5A}
+</style></head><body>
+<div id="st">
+  <img class="w" id="w">
+  <div id="hd">מה לא רואים בתמונה הזאת?</div>
+  <div class="pill" id="pc" style="top:400px">עולם מותג קונספט · <span dir="ltr">PARDON ME°</span></div>
+  <div class="pill" id="ps" style="top:250px">מתוך האתר</div>
+  <div id="mini">
+    <div class="mb" id="k0" style="background:#CFE06A"></div>
+    <img class="mb" id="k1" src="pm/img/lemon.jpg">
+    <img class="mb" id="k2" src="pm/img/fig.jpg">
+    <img class="mb" id="k3" src="pm/img/rose.jpg">
+    <img class="mb" id="k4" src="pm/img/berry.jpg">
+    <div class="mb" id="k5" style="background:#F3EDE2"></div>
+    <img id="me">
+  </div>
+  <div id="cap"></div>
+  <div id="cta">
+    <img src="img/hagit.jpg" style="width:440px;height:580px;object-fit:cover;object-position:50% 20%;border-radius:50%">
+    <div dir="ltr" style="margin-top:44px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:68px;line-height:1.1">Brand Worlds Studio</div>
+    <div style="margin-top:10px;font-size:34px;letter-spacing:.3em;color:#3D4A5C">חגית אנטבי</div>
+    <div style="position:relative;width:952px;height:8px;margin-top:60px;background:#C28A5A;border-radius:99px"><div class="halo" id="halo"></div><div class="ball" id="ball"></div></div>
+    <div style="margin:60px 80px 0;font-size:60px;line-height:1.25;font-weight:600">החשיבה שמחברת ביניהן היא מה שבונה את המותג.</div>
+    <div style="margin-top:40px;padding:28px 72px;border-radius:24px;background:#15202E;color:#F2EBDC;font-size:48px;font-weight:600">אבחון פער המותג</div>
+    <div style="margin-top:24px;font-size:36px;color:#3D4A5C">30 דק׳ · בלי עלות</div>
+    <div dir="ltr" style="margin-top:24px;font-family:'Plus Jakarta Sans','Heebo';font-size:26px;font-weight:500;letter-spacing:.28em;color:#3D4A5C">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ez=x=>{x=cl(x);return x*x*(3-2*x)};
+const lerp=(a,b,p)=>a+(b-a)*p;
+const pad=(n,w)=>String(n).padStart(w,'0');
+const CUT=8.3;
+const take=r=>r<CUT? r+0.95 : r-CUT+32.75;
+const CAP=[[0.29,2.0,'כשאת רואה את התמונה הזאת,'],[2.05,3.55,'את רואה את התוצאה.'],[3.85,6.7,'אני רוצה להראות לך דווקא את מה שלא רואים בה.'],[6.75,8.25,'את ההחלטות שהובילו אליה.'],[8.6,11.0,'כי התמונות הן רק מה שרואים.'],[11.05,13.25,'החשיבה שמחברת ביניהן'],[13.45,15.15,'היא מה שבונה את המותג.']];
+const SHOTS=['s1','s2','s3','s4'];
+// what fills the screen at reel time r
+function world(r){
+  if(r<3.7) return ['pm/img/result.jpg', 1+0.06*cl(r/3.7)];
+  if(r<6.75) return ['pm/peek/'+pad(Math.round(62*ez((r-3.7)/2.8)),3)+'.jpg', 1];
+  if(r<CUT) return ['pm/tear/'+pad(r<6.95?0:Math.round(lerp(6,50,cl((r-6.95)/1.2))),3)+'.jpg', 1];
+  if(r<11.05){ const i=Math.min(3,Math.floor((r-CUT)/0.69)); const q=(r-CUT)-i*0.69; return ['pm/img/'+SHOTS[i]+'.jpg', 1.06-0.06*ez(q/0.5)]; }
+  if(r<13.4) return ['pm/reveal/'+pad(1+Math.round(250*cl((r-11.05)/2.35)),3)+'.jpg', 1];
+  return ['pm/peek/'+pad(Math.round(40*(1-ez((r-13.45)/1.4))),3)+'.jpg', 1];
+}
+async function setSrc(img,src){ if(img.dataset.s===src) return; img.dataset.s=src; img.src=src; try{await img.decode()}catch(e){} }
+window.seek=async function(r){
+  const jobs=[];
+  jobs.push(setSrc($('me'),'pm/me/'+pad(cl(Math.floor(take(r)*30)+1,25,1206),4)+'.webp'));
+  const w=world(r); jobs.push(setSrc($('w'),w[0])); $('w').style.transform='scale('+w[1]+')';
+  // her window: only the print behind her changes
+  const T=[0,3.7,6.75,CUT,11.05,13.45]; let st=0; T.forEach(function(t,i){ if(r>=t) st=i; });
+  for(let i=0;i<6;i++){ const e=$('k'+i); e.style.opacity = i<st?1:(i===st? (i===0?1:ez((r-T[i])/.3)) : 0); e.style.zIndex=i; }
+  $('me').style.zIndex=9;
+  const ho=1-ez((r-3.5)/.25); $('hd').style.opacity=ho; $('hd').style.transform='translateY('+((1-ho)*-30)+'px)'; $('pc').style.opacity=ho;
+  $('ps').style.opacity=ez((r-3.9)/.3)*(1-ez((r-8.1)/.2)) + ez((r-13.6)/.3)*(1-ez((r-14.9)/.2));
+  const cp=$('cap'); const k=CAP.find(x=>r>=x[0]&&r<x[1]);
+  if(k){ cp.textContent=k[2]; cp.style.opacity=Math.min(ez((r-k[0])/.12+.4),1)*(1-ez((r-15.0)/.2)); } else cp.style.opacity=0;
+  const z=ez((r-15.05)/.55); $('cta').style.opacity=z>0?1:0; $('cta').style.top=lerp(1920,0,z)+'px';
+  const bx=lerp(952,120,ez((r-15.5)/2.0)); $('halo').style.left=(bx-40)+'px'; $('ball').style.left=(bx-24)+'px';
+  await Promise.all(jobs);
+};
+</script></body></html>

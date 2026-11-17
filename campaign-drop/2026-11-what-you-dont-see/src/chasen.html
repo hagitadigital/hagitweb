@@ -1,0 +1,127 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/local.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#F2EBDC}
+#st{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F2EBDC;color:#15202E;font-family:'Heebo',sans-serif}
+#st>*{position:absolute}
+#mw{overflow:hidden}#me{position:absolute;max-width:none}
+.world{left:0;top:0;width:1080px;height:1920px;z-index:2;overflow:hidden}
+.world>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hd{z-index:6;top:230px;left:64px;right:64px;padding:28px 36px;border-radius:24px;background:#F2EBDC;font-size:64px;line-height:1.18;font-weight:600;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+.pill{padding:8px 28px;border-radius:999px;background:#F2EBDC;font-size:30px;font-weight:600;color:#825630}
+.fc{z-index:4;background:#F2EBDC;border-radius:24px;padding:24px 28px;box-shadow:0 16px 40px rgba(20,30,45,.28)}
+.q{font-size:26px;font-weight:600;color:#825630}.a{font-size:32px;line-height:1.3;font-weight:500;margin-top:6px}
+#wg{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#F2EBDC}
+.tile{position:relative;height:956px;overflow:hidden;background:#E7DEC9}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile span{position:absolute;top:28px;right:28px;padding:8px 28px;border-radius:999px;background:#F2EBDC;border:2px solid #D9AE85;font-size:32px;font-weight:600}
+#cap{z-index:6;padding:22px 32px;border-radius:24px;background:#F2EBDC;font-size:40px;line-height:1.35;font-weight:500;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+.mc{width:200px;height:260px;border-radius:20px;overflow:hidden;border:6px solid #F2EBDC;background:#E7DEC9;z-index:4;box-shadow:0 16px 40px rgba(20,30,45,.3)}
+.mc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#th{z-index:3;left:0;top:0}
+#cta{z-index:7;left:0;right:0;height:1920px;background:#F2EBDC;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:230px}
+.halo,.ball{position:absolute;border-radius:999px}
+.halo{width:80px;height:80px;top:-36px;background:#D9AE85}.ball{width:48px;height:48px;top:-20px;background:#C28A5A}
+.sw{width:48px;height:48px;border-radius:99px;display:block}
+</style></head><body>
+<div id="st">
+  <div id="mat" style="z-index:0;left:156px;top:376px;width:768px;height:1008px;border-radius:64px 64px 204px 204px;background:linear-gradient(180deg,#4C6B33 0%,#4C6B33 44%,#FBF6EC 60%,#FBF6EC 100%);border:4px solid #C28A5A"></div>
+  <div id="mw"><img id="me"></div>
+
+  <div class="world" id="w1"><img id="w1i" src="c/img/result.jpg">
+    <div class="pill" style="position:absolute;top:420px;right:64px">עולם מותג קונספט · <span dir="ltr">CHASEN°</span></div></div>
+  <div class="world" id="w2"><img id="dropf">
+    <div class="pill" style="position:absolute;top:420px;right:64px">אנימציה מהאתר</div>
+    <div id="wlab" class="fc" style="position:absolute;left:220px;width:640px;top:920px;text-align:center"><div class="q">ההחלטה</div><div class="a" style="font-weight:600;font-size:48px">מטרפה אחת, שלא משתנה</div></div></div>
+  <div class="world" id="w3"><div id="wg">
+    <div class="tile" id="t1"><img id="site"><span style="top:250px">באתר</span></div>
+    <div class="tile" id="t2"><img id="feed"><span style="top:250px">בפיד</span></div>
+    <div class="tile" id="t3"><img src="c/img/box.jpg"><span>באריזה</span></div>
+    <div class="tile" id="t4"><img src="c/img/trousse.jpg"><span>בפרט הקטן</span></div></div></div>
+
+  <div id="hd"></div>
+
+  <div id="q1" class="fc" style="right:40px;top:960px;width:420px"><div class="q">מה הוא מבטיח?</div><div class="a">מאצ׳ה לא מזמינים. מרכיבים.</div></div>
+  <div id="q2" class="fc" style="left:40px;top:1070px;width:420px"><div class="q">איך הוא צריך להרגיש?</div><div class="a">טקס שתמיד זהה, וכוס שאף פעם לא.</div></div>
+  <div id="q3" class="fc" style="right:40px;top:1180px;width:420px"><div class="q">מה יגרום לזהות אותו?</div><div class="a">המטרפה, גם כשמכסים את השם.</div></div>
+
+  <div id="l1" class="fc" style="left:40px;top:960px;width:420px"><div class="q">צבעים</div><div style="display:flex;gap:10px;margin-top:16px"><i class="sw" style="width:42px;height:42px;background:#22301F"></i><i class="sw" style="width:42px;height:42px;background:#4C6B33"></i><i class="sw" style="width:42px;height:42px;background:#F4E7D5;border:2px solid #3D4A5C"></i><i class="sw" style="width:42px;height:42px;background:#D98A95"></i><i class="sw" style="width:42px;height:42px;background:#A8794F"></i><i class="sw" style="width:42px;height:42px;background:#E5C85A"></i><i class="sw" style="width:42px;height:42px;background:#7F8FC9"></i></div></div>
+  <div id="l2" class="fc" style="right:40px;top:990px;width:380px;padding:18px"><img id="matv" style="display:block;width:344px;height:240px;object-fit:cover;border-radius:14px"><div class="q" style="padding:14px 10px 2px">חומרים: אבקה, קרמיקה, במבוק</div></div>
+  <div id="l3" class="fc" style="left:40px;top:1130px;width:420px"><div class="q">אותיות</div>
+    <div dir="ltr" style="font-family:'Cormorant Garamond',serif;font-size:58px;letter-spacing:.2em;color:#22301F;text-align:right;margin-top:6px">CHASEN°</div>
+    <div dir="ltr" style="font-family:'Cormorant Garamond',serif;font-size:44px;color:#22301F;text-align:right">Matcha Yuzu · <i>glacé</i></div></div>
+
+  <svg id="th" width="1080" height="1920" viewBox="0 0 1080 1920"><path id="tp" d="M540 1300 A440 440 0 1 1 540.01 1300" fill="none" stroke="#C28A5A" stroke-width="6" stroke-linecap="round"/><circle id="tb2" r="40" fill="#D9AE85"/><circle id="tb" r="24" fill="#C28A5A"/></svg>
+  <div class="mc" id="m1" style="left:850px;top:760px"><img src="c/img/result.jpg"></div>
+  <div class="mc" id="m2" style="left:820px;top:1060px"><img id="site2"></div>
+  <div class="mc" id="m3" style="left:440px;top:1120px"><img id="feed2"></div>
+  <div class="mc" id="m4" style="left:60px;top:1060px"><img src="c/img/box.jpg"></div>
+  <div class="mc" id="m5" style="left:30px;top:760px"><img src="c/img/trousse.jpg"></div>
+
+  <div id="ring" style="z-index:5;left:40px;top:1152px;width:316px;height:316px;border:8px solid #C28A5A;border-radius:999px"></div>
+  <div id="cap"></div>
+  <div id="cta">
+    <img src="img/hagit.jpg" style="width:440px;height:550px;object-fit:cover;object-position:50% 20%;border-radius:40px 40px 160px 160px">
+    <div dir="ltr" style="margin-top:44px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:68px;line-height:1.1">Brand Worlds Studio</div>
+    <div style="margin-top:10px;font-size:34px;letter-spacing:.3em;color:#3D4A5C">חגית אנטבי</div>
+    <div style="position:relative;width:952px;height:8px;margin-top:64px;background:#C28A5A;border-radius:99px"><div class="halo" id="halo"></div><div class="ball" id="ball"></div></div>
+    <div style="margin:64px 80px 0;font-size:60px;line-height:1.25;font-weight:600">החשיבה שמחברת ביניהן היא מה שבונה את המותג.</div>
+    <div style="margin-top:44px;padding:28px 72px;border-radius:24px;background:#15202E;color:#F2EBDC;font-size:48px;font-weight:600">אבחון פער המותג</div>
+    <div style="margin-top:24px;font-size:36px;color:#3D4A5C">30 דק׳ · בלי עלות</div>
+    <div dir="ltr" style="margin-top:24px;font-family:'Plus Jakarta Sans','Heebo';font-size:26px;font-weight:500;letter-spacing:.28em;color:#3D4A5C">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ez=x=>{x=cl(x);return x*x*(3-2*x)};
+const win=(t,a,b,fi=.3,fo=.25)=>ez((t-a)/fi)*(1-ez((t-(b-fo))/fo));
+const lerp=(a,b,p)=>a+(b-a)*p;
+const pad=(n,w)=>String(n).padStart(w,'0');
+const HD=[[0,4.5,'מה לא רואים בתמונה הזאת?'],[7.7,9.85,'ההחלטות שהובילו אליה'],[13.0,18.55,'מי המותג הזה?'],[18.9,23.95,'רק אז, השפה']];
+const CAP=[[1.24,2.95,'כשאת רואה את התמונה הזאת,'],[3.0,4.5,'את רואה את התוצאה.'],[4.8,7.65,'אני רוצה להראות לך דווקא את מה שלא רואים בה.'],[7.7,9.6,'את ההחלטות שהובילו אליה.'],[10.07,12.95,'כשאני בונה עולם מותג, אני מתחילה מלהבין'],[13.0,14.05,'מי המותג הזה?'],[14.1,15.5,'מה הוא מבטיח?'],[15.6,16.9,'איך הוא צריך להרגיש?'],[16.9,18.5,'ומה יגרום לזהות אותו?'],[18.9,20.95,'רק אחר כך אני בונה את השפה.'],[21.0,23.9,'צבעים, חומרים, אותיות, קומפוזיציה.'],[24.29,26.2,'ואז מגיע החלק שאני הכי אוהבת.'],[26.3,28.7,'לראות את אותה זהות מתחילה לחיות.'],[28.8,30.25,'באתר, בפיד,'],[30.3,32.6,'באריזה, ועד הפרט הכי קטן.'],[33.05,35.45,'כי התמונות הן רק מה שרואים.'],[35.5,37.7,'החשיבה שמחברת ביניהן'],[37.9,39.6,'היא מה שבונה את המותג.']];
+// [left, top, w, h, radius, imgW, imgL, imgT]
+const F=[180,400,720,960,0,720,0,-150], C=[48,1160,300,300,150,560,-130,-298];
+const ROT=[5,-4,2,4,-5];
+const TP=$('tp'), TL=TP.getTotalLength();
+async function setSrc(img,src){ if(img.dataset.s===src) return; img.dataset.s=src; img.src=src; try{await img.decode()}catch(e){} }
+function card(id,o,rot){ const e=$(id); e.style.opacity=o; e.style.transform='translateY('+((1-o)*50)+'px) rotate('+rot+'deg) scale('+lerp(.9,1,o)+')'; }
+window.seek=async function(t){
+  t=t+0.8;
+  const jobs=[];
+  jobs.push(setSrc($('me'),'me/'+pad(cl(Math.floor(t*30)+1,1,1213),4)+'.jpg'));
+  // circle amount: 1 = she is the small circle over a full-screen world
+  const c=cl((1-ez((t-4.55)/.6)) + ez((t-7.45)/.5)*(1-ez((t-9.85)/.55)) + ez((t-26.2)/.6)*(1-ez((t-32.6)/.6)));
+  const v=F.map((f,i)=>lerp(f,C[i],c));
+  const mw=$('mw').style; mw.left=v[0]+'px'; mw.top=v[1]+'px'; mw.width=v[2]+'px'; mw.height=v[3]+'px'; mw.borderRadius=lerp(44,150,c)+'px '+lerp(44,150,c)+'px '+lerp(184,150,c)+'px '+lerp(184,150,c)+'px'; $('mat').style.opacity=1-ez(c*2.5); mw.zIndex=c>0?5:1;
+  const me=$('me').style; me.width=v[5]+'px'; me.left=v[6]+'px'; me.top=v[7]+'px';
+  $('ring').style.opacity=ez((c-.85)/.15);
+  // worlds (only while she is not full-screen)
+  $('w1').style.opacity=(c>0&&t<6)?1:0; $('w1i').style.transform='scale('+lerp(1,1.07,cl(t/5.2))+')';
+  $('w2').style.opacity=(c>0&&t>=7&&t<11)?1:0;
+  jobs.push(setSrc($('dropf'),'c/dropf/'+pad(cl(Math.round(1+(t-7.5)*30),1,90),3)+'.jpg'));
+  const lo=win(t,8.3,9.9); $('wlab').style.opacity=lo; $('wlab').style.transform='translateY('+((1-lo)*40)+'px)';
+  $('w3').style.opacity=(c>0&&t>=26)?1:0;
+  [['t1',28.87],['t2',29.35],['t3',30.33],['t4',31.1]].forEach(function(x){ const o=ez((t-x[1])/.3); const ch=$(x[0]).children; ch[0].style.opacity=lerp(.28,1,o); ch[1].style.opacity=o; });
+  const sSrc='c/site/'+pad(Math.floor(cl(t-28.87,0,99)*10)%70,3)+'.png', fSrc='c/feed/'+pad(1+Math.floor(cl(t-29.35,0,99)*30)%180,3)+'.jpg';
+  jobs.push(setSrc($('matv'),'c/mat/'+pad(1+Math.floor(cl(t-21.69,0,99)*30)%150,3)+'.jpg')); jobs.push(setSrc($('site'),sSrc)); jobs.push(setSrc($('feed'),fSrc)); jobs.push(setSrc($('site2'),sSrc)); jobs.push(setSrc($('feed2'),fSrc));
+  // top plate
+  const hd=$('hd'); const h=HD.find(x=>t>=x[0]&&t<x[1]);
+  if(h){ hd.textContent=h[2]; const o=(h[0]===0?1:ez((t-h[0])/.3))*(1-ez((t-(h[1]-.25))/.25)); hd.style.opacity=o; hd.style.transform='translateY('+((1-o)*-30)+'px)'; } else hd.style.opacity=0;
+  // floating cards around her
+  card('q1',win(t,14.12,18.6),-2); card('q2',win(t,15.64,18.6),2); card('q3',win(t,16.9,18.6),-1.5);
+  card('l1',win(t,21.08,23.95),-2); card('l2',win(t,21.69,23.95),2.5); card('l3',win(t,22.41,23.95),1.5);
+  const th=2*Math.PI*ez((t-35.5)/3.9);
+  for(let i=0;i<5;i++){ const a=(90+72*i)*Math.PI/180+th; const e=$('m'+(i+1)); e.style.left=(540+440*Math.cos(a)-100)+'px'; e.style.top=(860+440*Math.sin(a)-130)+'px'; card('m'+(i+1), ez((t-(33.2+i*.3))/.35), ROT[i]); }
+  const lg=ez((t-35.4)/1.6); TP.style.strokeDasharray=TL; TP.style.strokeDashoffset=TL*(1-lg); const pt=TP.getPointAtLength(TL*lg);
+  ['tb','tb2'].forEach(function(id){ const e=$(id); e.setAttribute('cx',pt.x); e.setAttribute('cy',pt.y); }); $('th').style.opacity=lg>0?1:0;
+  // captions
+  const cp=$('cap'); const k=CAP.find(x=>t>=x[0]&&t<x[1]);
+  if(k){ cp.textContent=k[2]; cp.style.opacity=Math.min(ez((t-k[0])/.12+.4),1)*(1-ez((t-39.4)/.25)); } else cp.style.opacity=0;
+  cp.style.right='64px'; cp.style.left=lerp(64,392,c)+'px'; cp.style.bottom=lerp(420,450,c)+'px';
+  // closing screen
+  const z=ez((t-39.45)/.55); $('cta').style.opacity=z>0?1:0; $('cta').style.top=lerp(1920,0,z)+'px';
+  const bx=lerp(952,120,ez((t-39.9)/2.0)); $('halo').style.left=(bx-40)+'px'; $('ball').style.left=(bx-24)+'px';
+  await Promise.all(jobs);
+};
+</script></body></html>

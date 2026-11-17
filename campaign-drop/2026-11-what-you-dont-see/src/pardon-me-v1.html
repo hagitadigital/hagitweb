@@ -1,0 +1,114 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/local.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#F3EDE2}
+#st{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F3EDE2;color:#15202E;font-family:'Heebo',sans-serif}
+#st>*{position:absolute}
+#outer{z-index:1;left:0;top:0;width:1080px;height:1920px;overflow:hidden}
+#outer img{position:absolute;left:0;width:1080px;height:1080px}
+#sleeve{z-index:2;left:0;top:0;width:1080px;height:1920px;background:#F3EDE2}
+#oval{z-index:3;left:0;top:0;width:1080px;height:1920px;clip-path:ellipse(330px 490px at 540px 910px);background:#F3EDE2}
+#oval>*{position:absolute}
+.bg{left:210px;top:420px;width:660px;height:980px;object-fit:cover}
+#me{left:180px;top:150px;width:720px;max-width:none}
+#band{left:-10px;top:60px;width:1100px;height:1700px;overflow:hidden;box-shadow:0 0 60px rgba(20,30,45,.35)}
+#band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#line{z-index:4;left:0;top:0}
+#wm{z-index:5;left:0;right:0;top:206px;text-align:center}
+#wm .w{display:inline-block;padding:10px 44px 6px;border-radius:999px;background:#F3EDE2;font-family:'Frank Ruhl Libre',serif;font-size:54px;letter-spacing:.3em;color:#1E3A2B;direction:ltr}
+#wm .c{display:inline-block;margin-top:10px;padding:2px 24px;border-radius:999px;background:#F3EDE2;font-size:26px;font-weight:600;color:#825630}
+#hd{z-index:6;top:356px;left:64px;right:64px;padding:26px 36px;border-radius:24px;background:#F2EBDC;font-size:64px;line-height:1.18;font-weight:600;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+#mini{z-index:5;left:56px;top:1030px;width:240px;height:340px;border-radius:50%;overflow:hidden;background:#CFE06A;border:6px solid #1E3A2B}
+#mini img{position:absolute;width:330px;max-width:none;left:-50px;top:-70px}
+.pill{z-index:5;padding:12px 32px;border-radius:999px;background:#F3EDE2;border:3px solid #1E3A2B;font-size:36px;font-weight:600;color:#1E3A2B;box-shadow:0 12px 30px rgba(20,30,45,.25)}
+.mc{width:170px;height:220px;border-radius:18px;overflow:hidden;border:6px solid #F3EDE2;background:#E7DEC9;z-index:5;box-shadow:0 16px 40px rgba(20,30,45,.3)}
+.mc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#cap{z-index:6;right:64px;left:64px;bottom:420px;padding:22px 32px;border-radius:24px;background:#F2EBDC;font-size:40px;line-height:1.35;font-weight:500;box-shadow:0 16px 40px rgba(20,30,45,.22)}
+#cta{z-index:7;left:0;right:0;height:1920px;background:#F2EBDC;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:230px}
+.halo,.ball{position:absolute;border-radius:999px}
+.halo{width:80px;height:80px;top:-36px;background:#D9AE85}.ball{width:48px;height:48px;top:-20px;background:#C28A5A}
+</style></head><body>
+<div id="st">
+  <div id="outer"><img src="pm/img/berry.jpg" style="top:0"><img src="pm/img/berry.jpg" style="top:1080px;transform:scaleY(-1)"></div>
+  <div id="sleeve"></div>
+  <div id="oval">
+    <img class="bg" id="b0" src="pm/img/result.jpg" style="object-position:50% 60%">
+    <img class="bg" id="b1" src="pm/img/lemon.jpg">
+    <img class="bg" id="b2" src="pm/img/fig.jpg">
+    <img class="bg" id="b3" src="pm/img/rose.jpg">
+    <div class="bg" id="b4" style="background:#F3EDE2"></div>
+    <img id="me">
+    <div id="band"><img id="bandi"></div>
+  </div>
+  <svg id="line" width="1080" height="1920"><ellipse cx="540" cy="910" rx="344" ry="504" fill="none" stroke="#1E3A2B" stroke-width="4"/></svg>
+  <div id="wm"><div class="w">PARDON ME</div><br><div class="c">עולם מותג קונספט</div></div>
+  <div id="hd">מה לא רואים בתמונה הזאת?</div>
+  <div id="mini"><img id="me2"></div>
+  <div class="pill" id="p1" style="right:48px;top:560px">חלון אחד</div>
+  <div class="pill" id="p2" style="left:48px;top:860px">שרוול שקט</div>
+  <div class="pill" id="p3" style="right:48px;top:1160px">פרינט רק בפנים</div>
+  <div class="mc" id="m1"><img src="pm/img/c1.jpg"></div>
+  <div class="mc" id="m2"><img src="pm/img/c2.jpg"></div>
+  <div class="mc" id="m3"><img src="pm/img/c3.jpg"></div>
+  <div class="mc" id="m4"><img src="pm/img/c4.jpg"></div>
+  <div class="mc" id="m5"><img src="pm/img/c5.jpg"></div>
+  <div id="cap"></div>
+  <div id="cta">
+    <img src="img/hagit.jpg" style="width:440px;height:580px;object-fit:cover;object-position:50% 20%;border-radius:50%">
+    <div dir="ltr" style="margin-top:44px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:68px;line-height:1.1">Brand Worlds Studio</div>
+    <div style="margin-top:10px;font-size:34px;letter-spacing:.3em;color:#3D4A5C">חגית אנטבי</div>
+    <div style="position:relative;width:952px;height:8px;margin-top:60px;background:#C28A5A;border-radius:99px"><div class="halo" id="halo"></div><div class="ball" id="ball"></div></div>
+    <div style="margin:60px 80px 0;font-size:60px;line-height:1.25;font-weight:600">החשיבה שמחברת ביניהן היא מה שבונה את המותג.</div>
+    <div style="margin-top:40px;padding:28px 72px;border-radius:24px;background:#15202E;color:#F2EBDC;font-size:48px;font-weight:600">אבחון פער המותג</div>
+    <div style="margin-top:24px;font-size:36px;color:#3D4A5C">30 דק׳ · בלי עלות</div>
+    <div dir="ltr" style="margin-top:24px;font-family:'Plus Jakarta Sans','Heebo';font-size:26px;font-weight:500;letter-spacing:.28em;color:#3D4A5C">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ez=x=>{x=cl(x);return x*x*(3-2*x)};
+const win=(t,a,b,fi=.3,fo=.25)=>ez((t-a)/fi)*(1-ez((t-(b-fo))/fo));
+const lerp=(a,b,p)=>a+(b-a)*p;
+const pad=(n,w)=>String(n).padStart(w,'0');
+// reel time r -> take time: part A (0..8.3) and part B (8.3..)
+const CUT=8.3;
+const take=r=>r<CUT? r+0.95 : r-CUT+32.75;
+const CAP=[[0.29,2.0,'כשאת רואה את התמונה הזאת,'],[2.05,3.55,'את רואה את התוצאה.'],[3.85,6.7,'אני רוצה להראות לך דווקא את מה שלא רואים בה.'],[6.75,8.25,'את ההחלטות שהובילו אליה.'],[8.6,11.0,'כי התמונות הן רק מה שרואים.'],[11.05,13.25,'החשיבה שמחברת ביניהן'],[13.45,15.15,'היא מה שבונה את המותג.']];
+// fabric sweeps: [centre time, print that the band carries and leaves behind]
+const SW=[[4.1,'lemon',1],[6.8,'fig',2],[CUT,'rose',3]];
+const ROT=[5,-4,3,-5,4];
+async function setSrc(img,src){ if(img.dataset.s===src) return; img.dataset.s=src; img.src=src; try{await img.decode()}catch(e){} }
+window.seek=async function(r){
+  const jobs=[];
+  const f='pm/me/'+pad(cl(Math.floor(take(r)*30)+1,25,1206),4)+'.webp';
+  jobs.push(setSrc($('me'),f)); jobs.push(setSrc($('me2'),f));
+  // which print is behind her
+  let stage=0; SW.forEach(function(s){ if(r>=s[0]) stage=s[2]; });
+  const fin=ez((r-13.5)/.7);
+  ['b0','b1','b2','b3'].forEach(function(id,i){ $(id).style.opacity=(i===stage)?1:0; });
+  $('b4').style.opacity=fin;
+  $('me').style.opacity=stage>0?1:0;
+  // the band of printed tissue that passes in front of the window
+  const band=$('band'); let on=null; SW.forEach(function(s){ if(Math.abs(r-s[0])<.42) on=s; });
+  if(on){ const p=(r-on[0]+.42)/.84; band.style.opacity=1; band.style.transform='translateX('+lerp(1250,-1250,ez(p))+'px) rotate(9deg)'; jobs.push(setSrc($('bandi'),'pm/img/'+on[1]+'.jpg')); } else band.style.opacity=0;
+  // beat 1: product photo in the window, she is the small oval
+  const mo=1-ez((r-3.75)/.35); $('mini').style.opacity=mo; $('mini').style.transform='scale('+lerp(.8,1,mo)+')';
+  const ho=1-ez((r-3.55)/.3); $('hd').style.opacity=ho; $('hd').style.transform='translateY('+((1-ho)*-30)+'px)';
+  // the three decisions
+  [['p1',6.95,-3],['p2',7.25,3],['p3',7.55,-2]].forEach(function(x){ const o=win(r,x[1],8.15); const e=$(x[0]); e.style.opacity=o; e.style.transform='translateY('+((1-o)*40)+'px) rotate('+x[2]+'deg)'; });
+  // cards around the window, then one turn on the oval
+  const th=2*Math.PI*ez((r-11.05)/3.6);
+  for(let i=0;i<5;i++){ const a=(90+72*i)*Math.PI/180+th; const o=ez((r-(8.75+i*.25))/.35); const e=$('m'+(i+1));
+    e.style.left=(540+405*Math.cos(a)-85)+'px'; e.style.top=(910+530*Math.sin(a)-110)+'px'; e.style.opacity=o; e.style.transform='rotate('+ROT[i]+'deg) scale('+lerp(.8,1,o)+')'; }
+  // finale: the print comes out of the window, the inside turns polite
+  $('sleeve').style.opacity=1-fin;
+  // captions
+  const cp=$('cap'); const k=CAP.find(x=>r>=x[0]&&r<x[1]);
+  if(k){ cp.textContent=k[2]; cp.style.opacity=Math.min(ez((r-k[0])/.12+.4),1)*(1-ez((r-15.0)/.2)); } else cp.style.opacity=0;
+  // closing screen
+  const z=ez((r-15.05)/.55); $('cta').style.opacity=z>0?1:0; $('cta').style.top=lerp(1920,0,z)+'px';
+  const bx=lerp(952,120,ez((r-15.5)/2.0)); $('halo').style.left=(bx-40)+'px'; $('ball').style.left=(bx-24)+'px';
+  await Promise.all(jobs);
+};
+</script></body></html>
