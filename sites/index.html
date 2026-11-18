@@ -10,7 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="אתרים שנראים אחרת. חושבים אחרת. עובדים בשביל העסק.">
 <meta property="og:description" content="אתר תדמית, עמוד נחיתה או שדרוג של האתר הקיים, עם חשיבה שלמה מאחוריו. חגית אנטבי · Brand Worlds Studio.">
-<meta property="og:image" content="https://hagitantebi.co.il/sphere-outcome.png">
+<meta property="og:image" content="https://hagitantebi.co.il/sites/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="אתרים שנראים אחרת, חושבים אחרת ועובדים בשביל העסק. לצד הכותרת, עמוד נחיתה שבנה הסטודיו בתוך מסך.">
 <meta property="og:url" content="https://hagitantebi.co.il/sites/">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,7 +45,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 html,body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-/* Layout: the studio's own cream, ink and copper. One copper line with a ball runs the page and ends on the call button; real pages scroll inside frames as proof. */
+/* Layout: the studio's own cream, ink and copper. Real pages scroll inside frames as proof; copper only marks what matters. */
 :root{
   --cream:#FAF8F3; --beige:#F5F1E8; --sand:#E9E1D2; --ink:#2A201A; --text:#4F372C; --muted:#7A6349; --copper:#C4765A; --copper-deep:#8A4A2F; --line:#DDD3C2;
   --latin:"Cormorant Garamond","Frank Ruhl Libre",serif; --display:"Frank Ruhl Libre","David Libre",serif; --body:"Heebo",system-ui,Arial,sans-serif;
@@ -71,10 +74,6 @@ p{margin:0}
 .head{display:flex;flex-direction:column;gap:16px;max-width:33em;margin-bottom:52px}
 .head p{color:var(--muted)}
 
-/* the copper line: drawn through the page as it scrolls, the ball leads */
-#thread{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:visible}
-#thread path{fill:none;stroke:var(--copper);stroke-width:1.6;stroke-linecap:round}
-#thread circle{fill:var(--copper)}
 .hero .copy,.frame,.mock,.who figure,form,.moments,.depth{position:relative;z-index:5}
 
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#FAF8F3eb;backdrop-filter:blur(10px)}
@@ -322,7 +321,6 @@ footer .sig{font-family:var(--latin);font-size:18px;letter-spacing:.06em;directi
   .who figure{max-width:340px}
   .logo{font-size:19px}
   .dock{display:flex}
-  #thread{display:none}
 }
 @media (max-width:480px){.logo span{display:none}.logo i{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.three li{color:var(--cream)}}
@@ -335,7 +333,6 @@ form small a,footer a{color:inherit}
 </head>
 <body>
 <div dir="rtl" lang="he" id="page">
-<svg id="thread" aria-hidden="true"><path id="threadPath" d=""/><circle id="threadBall" r="6" cx="0" cy="0" style="opacity:0"/></svg>
 
 <header class="top"><div class="in">
   <a class="logo" href="#page">Hagit Antebi<i>|</i><span>Brand Worlds Studio</span></a>
@@ -567,34 +564,6 @@ function cycle(i){ ci=i; cyc.forEach((im,k)=>im.classList.toggle('on',k===i)); c
   $('#cyc-url').textContent=cyc[i].dataset.url; $('#cyc-cap').textContent=cyc[i].dataset.cap; }
 if(!calm) setInterval(()=>cycle((ci+1)%cyc.length),5200);
 
-/* the copper line through the page */
-(function(){
-  const svg=$('#thread'), path=$('#threadPath'), ball=$('#threadBall'), page=$('#page');
-  const pt=(el,fx,fy)=>{const r=el.getBoundingClientRect(); return [r.left+scrollX+r.width*fx, r.top+scrollY+r.height*fy]};
-  let length=0, y0=0, y1=0, lastH=0;
-  function build(){
-    const W=page.clientWidth, H=page.scrollHeight; lastH=H;
-    if(W<900){ length=0; return }
-    svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width',W); svg.setAttribute('height',H);
-    const cases=$$('.case .frame');
-    const pts=[ pt($('#rule'),0,.5), pt($('.hero .copy'),-.05,.47), pt($('.hero .copy'),-.07,.92), pt($('#hero'),.5,1.01), pt($('#moments'),.5,1.02), pt($('#enough'),.5,.3), pt($('#mock'),.5,.5), pt($('#build'),.2,.1), pt($('.two'),.333,-.03), pt($('.two'),.333,.6), pt($('.two'),.5,1.06),
-      pt(cases[0],-.05,.4), pt(cases[1],1.05,.5), pt(cases[2],-.05,.5),
-      pt($('#how'),.5,.1), pt($('#portrait'),-.08,.5), pt($('#after'),.03,.45), pt($('.depth'),.5,1.2), pt($('#faq'),.04,.6), pt($('#go'),1.2,-3), pt($('#go'),.97,.5) ];
-    let d=`M ${pts[0][0]} ${pts[0][1]}`;
-    for(let i=0;i<pts.length-1;i++){ const a=pts[i-1]||pts[i], b=pts[i], c=pts[i+1], e=pts[i+2]||c;
-      d+=` C ${b[0]+(c[0]-a[0])/6} ${b[1]+(c[1]-a[1])/6} ${c[0]-(e[0]-b[0])/6} ${c[1]-(e[1]-b[1])/6} ${c[0]} ${c[1]}`; }
-    path.setAttribute('d',d); length=path.getTotalLength(); y0=pts[0][1]; y1=pts[pts.length-1][1];
-    path.style.strokeDasharray=length; update();
-  }
-  function update(){ if(page.scrollHeight!==lastH) return build(); if(!length) return;
-    const prog=calm?1:cl((scrollY+innerHeight*.6-y0)/(y1-y0)), ty=y0+prog*(y1-y0);
-    let lo=0, hi=length; for(let k=0;k<22;k++){const m=(lo+hi)/2; if(path.getPointAtLength(m).y<ty) lo=m; else hi=m}
-    const L=prog>=1?length:lo; path.style.strokeDashoffset=length-L;
-    const tip=path.getPointAtLength(L); ball.setAttribute('cx',tip.x); ball.setAttribute('cy',tip.y); ball.style.opacity=(prog<=0||prog>=1)?0:1;
-  }
-  addEventListener('scroll',update,{passive:true}); addEventListener('resize',build); addEventListener('load',build);
-  document.fonts.ready.then(build); build();
-})();
 
 /* process: the line fills as the four steps cross the screen */
 const steps=$$('#steps li');
