@@ -210,6 +210,57 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;pa
 .dock{position:fixed;inset:auto 0 0;z-index:20;display:none;align-items:center;justify-content:space-between;gap:12px;background:#151931f2;color:var(--paper);padding:10px var(--gr) calc(10px + env(safe-area-inset-bottom,0px)) var(--gl);font-size:15px}
 .dock .btn{min-height:44px;padding:0 20px;font-size:16px}
 
+/* the seed: a lit seed in the soil grows with the scroll, and every stage leaves one good thought */
+.grow{position:relative;height:440vh;background:#C9D2AE}
+.grow .pin{position:sticky;top:0;height:100vh;overflow:hidden}
+.grow canvas{position:absolute;inset:0;width:100%;height:100%}
+.gcap{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 108px);inset-inline-start:max(6vw,var(--gr));max-width:15em;display:flex;flex-direction:column;gap:12px}
+.gcap p{color:var(--ink-2)}
+.gth{position:absolute;inset:0;z-index:2;pointer-events:none}
+.gth p{position:absolute;left:5%;width:27%;top:var(--t);text-align:right;font:400 clamp(21px,2.05vw,30px)/1.25 var(--hand);color:var(--ink);opacity:0;transform:translateY(16px) scale(.96);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.gth p small{display:block;font:600 14px var(--body);letter-spacing:.14em;color:var(--lamp-deep);margin-bottom:4px}
+.gth p.on{opacity:1;transform:none}
+.stages{position:absolute;z-index:2;inset-inline:max(8vw,var(--gl));bottom:34px;display:grid;grid-template-columns:repeat(5,1fr);padding:0;margin:0;direction:rtl}
+.stages::before{content:"";position:absolute;inset-inline:10%;top:6px;height:1px;background:#2c3b3740}
+.stages::after{content:"";position:absolute;inset-inline-start:10%;top:5px;height:3px;width:calc(80% * var(--gp,0));background:var(--lamp-deep);border-radius:3px}
+.stages li{list-style:none;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink-2);transition:color .5s}
+.stages li::before{content:"";width:13px;height:13px;border-radius:50%;background:#EEF0DC;border:1px solid var(--lamp-deep);position:relative;z-index:1;transition:background .5s,box-shadow .5s}
+.stages li.on{color:var(--ink)}
+.stages li.on::before{background:var(--lamp);box-shadow:0 0 0 6px #e8b76f47}
+@media (max-width:880px){
+  .grow{height:400vh}
+  .gcap{top:calc(env(safe-area-inset-top,0px) + 96px);inset-inline:var(--gr) var(--gl);max-width:none;text-align:center;align-items:center;gap:6px}
+  .gcap h2{font-size:27px}
+  .gcap p{display:none}
+  .gth p{left:8%;right:8%;width:auto;top:calc(env(safe-area-inset-top,0px) + 198px);text-align:center;font-size:25px}
+  .gth p.on{opacity:0;transform:translateY(-10px)}
+  .gth p.cur{opacity:1;transform:none}
+  .stages{bottom:86px;inset-inline:var(--gl)}
+  .stages li{font-size:13px;color:#EDE6D6;text-shadow:0 1px 6px #2c1d10}
+  .stages li.on{color:#FFF8EA}
+  .stages::before{background:#f7f3ea66}
+}
+/* notes left on the table: two rows of handwritten notes drifting past each other */
+.notes{overflow:hidden;padding-block:104px}
+.notes .head{margin-bottom:36px}
+.lane{direction:ltr;overflow:hidden}
+.row{display:flex;gap:26px;width:max-content;padding-block:16px;direction:ltr;animation:slide 70s linear infinite}
+.row.back{animation-direction:reverse;animation-duration:84s}
+.notes:hover .row,.notes:focus-within .row{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.note-card{direction:rtl;flex:none;width:330px;min-height:210px;margin:0;padding:30px 28px 22px;background:var(--c,#FFFDF8);border-radius:4px 18px 6px 16px;box-shadow:0 22px 40px -28px #3f5f56b3,0 1px 0 #ffffffb3 inset;display:flex;flex-direction:column;gap:18px;justify-content:space-between;rotate:var(--r,0deg);position:relative;transition:rotate .5s,translate .5s,box-shadow .5s}
+.note-card::before{content:"";position:absolute;top:12px;inset-inline-start:50%;width:11px;height:11px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 5px #e8b76f40;translate:50% 0}
+.note-card:hover{rotate:0deg;translate:0 -8px;box-shadow:0 34px 50px -30px #3f5f56}
+.note-card blockquote{margin:0;font:400 23px/1.4 var(--hand);color:var(--ink)}
+.note-card figcaption{font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--ink-2);border-top:1px dashed #2c3b3733;padding-top:12px;display:flex;justify-content:space-between;gap:10px}
+.note-card figcaption span:last-child{color:var(--lamp-deep)}
+.notes .fine{font-size:14px;color:var(--ink-2);margin-top:26px}
+@media (max-width:880px){
+  .notes{padding-block:68px}
+  .note-card{width:270px;min-height:190px;padding:28px 22px 18px}
+  .note-card blockquote{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){.row{flex-wrap:wrap;width:auto;justify-content:center}.row [aria-hidden=true]{display:none}}
 /* calm palette: no dark surfaces */
 body::before{background:var(--paper)}
 .btn{background:var(--night);color:var(--paper)}
@@ -278,13 +329,15 @@ form{box-shadow:0 40px 90px -60px #3f5f56}
 .note .bws{opacity:.65}
 .note a{color:var(--paper);text-decoration:none;font-weight:600;white-space:nowrap;border-bottom:1px solid #f7f3ea73}
 header.top{top:calc(env(safe-area-inset-top,0px) + 34px)}
+.gcap{top:calc(env(safe-area-inset-top,0px) + 142px)}
+.gth p{margin-top:40px}
 .studio{background:var(--dawn)}
 .studio .in{display:flex;flex-direction:column;gap:18px;max-width:860px}
 .studio p{color:var(--ink-2)}
 .studio .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
 .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--night)}
 footer a{color:inherit}
-@media (max-width:880px){.note .bws{display:none}}
+@media (max-width:880px){.note .bws{display:none}.gcap{top:calc(env(safe-area-inset-top,0px) + 126px)}.gth p{margin-top:0;top:calc(env(safe-area-inset-top,0px) + 226px)}}
 </style>
 </head>
 <body>
@@ -362,6 +415,19 @@ footer a{color:inherit}
   </div>
 </div></section>
 
+<section class="grow" id="grow" aria-label="זרע מואר נשתל באדמה וצומח בשלבים עד שהוא פורח"><div class="pin">
+  <canvas id="gcv" width="1280" height="720"></canvas>
+  <div class="gcap"><span class="eye">מה שותלות כאן</span><h2>מחשבה אחת טובה. נשתלת, וגדלה.</h2><p>לא מחליפים את מה שכואב במשפט יפה. שותלים זרע אחד, משקים אותו פעם בשבוע, ורואים מה צומח.</p></div>
+  <div class="gth" id="gth">
+    <p class="on cur" style="--t:52%"><small>זרע</small>מותר לי לעצור רגע.</p>
+    <p style="--t:38%"><small>נבט</small>אני לא חייבת להחזיק הכול לבד.</p>
+    <p style="--t:28.5%"><small>עלים</small>עשיתי היום מספיק.</p>
+    <p style="--t:19%"><small>ניצן</small>מה שאני מרגישה הגיוני.</p>
+    <p style="--t:9.5%"><small>פריחה</small>יש לי מקום. גם אצלי.</p>
+  </div>
+  <ol class="stages" id="stages" aria-hidden="true"><li class="on">זרע</li><li>נבט</li><li>עלים</li><li>ניצן</li><li>פריחה</li></ol>
+</div></section>
+
 <section class="voices sec"><div class="in">
   <span class="eye">מה נשאר אחרי</span>
   <div class="stack" id="voices" style="margin-top:22px">
@@ -395,6 +461,13 @@ footer a{color:inherit}
     <li><span>ביטול<small>עד 24 שעות לפני, בלי חיוב</small></span><b>₪0</b></li>
   </ul>
 </div></section>
+
+<section class="notes" id="notes">
+  <div class="in"><div class="head rv"><span class="eye">פתקים שנשארו על השולחן</span><h2>בסוף תהליך אני מבקשת משפט אחד, בכתב יד.</h2><p>לא סיכום ולא תודה. רק מה שהן לוקחות איתן. אלה חלק מהפתקים.</p></div></div>
+  <div class="lane"><div class="row"><figure class="note-card" style="--c:#FFFDF8;--r:-2.2deg"><blockquote>הגעתי בטוחה שאני "סתם לחוצה". יצאתי עם מילים למה שקורה לי, ועם דקה ביום שהיא רק שלי.</blockquote><figcaption><span>מ׳, 29</span><span>חרדה · 10 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#EEF3E8;--r:1.6deg"><blockquote>חצי שנה לא הצלחתי להגיד לא בעבודה. היום יש לי משפט אחד, ואני משתמשת בו.</blockquote><figcaption><span>ד׳, 38</span><span>שחיקה · 8 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FBF1DD;--r:-1.1deg"><blockquote>אחרי שאמא נפטרה כולם רצו שאתאושש. אצל יעל אף אחד לא מיהר.</blockquote><figcaption><span>א׳, 47</span><span>אובדן · 14 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FFFDF8;--r:2.3deg"><blockquote>שנה התלבטתי אם לעזוב. בשלוש פגישות הבנתי מה אני רוצה, ולמה פחדתי להגיד את זה.</blockquote><figcaption><span>ל׳, 33</span><span>החלטה · 6 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:-2.2deg"><blockquote>הגעתי בטוחה שאני "סתם לחוצה". יצאתי עם מילים למה שקורה לי, ועם דקה ביום שהיא רק שלי.</blockquote><figcaption><span>מ׳, 29</span><span>חרדה · 10 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:1.6deg"><blockquote>חצי שנה לא הצלחתי להגיד לא בעבודה. היום יש לי משפט אחד, ואני משתמשת בו.</blockquote><figcaption><span>ד׳, 38</span><span>שחיקה · 8 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FBF1DD;--r:-1.1deg"><blockquote>אחרי שאמא נפטרה כולם רצו שאתאושש. אצל יעל אף אחד לא מיהר.</blockquote><figcaption><span>א׳, 47</span><span>אובדן · 14 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:2.3deg"><blockquote>שנה התלבטתי אם לעזוב. בשלוש פגישות הבנתי מה אני רוצה, ולמה פחדתי להגיד את זה.</blockquote><figcaption><span>ל׳, 33</span><span>החלטה · 6 פגישות</span></figcaption></figure></div>
+  <div class="row back"><figure class="note-card" style="--c:#EEF3E8;--r:-1.8deg"><blockquote>חשבתי ש-NLP זה סיסמאות. זה היה תרגיל של חמש דקות ששינה לי את הנסיעה לעבודה.</blockquote><figcaption><span>ת׳, 41</span><span>מחשבות טורדניות · 9 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FBF1DD;--r:1.2deg"><blockquote>בפעם הראשונה בכיתי ולא התנצלתי.</blockquote><figcaption><span>ר׳, 36</span><span>אחרי פרידה · 11 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FFFDF8;--r:-2.6deg"><blockquote>הבנתי שאני לא עצלנית. אני עייפה. זה משפט ששווה את כל התהליך.</blockquote><figcaption><span>י׳, 44</span><span>שחיקה · 12 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#EEF3E8;--r:1.9deg"><blockquote>הבת שלי אמרה שאני צוחקת יותר. לא סיפרתי לה שהתחלתי טיפול.</blockquote><figcaption><span>ה׳, 52</span><span>לא ידעתי להגדיר · 16 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:-1.8deg"><blockquote>חשבתי ש-NLP זה סיסמאות. זה היה תרגיל של חמש דקות ששינה לי את הנסיעה לעבודה.</blockquote><figcaption><span>ת׳, 41</span><span>מחשבות טורדניות · 9 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FBF1DD;--r:1.2deg"><blockquote>בפעם הראשונה בכיתי ולא התנצלתי.</blockquote><figcaption><span>ר׳, 36</span><span>אחרי פרידה · 11 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:-2.6deg"><blockquote>הבנתי שאני לא עצלנית. אני עייפה. זה משפט ששווה את כל התהליך.</blockquote><figcaption><span>י׳, 44</span><span>שחיקה · 12 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:1.9deg"><blockquote>הבת שלי אמרה שאני צוחקת יותר. לא סיפרתי לה שהתחלתי טיפול.</blockquote><figcaption><span>ה׳, 52</span><span>לא ידעתי להגדיר · 16 פגישות</span></figcaption></figure></div></div>
+  <div class="in"><p class="fine">הפתקים בעמוד הקונספט הזה בדויים. בעמוד אמיתי יופיעו כאן רק מילים של מטופלות שאישרו לפרסם אותן, בלי שם.</p></div>
+</section>
 
 <section class="sec" id="faq"><div class="in">
   <div class="head rv"><span class="eye">שאלות לפני</span><h2>מה ששואלות אותי בשיחה הראשונה</h2></div>
@@ -430,8 +503,8 @@ footer a{color:inherit}
 <section class="studio sec" id="studio"><div class="in">
   <span class="eye">Studio Note · מה ראית כאן</span>
   <h2>עמוד נחיתה אחד, בשפה של הקליניקה שלך.</h2>
-  <p>«מרווח» היא קליניקה בדויה, ויעל היא מטפלת בדויה. העמוד הזה הוא דוגמה: הקליניקה, המחירים והציטוטים הם הדמיה, והטופס לא נשלח לאף אחד.</p>
-  <p>ככה נראה עמוד נחיתה למטפלת כשהוא נבנה סביב מה שהיא מבטיחה, מקום להניח בו את מה שמחזיקים: מחשבות שאפשר להניח בנגיעה, נשימה אחת לפני שממשיכים, ותשובה שמשתנה לפי מה שמביא אותך.</p>
+  <p>«מרווח» היא קליניקה בדויה, ויעל היא מטפלת בדויה. העמוד הזה הוא דוגמה: הקליניקה, המחירים, הציטוטים והפתקים הם הדמיה, והטופס לא נשלח לאף אחד.</p>
+  <p>ככה נראה עמוד נחיתה למטפלת כשהוא נבנה סביב מה שהיא מבטיחה, מקום להניח בו את מה שמחזיקים: מחשבות שאפשר להניח בנגיעה, נשימה אחת לפני שממשיכים, תשובה שמשתנה לפי מה שמביא אותך, וזרע מואר שצומח לפרח עם הגלילה.</p>
   <div class="cta"><a class="btn" href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%D7%A9%D7%9C%20%C2%AB%D7%9E%D7%A8%D7%95%D7%95%D7%97%C2%BB%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%9B%D7%96%D7%94%20%D7%9C%D7%A7%D7%9C%D7%99%D7%A0%D7%99%D7%A7%D7%94%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener" data-studio="section">לדבר עם חגית על עמוד כזה</a><a class="btn line" href="https://hagitantebi.co.il/oreva/landing/">עוד דוגמה: עמוד לקוסמטיקאית</a></div>
 </div></section>
 <footer><div class="in"><span>מרווח · טיפול רגשי ו-NLP · עמוד נחיתה קונספט</span><a href="https://hagitantebi.co.il/">Brand Worlds Studio · חגית אנטבי</a></div></footer>
@@ -472,13 +545,29 @@ const arc=[$('#arcA'),$('#arcB'),$('#arcC')], len=[10,30,10], parts=$$('#parts l
 function hour(p){ let rest=p*50; arc.forEach((c,i)=>{const v=Math.max(0,Math.min(len[i],rest)); c.setAttribute('stroke-dasharray',v+' 60'); rest-=len[i]; parts[i].classList.toggle('on',v>0.5)});
   $('#mins').textContent=Math.round(p*50); }
 
+/* the seed: frames follow the scroll; each stage switches on one thought, and it stays */
+const GN=72, gfr=[], gcv=$('#gcv'), gx=gcv.getContext('2d'); let gdrawn=-1;
+for(let i=1;i<=GN;i++){const im=new Image(); im.src='a/grow/g'+String(i).padStart(2,'0')+'.webp'; if(i===1) im.onload=()=>gdraw(0); gfr.push(im)}
+function gdraw(k){ const im=gfr[k]; if(!im||!im.complete||!im.naturalWidth) return; gdrawn=k;
+  const W=gcv.clientWidth*devicePixelRatio|0, H=gcv.clientHeight*devicePixelRatio|0; if(!W||!H) return;
+  if(gcv.width!==W||gcv.height!==H){gcv.width=W;gcv.height=H}
+  const tall=W/H<1, h=tall?H*.64:Math.max(H,W*im.naturalHeight/im.naturalWidth), w=h*im.naturalWidth/im.naturalHeight;
+  if(tall){ gx.drawImage(im,im.naturalWidth/2-2,0,4,3,0,0,W,H-h+2) }            /* backdrop colour above the frame */
+  gx.drawImage(im,(W-w)/2,H-h,w,h);
+}
+const gth=$$('#gth p'), gst=$$('#stages li'), GT=[0,.30,.50,.64,.84];
+function grow(p){ const k=Math.min(GN-1,Math.round(p*(GN-1))); if(k!==gdrawn) gdraw(k);
+  let cur=0; GT.forEach((t,i)=>{const on=p>=t; if(on) cur=i; gth[i].classList.toggle('on',on); gst[i].classList.toggle('on',on)});
+  gth.forEach((el,i)=>el.classList.toggle('cur',i===cur)); $('#stages').style.setProperty('--gp',(cur/4).toFixed(2)); }
+
 function onScroll(){
+  const g=$('#grow').getBoundingClientRect(); grow(calm?1:cl(-g.top/(g.height-innerHeight)));
   const h=$('#hero').getBoundingClientRect(), q=cl(-h.top/(h.height*.75));
   $('#thoughts').style.setProperty('--q',calm?0:q.toFixed(3));
   const c=$('#clock').getBoundingClientRect(); hour(calm?1:cl((innerHeight*.9-c.top)/(innerHeight*.55)));
   if(!calm){const f=$('#portrait').getBoundingClientRect(); $('#portrait img').style.setProperty('--py',((f.top+f.height/2-innerHeight/2)*-.05).toFixed(1)+'px')}
 }
-addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',()=>{gdrawn=-1;onScroll()}); onScroll();
 
 /* voices: one at a time, the dots pick */
 const figs=$$('#voices figure'), dots=$$('#dots button'); let vi=0, timer;
