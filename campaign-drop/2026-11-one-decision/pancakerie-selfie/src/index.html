@@ -46,6 +46,13 @@
       #fan .ttl { position: absolute; top: 26px; left: 0; right: 0; text-align: center; font-size: 24px; letter-spacing: .3em; z-index: 3; }
       #fan .ttl span { position: absolute; left: 0; right: 0; top: 0; }
 
+      /* orbit: the dishes circle her; back half behind her cut-out, front half in front */
+      #orb-back { position: absolute; inset: 0; z-index: 2; }
+      #cut { position: absolute; inset: 0; z-index: 3; }
+      #cut img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; visibility: hidden; }
+      #orb-front { position: absolute; inset: 0; z-index: 4; }
+      .orb { position: absolute; left: 0; top: 0; width: 340px; margin: -128px 0 0 -170px; display: block; filter: drop-shadow(0 18px 22px rgba(62,47,37,.35)); }
+
       /* touchpoints grid */
       #grid { position: absolute; inset: 0; z-index: 5; background: #EEE6DA; }
       #grid .head { position: absolute; top: 172px; left: 0; right: 0; text-align: center; font-size: 30px; letter-spacing: .3em; color: #8C6A52; }
@@ -67,20 +74,22 @@
 
       /* end card */
       #end { position: absolute; inset: 0; z-index: 10; background: #FAF8F3; text-align: center; }
-      #end .brand { position: absolute; top: 230px; left: 0; right: 0; font-style: italic; font-size: 58px; color: #3E2F25; }
-      #end .name { position: absolute; top: 312px; left: 0; right: 0; font-size: 24px; letter-spacing: .34em; color: #8B7B6E; }
-      #end .ans { position: absolute; top: 560px; left: 70px; right: 70px; font-size: 88px; font-weight: 700; line-height: 1.16; color: #6B563F; direction: rtl; }
+      #end .brand { position: absolute; top: 96px; left: 0; right: 0; font-style: italic; font-size: 50px; color: #3E2F25; }
+      #end .name { position: absolute; top: 748px; left: 0; right: 0; font-size: 28px; letter-spacing: .08em; color: #8B7B6E; direction: rtl; }
+      #end .ans { position: absolute; top: 840px; left: 70px; right: 70px; font-size: 80px; font-weight: 700; line-height: 1.16; color: #6B563F; direction: rtl; }
       #end .ans b { color: #C4765A; }
+      #end .pic { position: absolute; top: 190px; left: 320px; width: 440px; height: 530px; border-radius: 220px 220px 40px 40px; overflow: hidden; box-shadow: 0 24px 60px rgba(62,47,37,.2); }
+      #end .pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; transform: scale(1.12); }
       #end .row { position: absolute; top: 860px; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
       #end .row i { width: 44px; height: 44px; border-radius: 50%; display: block; }
-      #end .track { position: absolute; top: 1068px; left: 140px; width: 800px; height: 4px; border-radius: 2px; background: #C4765A; transform-origin: right center; }
-      #end .ball { position: absolute; top: 1018px; left: 888px; width: 104px; height: 104px; border-radius: 50%; background: rgba(246,239,229,.6); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 28px rgba(62,40,24,.28); }
+      #end .track { position: absolute; top: 1100px; left: 140px; width: 800px; height: 4px; border-radius: 2px; background: #C4765A; transform-origin: right center; }
+      #end .ball { position: absolute; top: 1050px; left: 888px; width: 104px; height: 104px; border-radius: 50%; background: rgba(246,239,229,.6); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 28px rgba(62,40,24,.28); }
       #end .ball .sph { position: absolute; left: 12px; top: 12px; width: 78px; height: 78px; border-radius: 50%; background: radial-gradient(circle at 38% 30%, #F2C9A0 0%, #C98552 32%, #8A4F28 68%, #4E2A14 100%); display: flex; align-items: center; justify-content: center; font-family: "Cormorant Garamond", serif; font-size: 22px; color: #F5DEC4; }
-      #end .ask { position: absolute; top: 1190px; left: 80px; right: 80px; font-size: 46px; font-weight: 500; line-height: 1.32; color: #C4765A; direction: rtl; }
-      #end .cta { position: absolute; top: 1400px; left: 240px; width: 600px; padding: 26px 0 28px; border-radius: 16px; background: #6B563F; color: #FAF8F3; direction: rtl; }
+      #end .ask { position: absolute; top: 1190px; left: 80px; right: 80px; font-size: 44px; font-weight: 500; line-height: 1.32; color: #C4765A; direction: rtl; }
+      #end .cta { position: absolute; top: 1370px; left: 240px; width: 600px; padding: 26px 0 28px; border-radius: 16px; background: #6B563F; color: #FAF8F3; direction: rtl; }
       #end .cta strong { display: block; font-size: 46px; font-weight: 600; }
       #end .cta span { display: block; font-size: 28px; opacity: .85; margin-top: 4px; }
-      #end .url { position: absolute; top: 1610px; left: 0; right: 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: 24px; letter-spacing: .3em; color: #8B7355; }
+      #end .url { position: absolute; top: 1570px; left: 0; right: 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: 24px; letter-spacing: .3em; color: #8B7355; }
     </style>
   </head>
   <body>
@@ -159,12 +168,17 @@
       <div id="cap6" class="clip cap" data-start="12.85" data-duration="2.2" data-track-index="4"><span class="box">השאלה אם כל מה שמסביבו</span></div>
       <div id="cap7" class="clip cap" data-start="15.1" data-duration="1.3" data-track-index="4"><span class="box">מדבר <b>באותה שפה</b>?</span></div>
 
+      <!-- 12.85–15.15 · "everything around it": the four dishes orbit her -->
+      <div id="orb-back" class="clip" data-start="12.85" data-duration="2.3" data-track-index="9"><img class="orb ob0" src="assets/dish-pistache.webp" alt=""><img class="orb ob1" src="assets/dish-fraise.webp" alt=""><img class="orb ob2" src="assets/dish-citron.webp" alt=""><img class="orb ob3" src="assets/dish-noisette.webp" alt=""></div>
+      <div id="cut" class="clip" data-start="12.85" data-duration="2.3" data-track-index="10"><img id="m5" src="assets/me/005.webp" alt=""><img id="m6" src="assets/me/006.webp" alt=""><img id="m7" src="assets/me/007.webp" alt=""><img id="m8" src="assets/me/008.webp" alt=""><img id="m9" src="assets/me/009.webp" alt=""><img id="m10" src="assets/me/010.webp" alt=""><img id="m11" src="assets/me/011.webp" alt=""><img id="m12" src="assets/me/012.webp" alt=""><img id="m13" src="assets/me/013.webp" alt=""><img id="m14" src="assets/me/014.webp" alt=""><img id="m15" src="assets/me/015.webp" alt=""><img id="m16" src="assets/me/016.webp" alt=""><img id="m17" src="assets/me/017.webp" alt=""><img id="m18" src="assets/me/018.webp" alt=""><img id="m19" src="assets/me/019.webp" alt=""><img id="m20" src="assets/me/020.webp" alt=""><img id="m21" src="assets/me/021.webp" alt=""><img id="m22" src="assets/me/022.webp" alt=""><img id="m23" src="assets/me/023.webp" alt=""><img id="m24" src="assets/me/024.webp" alt=""><img id="m25" src="assets/me/025.webp" alt=""><img id="m26" src="assets/me/026.webp" alt=""><img id="m27" src="assets/me/027.webp" alt=""><img id="m28" src="assets/me/028.webp" alt=""><img id="m29" src="assets/me/029.webp" alt=""><img id="m30" src="assets/me/030.webp" alt=""><img id="m31" src="assets/me/031.webp" alt=""><img id="m32" src="assets/me/032.webp" alt=""><img id="m33" src="assets/me/033.webp" alt=""><img id="m34" src="assets/me/034.webp" alt=""><img id="m35" src="assets/me/035.webp" alt=""><img id="m36" src="assets/me/036.webp" alt=""><img id="m37" src="assets/me/037.webp" alt=""><img id="m38" src="assets/me/038.webp" alt=""><img id="m39" src="assets/me/039.webp" alt=""><img id="m40" src="assets/me/040.webp" alt=""><img id="m41" src="assets/me/041.webp" alt=""><img id="m42" src="assets/me/042.webp" alt=""><img id="m43" src="assets/me/043.webp" alt=""><img id="m44" src="assets/me/044.webp" alt=""><img id="m45" src="assets/me/045.webp" alt=""><img id="m46" src="assets/me/046.webp" alt=""><img id="m47" src="assets/me/047.webp" alt=""><img id="m48" src="assets/me/048.webp" alt=""><img id="m49" src="assets/me/049.webp" alt=""><img id="m50" src="assets/me/050.webp" alt=""><img id="m51" src="assets/me/051.webp" alt=""><img id="m52" src="assets/me/052.webp" alt=""><img id="m53" src="assets/me/053.webp" alt=""><img id="m54" src="assets/me/054.webp" alt=""><img id="m55" src="assets/me/055.webp" alt=""><img id="m56" src="assets/me/056.webp" alt=""><img id="m57" src="assets/me/057.webp" alt=""><img id="m58" src="assets/me/058.webp" alt=""><img id="m59" src="assets/me/059.webp" alt=""><img id="m60" src="assets/me/060.webp" alt=""><img id="m61" src="assets/me/061.webp" alt=""><img id="m62" src="assets/me/062.webp" alt=""></div>
+      <div id="orb-front" class="clip" data-start="12.85" data-duration="2.3" data-track-index="11"><img class="orb of0" src="assets/dish-pistache.webp" alt=""><img class="orb of1" src="assets/dish-fraise.webp" alt=""><img class="orb of2" src="assets/dish-citron.webp" alt=""><img class="orb of3" src="assets/dish-noisette.webp" alt=""></div>
+
       <!-- 16.4–19.4 · studio closing screen -->
       <div id="end" class="clip" data-start="16.4" data-duration="3" data-track-index="7">
         <div class="brand lat e1" dir="ltr">Brand Worlds Studio</div>
-        <div class="name e1">חגית אנטבי</div>
+        <div class="pic e1"><img src="assets/hagit.png" alt=""></div>
+        <div class="name e1">חגית אנטבי · בונה עולמות מותג</div>
         <div class="ans e2">מותג הוא <b>החלטה אחת</b>.<br>בכל מקום.</div>
-        <div class="row e2"><i style="background:#A5A57F"></i><i style="background:#D39483"></i><i style="background:#EEC376"></i><i style="background:#523726"></i></div>
         <div class="track"></div>
         <div class="ball"><div class="sph" dir="ltr">BW</div></div>
         <div class="ask e3">רוצה לדעת איפה המותג שלך<br>מפסיק לדבר באותה שפה?</div>
@@ -215,11 +229,37 @@
       });
       tl.to("#grid", { opacity: 0, duration: 0.14, ease: "none" }, 11.41);
 
+      // orbit around her: one proxy drives the cut-out frame and the four dishes
+      (function () {
+        const T0 = 12.85, DUR = 2.3, CX = 540, CY = 1005, RX = 455, RY = 170, TILT = -0.12;
+        const back = [0,1,2,3].map(i => document.querySelector(".ob" + i));
+        const front = [0,1,2,3].map(i => document.querySelector(".of" + i));
+        const cuts = []; for (let k = 5; k <= 62; k++) cuts[k] = document.getElementById("m" + k);
+        const st = { t: 0 }; let shown = -1;
+        const ease = x => x < 0 ? 0 : x > 1 ? 1 : x * x * (3 - 2 * x);
+        function place() {
+          const t = st.t, k = Math.max(5, Math.min(62, Math.round((T0 + t - 12.6) * 24)));
+          if (k !== shown) { if (cuts[shown]) cuts[shown].style.visibility = "hidden"; cuts[k].style.visibility = "visible"; shown = k; }
+          const grow = ease(t / 0.45) * (1 - ease((t - (DUR - 0.32)) / 0.3));
+          for (let i = 0; i < 4; i++) {
+            const a = Math.PI * 0.5 + i * Math.PI / 2 + (t / DUR) * Math.PI * 1.5;
+            const ex = Math.cos(a) * RX, ey = Math.sin(a) * RY, depth = Math.sin(a);
+            const x = CX + ex * Math.cos(TILT) - ey * Math.sin(TILT), y = CY + ex * Math.sin(TILT) + ey * Math.cos(TILT);
+            const sc = (0.72 + 0.28 * depth) * grow;
+            const tf = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + sc.toFixed(4) + ")";
+            back[i].style.transform = tf; front[i].style.transform = tf;
+            back[i].style.visibility = depth < 0 ? "visible" : "hidden";
+            front[i].style.visibility = depth >= 0 ? "visible" : "hidden";
+          }
+        }
+        tl.fromTo(st, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: place, immediateRender: false }, T0);
+        place();
+      })();
+
       // closing screen
       tl.fromTo("#end", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "none" }, 16.4);
       tl.fromTo("#end .e1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 16.5);
       tl.fromTo("#end .e2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 16.65);
-      tl.fromTo("#end .row i", { scale: 0 }, { scale: 1, duration: 0.3, stagger: 0.07, ease: "back.out(2)" }, 16.9);
       tl.fromTo("#end .track", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "power2.inOut" }, 16.8);
       tl.fromTo("#end .ball", { x: 150, opacity: 0 }, { x: -800, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 16.8);
       tl.fromTo("#end .ball .sph", { rotation: 0 }, { rotation: -540, duration: 1.0, ease: "power2.inOut" }, 16.8);

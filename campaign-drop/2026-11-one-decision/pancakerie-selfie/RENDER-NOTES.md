@@ -5,3 +5,5 @@
 - Voice: `src/voice.m4a` — the original selfie audio (first 16.5s).
 - Motion: HyperFrames composition (`src/index.html`, GSAP timeline). Render: `npx hyperframes render -q high -o out.mp4` inside `src/`.
 - Caption timings were set from speech pauses, not from a transcript.
+- Orbit (12.85–15.15s): `src/assets/me/*.webp` are rembg (`u2net_human_seg`) cut-outs of the a-roll at 24fps; back-half dishes sit under the cut-out, front-half above it.
+- Closing screen portrait: `hagit-portrait-2026.png` from the site root.
