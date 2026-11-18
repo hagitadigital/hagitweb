@@ -1,0 +1,76 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF8F3;--ink:#6B563F;--copper:#C4765A}
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:Heebo,sans-serif}
+#base{position:absolute;inset:0;width:1080px;height:1920px}
+.l{position:absolute;left:0;right:0;opacity:0}
+#scrim{top:0;height:760px;background:linear-gradient(#1c1612e6 0%,#1c1612b0 45%,#1c161200 100%)}
+#hook{top:150px;text-align:center;color:var(--cream);font-weight:500;font-size:104px;line-height:1.16;letter-spacing:-1px}
+#hooksub{top:452px;text-align:center;color:#F1D9CC;font-weight:300;font-size:52px}
+#line{top:559px;left:240px;right:240px;height:4px;background:var(--copper);transform-origin:right}
+#ball{top:546px;left:auto;right:240px;width:30px;height:30px;border-radius:50%;background:var(--copper)}
+#tag{top:1760px;text-align:center}
+#tag span,.pill span{display:inline-block;background:#FAF8F3ee;color:var(--ink);border-radius:999px}
+#tag span{font-size:30px;padding:12px 30px;letter-spacing:.5px}
+.pill{top:215px;text-align:center}
+.pill span{font-size:50px;font-weight:500;padding:22px 48px;box-shadow:0 10px 40px #0003}
+.pill b{color:var(--copper);font-family:"Cormorant Garamond",serif;font-weight:500;font-size:46px;margin-left:18px}
+#s3a{top:170px;text-align:center;color:var(--cream);font-weight:500;font-size:96px}
+#s3b{top:300px;text-align:center;color:#F1D9CC;font-weight:300;font-size:68px}
+#end{top:0;height:1920px;background:var(--cream)}
+#end>div{position:absolute;left:0;right:0;text-align:center;opacity:0}
+#e1{top:640px;color:var(--ink);font-weight:500;font-size:100px;line-height:1.15}
+#e2{top:910px;color:var(--ink);font-weight:300;font-size:50px}
+#e3{top:1080px}#e3 span{display:inline-block;background:var(--copper);color:var(--cream);font-size:50px;font-weight:500;padding:26px 64px;border-radius:999px}
+#eline{top:560px;left:340px!important;right:340px!important;height:4px;background:var(--copper);transform-origin:right}
+#eball{top:546px;left:auto!important;right:340px!important;width:30px;height:30px;border-radius:50%;background:var(--copper)}
+#sig{top:1560px;color:var(--ink);font-family:"Cormorant Garamond",serif;font-size:50px;letter-spacing:1px;direction:ltr}
+#sig i{font-style:normal;color:var(--copper);margin:0 16px}
+</style></head><body>
+<img id="base">
+<div class="l" id="scrim"></div>
+<div class="l" id="hook">העמוד שלך נראה<br>כמו תבנית?</div>
+<div class="l" id="hooksub">ככה נראה עמוד שלא.</div>
+<div class="l" id="line"></div><div class="l" id="ball"></div>
+<div class="l" id="tag"><span>עמוד קונספט · <bdi dir="ltr">VELUNE°</bdi></span></div>
+<div class="l pill" id="p1"><span><b>01</b>עיצוב שנבנה סביב המוצר</span></div>
+<div class="l pill" id="p2"><span><b>02</b>קופי שמוכר</span></div>
+<div class="l pill" id="p3"><span><b>03</b>ונראה ככה גם בנייד</span></div>
+<div class="l" id="s3a">עמוד נחיתה אחד.</div>
+<div class="l" id="s3b">בשפה של המותג שלך.</div>
+<div class="l" id="end">
+  <div id="eline"></div><div id="eball"></div>
+  <div id="e1">עמוד נחיתה<br>למותג שלך</div>
+  <div id="e2">עיצוב · קופי · מותאם לנייד</div>
+  <div id="e3"><span>שלחי הודעה ונתחיל</span></div>
+  <div id="sig">Hagit Antebi <i>|</i> Brand Worlds Studio</div>
+</div>
+<script>
+const $=id=>document.getElementById(id), cl=t=>Math.min(1,Math.max(0,t)), ez=t=>{t=cl(t);return t*t*(3-2*t)};
+// visible between a..b seconds with fades fi/fo
+const vis=(t,a,b,fi=.35,fo=.35)=>Math.min(ez((t-a)/fi),1-ez((t-(b-fo))/fo));
+const rise=(el,t,a,b,fi=.4)=>{const v=vis(t,a,b,fi);el.style.opacity=v;el.style.transform=`translateY(${(1-ez((t-a)/fi))*26}px)`};
+const BASE=462, FPS=30;
+window.setT=async f=>{
+  const t=f/FPS, img=$('base');
+  const src='base/b'+String(Math.min(f,BASE-1)).padStart(4,'0')+'.jpg';
+  if(!img.src.endsWith(src)){img.src=src;await img.decode();}
+  // hook: fully on at frame 0
+  const h=1-ez((t-3.5)/.45);
+  $('scrim').style.opacity=Math.max(h, vis(t,10.6,15.5,.3,.3));
+  $('hook').style.opacity=h;
+  $('hooksub').style.opacity=Math.min(ez((t-1.5)/.4),h);
+  $('line').style.opacity=h; $('line').style.transform=`scaleX(${.12+.88*ez(t/3.2)})`;
+  $('ball').style.opacity=h; $('ball').style.transform=`translateX(${-600*ez(t/3.2)*.88-600*.12+15}px)`;
+  $('tag').style.opacity=vis(t,.6,4.0);
+  rise($('p1'),t,5.0,6.8); rise($('p2'),t,6.9,8.7); rise($('p3'),t,8.8,10.5);
+  rise($('s3a'),t,11.0,15.5); rise($('s3b'),t,11.9,15.5);
+  const e=ez((t-15.4)/.35); $('end').style.opacity=e;
+  const s=(id,a)=>{const v=ez((t-a)/.45);$(id).style.opacity=v;$(id).style.transform=`translateY(${(1-v)*24}px)`};
+  s('e1',15.7);s('e2',16.1);s('e3',16.5);s('sig',16.9);
+  const g=ez((t-15.5)/1.6); $('eline').style.opacity=1;$('eline').style.transform=`scaleX(${g})`;
+  $('eball').style.opacity=1;$('eball').style.transform=`translateX(${-400*g+15}px)`;
+};
+</script></body></html>
