@@ -1,12 +1,15 @@
-# Landing-page film with the digital twin · v1 draft
+# Landing-page film with the digital twin
 
-`landing-twin-v2.mp4` (opening shot is the real clip; v1 used a still) — 1080×1920, 30fps, 18.2s, no audio yet.
+`landing-twin-v3.mp4` — 1080×1920, 30fps, 18.2s, no audio yet. The page on the screens is the ORÉVA° concept landing page
+(`../concept-page-oreva/index.html`; its media are the files of `oreva/assets/`, copied to `a/` next to the page).
+v1 used a still for the opening shot, v2 the real clip, both with VELUNE° on screen.
 
-Rebuild (from `src/`, site served at `localhost:8765` from the repo root):
+Rebuild (from `src/`, the concept page served at `localhost:8766/preview.html` — the page wrapped in a plain html/body):
 1. `ffmpeg -i front-clip.mp4 clip/f%04d.png` · `ffmpeg -i back-clip.mp4 clipB/f%04d.png`
-2. `node capscroll.js scrB 1440 900 138 0 2750 30 10` · `node capscroll.js scrC 1440 900 145 7300 8650 10 30` · `MOBILE=1 node capscroll.js scrM 390 693 180 700 4250 6 30`
-3. `python3 comp.py clip scrC outC` — tracks the laptop screen in the front clip and composites the page.
+2. `node cap2.js oB 138 30 "0:0,40:0,137:1750"` · `node cap2.js oC 145 24 "0:6520,60:7330,85:7330,144:8080"` ·
+   `MOBILE=1 node cap2.js oM 180 30 "0:2934,125:4043,152:4650,179:4650"` (frames:scrollY keyframes; CSS animations and videos follow frame time)
+3. `python3 comp.py clip oC outC` — tracks the laptop screen in the front clip and composites the page.
 4. `python3 base.py` — builds the three scenes into `base/`.
-5. `node render.js landing-twin-v1.mp4` — text overlays and end card from `film.html`.
+5. `node render.js landing-twin-v3.mp4` — text overlays and end card from `film.html`.
 
 Screen corners are hard-coded for these two shots (`comp.py` C0, `base.py` C).

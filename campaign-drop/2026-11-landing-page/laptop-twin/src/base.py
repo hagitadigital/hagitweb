@@ -23,7 +23,7 @@ def s1(i):
     d=np.linalg.norm(ots.astype(np.float32)-disp,axis=2)
     key=cv2.GaussianBlur(1-np.clip((d-22)/18,0,1),(0,0),1.0)   # hair and notch stay in front
     a=(wm*key)[...,None]
-    page=cv2.imread(f'scrB/s{i:04d}.jpg')
+    page=cv2.imread(f'oB/s{i:04d}.jpg')
     wp=cv2.resize(cv2.warpPerspective(page,Hm,(W*2,H*2),flags=cv2.INTER_AREA),(W,H),interpolation=cv2.INTER_AREA).astype(np.float32)
     f=(wp*0.95+8)*a+ots.astype(np.float32)*(1-a)
     z,fx,fy=cam(i)
@@ -31,8 +31,7 @@ def s1(i):
     return cv2.warpAffine(np.clip(f,0,255).astype(np.uint8),M,(W,H),flags=cv2.INTER_LANCZOS4)
 # ---------- S2: the page full frame, mobile (180 frames)
 def s2(i):
-    m=cv2.imread(f'scrM/s{i:04d}.jpg')
-    m=m[84:1919,24:1056]                                    # drop the studio top bar
+    m=cv2.imread(f'oM/s{i:04d}.jpg')
     return cv2.resize(m,(W,H),interpolation=cv2.INTER_LANCZOS4)
 # ---------- S3: front shot with the bottle section on the laptop (24fps -> 30fps, 144 frames)
 def s3(i):
