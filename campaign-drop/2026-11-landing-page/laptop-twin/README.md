@@ -1,6 +1,8 @@
 # Landing-page film with the digital twin
 
-`landing-twin-v3.mp4` — 1080×1920, 30fps, 18.2s, no audio yet. The page on the screens is the ORÉVA° concept landing page
+`landing-twin-v4-music.mp4` — 1080×1920, 30fps, 18.2s: v3 with the music bed (`audio/bed-piano-strings-v1.mp3`, from the October explainer reel), no narration yet.
+`audio/voice-test-a/b.mp3` — two test lines of a voice cloned in Higgsfield (Seed Audio) from the earlier Cartesia narration; not checked by ear.
+`landing-twin-v3.mp4` — the same film, silent. The page on the screens is the ORÉVA° concept landing page
 (`../concept-page-oreva/index.html`; its media are the files of `oreva/assets/`, copied to `a/` next to the page).
 v1 used a still for the opening shot, v2 the real clip, both with VELUNE° on screen.
 
