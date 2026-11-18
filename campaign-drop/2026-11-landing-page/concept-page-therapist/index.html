@@ -200,6 +200,27 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;pa
   .stages li.on{color:#FFF8EA}
   .stages::before{background:#f7f3ea66}
 }
+/* notes left on the table: two rows of handwritten notes drifting past each other */
+.notes{overflow:hidden;padding-block:104px}
+.notes .head{margin-bottom:36px}
+.lane{direction:ltr;overflow:hidden}
+.row{display:flex;gap:26px;width:max-content;padding-block:16px;direction:ltr;animation:slide 70s linear infinite}
+.row.back{animation-direction:reverse;animation-duration:84s}
+.notes:hover .row,.notes:focus-within .row{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.note-card{direction:rtl;flex:none;width:330px;min-height:210px;margin:0;padding:30px 28px 22px;background:var(--c,#FFFDF8);border-radius:4px 18px 6px 16px;box-shadow:0 22px 40px -28px #3f5f56b3,0 1px 0 #ffffffb3 inset;display:flex;flex-direction:column;gap:18px;justify-content:space-between;rotate:var(--r,0deg);position:relative;transition:rotate .5s,translate .5s,box-shadow .5s}
+.note-card::before{content:"";position:absolute;top:12px;inset-inline-start:50%;width:11px;height:11px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 5px #e8b76f40;translate:50% 0}
+.note-card:hover{rotate:0deg;translate:0 -8px;box-shadow:0 34px 50px -30px #3f5f56}
+.note-card blockquote{margin:0;font:400 23px/1.4 var(--hand);color:var(--ink)}
+.note-card figcaption{font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--ink-2);border-top:1px dashed #2c3b3733;padding-top:12px;display:flex;justify-content:space-between;gap:10px}
+.note-card figcaption span:last-child{color:var(--lamp-deep)}
+.notes .fine{font-size:14px;color:var(--ink-2);margin-top:26px}
+@media (max-width:880px){
+  .notes{padding-block:68px}
+  .note-card{width:270px;min-height:190px;padding:28px 22px 18px}
+  .note-card blockquote{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){.row{flex-wrap:wrap;width:auto;justify-content:center}.row [aria-hidden=true]{display:none}}
 /* calm palette: no dark surfaces */
 body::before{background:var(--paper)}
 .btn{background:var(--night);color:var(--paper)}
@@ -383,6 +404,13 @@ form{box-shadow:0 40px 90px -60px #3f5f56}
     <li><span>ביטול<small>עד 24 שעות לפני, בלי חיוב</small></span><b>₪0</b></li>
   </ul>
 </div></section>
+
+<section class="notes" id="notes">
+  <div class="in"><div class="head rv"><span class="eye">פתקים שנשארו על השולחן</span><h2>בסוף תהליך אני מבקשת משפט אחד, בכתב יד.</h2><p>לא סיכום ולא תודה. רק מה שהן לוקחות איתן. אלה חלק מהפתקים.</p></div></div>
+  <div class="lane"><div class="row"><figure class="note-card" style="--c:#FFFDF8;--r:-2.2deg"><blockquote>הגעתי בטוחה שאני "סתם לחוצה". יצאתי עם מילים למה שקורה לי, ועם דקה ביום שהיא רק שלי.</blockquote><figcaption><span>מ׳, 29</span><span>חרדה · 10 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#EEF3E8;--r:1.6deg"><blockquote>חצי שנה לא הצלחתי להגיד לא בעבודה. היום יש לי משפט אחד, ואני משתמשת בו.</blockquote><figcaption><span>ד׳, 38</span><span>שחיקה · 8 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FBF1DD;--r:-1.1deg"><blockquote>אחרי שאמא נפטרה כולם רצו שאתאושש. אצל יעל אף אחד לא מיהר.</blockquote><figcaption><span>א׳, 47</span><span>אובדן · 14 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FFFDF8;--r:2.3deg"><blockquote>שנה התלבטתי אם לעזוב. בשלוש פגישות הבנתי מה אני רוצה, ולמה פחדתי להגיד את זה.</blockquote><figcaption><span>ל׳, 33</span><span>החלטה · 6 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:-2.2deg"><blockquote>הגעתי בטוחה שאני "סתם לחוצה". יצאתי עם מילים למה שקורה לי, ועם דקה ביום שהיא רק שלי.</blockquote><figcaption><span>מ׳, 29</span><span>חרדה · 10 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:1.6deg"><blockquote>חצי שנה לא הצלחתי להגיד לא בעבודה. היום יש לי משפט אחד, ואני משתמשת בו.</blockquote><figcaption><span>ד׳, 38</span><span>שחיקה · 8 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FBF1DD;--r:-1.1deg"><blockquote>אחרי שאמא נפטרה כולם רצו שאתאושש. אצל יעל אף אחד לא מיהר.</blockquote><figcaption><span>א׳, 47</span><span>אובדן · 14 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:2.3deg"><blockquote>שנה התלבטתי אם לעזוב. בשלוש פגישות הבנתי מה אני רוצה, ולמה פחדתי להגיד את זה.</blockquote><figcaption><span>ל׳, 33</span><span>החלטה · 6 פגישות</span></figcaption></figure></div>
+  <div class="row back"><figure class="note-card" style="--c:#EEF3E8;--r:-1.8deg"><blockquote>חשבתי ש-NLP זה סיסמאות. זה היה תרגיל של חמש דקות ששינה לי את הנסיעה לעבודה.</blockquote><figcaption><span>ת׳, 41</span><span>מחשבות טורדניות · 9 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FBF1DD;--r:1.2deg"><blockquote>בפעם הראשונה בכיתי ולא התנצלתי.</blockquote><figcaption><span>ר׳, 36</span><span>אחרי פרידה · 11 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#FFFDF8;--r:-2.6deg"><blockquote>הבנתי שאני לא עצלנית. אני עייפה. זה משפט ששווה את כל התהליך.</blockquote><figcaption><span>י׳, 44</span><span>שחיקה · 12 פגישות</span></figcaption></figure><figure class="note-card" style="--c:#EEF3E8;--r:1.9deg"><blockquote>הבת שלי אמרה שאני צוחקת יותר. לא סיפרתי לה שהתחלתי טיפול.</blockquote><figcaption><span>ה׳, 52</span><span>לא ידעתי להגדיר · 16 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:-1.8deg"><blockquote>חשבתי ש-NLP זה סיסמאות. זה היה תרגיל של חמש דקות ששינה לי את הנסיעה לעבודה.</blockquote><figcaption><span>ת׳, 41</span><span>מחשבות טורדניות · 9 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FBF1DD;--r:1.2deg"><blockquote>בפעם הראשונה בכיתי ולא התנצלתי.</blockquote><figcaption><span>ר׳, 36</span><span>אחרי פרידה · 11 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#FFFDF8;--r:-2.6deg"><blockquote>הבנתי שאני לא עצלנית. אני עייפה. זה משפט ששווה את כל התהליך.</blockquote><figcaption><span>י׳, 44</span><span>שחיקה · 12 פגישות</span></figcaption></figure><figure class="note-card" aria-hidden="true" style="--c:#EEF3E8;--r:1.9deg"><blockquote>הבת שלי אמרה שאני צוחקת יותר. לא סיפרתי לה שהתחלתי טיפול.</blockquote><figcaption><span>ה׳, 52</span><span>לא ידעתי להגדיר · 16 פגישות</span></figcaption></figure></div></div>
+  <div class="in"><p class="fine">הפתקים בעמוד הקונספט הזה בדויים. בעמוד אמיתי יופיעו כאן רק מילים של מטופלות שאישרו לפרסם אותן, בלי שם.</p></div>
+</section>
 
 <section class="sec" id="faq"><div class="in">
   <div class="head rv"><span class="eye">שאלות לפני</span><h2>מה ששואלות אותי בשיחה הראשונה</h2></div>
