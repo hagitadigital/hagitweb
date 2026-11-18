@@ -244,9 +244,8 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;pa
 .notes{overflow:hidden;padding-block:104px}
 .notes .head{margin-bottom:36px}
 .lane{direction:ltr;overflow:hidden}
-.row{display:flex;gap:26px;width:max-content;padding-block:16px;direction:ltr;animation:slide 70s linear infinite}
-.row.back{animation-direction:reverse;animation-duration:84s}
-.notes:hover .row,.notes:focus-within .row{animation-play-state:paused}
+.row{display:flex;gap:26px;width:max-content;padding-block:16px;direction:ltr;animation:slide 46s linear infinite}
+.row.back{animation-direction:reverse;animation-duration:56s}
 @keyframes slide{to{transform:translateX(-50%)}}
 .note-card{direction:rtl;flex:none;width:330px;min-height:210px;margin:0;padding:30px 28px 22px;background:var(--c,#FFFDF8);border-radius:4px 18px 6px 16px;box-shadow:0 22px 40px -28px #3f5f56b3,0 1px 0 #ffffffb3 inset;display:flex;flex-direction:column;gap:18px;justify-content:space-between;rotate:var(--r,0deg);position:relative;transition:rotate .5s,translate .5s,box-shadow .5s}
 .note-card::before{content:"";position:absolute;top:12px;inset-inline-start:50%;width:11px;height:11px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 5px #e8b76f40;translate:50% 0}
@@ -261,6 +260,8 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;pa
   .note-card blockquote{font-size:20px}
 }
 @media (prefers-reduced-motion:reduce){.row{flex-wrap:wrap;width:auto;justify-content:center}.row [aria-hidden=true]{display:none}}
+.logo span,header.top .btn,.dock .btn{white-space:nowrap}
+@media (max-width:480px){.logo small{display:none}.voices .stack{min-height:250px}.dock{font-size:14px}}
 /* calm palette: no dark surfaces */
 body::before{background:var(--paper)}
 .btn{background:var(--night);color:var(--paper)}
@@ -551,9 +552,11 @@ for(let i=1;i<=GN;i++){const im=new Image(); im.src='a/grow/g'+String(i).padStar
 function gdraw(k){ const im=gfr[k]; if(!im||!im.complete||!im.naturalWidth) return; gdrawn=k;
   const W=gcv.clientWidth*devicePixelRatio|0, H=gcv.clientHeight*devicePixelRatio|0; if(!W||!H) return;
   if(gcv.width!==W||gcv.height!==H){gcv.width=W;gcv.height=H}
-  const tall=W/H<1, h=tall?H*.64:Math.max(H,W*im.naturalHeight/im.naturalWidth), w=h*im.naturalWidth/im.naturalHeight;
-  if(tall){ gx.drawImage(im,im.naturalWidth/2-2,0,4,3,0,0,W,H-h+2) }            /* backdrop colour above the frame */
-  gx.drawImage(im,(W-w)/2,H-h,w,h);
+  const tall=W/H<1, iw=im.naturalWidth, ih=im.naturalHeight, top=Math.max(0,$('header.top').getBoundingClientRect().bottom)*devicePixelRatio;
+  const h=tall?H*.64:H-top, w=h*iw/ih, x=(W-w)/2;
+  gx.drawImage(im,iw/2-2,0,4,3,0,0,W,H-h+2);                                    /* backdrop colour above the frame, behind the header */
+  if(x>0){ gx.drawImage(im,0,0,3,ih,0,H-h,x+2,h); gx.drawImage(im,iw-3,0,3,ih,W-x-2,H-h,x+2,h) }   /* and beside it on wide screens */
+  gx.drawImage(im,x,H-h,w,h);
 }
 const gth=$$('#gth p'), gst=$$('#stages li'), GT=[0,.30,.50,.64,.84];
 function grow(p){ const k=Math.min(GN-1,Math.round(p*(GN-1))); if(k!==gdrawn) gdraw(k);
