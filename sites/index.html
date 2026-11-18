@@ -292,6 +292,101 @@ footer .sig{font-family:var(--latin);font-size:18px;letter-spacing:.06em;directi
 .dock{position:fixed;inset:auto 0 0;z-index:20;display:none;align-items:center;justify-content:space-between;gap:12px;background:#FAF8F3f5;border-top:1px solid var(--line);padding:10px var(--gr) calc(10px + env(safe-area-inset-bottom,0px)) var(--gl);font-size:14px;color:var(--text)}
 .dock .btn{min-height:44px;padding:0 20px;font-size:16px}
 
+
+/* the studio's own look: the home page's tokens, type and cards */
+:root{--ink:#7A6349; --text:#7A6349; --muted:#786A5E; --deep:#4F372C; --copper-deep:#A45839; --line:#D4C9BC; --sand:#EFE8DC;
+  --display:"Cormorant Garamond","Frank Ruhl Libre",serif; --en:"Plus Jakarta Sans","Heebo",sans-serif}
+body{color:var(--text);line-height:1.7}
+h1,h2,h3{font-family:var(--display);font-weight:500;color:var(--ink)}
+h1,h2{letter-spacing:-1px}
+h1 b,h2 b,.hero h1 span:nth-child(3) i{font-weight:inherit;color:inherit}
+.eye{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--copper-deep)}
+.eye b{font-family:var(--body);font-size:13px;font-weight:500;letter-spacing:.08em}
+.head{align-items:center;text-align:center;margin-inline:auto;max-width:44em}
+.head p{color:var(--muted);max-width:34em}
+.btn{border-radius:0;border-color:var(--ink);background:var(--ink);color:var(--cream);font-weight:500;letter-spacing:.03em}
+.btn:hover{background:var(--deep);border-color:var(--deep);transform:none}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--cream)}
+.logo{font-family:var(--display);font-size:25px;font-weight:600;letter-spacing:.02em;color:var(--ink);display:inline-flex;align-items:center;gap:12px;direction:ltr}
+.logo .mark{width:30px;height:30px;display:block}
+.logo .mark svg{width:100%;height:100%;display:block}
+.hero h1{font-weight:400}
+.lead{color:var(--text)}
+.frame,.mock{border-radius:18px;box-shadow:0 18px 40px -30px #2b1a1259,0 0 0 1px var(--line)}
+
+/* five seconds: a light band, like the rest of the site */
+.moments{background:var(--beige);color:var(--text)}
+.moments h2{color:var(--ink)}
+.moments p{color:var(--muted)}
+.moments .eye{color:var(--copper-deep)!important}
+.timer::before{background:var(--line)}
+.timer span{color:var(--muted)}
+.three li{border-top-color:var(--line);font-family:var(--display);color:#7a634959}
+.three li b{font-family:var(--display);color:var(--copper-deep)}
+@keyframes lit{0%,8%{color:#7a634959}14%,100%{color:var(--ink)}}
+@keyframes lit2{0%,34%{color:#7a634959}40%,100%{color:var(--ink)}}
+@keyframes lit3{0%,60%{color:#7a634959}66%,100%{color:var(--ink)}}
+.asks li{font-family:var(--display);color:var(--ink)}
+.eg{color:var(--ink);text-align:center}
+.mock figcaption b,.site h4{font-family:var(--display);color:var(--ink)}
+.pair .mock:last-child figcaption b{color:var(--copper-deep)}
+.site .go{border-radius:0;background:var(--ink)}
+.snav b{color:var(--ink)}
+.q{border-color:var(--copper);color:var(--copper-deep)}
+
+/* the three services: the home page's "door" cards */
+.two{gap:clamp(16px,2.2vw,28px);border-top:0}
+.svc,.svc+.svc,.svc:last-child{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(26px,3vw,36px);box-shadow:0 18px 40px -30px #2b1a1259}
+.svc:first-child{border-color:var(--copper)}
+.svc .dia i{border-color:var(--line);background:var(--cream);border-radius:4px}
+.svc .dia i.on{background:var(--copper);border-color:var(--copper)}
+.svc .one{font-family:var(--display);color:var(--ink)}
+.svc p{color:var(--muted)}
+.fits li{border-color:var(--line);color:var(--text);font-size:15px}
+.price{border-top-color:var(--line)}
+.price b{font-family:var(--display);font-weight:600;color:var(--copper-deep)}
+.pnote{text-align:center}
+
+.proof{background:var(--beige)}
+.case .kind{font-family:var(--body);color:var(--copper-deep)}
+.case .dec{font-family:var(--display);color:var(--ink);border-inline-start-color:var(--copper)}
+.case li{position:relative;padding-inline-start:20px;border-top-color:var(--line)}
+.case li:last-child{border-bottom-color:var(--line)}
+.case li::before{content:"";position:absolute;inset-inline-start:0;top:1.25em;width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.case a.more{color:var(--copper-deep);font-weight:600;border-bottom:0}
+.steps b{font-family:var(--display);font-weight:600;color:var(--copper-deep)}
+.steps p,.who .txt p,.next p{color:var(--muted)}
+.who .big{font-family:var(--display);color:var(--ink)}
+.who figure{border-radius:18px}
+.next{gap:clamp(16px,2.2vw,28px);border-top:0}
+.next li,.next li+li,.next li:last-child{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(24px,2.6vw,32px)}
+.depth{background:var(--beige)}
+.depth p{color:var(--text)}
+.depth a{color:var(--copper-deep);font-weight:600;border-bottom:0}
+.faq summary{font-family:var(--display);color:var(--ink)}
+.faq summary::after{color:var(--copper-deep)}
+.faq{margin-inline:auto}
+
+/* the closing band is light, as on the home page; only the footer is deep */
+.talk{background:var(--beige);color:var(--text)}
+.talk h2{color:var(--ink)}
+.moments h2 b,.talk h2 b{color:inherit}
+.talk .txt p{color:var(--muted)}
+.talk .eye{color:var(--copper-deep)!important}
+form{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px -30px #2b1a1259}
+label,legend{color:var(--ink)}
+.chip input:checked+span{background:var(--ink);border-color:var(--ink)}
+footer{background:var(--deep);color:#E9DFD2}
+footer .in{border-top:0}
+footer .sig{font-family:var(--display)}
+.dock .btn{border-radius:0}
+@media (max-width:900px){
+  .svc,.svc+.svc{padding:26px;border:1px solid var(--line)}
+  .svc:first-child{border-color:var(--copper)}
+  .next li,.next li+li{padding:24px;border:1px solid var(--line)}
+  .two,.next{gap:16px}
+}
 @supports (animation-timeline:view()){
   @media (prefers-reduced-motion:no-preference){
     .rv{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
@@ -335,7 +430,7 @@ form small a,footer a{color:inherit}
 <div dir="rtl" lang="he" id="page">
 
 <header class="top"><div class="in">
-  <a class="logo" href="#page">Hagit Antebi<i>|</i><span>Brand Worlds Studio</span></a>
+  <a class="logo" href="#page"><span class="mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 701" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,701.000000) scale(0.100000,-0.100000)" fill="currentColor"> <path d="M3305 6604 c-182 -18 -259 -29 -388 -55 -1227 -248 -2210 -1310 -2401 -2596 -93 -617 19 -1286 311 -1868 84 -168 83 -167 83 -49 0 414 256 789 686 1003 287 142 508 197 1634 406 948 175 1140 223 1457 360 779 337 1131 985 906 1668 -181 550 -849 1002 -1643 1112 -109 16 -550 28 -645 19z m509 -349 c567 -66 1071 -309 1320 -635 269 -352 245 -836 -58 -1157 -146 -155 -390 -311 -573 -367 l-23 -7 -2 723 c-3 711 -3 724 -24 763 -66 126 -267 134 -350 13 l-29 -41 -5 -796 -5 -796 -110 -23 c-214 -45 -1050 -199 -1057 -195 -5 2 -8 408 -8 901 l0 897 -23 40 c-77 136 -279 133 -357 -5 l-25 -45 -3 -936 -2 -936 -88 -17 c-738 -145 -1178 -353 -1433 -676 l-64 -82 -17 84 c-94 453 -67 950 74 1388 406 1257 1600 2053 2862 1905z"/> <path d="M5830 5597 c0 -5 5 -18 11 -29 6 -11 20 -52 31 -92 267 -957 -313 -1826 -1453 -2176 -280 -86 -473 -128 -1236 -269 -700 -130 -818 -154 -998 -201 -546 -141 -835 -351 -967 -701 -47 -124 -49 -368 -4 -499 77 -228 229 -422 486 -621 1356 -1051 3332 -725 4287 706 108 162 224 366 266 470 9 22 30 74 47 115 176 422 246 810 237 1320 -12 689 -209 1291 -608 1850 -85 120 -98 137 -99 127z m304 -1362 c205 -982 -15 -1877 -641 -2606 -628 -732 -1659 -1050 -2633 -813 -326 80 -729 280 -990 491 -328 266 -431 521 -310 767 101 205 333 337 770 439 l145 34 5 -541 c5 -587 3 -559 64 -624 95 -102 262 -76 327 50 18 35 19 67 19 613 l0 575 23 9 c12 4 92 20 177 35 206 37 640 120 818 156 79 17 147 30 152 30 6 0 10 -259 10 -694 l0 -694 33 -48 c84 -127 263 -126 342 1 l30 48 5 749 5 749 140 48 c737 254 1237 693 1431 1256 20 58 40 103 45 98 4 -3 0 -12 -8 -22z"/> </g> </svg></span>Hagit Antebi</a>
   <a class="btn" href="#talk">בואו נדבר</a>
 </div></header>
 
@@ -343,7 +438,6 @@ form small a,footer a{color:inherit}
   <div class="copy">
     <span class="eye">Sites · <b>אתרי תדמית ועמודי נחיתה</b></span>
     <h1><span><i>אתרים שנראים אחרת.</i></span><span><i>חושבים אחרת.</i></span><span><i>עובדים בשביל העסק.</i></span></h1>
-    <div class="rule" id="rule" aria-hidden="true"></div>
     <p class="lead">אתר תדמית או עמוד נחיתה שנבנים מתוך הבנה של העסק, של הלקוחות ושל ההחלטה שרוצים להניע.</p>
     <div class="cta"><a class="btn" href="#talk">בואו נדבר על האתר שלכם</a><a class="btn line" href="#proof">לראות דוגמאות</a></div>
     <small>אסטרטגיה, עיצוב מוקפד וחוויית משתמש שמובילה לפעולה.</small>
@@ -362,7 +456,7 @@ form small a,footer a{color:inherit}
 
 <section class="moments sec" id="moments"><div class="in">
   <div>
-    <span class="eye" style="color:#E5A88F">Five seconds</span>
+    <span class="eye">Five seconds</span>
     <h2 style="margin-block:14px 20px">אתר טוב גורם ללקוחות להבין <b>תוך רגעים</b> שלושה דברים.</h2>
     <p>הוא צריך להיראות נכון, להרגיש נכון ולעבוד נכון. האתר שלכם הוא המקום שבו לקוחות פוגשים את העסק, מגבשים רושם ראשוני ומחליטים אם להמשיך איתכם.</p>
   </div>
@@ -529,7 +623,7 @@ form small a,footer a{color:inherit}
 
 <section class="talk sec" id="talk"><div class="in">
   <div class="txt rv">
-    <span class="eye" style="color:#E5A88F">Let's talk</span>
+    <span class="eye">Let's talk</span>
     <h2>יש לכם עסק טוב. <b>הגיע הזמן שגם האתר יספר את זה.</b></h2>
     <p>בין אם צריך עמוד נחיתה מדויק לקמפיין, אתר תדמית חדש או שדרוג של האתר הקיים, נתחיל בשיחת התאמה קצרה ונבין מה נכון לעסק שלכם.</p>
   </div>
