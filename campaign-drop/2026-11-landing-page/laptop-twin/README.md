@@ -1,6 +1,7 @@
 # Landing-page film with the digital twin
 
 `landing-twin-v4-music.mp4` — 1080×1920, 30fps, 18.2s: v3 with the music bed (`audio/bed-piano-strings-v1.mp3`, from the October explainer reel), no narration yet.
+`landing-twin-v5-vo-4x5.mp4` — the 4:5 feed version of v5 (frame45.sh from the reel skill).
 `landing-twin-v5-vo.mp4` — v3 with Hagit's Cartesia narration (`audio/narration-cartesia.wav`, one file, cut at its pauses into eight phrases and placed on the captions) over the music bed, ducked under the voice.
 `landing-twin-v3.mp4` — the same film, silent. The page on the screens is the ORÉVA° concept landing page
 (`../concept-page-oreva/index.html`; its media are the files of `oreva/assets/`, copied to `a/` next to the page).
