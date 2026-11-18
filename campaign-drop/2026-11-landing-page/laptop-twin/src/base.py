@@ -4,14 +4,11 @@ W,H=1080,1920
 def ease(t): t=min(max(t,0),1); return t*t*(3-2*t)
 def easeIn(t): t=min(max(t,0),1); return t*t*t
 # ---------- S1: over-the-shoulder, push forward into the screen (138 frames)
-ots=cv2.imread('ots.png'); C=np.float32([[528,974],[1003,1003],[981,1371],[507,1282]])
-disp=ots[1150,800].astype(np.float32)
-d=np.linalg.norm(ots.astype(np.float32)-disp,axis=2)
-key=cv2.GaussianBlur(1-np.clip((d-22)/18,0,1),(0,0),1.0)
+C=np.float32([[528,974],[1002,1002],[982,1366],[508,1279]])
+disp=np.float32([97,82,77])
 src=np.float32([[0,0],[1440,0],[1440,900],[0,900]])
 Hm=cv2.getPerspectiveTransform(src,C*2)
 wm=cv2.resize(cv2.warpPerspective(np.full((900,1440),255,np.uint8),Hm,(W*2,H*2)),(W,H),interpolation=cv2.INTER_AREA).astype(np.float32)/255
-a=(wm*key)[...,None]
 cx,cy=C[:,0].mean(),C[:,1].mean()
 N1=138
 def cam(i):
@@ -21,6 +18,11 @@ def cam(i):
     fx=540+(cx-540)*k; fy=960+(cy-90-960)*k                 # look-at point drifts to the screen
     return z,fx,fy
 def s1(i):
+    k=min(int(round(i/30*24))+1,121)                        # real clip, 24fps -> 30fps
+    ots=cv2.resize(cv2.imread(f'clipB/f{k:04d}.png'),(W,H),interpolation=cv2.INTER_LANCZOS4)
+    d=np.linalg.norm(ots.astype(np.float32)-disp,axis=2)
+    key=cv2.GaussianBlur(1-np.clip((d-22)/18,0,1),(0,0),1.0)   # hair and notch stay in front
+    a=(wm*key)[...,None]
     page=cv2.imread(f'scrB/s{i:04d}.jpg')
     wp=cv2.resize(cv2.warpPerspective(page,Hm,(W*2,H*2),flags=cv2.INTER_AREA),(W,H),interpolation=cv2.INTER_AREA).astype(np.float32)
     f=(wp*0.95+8)*a+ots.astype(np.float32)*(1-a)
