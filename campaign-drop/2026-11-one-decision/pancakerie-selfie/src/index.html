@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="he" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <link rel="stylesheet" href="fonts.css" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #FAF8F3; }
+      body { font-family: "Heebo", sans-serif; color: #3E2F25; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #FAF8F3; }
+      .full { position: absolute; inset: 0; }
+      .lat { font-family: "Cormorant Garamond", serif; }
+
+      /* studio tag + world tag (top) */
+      .tag { position: absolute; top: 64px; padding: 14px 24px; border-radius: 999px; background: rgba(250,248,243,.92); font-size: 24px; font-weight: 500; color: #6B563F; z-index: 7; white-space: nowrap; }
+      #tag-studio { right: 48px; }
+      #tag-world { left: 48px; display: flex; align-items: center; gap: 12px; }
+      #tag-world i { width: 16px; height: 16px; border-radius: 50%; background: #A5A57F; display: block; }
+
+      /* hook */
+      #hook { position: absolute; left: 56px; right: 56px; top: 1090px; z-index: 8; padding: 44px 48px 48px; border-radius: 36px; background: rgba(250,248,243,.96); box-shadow: 0 30px 80px rgba(62,47,37,.28); text-align: right; direction: rtl; }
+      #hook .q { font-size: 78px; font-weight: 700; line-height: 1.16; color: #3E2F25; }
+      #hook .q b { color: #C4765A; font-weight: 700; }
+      #hook .q s { text-decoration: none; color: #9A8B7C; }
+      #hook .rule { margin-top: 30px; height: 4px; border-radius: 2px; background: #C4765A; transform-origin: right center; }
+
+      /* captions */
+      .cap { position: absolute; left: 60px; right: 60px; top: 1400px; z-index: 8; display: flex; justify-content: center; direction: rtl; }
+      .cap span.box { display: inline-block; padding: 16px 34px 20px; border-radius: 22px; background: rgba(250,248,243,.96); box-shadow: 0 16px 44px rgba(62,47,37,.24); font-size: 62px; font-weight: 600; line-height: 1.2; color: #3E2F25; text-align: center; white-space: nowrap; }
+      .cap b { color: #C4765A; font-weight: 700; }
+      .cap .w { display: inline-block; }
+
+      /* the one decision: a dot that repeats */
+      #dots { position: absolute; left: 0; right: 0; top: 1236px; height: 110px; z-index: 8; }
+      #dots .d { position: absolute; top: 15px; left: 500px; width: 80px; height: 80px; border-radius: 50%; background: #A5A57F; border: 5px solid #FAF8F3; box-shadow: 0 10px 26px rgba(62,47,37,.3); }
+
+      /* touchpoints grid */
+      #grid { position: absolute; inset: 0; z-index: 5; background: #EEE6DA; }
+      #grid .head { position: absolute; top: 172px; left: 0; right: 0; text-align: center; font-size: 30px; letter-spacing: .3em; color: #8C6A52; }
+      .tile { position: absolute; width: 490px; height: 600px; border-radius: 30px; overflow: hidden; background: #D4CFBA; box-shadow: 0 22px 54px rgba(82,55,38,.2); }
+      #t1 { left: 550px; top: 250px; } #t2 { left: 40px; top: 250px; }
+      #t3 { left: 550px; top: 870px; } #t4 { left: 40px; top: 870px; }
+      #cap3, #cap4 { top: 1530px; }
+      .tile .v { position: absolute; inset: 0; }
+      .tile img.cov { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .tile .lbl { position: absolute; right: 18px; bottom: 18px; padding: 8px 22px 10px; border-radius: 999px; background: rgba(250,248,243,.95); font-size: 32px; font-weight: 600; color: #523726; direction: rtl; z-index: 3; }
+      .post .bar { position: absolute; top: 0; left: 0; right: 0; height: 74px; background: #FAF8F3; display: flex; align-items: center; gap: 14px; padding: 0 20px; font-size: 24px; font-weight: 500; color: #523726; direction: ltr; }
+      .post .bar i { width: 42px; height: 42px; border-radius: 50%; display: block; }
+      .post .art { position: absolute; top: 74px; left: 0; right: 0; bottom: 0; }
+      .post .art u { position: absolute; left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; border-radius: 50%; display: block; }
+      .post .art img { position: absolute; left: 50%; top: 50%; width: 400px; margin: -150px 0 0 -200px; display: block; }
+      .det img.top { position: absolute; left: 50%; top: 46%; width: 330px; transform: translate(-50%,-50%); display: block; }
+      .det .seal { position: absolute; left: 24px; top: 24px; width: 108px; height: 108px; border-radius: 50%; background: #FAF8F3; display: flex; align-items: center; justify-content: center; }
+      .det .seal img { width: 88px; display: block; }
+
+      /* end card */
+      #end { position: absolute; inset: 0; z-index: 10; background: #FAF8F3; text-align: center; }
+      #end .brand { position: absolute; top: 230px; left: 0; right: 0; font-style: italic; font-size: 58px; color: #3E2F25; }
+      #end .name { position: absolute; top: 312px; left: 0; right: 0; font-size: 24px; letter-spacing: .34em; color: #8B7B6E; }
+      #end .ans { position: absolute; top: 560px; left: 70px; right: 70px; font-size: 88px; font-weight: 700; line-height: 1.16; color: #6B563F; direction: rtl; }
+      #end .ans b { color: #C4765A; }
+      #end .row { position: absolute; top: 860px; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
+      #end .row i { width: 44px; height: 44px; border-radius: 50%; display: block; }
+      #end .track { position: absolute; top: 1068px; left: 140px; width: 800px; height: 4px; border-radius: 2px; background: #C4765A; transform-origin: right center; }
+      #end .ball { position: absolute; top: 1018px; left: 888px; width: 104px; height: 104px; border-radius: 50%; background: rgba(246,239,229,.6); border: 1.5px solid #D8CCBD; box-shadow: 0 10px 28px rgba(62,40,24,.28); }
+      #end .ball .sph { position: absolute; left: 12px; top: 12px; width: 78px; height: 78px; border-radius: 50%; background: radial-gradient(circle at 38% 30%, #F2C9A0 0%, #C98552 32%, #8A4F28 68%, #4E2A14 100%); display: flex; align-items: center; justify-content: center; font-family: "Cormorant Garamond", serif; font-size: 22px; color: #F5DEC4; }
+      #end .ask { position: absolute; top: 1190px; left: 80px; right: 80px; font-size: 46px; font-weight: 500; line-height: 1.32; color: #C4765A; direction: rtl; }
+      #end .cta { position: absolute; top: 1400px; left: 240px; width: 600px; padding: 26px 0 28px; border-radius: 16px; background: #6B563F; color: #FAF8F3; direction: rtl; }
+      #end .cta strong { display: block; font-size: 46px; font-weight: 600; }
+      #end .cta span { display: block; font-size: 28px; opacity: .85; margin-top: 4px; }
+      #end .url { position: absolute; top: 1610px; left: 0; right: 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: 24px; letter-spacing: .3em; color: #8B7355; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="19.4" data-width="1080" data-height="1920">
+
+      <video id="a-roll" class="clip" src="hagit-panc.mp4" playsinline data-start="0" data-duration="16.5" data-track-index="0" muted
+        style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1"></video>
+
+      <audio id="voice" class="clip" src="voice.m4a" data-start="0" data-duration="16.5" data-track-index="8"></audio>
+
+      <div id="tag-studio" class="clip tag" data-start="0" data-duration="16.5" data-track-index="1" dir="rtl">Brand Worlds Studio · חגית אנטבי</div>
+      <div id="tag-world" class="clip tag" data-start="0" data-duration="16.5" data-track-index="2" dir="rtl"><i></i><span><span dir="ltr">PANCAKERIE°</span> · עולם מותג 26</span></div>
+
+      <!-- 0–3.95 · hook -->
+      <div id="hook" class="clip" data-start="0" data-duration="3.95" data-track-index="3">
+        <div class="q">למה מוצר אחד מרגיש כמו <b>מותג</b>, ואחר <s>סתם מוצר</s>?</div>
+        <div class="rule"></div>
+      </div>
+
+      <!-- 4.3–7.6 · the one decision -->
+      <div id="cap1" class="clip cap" data-start="4.3" data-duration="0.95" data-track-index="4"><span class="box">זה לא המוצר.</span></div>
+      <div id="cap2" class="clip cap" data-start="5.35" data-duration="2.3" data-track-index="4"><span class="box">זאת <b>החלטה אחת</b>, שחוזרת בכל מקום.</span></div>
+      <div id="dots" class="clip" data-start="5.5" data-duration="2.15" data-track-index="5">
+        <div class="d" id="d0"></div><div class="d" id="d1"></div><div class="d" id="d2"></div><div class="d" id="d3"></div><div class="d" id="d4"></div>
+      </div>
+
+      <!-- 7.65–11.55 · the world's touchpoints, one colour, then the colour changes everywhere at once -->
+      <div id="grid" class="clip" data-start="7.65" data-duration="3.9" data-track-index="6">
+        <div class="head lat" dir="ltr">PANCAKERIE° · ONE DECISION</div>
+
+        <div class="tile" id="t1">
+          <div class="v v0"><img class="cov" src="assets/site-a.jpg" alt="" style="object-position: 50% 36%"></div>
+          <div class="v v1"><img class="cov" src="assets/site-b.jpg" alt="" style="object-position: 50% 36%"></div>
+          <div class="v v2"><img class="cov" src="assets/site-d.jpg" alt="" style="object-position: 50% 36%"></div>
+          <div class="lbl">האתר</div>
+        </div>
+
+        <div class="tile post" id="t2">
+          <div class="v v0"><div class="art" style="background:#D4CFBA"><u style="background:#A5A57F"></u><img src="assets/dish-pistache.webp" alt=""></div><div class="bar"><i style="background:#A5A57F"></i>pancakerie</div></div>
+          <div class="v v1"><div class="art" style="background:#E5C9BC"><u style="background:#D39483"></u><img src="assets/dish-fraise.webp" alt=""></div><div class="bar"><i style="background:#D39483"></i>pancakerie</div></div>
+          <div class="v v2"><div class="art" style="background:#EEDAB7"><u style="background:#EEC376"></u><img src="assets/dish-citron.webp" alt=""></div><div class="bar"><i style="background:#EEC376"></i>pancakerie</div></div>
+          <div class="lbl">הפיד</div>
+        </div>
+
+        <div class="tile" id="t3">
+          <div class="v v0"><img class="cov" src="assets/box-pistache.webp" alt="" style="object-position: 30% 60%"></div>
+          <div class="v v1"><img class="cov" src="assets/box-fraise.webp" alt="" style="object-position: 30% 60%"></div>
+          <div class="v v2"><img class="cov" src="assets/box-citron.webp" alt="" style="object-position: 30% 60%"></div>
+          <div class="lbl">האריזה</div>
+        </div>
+
+        <div class="tile det" id="t4">
+          <div class="v v0" style="background:#A5A57F"><img class="top" src="assets/top-pistaches.webp" alt=""></div>
+          <div class="v v1" style="background:#D39483"><img class="top" src="assets/top-fraises.webp" alt=""></div>
+          <div class="v v2" style="background:#EEC376"><img class="top" src="assets/top-citron.webp" alt=""></div>
+          <div class="seal"><img src="assets/logo.webp" alt=""></div>
+          <div class="lbl">הפרט הקטן</div>
+        </div>
+      </div>
+
+      <div id="cap3" class="clip cap" data-start="7.7" data-duration="2.2" data-track-index="4"><span class="box"><span class="w" id="w1">באתר,</span> <span class="w" id="w2">בפיד,</span> <span class="w" id="w3">באריזה,</span></span></div>
+      <div id="cap4" class="clip cap" data-start="10" data-duration="1.5" data-track-index="4"><span class="box">ועד <b>הפרט הכי קטן</b>.</span></div>
+
+      <!-- 11.6–16.4 · back to Hagit -->
+      <div id="cap5" class="clip cap" data-start="11.6" data-duration="1.2" data-track-index="4"><span class="box">המוצר שלך כבר שם.</span></div>
+      <div id="cap6" class="clip cap" data-start="12.85" data-duration="2.2" data-track-index="4"><span class="box">השאלה אם כל מה שמסביבו</span></div>
+      <div id="cap7" class="clip cap" data-start="15.1" data-duration="1.3" data-track-index="4"><span class="box">מדבר <b>באותה שפה</b>?</span></div>
+
+      <!-- 16.4–19.4 · studio closing screen -->
+      <div id="end" class="clip" data-start="16.4" data-duration="3" data-track-index="7">
+        <div class="brand lat e1" dir="ltr">Brand Worlds Studio</div>
+        <div class="name e1">חגית אנטבי</div>
+        <div class="ans e2">מותג הוא <b>החלטה אחת</b>.<br>בכל מקום.</div>
+        <div class="row e2"><i style="background:#A5A57F"></i><i style="background:#D39483"></i><i style="background:#EEC376"></i><i style="background:#523726"></i></div>
+        <div class="track"></div>
+        <div class="ball"><div class="sph" dir="ltr">BW</div></div>
+        <div class="ask e3">רוצה לדעת איפה המותג שלך<br>מפסיק לדבר באותה שפה?</div>
+        <div class="cta e4"><strong>אבחון פער המותג</strong><span>30 דק׳ · בלי עלות</span></div>
+        <div class="url e4" dir="ltr">HAGITANTEBI.CO.IL</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // hook: on screen from frame 0 (it is the thumbnail); only the rule draws and the card leaves
+      tl.fromTo("#hook .rule", { scaleX: 0 }, { scaleX: 1, duration: 2.6, ease: "power1.inOut" }, 0.3);
+      tl.to("#hook", { y: 80, opacity: 0, duration: 0.3, ease: "power2.in" }, 3.65);
+
+      // captions pop
+      const pop = (sel, t) => tl.fromTo(sel + " .box", { y: 34, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.26, ease: "back.out(1.7)" }, t);
+      pop("#cap1", 4.3); pop("#cap2", 5.35); pop("#cap4", 10); pop("#cap5", 11.6); pop("#cap6", 12.85); pop("#cap7", 15.1);
+      pop("#cap3", 7.7);
+      tl.fromTo("#w2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 8.38);
+      tl.fromTo("#w3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 9.02);
+
+      // one decision: a single dot, then it repeats across the frame
+      tl.fromTo("#d0", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.2)" }, 5.55);
+      [["#d1", -180], ["#d2", 180], ["#d3", -360], ["#d4", 360]].forEach(([s, x], i) => {
+        tl.fromTo(s, { x: 0, scale: 0, opacity: 0 }, { x: x, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.35 + i * 0.09);
+      });
+      tl.to("#dots", { opacity: 0, y: -20, duration: 0.22, ease: "power2.in" }, 7.42);
+
+      // touchpoints grid
+      tl.fromTo("#grid", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "none" }, 7.65);
+      tl.fromTo("#grid .head", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 7.7);
+      [["#t1", 7.78], ["#t2", 8.38], ["#t3", 9.02], ["#t4", 10.08]].forEach(([s, t]) => {
+        tl.fromTo(s, { scale: 0.6, opacity: 0, y: 60 }, { scale: 1, opacity: 1, y: 0, duration: 0.42, ease: "back.out(1.5)" }, t);
+        tl.fromTo(s + " .cov, " + s + " .art img, " + s + " img.top", { scale: 1.12 }, { scale: 1, duration: 1.6, ease: "power2.out" }, t);
+      });
+      gsap.set("#grid .v1, #grid .v2", { opacity: 0 });
+      ["#t1", "#t2", "#t3", "#t4"].forEach((s, i) => {
+        tl.to(s + " .v1", { opacity: 1, duration: 0.16, ease: "none" }, 10.6 + i * 0.04);
+        tl.to(s, { scale: 1.035, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut" }, 10.6 + i * 0.04);
+        tl.to(s + " .v2", { opacity: 1, duration: 0.16, ease: "none" }, 10.98 + i * 0.04);
+        tl.to(s, { scale: 1.035, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut" }, 10.98 + i * 0.04);
+      });
+      tl.to("#grid", { opacity: 0, duration: 0.14, ease: "none" }, 11.41);
+
+      // closing screen
+      tl.fromTo("#end", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "none" }, 16.4);
+      tl.fromTo("#end .e1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 16.5);
+      tl.fromTo("#end .e2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 16.65);
+      tl.fromTo("#end .row i", { scale: 0 }, { scale: 1, duration: 0.3, stagger: 0.07, ease: "back.out(2)" }, 16.9);
+      tl.fromTo("#end .track", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "power2.inOut" }, 16.8);
+      tl.fromTo("#end .ball", { x: 150, opacity: 0 }, { x: -800, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 16.8);
+      tl.fromTo("#end .ball .sph", { rotation: 0 }, { rotation: -540, duration: 1.0, ease: "power2.inOut" }, 16.8);
+      tl.fromTo("#end .e3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 17.3);
+      tl.fromTo("#end .e4", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 17.6);
+      tl.to({}, { duration: 0.01 }, 19.39);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
