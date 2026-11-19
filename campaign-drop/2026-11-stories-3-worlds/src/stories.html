@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Stories · 3 worlds, 3 lessons</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=David+Libre:wght@400;500;700&family=Marcellus&family=Assistant:wght@200;300;400;600;700&family=Heebo:wght@300;400;500;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Archivo+Narrow:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;direction:rtl;margin:0 auto 40px}
+.abs{position:absolute}
+.sig{position:absolute;top:236px;left:0;right:0;text-align:center;font:600 21px/1 'Assistant',sans-serif;letter-spacing:.34em;direction:ltr;text-transform:uppercase}
+.pg{position:absolute;top:232px;left:70px;font:400 26px/1 'Cormorant Garamond',serif;font-style:italic;direction:ltr}
+img{display:block;object-fit:cover}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+/* ---------- 01 cover (studio) ---------- */
+#s1{background:#F6F1E8;color:#1B1F1C}
+#s1 .sig{color:#B08A5E}
+#s1 .kick{top:306px;left:0;right:0;text-align:center;font:400 34px/1 'Assistant';letter-spacing:.06em;color:#6b6257}
+#s1 h1{top:372px;left:60px;right:60px;text-align:center;font:500 104px/1.12 'Frank Ruhl Libre',serif;letter-spacing:-.01em}
+#s1 h1 em{font-style:normal;color:#9B1B47}
+#s1 .arches{top:700px;left:60px;right:60px;display:flex;gap:27px;direction:ltr}
+#s1 .arch{flex:1;text-align:center}
+#s1 .arch img{width:100%;height:640px;border-radius:160px 160px 0 0}
+#s1 .arch b{display:block;margin-top:26px;font:400 30px/1 'Marcellus',serif;letter-spacing:.14em}
+#s1 .arch span{display:block;margin-top:14px;font:400 30px/1.2 'Assistant';color:#6b6257;direction:rtl}
+#s1 .arch i{display:inline-block;width:64px;height:2px;margin-top:22px}
+#s1 .next{top:1560px;left:0;right:0;text-align:center;font:600 36px/1.3 'Assistant';}
+#s1 .next small{display:block;font:400 30px/1.4 'Assistant';color:#6b6257;margin-top:6px}
+
+/* ---------- 02 VELUNE ---------- */
+#s2{background:#DCE3EB;color:#1E2A38}
+#s2 .sig{color:#6E8399}
+#s2 .pg,#s2 .kick b{color:#8E1E44}
+.kick{position:absolute;top:296px;right:70px;left:70px;font:400 30px/1 'Assistant';letter-spacing:.05em}
+#s2 h1{top:356px;right:70px;left:70px;font:500 88px/1.1 'David Libre',serif}
+#s2 .big{top:582px;left:60px;width:960px;height:520px;border-radius:6px}
+#s2 .sm{top:1122px;width:470px;height:300px;border-radius:6px}
+.cap{position:absolute;font:600 25px/1 'Assistant';background:rgba(255,255,255,.9);color:#1E2A38;padding:12px 18px 13px;border-radius:40px}
+.cap b{color:#8E1E44;font-family:'Marcellus';font-weight:400;margin-left:8px}
+#s2 p{top:1446px;right:70px;left:70px;font:400 36px/1.34 'Assistant'}
+.try{position:absolute;right:60px;left:60px;border-radius:10px;padding:26px 34px 28px}
+.try b{display:block;font:700 24px/1 'Assistant';letter-spacing:.12em;margin-bottom:12px}
+.try span{font:600 37px/1.28 'Assistant'}
+#s2 .try{top:1570px;background:#1E2A38;color:#F1F4F8}
+#s2 .try b{color:#F1D9DC}
+
+/* ---------- 03 PARDON ME ---------- */
+#s3{background:#9B1B47;color:#F3EDE2}
+#s3 .sig{color:#F2C4CE}
+#s3 .pg{color:#CFE06A}
+#s3 .kick b{color:#CFE06A}
+#s3 h1{top:348px;right:70px;left:70px;font:900 90px/1.16 'Heebo'}
+#s3 h1 mark{background:#CFE06A;color:#1E3A2B;padding:0 16px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#s3 .big{top:590px;left:60px;width:960px;height:560px;border-radius:6px;object-position:50% 62%}
+#s3 .cap{background:#F3EDE2;color:#1E3A2B}
+#s3 .cap b{color:#9B1B47}
+#s3 .names{top:1176px;right:70px;left:70px}
+#s3 .names .lead{font:400 35px/1.3 'Heebo';margin-bottom:18px}
+#s3 .row{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(243,237,226,.35);padding:22px 0 20px}
+#s3 .row s{font:300 38px/1 'Heebo';color:#F2C4CE;text-decoration-thickness:2px}
+#s3 .row em{font:italic 400 58px/1 'Bodoni Moda',serif;direction:ltr;color:#F3EDE2}
+#s3 .try{top:1510px;background:#F3EDE2;color:#1E3A2B}
+#s3 .try b{color:#9B1B47}
+
+/* ---------- 04 CHASEN ---------- */
+#s4{background:#f4e7d5;color:#1f2a1f}
+#s4 .sig{color:#C28A5A}
+#s4 .pg,#s4 .kick b{color:#4c6b33}
+#s4 h1{top:352px;right:70px;left:70px;font:300 78px/1.14 'Assistant'}
+#s4 h1 b{font-weight:700;color:#22301f}
+#s4 .big{top:570px;left:60px;width:960px;height:600px;border-radius:6px;object-position:50% 78%}
+#s4 .steps{top:1196px;left:60px;right:60px;display:flex;gap:16px}
+#s4 .steps div{flex:1;background:#4c6b33;color:#f4e7d5;border-radius:8px;padding:20px 22px 22px}
+#s4 .steps i{display:block;font:italic 400 30px/1 'Cormorant Garamond';direction:ltr;text-align:right;opacity:.85}
+#s4 .steps b{display:block;font:600 42px/1.1 'Assistant';margin-top:8px}
+#s4 p{top:1356px;right:70px;left:70px;font:400 35px/1.36 'Assistant'}
+#s4 .try{top:1510px;background:#22301f;color:#f4e7d5}
+#s4 .try b{color:#C9D9A8}
+#s4 .cap b{color:#4c6b33}
+
+/* ---------- 05 three questions ---------- */
+#s5{background:#F6F1E8;color:#1B1F1C}
+#s5 .sig{color:#B08A5E}
+#s5 .pg{color:#9B1B47}
+#s5 .kick{color:#6b6257}
+#s5 h1{top:352px;right:70px;left:70px;font:500 100px/1.08 'Frank Ruhl Libre',serif}
+#s5 .q{right:60px;left:60px;height:310px;border-radius:12px;display:flex;align-items:center;gap:34px;padding:0 36px}
+#s5 .q img{width:230px;height:230px;border-radius:50%;flex:none}
+#s5 .q small{display:block;font:600 25px/1 'Assistant';letter-spacing:.1em;margin-bottom:16px}
+#s5 .q strong{display:block;font:500 50px/1.16 'Frank Ruhl Libre',serif}
+#s5 .q1{top:520px;background:#DCE3EB;color:#1E2A38}#s5 .q1 small{color:#6E8399}
+#s5 .q2{top:852px;background:#9B1B47;color:#F3EDE2}#s5 .q2 small{color:#CFE06A}
+#s5 .q3{top:1184px;background:#4c6b33;color:#f4e7d5}#s5 .q3 small{color:#D9E5BD}
+#s5 .foot{top:1532px;left:60px;right:60px;text-align:center;font:400 36px/1.35 'Assistant'}
+#s5 .foot b{font-weight:700}
+
+/* ---------- 06 CTA ---------- */
+#s6{background:#1B1F1C;color:#F6F1E8}
+#s6 .sig{color:#B08A5E}
+#s6 .pg{color:#CFE06A}
+#s6 .kick{color:#b9b2a6;text-align:center}
+#s6 h1{top:352px;left:60px;right:60px;text-align:center;font:500 112px/1.08 'Frank Ruhl Libre',serif}
+#s6 .arches{top:520px;left:60px;right:60px;display:flex;gap:27px;direction:ltr}
+#s6 .arch{flex:1;text-align:center}
+#s6 .arch img{width:100%;height:520px;border-radius:160px 160px 0 0}
+#s6 .arch b{display:block;margin-top:24px;font:400 30px/1 'Marcellus',serif;letter-spacing:.14em}
+#s6 .arch span{display:block;margin-top:12px;font:400 28px/1.2 'Assistant';color:#b9b2a6;direction:rtl}
+#s6 .link{top:1420px;left:60px;right:60px;text-align:center;font:400 40px/1.35 'Assistant'}
+#s6 .link b{display:block;font:500 62px/1.15 'Frank Ruhl Libre',serif;margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<section class="story" id="s1">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs kick">3 עולמות מותג · 3 שיעורים במיתוג</div>
+  <h1 class="abs">למה מותג אחד נזכר,<br><em>ועשרה נשכחים?</em></h1>
+  <div class="abs arches">
+    <div class="arch"><img src="../../../velune/assets/03-porte-closed-trees-m.webp" style="object-position:50% 60%"><b>VELUNE°</b><i style="background:#8FA9C2"></i><span>דבר אחד שחוזר</span></div>
+    <div class="arch"><img src="../../../pardon-me/assets/bad-influence.webp" style="object-position:38% 50%"><b>PARDON ME°</b><i style="background:#9B1B47"></i><span>קול עם שני צדדים</span></div>
+    <div class="arch"><img src="../../../chasen/assets/touchpoints/hand.webp" style="object-position:50% 40%"><b>CHASEN°</b><i style="background:#4c6b33"></i><span>טקס שהלקוחה עושה</span></div>
+  </div>
+  <div class="abs next">שלושה שיעורים, אחד מכל עולם<small>ובסוף שלוש שאלות למותג שלך. הקישי להמשך</small></div>
+</section>
+
+<section class="story" id="s2">
+  <div class="sig">Brand Worlds Studio</div><div class="pg">02 / 06</div>
+  <div class="kick"><b>שיעור 01</b> · <span class="ltr">VELUNE°</span> · בית בושם</div>
+  <h1 class="abs">בחרי דבר אחד.<br>וחזרי עליו בכל מקום.</h1>
+  <img class="abs big" src="../../../velune/assets/03-porte-closed-trees.webp">
+  <div class="cap" style="top:1030px;right:84px"><b>01</b>הדלת בכניסה לאתר</div>
+  <img class="abs sm" style="left:60px" src="../../../velune/assets/21-boutique-interior.webp">
+  <img class="abs sm" style="left:550px" src="../../../velune/assets/19-ecrin-box-closed.webp">
+  <div class="cap" style="top:1350px;right:84px"><b>02</b>הדלת על הקופסה</div>
+  <div class="cap" style="top:1350px;right:574px"><b>03</b>הקשתות בבוטיק</div>
+  <p class="abs">אותה קשת, שלוש פעמים.<br>ככה מזהים מותג גם כשמסתירים את הלוגו.</p>
+  <div class="try"><b>נסי אצלך</b><span>איזו צורה, צבע או מחווה חוזרים אצלך בכל נקודת מגע?</span></div>
+</section>
+
+<section class="story" id="s3">
+  <div class="sig">Brand Worlds Studio</div><div class="pg">03 / 06</div>
+  <div class="kick"><b>שיעור 02</b> · <span class="ltr">PARDON ME°</span> · נרות וטיפוח</div>
+  <h1 class="abs">מותג בלי ניגוד<br><mark>הוא מותג בלי אופי.</mark></h1>
+  <img class="abs big" src="../../../pardon-me/assets/reveal.webp">
+  <div class="cap" style="top:1078px;left:84px"><b>מבחוץ</b>שרוול שמנת מנומס</div>
+  <div class="cap" style="top:1078px;right:84px"><b>מבפנים</b>פרינט פרוע</div>
+  <div class="abs names">
+    <div class="lead">גם השמות עובדים ככה.<br>לא מה שיש בנר, אלא מה שהיא רוצה להגיד:</div>
+    <div class="row"><s>נר בריח תאנה וענבר</s><em>None of Your Business.</em></div>
+    <div class="row"><s>נר בריח ורד ווניל</s><em>High Maintenance.</em></div>
+  </div>
+  <div class="try"><b>נסי אצלך</b><span>מה המותג שלך אומר בקול, ומה הוא לוחש רק למי שמציצה?</span></div>
+</section>
+
+<section class="story" id="s4">
+  <div class="sig">Brand Worlds Studio</div><div class="pg">04 / 06</div>
+  <div class="kick"><b>שיעור 03</b> · <span class="ltr">CHASEN°</span> · בר מאצ'ה</div>
+  <h1 class="abs">הבטחה היא לא משפט על הקיר.<br><b>היא משהו שהלקוחה עושה.</b></h1>
+  <img class="abs big" src="../../../chasen/assets/lecon/mains.webp">
+  <div class="cap" style="top:1098px;right:84px">המטרפה עוברת ליד של הלקוחה</div>
+  <div class="abs steps">
+    <div><i>01</i><b>לנפות</b></div><div><i>02</i><b>להקציף</b></div><div><i>03</i><b>למזוג</b></div>
+  </div>
+  <p class="abs">הטקס תמיד זהה, והכוס אף פעם לא.<br>שלושה מהלכים, חמישה טעמים, אלף כוסות.</p>
+  <div class="try"><b>נסי אצלך</b><span>איזה רגע בקנייה הלקוחה שלך יכולה לעשות בעצמה, בידיים?</span></div>
+</section>
+
+<section class="story" id="s5">
+  <div class="sig">Brand Worlds Studio</div><div class="pg">05 / 06</div>
+  <div class="kick">לשמור ולחזור לזה מול המותג שלך</div>
+  <h1 class="abs">3 שאלות למותג שלך</h1>
+  <div class="abs q q1"><img src="../../../velune/assets/02-porte-closed-wall-m.webp" style="object-position:50% 55%"><div><small>01 · האלמנט</small><strong>מה הדבר האחד שחוזר אצלי בכל נקודת מגע?</strong></div></div>
+  <div class="abs q q2"><img src="../../../pardon-me/assets/print-bad-influence.webp"><div><small>02 · הקול</small><strong>מה אני אומרת בקול, ומה אני לוחשת?</strong></div></div>
+  <div class="abs q q3"><img src="../../../chasen/assets/chasen.webp" style="object-position:60% 50%"><div><small>03 · הטקס</small><strong>מה הלקוחה שלי עושה, ולא רק קונה?</strong></div></div>
+  <div class="abs foot">יש לך תשובה לשלושתן?<br><b>זה כבר לא מוצר. זו התחלה של עולם.</b></div>
+</section>
+
+<section class="story" id="s6">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs kick" style="top:296px">ועכשיו שאלה אלייך</div>
+  <h1 class="abs">איזה עולם הכי את?</h1>
+  <div class="abs arches">
+    <div class="arch"><img src="../../../velune/assets/10-bottle-aube-day-m.webp"><b>VELUNE°</b><span>שקט, אחד, מדויק</span></div>
+    <div class="arch"><img src="../../../pardon-me/assets/ad-touch-yourself.webp" style="object-position:50% 30%"><b>PARDON ME°</b><span>מנומסת, אבל לא באמת</span></div>
+    <div class="arch"><img src="../../../chasen/assets/touchpoints/five.webp" style="object-position:50% 62%"><b>CHASEN°</b><span>בידיים, כל פעם מחדש</span></div>
+  </div>
+  <div class="abs link"><b>29 עולמות מותג חיים</b>כל אחד נבנה סביב הבטחה אחת. הגלריה כולה בלינק</div>
+</section>
+</body></html>
