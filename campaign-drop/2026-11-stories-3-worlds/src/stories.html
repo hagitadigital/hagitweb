@@ -18,7 +18,7 @@ img{display:block;object-fit:cover}
 #s1{background:#F6F1E8;color:#1B1F1C}
 #s1 .sig{color:#B08A5E}
 #s1 .kick{top:306px;left:0;right:0;text-align:center;font:400 34px/1 'Assistant';letter-spacing:.06em;color:#6b6257}
-#s1 h1{top:372px;left:60px;right:60px;text-align:center;font:500 104px/1.12 'Frank Ruhl Libre',serif;letter-spacing:-.01em}
+#s1 h1{top:376px;left:40px;right:40px;text-align:center;font:500 96px/1.14 'Frank Ruhl Libre',serif;letter-spacing:-.01em}
 #s1 h1 em{font-style:normal;color:#9B1B47}
 #s1 .arches{top:700px;left:60px;right:60px;display:flex;gap:27px;direction:ltr}
 #s1 .arch{flex:1;text-align:center}
@@ -104,7 +104,16 @@ img{display:block;object-fit:cover}
 #s6 h1{top:352px;left:60px;right:60px;text-align:center;font:500 112px/1.08 'Frank Ruhl Libre',serif}
 #s6 .arches{top:520px;left:60px;right:60px;display:flex;gap:27px;direction:ltr}
 #s6 .arch{flex:1;text-align:center}
-#s6 .arch img{width:100%;height:520px;border-radius:160px 160px 0 0}
+#s6 .win{position:relative;width:100%;height:520px;border-radius:160px 160px 0 0;overflow:hidden;background:#F3EDE2}
+#s6 .win img{position:absolute;inset:0;width:100%;height:100%}
+#s6 #wv u{position:absolute;z-index:3;left:0;right:0;bottom:26px;text-decoration:none;font:400 20px/1 'Marcellus',serif;letter-spacing:.3em;color:#fff;text-shadow:0 1px 8px rgba(30,42,56,.55)}
+#s6 #wc img{object-position:50% 42%}
+#s6 .polite{position:absolute;inset:0;background:#F3EDE2;color:#1E3A2B;direction:ltr;
+  -webkit-mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%);mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%)}
+#s6 .polite em{position:absolute;top:120px;left:0;right:0;font:400 25px/1 'Bodoni Moda',serif;font-style:normal;letter-spacing:.24em}
+#s6 .polite i{position:absolute;bottom:40px;left:0;right:0;font:italic 400 27px/1.15 'Bodoni Moda',serif}
+#s6 .lens{position:absolute;width:calc(var(--r)*2);height:calc(var(--r)*2.8);left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:1.5px solid #F3EDE2;border-radius:50%;box-shadow:0 0 0 1px rgba(30,58,43,.35),0 10px 30px rgba(30,58,43,.25)}
+#s6 #wp{--r:74px;--x:50%;--y:52%}
 #s6 .arch b{display:block;margin-top:24px;font:400 30px/1 'Marcellus',serif;letter-spacing:.14em}
 #s6 .arch span{display:block;margin-top:12px;font:400 28px/1.2 'Assistant';color:#b9b2a6;direction:rtl}
 #s6 .link{top:1420px;left:60px;right:60px;text-align:center;font:400 40px/1.35 'Assistant'}
@@ -116,7 +125,7 @@ img{display:block;object-fit:cover}
 <section class="story" id="s1">
   <div class="sig">Brand Worlds Studio · Hagit Antebi</div>
   <div class="abs kick">3 עולמות מותג · 3 שיעורים במיתוג</div>
-  <h1 class="abs">למה מותג אחד נזכר,<br><em>ועשרה נשכחים?</em></h1>
+  <h1 class="abs">למה יש מותגים שזוכרים?<br><em>ועשרה נשכחים.</em></h1>
   <div class="abs arches">
     <div class="arch"><img src="../../../velune/assets/03-porte-closed-trees-m.webp" style="object-position:50% 60%"><b>VELUNE°</b><i style="background:#8FA9C2"></i><span>דבר אחד שחוזר</span></div>
     <div class="arch"><img src="../../../pardon-me/assets/bad-influence.webp" style="object-position:38% 50%"><b>PARDON ME°</b><i style="background:#9B1B47"></i><span>קול עם שני צדדים</span></div>
@@ -151,7 +160,7 @@ img{display:block;object-fit:cover}
     <div class="row"><s>נר בריח תאנה וענבר</s><em>None of Your Business.</em></div>
     <div class="row"><s>נר בריח ורד ווניל</s><em>High Maintenance.</em></div>
   </div>
-  <div class="try"><b>נסי אצלך</b><span>מה המותג שלך אומר בקול, ומה הוא לוחש רק למי שמציצה?</span></div>
+  <div class="try"><b>נסי אצלך</b><span>מה המותג שלך אומר בקול, ומה הוא לוחש רק למי שמסתכלת?</span></div>
 </section>
 
 <section class="story" id="s4">
@@ -182,10 +191,46 @@ img{display:block;object-fit:cover}
   <div class="abs kick" style="top:296px">ועכשיו שאלה אלייך</div>
   <h1 class="abs">איזה עולם הכי את?</h1>
   <div class="abs arches">
-    <div class="arch"><img src="../../../velune/assets/10-bottle-aube-day-m.webp"><b>VELUNE°</b><span>שקט, אחד, מדויק</span></div>
-    <div class="arch"><img src="../../../pardon-me/assets/ad-touch-yourself.webp" style="object-position:50% 30%"><b>PARDON ME°</b><span>מנומסת, אבל לא באמת</span></div>
-    <div class="arch"><img src="../../../chasen/assets/touchpoints/five.webp" style="object-position:50% 62%"><b>CHASEN°</b><span>בידיים, כל פעם מחדש</span></div>
+    <div class="arch"><div class="win" id="wv">
+      <img src="../../../velune/assets/10-bottle-aube-day-m.webp"><img src="../../../velune/assets/11-bottle-floraison-blush-m.webp"><img src="../../../velune/assets/12-bottle-crepuscule-dusk-m.webp">
+      <u>AUBE</u><u>FLORAISON</u><u>CRÉPUSCULE</u>
+    </div><b>VELUNE°</b><span>שקט, אחד, מדויק</span></div>
+    <div class="arch"><div class="win" id="wp">
+      <img src="../../../pardon-me/assets/ad-touch-yourself.webp" style="object-position:50% 30%">
+      <div class="polite"><em>PARDON ME</em><i>A nourishing<br>hand cream.</i></div><div class="lens"></div>
+    </div><b>PARDON ME°</b><span>מנומסת, אבל לא באמת</span></div>
+    <div class="arch"><div class="win" id="wc">
+      <img src="../../../chasen/img/glass_classic.webp"><img src="../../../chasen/img/glass_fraise.webp"><img src="../../../chasen/img/glass_hojicha.webp"><img src="../../../chasen/img/glass_yuzu.webp"><img src="../../../chasen/img/glass_bleu.webp">
+    </div><b>CHASEN°</b><span>בידיים, כל פעם מחדש</span></div>
   </div>
   <div class="abs link"><b>29 עולמות מותג חיים</b>כל אחד נבנה סביב הבטחה אחת. הגלריה כולה בלינק</div>
 </section>
+<script>
+// Story 06 motion: deterministic, driven by setT(seconds); loop length T.
+const T=10, cl=x=>Math.max(0,Math.min(1,x)), ez=x=>x*x*(3-2*x);
+function setT(t){
+  t=((t%T)+T)%T;
+  // VELUNE: one bottle, three hours (crossfade)
+  const seg=T/3, fd=.9;
+  document.querySelectorAll('#wv img').forEach((im,i)=>{
+    const l=((t-i*seg)%T+T)%T;
+    const o=Math.max(ez(cl(l/fd))*(l<seg?1:0), l>=seg?1-ez(cl((l-seg)/fd)):0, (i===0&&l<fd)?0:0);
+    im.style.opacity=o; im.style.zIndex=l<seg?2:1;
+    document.querySelectorAll('#wv u')[i].style.opacity=l<seg?ez(cl(l/fd)):1-ez(cl((l-seg)/.4));
+  });
+  // PARDON ME: oval lens travels over the polite sleeve
+  const w=document.getElementById('wp'), a=2*Math.PI*t/T;
+  w.style.setProperty('--x',(50+19*Math.sin(a))+'%');
+  w.style.setProperty('--y',(50+22*Math.sin(2*a+1))+'%');
+  w.style.setProperty('--r',(74+10*Math.sin(3*a))+'px');
+  // CHASEN: a different glass up front every 2s
+  const g=[...document.querySelectorAll('#wc img')], d=T/g.length, k=Math.floor(t/d), f=t/d-k, e=ez(cl((f-.74)/.26));
+  g.forEach((im,i)=>{
+    let x=null; if(i===k)x=-e*100; else if(i===(k+1)%g.length)x=(1-e)*100;
+    im.style.visibility=x===null?'hidden':'visible';
+    im.style.transform=x===null?'':`translateX(${x}%) scale(${i===k?1+.05*f:1})`;
+  });
+}
+setT(0);
+</script>
 </body></html>
