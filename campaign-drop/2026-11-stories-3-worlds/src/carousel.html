@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Carousel · 3 worlds, 3 lessons (4:5, studio frame, motion)</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Marcellus&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Archivo+Narrow:wght@700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--s-bg:#FAF8F3;--s-cream:#EEE6D8;--s-ink:#6B563F;--s-copper:#C4765A;--s-gold:#B8894A;--s-dark:#3E2F25}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--s-bg);color:var(--s-ink);font-family:'Heebo',sans-serif;direction:rtl;margin:0 auto 40px}
+.slide>*{position:absolute}
+img{display:block;object-fit:cover}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.sig{top:44px;left:0;right:0;text-align:center;font:500 20px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--s-copper);direction:ltr}
+.pg{top:38px;left:64px;font:italic 400 28px/1 'Cormorant Garamond',serif;color:var(--s-gold);direction:ltr}
+.kick{top:88px;left:0;right:0;text-align:center;font:500 27px/1 'Heebo';color:var(--s-copper);letter-spacing:.03em}
+.kick em{font:400 34px/0 'Cormorant Garamond',serif;font-style:italic;color:var(--s-gold)}
+h1{top:134px;left:50px;right:50px;text-align:center;font:600 60px/1.2 'Heebo';color:var(--s-ink)}
+h1 b{font-weight:600;color:var(--s-copper)}
+.win{top:300px;left:110px;width:860px;height:740px;overflow:hidden;background:var(--s-cream)}
+.win>*{position:absolute}
+.win img.f{inset:0;width:100%;height:100%}
+.mk{width:44px;height:44px;border:0 solid var(--s-copper)}
+.mk.a{top:282px;left:92px;border-top-width:2px;border-left-width:2px}
+.mk.b{top:282px;left:944px;border-top-width:2px;border-right-width:2px}
+.mk.c{top:1014px;left:92px;border-bottom-width:2px;border-left-width:2px}
+.mk.d{top:1014px;left:944px;border-bottom-width:2px;border-right-width:2px}
+.try{top:1076px;left:70px;right:70px;text-align:center}
+.try small{display:block;font:500 24px/1 'Heebo';letter-spacing:.14em;color:var(--s-copper);margin-bottom:14px}
+.try span{display:block;font:500 39px/1.3 'Heebo';color:var(--s-ink)}
+.try span b{font-weight:700;color:var(--s-dark)}
+.foot{top:1292px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:baseline;direction:ltr}
+.foot i{font:500 17px/1 'Plus Jakarta Sans';font-style:normal;letter-spacing:.3em;color:#8B7355}
+.foot u{text-decoration:none;font:400 22px/1 'Heebo';color:var(--s-ink);direction:rtl}
+.chip{font:600 25px/1 'Assistant';background:rgba(255,255,255,.92);color:#1E2A38;padding:13px 20px 14px;border-radius:40px;white-space:nowrap}
+.chip b{font-family:'Marcellus';font-weight:400;margin-left:8px}
+
+/* 02 VELUNE */ #c2 .chip{right:24px;bottom:24px}#c2 .chip b{color:#8E1E44}
+/* 03 PARDON ME */
+#c3 .win{background:#F3EDE2;--r:0px;--x:50%;--y:50%}
+#c3 .truth{inset:0}
+#c3 .truth .t{position:absolute;top:44px;left:40px;right:40px;text-align:center;direction:ltr}
+#c3 .truth .t b{font:700 54px/1.04 'Archivo Narrow',sans-serif;text-transform:uppercase;color:#F3EDE2;background:#9B1B47;padding:0 .14em}
+#c3 .truth .t i{display:inline-block;margin-top:12px;font:400 32px/1.2 'Bodoni Moda',serif;font-style:italic;color:#1E3A2B;background:#CFE06A;padding:.04em .4em}
+#c3 .polite{inset:0;background:#F3EDE2;color:#1E3A2B;direction:ltr;text-align:center;
+  -webkit-mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%);mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%)}
+#c3 .polite em{position:absolute;top:70px;left:0;right:0;font:400 30px/1 'Bodoni Moda',serif;font-style:normal;letter-spacing:.3em}
+#c3 .polite i{position:absolute;top:150px;left:0;right:0;font:italic 400 50px/1.15 'Bodoni Moda',serif}
+#c3 .polite u{position:absolute;bottom:92px;left:0;right:0;text-decoration:none;font:400 26px/1 'Heebo';color:#5A6359;direction:rtl}
+#c3 .lens{width:calc(var(--r)*2);height:calc(var(--r)*2.8);left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:2px solid #F3EDE2;border-radius:50%;box-shadow:0 0 0 1px rgba(30,58,43,.35),0 14px 40px rgba(30,58,43,.25)}
+#c3 .chip{bottom:24px;color:#1E3A2B;background:#F3EDE2;box-shadow:0 2px 14px rgba(30,58,43,.18)}#c3 .chip b{font-family:'Assistant';font-weight:700;color:#9B1B47}
+#c3 .chip.o{left:24px}#c3 .chip.i{right:24px}
+/* 04 CHASEN */
+#c4 .steps{left:24px;right:24px;bottom:24px;display:flex;gap:12px}
+#c4 .steps div{flex:1;background:rgba(244,231,213,.94);color:#22301f;border-radius:8px;padding:14px 20px 16px}
+#c4 .steps i{display:block;font:italic 400 26px/1 'Cormorant Garamond';direction:ltr;text-align:right;opacity:.8}
+#c4 .steps b{display:block;font:600 38px/1.1 'Assistant';margin-top:4px}
+#c4 .chip{right:24px;bottom:24px}
+/* 05 questions */
+#c5 .win{background:none}
+#c5 .q{left:0;right:0;height:238px;display:flex;align-items:center;gap:30px;padding:0 32px}
+#c5 .q img{width:176px;height:176px;border-radius:50%;flex:none}
+#c5 .q small{display:block;font:600 23px/1 'Assistant';letter-spacing:.1em;margin-bottom:12px}
+#c5 .q strong{display:block;font:600 44px/1.18 'Heebo'}
+#c5 .q1{top:0;background:#DCE3EB;color:#1E2A38}#c5 .q1 small{color:#6E8399}
+#c5 .q2{top:251px;background:#9B1B47;color:#F3EDE2}#c5 .q2 small{color:#CFE06A}
+#c5 .q3{top:502px;background:#4c6b33;color:#f4e7d5}#c5 .q3 small{color:#D9E5BD}
+/* 01 cover + 06 arches */
+#c1 .chip{left:50%;bottom:26px;transform:translateX(-50%)}
+#c1 .chip b{font-size:26px;letter-spacing:.1em;margin:0 0 0 12px;direction:ltr;unicode-bidi:isolate}
+#c6 .win{background:var(--s-cream);display:flex;gap:22px;padding:34px 30px 0;direction:ltr}
+#c6 .arch{position:relative;flex:1;text-align:center;color:var(--s-dark)}
+#c6 .arch b{display:block;margin-top:22px;font:400 27px/1 'Marcellus',serif;letter-spacing:.14em}
+#c6 .arch span{display:block;margin-top:12px;font:400 25px/1.2 'Heebo';color:var(--s-ink);direction:rtl}
+#c6 .aw{position:relative;width:100%;height:572px;border-radius:130px 130px 0 0;overflow:hidden;background:#F3EDE2}
+#c6 .aw img{position:absolute;inset:0;width:100%;height:100%}
+#c6 #wv u{position:absolute;z-index:3;left:0;right:0;bottom:24px;text-decoration:none;font:400 18px/1 'Marcellus',serif;letter-spacing:.28em;color:#fff;text-shadow:0 1px 8px rgba(30,42,56,.55)}
+#c6 #wc img{object-position:50% 42%}
+#c6 #wp{--r:66px;--x:50%;--y:52%}
+#c6 .polite{position:absolute;inset:0;background:#F3EDE2;color:#1E3A2B;direction:ltr;
+  -webkit-mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%);mask-image:radial-gradient(var(--r) calc(var(--r)*1.4) at var(--x) var(--y),transparent 98%,#000 100%)}
+#c6 .polite em{position:absolute;top:120px;left:0;right:0;font:400 22px/1 'Bodoni Moda',serif;font-style:normal;letter-spacing:.22em}
+#c6 .polite i{position:absolute;bottom:44px;left:0;right:0;font:italic 400 25px/1.15 'Bodoni Moda',serif}
+#c6 .lens{position:absolute;width:calc(var(--r)*2);height:calc(var(--r)*2.8);left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:1.5px solid #F3EDE2;border-radius:50%;box-shadow:0 0 0 1px rgba(30,58,43,.35),0 10px 30px rgba(30,58,43,.25)}
+#c6 .cta{top:1076px;left:0;right:0;text-align:center}
+#c6 .cta span{display:block;font:500 39px/1.3 'Heebo';margin-bottom:22px}
+#c6 .cta a{display:inline-block;padding:18px 48px 20px;background:var(--s-ink);color:var(--s-bg);border-radius:12px;font:500 32px/1 'Heebo'}
+#c6 .cta a small{font-size:22px;opacity:.8;margin-right:14px}
+</style>
+</head>
+<body>
+
+<section class="slide" id="c1" data-t="9" data-still="0.6">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="kick">3 עולמות מותג · 3 שיעורים במיתוג</div>
+  <h1>למה יש מותגים שזוכרים?<br><b>ועשרה נשכחים.</b></h1>
+  <div class="win" id="w1">
+    <img class="f" src="../../../velune/assets/03-porte-closed-trees-m.webp" style="object-position:50% 70%">
+    <img class="f" src="../../../pardon-me/assets/bad-influence.webp" style="object-position:50% 55%">
+    <img class="f" src="../../../chasen/assets/touchpoints/hand.webp" style="object-position:50% 42%">
+    <div class="chip"><b>VELUNE°</b>דבר אחד שחוזר</div>
+    <div class="chip"><b>PARDON ME°</b>קול עם שני צדדים</div>
+    <div class="chip"><b>CHASEN°</b>טקס שהלקוחה עושה</div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="try"><small>שיעור אחד מכל עולם</small><span>ובסוף שלוש שאלות למותג שלך.<br><b>החליקי ←</b></span></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u>עולמות מותג קונספט</u></div>
+</section>
+
+<section class="slide" id="c2" data-t="9" data-still="0.9">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div><div class="pg">02 / 06</div>
+  <div class="kick">שיעור 01 · עולם מותג <em>25</em></div>
+  <h1>בחרי דבר אחד.<br>וחזרי עליו בכל מקום.</h1>
+  <div class="win" id="w2">
+    <div id="door" style="inset:0"></div>
+    <img class="f" id="box0" src="../../../velune/assets/19-ecrin-box-closed.webp">
+    <img class="f" id="box1" src="../../../velune/assets/20-ecrin-box-open.webp">
+    <img class="f" id="btq" src="../../../velune/assets/21-boutique-interior.webp">
+    <div class="chip"><b>01</b>הדלת בכניסה לאתר</div>
+    <div class="chip"><b>02</b>הדלת על הקופסה</div>
+    <div class="chip"><b>03</b>הקשתות בבוטיק</div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="try"><small>נסי אצלך</small><span>איזו צורה, צבע או מחווה חוזרים אצלך<br>בכל נקודת מגע?</span></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u><span class="ltr">VELUNE°</span> · בית בושם · עולם מותג קונספט</u></div>
+</section>
+
+<section class="slide" id="c3" data-t="9" data-still="2.45">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div><div class="pg">03 / 06</div>
+  <div class="kick">שיעור 02 · עולם מותג <em>29</em></div>
+  <h1>מותג בלי ניגוד<br>הוא מותג בלי אופי.</h1>
+  <div class="win" id="w3">
+    <div class="truth"><img class="f" src="../../../pardon-me/assets/ad-bad-decisions.webp" style="object-position:50% 62%"><span class="t"><b>Smells like bad decisions.</b><br><i>The good kind.</i></span></div>
+    <div class="truth"><img class="f" src="../../../pardon-me/assets/ad-touch-yourself.webp" style="object-position:50% 60%"><span class="t"><b>Touch yourself.</b><br><i>It's skincare.</i></span></div>
+    <div class="truth"><img class="f" src="../../../pardon-me/assets/ad-i-kept-it.webp" style="object-position:50% 38%"><span class="t"><b>I bought you something.</b><br><i>I kept it.</i></span></div>
+    <div class="polite"><em>PARDON ME</em><i>A lovely candle<br>for a calm evening.</i><u>נר נעים לערב רגוע.</u></div>
+    <div class="polite"><em>PARDON ME</em><i>A nourishing<br>hand cream.</i><u>קרם ידיים מזין.</u></div>
+    <div class="polite"><em>PARDON ME</em><i>A thoughtful gift<br>for someone special.</i><u>מתנה מתחשבת למישהי מיוחדת.</u></div>
+    <div class="lens"></div>
+    <div class="chip o"><b>מבחוץ</b>מודעה מנומסת</div>
+    <div class="chip i"><b>מבפנים</b>מה שהיא באמת אומרת</div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="try"><small>נסי אצלך</small><span>מה המותג שלך אומר בקול,<br>ומה הוא לוחש רק למי שמסתכלת?</span></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u><span class="ltr">PARDON ME°</span> · נרות וטיפוח · עולם מותג קונספט</u></div>
+</section>
+
+<section class="slide" id="c4" data-t="9" data-still="2.4">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div><div class="pg">04 / 06</div>
+  <div class="kick">שיעור 03 · עולם מותג <em>22</em></div>
+  <h1>הבטחה היא לא משפט על הקיר.<br>היא משהו שהלקוחה עושה.</h1>
+  <div class="win" id="w4">
+    <div id="mains" style="inset:0"></div>
+    <img class="f" id="five" src="../../../chasen/assets/touchpoints/five.webp" style="object-position:50% 58%">
+    <div class="steps"><div><i>01</i><b>לנפות</b></div><div><i>02</i><b>להקציף</b></div><div><i>03</i><b>למזוג</b></div></div>
+    <div class="chip">טקס אחד. חמישה טעמים. אלף כוסות.</div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="try"><small>נסי אצלך</small><span>איזה רגע בקנייה הלקוחה שלך יכולה<br>לעשות בעצמה, בידיים?</span></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u><span class="ltr">CHASEN°</span> · בר מאצ'ה · עולם מותג קונספט</u></div>
+</section>
+
+<section class="slide" id="c5" data-t="9" data-still="-1">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div><div class="pg">05 / 06</div>
+  <div class="kick">לשמור ולחזור לזה מול המותג שלך</div>
+  <h1 style="top:158px;font-size:76px">3 שאלות למותג שלך</h1>
+  <div class="win" id="w5">
+    <div class="q q1"><img src="../../../velune/assets/02-porte-closed-wall-m.webp" style="object-position:50% 55%"><div><small>01 · האלמנט</small><strong>מה הדבר האחד שחוזר אצלי בכל נקודת מגע?</strong></div></div>
+    <div class="q q2"><img src="../../../pardon-me/assets/print-bad-influence.webp"><div><small>02 · הקול</small><strong>מה אני אומרת בקול,<br>ומה אני לוחשת?</strong></div></div>
+    <div class="q q3"><img src="../../../chasen/assets/chasen.webp" style="object-position:60% 50%"><div><small>03 · הטקס</small><strong>מה הלקוחה שלי עושה,<br>ולא רק קונה?</strong></div></div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="try"><small>יש לך תשובה לשלושתן?</small><span>זה כבר לא מוצר.<br><b>זו התחלה של עולם.</b></span></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u>עולמות מותג קונספט</u></div>
+</section>
+
+<section class="slide" id="c6" data-t="10" data-still="6.2">
+  <div class="sig">Brand Worlds Studio · Hagit Antebi</div><div class="pg">06 / 06</div>
+  <div class="kick">ועכשיו שאלה אלייך</div>
+  <h1 style="top:158px;font-size:76px">איזה עולם הכי את?</h1>
+  <div class="win" id="w6">
+    <div class="arch"><div class="aw" id="wv">
+      <img src="../../../velune/assets/10-bottle-aube-day-m.webp"><img src="../../../velune/assets/11-bottle-floraison-blush-m.webp"><img src="../../../velune/assets/12-bottle-crepuscule-dusk-m.webp">
+      <u>AUBE</u><u>FLORAISON</u><u>CRÉPUSCULE</u></div><b>VELUNE°</b><span>שקט, אחד, מדויק</span></div>
+    <div class="arch"><div class="aw" id="wp">
+      <img src="../../../pardon-me/assets/ad-touch-yourself.webp" style="object-position:50% 30%">
+      <div class="polite"><em>PARDON ME</em><i>A nourishing<br>hand cream.</i></div><div class="lens"></div></div><b>PARDON ME°</b><span>מנומסת, אבל לא באמת</span></div>
+    <div class="arch"><div class="aw" id="wc">
+      <img src="../../../chasen/img/glass_classic.webp"><img src="../../../chasen/img/glass_fraise.webp"><img src="../../../chasen/img/glass_hojicha.webp"><img src="../../../chasen/img/glass_yuzu.webp"><img src="../../../chasen/img/glass_bleu.webp"></div><b>CHASEN°</b><span>בידיים, כל פעם מחדש</span></div>
+  </div>
+  <div class="mk a"></div><div class="mk b"></div><div class="mk c"></div><div class="mk d"></div>
+  <div class="cta"><span>כתבי לי בתגובות איזה, ולמה.</span><a>אבחון פער המותג<small>30 דק׳ · בלי עלות</small></a></div>
+  <div class="foot"><i>HAGITANTEBI.CO.IL</i><u>29 עולמות מותג חיים</u></div>
+</section>
+
+<script>
+// Every slide is driven by setT(id, seconds): deterministic, so render-carousel.js can step frame by frame.
+const cl=x=>Math.max(0,Math.min(1,x)), ez=x=>x*x*(3-2*x), $=(s,r=document)=>[...r.querySelectorAll(s)];
+const fade=(l,len,fd)=>l<0||l>len+fd?0:Math.min(ez(cl(l/fd)),1-ez(cl((l-len)/fd)));   // in over fd, hold, out over fd after len
+function seq(host,urls){urls.forEach(u=>{const i=new Image();i.src=u;i.className='f';i.style.position='absolute';i.style.visibility='hidden';host.appendChild(i)});return $('img',host)}
+const doorF=seq(document.getElementById('door'),[...Array(40)].map((_,i)=>`../../../velune/assets/porte/d${String(i+1).padStart(2,'0')}.webp`).concat([...Array(38)].map((_,i)=>`../../../velune/assets/porte/e${String(i+1).padStart(2,'0')}.webp`)));
+const mainsF=seq(document.getElementById('mains'),[...Array(108)].map((_,i)=>`_mains/m${String(i+1).padStart(3,'0')}.jpg`));
+const show=(arr,k)=>arr.forEach((im,i)=>im.style.visibility=i===k?'visible':'hidden');
+
+const A={
+c1(t,T){const g=$('#w1 img'),c=$('#w1 .chip'),d=T/3,k=Math.floor(t/d),f=t/d-k,e=ez(cl((f-.82)/.18));
+  g.forEach((im,i)=>{let x=null;if(i===k)x=-e*100;else if(i===(k+1)%3&&e>0)x=(1-e)*100;
+    im.style.visibility=x===null?'hidden':'visible';im.style.transform=x===null?'':`translateX(${x}%) scale(${i===k?1.02+.05*f:1.02})`});
+  c.forEach((el,i)=>el.style.opacity=i===k?Math.min(ez(cl(f/.12)),1-ez(cl((f-.76)/.08))):0)},
+c2(t){const c=$('#w2 .chip');
+  show(doorF,Math.round(cl((t-.6)/2.3)*(doorF.length-1)));
+  const b=fade(t-3,3,.5),bo=ez(cl((t-4.1)/.8)),q=fade(t-6,2.5,.5);
+  box0.style.opacity=b;box1.style.opacity=b*bo;btq.style.opacity=q;
+  box0.style.transform=box1.style.transform=`scale(${1.02+.03*cl((t-3)/3.5)})`;btq.style.transform=`scale(${1.02+.05*cl((t-6)/3)})`;
+  c[0].style.opacity=fade(t-.2,2.5,.3);c[1].style.opacity=fade(t-3.3,2.4,.3);c[2].style.opacity=fade(t-6.3,2.0,.3)},
+c3(t,T){const w=document.getElementById('w3'),tr=$('#w3 .truth'),po=$('#w3 .polite'),d=T/3,k=Math.floor(t/d),f=t/d-k,a=2*Math.PI*f;
+  tr.forEach((el,i)=>el.style.visibility=i===k?'visible':'hidden');
+  const open=ez(cl((f-.6)/.14)), back=ez(cl((f-.93)/.07));           // lens wanders, opens fully, sleeve returns
+  po.forEach((el,i)=>{el.style.visibility=(i===k||(back>0&&i===(k+1)%3))?'visible':'hidden';el.style.zIndex=i===k?1:2;
+    el.style.opacity=i===k?1:back;});
+  po[(k+1)%3].style.webkitMaskImage=po[(k+1)%3].style.maskImage=back>0?'none':'';po[k].style.webkitMaskImage=po[k].style.maskImage='';
+  const r=ez(cl(f/.1))*96+open*900;
+  w.style.setProperty('--r',r+'px');w.style.setProperty('--x',(50+24*Math.sin(a*1.6+.6))+'%');w.style.setProperty('--y',(64+13*Math.sin(a*3.2))+'%');
+  $('#w3 .lens')[0].style.opacity=(1-open)*(1-back);$('#w3 .lens')[0].style.zIndex=3;
+  const o=$('#w3 .chip.o')[0],i=$('#w3 .chip.i')[0];o.style.zIndex=i.style.zIndex=4;
+  o.style.opacity=Math.max(1-ez(cl((f-.58)/.1)),back);i.style.opacity=open*(1-back)},
+c4(t){const s=$('#w4 .steps div'),n=mainsF.length;
+  let p=t<4.5?t/4.5:0;show(mainsF,Math.min(n-1,Math.floor(p*n)));
+  const v=fade(t-4.5,4,.5);five.style.opacity=v;five.style.transform=`scale(${1.04+.08*cl((t-4.5)/4.5)})`;
+  s.forEach((el,i)=>{const on=t>=i*1.5&&t<(i+1)*1.5;el.style.background=on?'#4c6b33':'rgba(244,231,213,.94)';el.style.color=on?'#f4e7d5':'#22301f'});
+  $('#w4 .steps')[0].style.opacity=1-ez(cl((t-4.4)/.4))+ez(cl((t-8.7)/.3));
+  $('#w4 .chip')[0].style.opacity=fade(t-5,3.3,.35)},
+c5(t,T){const q=$('#w5 .q'),d=T/3;
+  q.forEach((el,i)=>{const on=t<0?1:fade(t-i*d,d-.5,.5);el.style.opacity=.5+.5*on;
+    $('img',el)[0].style.transform=`scale(${1+.1*on})`;$('div',el)[0].style.transform=`translateX(${-14*on}px)`})},
+c6(t,T){
+  const seg=T/3,fd=.9;
+  $('#wv img').forEach((im,i)=>{const l=((t-i*seg)%T+T)%T;
+    im.style.opacity=l<seg?ez(cl(l/fd)):1-ez(cl((l-seg)/fd));im.style.zIndex=l<seg?2:1;
+    $('#wv u')[i].style.opacity=l<seg?ez(cl(l/fd)):1-ez(cl((l-seg)/.4))});
+  const w=document.getElementById('wp'),a=2*Math.PI*t/T;
+  w.style.setProperty('--x',(50+19*Math.sin(a))+'%');w.style.setProperty('--y',(50+22*Math.sin(2*a+1))+'%');w.style.setProperty('--r',(66+9*Math.sin(3*a))+'px');
+  const g=$('#wc img'),d=T/g.length,k=Math.floor(t/d),f=t/d-k,e=ez(cl((f-.74)/.26));
+  g.forEach((im,i)=>{let x=null;if(i===k)x=-e*100;else if(i===(k+1)%g.length)x=(1-e)*100;
+    im.style.visibility=x===null?'hidden':'visible';im.style.transform=x===null?'':`translateX(${x}%) scale(${i===k?1+.05*f:1})`})}
+};
+function setT(id,t){const T=+document.getElementById(id).dataset.t;A[id](t<0?t:((t%T)+T)%T,T)}
+$('.slide').forEach(s=>setT(s.id,+s.dataset.still));
+</script>
+</body></html>
