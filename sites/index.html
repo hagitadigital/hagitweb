@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap">
-<link rel="preload" as="image" href="a/oreva.webp">
+<link rel="preload" as="image" href="a/oreva.jpg">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -105,13 +105,11 @@ p.lead{font-size:22px;color:var(--text);max-width:27em}
 .frame .bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
 .frame .bar span{margin-inline-start:10px;font:400 12px var(--body);color:var(--muted);letter-spacing:.02em}
 .view{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--beige)}
-.view img{position:absolute;top:0;left:0;width:100%;height:auto;animation:pan var(--t,34s) ease-in-out infinite alternate}
-@keyframes pan{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + var(--vh,62.5cqw)))}}
-.view{container-type:inline-size}
+.view video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .stagebox .frame{animation:up 1.2s .3s both}
 .cycle{aspect-ratio:16/11.4}
-.cycle img{opacity:0;transition:opacity 1.3s}
-.cycle img.on{opacity:1}
+.cycle video{opacity:0;transition:opacity 1.3s}
+.cycle video.on{opacity:1}
 .cyc-cap{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:16px;font-size:16px;color:var(--muted)}
 .dots3{display:flex;gap:8px;direction:ltr}
 .dots3 i{width:22px;height:2px;background:var(--line);transition:background .5s}
@@ -425,9 +423,9 @@ form small a,footer a{color:inherit}
   <div class="stagebox">
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span id="cyc-url">oreva · landing</span></div>
       <div class="view cycle" id="cycle">
-        <img class="on" src="a/oreva.webp" alt="עמוד הנחיתה של ORÉVA°, קוסמטיקאית" data-url="oreva · landing" data-cap="עמוד נחיתה · קוסמטיקאית">
-        <img src="a/rue.webp" alt="האתר של RUE°, יזמות והתחדשות עירונית" data-url="rue · site" data-cap="אתר תדמית · יזמות והתחדשות עירונית">
-        <img src="a/mirvach.webp" alt="עמוד הנחיתה של מרווח, מטפלת רגשית" data-url="mirvach · landing" data-cap="עמוד נחיתה · מטפלת רגשית">
+        <video class="on" src="a/oreva.mp4" poster="a/oreva.jpg" muted playsinline preload="auto" width="960" height="600" aria-label="עמוד הנחיתה של ORÉVA°, קוסמטיקאית, נגלל" data-url="oreva · landing" data-cap="עמוד נחיתה · קוסמטיקאית"></video>
+        <video src="a/rue.mp4" poster="a/rue.jpg" muted playsinline preload="none" width="960" height="600" aria-label="האתר של RUE°, יזמות והתחדשות עירונית, נגלל" data-url="rue · site" data-cap="אתר תדמית · יזמות והתחדשות עירונית"></video>
+        <video src="a/mirvach.mp4" poster="a/mirvach.jpg" muted playsinline preload="none" width="960" height="600" aria-label="עמוד הנחיתה של מרווח, מטפלת רגשית, נגלל" data-url="mirvach · landing" data-cap="עמוד נחיתה · מטפלת רגשית"></video>
       </div>
     </div>
     <p class="cyc-cap"><span id="cyc-cap">עמוד נחיתה · קוסמטיקאית</span><span class="dots3" id="cyc-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span></p>
@@ -520,7 +518,7 @@ form small a,footer a{color:inherit}
   <div class="head rv"><span class="eye">Selected · <b>שלוש דוגמאות</b></span><h2>לא גלריה. <b>ההחלטה שמאחורי כל עמוד.</b></h2><p>בכל אחד מהם נוסחה קודם החלטה אחת על העסק, וכל השאר נגזר ממנה.</p></div>
   <div class="cases">
     <article class="case">
-      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>oreva · landing</span></div><div class="view"><img src="a/oreva.webp" alt="עמוד הנחיתה של ORÉVA° נגלל" loading="lazy"></div></div>
+      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>oreva · landing</span></div><div class="view"><video class="live" src="a/oreva.mp4" poster="a/oreva.jpg" muted loop playsinline preload="none" width="960" height="600" aria-label="עמוד הנחיתה של ORÉVA° נגלל"></video></div></div>
       <div class="txt rv">
         <span class="kind">עמוד נחיתה · קוסמטיקאית</span>
         <h3><bdi dir="ltr">ORÉVA° Skin Studio</bdi></h3>
@@ -530,7 +528,7 @@ form small a,footer a{color:inherit}
       </div>
     </article>
     <article class="case">
-      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>mirvach · landing</span></div><div class="view" style="--t:38s"><img src="a/mirvach.webp" alt="עמוד הנחיתה של מרווח נגלל" loading="lazy"></div></div>
+      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>mirvach · landing</span></div><div class="view"><video class="live" src="a/mirvach.mp4" poster="a/mirvach.jpg" muted loop playsinline preload="none" width="960" height="600" aria-label="עמוד הנחיתה של מרווח נגלל"></video></div></div>
       <div class="txt rv">
         <span class="kind">עמוד נחיתה · מטפלת רגשית</span>
         <h3>מרווח</h3>
@@ -540,7 +538,7 @@ form small a,footer a{color:inherit}
       </div>
     </article>
     <article class="case">
-      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>rue · site</span></div><div class="view" style="--t:44s"><img src="a/rue.webp" alt="האתר של RUE° נגלל" loading="lazy"></div></div>
+      <div class="frame rv"><div class="bar"><i></i><i></i><i></i><span>rue · site</span></div><div class="view"><video class="live" src="a/rue.mp4" poster="a/rue.jpg" muted loop playsinline preload="none" width="960" height="600" aria-label="האתר של RUE° נגלל"></video></div></div>
       <div class="txt rv">
         <span class="kind">אתר תדמית · יזמות והתחדשות עירונית</span>
         <h3><bdi dir="ltr">RUE°</bdi></h3>
@@ -633,10 +631,19 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], c
 const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 /* hero: one frame, three sites, one at a time */
-const cyc=$$('#cycle img'), cdots=$$('#cyc-dots i'); let ci=0;
-function cycle(i){ ci=i; cyc.forEach((im,k)=>im.classList.toggle('on',k===i)); cdots.forEach((d,k)=>d.classList.toggle('on',k===i));
-  $('#cyc-url').textContent=cyc[i].dataset.url; $('#cyc-cap').textContent=cyc[i].dataset.cap; }
-if(!calm) setInterval(()=>cycle((ci+1)%cyc.length),5200);
+const cyc=$$('#cycle video'), cdots=$$('#cyc-dots i'); let ci=0;
+const play=v=>{const p=v.play(); if(p) p.catch(()=>{});};
+function cycle(i){ ci=i; cyc.forEach((v,k)=>{v.classList.toggle('on',k===i); if(k===i){v.currentTime=0; play(v);} else setTimeout(()=>{if(k!==ci)v.pause()},1300);});
+  cdots.forEach((d,k)=>d.classList.toggle('on',k===i));
+  $('#cyc-url').textContent=cyc[i].dataset.url; $('#cyc-cap').textContent=cyc[i].dataset.cap;
+  const n=cyc[(i+1)%cyc.length]; if(n.preload==='none') n.preload='auto'; }
+if(!calm){ cycle(0); setInterval(()=>cycle((ci+1)%cyc.length),7000); }
+
+/* the three examples: each page plays while it is on screen */
+if(!calm && 'IntersectionObserver' in window){
+  const lio=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?play(e.target):e.target.pause()),{threshold:.35});
+  $$('video.live').forEach(v=>lio.observe(v));
+}
 
 
 /* process: the line fills as the four steps cross the screen */
