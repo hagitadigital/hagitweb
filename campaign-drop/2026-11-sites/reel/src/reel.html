@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Sites reel · 9:16</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<script src="quads.js"></script>
+<style>
+:root{--cream:#F2EBDC;--deep:#E7DEC9;--ink:#15202E;--soft:#3D4A5C;--copper:#C28A5A;--csoft:#D9AE85;--ctext:#825630}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--cream);color:var(--ink);font-family:'Heebo',sans-serif}
+#stage *{will-change:auto}
+.abs{position:absolute}
+#plate{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+#vid{position:absolute;left:0;top:0;width:1080px;height:1920px;display:block}
+.scr{position:absolute;left:0;top:0;width:960px;height:600px;transform-origin:0 0}
+#scr{mix-blend-mode:multiply;overflow:hidden;background:#fff}
+#scr img{position:absolute;left:0;top:0;width:960px;height:600px;display:block}
+#scrCta{position:absolute;inset:0;background:#fff;padding:40px 64px 44px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.cm{position:absolute;width:44px;height:44px;border:0 solid var(--copper)}
+.cm.tl{border-top-width:5px;border-left-width:5px}.cm.tr{border-top-width:5px;border-right-width:5px}
+.cm.bl{border-bottom-width:5px;border-left-width:5px}.cm.br{border-bottom-width:5px;border-right-width:5px}
+.dot{position:absolute;left:911px;width:44px;height:44px;border-radius:999px;background:var(--copper);box-shadow:0 0 0 7px rgba(217,174,133,.6);display:flex;align-items:center;justify-content:center;font:600 20px "Plus Jakarta Sans",sans-serif;color:var(--ink)}
+#mask{position:absolute;border-radius:20px;box-shadow:0 0 0 3000px var(--cream);pointer-events:none}
+.eye{font:600 22px/1.3 'Plus Jakarta Sans','Heebo',sans-serif;letter-spacing:3px;color:var(--ctext)}
+.ball{position:absolute;border-radius:999px;background:radial-gradient(circle at 35% 30%,#D9AE85,#C28A5A 62%)}
+.line{position:absolute;left:0;right:0;height:4px;border-radius:4px;background:var(--copper)}
+.panel{position:absolute;left:80px;right:80px;border-radius:20px;background:var(--deep);box-shadow:0 24px 60px rgba(20,30,45,.3);display:flex;flex-direction:column}
+.panel h2{margin:0;font-weight:600;line-height:1.18}
+.ln{display:block}
+.pill{position:absolute;display:flex;align-items:center;gap:18px;padding:8px 24px;border-radius:999px;background:var(--cream);box-shadow:0 12px 30px rgba(20,30,45,.35);font-size:28px;line-height:1.4;font-weight:500;color:var(--ctext);white-space:nowrap}
+.dash{display:flex;gap:8px}.dash i{width:26px;height:4px;border-radius:4px;background:var(--csoft);opacity:.5}.dash i.on{background:var(--copper);opacity:1}
+.inside{position:absolute;inset:0}
+.inside .hd{position:absolute;left:80px;right:80px;top:240px;display:flex;flex-direction:column;gap:14px}
+.inside .nm{display:flex;align-items:baseline;gap:16px;color:var(--ctext)}
+.inside .nm b{font:500 40px/1.05 'Cormorant Garamond',serif;letter-spacing:.04em}
+.inside .nm span{font-size:28px;line-height:1.4;font-weight:500}
+.inside h2{margin:0;font-size:44px;line-height:1.25;font-weight:600}
+.inside .top{position:absolute;left:0;top:490px;width:1080px;height:675px;overflow:hidden;box-shadow:0 30px 70px rgba(20,30,45,.25)}
+.inside .top img{display:block;width:1080px;height:675px}
+.inside .bot{position:absolute;left:80px;top:1245px;width:920px;height:575px}
+.inside .bot .w{position:absolute;inset:0;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(20,30,45,.25)}
+.inside .bot img{display:block;width:920px;height:575px}
+.inside .bot .cm{border-width:0}
+.inside .bot .cm.tl{left:-24px;top:-24px;border-top-width:4px;border-left-width:4px}
+.inside .bot .cm.tr{right:-24px;top:-24px;border-top-width:4px;border-right-width:4px}
+.inside .bot .cm.bl{left:-24px;bottom:-24px;border-bottom-width:4px;border-left-width:4px}
+.inside .bot .cm.br{right:-24px;bottom:-24px;border-bottom-width:4px;border-right-width:4px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <div id="plate">
+    <img id="vid" alt="">
+    <div id="scr" class="scr" dir="ltr">
+      <img id="scrA" alt=""><img id="scrB" alt="">
+      <div id="scrCta" dir="rtl">
+        <div dir="ltr" style="font:italic 500 34px/1.2 'Cormorant Garamond',serif;color:var(--soft);letter-spacing:.02em">Hagit Antebi | Brand Worlds Studio</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:22px;align-self:stretch">
+          <div id="btn" style="align-self:stretch;height:128px;border-radius:12px;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:54px;line-height:1.1;font-weight:600">בואו נדבר על האתר שלכם</div>
+          <div style="font-size:34px;line-height:1.4;color:var(--soft)">שיחת התאמה קצרה, בלי התחייבות.</div>
+        </div>
+        <div style="display:flex;gap:14px;font-size:28px;line-height:1.4;font-weight:500">
+          <span style="padding:8px 24px;border-radius:999px;border:2px solid var(--copper)">עמוד נחיתה</span>
+          <span style="padding:8px 24px;border-radius:999px;border:2px solid var(--copper)">אתר תדמית</span>
+          <span style="padding:8px 24px;border-radius:999px;border:2px solid var(--copper)">שדרוג אתר קיים</span>
+        </div>
+      </div>
+    </div>
+    <div id="scrOv" class="scr" dir="ltr">
+      <div class="cm tl" style="left:-16px;top:-16px"></div><div class="cm tr" style="left:932px;top:-16px"></div>
+      <div class="cm bl" style="left:-16px;top:572px"></div><div class="cm br" style="left:932px;top:572px"></div>
+      <div class="dot" id="d1" style="top:181px">01</div><div class="dot" id="d2" style="top:430px">02</div><div class="dot" id="d3" style="top:498px">03</div>
+    </div>
+  </div>
+
+  <!-- scene 1: the hook frame -->
+  <div id="mask"></div>
+  <div id="s1">
+    <div class="abs" style="left:80px;right:80px;top:250px;display:flex;flex-direction:column;gap:24px">
+      <div class="eye">SITES · אתרי תדמית ועמודי נחיתה</div>
+      <h1 style="margin:0;font-size:76px;line-height:1.18;font-weight:600;letter-spacing:-.5px">יש לכם עסק טוב.<br>האתר כבר מספר את זה?</h1>
+      <div style="position:relative;height:44px;margin-top:8px">
+        <div class="line" style="top:20px"></div>
+        <div class="ball" id="ball1" style="top:0;width:44px;height:44px;box-shadow:0 0 0 12px rgba(217,174,133,.5)"></div>
+      </div>
+    </div>
+    <div class="cm tl abs" style="left:56px;top:626px;border-top-width:4px;border-left-width:4px"></div>
+    <div class="cm tr abs" style="left:980px;top:626px;border-top-width:4px;border-right-width:4px"></div>
+    <div class="cm bl abs" style="left:56px;top:1660px;border-bottom-width:4px;border-left-width:4px"></div>
+    <div class="cm br abs" style="left:980px;top:1660px;border-bottom-width:4px;border-right-width:4px"></div>
+    <div id="proof" class="abs" style="left:120px;top:1262px;width:500px;display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+      <div style="padding:8px 22px;border-radius:999px;background:var(--cream);font-size:28px;line-height:1.4;font-weight:500;color:var(--ctext);box-shadow:0 10px 26px rgba(20,30,45,.2)">עמוד נחיתה · קוסמטיקאית</div>
+      <div style="width:500px;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 26px 60px rgba(20,30,45,.38),0 0 0 1px var(--csoft)">
+        <div dir="ltr" style="height:36px;display:flex;align-items:center;gap:7px;padding:0 14px;background:var(--deep)">
+          <i style="width:9px;height:9px;border-radius:9px;background:var(--csoft)"></i><i style="width:9px;height:9px;border-radius:9px;background:var(--csoft)"></i><i style="width:9px;height:9px;border-radius:9px;background:var(--csoft)"></i>
+          <span style="margin-left:10px;font-size:16px;color:var(--soft)">oreva · landing</span>
+        </div>
+        <img id="proofImg" alt="" style="display:block;width:500px;height:312px">
+      </div>
+    </div>
+  </div>
+
+  <!-- chest-level captions over the video -->
+  <div class="panel" id="p2" style="top:800px;padding:28px 40px 30px;gap:12px">
+    <div class="eye">PROCESS · איך עובדים</div>
+    <h2 style="font-size:64px"><span class="ln" id="p2a">לא מתחילים מעיצוב.</span><span class="ln" id="p2b">מתחילים מהבנה.</span></h2>
+  </div>
+
+  <div class="panel" id="p3" style="top:770px;padding:28px 40px 26px;gap:22px">
+    <h2 style="font-size:56px"><span class="ln" id="p3a">אתר טוב גורם ללקוחות להבין</span><span class="ln" id="p3b">תוך רגעים שלושה דברים.</span></h2>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="position:relative;height:36px"><div class="line" style="top:16px"></div><div class="ball" id="ball3" style="top:0;width:36px;height:36px;box-shadow:0 0 0 10px rgba(217,174,133,.55)"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:28px;line-height:1.4;font-weight:500;color:var(--soft)"><span>0</span><span>5 שניות</span></div>
+    </div>
+  </div>
+
+  <div class="panel" id="p4" style="top:810px;padding:24px 40px;gap:14px">
+    <div style="display:flex;align-items:center;gap:20px">
+      <span style="font-size:28px;line-height:1.4;font-weight:500;color:var(--soft)">0</span>
+      <div id="track4" style="position:relative;flex-grow:1;height:36px"><div class="line" style="top:16px"></div><div class="ball" id="ball4" style="top:0;width:36px;height:36px;box-shadow:0 0 0 10px rgba(217,174,133,.55)"></div></div>
+      <span style="font-size:28px;line-height:1.4;font-weight:600">5 שניות</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+      <div id="c1" style="display:flex;flex-direction:column;gap:2px"><span style="font:500 40px/1.05 'Cormorant Garamond',serif;color:var(--ctext)">01</span><span style="font-size:31px;line-height:1.3;font-weight:600">מה העסק מציע</span></div>
+      <div id="c2" style="display:flex;flex-direction:column;gap:2px"><span style="font:500 40px/1.05 'Cormorant Garamond',serif;color:var(--ctext)">02</span><span style="font-size:31px;line-height:1.3;font-weight:600">למה כדאי לבחור בו</span></div>
+      <div id="c3" style="display:flex;flex-direction:column;gap:2px"><span style="font:500 40px/1.05 'Cormorant Garamond',serif;color:var(--ctext)">03</span><span style="font-size:31px;line-height:1.3;font-weight:600">מה הצעד הבא</span></div>
+    </div>
+  </div>
+  <div class="pill" id="pill4" style="right:80px;top:1664px"><span>עמוד נחיתה · קוסמטיקאית</span><span class="dash"><i class="on"></i><i></i><i></i></span></div>
+
+  <div class="panel" id="p8" style="top:810px;padding:26px 40px 28px;gap:10px">
+    <div class="eye">SELECTED · שלוש דוגמאות</div>
+    <h2 style="font-size:64px"><span class="ln" id="p8a">לא גלריה.</span><span class="ln" id="p8b">ההחלטה שמאחורי כל עמוד.</span></h2>
+  </div>
+  <div class="pill" id="pill8" style="right:80px;top:1664px"><span>אתר תדמית · יזמות והתחדשות עירונית</span><span class="dash"><i></i><i class="on"></i><i></i></span></div>
+
+  <div class="panel" id="p9" style="top:810px;padding:24px 40px;gap:6px">
+    <div class="eye">LET'S TALK</div>
+    <h2 style="font-size:64px" id="p9a">יש לכם עסק טוב.</h2>
+    <p style="margin:0;font-size:40px;line-height:1.4;font-weight:500" id="p9b">הגיע הזמן שגם האתר יספר את זה.</p>
+  </div>
+  <div class="abs" id="pill9" style="left:0;right:0;top:1664px;display:flex;justify-content:center">
+    <div dir="ltr" style="display:flex;align-items:center;gap:16px;padding:12px 28px;border-radius:999px;background:var(--cream);box-shadow:0 12px 30px rgba(20,30,45,.35)">
+      <span class="ball" style="position:static;width:22px;height:22px;box-shadow:0 0 0 6px rgba(217,174,133,.55)"></span>
+      <span style="font:600 22px/1.3 'Plus Jakarta Sans',sans-serif;letter-spacing:4px;color:var(--soft)">HAGITANTEBI.CO.IL/SITES</span>
+    </div>
+  </div>
+
+  <!-- inside the pages -->
+  <div id="inBg" class="abs" style="inset:0;background:var(--cream)"></div>
+  <div class="inside" id="in0">
+    <div class="hd"><div class="nm"><b dir="ltr">ORÉVA° Skin Studio</b><span>עמוד נחיתה · קוסמטיקאית</span></div>
+      <h2>ההחלטה: לקוחה בוחרת קוסמטיקאית לפי הידיים שלה, לא לפי הבקבוק.</h2></div>
+    <div class="top"><img alt=""></div>
+    <div class="pill tagA" style="right:80px;top:1137px">סרטון של הטיפול בפתיחה, לא תמונת מוצר</div>
+    <div class="bot"><div class="w"><img alt=""></div><div class="cm tl"></div><div class="cm tr"></div><div class="cm bl"></div><div class="cm br"></div></div>
+  </div>
+  <div class="inside" id="in1">
+    <div class="hd"><div class="nm"><b style="font:600 36px/1.15 'Heebo',sans-serif;letter-spacing:0">מרווח</b><span>עמוד נחיתה · מטפלת רגשית</span></div>
+      <h2>ההחלטה: מי שמחפשת טיפול צריכה קודם להרגיש שיש לה איפה להניח את מה שהיא מחזיקה.</h2></div>
+    <div class="top"><img alt=""></div>
+    <div class="pill tagA" style="right:80px;top:1137px">מחשבות רועשות שאפשר להניח בנגיעה</div>
+    <div class="bot"><div class="w"><img alt=""></div><div class="cm tl"></div><div class="cm tr"></div><div class="cm bl"></div><div class="cm br"></div></div>
+    <div class="pill tagB" style="right:120px;top:1792px">זרע מואר שצומח לפרח עם הגלילה</div>
+  </div>
+  <div class="inside" id="in2">
+    <div class="hd"><div class="nm"><b dir="ltr">RUE°</b><span>אתר תדמית · יזמות והתחדשות עירונית</span></div>
+      <h2>ההחלטה: בהתחדשות עירונית הכול משתנה חוץ מהכתובת.</h2></div>
+    <div class="top"><img alt=""></div>
+    <div class="pill tagA" style="right:80px;top:1137px">שלט מספר הבית הוא הלוגו, הכפתור ומספר הסקשן</div>
+    <div class="bot"><div class="w"><img alt=""></div><div class="cm tl"></div><div class="cm tr"></div><div class="cm bl"></div><div class="cm br"></div></div>
+    <div class="pill tagB" style="right:120px;top:1792px">לפרויקט אין שם. יש לו כתובת</div>
+  </div>
+
+</div>
+<script>
+/* Deterministic timeline: renderAt(t) sets every element from t alone. Frames come from image sequences
+   (?seq=<folder with hf/ oreva/ mirvach/ rue/ as %04d.jpg>), so a headless capture is exact. */
+const SEQ = new URLSearchParams(location.search).get('seq') || '../seq';
+const DUR = 23.6, FPS = 30;
+const $ = id => document.getElementById(id);
+const cl = v => Math.min(1, Math.max(0, v));
+const seg = (t, a, b) => cl((t - a) / (b - a));
+const ease = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+const out3 = p => 1 - Math.pow(1 - p, 3);
+const lerp = (a, b, p) => a + (b - a) * p;
+const pad = n => String(n).padStart(4, '0');
+let pending = [];
+function src(img, folder, n) {
+  const u = `${SEQ}/${folder}/${pad(n)}.jpg`;
+  if (img.dataset.u !== u) { img.dataset.u = u; img.src = u; pending.push(img.decode().catch(() => {})); }
+}
+function show(el, o, y = 0, s = 1) {
+  el.style.opacity = o; el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
+  el.style.transform = (y || s !== 1) ? `translateY(${y}px) scale(${s})` : '';
+}
+const rise = (el, t, a, d = .4) => { const p = out3(seg(t, a, a + d)); return [p, (1 - p) * 26]; };
+function homography(q) { // 960x600 rect -> quad [x0,y0,...] as a CSS matrix3d
+  const s = [[0, 0], [960, 0], [960, 600], [0, 600]], A = [], B = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = s[i], u = q[2 * i], v = q[2 * i + 1];
+    A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); B.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); B.push(v); }
+  for (let c = 0; c < 8; c++) { let p = c; for (let r = c + 1; r < 8; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+    [A[c], A[p]] = [A[p], A[c]]; [B[c], B[p]] = [B[p], B[c]];
+    for (let r = 0; r < 8; r++) if (r !== c) { const f = A[r][c] / A[c][c]; for (let k = c; k < 8; k++) A[r][k] -= f * A[c][k]; B[r] -= f * B[c]; } }
+  const h = B.map((b, i) => b / A[i][i]);
+  return `matrix3d(${h[0]},${h[3]},0,${h[6]},${h[1]},${h[4]},0,${h[7]},0,0,1,0,${h[2]},${h[5]},0,1)`;
+}
+const T = { expand: [2.1, 2.7], s3: 4.4, s4: 6.5, push: [9.0, 9.6], in0: 9.6, inLen: 3, pull: [18.6, 19.2], s9: 20.6 };
+
+window.renderAt = function (t) {
+  pending = [];
+  /* --- which source second of the Higgsfield clip --- */
+  let v = t < T.push[1] ? t : (t < T.pull[0] ? T.push[1] : Math.min(11.0, 9.0 + (t - T.pull[0])));
+  const hf = Math.max(1, Math.min(297, Math.floor(v * 24) + 1));
+  src($('vid'), 'hf', hf);
+
+  /* --- plate: windowed in the hook, full after, pushed in and out around the pages --- */
+  const e = ease(seg(t, ...T.expand));
+  let sc = lerp(0.926, 1, e), tx = lerp(40, 0, e), ty = lerp(520, 0, e);
+  const zin = ease(seg(t, ...T.push)), zout = ease(seg(t, ...T.pull));
+  const z = t < T.pull[0] ? zin : 1 - zout;
+  if (t >= T.push[0]) { const Z = lerp(1, 2.5, z), cx = 630, cy = 1322; sc = Z; tx = lerp(0, 540 - cx * Z, z); ty = lerp(0, 960 - cy * Z, z); }
+  if (t >= T.s9) { const k = 1 + 0.025 * seg(t, T.s9, DUR); sc = k; tx = 540 * (1 - k); ty = 1100 * (1 - k); }
+  $('plate').style.transform = `translate(${tx}px,${ty}px) scale(${sc})`;
+  const m = $('mask');
+  m.style.left = lerp(80, 0, e) + 'px'; m.style.top = lerp(650, 0, e) + 'px';
+  m.style.width = lerp(920, 1080, e) + 'px'; m.style.height = lerp(1030, 1920, e) + 'px';
+  m.style.borderRadius = lerp(20, 0, e) + 'px'; m.style.visibility = e >= 1 ? 'hidden' : 'visible';
+
+  /* --- scene 1: hook is complete at frame 0 (it is the thumbnail) --- */
+  show($('s1'), 1 - seg(t, 1.95, 2.25));
+  $('ball1').style.right = lerp(0, 876, ease(seg(t, 0.15, 1.9))) + 'px';
+  src($('proofImg'), 'oreva', 1 + Math.min(60, Math.floor(t * 30)));
+  $('proof').style.transform = `translateY(${lerp(0, -10, ease(seg(t, 0, 1.6)))}px)`;
+
+  /* --- screen: site pinned to the tracked laptop screen --- */
+  const q = window.QUADS[hf];
+  const scrOn = q && t >= T.s4 ? seg(t, T.s4, T.s4 + .4) : 0;
+  for (const id of ['scr', 'scrOv']) { const el = $(id); el.style.visibility = scrOn > 0 ? 'visible' : 'hidden'; el.style.opacity = scrOn; if (q) el.style.transform = homography(q); }
+  const second = t >= T.pull[0] - .5;
+  $('scrA').style.visibility = second ? 'hidden' : 'visible'; $('scrB').style.visibility = second ? 'visible' : 'hidden';
+  if (!second) src($('scrA'), 'oreva', 1 + Math.min(100, Math.max(0, Math.floor((t - T.s4) * 30))));
+  else src($('scrB'), 'rue', Math.min(200, 100 + Math.max(0, Math.floor((t - T.pull[0]) * 30))));
+  const cta = seg(t, T.s9 - .1, T.s9 + .3); $('scrCta').style.opacity = cta; $('scrCta').style.visibility = cta > 0 ? 'visible' : 'hidden';
+  const pulse = Math.sin(Math.PI * seg(t, 22.0, 22.6)); $('btn').style.transform = `scale(${1 + .035 * pulse})`;
+  [[$('d1'), 7.4], [$('d2'), 7.8], [$('d3'), 8.2]].forEach(([d, a]) => { const p = out3(seg(t, a, a + .3)) * (1 - seg(t, 8.9, 9.1)); d.style.transform = `scale(${p})`; d.style.opacity = t >= T.pull[0] - 1 ? 0 : p; });
+
+  /* --- captions --- */
+  const gone = (a, b) => 1 - seg(t, a, b);
+  show($('p2'), out3(seg(t, 2.6, 2.95)) * gone(4.2, 4.45), (1 - out3(seg(t, 2.6, 2.95))) * 30);
+  let r = rise($('p2a'), t, 2.7); show($('p2a'), r[0], r[1]); r = rise($('p2b'), t, 3.05); show($('p2b'), r[0], r[1]);
+  show($('p3'), out3(seg(t, 4.5, 4.85)) * gone(6.4, 6.65), (1 - out3(seg(t, 4.5, 4.85))) * 30);
+  r = rise($('p3a'), t, 4.6); show($('p3a'), r[0], r[1]); r = rise($('p3b'), t, 4.9); show($('p3b'), r[0], r[1]);
+  $('ball3').style.right = lerp(0, 0.34 * 804, seg(t, 5.2, 6.5)) + 'px';
+  show($('p4'), out3(seg(t, 6.5, 6.85)) * gone(8.8, 9.05));
+  const w4 = $('track4').clientWidth - 36; $('ball4').style.right = lerp(0.34 * w4, w4, ease(seg(t, 6.5, 7.4))) + 'px';
+  [[$('c1'), 7.4], [$('c2'), 7.8], [$('c3'), 8.2]].forEach(([c, a]) => c.style.opacity = lerp(.32, 1, seg(t, a, a + .3)));
+  show($('pill4'), out3(seg(t, 7.0, 7.3)) * gone(8.8, 9.05), (1 - out3(seg(t, 7.0, 7.3))) * 20);
+  show($('p8'), out3(seg(t, 19.1, 19.45)) * gone(20.4, 20.65), (1 - out3(seg(t, 19.1, 19.45))) * 30);
+  r = rise($('p8a'), t, 19.2); show($('p8a'), r[0], r[1]); r = rise($('p8b'), t, 19.5); show($('p8b'), r[0], r[1]);
+  show($('pill8'), out3(seg(t, 19.2, 19.5)) * gone(20.4, 20.65), (1 - out3(seg(t, 19.2, 19.5))) * 20);
+  show($('p9'), out3(seg(t, 20.75, 21.1)), (1 - out3(seg(t, 20.75, 21.1))) * 30);
+  r = rise($('p9a'), t, 20.85); show($('p9a'), r[0], r[1]); r = rise($('p9b'), t, 21.2); show($('p9b'), r[0], r[1]);
+  show($('pill9'), out3(seg(t, 21.4, 21.75)), (1 - out3(seg(t, 21.4, 21.75))) * 20);
+
+  /* --- inside the pages: each page gets its opening and one more moment, both playing --- */
+  const inA = seg(t, T.push[0] + .3, T.push[1]) * (1 - seg(t, T.pull[0] - .05, T.pull[0] + .3));
+  show($('inBg'), inA);
+  const clips = [['oreva', 1, 255], ['mirvach', 1, 265], ['rue', 95, 200]];
+  clips.forEach(([name, a0, b0], k) => {
+    const a = T.in0 + k * T.inLen, el = $('in' + k), lt = t - a;
+    let o = (k === 0 ? inA > 0 ? seg(t, T.push[0] + .3, T.push[1]) : 0 : seg(t, a - .2, a + .2)) * (k === 2 ? (1 - seg(t, T.pull[0] - .05, T.pull[0] + .3)) : (1 - seg(t, a + T.inLen - .2, a + T.inLen + .2)));
+    const zoomIn = k === 0 ? lerp(1.14, 1, ease(seg(t, T.push[0] + .3, T.push[1] + .1))) : 1;
+    const zoomOut = k === 2 ? lerp(1, 0.9, ease(seg(t, T.pull[0] - .05, T.pull[0] + .3))) : 1;
+    show(el, o, 0, zoomIn * zoomOut);
+    if (o <= 0) return;
+    const f = Math.max(0, Math.floor(lt * 30));
+    src(el.querySelector('.top img'), name, Math.min(450, a0 + f));
+    src(el.querySelector('.bot img'), name, Math.min(450, b0 + Math.max(0, f - 20)));
+    const hd = el.querySelector('.hd'), pH = out3(seg(lt, k === 0 ? -.1 : 0, .45)); hd.style.opacity = pH; hd.style.transform = `translateY(${(1 - pH) * 24}px)`;
+    const bot = el.querySelector('.bot'), pB = out3(seg(lt, .55, 1.05)); bot.style.opacity = pB; bot.style.transform = `translateY(${(1 - pB) * 60}px)`;
+    const ta = el.querySelector('.tagA'), pA = out3(seg(lt, .35, .7)); ta.style.opacity = pA; ta.style.transform = `translateY(${(1 - pA) * 16}px)`;
+    const tb = el.querySelector('.tagB'); if (tb) { const pT = out3(seg(lt, 1.3, 1.65)); tb.style.opacity = pT; tb.style.transform = `translateY(${(1 - pT) * 16}px)`; }
+  });
+  return Promise.all(pending);
+};
+window.REEL = { DUR, FPS };
+if (new URLSearchParams(location.search).has('play')) { const t0 = performance.now(); (function loop() { renderAt(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); })(); }
+else renderAt(0);
+</script>
+</body>
+</html>
