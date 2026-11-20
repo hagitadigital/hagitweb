@@ -1,0 +1,48 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap">
+<style>
+:root{--linen:#F7F3E9;--cream:#F0EADD;--sage:#B9C1A2;--sage-soft:#DFE3CE;--olive:#55613F;--olive-deep:#3E4930;--ink:#2E3526;--nectar:#E9DABC;
+--plain:#E6E3DD;--s-bg:#FAF8F3;--s-ink:#6B563F;--s-copper:#C4765A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1080px;overflow:hidden;background:var(--plain)}
+body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
+*{animation-duration:9s;animation-timing-function:linear;animation-fill-mode:both}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.chip{position:absolute;padding:10px 26px;border-radius:999px;background:#FFFDF8;color:#3A342C;font-size:34px;font-weight:500;box-shadow:0 6px 18px rgba(60,50,30,.16)}
+.pill{position:absolute;top:66px;padding:12px 26px;border-radius:999px;background:rgba(255,253,248,.94);font-size:25px;color:#4A4238;box-shadow:0 4px 14px rgba(60,50,30,.12);white-space:nowrap}
+img{display:block}
+
+@keyframes bgin{0%,10.000%{opacity:0}17.778%,100%{opacity:1}}
+@keyframes arch{0%,10.000%{transform:translateY(760px)}21.111%,100%{transform:none}}
+@keyframes shift{0%,10.000%{transform:translateX(125px)}21.111%,100%{transform:none}}
+@keyframes box{0%,10.000%{opacity:0;transform:translateX(230px)}12.778%{opacity:1}21.111%,100%{opacity:1;transform:none}}
+@keyframes lab{0%,60.000%{opacity:0}67.778%,100%{opacity:1}}
+.bgin{animation-name:bgin}.arch{animation-name:arch;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+.shift{animation-name:shift;animation-timing-function:cubic-bezier(.3,.1,.2,1)}
+.box{animation-name:box;animation-timing-function:cubic-bezier(.2,.7,.2,1)}.lab{animation-name:lab}
+.wm{font-family:'Cormorant Garamond',serif;font-size:104px;letter-spacing:.2em;color:var(--ink);line-height:1}
+.sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:.44em;color:var(--olive);margin-top:16px}
+
+</style></head><body data-duration="9"><div class="fill" style="background:radial-gradient(120%% 90%% at 30%% 20%%,#F1EFEA 0%%,#E6E3DD 55%%,#D9D5CD 100%%)"></div>
+<div class="fill bgin" style="background:linear-gradient(160deg,#FBF8F0,#F0EADD)"></div>
+<div class="fill bgin" style="overflow:hidden"><div class="abs arch" style="left:360px;top:300px;width:900px;height:1100px;border-radius:450px 450px 0 0;background:linear-gradient(180deg,#B9C1A2,#A9B391)"></div></div>
+<div class="abs" style="left:0;right:0;top:880px;bottom:0;background:linear-gradient(180deg,rgba(120,110,85,.10),rgba(120,110,85,0) 60%%)"></div>
+<div class="fill box"><div class="abs" style="left:560px;top:858px;width:470px;height:56px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,60,40,.30),rgba(70,60,40,0));"></div><img class="abs" src="assets/box.webp" style="height:690px;left:590px;top:196px"></div>
+<div class="fill shift"><div class="abs" style="left:190px;top:832px;width:470px;height:56px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,60,40,.30),rgba(70,60,40,0));"></div>
+<img class="abs" src="assets/bottle-plain.webp" style="height:680px;left:160px;top:230px">
+<img class="abs bgin" src="assets/bottle-bare.webp" style="height:680px;left:160px;top:230px">
+<img class="abs lab" src="assets/bottle-label.webp" style="height:680px;left:160px;top:230px"></div>
+<div class="abs" data-in="3.3" dir="ltr" style="left:0;right:0;top:64px;text-align:center"><div class="wm">ELVÉA°</div><div class="sub">BOTANICAL SKIN SCIENCE</div></div>
+<div class="chip" data-in="1.7000000000000002" style="right:60px;top:940px">האריזה</div><div class="chip" data-in="3.5999999999999996" style="right:262px;top:940px">השם</div><div class="chip" data-in="5.800000000000001" style="right:420px;top:940px">התווית</div>
+<script>
+(function(){const D=+document.body.dataset.duration,css=[];const P=t=>(Math.max(0,Math.min(D,t))/D*100).toFixed(3)+'%';let n=0;
+document.querySelectorAll('[data-show]').forEach(el=>{const [a,b]=el.dataset.show.split(',').map(Number),f=+(el.dataset.fade||.4),k='sh'+(n++);
+const s=a<=0?'0%{opacity:1}':`0%,${P(a-f)}{opacity:0}${P(a)}{opacity:1}`;const e=b>=D?'100%{opacity:1}':`${P(b)}{opacity:1}${P(b+f)},100%{opacity:0}`;
+css.push(`@keyframes ${k}{${s}${e}}`);el.style.animationName=k;});
+document.querySelectorAll('[data-in]').forEach(el=>{const t=+el.dataset.in,k='in'+(n++),from=el.dataset.from||'translateY(30px)';
+css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:${from}}${P(t+.7)},100%{opacity:1;transform:none}}`);el.style.animationName=k;el.style.animationTimingFunction='cubic-bezier(.2,.7,.2,1)';});
+document.querySelectorAll('[data-seq]').forEach(el=>{const d=el.dataset,start=+d.start,step=+d.step;let i=0;
+for(let f=+d.from;f<=+d.to;f+=+(d.by||1),i++){const im=document.createElement('img'),k='sq'+(n++),t=start+i*step;im.src=d.seq.replace('%03d',String(f).padStart(3,'0'));
+im.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';if(i>0){css.push(`@keyframes ${k}{0%,${P(t-.03)}{opacity:0}${P(t)},100%{opacity:1}}`);im.style.animationName=k;}el.appendChild(im);}});
+const s=document.createElement('style');s.textContent=css.join('\n');document.head.appendChild(s);})();
+</script></body></html>

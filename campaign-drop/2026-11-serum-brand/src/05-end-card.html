@@ -1,0 +1,38 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap">
+<style>
+:root{--linen:#F7F3E9;--cream:#F0EADD;--sage:#B9C1A2;--sage-soft:#DFE3CE;--olive:#55613F;--olive-deep:#3E4930;--ink:#2E3526;--nectar:#E9DABC;
+--plain:#E6E3DD;--s-bg:#FAF8F3;--s-ink:#6B563F;--s-copper:#C4765A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--plain)}
+body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
+*{animation-duration:5s;animation-timing-function:linear;animation-fill-mode:both}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.chip{position:absolute;padding:10px 26px;border-radius:999px;background:#FFFDF8;color:#3A342C;font-size:34px;font-weight:500;box-shadow:0 6px 18px rgba(60,50,30,.16)}
+.pill{position:absolute;top:66px;padding:12px 26px;border-radius:999px;background:rgba(255,253,248,.94);font-size:25px;color:#4A4238;box-shadow:0 4px 14px rgba(60,50,30,.12);white-space:nowrap}
+img{display:block}
+
+@keyframes line{0%,24%{transform:scaleX(0)}60%,100%{transform:scaleX(1)}}
+@keyframes ball{0%,24%{transform:translateX(760px)}60%,100%{transform:none}}
+</style></head><body data-duration="5"><div class="fill" style="background:var(--s-bg)"></div>
+<div class="abs" dir="ltr" style="left:0;right:0;top:96px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:50px;color:#3A342C">Brand Worlds Studio</div>
+<div class="abs" style="left:320px;top:190px;width:440px;height:530px;border-radius:220px 220px 26px 26px;overflow:hidden;box-shadow:0 18px 40px rgba(70,60,40,.18)"><img src="assets/hagit.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%"></div>
+<div class="abs" style="left:0;right:0;top:748px;text-align:center;font-size:27px;letter-spacing:.12em;color:#8B7B6E">חגית אנטבי · בונה עולמות מותג</div>
+<div class="abs" data-in="0.3" style="left:60px;right:60px;top:836px;text-align:center;font-size:82px;font-weight:600;line-height:1.18;color:var(--s-ink)">ההבדל בין לעצב מוצר<br>לבין <span style="color:var(--s-copper)">לבנות מותג.</span></div>
+<div class="abs" style="left:150px;width:780px;top:1099px;height:3px;background:var(--s-copper);transform-origin:100% 50%;animation-name:line"></div>
+<div class="abs" style="left:108px;top:1058px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E9B08F,#C4765A 55%,#8E4E36);box-shadow:0 0 0 8px rgba(255,255,255,.75),0 10px 24px rgba(120,70,40,.35);animation-name:ball"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;color:#F5DEC4" dir="ltr">BW</div></div>
+<div class="abs" data-in="1.6" style="left:0;right:0;top:1186px;text-align:center;font-size:42px;line-height:1.4;color:var(--s-copper)">המוצר שלך כבר שם.<br>רוצה לדעת מה חסר סביבו?</div>
+<div class="abs" data-in="2.2" style="left:240px;width:600px;top:1372px;padding:26px 0;border-radius:12px;background:var(--s-ink);color:var(--s-bg);text-align:center"><div style="font-size:44px;font-weight:600">אבחון פער המותג</div><div style="font-size:27px;opacity:.85;margin-top:4px">30 דק׳ · בלי עלות</div></div>
+<div class="abs" dir="ltr" style="left:0;right:0;top:1566px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;letter-spacing:.3em;color:#8B7355">HAGITANTEBI.CO.IL</div>
+<script>
+(function(){const D=+document.body.dataset.duration,css=[];const P=t=>(Math.max(0,Math.min(D,t))/D*100).toFixed(3)+'%';let n=0;
+document.querySelectorAll('[data-show]').forEach(el=>{const [a,b]=el.dataset.show.split(',').map(Number),f=+(el.dataset.fade||.4),k='sh'+(n++);
+const s=a<=0?'0%{opacity:1}':`0%,${P(a-f)}{opacity:0}${P(a)}{opacity:1}`;const e=b>=D?'100%{opacity:1}':`${P(b)}{opacity:1}${P(b+f)},100%{opacity:0}`;
+css.push(`@keyframes ${k}{${s}${e}}`);el.style.animationName=k;});
+document.querySelectorAll('[data-in]').forEach(el=>{const t=+el.dataset.in,k='in'+(n++),from=el.dataset.from||'translateY(30px)';
+css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:${from}}${P(t+.7)},100%{opacity:1;transform:none}}`);el.style.animationName=k;el.style.animationTimingFunction='cubic-bezier(.2,.7,.2,1)';});
+document.querySelectorAll('[data-seq]').forEach(el=>{const d=el.dataset,start=+d.start,step=+d.step;let i=0;
+for(let f=+d.from;f<=+d.to;f+=+(d.by||1),i++){const im=document.createElement('img'),k='sq'+(n++),t=start+i*step;im.src=d.seq.replace('%03d',String(f).padStart(3,'0'));
+im.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';if(i>0){css.push(`@keyframes ${k}{0%,${P(t-.03)}{opacity:0}${P(t)},100%{opacity:1}}`);im.style.animationName=k;}el.appendChild(im);}});
+const s=document.createElement('style');s.textContent=css.join('\n');document.head.appendChild(s);})();
+</script></body></html>

@@ -1,0 +1,29 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap">
+<style>
+:root{--linen:#F7F3E9;--cream:#F0EADD;--sage:#B9C1A2;--sage-soft:#DFE3CE;--olive:#55613F;--olive-deep:#3E4930;--ink:#2E3526;--nectar:#E9DABC;
+--plain:#E6E3DD;--s-bg:#FAF8F3;--s-ink:#6B563F;--s-copper:#C4765A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1080px;overflow:hidden;background:var(--plain)}
+body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
+*{animation-duration:4s;animation-timing-function:linear;animation-fill-mode:both}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.chip{position:absolute;padding:10px 26px;border-radius:999px;background:#FFFDF8;color:#3A342C;font-size:34px;font-weight:500;box-shadow:0 6px 18px rgba(60,50,30,.16)}
+.pill{position:absolute;top:66px;padding:12px 26px;border-radius:999px;background:rgba(255,253,248,.94);font-size:25px;color:#4A4238;box-shadow:0 4px 14px rgba(60,50,30,.12);white-space:nowrap}
+img{display:block}
+
+@keyframes push{0%{transform:scale(1)}100%{transform:scale(1.04)}}
+.b{animation-name:push;transform-origin:50% 70%}
+</style></head><body data-duration="4"><div class="abs" style="right:0;top:0;bottom:0;width:540px;overflow:hidden"><div class="fill" style="background:radial-gradient(120% 90% at 30% 20%,#F1EFEA 0%,#E6E3DD 55%,#D9D5CD 100%)"></div><div class="fill b"><div class="abs" style="left:60px;top:826px;width:420px;height:52px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,60,40,.30),rgba(70,60,40,0));"></div><img class="abs" src="assets/bottle-plain.webp" style="height:640px;left:44px;top:260px"></div></div><div class="abs" style="left:0;top:0;bottom:0;width:540px;overflow:hidden"><div class="fill" style="background:linear-gradient(160deg,#FBF8F0,#F0EADD)"></div><div class="abs" style="left:70px;top:330px;width:400px;height:900px;border-radius:200px 200px 0 0;background:linear-gradient(180deg,#B9C1A2,#A9B391)"></div><div class="fill b"><div class="abs" style="left:60px;top:826px;width:420px;height:52px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,60,40,.30),rgba(70,60,40,0));"></div><img class="abs" src="assets/bottle-label.webp" style="height:640px;left:44px;top:260px"></div><div class="abs" dir="ltr" style="left:0;right:0;top:92px;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:62px;letter-spacing:.2em;color:#2E3526;line-height:1">ELVÉA°</div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;letter-spacing:.44em;color:#55613F;margin-top:12px">BOTANICAL SKIN SCIENCE</div></div></div><div class="abs" style="left:539px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.8)"></div>
+<script>
+(function(){const D=+document.body.dataset.duration,css=[];const P=t=>(Math.max(0,Math.min(D,t))/D*100).toFixed(3)+'%';let n=0;
+document.querySelectorAll('[data-show]').forEach(el=>{const [a,b]=el.dataset.show.split(',').map(Number),f=+(el.dataset.fade||.4),k='sh'+(n++);
+const s=a<=0?'0%{opacity:1}':`0%,${P(a-f)}{opacity:0}${P(a)}{opacity:1}`;const e=b>=D?'100%{opacity:1}':`${P(b)}{opacity:1}${P(b+f)},100%{opacity:0}`;
+css.push(`@keyframes ${k}{${s}${e}}`);el.style.animationName=k;});
+document.querySelectorAll('[data-in]').forEach(el=>{const t=+el.dataset.in,k='in'+(n++),from=el.dataset.from||'translateY(30px)';
+css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:${from}}${P(t+.7)},100%{opacity:1;transform:none}}`);el.style.animationName=k;el.style.animationTimingFunction='cubic-bezier(.2,.7,.2,1)';});
+document.querySelectorAll('[data-seq]').forEach(el=>{const d=el.dataset,start=+d.start,step=+d.step;let i=0;
+for(let f=+d.from;f<=+d.to;f+=+(d.by||1),i++){const im=document.createElement('img'),k='sq'+(n++),t=start+i*step;im.src=d.seq.replace('%03d',String(f).padStart(3,'0'));
+im.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';if(i>0){css.push(`@keyframes ${k}{0%,${P(t-.03)}{opacity:0}${P(t)},100%{opacity:1}}`);im.style.animationName=k;}el.appendChild(im);}});
+const s=document.createElement('style');s.textContent=css.join('\n');document.head.appendChild(s);})();
+</script></body></html>

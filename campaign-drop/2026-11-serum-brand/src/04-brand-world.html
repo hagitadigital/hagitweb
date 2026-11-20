@@ -1,0 +1,31 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Heebo:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500&display=swap">
+<style>
+:root{--linen:#F7F3E9;--cream:#F0EADD;--sage:#B9C1A2;--sage-soft:#DFE3CE;--olive:#55613F;--olive-deep:#3E4930;--ink:#2E3526;--nectar:#E9DABC;
+--plain:#E6E3DD;--s-bg:#FAF8F3;--s-ink:#6B563F;--s-copper:#C4765A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--plain)}
+body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
+*{animation-duration:10s;animation-timing-function:linear;animation-fill-mode:both}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.chip{position:absolute;padding:10px 26px;border-radius:999px;background:#FFFDF8;color:#3A342C;font-size:34px;font-weight:500;box-shadow:0 6px 18px rgba(60,50,30,.16)}
+.pill{position:absolute;top:66px;padding:12px 26px;border-radius:999px;background:rgba(255,253,248,.94);font-size:25px;color:#4A4238;box-shadow:0 4px 14px rgba(60,50,30,.12);white-space:nowrap}
+img{display:block}
+
+@keyframes kb{0%{transform:scale(1.02)}100%{transform:scale(1.14)}}
+@keyframes scr{0%,44%{transform:translateY(0)}54%,62%{transform:translateY(-25%)}72%,80%{transform:translateY(-50%)}90%,100%{transform:translateY(-75%)}}
+.kb{animation-name:kb}.scr{animation-name:scr;animation-timing-function:ease-in-out}
+</style></head><body data-duration="10"><div class="fill" style="background:linear-gradient(180deg,#F7F3E9,#EFE8DA)"></div><div class="pill" style="right:44px">חגית אנטבי · <span dir="ltr" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:23px">Brand Worlds Studio</span></div><div class="pill" style="left:44px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#55613F;margin-left:10px;vertical-align:middle"></span>עולם מותג 14 · <span dir="ltr" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:23px">ELVÉA°</span></div>
+<div class="abs" dir="ltr" style="left:0;right:0;top:182px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.42em;color:#7A6F5C">ELVÉA° · ONE WORLD</div><div class="abs" data-in="0.3" style="left:550px;top:270px;width:500px;height:620px;border-radius:26px;overflow:hidden;background:#EDE7DA;box-shadow:0 14px 34px rgba(70,60,40,.16)"><div class="fill" data-seq="assets/seq/f_%03d.jpg" data-from="1" data-to="79" data-by="2" data-start="0.9" data-step="0.11"></div><div class="chip" style="right:22px;bottom:22px">הסיפור</div></div><div class="abs" data-in="2.0" style="left:30px;top:270px;width:500px;height:620px;border-radius:26px;overflow:hidden;background:#EDE7DA;box-shadow:0 14px 34px rgba(70,60,40,.16)"><img class="kb" src="assets/fil-02.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%"><div class="chip" style="right:22px;bottom:22px">השפה</div></div><div class="abs" data-in="3.7" style="left:550px;top:910px;width:500px;height:620px;border-radius:26px;overflow:hidden;background:#DFE3CE;box-shadow:0 14px 34px rgba(70,60,40,.16)"><div class="abs" style="left:70px;top:36px;width:360px;height:640px;border-radius:34px 34px 0 0;overflow:hidden;border:8px solid #2E3526;border-bottom:0;background:#F0EADD"><div class="scr"><img src="assets/site-00.jpg" style="width:100%"><img src="assets/site-04.jpg" style="width:100%"><img src="assets/site-05.jpg" style="width:100%"><img src="assets/site-10.jpg" style="width:100%"></div></div><div class="chip" style="right:22px;bottom:22px">האתר</div></div><div class="abs" data-in="5.4" style="left:30px;top:910px;width:500px;height:620px;border-radius:26px;overflow:hidden;background:#EDE7DA;box-shadow:0 14px 34px rgba(70,60,40,.16)"><img class="kb" src="assets/boutique.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%"><div class="chip" style="right:22px;bottom:22px">החנות</div></div>
+<script>
+(function(){const D=+document.body.dataset.duration,css=[];const P=t=>(Math.max(0,Math.min(D,t))/D*100).toFixed(3)+'%';let n=0;
+document.querySelectorAll('[data-show]').forEach(el=>{const [a,b]=el.dataset.show.split(',').map(Number),f=+(el.dataset.fade||.4),k='sh'+(n++);
+const s=a<=0?'0%{opacity:1}':`0%,${P(a-f)}{opacity:0}${P(a)}{opacity:1}`;const e=b>=D?'100%{opacity:1}':`${P(b)}{opacity:1}${P(b+f)},100%{opacity:0}`;
+css.push(`@keyframes ${k}{${s}${e}}`);el.style.animationName=k;});
+document.querySelectorAll('[data-in]').forEach(el=>{const t=+el.dataset.in,k='in'+(n++),from=el.dataset.from||'translateY(30px)';
+css.push(`@keyframes ${k}{0%,${P(t)}{opacity:0;transform:${from}}${P(t+.7)},100%{opacity:1;transform:none}}`);el.style.animationName=k;el.style.animationTimingFunction='cubic-bezier(.2,.7,.2,1)';});
+document.querySelectorAll('[data-seq]').forEach(el=>{const d=el.dataset,start=+d.start,step=+d.step;let i=0;
+for(let f=+d.from;f<=+d.to;f+=+(d.by||1),i++){const im=document.createElement('img'),k='sq'+(n++),t=start+i*step;im.src=d.seq.replace('%03d',String(f).padStart(3,'0'));
+im.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover';if(i>0){css.push(`@keyframes ${k}{0%,${P(t-.03)}{opacity:0}${P(t)},100%{opacity:1}}`);im.style.animationName=k;}el.appendChild(im);}});
+const s=document.createElement('style');s.textContent=css.join('\n');document.head.appendChild(s);})();
+</script></body></html>
