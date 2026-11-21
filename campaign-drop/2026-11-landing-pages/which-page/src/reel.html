@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<title>לאיזה עמוד היית משאירה פרטים? · v2 kinetic · 9s loop</title>
+<title>לאיזה עמוד היית משאירה פרטים? · v2 kinetic · 12s loop</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
 <style>
 :root{--cream:#FAF8F3;--dark:#2B2019;--ink:#3E2F22;--copper:#C4765A;--soft:#EDE4D6;--mute:#8B7B6E}
@@ -104,10 +104,13 @@ body{font-family:'Heebo',sans-serif;position:relative}
 </div>
 
 <script>
-const D = 9, $ = s => document.querySelector(s);
+const D = 12, $ = s => document.querySelector(s);
+// Scene times below are written on the original 9s cut; M() stretches each scene to the 12s cut (more time to read).
+const MAP = [[0, 0], [1.2, 1.8], [3.5, 4.6], [5.7, 7.3], [6.75, 8.7], [7.8, 10.1], [9, 12]];
+function M(t) { for (let i = 1; i < MAP.length; i++) { const [a, A] = MAP[i - 1], [b, B] = MAP[i]; if (t <= b) return A + (t - a) / (b - a) * (B - A); } return D; }
 function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 9s timeline
   if (typeof el === 'string') el = $(el);
-  const k = frames.map(([t, p, e]) => ({ offset: Math.min(1, t / D), easing: e || 'cubic-bezier(.3,.7,.2,1)', ...p }));
+  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, M(t) / D)), easing: e || 'cubic-bezier(.3,.7,.2,1)', ...p }));
   if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
   if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
   return el.animate(k, { duration: D * 1000, fill: 'both' });
@@ -156,12 +159,12 @@ on('#one b', 4.9, .15); on('#one small', 4.9, .15);
 tl('#b2', [[4.7, { opacity: 1 }], [4.85, { opacity: 0 }]]).effect.updateTiming({ composite: 'replace' });
 tl('#b3', [[4.7, { opacity: 1 }], [4.85, { opacity: 0 }]]);
 // (b2/b3: the later opacity animation wins, so they pop in at 2.8/2.95 and leave at 4.7)
-$('#b2').getAnimations()[0].effect.setKeyframes([{ offset: 0, opacity: 0, transform: 'translateY(30px)' }, { offset: 2.79 / D, opacity: 0, transform: 'translateY(30px)' }, { offset: 2.98 / D, opacity: 1, transform: 'none' }, { offset: 4.7 / D, opacity: 1, transform: 'none' }, { offset: 4.85 / D, opacity: 0, transform: 'none' }, { offset: 1, opacity: 0, transform: 'none' }]);
+$('#b2').getAnimations()[0].effect.setKeyframes([{ offset: 0, opacity: 0, transform: 'translateY(30px)' }, { offset: M(2.79) / D, opacity: 0, transform: 'translateY(30px)' }, { offset: M(2.98) / D, opacity: 1, transform: 'none' }, { offset: M(4.7) / D, opacity: 1, transform: 'none' }, { offset: M(4.85) / D, opacity: 0, transform: 'none' }, { offset: 1, opacity: 0, transform: 'none' }]);
 $('#b2').getAnimations()[1].cancel();
-$('#b3').getAnimations()[0].effect.setKeyframes([{ offset: 0, opacity: 0, transform: 'translateY(30px)' }, { offset: 2.94 / D, opacity: 0, transform: 'translateY(30px)' }, { offset: 3.13 / D, opacity: 1, transform: 'none' }, { offset: 4.7 / D, opacity: 1, transform: 'none' }, { offset: 4.85 / D, opacity: 0, transform: 'none' }, { offset: 1, opacity: 0, transform: 'none' }]);
+$('#b3').getAnimations()[0].effect.setKeyframes([{ offset: 0, opacity: 0, transform: 'translateY(30px)' }, { offset: M(2.94) / D, opacity: 0, transform: 'translateY(30px)' }, { offset: M(3.13) / D, opacity: 1, transform: 'none' }, { offset: M(4.7) / D, opacity: 1, transform: 'none' }, { offset: M(4.85) / D, opacity: 0, transform: 'none' }, { offset: 1, opacity: 0, transform: 'none' }]);
 $('#b3').getAnimations()[1].cancel();
 const b1 = $('#b1');
-b1.animate([{ offset: 0, left: '710px', width: '300px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: 4.8 / D, left: '710px', width: '300px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: 5.1 / D, left: '70px', width: '940px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: 5.34 / D, left: '70px', width: '940px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: 5.4 / D, left: '70px', width: '940px', background: '#C4765A', borderColor: '#C4765A' }, { offset: 1, left: '70px', width: '940px', background: '#C4765A', borderColor: '#C4765A' }], { duration: D * 1000, fill: 'both' });
+b1.animate([{ offset: 0, left: '710px', width: '300px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: M(4.8) / D, left: '710px', width: '300px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: M(5.1) / D, left: '70px', width: '940px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: M(5.34) / D, left: '70px', width: '940px', background: '#3E2F22', borderColor: '#3E2F22' }, { offset: M(5.4) / D, left: '70px', width: '940px', background: '#C4765A', borderColor: '#C4765A' }, { offset: 1, left: '70px', width: '940px', background: '#C4765A', borderColor: '#C4765A' }], { duration: D * 1000, fill: 'both' });
 off('#b1a', 4.8, .12); win('#b1b', 5.0, 5.32, .1); on('#b1c', 5.42, .06);
 
 // counters
