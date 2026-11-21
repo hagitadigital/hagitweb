@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<title>PARDON ME° · World 29 · kinetic reel · 22s</title>
+<title>PARDON ME° · World 29 · kinetic reel · 24s</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
 <style>
 /* the world's own palette and type (pardon-me/brand-book.json) */
@@ -130,10 +130,13 @@ body{font-family:'Heebo',sans-serif;color:var(--garden);position:relative}
 </div>
 
 <script>
-const D = 22, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)';
-function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 22s timeline
+const D = 24, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)';
+// Scene times below are written on the 22s cut; M() stretches the names, the proof and the outro to the 24s cut.
+const MAP = [[0, 0], [13.3, 13.3], [16.6, 18.2], [19.3, 21.2], [22, 24]];
+function M(t) { for (let i = 1; i < MAP.length; i++) { const [a, A] = MAP[i - 1], [b, B] = MAP[i]; if (t <= b) return A + (t - a) / (b - a) * (B - A); } return D; }
+function tl(el, frames) {                       // [[seconds, {props}, easing?], …] written on the 22s cut
   if (typeof el === 'string') el = $(el);
-  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, t / D)), easing: e || EASE, ...p }));
+  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, M(t) / D)), easing: e || EASE, ...p }));
   if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
   if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
   return el.animate(k, { duration: D * 1000, fill: 'both' });
@@ -193,7 +196,7 @@ tl('#k4', [[15.65, { background: '#1E3A2B', color: '#F3EDE2' }], [15.7, { backgr
 wipe('#prf', 16.6);
 const pt = [16.6, 17.55, 18.45];
 ['#h0', '#h1', '#h2'].forEach((id, i) => tl(id, [[pt[i], { opacity: i ? 0 : 1, transform: 'translateY(70px) scale(.96)' }], [pt[i] + .35, { opacity: 1, transform: 'none' }]]));
-['#w0', '#w1', '#w2'].forEach((id, i) => win(id, pt[i] + .25, i < 2 ? pt[i + 1] - .05 : D, .12));
+['#w0', '#w1', '#w2'].forEach((id, i) => win(id, pt[i] + .25, i < 2 ? pt[i + 1] - .05 : 22, .12));
 
 /* ── 19.3–22 outro: the answer, then the CTA ──────────────────────────────── */
 wipe('#out', 19.3);
