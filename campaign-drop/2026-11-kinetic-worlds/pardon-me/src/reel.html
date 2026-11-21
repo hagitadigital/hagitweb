@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>PARDON ME° · World 29 · kinetic reel · 22s</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* the world's own palette and type (pardon-me/brand-book.json) */
+:root{--porc:#F3EDE2;--garden:#1E3A2B;--lime:#CFE06A;--sky:#B9D3E8;--petal:#F2C4CE;--berry:#9B1B47;--copper:#C4765A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--porc)}
+body{font-family:'Heebo',sans-serif;color:var(--garden);position:relative}
+.abs{position:absolute}.full{position:absolute;inset:0;overflow:hidden}
+.mono{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.28em;text-transform:uppercase;font-size:20px}
+.bod{font-family:'Bodoni Moda',serif;direction:ltr;unicode-bidi:isolate}
+.frl{font-family:'Frank Ruhl Libre','Heebo',serif}
+.sig{left:0;right:0;top:236px;text-align:center;color:var(--copper)}
+.code{right:70px;top:300px;height:54px;padding:0 22px;background:var(--garden);color:var(--porc);font-size:27px;font-weight:600;display:flex;align-items:center;gap:14px;white-space:nowrap}
+.code b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;color:var(--lime)}
+.gl{background:rgba(30,58,43,.2)}
+/* hook */
+.hq{left:70px;right:70px;top:320px;font-size:98px;font-weight:900;line-height:1.1;letter-spacing:-.015em;text-align:right}
+.hq em{font-style:normal;color:var(--berry)}
+.wm{left:0;right:0;top:960px;display:flex;justify-content:center;align-items:center;direction:ltr;font-family:'Bodoni Moda',serif;font-weight:400;font-size:112px;letter-spacing:.28em;line-height:1;white-space:nowrap}
+.wm .o{display:inline-block;width:.62em;height:.86em;margin:0 .3em 0 .02em}
+.hbox{border:2.5px solid var(--berry)}
+.hbox i{position:absolute;width:18px;height:18px;background:var(--porc);border:2.5px solid var(--berry)}
+.hbox .lab{position:absolute;right:-2.5px;top:-46px;height:44px;padding:0 16px;background:var(--berry);color:#fff;font-size:24px;font-weight:600;display:flex;align-items:center}
+/* the window: a print layer cut by an ellipse, and its thin green ring */
+#prints{clip-path:ellipse(40px 60px at 540px 960px)}
+#pbox{position:absolute;left:-420px;top:0;width:1920px;height:1920px}
+#pbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ring{border:4px solid var(--garden);border-radius:50%;box-shadow:inset 0 0 0 10px rgba(30,58,43,.07)}
+.seal{left:290px;top:660px;width:500px;height:500px;border-radius:50%;background:var(--berry);color:var(--porc);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bodoni Moda',serif;font-size:92px;line-height:1.05;letter-spacing:.06em;direction:ltr;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.s2h{left:70px;right:70px;top:392px;font-size:92px;font-weight:700;line-height:1.1;text-align:right}
+.nm{left:0;right:0;top:1350px;text-align:center;font-style:italic;font-size:72px;line-height:1.1}
+.cntr{left:70px;top:1368px;font-size:24px;letter-spacing:.2em;font-family:'Plus Jakarta Sans',sans-serif}
+/* decision */
+#dec{background:var(--garden);color:var(--porc)}
+.big{left:70px;right:70px;font-size:168px;font-weight:700;line-height:1.02;text-align:right;white-space:nowrap}
+/* sleeve */
+#slv{background:var(--porc)}
+.wm2{left:0;right:0;top:690px;text-align:center;direction:ltr;font-family:'Bodoni Moda',serif;font-size:96px;line-height:1;white-space:nowrap}
+.wm2 .o{display:inline-block;width:.62em;height:.86em;border-radius:50%;border:.05em solid currentColor;vertical-align:-.06em;margin:0 .02em}
+.no{left:70px;right:70px;font-size:104px;font-weight:700;line-height:1.1;text-align:right}
+.meas{font-size:22px;letter-spacing:.14em;font-family:'Plus Jakarta Sans',sans-serif;color:var(--berry)}
+/* names */
+.nmf{left:60px;right:60px;top:680px;font-style:italic;font-size:176px;line-height:1.02;text-align:left;letter-spacing:-.01em}
+.rule{left:70px;right:70px;top:1330px;font-size:44px;font-weight:300;text-align:right}
+.rule b{font-weight:800}
+/* proof */
+#prf{background:var(--porc)}
+.shot{left:120px;top:470px;width:840px;height:1010px;border-radius:26px;overflow:hidden;box-shadow:0 30px 60px rgba(30,58,43,.22)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.where{left:70px;right:70px;top:300px;font-size:104px;font-weight:700;text-align:right;line-height:1}
+/* outro */
+#out{background:var(--porc)}
+.ans{left:70px;right:70px;top:860px;font-size:136px;font-weight:900;line-height:1.04;letter-spacing:-.02em;text-align:center}
+.ans em{font-style:normal;color:var(--berry)}
+.wtag{left:0;right:0;top:1160px;text-align:center;font-size:30px;font-weight:500;color:var(--garden)}
+.cta{left:150px;right:150px;top:1250px;height:150px;border-radius:75px;background:var(--garden);color:var(--porc);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.cta b{font-size:48px;font-weight:700}.cta span{font-size:27px;color:var(--lime)}
+.url{left:0;right:0;top:1432px;text-align:center;color:var(--garden)}
+</style>
+</head>
+<body>
+
+<!-- base: the polite front. Hook (0–2.6) and the window scene (5.2–10.4) both live on it -->
+<div class="abs sig mono" id="sig0" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+<div class="abs hq" id="hq">אם נסתיר<br>את הלוגו,<br><em>עדיין יזהו אותך?</em></div>
+<div class="abs wm" id="wm"><span class="l">P</span><span class="l">A</span><span class="l">R</span><span class="l">D</span><span class="o" id="o"></span><span class="l">N</span><span class="l">&nbsp;</span><span class="l">M</span><span class="l">E</span></div>
+<div class="abs hbox" id="hb" style="left:90px;top:900px;width:900px;height:220px"><i style="left:-10px;top:-10px"></i><i style="right:-10px;top:-10px"></i><i style="left:-10px;bottom:-10px"></i><i style="right:-10px;bottom:-10px"></i><span class="lab">הלוגו</span></div>
+
+<div class="abs code" id="k1"><b>01</b>החלון</div>
+<div class="abs s2h frl" id="s2h">חלון אליפטי<br>אחד.</div>
+<div class="abs nm bod" id="n0">Well, Hello.</div><div class="abs nm bod" id="n1">High Maintenance.</div><div class="abs nm bod" id="n2">None of Your Business.</div><div class="abs nm bod" id="n3">Bad Influence.</div>
+<div class="abs rule" id="s2r" style="top:1462px;text-align:center;font-size:38px">החזית לא משתנה. <b>רק מה שמציץ.</b></div>
+
+<div class="full" id="prints"><div id="pbox">
+  <img id="p0" src="../../../../pardon-me/assets/print-well-hello.webp" alt=""><img id="p1" src="../../../../pardon-me/assets/print-high-maintenance.webp" alt="">
+  <img id="p2" src="../../../../pardon-me/assets/print-none-of-your-business.webp" alt=""><img id="p3" src="../../../../pardon-me/assets/print-bad-influence.webp" alt="">
+</div><div class="abs seal" id="seal">NOT<br>SORRY.</div><div class="abs code" id="k3" style="background:var(--porc);color:var(--garden)"><b style="color:var(--berry)">03</b>הפרינט שמבפנים</div></div>
+<div class="abs ring" id="ring"></div>
+
+<!-- the decision -->
+<div class="full" id="dec">
+  <div class="abs hbox" id="db" style="left:52px;right:52px;top:560px;height:800px;border-color:var(--lime)"><i style="left:-10px;top:-10px;background:var(--garden);border-color:var(--lime)"></i><i style="right:-10px;top:-10px;background:var(--garden);border-color:var(--lime)"></i><i style="left:-10px;bottom:-10px;background:var(--garden);border-color:var(--lime)"></i><i style="right:-10px;bottom:-10px;background:var(--garden);border-color:var(--lime)"></i><span class="lab" style="background:var(--lime);color:var(--garden)">ההחלטה</span></div>
+  <div class="abs big frl" id="d1" style="top:610px">מנומס<br>מבחוץ.</div>
+  <div class="abs big frl" id="d2" style="top:980px;color:var(--lime)">לא מתנצל<br>מבפנים.</div>
+</div>
+
+<!-- code 02 · the polite sleeve -->
+<div class="full" id="slv">
+  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
+  <div class="abs gl" style="left:0;right:0;top:640px;height:1.5px"></div><div class="abs gl" style="left:0;right:0;top:836px;height:1.5px"></div>
+  <div class="abs code"><b>02</b>השרוול המנומס</div>
+  <div class="abs wm2" id="wm2">PARD<span class="o"></span>N ME</div>
+  <div class="abs meas" id="ms" style="left:0;right:0;top:860px;text-align:center" dir="ltr">TRACKING +280 · PORCELAIN #F3EDE2</div>
+  <div class="abs no frl" id="x1" style="top:990px">בלי פויל.</div>
+  <div class="abs no frl" id="x2" style="top:1110px">בלי פרינט.</div>
+  <div class="abs no frl" id="x3" style="top:1230px;color:var(--berry)">בלי בדיחה על החזית.</div>
+</div>
+
+<!-- code 04 · the name with the full stop: every full stop flips the colour -->
+<div class="full" id="nA" style="background:var(--sky)"><div class="abs nmf bod">Well,<br>Hello.</div></div>
+<div class="full" id="nB" style="background:var(--petal)"><div class="abs nmf bod" style="font-size:146px;top:680px">High<br>Maintenance.</div></div>
+<div class="full" id="nC" style="background:var(--lime)"><div class="abs nmf bod">Bad<br>Influence.</div></div>
+<div class="full" id="nD" style="background:var(--garden);color:var(--porc)"><div class="abs nmf bod" style="font-size:150px">None of<br>Your<br>Business.</div></div>
+<div class="full" id="nT" style="pointer-events:none">
+  <div class="abs code" id="k4"><b>04</b>השם עם הנקודה</div>
+  <div class="abs rule" id="nr">כל שם נגמר בנקודה. <b>בלי סימן קריאה.</b></div>
+</div>
+
+<!-- proof: the real touchpoints -->
+<div class="full" id="prf">
+  <div class="abs where frl" id="w0">השקית.</div><div class="abs where frl" id="w1">המדף.</div><div class="abs where frl" id="w2">השלט.</div>
+  <div class="abs shot" id="h0"><img src="../../../../pardon-me/assets/bag.webp" alt=""></div>
+  <div class="abs shot" id="h1"><img src="../../../../pardon-me/assets/bad-influence.webp" alt=""></div>
+  <div class="abs shot" id="h2"><img src="../../../../pardon-me/assets/poster.webp" alt="" style="object-position:60% 40%"></div>
+</div>
+
+<!-- outro: the window alone, no logo -->
+<div class="full" id="out">
+  <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs" id="ow" style="left:420px;top:330px;width:240px;height:388px;border-radius:50%;overflow:hidden;border:4px solid var(--garden)"><img src="../../../../pardon-me/assets/print-high-maintenance.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div class="abs ans" id="an">זיהו.<br><em>בלי לוגו.</em></div>
+  <div class="abs wtag" id="wt"><span class="bod">PARDON ME°</span> · עולם מותג 29</div>
+  <div class="abs cta" id="ct"><b>אבחון פער המותג</b><span>30 דק׳ · בלי עלות</span></div>
+  <div class="abs url mono" id="ur" dir="ltr">hagitantebi.co.il</div>
+</div>
+
+<script>
+const D = 22, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)';
+function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 22s timeline
+  if (typeof el === 'string') el = $(el);
+  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, t / D)), easing: e || EASE, ...p }));
+  if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
+  if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
+  return el.animate(k, { duration: D * 1000, fill: 'both' });
+}
+const on = (el, a, f = .25) => tl(el, [[a - f, { opacity: 0 }], [a, { opacity: 1 }]]);
+const off = (el, a, f = .25) => tl(el, [[a, { opacity: 1 }], [a + f, { opacity: 0 }]]);
+const win = (el, a, b, f = .25) => tl(el, [[a - f, { opacity: 0 }], [a, { opacity: 1 }], [b, { opacity: 1 }], [b + f, { opacity: 0 }]]);
+const rise = (el, a, d = 60) => tl(el, [[a - .01, { opacity: 0, transform: `translateY(${d}px)` }], [a + .3, { opacity: 1, transform: 'none' }]]);
+const wipe = (el, a, f = .32) => tl(el, [[a, { clipPath: 'inset(100% 0 0 0)' }], [a + f, { clipPath: 'inset(0% 0 0 0)' }]]);
+
+/* ── the window: [t, cx, cy, rx, ry, print scale] ─────────────────────────── */
+const o = $('#o').getBoundingClientRect(), ox = o.left + o.width / 2, oy = o.top + o.height / 2;
+const W = [
+  [0, ox, oy, o.width / 2, o.height / 2, .1], [1.9, ox, oy, o.width / 2, o.height / 2, .1],
+  [2.5, 540, 1010, 150, 242, .3],                                   // the logo is gone, the window stays
+  [5.2, 540, 930, 215, 347, .45], [9.25, 540, 930, 215, 347, .5],   // one elliptical window
+  [9.75, 540, 960, 1300, 2100, 1.02],                               // …swallows the screen
+];
+tl('#prints', W.map(([t, x, y, a, b]) => [t, { clipPath: `ellipse(${a}px ${b}px at ${x}px ${y}px)` }]));
+tl('#ring', W.map(([t, x, y, a, b]) => [t, { left: x - a + 'px', top: y - b + 'px', width: 2 * a + 'px', height: 2 * b + 'px' }]));
+tl('#pbox', W.map(([t, x, y, a, b, s]) => [t, { transform: `translate(${x - 540}px,${y - 960}px) scale(${s})` }]));
+off('#ring', 9.3, .2);
+// what peeks through changes on every beat; the front never does
+const beats = [5.2, 6.35, 7.35, 8.35];
+['#p1', '#p2', '#p3'].forEach((id, i) => on(id, beats[i + 1], .3));
+['#n0', '#n1', '#n2', '#n3'].forEach((id, i) => win(id, beats[i] + .2, i < 3 ? beats[i + 1] - .2 : 9.1, .15));
+tl('#seal', [[9.8, { transform: 'scale(0) rotate(-40deg)' }], [10.15, { transform: 'scale(1) rotate(-9deg)' }, 'cubic-bezier(.3,1.5,.5,1)']]);
+on('#k3', 9.9, .2);
+
+/* ── 0–2.6 hook: the logo is selected and deleted, the window stays ───────── */
+on('#hb', .55, .15); off('#hb', 1.85, .1);
+document.querySelectorAll('#wm .l').forEach((l, i, a) => off(l, 1.15 + (a.length - 1 - i) * .09, .06));
+off('#hq', 2.45, .2); off('#sig0', 2.45, .2);
+
+/* ── 2.6–5.2 the decision ─────────────────────────────────────────────────── */
+tl('#dec', [[2.55, { clipPath: 'inset(100% 0 0 0)' }], [2.9, { clipPath: 'inset(0% 0 0 0)' }], [5.15, { clipPath: 'inset(0% 0 0 0)' }], [5.5, { clipPath: 'inset(0 0 100% 0)' }]]);
+rise('#d1', 2.85); rise('#d2', 3.75); on('#db', 3.05, .15);
+
+/* ── 5.2–10.4 code 01 ─────────────────────────────────────────────────────── */
+win('#k1', 5.6, 9.2, .2); win('#s2h', 5.7, 9.2, .25); win('#s2r', 7.4, 9.2, .25);
+
+/* ── 10.5–13.3 code 02: the polite sleeve ─────────────────────────────────── */
+wipe('#slv', 10.55);
+tl('#wm2', [[10.9, { letterSpacing: '0em' }], [11.6, { letterSpacing: '.28em' }]]);
+on('#ms', 11.6, .2); rise('#x1', 11.55, 40); rise('#x2', 11.95, 40); rise('#x3', 12.35, 40);
+
+/* ── 13.3–16.5 code 04: each full stop flips the colour ───────────────────── */
+[['#nA', 13.3], ['#nB', 14.1], ['#nC', 14.9], ['#nD', 15.7]].forEach(([id, t], i) => {
+  if (i) on(id, t, .01); else wipe(id, t);
+  tl(id + ' .nmf', [[t, { clipPath: 'inset(0 100% 0 0)' }, 'steps(9,end)'], [t + .5, { clipPath: 'inset(0 0% 0 0)' }]]);
+});
+tl('#nT', [[13.3, { opacity: 0 }], [13.6, { opacity: 1 }], [16.5, { opacity: 1 }], [16.6, { opacity: 0 }]]);
+tl('#nr', [[15.65, { color: '#1E3A2B' }], [15.7, { color: '#F3EDE2' }]]);
+tl('#k4', [[15.65, { background: '#1E3A2B', color: '#F3EDE2' }], [15.7, { background: '#F3EDE2', color: '#1E3A2B' }]]);
+
+/* ── 16.6–19.3 proof: three real touchpoints ──────────────────────────────── */
+wipe('#prf', 16.6);
+const pt = [16.6, 17.55, 18.45];
+['#h0', '#h1', '#h2'].forEach((id, i) => tl(id, [[pt[i], { opacity: i ? 0 : 1, transform: 'translateY(70px) scale(.96)' }], [pt[i] + .35, { opacity: 1, transform: 'none' }]]));
+['#w0', '#w1', '#w2'].forEach((id, i) => win(id, pt[i] + .25, i < 2 ? pt[i + 1] - .05 : D, .12));
+
+/* ── 19.3–22 outro: the answer, then the CTA ──────────────────────────────── */
+wipe('#out', 19.3);
+tl('#ow', [[19.4, { transform: 'scale(.6)', opacity: 0 }], [19.8, { transform: 'none', opacity: 1 }]]);
+rise('#an', 19.75); on('#wt', 20.4); rise('#ct', 20.55, 40); on('#ur', 20.9);
+</script>
+</body>
+</html>
