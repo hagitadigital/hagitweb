@@ -496,6 +496,28 @@ footer .sig{font-family:var(--display)}
 }
 
 
+/* phones with large system text (in-app browsers enlarge it): nothing may be wider than the screen */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@supports not (overflow:clip){#page{overflow-x:hidden}}
+@media (max-width:900px){
+  .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 20px;max-width:100%}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn{width:100%}
+  header.top .in{gap:10px}
+  header.top .btn,.dock .btn{white-space:nowrap;flex:none;padding:0 16px}
+  .logo{min-width:0}
+  .dock{gap:10px}
+  .dock span{font-size:13px;line-height:1.35;min-width:0}
+  .pr3{grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch}
+  .pr3 li{padding-inline:8px;min-width:0}
+  .pr3 b{font-size:clamp(17px,5.4vw,22px)}
+  .gift{font-size:17px;padding:12px 14px;gap:10px}
+  .offerbar .in{padding-inline:14px}
+  .due .n{flex-wrap:wrap;justify-content:center}
+  .chip span{padding:8px 14px}
+  form{padding:24px 18px}
+}
+
 .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
 .rev{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;gap:16px}
 .rev .st{color:var(--copper);letter-spacing:3px;font-size:17px;direction:ltr;text-align:right}
