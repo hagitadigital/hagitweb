@@ -2,112 +2,138 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<title>ORÉVA° · four questions to your site · kinetic reel · 24s</title>
+<title>ORÉVA° · four questions to your site · kinetic reel v2 · 24s</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
 <style>
-/* ORÉVA's own palette and type (oreva/brand-book.json). Questions are in the studio's voice (Heebo), answers in the site's (Frank Ruhl Libre). */
+/* ORÉVA's palette and type (oreva/brand-book.json). Questions: the studio's voice (Heebo). Answers: the site's (Frank Ruhl Libre).
+   Motion: the copper bead (ORÉVA's own code) opens every screen; footage, bottle and phone come from the site itself. */
 :root{--cream:#F6EFE7;--blush:#EFCDBF;--glow:#F0BFB0;--stone:#D9C7B3;--copper:#B87A57;--deep:#8F5A3C;--light:#D9A88A;--ink:#3A2E29;--ink2:#6E5E55}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
 body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
-.abs{position:absolute}.full{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute}.full{position:absolute;inset:0}
 .mono{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.28em;text-transform:uppercase;font-size:20px}
 .frl{font-family:'Frank Ruhl Libre','Heebo',serif}
+.cg{font-family:'Cormorant Garamond',serif;direction:ltr;unicode-bidi:isolate}
 .sig{left:0;right:0;top:236px;text-align:center;color:var(--copper)}
-.gl{background:rgba(184,122,87,.3)}
+.ml{display:block;overflow:hidden;padding:.06em 0 .1em;margin:-.06em 0 -.1em}.ml>span{display:block}
 /* question screens */
-.qs{color:var(--cream)}
-.qn{right:70px;top:300px;font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;direction:ltr}
-.qn small{font-size:34px;opacity:.6}
-.qt{left:70px;right:70px;top:620px;font-size:142px;font-weight:900;line-height:1.05;letter-spacing:-.02em;text-align:right}
+.qs{overflow:hidden}
+.qn{left:-30px;top:1010px;font-size:640px;line-height:.8;color:transparent;-webkit-text-stroke:2.5px currentColor}
+.qd{right:70px;top:306px;display:flex;gap:14px;direction:ltr}
+.qd i{width:44px;height:6px;border-radius:3px;background:currentColor;opacity:.25}.qd i.on{opacity:1}
+.qt{left:70px;right:70px;top:600px;font-size:142px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+.cd{left:70px;top:270px;width:210px;height:210px}
+.cd b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:120px;line-height:1;opacity:0}
 /* answer screens */
-.as{background:var(--cream)}
-.src{left:70px;top:312px;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.3em;direction:ltr;color:var(--ink)}
-.src small{display:block;font-family:'Heebo',sans-serif;font-size:22px;letter-spacing:.02em;color:var(--copper);direction:rtl;text-align:left;margin-top:6px}
+.as{background:var(--cream);overflow:hidden}
+.src{left:70px;top:250px;font-size:34px;letter-spacing:.3em;color:var(--ink)}
+.src small{display:block;font-family:'Heebo',sans-serif;font-size:22px;letter-spacing:.02em;color:var(--copper);direction:rtl;text-align:left;margin-top:4px}
 .sel{border:2.5px solid var(--copper)}
 .sel i{position:absolute;width:18px;height:18px;background:var(--cream);border:2.5px solid var(--copper)}
 .sel i:nth-child(1){left:-10px;top:-10px}.sel i:nth-child(2){right:-10px;top:-10px}.sel i:nth-child(3){left:-10px;bottom:-10px}.sel i:nth-child(4){right:-10px;bottom:-10px}
 .lab{position:absolute;right:-2.5px;top:-50px;height:48px;padding:0 18px;background:var(--copper);color:#fff;font-size:27px;font-weight:600;display:flex;align-items:center;white-space:nowrap}
+.seq{overflow:hidden;background:var(--stone)}
+.seq img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .a1{left:70px;right:70px;font-size:150px;font-weight:700;line-height:1.05;text-align:right;white-space:nowrap}
-.a2{left:86px;right:86px;font-size:88px;font-weight:500;line-height:1.16;text-align:right}
-.btn{left:130px;top:760px;width:820px;height:170px;border-radius:85px;background:var(--copper);color:#fff;font-size:68px;font-weight:500;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 50px rgba(143,90,60,.3)}
-.bead{left:0;top:0;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 13px rgba(184,122,87,.22),0 10px 22px rgba(62,40,24,.4)}
+.a2{left:86px;right:86px;font-size:84px;font-weight:500;line-height:1.16;text-align:right}
+svg.rb{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible}
+svg.rb path{fill:none;stroke:var(--copper);stroke-width:5;stroke-linecap:round}
 /* hook */
-.hq{left:70px;right:70px;top:320px;font-size:112px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+.hq{left:70px;right:70px;top:300px;font-size:112px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
 .hq em{font-style:normal;color:var(--deep)}
-.hero{left:70px;top:790px;width:940px;height:700px;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(62,40,24,.2)}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
-.pretty{left:98px;top:1396px;height:66px;padding:0 26px;border-radius:33px;background:var(--cream);color:var(--ink);font-size:32px;font-weight:600;display:flex;align-items:center}
-/* the phone */
+.stage{left:0;top:760px;width:1080px;height:760px;perspective:1500px;perspective-origin:50% 40%}
+.ringc{position:absolute;left:370px;top:70px;width:340px;height:600px;transform-style:preserve-3d}
+.card{position:absolute;inset:0;border-radius:26px;overflow:hidden;background:var(--stone);box-shadow:0 30px 50px rgba(62,40,24,.28);backface-visibility:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.pretty{left:420px;top:1378px;width:240px;height:76px;border-radius:38px;background:var(--ink);color:var(--cream);font-size:36px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 24px rgba(62,40,24,.3)}
+/* price wheel */
+.wst{left:110px;top:330px;width:860px;height:440px;perspective:1100px}
+.wheel{position:absolute;left:0;top:172px;width:860px;height:96px;transform-style:preserve-3d}
+.row{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font-size:42px;border-top:1.5px solid var(--stone);border-bottom:1.5px solid var(--stone);background:var(--cream);backface-visibility:hidden}
+.row b{font-weight:800;color:var(--deep);direction:rtl}
+.fade{left:110px;width:860px;height:130px;pointer-events:none}
+/* button */
+.btn{left:130px;top:850px;width:820px;height:160px;border-radius:80px;background:var(--copper);color:#fff;font-size:66px;font-weight:500;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 50px rgba(143,90,60,.3)}
+.rip{left:300px;top:930px;width:160px;height:160px;margin:-80px 0 0 -80px;border-radius:50%;border:4px solid var(--copper);opacity:0}
+/* phone */
 .ph{left:280px;top:300px;width:520px;height:1125px;border-radius:44px;overflow:hidden;background:var(--cream);box-shadow:0 0 0 10px var(--ink),0 40px 70px rgba(62,40,24,.3)}
 .ph .shot{position:absolute;inset:0;background:url(oreva-mobile.jpg) 0 0/520px 1125px no-repeat}
 .ph .veil{position:absolute;inset:0;background:rgba(246,239,231,.72)}
 .ph .lit{position:absolute;left:0;width:520px;background:url(oreva-mobile.jpg) 0 0/520px 1125px no-repeat;opacity:0}
+.ph .scan{position:absolute;left:0;right:0;top:0;height:120px;background:linear-gradient(rgba(184,122,87,0),rgba(184,122,87,.35));border-bottom:3px solid var(--copper);opacity:0}
 .pin{height:58px;padding:0 20px;background:var(--copper);color:#fff;font-size:28px;font-weight:600;display:flex;align-items:center;white-space:nowrap;opacity:0}
 .pl{height:2.5px;background:var(--copper);opacity:0}
 .one{left:0;right:0;top:1452px;text-align:center;font-size:46px;font-weight:300;opacity:0}
 .one b{font-weight:800;color:var(--deep)}
 .s4h{left:70px;right:70px;top:226px;text-align:center;font-size:40px;font-weight:300}
 /* outro */
-#out{background:var(--ink);color:var(--cream)}
-.big{left:70px;right:70px;font-size:136px;font-weight:900;line-height:1.05;letter-spacing:-.02em;text-align:right}
+#out{background:var(--ink);color:var(--cream);overflow:hidden}
+.big{left:70px;right:70px;font-size:136px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
 .msg{left:70px;right:70px;top:1150px}
-.msg .t{font-size:62px;font-weight:300;text-align:right}.msg .t b{font-weight:800}
+.msg .t{font-size:62px;font-weight:300;text-align:right;line-height:1.5}.msg .t b{font-weight:800}
 .comp{margin-top:30px;height:132px;border-radius:66px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 44px 0 16px}
 .comp .w{font-size:62px;font-weight:800;color:var(--ink)}
-.comp .s{width:100px;height:100px;border-radius:50%;background:var(--copper);display:flex;align-items:center;justify-content:center}
+.comp .s{width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);display:flex;align-items:center;justify-content:center;opacity:0}
+/* the bead */
+#bead{left:0;top:0;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 13px rgba(184,122,87,.22),0 10px 22px rgba(62,40,24,.4);opacity:0;z-index:50}
 </style>
 </head>
 <body>
 
-<!-- 0–3 hook: beautiful, and…? -->
+<!-- 0–2.9 hook: five beautiful screens turning, each one stamped "pretty" -->
 <div class="full" id="s0">
   <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
-  <div class="abs hq">האתר שלך יפה.<br><em>הוא גם<br>מביא פניות?</em></div>
-  <div class="abs hero"><img id="hi" src="../../../../oreva/assets/founder-counter-full-line.webp" alt=""></div>
-  <div class="abs pretty" id="pr">יפה ✓</div>
+  <div class="abs hq"><span class="ml"><span>האתר שלך יפה.</span></span><em><span class="ml"><span id="h2">הוא גם</span></span><span class="ml"><span id="h3">מביא פניות?</span></span></em></div>
+  <div class="abs stage"><div class="ringc" id="ring"></div></div>
+  <div class="abs pretty" id="pr">יפה <span>✓</span></div>
 </div>
 
-<!-- 01 · the first sentence -->
-<div class="full qs" id="q1" style="background:var(--ink)"><div class="abs qn">01 <small>/ 04</small></div><div class="abs qt">מבינים<br>תוך 3 שניות<br><span style="color:var(--light)">מה מקבלים?</span></div></div>
+<div id="scenes"></div>
+
+<!-- answer 01 · hands first, then the bottle -->
 <div class="full as" id="a1">
-  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
-  <div class="abs src">ORÉVA°<small>מסך הפתיחה של האתר</small></div>
-  <div class="abs sel" id="b1" style="left:48px;right:48px;top:640px;height:420px"><i></i><i></i><i></i><i></i><span class="lab">המשפט הראשון</span></div>
-  <div class="abs a1 frl" id="t1a" style="top:690px">קודם הידיים.</div>
-  <div class="abs a1 frl" id="t1b" style="top:850px;color:var(--deep)">אחר כך הבקבוק.</div>
-  <div class="abs" id="t1c" style="left:70px;right:70px;top:1130px;font-size:44px;font-weight:300;text-align:right">ארבע מילים, ויודעים <b style="font-weight:800">מי עומדת מאחורי זה.</b></div>
+  <div class="abs src cg">ORÉVA°<small>מסך הפתיחה של האתר</small></div>
+  <div class="abs seq" id="arch" style="left:500px;top:350px;width:500px;height:500px;border-radius:250px 250px 26px 26px"></div>
+  <svg class="rb"><path id="rb1" d="M 500 800 C 380 800, 330 700, 300 560 S 250 400, 232 372"/></svg>
+  <img class="abs" id="bot" src="../../../../oreva/assets/p-glow.webp" alt="" style="left:120px;top:352px;height:500px">
+  <div class="abs sel" id="b1" style="left:48px;right:48px;top:900px;height:370px"><i></i><i></i><i></i><i></i><span class="lab">המשפט הראשון</span></div>
+  <div class="abs a1 frl" style="top:925px"><span class="ml"><span id="t1a">קודם הידיים.</span></span></div>
+  <div class="abs a1 frl" style="top:1085px;color:var(--deep)"><span class="ml"><span id="t1b">אחר כך הבקבוק.</span></span></div>
+  <div class="abs" id="t1c" style="left:70px;right:70px;top:1320px;font-size:44px;font-weight:300;text-align:right">ארבע מילים, ויודעים <b style="font-weight:800">מי עומדת מאחורי זה.</b></div>
 </div>
 
-<!-- 02 · the reason -->
-<div class="full qs" id="q2" style="background:var(--glow);color:var(--ink)"><div class="abs qn">02 <small>/ 04</small></div><div class="abs qt">יש סיבה<br>לבחור בך<br><span style="color:var(--deep)">ולא להשוות?</span></div></div>
+<!-- answer 02 · prices can be compared. Hands cannot. -->
 <div class="full as" id="a2">
-  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
-  <div class="abs src">ORÉVA°<small>למה אי אפשר להשוות</small></div>
-  <div class="abs sel" id="b2" style="left:48px;right:48px;top:900px;height:360px"><i></i><i></i><i></i><i></i><span class="lab">הסיבה</span></div>
-  <div class="abs a2 frl" id="t2a" style="top:580px">סרום אפשר להשוות<br>לפי מחיר למ״ל.</div>
-  <div class="abs a2 frl" id="t2b" style="top:930px;color:var(--deep);font-weight:700">ידיים שמכירות את<br>העור שלך אי אפשר.</div>
+  <div class="abs src cg">ORÉVA°<small>למה אי אפשר להשוות</small></div>
+  <div class="abs wst" id="wst"><div class="wheel" id="wheel"></div></div>
+  <div class="abs fade" style="top:330px;background:linear-gradient(var(--cream),rgba(246,239,231,0))"></div>
+  <div class="abs fade" style="top:640px;background:linear-gradient(rgba(246,239,231,0),var(--cream))"></div>
+  <div class="abs sel" id="cmp" style="left:96px;top:496px;width:888px;height:108px"><i></i><i></i><i></i><i></i><span class="lab" style="background:var(--ink)">ככה משווים</span></div>
+  <div class="abs seq" id="circ" style="left:290px;top:300px;width:500px;height:500px;border-radius:50%;box-shadow:0 0 0 5px var(--copper),0 30px 60px rgba(62,40,24,.3)"></div>
+  <div class="abs a2 frl" id="t2a" style="top:850px">סרום אפשר להשוות<br>לפי מחיר למ״ל.</div>
+  <div class="abs sel" id="b2" style="left:48px;right:48px;top:1080px;height:240px"><i></i><i></i><i></i><i></i><span class="lab">הסיבה</span></div>
+  <div class="abs a2 frl" style="top:1100px;color:var(--deep);font-weight:700"><span class="ml"><span id="t2b">ידיים שמכירות את</span></span><span class="ml"><span id="t2c">העור שלך אי אפשר.</span></span></div>
 </div>
 
-<!-- 03 · the next step -->
-<div class="full qs" id="q3" style="background:var(--copper)"><div class="abs qn">03 <small>/ 04</small></div><div class="abs qt">המבקרת<br>יודעת מה<br><span style="color:var(--ink)">הצעד הבא?</span></div></div>
+<!-- answer 03 · the bead rolls down the ribbon into the one next step -->
 <div class="full as" id="a3">
-  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
-  <div class="abs src">ORÉVA°<small>הכפתור במסך הפתיחה</small></div>
-  <div class="abs sel" id="b3" style="left:100px;right:100px;top:730px;height:230px"><i></i><i></i><i></i><i></i><span class="lab">הצעד הבא</span></div>
+  <div class="abs src cg">ORÉVA°<small>הכפתור במסך הפתיחה</small></div>
+  <div class="abs seq" id="dg" style="left:330px;top:300px;width:420px;height:420px;border-radius:50%;box-shadow:0 0 0 5px var(--copper)"></div>
+  <svg class="rb"><path id="rb3" d="M 330 560 C 100 600, 80 800, 300 852"/></svg>
+  <div class="abs rip" id="rp1"></div><div class="abs rip" id="rp2"></div>
   <div class="abs btn" id="bt">לקבוע אבחון עור</div>
-  <div class="abs a2 frl" id="t3" style="top:1060px;font-size:80px">הפגישה הראשונה<br>היא אבחון, <span style="color:var(--deep);font-weight:700">לא מכירה.</span></div>
-  <div class="abs bead" id="bd"></div>
+  <div class="abs sel" id="b3" style="left:100px;right:100px;top:820px;height:220px"><i></i><i></i><i></i><i></i><span class="lab">הצעד הבא</span></div>
+  <div class="abs a2 frl" style="top:1110px;font-size:80px"><span class="ml"><span id="t3a">הפגישה הראשונה</span></span><span class="ml"><span id="t3b">היא אבחון, <span style="color:var(--deep);font-weight:700">לא מכירה.</span></span></span></div>
 </div>
 
-<!-- 04 · on the phone: all three on one screen -->
-<div class="full qs" id="q4" style="background:var(--ink)"><div class="abs qn">04 <small>/ 04</small></div><div class="abs qt">ובנייד<br>זה עדיין<br><span style="color:var(--light)">ברור?</span></div></div>
+<!-- answer 04 · the real site on a phone -->
 <div class="full as" id="a4">
-  <div class="abs s4h">האתר של <span style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em" dir="ltr">ORÉVA°</span> בנייד</div>
-  <div class="abs ph"><div class="shot"></div><div class="veil" id="vl"></div>
+  <div class="abs s4h">האתר של <span class="cg" style="letter-spacing:.2em">ORÉVA°</span> בנייד</div>
+  <div class="abs ph" id="ph"><div class="shot"></div><div class="veil" id="vl"></div>
     <div class="lit" id="l1" style="top:560px;height:136px;background-position:0 -560px"></div>
     <div class="lit" id="l2" style="top:702px;height:142px;background-position:0 -702px"></div>
-    <div class="lit" id="l3" style="top:858px;height:112px;background-position:0 -858px"></div></div>
+    <div class="lit" id="l3" style="top:858px;height:112px;background-position:0 -858px"></div><div class="scan" id="sc"></div></div>
   <div class="abs sel" id="r1" style="left:296px;top:864px;width:488px;height:132px;opacity:0"><i></i><i></i><i></i><i></i></div>
   <div class="abs sel" id="r2" style="left:296px;top:1006px;width:488px;height:138px;opacity:0"><i></i><i></i><i></i><i></i></div>
   <div class="abs sel" id="r3" style="left:296px;top:1162px;width:488px;height:104px;opacity:0"><i></i><i></i><i></i><i></i></div>
@@ -120,14 +146,16 @@ body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
 <!-- outro -->
 <div class="full" id="out">
   <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
-  <div class="abs big" id="o1" style="top:330px">יפה זה<br>לא מספיק.</div>
-  <div class="abs big" id="o2" style="top:650px;color:var(--light)">ברור זה מה<br>שמביא פניות.</div>
+  <div class="abs big" style="top:330px"><span class="ml"><span id="o1a">יפה זה</span></span><span class="ml"><span id="o1b">לא מספיק.</span></span></div>
+  <div class="abs big" style="top:650px;color:var(--light)"><span class="ml"><span id="o2a">ברור זה מה</span></span><span class="ml"><span id="o2b">שמביא פניות.</span></span></div>
   <div class="abs msg" id="msg"><div class="t">שלחי לי <b>״אתר״</b> בהודעה</div>
     <div class="comp"><span class="w" id="word">אתר</span><span class="s" id="send"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></span></div></div>
 </div>
 
+<div class="abs" id="bead"></div>
+
 <script>
-const D = 24, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)';
+const D = 24, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)', SPRING = 'cubic-bezier(.3,1.5,.5,1)';
 function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 24s timeline
   if (typeof el === 'string') el = $(el);
   const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, t / D)), easing: e || EASE, ...p }));
@@ -137,44 +165,119 @@ function tl(el, frames) {                       // [[seconds, {props}, easing?],
 }
 const on = (el, a, f = .25) => tl(el, [[a - f, { opacity: 0 }], [a, { opacity: 1 }]]);
 const rise = (el, a, d = 60) => tl(el, [[a - .01, { opacity: 0, transform: `translateY(${d}px)` }], [a + .3, { opacity: 1, transform: 'none' }]]);
-const wipe = (el, a, f = .32) => tl(el, [[a, { clipPath: 'inset(100% 0 0 0)' }], [a + f, { clipPath: 'inset(0% 0 0 0)' }]]);
+const up = (el, a, f = .45) => tl(el, [[a, { transform: 'translateY(112%)' }], [a + f, { transform: 'translateY(0%)' }]]);   // a line inside .ml slides up into view
 const type = (el, a, d, n = 10) => tl(el, [[a, { clipPath: 'inset(-10% 0 -10% 100%)' }, `steps(${n},end)`], [a + d, { clipPath: 'inset(-10% 0 -10% 0%)' }]]);
-const box = (el, a) => { on(el, a, .15); tl(el, [[a - .15, { transform: 'scale(1.04)' }], [a + .1, { transform: 'none' }]]); };
-// a question screen wipes in and its three lines rise one after the other
-function ask(id, t) { wipe(id, t); rise(id + ' .qn', t + .15, 30); tl(id + ' .qt', [[t + .1, { transform: 'translateY(90px)', opacity: 0 }], [t + .45, { transform: 'none', opacity: 1 }]]); }
+const box = (el, a) => { on(el, a, .15); tl(el, [[a - .15, { transform: 'scale(1.05)' }], [a + .12, { transform: 'none' }]]); };
+const pop = (el, a) => tl(el, [[a, { transform: 'scale(0)' }], [a + .4, { transform: 'scale(1)' }, SPRING]]);
+// a screen opens out of the bead: a circle of its colour grows from (x, y)
+const open = (el, t, x, y) => tl(el, [[t, { clipPath: `circle(0px at ${x}px ${y}px)` }, 'cubic-bezier(.5,0,.3,1)'], [t + .55, { clipPath: `circle(2300px at ${x}px ${y}px)` }]]);
+// footage from the site: frame i shows at t0 + i/12, the last one holds
+function seq(id, name, n, t0) { const c = $(id); for (let i = 1; i <= n; i++) { const im = new Image(); im.src = `seq/${name}_${String(i).padStart(2, '0')}.jpg`; c.appendChild(im); if (i > 1) tl(im, [[t0 + (i - 1) / 12 - .001, { opacity: 0 }, 'steps(1,end)'], [t0 + (i - 1) / 12, { opacity: 1 }]]); } }
+const draw = (id, a, b) => { const p = $(id), L = p.getTotalLength(); p.style.strokeDasharray = L; tl(p, [[a, { strokeDashoffset: L }, 'ease-in-out'], [b, { strokeDashoffset: 0 }]]); };
 
-/* 0–3 hook */
-tl('#hi', [[0, { transform: 'scale(1.12)' }, 'linear'], [3.2, { transform: 'scale(1)' }]]);
-tl('#pr', [[.5, { transform: 'scale(0)' }], [.8, { transform: 'scale(1)' }, 'cubic-bezier(.3,1.5,.5,1)']]);
+/* ── the four question screens ───────────────────────────────────────────── */
+const QS = [
+  { id: 'q1', bg: '#3A2E29', fg: '#F6EFE7', hl: '#D9A88A', lines: ['מבינים', 'תוך 3 שניות', 'מה מקבלים?'] },
+  { id: 'q2', bg: '#F0BFB0', fg: '#3A2E29', hl: '#8F5A3C', lines: ['יש סיבה', 'לבחור בך', 'ולא להשוות?'] },
+  { id: 'q3', bg: '#B87A57', fg: '#F6EFE7', hl: '#3A2E29', lines: ['המבקרת', 'יודעת מה', 'הצעד הבא?'] },
+  { id: 'q4', bg: '#3A2E29', fg: '#F6EFE7', hl: '#D9A88A', lines: ['ובנייד', 'זה עדיין', 'ברור?'] },
+];
+// each answer screen follows its question in the DOM so the later screen always covers the earlier one
+QS.forEach((q, i) => {
+  const d = document.createElement('div'); d.className = 'full qs'; d.id = q.id; d.style.cssText = `background:${q.bg};color:${q.fg}`;
+  d.innerHTML = `<div class="abs qn cg" style="color:${q.hl};opacity:.5">0${i + 1}</div>
+    <div class="abs qd">${[0, 1, 2, 3].map(j => `<i class="${j <= i ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="abs qt">${q.lines.map((l, j) => `<span class="ml"><span${j === 2 ? ` style="color:${q.hl}"` : ''}>${l}</span></span>`).join('')}</div>` +
+    (i === 0 ? `<div class="abs cd"><svg width="210" height="210" style="transform:rotate(-90deg)"><circle cx="105" cy="105" r="96" fill="none" stroke="${q.hl}" stroke-opacity=".25" stroke-width="5"/><circle id="cdr" cx="105" cy="105" r="96" fill="none" stroke="${q.hl}" stroke-width="5" stroke-linecap="round"/></svg><b>3</b><b>2</b><b>1</b></div>` : '');
+  $('#a' + (i + 1)).before(d);
+});
+function ask(i, t, x, y) {
+  const id = '#' + QS[i].id; open(id, t, x, y);
+  document.querySelectorAll(id + ' .ml>span').forEach((s, j) => up(s, t + .22 + j * .13));
+  tl(id + ' .qn', [[t, { transform: 'translateX(-140px)' }, 'linear'], [t + 2, { transform: 'translateX(60px)' }]]);
+  tl(id + ' .qd', [[t + .2, { opacity: 0 }], [t + .5, { opacity: 1 }]]);
+}
 
-/* 01 */
-ask('#q1', 3.0); wipe('#a1', 4.75);
-rise('#t1a', 5.0); type('#t1b', 5.55, .5); box('#b1', 6.15); on('#t1c', 6.5);
+/* ── the bead: [t, x, y, scale, opacity] — it drops, waits, and each new screen opens out of it ── */
+const B = (x, y, s = 1) => ({ transform: `translate(${x}px,${y}px) scale(${s})` });
+const drop = (t, x, y) => [[t, { ...B(x, y - 500), opacity: 0 }, 'cubic-bezier(.5,0,.9,.6)'], [t + .3, { ...B(x, y), opacity: 1 }], [t + .4, B(x, y - 46)], [t + .5, B(x, y)]];
+const burst = (t, x, y) => [[t, { ...B(x, y), opacity: 1 }], [t + .18, { ...B(x, y, 3), opacity: 0 }]];
+const T = [2.9, 4.75, 7.5, 9.2, 12.1, 13.7, 16.1, 17.4, 21.1];   // screen changes
+tl('#bead', [
+  ...drop(2.35, 540, 1150), ...burst(T[0], 540, 1150),                 // out of the front card → Q1
+  ...drop(3.95, 170, 1210), ...burst(T[1], 170, 1210),                 // → A1
+  [5.95, { ...B(500, 800), opacity: 0 }], [6.05, { ...B(500, 800), opacity: 1 }], [6.7, { ...B(232, 372), opacity: 1 }], ...burst(T[2], 232, 372),   // rides the ribbon from the hands to the bottle → Q2
+  ...drop(8.45, 170, 1210), ...burst(T[3], 170, 1210),                 // → A2
+  [11.55, { ...B(540, 550, 0), opacity: 0 }], [11.6, { ...B(540, 550, 0), opacity: 1 }], [11.85, { ...B(540, 550), opacity: 1 }, SPRING], ...burst(T[4], 540, 550),                              // out of the hands → Q3
+  ...drop(12.95, 170, 1210), ...burst(T[5], 170, 1210),                // → A3
+  [14.25, { ...B(330, 560), opacity: 0 }], [14.35, { ...B(330, 560), opacity: 1 }, 'ease-in'], [14.7, B(146, 701), 'ease-out'], [15.1, B(300, 852)],
+  [15.2, { ...B(300, 930), opacity: 1 }], [15.28, B(300, 930, .65)], [15.42, B(300, 930)], ...burst(T[6], 300, 930),                                  // rolls into the button, taps → Q4
+  ...drop(16.75, 170, 1210), ...burst(T[7], 170, 1210),                // → A4
+  [20.5, { ...B(540, 1213, 0), opacity: 0 }], [20.55, { ...B(540, 1213, 0), opacity: 1 }], [20.8, { ...B(540, 1213), opacity: 1 }, SPRING], ...burst(T[8], 540, 1213),                            // out of the phone's button → outro
+  [22.7, { ...B(-80, 760), opacity: 0 }], [22.75, { ...B(-80, 760), opacity: 1 }, 'ease-in'], [23.0, B(60, 1100), 'ease-out'], [23.25, { ...B(136, 1339, 1.3), opacity: 1 }], [23.3, { ...B(136, 1339, 1.3), opacity: 0 }],   // becomes the send button
+]);
 
-/* 02 */
-ask('#q2', 7.5); wipe('#a2', 9.2);
-rise('#t2a', 9.4); tl('#t2a', [[10.35, { color: '#3A2E29' }], [10.6, { color: '#B9AA9F' }]]);
-rise('#t2b', 10.45); box('#b2', 11.0);
+/* ── 0–2.9 hook ──────────────────────────────────────────────────────────── */
+['oreva-mobile.jpg', '../../../../oreva/assets/founder-counter-full-line.webp', '../../../../oreva/assets/lineup-three-serums-podiums.webp', '../../../../oreva/assets/skin-face-closeup-drop.webp', '../../../../oreva/assets/texture-serum-swipe-spheres.webp'].forEach((src, i) => {
+  const c = document.createElement('div'); c.className = 'card'; c.style.transform = `rotateY(${i * 72}deg) translateZ(310px)`;
+  c.innerHTML = `<img src="${src}" alt="" style="object-position:${i === 0 ? '50% 0' : i === 1 ? '22% 50%' : '50% 50%'}">`; $('#ring').appendChild(c);
+});
+const R = a => ({ transform: `rotateX(-6deg) rotateY(${a}deg)` });
+tl('#ring', [[0, R(8), 'linear'], [.55, R(0)], [.95, R(-72), 'linear'], [1.3, R(-78)], [1.7, R(-144), 'linear'], [2.05, R(-150)], [2.45, R(-216), 'linear'], [2.9, R(-222)]]);
+tl('#pr', [[.0, { transform: 'scale(1)' }], [.6, { transform: 'scale(1)' }], [.75, { transform: 'scale(0)' }], [.95, { transform: 'scale(0)' }], [1.2, { transform: 'scale(1)' }, SPRING], [1.38, { transform: 'scale(1)' }], [1.5, { transform: 'scale(0)' }], [1.7, { transform: 'scale(0)' }], [1.95, { transform: 'scale(1)' }, SPRING], [2.1, { transform: 'scale(1)' }], [2.22, { transform: 'scale(0)' }]]);
+tl('#h2', [[1.0, { transform: 'scale(1)' }], [1.2, { transform: 'scale(1.06)' }], [1.45, { transform: 'scale(1)' }]]);
+tl('#h3', [[1.75, { transform: 'scale(1)' }], [1.95, { transform: 'scale(1.06)' }], [2.2, { transform: 'scale(1)' }]]);
 
-/* 03 */
-ask('#q3', 12.1); wipe('#a3', 13.7);
-tl('#bt', [[13.9, { transform: 'scale(.5)', opacity: 0 }], [14.25, { transform: 'scale(1)', opacity: 1 }, 'cubic-bezier(.3,1.4,.5,1)'], [14.98, { transform: 'scale(1)', opacity: 1 }], [15.06, { transform: 'scale(.95)', opacity: 1 }], [15.2, { transform: 'scale(1)', opacity: 1 }]]);
-box('#b3', 14.4); rise('#t3', 14.5);
-tl('#bd', [[14.6, { transform: 'translate(300px,1500px) scale(1)', opacity: 0 }], [14.98, { transform: 'translate(300px,880px) scale(1)', opacity: 1 }], [15.06, { transform: 'translate(300px,880px) scale(.7)', opacity: 1 }], [15.2, { transform: 'translate(300px,880px) scale(1)', opacity: 1 }], [15.55, { transform: 'translate(300px,880px) scale(1)', opacity: 0 }]]);
+/* ── 01 ──────────────────────────────────────────────────────────────────── */
+ask(0, T[0], 540, 1150);
+{ const c = $('#cdr'), L = 2 * Math.PI * 96; c.style.strokeDasharray = L; tl(c, [[3.25, { strokeDashoffset: 0 }, 'linear'], [4.6, { strokeDashoffset: L }]]);
+  document.querySelectorAll('#q1 .cd b').forEach((b, i) => tl(b, [[3.25 + i * .45 - .01, { opacity: 0 }, 'steps(1,end)'], [3.25 + i * .45, { opacity: 1 }, 'steps(1,end)'], [3.25 + (i + 1) * .45, { opacity: i < 2 ? 0 : 1 }]])); }
+open('#a1', T[1], 170, 1210);
+seq('#arch', 'hands', 34, 4.8);
+tl('#arch', [[4.95, { clipPath: 'inset(100% 0 0 0)' }], [5.45, { clipPath: 'inset(0% 0 0 0)' }]]);
+up('#t1a', 5.15); up('#t1b', 5.75);
+draw('#rb1', 6.05, 6.7);
+tl('#bot', [[5.85, { transform: 'translateY(700px) rotate(-8deg)' }], [6.4, { transform: 'translateY(0) rotate(0deg)' }, SPRING]]);
+box('#b1', 6.75); on('#t1c', 6.95);
 
-/* 04 */
-ask('#q4', 16.1); wipe('#a4', 17.4);
-tl('.ph', [[17.5, { transform: 'translateY(160px)' }], [17.95, { transform: 'none' }]]);
-[[1, 18.1], [2, 18.8], [3, 19.5]].forEach(([i, t]) => { on('#l' + i, t, .2); box('#r' + i, t); on('#c' + i, t + .15, .1); tl('#p' + i, [[t + .1, { opacity: 0, transform: 'translateY(16px)' }], [t + .3, { opacity: 1, transform: 'none' }]]); });
-rise('#on', 20.1, 30);
-tl('#vl', [[20.0, { opacity: 1 }], [20.5, { opacity: 0 }]]);
+/* ── 02 ──────────────────────────────────────────────────────────────────── */
+ask(1, T[2], 232, 372);
+open('#a2', T[3], 170, 1210);
+[['סרום ויטמין C', '6.30'], ['סרום היאלורוני', '4.90'], ['סרום רטינול', '8.10'], ['סרום ניאצינמיד', '3.70'], ['סרום פפטידים', '9.40'], ['סרום ויטמין C', '5.80'], ['סרום היאלורוני', '7.20'], ['סרום רטינול', '6.60'], ['סרום ניאצינמיד', '4.10'], ['סרום פפטידים', '8.80']].forEach(([n, p], i) => {
+  const r = document.createElement('div'); r.className = 'row'; r.style.transform = `rotateX(${i * 36}deg) translateZ(148px)`; r.innerHTML = `<span>${n} · 30 מ״ל</span><b>₪ ${p} למ״ל</b>`; $('#wheel').appendChild(r);
+});
+tl('#wheel', [[9.3, { transform: 'rotateX(0deg)' }, 'cubic-bezier(.2,.6,.2,1)'], [10.75, { transform: 'rotateX(-612deg)' }]]);
+rise('#t2a', 9.55);
+tl('#wst', [[10.7, { opacity: 1, transform: 'scale(1)' }], [11.0, { opacity: .16, transform: 'scale(.86)' }]]);
+tl('#cmp', [[9.6, { opacity: 0, transform: 'scale(1.05)' }], [9.8, { opacity: 1, transform: 'none' }], [10.7, { opacity: 1, transform: 'none' }], [10.85, { opacity: 0, transform: 'none' }]]);
+tl('#t2a', [[10.7, { color: '#3A2E29' }], [10.95, { color: '#B9AA9F' }]]);
+seq('#circ', 'treat', 21, 10.8); pop('#circ', 10.75);
+up('#t2b', 10.95); up('#t2c', 11.08); box('#b2', 11.5);
 
-/* outro */
-wipe('#out', 21.1);
-rise('#o1', 21.25); rise('#o2', 21.85);
+/* ── 03 ──────────────────────────────────────────────────────────────────── */
+ask(2, T[4], 540, 550);
+open('#a3', T[5], 170, 1210);
+seq('#dg', 'diag', 30, 13.75); pop('#dg', 13.85);
+draw('#rb3', 14.3, 15.1);
+tl('#bt', [[14.0, { transform: 'scale(.5)', opacity: 0 }], [14.35, { transform: 'scale(1)', opacity: 1 }, SPRING], [15.2, { transform: 'scale(1)', opacity: 1 }], [15.28, { transform: 'scale(.94)', opacity: 1 }], [15.45, { transform: 'scale(1)', opacity: 1 }]]);
+[['#rp1', 15.28], ['#rp2', 15.45]].forEach(([id, t]) => tl(id, [[t, { transform: 'scale(.6)', opacity: .9 }, 'ease-out'], [t + .6, { transform: 'scale(6)', opacity: 0 }]]));
+box('#b3', 15.5); up('#t3a', 15.15); up('#t3b', 15.3);
+
+/* ── 04 ──────────────────────────────────────────────────────────────────── */
+ask(3, T[6], 300, 930);
+open('#a4', T[7], 170, 1210);
+const PH = (ry, rx, y) => ({ transform: `perspective(1600px) translateY(${y}px) rotateY(${ry}deg) rotateX(${rx}deg)` });
+tl('#ph', [[17.45, PH(-70, 14, 260)], [18.25, PH(8, -2, 0)], [18.55, PH(0, 0, 0)]]);
+tl('#sc', [[18.3, { opacity: 0, transform: 'translateY(0px)' }, 'linear'], [18.35, { opacity: 1, transform: 'translateY(0px)' }, 'ease-in-out'], [19.0, { opacity: 1, transform: 'translateY(1010px)' }], [19.1, { opacity: 0, transform: 'translateY(1010px)' }]]);
+[[1, 18.75], [2, 19.25], [3, 19.75]].forEach(([i, t]) => { on('#l' + i, t, .2); box('#r' + i, t); on('#c' + i, t + .15, .1); tl('#p' + i, [[t + .1, { opacity: 0, transform: 'translateY(16px)' }], [t + .3, { opacity: 1, transform: 'none' }]]); });
+rise('#on', 20.2, 30); tl('#vl', [[20.1, { opacity: 1 }], [20.5, { opacity: 0 }]]);
+
+/* ── outro ───────────────────────────────────────────────────────────────── */
+open('#out', T[8], 540, 1213);
+up('#o1a', 21.3); up('#o1b', 21.42); up('#o2a', 21.9); up('#o2b', 22.02);
 tl('#msg', [[22.4, { transform: 'translateY(50px)', opacity: 0 }], [22.7, { transform: 'none', opacity: 1 }]]);
-type('#word', 22.8, .3, 3);
-tl('#send', [[23.3, { transform: 'scale(1)' }], [23.4, { transform: 'scale(1.18)' }], [23.55, { transform: 'scale(1)' }]]);
+type('#word', 22.85, .3, 3);
+on('#send', 23.28, .04); tl('#send', [[23.28, { transform: 'scale(1.3)' }], [23.5, { transform: 'scale(1)' }, SPRING]]);
 </script>
 </body>
 </html>

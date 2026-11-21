@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ORÉVA° · four questions to your site · kinetic reel · 24s</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Frank+Ruhl+Libre:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* ORÉVA's own palette and type (oreva/brand-book.json). Questions are in the studio's voice (Heebo), answers in the site's (Frank Ruhl Libre). */
+:root{--cream:#F6EFE7;--blush:#EFCDBF;--glow:#F0BFB0;--stone:#D9C7B3;--copper:#B87A57;--deep:#8F5A3C;--light:#D9A88A;--ink:#3A2E29;--ink2:#6E5E55}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:'Heebo',sans-serif;color:var(--ink);position:relative}
+.abs{position:absolute}.full{position:absolute;inset:0;overflow:hidden}
+.mono{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.28em;text-transform:uppercase;font-size:20px}
+.frl{font-family:'Frank Ruhl Libre','Heebo',serif}
+.sig{left:0;right:0;top:236px;text-align:center;color:var(--copper)}
+.gl{background:rgba(184,122,87,.3)}
+/* question screens */
+.qs{color:var(--cream)}
+.qn{right:70px;top:300px;font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;direction:ltr}
+.qn small{font-size:34px;opacity:.6}
+.qt{left:70px;right:70px;top:620px;font-size:142px;font-weight:900;line-height:1.05;letter-spacing:-.02em;text-align:right}
+/* answer screens */
+.as{background:var(--cream)}
+.src{left:70px;top:312px;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.3em;direction:ltr;color:var(--ink)}
+.src small{display:block;font-family:'Heebo',sans-serif;font-size:22px;letter-spacing:.02em;color:var(--copper);direction:rtl;text-align:left;margin-top:6px}
+.sel{border:2.5px solid var(--copper)}
+.sel i{position:absolute;width:18px;height:18px;background:var(--cream);border:2.5px solid var(--copper)}
+.sel i:nth-child(1){left:-10px;top:-10px}.sel i:nth-child(2){right:-10px;top:-10px}.sel i:nth-child(3){left:-10px;bottom:-10px}.sel i:nth-child(4){right:-10px;bottom:-10px}
+.lab{position:absolute;right:-2.5px;top:-50px;height:48px;padding:0 18px;background:var(--copper);color:#fff;font-size:27px;font-weight:600;display:flex;align-items:center;white-space:nowrap}
+.a1{left:70px;right:70px;font-size:150px;font-weight:700;line-height:1.05;text-align:right;white-space:nowrap}
+.a2{left:86px;right:86px;font-size:88px;font-weight:500;line-height:1.16;text-align:right}
+.btn{left:130px;top:760px;width:820px;height:170px;border-radius:85px;background:var(--copper);color:#fff;font-size:68px;font-weight:500;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 50px rgba(143,90,60,.3)}
+.bead{left:0;top:0;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 13px rgba(184,122,87,.22),0 10px 22px rgba(62,40,24,.4)}
+/* hook */
+.hq{left:70px;right:70px;top:320px;font-size:112px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+.hq em{font-style:normal;color:var(--deep)}
+.hero{left:70px;top:790px;width:940px;height:700px;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(62,40,24,.2)}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.pretty{left:98px;top:1396px;height:66px;padding:0 26px;border-radius:33px;background:var(--cream);color:var(--ink);font-size:32px;font-weight:600;display:flex;align-items:center}
+/* the phone */
+.ph{left:280px;top:300px;width:520px;height:1125px;border-radius:44px;overflow:hidden;background:var(--cream);box-shadow:0 0 0 10px var(--ink),0 40px 70px rgba(62,40,24,.3)}
+.ph .shot{position:absolute;inset:0;background:url(oreva-mobile.jpg) 0 0/520px 1125px no-repeat}
+.ph .veil{position:absolute;inset:0;background:rgba(246,239,231,.72)}
+.ph .lit{position:absolute;left:0;width:520px;background:url(oreva-mobile.jpg) 0 0/520px 1125px no-repeat;opacity:0}
+.pin{height:58px;padding:0 20px;background:var(--copper);color:#fff;font-size:28px;font-weight:600;display:flex;align-items:center;white-space:nowrap;opacity:0}
+.pl{height:2.5px;background:var(--copper);opacity:0}
+.one{left:0;right:0;top:1452px;text-align:center;font-size:46px;font-weight:300;opacity:0}
+.one b{font-weight:800;color:var(--deep)}
+.s4h{left:70px;right:70px;top:226px;text-align:center;font-size:40px;font-weight:300}
+/* outro */
+#out{background:var(--ink);color:var(--cream)}
+.big{left:70px;right:70px;font-size:136px;font-weight:900;line-height:1.05;letter-spacing:-.02em;text-align:right}
+.msg{left:70px;right:70px;top:1150px}
+.msg .t{font-size:62px;font-weight:300;text-align:right}.msg .t b{font-weight:800}
+.comp{margin-top:30px;height:132px;border-radius:66px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 44px 0 16px}
+.comp .w{font-size:62px;font-weight:800;color:var(--ink)}
+.comp .s{width:100px;height:100px;border-radius:50%;background:var(--copper);display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<!-- 0–3 hook: beautiful, and…? -->
+<div class="full" id="s0">
+  <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs hq">האתר שלך יפה.<br><em>הוא גם<br>מביא פניות?</em></div>
+  <div class="abs hero"><img id="hi" src="../../../../oreva/assets/founder-counter-full-line.webp" alt=""></div>
+  <div class="abs pretty" id="pr">יפה ✓</div>
+</div>
+
+<!-- 01 · the first sentence -->
+<div class="full qs" id="q1" style="background:var(--ink)"><div class="abs qn">01 <small>/ 04</small></div><div class="abs qt">מבינים<br>תוך 3 שניות<br><span style="color:var(--light)">מה מקבלים?</span></div></div>
+<div class="full as" id="a1">
+  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
+  <div class="abs src">ORÉVA°<small>מסך הפתיחה של האתר</small></div>
+  <div class="abs sel" id="b1" style="left:48px;right:48px;top:640px;height:420px"><i></i><i></i><i></i><i></i><span class="lab">המשפט הראשון</span></div>
+  <div class="abs a1 frl" id="t1a" style="top:690px">קודם הידיים.</div>
+  <div class="abs a1 frl" id="t1b" style="top:850px;color:var(--deep)">אחר כך הבקבוק.</div>
+  <div class="abs" id="t1c" style="left:70px;right:70px;top:1130px;font-size:44px;font-weight:300;text-align:right">ארבע מילים, ויודעים <b style="font-weight:800">מי עומדת מאחורי זה.</b></div>
+</div>
+
+<!-- 02 · the reason -->
+<div class="full qs" id="q2" style="background:var(--glow);color:var(--ink)"><div class="abs qn">02 <small>/ 04</small></div><div class="abs qt">יש סיבה<br>לבחור בך<br><span style="color:var(--deep)">ולא להשוות?</span></div></div>
+<div class="full as" id="a2">
+  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
+  <div class="abs src">ORÉVA°<small>למה אי אפשר להשוות</small></div>
+  <div class="abs sel" id="b2" style="left:48px;right:48px;top:900px;height:360px"><i></i><i></i><i></i><i></i><span class="lab">הסיבה</span></div>
+  <div class="abs a2 frl" id="t2a" style="top:580px">סרום אפשר להשוות<br>לפי מחיר למ״ל.</div>
+  <div class="abs a2 frl" id="t2b" style="top:930px;color:var(--deep);font-weight:700">ידיים שמכירות את<br>העור שלך אי אפשר.</div>
+</div>
+
+<!-- 03 · the next step -->
+<div class="full qs" id="q3" style="background:var(--copper)"><div class="abs qn">03 <small>/ 04</small></div><div class="abs qt">המבקרת<br>יודעת מה<br><span style="color:var(--ink)">הצעד הבא?</span></div></div>
+<div class="full as" id="a3">
+  <div class="abs gl" style="left:70px;top:0;bottom:0;width:1.5px"></div><div class="abs gl" style="left:1009px;top:0;bottom:0;width:1.5px"></div>
+  <div class="abs src">ORÉVA°<small>הכפתור במסך הפתיחה</small></div>
+  <div class="abs sel" id="b3" style="left:100px;right:100px;top:730px;height:230px"><i></i><i></i><i></i><i></i><span class="lab">הצעד הבא</span></div>
+  <div class="abs btn" id="bt">לקבוע אבחון עור</div>
+  <div class="abs a2 frl" id="t3" style="top:1060px;font-size:80px">הפגישה הראשונה<br>היא אבחון, <span style="color:var(--deep);font-weight:700">לא מכירה.</span></div>
+  <div class="abs bead" id="bd"></div>
+</div>
+
+<!-- 04 · on the phone: all three on one screen -->
+<div class="full qs" id="q4" style="background:var(--ink)"><div class="abs qn">04 <small>/ 04</small></div><div class="abs qt">ובנייד<br>זה עדיין<br><span style="color:var(--light)">ברור?</span></div></div>
+<div class="full as" id="a4">
+  <div class="abs s4h">האתר של <span style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em" dir="ltr">ORÉVA°</span> בנייד</div>
+  <div class="abs ph"><div class="shot"></div><div class="veil" id="vl"></div>
+    <div class="lit" id="l1" style="top:560px;height:136px;background-position:0 -560px"></div>
+    <div class="lit" id="l2" style="top:702px;height:142px;background-position:0 -702px"></div>
+    <div class="lit" id="l3" style="top:858px;height:112px;background-position:0 -858px"></div></div>
+  <div class="abs sel" id="r1" style="left:296px;top:864px;width:488px;height:132px;opacity:0"><i></i><i></i><i></i><i></i></div>
+  <div class="abs sel" id="r2" style="left:296px;top:1006px;width:488px;height:138px;opacity:0"><i></i><i></i><i></i><i></i></div>
+  <div class="abs sel" id="r3" style="left:296px;top:1162px;width:488px;height:104px;opacity:0"><i></i><i></i><i></i><i></i></div>
+  <div class="abs pl" id="c1" style="left:784px;top:928px;width:46px"></div><div class="abs pin" id="p1" style="left:830px;top:900px">המשפט הראשון</div>
+  <div class="abs pl" id="c2" style="left:250px;top:1074px;width:46px"></div><div class="abs pin" id="p2" style="left:118px;top:1046px">הסיבה</div>
+  <div class="abs pl" id="c3" style="left:784px;top:1213px;width:46px"></div><div class="abs pin" id="p3" style="left:830px;top:1185px">הצעד הבא</div>
+  <div class="abs one" id="on">הכול ב<b>מסך אחד</b>. בלי לגלול.</div>
+</div>
+
+<!-- outro -->
+<div class="full" id="out">
+  <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs big" id="o1" style="top:330px">יפה זה<br>לא מספיק.</div>
+  <div class="abs big" id="o2" style="top:650px;color:var(--light)">ברור זה מה<br>שמביא פניות.</div>
+  <div class="abs msg" id="msg"><div class="t">שלחי לי <b>״אתר״</b> בהודעה</div>
+    <div class="comp"><span class="w" id="word">אתר</span><span class="s" id="send"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></span></div></div>
+</div>
+
+<script>
+const D = 24, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)';
+function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 24s timeline
+  if (typeof el === 'string') el = $(el);
+  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, t / D)), easing: e || EASE, ...p }));
+  if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
+  if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
+  return el.animate(k, { duration: D * 1000, fill: 'both' });
+}
+const on = (el, a, f = .25) => tl(el, [[a - f, { opacity: 0 }], [a, { opacity: 1 }]]);
+const rise = (el, a, d = 60) => tl(el, [[a - .01, { opacity: 0, transform: `translateY(${d}px)` }], [a + .3, { opacity: 1, transform: 'none' }]]);
+const wipe = (el, a, f = .32) => tl(el, [[a, { clipPath: 'inset(100% 0 0 0)' }], [a + f, { clipPath: 'inset(0% 0 0 0)' }]]);
+const type = (el, a, d, n = 10) => tl(el, [[a, { clipPath: 'inset(-10% 0 -10% 100%)' }, `steps(${n},end)`], [a + d, { clipPath: 'inset(-10% 0 -10% 0%)' }]]);
+const box = (el, a) => { on(el, a, .15); tl(el, [[a - .15, { transform: 'scale(1.04)' }], [a + .1, { transform: 'none' }]]); };
+// a question screen wipes in and its three lines rise one after the other
+function ask(id, t) { wipe(id, t); rise(id + ' .qn', t + .15, 30); tl(id + ' .qt', [[t + .1, { transform: 'translateY(90px)', opacity: 0 }], [t + .45, { transform: 'none', opacity: 1 }]]); }
+
+/* 0–3 hook */
+tl('#hi', [[0, { transform: 'scale(1.12)' }, 'linear'], [3.2, { transform: 'scale(1)' }]]);
+tl('#pr', [[.5, { transform: 'scale(0)' }], [.8, { transform: 'scale(1)' }, 'cubic-bezier(.3,1.5,.5,1)']]);
+
+/* 01 */
+ask('#q1', 3.0); wipe('#a1', 4.75);
+rise('#t1a', 5.0); type('#t1b', 5.55, .5); box('#b1', 6.15); on('#t1c', 6.5);
+
+/* 02 */
+ask('#q2', 7.5); wipe('#a2', 9.2);
+rise('#t2a', 9.4); tl('#t2a', [[10.35, { color: '#3A2E29' }], [10.6, { color: '#B9AA9F' }]]);
+rise('#t2b', 10.45); box('#b2', 11.0);
+
+/* 03 */
+ask('#q3', 12.1); wipe('#a3', 13.7);
+tl('#bt', [[13.9, { transform: 'scale(.5)', opacity: 0 }], [14.25, { transform: 'scale(1)', opacity: 1 }, 'cubic-bezier(.3,1.4,.5,1)'], [14.98, { transform: 'scale(1)', opacity: 1 }], [15.06, { transform: 'scale(.95)', opacity: 1 }], [15.2, { transform: 'scale(1)', opacity: 1 }]]);
+box('#b3', 14.4); rise('#t3', 14.5);
+tl('#bd', [[14.6, { transform: 'translate(300px,1500px) scale(1)', opacity: 0 }], [14.98, { transform: 'translate(300px,880px) scale(1)', opacity: 1 }], [15.06, { transform: 'translate(300px,880px) scale(.7)', opacity: 1 }], [15.2, { transform: 'translate(300px,880px) scale(1)', opacity: 1 }], [15.55, { transform: 'translate(300px,880px) scale(1)', opacity: 0 }]]);
+
+/* 04 */
+ask('#q4', 16.1); wipe('#a4', 17.4);
+tl('.ph', [[17.5, { transform: 'translateY(160px)' }], [17.95, { transform: 'none' }]]);
+[[1, 18.1], [2, 18.8], [3, 19.5]].forEach(([i, t]) => { on('#l' + i, t, .2); box('#r' + i, t); on('#c' + i, t + .15, .1); tl('#p' + i, [[t + .1, { opacity: 0, transform: 'translateY(16px)' }], [t + .3, { opacity: 1, transform: 'none' }]]); });
+rise('#on', 20.1, 30);
+tl('#vl', [[20.0, { opacity: 1 }], [20.5, { opacity: 0 }]]);
+
+/* outro */
+wipe('#out', 21.1);
+rise('#o1', 21.25); rise('#o2', 21.85);
+tl('#msg', [[22.4, { transform: 'translateY(50px)', opacity: 0 }], [22.7, { transform: 'none', opacity: 1 }]]);
+type('#word', 22.8, .3, 3);
+tl('#send', [[23.3, { transform: 'scale(1)' }], [23.4, { transform: 'scale(1.18)' }], [23.55, { transform: 'scale(1)' }]]);
+</script>
+</body>
+</html>
