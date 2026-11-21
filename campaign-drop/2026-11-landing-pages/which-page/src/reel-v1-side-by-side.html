@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>לאיזה עמוד היית משאירה פרטים? · 9s loop</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Heebo:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+:root{--bg:#FAF8F3;--ink:#6B563F;--dark:#3E2F22;--copper:#C4765A;--line:#E4D9CA;
+      --p-bg:#FFFDFA;--p-ink:#3F4A44;--p-soft:#EEE6DC;--p-acc:#B98478;--p-mute:#8A938C}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+body{font-family:'Heebo',sans-serif;color:var(--dark);position:relative}
+.abs{position:absolute}
+.top{left:60px;right:60px;top:300px;text-align:center}
+.q{font-size:82px;font-weight:700;line-height:1.14;color:var(--dark)}
+.q em{font-style:normal;color:var(--copper)}
+.ans{font-size:66px;font-weight:700;line-height:1.2}
+.studio{left:0;right:0;top:236px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;letter-spacing:.3em;text-transform:uppercase;color:var(--copper)}
+/* the two pages: same system, same palette, same hero — only the words and the number of choices differ */
+.page{top:610px;width:478px;height:790px;background:var(--p-bg);border-radius:26px;border:1.5px solid var(--line);box-shadow:0 24px 50px rgba(62,40,24,.13);padding:24px 26px 26px;display:flex;flex-direction:column;color:var(--p-ink)}
+#A{left:562px}#B{left:40px}
+.tag{top:578px;width:64px;height:64px;border-radius:50%;background:var(--dark);color:var(--bg);font-family:'Cormorant Garamond',serif;font-size:40px;display:flex;align-items:center;justify-content:center;line-height:1}
+.nav{display:flex;justify-content:space-between;align-items:center;height:34px}
+.mark{width:30px;height:30px;border-radius:50%;border:2px solid var(--p-acc)}
+.nav i{display:block;width:74px;height:3px;border-radius:2px;background:var(--p-soft);box-shadow:0 9px 0 var(--p-soft)}
+.hero{margin-top:14px;height:132px;border-radius:16px;background:radial-gradient(120px 90px at 72% 40%,#F6DCD3 0,rgba(246,220,211,0) 100%),radial-gradient(160px 120px at 22% 70%,#DCE5DD 0,rgba(220,229,221,0) 100%),#F3ECE3;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;left:50%;bottom:-8px;width:150px;height:118px;margin-left:-75px;border-radius:75px 75px 0 0;background:linear-gradient(#E9CFC6,#D9B3A8)}
+.h1{margin-top:18px;font-size:39px;font-weight:700;line-height:1.14;letter-spacing:-.01em;position:relative}
+.sub{margin-top:8px;font-size:20px;color:var(--p-mute)}
+.grid{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.t{height:84px;border-radius:12px;background:#F7F1EA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:18px;font-weight:500}
+.t b{font-size:16px;font-weight:400;color:var(--p-mute)}
+.card{margin-top:18px;border-radius:16px;background:#F7F1EA;padding:22px 24px;display:flex;justify-content:space-between;align-items:center}
+.card .n{font-size:28px;font-weight:600}.card .d{font-size:19px;color:var(--p-mute);margin-top:4px}
+.card .p{font-size:36px;font-weight:700}
+.note{margin-top:14px;font-size:19px;color:var(--p-mute);line-height:1.5}
+.cta{margin-top:auto;display:flex;gap:8px}
+.btn{flex:1;height:56px;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:600;border:1.5px solid var(--p-ink);color:var(--p-ink);position:relative}
+.btn.f{background:var(--p-ink);color:#fff}
+#B .btn{height:64px;border-radius:32px;font-size:24px}
+.sent{position:absolute;inset:-1.5px;border-radius:32px;background:var(--copper);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0}
+.hl{position:absolute;inset:-8px -10px;border:3px solid var(--copper);border-radius:12px;opacity:0}
+.first{position:absolute;top:-34px;left:-10px;font-size:20px;font-weight:600;color:#fff;background:var(--copper);padding:2px 12px;border-radius:999px;opacity:0;line-height:1.5}
+/* under the pages */
+.status{top:1420px;width:478px;text-align:center;font-size:30px;font-weight:600;opacity:0}
+.same{left:0;right:0;top:1482px;text-align:center;font-size:32px;font-weight:500;color:var(--ink)}
+.same b{color:var(--copper);font-weight:700}
+.count{top:1420px;width:478px;text-align:center;font-size:27px;color:var(--ink);opacity:0}
+.go{left:110px;right:110px;top:1424px;height:124px;border-radius:62px;background:var(--dark);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:600;opacity:0}
+.go em{font-style:normal;color:#F0B89F;margin:0 12px}
+/* the visitor: her copper ball */
+.ball{left:0;top:0;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%);box-shadow:0 0 0 9px rgba(196,118,90,.2),0 8px 18px rgba(62,40,24,.35);opacity:0}
+</style>
+</head>
+<body>
+<div class="abs studio" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+<div class="abs top" id="q"><div class="q">לאיזה עמוד<br>היית <em>משאירה פרטים</em>?</div></div>
+<div class="abs top" id="ans"><div class="ans" id="a1">ההבדל הוא לא העיצוב.</div><div class="ans" id="a2" style="color:var(--copper)">ההבדל הוא מה<br>אומרים קודם.</div></div>
+
+<div class="abs page" id="A">
+  <div class="nav"><span class="mark"></span><i></i></div>
+  <div class="hero"></div>
+  <div class="h1">ברוכות הבאות<br>לקליניקה שלי<span class="hl"></span><span class="first">נאמר קודם</span></div>
+  <div class="sub">כל הטיפולים במקום אחד</div>
+  <div class="grid">
+    <div class="t">ניקוי עמוק<b>320 ₪</b></div><div class="t">פילינג<b>350 ₪</b></div><div class="t">טיפול הרגעה<b>280 ₪</b></div>
+    <div class="t">מיצוק<b>420 ₪</b></div><div class="t">טיפול אקנה<b>300 ₪</b></div><div class="t">עיצוב גבות<b>90 ₪</b></div>
+    <div class="t">הרמת ריסים<b>220 ₪</b></div><div class="t">שעווה<b>120 ₪</b></div><div class="t">מניקור<b>140 ₪</b></div>
+  </div>
+  <div class="cta"><div class="btn f" id="a-b1">קבעי תור</div><div class="btn" id="a-b2">וואטסאפ</div><div class="btn" id="a-b3">מחירון</div></div>
+</div>
+<div class="abs page" id="B">
+  <div class="nav"><span class="mark"></span><i></i></div>
+  <div class="hero"></div>
+  <div class="h1">עור רגוע תוך<br>שלושה טיפולים<span class="hl"></span><span class="first">נאמר קודם</span></div>
+  <div class="sub">לעור רגיש, אדום או מגורה</div>
+  <div class="card"><div><div class="n">טיפול הרגעה</div><div class="d">60 דק׳ · בקליניקה</div></div><div class="p">280 ₪</div></div>
+  <div class="note">מתחילות בטיפול אחד.<br>אחרי שלושה רואים את ההבדל.</div>
+  <div class="cta"><div class="btn f" id="b-b1">קבעי טיפול ראשון<span class="sent">✓ הפרטים נשלחו</span></div></div>
+</div>
+<div class="abs tag" style="left:769px" dir="ltr">A</div>
+<div class="abs tag" style="left:247px" dir="ltr">B</div>
+
+<div class="abs count" id="cA" style="left:562px">9 טיפולים · 3 כפתורים</div>
+<div class="abs count" id="cB" style="left:40px">טיפול אחד · כפתור אחד</div>
+<div class="abs status" id="sA" style="left:562px;color:var(--ink)">התלבטה. יצאה.</div>
+<div class="abs status" id="sB" style="left:40px;color:var(--copper)">השאירה פרטים ✓</div>
+<div class="abs same" id="same">אותו טיפול · אותו מחיר · <b>280 ₪</b></div>
+<div class="abs go" id="go">שלחי לי <em>״עמוד״</em> בהודעה</div>
+<div class="abs ball" id="ball"></div>
+
+<script>
+/* One 9s timeline. Every animation is a WAAPI animation with offsets written in seconds; render.js pauses and steps them. */
+const D = 9, $ = s => document.querySelector(s);
+function tl(el, frames) {            // frames: [[t, {props}, easing?], …]
+  if (typeof el === 'string') el = $(el);
+  const k = frames.map(([t, p, e]) => ({ offset: t / D, easing: e || 'ease-in-out', ...p }));
+  if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
+  if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
+  el.animate(k, { duration: D * 1000, fill: 'both' });
+}
+const show = (el, a, b, f = .3) => tl(el, [[Math.max(0, a - f), { opacity: 0 }], [a, { opacity: 1 }], ...(b < D ? [[b, { opacity: 1 }], [b + f, { opacity: 0 }]] : [])]);
+const hide = (el, a, f = .3) => tl(el, [[a, { opacity: 1 }], [a + f, { opacity: 0 }]]);
+
+// top text: the question, then the answer in two beats
+hide('#q', 5.5);
+show('#a1', 5.95, D); show('#a2', 6.7, D);
+tl('#ans', [[0, { transform: 'none' }]]);
+
+// focus: A is read first (B waits), then B
+tl('#B', [[0.35, { opacity: 1 }], [0.7, { opacity: .45 }], [3.3, { opacity: .45 }], [3.6, { opacity: 1 }]]);
+tl('#A', [[3.3, { opacity: 1 }], [3.6, { opacity: .45 }], [5.5, { opacity: .45 }], [5.8, { opacity: 1 }]]);
+
+// the visitor on page A: headline → nine treatments → three buttons → leaves
+const P = (x, y) => ({ transform: `translate(${x}px,${y}px) scale(1)` });
+tl('#ball', [
+  [0.4, { ...P(801, 876), opacity: 0 }], [0.65, { ...P(801, 876), opacity: 1 }], [0.95, P(801, 876)],
+  [1.15, P(947, 1017)], [1.4, P(655, 1017)], [1.55, P(655, 1109)], [1.8, P(947, 1109)], [1.95, P(947, 1201)], [2.2, P(655, 1201)],
+  [2.45, P(947, 1346)], [2.62, P(947, 1346)], [2.8, P(801, 1346)], [2.95, P(801, 1346)], [3.1, P(655, 1346)], [3.22, P(655, 1346)],
+  [3.32, { ...P(801, 1346), opacity: 1 }], [3.55, { ...P(1010, 1150), opacity: 0 }],
+  // page B: headline → the one treatment → the one button → tap
+  [3.6, { ...P(279, 876), opacity: 0 }], [3.85, { ...P(279, 876), opacity: 1 }], [4.2, P(279, 876)],
+  [4.5, P(279, 1035)], [4.75, P(279, 1035)], [5.05, P(279, 1342)],
+  [5.15, { transform: 'translate(279px,1342px) scale(.72)' }], [5.28, { ...P(279, 1342), opacity: 1 }], [5.6, { ...P(279, 1342), opacity: 0 }],
+]);
+// buttons light up as she hesitates between them
+const hov = (id, a, b) => tl(id, [[a - .1, { boxShadow: '0 0 0 0 rgba(196,118,90,0)' }], [a, { boxShadow: '0 0 0 6px rgba(196,118,90,.55)' }], [b, { boxShadow: '0 0 0 6px rgba(196,118,90,.55)' }], [b + .1, { boxShadow: '0 0 0 0 rgba(196,118,90,0)' }]]);
+hov('#a-b1', 2.45, 2.66); hov('#a-b2', 2.8, 3.0); hov('#a-b3', 3.1, 3.26);
+show('#b-b1 .sent', 5.22, D, .1);
+
+// counts while each page is read, then the outcome
+show('#cA', 1.0, 3.0, .25); show('#sA', 3.5, 6.9, .25);
+show('#cB', 3.9, 5.0, .25); show('#sB', 5.4, 6.9, .2);
+
+// what was said first
+document.querySelectorAll('.hl').forEach(e => show(e, 6.7, D, .3));
+document.querySelectorAll('.first').forEach(e => show(e, 6.9, D, .3));
+
+// CTA replaces the line under the pages
+hide('#same', 6.9); show('#go', 7.5, D, .3);
+tl('#go', [[7.2, { transform: 'translateY(24px)' }], [7.5, { transform: 'none' }]]);
+</script>
+</body>
+</html>
