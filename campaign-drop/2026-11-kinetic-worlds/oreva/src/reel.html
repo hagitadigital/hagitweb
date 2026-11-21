@@ -260,7 +260,7 @@ open('#a3', T[5], 170, 1210);
 seq('#dg', 'diag', 30, 13.75); pop('#dg', 13.85);
 draw('#rb3', 14.3, 15.1);
 tl('#bt', [[14.0, { transform: 'scale(.5)', opacity: 0 }], [14.35, { transform: 'scale(1)', opacity: 1 }, SPRING], [15.2, { transform: 'scale(1)', opacity: 1 }], [15.28, { transform: 'scale(.94)', opacity: 1 }], [15.45, { transform: 'scale(1)', opacity: 1 }]]);
-[['#rp1', 15.28], ['#rp2', 15.45]].forEach(([id, t]) => tl(id, [[t, { transform: 'scale(.6)', opacity: .9 }, 'ease-out'], [t + .6, { transform: 'scale(6)', opacity: 0 }]]));
+[['#rp1', 15.28], ['#rp2', 15.45]].forEach(([id, t]) => tl(id, [[t - .01, { transform: 'scale(.6)', opacity: 0 }], [t, { transform: 'scale(.6)', opacity: .9 }, 'ease-out'], [t + .6, { transform: 'scale(6)', opacity: 0 }]]));
 box('#b3', 15.5); up('#t3a', 15.15); up('#t3b', 15.3);
 
 /* ── 04 ──────────────────────────────────────────────────────────────────── */

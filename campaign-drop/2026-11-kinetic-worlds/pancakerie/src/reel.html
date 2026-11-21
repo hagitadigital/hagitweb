@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>PANCAKERIE° · tempting, but does it sell? · kinetic reel · 24s</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Rubik:wght@400;500;700&amp;family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap">
+<style>
+/* PANCAKERIE's own palette and type (pancakerie/index.html). Questions: the studio's voice (Heebo). Answers: the site's (Rubik / Fraunces).
+   Motion: a drop of cream falls and every screen opens out of it; dishes, builder layers and the box come from the site itself. */
+:root{--creme:#EEE6DA;--sable:#E8D8C3;--encre:#523726;--deep:#402613;--pistache:#A5A57F;--fraise:#D39483;--citron:#EEC376;--copper:#B4654F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--creme)}
+body{font-family:'Heebo',sans-serif;color:var(--deep);position:relative}
+.abs{position:absolute}.full{position:absolute;inset:0;isolation:isolate}
+.mono{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.28em;text-transform:uppercase;font-size:20px}
+.rb{font-family:'Rubik','Heebo',sans-serif}
+.fr{font-family:'Fraunces',serif;direction:ltr;unicode-bidi:isolate}
+.sig{left:0;right:0;top:236px;text-align:center;color:var(--copper)}
+.ml{display:block;overflow:hidden;padding:.06em 0 .1em;margin:-.06em 0 -.1em}.ml>span{display:block}
+/* question screens */
+.qs{overflow:hidden}
+.qn{left:-30px;top:1010px;font-size:620px;line-height:.8;color:transparent;-webkit-text-stroke:2.5px currentColor;font-weight:500}
+.qd{right:70px;top:306px;display:flex;gap:14px;direction:ltr}
+.qd i{width:44px;height:6px;border-radius:3px;background:currentColor;opacity:.25}.qd i.on{opacity:1}
+.qt{left:70px;right:70px;top:600px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+/* answer screens */
+.as{background:var(--creme);overflow:hidden}
+.src{left:70px;top:246px;width:230px}.src img{width:100%;display:block}
+.src small{display:block;font-size:22px;color:var(--copper);text-align:left;margin-top:6px;white-space:nowrap}
+.sel{border:2.5px solid var(--copper)}
+.sel i{position:absolute;width:18px;height:18px;background:var(--creme);border:2.5px solid var(--copper)}
+.sel i:nth-child(1){left:-10px;top:-10px}.sel i:nth-child(2){right:-10px;top:-10px}.sel i:nth-child(3){left:-10px;bottom:-10px}.sel i:nth-child(4){right:-10px;bottom:-10px}
+.lab{position:absolute;right:-2.5px;top:-50px;height:48px;padding:0 18px;background:var(--copper);color:#fff;font-size:27px;font-weight:600;display:flex;align-items:center;white-space:nowrap}
+.h{left:70px;right:70px;font-weight:700;font-size:118px;line-height:1.06;letter-spacing:-.02em;text-align:right;color:var(--deep)}
+.btn{height:124px;border-radius:62px;background:var(--deep);color:var(--creme);font-size:52px;font-weight:500;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(64,38,19,.28);overflow:hidden}
+.btn span{position:absolute}
+.rip{width:140px;height:140px;margin:-70px 0 0 -70px;border-radius:50%;border:4px solid var(--deep);opacity:0}
+/* hook */
+.hq{left:70px;right:70px;top:300px;font-size:116px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+.hq em{font-style:normal;color:var(--copper)}
+.dish{left:0;top:0;width:600px;height:450px;margin:-225px 0 0 -300px;filter:drop-shadow(0 30px 30px rgba(64,38,19,.25))}
+.dish img,.stk img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.stamp{left:400px;top:1436px;width:280px;height:76px;border-radius:38px;background:var(--deep);color:var(--creme);font-size:36px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 24px rgba(64,38,19,.3);z-index:20}
+/* A1 */
+.disc{left:160px;top:330px;width:760px;height:760px;border-radius:50%;background:var(--pistache)}
+/* A2 */
+.frn{left:0;right:0;top:1150px;text-align:center;font-size:120px;font-weight:700;line-height:1;letter-spacing:.01em;color:var(--deep)}
+.frn small{font-family:'Rubik',sans-serif;font-size:44px;font-weight:400;margin-right:18px;opacity:.75}
+.sw{top:1330px;width:104px;height:104px;border-radius:50%;box-shadow:inset 0 0 0 5px rgba(255,255,255,.55)}
+.swr{top:1316px;width:132px;height:132px;border-radius:50%;border:5px solid var(--deep)}
+/* A3 builder */
+.stk{left:90px;top:372px;width:900px;height:675px}
+.chip{width:450px;height:112px;border-radius:22px;background:#fff8ee;border:2.5px solid rgba(82,55,38,.22);display:flex;align-items:center;gap:18px;padding:0 24px;font-size:36px;font-weight:500;color:var(--deep);white-space:nowrap}
+.chip b{font-family:'Fraunces',serif;font-weight:500;font-size:34px;color:var(--copper)}
+.chip small{font-size:27px;font-weight:400;opacity:.7}
+.tap{left:0;top:0;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(64,38,19,.55);box-shadow:0 0 0 10px rgba(64,38,19,.16);opacity:0;z-index:30}
+/* A4 */
+.box{left:70px;top:372px;width:940px;height:705px;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(64,38,19,.25)}
+.box img{width:100%;height:100%;object-fit:cover;display:block}
+/* outro */
+#out{background:var(--deep);color:var(--creme);overflow:hidden}
+.big{left:70px;right:70px;font-weight:900;line-height:1.08;letter-spacing:-.02em;text-align:right}
+.msg{left:70px;right:70px;top:1150px}
+.msg .t{font-size:62px;font-weight:300;text-align:right;line-height:1.5}.msg .t b{font-weight:800}
+.comp{margin-top:30px;height:132px;border-radius:66px;background:var(--creme);display:flex;align-items:center;justify-content:space-between;padding:0 44px 0 16px}
+.comp .w{font-size:62px;font-weight:800;color:var(--deep)}
+.comp .s{width:100px;height:100px;border-radius:50%;background:var(--copper);display:flex;align-items:center;justify-content:center;opacity:0}
+/* the drop of cream */
+#drop{left:0;top:0;width:72px;height:72px;margin:-36px 0 0 -36px;opacity:0;z-index:50}
+#drop i{position:absolute;inset:0;border-radius:0 50% 50% 50%;transform:rotate(45deg);background:radial-gradient(circle at 60% 60%,#FFFFFF 0%,#FFF6E6 55%,#EAD9BF 100%);box-shadow:4px 8px 18px rgba(64,38,19,.35)}
+</style>
+</head>
+<body>
+
+<!-- 0–2.9 hook: four tempting dishes on a turning table -->
+<div class="full" id="s0">
+  <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs hq"><span class="ml"><span>האתר שלך מגרה.</span></span><em><span class="ml"><span id="h2">הוא גם</span></span><span class="ml"><span id="h3">מוכר?</span></span></em></div>
+  <div id="orbit"></div>
+  <div class="abs stamp" id="st">מגרה <span>✓</span></div>
+</div>
+
+<!-- answer 01 · you see the taste first, then the words -->
+<div class="full as" id="a1">
+  <div class="abs src"><img src="../../../../pancakerie/assets/logo.webp" alt=""><small>מסך הפתיחה של האתר</small></div>
+  <div class="abs disc" id="disc"></div>
+  <div class="abs dish" id="d1" style="width:820px;height:615px;margin:0;left:130px;top:420px"><img src="../../../../pancakerie/assets/dish-pistache.webp" alt=""></div>
+  <div class="abs sel" id="b1" style="left:48px;right:48px;top:1150px;height:300px"><i></i><i></i><i></i><i></i><span class="lab">המשפט הראשון</span></div>
+  <div class="abs h rb" style="top:1172px"><span class="ml"><span id="t1a">טעם שרואים</span></span><span class="ml"><span id="t1b">לפני שטועמים.</span></span></div>
+</div>
+
+<!-- answer 02 · choose a colour, get a dish -->
+<div class="full as" id="a2" style="background:#D4CFBA">
+  <div class="abs src"><img src="../../../../pancakerie/assets/logo.webp" alt=""><small>ארבע מנות, ארבעה צבעים</small></div>
+  <div class="abs h rb" style="top:330px;font-size:112px"><span class="ml"><span id="t2a">בוחרים צבע.</span></span><span class="ml"><span id="t2b">מקבלים מנה.</span></span></div>
+  <div id="fan"></div>
+  <div id="sws"></div><div class="abs swr" id="swr"></div>
+</div>
+
+<!-- answer 03 · the builder: she taps, the dish builds -->
+<div class="full as" id="a3" style="background:#F1E3DA">
+  <div class="abs src"><img src="../../../../pancakerie/assets/logo.webp" alt=""><small>בנאי המנה באתר</small></div>
+  <div class="abs stk" id="stk">
+    <img id="ly0" src="../../../../pancakerie/assets/layer-base.webp" alt=""><img id="ly1" src="../../../../pancakerie/assets/stack-vanille.webp" alt="">
+    <img id="ly2" src="../../../../pancakerie/assets/layer-fraises.webp" alt="">
+    <img id="ly3" src="../../../../pancakerie/assets/top-crumble.webp" alt="" style="inset:auto;width:306px;height:auto;left:405px;top:128px">
+    <img id="ly4" src="../../../../pancakerie/assets/layer-chantilly.webp" alt="">
+  </div>
+  <div class="abs chip" id="c1" style="left:550px;top:1100px"><b>01</b>בסיס <small>פנקייק</small></div>
+  <div class="abs chip" id="c2" style="left:80px;top:1100px"><b>02</b>קרם <small>וניל</small></div>
+  <div class="abs chip" id="c3" style="left:550px;top:1228px"><b>03</b>פרי <small>תותים</small></div>
+  <div class="abs chip" id="c4" style="left:80px;top:1228px"><b>04</b>תוספות <small>פירורים · קצפת</small></div>
+  <div class="abs rip" id="rp3" style="left:540px;top:1432px"></div>
+  <div class="abs btn" id="bt3" style="left:180px;top:1370px;width:720px">להוסיף למארז</div>
+  <div class="abs tap" id="tap3"></div>
+</div>
+
+<!-- answer 04 · from the screen to the door -->
+<div class="full as" id="a4" style="background:#F1E3DA">
+  <div class="abs src"><img src="../../../../pancakerie/assets/logo.webp" alt=""><small>ההזמנה</small></div>
+  <div class="abs box" id="bx"><img src="../../../../pancakerie/assets/box-fraise.webp" alt=""></div>
+  <div class="abs h rb" style="top:1120px;font-size:112px"><span class="ml"><span id="t4">הצבע יוצא איתך.</span></span></div>
+  <div class="abs rip" id="rp4" style="left:540px;top:1372px"></div>
+  <div class="abs btn" id="bt4" style="left:180px;top:1310px;width:720px"><span id="b4a">להזמין מארז</span><span id="b4b">✓ המארז הוזמן</span></div>
+  <div class="abs sel" id="b4" style="left:150px;right:150px;top:1284px;height:176px"><i></i><i></i><i></i><i></i><span class="lab">הצעד הבא</span></div>
+  <div class="abs tap" id="tap4"></div>
+</div>
+
+<!-- outro -->
+<div class="full" id="out">
+  <div class="abs sig mono" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+  <div class="abs big" style="top:320px;font-size:136px"><span class="ml"><span id="o1a">מגרה זה</span></span><span class="ml"><span id="o1b">לא מספיק.</span></span></div>
+  <div class="abs big" style="top:640px;font-size:108px;color:var(--citron)"><span class="ml"><span id="o2a">צריך שיהיה ברור</span></span><span class="ml"><span id="o2b">מה מזמינים.</span></span></div>
+  <div class="abs msg" id="msg"><div class="t">שלחי לי <b>״אתר״</b> בהודעה</div>
+    <div class="comp"><span class="w" id="word">אתר</span><span class="s" id="send"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></span></div></div>
+</div>
+
+<div class="abs" id="drop"><i></i></div>
+
+<script>
+const D = 24, $ = s => document.querySelector(s), EASE = 'cubic-bezier(.3,.7,.2,1)', SPRING = 'cubic-bezier(.3,1.5,.5,1)', A = '../../../../pancakerie/assets/';
+function tl(el, frames) {                       // [[seconds, {props}, easing?], …] on one 24s timeline
+  if (typeof el === 'string') el = $(el);
+  const k = frames.map(([t, p, e]) => ({ offset: Math.max(0, Math.min(1, t / D)), easing: e || EASE, ...p }));
+  if (k[0].offset > 0) k.unshift({ ...k[0], offset: 0 });
+  if (k[k.length - 1].offset < 1) k.push({ ...k[k.length - 1], offset: 1 });
+  return el.animate(k, { duration: D * 1000, fill: 'both' });
+}
+const on = (el, a, f = .25) => tl(el, [[a - f, { opacity: 0 }], [a, { opacity: 1 }]]);
+const up = (el, a, f = .45) => tl(el, [[a, { transform: 'translateY(112%)' }], [a + f, { transform: 'translateY(0%)' }]]);
+const type = (el, a, d, n = 10) => tl(el, [[a, { clipPath: 'inset(-10% 0 -10% 100%)' }, `steps(${n},end)`], [a + d, { clipPath: 'inset(-10% 0 -10% 0%)' }]]);
+const box = (el, a) => tl(el, [[a - .15, { opacity: 0, transform: 'scale(1.05)' }], [a + .1, { opacity: 1, transform: 'none' }]]);
+const pop = (el, a) => tl(el, [[a, { transform: 'scale(0)' }], [a + .4, { transform: 'scale(1)' }, SPRING]]);
+const land = (el, a, d = 520) => tl(el, [[a, { transform: `translateY(-${d}px) scale(.96)`, opacity: 0 }, 'cubic-bezier(.5,0,.9,.6)'], [a + .06, { transform: `translateY(-${d * .8}px) scale(.96)`, opacity: 1 }, 'cubic-bezier(.5,0,.9,.6)'], [a + .3, { transform: 'translateY(0) scale(1.03,.95)', opacity: 1 }], [a + .5, { transform: 'translateY(0) scale(1)', opacity: 1 }, SPRING]]);
+// a screen opens out of the drop of cream: a circle of its colour grows from (x, y)
+const open = (el, t, x, y) => tl(el, [[t, { clipPath: `circle(0px at ${x}px ${y}px)` }, 'cubic-bezier(.5,0,.3,1)'], [t + .55, { clipPath: `circle(2300px at ${x}px ${y}px)` }]]);
+
+/* ── the four question screens ───────────────────────────────────────────── */
+const QS = [
+  { id: 'q1', bg: '#402613', fg: '#EEE6DA', hl: '#EEC376', size: 124, lines: ['רואים את הטעם', 'לפני שקוראים', 'מילה?'] },
+  { id: 'q2', bg: '#A5A57F', fg: '#402613', hl: '#FFF8EC', size: 176, lines: ['ברור מה', 'בוחרים?'] },
+  { id: 'q3', bg: '#D39483', fg: '#402613', hl: '#FFF8EC', size: 128, lines: ['המבקרת', 'עושה משהו,', 'או רק גוללת?'] },
+  { id: 'q4', bg: '#EEC376', fg: '#402613', hl: '#8A4A2E', size: 176, lines: ['ומהמסך', 'עד הדלת?'] },
+];
+QS.forEach((q, i) => {
+  const d = document.createElement('div'); d.className = 'full qs'; d.id = q.id; d.style.cssText = `background:${q.bg};color:${q.fg}`;
+  d.innerHTML = `<div class="abs qn fr" style="color:${q.hl};opacity:.55">0${i + 1}</div>
+    <div class="abs qd">${[0, 1, 2, 3].map(j => `<i class="${j <= i ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="abs qt" style="font-size:${q.size}px">${q.lines.map((l, j) => `<span class="ml"><span${j === q.lines.length - 1 ? ` style="color:${q.hl}"` : ''}>${l}</span></span>`).join('')}</div>`;
+  $('#a' + (i + 1)).before(d);
+});
+function ask(i, t, x, y) {
+  const id = '#' + QS[i].id; open(id, t, x, y);
+  document.querySelectorAll(id + ' .ml>span').forEach((s, j) => up(s, t + .22 + j * .13));
+  tl(id + ' .qn', [[t, { transform: 'translateX(-140px)' }, 'linear'], [t + 2, { transform: 'translateX(60px)' }]]);
+  tl(id + ' .qd', [[t + .2, { opacity: 0 }], [t + .5, { opacity: 1 }]]);
+}
+
+/* ── the drop of cream falls, squashes, and the next screen opens out of it ── */
+const T = [2.9, 4.75, 7.5, 9.2, 12.1, 13.6, 17.1, 18.5, 21.1];
+const P = [[540, 1250], [170, 1210], [540, 600], [170, 1210], [540, 860], [170, 1210], [540, 1432], [170, 1210], [540, 1372]];
+const B = (x, y, sx = 1, sy = sx) => ({ transform: `translate(${x}px,${y}px) scale(${sx},${sy})` });
+tl('#drop', T.flatMap((t, i) => { const [x, y] = P[i]; return [
+  [t - .62, { ...B(x, y - 620, .8, 1.2), opacity: 0 }, 'cubic-bezier(.5,0,.9,.6)'], [t - .55, { ...B(x, y - 560, .8, 1.2), opacity: 1 }, 'cubic-bezier(.5,0,.9,.6)'],
+  [t - .22, { ...B(x, y, .8, 1.25), opacity: 1 }], [t - .14, { ...B(x, y + 14, 1.6, .55), opacity: 1 }], [t, { ...B(x, y, 1.15, 1), opacity: 1 }], [t + .16, { ...B(x, y, 3.2), opacity: 0 }]]; }).concat([
+  [22.7, { ...B(-80, 760), opacity: 0 }], [22.75, { ...B(-80, 760), opacity: 1 }, 'ease-in'], [23.0, B(60, 1100), 'ease-out'], [23.25, { ...B(136, 1339, 1.2), opacity: 1 }], [23.3, { ...B(136, 1339, 1.2), opacity: 0 }]]));
+
+/* ── 0–2.9 hook: a turning table. ang(t) stops with each dish at the front ── */
+const stops = [[0, 6], [.5, 0], [.95, -90], [1.3, -94], [1.75, -180], [2.1, -184], [2.55, -270], [3.2, -278]];
+const ease = u => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+function ang(t) { for (let i = 1; i < stops.length; i++) { const [a, A0] = stops[i - 1], [b, B0] = stops[i]; if (t <= b) { const u = (t - a) / (b - a); return A0 + (B0 - A0) * (i % 2 ? u : ease(u)); } } return stops[stops.length - 1][1]; }
+['pistache', 'fraise', 'noisette', 'citron'].forEach((n, i) => {
+  const d = document.createElement('div'); d.className = 'abs dish'; d.innerHTML = `<img src="${A}dish-${n}.webp" alt="">`; $('#orbit').appendChild(d);
+  const k = []; for (let f = 0; f <= 96; f++) { const t = f / 30, a = (90 + i * 90 + ang(t)) * Math.PI / 180, dp = (Math.sin(a) + 1) / 2;
+    k.push([t, { transform: `translate(${540 + 320 * Math.cos(a)}px,${1100 + 130 * Math.sin(a)}px) scale(${.5 + .55 * dp})`, zIndex: Math.round(dp * 10), opacity: .55 + .45 * dp }, 'linear']); }
+  tl(d, k);
+});
+tl('#st', [[0, { transform: 'scale(1)' }], [.5, { transform: 'scale(1)' }], [.62, { transform: 'scale(0)' }], [.95, { transform: 'scale(0)' }], [1.2, { transform: 'scale(1)' }, SPRING], [1.3, { transform: 'scale(1)' }], [1.42, { transform: 'scale(0)' }], [1.75, { transform: 'scale(0)' }], [2.0, { transform: 'scale(1)' }, SPRING], [2.1, { transform: 'scale(1)' }], [2.22, { transform: 'scale(0)' }]]);
+tl('#h2', [[1.0, { transform: 'scale(1)' }], [1.2, { transform: 'scale(1.06)' }], [1.45, { transform: 'scale(1)' }]]);
+tl('#h3', [[1.75, { transform: 'scale(1)' }], [1.95, { transform: 'scale(1.08)' }], [2.2, { transform: 'scale(1)' }]]);
+
+/* ── 01 · the dish arrives first, the words after ────────────────────────── */
+ask(0, T[0], ...P[0]);
+open('#a1', T[1], ...P[1]);
+pop('#disc', 4.95); land('#d1', 5.2, 700);
+up('#t1a', 5.95); up('#t1b', 6.1); box('#b1', 6.7);
+
+/* ── 02 · choose a colour, get a dish ────────────────────────────────────── */
+ask(1, T[2], ...P[2]);
+open('#a2', T[3], ...P[3]);
+const WL = [['pistache', 'PISTACHE', 'פיסטוק', '#D4CFBA', '#A5A57F'], ['fraise', 'FRAISE', 'תות', '#E5C9BC', '#D39483'], ['noisette', 'NOISETTE', 'אגוזי לוז', '#B7A99B', '#523726'], ['citron', 'CITRON', 'לימון', '#EEDAB7', '#EEC376']];
+const BT = [9.2, 9.95, 10.6, 11.25];
+up('#t2a', 9.4); up('#t2b', 10.05);
+tl('#a2', WL.flatMap((w, i) => i ? [[BT[i] - .05, { backgroundColor: WL[i - 1][3] }], [BT[i] + .2, { backgroundColor: w[3] }]] : [[BT[0], { backgroundColor: w[3] }]]));
+WL.forEach((w, i) => {
+  const d = document.createElement('div'); d.className = 'abs dish'; d.style.cssText = 'width:780px;height:585px;margin:0;left:150px;top:560px'; d.innerHTML = `<img src="${A}dish-${w[0]}.webp" alt="">`; $('#fan').appendChild(d);
+  const n = document.createElement('div'); n.className = 'abs frn fr'; n.innerHTML = `${w[1]}<small>${w[2]}</small>`; $('#fan').appendChild(n);
+  const a = BT[i], b = i < 3 ? BT[i + 1] : 99, X = (x, r, o) => ({ transform: `translateX(${x}px) rotate(${r}deg)`, opacity: o });
+  tl(d, [[a - .05, X(900, 25, 0)], [a + .35, X(0, 0, 1), 'cubic-bezier(.2,1.2,.4,1)'], ...(i < 3 ? [[b - .05, X(0, 0, 1), 'cubic-bezier(.5,0,.8,.4)'], [b + .25, X(-900, -25, 0)]] : [])]);
+  tl(n, [[a, { opacity: 0, transform: 'translateY(40px)' }], [a + .25, { opacity: 1, transform: 'none' }], ...(i < 3 ? [[b - .1, { opacity: 1, transform: 'none' }], [b, { opacity: 0, transform: 'translateY(-30px)' }]] : [])]);
+  const s = document.createElement('div'); s.className = 'abs sw'; s.style.cssText = `left:${764 - i * 150}px;background:${w[4]}`; $('#sws').appendChild(s);
+  tl(s, [[9.45 + i * .06, { transform: 'scale(0)' }], [9.75 + i * .06, { transform: 'scale(1)' }, SPRING]]);
+});
+tl('#swr', [[9.7, { opacity: 0, left: '750px' }], [9.8, { opacity: 1, left: '750px' }], ...[1, 2, 3].flatMap(i => [[BT[i] - .1, { opacity: 1, left: 750 - (i - 1) * 150 + 'px' }], [BT[i] + .15, { opacity: 1, left: 750 - i * 150 + 'px' }, SPRING]])]);
+
+/* ── 03 · the builder: every tap lands a layer ───────────────────────────── */
+ask(2, T[4], ...P[4]);
+open('#a3', T[5], ...P[5]);
+const CH = [[775, 1156], [305, 1156], [775, 1284], [305, 1284]], TT = [13.95, 14.6, 15.25, 15.9];
+['#c1', '#c2', '#c3', '#c4'].forEach((id, i) => {
+  tl(id, [[13.7 + i * .06, { opacity: 0, transform: 'translateY(40px)' }], [13.95 + i * .06, { opacity: 1, transform: 'none' }]]);
+  $(id).animate([{ offset: 0, background: '#fff8ee', borderColor: 'rgba(82,55,38,.22)', color: '#402613' }, { offset: TT[i] / D, background: '#fff8ee', borderColor: 'rgba(82,55,38,.22)', color: '#402613' }, { offset: (TT[i] + .12) / D, background: '#402613', borderColor: '#402613', color: '#EEE6DA' }, { offset: 1, background: '#402613', borderColor: '#402613', color: '#EEE6DA' }], { duration: D * 1000, fill: 'both' });
+});
+const TP = (x, y, s = 1) => ({ transform: `translate(${x}px,${y}px) scale(${s})` });
+tl('#tap3', [[13.75, { ...TP(900, 1500), opacity: 0 }], ...TT.flatMap((t, i) => [[t - .12, { ...TP(...CH[i]), opacity: 1 }], [t, { ...TP(...CH[i], .7), opacity: 1 }], [t + .14, { ...TP(...CH[i]), opacity: 1 }]]),
+  [16.72, { ...TP(540, 1432), opacity: 1 }], [16.8, { ...TP(540, 1432, .7), opacity: 1 }], [16.94, { ...TP(540, 1432), opacity: 1 }], [17.05, { ...TP(540, 1432), opacity: 0 }]]);
+land('#ly0', TT[0] + .03);
+tl('#ly1', [[TT[1] + .03, { clipPath: 'inset(0 0 100% 0)' }, 'cubic-bezier(.4,0,.6,1)'], [TT[1] + .5, { clipPath: 'inset(0 0 0% 0)' }]]);
+land('#ly2', TT[2] + .03, 420);
+tl('#ly3', [[TT[3] + .03, { transform: 'translateY(-380px) rotate(40deg) scale(.6)', opacity: 0 }, 'cubic-bezier(.5,0,.9,.6)'], [TT[3] + .3, { transform: 'translateY(0) rotate(10deg) scale(1.05)', opacity: 1 }], [TT[3] + .45, { transform: 'translateY(0) rotate(10deg) scale(1)', opacity: 1 }]]);
+land('#ly4', TT[3] + .3, 420);
+// the whole plate takes each landing
+tl('#stk', TT.concat([TT[3] + .27]).flatMap(t => [[t + .3, { transform: 'translateY(0) scale(1)' }], [t + .36, { transform: 'translateY(10px) scale(1.015,.985)' }], [t + .55, { transform: 'translateY(0) scale(1)' }]]));
+tl('#bt3', [[16.3, { transform: 'scale(.5)', opacity: 0 }], [16.6, { transform: 'scale(1)', opacity: 1 }, SPRING], [16.8, { transform: 'scale(.95)', opacity: 1 }], [16.95, { transform: 'scale(1)', opacity: 1 }]]);
+tl('#rp3', [[16.79, { transform: 'scale(.6)', opacity: 0 }], [16.8, { transform: 'scale(.6)', opacity: .9 }, 'ease-out'], [17.4, { transform: 'scale(7)', opacity: 0 }]]);
+
+/* ── 04 · from the screen to the door ────────────────────────────────────── */
+ask(3, T[6], ...P[6]);
+open('#a4', T[7], ...P[7]);
+tl('#bx', [[18.6, { transform: 'perspective(1500px) translateY(220px) rotateX(38deg) rotateZ(-6deg) scale(.8)', opacity: 0 }], [19.2, { transform: 'perspective(1500px) translateY(0) rotateX(0deg) rotateZ(-1.5deg) scale(1)', opacity: 1 }, 'cubic-bezier(.2,1.2,.4,1)']]);
+tl('#bx img', [[18.6, { transform: 'scale(1.18)' }, 'linear'], [21.2, { transform: 'scale(1)' }]]);
+up('#t4', 19.25);
+tl('#bt4', [[19.6, { transform: 'scale(.5)', opacity: 0, background: '#402613' }], [19.9, { transform: 'scale(1)', opacity: 1, background: '#402613' }, SPRING], [20.35, { transform: 'scale(.95)', opacity: 1, background: '#402613' }], [20.5, { transform: 'scale(1)', opacity: 1, background: '#B4654F' }]]);
+tl('#b4a', [[20.38, { opacity: 1 }], [20.45, { opacity: 0 }]]); on('#b4b', 20.52, .06);
+tl('#tap4', [[19.9, { ...TP(900, 1560), opacity: 0 }], [20.26, { ...TP(330, 1372), opacity: 1 }], [20.35, { ...TP(330, 1372, .7), opacity: 1 }], [20.5, { ...TP(330, 1372), opacity: 1 }], [20.62, { ...TP(330, 1372), opacity: 0 }]]);
+tl('#rp4', [[20.34, { transform: 'scale(.6)', opacity: 0 }], [20.35, { transform: 'scale(.6)', opacity: .9 }, 'ease-out'], [20.95, { transform: 'scale(7)', opacity: 0 }]]);
+box('#b4', 20.0);
+
+/* ── outro ───────────────────────────────────────────────────────────────── */
+open('#out', T[8], ...P[8]);
+up('#o1a', 21.3); up('#o1b', 21.42); up('#o2a', 21.9); up('#o2b', 22.02);
+tl('#msg', [[22.4, { transform: 'translateY(50px)', opacity: 0 }], [22.7, { transform: 'none', opacity: 1 }]]);
+type('#word', 22.85, .3, 3);
+on('#send', 23.28, .04); tl('#send', [[23.28, { transform: 'scale(1.3)' }], [23.5, { transform: 'scale(1)' }, SPRING]]);
+</script>
+</body>
+</html>
