@@ -960,7 +960,12 @@ function cycle(i){ ci=i; cyc.forEach((v,k)=>{v.classList.toggle('on',k===i); if(
   cdots.forEach((d,k)=>d.classList.toggle('on',k===i));
   $('#cyc-url').textContent=cyc[i].dataset.url; $('#cyc-cap').textContent=cyc[i].dataset.cap;
   const n=cyc[(i+1)%cyc.length]; if(n.preload==='none') n.preload='auto'; }
-function turn(i){ cycle(i); setTimeout(()=>turn((i+1)%cyc.length),(+cyc[i].dataset.dur||7)*1000); }
+let heroOn=true, rounds=0;
+if('IntersectionObserver' in window) new IntersectionObserver(es=>es.forEach(e=>heroOn=e.isIntersecting),{threshold:.5}).observe($('#cycle'));
+window.seenEv=function(name,params,still){ setTimeout(()=>{ if(still() && !document.hidden && window.gaEvent) gaEvent(name,params); },3000); }
+function turn(i){ cycle(i); if(i===0) rounds++;
+  if(rounds<=3){ const r=rounds; seenEv('hero_site_view',{site:cyc[i].dataset.url,round:r},()=>ci===i&&heroOn); }
+  setTimeout(()=>turn((i+1)%cyc.length),(+cyc[i].dataset.dur||7)*1000); }
 if(!calm) turn(0);
 
 /* the offer ends on 12.12.2026 (Israel time). After that every [data-offer] block leaves the page by itself. */
@@ -996,7 +1001,9 @@ if(!calm && 'IntersectionObserver' in window){
       const v=s.querySelector('video'); if(!ab&&seen&&!calm){ play(v); } else v.pause(); });
     tx.forEach((t,i)=>t.classList.toggle('on',i===a)); dots.forEach((d,i)=>d.classList.toggle('on',i===a));
   }
-  function go(i,user){ a=((i%n)+n)%n; lay(); clearInterval(timer); if(!user&&!calm) timer=setInterval(()=>go(a+1),12000); }
+  const names=['oreva · landing','mirvach · landing','rue · site'], sent={};
+  function go(i,user){ a=((i%n)+n)%n; lay(); clearInterval(timer);
+    { const k=a; if(seen&&window.seenEv&&(user||!sent[k])){ sent[k]=1; seenEv('example_view',{example:names[k],by:user?'click':'auto'},()=>a===k&&seen); } } if(!user&&!calm) timer=setInterval(()=>go(a+1),12000); }
   sl.forEach((s,i)=>s.addEventListener('click',()=>{ if(i!==a) go(i,true); }));
   $('#cf-prev').addEventListener('click',()=>go(a-1,true)); $('#cf-next').addEventListener('click',()=>go(a+1,true));
   let x0=null; box.addEventListener('pointerdown',e=>{x0=e.clientX}); addEventListener('pointerup',e=>{ if(x0===null)return; const dx=e.clientX-x0; x0=null; if(Math.abs(dx)>45) go(a+(dx<0?1:-1),true); });
