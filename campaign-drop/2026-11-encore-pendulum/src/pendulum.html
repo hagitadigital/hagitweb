@@ -52,6 +52,10 @@ const figReady = () => Promise.all(Object.values(FIG).map(f => new Promise(res =
   f.im = new Image(); f.im.onload = res; f.im.src = f.src; })));
 
 const cv = document.getElementById('c'), g = cv.getContext('2d');
+// ?fmt=45 renders the 4:5 feed version: the same scene, scaled to fit 1080x1350.
+const FEED = new URLSearchParams(location.search).get('fmt') === '45';
+const OUT_H = FEED ? 1350 : H, FIT = FEED ? 1350 / 1460 : 1, FIT_TOP = FEED ? 215 : 0;
+cv.height = OUT_H; cv.style.height = OUT_H + 'px';
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
 const mod = (a, n) => ((a % n) + n) % n;
@@ -91,7 +95,8 @@ function show(tRaw) {
 
   // --- background: the chain wipes in the colour of the new hour
   const cur = HOURS[piece.hour], old = HOURS[prev.hour];
-  g.fillStyle = cur.bg; g.fillRect(0, 0, W, H);
+  g.setTransform(FIT, 0, 0, FIT, (W - W * FIT) / 2, -FIT_TOP * FIT);
+  g.fillStyle = cur.bg; g.fillRect(-600, -600, W + 1200, H + 1200);
   if (cur !== old) {
     const far = 3200, fx = PIVOT.x + far * sin, fy = PIVOT.y + far * cos;
     g.save();
@@ -103,7 +108,7 @@ function show(tRaw) {
   }
   const vg = g.createRadialGradient(540, 860, 200, 540, 960, 1250);
   vg.addColorStop(0, 'rgba(255,240,220,.10)'); vg.addColorStop(1, 'rgba(0,0,0,.34)');
-  g.fillStyle = vg; g.fillRect(0, 0, W, H);
+  g.fillStyle = vg; g.fillRect(-600, -600, W + 1200, H + 1200);
 
   // --- hook, fixed
   g.fillStyle = INK; g.textAlign = 'center'; g.direction = 'rtl';
