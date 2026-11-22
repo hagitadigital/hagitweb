@@ -36,7 +36,7 @@ const HOURS = [
 const PIECES = [
   { id: 'bulle',        name: 'Bulle',        hour: 0, h: 230, pose: 'sit',  seat: 16 },
   { id: 'halo',         name: 'Halo',         hour: 0, h: 330, pose: 'sit',  seat: 268 },
-  { id: 'deux-gouttes', name: 'Deux Gouttes', hour: 1, h: 420, pose: 'sit',  seat: 396 },
+  { id: 'deux-gouttes', name: 'Deux Gouttes', hour: 1, h: 420, pose: 'sit',  seat: 366 },
   { id: 'courant',      name: 'Courant',      hour: 1, h: 420, pose: 'sit',  seat: 350 },
   { id: 'fil-dor',      name: 'Fil d’or',     hour: 2, h: 400, pose: 'hang', seat: 392 },
   { id: 'boucle',       name: 'Boucle',       hour: 2, h: 330, pose: 'sit',  seat: 282 },
@@ -48,36 +48,22 @@ const imgs = {};
 const ready = Promise.all(PIECES.map(p => new Promise(res => {
   const im = new Image(); im.onload = res; im.src = 'pieces/' + p.id + '.png'; imgs[p.id] = im;
 })).concat([document.fonts.ready]));
+const figReady = () => Promise.all(Object.values(FIG).map(f => new Promise(res => {
+  f.im = new Image(); f.im.onload = res; f.im.src = f.src; })));
 
 const cv = document.getElementById('c'), g = cv.getContext('2d');
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
 const mod = (a, n) => ((a % n) + n) % n;
 
-// Placeholder for the miniature Hagit. Origin: hips when sitting, grip hand when hanging.
+// The miniature Hagit: two cutouts. Anchor = hips when sitting, grip hand when hanging (px in the asset).
+const FIG = {
+  sit:  { src: 'figure/sit.png',  ax: 108.5, ay: 273,  k: 0.50 },
+  hang: { src: 'figure/hang.png', ax: 149,   ay: 12.5, k: 0.50 },
+};
 function figure(pose) {
-  g.fillStyle = INK; g.strokeStyle = INK; g.lineCap = 'round'; g.lineJoin = 'round';
-  const part = (w, pts) => { g.lineWidth = w; g.beginPath(); g.moveTo(pts[0], pts[1]);
-    for (let i = 2; i < pts.length; i += 2) g.lineTo(pts[i], pts[i + 1]); g.stroke(); };
-  const head = (x, y) => {
-    g.beginPath(); g.ellipse(x - 3, y + 16, 25, 40, 0.08, 0, 7); g.fill();     // long hair
-    g.beginPath(); g.arc(x, y, 19, 0, 7); g.fill();
-  };
-  if (pose === 'sit') {
-    part(30, [0, -14, 0, -78]);                       // torso
-    part(14, [-8, -4, -30, 8, -34, 62]);              // legs, dangling
-    part(14, [8, -4, 22, 12, 20, 66]);
-    part(10, [10, -72, 30, -44, 16, -18]);            // arm resting
-    part(10, [-10, -72, -34, -96, -30, -128]);        // arm holding on
-    head(0, -108);
-  } else {
-    part(10, [0, 0, 6, 46, 4, 70]);                   // arm up, gripping
-    head(4, 92);
-    part(30, [4, 124, 2, 186]);
-    part(10, [16, 122, 34, 150, 30, 182]);
-    part(14, [-4, 196, -12, 250, -30, 286]);
-    part(14, [10, 196, 16, 254, 6, 292]);
-  }
+  const f = FIG[pose];
+  g.drawImage(f.im, -f.ax * f.k, -f.ay * f.k, f.im.width * f.k, f.im.height * f.k);
 }
 
 function glint(x, y, a) {
@@ -173,9 +159,9 @@ function show(tRaw) {
   g.restore();
 }
 window.show = show;
-window.ready = ready;
+window.ready = Promise.all([ready, figReady()]);
 window.DUR = DUR;
-ready.then(() => {
+window.ready.then(() => {
   show(0);
   if (new URLSearchParams(location.search).has('play')) {
     const t0 = performance.now();
