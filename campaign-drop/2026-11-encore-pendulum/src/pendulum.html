@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ENCORE° pendulum animatic</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Frank+Ruhl+Libre:wght@500&family=Heebo:wght@300;400&display=swap">
+<style>
+  html,body{margin:0;background:#111;overflow:hidden}
+  canvas{display:block;width:1080px;height:1920px}
+  .preload{position:fixed;top:0;left:0;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div class="preload">
+  <span style="font-family:'Frank Ruhl Libre';font-weight:500">א</span>
+  <span style="font-family:'Cormorant Garamond';font-weight:500">a</span>
+  <span style="font-family:'Heebo';font-weight:300">א</span>
+</div>
+<script>
+// Pendulum animatic. Deterministic: window.show(t) draws the frame at t seconds. Loop length = DUR.
+const W = 1080, H = 1920, DUR = 10;
+const HALF = 1.25;          // seconds per pass
+const T0 = 0.3;             // frame 0 sits 0.3s after an apex, so the figure has already landed
+const AMP = 17 * Math.PI / 180;
+const PIVOT = { x: 540, y: -260 }, LEN = 980;
+const INK = '#F6EEE4', GOLD = '#D9B26A';
+
+const HOURS = [
+  { t: '12:00', bg: '#34405A' },
+  { t: '18:00', bg: '#853A26' },
+  { t: '00:00', bg: '#241212' },
+  { t: '06:00', bg: '#6E4E4A' },
+];
+// h = drawn height in px. seat = where the figure goes, measured down from the top of the piece.
+const PIECES = [
+  { id: 'bulle',        name: 'Bulle',        hour: 0, h: 230, pose: 'sit',  seat: 16 },
+  { id: 'halo',         name: 'Halo',         hour: 0, h: 330, pose: 'sit',  seat: 268 },
+  { id: 'deux-gouttes', name: 'Deux Gouttes', hour: 1, h: 420, pose: 'sit',  seat: 396 },
+  { id: 'courant',      name: 'Courant',      hour: 1, h: 420, pose: 'sit',  seat: 350 },
+  { id: 'fil-dor',      name: 'Fil d’or',     hour: 2, h: 400, pose: 'hang', seat: 392 },
+  { id: 'boucle',       name: 'Boucle',       hour: 2, h: 330, pose: 'sit',  seat: 282 },
+  { id: 'riviere',      name: 'Rivière',      hour: 3, h: 400, pose: 'sit',  seat: 345 },
+  { id: 'goutte',       name: 'Goutte',       hour: 3, h: 350, pose: 'hang', seat: 344 },
+];
+const N = PIECES.length;
+const imgs = {};
+const ready = Promise.all(PIECES.map(p => new Promise(res => {
+  const im = new Image(); im.onload = res; im.src = 'pieces/' + p.id + '.png'; imgs[p.id] = im;
+})).concat([document.fonts.ready]));
+
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+const mod = (a, n) => ((a % n) + n) % n;
+
+// Placeholder for the miniature Hagit. Origin: hips when sitting, grip hand when hanging.
+function figure(pose) {
+  g.fillStyle = INK; g.strokeStyle = INK; g.lineCap = 'round'; g.lineJoin = 'round';
+  const part = (w, pts) => { g.lineWidth = w; g.beginPath(); g.moveTo(pts[0], pts[1]);
+    for (let i = 2; i < pts.length; i += 2) g.lineTo(pts[i], pts[i + 1]); g.stroke(); };
+  const head = (x, y) => {
+    g.beginPath(); g.ellipse(x - 3, y + 16, 25, 40, 0.08, 0, 7); g.fill();     // long hair
+    g.beginPath(); g.arc(x, y, 19, 0, 7); g.fill();
+  };
+  if (pose === 'sit') {
+    part(30, [0, -14, 0, -78]);                       // torso
+    part(14, [-8, -4, -30, 8, -34, 62]);              // legs, dangling
+    part(14, [8, -4, 22, 12, 20, 66]);
+    part(10, [10, -72, 30, -44, 16, -18]);            // arm resting
+    part(10, [-10, -72, -34, -96, -30, -128]);        // arm holding on
+    head(0, -108);
+  } else {
+    part(10, [0, 0, 6, 46, 4, 70]);                   // arm up, gripping
+    head(4, 92);
+    part(30, [4, 124, 2, 186]);
+    part(10, [16, 122, 34, 150, 30, 182]);
+    part(14, [-4, 196, -12, 250, -30, 286]);
+    part(14, [10, 196, 16, 254, 6, 292]);
+  }
+}
+
+function glint(x, y, a) {
+  if (a <= 0) return;
+  g.save(); g.translate(x, y); g.globalAlpha = a; g.fillStyle = '#FFF6DE';
+  const r = 70 * (0.5 + a * 0.5);
+  g.beginPath();
+  for (let i = 0; i < 8; i++) { const rr = i % 2 ? r * 0.12 : r, an = i * Math.PI / 4;
+    g.lineTo(Math.cos(an) * rr, Math.sin(an) * rr); }
+  g.closePath(); g.fill(); g.restore();
+}
+
+function show(tRaw) {
+  const t = mod(tRaw, DUR);
+  const u = (t + T0) / HALF;               // passes since the first apex
+  const k = Math.floor(u), p = u - k;      // p: 0 at the apex where piece k arrived, 1 at the next apex
+  const s = mod(k, N);
+  const piece = PIECES[s], prev = PIECES[mod(s - 1, N)];
+  const th = AMP * Math.cos(Math.PI * u);  // + = right
+  const sin = Math.sin(th), cos = Math.cos(th);
+  const ax = PIVOT.x + LEN * sin, ay = PIVOT.y + LEN * cos;
+
+  // --- background: the chain wipes in the colour of the new hour
+  const cur = HOURS[piece.hour], old = HOURS[prev.hour];
+  g.fillStyle = cur.bg; g.fillRect(0, 0, W, H);
+  if (cur !== old) {
+    const far = 3200, fx = PIVOT.x + far * sin, fy = PIVOT.y + far * cos;
+    g.save();
+    g.globalAlpha = 1 - smooth(0.62, 0.96, p);
+    g.beginPath(); g.moveTo(PIVOT.x, PIVOT.y); g.lineTo(fx, fy);
+    g.lineTo(-2400, fy); g.lineTo(-2400, PIVOT.y); g.closePath();   // everything left of the chain
+    g.fillStyle = old.bg; g.fill();
+    g.restore();
+  }
+  const vg = g.createRadialGradient(540, 860, 200, 540, 960, 1250);
+  vg.addColorStop(0, 'rgba(255,240,220,.10)'); vg.addColorStop(1, 'rgba(0,0,0,.34)');
+  g.fillStyle = vg; g.fillRect(0, 0, W, H);
+
+  // --- hook, fixed
+  g.fillStyle = INK; g.textAlign = 'center'; g.direction = 'rtl';
+  g.font = "500 88px 'Frank Ruhl Libre'";
+  g.fillText('המוצר מתחלף.', 540, 372);
+  g.fillText('אותך עדיין מזהים?', 540, 478);
+
+  // --- signature, fixed
+  g.direction = 'ltr'; g.globalAlpha = .9;
+  g.font = "500 40px 'Cormorant Garamond'"; g.letterSpacing = '10px';
+  g.fillText('ENCORE°', 545, 1580);
+  g.letterSpacing = '0px'; g.globalAlpha = .62; g.direction = 'rtl';
+  g.font = "300 26px 'Heebo'";
+  g.fillText('עולם מותג · Brand Worlds Studio', 540, 1626);
+  g.globalAlpha = 1;
+
+  // --- swap envelope around the apex (time in seconds from the nearest apex)
+  const dIn = p * HALF, dOut = (1 - p) * HALF;
+  const SW = 0.16, HOP = 0.3;
+  let shown = piece, scale = 1, alpha = 1, hop = 0, pose = piece.pose, flash = 0;
+  if (dIn < SW) { const e = dIn / SW; scale = 0.78 + 0.22 * (1 - Math.pow(1 - e, 3)) + 0.06 * Math.sin(e * Math.PI); alpha = clamp(e * 2.2); }
+  if (dOut < SW) { const e = dOut / SW; shown = piece; scale = 0.86 + 0.14 * e; alpha = clamp(e * 1.6); }
+  if (dIn < HOP) hop = 1 - Math.pow(dIn / HOP, 2);
+  if (dOut < HOP) hop = 1 - Math.pow(dOut / HOP, 2);
+  if (dIn < 0.34) flash = 1 - dIn / 0.34;
+
+  // --- chain
+  g.save();
+  g.lineCap = 'round'; g.strokeStyle = GOLD; g.lineWidth = 6; g.setLineDash([15, 8]);
+  g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 10; g.shadowOffsetY = 4;
+  g.beginPath(); g.moveTo(PIVOT.x, PIVOT.y); g.lineTo(ax, ay); g.stroke();
+  g.restore();
+
+  // --- piece + figure, hanging from the chain
+  const im = imgs[shown.id], ph = shown.h, pw = ph * im.width / im.height;
+  g.save(); g.translate(ax, ay); g.rotate(-th); g.scale(1.25, 1.25);
+  g.save();
+  g.translate(0, ph * 0.5 - 6); g.scale(scale, scale); g.globalAlpha = alpha;
+  g.shadowColor = 'rgba(0,0,0,.38)'; g.shadowBlur = 26; g.shadowOffsetY = 14;
+  g.drawImage(im, -pw / 2, -ph / 2, pw, ph);
+  g.restore();
+  g.save();
+  g.translate(0, shown.seat - 6 - hop * 96);
+  g.rotate(th * 0.35 + (pose === 'hang' ? th * 0.5 : 0));   // a little lag, so it reads as alive
+  g.shadowColor = 'rgba(0,0,0,.3)'; g.shadowBlur = 12; g.shadowOffsetY = 5;
+  figure(pose);
+  g.restore();
+  glint(pw * 0.22, ph * 0.3, flash);
+  g.restore();
+
+  // --- tag: hour + name of the piece, the way the ENCORE label reads
+  const tagA = Math.min(smooth(0.02, 0.2, dIn), smooth(0.02, 0.2, dOut));
+  g.save(); g.globalAlpha = tagA * .92; g.fillStyle = INK; g.direction = 'ltr';
+  g.font = "500 44px 'Cormorant Garamond'"; g.letterSpacing = '3px';
+  g.fillText(HOURS[piece.hour].t + ' · ' + piece.name, 540, 1478);
+  g.restore();
+}
+window.show = show;
+window.ready = ready;
+window.DUR = DUR;
+ready.then(() => {
+  show(0);
+  if (new URLSearchParams(location.search).has('play')) {
+    const t0 = performance.now();
+    (function loop() { show((performance.now() - t0) / 1000); requestAnimationFrame(loop); })();
+  }
+});
+</script>
+</body>
+</html>
