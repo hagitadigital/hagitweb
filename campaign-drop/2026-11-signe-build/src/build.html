@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SIGNÉ° build-a-world reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Assistant:wght@300;400;600&family=Frank+Ruhl+Libre:wght@500&display=swap">
+<style>
+  html,body{margin:0;background:#111;overflow:hidden}
+  canvas{display:block;width:1080px;height:1920px}
+  .preload{position:fixed;top:0;left:0;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div class="preload">
+  <span style="font-family:'Frank Ruhl Libre';font-weight:500">א</span>
+  <span style="font-family:'Cormorant Garamond';font-weight:500">a</span>
+  <span style="font-family:'Assistant';font-weight:600">א</span>
+  <span style="font-family:'Assistant';font-weight:300">א</span>
+</div>
+<script>
+// A brand world gets built on an editor page: every element is dragged in by a cursor and snaps
+// into place, the miniature figure hops from element to element, and at the end the page itself
+// turns into the world. Deterministic: window.show(t) draws the frame at t seconds.
+const W = 1080, H = 1920, DUR = 12;
+const PAGE = '#F2EBDC', INK = '#15202E', NOIR = '#120E08', GOLD = '#C9A25E', CREAM = '#F0E3CE', COPPER = '#C28A5A';
+const UI = '#C2704A';                       // selection boxes, guides, cursor label
+const FLOOD = 9.2;                          // the page becomes the world
+
+// Every element: its resting rect, when its drag starts (the drop is 0.7s later), where it comes from.
+const DRAG = 0.7;
+const E = [
+  { id: 'hello',   x: 170, y: 246, w: 740, h: 226, t: -0.38, from: [70, -46] },
+  { id: 'chip0',   x: 204, y: 530, w: 150, h: 84,  t: 0.95, from: [760, 120], color: NOIR,   hex: '#120E08' },
+  { id: 'chip1',   x: 378, y: 530, w: 150, h: 84,  t: 1.5,  from: [620, 200], color: GOLD,   hex: '#C9A25E' },
+  { id: 'chip2',   x: 552, y: 530, w: 150, h: 84,  t: 2.0,  from: [480, 260], color: CREAM,  hex: '#F0E3CE' },
+  { id: 'chip3',   x: 726, y: 530, w: 150, h: 84,  t: 2.5,  from: [340, 300], color: COPPER, hex: '#C28A5A' },
+  { id: 'logo',    x: 250, y: 738, w: 580, h: 112, t: 4.55, from: [-720, 90] },
+  { id: 'product', x: 110, y: 900, w: 420, h: 560, t: 5.45, from: [-640, 380], img: 'product', fx: .5, fy: .5 },
+  { id: 'box',     x: 550, y: 900, w: 420, h: 270, t: 6.4,  from: [640, -60],  img: 'box',     fx: .5, fy: .64 },
+  { id: 'bag',     x: 550, y: 1190, w: 200, h: 270, t: 7.2, from: [300, 700],  img: 'bag',     fx: .42, fy: .52 },
+  { id: 'night',   x: 770, y: 1190, w: 200, h: 270, t: 7.95, from: [520, 620], img: 'night',   fx: .5, fy: .6 },
+];
+const SIG = { t0: 3.25, t1: 4.45 };         // the piped signature is drawn, not dragged
+
+// Where the figure sits: [time she lands, x, y of her hips, pose]. She hops between them.
+const SEATS = [
+  [-9,   300, 246, 'sit'],
+  [3.3,  806, 530, 'wave'],
+  [6.5,  190, 900, 'sit'],
+  [7.45, 880, 900, 'wave'],
+];
+const HOP = 0.5;
+
+const FIG = {
+  sit:   { src: 'figure/sit.png',   ax: 166, ay: 303.5, k: 0.44 },
+  wave:  { src: 'figure/wave.png',  ax: 90,  ay: 313.5, k: 0.52 },
+  stand: { src: 'figure/stand.png', ax: 206, ay: 516.5, k: 0.42 },
+  jump:  { src: 'figure/jump.png',  ax: 164, ay: 525,   k: 0.50 },
+};
+const IMG = {};
+const load = (o, src) => new Promise(res => { o.im = new Image(); o.im.onload = res; o.im.src = src; });
+const ready = Promise.all([
+  ...['product', 'box', 'bag', 'night'].map(n => load(IMG[n] = {}, 'assets/' + n + '.jpg')),
+  ...Object.values(FIG).map(f => load(f, f.src)),
+  document.fonts.ready,
+]);
+
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+// ?fmt=45 renders the 4:5 feed version: the same scene, scaled to fit 1080x1350.
+const FEED = new URLSearchParams(location.search).get('fmt') === '45';
+const OUT_H = FEED ? 1350 : H, FIT = FEED ? 1350 / 1560 : 1, FIT_TOP = FEED ? 140 : 0;
+cv.height = OUT_H; cv.style.height = OUT_H + 'px';
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+const outCubic = u => 1 - Math.pow(1 - clamp(u), 3);
+const mix = (a, b, u) => a + (b - a) * u;
+function lerpColor(a, b, u) {
+  const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+  const A = p(a), B = p(b);
+  return 'rgb(' + A.map((v, i) => Math.round(mix(v, B[i], u))).join(',') + ')';
+}
+
+// Position of a dragged element at time t: offset from rest, tilt, lift (0..1), selected?
+function drag(e, t) {
+  const u = (t - e.t) / DRAG;
+  if (u < 0) return null;
+  const k = 1 - outCubic(u);
+  const settle = clamp((t - e.t - DRAG) / 0.22);
+  return { dx: e.from[0] * k, dy: e.from[1] * k, rot: 0.05 * k * Math.sign(e.from[0] || 1),
+           lift: u < 1 ? 1 : 1 - settle, pop: u >= 1 ? Math.sin(settle * Math.PI) * 0.035 : 0,
+           held: u < 1, selected: t < e.t + DRAG + 0.55 };
+}
+
+function cover(im, x, y, w, h, fx, fy) {
+  const s = Math.max(w / im.width, h / im.height), sw = w / s, sh = h / s;
+  g.drawImage(im, (im.width - sw) * fx, (im.height - sh) * fy, sw, sh, x, y, w, h);
+}
+
+// The piped signature of the world, as a polyline; p = how much of it is drawn.
+const SIGPTS = (() => {
+  const pts = [];
+  for (let i = 0; i <= 160; i++) {
+    const s = i / 160, x = 270 + 470 * s;
+    pts.push([x, 694 + Math.sin(s * Math.PI * 5.2) * 22 * (1 - s * 0.45) - s * 6]);
+  }
+  const [lx, ly] = pts[pts.length - 1];
+  for (let i = 1; i <= 40; i++) { const s = i / 40; pts.push([lx + 62 * s, ly + 8 * s + 26 * s * s]); }
+  return pts;
+})();
+
+function selection(x, y, w, h, a) {
+  g.save(); g.globalAlpha = a; g.strokeStyle = UI; g.lineWidth = 2.5;
+  g.strokeRect(x - 8, y - 8, w + 16, h + 16);
+  g.fillStyle = '#fff';
+  for (const [hx, hy] of [[0, 0], [.5, 0], [1, 0], [0, 1], [.5, 1], [1, 1], [0, .5], [1, .5]]) {
+    const px = x - 8 + (w + 16) * hx, py = y - 8 + (h + 16) * hy;
+    g.fillRect(px - 7, py - 7, 14, 14); g.strokeRect(px - 7, py - 7, 14, 14);
+  }
+  g.restore();
+}
+
+function cursor(x, y, a) {
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = a; g.translate(x, y);
+  g.shadowColor = 'rgba(0,0,0,.3)'; g.shadowBlur = 8; g.shadowOffsetY = 3;
+  g.fillStyle = INK; g.strokeStyle = '#fff'; g.lineWidth = 3; g.lineJoin = 'round';
+  g.beginPath(); g.moveTo(0, 0); g.lineTo(0, 44); g.lineTo(12, 33); g.lineTo(20, 52); g.lineTo(28, 48);
+  g.lineTo(20, 30); g.lineTo(35, 30); g.closePath(); g.stroke(); g.fill();
+  g.shadowColor = 'transparent';
+  g.fillStyle = UI; g.beginPath(); g.roundRect(30, 46, 92, 40, 20); g.fill();
+  g.fillStyle = '#fff'; g.font = "600 24px 'Assistant'"; g.textAlign = 'center'; g.direction = 'rtl';
+  g.fillText('חגית', 76, 74);
+  g.restore();
+}
+
+function show(tRaw) {
+  const t = clamp(tRaw, 0, DUR);
+  const fl = smooth(FLOOD, FLOOD + 0.75, t);            // 0 = editor page, 1 = the world
+  const ink = lerpColor(INK, CREAM, smooth(0.15, 0.6, fl));
+  const push = 1 + 0.035 * smooth(FLOOD, DUR, t);        // slow push-in once the world is alive
+
+  g.setTransform(FIT, 0, 0, FIT, (W - W * FIT) / 2, -FIT_TOP * FIT);
+  g.fillStyle = PAGE; g.fillRect(-600, -600, W + 1200, H + 1200);
+  // editor dot grid
+  g.fillStyle = 'rgba(21,32,46,.13)';
+  for (let y = 30; y < H; y += 60) for (let x = 30; x < W; x += 60) g.fillRect(x - 1.5, y - 1.5, 3, 3);
+  // the flood: noir spreads out of the first swatch
+  if (fl > 0) {
+    g.save(); g.beginPath(); g.arc(279, 572, 2400 * fl * fl + 40 * fl, 0, 7); g.clip();
+    g.fillStyle = NOIR; g.fillRect(-600, -600, W + 1200, H + 1200);
+    const sp = g.createRadialGradient(540, 760, 60, 540, 900, 1250);
+    sp.addColorStop(0, 'rgba(201,162,94,.20)'); sp.addColorStop(0.5, 'rgba(120,80,40,.07)'); sp.addColorStop(1, 'rgba(0,0,0,.5)');
+    g.fillStyle = sp; g.fillRect(-600, -600, W + 1200, H + 1200);
+    g.restore();
+  }
+
+  g.translate(540, 900); g.scale(push, push); g.translate(-540, -900);
+
+  let cur = null;                                         // cursor position this frame
+  const guides = [];
+  const fig = { ox: 0, oy: 0 };                           // offset of the element she is riding
+
+  for (const e of E) {
+    const d = drag(e, t);
+    if (!d) continue;
+    const cx = e.x + e.w / 2, cy = e.y + e.h / 2;
+    g.save();
+    g.translate(cx + d.dx, cy + d.dy); g.rotate(d.rot); g.scale(1 + d.pop + d.lift * 0.03, 1 + d.pop + d.lift * 0.03);
+    g.translate(-e.w / 2, -e.h / 2);
+    if (d.lift > 0) { g.shadowColor = `rgba(20,14,8,${0.28 * d.lift})`; g.shadowBlur = 40 * d.lift; g.shadowOffsetY = 22 * d.lift; }
+
+    if (e.id === 'hello') {
+      g.shadowColor = 'transparent';
+      g.fillStyle = ink; g.textAlign = 'center'; g.direction = 'rtl';
+      g.font = "500 92px 'Frank Ruhl Libre'";
+      g.fillText('היי, אני בונה', e.w / 2, 92);
+      g.fillText('עולמות מותג.', e.w / 2, 200);
+    } else if (e.color) {
+      g.fillStyle = e.color; g.beginPath(); g.roundRect(0, 0, e.w, e.h, 10); g.fill();
+      g.shadowColor = 'transparent';
+      g.strokeStyle = fl > 0.3 ? 'rgba(201,162,94,.55)' : 'rgba(21,32,46,.16)'; g.lineWidth = 1.5; g.stroke();
+      g.fillStyle = ink; g.globalAlpha = .7; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "400 21px 'Assistant'"; g.fillText(e.hex, e.w / 2, e.h + 30);
+    } else if (e.id === 'logo') {
+      g.shadowColor = 'transparent';
+      g.fillStyle = ink; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "500 112px 'Cormorant Garamond'"; g.letterSpacing = '24px';
+      g.fillText('SIGNÉ°', e.w / 2 + 12, 96); g.letterSpacing = '0px';
+    } else {
+      g.fillStyle = NOIR; g.beginPath(); g.roundRect(0, 0, e.w, e.h, 8); g.fill();
+      g.shadowColor = 'transparent';
+      g.save(); g.beginPath(); g.roundRect(0, 0, e.w, e.h, 8); g.clip();
+      cover(IMG[e.img].im, 0, 0, e.w, e.h, e.fx, e.fy); g.restore();
+      if (fl > 0) { g.strokeStyle = `rgba(201,162,94,${0.5 * fl})`; g.lineWidth = 1.5; g.beginPath(); g.roundRect(0, 0, e.w, e.h, 8); g.stroke(); }
+    }
+    g.restore();
+
+    if (d.selected && fl === 0) {
+      const a = d.held ? 1 : 1 - smooth(e.t + DRAG + 0.3, e.t + DRAG + 0.55, t);
+      g.save(); g.translate(cx + d.dx, cy + d.dy); g.rotate(d.rot); g.translate(-e.w / 2, -e.h / 2);
+      selection(0, 0, e.w, e.h, a); g.restore();
+    }
+    if (d.held) cur = [cx + d.dx + e.w * 0.5 - 14, cy + d.dy + e.h * 0.5 - 10];
+    const sinceDrop = t - e.t - DRAG;
+    if (sinceDrop >= 0 && sinceDrop < 0.4) guides.push([e, 1 - sinceDrop / 0.4]);
+    if (e.id === 'hello') { fig.ox = d.dx; fig.oy = d.dy; }
+  }
+
+  // --- the signature, piped across the page by the cursor
+  const sp = clamp((t - SIG.t0) / (SIG.t1 - SIG.t0));
+  if (sp > 0) {
+    const n = Math.max(2, Math.round(outCubic(sp) * 0.25 * SIGPTS.length + sp * 0.75 * SIGPTS.length));
+    g.save(); g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = GOLD; g.lineWidth = 11;
+    g.shadowColor = 'rgba(60,40,10,.25)'; g.shadowBlur = 8; g.shadowOffsetY = 4;
+    g.beginPath(); g.moveTo(...SIGPTS[0]);
+    for (let i = 1; i < n; i++) g.lineTo(...SIGPTS[i]);
+    g.stroke();
+    if (sp >= 1) { const [x, y] = SIGPTS[SIGPTS.length - 1]; g.fillStyle = GOLD; g.beginPath(); g.arc(x + 3, y + 10, 11, 0, 7); g.fill(); }
+    g.restore();
+    if (sp < 1) cur = [SIGPTS[n - 1][0], SIGPTS[n - 1][1]];
+  }
+
+  // --- snap guides
+  if (fl === 0) for (const [e, a] of guides) {
+    g.save(); g.globalAlpha = a * 0.8; g.strokeStyle = UI; g.lineWidth = 1.5; g.setLineDash([8, 6]);
+    g.beginPath(); g.moveTo(e.x + e.w / 2, 0); g.lineTo(e.x + e.w / 2, H);
+    g.moveTo(0, e.y); g.lineTo(W, e.y); g.stroke(); g.restore();
+  }
+
+  // --- the figure: hops from seat to seat
+  let i = 0; while (i + 1 < SEATS.length && t >= SEATS[i + 1][0] - HOP) i++;
+  let [, fx, fy, pose] = SEATS[i], lift = 0;
+  if (i > 0 && t < SEATS[i][0]) {                         // in the air, on the way to seat i
+    const u = (t - (SEATS[i][0] - HOP)) / HOP, [, px, py] = SEATS[i - 1];
+    fx = mix(px, fx, u); fy = mix(py, fy, u);
+    lift = Math.sin(u * Math.PI) * 150; pose = 'jump';
+  }
+  if (i === 0) { fx += fig.ox; fy += fig.oy; }
+  const wob = pose === 'jump' ? 0 : Math.sin(t * 2.2) * 0.02;
+  const f = FIG[pose];
+  g.save();
+  g.translate(fx, fy + 6 - lift + (pose === 'jump' ? 40 : 0)); g.rotate(wob);
+  if (fl > 0) { g.shadowColor = `rgba(240,227,206,${0.55 * fl})`; g.shadowBlur = 22; }   // rim light, so the black blazer reads on noir
+  else { g.shadowColor = 'rgba(20,14,8,.25)'; g.shadowBlur = 12; g.shadowOffsetY = 6; }
+  g.drawImage(f.im, -f.ax * f.k, -f.ay * f.k, f.im.width * f.k, f.im.height * f.k);
+  g.restore();
+
+  if (cur && fl === 0) cursor(cur[0], cur[1], 1);
+
+  // --- closing line, once the page has become the world
+  const end = smooth(FLOOD + 0.6, FLOOD + 1.2, t);
+  if (end > 0) {
+    g.save(); g.globalAlpha = end; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'rtl';
+    g.font = "500 54px 'Frank Ruhl Libre'";
+    g.fillText('ככה נראה עולם מותג.', 540, 1560);
+    g.globalAlpha = end * .7; g.font = "300 27px 'Assistant'";
+    g.fillText('Brand Worlds Studio · חגית אנטבי', 540, 1614);
+    g.restore();
+  }
+}
+window.show = show;
+window.ready = ready;
+window.DUR = DUR;
+ready.then(() => {
+  show(0);
+  if (new URLSearchParams(location.search).has('play')) {
+    const t0 = performance.now();
+    (function loop() { show(((performance.now() - t0) / 1000) % (DUR + 1)); requestAnimationFrame(loop); })();
+  }
+});
+</script>
+</body>
+</html>
