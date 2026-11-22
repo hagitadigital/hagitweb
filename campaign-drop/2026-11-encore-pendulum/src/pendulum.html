@@ -34,14 +34,14 @@ const HOURS = [
 ];
 // h = drawn height in px. seat = where the figure goes, measured down from the top of the piece.
 const PIECES = [
-  { id: 'bulle',        name: 'Bulle',        hour: 0, h: 230, pose: 'sit',  seat: 16 },
+  { id: 'bulle',        name: 'Bulle',        hour: 0, h: 230, pose: 'stand', seat: 20 },
   { id: 'halo',         name: 'Halo',         hour: 0, h: 330, pose: 'sit',  seat: 268 },
-  { id: 'deux-gouttes', name: 'Deux Gouttes', hour: 1, h: 420, pose: 'sit',  seat: 366 },
+  { id: 'deux-gouttes', name: 'Deux Gouttes', hour: 1, h: 420, pose: 'wave', seat: 366 },
   { id: 'courant',      name: 'Courant',      hour: 1, h: 420, pose: 'sit',  seat: 350 },
-  { id: 'fil-dor',      name: 'Fil d’or',     hour: 2, h: 400, pose: 'hang', seat: 392 },
-  { id: 'boucle',       name: 'Boucle',       hour: 2, h: 330, pose: 'sit',  seat: 282 },
+  { id: 'fil-dor',      name: 'Fil d’or',     hour: 2, h: 330, pose: 'hang', seat: 323 },
+  { id: 'boucle',       name: 'Boucle',       hour: 2, h: 330, pose: 'wave', seat: 282 },
   { id: 'riviere',      name: 'Rivière',      hour: 3, h: 400, pose: 'sit',  seat: 345 },
-  { id: 'goutte',       name: 'Goutte',       hour: 3, h: 350, pose: 'hang', seat: 344 },
+  { id: 'goutte',       name: 'Goutte',       hour: 3, h: 320, pose: 'hang', seat: 314 },
 ];
 const N = PIECES.length;
 const imgs = {};
@@ -58,8 +58,11 @@ const mod = (a, n) => ((a % n) + n) % n;
 
 // The miniature Hagit: two cutouts. Anchor = hips when sitting, grip hand when hanging (px in the asset).
 const FIG = {
-  sit:  { src: 'figure/sit.png',  ax: 108.5, ay: 273,  k: 0.50 },
-  hang: { src: 'figure/hang.png', ax: 149,   ay: 12.5, k: 0.50 },
+  sit:   { src: 'figure/sit.png',   ax: 166, ay: 303.5, k: 0.39 },   // hands on the seat, ankles crossed
+  wave:  { src: 'figure/wave.png',  ax: 90,  ay: 313.5, k: 0.46 },   // three-quarter, waving
+  stand: { src: 'figure/stand.png', ax: 206, ay: 516.5, k: 0.455 },  // balancing, anchor = feet
+  hang:  { src: 'figure/hang.png',  ax: 149, ay: 12.5,  k: 0.46 },   // anchor = grip hand
+  jump:  { src: 'figure/jump.png',  ax: 164, ay: 525,   k: 0.48 },   // in the air between two pieces
 };
 function figure(pose) {
   const f = FIG[pose];
@@ -104,22 +107,22 @@ function show(tRaw) {
 
   // --- hook, fixed
   g.fillStyle = INK; g.textAlign = 'center'; g.direction = 'rtl';
-  g.font = "500 88px 'Frank Ruhl Libre'";
-  g.fillText('המוצר מתחלף.', 540, 372);
-  g.fillText('אותך עדיין מזהים?', 540, 478);
+  g.font = "500 80px 'Frank Ruhl Libre'";
+  g.fillText('המוצר מתחלף.', 540, 318);
+  g.fillText('אותך עדיין מזהים?', 540, 414);
 
   // --- signature, fixed
   g.direction = 'ltr'; g.globalAlpha = .9;
   g.font = "500 40px 'Cormorant Garamond'"; g.letterSpacing = '10px';
-  g.fillText('ENCORE°', 545, 1580);
+  g.fillText('ENCORE°', 545, 1600);
   g.letterSpacing = '0px'; g.globalAlpha = .62; g.direction = 'rtl';
   g.font = "300 26px 'Heebo'";
-  g.fillText('עולם מותג · Brand Worlds Studio', 540, 1626);
+  g.fillText('עולם מותג · Brand Worlds Studio', 540, 1642);
   g.globalAlpha = 1;
 
   // --- swap envelope around the apex (time in seconds from the nearest apex)
   const dIn = p * HALF, dOut = (1 - p) * HALF;
-  const SW = 0.16, HOP = 0.3;
+  const SW = 0.16, HOP = 0.22;
   let shown = piece, scale = 1, alpha = 1, hop = 0, pose = piece.pose, flash = 0;
   if (dIn < SW) { const e = dIn / SW; scale = 0.78 + 0.22 * (1 - Math.pow(1 - e, 3)) + 0.06 * Math.sin(e * Math.PI); alpha = clamp(e * 2.2); }
   if (dOut < SW) { const e = dOut / SW; shown = piece; scale = 0.86 + 0.14 * e; alpha = clamp(e * 1.6); }
@@ -143,8 +146,11 @@ function show(tRaw) {
   g.drawImage(im, -pw / 2, -ph / 2, pw, ph);
   g.restore();
   g.save();
-  g.translate(0, shown.seat - 6 - hop * 96);
-  g.rotate(th * 0.35 + (pose === 'hang' ? th * 0.5 : 0));   // a little lag, so it reads as alive
+  const air = hop > 0;                                        // mid-swap: she is in the air
+  const lift = pose === 'hang' ? 130 - hop * 50 : 30 - hop * 110;
+  g.translate(0, shown.seat - 6 + (air ? lift : 0));
+  g.rotate(th * 0.35 + (pose === 'hang' ? th * 0.5 : 0));
+  if (air) pose = 'jump';   // a little lag, so it reads as alive
   g.shadowColor = 'rgba(0,0,0,.3)'; g.shadowBlur = 12; g.shadowOffsetY = 5;
   figure(pose);
   g.restore();
@@ -155,7 +161,7 @@ function show(tRaw) {
   const tagA = Math.min(smooth(0.02, 0.2, dIn), smooth(0.02, 0.2, dOut));
   g.save(); g.globalAlpha = tagA * .92; g.fillStyle = INK; g.direction = 'ltr';
   g.font = "500 44px 'Cormorant Garamond'"; g.letterSpacing = '3px';
-  g.fillText(HOURS[piece.hour].t + ' · ' + piece.name, 540, 1478);
+  g.fillText(HOURS[piece.hour].t + ' · ' + piece.name, 540, 1524);
   g.restore();
 }
 window.show = show;
