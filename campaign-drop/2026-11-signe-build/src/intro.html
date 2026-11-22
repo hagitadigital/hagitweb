@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>SIGNÉ° intro reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Heebo:wght@300;900&display=swap">
+<style>
+  html,body{margin:0;background:#111;overflow:hidden}
+  canvas{display:block;width:1080px;height:1920px}
+  .preload{position:fixed;top:0;left:0;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div class="preload">
+  <span style="font-family:'Heebo';font-weight:900">א</span>
+  <span style="font-family:'Heebo';font-weight:300">א</span>
+  <span style="font-family:'Cormorant Garamond';font-weight:500">a</span>
+</div>
+<script>
+// "Hi / I'm Hagit / I build brand worlds / meet SIGNÉ°" in big type that flips between cream and noir,
+// then the parts of the world on a turning carousel, then everything gathers into one ring.
+// Deterministic: window.show(t) draws the frame at t seconds.
+const W = 1080, H = 1920;
+const PAGE = '#F2EBDC', INK = '#15202E', NOIR = '#120E08', GOLD = '#C9A25E', CREAM = '#F0E3CE';
+
+// beats: [start, name]
+const B = { hi: 0, me: 1.0, build: 2.1, meet: 3.6, parts: 5.0, ring: 11.6, end: 15 };
+const DUR = B.end;
+const CARD_STEP = 1.1, CARD_MOVE = 0.45;                 // each card: 0.45s turning in, 0.65s resting
+const CARDS = [
+  { img: 'pour',    he: 'המזיגה', fx: .5,  fy: .5 },    // frame sequence from the site
+  { img: 'product', he: 'האקלר',  fx: .5,  fy: .5 },
+  { img: 'bowl',    he: 'הטעמים', fx: .5,  fy: .5 },
+  { img: 'box',     he: 'הקופסה', fx: .5,  fy: .62 },
+  { img: 'bag',     he: 'השקית',  fx: .42, fy: .5 },
+  { img: 'night',   he: 'החנות',  fx: .5,  fy: .6 },
+];
+const NC = CARDS.length;
+
+const FIG = {
+  sit:   { src: 'figure/sit.png',   ax: 166, ay: 303.5 },
+  wave:  { src: 'figure/wave.png',  ax: 90,  ay: 313.5 },
+  stand: { src: 'figure/stand.png', ax: 206, ay: 516.5 },
+  jump:  { src: 'figure/jump.png',  ax: 164, ay: 525 },
+};
+const FK = { sit: 1, wave: 1.18, stand: 0.96, jump: 1.12 };   // keeps her the same size across poses
+const IMG = {}, POUR = [];
+const load = (o, src) => new Promise(res => { o.im = new Image(); o.im.onload = res; o.im.src = src; });
+const ready = Promise.all([
+  ...['product', 'bowl', 'box', 'bag', 'night'].map(n => load(IMG[n] = {}, 'assets/' + n + '.jpg')),
+  ...Array.from({ length: 35 }, (_, i) => load(POUR[i] = {}, 'assets/pour/' + String(i + 1).padStart(2, '0') + '.jpg')),
+  ...Object.values(FIG).map(f => load(f, f.src)),
+  document.fonts.ready,
+]);
+
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+// ?fmt=45 renders the 4:5 feed version: the same scene, scaled to fit 1080x1350.
+const FEED = new URLSearchParams(location.search).get('fmt') === '45';
+const OUT_H = FEED ? 1350 : H, FIT = FEED ? 1350 / 1500 : 1, FIT_TOP = FEED ? 210 : 0;
+cv.height = OUT_H; cv.style.height = OUT_H + 'px';
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+const mix = (a, b, u) => a + (b - a) * u;
+const inOut = u => { u = clamp(u); return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+const pop = (t, at) => { const u = clamp((t - at) / 0.16); return { a: clamp((t - at) / 0.07), s: 1 + 0.22 * Math.pow(1 - u, 2) }; };
+
+function bg(dark) {
+  g.fillStyle = dark ? NOIR : PAGE; g.fillRect(-600, -600, W + 1200, H + 1200);
+  if (dark) {
+    const sp = g.createRadialGradient(540, 820, 60, 540, 940, 1250);
+    sp.addColorStop(0, 'rgba(201,162,94,.20)'); sp.addColorStop(0.5, 'rgba(120,80,40,.07)'); sp.addColorStop(1, 'rgba(0,0,0,.5)');
+    g.fillStyle = sp; g.fillRect(-600, -600, W + 1200, H + 1200);
+  }
+}
+
+// A word that pops in. Returns the y of its top edge, so the figure can sit on it.
+function word(txt, x, baseline, font, color, t, at, opts = {}) {
+  const p = pop(t, at);
+  g.save(); g.font = font; g.textAlign = 'center'; g.direction = opts.ltr ? 'ltr' : 'rtl';
+  if (opts.spacing) g.letterSpacing = opts.spacing;
+  const m = g.measureText(txt);
+  if (p.a > 0) {
+    g.globalAlpha = p.a; g.fillStyle = color;
+    g.translate(x, baseline - m.actualBoundingBoxAscent / 2); g.scale(p.s, p.s);
+    g.fillText(txt, 0, m.actualBoundingBoxAscent / 2);
+  }
+  g.restore();
+  return { top: baseline - m.actualBoundingBoxAscent, left: x - m.width / 2, right: x + m.width / 2, on: p.a > 0 };
+}
+
+function figure(pose, x, y, k, dark, rot = 0) {
+  const f = FIG[pose], s = k * FK[pose];
+  g.save(); g.translate(x, y); g.rotate(rot);
+  if (dark) { g.shadowColor = 'rgba(240,227,206,.6)'; g.shadowBlur = 24; }       // rim light: the black blazer on noir
+  else { g.shadowColor = 'rgba(20,14,8,.25)'; g.shadowBlur = 14; g.shadowOffsetY = 7; }
+  g.drawImage(f.im, -f.ax * s, -f.ay * s, f.im.width * s, f.im.height * s);
+  g.restore();
+}
+// She hops in place: returns [pose, lift] for a hop of length d starting at `at`.
+function hop(t, at, d, rest, height = 110) {
+  const u = (t - at) / d;
+  return u > 0 && u < 1 ? ['jump', Math.sin(u * Math.PI) * height + 36] : [rest, 0];
+}
+
+function cover(im, x, y, w, h, fx, fy) {
+  const s = Math.max(w / im.width, h / im.height), sw = w / s, sh = h / s;
+  g.drawImage(im, (im.width - sw) * fx, (im.height - sh) * fy, sw, sh, x, y, w, h);
+}
+const cardImage = (c, t) => c.img === 'pour'
+  ? POUR[Math.floor(clamp((t - B.parts) / 2.2) * 34)].im      // the chocolate pours once, then rests on its last frame
+  : IMG[c.img].im;
+
+function squiggle(x0, y0, width, p, lw) {
+  if (p <= 0) return;
+  const n = 120, upto = Math.max(2, Math.round(p * n));
+  g.save(); g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = GOLD; g.lineWidth = lw;
+  g.beginPath();
+  for (let i = 0; i <= upto; i++) {
+    const s = i / n, x = x0 + width * s, y = y0 + Math.sin(s * Math.PI * 5.2) * lw * 2.1 * (1 - s * 0.45) + (s > 0.86 ? Math.pow((s - 0.86) / 0.14, 2) * lw * 3.2 : 0);
+    i ? g.lineTo(x, y) : g.moveTo(x, y);
+  }
+  g.stroke();
+  if (p >= 1) { g.fillStyle = GOLD; g.beginPath(); g.arc(x0 + width + lw * 0.2, y0 + lw * 4.3, lw, 0, 7); g.fill(); }
+  g.restore();
+}
+
+function show(tRaw) {
+  const t = clamp(tRaw, 0, DUR - 0.001);
+  g.setTransform(FIT, 0, 0, FIT, (W - W * FIT) / 2, -FIT_TOP * FIT);
+  const BIG = "900 ", LIGHT = "300 ", HEB = "px 'Heebo'";
+
+  if (t < B.me) {                                   // --- היי
+    bg(false);
+    const w = word('היי', 540, 1060, BIG + 420 + HEB, INK, t, -0.3);      // already there on frame 0
+    figure('wave', w.right - 70, w.top + 14, 0.78, false, Math.sin(t * 9) * 0.05);
+  } else if (t < B.build) {                         // --- אני חגית
+    bg(true);
+    word('אני', 540, 760, LIGHT + 170 + HEB, CREAM, t, B.me);
+    const w = word('חגית', 540, 1090, BIG + 330 + HEB, CREAM, t, B.me + 0.22);
+    const [pose, lift] = hop(t, B.me + 0.2, 0.36, 'stand', 90);
+    figure(pose, w.right - 110, w.top + 12 - lift, 0.62, true);
+  } else if (t < B.meet) {                          // --- בונה עולמות מותג
+    bg(false);
+    const a = word('בונה', 540, 690, LIGHT + 190 + HEB, INK, t, B.build);
+    const b = word('עולמות', 540, 960, BIG + 250 + HEB, INK, t, B.build + 0.4);
+    const c = word('מותג.', 540, 1230, BIG + 250 + HEB, INK, t, B.build + 0.8);
+    // she drops in from above and lands on the bold word as it appears, then hops when the last one lands
+    const land = B.build + 0.4, sx = b.left + 78, sy = b.top + 18;
+    if (t < land) { const u = clamp((t - B.build) / 0.4); figure('jump', sx, mix(-140, sy + 36, u * u), 0.6, false); }
+    else { const [pose, lift] = hop(t, B.build + 0.78, 0.34, 'wave', 90); figure(pose, sx, sy - lift, 0.6, false); }
+  } else if (t < B.parts) {                         // --- קבלו את SIGNÉ°
+    bg(true);
+    word('קבלו את', 540, 760, LIGHT + 120 + HEB, CREAM, t, B.meet);
+    const w = word('SIGNÉ°', 552, 1010, "500 236px 'Cormorant Garamond'", CREAM, t, B.meet + 0.3, { ltr: true, spacing: '26px' });
+    squiggle(250, 1100, 560, clamp((t - B.meet - 0.5) / 0.6), 12);
+    if (w.on) { const [pose, lift] = hop(t, B.meet + 0.3, 0.36, 'sit', 100); figure(pose, w.left + 110, w.top + 20 - lift, 0.58, true); }
+  } else {                                          // --- the parts, then the ring
+    bg(true);
+    const ringU = inOut((t - B.ring) / 1.0);                       // 0 = carousel, 1 = ring
+    const k = Math.min(NC - 1, Math.floor((t - B.parts) / CARD_STEP));
+    const into = (t - B.parts) - k * CARD_STEP;
+    const pos = Math.min(NC - 1, k - 1 + inOut(into / CARD_MOVE)) ;  // which card faces us, continuous
+    const front = t < B.ring ? Math.round(clamp(pos, 0, NC - 1)) : NC - 1;
+    const spin = Math.max(0, t - B.ring) * 0.22;                    // the ring turns slowly
+    const CW = 560, CH = 747, CY = 930, RR = 345, MR = 124;
+
+    const items = CARDS.map((c, i) => {
+      let d = i - pos; d = ((d + NC / 2) % NC + NC) % NC - NC / 2;  // wrap to [-3, 3)
+      const an = d * 0.66, z = Math.cos(an);
+      const car = { x: 540 + Math.sin(an) * 470, y: CY + (1 - z) * 26, w: CW * (0.5 + 0.5 * z) * (0.62 + 0.38 * z), h: CH * (0.62 + 0.38 * z),
+                    shade: clamp((1 - z) * 0.62), a: smooth(-0.45, 0.1, z), r: 14 };
+      const ra = -Math.PI / 2 + i * 2 * Math.PI / NC + spin;
+      const ring = { x: 540 + Math.cos(ra) * RR, y: CY + Math.sin(ra) * RR, w: MR * 2, h: MR * 2, shade: 0, a: 1, r: MR };
+      const o = {}; for (const q in car) o[q] = mix(car[q], ring[q], ringU);
+      return { c, i, z: mix(z, 1, ringU), ...o };
+    }).sort((p, q) => p.z - q.z);
+
+    for (const it of items) {
+      if (it.a <= 0.01) continue;
+      g.save(); g.globalAlpha = it.a;
+      g.shadowColor = 'rgba(0,0,0,.6)'; g.shadowBlur = 40; g.shadowOffsetY = 20;
+      g.fillStyle = NOIR; g.beginPath(); g.roundRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, Math.min(it.r, it.w / 2)); g.fill();
+      g.shadowColor = 'transparent'; g.clip();
+      cover(cardImage(it.c, t), it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, it.c.fx, it.c.fy);
+      g.fillStyle = `rgba(18,14,8,${it.shade})`; g.fillRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h);
+      g.restore();
+      g.save(); g.globalAlpha = it.a * 0.6; g.strokeStyle = GOLD; g.lineWidth = 2;
+      g.beginPath(); g.roundRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, Math.min(it.r, it.w / 2)); g.stroke(); g.restore();
+    }
+
+    if (t < B.ring) {
+      // caption of the card in front, and a counter
+      const capA = Math.min(smooth(CARD_MOVE - 0.15, CARD_MOVE + 0.1, into), k < NC - 1 ? 1 - smooth(CARD_STEP - 0.12, CARD_STEP, into) : 1) * (1 - smooth(B.ring - 0.2, B.ring, t));
+      g.save(); g.globalAlpha = capA; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'rtl';
+      g.font = BIG + 92 + HEB; g.fillText(CARDS[k].he, 540, 1470);
+      g.globalAlpha = capA * 0.6; g.font = LIGHT + 30 + HEB; g.direction = 'ltr';
+      g.fillText(String(k + 1).padStart(2, '0') + ' / ' + String(NC).padStart(2, '0'), 540, 1530);
+      g.restore();
+      g.save(); g.globalAlpha = 0.85; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "500 60px 'Cormorant Garamond'"; g.letterSpacing = '12px'; g.fillText('SIGNÉ°', 546, 330); g.restore();
+      // she hops onto every card as it turns in
+      const [pose, lift] = hop(t, B.parts + k * CARD_STEP + 0.04, 0.44, k % 2 ? 'wave' : 'sit', 130);
+      figure(pose, 540 + (k % 2 ? 150 : -150), CY - CH / 2 + 12 - lift, 0.56, true);
+    } else {
+      // the whole world: logo in the middle of the ring
+      const a = smooth(B.ring + 0.5, B.ring + 1.0, t);
+      g.save(); g.globalAlpha = a; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "500 96px 'Cormorant Garamond'"; g.letterSpacing = '12px'; g.fillText('SIGNÉ°', 546, CY + 46);
+      g.restore();
+      squiggle(430, CY + 86, 220, clamp((t - B.ring - 0.9) / 0.5), 6);
+      const land = B.ring + 0.75;
+      if (t > land - 0.5) {
+        const u = clamp((t - (land - 0.5)) / 0.5);
+        const pose = u < 1 ? 'jump' : 'wave', lift = u < 1 ? Math.sin(u * Math.PI) * 150 + 36 : 0;
+        figure(pose, mix(690, 470, u), mix(CY - CH / 2 + 12, CY - 36, u) - lift, 0.46, true, u < 1 ? 0 : Math.sin(t * 5) * 0.03);
+      } else figure('wave', 690, CY - CH / 2 + 12, 0.56, true);
+      const e = smooth(B.ring + 1.3, B.ring + 1.8, t);
+      g.save(); g.globalAlpha = e; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'rtl';
+      g.font = BIG + 84 + HEB; g.fillText('עולם מותג שלם.', 540, 1500);
+      g.globalAlpha = e * 0.65; g.font = LIGHT + 30 + HEB; g.fillText('Brand Worlds Studio · חגית אנטבי', 540, 1562);
+      g.restore();
+    }
+  }
+}
+window.show = show;
+window.ready = ready;
+window.DUR = DUR;
+ready.then(() => {
+  show(0);
+  if (new URLSearchParams(location.search).has('play')) {
+    const t0 = performance.now();
+    (function loop() { show(((performance.now() - t0) / 1000) % (DUR + 1)); requestAnimationFrame(loop); })();
+  }
+});
+</script>
+</body>
+</html>
