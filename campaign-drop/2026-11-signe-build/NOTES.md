@@ -1,7 +1,7 @@
 # SIGNÉ° — render notes
 
-## v2: intro reel (current)
-- `signe-intro-v2-9x16.mp4` — 1080×1920, 30fps, 15s, with the sound bed. `signe-intro-v2-4x5.mp4` — 1080×1350.
+## v3: intro reel (current; v2 had a hop on every beat, now two jumps in total)
+- `signe-intro-v3-9x16.mp4` — 1080×1920, 30fps, 15s, with the sound bed. `signe-intro-v3-4x5.mp4` — 1080×1350.
 - Source: `src/intro.html`. Beats (table `B`): "היי" 0s, "אני חגית" 1.0s, "בונה עולמות מותג" 2.1s, "קבלו את SIGNÉ°" 3.6s,
   carousel of six parts 5.0s (1.1s per card; the first card plays the pour frame sequence from the site), ring 11.6s.
 - Render: `node src/render-intro.cjs <frames> [all] [45]`, `python src/sound-intro.py bed.wav`, then mux as below.

@@ -139,7 +139,7 @@ function show(tRaw) {
     bg(true);
     word('אני', 540, 760, LIGHT + 170 + HEB, CREAM, t, B.me);
     const w = word('חגית', 540, 1090, BIG + 330 + HEB, CREAM, t, B.me + 0.22);
-    const [pose, lift] = hop(t, B.me + 0.2, 0.36, 'stand', 90);
+    const pose = 'stand', lift = 0;                        // she just stands there, no hop
     figure(pose, w.right - 110, w.top + 12 - lift, 0.62, true);
   } else if (t < B.meet) {                          // --- בונה עולמות מותג
     bg(false);
@@ -149,13 +149,13 @@ function show(tRaw) {
     // she drops in from above and lands on the bold word as it appears, then hops when the last one lands
     const land = B.build + 0.4, sx = b.left + 78, sy = b.top + 18;
     if (t < land) { const u = clamp((t - B.build) / 0.4); figure('jump', sx, mix(-140, sy + 36, u * u), 0.6, false); }
-    else { const [pose, lift] = hop(t, B.build + 0.78, 0.34, 'wave', 90); figure(pose, sx, sy - lift, 0.6, false); }
+    else figure('wave', sx, sy, 0.6, false, Math.sin(t * 6) * 0.025);
   } else if (t < B.parts) {                         // --- קבלו את SIGNÉ°
     bg(true);
     word('קבלו את', 540, 760, LIGHT + 120 + HEB, CREAM, t, B.meet);
     const w = word('SIGNÉ°', 552, 1010, "500 236px 'Cormorant Garamond'", CREAM, t, B.meet + 0.3, { ltr: true, spacing: '26px' });
     squiggle(250, 1100, 560, clamp((t - B.meet - 0.5) / 0.6), 12);
-    if (w.on) { const [pose, lift] = hop(t, B.meet + 0.3, 0.36, 'sit', 100); figure(pose, w.left + 110, w.top + 20 - lift, 0.58, true); }
+    if (w.on) figure('sit', w.left + 110, w.top + 20, 0.58, true);
   } else {                                          // --- the parts, then the ring
     bg(true);
     const ringU = inOut((t - B.ring) / 1.0);                       // 0 = carousel, 1 = ring
@@ -200,9 +200,8 @@ function show(tRaw) {
       g.restore();
       g.save(); g.globalAlpha = 0.85; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'ltr';
       g.font = "500 60px 'Cormorant Garamond'"; g.letterSpacing = '12px'; g.fillText('SIGNÉ°', 546, 330); g.restore();
-      // she hops onto every card as it turns in
-      const [pose, lift] = hop(t, B.parts + k * CARD_STEP + 0.04, 0.44, k % 2 ? 'wave' : 'sit', 130);
-      figure(pose, 540 + (k % 2 ? 150 : -150), CY - CH / 2 + 12 - lift, 0.56, true);
+      // she stays seated on the front of the carousel while the cards change under her; one wave halfway
+      figure(k >= 3 ? 'wave' : 'sit', 690, CY - CH / 2 + 12, 0.56, true, Math.sin(t * 2.4) * 0.02);
     } else {
       // the whole world: logo in the middle of the ring
       const a = smooth(B.ring + 0.5, B.ring + 1.0, t);
