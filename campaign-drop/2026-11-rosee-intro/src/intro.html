@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<title>ROSÉE° intro reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Heebo:wght@300;900&display=swap">
+<style>
+  html,body{margin:0;background:#111;overflow:hidden}
+  canvas{display:block;width:1080px;height:1920px}
+  .preload{position:fixed;top:0;left:0;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div class="preload">
+  <span style="font-family:'Heebo';font-weight:900">א</span>
+  <span style="font-family:'Heebo';font-weight:300">א</span>
+  <span style="font-family:'Cormorant Garamond';font-weight:500">a</span>
+</div>
+<script>
+// "Hi / I'm Hagit / I build brand worlds / meet ROSÉE°" in big type that flips between the studio page and the world,
+// then the parts of the world on a turning carousel, then everything gathers into one ring.
+// Deterministic: window.show(t) draws the frame at t seconds.
+const W = 1080, H = 1920;
+const PAGE = '#F2EBDC', INK = '#15202E';                                   // the studio's own page, same in every world
+const NOIR = '#FBF6EE', GOLD = '#C28A5A', CREAM = '#3B2E33';               // this world: background, accent line, ink
+const ROSE = '#E8B4B8', DEEP = '#C9878E', PLUM = '#E5C4CB', CREME = '#F7F0E6';
+const LOGO = 'ROSÉE°', LOGO_STAND = 4;                                      // she stands on the flat top of the E
+
+// beats: [start, name]
+const B = { hi: 0, me: 1.0, build: 2.1, meet: 3.6, parts: 5.0, ring: 12.0, end: 15.4 };
+const DUR = B.end;
+const CARD_STEP = 1.0, CARD_MOVE = 0.42;                 // each card: 0.42s turning in, 0.58s resting
+// The envelope: every card is one layer of the work, shown through this world.
+const CARDS = [
+  { he: 'אסטרטגיה', kind: 'strategy' },
+  { he: 'שפה',      kind: 'language' },
+  { he: 'צבעים',    kind: 'colors' },
+  { he: 'אריזה',    kind: 'img', img: 'bag', fx: .5, fy: .5 },
+  { he: 'אתר',      kind: 'site' },
+  { he: 'רשתות',    kind: 'social' },
+  { he: 'סרטונים',  kind: 'video' },                     // the falling-drop frame sequence from the site
+];
+const NC = CARDS.length;
+
+const FIG = {
+  // ay = the line she actually rests on: under the palms when sitting, the soles when standing (measured in the asset)
+  sit:   { src: 'figure/sit.png',   ax: 166, ay: 305 },
+  wave:  { src: 'figure/wave.png',  ax: 92,  ay: 314 },
+  stand: { src: 'figure/stand.png', ax: 206, ay: 518 },
+  jump:  { src: 'figure/jump.png',  ax: 164, ay: 525 },
+};
+const FK = { sit: 1, wave: 1.18, stand: 0.96, jump: 1.12 };   // keeps her the same size across poses
+const IMG = {}, POUR = [];
+const load = (o, src) => new Promise(res => { o.im = new Image(); o.im.onload = res; o.im.src = src; });
+const ready = Promise.all([
+  ...['brume', 'reveil', 'voile', 'lumiere', 'nuit', 'bag', 'box-card', 'shelf', 'trousse', 'site'].map(n => load(IMG[n] = {}, 'assets/' + n + '.jpg')),
+  ...Array.from({ length: 40 }, (_, i) => load(POUR[i] = {}, 'assets/seq/' + String(i + 1).padStart(2, '0') + '.jpg')),
+  ...Object.values(FIG).map(f => load(f, f.src)),
+  document.fonts.ready,
+]);
+
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+// ?fmt=45 renders the 4:5 feed version: the same scene, scaled to fit 1080x1350.
+const FEED = new URLSearchParams(location.search).get('fmt') === '45';
+const OUT_H = FEED ? 1350 : H, FIT = FEED ? 1350 / 1500 : 1, FIT_TOP = FEED ? 210 : 0;
+cv.height = OUT_H; cv.style.height = OUT_H + 'px';
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const smooth = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+const mix = (a, b, u) => a + (b - a) * u;
+const inOut = u => { u = clamp(u); return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+const pop = (t, at) => { const u = clamp((t - at) / 0.16); return { a: clamp((t - at) / 0.07), s: 1 + 0.22 * Math.pow(1 - u, 2) }; };
+
+function bg(dark) {
+  g.fillStyle = dark ? NOIR : PAGE; g.fillRect(-600, -600, W + 1200, H + 1200);
+  if (dark) {                                  // the world: a dawn sky, plum at the edges clearing to cream
+    const sp = g.createRadialGradient(540, 860, 80, 540, 960, 1200);
+    sp.addColorStop(0, 'rgba(255,255,255,.85)'); sp.addColorStop(0.5, 'rgba(247,240,230,.5)'); sp.addColorStop(1, 'rgba(229,196,203,.95)');
+    g.fillStyle = sp; g.fillRect(-600, -600, W + 1200, H + 1200);
+  }
+}
+
+// Centre and top edge of one letter of a centred word, so the figure can rest exactly on that letter.
+function glyph(txt, i, x, baseline, font, o = {}) {
+  g.save(); g.font = font; if (o.spacing) g.letterSpacing = o.spacing;
+  const wd = q => g.measureText(q).width, full = wd(txt), before = wd(txt.slice(0, i)), cw = wd(txt.slice(0, i + 1)) - before;
+  const top = baseline - g.measureText(txt[i]).actualBoundingBoxAscent;
+  g.restore();
+  return { cx: o.ltr ? x - full / 2 + before + cw / 2 : x + full / 2 - before - cw / 2, top, w: cw };
+}
+
+// A word that pops in. Returns its box, and at(i) = the box of its i-th letter.
+function word(txt, x, baseline, font, color, t, at, opts = {}) {
+  const p = pop(t, at);
+  g.save(); g.font = font; g.textAlign = 'center'; g.direction = opts.ltr ? 'ltr' : 'rtl';
+  if (opts.spacing) g.letterSpacing = opts.spacing;
+  const m = g.measureText(txt);
+  if (p.a > 0) {
+    g.globalAlpha = p.a; g.fillStyle = color;
+    g.translate(x, baseline - m.actualBoundingBoxAscent / 2); g.scale(p.s, p.s);
+    g.fillText(txt, 0, m.actualBoundingBoxAscent / 2);
+  }
+  g.restore();
+  return { top: baseline - m.actualBoundingBoxAscent, left: x - m.width / 2, right: x + m.width / 2, on: p.a > 0,
+           at: i => glyph(txt, i, x, baseline, font, opts) };
+}
+
+function figure(pose, x, y, k, dark, rot = 0) {
+  const f = FIG[pose], s = k * FK[pose];
+  g.save(); g.translate(x, y); g.rotate(rot);
+  { g.shadowColor = 'rgba(20,14,8,.25)'; g.shadowBlur = 14; g.shadowOffsetY = 7; }
+  g.drawImage(f.im, -f.ax * s, -f.ay * s, f.im.width * s, f.im.height * s);
+  g.restore();
+}
+// She hops in place: returns [pose, lift] for a hop of length d starting at `at`.
+function hop(t, at, d, rest, height = 110) {
+  const u = (t - at) / d;
+  return u > 0 && u < 1 ? ['jump', Math.sin(u * Math.PI) * height + 36] : [rest, 0];
+}
+
+function cover(im, x, y, w, h, fx, fy) {
+  const s = Math.max(w / im.width, h / im.height), sw = w / s, sh = h / s;
+  g.drawImage(im, (im.width - sw) * fx, (im.height - sh) * fy, sw, sh, x, y, w, h);
+}
+// --- designed cards, drawn once into their own canvases (840x1120)
+const CARD = {};
+function makeCards() {
+  const mk = draw => { const c = document.createElement('canvas'); c.width = 840; c.height = 1120; const x = c.getContext('2d'); draw(x); return c; };
+  const base = x => { x.fillStyle = CREME; x.fillRect(0, 0, 840, 1120);
+    const r = x.createLinearGradient(0, 0, 0, 1120); r.addColorStop(0, 'rgba(229,196,203,.75)'); r.addColorStop(0.6, 'rgba(247,240,230,0)');
+    x.fillStyle = r; x.fillRect(0, 0, 840, 1120); };
+  // the mark of the world: a copper dawn arc with hour ticks
+  const arc = (x, cx, cy, r) => { x.save(); x.strokeStyle = GOLD; x.lineWidth = 3; x.beginPath(); x.arc(cx, cy, r, Math.PI, 0); x.stroke();
+    for (let i = 0; i <= 8; i++) { const an = Math.PI + i * Math.PI / 8; x.beginPath(); x.moveTo(cx + Math.cos(an) * (r + 8), cy + Math.sin(an) * (r + 8)); x.lineTo(cx + Math.cos(an) * (r + 24), cy + Math.sin(an) * (r + 24)); x.stroke(); }
+    x.restore(); };
+
+  CARD.strategy = mk(x => { base(x);
+    x.fillStyle = GOLD; x.textAlign = 'center'; x.direction = 'rtl'; x.font = "300 44px 'Heebo'"; x.fillText('ההבטחה', 420, 290);
+    x.fillStyle = CREAM; x.font = "900 104px 'Heebo'";
+    x.fillText('לא מוכרים סרום.', 420, 520);
+    x.fillStyle = DEEP; x.fillText('מוכרים בוקר.', 420, 660);
+    arc(x, 420, 930, 110); });
+
+  CARD.language = mk(x => { base(x);                       // every product has an hour, and the hour comes before the name
+    arc(x, 420, 470, 230);
+    x.fillStyle = CREAM; x.textAlign = 'center'; x.direction = 'ltr'; x.font = "500 190px 'Cormorant Garamond'"; x.fillText('06:15', 420, 640);
+    x.font = "500 78px 'Cormorant Garamond'"; x.fillText('Le Réveil', 420, 770);
+    x.strokeStyle = GOLD; x.lineWidth = 2; x.setLineDash([4, 8]); x.beginPath(); x.moveTo(250, 820); x.lineTo(590, 820); x.stroke(); x.setLineDash([]);
+    x.fillStyle = '#6E5A61'; x.direction = 'rtl'; x.font = "300 50px 'Heebo'"; x.fillText('סרום בוקר', 420, 900);
+    x.fillStyle = GOLD; x.font = "300 34px 'Heebo'"; x.fillText('לכל מוצר שעה', 420, 1030); });
+
+  CARD.colors = mk(x => { base(x);
+    [[PLUM, 'שזיף של לפנות בוקר'], [ROSE, 'זכוכית ורודה'], [DEEP, 'ורוד עמוק'], [GOLD, 'נחושת']].forEach(([c, n], i) => {
+      x.fillStyle = c; x.beginPath(); x.roundRect(90, 190 + i * 196, 660, 170, 14); x.fill();
+      x.fillStyle = i < 2 ? CREAM : '#fff'; x.textAlign = 'right'; x.direction = 'rtl'; x.font = "900 46px 'Heebo'"; x.fillText(n, 710, 290 + i * 196); });
+    x.fillStyle = CREAM; x.globalAlpha = .7; x.textAlign = 'center'; x.direction = 'rtl'; x.font = "300 36px 'Heebo'"; x.fillText('צבעים של שעה אחת', 420, 1040); });
+
+  CARD.site = mk(x => { x.fillStyle = CREME; x.fillRect(0, 0, 840, 1120);
+    const im = IMG.site.im, w = 760, h = w * im.height / im.width;                  // a phone-size screenshot of the world's site
+    x.save(); x.beginPath(); x.roundRect(40, 60, w, 1010, 34); x.clip();
+    x.drawImage(im, 40, 60 + 64, w, h); x.fillStyle = '#fff'; x.fillRect(40, 60, w, 64);
+    x.fillStyle = 'rgba(59,46,51,.09)'; x.beginPath(); x.roundRect(150, 76, 540, 34, 17); x.fill();
+    x.fillStyle = 'rgba(59,46,51,.75)'; x.textAlign = 'center'; x.direction = 'ltr'; x.font = "300 22px 'Heebo'"; x.fillText('hagitantebi.co.il/rosee', 420, 101);
+    x.restore(); x.strokeStyle = GOLD; x.lineWidth = 3; x.beginPath(); x.roundRect(40, 60, w, 1010, 34); x.stroke(); });
+
+  CARD.social = mk(x => { base(x);
+    x.fillStyle = CREAM; x.textAlign = 'left'; x.direction = 'ltr'; x.font = "500 46px 'Cormorant Garamond'"; x.letterSpacing = '8px'; x.fillText(LOGO, 150, 128); x.letterSpacing = '0px';
+    x.strokeStyle = GOLD; x.lineWidth = 3; x.beginPath(); x.arc(92, 112, 38, 0, 7); x.stroke(); x.fillStyle = ROSE; x.beginPath(); x.arc(92, 112, 14, 0, 7); x.fill();
+    const tiles = ['brume', 'bag', 'reveil', 'shelf', 'lumiere', 'box-card', 'voile', 'trousse', 'nuit'], sz = 252, gap = 12;
+    tiles.forEach((n, i) => { const im = IMG[n].im, px = 30 + (i % 3) * (sz + gap), py = 200 + Math.floor(i / 3) * (sz + gap), sc = Math.max(sz / im.width, sz / im.height);
+      x.drawImage(im, (im.width - sz / sc) / 2, (im.height - sz / sc) * 0.5, sz / sc, sz / sc, px, py, sz, sz); });
+    x.fillStyle = CREAM; x.globalAlpha = .6; x.textAlign = 'center'; x.font = "300 30px 'Heebo'"; x.direction = 'rtl'; x.fillText('אותו עולם, גם בפיד', 420, 1060); });
+}
+function cardImage(c, i, t) {
+  if (c.kind === 'img') return IMG[c.img].im;
+  if (c.kind === 'video') return POUR[Math.floor(clamp((t - B.parts - i * CARD_STEP + 0.2) / 3.0) * 39)].im;   // plays when its card arrives
+  return CARD[c.kind];
+}
+
+function squiggle(x0, y0, width, p, lw) {       // this world's flourish: a copper hairline that opens from the centre, a dew drop on it
+  if (p <= 0) return;
+  const cx = x0 + width / 2, half = width / 2 * Math.min(1, p * 1.3), r = lw * 1.5 * Math.min(1, p * 1.6);
+  g.save(); g.strokeStyle = GOLD; g.lineWidth = Math.max(2, lw / 3.5); g.lineCap = 'round';
+  g.beginPath(); g.moveTo(cx - half, y0); g.lineTo(cx + half, y0); g.stroke();
+  const gr = g.createRadialGradient(cx - r * 0.35, y0 - r * 0.4, r * 0.1, cx, y0, r);
+  gr.addColorStop(0, '#FFF7F4'); gr.addColorStop(0.45, '#F2C9CB'); gr.addColorStop(1, DEEP);
+  g.fillStyle = gr; g.beginPath(); g.arc(cx, y0, r, 0, 7); g.fill();
+  g.restore();
+}
+
+function show(tRaw) {
+  const t = clamp(tRaw, 0, DUR - 0.001);
+  g.setTransform(FIT, 0, 0, FIT, (W - W * FIT) / 2, -FIT_TOP * FIT);
+  const BIG = "900 ", LIGHT = "300 ", HEB = "px 'Heebo'";
+
+  if (t < B.me) {                                   // --- היי
+    bg(false);
+    const w = word('היי', 540, 1060, BIG + 420 + HEB, INK, t, -0.3);      // already there on frame 0
+    const l = w.at(0);                                   // on the flat top of ה
+    figure('wave', l.cx, l.top, 0.78, false);
+  } else if (t < B.build) {                         // --- אני חגית
+    bg(true);
+    word('אני', 540, 760, LIGHT + 170 + HEB, CREAM, t, B.me);
+    const w = word('חגית', 540, 1090, BIG + 330 + HEB, CREAM, t, B.me + 0.22);
+    const l = w.at(0);                                   // sitting on ח, legs in its opening
+    figure('sit', l.cx, l.top, 0.62, true);
+  } else if (t < B.meet) {                          // --- בונה עולמות מותג
+    bg(false);
+    const a = word('בונה', 540, 690, LIGHT + 190 + HEB, INK, t, B.build);
+    const b = word('עולמות', 540, 960, BIG + 250 + HEB, INK, t, B.build + 0.4);
+    const c = word('מותג.', 540, 1230, BIG + 250 + HEB, INK, t, B.build + 0.8);
+    // she drops in from above and lands on the bold word as it appears, then hops when the last one lands
+    const l = b.at(5), land = B.build + 0.4, sx = l.cx, sy = l.top;      // on the flat top of ת
+    if (t < land) { const u = clamp((t - B.build) / 0.4); figure('jump', sx, mix(-140, sy + 36, u * u), 0.6, false); }
+    else figure('wave', sx, sy, 0.6, false);
+  } else if (t < B.parts) {                         // --- קבלו את <the world>
+    bg(true);
+    word('קבלו את', 540, 580, LIGHT + 120 + HEB, CREAM, t, B.meet);
+    const w = word(LOGO, 552, 1010, "500 236px 'Cormorant Garamond'", CREAM, t, B.meet + 0.3, { ltr: true, spacing: '26px' });
+    squiggle(250, 1100, 560, clamp((t - B.meet - 0.5) / 0.6), 12);
+    if (w.on) { const l = w.at(LOGO_STAND); figure('stand', l.cx - 8, l.top, 0.5, true); }     // standing on the E, so the name stays readable
+  } else {                                          // --- the parts, then the ring
+    bg(true);
+    const ringU = inOut((t - B.ring) / 1.0);                       // 0 = carousel, 1 = ring
+    const k = Math.min(NC - 1, Math.floor((t - B.parts) / CARD_STEP));
+    const into = (t - B.parts) - k * CARD_STEP;
+    const pos = Math.min(NC - 1, k - 1 + inOut(into / CARD_MOVE)) ;  // which card faces us, continuous
+    const front = t < B.ring ? Math.round(clamp(pos, 0, NC - 1)) : NC - 1;
+    const spin = Math.max(0, t - B.ring) * 0.22;                    // the ring turns slowly
+    const CW = 560, CH = 747, CY = 930, RR = 350, MR = 110;
+
+    const items = CARDS.map((c, i) => {
+      let d = i - pos; d = ((d + NC / 2) % NC + NC) % NC - NC / 2;  // wrap to [-3, 3)
+      const an = d * 0.66, z = Math.cos(an);
+      const car = { x: 540 + Math.sin(an) * 470, y: CY + (1 - z) * 26, w: CW * (0.5 + 0.5 * z) * (0.62 + 0.38 * z), h: CH * (0.62 + 0.38 * z),
+                    shade: clamp((1 - z) * 0.62), a: smooth(-0.45, 0.1, z), r: 14 };
+      const ra = -Math.PI / 2 + i * 2 * Math.PI / NC + spin;
+      const ring = { x: 540 + Math.cos(ra) * RR, y: CY + Math.sin(ra) * RR, w: MR * 2, h: MR * 2, shade: 0, a: 1, r: MR };
+      const o = {}; for (const q in car) o[q] = mix(car[q], ring[q], ringU);
+      return { c, i, z: mix(z, 1, ringU), ...o };
+    }).sort((p, q) => p.z - q.z);
+
+    for (const it of items) {
+      if (it.a <= 0.01) continue;
+      g.save(); g.globalAlpha = it.a;
+      g.shadowColor = 'rgba(120,70,80,.28)'; g.shadowBlur = 40; g.shadowOffsetY = 20;
+      g.fillStyle = NOIR; g.beginPath(); g.roundRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, Math.min(it.r, it.w / 2)); g.fill();
+      g.shadowColor = 'transparent'; g.clip();
+      cover(cardImage(it.c, it.i, t), it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, it.c.fx ?? .5, it.c.fy ?? .5);
+      g.fillStyle = `rgba(251,246,238,${it.shade})`; g.fillRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h);
+      g.restore();
+      g.save(); g.globalAlpha = it.a * 0.6; g.strokeStyle = GOLD; g.lineWidth = 2;
+      g.beginPath(); g.roundRect(it.x - it.w / 2, it.y - it.h / 2, it.w, it.h, Math.min(it.r, it.w / 2)); g.stroke(); g.restore();
+    }
+
+    if (t < B.ring) {
+      // caption of the card in front, and a counter
+      const capA = Math.min(smooth(CARD_MOVE - 0.15, CARD_MOVE + 0.1, into), k < NC - 1 ? 1 - smooth(CARD_STEP - 0.12, CARD_STEP, into) : 1) * (1 - smooth(B.ring - 0.2, B.ring, t));
+      g.save(); g.globalAlpha = capA; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'rtl';
+      g.font = BIG + 92 + HEB; g.fillText(CARDS[k].he, 540, 1470);
+      g.globalAlpha = capA * 0.6; g.font = LIGHT + 30 + HEB; g.direction = 'ltr';
+      g.fillText(String(k + 1).padStart(2, '0') + ' / ' + String(NC).padStart(2, '0'), 540, 1530);
+      g.restore();
+      g.save(); g.globalAlpha = 0.85; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "500 60px 'Cormorant Garamond'"; g.letterSpacing = '12px'; g.fillText(LOGO, 546, 330); g.restore();
+      // she stays seated on the front of the carousel while the cards change under her; one wave halfway
+      figure(k >= 4 ? 'wave' : 'sit', 690, CY - CH / 2, 0.56, true);
+    } else {
+      // the whole world: logo in the middle of the ring
+      const a = smooth(B.ring + 0.5, B.ring + 1.0, t);
+      g.save(); g.globalAlpha = a; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'ltr';
+      g.font = "500 96px 'Cormorant Garamond'"; g.letterSpacing = '12px'; g.fillText(LOGO, 546, CY + 46);
+      g.restore();
+      squiggle(430, CY + 86, 220, clamp((t - B.ring - 0.9) / 0.5), 6);
+      const land = B.ring + 0.75, ln = glyph(LOGO, LOGO_STAND, 546, CY + 46, "500 96px 'Cormorant Garamond'", { ltr: true, spacing: '12px' });
+      if (t > land - 0.5) {
+        const u = clamp((t - (land - 0.5)) / 0.5);
+        const pose = u < 1 ? 'jump' : 'stand', lift = u < 1 ? Math.sin(u * Math.PI) * 150 + 36 : 0;
+        figure(pose, mix(690, ln.cx - 6, u), mix(CY - CH / 2, ln.top, u) - lift, 0.4, true);
+      } else figure('wave', 690, CY - CH / 2, 0.56, true);
+      const e = smooth(B.ring + 1.3, B.ring + 1.8, t);
+      g.save(); g.globalAlpha = e; g.fillStyle = CREAM; g.textAlign = 'center'; g.direction = 'rtl';
+      g.font = BIG + 84 + HEB; g.fillText('עולם מותג שלם.', 540, 1500);
+      g.globalAlpha = e * 0.65; g.font = LIGHT + 30 + HEB; g.fillText('Brand Worlds Studio · חגית אנטבי', 540, 1562);
+      g.restore();
+    }
+  }
+}
+window.show = show;
+window.ready = ready.then(makeCards);
+window.DUR = DUR;
+window.ready.then(() => {
+  show(0);
+  if (new URLSearchParams(location.search).has('play')) {
+    const t0 = performance.now();
+    (function loop() { show(((performance.now() - t0) / 1000) % (DUR + 1)); requestAnimationFrame(loop); })();
+  }
+});
+</script>
+</body>
+</html>
