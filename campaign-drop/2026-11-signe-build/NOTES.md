@@ -1,11 +1,15 @@
 # SIGNÉ° — render notes
 
-## v4: intro reel (current). Two jumps in total; the figure rests on the exact top of one letter per word (`glyph()`)
-- `signe-intro-v4-9x16.mp4` — 1080×1920, 30fps, 15s, with the sound bed. `signe-intro-v4-4x5.mp4` — 1080×1350.
+## v5: intro reel, envelope version (current)
+- `signe-intro-v5-envelope-9x16.mp4` — 1080×1920, 30fps, 15.4s, with the sound bed. `signe-intro-v5-envelope-4x5.mp4` — 1080×1350.
+- `signe-intro-v4-*.mp4` — the previous version: same intro and ring, carousel of six things from the world instead of the envelope.
 - Source: `src/intro.html`. Beats (table `B`): "היי" 0s, "אני חגית" 1.0s, "בונה עולמות מותג" 2.1s, "קבלו את SIGNÉ°" 3.6s,
-  carousel of six parts 5.0s (1.1s per card; the first card plays the pour frame sequence from the site), ring 11.6s.
+  carousel 5.0s (seven cards, 1.0s each), ring 12.0s.
+- Carousel cards (`CARDS`): strategy, language, colours, packaging, site, social, videos. Strategy, colours, site and social are
+  drawn in `makeCards()`; the strategy line and the colours come from `signe/brand-book.html`; the site card is a phone-size
+  screenshot of `signe/index.html`; the social card is a mock grid of the world's own photos; videos plays the pour frame sequence.
+- The figure rests on the exact top of one letter per word (`glyph()`); two jumps in total.
 - Render: `node src/render-intro.cjs <frames> [all] [45]`, `python src/sound-intro.py bed.wav`, then mux as below.
-- Extra assets: `src/assets/pour/` (35 frames from `signe/assets/pour`, cropped to 3:4), `src/assets/bowl.jpg`.
 
 ## v1: build-a-world on an editor page
 

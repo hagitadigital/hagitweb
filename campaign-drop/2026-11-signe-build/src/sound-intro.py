@@ -3,7 +3,7 @@ a low bell when everything gathers into the ring. Synthesised. Usage: python sou
 import sys, wave
 import numpy as np
 
-SR, DUR = 48000, 15.0
+SR, DUR = 48000, 15.4
 n = int(SR * DUR)
 out = np.zeros(n)
 
@@ -27,9 +27,9 @@ def bell(f, amp, decay):
     return s * amp * np.minimum(1, t / 0.004)
 
 for t in (0.02, 1.0, 1.22, 2.1, 2.5, 2.9, 3.6, 3.9): add(thump(), t)          # words
-for k in range(6): add(snap(520 + 60 * k), 5.0 + k * 1.1 + 0.4)                # cards
+for k in range(7): add(snap(520 + 50 * k), 5.0 + k * 1.0 + 0.38)                # cards
 add(bell(1318.5, 0.09, 3.0), 4.4)                                              # the signature under the logo
-for f, a in ((220.0, 0.22), (329.6, 0.16), (659.3, 0.10)): add(bell(f, a, 1.5), 12.4)   # the whole world
+for f, a in ((220.0, 0.22), (329.6, 0.16), (659.3, 0.10)): add(bell(f, a, 1.5), 12.8)   # the whole world
 
 out = np.tanh(out * 1.1) * 0.8
 pcm = (np.stack([out, out], 1) * 32767).astype('<i2')
