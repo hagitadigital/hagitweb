@@ -33,3 +33,5 @@ rolls right to left across the whole reel; the five frames run along the bottom;
 A new take needs new times: `DUR`, `T` and `CAPSF` at the top of `plates.html`, and `CUT` in `final.js`
 (find the pauses with ffmpeg `silencedetect`). The stand-alone plates (`P1`–`P6`, `GUIDE-animatic`) are from before v2.
 `SITES-PRESENTER-v1-9x16.mp4` is the first cut, kept for comparison.
+`SITES-PRESENTER-v3-music-9x16.mp4`: v2 with music, built by `sh src/music.sh <track>`. Track: «Slate Hour»
+(`brandworld_ad/Slate Hour.mp3`, the one stored with the world films). Quiet under the voice, up during the beat in scene 4.
