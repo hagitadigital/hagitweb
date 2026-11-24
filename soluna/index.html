@@ -3,25 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SOLUNA° · בית חליטות לשעות היום</title>
+<title>SOLUNA° · חליטות למצב רוח</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="SOLUNA° — עולם מותג קונספטואלי של Brand Worlds Studio: חנות חליטות אונליין שבה כל שעה ביום צובעת את המים בצבע אחר. הדגמת תיק עבודות, לא מוצר למכירה.">
+<meta name="description" content="SOLUNA° — עולם מותג קונספטואלי של Brand Worlds Studio: חנות חליטות אונליין שבה כל מצב רוח צובע את המים בצבע אחר. פירמידות נייר מקופלות בקומקום שקוף. הדגמת תיק עבודות, לא מוצר למכירה.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Heebo:wght@300;400;500&family=Spline+Sans+Mono:wght@400&display=swap">
 <style>
 /* Layout: a clear glass of water fills the screen (live fluid canvas); the shop is built on top of it:
-   shopfront → glass shelves → counter → bag. One look, light, by choice. */
+   shopfront → mood shelves → counter → bag, then the world itself scrolls on below. One look, light, by choice. */
 :root{
   --water:#EEF3F1;
   --ink:#16222A;
   --ink-soft:#4A5A62;
   --brass:#B08A45;
   --brass-hi:#D9BE84;
-  --glass:rgba(255,255,255,.42);
-  --glass-line:rgba(255,255,255,.75);
-  --frost:rgba(246,249,248,.78);
-  --dawn:#D98A0E; --day:#C9B04A; --dusk:#A3123A; --night:#1B3AA8;
+  --frost:rgba(246,249,248,.8);
+  --fresh:#5FA35A; --clarity:#E08A12; --calm:#2443B8; --joy:#B3143F;
   --he-serif:"Frank Ruhl Libre","David",serif;
   --he-sans:"Heebo","Arial Hebrew",system-ui,sans-serif;
   --latin:"Fraunces","Georgia",serif;
@@ -29,14 +27,15 @@
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+html{scroll-behavior:smooth}
 body{background:var(--water);color:var(--ink);font-family:var(--he-sans);font-weight:300;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 body.locked{overflow:hidden}
-img{max-width:100%;display:block}
+img,video{max-width:100%;display:block}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .mono{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.latin{font-family:var(--latin);font-style:italic;font-weight:300}
 
 /* ---------- the glass of water ---------- */
 #water,#fx{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
@@ -59,24 +58,21 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .word sup{font-size:.42em;letter-spacing:0;vertical-align:.9em}
 .fascia .mono{color:var(--ink-soft);direction:ltr}
 .rule{width:min(520px,82vw);height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
-
 .vitrine{position:relative;width:min(560px,100%,52svh);aspect-ratio:5/4;border-radius:999px 999px 6px 6px / 46% 46% 6px 6px;
   padding:10px;background:linear-gradient(160deg,var(--brass-hi),var(--brass) 40%,#8c6a2e);box-shadow:0 30px 60px -30px rgba(22,34,42,.35)}
 .vitrine .pane{position:relative;height:100%;border-radius:inherit;overflow:hidden;
   background:radial-gradient(90% 70% at 50% 100%,#FFFFFF 0%,transparent 70%),linear-gradient(180deg,#F4F8F7 0%,#E4ECE9 100%);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 0 60px rgba(255,255,255,.5);backdrop-filter:blur(2px)}
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 0 60px rgba(255,255,255,.5)}
 .pane::after{content:"";position:absolute;inset:-30%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.55) 47%,transparent 52%,transparent 58%,rgba(255,255,255,.35) 60%,transparent 63%);
   animation:sheen 7s ease-in-out infinite;pointer-events:none}
 @keyframes sheen{0%,100%{transform:translateX(-18%)}50%{transform:translateX(18%)}}
-.window-shelf{position:absolute;inset:auto 7% 15% 7%;display:flex;justify-content:space-around;align-items:flex-end;gap:2%}
+.window-shelf{position:absolute;inset:auto 6% 15% 6%;height:58%;display:flex;justify-content:space-around;align-items:flex-end;gap:1%}
 .window-shelf::after{content:"";position:absolute;inset:auto -4% -10px -4%;height:9px;border-radius:2px;
   background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(200,220,215,.55));box-shadow:0 10px 18px -8px rgba(22,34,42,.3)}
-.window-shelf img{width:auto;filter:drop-shadow(0 8px 10px rgba(22,34,42,.22));transition:filter .6s}
-.window-shelf img.lit{filter:drop-shadow(0 0 22px var(--glow)) drop-shadow(0 8px 10px rgba(22,34,42,.22))}
-.open-sign{position:absolute;top:16%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;
+.window-shelf img{height:92%;width:auto;min-width:0;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(22,34,42,.22))}
+.open-sign{position:absolute;top:14%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;
   padding:6px 12px;border:1px solid var(--brass);border-radius:999px;background:rgba(255,255,255,.6);direction:ltr;white-space:nowrap}
 .open-sign i{width:6px;height:6px;border-radius:50%;background:#2F8F5B;box-shadow:0 0 0 3px rgba(47,143,91,.18)}
-
 .pitch{text-align:center;display:grid;gap:10px;max-width:34ch}
 .pitch h1{font-family:var(--he-serif);font-weight:300;font-size:clamp(30px,7.4vw,48px);line-height:1.05;text-wrap:balance}
 .pitch p{font-size:16px;line-height:1.55;color:var(--ink-soft);text-wrap:balance}
@@ -86,18 +82,18 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .door .handle{width:26px;height:4px;border-radius:2px;background:var(--brass-hi)}
 
 body[data-view="shop"] .front, body[data-view="item"] .front{opacity:0;transform:scale(1.9);pointer-events:none;position:fixed;inset:0}
-body[data-view="front"] .shop{display:none}
-body[data-view="shop"] .shop{animation:rise .9s ease .2s both}
+body[data-view="front"] .inside{display:none}
+body[data-view="shop"] .inside{animation:rise .9s ease .2s both}
 @keyframes rise{from{opacity:0;transform:translateY(30px)}}
 
 /* ---------- top bar ---------- */
 .bar{position:fixed;inset:0 0 auto 0;z-index:7;pointer-events:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding-block:calc(env(safe-area-inset-top,0px) + 12px) 12px;
-  padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));
-  transition:opacity .6s}
-body[data-view="front"] .bar{opacity:0;pointer-events:none}
+  padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));transition:opacity .6s}
+body[data-view="front"] .bar{opacity:0}
+body[data-view="front"] .bar *{pointer-events:none!important}
 body[data-view="shop"] .bar{background:linear-gradient(180deg,rgba(238,243,241,.92) 55%,rgba(238,243,241,0));padding-bottom:22px}
-.bar .word{font-size:18px;letter-spacing:.3em}
+.bar .word{font-size:18px;letter-spacing:.3em;transition:opacity .4s}
 .bag-btn{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(22,34,42,.35);border-radius:999px;background:var(--frost);backdrop-filter:blur(8px)}
 .bag-btn svg{width:16px;height:16px}
 .bag-btn b{font-family:var(--mono);font-weight:400;font-size:12px;min-width:1ch}
@@ -105,62 +101,64 @@ body[data-view="shop"] .bar{background:linear-gradient(180deg,rgba(238,243,241,.
 @keyframes bump{40%{transform:scale(1.14)}}
 
 /* ---------- 2 · shelves ---------- */
-.shop{padding-block:calc(env(safe-area-inset-top,0px) + 84px) calc(env(safe-area-inset-bottom,0px) + 40px);
-  transition:opacity .9s ease .25s, transform .9s ease .25s;max-width:1180px;margin-inline:auto}
+.shop{padding-block:calc(env(safe-area-inset-top,0px) + 84px) 24px;max-width:1180px;margin-inline:auto}
 .shop-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 24px;margin-bottom:18px}
 .shop-head h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(28px,6vw,44px);line-height:1}
-.shop-head p{color:var(--ink-soft);font-size:15px;max-width:40ch}
-.shelves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.shop-head h2 .latin{font-size:.55em;color:var(--ink-soft);margin-inline-start:.4em}
+.shop-head p{color:var(--ink-soft);font-size:15px;max-width:44ch}
+.shelves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:880px){.shelves{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.item{position:relative;display:grid;grid-template-rows:auto auto;padding:26px 10px 16px;text-align:center;cursor:pointer;isolation:isolate}
-.item .spot{position:absolute;inset:0 6% 30% 6%;z-index:-1;opacity:0;transition:opacity .8s;
-  background:radial-gradient(60% 70% at 50% 0%,var(--glow) 0%,transparent 70%)}
-.item.now .spot{opacity:.55}
-.item .stage{height:clamp(190px,42vw,300px);display:flex;align-items:flex-end;justify-content:center;position:relative}
+.item{position:relative;display:grid;padding:26px 10px 16px;text-align:center;cursor:pointer;isolation:isolate}
+.item .spot{position:absolute;inset:0 6% 30% 6%;z-index:-1;opacity:0;transition:opacity .6s;background:radial-gradient(60% 70% at 50% 0%,var(--glow) 0%,transparent 70%)}
+.item:hover .spot,.item:focus-visible .spot{opacity:.5}
+.item .stage{height:clamp(190px,44vw,300px);display:flex;align-items:flex-end;justify-content:center;position:relative}
 .item .stage::after{content:"";position:absolute;inset:auto -10px -8px -10px;height:8px;border-radius:2px;
   background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(200,220,215,.5));box-shadow:0 12px 18px -10px rgba(22,34,42,.35)}
 .item img{height:calc(var(--h) * 100%);width:auto;max-width:100%;object-fit:contain;transform-origin:50% 100%;
   filter:drop-shadow(0 10px 12px rgba(22,34,42,.2));transition:transform .35s cubic-bezier(.3,.7,.3,1.3)}
 .item:hover img,.item:focus-visible img{transform:translateY(-8px) rotate(-1.5deg)}
-.item:not(.now) img{filter:drop-shadow(0 10px 12px rgba(22,34,42,.2)) saturate(.9)}
 .tag{margin-top:22px;display:grid;gap:4px;justify-items:center}
 .tag .mono{color:var(--ink-soft);direction:ltr}
 .tag h3{font-family:var(--he-serif);font-weight:400;font-size:22px}
 .tag .price{font-family:var(--mono);font-size:13px}
 .now-chip{position:absolute;top:8px;left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--water);white-space:nowrap;direction:ltr;opacity:0}
 .item.now .now-chip{opacity:1}
-.fine{margin-top:36px;color:var(--ink-soft);font-size:13px;line-height:1.6;max-width:62ch}
-.fine a{color:inherit}
+.item.now .spot{opacity:.45}
+.special{margin-top:48px;padding-top:28px;border-top:1px solid rgba(22,34,42,.14)}
+.special .shelves .stage{height:clamp(150px,34vw,230px)}
+.badge{display:inline-block;padding:4px 10px;border:1px solid var(--brass);border-radius:999px;color:#7A5E2A;background:rgba(255,255,255,.5);direction:ltr}
 
 /* ---------- 3 · counter ---------- */
 .counter{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:1fr auto;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .5s}
 body[data-view="item"] .counter{opacity:1;pointer-events:auto}
-body[data-view="item"] .shop{opacity:0;pointer-events:none}
-.counter .hero{display:flex;align-items:flex-end;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
-.counter .hero img{height:min(42svh,420px);width:auto;max-width:86vw;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(22,34,42,.28));visibility:hidden}
-.counter .hero img.on{visibility:visible}
+body[data-view="item"] .inside{visibility:hidden}
+.counter .hero{position:relative;display:flex;align-items:flex-end;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 70px);min-height:min(48svh,480px)}
+.counter .hero img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:min(40svh,400px);width:auto;max-width:86vw;object-fit:contain;
+  filter:drop-shadow(0 18px 20px rgba(22,34,42,.28));opacity:0;transition:opacity .6s ease, transform .9s cubic-bezier(.2,.9,.25,1.2)}
+.counter .hero img.on{opacity:1}
+#heroClosed.pop{animation:pop .7s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes pop{from{transform:translateX(-50%) translateY(40px) scale(.6)}}
+#heroOpen{transform:translateX(-50%) scale(.82)}
+#heroOpen.on{transform:translateX(-50%) scale(1)}
 .panel{margin:18px auto calc(env(safe-area-inset-bottom,0px) + 16px);width:min(620px,calc(100% - 2*max(16px,env(safe-area-inset-left,0px))));
   background:var(--frost);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
-  border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:20px 20px 18px;display:grid;gap:12px;
-  transform:translateY(24px);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:20px 20px 18px;display:grid;gap:12px;transform:translateY(24px);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 body[data-view="item"] .panel{transform:none}
 .panel .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .panel h2{font-family:var(--he-serif);font-weight:400;font-size:clamp(28px,7vw,38px);line-height:1}
-.panel .latin{font-family:var(--latin);font-style:italic;font-size:16px;color:var(--ink-soft);direction:ltr}
+.panel .latin{font-size:16px;color:var(--ink-soft);direction:ltr}
 .panel p{font-size:15.5px;line-height:1.55}
 .specs{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
 .specs dt{color:var(--ink-soft)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:4px}
 .add{flex:1 1 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-radius:999px;background:var(--ink);color:var(--water);font-size:16px;font-weight:400}
 .add .mono{font-size:13px;letter-spacing:.08em}
-.lemon{padding:13px 16px;border-radius:999px;border:1px solid var(--ink);display:inline-flex;gap:8px;align-items:center;font-size:15px}
+.lemon,.toggle{padding:13px 16px;border-radius:999px;border:1px solid var(--ink);display:inline-flex;gap:8px;align-items:center;font-size:15px}
 .lemon i{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FBF0B8,#F2D33A)}
-.lemon[hidden]{display:none!important}
 .back{position:fixed;z-index:7;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(18px,env(safe-area-inset-right,0px));
   padding:8px 14px;border-radius:999px;background:var(--frost);border:1px solid rgba(22,34,42,.3);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
 body[data-view="item"] .back{opacity:1;pointer-events:auto}
 body[data-view="item"] .bar .word{opacity:0}
-
 .flyer{position:fixed;z-index:8;pointer-events:none;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(22,34,42,.28))}
 
 /* ---------- 4 · bag ---------- */
@@ -183,9 +181,82 @@ body[data-view="item"] .bar .word{opacity:0}
 .pay{padding:14px 20px;border-radius:999px;background:var(--ink);color:var(--water);font-size:16px}
 .note{font-size:14px;line-height:1.55;color:var(--ink-soft);padding:14px;border:1px dashed rgba(22,34,42,.3);border-radius:14px}
 
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition-duration:.01s!important}
-}
+/* ---------- 5 · the world, below the shop ---------- */
+.sec{max-width:1180px;margin-inline:auto;padding-block:72px}
+.sec-head{display:grid;gap:10px;max-width:640px;margin-bottom:28px}
+.sec-head .mono{color:var(--ink-soft);direction:ltr;text-align:right}
+.sec h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(32px,7vw,58px);line-height:1.02;text-wrap:balance}
+.sec h2 b{font-weight:500}
+.sec-head p{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:56ch}
+
+.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:880px){.films{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.film{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;background:#dde6e3}
+.film video,.film img{width:100%;height:100%;object-fit:cover}
+.film figcaption{position:absolute;inset:auto 0 0 0;padding:28px 14px 12px;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(10,16,20,.55));display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.film figcaption b{font-family:var(--he-serif);font-weight:400;font-size:20px}
+.film figcaption .mono{opacity:.85;direction:ltr}
+
+.manifest{display:grid;gap:26px;max-width:860px}
+.manifest p.big{font-family:var(--he-serif);font-weight:300;font-size:clamp(26px,5.4vw,42px);line-height:1.2;text-wrap:balance}
+.manifest p.big em{font-style:normal;background:linear-gradient(90deg,var(--fresh),var(--clarity),var(--calm),var(--joy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:520px}
+.sw{display:grid;gap:8px}
+.sw i{display:block;aspect-ratio:1/1.3;border-radius:999px 999px 12px 12px;background:linear-gradient(180deg,rgba(255,255,255,.55),var(--c) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 14px 24px -16px var(--c)}
+.sw span{font-size:14px}
+.sw .mono{color:var(--ink-soft);direction:ltr}
+
+.unfold{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:880px){.unfold{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pyr{position:relative;display:grid;justify-items:center;gap:10px;padding:18px 10px 14px;border-radius:18px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.8)}
+.pyr .box{position:relative;width:100%;aspect-ratio:1/1}
+.pyr .box img{position:absolute;inset:0;margin:auto;max-height:100%;width:auto;object-fit:contain;transition:opacity .6s ease, transform .8s cubic-bezier(.2,.9,.25,1.2)}
+.pyr .box .o{opacity:0;transform:scale(.82)}
+.pyr.open .box .c{opacity:0;transform:scale(1.08)}
+.pyr.open .box .o{opacity:1;transform:none}
+.pyr .lab{display:grid;gap:2px;text-align:center}
+.pyr .lab b{font-family:var(--he-serif);font-weight:400;font-size:20px}
+.pyr .lab small{font-size:13px;color:var(--ink-soft)}
+.hint-row{margin-top:14px;color:var(--ink-soft);font-size:14px}
+
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,78%);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-inline:calc(-1*max(18px,env(safe-area-inset-left,0px)));padding-inline:max(18px,env(safe-area-inset-left,0px))}
+@media (min-width:880px){.strip{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;margin-inline:0;padding-inline:0}}
+.strip figure{scroll-snap-align:center;border-radius:18px;overflow:hidden;background:#fff}
+.strip img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto}
+.strip figcaption{padding:12px 14px;display:flex;justify-content:space-between;gap:8px;font-size:15px}
+.strip figcaption .mono{color:var(--ink-soft);direction:ltr}
+
+.sans{display:grid;gap:18px}
+.sans-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end;max-width:680px}
+.sans-row figure{display:grid;gap:10px;justify-items:center}
+.sans-row img{width:100%;height:auto}
+.sans-row .glass{width:62%;aspect-ratio:1/1.35;border-radius:4px 4px 14px 14px;background:linear-gradient(180deg,rgba(255,255,255,.6) 0 16%,var(--c) 16%);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),inset 8px 0 14px rgba(255,255,255,.35)}
+
+.studio-note{max-width:860px;margin-inline:auto;padding-block:64px}
+.studio-note .card{background:rgba(255,255,255,.62);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);border-radius:24px;padding:clamp(22px,5vw,44px);display:grid;gap:16px}
+.studio-note .mono{color:var(--ink-soft);direction:ltr;text-align:right}
+.studio-note h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(26px,5.4vw,40px);line-height:1.1;text-wrap:balance}
+.studio-note p{font-size:16px;line-height:1.75}
+.cta{max-width:860px;margin-inline:auto;padding-block:40px 64px;text-align:center;display:grid;gap:14px;justify-items:center}
+.cta .script{font-family:var(--latin);font-style:italic;font-size:22px;color:var(--ink-soft);direction:ltr}
+.cta h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(30px,6vw,48px);line-height:1.1;text-wrap:balance}
+.cta p{color:var(--ink-soft);max-width:46ch;line-height:1.6}
+.cta .btn{display:inline-block;padding:15px 28px;border-radius:999px;background:var(--ink);color:var(--water);text-decoration:none;font-size:16px}
+.voisins{max-width:1180px;margin-inline:auto;padding-block:24px 48px}
+.voisins h2{font-family:var(--he-serif);font-weight:300;font-size:28px;margin-bottom:16px}
+.voisins .mono{color:var(--ink-soft);direction:ltr;text-align:right;margin-bottom:6px}
+.voisins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.voisin{display:grid;border-radius:16px;overflow:hidden;background:#fff;text-decoration:none;color:inherit}
+.voisin img{aspect-ratio:1200/630;object-fit:cover;width:100%}
+.voisin div{padding:12px 14px;display:flex;justify-content:space-between;gap:8px}
+.voisin b{font-family:var(--latin);font-weight:400;letter-spacing:.08em;direction:ltr}
+footer.foot{max-width:1180px;margin-inline:auto;padding-block:24px calc(env(safe-area-inset-bottom,0px) + 32px);border-top:1px solid rgba(22,34,42,.14);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px;color:var(--ink-soft)}
+footer.foot a{color:inherit}
+
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition-duration:.01s!important}}
 </style>
 </head>
 <body data-view="front">
@@ -194,7 +265,6 @@ body[data-view="item"] .bar .word{opacity:0}
 <canvas id="fx" aria-hidden="true"></canvas>
 <div class="caustic" aria-hidden="true"></div>
 
-<!-- top bar (inside the shop) -->
 <header class="bar">
   <div class="word" aria-label="SOLUNA">SOLUNA<sup>°</sup></div>
   <button class="bag-btn" id="bagBtn" type="button" aria-label="השקית שלי">
@@ -208,7 +278,7 @@ body[data-view="item"] .bar .word{opacity:0}
 <section class="front wrap" aria-labelledby="hook">
   <div class="fascia">
     <div class="word">SOLUNA<sup>°</sup></div>
-    <div class="mono">Tisanes de la lumière · Maison des heures</div>
+    <div class="mono">Tisanes d'humeur · Maison de la lumière</div>
   </div>
   <div class="rule" aria-hidden="true"></div>
   <div class="vitrine">
@@ -218,25 +288,114 @@ body[data-view="item"] .bar .word{opacity:0}
     </div>
   </div>
   <div class="pitch">
-    <h1 id="hook">באיזה צבע השעה שלך?</h1>
-    <p>ארבע חליטות, אחת לכל אור של היום. כל אחת צובעת את המים בצבע של השעה שלה.</p>
+    <h1 id="hook">איך את רוצה להרגיש?</h1>
+    <p>ארבע פירמידות, ארבעה מצבי רוח. כל אחת נפתחת במים וצובעת אותם בצבע של התחושה שלה.</p>
   </div>
   <button class="door" id="enter" type="button"><span class="handle" aria-hidden="true"></span>להיכנס לחנות</button>
 </section>
 
+<div class="inside">
 <!-- 2 · shelves -->
 <main class="shop wrap" aria-labelledby="shelvesTitle">
   <div class="shop-head">
-    <h2 id="shelvesTitle">המדפים</h2>
-    <p id="nowLine">המדף של השעה הזאת מואר. לחצי על אריזה כדי להוריד אותה לדלפק.</p>
+    <h2 id="shelvesTitle">המדפים <span class="latin">Les Humeurs</span></h2>
+    <p>ארבעה קומקומים שקופים, בכל אחד עשר פירמידות. לחצי על קומקום, ופירמידה אחת תרד לדלפק ותיפתח במים.</p>
   </div>
-  <div class="shelves" id="shelves"></div>
-  <p class="fine">SOLUNA° הוא עולם מותג קונספטואלי של <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds Studio</a>, עולם No.05 אחרי שדרוג. הדגמת תיק עבודות: המוצרים, המחירים והקופה אינם אמיתיים, ושום דבר כאן אינו ייעוץ רפואי.</p>
+  <div class="shelves" id="moodShelves"></div>
+
+  <div class="special">
+    <div class="shop-head">
+      <h2>אריזות של שעה <span class="latin">Special Edition</span></h2>
+      <p><span class="badge mono">Édition spéciale</span> &nbsp;ארבע אריזות שנעשו לשעות היום, בכמות מוגבלת. המדף של השעה הזאת מואר.</p>
+    </div>
+    <div class="shelves" id="specialShelves"></div>
+  </div>
 </main>
+
+<!-- 5 · the world -->
+<section class="sec wrap" id="films" aria-labelledby="filmsTitle">
+  <div class="sec-head">
+    <span class="mono">Les films · 4 × 5″</span>
+    <h2 id="filmsTitle">פירמידה אחת. <b>כוס אחת. צבע אחד.</b></h2>
+    <p>הרגע שבשבילו נבנה המותג: הנייר נוגע במים, נפתח קצת, והצבע יוצא ממנו בחוטים עד שכל הכוס מקבלת את התחושה.</p>
+  </div>
+  <div class="films" id="filmsGrid"></div>
+</section>
+
+<section class="sec wrap" id="manifeste" aria-labelledby="manTitle">
+  <div class="manifest">
+    <span class="mono" style="color:var(--ink-soft);direction:ltr;text-align:right">Manifeste</span>
+    <h2 id="manTitle" class="visually" style="font-family:var(--he-serif);font-weight:300;font-size:clamp(32px,7vw,58px);line-height:1.02">הצבע הוא המוצר.</h2>
+    <p class="big">רוב החליטות נראות אותו דבר עד שהן במים. ב-SOLUNA מתחילים מהצבע: <em>ירוק לרעננות, זהב לחדות, כחול לרוגע, אדום לשמחה.</em> בוחרים איך רוצים להרגיש, והכוס מראה שזה עובד.</p>
+    <div class="swatches" id="swatches"></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="pyramide" aria-labelledby="pyrTitle">
+  <div class="sec-head">
+    <span class="mono">La pyramide · fermée / ouverte</span>
+    <h2 id="pyrTitle">סגורה על המדף. <b>פתוחה במים.</b></h2>
+    <p>כל פירמידה מקופלת מנייר תה בשיפוע של צבע, עם תגית פליז קטנה בקודקוד. במים הקפלים נפתחים כמו פרח, ורואים מה יש בפנים.</p>
+  </div>
+  <div class="unfold" id="unfold"></div>
+  <p class="hint-row">לחצי על פירמידה כדי לפתוח ולסגור אותה.</p>
+</section>
+
+<section class="sec wrap" id="theiere" aria-labelledby="potTitle">
+  <div class="sec-head">
+    <span class="mono">La théière · 10 pyramides</span>
+    <h2 id="potTitle">הקומקום <b>שלא מבשלים בו.</b></h2>
+    <p>האריזה היא קומקום שקוף, עם ידית פליז ופס נייר שסוגר את המכסה. עשר הפירמידות נראות מבחוץ, כמו צנצנת של סוכריות. כשהוא מתרוקן, הוא נשאר על המדף.</p>
+  </div>
+  <div class="strip" id="strip"></div>
+</section>
+
+<section class="sec wrap" id="sans" aria-labelledby="sansTitle">
+  <div class="sec-head">
+    <span class="mono">Sans le nom</span>
+    <h2 id="sansTitle">מכסים את השם. <b>הצבע עדיין שם.</b></h2>
+    <p>מורידים את התגית, את הלוגו ואת האריזה. מה שנשאר זה פירמידה מקופלת בשיפוע של צבע וכוס מים באותו צבע. גם בלי לקרוא מילה, יודעים מאיפה זה.</p>
+  </div>
+  <div class="sans-row" id="sansRow"></div>
+</section>
+
+<section class="studio-note wrap" id="studio-note">
+  <div class="card">
+    <span class="mono">Studio Note · איך העולם הזה נבנה</span>
+    <h2>עולם שהתחיל כתוסף תזונה, <b>והפך לכוס מים שמשנה צבע.</b></h2>
+    <p>SOLUNA° היה אחד העולמות הראשונים בסטודיו: תוסף של אור יום, עם שמיים שזזים לאורך הדף. בשדרוג נשאר ממנו רק הרעיון של אור וצבע, והמוצר התחלף. ההבטחה נוסחה מחדש: <b>בוחרים איך רוצים להרגיש, והצבע במים מראה את זה.</b></p>
+    <p><b>הכוס:</b> הרקע של כל העמוד הוא סימולציה של נוזל שרצה בדפדפן. הצבעים לא מצוירים: כל חליטה מוגדרת לפי כמה אור היא בולעת, ולכן כשצבעים נפגשים במים הם מתערבבים כמו במציאות, ובמיוחד הכחול שהופך לסגול כשמוסיפים לימון.</p>
+    <p><b>המוצר:</b> הכיוונים מפינטרסט היו ירוק וזהב ועלים, השפה הרגילה של תה. במקום זה נבחר הצבע של התה עצמו, ופירמידת הנייר מאחת מאריזות השעה הפכה לתיון של כל הקו. ארבע אריזות השעה נשארו בחנות כ-Special Edition.</p>
+    <p><b>למה זה משנה למותג אמיתי:</b> אותן ארבע חליטות בלי מותג הן עוד מדף של תה. עם מותג הן תחושה שבוחרים, צבע שמזהים מרחוק וקומקום שנשאר על המדף. ככה נראית עבודה של <b>Brand Worlds Studio</b>: כל פרט נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
+  </div>
+</section>
+
+<section class="cta wrap">
+  <div class="script">Et votre marque?</div>
+  <h2>הלקוחות שלך בוחרות מוצר.<br><b>מה הן מרגישות כשהן בוחרות בך?</b></h2>
+  <p>אבחון פער המותג בודק מה יש לך היום, מה חסר, ואיזה עולם אפשר לבנות סביב ההבטחה שלך.</p>
+  <a class="btn" href="https://hagitantebi.co.il/brand-world.html">לאבחון פער המותג</a>
+</section>
+
+<section class="voisins wrap" aria-label="עולמות קרובים">
+  <p class="mono">Mondes Voisins</p>
+  <h2>עולמות קרובים מהסטודיו</h2>
+  <div class="voisins-grid">
+    <a class="voisin" href="https://hagitantebi.co.il/chasen/"><img width="720" height="378" src="../brand-worlds/thumbs/chasen.webp" alt="CHASEN° — עולם מותג לבר מאצ'ה" loading="lazy"><div><b>CHASEN°</b><span>מאצ'ה שמרכיבים</span></div></a>
+    <a class="voisin" href="https://hagitantebi.co.il/crema.html"><img width="720" height="378" src="../brand-worlds/thumbs/crema.webp" alt="CREMA° — עולם מותג לקפה" loading="lazy"><div><b>CREMA°</b><span>קפה, מזיגה אחת</span></div></a>
+    <a class="voisin" href="https://hagitantebi.co.il/petale.html"><img width="720" height="378" src="../brand-worlds/thumbs/petale.webp" alt="PÉTALE° — עולם מותג למקרונים" loading="lazy"><div><b>PÉTALE°</b><span>מקרונים, קופסה שבונים</span></div></a>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <span>SOLUNA° הוא מותג קונספט בדיוני · עולם מס' 05 · © Brand Worlds Studio — חגית אנטבי. המוצרים, המחירים והקופה אינם אמיתיים, ושום דבר כאן אינו ייעוץ רפואי.</span>
+  <span><a href="https://hagitantebi.co.il/">hagitantebi.co.il</a> · <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds</a></span>
+</footer>
+</div>
 
 <!-- 3 · counter -->
 <section class="counter" id="counter" aria-live="polite" aria-label="הדלפק">
-  <div class="hero"><img id="heroImg" alt=""></div>
+  <div class="hero"><img id="heroClosed" alt=""><img id="heroOpen" alt=""></div>
   <div class="panel">
     <div class="head"><span class="mono" id="pClock"></span><span class="latin" id="pLatin"></span></div>
     <h2 id="pName"></h2>
@@ -247,6 +406,7 @@ body[data-view="item"] .bar .word{opacity:0}
       <dt>האריזה</dt><dd id="pPack"></dd>
     </dl>
     <div class="actions">
+      <button class="toggle" id="toggle" type="button" hidden>לסגור את הפירמידה</button>
       <button class="lemon" id="lemon" type="button" hidden><i aria-hidden="true"></i>טיפת לימון</button>
       <button class="add" id="add" type="button"><span>להוסיף לשקית</span><span class="mono" id="pPrice"></span></button>
     </div>
@@ -259,33 +419,44 @@ body[data-view="item"] .bar .word{opacity:0}
   <div class="sheet-in">
     <h2>השקית</h2>
     <ul class="lines" id="lines"></ul>
-    <p class="empty" id="empty">השקית ריקה. כל אריזה שתורידי מהמדף תחכה כאן.</p>
+    <p class="empty" id="empty">השקית ריקה. כל מה שתורידי מהמדף יחכה כאן.</p>
     <div class="total"><span>סה״כ</span><b id="total">₪0</b></div>
     <button class="pay" id="pay" type="button">לקופה</button>
-    <p class="note" id="note" hidden>זו חנות קונספט של Brand Worlds Studio, אז שום דבר לא נקנה באמת. אבל עכשיו את יודעת באיזה צבע השעה שלך.</p>
+    <p class="note" id="note" hidden>זו חנות קונספט של Brand Worlds Studio, אז שום דבר לא נקנה באמת. אבל עכשיו את יודעת איזה צבע יש לתחושה שלך.</p>
   </div>
 </aside>
 
 <script>
 (() => {
-/* ---------- the four hours ---------- */
-const HOURS = [
-  {k:'dawn', clock:'06:12 · AUBE', name:'זריחה', latin:'Aube', col:'#D98A0E', glow:'rgba(240,170,40,.8)', h:.62, price:68,
-   desc:'קופסת פליז עגולה עם להב של שעון שמש. בבוקר הצל של הלהב נופל בדיוק על הלוגו, ומבעד לחלון בצד רואים את מה שבפנים.',
-   blend:'כורכום, חוטי זעפרן, קליפת תפוז', steep:'92°C · 5 דקות · זהב', pack:'קופסת שעון שמש מפליז · 60 גר׳'},
-  {k:'day', clock:'12:40 · MIDI', name:'צהריים', latin:'Midi', col:'#E2CD62', glow:'rgba(240,222,120,.9)', h:1, price:64,
-   desc:'מנסרת זכוכית מלאה בקמומיל שלם ולמון גראס. כשאור הצהריים עובר דרכה, היא מטילה קשת קטנה על השולחן.',
-   blend:'למון גראס, קמומיל, ורבנה לימונית', steep:'85°C · 4 דקות · צהוב חיוור', pack:'מנסרת זכוכית עם מכסה פליז · 40 גר׳'},
-  {k:'dusk', clock:'18:55 · CRÉPUSCULE', name:'שקיעה', latin:'Crépuscule', col:'#A3123A', glow:'rgba(214,60,100,.75)', h:.8, price:72,
-   desc:'פירמידה של נייר מקופל שנפתחת כמו פרח. בפנים מחכים עלי הגביע המיובשים של ההיביסקוס.',
-   blend:'היביסקוס, עלי ורדים, מקל קינמון', steep:'95°C · 6 דקות · אדום עמוק', pack:'פירמידת נייר מקופלת עם תגית פליז · 50 גר׳'},
-  {k:'night', clock:'22:30 · NUIT', name:'לילה', latin:'Nuit', col:'#1B3AA8', glow:'rgba(70,100,230,.7)', h:.96, price:84,
-   desc:'צנצנת סהר מקרמיקה, ועליה טפטפת לימון. החליטה יוצאת כחולה עמוקה. טיפה אחת מהטפטפת, והכוס הופכת לסגולה.',
-   blend:'פרח אפונת הפרפר, לבנדר, לואיזה', steep:'90°C · 5 דקות · כחול, ואז סגול', pack:'צנצנת סהר מקרמיקה + טפטפת לימון · 30 גר׳'}
+/* ---------- the line ---------- */
+const MOODS = [
+  {k:'fresh', kind:'mood', clock:'FRAÎCHEUR · 10 PYRAMIDES', name:'רעננות', latin:'Fraîcheur', col:'#9CC76A', glow:'rgba(120,190,100,.75)', price:78,
+   desc:'פירמידה ירוקה לבוקר שמתחיל לאט, או לצהריים שצריך בהם אוויר. במים היא נפתחת לירוק בהיר וצלול.',
+   blend:'עלי נענע, למון גראס, ורבנה לימונית', steep:'85°C · 4 דקות · ירוק בהיר', pack:'קומקום שקוף · 10 פירמידות'},
+  {k:'clarity', kind:'mood', clock:'CLARTÉ · 10 PYRAMIDES', name:'חדות', latin:'Clarté', col:'#D98A0E', glow:'rgba(240,170,40,.8)', price:78,
+   desc:'פירמידה זהובה לשעות שצריך בהן ראש צלול. הכורכום צובע את הכוס בזהב חם, והג׳ינג׳ר מעיר.',
+   blend:'כורכום, ג׳ינג׳ר, קליפת תפוז', steep:'92°C · 5 דקות · זהב', pack:'קומקום שקוף · 10 פירמידות'},
+  {k:'calm', kind:'mood', clock:'CALME · 10 PYRAMIDES', name:'רוגע', latin:'Calme', col:'#1B3AA8', glow:'rgba(70,100,230,.7)', price:78,
+   desc:'פירמידה כחולה לערב. החליטה יוצאת כחולה עמוקה, וטיפת לימון הופכת אותה לסגולה.',
+   blend:'פרח אפונת הפרפר, לבנדר, לואיזה', steep:'90°C · 5 דקות · כחול, ואז סגול', pack:'קומקום שקוף · 10 פירמידות'},
+  {k:'joy', kind:'mood', clock:'JOIE · 10 PYRAMIDES', name:'שמחה', latin:'Joie', col:'#A3123A', glow:'rgba(214,60,100,.75)', price:78,
+   desc:'פירמידה אדומה לרגעים שרוצים לחגוג. ההיביסקוס צובע את המים באדום עמוק, חמוץ־מתוק.',
+   blend:'היביסקוס, עלי ורדים, מקל קינמון', steep:'95°C · 6 דקות · אדום עמוק', pack:'קומקום שקוף · 10 פירמידות'}
+];
+const SPECIAL = [
+  {k:'dawn', kind:'special', clock:'06:12 · AUBE', name:'זריחה', latin:'Aube', col:'#D98A0E', glow:'rgba(240,170,40,.8)', h:.62, price:68,
+   desc:'קופסת פליז עגולה עם להב של שעון שמש. בבוקר הצל של הלהב נופל בדיוק על הלוגו.', blend:'כורכום, חוטי זעפרן, קליפת תפוז', steep:'92°C · 5 דקות · זהב', pack:'קופסת שעון שמש מפליז · 60 גר׳'},
+  {k:'day', kind:'special', clock:'12:40 · MIDI', name:'צהריים', latin:'Midi', col:'#E2CD62', glow:'rgba(240,222,120,.9)', h:1, price:64,
+   desc:'מנסרת זכוכית מלאה בקמומיל ולמון גראס. אור הצהריים עובר דרכה ומטיל קשת על השולחן.', blend:'למון גראס, קמומיל, ורבנה לימונית', steep:'85°C · 4 דקות · צהוב חיוור', pack:'מנסרת זכוכית עם מכסה פליז · 40 גר׳'},
+  {k:'dusk', kind:'special', clock:'18:55 · CRÉPUSCULE', name:'שקיעה', latin:'Crépuscule', col:'#A3123A', glow:'rgba(214,60,100,.75)', h:.8, price:72,
+   desc:'הפירמידה המקורית, בגודל של אריזה. נפתחת כמו פרח, ובפנים עלי הגביע של ההיביסקוס.', blend:'היביסקוס, עלי ורדים, מקל קינמון', steep:'95°C · 6 דקות · אדום עמוק', pack:'פירמידת נייר מקופלת עם תגית פליז · 50 גר׳'},
+  {k:'night', kind:'special', clock:'22:30 · NUIT', name:'לילה', latin:'Nuit', col:'#1B3AA8', glow:'rgba(70,100,230,.7)', h:.96, price:84,
+   desc:'צנצנת סהר מקרמיקה, ועליה טפטפת לימון. טיפה אחת, והכחול הופך לסגול.', blend:'פרח אפונת הפרפר, לבנדר, לואיזה', steep:'90°C · 5 דקות · כחול, ואז סגול', pack:'צנצנת סהר מקרמיקה + טפטפת לימון · 30 גר׳'}
 ];
 const LEMON = {k:'lemon', col:'#7A2AA8'};
-const byK = Object.fromEntries(HOURS.map(h=>[h.k,h]));
-const src = k => `assets/cut/${k}.webp`;
+const ALL = [...MOODS,...SPECIAL];
+const byK = Object.fromEntries(ALL.map(h=>[h.k,h]));
+const img = (h,v) => h.kind==='mood' ? `assets/mood/${v||'pot'}-${h.k}.webp` : `assets/cut/${h.k}.webp`;
 const nowHour = () => { const h=new Date().getHours(); return h>=5&&h<11?'dawn':h>=11&&h<17?'day':h>=17&&h<20?'dusk':'night'; };
 const pad = n => String(n).padStart(2,'0');
 const clockStr = () => { const d=new Date(); return pad(d.getHours())+':'+pad(d.getMinutes()); };
@@ -296,7 +467,7 @@ const $ = id => document.getElementById(id);
 const WATER=[238/255,243/255,241/255];
 const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255);
 const absorb=h=>hex(h).map((c,i)=>-Math.log(Math.max(c,.02)/WATER[i]));
-[...HOURS,LEMON].forEach(p=>p.A=absorb(p.col));
+[...ALL,LEMON].forEach(p=>p.A=absorb(p.col));
 const ZERO=[0,0,0];
 const cv=$('water'), fx=$('fx'), fc=fx.getContext('2d');
 let W=innerWidth,H=innerHeight,KF=1;
@@ -377,7 +548,6 @@ function simulate(dt){
 }
 function render(){const u=F.use('display',F.dye.read);gl.uniform1i(u.uDye,F.dye.read.bind(0));gl.uniform3f(u.water,...WATER);F.blit(null);}
 
-/* drops of colour: a short plume that sinks and curls */
 const drops=[];
 function pour(p,x,y,opts={}){ if(!fluid) return; drops.push({p,x,y,t:0,dur:opts.dur||1.3,k:opts.k||.5}); }
 function runDrops(dt){
@@ -395,11 +565,8 @@ function runDrops(dt){
     if(d.t>d.dur) drops.splice(i,1);
   }
 }
-
-/* the glass slowly settles toward a target colour */
 let target={A:ZERO,rate:0};
 function settle(A,strength,rate){ target={A:A.map(v=>v*strength),rate}; }
-
 function size(){
   W=innerWidth;H=innerHeight;const dpr=Math.min(devicePixelRatio||1,1.5);
   for(const c of [cv,fx]){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);}
@@ -419,89 +586,130 @@ function frame(now){
 if(!fluid){ cv.style.display='none'; document.body.style.transition='background-color 1.4s ease'; }
 const tintStatic = (p,s) => { if(!fluid) document.body.style.backgroundColor = p ? `color-mix(in srgb, ${p.col} ${Math.round(s*100)}%, #EEF3F1)` : '#EEF3F1'; };
 
-/* ---------- build the window and the shelves ---------- */
+/* ---------- build ---------- */
 const NOW = nowHour();
+const AMB = byK.calm; // the store rests in a faint blue: the calm of an empty shop
 const shelf=$('windowShelf');
-HOURS.forEach(h=>{
-  const img=new Image(); img.src=src(h.k); img.alt=''; img.style.height=`calc(${h.h} * 62%)`; img.style.maxHeight=`${Math.round(h.h*190)}px`;
-  img.style.setProperty('--glow',h.glow); if(h.k===NOW) img.classList.add('lit'); shelf.appendChild(img);
-});
-// the vitrine shelf needs a height to size against
-shelf.style.height='62%';
-$('openClock').textContent = 'OUVERT · '+clockStr();
+MOODS.forEach(h=>{ const i=new Image(); i.src=img(h); i.alt=''; shelf.appendChild(i); });
+$('openClock').textContent='OUVERT · '+clockStr();
 
-const shelves=$('shelves');
-HOURS.forEach(h=>{
-  const b=document.createElement('button'); b.type='button'; b.className='item'+(h.k===NOW?' now':''); b.dataset.k=h.k;
-  b.style.setProperty('--glow',h.glow); b.style.setProperty('--h',h.h);
+function shelfItem(h,isNow){
+  const b=document.createElement('button'); b.type='button'; b.className='item'+(isNow?' now':''); b.dataset.k=h.k;
+  b.style.setProperty('--glow',h.glow); b.style.setProperty('--h',h.h||1);
   b.setAttribute('aria-label',`${h.name}, ${h.price} ש״ח. להוריד לדלפק`);
-  b.innerHTML=`<span class="spot" aria-hidden="true"></span><span class="now-chip mono">NOW · ${clockStr()}</span>
-    <span class="stage"><img src="${src(h.k)}" alt="" loading="eager"></span>
-    <span class="tag"><span class="mono">${h.clock}</span><h3>${h.name}</h3><span class="price">₪${h.price}</span></span>`;
+  b.innerHTML=`<span class="spot" aria-hidden="true"></span>${h.kind==='special'?`<span class="now-chip mono">NOW · ${clockStr()}</span>`:''}
+    <span class="stage"><img src="${img(h)}" alt="" loading="lazy"></span>
+    <span class="tag"><span class="mono">${h.latin}</span><h3>${h.name}</h3><span class="price">₪${h.price}</span></span>`;
   b.addEventListener('click',()=>openItem(h.k,b.querySelector('img')));
-  shelves.appendChild(b);
+  return b;
+}
+MOODS.forEach(h=>$('moodShelves').appendChild(shelfItem(h,false)));
+SPECIAL.forEach(h=>$('specialShelves').appendChild(shelfItem(h,h.k===NOW)));
+
+// films
+MOODS.forEach(h=>{
+  const f=document.createElement('figure'); f.className='film';
+  f.innerHTML=`<video muted loop playsinline preload="none" poster="assets/film/${h.k}.jpg" aria-label="${h.name}: פירמידה נפתחת במים"><source src="assets/film/${h.k}.mp4" type="video/mp4"></video>
+    <figcaption><b>${h.name}</b><span class="mono">${h.latin}</span></figcaption>`;
+  $('filmsGrid').appendChild(f);
 });
-$('nowLine').textContent = `עכשיו ${clockStr()}, אז מואר המדף של ה${byK[NOW].name}. לחצי על אריזה כדי להוריד אותה לדלפק.`;
+const vio = 'IntersectionObserver' in window ? new IntersectionObserver(es=>es.forEach(e=>{ const v=e.target; if(e.isIntersecting && !reduce){ v.play().catch(()=>{}); } else v.pause(); }),{threshold:.35}) : null;
+document.querySelectorAll('.film video').forEach(v=>vio&&vio.observe(v));
+
+// swatches
+MOODS.forEach(h=>{ const d=document.createElement('div'); d.className='sw'; d.style.setProperty('--c',h.col);
+  d.innerHTML=`<i aria-hidden="true"></i><span>${h.name}</span><span class="mono">${h.latin}</span>`; $('swatches').appendChild(d); });
+
+// closed / open
+MOODS.forEach(h=>{
+  const b=document.createElement('button'); b.type='button'; b.className='pyr'; b.setAttribute('aria-pressed','false');
+  b.innerHTML=`<span class="box"><img class="c" src="${img(h,'closed')}" alt="פירמידת ${h.name} סגורה" loading="lazy"><img class="o" src="${img(h,'open')}" alt="פירמידת ${h.name} פתוחה" loading="lazy"></span>
+    <span class="lab"><b>${h.name}</b><small>${h.blend}</small></span>`;
+  b.addEventListener('click',()=>{ const on=b.classList.toggle('open'); b.setAttribute('aria-pressed',on); });
+  $('unfold').appendChild(b);
+});
+// auto-open one by one the first time the row is seen
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ io.disconnect(); [...$('unfold').children].forEach((b,i)=>setTimeout(()=>{b.classList.add('open');b.setAttribute('aria-pressed','true');},400+i*350)); } },{threshold:.5});
+  io.observe($('unfold'));
+}
+// teapot photos
+MOODS.forEach(h=>{ const f=document.createElement('figure');
+  f.innerHTML=`<img src="assets/photo/pot-${h.k}.webp" alt="קומקום SOLUNA שקוף עם פירמידות ${h.name}" loading="lazy" width="1200" height="1500"><figcaption><span>${h.name}</span><span class="mono">${h.latin}</span></figcaption>`;
+  $('strip').appendChild(f); });
+// no name
+MOODS.forEach(h=>{ const f=document.createElement('figure'); f.style.setProperty('--c',h.col);
+  f.innerHTML=`<img src="assets/mood/bare-${h.k}.webp" alt="" loading="lazy"><span class="glass" aria-hidden="true"></span>`; $('sansRow').appendChild(f); });
 
 /* ---------- views ---------- */
 const body=document.body;
 function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v==='item'); }
 setView('front');
-
-// the shopfront: a gentle drop of the current hour so the window is never still
-setTimeout(()=>pour(byK[NOW],W*.5,H*.1,{dur:1.1,k:.35}),600);
-settle(byK[NOW].A,.12,.004);
-tintStatic(byK[NOW],.12);
+setTimeout(()=>pour(byK.fresh,W*.3,H*.08,{dur:.9,k:.35}),500);
+setTimeout(()=>pour(byK.joy,W*.7,H*.12,{dur:.9,k:.35}),1300);
+settle(AMB.A,.08,.003); tintStatic(AMB,.08);
 
 $('enter').addEventListener('click',()=>{
   setView('shop'); scrollTo(0,0);
-  pour(byK[NOW],W*.72,H*.06,{dur:1.4,k:.45});
-  settle(byK[NOW].A,.2,.006); tintStatic(byK[NOW],.2);
+  MOODS.forEach((h,i)=>setTimeout(()=>pour(h,W*(.2+i*.2),H*.06,{dur:.8,k:.25}),i*220));
+  setTimeout(()=>settle(AMB.A,.1,.012),1800); tintStatic(AMB,.1);
 });
 
-let current=null;
-function flight(fromEl,toEl,reverse){
+let current=null, saveY=0;
+function flight(src,fromEl,toEl,reverse){
   const a=fromEl.getBoundingClientRect(), b=toEl.getBoundingClientRect();
-  const f=new Image(); f.src=fromEl.src; f.className='flyer'; document.body.appendChild(f);
-  const set=r=>`left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px`;
-  f.style.cssText=set(a);
-  if(reduce){ f.remove(); return Promise.resolve(); }
-  const anim=f.animate([
-    {left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px',transform:'rotate(0deg)'},
-    {offset:.55,transform:reverse?'rotate(-4deg)':'rotate(4deg)'},
-    {left:b.left+'px',top:b.top+'px',width:b.width+'px',height:b.height+'px',transform:'rotate(0deg)'}
-  ],{duration:720,easing:'cubic-bezier(.5,0,.2,1)',fill:'forwards'});
-  return anim.finished.then(()=>f.remove());
+  if(reduce||!a.width||!b.width) return Promise.resolve();
+  const f=new Image(); f.src=src; f.className='flyer'; document.body.appendChild(f);
+  f.style.cssText=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px`;
+  return f.animate([
+    {left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px',transform:'rotate(0deg)',opacity:1},
+    {offset:.55,transform:reverse?'rotate(-4deg)':'rotate(4deg)',opacity:1},
+    {left:b.left+'px',top:b.top+'px',width:b.width+'px',height:b.height+'px',transform:'rotate(0deg)',opacity:reverse?1:.0}
+  ],{duration:720,easing:'cubic-bezier(.5,0,.2,1)',fill:'forwards'}).finished.then(()=>f.remove());
+}
+const hC=$('heroClosed'), hO=$('heroOpen');
+function showOpen(on){
+  hO.classList.toggle('on',on); hC.classList.toggle('on',!on);
+  $('toggle').textContent = on ? 'לסגור את הפירמידה' : 'לפתוח את הפירמידה';
 }
 function openItem(k,fromImg){
-  const h=byK[k]; current=k;
+  const h=byK[k]; current=k; saveY=scrollY;
   $('pClock').textContent=h.clock; $('pLatin').textContent=h.latin; $('pName').textContent=h.name;
   $('pDesc').textContent=h.desc; $('pBlend').textContent=h.blend; $('pSteep').textContent=h.steep; $('pPack').textContent=h.pack;
-  $('pPrice').textContent='₪'+h.price; $('lemon').hidden = k!=='night'; $('lemon').disabled=false;
-  const hero=$('heroImg'); hero.classList.remove('on'); hero.src=src(k); hero.alt=h.name;
+  $('pPrice').textContent='₪'+h.price; $('lemon').hidden = !(k==='calm'||k==='night'); $('lemon').disabled=false;
+  $('toggle').hidden = h.kind!=='mood';
+  const mood=h.kind==='mood';
+  hC.className=''; hO.className='';
+  hC.src = mood ? img(h,'closed') : img(h); hC.alt=h.name;
+  hO.src = mood ? img(h,'open') : ''; hO.alt = mood ? h.name+' פתוחה' : '';
   fromImg.style.visibility='hidden';
   setView('item');
   const go=()=>{
-    flight(fromImg,hero).then(()=>{hero.classList.add('on');});
-    // the counter: fresh water, then the blend drops in behind the package and steeps the glass
+    flight(img(h),fromImg,hC).then(()=>{
+      hC.classList.add('on'); if(mood){ hC.classList.add('pop'); setTimeout(()=>{ if(current===k) showOpen(true); },900); }
+    });
     settle(ZERO,0,.09);
-    setTimeout(()=>{ const r=hero.getBoundingClientRect(); pour(h,r.left+r.width*.5,Math.max(40,r.top+r.height*.15),{dur:1.6,k:.6}); settle(h.A,.75,0); },450);
-    setTimeout(()=>settle(h.A,.75,.018),1900);
+    setTimeout(()=>{ const r=hC.getBoundingClientRect(); pour(h,r.left+r.width*.5,Math.max(40,r.top+r.height*.3),{dur:1.6,k:.6}); settle(h.A,.75,0); }, mood?1300:450);
+    setTimeout(()=>settle(h.A,.75,.018), mood?2700:1900);
     tintStatic(h,.55);
   };
-  if(hero.complete) requestAnimationFrame(go); else hero.onload=()=>requestAnimationFrame(go);
+  if(hC.complete) requestAnimationFrame(go); else hC.onload=()=>requestAnimationFrame(go);
 }
 function closeItem(){
-  if(!current) return; const k=current; current=null;
-  const toImg=shelves.querySelector(`[data-k="${k}"] img`), hero=$('heroImg');
-  setView('shop');
-  hero.classList.remove('on');
-  flight(hero,toImg,true).then(()=>{toImg.style.visibility='';});
-  settle(byK[NOW].A,.2,.02); tintStatic(byK[NOW],.2);
+  if(!current) return; const k=current, h=byK[k]; current=null;
+  const toImg=document.querySelector(`.shelves [data-k="${k}"] img`);
+  const from = hO.classList.contains('on') ? hO : hC;
+  setView('shop'); scrollTo(0,saveY);
+  hC.className=''; hO.className='';
+  flight(img(h),from,toImg,true).then(()=>{toImg.style.visibility='';});
+  settle(AMB.A,.1,.02); tintStatic(AMB,.1);
 }
+// once the shop is browsed, keep the water calm behind the text
+addEventListener('scroll',()=>{ if(body.dataset.view==='shop' && scrollY>innerHeight*.6 && target.rate<.012) settle(AMB.A,.1,.012); },{passive:true});
 $('back').addEventListener('click',closeItem);
+$('toggle').addEventListener('click',()=>showOpen(!hO.classList.contains('on')));
 $('lemon').addEventListener('click',()=>{
-  const r=$('heroImg').getBoundingClientRect();
+  const r=hC.getBoundingClientRect();
   pour(LEMON,r.left+r.width*.5,r.top+r.height*.4,{dur:1.3});
   setTimeout(()=>settle(LEMON.A,.8,.02),900);
   $('pSteep').textContent='90°C · 5 דקות · הכחול הפך לסגול';
@@ -514,17 +722,17 @@ function renderBag(){
   const ul=$('lines'); ul.innerHTML=''; let n=0,sum=0;
   for(const k in bag){ const h=byK[k],q=bag[k]; n+=q; sum+=q*h.price;
     const li=document.createElement('li');
-    li.innerHTML=`<img src="${src(k)}" alt=""><span><b style="font-weight:400">${h.name}</b><br><span class="mono">${h.clock}</span></span><span class="mono">${q} × ₪${h.price}</span><button type="button" aria-label="להוציא ${h.name} מהשקית">×</button>`;
+    li.innerHTML=`<img src="${img(h)}" alt=""><span><b style="font-weight:400">${h.name}</b><br><span class="mono">${h.latin}</span></span><span class="mono">${q} × ₪${h.price}</span><button type="button" aria-label="להוציא ${h.name} מהשקית">×</button>`;
     li.querySelector('button').onclick=()=>{ if(--bag[k]<=0) delete bag[k]; renderBag(); };
     ul.appendChild(li); }
   $('bagCount').textContent=n; $('total').textContent='₪'+sum; $('empty').hidden=n>0; $('pay').hidden=n===0;
 }
 $('add').addEventListener('click',()=>{
-  if(!current) return; bag[current]=(bag[current]||0)+1; renderBag();
-  const hero=$('heroImg'), btn=$('bagBtn');
-  const a=hero.getBoundingClientRect(), b=btn.getBoundingClientRect();
+  if(!current) return; const h=byK[current]; bag[current]=(bag[current]||0)+1; renderBag();
+  const from = hO.classList.contains('on') ? hO : hC, btn=$('bagBtn');
+  const a=from.getBoundingClientRect(), b=btn.getBoundingClientRect();
   if(!reduce){
-    const f=new Image(); f.src=hero.src; f.className='flyer'; document.body.appendChild(f);
+    const f=new Image(); f.src=img(h); f.className='flyer'; document.body.appendChild(f);
     f.animate([{left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px',opacity:1},
                {left:b.left+'px',top:b.top+'px',width:'24px',height:'24px',opacity:.2}],
               {duration:650,easing:'cubic-bezier(.6,0,.3,1)',fill:'forwards'}).finished.then(()=>f.remove());
@@ -540,10 +748,12 @@ $('pay').addEventListener('click',()=>{ $('note').hidden=false; });
 addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('sheet').classList.contains('open')) openBag(false); else closeItem(); } });
 renderBag();
 
-/* tapping the empty water drops the current hour's colour */
-cv.addEventListener('pointerdown',e=>{ const p=current?byK[current]:byK[NOW]; pour(p,e.clientX,e.clientY,{dur:.9,k:.45}); });
-document.querySelector('.front').addEventListener('pointerdown',e=>{ if(e.target.closest('button')) return; pour(byK[NOW],e.clientX,e.clientY,{dur:.9,k:.45}); });
-document.querySelector('.shop').addEventListener('pointerdown',e=>{ if(e.target.closest('button,a')) return; pour(byK[NOW],e.clientX,e.clientY,{dur:.9,k:.45}); });
+/* tapping empty water drops a colour: the mood you hover last, or a random one */
+const pick=()=>MOODS[(Math.random()*MOODS.length)|0];
+function tapPour(e){ if(e.target.closest('button,a,video,img,figure')) return; const p=current?byK[current]:pick(); pour(p,e.clientX,e.clientY,{dur:.9,k:.45}); }
+cv.addEventListener('pointerdown',tapPour);
+document.querySelector('.front').addEventListener('pointerdown',tapPour);
+document.querySelector('.inside').addEventListener('pointerdown',tapPour);
 
 addEventListener('resize',()=>{ if(Math.abs(innerWidth-W)>2||Math.abs(innerHeight-H)>140) size(); });
 size(); requestAnimationFrame(frame);
