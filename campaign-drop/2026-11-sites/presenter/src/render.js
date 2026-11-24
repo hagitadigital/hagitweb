@@ -4,7 +4,7 @@ const mode=process.argv[2]||'clean',FPS=30,out=path.resolve(__dirname,'..'),tmp=
 (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
  await p.goto('file://'+__dirname+'/plates.html'+(mode==='guide'?'?guide=1':''));await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(800);
  const fonts=await p.evaluate(()=>[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family));console.log('fonts',[...new Set(fonts)]);
- const D=await p.evaluate(()=>window.DUR);const names={p1:'P1-hook-before',p2:'P2-before-questions',p3:'P3-after-answers',p4:'P4-offer'};
+ const D=await p.evaluate(()=>window.DUR);const names={p1:'P1-hook-before',p2:'P2-before',p3:'P3-after',p4:'P4-mobile',p5:'P5-offer'};
  for(const s of Object.keys(D)){const d=`${tmp}/${mode}-${s}`;fs.rmSync(d,{recursive:true,force:true});fs.mkdirSync(d,{recursive:true});
   for(let i=0;i<D[s]*FPS;i++){await p.evaluate(([s,t])=>window.draw(s,t),[s,i/FPS]);await p.screenshot({path:`${d}/${String(i).padStart(4,'0')}.png`})}
   const f=`${mode==='guide'?tmp+'/g-'+s:out+'/'+names[s]}.mp4`;
