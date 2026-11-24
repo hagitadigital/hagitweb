@@ -798,6 +798,67 @@ body.cart-open .cart-drawer{transform:none}
   .story{order:2}
 }
 
+/* ---------- HERO v3 : the frame at the centre, the words at its sides ---------- */
+body:not(.static) .hero{
+  background:
+    radial-gradient(900px 720px at 50% 56%, rgba(194,138,90,.09), transparent 65%),
+    linear-gradient(160deg, #0C1420 0%, #131F2E 55%, #0C1420 100%);
+}
+body:not(.static) .hero .wash i{left:9%}
+body:not(.static) .hero .lens-glass{background:none;box-shadow:none}
+body:not(.static) .hero .lens-flare,body:not(.static) .hero .lens-ring::after,body:not(.static) .hero .rail{display:none}
+body:not(.static) .hero .lens-ring{inset:0;border:1px solid rgba(194,138,90,.5);box-shadow:0 0 60px rgba(194,138,90,.1)}
+body:not(.static) .hero .lens-halo{inset:-16%;background:radial-gradient(circle, color-mix(in srgb, var(--accent) 17%, transparent), transparent 66%);transition:background .6s var(--ease-ui)}
+body:not(.static) .hero .sub,body:not(.static) .hero .model-chips{display:none}
+@media (min-width:901px){
+  :root{
+    --lens-size:min(54vh, 38vw, 620px);
+    --lens-x:50%;
+    --cy:57%;
+    --side:clamp(24px,5vw,96px);
+    --col:calc(50% - var(--lens-size) / 2 - var(--side) - clamp(20px,3vw,56px));
+  }
+  body:not(.static) .hero-copy{inset:0;width:auto;padding:0;display:block;pointer-events:none}
+  body:not(.static) .hero .eyebrow{position:absolute;top:clamp(54px,9vh,96px);left:0;right:0;text-align:center;margin:0}
+  body:not(.static) .hero .brand{
+    position:absolute;top:clamp(84px,13vh,140px);left:0;right:0;text-align:center;
+    font-size:clamp(64px,min(9.5vw,17vh),180px);letter-spacing:.1em;padding-inline-start:.1em;
+  }
+  body:not(.static) .hero .promise{
+    position:absolute;top:var(--cy);transform:translateY(-50%);
+    inset-inline-start:var(--side);width:var(--col);max-width:none;margin:0;
+    font-size:clamp(18px,1.5vw,25px);line-height:1.6;text-wrap:balance;
+  }
+  body:not(.static) .hero .model-panel{
+    position:absolute;top:var(--cy);transform:translateY(-50%);
+    inset-inline-end:var(--side);width:var(--col);margin:0;min-height:150px;text-align:left;
+  }
+  body:not(.static) .hero .model-rule{margin-inline-start:auto}
+  body:not(.static) .hero .model-name{text-align:left}
+  body:not(.static) .hero .rig{width:100%}
+  body:not(.static) .hero .roller{visibility:hidden}
+  body:not(.static) .hero .lens{top:var(--cy)}
+  body:not(.static) .hero .dial{
+    top:auto;bottom:clamp(60px,9.5vh,100px);left:50%;transform:translateX(-50%);
+    flex-direction:row;gap:24px;
+  }
+  body:not(.static) .hero .dial b{font-size:15px}
+  body:not(.static) .hero .scroll-hint{inset-inline:0;justify-content:center}
+}
+@media (max-width:900px){
+  :root{--lens-size:min(84vw,400px);--lens-y-m:calc(50% + 14px)}
+  body:not(.static) .hero{padding-top:clamp(40px,7vh,64px)}
+  body:not(.static) .hero-copy{display:contents}
+  body:not(.static) .hero .eyebrow{order:1;text-align:center;padding-inline:16px;margin-bottom:16px;font-size:10px;letter-spacing:.3em;white-space:nowrap}
+  body:not(.static) .hero .brand{order:2;text-align:center;font-size:clamp(56px,17vw,96px);letter-spacing:.08em;padding-inline-start:.08em}
+  body:not(.static) .hero .rig{order:3;height:calc(var(--lens-size) + 64px);margin-top:10px}
+  body:not(.static) .hero .promise{order:4;text-align:center;padding-inline:24px;max-width:none;margin-top:14px;font-size:17px;text-wrap:balance}
+  body:not(.static) .hero .roller{visibility:hidden}
+  body:not(.static) .hero .model-panel{order:5;text-align:center;margin:26px 24px 44px;min-height:120px}
+  body:not(.static) .hero .model-rule{margin-inline:auto}
+  body:not(.static) .hero .model-name{text-align:center}
+}
+
 /* ---------- REDUCED MOTION / STATIC ---------- */
 @media (prefers-reduced-motion: reduce){
   .scroll-hint::after{animation:none}
@@ -1180,6 +1241,7 @@ const PORTRAITS = [
 
 const COUNT = MODELS.length;
 const ZOOM = 1.5;
+const FILL = 1.12;  /* the cut-outs carry an empty margin of their own */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
 
@@ -1263,6 +1325,11 @@ function lensCenter(){
   return { x:l.left+l.width/2, y:l.top+l.height/2 };
 }
 const clamp01 = v => Math.max(0, Math.min(1, v));
+/* v3: the frame fills the ring, so the wheel's step follows the ring's size */
+function fitWheel(){
+  const l = document.querySelector('.lens').offsetWidth;
+  if(l) document.documentElement.style.setProperty('--item-h', Math.round(l / ZOOM * FILL) + 'px');
+}
 
 /* render wheel at continuous p */
 function render(p){
@@ -1348,6 +1415,7 @@ if (reduceMotion){
   });
 } else {
   gsap.registerPlugin(ScrollTrigger);
+  fitWheel();
 
   /* --- the wheel drives itself --- */
   function goTo(i, dur){
@@ -1468,7 +1536,7 @@ if (reduceMotion){
   function layThread(){
     const rr = receive.getBoundingClientRect();
     thread.setAttribute('viewBox', `0 0 ${rr.width} ${rr.height}`);
-    const sX = isMobile()? rr.width/2 : Math.min(260, rr.width*0.22);
+    const sX = rr.width/2;   /* the thread leaves from the centre, where the frame was */
     const r  = slot.getBoundingClientRect();
     const eX = r.left - rr.left + r.width/2;
     const eY = r.top - rr.top + r.height/2;
@@ -1482,7 +1550,7 @@ if (reduceMotion){
     strokeDashoffset:0, ease:'none',
     scrollTrigger:{ trigger:receive, start:'top 85%', end:'center 55%', scrub:.5 }
   });
-  window.addEventListener('resize', ()=>{ layThread(); ScrollTrigger.refresh(); });
+  window.addEventListener('resize', ()=>{ fitWheel(); render(proxy.p); layThread(); ScrollTrigger.refresh(); });
 
   /* ---------- faces gallery: pinned horizontal scrub ---------- */
   /* RTL flow: the next portrait waits on the left, like the mobile roller */
