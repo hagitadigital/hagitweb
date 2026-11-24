@@ -1,0 +1,297 @@
+<title>SOLUNA Steep Test</title>
+<meta name="robots" content="noindex">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;500&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Spline+Sans+Mono:wght@400&display=swap">
+<style>
+/* Layout: one full-screen glass of water; the hour's colour steeps into it; type floats on top. */
+:root{
+  --water:#EEF3F1;          /* clear water */
+  --ink:#16222A;            /* text, changes per hour */
+  --rule:rgba(22,34,42,.28);
+  --he-serif:"Frank Ruhl Libre","David",serif;
+  --latin:"Fraunces","Georgia",serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--water);color:var(--ink);overflow:hidden;font-family:var(--he-serif);
+  -webkit-font-smoothing:antialiased;transition:color .9s ease;-webkit-tap-highlight-color:transparent}
+.stage{position:fixed;inset:0;cursor:crosshair}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* caustic light moving through the water */
+.caustic{position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:soft-light;opacity:.55;
+  background:
+   radial-gradient(40% 18% at 30% 20%,rgba(255,255,255,.9),transparent 70%),
+   radial-gradient(30% 14% at 70% 40%,rgba(255,255,255,.7),transparent 70%),
+   radial-gradient(36% 16% at 40% 70%,rgba(255,255,255,.6),transparent 70%);
+  animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,3%) rotate(3deg) scale(1.05)}}
+.glass-edge{position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),inset 0 0 120px rgba(255,255,255,.18)}
+
+.ui{position:fixed;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;
+  padding-block:calc(env(safe-area-inset-top,0px) + 20px) calc(env(safe-area-inset-bottom,0px) + 22px);
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mark{font-family:var(--latin);font-weight:300;font-size:22px;letter-spacing:.32em}
+.mark sup{font-size:.5em;letter-spacing:0}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+
+.read{direction:rtl;display:grid;gap:6px;max-width:560px}
+.clock{font-family:var(--mono);font-size:12px;letter-spacing:.2em;direction:ltr;text-align:right;opacity:.85;font-variant-numeric:tabular-nums}
+.hour{font-weight:300;font-size:clamp(46px,13vw,104px);line-height:.95;text-wrap:balance}
+.plant{font-size:clamp(17px,4.4vw,22px);font-weight:300}
+.latin{font-family:var(--latin);font-style:italic;font-weight:300;font-size:clamp(14px,3.6vw,17px);opacity:.8;direction:ltr;text-align:right}
+.read > *{transition:opacity .5s ease,transform .5s ease}
+.read.swap > *{opacity:0;transform:translateY(8px)}
+
+.dial{direction:rtl;display:flex;gap:6px;margin-top:22px;align-items:center}
+.dial i{flex:1;height:2px;background:var(--rule);position:relative;overflow:hidden;border-radius:2px}
+.dial i b{position:absolute;inset:0 0 0 auto;width:0;background:currentColor}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;direction:rtl;gap:12px}
+.hint{font-size:14px;opacity:.75}
+button{pointer-events:auto;font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:inherit;background:transparent;border:1px solid currentColor;border-radius:999px;padding:8px 14px;cursor:pointer;opacity:.85}
+button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+</style>
+
+<div class="stage" id="stage" aria-label="כוס מים: לחיצה מטפטפת את צבע השעה">
+  <canvas id="ink"></canvas>
+  <canvas id="fx"></canvas>
+  <div class="caustic"></div>
+  <div class="glass-edge"></div>
+</div>
+
+<div class="ui">
+  <div class="top">
+    <div class="mark">SOLUNA<sup>°</sup></div>
+    <div class="tag">Tisanes de la lumière · Motion test</div>
+  </div>
+  <div>
+    <div class="read" id="read" aria-live="polite">
+      <div class="clock" id="clock">05:40</div>
+      <div class="hour" id="hour">מים צלולים</div>
+      <div class="plant" id="plant">לפני שהשמש עולה</div>
+      <div class="latin" id="latin">aqua · 92°C</div>
+    </div>
+    <div class="dial" id="dial"></div>
+    <div class="foot">
+      <div class="hint">לחצי על המים כדי לטפטף את צבע השעה</div>
+      <button id="pause" type="button" aria-pressed="false">Pause</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+/* ---------- the day, hour by hour ---------- */
+const PH = [
+  {k:'clear', d:1.0, clock:'05:40', hour:'מים צלולים', plant:'לפני שהשמש עולה', latin:'aqua · 92°C', col:null, text:'#16222A'},
+  {k:'dawn',  d:3.4, clock:'06:12', hour:'זריחה', plant:'כורכום וחוטי זעפרן', latin:'Curcuma longa · Crocus sativus', col:'#D98A0E', text:'#2A1404'},
+  {k:'day',   d:3.2, clock:'12:40', hour:'צהריים', plant:'למון גראס וקמומיל', latin:'Cymbopogon · Matricaria', col:'#E2CD62', text:'#2B2608'},
+  {k:'dusk',  d:3.4, clock:'18:55', hour:'שקיעה', plant:'עלי גביע של היביסקוס', latin:'Hibiscus sabdariffa', col:'#A3123A', text:'#FFEFF2'},
+  {k:'night', d:3.4, clock:'22:30', hour:'לילה', plant:'פרח אפונת הפרפר', latin:'Clitoria ternatea', col:'#1B3AA8', text:'#E9EEFF'},
+  {k:'lemon', d:3.8, clock:'22:31', hour:'+ טיפת לימון', plant:'הכחול הופך לסגול', latin:'pH 7 → pH 3', col:'#7A2AA8', text:'#F7EBFF'},
+  {k:'flush', d:1.3, clock:'05:40', hour:'מים צלולים', plant:'ומתחילים יום חדש', latin:'aqua · 92°C', col:null, text:'#16222A'}
+];
+const TOTAL = PH.reduce((s,p)=>s+p.d,0);
+const WATER = [238/255,243/255,241/255];
+const hex = h => [1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255);
+// colour -> absorbance in water (Beer–Lambert), so inks mix the way they do in a glass
+const absorb = h => hex(h).map((c,i)=>-Math.log(Math.max(c,.02)/WATER[i]));
+PH.forEach(p=>{ if(p.col) p.A=absorb(p.col); });
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const ink=document.getElementById('ink'), fx=document.getElementById('fx'), fc=fx.getContext('2d');
+let W=innerWidth, H=innerHeight;
+const gl = reduce ? null : ink.getContext('webgl2',{alpha:false,depth:false,stencil:false,antialias:false});
+const fluid = !!(gl && gl.getExtension('EXT_color_buffer_float'));
+
+/* ---------- WebGL stable-fluids solver ---------- */
+let F=null;
+if(fluid){
+  const VS=`#version 300 es
+  precision highp float; in vec2 aPos; uniform vec2 texel; out vec2 vUv,vL,vR,vT,vB;
+  void main(){vUv=aPos*.5+.5;vL=vUv-vec2(texel.x,0.);vR=vUv+vec2(texel.x,0.);vT=vUv+vec2(0.,texel.y);vB=vUv-vec2(0.,texel.y);gl_Position=vec4(aPos,0.,1.);}`;
+  const HD=`#version 300 es
+  precision highp float; precision highp sampler2D; in vec2 vUv,vL,vR,vT,vB; out vec4 o;
+  `;
+  const FS={
+    splatAdd:`uniform sampler2D uT;uniform float aspect,radius;uniform vec2 point;uniform vec3 color;
+      void main(){vec2 p=vUv-point;p.x*=aspect;float g=exp(-dot(p,p)/radius);o=vec4(texture(uT,vUv).xyz+g*color,1.);}`,
+    splatMix:`uniform sampler2D uT;uniform float aspect,radius,strength;uniform vec2 point;uniform vec3 color;
+      void main(){vec2 p=vUv-point;p.x*=aspect;float g=clamp(exp(-dot(p,p)/radius)*strength,0.,1.);vec3 b=texture(uT,vUv).rgb;o=vec4(mix(b,color,g),1.);}`,
+    advect:`uniform sampler2D uVel,uSrc;uniform vec2 vtexel;uniform float dt,diss;
+      void main(){vec2 c=vUv-dt*texture(uVel,vUv).xy*vtexel;o=texture(uSrc,c)/(1.+diss*dt);}`,
+    divergence:`uniform sampler2D uVel;
+      void main(){float L=texture(uVel,vL).x,R=texture(uVel,vR).x,T=texture(uVel,vT).y,B=texture(uVel,vB).y;vec2 C=texture(uVel,vUv).xy;
+      if(vL.x<0.)L=-C.x;if(vR.x>1.)R=-C.x;if(vT.y>1.)T=-C.y;if(vB.y<0.)B=-C.y;o=vec4(.5*(R-L+T-B),0.,0.,1.);}`,
+    curl:`uniform sampler2D uVel;
+      void main(){o=vec4(.5*(texture(uVel,vR).y-texture(uVel,vL).y-texture(uVel,vT).x+texture(uVel,vB).x),0.,0.,1.);}`,
+    vort:`uniform sampler2D uVel,uCurl;uniform float curl,dt;
+      void main(){float L=texture(uCurl,vL).x,R=texture(uCurl,vR).x,T=texture(uCurl,vT).x,B=texture(uCurl,vB).x,C=texture(uCurl,vUv).x;
+      vec2 f=.5*vec2(abs(T)-abs(B),abs(R)-abs(L));f/=length(f)+1e-4;f*=curl*C;f.y*=-1.;
+      o=vec4(clamp(texture(uVel,vUv).xy+f*dt,-1000.,1000.),0.,1.);}`,
+    sink:`uniform sampler2D uVel,uDye;uniform float g,dt,ambient;
+      void main(){vec3 A=texture(uDye,vUv).rgb;float d=max(0.,A.r+A.g+A.b-ambient);vec2 v=texture(uVel,vUv).xy;o=vec4(v.x,v.y-g*d*dt,0.,1.);}`,
+    pressure:`uniform sampler2D uP,uDiv;
+      void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4((L+R+B+T-texture(uDiv,vUv).x)*.25,0.,0.,1.);}`,
+    gradSub:`uniform sampler2D uP,uVel;
+      void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4(texture(uVel,vUv).xy-vec2(R-L,T-B),0.,1.);}`,
+    scale:`uniform sampler2D uT;uniform float value;void main(){o=value*texture(uT,vUv);}`,
+    steep:`uniform sampler2D uT;uniform vec3 target;uniform float amt;void main(){o=vec4(mix(texture(uT,vUv).rgb,target,amt),1.);}`,
+    display:`uniform sampler2D uDye;uniform vec3 water;
+      void main(){vec3 A=max(texture(uDye,vUv).rgb,0.);vec3 c=water*exp(-A);
+      float l=dot(texture(uDye,vL).rgb,vec3(1)),r=dot(texture(uDye,vR).rgb,vec3(1)),t=dot(texture(uDye,vT).rgb,vec3(1)),b=dot(texture(uDye,vB).rgb,vec3(1));
+      vec3 n=normalize(vec3(l-r,b-t,.35));float s=dot(n,normalize(vec3(-.35,.55,1.)));
+      c*=.94+.1*s; o=vec4(c,1.);}`
+  };
+  const sh=(t,src)=>{const s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(s);return s;};
+  const vs=sh(gl.VERTEX_SHADER,VS); const P={};
+  for(const k in FS){const p=gl.createProgram();gl.attachShader(p,vs);gl.attachShader(p,sh(gl.FRAGMENT_SHADER,HD+FS[k]));gl.bindAttribLocation(p,0,'aPos');gl.linkProgram(p);
+    const u={};const n=gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS);for(let i=0;i<n;i++){const nm=gl.getActiveUniform(p,i).name;u[nm]=gl.getUniformLocation(p,nm);}P[k]={p,u};}
+  const vao=gl.createVertexArray();gl.bindVertexArray(vao);
+  gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,-1,1,1,1,1,-1]),gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array([0,1,2,0,2,3]),gl.STATIC_DRAW);
+  gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(0);
+  function fbo(w,h){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA16F,w,h,0,gl.RGBA,gl.HALF_FLOAT,null);
+    const f=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,f);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,t,0);
+    gl.viewport(0,0,w,h);gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT);
+    return {t,f,w,h,bind(u){gl.activeTexture(gl.TEXTURE0+u);gl.bindTexture(gl.TEXTURE_2D,t);return u;}};}
+  function dfbo(w,h){let a=fbo(w,h),b=fbo(w,h);return {w,h,get read(){return a},get write(){return b},swap(){const x=a;a=b;b=x;}};}
+  const res=r=>{const asp=ink.width/ink.height;return asp<1?[r,Math.round(r/asp)]:[Math.round(r*asp),r];};
+  function use(k,texelOf){const q=P[k];gl.useProgram(q.p);if(texelOf&&q.u.texel)gl.uniform2f(q.u.texel,1/texelOf.w,1/texelOf.h);return q.u;}
+  function blit(target){if(target){gl.viewport(0,0,target.w,target.h);gl.bindFramebuffer(gl.FRAMEBUFFER,target.f);}else{gl.viewport(0,0,ink.width,ink.height);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_SHORT,0);}
+  F={P,use,blit,res,fbo,dfbo,init(){const [sw,sh_]=res(128),[dw,dh]=res(640);
+      F.vel=dfbo(sw,sh_);F.dye=dfbo(dw,dh);F.div=fbo(sw,sh_);F.curl=fbo(sw,sh_);F.pr=dfbo(sw,sh_);}};
+}
+
+function size(){
+  W=innerWidth;H=innerHeight;const dpr=Math.min(devicePixelRatio||1,1.5);
+  for(const c of [ink,fx]){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);}
+  fc.setTransform(dpr,0,0,dpr,0,0);
+  if(fluid) F.init();
+}
+
+const toUv=(x,y)=>[x/W,1-y/H];
+function splatVel(x,y,vx,vy,rad){const u=F.use('splatAdd',F.vel.read);gl.uniform1i(u.uT,F.vel.read.bind(0));gl.uniform1f(u.aspect,W/H);
+  const [px,py]=toUv(x,y);gl.uniform2f(u.point,px,py);gl.uniform3f(u.color,vx,vy,0);gl.uniform1f(u.radius,rad);F.blit(F.vel.write);F.vel.swap();}
+function splatInk(x,y,A,k,rad){const u=F.use('splatAdd',F.dye.read);gl.uniform1i(u.uT,F.dye.read.bind(0));gl.uniform1f(u.aspect,W/H);
+  const [px,py]=toUv(x,y);gl.uniform2f(u.point,px,py);gl.uniform3f(u.color,A[0]*k,A[1]*k,A[2]*k);gl.uniform1f(u.radius,rad);F.blit(F.dye.write);F.dye.swap();}
+function mixInk(x,y,A,str,rad){const u=F.use('splatMix',F.dye.read);gl.uniform1i(u.uT,F.dye.read.bind(0));gl.uniform1f(u.aspect,W/H);
+  const [px,py]=toUv(x,y);gl.uniform2f(u.point,px,py);gl.uniform3f(u.color,A[0],A[1],A[2]);gl.uniform1f(u.radius,rad);gl.uniform1f(u.strength,str);F.blit(F.dye.write);F.dye.swap();}
+function steep(A,amt){amt=1-Math.pow(1-amt,KF);const u=F.use('steep',F.dye.read);gl.uniform1i(u.uT,F.dye.read.bind(0));gl.uniform3f(u.target,A[0],A[1],A[2]);gl.uniform1f(u.amt,amt);F.blit(F.dye.write);F.dye.swap();}
+
+let ambient=0,KF=1;
+function simulate(dt){
+  const {vel,dye,div,curl,pr}=F;let u;
+  u=F.use('curl',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));F.blit(curl);
+  u=F.use('vort',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uCurl,curl.bind(1));gl.uniform1f(u.curl,32);gl.uniform1f(u.dt,dt);F.blit(vel.write);vel.swap();
+  u=F.use('sink',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uDye,dye.read.bind(1));gl.uniform1f(u.g,55);gl.uniform1f(u.dt,dt);gl.uniform1f(u.ambient,ambient);F.blit(vel.write);vel.swap();
+  u=F.use('divergence',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));F.blit(div);
+  u=F.use('scale',pr.read);gl.uniform1i(u.uT,pr.read.bind(0));gl.uniform1f(u.value,.8);F.blit(pr.write);pr.swap();
+  u=F.use('pressure',pr.read);gl.uniform1i(u.uDiv,div.bind(0));
+  for(let i=0;i<22;i++){gl.uniform1i(u.uP,pr.read.bind(1));F.blit(pr.write);pr.swap();}
+  u=F.use('gradSub',vel.read);gl.uniform1i(u.uP,pr.read.bind(0));gl.uniform1i(u.uVel,vel.read.bind(1));F.blit(vel.write);vel.swap();
+  u=F.use('advect',vel.read);gl.uniform2f(u.vtexel,1/vel.w,1/vel.h);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uSrc,vel.read.bind(0));gl.uniform1f(u.dt,dt);gl.uniform1f(u.diss,.25);F.blit(vel.write);vel.swap();
+  u=F.use('advect',dye.read);gl.uniform2f(u.vtexel,1/vel.w,1/vel.h);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uSrc,dye.read.bind(1));gl.uniform1f(u.diss,0);F.blit(dye.write);dye.swap();
+}
+function render(){const u=F.use('display',F.dye.read);gl.uniform1i(u.uDye,F.dye.read.bind(0));gl.uniform3f(u.water,...WATER);F.blit(null);}
+
+/* ---------- botanicals sinking into the glass ---------- */
+const drops=[];
+function addDrop(p,x,y,tap){drops.push({p,x,y:tap?y:-40,ty:tap?y:H*(.22+Math.random()*.08),vy:0,age:0,emit:0,rot:Math.random()*6,alpha:1,tap});}
+function drawBot(d){
+  const c=fc;c.save();c.translate(d.x,d.y);c.rotate(d.rot);c.globalAlpha=d.alpha;const k=d.p.k;
+  if(k==='dawn'){c.fillStyle='#E08A0C';c.beginPath();c.arc(0,0,11,0,7);c.fill();c.fillStyle='#F3B23A';c.beginPath();c.arc(0,0,7,0,7);c.fill();
+    c.strokeStyle='#B5240E';c.lineWidth=1.6;c.lineCap='round';for(let i=0;i<5;i++){c.beginPath();c.moveTo(14,-8+i*4);c.quadraticCurveTo(24,-10+i*5,32,-4+i*4);c.stroke();}}
+  else if(k==='day'){c.fillStyle='#FFFFFF';for(let i=0;i<14;i++){c.save();c.rotate(i*Math.PI/7);c.beginPath();c.ellipse(0,-11,3.2,8,0,0,7);c.fill();c.restore();}
+    c.fillStyle='#E7B21E';c.beginPath();c.arc(0,0,6,0,7);c.fill();}
+  else if(k==='dusk'){c.fillStyle='#6E0A22';for(let i=0;i<5;i++){c.save();c.rotate(i*Math.PI*2/5);c.beginPath();c.moveTo(0,0);c.quadraticCurveTo(9,-10,0,-22);c.quadraticCurveTo(-9,-10,0,0);c.fill();c.restore();}
+    c.fillStyle='#9E1235';c.beginPath();c.arc(0,0,5,0,7);c.fill();}
+  else if(k==='night'){c.fillStyle='#2443B8';c.beginPath();c.ellipse(0,-4,15,18,0,0,7);c.fill();c.fillStyle='#3A5CD6';c.beginPath();c.ellipse(0,-6,9,11,0,0,7);c.fill();
+    c.fillStyle='#F5F1DE';c.beginPath();c.ellipse(0,6,4,7,0,0,7);c.fill();c.fillStyle='#E8C23A';c.beginPath();c.ellipse(0,9,2.2,3.5,0,0,7);c.fill();}
+  else if(k==='lemon'){c.fillStyle='#F2D33A';c.beginPath();c.arc(0,0,17,0,7);c.fill();c.fillStyle='#FBF0B8';c.beginPath();c.arc(0,0,14,0,7);c.fill();
+    c.fillStyle='#F4D84E';for(let i=0;i<8;i++){c.save();c.rotate(i*Math.PI/4);c.beginPath();c.moveTo(0,0);c.arc(0,0,12.5,-.33,.33);c.closePath();c.fill();c.restore();}}
+  c.restore();
+}
+function release(d,dt){
+  const A=d.p.A, s=Math.min(W,H)/400;
+  if(d.p.k==='lemon'){ // acid spreads outward and turns the blue violet
+    for(let i=0;i<3;i++){const a=Math.random()*Math.PI*2;
+      splatVel(d.x+Math.cos(a)*8,d.y+Math.sin(a)*8,Math.cos(a)*260*s*KF,-Math.sin(a)*260*s*KF,.0006);}
+    mixInk(d.x,d.y,A.map(v=>v*1.25),1-Math.pow(.65,KF),.0022+d.emit*.004);
+  } else {
+    const jx=(Math.random()-.5)*10;
+    splatVel(d.x+jx,d.y+6,(Math.random()-.5)*120*s*KF,-210*s*KF,.00035);
+    splatInk(d.x+jx,d.y+4,A,.55*KF,.00018);
+  }
+}
+
+/* ---------- UI ---------- */
+const $=id=>document.getElementById(id);
+const read=$('read'),dial=$('dial');
+const steps=PH.filter(p=>p.col);
+steps.forEach(()=>{const i=document.createElement('i');i.appendChild(document.createElement('b'));dial.appendChild(i);});
+let shown=-1;
+function setText(c){document.body.style.color=c;document.documentElement.style.setProperty('--rule',c+'47');}
+function showPhase(i){
+  if(i===shown)return;shown=i;const p=PH[i];
+  read.classList.add('swap');
+  setTimeout(()=>{$('clock').textContent=p.clock;$('hour').textContent=p.hour;$('plant').textContent=p.plant;$('latin').textContent=p.latin;read.classList.remove('swap');},380);
+  const light=['dusk','night'].includes(p.k);
+  clearTimeout(showPhase.tm);
+  showPhase.pending = light&&fluid ? p.text : null;
+  setText(light&&fluid ? '#16222A' : p.text);
+  if(!fluid){document.body.style.background=p.col||'#EEF3F1';return;}
+  if(p.col) setTimeout(()=>addDrop(p,W*(.36+Math.random()*.28),0,false),p.k==='lemon'?0:380);
+}
+if(!fluid){ink.style.display='none';document.body.style.transition='background-color 1.6s ease, color .9s ease';}
+
+let t=0,last=performance.now(),paused=false,phaseIdx=0,phaseT=0;
+function phaseAt(tt){let s=0;for(let i=0;i<PH.length;i++){if(tt<s+PH[i].d)return [i,tt-s];s+=PH[i].d;}return [0,0];}
+const ZERO=[0,0,0];
+
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;KF=dt*60;
+  if(!paused)t=(t+dt)%TOTAL;
+  [phaseIdx,phaseT]=phaseAt(t);const p=PH[phaseIdx];
+  showPhase(phaseIdx);
+  if(showPhase.pending && phaseT>2.0){setText(showPhase.pending);showPhase.pending=null;}
+  let si=steps.indexOf(p);
+  [...dial.children].forEach((el,i)=>{const w=si<0?(p.k==='flush'?100:0):i<si?100:i===si?Math.min(100,phaseT/p.d*100):0;el.firstChild.style.width=w+'%';});
+
+  if(fluid&&!paused){
+    // a fresh glass for every hour, except the lemon, which works on the blue already there
+    if(p.col&&p.k!=='lemon'&&phaseT<.5){steep(ZERO,.12);ambient=0;}
+    // after the plume has fallen, the whole glass slowly takes the hour's colour
+    if(p.col&&phaseT>1.7){const a=Math.min(.022,(phaseT-1.7)*.02);steep(p.A.map(v=>v*.8),a);ambient=(p.A[0]+p.A[1]+p.A[2])*.8;}
+    if(p.k==='flush'){steep(ZERO,.03+phaseT/p.d*.12);ambient=0;}
+    fc.clearRect(0,0,W,H);
+    for(let i=drops.length-1;i>=0;i--){
+      const d=drops[i];d.age+=dt;
+      if(d.y<d.ty){d.vy=Math.min(d.vy+.5*KF,9);d.y+=d.vy*KF;d.x+=Math.sin(d.age*3)*.6*KF;d.rot+=.02*KF;}
+      else{d.y+=.3*KF;d.rot+=.004*KF;d.emit+=dt;if(d.emit<(d.p.k==='lemon'?1.2:1.5))release(d,dt);if(d.emit>1.3)d.alpha=Math.max(0,d.alpha-dt*.8);}
+      drawBot(d);if(d.alpha<=0)drops.splice(i,1);
+    }
+    simulate(dt);
+  }
+  if(fluid)render();
+  requestAnimationFrame(frame);
+}
+
+$('stage').addEventListener('pointerdown',e=>{
+  const p=PH[phaseIdx];const ph=p.col?p:PH[1];
+  if(!fluid)return;addDrop(ph,e.clientX,e.clientY,true);
+});
+$('pause').addEventListener('click',()=>{paused=!paused;$('pause').textContent=paused?'Play':'Pause';$('pause').setAttribute('aria-pressed',paused);});
+addEventListener('resize',()=>{const w=innerWidth,h=innerHeight;if(Math.abs(w-W)>2||Math.abs(h-H)>120)size();});
+
+size();requestAnimationFrame(frame);
+})();
+</script>
