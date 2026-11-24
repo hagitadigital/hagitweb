@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOLUNA° · בית חליטות לשעות היום</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="SOLUNA° — עולם מותג קונספטואלי של Brand Worlds Studio: חנות חליטות אונליין שבה כל שעה ביום צובעת את המים בצבע אחר. הדגמת תיק עבודות, לא מוצר למכירה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Heebo:wght@300;400;500&family=Spline+Sans+Mono:wght@400&display=swap">
+<style>
+/* Layout: a clear glass of water fills the screen (live fluid canvas); the shop is built on top of it:
+   shopfront → glass shelves → counter → bag. One look, light, by choice. */
+:root{
+  --water:#EEF3F1;
+  --ink:#16222A;
+  --ink-soft:#4A5A62;
+  --brass:#B08A45;
+  --brass-hi:#D9BE84;
+  --glass:rgba(255,255,255,.42);
+  --glass-line:rgba(255,255,255,.75);
+  --frost:rgba(246,249,248,.78);
+  --dawn:#D98A0E; --day:#C9B04A; --dusk:#A3123A; --night:#1B3AA8;
+  --he-serif:"Frank Ruhl Libre","David",serif;
+  --he-sans:"Heebo","Arial Hebrew",system-ui,sans-serif;
+  --latin:"Fraunces","Georgia",serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--water);color:var(--ink);font-family:var(--he-sans);font-weight:300;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+
+/* ---------- the glass of water ---------- */
+#water,#fx{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+#fx{pointer-events:none;z-index:1}
+.caustic{position:fixed;inset:-20%;pointer-events:none;z-index:1;mix-blend-mode:soft-light;opacity:.5;
+  background:radial-gradient(40% 18% at 30% 20%,rgba(255,255,255,.9),transparent 70%),
+             radial-gradient(30% 14% at 70% 40%,rgba(255,255,255,.7),transparent 70%),
+             radial-gradient(36% 16% at 40% 70%,rgba(255,255,255,.6),transparent 70%);
+  animation:drift 11s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,3%) rotate(3deg) scale(1.05)}}
+
+.wrap{position:relative;z-index:2;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+
+/* ---------- 1 · shopfront ---------- */
+.front{min-height:100svh;display:grid;align-content:center;justify-items:center;gap:22px;
+  padding-block:calc(env(safe-area-inset-top,0px) + 28px) calc(env(safe-area-inset-bottom,0px) + 28px);
+  transition:opacity .9s ease, transform 1.1s cubic-bezier(.6,0,.2,1)}
+.fascia{text-align:center;display:grid;gap:8px}
+.word{font-family:var(--latin);font-weight:300;font-size:clamp(34px,9vw,64px);letter-spacing:.34em;margin-inline-end:-.34em;direction:ltr}
+.word sup{font-size:.42em;letter-spacing:0;vertical-align:.9em}
+.fascia .mono{color:var(--ink-soft);direction:ltr}
+.rule{width:min(520px,82vw);height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
+
+.vitrine{position:relative;width:min(560px,100%,58svh);aspect-ratio:5/4;border-radius:999px 999px 6px 6px / 46% 46% 6px 6px;
+  padding:10px;background:linear-gradient(160deg,var(--brass-hi),var(--brass) 40%,#8c6a2e);box-shadow:0 30px 60px -30px rgba(22,34,42,.35)}
+.vitrine .pane{position:relative;height:100%;border-radius:inherit;overflow:hidden;
+  background:radial-gradient(90% 70% at 50% 100%,#FFFFFF 0%,transparent 70%),linear-gradient(180deg,#F4F8F7 0%,#E4ECE9 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 0 60px rgba(255,255,255,.5);backdrop-filter:blur(2px)}
+.pane::after{content:"";position:absolute;inset:-30%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.55) 47%,transparent 52%,transparent 58%,rgba(255,255,255,.35) 60%,transparent 63%);
+  animation:sheen 7s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{0%,100%{transform:translateX(-18%)}50%{transform:translateX(18%)}}
+.window-shelf{position:absolute;inset:auto 7% 15% 7%;display:flex;justify-content:space-around;align-items:flex-end;gap:2%}
+.window-shelf::after{content:"";position:absolute;inset:auto -4% -10px -4%;height:9px;border-radius:2px;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(200,220,215,.55));box-shadow:0 10px 18px -8px rgba(22,34,42,.3)}
+.window-shelf img{width:auto;filter:drop-shadow(0 8px 10px rgba(22,34,42,.22));transition:filter .6s}
+.window-shelf img.lit{filter:drop-shadow(0 0 22px var(--glow)) drop-shadow(0 8px 10px rgba(22,34,42,.22))}
+.open-sign{position:absolute;top:16%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;
+  padding:6px 12px;border:1px solid var(--brass);border-radius:999px;background:rgba(255,255,255,.6);direction:ltr;white-space:nowrap}
+.open-sign i{width:6px;height:6px;border-radius:50%;background:#2F8F5B;box-shadow:0 0 0 3px rgba(47,143,91,.18)}
+
+.pitch{text-align:center;display:grid;gap:10px;max-width:34ch}
+.pitch h1{font-family:var(--he-serif);font-weight:300;font-size:clamp(30px,7.4vw,48px);line-height:1.05;text-wrap:balance}
+.pitch p{font-size:16px;line-height:1.55;color:var(--ink-soft);text-wrap:balance}
+.door{display:inline-flex;align-items:center;gap:14px;padding:14px 26px 14px 18px;border-radius:999px;
+  background:var(--ink);color:var(--water);font-size:16px;font-weight:400;transition:transform .2s}
+.door:hover{transform:translateY(-2px)}
+.door .handle{width:26px;height:4px;border-radius:2px;background:var(--brass-hi)}
+
+body[data-view="shop"] .front, body[data-view="item"] .front{opacity:0;transform:scale(1.9);pointer-events:none;position:fixed;inset:0}
+body[data-view="front"] .shop{opacity:0;pointer-events:none;transform:translateY(30px)}
+
+/* ---------- top bar ---------- */
+.bar{position:fixed;inset:0 0 auto 0;z-index:7;pointer-events:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding-block:calc(env(safe-area-inset-top,0px) + 12px) 12px;
+  padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));
+  transition:opacity .6s}
+body[data-view="front"] .bar{opacity:0;pointer-events:none}
+body[data-view="shop"] .bar{background:linear-gradient(180deg,rgba(238,243,241,.92) 55%,rgba(238,243,241,0));padding-bottom:22px}
+.bar .word{font-size:18px;letter-spacing:.3em}
+.bag-btn{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(22,34,42,.35);border-radius:999px;background:var(--frost);backdrop-filter:blur(8px)}
+.bag-btn svg{width:16px;height:16px}
+.bag-btn b{font-family:var(--mono);font-weight:400;font-size:12px;min-width:1ch}
+.bag-btn.bump{animation:bump .5s ease}
+@keyframes bump{40%{transform:scale(1.14)}}
+
+/* ---------- 2 · shelves ---------- */
+.shop{padding-block:calc(env(safe-area-inset-top,0px) + 84px) calc(env(safe-area-inset-bottom,0px) + 40px);
+  transition:opacity .9s ease .25s, transform .9s ease .25s;max-width:1180px;margin-inline:auto}
+.shop-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 24px;margin-bottom:18px}
+.shop-head h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(28px,6vw,44px);line-height:1}
+.shop-head p{color:var(--ink-soft);font-size:15px;max-width:40ch}
+.shelves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+@media (min-width:880px){.shelves{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.item{position:relative;display:grid;grid-template-rows:auto auto;padding:26px 10px 16px;text-align:center;cursor:pointer;isolation:isolate}
+.item .spot{position:absolute;inset:0 6% 30% 6%;z-index:-1;opacity:0;transition:opacity .8s;
+  background:radial-gradient(60% 70% at 50% 0%,var(--glow) 0%,transparent 70%)}
+.item.now .spot{opacity:.55}
+.item .stage{height:clamp(190px,42vw,300px);display:flex;align-items:flex-end;justify-content:center;position:relative}
+.item .stage::after{content:"";position:absolute;inset:auto -10px -8px -10px;height:8px;border-radius:2px;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(200,220,215,.5));box-shadow:0 12px 18px -10px rgba(22,34,42,.35)}
+.item img{height:calc(var(--h) * 100%);width:auto;max-width:100%;object-fit:contain;transform-origin:50% 100%;
+  filter:drop-shadow(0 10px 12px rgba(22,34,42,.2));transition:transform .35s cubic-bezier(.3,.7,.3,1.3)}
+.item:hover img,.item:focus-visible img{transform:translateY(-8px) rotate(-1.5deg)}
+.item:not(.now) img{filter:drop-shadow(0 10px 12px rgba(22,34,42,.2)) saturate(.9)}
+.tag{margin-top:22px;display:grid;gap:4px;justify-items:center}
+.tag .mono{color:var(--ink-soft);direction:ltr}
+.tag h3{font-family:var(--he-serif);font-weight:400;font-size:22px}
+.tag .price{font-family:var(--mono);font-size:13px}
+.now-chip{position:absolute;top:8px;left:50%;transform:translateX(-50%);padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--water);white-space:nowrap;direction:ltr;opacity:0}
+.item.now .now-chip{opacity:1}
+.fine{margin-top:36px;color:var(--ink-soft);font-size:13px;line-height:1.6;max-width:62ch}
+.fine a{color:inherit}
+
+/* ---------- 3 · counter ---------- */
+.counter{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:1fr auto;opacity:0;pointer-events:none;transition:opacity .5s}
+body[data-view="item"] .counter{opacity:1;pointer-events:auto}
+body[data-view="item"] .shop{opacity:0;pointer-events:none}
+.counter .hero{display:flex;align-items:flex-end;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+.counter .hero img{height:min(42svh,420px);width:auto;max-width:86vw;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(22,34,42,.28));visibility:hidden}
+.counter .hero img.on{visibility:visible}
+.panel{margin:18px auto calc(env(safe-area-inset-bottom,0px) + 16px);width:min(620px,calc(100% - 2*max(16px,env(safe-area-inset-left,0px))));
+  background:var(--frost);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:20px 20px 18px;display:grid;gap:12px;
+  transform:translateY(24px);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+body[data-view="item"] .panel{transform:none}
+.panel .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.panel h2{font-family:var(--he-serif);font-weight:400;font-size:clamp(28px,7vw,38px);line-height:1}
+.panel .latin{font-family:var(--latin);font-style:italic;font-size:16px;color:var(--ink-soft);direction:ltr}
+.panel p{font-size:15.5px;line-height:1.55}
+.specs{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.specs dt{color:var(--ink-soft)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:4px}
+.add{flex:1 1 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-radius:999px;background:var(--ink);color:var(--water);font-size:16px;font-weight:400}
+.add .mono{font-size:13px;letter-spacing:.08em}
+.lemon{padding:13px 16px;border-radius:999px;border:1px solid var(--ink);display:inline-flex;gap:8px;align-items:center;font-size:15px}
+.lemon i{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FBF0B8,#F2D33A)}
+.lemon[hidden]{display:none!important}
+.back{position:fixed;z-index:7;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(18px,env(safe-area-inset-right,0px));
+  padding:8px 14px;border-radius:999px;background:var(--frost);border:1px solid rgba(22,34,42,.3);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
+body[data-view="item"] .back{opacity:1;pointer-events:auto}
+body[data-view="item"] .bar .word{opacity:0}
+
+.flyer{position:fixed;z-index:8;pointer-events:none;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(22,34,42,.28))}
+
+/* ---------- 4 · bag ---------- */
+.sheet{position:fixed;inset:auto 0 0 0;z-index:9;max-height:80svh;overflow:auto;background:#F7FAF9;border-radius:22px 22px 0 0;
+  box-shadow:0 -20px 60px rgba(22,34,42,.25);transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  padding-block:22px calc(env(safe-area-inset-bottom,0px) + 22px);padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.sheet.open{transform:none}
+.scrim{position:fixed;inset:0;z-index:8;background:rgba(22,34,42,.3);opacity:0;pointer-events:none;transition:opacity .4s}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet-in{max-width:560px;margin-inline:auto;display:grid;gap:14px}
+.sheet h2{font-family:var(--he-serif);font-weight:400;font-size:28px}
+.lines{display:grid;gap:10px;list-style:none}
+.lines li{display:grid;grid-template-columns:52px 1fr auto auto;gap:12px;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(22,34,42,.1)}
+.lines img{height:52px;width:52px;object-fit:contain}
+.lines .mono{color:var(--ink-soft)}
+.lines button{font-size:20px;line-height:1;padding:4px 8px;color:var(--ink-soft)}
+.total{display:flex;justify-content:space-between;font-size:17px}
+.total b{font-family:var(--mono);font-weight:400}
+.empty{color:var(--ink-soft)}
+.pay{padding:14px 20px;border-radius:999px;background:var(--ink);color:var(--water);font-size:16px}
+.note{font-size:14px;line-height:1.55;color:var(--ink-soft);padding:14px;border:1px dashed rgba(22,34,42,.3);border-radius:14px}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01s!important}
+}
+</style>
+</head>
+<body data-view="front">
+
+<canvas id="water" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="caustic" aria-hidden="true"></div>
+
+<!-- top bar (inside the shop) -->
+<header class="bar">
+  <div class="word" aria-label="SOLUNA">SOLUNA<sup>°</sup></div>
+  <button class="bag-btn" id="bagBtn" type="button" aria-label="השקית שלי">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    <span>שקית</span><b id="bagCount">0</b>
+  </button>
+</header>
+<button class="back" id="back" type="button">→ חזרה למדפים</button>
+
+<!-- 1 · shopfront -->
+<section class="front wrap" aria-labelledby="hook">
+  <div class="fascia">
+    <div class="word">SOLUNA<sup>°</sup></div>
+    <div class="mono">Tisanes de la lumière · Maison des heures</div>
+  </div>
+  <div class="rule" aria-hidden="true"></div>
+  <div class="vitrine">
+    <div class="pane">
+      <div class="open-sign mono"><i aria-hidden="true"></i><span id="openClock">OUVERT</span></div>
+      <div class="window-shelf" id="windowShelf"></div>
+    </div>
+  </div>
+  <div class="pitch">
+    <h1 id="hook">באיזה צבע השעה שלך?</h1>
+    <p>ארבע חליטות, אחת לכל אור של היום. כל אחת צובעת את המים בצבע של השעה שלה.</p>
+  </div>
+  <button class="door" id="enter" type="button"><span class="handle" aria-hidden="true"></span>להיכנס לחנות</button>
+</section>
+
+<!-- 2 · shelves -->
+<main class="shop wrap" aria-labelledby="shelvesTitle">
+  <div class="shop-head">
+    <h2 id="shelvesTitle">המדפים</h2>
+    <p id="nowLine">המדף של השעה הזאת מואר. לחצי על אריזה כדי להוריד אותה לדלפק.</p>
+  </div>
+  <div class="shelves" id="shelves"></div>
+  <p class="fine">SOLUNA° הוא עולם מותג קונספטואלי של <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds Studio</a>, עולם No.05 אחרי שדרוג. הדגמת תיק עבודות: המוצרים, המחירים והקופה אינם אמיתיים, ושום דבר כאן אינו ייעוץ רפואי.</p>
+</main>
+
+<!-- 3 · counter -->
+<section class="counter" id="counter" aria-live="polite" aria-label="הדלפק">
+  <div class="hero"><img id="heroImg" alt=""></div>
+  <div class="panel">
+    <div class="head"><span class="mono" id="pClock"></span><span class="latin" id="pLatin"></span></div>
+    <h2 id="pName"></h2>
+    <p id="pDesc"></p>
+    <dl class="specs">
+      <dt>בתוך החליטה</dt><dd id="pBlend"></dd>
+      <dt>חליטה</dt><dd id="pSteep"></dd>
+      <dt>האריזה</dt><dd id="pPack"></dd>
+    </dl>
+    <div class="actions">
+      <button class="lemon" id="lemon" type="button" hidden><i aria-hidden="true"></i>טיפת לימון</button>
+      <button class="add" id="add" type="button"><span>להוסיף לשקית</span><span class="mono" id="pPrice"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · bag -->
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" aria-label="השקית" aria-hidden="true">
+  <div class="sheet-in">
+    <h2>השקית</h2>
+    <ul class="lines" id="lines"></ul>
+    <p class="empty" id="empty">השקית ריקה. כל אריזה שתורידי מהמדף תחכה כאן.</p>
+    <div class="total"><span>סה״כ</span><b id="total">₪0</b></div>
+    <button class="pay" id="pay" type="button">לקופה</button>
+    <p class="note" id="note" hidden>זו חנות קונספט של Brand Worlds Studio, אז שום דבר לא נקנה באמת. אבל עכשיו את יודעת באיזה צבע השעה שלך.</p>
+  </div>
+</aside>
+
+<script>
+(() => {
+/* ---------- the four hours ---------- */
+const HOURS = [
+  {k:'dawn', clock:'06:12 · AUBE', name:'זריחה', latin:'Aube', col:'#D98A0E', glow:'rgba(240,170,40,.8)', h:.62, price:68,
+   desc:'קופסת פליז עגולה עם להב של שעון שמש. בבוקר הצל של הלהב נופל בדיוק על הלוגו, ומבעד לחלון בצד רואים את מה שבפנים.',
+   blend:'כורכום, חוטי זעפרן, קליפת תפוז', steep:'92°C · 5 דקות · זהב', pack:'קופסת שעון שמש מפליז · 60 גר׳'},
+  {k:'day', clock:'12:40 · MIDI', name:'צהריים', latin:'Midi', col:'#E2CD62', glow:'rgba(240,222,120,.9)', h:1, price:64,
+   desc:'מנסרת זכוכית מלאה בקמומיל שלם ולמון גראס. כשאור הצהריים עובר דרכה, היא מטילה קשת קטנה על השולחן.',
+   blend:'למון גראס, קמומיל, ורבנה לימונית', steep:'85°C · 4 דקות · צהוב חיוור', pack:'מנסרת זכוכית עם מכסה פליז · 40 גר׳'},
+  {k:'dusk', clock:'18:55 · CRÉPUSCULE', name:'שקיעה', latin:'Crépuscule', col:'#A3123A', glow:'rgba(214,60,100,.75)', h:.8, price:72,
+   desc:'פירמידה של נייר מקופל שנפתחת כמו פרח. בפנים מחכים עלי הגביע המיובשים של ההיביסקוס.',
+   blend:'היביסקוס, עלי ורדים, מקל קינמון', steep:'95°C · 6 דקות · אדום עמוק', pack:'פירמידת נייר מקופלת עם תגית פליז · 50 גר׳'},
+  {k:'night', clock:'22:30 · NUIT', name:'לילה', latin:'Nuit', col:'#1B3AA8', glow:'rgba(70,100,230,.7)', h:.96, price:84,
+   desc:'צנצנת סהר מקרמיקה, ועליה טפטפת לימון. החליטה יוצאת כחולה עמוקה. טיפה אחת מהטפטפת, והכוס הופכת לסגולה.',
+   blend:'פרח אפונת הפרפר, לבנדר, לואיזה', steep:'90°C · 5 דקות · כחול, ואז סגול', pack:'צנצנת סהר מקרמיקה + טפטפת לימון · 30 גר׳'}
+];
+const LEMON = {k:'lemon', col:'#7A2AA8'};
+const byK = Object.fromEntries(HOURS.map(h=>[h.k,h]));
+const src = k => `assets/cut/${k}.webp`;
+const nowHour = () => { const h=new Date().getHours(); return h>=5&&h<11?'dawn':h>=11&&h<17?'day':h>=17&&h<20?'dusk':'night'; };
+const pad = n => String(n).padStart(2,'0');
+const clockStr = () => { const d=new Date(); return pad(d.getHours())+':'+pad(d.getMinutes()); };
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+
+/* ---------- fluid engine (WebGL2 stable fluids, ink as absorbance) ---------- */
+const WATER=[238/255,243/255,241/255];
+const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255);
+const absorb=h=>hex(h).map((c,i)=>-Math.log(Math.max(c,.02)/WATER[i]));
+[...HOURS,LEMON].forEach(p=>p.A=absorb(p.col));
+const ZERO=[0,0,0];
+const cv=$('water'), fx=$('fx'), fc=fx.getContext('2d');
+let W=innerWidth,H=innerHeight,KF=1;
+const gl = reduce?null:cv.getContext('webgl2',{alpha:false,depth:false,stencil:false,antialias:false});
+const fluid = !!(gl && gl.getExtension('EXT_color_buffer_float'));
+let F=null;
+if(fluid){
+  const VS=`#version 300 es
+  precision highp float;in vec2 aPos;uniform vec2 texel;out vec2 vUv,vL,vR,vT,vB;
+  void main(){vUv=aPos*.5+.5;vL=vUv-vec2(texel.x,0.);vR=vUv+vec2(texel.x,0.);vT=vUv+vec2(0.,texel.y);vB=vUv-vec2(0.,texel.y);gl_Position=vec4(aPos,0.,1.);}`;
+  const HD=`#version 300 es
+  precision highp float;precision highp sampler2D;in vec2 vUv,vL,vR,vT,vB;out vec4 o;
+  `;
+  const FS={
+    splatAdd:`uniform sampler2D uT;uniform float aspect,radius;uniform vec2 point;uniform vec3 color;
+      void main(){vec2 p=vUv-point;p.x*=aspect;float g=exp(-dot(p,p)/radius);o=vec4(texture(uT,vUv).xyz+g*color,1.);}`,
+    splatMix:`uniform sampler2D uT;uniform float aspect,radius,strength;uniform vec2 point;uniform vec3 color;
+      void main(){vec2 p=vUv-point;p.x*=aspect;float g=clamp(exp(-dot(p,p)/radius)*strength,0.,1.);o=vec4(mix(texture(uT,vUv).rgb,color,g),1.);}`,
+    advect:`uniform sampler2D uVel,uSrc;uniform vec2 vtexel;uniform float dt,diss;
+      void main(){vec2 c=vUv-dt*texture(uVel,vUv).xy*vtexel;o=texture(uSrc,c)/(1.+diss*dt);}`,
+    divergence:`uniform sampler2D uVel;
+      void main(){float L=texture(uVel,vL).x,R=texture(uVel,vR).x,T=texture(uVel,vT).y,B=texture(uVel,vB).y;vec2 C=texture(uVel,vUv).xy;
+      if(vL.x<0.)L=-C.x;if(vR.x>1.)R=-C.x;if(vT.y>1.)T=-C.y;if(vB.y<0.)B=-C.y;o=vec4(.5*(R-L+T-B),0.,0.,1.);}`,
+    curl:`uniform sampler2D uVel;void main(){o=vec4(.5*(texture(uVel,vR).y-texture(uVel,vL).y-texture(uVel,vT).x+texture(uVel,vB).x),0.,0.,1.);}`,
+    vort:`uniform sampler2D uVel,uCurl;uniform float curl,dt;
+      void main(){float L=texture(uCurl,vL).x,R=texture(uCurl,vR).x,T=texture(uCurl,vT).x,B=texture(uCurl,vB).x,C=texture(uCurl,vUv).x;
+      vec2 f=.5*vec2(abs(T)-abs(B),abs(R)-abs(L));f/=length(f)+1e-4;f*=curl*C;f.y*=-1.;o=vec4(clamp(texture(uVel,vUv).xy+f*dt,-1000.,1000.),0.,1.);}`,
+    sink:`uniform sampler2D uVel,uDye;uniform float g,dt,ambient;
+      void main(){vec3 A=texture(uDye,vUv).rgb;float d=max(0.,A.r+A.g+A.b-ambient);vec2 v=texture(uVel,vUv).xy;o=vec4(v.x,v.y-g*d*dt,0.,1.);}`,
+    pressure:`uniform sampler2D uP,uDiv;void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4((L+R+B+T-texture(uDiv,vUv).x)*.25,0.,0.,1.);}`,
+    gradSub:`uniform sampler2D uP,uVel;void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4(texture(uVel,vUv).xy-vec2(R-L,T-B),0.,1.);}`,
+    scale:`uniform sampler2D uT;uniform float value;void main(){o=value*texture(uT,vUv);}`,
+    steep:`uniform sampler2D uT;uniform vec3 target;uniform float amt;void main(){o=vec4(mix(texture(uT,vUv).rgb,target,amt),1.);}`,
+    display:`uniform sampler2D uDye;uniform vec3 water;
+      void main(){vec3 A=max(texture(uDye,vUv).rgb,0.);vec3 c=water*exp(-A);
+      float l=dot(texture(uDye,vL).rgb,vec3(1)),r=dot(texture(uDye,vR).rgb,vec3(1)),t=dot(texture(uDye,vT).rgb,vec3(1)),b=dot(texture(uDye,vB).rgb,vec3(1));
+      vec3 n=normalize(vec3(l-r,b-t,.35));c*=.94+.1*dot(n,normalize(vec3(-.35,.55,1.)));o=vec4(c,1.);}`
+  };
+  const sh=(t,s)=>{const x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);if(!gl.getShaderParameter(x,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(x);return x;};
+  const vs=sh(gl.VERTEX_SHADER,VS),P={};
+  for(const k in FS){const p=gl.createProgram();gl.attachShader(p,vs);gl.attachShader(p,sh(gl.FRAGMENT_SHADER,HD+FS[k]));gl.bindAttribLocation(p,0,'aPos');gl.linkProgram(p);
+    const u={},n=gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS);for(let i=0;i<n;i++){const nm=gl.getActiveUniform(p,i).name;u[nm]=gl.getUniformLocation(p,nm);}P[k]={p,u};}
+  gl.bindVertexArray(gl.createVertexArray());
+  gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,-1,1,1,1,1,-1]),gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array([0,1,2,0,2,3]),gl.STATIC_DRAW);
+  gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(0);
+  const fbo=(w,h)=>{const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
+    for(const [a,b] of [[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR],[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE]])gl.texParameteri(gl.TEXTURE_2D,a,b);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA16F,w,h,0,gl.RGBA,gl.HALF_FLOAT,null);
+    const f=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,f);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,t,0);
+    gl.viewport(0,0,w,h);gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT);
+    return {f,w,h,bind(u){gl.activeTexture(gl.TEXTURE0+u);gl.bindTexture(gl.TEXTURE_2D,t);return u;}};};
+  const dfbo=(w,h)=>{let a=fbo(w,h),b=fbo(w,h);return {w,h,get read(){return a},get write(){return b},swap(){const x=a;a=b;b=x;}};};
+  const res=r=>{const a=cv.width/cv.height;return a<1?[r,Math.round(r/a)]:[Math.round(r*a),r];};
+  const use=(k,t)=>{const q=P[k];gl.useProgram(q.p);if(t&&q.u.texel)gl.uniform2f(q.u.texel,1/t.w,1/t.h);return q.u;};
+  const blit=t=>{if(t){gl.viewport(0,0,t.w,t.h);gl.bindFramebuffer(gl.FRAMEBUFFER,t.f);}else{gl.viewport(0,0,cv.width,cv.height);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_SHORT,0);};
+  F={use,blit,init(){const [sw,sh_]=res(128),[dw,dh]=res(640);F.vel=dfbo(sw,sh_);F.dye=dfbo(dw,dh);F.div=fbo(sw,sh_);F.curl=fbo(sw,sh_);F.pr=dfbo(sw,sh_);}};
+}
+const toUv=(x,y)=>[x/W,1-y/H];
+function splat(kind,x,y,c,rad,str){
+  const tgt = kind==='vel'?F.vel:F.dye; const u=F.use(kind==='mix'?'splatMix':'splatAdd',tgt.read);
+  gl.uniform1i(u.uT,tgt.read.bind(0));gl.uniform1f(u.aspect,W/H);const [px,py]=toUv(x,y);gl.uniform2f(u.point,px,py);
+  gl.uniform3f(u.color,c[0],c[1],c[2]);gl.uniform1f(u.radius,rad);if(kind==='mix')gl.uniform1f(u.strength,str);F.blit(tgt.write);tgt.swap();
+}
+function steep(A,amt){amt=1-Math.pow(1-amt,KF);const u=F.use('steep',F.dye.read);gl.uniform1i(u.uT,F.dye.read.bind(0));gl.uniform3f(u.target,A[0],A[1],A[2]);gl.uniform1f(u.amt,amt);F.blit(F.dye.write);F.dye.swap();}
+let ambient=0;
+function simulate(dt){
+  const {vel,dye,div,curl,pr}=F;let u;
+  u=F.use('curl',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));F.blit(curl);
+  u=F.use('vort',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uCurl,curl.bind(1));gl.uniform1f(u.curl,32);gl.uniform1f(u.dt,dt);F.blit(vel.write);vel.swap();
+  u=F.use('sink',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uDye,dye.read.bind(1));gl.uniform1f(u.g,55);gl.uniform1f(u.dt,dt);gl.uniform1f(u.ambient,ambient);F.blit(vel.write);vel.swap();
+  u=F.use('divergence',vel.read);gl.uniform1i(u.uVel,vel.read.bind(0));F.blit(div);
+  u=F.use('scale',pr.read);gl.uniform1i(u.uT,pr.read.bind(0));gl.uniform1f(u.value,.8);F.blit(pr.write);pr.swap();
+  u=F.use('pressure',pr.read);gl.uniform1i(u.uDiv,div.bind(0));for(let i=0;i<20;i++){gl.uniform1i(u.uP,pr.read.bind(1));F.blit(pr.write);pr.swap();}
+  u=F.use('gradSub',vel.read);gl.uniform1i(u.uP,pr.read.bind(0));gl.uniform1i(u.uVel,vel.read.bind(1));F.blit(vel.write);vel.swap();
+  u=F.use('advect',vel.read);gl.uniform2f(u.vtexel,1/vel.w,1/vel.h);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uSrc,vel.read.bind(0));gl.uniform1f(u.dt,dt);gl.uniform1f(u.diss,.25);F.blit(vel.write);vel.swap();
+  u=F.use('advect',dye.read);gl.uniform2f(u.vtexel,1/vel.w,1/vel.h);gl.uniform1i(u.uVel,vel.read.bind(0));gl.uniform1i(u.uSrc,dye.read.bind(1));gl.uniform1f(u.diss,0);F.blit(dye.write);dye.swap();
+}
+function render(){const u=F.use('display',F.dye.read);gl.uniform1i(u.uDye,F.dye.read.bind(0));gl.uniform3f(u.water,...WATER);F.blit(null);}
+
+/* drops of colour: a short plume that sinks and curls */
+const drops=[];
+function pour(p,x,y,opts={}){ if(!fluid) return; drops.push({p,x,y,t:0,dur:opts.dur||1.3,k:opts.k||.5}); }
+function runDrops(dt){
+  const s=Math.min(W,H)/400;
+  for(let i=drops.length-1;i>=0;i--){
+    const d=drops[i]; d.t+=dt; d.y+=.25*KF;
+    if(d.p.k==='lemon'){
+      for(let j=0;j<3;j++){const a=Math.random()*Math.PI*2;splat('vel',d.x+Math.cos(a)*8,d.y+Math.sin(a)*8,[Math.cos(a)*260*s*KF,-Math.sin(a)*260*s*KF,0],.0006);}
+      splat('mix',d.x,d.y,d.p.A.map(v=>v*1.25),.0022+d.t*.004,1-Math.pow(.65,KF));
+    } else {
+      const jx=(Math.random()-.5)*10;
+      splat('vel',d.x+jx,d.y+6,[(Math.random()-.5)*120*s*KF,-210*s*KF,0],.00035);
+      splat('add',d.x+jx,d.y+4,d.p.A.map(v=>v*d.k*KF),.00018);
+    }
+    if(d.t>d.dur) drops.splice(i,1);
+  }
+}
+
+/* the glass slowly settles toward a target colour */
+let target={A:ZERO,rate:0};
+function settle(A,strength,rate){ target={A:A.map(v=>v*strength),rate}; }
+
+function size(){
+  W=innerWidth;H=innerHeight;const dpr=Math.min(devicePixelRatio||1,1.5);
+  for(const c of [cv,fx]){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);}
+  fc.setTransform(dpr,0,0,dpr,0,0);
+  if(fluid) F.init();
+}
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;KF=dt*60;
+  if(fluid && !document.hidden){
+    if(target.rate>0) steep(target.A,target.rate);
+    ambient=(target.A[0]+target.A[1]+target.A[2]);
+    runDrops(dt); simulate(dt); render();
+  }
+  requestAnimationFrame(frame);
+}
+if(!fluid){ cv.style.display='none'; document.body.style.transition='background-color 1.4s ease'; }
+const tintStatic = (p,s) => { if(!fluid) document.body.style.backgroundColor = p ? `color-mix(in srgb, ${p.col} ${Math.round(s*100)}%, #EEF3F1)` : '#EEF3F1'; };
+
+/* ---------- build the window and the shelves ---------- */
+const NOW = nowHour();
+const shelf=$('windowShelf');
+HOURS.forEach(h=>{
+  const img=new Image(); img.src=src(h.k); img.alt=''; img.style.height=`calc(${h.h} * 62%)`; img.style.maxHeight=`${Math.round(h.h*190)}px`;
+  img.style.setProperty('--glow',h.glow); if(h.k===NOW) img.classList.add('lit'); shelf.appendChild(img);
+});
+// the vitrine shelf needs a height to size against
+shelf.style.height='62%';
+$('openClock').textContent = 'OUVERT · '+clockStr();
+
+const shelves=$('shelves');
+HOURS.forEach(h=>{
+  const b=document.createElement('button'); b.type='button'; b.className='item'+(h.k===NOW?' now':''); b.dataset.k=h.k;
+  b.style.setProperty('--glow',h.glow); b.style.setProperty('--h',h.h);
+  b.setAttribute('aria-label',`${h.name}, ${h.price} ש״ח. להוריד לדלפק`);
+  b.innerHTML=`<span class="spot" aria-hidden="true"></span><span class="now-chip mono">NOW · ${clockStr()}</span>
+    <span class="stage"><img src="${src(h.k)}" alt="" loading="eager"></span>
+    <span class="tag"><span class="mono">${h.clock}</span><h3>${h.name}</h3><span class="price">₪${h.price}</span></span>`;
+  b.addEventListener('click',()=>openItem(h.k,b.querySelector('img')));
+  shelves.appendChild(b);
+});
+$('nowLine').textContent = `עכשיו ${clockStr()}, אז מואר המדף של ה${byK[NOW].name}. לחצי על אריזה כדי להוריד אותה לדלפק.`;
+
+/* ---------- views ---------- */
+const body=document.body;
+function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v!=='shop'); }
+setView('front');
+
+// the shopfront: a gentle drop of the current hour so the window is never still
+setTimeout(()=>pour(byK[NOW],W*.5,H*.1,{dur:1.1,k:.35}),600);
+settle(byK[NOW].A,.12,.004);
+tintStatic(byK[NOW],.12);
+
+$('enter').addEventListener('click',()=>{
+  setView('shop'); scrollTo(0,0);
+  pour(byK[NOW],W*.72,H*.06,{dur:1.4,k:.45});
+  settle(byK[NOW].A,.2,.006); tintStatic(byK[NOW],.2);
+});
+
+let current=null;
+function flight(fromEl,toEl,reverse){
+  const a=fromEl.getBoundingClientRect(), b=toEl.getBoundingClientRect();
+  const f=new Image(); f.src=fromEl.src; f.className='flyer'; document.body.appendChild(f);
+  const set=r=>`left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px`;
+  f.style.cssText=set(a);
+  if(reduce){ f.remove(); return Promise.resolve(); }
+  const anim=f.animate([
+    {left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px',transform:'rotate(0deg)'},
+    {offset:.55,transform:reverse?'rotate(-4deg)':'rotate(4deg)'},
+    {left:b.left+'px',top:b.top+'px',width:b.width+'px',height:b.height+'px',transform:'rotate(0deg)'}
+  ],{duration:720,easing:'cubic-bezier(.5,0,.2,1)',fill:'forwards'});
+  return anim.finished.then(()=>f.remove());
+}
+function openItem(k,fromImg){
+  const h=byK[k]; current=k;
+  $('pClock').textContent=h.clock; $('pLatin').textContent=h.latin; $('pName').textContent=h.name;
+  $('pDesc').textContent=h.desc; $('pBlend').textContent=h.blend; $('pSteep').textContent=h.steep; $('pPack').textContent=h.pack;
+  $('pPrice').textContent='₪'+h.price; $('lemon').hidden = k!=='night'; $('lemon').disabled=false;
+  const hero=$('heroImg'); hero.classList.remove('on'); hero.src=src(k); hero.alt=h.name;
+  fromImg.style.visibility='hidden';
+  setView('item');
+  const go=()=>{
+    flight(fromImg,hero).then(()=>{hero.classList.add('on');});
+    // the counter: fresh water, then the blend drops in behind the package and steeps the glass
+    settle(ZERO,0,.09);
+    setTimeout(()=>{ const r=hero.getBoundingClientRect(); pour(h,r.left+r.width*.5,Math.max(40,r.top+r.height*.15),{dur:1.6,k:.6}); settle(h.A,.75,0); },450);
+    setTimeout(()=>settle(h.A,.75,.018),1900);
+    tintStatic(h,.55);
+  };
+  if(hero.complete) requestAnimationFrame(go); else hero.onload=()=>requestAnimationFrame(go);
+}
+function closeItem(){
+  if(!current) return; const k=current; current=null;
+  const toImg=shelves.querySelector(`[data-k="${k}"] img`), hero=$('heroImg');
+  setView('shop');
+  hero.classList.remove('on');
+  flight(hero,toImg,true).then(()=>{toImg.style.visibility='';});
+  settle(byK[NOW].A,.2,.02); tintStatic(byK[NOW],.2);
+}
+$('back').addEventListener('click',closeItem);
+$('lemon').addEventListener('click',()=>{
+  const r=$('heroImg').getBoundingClientRect();
+  pour(LEMON,r.left+r.width*.5,r.top+r.height*.4,{dur:1.3});
+  setTimeout(()=>settle(LEMON.A,.8,.02),900);
+  $('pSteep').textContent='90°C · 5 דקות · הכחול הפך לסגול';
+  $('lemon').disabled=true; tintStatic(LEMON,.55);
+});
+
+/* ---------- the bag ---------- */
+const bag={};
+function renderBag(){
+  const ul=$('lines'); ul.innerHTML=''; let n=0,sum=0;
+  for(const k in bag){ const h=byK[k],q=bag[k]; n+=q; sum+=q*h.price;
+    const li=document.createElement('li');
+    li.innerHTML=`<img src="${src(k)}" alt=""><span><b style="font-weight:400">${h.name}</b><br><span class="mono">${h.clock}</span></span><span class="mono">${q} × ₪${h.price}</span><button type="button" aria-label="להוציא ${h.name} מהשקית">×</button>`;
+    li.querySelector('button').onclick=()=>{ if(--bag[k]<=0) delete bag[k]; renderBag(); };
+    ul.appendChild(li); }
+  $('bagCount').textContent=n; $('total').textContent='₪'+sum; $('empty').hidden=n>0; $('pay').hidden=n===0;
+}
+$('add').addEventListener('click',()=>{
+  if(!current) return; bag[current]=(bag[current]||0)+1; renderBag();
+  const hero=$('heroImg'), btn=$('bagBtn');
+  const a=hero.getBoundingClientRect(), b=btn.getBoundingClientRect();
+  if(!reduce){
+    const f=new Image(); f.src=hero.src; f.className='flyer'; document.body.appendChild(f);
+    f.animate([{left:a.left+'px',top:a.top+'px',width:a.width+'px',height:a.height+'px',opacity:1},
+               {left:b.left+'px',top:b.top+'px',width:'24px',height:'24px',opacity:.2}],
+              {duration:650,easing:'cubic-bezier(.6,0,.3,1)',fill:'forwards'}).finished.then(()=>f.remove());
+  }
+  setTimeout(()=>{btn.classList.remove('bump');void btn.offsetWidth;btn.classList.add('bump');},600);
+  $('add').firstElementChild.textContent='נוסף לשקית · עוד אחד?';
+  setTimeout(()=>{$('add').firstElementChild.textContent='להוסיף לשקית';},1800);
+});
+function openBag(on){ $('sheet').classList.toggle('open',on); $('scrim').classList.toggle('open',on); $('sheet').setAttribute('aria-hidden',!on); if(!on) $('note').hidden=true; }
+$('bagBtn').addEventListener('click',()=>openBag(true));
+$('scrim').addEventListener('click',()=>openBag(false));
+$('pay').addEventListener('click',()=>{ $('note').hidden=false; });
+addEventListener('keydown',e=>{ if(e.key==='Escape'){ if($('sheet').classList.contains('open')) openBag(false); else closeItem(); } });
+renderBag();
+
+/* tapping the empty water drops the current hour's colour */
+cv.addEventListener('pointerdown',e=>{ const p=current?byK[current]:byK[NOW]; pour(p,e.clientX,e.clientY,{dur:.9,k:.45}); });
+document.querySelector('.front').addEventListener('pointerdown',e=>{ if(e.target.closest('button')) return; pour(byK[NOW],e.clientX,e.clientY,{dur:.9,k:.45}); });
+document.querySelector('.shop').addEventListener('pointerdown',e=>{ if(e.target.closest('button,a')) return; pour(byK[NOW],e.clientX,e.clientY,{dur:.9,k:.45}); });
+
+addEventListener('resize',()=>{ if(Math.abs(innerWidth-W)>2||Math.abs(innerHeight-H)>140) size(); });
+size(); requestAnimationFrame(frame);
+setInterval(()=>{ $('openClock').textContent='OUVERT · '+clockStr(); },30000);
+})();
+</script>
+</body>
+</html>
