@@ -5,7 +5,7 @@
 --latin:"Cormorant Garamond",serif;--display:"Frank Ruhl Libre",serif;--body:"Heebo",sans-serif}
 *{box-sizing:border-box;margin:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream);font-family:var(--body);color:var(--deep)}
-#st{position:absolute;inset:0}
+#st{position:absolute;inset:0;overflow:clip;contain:paint}
 .abs{position:absolute}
 .hook{top:200px;left:50px;right:50px;text-align:center;font:500 70px/1.16 var(--display);color:var(--ink)}
 .hook b{font-weight:500;color:var(--cd)}
@@ -21,8 +21,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream);fon
 .shotw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .q{position:absolute;padding:12px 26px;border-radius:99px;background:#fff;border:2px dashed var(--copper);font:500 30px var(--body);color:var(--cd);box-shadow:0 16px 34px -16px #000c;white-space:nowrap}
 .q.s{background:var(--cd);border:2px solid var(--cd);color:#fff}
-.plab{text-align:center;font:500 54px var(--display);margin-bottom:22px}
-.phone{border-radius:34px;overflow:hidden;box-shadow:0 40px 80px -40px #2b1a12cc,0 0 0 3px var(--line);height:974px}.phone img{width:100%;display:block}
+.plab{text-align:center;font:500 48px var(--display);margin-bottom:16px}
+.phone{border-radius:34px;overflow:hidden;box-shadow:0 40px 80px -40px #2b1a12cc,0 0 0 3px var(--line);height:866px}.phone img{width:100%;display:block}
 .t{position:relative;height:412px}
 .t>div{position:absolute;inset:0;padding:34px 38px;display:flex;flex-direction:column;align-items:flex-start}
 h4{font:500 43px/1.2 var(--display);color:var(--ink)}
@@ -35,6 +35,9 @@ h4{font:500 43px/1.2 var(--display);color:var(--ink)}
 .zone{border:4px dashed #C4765A99;background:#C4765A14;display:flex;align-items:center;justify-content:center;text-align:center;font:500 34px/1.3 var(--body);color:var(--cd)}
 .cap{left:90px;right:90px;text-align:center;font:600 44px/1.3 var(--body);color:#fff;text-shadow:0 0 14px #000c,0 2px 4px #000}
 .cap span{background:#2A201Acc;padding:6px 18px;border-radius:10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.three{text-align:center;font:500 47px var(--display);color:var(--ink)}.three i{font-style:normal;color:var(--cd);margin:0 10px}
+.run{left:0;display:flex;width:2500px;direction:ltr}.run span{flex:0 0 250px;height:96px;display:flex;align-items:center;justify-content:center}.run img{max-width:200px;max-height:92px;filter:drop-shadow(0 8px 10px #2b1a1233)}
+.bead{width:30px;height:30px;border-radius:50%;background:#C4765A;box-shadow:0 6px 14px -4px #2b1a1299}.bead i{position:absolute;left:14px;top:4px;width:2px;height:22px;border-radius:2px;background:#FAF8F3;opacity:.6;transform-origin:1px 11px}
 .end h2{font:500 80px/1.14 var(--display);color:var(--ink);text-align:center}
 .end h2 b{font-weight:500;color:var(--cd)}
 .svc{display:flex;align-items:baseline;justify-content:space-between;padding:24px 6px;border-bottom:2px solid var(--line);font:500 46px var(--display);color:var(--ink)}
@@ -50,7 +53,7 @@ const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),ease=x=>{x=cl(x);return 1-Math.p
 const ramp=(t,s,d=.5)=>ease((t-s)/d);
 const FINAL=P.get('final')==='1';
 /* final=1: lengths, events and captions follow the recorded voice (avatar take of 24.11, cuts in the pauses) */
-const DUR=FINAL?{p1:3.77,p2:8.52,p3:9.02,p4:3.71,p5:3.11,p6:11.19}:{p1:5,p2:6,p3:7,p4:7,p5:4,p6:6};
+const DUR=FINAL?{p1:3.77,p2:8.52,p3:9.02,p4:7.2,p5:3.11,p6:11.19}:{p1:5,p2:6,p3:7,p4:7,p5:4,p6:6};
 const T=FINAL?{q2:[3.9,5.7,7.0],m3:.5,q3:[5.2,7.1,7.1],m2:99,ph:.5,end:[.2,1.1,1.9,2.8,4.8,9.8]}
              :{q2:[2.2,3.4,4.6],m3:.6,q3:[3,4.4,4.4],m2:5.4,ph:.9,end:[.2,.55,.9,1.25,1.6,1.95]};
 const CAPS={ // guide only: what Hagit says while the plate plays
@@ -64,7 +67,7 @@ const CAPSF={
  p1:[[.1,1.8,'המוצר שלכם טוב.'],[1.8,3.77,'אז למה באתר הוא הולך לאיבוד?']],
  p2:[[.25,3.8,'זה הירו שבניתי למותג קונספט של משקפיים.'],[3.8,5.6,'המשקפיים קטנים בפינה,'],[5.6,8.52,'כל הטקסט בצד אחד, ואמצע המסך ריק.']],
  p3:[[.25,2.3,'וזה אותו הירו, אחרי.'],[2.3,4.5,'אותה הבטחה, אותם צבעים.'],[4.5,7.0,'רק שילבתי את המוצר במרכז, בגדול,'],[7.0,9.02,'ואת המילים משני הצדדים.']],
- p4:[[.25,3.71,'וההמשך מדבר באותה שפה, סקשן אחרי סקשן.']],
+ p4:[[.25,3.9,'וההמשך מדבר באותה שפה, סקשן אחרי סקשן.']],
  p5:[[.25,1.6,'וגם בטלפון:'],[1.6,3.11,'קודם רואים את המוצר.']],
  p6:[[.2,2.3,'זה מה שאני עושה בעמודי נחיתה,'],[2.3,4.6,'באתרים ובשדרוג אתר קיים.'],[4.6,6.9,'ועד 12.12, מי שסוגר איתי אתר'],[6.9,9.7,'מקבל גם את התוכן להשקה.'],[9.7,11.19,'הקישור כאן למטה.']]};
 const B='../regard-before/before-',A='../regard-after/after-';
@@ -82,15 +85,23 @@ function scene(s,t){let h='';
  if(s==='p3'){ const m=ramp(t,T.m3,.8);
    h+=label(196,L1,L2,m)+shot(400,1,m,chip('המוצר במרכז, בגדול','left:31%;bottom:5%',ramp(t,T.q3[0],.4),1)+chip('ההבטחה','right:6%;top:40%',ramp(t,T.q3[1],.4),1)+chip('הדמות','left:6%;top:37%',ramp(t,T.q3[2],.4),1),ramp(t,T.m2,.7)); if(guide)h+=circle}
  if(s==='p4'){ h+=label(196,L3,L3,0)+`<div class="abs shotw" style="top:400px"></div>`; if(guide)h+=circle}
- if(s==='p5'){ const ph=(x,src,l,c,o)=>`<div class="abs" style="left:${x}px;top:300px;width:450px;opacity:${o}"><div class="plab" style="color:${c}">${l}</div><div class="phone"><img src="${src}"></div></div>`;
-   h+=ph(60,B+'mobile.jpg','לפני','var(--ink)',1)+ph(570,A+'mobile.jpg','אחרי','var(--cd)',ramp(t,T.ph,.6)); if(guide)h+=`<div class="abs zone" style="left:390px;top:1450px;width:300px;height:300px;border-radius:50%">חגית<br>בעיגול</div>`}
+ if(s==='p5'){ const ph=(x,src,l,c,o)=>`<div class="abs" style="left:${x}px;top:270px;width:400px;opacity:${o}"><div class="plab" style="color:${c}">${l}</div><div class="phone"><img src="${src}"></div></div>`;
+   h+=ph(110,B+'mobile.jpg','לפני','var(--ink)',1)+ph(570,A+'mobile.jpg','אחרי','var(--cd)',ramp(t,T.ph,.6)); if(guide)h+=`<div class="abs zone" style="left:390px;top:1300px;width:300px;height:300px;border-radius:50%">חגית<br>בעיגול</div>`}
  if(s==='p6'){ const a=i=>`opacity:${ramp(t,T.end[i],.5)};transform:translateY(${(1-ramp(t,T.end[i],.5))*24}px)`;
-   h+=`<div class="abs end" style="top:230px;left:70px;right:70px"><h2 style="${a(0)}">אתרים שנראים אחרת.<br><b>ועובדים בשביל העסק.</b></h2>
-   <div style="margin-top:56px">${[['עמוד נחיתה','3,200'],['אתר תדמית','6,500'],['שדרוג אתר קיים','1,900']].map((r,i)=>`<div class="svc" style="${a(i+1)}">${r[0]}<span>החל מ-<bdi>₪${r[1]}</bdi></span></div>`).join('')}</div>
-   <div class="offer" style="margin-top:50px;${a(4)}">עד 12.12: ערכת תוכן להשקה<small>2 סרטונים, 2 קרוסלות ומאמר. בלי תוספת מחיר.</small></div>
-   <div class="url" style="margin-top:44px;${a(5)}">hagitantebi.co.il/sites</div></div>`;
-   if(guide)h+=`<div class="abs zone" style="left:320px;top:1280px;width:440px;height:440px;border-radius:50%">חגית<br>בעיגול</div>`}
- if(guide||(FINAL&&s!=='p1')){const c=(FINAL?CAPSF:CAPS)[s].find(c=>t>=c[0]&&t<c[1]);if(c)h+=`<div class="abs cap" style="top:${s==='p1'?1560:s==='p6'?1172:s==='p5'?1366:FINAL?1034:1010}px;${FINAL&&s!=='p1'?'font-size:38px':''}"><span>${c[2]}</span></div>`}
- document.getElementById('st').innerHTML=h}
+   h+=`<div class="abs end" style="top:250px;left:70px;right:70px"><h2 style="${a(0)}">אתרים שנראים אחרת.<br><b>ועובדים בשביל העסק.</b></h2>
+   <div class="three" style="margin-top:60px;${a(1)}">עמוד נחיתה <i>·</i> אתר תדמית <i>·</i> שדרוג אתר</div>
+   <div class="offer" style="margin-top:56px;${a(4)}">עד 12.12: ערכת תוכן להשקה<small>2 סרטונים, 2 קרוסלות ומאמר. בלי תוספת מחיר.</small></div>
+   <div class="url" style="margin-top:46px;${a(5)}">hagitantebi.co.il/sites</div></div>`;
+   if(guide)h+=circle}
+ if(guide||(FINAL&&s!=='p1')){const c=(FINAL?CAPSF:CAPS)[s].find(c=>t>=c[0]&&t<c[1]);if(c)h+=`<div class="abs cap" style="top:${s==='p1'?1560:s==='p5'?1228:FINAL?1034:1010}px;${FINAL&&s!=='p1'?'font-size:38px':''}"><span>${c[2]}</span></div>`}
+ if(s!=='p1'){const G=OFF[s]+t,x0=-((G*46)%1250);
+   h+=`<div class="abs run" style="top:${s==='p5'?1640:1606}px;transform:translateX(${x0}px)">${[0,1].map(()=>[1,2,3,4,5].map(i=>`<span><img src="../../../../regard/reel/img/f${i}.webp"></span>`).join('')).join('')}</div>`}
+ const cy={p1:1066,p5:1450}[s]||1340,th=s==='p1'?34:119;
+ h+=`<svg class="abs" style="left:0;top:${cy-th/2}px" width="1080" height="${th}" viewBox="0 0 1000 110" preserveAspectRatio="none"><path id="thr" d="M986 88 C 820 88, 800 24, 610 24 S 386 96, 196 60 S 70 34, 14 40" fill="none" stroke="#C4765A" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg><div class="abs bead" id="bead"><i></i></div>`;
+ document.getElementById('st').innerHTML=h;
+ /* the studio's copper thread: the bead rolls right to left across the whole reel */
+ const pth=document.getElementById('thr'),L=pth.getTotalLength(),f=.04+.92*(OFF[s]+t)/TOTAL,pt=pth.getPointAtLength(f*L),bd=document.getElementById('bead');
+ bd.style.left=(pt.x*1.08-15)+'px';bd.style.top=(cy-th/2+pt.y*th/110-15)+'px';bd.firstChild.style.transform=`rotate(${-f*L*1.08/15}rad)`}
+const OFF={};let TOTAL=0;for(const k of Object.keys(DUR)){OFF[k]=TOTAL;TOTAL+=DUR[k]}
 window.draw=scene;window.DUR=DUR;scene(P.get('s')||'p1',+(P.get('t')||0));
 </script>
