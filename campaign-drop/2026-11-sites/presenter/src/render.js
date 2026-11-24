@@ -4,11 +4,14 @@ const mode=process.argv[2]||'clean',FPS=30,out=path.resolve(__dirname,'..'),tmp=
 (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
  await p.goto('file://'+__dirname+'/plates.html'+(mode==='guide'?'?guide=1':''));await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(800);
  const fonts=await p.evaluate(()=>[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family));console.log('fonts',[...new Set(fonts)]);
- const D=await p.evaluate(()=>window.DUR);const names={p1:'P1-hook-before',p2:'P2-before',p3:'P3-after',p4:'P4-mobile',p5:'P5-offer'};
+ const D=await p.evaluate(()=>window.DUR);const names={p1:'P1-hook-before',p2:'P2-before',p3:'P3-after',p4:'P4-sections',p5:'P5-mobile',p6:'P6-offer'};
  for(const s of Object.keys(D)){const d=`${tmp}/${mode}-${s}`;fs.rmSync(d,{recursive:true,force:true});fs.mkdirSync(d,{recursive:true});
   for(let i=0;i<D[s]*FPS;i++){await p.evaluate(([s,t])=>window.draw(s,t),[s,i/FPS]);await p.screenshot({path:`${d}/${String(i).padStart(4,'0')}.png`})}
   const f=`${mode==='guide'?tmp+'/g-'+s:out+'/'+names[s]}.mp4`;
-  execSync(`ffmpeg -y -loglevel error -framerate ${FPS} -i ${d}/%04d.png -c:v libx264 -pix_fmt yuv420p -crf 17 -movflags +faststart ${f}`);console.log(f)}
+  execSync(`ffmpeg -y -loglevel error -framerate ${FPS} -i ${d}/%04d.png -c:v libx264 -pix_fmt yuv420p -crf 17 -movflags +faststart ${s==='p4'?tmp+'/bg.mp4':f}`);
+  /* P4: the scroll recording of the live page plays inside the frame (3.2s of page load skipped, sped up to fit) */
+  if(s==='p4')execSync(`ffmpeg -y -loglevel error -i ${tmp}/bg.mp4 -ss 3.2 -i ${out}/regard-after/scroll-desktop.webm -filter_complex "[1:v]setpts=PTS/1.78,fps=${FPS},scale=1080:608[v];[0:v][v]overlay=0:400:shortest=1" -c:v libx264 -pix_fmt yuv420p -crf 17 -movflags +faststart ${f}`);
+  console.log(f)}
  if(mode==='guide'){fs.writeFileSync(tmp+'/l.txt',Object.keys(D).map(s=>`file '${tmp}/g-${s}.mp4'`).join('\n'));
   execSync(`ffmpeg -y -loglevel error -f concat -safe 0 -i ${tmp}/l.txt -c copy ${out}/GUIDE-animatic.mp4`)}
  await b.close()})();
