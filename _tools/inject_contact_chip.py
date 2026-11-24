@@ -48,7 +48,7 @@ WORLDS = {
     "melte.html": "MELTÉ°",
     "petale.html": "Pétale°",
     "poppi.html": "POPPI",
-    "soluna.html": "SOLUNA",
+    "soluna/index.html": "SOLUNA°",
     "souffle.html": "SOUFFLÉ°",
 }
 
