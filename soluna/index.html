@@ -60,7 +60,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .fascia .mono{color:var(--ink-soft);direction:ltr}
 .rule{width:min(520px,82vw);height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
 
-.vitrine{position:relative;width:min(560px,100%,58svh);aspect-ratio:5/4;border-radius:999px 999px 6px 6px / 46% 46% 6px 6px;
+.vitrine{position:relative;width:min(560px,100%,52svh);aspect-ratio:5/4;border-radius:999px 999px 6px 6px / 46% 46% 6px 6px;
   padding:10px;background:linear-gradient(160deg,var(--brass-hi),var(--brass) 40%,#8c6a2e);box-shadow:0 30px 60px -30px rgba(22,34,42,.35)}
 .vitrine .pane{position:relative;height:100%;border-radius:inherit;overflow:hidden;
   background:radial-gradient(90% 70% at 50% 100%,#FFFFFF 0%,transparent 70%),linear-gradient(180deg,#F4F8F7 0%,#E4ECE9 100%);
@@ -86,7 +86,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .door .handle{width:26px;height:4px;border-radius:2px;background:var(--brass-hi)}
 
 body[data-view="shop"] .front, body[data-view="item"] .front{opacity:0;transform:scale(1.9);pointer-events:none;position:fixed;inset:0}
-body[data-view="front"] .shop{opacity:0;pointer-events:none;transform:translateY(30px)}
+body[data-view="front"] .shop{display:none}
+body[data-view="shop"] .shop{animation:rise .9s ease .2s both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
 
 /* ---------- top bar ---------- */
 .bar{position:fixed;inset:0 0 auto 0;z-index:7;pointer-events:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
@@ -131,7 +133,7 @@ body[data-view="shop"] .bar{background:linear-gradient(180deg,rgba(238,243,241,.
 .fine a{color:inherit}
 
 /* ---------- 3 · counter ---------- */
-.counter{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:1fr auto;opacity:0;pointer-events:none;transition:opacity .5s}
+.counter{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:1fr auto;overflow-y:auto;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity .5s}
 body[data-view="item"] .counter{opacity:1;pointer-events:auto}
 body[data-view="item"] .shop{opacity:0;pointer-events:none}
 .counter .hero{display:flex;align-items:flex-end;justify-content:center;padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
@@ -443,7 +445,7 @@ $('nowLine').textContent = `עכשיו ${clockStr()}, אז מואר המדף ש�
 
 /* ---------- views ---------- */
 const body=document.body;
-function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v!=='shop'); }
+function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v==='item'); }
 setView('front');
 
 // the shopfront: a gentle drop of the current hour so the window is never still
