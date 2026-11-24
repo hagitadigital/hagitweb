@@ -21,3 +21,9 @@ taken before and after commit `3d536f3` on main. The plates read their stills fr
 
 Each plate holds its last frame, so it can be frozen or trimmed to the voice.
 Re-render: `cd src && node render.js clean && node render.js guide` (timings in `plates.html`, `DUR` and the `ramp(t, …)` calls).
+
+## Finished cut (24.11)
+`SITES-PRESENTER-v1-9x16.mp4` (39.3s): the avatar take `take/avatar-take-01.mp4` (HeyGen, 720×1280) over the plates.
+Built by `cd src && node final.js`: plates render in final mode (`plates.html?final=1`: scene lengths, on-screen notes
+and captions follow the pauses in the voice), then the take is laid on top, bottom half in scene 1 and a circle after.
+A new take needs new times: `DUR`, `T` and `CAPSF` at the top of `plates.html` (find the pauses with ffmpeg `silencedetect`).

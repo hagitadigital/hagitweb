@@ -48,7 +48,11 @@ h4{font:500 43px/1.2 var(--display);color:var(--ink)}
 const P=new URLSearchParams(location.search),guide=P.get('guide')==='1';
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),ease=x=>{x=cl(x);return 1-Math.pow(1-x,3)};
 const ramp=(t,s,d=.5)=>ease((t-s)/d);
-const DUR={p1:5,p2:6,p3:7,p4:7,p5:4,p6:6};
+const FINAL=P.get('final')==='1';
+/* final=1: lengths, events and captions follow the recorded voice (avatar take of 24.11, cuts in the pauses) */
+const DUR=FINAL?{p1:3.77,p2:8.52,p3:9.02,p4:3.71,p5:3.11,p6:11.19}:{p1:5,p2:6,p3:7,p4:7,p5:4,p6:6};
+const T=FINAL?{q2:[3.9,5.7,7.0],m3:.5,q3:[5.2,7.1,7.1],m2:99,ph:.5,end:[.2,1.1,1.9,2.8,4.8,9.8]}
+             :{q2:[2.2,3.4,4.6],m3:.6,q3:[3,4.4,4.4],m2:5.4,ph:.9,end:[.2,.55,.9,1.25,1.6,1.95]};
 const CAPS={ // guide only: what Hagit says while the plate plays
  p1:[[0,5,'המוצר שלכם טוב. אז למה באתר הוא הולך לאיבוד?']],
  p2:[[0,2.2,'זה הירו שבניתי למותג קונספט של משקפיים.'],[2.2,6,'המשקפיים קטנים בפינה, כל הטקסט בצד אחד, ואמצע המסך ריק.']],
@@ -56,6 +60,13 @@ const CAPS={ // guide only: what Hagit says while the plate plays
  p4:[[0,7,'וההמשך מדבר באותה שפה, סקשן אחרי סקשן.']],
  p5:[[0,4,'וגם בטלפון: קודם רואים את המוצר.']],
  p6:[[0,3,'עמוד נחיתה, אתר תדמית או שדרוג.'],[3,6,'ועד 12.12, גם התוכן שיביא אליו אנשים.']]};
+const CAPSF={
+ p1:[[.1,1.8,'המוצר שלכם טוב.'],[1.8,3.77,'אז למה באתר הוא הולך לאיבוד?']],
+ p2:[[.25,3.8,'זה הירו שבניתי למותג קונספט של משקפיים.'],[3.8,5.6,'המשקפיים קטנים בפינה,'],[5.6,8.52,'כל הטקסט בצד אחד, ואמצע המסך ריק.']],
+ p3:[[.25,2.3,'וזה אותו הירו, אחרי.'],[2.3,4.5,'אותה הבטחה, אותם צבעים.'],[4.5,7.0,'רק שילבתי את המוצר במרכז, בגדול,'],[7.0,9.02,'ואת המילים משני הצדדים.']],
+ p4:[[.25,3.71,'וההמשך מדבר באותה שפה, סקשן אחרי סקשן.']],
+ p5:[[.25,1.6,'וגם בטלפון:'],[1.6,3.11,'קודם רואים את המוצר.']],
+ p6:[[.2,2.3,'זה מה שאני עושה בעמודי נחיתה,'],[2.3,4.6,'באתרים ובשדרוג אתר קיים.'],[4.6,6.9,'ועד 12.12, מי שסוגר איתי אתר'],[6.9,9.7,'מקבל גם את התוכן להשקה.'],[9.7,11.19,'הקישור כאן למטה.']]};
 const B='../regard-before/before-',A='../regard-after/after-';
 const chip=(txt,css,o,solid)=>`<span class="q${solid?' s':''}" style="${css};opacity:${o};transform:scale(${.8+.2*o})">${txt}</span>`;
 function shot(top,scale,m,chips,m2=0){
@@ -67,19 +78,19 @@ const circle=`<div class="abs zone" style="left:330px;top:1130px;width:420px;hei
 function scene(s,t){let h='';
  if(s==='p1'){ h+=`<div class="abs hook">המוצר שלכם טוב.<br><b>אז למה באתר הוא הולך לאיבוד?</b></div>`+shot(520,.86,0);
    if(guide)h+=`<div class="abs zone" style="left:0;top:1090px;width:1080px;height:830px">חגית מדברת למצלמה<br>(חצי מסך תחתון)</div>`}
- if(s==='p2'){ h+=label(196,L1,L2,0)+shot(400,1,0,chip('המוצר קטן, בפינה','left:3%;top:68%',ramp(t,2.2,.4))+chip('כל הטקסט בצד אחד','right:4%;top:8%',ramp(t,3.4,.4))+chip('אמצע המסך ריק','left:33%;top:42%',ramp(t,4.6,.4))); if(guide)h+=circle}
- if(s==='p3'){ const m=ramp(t,.6,.8);
-   h+=label(196,L1,L2,m)+shot(400,1,m,chip('המוצר במרכז, בגדול','left:31%;bottom:5%',ramp(t,3,.4),1)+chip('ההבטחה','right:6%;top:40%',ramp(t,4.4,.4),1)+chip('הדמות','left:6%;top:37%',ramp(t,4.4,.4),1),ramp(t,5.4,.7)); if(guide)h+=circle}
+ if(s==='p2'){ h+=label(196,L1,L2,0)+shot(400,1,0,chip('המוצר קטן, בפינה','left:3%;top:68%',ramp(t,T.q2[0],.4))+chip('כל הטקסט בצד אחד','right:4%;top:8%',ramp(t,T.q2[1],.4))+chip('אמצע המסך ריק','left:33%;top:42%',ramp(t,T.q2[2],.4))); if(guide)h+=circle}
+ if(s==='p3'){ const m=ramp(t,T.m3,.8);
+   h+=label(196,L1,L2,m)+shot(400,1,m,chip('המוצר במרכז, בגדול','left:31%;bottom:5%',ramp(t,T.q3[0],.4),1)+chip('ההבטחה','right:6%;top:40%',ramp(t,T.q3[1],.4),1)+chip('הדמות','left:6%;top:37%',ramp(t,T.q3[2],.4),1),ramp(t,T.m2,.7)); if(guide)h+=circle}
  if(s==='p4'){ h+=label(196,L3,L3,0)+`<div class="abs shotw" style="top:400px"></div>`; if(guide)h+=circle}
  if(s==='p5'){ const ph=(x,src,l,c,o)=>`<div class="abs" style="left:${x}px;top:300px;width:450px;opacity:${o}"><div class="plab" style="color:${c}">${l}</div><div class="phone"><img src="${src}"></div></div>`;
-   h+=ph(60,B+'mobile.jpg','לפני','var(--ink)',1)+ph(570,A+'mobile.jpg','אחרי','var(--cd)',ramp(t,.9,.6)); if(guide)h+=`<div class="abs zone" style="left:390px;top:1450px;width:300px;height:300px;border-radius:50%">חגית<br>בעיגול</div>`}
- if(s==='p6'){ const a=i=>`opacity:${ramp(t,.2+i*.35,.5)};transform:translateY(${(1-ramp(t,.2+i*.35,.5))*24}px)`;
+   h+=ph(60,B+'mobile.jpg','לפני','var(--ink)',1)+ph(570,A+'mobile.jpg','אחרי','var(--cd)',ramp(t,T.ph,.6)); if(guide)h+=`<div class="abs zone" style="left:390px;top:1450px;width:300px;height:300px;border-radius:50%">חגית<br>בעיגול</div>`}
+ if(s==='p6'){ const a=i=>`opacity:${ramp(t,T.end[i],.5)};transform:translateY(${(1-ramp(t,T.end[i],.5))*24}px)`;
    h+=`<div class="abs end" style="top:230px;left:70px;right:70px"><h2 style="${a(0)}">אתרים שנראים אחרת.<br><b>ועובדים בשביל העסק.</b></h2>
    <div style="margin-top:56px">${[['עמוד נחיתה','3,200'],['אתר תדמית','6,500'],['שדרוג אתר קיים','1,900']].map((r,i)=>`<div class="svc" style="${a(i+1)}">${r[0]}<span>החל מ-<bdi>₪${r[1]}</bdi></span></div>`).join('')}</div>
    <div class="offer" style="margin-top:50px;${a(4)}">עד 12.12: ערכת תוכן להשקה<small>2 סרטונים, 2 קרוסלות ומאמר. בלי תוספת מחיר.</small></div>
    <div class="url" style="margin-top:44px;${a(5)}">hagitantebi.co.il/sites</div></div>`;
    if(guide)h+=`<div class="abs zone" style="left:320px;top:1280px;width:440px;height:440px;border-radius:50%">חגית<br>בעיגול</div>`}
- if(guide){const c=CAPS[s].find(c=>t>=c[0]&&t<c[1]);if(c)h+=`<div class="abs cap" style="top:${s==='p1'?1560:s==='p6'?1150:s==='p5'?1366:1010}px"><span>${c[2]}</span></div>`}
+ if(guide||(FINAL&&s!=='p1')){const c=(FINAL?CAPSF:CAPS)[s].find(c=>t>=c[0]&&t<c[1]);if(c)h+=`<div class="abs cap" style="top:${s==='p1'?1560:s==='p6'?1172:s==='p5'?1366:FINAL?1034:1010}px;${FINAL&&s!=='p1'?'font-size:38px':''}"><span>${c[2]}</span></div>`}
  document.getElementById('st').innerHTML=h}
 window.draw=scene;window.DUR=DUR;scene(P.get('s')||'p1',+(P.get('t')||0));
 </script>
