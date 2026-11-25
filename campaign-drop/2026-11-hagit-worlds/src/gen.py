@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """SITES · Hagit at the laptop — typographic edit of her own take. Builds schedule.json (for prep.py) and reel.html.
-    python3 gen.py && python3 prep.py && node render.js 19.4 ../SITES-HAGIT-9x16.mp4
+    python3 gen.py && python3 prep.py && node render.js 16.8 ../SITES-HAGIT-9x16.mp4
 Every timing lives here, in seconds. Her shots are pre-composited per output frame by prep.py (screen replaced, figure cut out)."""
 import pathlib, json
 HERE = pathlib.Path(__file__).resolve().parent
 FPS = 30
 # her shots: id, start, end, first take frame, take speed (take is 24fps; 1 = one take frame per output frame)
-HER = [('h1', 0.0, 2.8, 20, .8), ('h2', 2.8, 4.4, 96, 1), ('h3', 4.4, 6.0, 150, 1), ('h4', 6.0, 10.5, 200, .667), ('h5', 10.5, 13.5, 292, 1)]
+HER = [('hook', 0.0, 2.8, 292, .7), ('work', 2.8, 4.4, 30, 1), ('turn', 4.4, 8.9, 200, .667), ('hold', 11.3, 13.3, 352, .667)]   # the hook opens on the laptop held to camera: the sites are the first thing seen
 # what plays on the laptop screen: start, end, site, second in the site recording where it starts
-SCREEN = [(6.0, 7.5, 'oreva', 0.3), (7.5, 9.0, 'mirvach', 3.6), (9.0, 10.5, 'rue', 0.2), (10.5, 11.5, 'oreva', 3.0), (11.5, 12.5, 'mirvach', 6.0), (12.5, 13.5, 'rue', 4.0)]
-SITES_T, OUT, DUR = 13.5, 15.9, 19.4
+SCREEN = [(0.0, 1.4, 'oreva', 0.3), (1.4, 2.8, 'rue', 0.2), (4.4, 5.9, 'oreva', 2.0), (5.9, 7.4, 'mirvach', 3.6), (7.4, 8.9, 'rue', 2.0), (11.3, 12.3, 'mirvach', 6.0), (12.3, 13.3, 'oreva', 0.6)]
+SITES_T, CTA, DUR = 8.9, 13.3, 16.8
+OUT = DUR + 9   # no studio window here: the call to action gets a clean screen of its own
 FULL = [('oreva', 0.5, 'עמוד נחיתה', 'קוסמטיקאית'), ('mirvach', 4.0, 'עמוד נחיתה', 'מטפלת רגשית'), ('rue', 0.4, 'אתר תדמית', 'יזמות נדל״ן')]
 sched = []
 for sid, t0, t1, f0, sp in HER:
@@ -52,6 +53,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
 .who{position:absolute;left:0;right:0;top:1310px;text-align:center;font:500 84px/1.1 'Frank Ruhl Libre',serif;color:var(--copper2);animation:capin .35s ease-out both}
 .idx{position:absolute;left:0;right:0;top:150px;text-align:center;direction:ltr;font:600 120px/1 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:var(--copper);animation:capin .3s ease-out both}
 .note{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:400 38px/1.3 'Heebo',sans-serif;color:#786A5E}
+.ctab{position:absolute;left:90px;right:90px;top:1130px;text-align:center;font:700 66px/1.2 'Frank Ruhl Libre',serif;color:var(--cream);background:var(--ink);padding:38px 30px 46px;border-radius:16px;animation:capin .45s cubic-bezier(.16,.9,.2,1) both}
+.ctas{position:absolute;left:0;right:0;top:1370px;text-align:center;font:400 44px/1.3 'Heebo',sans-serif;color:#6B563F;animation:capin .45s ease-out both}
 #flash{position:absolute;inset:0;z-index:25;background:#fff;opacity:0;pointer-events:none}
 #grain{position:absolute;inset:0;z-index:31;pointer-events:none;opacity:.08;mix-blend-mode:overlay}
 .st{position:absolute;inset:0;font-family:'Heebo',sans-serif;color:#6B563F;opacity:0}
@@ -67,12 +70,12 @@ def W(cls, top, text, t0, t1, extra=''):
 def B(top, html, t0, t1, cls=''):
     anim = 'animation:none' if t0 == 0 else f'animation-delay:{t0+.05:.2f}s'
     return f'<div class="box {cls}" data-show="{t0},{t1}" style="top:{top}px"><p style="{anim}">{html}</p></div>'
-mid = [W('he', 250, 'יפה.', 0, 2.8), W('he', 290, 'פניות?', 2.8, 4.4, ';font-size:340px'), W('num', 60, '5', 4.4, 6.0),
-       W('num', 150, '01', 6.0, 7.5), W('num', 150, '02', 7.5, 9.0), W('num', 150, '03', 9.0, 10.5), W('he', 210, 'פניות.', 10.5, 13.5, ';font-size:340px')]
-top = [B(1380, 'האתר שלכם יפה.<br><em>הוא גם מביא פניות?</em>', 0, 4.4), B(1420, 'לקוח צריך להבין<br><em>תוך 5 שניות:</em>', 4.4, 6.0),
-       B(60, 'מה אתם מציעים', 6.0, 7.5, 'sm'), B(60, 'למה דווקא אתם', 7.5, 9.0, 'sm'), B(60, 'מה הצעד הבא', 9.0, 10.5, 'sm'),
-       B(60, 'אתר ברור <em>מביא פניות.</em>', 10.5, 13.5, 'sm')]
-cards = ''.join(f'''<div class="card" data-show="{SITES_T+i*.8},{SITES_T+(i+1)*.8 if i<2 else DUR}"><div class="idx" style="animation-delay:{SITES_T+i*.8+.02:.2f}s">0{i+1} / 03</div>
+mid = [W('he', 300, 'יפה.', 0, 1.4, ';font-size:400px'), W('he', 320, 'מדויק.', 1.4, 2.8, ';font-size:340px'), W('num', 60, '5', 2.8, 4.4),
+       W('num', 150, '01', 4.4, 5.9), W('num', 150, '02', 5.9, 7.4), W('num', 150, '03', 7.4, 8.9), W('he', 210, 'פניות.', 11.3, 13.3, ';font-size:340px')]
+top = [B(56, 'אתר יפה מושך את העין.<br><em>אתר מדויק מניע לפעולה.</em>', 0, 2.8, 'sm'), B(1420, 'לקוח צריך להבין<br><em>תוך 5 שניות:</em>', 2.8, 4.4),
+       B(60, 'מה אתם מציעים', 4.4, 5.9, 'sm'), B(60, 'למה דווקא אתם', 5.9, 7.4, 'sm'), B(60, 'מה הצעד הבא', 7.4, 8.9, 'sm'),
+       B(60, 'אתר ברור <em>מביא פניות.</em>', 11.3, 13.3, 'sm')]
+cards = ''.join(f'''<div class="card" data-show="{SITES_T+i*.8},{SITES_T+(i+1)*.8}"><div class="idx" style="animation-delay:{SITES_T+i*.8+.02:.2f}s">0{i+1} / 03</div>
   <div class="win"><div class="bar"><i></i><i></i><i></i></div><img id="full{i}"></div>
   <div class="kind" style="animation-delay:{SITES_T+i*.8+.03:.2f}s">{k}</div><div class="who" style="animation-delay:{SITES_T+i*.8+.12:.2f}s">{who}</div>
   <div class="note">שלושה פרויקטי קונספט של הסטודיו</div></div>''' for i, (_, _, k, who) in enumerate(FULL))
@@ -92,26 +95,33 @@ page = f'''<!doctype html>
 <div id="world">
   <div id="her"><img id="bg"><div class="mid">{''.join(mid)}</div><img id="fg"><div class="top">{''.join(top)}<div class="tag" id="tag">SITES · HAGIT ANTEBI</div></div></div>
   {cards}
+  <div class="card" data-show="{CTA},{DUR}">
+    <div class="tag" style="top:150px;color:#C4765A">HAGIT ANTEBI · BRAND WORLDS STUDIO</div>
+    <div class="w num" style="top:330px;visibility:inherit"><b style="font-size:760px;animation-delay:{CTA+.05:.2f}s">3</b></div>
+    <div class="ctab" style="animation-delay:{CTA+.45:.2f}s">לקבל 3 נקודות על האתר שלי</div>
+    <div class="ctas" style="animation-delay:{CTA+.75:.2f}s">שיחת התאמה קצרה · בלי התחייבות</div>
+    <div class="tag" style="top:auto;bottom:170px;letter-spacing:.24em">HAGITANTEBI.CO.IL/SITES</div>
+  </div>
   <div id="flash"></div>
   <svg id="grain" width="1080" height="1920"><filter id="n"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1080" height="1920" filter="url(#n)"/></svg>
 </div>
 </div>
 <script>
-const FPS=30, HER_END={SITES_T}, OUT={OUT}, CUTS={json.dumps([2.8, 4.4, 6.0, 7.5, 9.0, 10.5, 11.5, 12.5, 13.5, 14.3, 15.1])}, FULL={json.dumps([[round((SITES_T + i * .8) * FPS), FULL[i][0], round(FULL[i][1] * 30) + 1] for i in range(3)])};
+const FPS=30, HER={json.dumps([[a, b] for _, a, b, _, _ in HER])}, OUT={OUT}, CUTS={json.dumps([1.4, 2.8, 4.4, 5.9, 7.4, 8.9, 9.7, 10.5, 11.3, 12.3, 13.3])}, FULL={json.dumps([[round((SITES_T + i * .8) * FPS), FULL[i][0], round(FULL[i][1] * 30) + 1] for i in range(3)])};
 const pad=(n,w=3)=>String(n).padStart(w,'0'), cl=x=>Math.min(1,Math.max(0,x)), io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 async function put(img,u){{if(!img||img.dataset.u===u)return;img.dataset.u=u;img.src=u;try{{await img.decode()}}catch(e){{}}}}
 const shows=[...document.querySelectorAll('[data-show]')].map(e=>[e,...e.dataset.show.split(',').map(Number)]);
 window.seek=async function(t){{
   const F=Math.round(t*FPS), jobs=[];
-  document.getElementById('tag').style.visibility=t<6?'visible':'hidden';
+  document.getElementById('tag').style.visibility=(t>=2.8&&t<4.4)?'visible':'hidden';
   for(const [e,a,b] of shows) e.style.visibility=(t>=a-1e-6&&t<b-1e-6)?'visible':'hidden';
-  const her=document.getElementById('her'); her.style.visibility=t<HER_END-1e-6?'visible':'hidden';
-  if(t<HER_END-1e-6){{jobs.push(put(document.getElementById('bg'),`frames/out/b_${{pad(F)}}.jpg`),put(document.getElementById('fg'),`frames/out/f_${{pad(F)}}.webp`));
+  const on=HER.some(([a,b])=>t>=a-1e-6&&t<b-1e-6), her=document.getElementById('her'); her.style.visibility=on?'visible':'hidden';
+  if(on){{jobs.push(put(document.getElementById('bg'),`frames/out/b_${{pad(F)}}.jpg`),put(document.getElementById('fg'),`frames/out/f_${{pad(F)}}.webp`));
     let since=1e9;for(const c of [0,...CUTS])if(t>=c-1e-6)since=Math.min(since,Math.round((t-c)*FPS));
     let c0=0;for(const c of CUTS)if(t>=c-1e-6)c0=c;
     const k=1+.03*Math.pow(Math.max(0,1-since/7),2)+.012*(t-c0);
     for(const id of ['bg','fg'])document.getElementById(id).style.transform=`scale(${{k}})`;}}
-  FULL.forEach(([f0,site,s0],i)=>{{const n=F-f0;if(n>=0&&(i==2||n<24))jobs.push(put(document.getElementById('full'+i),`frames/site/${{site}}_${{pad(s0+Math.min(n,i==2?150:23))}}.jpg`));}});
+  FULL.forEach(([f0,site,s0],i)=>{{const n=F-f0;if(n>=0&&n<24)jobs.push(put(document.getElementById('full'+i),`frames/site/${{site}}_${{pad(s0+n)}}.jpg`));}});
   let fl=0;for(const c of CUTS){{const n=Math.round((t-c)*FPS);if(n>=0&&n<3)fl=[.28,.13,.05][n];}}
   document.getElementById('flash').style.opacity=fl;
   document.getElementById('turb').setAttribute('seed',1+F%97);
