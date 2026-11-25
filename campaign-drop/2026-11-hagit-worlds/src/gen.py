@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """SITES · Hagit at the laptop — typographic edit of her own take. Builds schedule.json (for prep.py) and reel.html.
-    python3 gen.py && python3 prep.py && node render.js 16.8 ../SITES-HAGIT-9x16.mp4
+    python3 gen.py && python3 prep.py && node render.js 16.5 ../SITES-HAGIT-9x16.mp4
 Every timing lives here, in seconds. Her shots are pre-composited per output frame by prep.py (screen replaced, figure cut out)."""
 import pathlib, json
 HERE = pathlib.Path(__file__).resolve().parent
 FPS = 30
 # her shots: id, start, end, first take frame, take speed (take is 24fps; 1 = one take frame per output frame)
-HER = [('hook', 0.0, 2.8, 292, .7), ('work', 2.8, 4.4, 30, 1), ('turn', 4.4, 8.9, 200, .667), ('hold', 11.3, 13.3, 352, .667)]   # the hook opens on the laptop held to camera: the sites are the first thing seen
+HER = [('hook', 0.0, 3.0, 292, .66), ('work', 3.0, 4.5, 30, 1), ('turn', 4.5, 9.0, 200, .667), ('hold', 12.0, 13.5, 352, .88)]   # the hook opens on the laptop held to camera: the sites are the first thing seen
 # what plays on the laptop screen: start, end, site, second in the site recording where it starts
-SCREEN = [(0.0, 1.4, 'oreva', 0.3), (1.4, 2.8, 'rue', 0.2), (4.4, 5.9, 'oreva', 2.0), (5.9, 7.4, 'mirvach', 3.6), (7.4, 8.9, 'rue', 2.0), (11.3, 12.3, 'mirvach', 6.0), (12.3, 13.3, 'oreva', 0.6)]
-SITES_T, CTA, DUR = 8.9, 13.3, 16.8
+SCREEN = [(0.0, 1.5, 'oreva', 0.3), (1.5, 3.0, 'rue', 0.2), (4.5, 6.0, 'oreva', 2.0), (6.0, 7.5, 'mirvach', 3.6), (7.5, 9.0, 'rue', 2.0), (12.0, 13.5, 'mirvach', 6.0)]   # every cut sits on the music's beat grid (120 BPM)
+SITES_T, CTA, DUR = 9.0, 13.5, 16.5
+CARD = 1.0
 OUT = DUR + 9   # no studio window here: the call to action gets a clean screen of its own
 FULL = [('oreva', 0.5, 'עמוד נחיתה', 'קוסמטיקאית'), ('mirvach', 4.0, 'עמוד נחיתה', 'מטפלת רגשית'), ('rue', 0.4, 'אתר תדמית', 'יזמות נדל״ן')]
 sched = []
@@ -21,7 +22,7 @@ for sid, t0, t1, f0, sp in HER:
         sched.append(dict(out=round(t * FPS), take=tf, screen=scr))
 full = []
 for i, (site, s0, _, _) in enumerate(FULL):
-    for n in range(round(.8 * FPS)): full.append(dict(out=round((SITES_T + i * .8) * FPS) + n, site=site, f=round(s0 * 30) + n + 1))
+    for n in range(round(CARD * FPS)): full.append(dict(out=round((SITES_T + i * CARD) * FPS) + n, site=site, f=round(s0 * 30) + n + 1))
 (HERE / 'schedule.json').write_text(json.dumps(dict(her=sched, full=full)))
 
 css = '''
@@ -70,14 +71,14 @@ def W(cls, top, text, t0, t1, extra=''):
 def B(top, html, t0, t1, cls=''):
     anim = 'animation:none' if t0 == 0 else f'animation-delay:{t0+.05:.2f}s'
     return f'<div class="box {cls}" data-show="{t0},{t1}" style="top:{top}px"><p style="{anim}">{html}</p></div>'
-mid = [W('he', 300, 'יפה.', 0, 1.4, ';font-size:400px'), W('he', 320, 'מדויק.', 1.4, 2.8, ';font-size:340px'), W('num', 60, '5', 2.8, 4.4),
-       W('num', 150, '01', 4.4, 5.9), W('num', 150, '02', 5.9, 7.4), W('num', 150, '03', 7.4, 8.9), W('he', 210, 'פניות.', 11.3, 13.3, ';font-size:340px')]
-top = [B(56, 'אתר יפה מושך את העין.<br><em>אתר מדויק מניע לפעולה.</em>', 0, 2.8, 'sm'), B(1420, 'לקוח צריך להבין<br><em>תוך 5 שניות:</em>', 2.8, 4.4),
-       B(60, 'מה אתם מציעים', 4.4, 5.9, 'sm'), B(60, 'למה דווקא אתם', 5.9, 7.4, 'sm'), B(60, 'מה הצעד הבא', 7.4, 8.9, 'sm'),
-       B(60, 'אתר ברור <em>מביא פניות.</em>', 11.3, 13.3, 'sm')]
-cards = ''.join(f'''<div class="card" data-show="{SITES_T+i*.8},{SITES_T+(i+1)*.8}"><div class="idx" style="animation-delay:{SITES_T+i*.8+.02:.2f}s">0{i+1} / 03</div>
+mid = [W('he', 300, 'יפה.', 0, 1.5, ';font-size:400px'), W('he', 320, 'מדויק.', 1.5, 3.0, ';font-size:340px'), W('num', 60, '5', 3.0, 4.5),
+       W('num', 150, '01', 4.5, 6.0), W('num', 150, '02', 6.0, 7.5), W('num', 150, '03', 7.5, 9.0), W('he', 210, 'פניות.', 12.0, 13.5, ';font-size:340px')]
+top = [B(56, 'אתר יפה מושך את העין.<br><em>אתר מדויק מניע לפעולה.</em>', 0, 3.0, 'sm'), B(1420, 'לקוח צריך להבין<br><em>תוך 5 שניות:</em>', 3.0, 4.5),
+       B(60, 'מה אתם מציעים', 4.5, 6.0, 'sm'), B(60, 'למה דווקא אתם', 6.0, 7.5, 'sm'), B(60, 'מה הצעד הבא', 7.5, 9.0, 'sm'),
+       B(60, 'אתר ברור <em>מביא פניות.</em>', 12.0, 13.5, 'sm')]
+cards = ''.join(f'''<div class="card" data-show="{SITES_T+i*CARD},{SITES_T+(i+1)*CARD}"><div class="idx" style="animation-delay:{SITES_T+i*CARD+.02:.2f}s">0{i+1} / 03</div>
   <div class="win"><div class="bar"><i></i><i></i><i></i></div><img id="full{i}"></div>
-  <div class="kind" style="animation-delay:{SITES_T+i*.8+.03:.2f}s">{k}</div><div class="who" style="animation-delay:{SITES_T+i*.8+.12:.2f}s">{who}</div>
+  <div class="kind" style="animation-delay:{SITES_T+i*CARD+.03:.2f}s">{k}</div><div class="who" style="animation-delay:{SITES_T+i*CARD+.12:.2f}s">{who}</div>
   <div class="note">שלושה פרויקטי קונספט של הסטודיו</div></div>''' for i, (_, _, k, who) in enumerate(FULL))
 page = f'''<!doctype html>
 <html lang="he" dir="rtl"><head><meta charset="utf-8"><title>SITES — Hagit</title>
@@ -107,13 +108,13 @@ page = f'''<!doctype html>
 </div>
 </div>
 <script>
-const FPS=30, HER={json.dumps([[a, b] for _, a, b, _, _ in HER])}, OUT={OUT}, CUTS={json.dumps([1.4, 2.8, 4.4, 5.9, 7.4, 8.9, 9.7, 10.5, 11.3, 12.3, 13.3])}, FULL={json.dumps([[round((SITES_T + i * .8) * FPS), FULL[i][0], round(FULL[i][1] * 30) + 1] for i in range(3)])};
+const FPS=30, HER={json.dumps([[a, b] for _, a, b, _, _ in HER])}, OUT={OUT}, CUTS={json.dumps([1.5, 3.0, 4.5, 6.0, 7.5, 9.0, 10.0, 11.0, 12.0, 13.5])}, FULL={json.dumps([[round((SITES_T + i * CARD) * FPS), FULL[i][0], round(FULL[i][1] * 30) + 1] for i in range(3)])};
 const pad=(n,w=3)=>String(n).padStart(w,'0'), cl=x=>Math.min(1,Math.max(0,x)), io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 async function put(img,u){{if(!img||img.dataset.u===u)return;img.dataset.u=u;img.src=u;try{{await img.decode()}}catch(e){{}}}}
 const shows=[...document.querySelectorAll('[data-show]')].map(e=>[e,...e.dataset.show.split(',').map(Number)]);
 window.seek=async function(t){{
   const F=Math.round(t*FPS), jobs=[];
-  document.getElementById('tag').style.visibility=(t>=2.8&&t<4.4)?'visible':'hidden';
+  document.getElementById('tag').style.visibility=(t>=3.0&&t<4.5)?'visible':'hidden';
   for(const [e,a,b] of shows) e.style.visibility=(t>=a-1e-6&&t<b-1e-6)?'visible':'hidden';
   const on=HER.some(([a,b])=>t>=a-1e-6&&t<b-1e-6), her=document.getElementById('her'); her.style.visibility=on?'visible':'hidden';
   if(on){{jobs.push(put(document.getElementById('bg'),`frames/out/b_${{pad(F)}}.jpg`),put(document.getElementById('fg'),`frames/out/f_${{pad(F)}}.webp`));
@@ -121,7 +122,7 @@ window.seek=async function(t){{
     let c0=0;for(const c of CUTS)if(t>=c-1e-6)c0=c;
     const k=1+.03*Math.pow(Math.max(0,1-since/7),2)+.012*(t-c0);
     for(const id of ['bg','fg'])document.getElementById(id).style.transform=`scale(${{k}})`;}}
-  FULL.forEach(([f0,site,s0],i)=>{{const n=F-f0;if(n>=0&&n<24)jobs.push(put(document.getElementById('full'+i),`frames/site/${{site}}_${{pad(s0+n)}}.jpg`));}});
+  FULL.forEach(([f0,site,s0],i)=>{{const n=F-f0;if(n>=0&&n<30)jobs.push(put(document.getElementById('full'+i),`frames/site/${{site}}_${{pad(s0+n)}}.jpg`));}});
   let fl=0;for(const c of CUTS){{const n=Math.round((t-c)*FPS);if(n>=0&&n<3)fl=[.28,.13,.05][n];}}
   document.getElementById('flash').style.opacity=fl;
   document.getElementById('turb').setAttribute('seed',1+F%97);
