@@ -2506,7 +2506,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="world-card__media">
           <div class="world-card__nº">No. 05</div>
           <div class="world-card__cta-corner">Interactif</div>
-          <img width="1000" height="1250" src="card-soluna.jpg" alt="SOLUNA° — קנקן תה שקוף מלא בפירמידות נייר כחולות" />
+          <img width="1000" height="1250" src="card-soluna.jpg?v=2" alt="SOLUNA° — קנקן תה שקוף מלא בפירמידות נייר כחולות" />
           <video class="world-card__loop" data-wl muted loop playsinline preload="none" src="loops/soluna.mp4" aria-hidden="true"></video>
         </div>
         <div class="world-card__copy">
@@ -3044,7 +3044,7 @@ document.addEventListener('DOMContentLoaded', function () {
     a.className = 'ring__tile'; a.href = w.href; a.tabIndex = -1;
     const im = document.createElement('img');
     im.alt = ''; im.decoding = 'async'; im.loading = 'lazy';
-    im.src = 'ring/' + String(w.no).padStart(2, '0') + '.webp';
+    im.src = 'ring/' + String(w.no).padStart(2, '0') + '.webp?v=2';
     im.onerror = () => { im.onerror = null; if (w.fallback) im.src = w.fallback; };
     a.appendChild(im); wheel.appendChild(a);
     return a;
