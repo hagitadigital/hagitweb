@@ -399,13 +399,6 @@ footer .sig{font-family:var(--display)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.three li{color:var(--ink)}}
 
 /* ---- campaign version: the offer (site + branded videos, until 12.12) ---- */
-.offerbar{background:var(--deep);color:#F3EADF;font-size:16px;text-align:center}
-.offerbar .in{padding-block:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
-.offerbar b{font-weight:500;color:#fff}
-.offerbar .left{color:#E5A88F;white-space:nowrap}
-.gift{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--copper);border-radius:14px;padding:14px 18px;font-size:18px;color:var(--deep);max-width:27em}
-.gift::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--copper);margin-top:.62em}
-.gift b{font-weight:600}
 .pr3{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;padding:0;margin:0}
 .pr3 li{list-style:none;display:flex;flex-direction:column;gap:2px;padding-inline:20px;border-inline-start:1px solid var(--line);font-size:15px;color:var(--muted)}
 .pr3 li:first-child{padding-inline-start:0;border-inline-start:0}
@@ -421,7 +414,6 @@ footer .sig{font-family:var(--display)}
 .svc .inc{padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
 .svc .inc li{list-style:none;position:relative;padding-inline-start:20px;font-size:16px;color:var(--text)}
 .svc .inc li::before{content:"";position:absolute;inset-inline-start:0;top:.68em;width:7px;height:7px;border-radius:50%;background:var(--copper)}
-.svc .inc li.plus{color:var(--copper-deep);font-weight:500}
 .svc .price{margin-top:auto}
 .svc .btn{width:100%;min-height:52px;padding:0 16px;font-size:17px;white-space:normal;text-align:center}
 .every{margin-top:34px;background:var(--beige);border-radius:18px;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:.8fr 1.6fr;gap:28px;align-items:start}
@@ -474,6 +466,10 @@ footer .sig{font-family:var(--display)}
 .cf-txt .case .dec{border-inline-start:0;padding-inline-start:0;max-width:32em}
 .cf-txt .case ul{width:100%;max-width:30em;text-align:start}
 .cf-txt .case a.more{align-self:center}
+.case .kind b{font-weight:700}
+.case .said{margin:10px 0 0;max-width:32em}
+.case .said blockquote{margin:0;font:400 19px/1.6 var(--display);color:var(--ink)}
+.case .said figcaption{margin-top:8px;font-size:15px;color:var(--text)}
 .train-h{margin:84px 0 22px;text-align:center}
 .train-h h3{margin-bottom:6px}
 .train-h p{color:var(--muted);font-size:17px}
@@ -511,8 +507,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .pr3{grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch}
   .pr3 li{padding-inline:8px;min-width:0}
   .pr3 b{font-size:clamp(17px,5.4vw,22px)}
-  .gift{font-size:17px;padding:12px 14px;gap:10px}
-  .offerbar .in{padding-inline:14px}
   .due .n{flex-wrap:wrap;justify-content:center}
   .chip span{padding:8px 14px}
   form{padding:24px 18px}
@@ -529,7 +523,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 .dock span b{font-weight:600;color:var(--deep)}
 @media (max-width:900px){
-  .offerbar{font-size:15px}
   .pr3 li{padding-inline:12px;font-size:14px}
   .pr3 b{font-size:22px}
   .fit{grid-template-columns:1fr}
@@ -681,8 +674,6 @@ form small a,footer a{color:inherit}
 <body>
 <div dir="rtl" lang="he" id="page">
 
-<div class="offerbar" data-offer><div class="in"><span><b>סוגרים אתר עד 12.12</b> ומקבלים ערכת תוכן להשקה: 2 סרטונים, 2 קרוסלות ומאמר</span><span class="left" data-left></span></div></div>
-
 <header class="top"><div class="in">
   <a class="logo" href="#page"><span class="mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 701" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,701.000000) scale(0.100000,-0.100000)" fill="currentColor"> <path d="M3305 6604 c-182 -18 -259 -29 -388 -55 -1227 -248 -2210 -1310 -2401 -2596 -93 -617 19 -1286 311 -1868 84 -168 83 -167 83 -49 0 414 256 789 686 1003 287 142 508 197 1634 406 948 175 1140 223 1457 360 779 337 1131 985 906 1668 -181 550 -849 1002 -1643 1112 -109 16 -550 28 -645 19z m509 -349 c567 -66 1071 -309 1320 -635 269 -352 245 -836 -58 -1157 -146 -155 -390 -311 -573 -367 l-23 -7 -2 723 c-3 711 -3 724 -24 763 -66 126 -267 134 -350 13 l-29 -41 -5 -796 -5 -796 -110 -23 c-214 -45 -1050 -199 -1057 -195 -5 2 -8 408 -8 901 l0 897 -23 40 c-77 136 -279 133 -357 -5 l-25 -45 -3 -936 -2 -936 -88 -17 c-738 -145 -1178 -353 -1433 -676 l-64 -82 -17 84 c-94 453 -67 950 74 1388 406 1257 1600 2053 2862 1905z"/> <path d="M5830 5597 c0 -5 5 -18 11 -29 6 -11 20 -52 31 -92 267 -957 -313 -1826 -1453 -2176 -280 -86 -473 -128 -1236 -269 -700 -130 -818 -154 -998 -201 -546 -141 -835 -351 -967 -701 -47 -124 -49 -368 -4 -499 77 -228 229 -422 486 -621 1356 -1051 3332 -725 4287 706 108 162 224 366 266 470 9 22 30 74 47 115 176 422 246 810 237 1320 -12 689 -209 1291 -608 1850 -85 120 -98 137 -99 127z m304 -1362 c205 -982 -15 -1877 -641 -2606 -628 -732 -1659 -1050 -2633 -813 -326 80 -729 280 -990 491 -328 266 -431 521 -310 767 101 205 333 337 770 439 l145 34 5 -541 c5 -587 3 -559 64 -624 95 -102 262 -76 327 50 18 35 19 67 19 613 l0 575 23 9 c12 4 92 20 177 35 206 37 640 120 818 156 79 17 147 30 152 30 6 0 10 -259 10 -694 l0 -694 33 -48 c84 -127 263 -126 342 1 l30 48 5 749 5 749 140 48 c737 254 1237 693 1431 1256 20 58 40 103 45 98 4 -3 0 -12 -8 -22z"/> </g> </svg></span>Hagit Antebi</a>
   <a class="btn" href="#talk">בואו נדבר</a>
@@ -691,10 +682,9 @@ form small a,footer a{color:inherit}
 <section class="hero" id="hero"><div class="in">
   <div class="copy">
     <span class="eye">Sites · <b>אתרי תדמית ועמודי נחיתה</b></span>
-    <h1><span><i>אתרים שנראים אחרת.</i></span><span><i>חושבים אחרת.</i></span><span><i>עובדים בשביל העסק.</i></span></h1>
-    <p class="lead">אתר תדמית או עמוד נחיתה שנבנים מתוך הבנה של העסק, של הלקוחות ושל ההחלטה שרוצים להניע.</p>
-    <p class="gift" data-offer><span><b>עד 12.12:</b> מי שסוגר איתי אתר מקבל גם ערכת תוכן להשקה: 2 סרטונים עד 30 שניות, 2 קרוסלות ומאמר אחד מדויק לתחילת הקידום.</span></p>
-    <div class="cta"><a class="btn" href="#talk" data-cta="אני רוצה אתר עם ערכת התוכן">אני רוצה אתר עם ערכת התוכן</a><a class="btn line" href="#proof">לראות דוגמאות</a></div>
+    <h1><span><i>יפה זה לא מספיק.</i></span><span><i>אתר ברור</i></span><span><i>מביא פניות.</i></span></h1>
+    <p class="lead">אתר תדמית, עמוד נחיתה או שדרוג של האתר הקיים. נבנים כך שמי שנכנס מבין מהר מה אתם מציעים, למה דווקא אתם ומה הצעד הבא.</p>
+    <div class="cta"><a class="btn" href="#talk">לקבל 3 נקודות על האתר שלי</a><a class="btn line" href="#proof">לראות דוגמאות</a></div>
     <ul class="pr3" aria-label="מחירי פתיחה">
       <li><span>עמוד נחיתה</span><b>₪3,200</b><small>החל מ-</small></li>
       <li><span>אתר תדמית</span><b>₪6,500</b><small>החל מ-</small></li>
@@ -705,7 +695,7 @@ form small a,footer a{color:inherit}
     <div class="frame"><div class="bar"><i></i><i></i><i></i><span id="cyc-url">oreva · landing</span></div>
       <div class="view cycle" id="cycle">
         <video class="on" src="a/oreva.mp4" poster="a/oreva.jpg" muted playsinline preload="auto" width="960" height="600" aria-label="עמוד הנחיתה של ORÉVA°, קוסמטיקאית, נגלל" data-url="oreva · landing" data-cap="עמוד נחיתה · קוסמטיקאית" data-dur="7"></video>
-        <video src="a/rue.mp4" poster="a/rue.jpg" muted playsinline preload="none" width="960" height="600" aria-label="האתר של RUE°, יזמות והתחדשות עירונית, נגלל" data-url="rue · site" data-cap="אתר תדמית · יזמות והתחדשות עירונית" data-dur="12"></video>
+        <video src="a/hila.mp4" poster="a/hila.jpg" muted playsinline preload="none" width="960" height="600" aria-label="האתר של הילה שרון, פסיכותרפיסטית, נגלל" data-url="hila sharon · site" data-cap="אתר תדמית · פסיכותרפיסטית · לקוחה" data-dur="12"></video>
         <video src="a/mirvach.mp4" poster="a/mirvach.jpg" muted playsinline preload="none" width="960" height="600" aria-label="עמוד הנחיתה של מרווח, מטפלת רגשית, נגלל" data-url="mirvach · landing" data-cap="עמוד נחיתה · מטפלת רגשית" data-dur="10"></video>
       </div>
     </div>
@@ -783,7 +773,7 @@ form small a,footer a{color:inherit}
       <h3>עמוד נחיתה ממוקד</h3>
       <p class="one">עמוד אחד, מטרה אחת, מסר ברור.</p>
       <p>נבנה סביב הצעת הערך שלכם, עם היררכיית מסרים ברורה, עיצוב בהתאמה אישית והנעה ממוקדת לפעולה.</p>
-      <ul class="inc"><li>עמוד אחד, בנוי סביב פעולה אחת</li><li>מסרים, מבנה ועיצוב בהתאמה אישית</li><li>טופס פניות או וואטסאפ מחוברים</li><li class="plus" data-offer>עד 12.12: ערכת תוכן להשקה</li></ul>
+      <ul class="inc"><li>עמוד אחד, בנוי סביב פעולה אחת</li><li>מסרים, מבנה ועיצוב בהתאמה אישית</li><li>טופס פניות או וואטסאפ מחוברים</li></ul>
       <p class="price"><span>החל מ-</span><b>₪3,200</b></p>
       <a class="btn" href="#talk" data-pick="k1">אני רוצה עמוד נחיתה</a>
     </div>
@@ -792,7 +782,7 @@ form small a,footer a{color:inherit}
       <h3>אתר תדמית</h3>
       <p class="one">נוכחות דיגיטלית שלמה שמשקפת את העסק שלכם.</p>
       <p>עם מבנה תוכן מתוכנן, שפה ויזואלית ייחודית וחוויית גלישה שמאפשרת ללקוחות להכיר אתכם, לבנות אמון ולהתקדם לפנייה.</p>
-      <ul class="inc"><li>כמה עמודים שמציגים את העסק כולו</li><li>מבנה תוכן, שפה ויזואלית ועיצוב אישי</li><li>דרכי יצירת קשר מחוברות</li><li class="plus" data-offer>עד 12.12: ערכת תוכן להשקה</li></ul>
+      <ul class="inc"><li>כמה עמודים שמציגים את העסק כולו</li><li>מבנה תוכן, שפה ויזואלית ועיצוב אישי</li><li>דרכי יצירת קשר מחוברות</li></ul>
       <p class="price"><span>החל מ-</span><b>₪6,500</b></p>
       <a class="btn" href="#talk" data-pick="k2">אני רוצה אתר תדמית</a>
     </div>
@@ -801,7 +791,7 @@ form small a,footer a{color:inherit}
       <h3>שדרוג אתר קיים</h3>
       <p class="one">האתר נשאר. המסר, הסדר והמראה מתחדדים.</p>
       <p>לא תמיד צריך לבנות מחדש. עוברים על מה שיש, מחליטים מה נשאר, ומחדדים את המסרים, המבנה והעיצוב כך שהאתר יתחיל לעבוד.</p>
-      <ul class="inc"><li>מעבר על האתר הקיים והחלטה מה נשאר</li><li>חידוד המסרים, הסדר והמראה</li><li>בלי לבנות הכול מחדש</li><li class="plus" data-offer>עד 12.12: ערכת תוכן להשקה</li></ul>
+      <ul class="inc"><li>מעבר על האתר הקיים והחלטה מה נשאר</li><li>חידוד המסרים, הסדר והמראה</li><li>בלי לבנות הכול מחדש</li></ul>
       <p class="price"><span>החל מ-</span><b>₪1,900</b></p>
       <a class="btn" href="#talk" data-pick="k3">אני רוצה לשדרג את האתר</a>
     </div>
@@ -831,11 +821,19 @@ form small a,footer a{color:inherit}
 </div></section>
 
 <section class="proof sec" id="proof"><div class="in">
-  <div class="head rv"><span class="eye">Selected · <b>שלוש דוגמאות</b></span><h2>לא גלריה. <b>ההחלטה שמאחורי כל עמוד.</b></h2><p>בכל אחד מהם נוסחה קודם החלטה אחת על העסק, וכל השאר נגזר ממנה.</p></div>
-  <div class="cf" id="cf"><div class="cf-track"><button type="button" class="cf-s" aria-label="ORÉVA°, עמוד נחיתה לקוסמטיקאית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>oreva · landing</span></span><span class="view"><video src="a/oreva.mp4" poster="a/oreva.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button><button type="button" class="cf-s" aria-label="מרווח, עמוד נחיתה למטפלת רגשית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>mirvach · landing</span></span><span class="view"><video src="a/mirvach.mp4" poster="a/mirvach.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button><button type="button" class="cf-s" aria-label="RUE°, אתר תדמית ליזמות והתחדשות עירונית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>rue · site</span></span><span class="view"><video src="a/rue.mp4" poster="a/rue.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button></div></div>
-  <div class="cf-nav"><button type="button" id="cf-prev" aria-label="הדוגמה הקודמת">←</button><span class="dots3" id="cf-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span><button type="button" id="cf-next" aria-label="הדוגמה הבאה">→</button></div>
+  <div class="head rv"><span class="eye">Selected · <b>ארבע דוגמאות</b></span><h2>לא גלריה. <b>ההחלטה שמאחורי כל עמוד.</b></h2><p>בכל אחד מהם נוסחה קודם החלטה אחת על העסק, וכל השאר נגזר ממנה.</p></div>
+  <div class="cf" id="cf"><div class="cf-track"><button type="button" class="cf-s" aria-label="הילה שרון, אתר תדמית לפסיכותרפיסטית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>hila sharon · site</span></span><span class="view"><video src="a/hila.mp4" poster="a/hila.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button><button type="button" class="cf-s" aria-label="ORÉVA°, עמוד נחיתה לקוסמטיקאית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>oreva · landing</span></span><span class="view"><video src="a/oreva.mp4" poster="a/oreva.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button><button type="button" class="cf-s" aria-label="מרווח, עמוד נחיתה למטפלת רגשית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>mirvach · landing</span></span><span class="view"><video src="a/mirvach.mp4" poster="a/mirvach.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button><button type="button" class="cf-s" aria-label="RUE°, אתר תדמית ליזמות והתחדשות עירונית"><span class="frame"><span class="bar"><i></i><i></i><i></i><span>rue · site</span></span><span class="view"><video src="a/rue.mp4" poster="a/rue.jpg" muted loop playsinline preload="none" width="960" height="600"></video></span></span></button></div></div>
+  <div class="cf-nav"><button type="button" id="cf-prev" aria-label="הדוגמה הקודמת">←</button><span class="dots3" id="cf-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><button type="button" id="cf-next" aria-label="הדוגמה הבאה">→</button></div>
   <div class="cf-txt" id="cf-txt" aria-live="polite">
     <article class="case on"><div class="txt">
+      <span class="kind">אתר תדמית · פסיכותרפיסטית · <b>לקוחה</b></span>
+      <h3>הילה שרון</h3>
+      <p class="dec">ההחלטה: מי שמגיעה לטיפול ברגע של שינוי צריכה קודם להרגיש שיש לה איפה לנשום. אז האתר נפתח בחדר שקט, לא ברשימת שירותים.</p>
+      <ul><li>סרטון של חדר רגוע בפתיחה, לפני מילה אחת על שירותים</li><li>שפה משלה: לוטוס, ירוק מרווה וורוד עתיק. לא תבנית</li><li>מערכת ניהול בעברית: הילה מעדכנת טקסטים ומאמרים בעצמה</li></ul>
+      <figure class="said"><blockquote>"חגית מקצועית, חדה, מבינה עניין ומעבר להכל קולטת את הצרכים שלך כלקוח. שמחתי מאד שליוותה אותי ועזרה לי להתפתח ולדייק את התהליך המקצועי שלי."</blockquote><figcaption>הילה שרון · ביקורת בגוגל · יולי 2024</figcaption></figure>
+      <a class="more" href="https://hila-sharon.netlify.app/" target="_blank" rel="noopener">לאתר החי ←</a>
+    </div></article>
+    <article class="case"><div class="txt">
       <span class="kind">עמוד נחיתה · קוסמטיקאית</span>
       <h3><bdi dir="ltr">ORÉVA° Skin Studio</bdi></h3>
       <p class="dec">ההחלטה: לקוחה בוחרת קוסמטיקאית לפי הידיים שלה, לא לפי הבקבוק. אז היא מופיעה לפני המוצר.</p>
@@ -932,7 +930,7 @@ form small a,footer a{color:inherit}
     <details open data-offer><summary>מה בדיוק מקבלים בערכת התוכן?</summary><p>שני סרטונים של עד 30 שניות, שתי קרוסלות ומאמר אחד מדויק לתחילת הקידום. הכול נבנה מתוך השפה של האתר: אותם צבעים, אותו קול, אותו מסר. הנושאים מסוכמים בהצעה הכתובה. דוגמה לסרטונים יש למעלה, אצל ORÉVA°.</p></details>
     <details data-offer><summary>מה קורה אחרי 12.12?</summary><p>המחירים נשארים כמו שהם. ערכת התוכן היא תוספת למי שסוגר פרויקט עד 12.12. אחרי התאריך, תוכן וסרטונים מסוכמים בנפרד.</p></details>
     <details><summary>מה ההבדל בין עמוד נחיתה לאתר תדמית?</summary><p>עמוד נחיתה הוא עמוד אחד עם מטרה אחת, בדרך כלל לקמפיין או להשקה. אתר תדמית הוא כמה עמודים שמציגים את העסק כולו. אם לא ברור מה נכון לכם, את זה בדיוק מבררים בשיחת ההתאמה.</p></details>
-    <details><summary>הדוגמאות הן פרויקטי קונספט. יש גם לקוחות אמיתיים?</summary><p>כן. הדוגמאות בעמוד הן עולמות קונספט שבניתי כדי להראות את השיטה עד הסוף, בלי מגבלות של לקוח. הביקורות בעמוד הן של לקוחות שעבדו איתי.</p></details>
+    <details><summary>חלק מהדוגמאות הן פרויקטי קונספט. יש גם לקוחות אמיתיים?</summary><p>כן. הדוגמה הראשונה, האתר של הילה שרון, נבנתה ללקוחה. שאר הדוגמאות הן עולמות קונספט שבניתי כדי להראות את השיטה עד הסוף, בלי מגבלות של לקוח. הביקורות בעמוד הן של לקוחות שעבדו איתי.</p></details>
     <details><summary>כמה זה עולה?</summary><p>מחירי הפתיחה כתובים למעלה, ליד כל שירות. המחיר הסופי תלוי בהיקף: כמה עמודים, כמה תוכן יש, ומה צריך להתחבר לאתר. אחרי שיחת ההתאמה תקבלו הצעה כתובה עם מחיר סגור, לפני שמתחילים.</p></details>
     <details><summary>כמה זמן זה לוקח?</summary><p>עמוד נחיתה קצר יותר מאתר תדמית, והלוח תלוי גם בקצב שבו התוכן והאישורים מגיעים מכם. את לוח הזמנים נסגור יחד בהצעה, שלב אחרי שלב.</p></details>
     <details><summary>מי כותבת את התוכן?</summary><p>את המסרים והמבנה בונים יחד בשלב השני. מה שכבר כתוב אצלכם נכנס כחומר גלם, ומה שחסר נכתב כחלק מהעבודה. ההיקף המדויק מוגדר בהצעה.</p></details>
@@ -946,10 +944,11 @@ form small a,footer a{color:inherit}
   <div class="txt rv">
     <span class="eye">Let's talk</span>
     <h2>יש לכם עסק טוב. <b>הגיע הזמן שגם האתר יספר את זה.</b></h2>
-    <p>בין אם צריך עמוד נחיתה מדויק לקמפיין, אתר תדמית חדש או שדרוג של האתר הקיים, נתחיל בשיחת התאמה קצרה ונבין מה נכון לעסק שלכם.</p>
-    <p class="gift" data-offer><span><b>עד 12.12:</b> מי שסוגר פרויקט מקבל גם 2 סרטונים, 2 קרוסלות ומאמר לתחילת הקידום. <span data-left></span></span></p>
+    <p><b>יש לכם אתר?</b> הדביקו את הקישור, ואחזור אליכם עם 3 נקודות לשיפור: מה ברור בו, מה חסר, ומה הייתי משנה קודם.</p>
+    <p><b>עוד אין אתר?</b> נתחיל בשיחת התאמה קצרה ונבין מה נכון לעסק שלכם: עמוד נחיתה או אתר תדמית.</p>
   </div>
-  <div class="formwrap"><form id="f" class="lead" data-lead-source="campaign-sites" data-lead-interest="אתרים · שיחת התאמה · ערכת תוכן עד 12.12" data-lead-success-title="קיבלתי!" data-lead-success-text="אחזור אליכם לתאם שיחת התאמה קצרה.">
+  <div class="formwrap"><form id="f" class="lead" data-lead-source="campaign-sites" data-lead-interest="אתרים · 3 נקודות על האתר / שיחת התאמה" data-lead-success-title="קיבלתי!" data-lead-success-text="אם שלחתם קישור, אחזור אליכם עם 3 נקודות על האתר. אם לא, אחזור לתאם שיחת התאמה קצרה.">
+    <label for="u">הקישור לאתר שלכם, אם יש<input id="u" name="link" type="text" inputmode="url" autocomplete="url" dir="ltr" style="text-align:right" placeholder="www."></label>
     <label for="n">שם<input id="n" name="name" type="text" autocomplete="name" required></label>
     <label for="t">טלפון<input id="t" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[0-9+\-\s]{9,15}" title="מספר טלפון תקין, למשל 050-0000000"></label>
     <fieldset><legend>מה אתם צריכים</legend>
@@ -958,16 +957,15 @@ form small a,footer a{color:inherit}
       <label class="chip"><input type="radio" name="need" id="k3" value="שדרוג אתר קיים" data-lead-label="מה צריך" data-lead-value="שדרוג אתר קיים"><span>שדרוג אתר קיים</span></label>
       <label class="chip"><input type="radio" name="need" id="k4" value="עוד לא בטוחים" data-lead-label="מה צריך" data-lead-value="עוד לא בטוחים"><span>עוד לא בטוחים</span></label>
     </fieldset>
-    <label for="u">יש לכם אתר היום? אפשר להדביק קישור (לא חובה)<input id="u" name="link" type="text" inputmode="url" autocomplete="url" dir="ltr" style="text-align:right"></label>
-    <button class="btn" type="submit" id="go" data-cta="אני רוצה אתר עם ערכת התוכן">אני רוצה אתר עם ערכת התוכן</button>
+    <button class="btn" type="submit" id="go">לשלוח לחגית</button>
     <input type="text" name="lead_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0);">
-    <small>שיחת התאמה קצרה, בלי התחייבות. אפשר גם <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%90%D7%AA%D7%A8%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94" target="_blank" rel="noopener">בוואטסאפ</a>.</small>
+    <small>בלי התחייבות. אפשר גם <a href="https://wa.me/972528351676?text=%D7%94%D7%99%D7%99%20%D7%97%D7%92%D7%99%D7%AA%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%90%D7%AA%D7%A8%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94" target="_blank" rel="noopener">בוואטסאפ</a>.</small>
     <small>הפרטים משמשים רק למענה לפנייה · <a href="/privacy.html">מדיניות פרטיות</a></small>
   </form></div>
 </div></section>
 
 <footer><div class="in"><span class="sig">Hagit Antebi | Brand Worlds Studio</span><span>מותג שנבחר, לא מותג שמשווים.</span><span><a href="/privacy.html">מדיניות פרטיות</a> · <a href="/accessibility.html">הצהרת נגישות</a> · <a href="/">hagitantebi.co.il</a></span></div></footer>
-<div class="dock"><span data-dock><b>עד 12.12</b> · אתר + ערכת תוכן</span><a class="btn" href="#talk">בואו נדבר</a></div>
+<div class="dock"><span>עמוד נחיתה · אתר תדמית · שדרוג</span><a class="btn" href="#talk">בואו נדבר</a></div>
 </div>
 
 <script>
@@ -995,9 +993,6 @@ if(!calm) turn(0);
   const END=Date.parse('2026-12-12T23:59:59+02:00'), ms=END-Date.now();
   if(ms<=0){
     $$('[data-offer]').forEach(e=>e.remove());
-    $$('[data-cta]').forEach(e=>e.textContent='בואו נדבר על האתר שלכם');
-    const d=$('[data-dock]'); if(d) d.textContent='עמוד נחיתה · אתר תדמית · שדרוג';
-    const f=$('#f'); if(f) f.dataset.leadInterest='אתרים · שיחת התאמה';
     const fq=$('.faq details'); if(fq) fq.open=true;
     return;
   }
@@ -1006,24 +1001,30 @@ if(!calm) turn(0);
   const big=$('[data-leftbig]'); if(big&&days>1){ big.querySelector('b').textContent=days; big.hidden=false; }
 })();
 
+/* a pasted link means an existing site: pick the upgrade chip, unless the visitor already chose one */
+(function(){ const u=$('#u'), k=$('#k3'); let touched=false; if(!u||!k) return;
+  $$('#f input[name=need]').forEach(r=>r.addEventListener('change',()=>{touched=true;}));
+  u.addEventListener('input',()=>{ if(!touched && u.value.trim().length>3) k.checked=true; });
+})();
+
 /* every clip plays only while it is on screen */
 if(!calm && 'IntersectionObserver' in window){
   const lio=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?play(e.target):e.target.pause()),{threshold:.35});
   $$('video.live').forEach(v=>lio.observe(v));
 }
 
-/* the three examples: a carousel, the page in front plays */
+/* the four examples: a carousel, the page in front plays */
 (function(){
   const box=$('#cf'), sl=$$('#cf .cf-s'), tx=$$('#cf-txt .case'), dots=$$('#cf-dots i'), n=sl.length; let a=0, seen=false, timer=null;
   function lay(){
     sl.forEach((s,i)=>{ let o=i-a; if(o>n/2)o-=n; if(o<-n/2)o+=n; const ab=Math.abs(o);
       s.style.transform='translateX('+(o*60)+'%) translateZ('+(-ab*240)+'px) rotateY('+(o*-32)+'deg) scale('+(ab?0.84:1)+')';
-      s.style.zIndex=10-ab; s.style.filter=ab?'brightness(.9) saturate(.8)':'none'; s.style.opacity=ab?.8:1;
+      s.style.zIndex=10-ab; s.style.filter=ab?'brightness(.9) saturate(.8)':'none'; s.style.opacity=ab>1?0:ab?.8:1; s.style.pointerEvents=ab>1?'none':'';
       s.setAttribute('aria-current',ab?'false':'true');
       const v=s.querySelector('video'); if(!ab&&seen&&!calm){ play(v); } else v.pause(); });
     tx.forEach((t,i)=>t.classList.toggle('on',i===a)); dots.forEach((d,i)=>d.classList.toggle('on',i===a));
   }
-  const names=['oreva · landing','mirvach · landing','rue · site'], sent={};
+  const names=['hila sharon · site','oreva · landing','mirvach · landing','rue · site'], sent={};
   function go(i,user){ a=((i%n)+n)%n; lay(); clearInterval(timer);
     { const k=a; if(seen&&window.seenEv&&(user||!sent[k])){ sent[k]=1; seenEv('example_view',{example:names[k],by:user?'click':'auto'},()=>a===k&&seen); } } if(!user&&!calm) timer=setInterval(()=>go(a+1),12000); }
   sl.forEach((s,i)=>s.addEventListener('click',()=>{ if(i!==a) go(i,true); }));
