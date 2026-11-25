@@ -39,7 +39,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#FAF8F3}
 #warm{position:absolute;inset:0;z-index:21;background:#f6d9a8;mix-blend-mode:multiply;opacity:.2;pointer-events:none}
 #leak{position:absolute;inset:0;z-index:22;background:radial-gradient(60% 80% at 0% 40%,rgba(255,150,60,.95),rgba(255,90,40,.35) 45%,transparent 75%);mix-blend-mode:screen;opacity:0;pointer-events:none}
 #dust{position:absolute;inset:0;z-index:23;pointer-events:none}
-#grain{position:absolute;inset:0;z-index:24;pointer-events:none;opacity:.26;mix-blend-mode:overlay}
+#grain{position:absolute;inset:0;z-index:24;pointer-events:none;opacity:.12;mix-blend-mode:overlay}
 #flick{position:absolute;inset:0;z-index:25;background:#000;opacity:0;pointer-events:none}
 #gatemask{position:absolute;inset:0;z-index:26;pointer-events:none;box-shadow:inset 0 0 0 16px #0b0806,inset 0 0 160px 30px rgba(8,5,3,.75);border-radius:0}
 #gatemask::after{content:"";position:absolute;inset:16px;border-radius:44px;box-shadow:0 0 0 60px #0b0806}
@@ -147,14 +147,13 @@ window.seek=async function(t){
   const atx=document.getElementById('atx');atx.style.visibility=(t>=AT&&t<AT+2.4)?'visible':'hidden';atx.style.opacity=cl((t-AT-.05)/.3);
   document.getElementById('rvx').style.visibility=t>=REV?'visible':'hidden';
   // vintage: gate weave, flicker, light leak on the cuts, dust and scratches, grain
-  document.getElementById('gate').style.transform=`translate(${(R()-.5)*3.2}px,${(R()-.5)*4.4}px) rotate(${(R()-.5)*.06}deg)`;
-  document.getElementById('flick').style.opacity=R()*.07;
-  let lk=0;for(const c of CUTS){const n=Math.round((t-c)*FPS);if(n>=0&&n<4)lk=[.75,.45,.22,.08][n];}
+  document.getElementById('gate').style.transform=`translate(${Math.sin(t*1.7)*1.2+Math.sin(t*4.1)*.5}px,${Math.sin(t*1.3+1)*1.6+Math.sin(t*3.3)*.6}px)`;   // slow drift, no per-frame jitter
+  document.getElementById('flick').style.opacity=0;
+  let lk=0;for(const c of CUTS){const n=Math.round((t-c)*FPS);if(n>=0&&n<5)lk=[.42,.34,.22,.12,.05][n];}
   const leak=document.getElementById('leak');leak.style.opacity=lk;leak.style.transform=`scaleX(${F%2?1:-1})`;
   dust.clearRect(0,0,1080,1920);
-  const ns=R()<.35?1+Math.floor(R()*2):0;for(let i=0;i<ns;i++){const x=R()*1080;dust.fillStyle=`rgba(255,244,225,${.10+R()*.14})`;dust.fillRect(x,0,1+R()*1.5,1920);}
-  const nd=3+Math.floor(R()*7);for(let i=0;i<nd;i++){const x=R()*1080,y=R()*1920,r=1+R()*3.2;dust.fillStyle=R()<.6?`rgba(20,12,8,${.35+R()*.4})`:`rgba(255,246,230,${.3+R()*.4})`;dust.beginPath();dust.ellipse(x,y,r,r*(.5+R()),R()*3,0,7);dust.fill();}
-  if(R()<.12){dust.strokeStyle='rgba(20,12,8,.5)';dust.lineWidth=1.4;dust.beginPath();const x=R()*1080,y=R()*1920;dust.moveTo(x,y);dust.bezierCurveTo(x+30*R(),y+40,x-40*R(),y+90,x+20,y+140*R());dust.stroke();}
+  const nd=F%3?0:1+Math.floor(R()*3);for(let i=0;i<nd;i++){const x=R()*1080,y=R()*1920,r=1+R()*3.2;dust.fillStyle=R()<.6?`rgba(20,12,8,${.35+R()*.4})`:`rgba(255,246,230,${.3+R()*.4})`;dust.beginPath();dust.ellipse(x,y,r,r*(.5+R()),R()*3,0,7);dust.fill();}
+  if(R()<.02){dust.strokeStyle='rgba(20,12,8,.5)';dust.lineWidth=1.4;dust.beginPath();const x=R()*1080,y=R()*1920;dust.moveTo(x,y);dust.bezierCurveTo(x+30*R(),y+40,x-40*R(),y+90,x+20,y+140*R());dust.stroke();}
   document.getElementById('turb').setAttribute('seed',1+F%97);
   const shrink=io(cl((t-2.6)/.4))-io(cl((t-4.15)/.45))+io(cl((t-OUT)/.45));
   document.getElementById('world').style.transform=`scale(${1-.5*shrink})`;
