@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><title>REGARD° — type edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Frank+Ruhl+Libre:wght@400;500&display=block" rel="stylesheet">
+<style>
+:root{--navy:#0C1420;--cream:#F2EBDC;--copper:#C28A5A}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#05080f}
+#stage{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;
+  background:radial-gradient(130% 75% at 50% 42%,#131d33 0,#0d1424 55%,#05080f 100%)}
+.shot{position:absolute;overflow:hidden;visibility:hidden}
+.shot.feather{background:radial-gradient(130% 75% at 50% 42%,#131d33 0,#0d1424 55%,#05080f 100%)}
+.shot img.bg,.shot img.fg{position:absolute;left:0;top:0;width:834px;height:1112px;transform-origin:0 0;display:block}
+.shot.feather img.bg{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%),linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect}
+.shot.feather img.fg{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.mid,.top{position:absolute;inset:0}
+.cg{font-family:'Cormorant Garamond',serif}
+.fr{font-family:'Frank Ruhl Libre',serif}
+
+/* the big word behind the head */
+.word{position:absolute;left:0;top:0;direction:ltr;white-space:nowrap;overflow:hidden;transform-origin:0 0}
+.word b{display:block;font:700 600px/0.86 'Cormorant Garamond',serif;letter-spacing:-.02em;padding:0 .04em;
+  animation:rise .42s cubic-bezier(.16,.9,.2,1) both}
+@keyframes rise{from{transform:translateY(104%)}to{transform:none}}
+.script{position:absolute;direction:ltr;font:italic 500 190px/1 'Cormorant Garamond',serif;color:var(--cream);
+  transform:rotate(-7deg);animation:pop .35s cubic-bezier(.2,1.3,.3,1) both;text-shadow:0 4px 30px rgba(5,8,15,.55)}
+@keyframes pop{from{opacity:0;transform:rotate(-7deg) translateY(40px) scale(.9)}to{opacity:1;transform:rotate(-7deg)}}
+.cap{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:400 50px/1.3 'Frank Ruhl Libre',serif;color:var(--cream);
+  animation:capin .5s ease-out both;text-shadow:0 2px 24px rgba(5,8,15,.9)}
+.cap::before{content:"";display:block;width:90px;height:2px;background:var(--copper);margin:0 auto 26px}
+@keyframes capin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.num{position:absolute;right:64px;top:92px;direction:ltr;font:500 34px/1 'Cormorant Garamond',serif;letter-spacing:.14em;color:var(--cream);opacity:.85}
+.num i{font-style:normal;color:var(--copper)}
+
+/* hook */
+.hook{position:absolute;left:0;right:0;top:1260px;text-align:center;color:var(--cream);text-shadow:0 2px 40px rgba(5,8,15,.95),0 0 12px rgba(5,8,15,.6)}
+.hook .l1{font:400 78px/1.15 'Frank Ruhl Libre',serif;animation:hk1 2.6s linear both}
+.hook .l2{font:500 112px/1.1 'Frank Ruhl Libre',serif;margin-top:14px;animation:hk2 2.6s linear both}
+.hook .l2 em{font-style:normal;color:var(--copper)}
+@keyframes hk1{0%{opacity:1;transform:none}40%{opacity:1}55%,100%{opacity:.55;transform:translateY(-6px)}}
+@keyframes hk2{0%{opacity:.9;transform:scale(.96)}38%{opacity:.9;transform:scale(.96)}50%,100%{opacity:1;transform:scale(1.04)}}
+
+/* split */
+#band{position:absolute;left:0;right:0;top:890px;height:140px;background:var(--cream);overflow:hidden;visibility:hidden;direction:ltr}
+#band div{position:absolute;left:0;top:0;white-space:nowrap;font:600 86px/140px 'Cormorant Garamond',serif;letter-spacing:.06em;color:var(--navy);
+  animation:run 3s linear 9s both}
+#band div i{font-style:normal;color:var(--copper);padding:0 .35em}
+@keyframes run{from{transform:translateX(40px)}to{transform:translateX(-1500px)}}
+.sp{position:absolute;left:0;right:0;text-align:center;color:var(--cream);font:500 84px/1.1 'Frank Ruhl Libre',serif;text-shadow:0 2px 36px rgba(5,8,15,.95),0 0 10px rgba(5,8,15,.7);animation:capin .4s ease-out both}
+.sp em{font-style:normal;color:var(--copper)}
+
+/* persistent brand tag + finishing */
+#tag{position:absolute;left:64px;top:84px;direction:ltr;font:600 46px/1 'Cormorant Garamond',serif;letter-spacing:.2em;color:var(--cream);z-index:20}
+#tag small{display:block;font:italic 400 26px/1 'Cormorant Garamond',serif;letter-spacing:.06em;margin-top:10px;opacity:.75}
+.end{position:absolute;left:0;right:0;bottom:210px;text-align:center;color:var(--cream);text-shadow:0 2px 30px rgba(5,8,15,.95)}
+.end .a{font:500 92px/1.15 'Frank Ruhl Libre',serif;animation:capin .6s ease-out 13.1s both}
+.end .a em{font-style:normal;color:var(--copper)}
+.end .b{direction:ltr;font:500 30px/1 'Cormorant Garamond',serif;letter-spacing:.22em;margin-top:34px;opacity:.8;animation:capin .6s ease-out 13.6s both}
+#vig{position:absolute;inset:0;z-index:30;pointer-events:none;background:radial-gradient(90% 70% at 50% 45%,transparent 55%,rgba(3,5,10,.55) 100%)}
+#grain{position:absolute;inset:0;z-index:31;pointer-events:none;opacity:.16;mix-blend-mode:overlay}
+#flash{position:absolute;inset:0;z-index:25;background:var(--cream);opacity:0;pointer-events:none}
+</style></head><body>
+<div id="stage">
+
+<div class="shot" id="s1"><img class="bg"><div class="top">
+  <div class="hook"><p class="l1">את לא מחליפה משקפיים.</p><p class="l2">את מחליפה <em>את המבט.</em></p></div>
+</div></div>
+
+<div class="shot feather" id="s2"><img class="bg"><div class="mid">
+  <div class="word" data-w="1040" data-x="20" data-y="400" style="color:#D9A8A2"><b style="animation-delay:2.62s">MUSE</b></div>
+  </div><img class="fg"><div class="top">
+  <div class="script" style="left:70px;top:330px;animation-delay:2.8s">La</div>
+  <div class="num">N° <i>01</i> / 05</div>
+  <p class="cap" style="animation-delay:2.95s">האור מחפש אותה.</p></div></div>
+
+<div class="shot feather" id="s3"><img class="bg"><div class="mid">
+  <div class="word" data-w="1050" data-x="15" data-y="300" style="color:#D6C7A9"><b style="animation-delay:4.22s">ICÔNE</b></div>
+  </div><img class="fg"><div class="top">
+  <div class="script" style="left:40px;top:205px;animation-delay:4.4s">L’</div>
+  <div class="num">N° <i>02</i> / 05</div>
+  <p class="cap" style="animation-delay:4.55s">נכנסת לחדר. השאר היסטוריה.</p></div></div>
+
+<div class="shot feather" id="s4"><img class="bg"><div class="mid">
+  <div class="word" data-w="1050" data-x="15" data-y="370" style="color:#C89A6B"><b style="animation-delay:5.72s">POÈTE</b></div>
+  </div><img class="fg"><div class="top">
+  <div class="script" style="left:70px;top:300px;animation-delay:5.9s">La</div>
+  <div class="num">N° <i>03</i> / 05</div>
+  <p class="cap" style="animation-delay:6.05s">רואה את מה שאחרים פספסו.</p></div></div>
+
+<div class="shot feather" id="s5"><img class="bg"><div class="mid">
+  <div class="word" id="dir" data-w="2700" data-x="60" data-y="380" style="color:#8FA6C0;overflow:visible"><b style="animation:none">DIRECTRICE</b></div>
+  </div><img class="fg"><div class="top">
+  <div class="script" style="left:70px;top:310px;animation-delay:7.45s">La</div>
+  <div class="num">N° <i>04</i> / 05</div>
+  <p class="cap" style="animation-delay:7.65s">ההחלטה כבר התקבלה.</p></div></div>
+
+<div class="shot" id="s6a"><img class="bg"><div class="top"><p class="sp" style="top:70px;animation-delay:9.1s">אותם פנים. בדיוק.</p></div></div>
+<div class="shot" id="s6b"><img class="bg"></div>
+<div class="shot" id="s6c"><img class="bg"></div>
+<div class="shot" id="s6d"><img class="bg"><div class="top"><p class="sp" style="bottom:70px;animation-delay:10.6s"><em>המבט</em> הוא זה שמתחלף.</p></div></div>
+<div id="band"><div>LA MUSE<i>·</i>L’ICÔNE<i>·</i>LA POÈTE<i>·</i>LA DIRECTRICE<i>·</i>L’ÉTOILE<i>·</i>LA MUSE<i>·</i>L’ICÔNE<i>·</i>LA POÈTE<i>·</i>LA DIRECTRICE</div></div>
+
+<div class="shot feather" id="s7"><img class="bg"><div class="mid">
+  <div class="word" data-w="1060" data-x="10" data-y="250" style="color:var(--cream)"><b style="animation-delay:12.02s;animation-duration:.6s">REGARD°</b></div>
+  </div><img class="fg"><div class="top">
+  <div class="end"><p class="a">בחרי את <em>המבט</em> שלך.</p><p class="b">BRAND WORLDS STUDIO · WORLD N°16</p></div></div></div>
+
+<div id="tag">REGARD°<small>Maison d’Optique</small></div>
+<div id="flash"></div><div id="vig"></div>
+<svg id="grain" width="1080" height="1920"><filter id="n"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="1"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1080" height="1920" filter="url(#n)"/></svg>
+</div>
+<script>
+const FPS=30;
+// clip, first source frame, rect [x,y,w,h], zoom from→to, source anchor (ax,ay) pinned to shot point (px,py)
+const SHOTS=[
+ {id:'s1', t:[0,2.6],    clip:2,f0:0,  r:[0,0,1080,1920],  s:[1.84,1.96], a:[417,380], p:[540,690]},
+ {id:'s2', t:[2.6,4.2],  clip:1,f0:55, r:[0,0,1080,1920],  s:[1.20,1.27], a:[417,1112],p:[540,1920]},
+ {id:'s3', t:[4.2,5.7],  clip:2,f0:74, r:[0,0,1080,1920],  s:[1.30,1.37], a:[417,1112],p:[540,1920]},
+ {id:'s4', t:[5.7,7.3],  clip:3,f0:62, r:[0,0,1080,1920],  s:[1.22,1.28], a:[417,1112],p:[540,1920]},
+ {id:'s5', t:[7.3,9.0],  clip:4,f0:5,  r:[0,0,1080,1920],  s:[1.20,1.26], a:[417,1112],p:[540,1920]},
+ {id:'s6a',t:[9.0,10.5], clip:1,f0:0,  r:[0,0,1080,960],   s:[1.34,1.40], a:[417,400], p:[540,520]},
+ {id:'s6b',t:[9.0,10.5], clip:4,f0:60, r:[0,960,1080,960], s:[1.40,1.34], a:[417,400], p:[540,470]},
+ {id:'s6c',t:[10.5,12],  clip:3,f0:12, r:[0,0,1080,960],   s:[1.40,1.34], a:[417,380], p:[540,520]},
+ {id:'s6d',t:[10.5,12],  clip:2,f0:20, r:[0,960,1080,960], s:[1.50,1.58], a:[417,380], p:[540,440]},
+ {id:'s7', t:[12,15],    clip:5,f0:22, r:[0,0,1080,1920],  s:[1.20,1.30], a:[440,1112],p:[540,1920]},
+];
+const CUTS=[2.6,4.2,5.7,7.3,9,10.5,12];
+const pad=n=>String(n).padStart(3,'0');
+for(const s of SHOTS){const el=document.getElementById(s.id);s.el=el;s.bg=el.querySelector('img.bg');s.fg=el.querySelector('img.fg');
+  Object.assign(el.style,{left:s.r[0]+'px',top:s.r[1]+'px',width:s.r[2]+'px',height:s.r[3]+'px'});}
+function fit(){document.querySelectorAll('.word').forEach(w=>{const b=w.firstElementChild;const k=+w.dataset.w/b.offsetWidth;
+  w.dataset.k=k;w.style.transform=`translate(${w.dataset.x}px,${w.dataset.y}px) scale(${k},1)`;});}
+const ease=x=>1-Math.pow(1-x,3);
+async function put(img,url){if(!img||img.dataset.u===url)return;img.dataset.u=url;img.src=url;try{await img.decode()}catch(e){}}
+window.seek=async function(t){
+  const jobs=[];
+  for(const s of SHOTS){const on=t>=s.t[0]-1e-6&&t<s.t[1]-1e-6;s.el.style.visibility=on?'visible':'hidden';if(!on)continue;
+    const n=Math.round((t-s.t[0])*FPS), f=Math.min(121,s.f0+n+1), p=(t-s.t[0])/(s.t[1]-s.t[0]);
+    const punch=1+.045*Math.pow(Math.max(0,1-n/7),2);
+    const k=(s.s[0]+(s.s[1]-s.s[0])*p)*punch;
+    const tr=`translate(${s.p[0]-s.a[0]*k}px,${s.p[1]-s.a[1]*k}px) scale(${k})`;
+    s.bg.style.transform=tr; jobs.push(put(s.bg,`frames/${s.clip}/b_${pad(f)}.jpg`));
+    if(s.fg){s.fg.style.transform=tr; jobs.push(put(s.fg,`frames/${s.clip}/f_${pad(f)}.webp`));}
+  }
+  // DIRECTRICE runs behind her
+  const d=document.getElementById('dir'), q=Math.min(1,Math.max(0,(t-7.3)/1.7));
+  d.style.transform=`translate(${60-(2700-1000)*(q*.9+.1*ease(q))}px,380px) scale(${d.dataset.k},1)`;
+  const sp=t>=9&&t<12;document.getElementById('band').style.visibility=sp?'visible':'hidden';document.getElementById('tag').style.visibility=(sp||t>=12)?'hidden':'visible';
+  let fl=0;for(const c of CUTS){const n=Math.round((t-c)*FPS);if(n>=0&&n<3)fl=[.22,.1,.04][n];}
+  document.getElementById('flash').style.opacity=fl;
+  document.getElementById('turb').setAttribute('seed',1+Math.round(t*FPS)%97);
+  document.getAnimations().forEach(a=>{a.currentTime=t*1000});
+  await Promise.all(jobs);
+};
+window.ready=(async()=>{await document.fonts.ready;fit();document.getAnimations().forEach(a=>a.pause());await seek(0);})();
+</script></body></html>
