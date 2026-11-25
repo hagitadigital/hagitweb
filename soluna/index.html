@@ -57,6 +57,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="preload" as="image" href="assets/store/interior.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Heebo:wght@300;400;500&family=Spline+Sans+Mono:wght@400&display=swap">
@@ -84,6 +85,7 @@ body{background:var(--water);color:var(--ink);font-family:var(--he-sans);font-we
 body.locked{overflow:hidden}
 img,video{max-width:100%;display:block}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+[hidden]{display:none!important}
 button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .mono{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-variant-numeric:tabular-nums}
 .latin{font-family:var(--latin);font-style:italic;font-weight:300}
@@ -112,7 +114,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .vitrine{position:relative;width:min(560px,100%,52svh);aspect-ratio:5/4;border-radius:999px 999px 6px 6px / 46% 46% 6px 6px;
   padding:10px;background:linear-gradient(160deg,var(--brass-hi),var(--brass) 40%,#8c6a2e);box-shadow:0 30px 60px -30px rgba(22,34,42,.35)}
 .vitrine .pane{position:relative;height:100%;border-radius:inherit;overflow:hidden;
-  background:radial-gradient(90% 70% at 50% 100%,#FFFFFF 0%,transparent 70%),linear-gradient(180deg,#F4F8F7 0%,#E4ECE9 100%);
+  background:#E4ECE9 url(assets/store/interior.webp) 41.6% 91%/190% auto no-repeat;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),inset 0 0 60px rgba(255,255,255,.5)}
 .pane::after{content:"";position:absolute;inset:-30%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.55) 47%,transparent 52%,transparent 58%,rgba(255,255,255,.35) 60%,transparent 63%);
   animation:sheen 7s ease-in-out infinite;pointer-events:none}
@@ -121,8 +123,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset
 .window-shelf::after{content:"";position:absolute;inset:auto -4% -10px -4%;height:9px;border-radius:2px;
   background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(200,220,215,.55));box-shadow:0 10px 18px -8px rgba(22,34,42,.3)}
 .window-shelf img{height:92%;width:auto;min-width:0;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(22,34,42,.22))}
-.open-sign{position:absolute;top:14%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;
-  padding:6px 12px;border:1px solid var(--brass);border-radius:999px;background:rgba(255,255,255,.6);direction:ltr;white-space:nowrap}
+.open-sign{position:absolute;z-index:1;top:9%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;
+  padding:6px 12px;border:1px solid var(--brass);border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);direction:ltr;white-space:nowrap}
 .open-sign i{width:6px;height:6px;border-radius:50%;background:#2F8F5B;box-shadow:0 0 0 3px rgba(47,143,91,.18)}
 .pitch{text-align:center;display:grid;gap:10px;max-width:34ch}
 .pitch h1{font-family:var(--he-serif);font-weight:300;font-size:clamp(30px,7.4vw,48px);line-height:1.05;text-wrap:balance}
@@ -136,6 +138,53 @@ body[data-view="shop"] .front, body[data-view="item"] .front{opacity:0;transform
 body[data-view="front"] .inside{display:none}
 body[data-view="shop"] .inside{animation:rise .9s ease .2s both}
 @keyframes rise{from{opacity:0;transform:translateY(30px)}}
+
+/* ---------- 2a · inside the store: one room, you look around and mark a product ---------- */
+.store{position:relative;z-index:2;height:100svh;min-height:520px;overflow:hidden;direction:ltr;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.store-cam{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 calc(100% - 110px),transparent);mask-image:linear-gradient(#000 calc(100% - 110px),transparent)}
+.store.dragging{cursor:grabbing}
+.store-world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.store-world>img{width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
+.store-world::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:.55;
+  background:radial-gradient(22% 12% at 30% 30%,#fff,transparent 70%),radial-gradient(18% 10% at 68% 62%,#fff,transparent 70%),radial-gradient(26% 12% at 48% 86%,#fff,transparent 70%);
+  animation:drift 9s ease-in-out infinite alternate}
+.mark{position:absolute;width:44px;height:44px;transform:translate(-50%,-50%);display:grid;place-items:center;z-index:2}
+.mark i{width:15px;height:15px;border-radius:50%;background:#fff;border:1.5px solid var(--brass);
+  box-shadow:0 0 0 5px rgba(255,255,255,.5),0 4px 10px rgba(22,34,42,.3);transition:transform .35s cubic-bezier(.3,.7,.3,1.4),background .3s,border-color .3s}
+.mark::before{content:"";position:absolute;width:15px;height:15px;border-radius:50%;border:1px solid #fff;animation:ping 2.6s ease-out infinite;animation-delay:var(--d,0s)}
+@keyframes ping{0%{transform:scale(1);opacity:.95}80%,100%{transform:scale(3.2);opacity:0}}
+.mark span{position:absolute;top:calc(50% + 15px);left:50%;transform:translateX(-50%);direction:rtl;white-space:nowrap;font-size:12.5px;font-weight:400;line-height:1;
+  padding:5px 10px;border-radius:999px;background:rgba(250,252,251,.9);border:1px solid rgba(176,138,69,.55);box-shadow:0 4px 12px -6px rgba(22,34,42,.4);transition:background .3s,color .3s,border-color .3s}
+.mark:hover i,.mark:focus-visible i{transform:scale(1.35);background:var(--c);border-color:#fff}
+.mark:hover span,.mark:focus-visible span,.mark.picked span{background:var(--ink);color:var(--water);border-color:var(--ink)}
+.mark.picked i{transform:scale(1.7);background:var(--c);border-color:#fff}
+.mark.picked::before{animation:none;opacity:0}
+.niche{position:absolute;z-index:1;border-radius:999px 999px 10px 10px / 26% 26% 10px 10px;transition:box-shadow .4s,background .4s}
+.niche:hover{box-shadow:inset 0 0 0 1.5px var(--brass-hi),0 0 40px -6px var(--glow);background:color-mix(in srgb,var(--c) 9%,transparent)}
+.store-hud{position:absolute;inset:auto 0 80px 0;z-index:3;display:flex;justify-content:center;pointer-events:none;direction:rtl;padding-inline:16px}
+.store-hint{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:400;text-align:center;
+  background:rgba(250,252,251,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 30px -14px rgba(22,34,42,.4);transition:opacity .8s}
+.store-hint svg{width:20px;height:20px;flex:none;animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+.store.seen .store-hint{opacity:0}
+.store-nav{position:absolute;z-index:3;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(250,252,251,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(22,34,42,.2);transition:opacity .3s}
+.store-nav svg{width:18px;height:18px}
+.store-nav.prev{left:max(10px,env(safe-area-inset-left,0px))}
+.store-nav.next{right:max(10px,env(safe-area-inset-right,0px))}
+.store-nav[disabled]{opacity:.25;pointer-events:none}
+.store:not(.wide) .store-nav{display:none}
+.store-down{position:absolute;z-index:3;inset:auto auto 26px 50%;transform:translateX(-50%);direction:rtl;white-space:nowrap;display:inline-flex;gap:8px;align-items:center;
+  padding:8px 16px;font-size:14px;font-weight:400;color:var(--ink);text-decoration:none;border-radius:999px;background:rgba(250,252,251,.86);border:1px solid rgba(176,138,69,.6)}
+body[data-view="shop"] .store-world>img{animation:storeIn 1.1s ease both}
+@keyframes storeIn{from{opacity:0;filter:blur(6px) brightness(1.25)}}
+
+/* special edition key visual, with the same markers */
+.heures{position:relative;overflow:hidden;border-radius:22px;aspect-ratio:4/3;margin-bottom:26px;direction:ltr;background:#E4ECEC;box-shadow:0 30px 60px -40px rgba(22,34,42,.45)}
+.heures-in{position:absolute;inset:0 0 auto 0;aspect-ratio:1447/1087}
+.heures-in img{width:100%;height:100%;object-fit:cover}
+@media (min-width:880px){.heures{aspect-ratio:16/10}.heures-in{top:-6.4%}}
+@media (max-width:560px){.heures .mark span{font-size:11.5px;padding:4px 8px}}
 
 /* ---------- top bar ---------- */
 .bar{position:fixed;inset:0 0 auto 0;z-index:7;pointer-events:none;display:flex;justify-content:space-between;align-items:center;gap:12px;
@@ -152,7 +201,7 @@ body[data-view="shop"] .bar{background:linear-gradient(180deg,rgba(238,243,241,.
 @keyframes bump{40%{transform:scale(1.14)}}
 
 /* ---------- 2 · shelves ---------- */
-.shop{padding-block:calc(env(safe-area-inset-top,0px) + 84px) 24px;max-width:1180px;margin-inline:auto}
+.shop{padding-block:40px 24px;scroll-margin-top:60px;max-width:1180px;margin-inline:auto}
 .shop-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 24px;margin-bottom:18px}
 .shop-head h2{font-family:var(--he-serif);font-weight:300;font-size:clamp(28px,6vw,44px);line-height:1}
 .shop-head h2 .latin{font-size:.55em;color:var(--ink-soft);margin-inline-start:.4em}
@@ -252,12 +301,12 @@ body[data-view="item"] .bar .word{opacity:0}
 .manifest{display:grid;gap:26px;max-width:860px}
 .manifest p.big{font-family:var(--he-serif);font-weight:300;font-size:clamp(20px,3.6vw,28px);line-height:1.45;text-wrap:pretty;max-width:46ch}
 .manifest p.big em{font-style:normal;font-weight:400}
-.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,72px));gap:14px}
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,96px));gap:14px 10px}
 .sw{justify-items:center;text-align:center}
 .sw{display:grid;gap:8px}
 .sw i{display:block;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),var(--c) 62%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
 .sw span{font-size:14px}
-.sw .mono{color:var(--ink-soft);direction:ltr}
+.sw .mono{color:var(--ink-soft);direction:ltr;font-size:10px;letter-spacing:.1em}
 
 .unfold{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:880px){.unfold{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -360,7 +409,6 @@ body[data-view="item"] #studioChip,body.bag-open #studioChip,body[data-view="fro
   <div class="vitrine">
     <div class="pane">
       <div class="open-sign mono"><i aria-hidden="true"></i><span id="openClock">OUVERT</span></div>
-      <div class="window-shelf" id="windowShelf"></div>
     </div>
   </div>
   <div class="pitch">
@@ -371,8 +419,18 @@ body[data-view="item"] #studioChip,body.bag-open #studioChip,body[data-view="fro
 </section>
 
 <div class="inside">
+<!-- 2a · inside the store -->
+<section class="store" id="store" aria-label="בתוך החנות של SOLUNA°: הסתכלי מסביב וסמני מוצר">
+  <div class="store-cam"><div class="store-world" id="world">
+    <img src="assets/store/interior.webp" width="1448" height="1086" alt="פנים החנות של SOLUNA°: ארבע גומחות לרעננות, חדות, רוגע ושמחה, קנקן זכוכית גדול במרכז עם ארבע פירמידות וארבע כוסות, ומימין המהדורות המיוחדות" decoding="async">
+  </div></div>
+  <button class="store-nav prev" id="navPrev" type="button" aria-label="להסתכל שמאלה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="store-nav next" id="navNext" type="button" aria-label="להסתכל ימינה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="store-hud"><p class="store-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg><span id="storeHint">הסתכלי מסביב, וסמני מוצר כדי להוריד אותו לדלפק</span></p></div>
+  <a class="store-down" href="#shelves">לכל המדפים <span aria-hidden="true">↓</span></a>
+</section>
 <!-- 2 · shelves -->
-<main class="shop wrap" aria-labelledby="shelvesTitle">
+<main class="shop wrap" id="shelves" aria-labelledby="shelvesTitle">
   <div class="shop-head">
     <h2 id="shelvesTitle">המדפים <span class="latin">Les Humeurs</span></h2>
     <p>ארבעה קנקני תה שקופים, בכל אחד עשר פירמידות. לחצי על קנקן, ופירמידה אחת תרד לדלפק ותיפתח במים.</p>
@@ -384,6 +442,9 @@ body[data-view="item"] #studioChip,body.bag-open #studioChip,body[data-view="fro
       <h2>אריזות של שעה <span class="latin">Special Edition</span></h2>
       <p><span class="badge mono">Édition spéciale</span> &nbsp;ארבע אריזות שנעשו לשעות היום, בכמות מוגבלת. המדף של השעה הזאת מואר.</p>
     </div>
+    <div class="heures" id="heures"><div class="heures-in">
+      <img src="assets/store/heures.webp" width="1447" height="1087" loading="lazy" alt="SOLUNA° Édition spéciale, Les Heures: מנסרת זכוכית לצהריים, קופסת שעון שמש לזריחה, צנצנת סהר ללילה ופירמידת נייר לשקיעה, על במות שיש">
+    </div></div>
     <div class="shelves" id="specialShelves"></div>
   </div>
 </main>
@@ -694,6 +755,7 @@ function frame(now){
     ambient=(target.A[0]+target.A[1]+target.A[2]);
     runDrops(dt); simulate(dt); render();
   }
+  camTick();
   requestAnimationFrame(frame);
 }
 if(!fluid){ cv.style.display='none'; document.body.style.transition='background-color 1.4s ease'; }
@@ -702,8 +764,6 @@ const tintStatic = (p,s) => { if(!fluid) document.body.style.backgroundColor = p
 /* ---------- build ---------- */
 const NOW = nowHour();
 const AMB = byK.calm; // the store rests in a faint blue: the calm of an empty shop
-const shelf=$('windowShelf');
-MOODS.forEach(h=>{ const i=new Image(); i.src=img(h); i.alt=''; shelf.appendChild(i); });
 $('openClock').textContent='OUVERT · '+clockStr();
 
 function shelfItem(h,isNow){
@@ -758,6 +818,78 @@ $('snBtn').addEventListener('click',()=>{
   $('snStatus').textContent = off ? 'בלי שם, בלי תגית ובלי לוגו. נשארו הקפלים, שיפוע הצבע והכוס.' : 'השם מופיע על כל ארבע נקודות המגע.';
 });
 
+/* ---------- the store: one room, a camera that looks around, markers on the products ---------- */
+const store=$('store'), world=$('world'), IW=1448, IH=1086;
+const hover=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const cam={x:0,y:0,z:1,tx:0,ty:0,tz:1,w:0,h:0,vw:0,vh:0,ease:.09,busy:false,fp:[.46,.62],drawn:''};
+const clampCam=(v,size,view,z)=>Math.min(0,Math.max(view-size*z,v));
+function camTo(px,py,z,ease,snap){
+  cam.tz=z; cam.tx=clampCam(cam.vw/2-px*cam.w*z,cam.w,cam.vw,z); cam.ty=clampCam(cam.vh/2-py*cam.h*z,cam.h,cam.vh,z);
+  if(ease) cam.ease=ease; if(snap||reduce){cam.x=cam.tx;cam.y=cam.ty;cam.z=cam.tz;} camDraw(); navState();
+}
+function camFit(){
+  const r=store.getBoundingClientRect(); if(!r.width) return; cam.vw=r.width; cam.vh=r.height;
+  const s=Math.max(cam.vw/IW,cam.vh/IH)*(hover?1.07:1);
+  cam.w=IW*s; cam.h=IH*s; world.style.width=cam.w+'px'; world.style.height=cam.h+'px';
+  store.classList.toggle('wide',cam.w-cam.vw>cam.vw*.25);
+  camTo(cam.fp[0],cam.fp[1],1,0,true);
+}
+function camDraw(){ const t=`translate3d(${cam.x.toFixed(1)}px,${cam.y.toFixed(1)}px,0) scale(${cam.z.toFixed(4)})`; if(t!==cam.drawn){world.style.transform=t;cam.drawn=t;} }
+function camTick(){
+  if(body.dataset.view!=='shop'||!cam.w) return;
+  const k=1-Math.pow(1-cam.ease,KF);
+  cam.x+=(cam.tx-cam.x)*k; cam.y+=(cam.ty-cam.y)*k; cam.z+=(cam.tz-cam.z)*k; camDraw();
+}
+function navState(){ $('navPrev').disabled=cam.tx>-4; $('navNext').disabled=cam.tx<cam.vw-cam.w*cam.tz+4; }
+const seen=()=>store.classList.add('seen');
+function pickMark(k,el,px,py){
+  if(cam.busy) return; cam.busy=true; seen(); el.classList.add('picked'); cam.fp=[px,py];
+  camTo(px,py,cam.vw<700?1.7:1.9,.13);
+  setTimeout(()=>{ openItem(k,el); cam.busy=false; }, reduce?0:640);
+}
+function mark(parent,k,x,y,i,onPick){
+  const h=byK[k], b=document.createElement('button'); b.type='button'; b.className='mark'; b.dataset.k=k;
+  b.style.cssText=`left:${x}%;top:${y}%;--c:${h.col};--d:${(i*.35).toFixed(2)}s`;
+  b.setAttribute('aria-label',`${h.name}, ${h.latin}, ${h.price} ש״ח. לסמן ולהוריד לדלפק`);
+  b.innerHTML=`<i aria-hidden="true"></i><span>${h.name}</span>`;
+  b.addEventListener('click',()=>onPick(k,b,x/100,y/100));
+  parent.appendChild(b); return b;
+}
+let dragged=false;
+const guarded=fn=>(...a)=>{ if(dragged) return; fn(...a); };
+// the four pyramids under the glass dome, and the three hour editions on their plinths
+[['fresh',35,72.5],['clarity',41.4,72.5],['calm',49.7,72.5],['joy',57.5,72.5],['day',71.1,40.5],['dawn',80.7,44],['night',92.2,41]]
+  .forEach(([k,x,y],i)=>{ const b=mark(world,k,x,y,i,guarded(pickMark)); b.addEventListener('focus',()=>{ if(!cam.busy&&b.matches(':focus-visible')) camTo(x/100,y/100,1,.09); }); });
+// the wall niches are clickable too (pointer only: the markers above already cover keyboard and screen readers)
+[['fresh',6.4,15.6],['clarity',22.7,11.7],['calm',35.2,11.7],['joy',47.8,11.7]].forEach(([k,l,w])=>{
+  const h=byK[k], n=document.createElement('button'); n.type='button'; n.className='niche'; n.tabIndex=-1; n.setAttribute('aria-hidden','true');
+  n.style.cssText=`left:${l}%;top:19.8%;width:${w}%;height:22%;--c:${h.col};--glow:${h.glow}`;
+  n.addEventListener('click',guarded(()=>pickMark(k,world.querySelector(`.mark[data-k="${k}"]`),(l+w/2)/100,.31)));
+  world.appendChild(n);
+});
+// looking around: the mouse steers the camera, a finger drags it
+let drag=null;
+store.addEventListener('pointermove',e=>{
+  if(cam.busy) return;
+  if(drag){
+    const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+    if(!drag.on && Math.abs(dx)>6 && Math.abs(dx)>Math.abs(dy)){ drag.on=true; dragged=true; store.classList.add('dragging'); try{store.setPointerCapture(e.pointerId);}catch(_){} seen(); }
+    if(drag.on){ cam.ease=.3; cam.tx=clampCam(drag.tx+dx,cam.w,cam.vw,cam.tz); if(e.pointerType==='mouse') cam.ty=clampCam(drag.ty+dy,cam.h,cam.vh,cam.tz); navState(); }
+  } else if(e.pointerType==='mouse' && hover){
+    const r=store.getBoundingClientRect(); cam.ease=.06;
+    cam.tx=(cam.vw-cam.w)*((e.clientX-r.left)/cam.vw); cam.ty=(cam.vh-cam.h)*((e.clientY-r.top)/cam.vh); navState();
+  }
+});
+store.addEventListener('pointerdown',e=>{ if(e.target.closest('.store-nav,.store-down')) return; dragged=false; drag={x:e.clientX,y:e.clientY,tx:cam.tx,ty:cam.ty,on:false}; });
+const endDrag=()=>{ drag=null; store.classList.remove('dragging'); setTimeout(()=>{dragged=false;},0); };
+store.addEventListener('pointerup',endDrag); store.addEventListener('pointercancel',endDrag);
+const stepCam=d=>{ seen(); cam.ease=.1; cam.tx=clampCam(cam.tx+d*cam.vw*.7,cam.w,cam.vw,cam.tz); navState(); };
+$('navPrev').addEventListener('click',()=>stepCam(1)); $('navNext').addEventListener('click',()=>stepCam(-1));
+if(hover) $('storeHint').textContent='הזיזי את העכבר כדי להסתכל מסביב, וסמני מוצר';
+
+// the hour editions key visual: the same markers, straight to the counter
+[['day',16.2,36],['dawn',37.3,49],['night',63.6,41],['dusk',84.7,49]].forEach(([k,x,y],i)=>mark($('heures').firstElementChild,k,x,y,i,(k,b)=>openItem(k,b)));
+
 /* ---------- views ---------- */
 const body=document.body;
 function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v==='item'); }
@@ -768,11 +900,13 @@ settle(AMB.A,.08,.003); tintStatic(AMB,.08);
 
 $('enter').addEventListener('click',()=>{
   setView('shop'); scrollTo(0,0);
+  cam.fp=[.46,.62]; camFit();
+  if(!reduce){ camTo(.46,.62,1.3,0,true); camTo(.46,.62,1,.035); }
   MOODS.forEach((h,i)=>setTimeout(()=>pour(h,W*(.2+i*.2),H*.06,{dur:.8,k:.25}),i*220));
   setTimeout(()=>settle(AMB.A,.1,.012),1800); tintStatic(AMB,.1);
 });
 
-let current=null, saveY=0;
+let current=null, saveY=0, fromEl=null;
 function flight(src,fromEl,toEl,reverse){
   const a=fromEl.getBoundingClientRect(), b=toEl.getBoundingClientRect();
   if(reduce||!a.width||!b.width) return Promise.resolve();
@@ -790,7 +924,7 @@ function showOpen(on){
   $('toggle').textContent = on ? 'לסגור את הפירמידה' : 'לפתוח את הפירמידה';
 }
 function openItem(k,fromImg){
-  const h=byK[k]; current=k; saveY=scrollY;
+  const h=byK[k]; current=k; saveY=scrollY; fromEl=fromImg;
   $('pClock').textContent=h.clock; $('pLatin').textContent=h.latin; $('pName').textContent=h.name;
   $('pDesc').textContent=h.desc; $('pBlend').textContent=h.blend; $('pSteep').textContent=h.steep; $('pPack').textContent=h.pack;
   $('pPrice').textContent='₪'+h.price; $('lemon').hidden = !(k==='calm'||k==='night'); $('lemon').disabled=false;
@@ -814,9 +948,11 @@ function openItem(k,fromImg){
 }
 function closeItem(){
   if(!current) return; const k=current, h=byK[k]; current=null;
-  const toImg=document.querySelector(`.shelves [data-k="${k}"] img`);
+  const toImg=fromEl||document.querySelector(`.shelves [data-k="${k}"] img`);
   const from = hO.classList.contains('on') ? hO : hC;
   setView('shop'); scrollTo(0,saveY);
+  if(toImg.closest('.store')){ camTo(cam.fp[0],cam.fp[1],1,.09,true); }
+  toImg.classList.remove('picked');
   hC.className=''; hO.className='';
   flight(img(h),from,toImg,true).then(()=>{toImg.style.visibility='';});
   settle(AMB.A,.1,.02); tintStatic(AMB,.1);
@@ -872,7 +1008,7 @@ cv.addEventListener('pointerdown',tapPour);
 document.querySelector('.front').addEventListener('pointerdown',tapPour);
 document.querySelector('.inside').addEventListener('pointerdown',tapPour);
 
-addEventListener('resize',()=>{ if(Math.abs(innerWidth-W)>2||Math.abs(innerHeight-H)>140) size(); });
+addEventListener('resize',()=>{ if(Math.abs(innerWidth-W)>2||Math.abs(innerHeight-H)>140) size(); if(body.dataset.view!=='front') camFit(); });
 size(); requestAnimationFrame(frame);
 setInterval(()=>{ $('openClock').textContent='OUVERT · '+clockStr(); },30000);
 })();
