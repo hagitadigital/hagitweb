@@ -1,4 +1,4 @@
-# PARDON ME° — type edit (22s, 9:16, studio intro and outro)
+# PARDON ME° — type edit (26s, 9:16, studio intro and outro)
 
 Typography-led edit with an AI presenter: big collection words sit behind her head, backdrop colour per collection.
 
@@ -7,4 +7,5 @@ Typography-led edit with an AI presenter: big collection words sit behind her he
 - `src/clips/01–05` — five 5s shots, Kling 3.0 pro via Higgsfield, 1076×1924, plain cream backdrop.
 - `src/prep.py` then `src/despill.py` — cut the figure out of every frame into `src/frames/` (generated, not committed).
   The product shot reads `frames/reveal/b_###.jpg`: `ffmpeg -i pardon-me/assets/film-reveal.mp4 -q:v 2 frames/reveal/b_%03d.jpg`.
-- `src/reel.html` — the timeline (`SHOTS` table); `node src/render.js 22 PARDON-ME-type-edit-9x16.mp4`.
+- `src/gen.py` — builds `src/reel.html` (all timings); then `node src/render.js 26.3 PARDON-ME-type-edit-9x16.mp4`. `src/reel-v1.html` is the first cut (presenter only) and supplies the base styles.
+- Prints, product photos and campaign images are read straight from `pardon-me/assets/`.
