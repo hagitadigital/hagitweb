@@ -763,7 +763,7 @@ const tintStatic = (p,s) => { if(!fluid) document.body.style.backgroundColor = p
 
 /* ---------- build ---------- */
 const NOW = nowHour();
-const AMB = byK.calm; // the store rests in a faint blue: the calm of an empty shop
+const AMB = {A:[.04,.022,.012]}; // the store rests in clear, pearl water; colour only arrives with a chosen product
 $('openClock').textContent='OUVERT · '+clockStr();
 
 function shelfItem(h,isNow){
@@ -894,16 +894,15 @@ if(hover) $('storeHint').textContent='הזיזי את העכבר כדי להסת
 const body=document.body;
 function setView(v){ body.dataset.view=v; body.classList.toggle('locked', v==='item'); }
 setView('front');
-setTimeout(()=>pour(byK.fresh,W*.3,H*.08,{dur:.9,k:.35}),500);
-setTimeout(()=>pour(byK.joy,W*.7,H*.12,{dur:.9,k:.35}),1300);
-settle(AMB.A,.08,.003); tintStatic(AMB,.08);
+setTimeout(()=>pour(byK.fresh,W*.3,H*.08,{dur:.8,k:.2}),500);
+setTimeout(()=>pour(byK.joy,W*.7,H*.12,{dur:.8,k:.2}),1300);
+settle(AMB.A,1,.006); tintStatic(null);
 
 $('enter').addEventListener('click',()=>{
   setView('shop'); scrollTo(0,0);
   cam.fp=[.46,.62]; camFit();
   if(!reduce){ camTo(.46,.62,1.3,0,true); camTo(.46,.62,1,.035); }
-  MOODS.forEach((h,i)=>setTimeout(()=>pour(h,W*(.2+i*.2),H*.06,{dur:.8,k:.25}),i*220));
-  setTimeout(()=>settle(AMB.A,.1,.012),1800); tintStatic(AMB,.1);
+  settle(AMB.A,1,.07); tintStatic(null);
 });
 
 let current=null, saveY=0, fromEl=null;
@@ -955,10 +954,10 @@ function closeItem(){
   toImg.classList.remove('picked');
   hC.className=''; hO.className='';
   flight(img(h),from,toImg,true).then(()=>{toImg.style.visibility='';});
-  settle(AMB.A,.1,.02); tintStatic(AMB,.1);
+  settle(AMB.A,1,.07); tintStatic(null);
 }
 // once the shop is browsed, keep the water calm behind the text
-addEventListener('scroll',()=>{ if(body.dataset.view==='shop' && scrollY>innerHeight*.6 && target.rate<.012) settle(AMB.A,.1,.012); },{passive:true});
+addEventListener('scroll',()=>{ if(body.dataset.view==='shop' && scrollY>innerHeight*.6 && target.rate<.03) settle(AMB.A,1,.03); },{passive:true});
 $('back').addEventListener('click',closeItem);
 $('toggle').addEventListener('click',()=>showOpen(!hO.classList.contains('on')));
 $('lemon').addEventListener('click',()=>{
