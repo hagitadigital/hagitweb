@@ -289,6 +289,20 @@ body[data-view="item"] .bar .word{opacity:0}
 .sec h2 b{font-weight:500}
 .sec-head p{font-size:17px;line-height:1.6;color:var(--ink-soft);max-width:56ch}
 
+/* out of the shop: the bag, the family, the café, the cup to go */
+.dehors{display:grid;gap:12px}
+.dehors figure{display:grid;grid-template-rows:minmax(0,1fr) auto;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -44px rgba(22,34,42,.5)}
+.dehors img{width:100%;height:100%;object-fit:cover}
+.dehors figcaption{padding:14px 16px 16px;display:grid;gap:4px}
+.dehors h3{font-family:var(--latin);font-weight:400;font-size:19px;direction:ltr;text-align:right;display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:baseline;gap:10px}
+.dehors h3 span{font-family:var(--he-serif);font-size:20px;direction:rtl}
+.dehors p{font-size:15px;line-height:1.55;color:var(--ink-soft)}
+@media (min-width:880px){
+  .dehors{grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(460px,50vw,680px);gap:16px}
+  .dehors figure:nth-child(1){grid-column:span 5}.dehors figure:nth-child(2){grid-column:span 7}
+  .dehors figure:nth-child(3){grid-column:span 7}.dehors figure:nth-child(4){grid-column:span 5}
+}
+
 .films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (min-width:880px){.films{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
 .film{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;background:#dde6e3}
@@ -372,7 +386,7 @@ body[data-view="item"] .bar .word{opacity:0}
 .voisins .mono{color:var(--ink-soft);direction:ltr;text-align:right;margin-bottom:6px}
 .voisins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .voisin{display:grid;border-radius:16px;overflow:hidden;background:#fff;text-decoration:none;color:inherit}
-.voisin img{aspect-ratio:1200/630;object-fit:cover;width:100%}
+.voisin img{aspect-ratio:1200/630;object-fit:cover;width:100%;height:auto}
 .voisin div{padding:12px 14px;display:flex;justify-content:space-between;gap:8px}
 .voisin b{font-family:var(--latin);font-weight:400;letter-spacing:.08em;direction:ltr}
 footer.foot{max-width:1180px;margin-inline:auto;padding-block:24px calc(env(safe-area-inset-bottom,0px) + 32px);border-top:1px solid rgba(22,34,42,.14);
@@ -448,6 +462,33 @@ body[data-view="item"] #studioChip,body.bag-open #studioChip,body[data-view="fro
     <div class="shelves" id="specialShelves"></div>
   </div>
 </main>
+
+<!-- 4b · out of the shop -->
+<section class="sec wrap" id="dehors" aria-labelledby="dehorsTitle">
+  <div class="sec-head">
+    <span class="mono">Hors de la boutique · le sac, la table, la rue</span>
+    <h2 id="dehorsTitle">יוצאים מהחנות. <b>הצבע יוצא איתך.</b></h2>
+    <p>האריזה לא נגמרת בקופה. השקית, הקופסה, הכוס בבית הקפה והכוס שלוקחים לדרך בנויות מאותם שלושה דברים: שקיפות, פס נייר אחד וידית פליז.</p>
+  </div>
+  <div class="dehors">
+    <figure>
+      <img src="assets/dehors/sac.webp" width="1400" height="1750" loading="lazy" alt="יד מחזיקה שקית SOLUNA° מנייר חלבי עם ידית פליז מעוגלת, מחוץ לחלון הראווה של החנות. דרך הנייר רואים קנקן עם פירמידות כחולות">
+      <figcaption><h3>Le Sac<span>השקית</span></h3><p>נייר חלבי וידית פליז אחת, כמו הידית של הקנקן. הצבע של מה שבחרת נראה מבחוץ, גם ברחוב.</p></figcaption>
+    </figure>
+    <figure>
+      <img src="assets/dehors/famille.webp" width="1680" height="1254" loading="lazy" alt="משפחת האריזות של SOLUNA°: ארבע שקיות חלביות בירוק, זהב, כחול ואדום, קופסת Les Quatre Humeurs עם חלון מקושת וארבע פירמידות, ושני שקיקים לפירמידה אחת">
+      <figcaption><h3>La Famille<span>מה שיוצא מהחנות</span></h3><p>ארבע שקיות, קופסת Les Quatre Humeurs למתנה, ושקיק לפירמידה אחת. אותו נייר, אותו פס, אותה ידית.</p></figcaption>
+    </figure>
+    <figure>
+      <img src="assets/dehors/cafe.webp" width="1400" height="1750" loading="lazy" style="object-position:50% 62%" alt="שולחן שיש בבית קפה עם ארבע כוסות שקופות של SOLUNA° בירוק, זהב, כחול ואדום, בכל אחת פירמידה, ולידן כרטיס תפריט עם השאלה Comment voulez-vous vous sentir">
+      <figcaption><h3>Au Café<span>בבית הקפה</span></h3><p>התפריט שואל שאלה אחת: איך את רוצה להרגיש? ארבע כוסות שקופות, והצבע נופל על השיש כמו ויטראז׳.</p></figcaption>
+    </figure>
+    <figure>
+      <img src="assets/dehors/emporter.webp" width="1400" height="1750" loading="lazy" style="object-position:50% 55%" alt="יד מחזיקה כוס שקופה לקחת של SOLUNA° עם חליטה כחולה ופירמידה בפנים, מכסה לבן ופס נייר עם השם, מול דלפק עם ארבעה קנקנים">
+      <figcaption><h3>À Emporter<span>לקחת</span></h3><p>כוס שקופה, כי הצבע הוא המוצר. הפירמידה נשארת בפנים, והתגית תלויה בחוץ.</p></figcaption>
+    </figure>
+  </div>
+</section>
 
 <!-- 5 · the world -->
 <section class="sec wrap" id="films" aria-labelledby="filmsTitle">
