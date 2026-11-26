@@ -220,6 +220,14 @@
             },
             {
                 "@type": "Question",
+                "name": "אפשר להתחיל רק מאתר, בלי עולם מותג מלא?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "כן. אפשר להתחיל מעמוד נחיתה ממוקד (מ-₪3,200), מאתר תדמית (מ-₪6,500) או משדרוג של אתר קיים (מ-₪1,900). גם אתר קטן מתחיל מהחלטה אחת על העסק: מה מבטיחים, למי, ולמה לבחור דווקא בכם. מי שרוצה ממשיך משם לעולם מותג מלא ול-BrandOS, בלי להתחיל מחדש."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "מה זה BrandOS?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -1837,13 +1845,16 @@
         .door__link:hover { text-decoration: underline; }
         .offer__note { max-width: 760px; margin: clamp(30px, 4vw, 44px) auto 0; padding: 0 var(--container-padding); text-align: center; font-size: clamp(15px, 1.5vw, 17px); line-height: 1.8; color: var(--color-chocolate-text); }
         .offer__cta { text-align: center; margin-top: 24px; }
+        .offer__side { max-width: 760px; margin: clamp(26px, 3.4vw, 38px) auto 0; padding: 0 var(--container-padding); text-align: center; font-size: clamp(15px, 1.5vw, 17px); line-height: 1.8; color: var(--color-taupe-text); }
+        .offer__side a { color: var(--color-copper-text); font-weight: 600; text-decoration: none; white-space: nowrap; }
+        .offer__side a:hover { text-decoration: underline; }
         .ways { background: var(--color-warm-beige); padding: clamp(60px, 8vw, 96px) 0; }
         .ways__header { text-align: center; max-width: 640px; margin: 0 auto clamp(34px, 4vw, 50px); padding: 0 var(--container-padding); }
         .ways__label { font-family: var(--font-body-en); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-copper-text); font-weight: 600; margin-bottom: 16px; }
         .ways__title { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 42px); font-weight: 500; color: var(--color-chocolate-text); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 12px; }
         .ways__subtitle { font-size: clamp(14px, 1.4vw, 16px); color: var(--color-taupe-text); line-height: 1.7; }
-        .ways__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2vw, 24px); max-width: 820px; margin: 0 auto; padding: 0 var(--container-padding); }
-        @media (max-width: 640px) { .ways__grid { grid-template-columns: 1fr; } }
+        .ways__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); max-width: 1120px; margin: 0 auto; padding: 0 var(--container-padding); }
+        @media (max-width: 900px) { .ways__grid { grid-template-columns: 1fr; max-width: 520px; } }
         .ways-card { display: block; background: #fff; border: 1px solid var(--color-light-taupe); border-radius: 16px; padding: clamp(24px, 3vw, 34px); text-decoration: none; color: inherit; text-align: right; transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s; }
         .ways-card:hover { transform: translateY(-4px); box-shadow: 0 24px 44px -30px rgba(43, 26, 18, 0.4); }
         .ways-card__tier { font-family: var(--font-body-en); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-copper-text); margin-bottom: 10px; }
@@ -2911,6 +2922,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <a class="door__link" href="geo-for-business.html">מה זה GEO ←</a>
             </article>
         </div>
+        <p class="offer__side reveal">צריכים קודם אתר או עמוד נחיתה? אפשר להתחיל משם, עמוד נחיתה מ-₪3,200, ולהמשיך לעולם מלא כשמתאים. <a href="websites/">לדוגמאות ולמחירים ←</a></p>
         <p class="offer__note reveal">כל פרויקט מתחיל באותה נקודה: <strong>אבחון פער המותג</strong>. 30 דקות, בלי עלות. אחריו ברור איזו דלת נכונה לכם, מה ההיקף ומה ההשקעה.</p>
         <div class="offer__cta reveal">
             <a href="https://wa.me/972528351676?text=היי%20חגית%2C%20אשמח%20לאבחון%20פער%20המותג" target="_blank" rel="noopener" class="brandos-act__btn">
@@ -3550,6 +3562,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p class="faq__a">עולם מותג הוא לא לוגו או אתר בודד — זו מערכת שלמה שממנה כל נקודת מגע נגזרת: <strong>Brand DNA</strong> (ערכים, טון, קהל ובידול), שפה ויזואלית, נרטיב, מוצרים ואתר חי. הכול נבנה כמקשה אחת, כך שכל תוכן עתידי — פוסט, הצעת מחיר או קמפיין — יוצא עקבי ובקול אחד.</p>
             </div>
             <div class="faq__item">
+                <h3 class="faq__q">אפשר להתחיל רק מאתר, בלי עולם מותג מלא?</h3>
+                <p class="faq__a"><strong>כן.</strong> אפשר להתחיל מעמוד נחיתה ממוקד (מ-₪3,200), מאתר תדמית (מ-₪6,500) או משדרוג של אתר קיים (מ-₪1,900). גם אתר קטן מתחיל מהחלטה אחת על העסק: מה מבטיחים, למי, ולמה לבחור דווקא בכם. מי שרוצה ממשיך משם לעולם מותג מלא ול-BrandOS, בלי להתחיל מחדש. <a href="websites/" style="color:var(--color-copper-text);font-weight:600;text-decoration:none">לדוגמאות, לתהליך ולמחירים ←</a></p>
+            </div>
+            <div class="faq__item">
                 <h3 class="faq__q">מה זה BrandOS?</h3>
                 <p class="faq__a"><strong>BrandOS</strong> היא מערכת ה-AI שמפעילה את עולם המותג אחרי שהוא נבנה. במקום שהמותג "ייגמר" בהשקה, המערכת ממשיכה לייצר תוכן ממותג, לשמור על עקביות ולרוץ בקול של המותג — יום אחרי יום. מאחוריה עומדים סקילים מותאמים שבניתי בקלוד: מנהל שיווק, מנהלת תוכן, אסטרטגית מותג, כותב הצעות ועוד.</p>
             </div>
@@ -3587,9 +3603,15 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="ways__header reveal">
             <p class="ways__label" dir="ltr">More Ways to Work Together</p>
             <h2 class="ways__title" id="ways-title">עוד לא בשלים לפרויקט מלא?</h2>
-            <p class="ways__subtitle">יש שתי דרכים נוספות להתחיל לעבוד יחד — ללמוד את השיטה, או לבנות איתה בעצמכם.</p>
+            <p class="ways__subtitle">יש שלוש דרכים קטנות יותר להתחיל לעבוד יחד: אתר שאני בונה לכם, ללמוד את השיטה, או לבנות איתה בעצמכם.</p>
         </div>
         <div class="ways__grid">
+            <a href="websites/" class="ways-card reveal" aria-label="אתרים ועמודי נחיתה — דוגמאות, תהליך ומחירים">
+                <p class="ways-card__tier" dir="ltr">Done-for-you</p>
+                <h3 class="ways-card__title">אתר או עמוד נחיתה</h3>
+                <p class="ways-card__desc">אתר תדמית, עמוד נחיתה ממוקד או שדרוג לאתר קיים, שמתחילים מהחלטה אחת על העסק. עמוד נחיתה מ-₪3,200, שדרוג אתר קיים מ-₪1,900.</p>
+                <span class="ways-card__cta" dir="ltr">See Websites &rarr;</span>
+            </a>
             <a href="studio.html" class="ways-card reveal" aria-label="Studio AI — סדנאות ומעבדות AI">
                 <p class="ways-card__tier" dir="ltr">Do-with-me</p>
                 <h3 class="ways-card__title">Studio AI</h3>
@@ -3635,6 +3657,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <li><a href="#whats-inside">Inside</a></li>
                         <li><a href="#method">Method</a></li>
                         <li><a href="brand-world.html">עולם מותג ליוקרה</a></li>
+                        <li><a href="websites/">אתרים ועמודי נחיתה</a></li>
                         <li><a href="brand-architecture.html">Brand Architecture</a></li>
                         <li><a href="digital-ecosystems.html">Digital Ecosystems</a></li>
                         <li><a href="about.html">About</a></li>
