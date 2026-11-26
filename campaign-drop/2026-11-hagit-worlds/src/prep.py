@@ -27,10 +27,10 @@ for f in range(lo, hi + 1):
 ks = sorted(Q); arr = np.array([Q[k] for k in ks]).reshape(len(ks), 8)
 full = np.array([[np.interp(f, ks, arr[:, j]) for j in range(8)] for f in range(lo, hi + 1)])
 # reject jumps (a mis-detected edge), then smooth
-med = np.array([np.median(full[max(0, i - 4):i + 5], axis=0) for i in range(len(full))])
-bad = np.abs(full - med).max(1) > 28; full[bad] = med[bad]
-ker = np.array([1, 2, 3, 2, 1], float); ker /= ker.sum()
-sm = np.array([np.convolve(np.pad(full[:, j], 2, mode='edge'), ker, 'valid') for j in range(8)]).T
+med = np.array([np.median(full[max(0, i - 6):i + 7], axis=0) for i in range(len(full))])
+bad = np.abs(full - med).max(1) > 16; full[bad] = med[bad]
+ker = np.array([1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1], float); ker /= ker.sum()                 # a steady screen matters more than chasing every pixel
+sm = np.array([np.convolve(np.pad(full[:, j], 5, mode='edge'), ker, 'valid') for j in range(8)]).T
 quad = {f: sm[f - lo].reshape(4, 2).astype(np.float32) for f in range(lo, hi + 1)}
 print('tracked', len(ks), 'of', hi - lo + 1, 'rejected', int(bad.sum()), flush=True)
 # 2) composite + cut out, one pair per output frame

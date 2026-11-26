@@ -1,6 +1,6 @@
 """Find the laptop's white screen in a frame of the take: four corners (tl,tr,br,bl; may lie outside the frame) and a matte of its visible part."""
 import cv2, numpy as np
-ASPECT = 1.6
+ASPECT = 1.78   # measured on the frames where the whole screen is in view
 def screen(img):
     H, W = img.shape[:2]
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
