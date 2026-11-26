@@ -8,7 +8,7 @@ const [,,durS,out,only]=process.argv;const FPS=30;
   const br=await chromium.launch({proxy,args:['--allow-file-access-from-files','--ignore-certificate-errors']});
   const tab=await br.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
   tab.on('pageerror',e=>console.error('PAGE',e.message));
-  await tab.goto('file://'+path.resolve(__dirname,'reel.html'),{waitUntil:'load'});
+  await tab.goto('file://'+path.resolve(__dirname,process.env.REEL||'reel.html'),{waitUntil:'load'});
   await tab.evaluate(()=>window.ready);
   console.error('fonts:',await tab.evaluate(()=>[...new Set([...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family))].join(', ')));
   const frames=only?only.split(',').map(Number):[...Array(Math.round(+durS*FPS)).keys()];
