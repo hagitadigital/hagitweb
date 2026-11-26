@@ -81,7 +81,7 @@ P = lambda n: f";--st:#A45839;--pr:url({R}pardon-me/assets/print-{n}.webp)"
 # 0–3.0 hook: the line and its proof (worlds in the windows) are in frame 0
 for sid, t0, wl, wr, pr in (('hookA', 0, W[3][7], W[1][7], 'high-maintenance'), ('hookB', BEAT, ('arch', 'miel/assets/08-still-slice-pink-topper.webp', '#E7C0BD', 'cover'), W[5][7], 'well-hello')):
     mid = word('נבחר.', "900 400px/1 'Frank Ruhl Libre',serif", '#A45839', t0, 900, 470, 'he', P(pr)).replace('<b ', '<b class="pf" ') + win(*wl, 'l', t0, 400, 600, 700) + win(*wr, 'r', t0, 400, 600, 700, .14)
-    top = '<div class="tag" style="color:#4F372C;animation:none">Brand Worlds Studio · Hagit Antebi</div>' + box('מותג שנבחר —<br><em>לא מותג שמשווים.</em>', '#2A201A', '#FAF8F3', '#EFCDBF', 0)
+    top = '<div class="tag" style="color:#4F372C;animation:none">Brand Worlds Studio · Hagit Antebi</div>' + box('מותג שנבחר<br><em>לא מותג שמשווים.</em>', '#2A201A', '#FAF8F3', '#EFCDBF', 0)
     slot(sid, t0, t0 + BEAT, '#FAF8F3', mid, top, S[sid][1], S[sid][0], S[sid][2])
 for i, (sid, no, cat, name, font, bg, wc, wn, (bb, bf, be), he, fitw, cy) in enumerate(W):
     t = T_W + i * BEAT; sc, x, dy = S[sid]; side = 'l' if x > 540 else 'r'

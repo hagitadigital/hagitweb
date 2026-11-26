@@ -20,7 +20,9 @@ css = '''
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
 #stage{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
 .slot{position:absolute;inset:0;overflow:hidden;visibility:hidden}
-.bg,.mid,.top,.clip,.orb{position:absolute;inset:0}
+.bg,.mid,.top,.clip,.orb,.cam,.txt{position:absolute;inset:0}
+.cam{transform-origin:0 0}
+.swap{position:absolute;inset:0;visibility:hidden}
 .fg{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;display:block}
 .word{position:absolute;left:0;right:0;text-align:center;white-space:nowrap;direction:ltr}
 .word b{display:inline-block;font-weight:inherit;animation:rise .4s cubic-bezier(.16,.9,.2,1) both}
@@ -89,19 +91,19 @@ def seq(d, pre, ext, start, step, count, t, style, pad=3):
     return f'<img data-seq=\'{json.dumps(dict(d=d, pre=pre, ext=ext, start=start, step=step, count=count, t=t, pad=pad))}\' style="{style}">'
 
 slots, her, orbits = [], [], []
-def slot(key, sid, bg, back, mid, top, x=None, y=505, sc=1, clip='', t=None):
+def slot(key, sid, bg, back, mid, top, x=None, y=505, sc=1, clip='', t=None, camtop='', zoom=None):
     """sid = her shot (frames/<sid>), or None for a slot without her."""
     t = T[key] if t is None else t
     fg = ''
     if sid:
         st = stats[sid]
-        her.append(dict(el='s_' + key, id=sid, t=[t, t + BEAT], x=x, sc=sc, top=st['top'], cx=st['cx'], y=y, hand=[[h[0], h[2]] for h in st.get('hand', [])]))
+        her.append(dict(el='s_' + key, id=sid, t=[t, t + BEAT], x=x, sc=sc, top=st['top'], cx=st['cx'], y=y, zoom=zoom, hand=[[h[0], h[2]] for h in st.get('hand', [])]))
         fg = f'<div class="clip" style="{clip}"><img class="fg"></div>'
-    slots.append(f'<div class="slot" id="s_{key}" data-show="{t},{t + BEAT}" style="background:{bg}"><div class="bg">{back}</div><div class="mid">{mid}<div class="orb ob"></div></div>{fg}<div class="top"><div class="orb of"></div>{top}</div></div>')
+    slots.append(f'<div class="slot" id="s_{key}" data-show="{t},{t + BEAT}" style="background:{bg}"><div class="cam"><div class="bg">{back}</div><div class="mid">{mid}<div class="orb ob"></div></div>{fg}<div class="top"><div class="orb of"></div>{camtop}</div></div><div class="txt">{top}</div></div>')
 
 P = lambda n: f";--st:#A45839;--pr:url({R}pardon-me/assets/print-{n}.webp)"
 HOOKW = "900 400px/1 'Frank Ruhl Libre',serif"
-HOOKBOX = lambda: box('מותג שנבחר —<br><em>לא מותג שמשווים.</em>', '#2A201A', '#FAF8F3', '#EFCDBF', -1)
+HOOKBOX = lambda: box('מותג שנבחר<br><em>לא מותג שמשווים.</em>', '#2A201A', '#FAF8F3', '#EFCDBF', -1)
 STUDIO = '<div class="tag" style="color:#4F372C;animation:none">Brand Worlds Studio · Hagit Antebi</div>'
 # 0–1.5 hook: the line and its proof (worlds in the windows) are in frame 0
 t = T['hookA']
@@ -112,46 +114,60 @@ t = T['hookB']
 front = f'''<div class="front he" style="top:985px;direction:rtl"><b style="display:inline-block;position:relative;font:900 270px/1 'Frank Ruhl Libre',serif;color:#FAF8F3;-webkit-text-stroke:10px #2A201A;paint-order:stroke fill;text-shadow:0 12px 0 #2A201A;animation:slam .3s cubic-bezier(.2,.9,.3,1) both;animation-delay:{t + .04:.2f}s">משווים.<i style="position:absolute;left:-30px;right:-30px;top:52%;height:22px;background:#A45839;transform-origin:100% 50%;animation:strike .3s cubic-bezier(.5,0,.2,1) both;animation-delay:{t + .7:.2f}s"></i></b></div>'''
 slot('hookB', 'hookB', '#FAF8F3', '', word('נבחר.', HOOKW, '#A45839', -1, 900, 470, 'he', P('well-hello'), 'pf') + win('miel/assets/08-still-slice-pink-topper.webp', '#E7C0BD', 'l', t) + win('chasen/assets/verre.webp', '#e8d8bf', 'r', t, d=.14),
      STUDIO + front + HOOKBOX(), 540, 505, .82)
-# 3.0 PARDON ME° — she is small, inside the brand's oval window; the print takes the whole frame
+# 3.0 PARDON ME° — NOT SORRY. as in the PARDON ME° type edit; the four collections swap in the brand's oval window (and inside the letters); she is small beside it
 t = T['pm']
-OV = 'ellipse(352px 530px at 540px 890px)'
-back = f'''<div style="position:absolute;inset:-100px;background:url({R}pardon-me/assets/print-high-maintenance.webp) 0 0/640px;animation:drift 1.5s linear both;animation-delay:{t:.2f}s"></div>
-<div style="position:absolute;inset:0;background:#1E3A2B;clip-path:ellipse(366px 544px at 540px 890px)"></div><div style="position:absolute;inset:0;background:#F3EDE2;clip-path:{OV}"></div>
-<div class="word" style="top:420px;font:italic 500 62px/1 'Cormorant Garamond',serif;color:#9B1B47"><b style="{dl(t, .1)}">No. 29</b></div>'''
-bands = f'''<div class="band" style="left:0;animation:fromL .32s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .02:.2f}s"><span style="transform:translate(-50%,-50%) rotate(-90deg)">PARDON ME°</span></div>
-<div class="band" style="right:0;animation:fromR .32s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .1:.2f}s"><span style="transform:translate(-50%,-50%) rotate(90deg)">PARDON ME°</span></div>'''
-slot('pm', 'pm', '#F2C4CE', back, '', bands + box('מנומס מבחוץ,<br><em>לא מתנצל מבפנים</em>', '#1E3A2B', '#F3EDE2', '#CFE06A', t), 540, 560, .56, f'clip-path:{OV}')
+COL = ['well-hello', 'none-of-your-business', 'high-maintenance', 'bad-influence']
+OV = 'ellipse(262px 338px at 330px 1086px)'
+mid = ''
+for i, c in enumerate(COL):
+    a, b = t + i * BEAT / 4, t + (i + 1) * BEAT / 4
+    pf = f";--st:#9B1B47;--pr:url({R}pardon-me/assets/print-{c}.webp)"
+    mid += f'''<div class="swap" data-show="{a},{b}">{word('NOT', "900 250px/1 'Bodoni Moda',serif", '#9B1B47', -1, 9999, 420, '', pf, 'pf')}{word('SORRY.', "900 250px/1 'Bodoni Moda',serif", '#9B1B47', -1, 1000, 630, '', pf, 'pf')}
+<div style="position:absolute;inset:0;background:#1E3A2B;clip-path:ellipse(274px 350px at 330px 1086px)"></div>
+<div style="position:absolute;inset:0;clip-path:{OV}"><img src="{R}pardon-me/assets/{c}.webp" style="position:absolute;left:40px;top:724px;width:580px;height:725px"></div></div>'''
+top = f'<div class="tag" style="color:#1E3A2B;{dl(t, .1)}">No. 29 · Candles · Home Scent · Body Care</div><div class="panel" style="background:#1E3A2B;animation-delay:{t + .02:.2f}s"><p style="color:#F3EDE2">מנומס מבחוץ,<br><em style="color:#CFE06A">לא מתנצל מבפנים</em></p></div>'
+slot('pm', 'pm', '#F3EDE2', '', mid, top, 800, 800, .5)
 # 4.5 ENCORE° — three strips: the world's own pendant film, her, the box; the name runs across in front
 t = T['en']
-strips = f'''<div class="strip" style="left:6px;background:#3D2623;animation:fromT .34s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .02:.2f}s">{seq('w_encore', 'b_', 'jpg', 1, 2, 240, t, 'position:absolute;left:-1034px;top:0;height:1350px;width:2416px;max-width:none')}</div>
-<div class="strip" style="left:366px;background:#6E4E4A"></div>
-<div class="strip" style="left:726px;background:#3D2623;animation:fromB .34s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .1:.2f}s"><img class="c" src="{R}encore/assets/touchpoints/box-open-sans.webp" style="animation:push 1.5s linear both;animation-delay:{t:.2f}s"></div>'''
+strips = f'''<div class="strip" style="left:6px;width:300px;background:#3D2623;animation:fromT .34s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .02:.2f}s">{seq('w_encore', 'b_', 'jpg', 1, 2, 240, t, 'position:absolute;left:-1058px;top:0;height:1350px;width:2416px;max-width:none')}</div>
+<div class="strip" style="left:318px;width:444px;background:#6E4E4A"></div>
+<div class="strip" style="left:774px;width:300px;background:#3D2623;animation:fromB .34s cubic-bezier(.16,.9,.2,1) both;animation-delay:{t + .1:.2f}s"><img class="c" src="{R}encore/assets/touchpoints/box-open-sans.webp" style="animation:push 1.5s linear both;animation-delay:{t:.2f}s"></div>'''
 front = f'''<div class="front" style="top:1090px;direction:ltr;font:600 236px/1 'Cormorant Garamond',serif;color:#F3D9A4;text-shadow:0 0 34px rgba(217,178,106,.85),0 6px 0 #3D2623">{letters('ENCORE°', t, .06)}</div>
 <div class="word" style="top:300px;font:600 27px/1 'Plus Jakarta Sans',sans-serif;letter-spacing:.26em;color:#F6EEE4"><b style="{dl(t, .1)}">NO. 28</b></div>'''
-slot('en', 'en', '#2A1917', strips, '', front + box('תכשיט <em>שלא יורד</em>', '#F6EEE4', '#4A302C', '#A0672F', t, 1420, 76, .3), 540, 520, .8, 'clip-path:inset(270px 366px 300px 366px round 14px)')
+slot('en', 'en', '#2A1917', strips, '', front + box('תכשיט <em>שלא יורד</em>', '#F6EEE4', '#4A302C', '#A0672F', t, 1420, 76, .3), 610, 560, .6, 'clip-path:inset(270px 318px 300px 318px round 14px)')
 # 6.0 MIEL° — the cake on her palm, the Maison's bag, box, seal and toppings turning around it
 t = T['mi']
-mi_items = [('miel/assets/touchpoints/bag-sans.webp', 'card', 150, 270), ('miel/assets/top-macarons.webp', '', 190, 190), ('miel/assets/touchpoints/box-sans.webp', 'card', 150, 270),
-            ('miel/assets/top-meringues.webp', '', 190, 190), ('miel/assets/touchpoints/seal-sans.webp', 'card', 150, 270), ('miel/assets/top-roses.webp', '', 190, 190)]
-orbits.append(dict(el='s_mi', t=t, R=360, tilt=.3, speed=.42, phase=.3, follow=-250, split=False, turn=.55, n=len(mi_items)))
+mi_items = [('miel/assets/touchpoints/bag-sans.webp', 'card', 200, 360), ('miel/assets/top-macarons.webp', '', 250, 250), ('miel/assets/touchpoints/box-sans.webp', 'card', 200, 360),
+            ('miel/assets/top-meringues.webp', '', 250, 250), ('miel/assets/touchpoints/seal-sans.webp', 'card', 200, 360), ('miel/assets/top-roses.webp', '', 250, 250)]
+orbits.append(dict(el='s_mi', t=t, R=410, tilt=.3, speed=.42, phase=.3, follow=-250, split=False, turn=.55, n=len(mi_items)))
 oi = ''.join(f'<img class="oi {c}" src="{R}{s}" style="width:{w}px;height:{h}px;object-fit:cover">' for s, c, w, h in mi_items)
-top = f'<img class="prod" src="{R}miel/assets/sig-rose.webp" data-lift="60" style="height:560px">' + oi + f'<div class="tag" style="color:#3A2E29;{dl(t, .1)}">No. 27 · Maison Miel · Romance</div>' + box('רומנטיקה <em>מתחילה מבפנים</em>', '#4A2C24', '#F6EADF', '#E7C0BD', t, 1500, 58)
-slot('mi', 'mi', '#F6EADF', '', word('MIEL°', "600 300px/1 'Cormorant Garamond',serif", '#C5293F', t, 1000, 495), top, 540, 505, .95)
+camtop = f'<img class="prod" src="{R}miel/assets/sig-rose.webp" data-lift="60" style="height:560px">' + oi
+top = f'<div class="tag" data-show="{t},{t + .62}" style="color:#3A2E29;{dl(t, .1)}">No. 27 · Maison Miel · Romance</div>' + box('רומנטיקה <em>מתחילה מבפנים</em>', '#4A2C24', '#F6EADF', '#E7C0BD', t, 1500, 58)
+slot('mi', 'mi', '#F6EADF', '', word('MIEL°', "600 300px/1 'Cormorant Garamond',serif", '#C5293F', t, 1000, 495), top, 540, 505, .95, camtop=camtop, zoom=[.6, 1.05, 1.7, -230])
 # 7.5 VELUNE° — the world itself: the door opens onto the garden, she stands small in front of it, the line lands word by word
 t = T['ve']
 back = f'<div style="position:absolute;inset:0;transform-origin:50% 45%;animation:push 1.5s linear both;animation-delay:{t:.2f}s">{seq(R + "velune/assets/porte", "d", "webp", 1, .9, 40, t, "position:absolute;left:-1162px;top:0;height:1920px;width:3404px;max-width:none", 2)}</div>'
-front = f'''<div class="front" style="top:300px;direction:ltr;font:400 170px/1 'Marcellus',serif;color:#FDF7F4;text-shadow:0 0 30px rgba(142,30,68,.75),0 5px 0 #8E1E44"><span style="display:inline-block;animation:wipe .5s cubic-bezier(.3,.8,.2,1) both;animation-delay:{t + .04:.2f}s">VELUNE°</span></div>
+HRS = [('aube', 'AUBE', 'בוקר', 'rgba(255,255,255,0)'), ('floraison', 'FLORAISON', 'צהריים', 'rgba(241,160,170,.22)'), ('crepuscule', 'CRÉPUSCULE', 'ערב', 'rgba(35,42,63,.5)')]
+hrs = ''
+for i, (f, nm, he, tint) in enumerate(HRS):
+    a, b = t + i * .5, t + (i + 1) * .5
+    hrs += f'''<div class="swap" data-show="{a},{b}"><div style="position:absolute;inset:0;background:{tint}"></div>
+<img src="{R}velune/assets/bottle-{f}.webp" style="position:absolute;left:432px;top:392px;height:446px;filter:drop-shadow(0 24px 30px rgba(30,42,56,.45));animation:pop .22s cubic-bezier(.2,1.5,.3,1) both;animation-delay:{a + .01:.2f}s">
+<div style="position:absolute;left:684px;top:560px;direction:ltr;font:400 44px/1.2 'Marcellus',serif;color:#FDF7F4;text-shadow:0 0 18px rgba(35,42,63,.9);animation:capin .2s ease-out both;animation-delay:{a + .05:.2f}s">{nm}<br><span style="font:500 46px/1.2 'Frank Ruhl Libre',serif">{he}</span></div></div>'''
+front = f'''<div class="front" style="top:286px;direction:ltr;font:400 100px/1 'Marcellus',serif;color:#FDF7F4;text-shadow:0 0 30px rgba(142,30,68,.75),0 4px 0 #8E1E44"><span style="display:inline-block;animation:wipe .5s cubic-bezier(.3,.8,.2,1) both;animation-delay:{t + .04:.2f}s">VELUNE°</span></div>
 <div class="panel" style="background:#232A3F;animation-delay:{t + .02:.2f}s"><p style="color:#DCE3EB">{words('בושם הוא לא ריח,| *הוא *מקום', t, .2, .12, '#F1D9DC')}</p><div class="tag" style="top:300px;color:#8FA9C2;animation-delay:{t + .3:.2f}s">No. 25 · Maison de Parfum · Luxury</div></div>'''
-slot('ve', 've', '#DCE3EB', back, '', front, 540, 800, .56)
+back += hrs
+slot('ve', 've', '#DCE3EB', back, '', front, 540, 870, .5)
 # 9.0 ORÉVA° — the bottle on her palm, the rest of the line turning around her; the line comes in two beats, in front
 t = T['or']
 or_items = [('calm', 201), ('cleanse', 184), ('eye', 237), ('dew', 188), ('essence', 158), ('cocoon', 560)]
-orbits.append(dict(el='s_or', t=t, R=440, tilt=.2, speed=.38, phase=.12, cx=540, cy=1010, split=True, turn=0, n=len(or_items)))
-oi = ''.join(f'<img class="oi" src="{R}oreva/assets/kit/{n}.webp" style="height:{250 if n != "cocoon" else 150}px;filter:drop-shadow(0 16px 18px rgba(58,46,41,.3))">' for n, _ in or_items)
+orbits.append(dict(el='s_or', t=t, R=470, tilt=.2, speed=.38, phase=.12, cx=540, cy=1010, split=True, turn=0, n=len(or_items)))
+oi = ''.join(f'<img class="oi" src="{R}oreva/assets/kit/{n}.webp" style="height:{340 if n != "cocoon" else 200}px;filter:drop-shadow(0 16px 18px rgba(58,46,41,.3))">' for n, _ in or_items)
 two = f'''<div class="box" style="top:1470px" data-show="{t},{t + .75}"><p style="background:#3A2E29;color:#F6EFE7;font-size:84px;animation:slam .26s cubic-bezier(.2,.9,.3,1) both;animation-delay:{t + .06:.2f}s">קודם הידיים,</p></div>
 <div class="box" style="top:1470px" data-show="{t + .75},{t + BEAT}"><p style="background:#B87A57;color:#FBF7F1;font-size:84px;animation:slam .26s cubic-bezier(.2,.9,.3,1) both;animation-delay:{t + .77:.2f}s">אחר כך הבקבוק</p></div>'''
-top = f'<img class="prod" src="{R}oreva/assets/p-glow.webp" data-lift="40" style="height:560px">' + oi + f'<div class="tag" style="color:#3A2E29;{dl(t, .1)}">No. 24 · Skin Studio · Beauty</div>' + two
-slot('or', 'or', '#F6EFE7', '', word('ORÉVA°', "600 300px/1 'Cormorant Garamond',serif", '#B87A57', t, 1010, 495), top, 540, 505, .95)
+camtop = f'<img class="prod" src="{R}oreva/assets/p-glow.webp" data-lift="40" style="height:560px">' + oi
+top = f'<div class="tag" data-show="{t},{t + .62}" style="color:#3A2E29;{dl(t, .1)}">No. 24 · Skin Studio · Beauty</div>' + two
+slot('or', 'or', '#F6EFE7', '', word('ORÉVA°', "600 300px/1 'Cormorant Garamond',serif", '#B87A57', t, 1010, 495), top, 540, 505, .95, camtop=camtop, zoom=[.6, 1.05, 1.6, -260])
 # 10.5 CHASEN° — the world's own pour fills the frame; she presents it, small; the name rises letter by letter
 t = T['ch']
 back = seq('w_chasen', 'b_', 'jpg', 14, 2.7, 144, t, 'position:absolute;left:-228px;top:0;height:1920px;width:1536px;max-width:none')
@@ -162,12 +178,12 @@ slot('ch', 'ch', '#f4e7d5', back, '', front, 235, 800, .6)
 t = T['n29']
 rows = ''.join(f'<div class="row" data-mq="{[-150, 150, -110][r]},{t}" style="top:{[690, 880, 1070][r]}px;left:{[-200, -900, -500][r]}px">' + ''.join(f'<img src="{R}images/home-worlds/{g}.webp">' for g in (GRID[r * 5:] + GRID[:r * 5])[:8]) + '</div>' for r in range(3))
 front = f'''<div class="front" style="top:1150px;direction:ltr;font:italic 500 190px/1 'Cormorant Garamond',serif;color:#FAF8F3;text-shadow:0 0 30px rgba(196,118,90,.9);transform:rotate(-4deg)"><span style="display:inline-block;padding:0 20px;animation:wipe .55s cubic-bezier(.3,.8,.2,1) both;animation-delay:{t + .12:.2f}s">Brand Worlds</span></div>'''
-slot('n29', 'n29', '#2A201A', '', word('29', "600 440px/0.9 'Cormorant Garamond',serif", '#C4765A', t, 9999, 490, '', ';font-variant-numeric:lining-nums') + rows,
-     front + box('עולמות מותג חיים', '#FAF8F3', '#2A201A', '#A45839', t, 1440, 88, .4), 540, 505, 1.06)
+slot('n29', 'n29', '#2A201A', '', word('29', "600 440px/0.9 'Cormorant Garamond',serif", '#C4765A', t, 9999, 470, '', ';font-variant-numeric:lining-nums') + rows,
+     front + box('עולמות מותג חיים', '#FAF8F3', '#2A201A', '#A45839', t, 1440, 88, .4), 540, 660, .78)
 t = T['cta']
 cta = f'''<div class="slot" data-show="{t},{DUR + 1}" style="background:#FAF8F3">
   <div class="k" style="top:296px">HAGIT ANTEBI · BRAND WORLDS STUDIO</div>
-  <div class="win arch" style="left:320px;top:360px;width:440px;height:640px;background:#EFCDBF;animation-delay:{t + .02:.2f}s"><img src="frames/cta/f_001.webp" style="object-position:46% 0;transform:scale(1.5);transform-origin:48% 30%"></div>
+  <div class="win arch" style="left:320px;top:360px;width:440px;height:640px;background:#EFCDBF;animation-delay:{t + .02:.2f}s"><img src="frames/ctaraw/b_040.jpg" style="inset:auto;left:-212px;top:-236px;width:800px;height:1422px;filter:saturate(1.05) brightness(1.04)"></div>
   <div class="ch" style="animation-delay:{t + .25:.2f}s">לא בטוחים אם למותג שלכם<br><em>כבר יש עולם?</em></div>
   <div class="btn" style="animation-delay:{t + .55:.2f}s"><b>אבחון פער המותג</b><span>30 דקות · בלי עלות</span></div>
   <div class="k" style="top:1560px;color:#8B7355">HAGITANTEBI.CO.IL</div>
@@ -200,10 +216,12 @@ window.seek=async function(t){{
   for(const h of HER){{ if(!(t>=h.t[0]-1e-6&&t<h.t[1]-1e-6))continue;
     const n=Math.min(45,Math.round((t-h.t[0])*FPS)+1); jobs.push(put(h.fg,`frames/${{h.id}}/f_${{pad(n)}}.webp`));
     const k=1+.035*Math.pow(Math.max(0,1-(n-1)/7),2)+.012*(t-h.t[0]), s=h.sc*k, PY=h.y+650*h.sc;
-    const tx=h.x-h.cx*s, ty=PY-(PY-h.y)*k-h.top*s; h.tx=tx;h.ty=ty;h.s=s;h.n=n;
+    const tx=h.x-h.cx*s, ty=PY-(PY-h.y)*k-h.top*s; h.tx=tx;h.ty=ty;h.s=s;h.n=n; const u=t-h.t[0];
     h.fg.style.transform=`translate(${{tx}}px,${{ty}}px) scale(${{s}})`;
     if(h.prod){{const p=h.prod,[hx,hy]=h.hand[n-1],pop=1-.3*Math.pow(Math.max(0,1-(n-1)/8),2);h.px=tx+hx*s;h.py=ty+hy*s;
-      p.style.transform=`translate(${{h.px-p.offsetWidth/2}}px,${{h.py+(+p.dataset.lift)-p.offsetHeight}}px) scale(${{pop}})`;p.style.opacity=Math.min(1,n/3);}} }}
+      p.style.transform=`translate(${{h.px-p.offsetWidth/2}}px,${{h.py+(+p.dataset.lift)-p.offsetHeight}}px) scale(${{pop}})`;p.style.opacity=Math.min(1,n/3);
+      if(h.zoom){{const [z0,z1,K0,dy]=h.zoom, x=Math.min(1,Math.max(0,(u-z0)/(z1-z0))), e=x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, K=1+(K0-1)*e, ox=h.px, oy=h.py+dy;
+        h.slot.querySelector('.cam').style.transform=`translate(${{(540-ox)*e+ox*(1-K)}}px,${{(900-oy)*e+oy*(1-K)}}px) scale(${{K}})`;}} }} }}
   for(const o of ORB){{ if(!(t>=o.t-1e-6&&t<o.t+BEAT-1e-6))continue;
     const u=t-o.t, grow=1-Math.pow(Math.max(0,1-u/.35),3), cx=o.follow!==undefined?o.her.px:o.cx, cy=o.follow!==undefined?o.her.py+o.follow:o.cy;
     o.items.forEach((e,i)=>{{const th=2*Math.PI*(o.phase+i/o.n+o.speed*u), d=Math.cos(th), x=cx+o.R*grow*Math.sin(th), y=cy+o.R*o.tilt*d, sc=(.8+.22*d)*(.5+.5*grow);
