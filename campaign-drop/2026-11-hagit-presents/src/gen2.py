@@ -91,14 +91,14 @@ def seq(d, pre, ext, start, step, count, t, style, pad=3):
     return f'<img data-seq=\'{json.dumps(dict(d=d, pre=pre, ext=ext, start=start, step=step, count=count, t=t, pad=pad))}\' style="{style}">'
 
 slots, her, orbits = [], [], []
-def slot(key, sid, bg, back, mid, top, x=None, y=505, sc=1, clip='', t=None, camtop='', zoom=None):
+def slot(key, sid, bg, back, mid, top, x=None, y=505, sc=1, clip='', t=None, camtop='', zoom=None, mirror=False):
     """sid = her shot (frames/<sid>), or None for a slot without her."""
     t = T[key] if t is None else t
     fg = ''
     if sid:
         st = stats[sid]
         her.append(dict(el='s_' + key, id=sid, t=[t, t + BEAT], x=x, sc=sc, top=st['top'], cx=st['cx'], y=y, zoom=zoom, hand=[[h[0], h[2]] for h in st.get('hand', [])]))
-        fg = f'<div class="clip" style="{clip}"><img class="fg"></div>'
+        fg = f'<div class="clip" style="{clip}"><img class="fg">{"<img class=\"fg fg2\">" if mirror else ""}</div>'
     slots.append(f'<div class="slot" id="s_{key}" data-show="{t},{t + BEAT}" style="background:{bg}"><div class="cam"><div class="bg">{back}</div><div class="mid">{mid}<div class="orb ob"></div></div>{fg}<div class="top"><div class="orb of"></div>{camtop}</div></div><div class="txt">{top}</div></div>')
 
 P = lambda n: f";--st:#A45839;--pr:url({R}pardon-me/assets/print-{n}.webp)"
@@ -173,7 +173,7 @@ t = T['ch']
 back = seq('w_chasen', 'b_', 'jpg', 14, 2.7, 144, t, 'position:absolute;left:-228px;top:0;height:1920px;width:1536px;max-width:none')
 front = f'''<div class="front" style="top:300px;direction:ltr;font:600 200px/1 'Cormorant Garamond',serif;color:#f4e7d5;text-shadow:0 0 34px rgba(34,48,31,.9),0 6px 0 #22301f">{letters('CHASEN°', t, .07)}</div>
 <div class="panel" style="background:#22301f;animation-delay:{t + .02:.2f}s"><p style="color:#f4e7d5">{words('העולם הראשון| *שמכינים', t, .22, .2, '#C9DD9A')}</p><div class="tag" style="top:300px;color:#9DB37C;animation-delay:{t + .3:.2f}s">No. 22 · Bar à Matcha · Interactive world</div></div>'''
-slot('ch', 'ch', '#f4e7d5', back, '', front, 235, 800, .6)
+slot('ch', 'ch', '#f4e7d5', back, '', front, 205, 800, .6, mirror=True)
 # 12.0 the count: 29 behind her, the worlds running past in three rows, the studio's name written across in front
 t = T['n29']
 rows = ''.join(f'<div class="row" data-mq="{[-150, 150, -110][r]},{t}" style="top:{[690, 880, 1070][r]}px;left:{[-200, -900, -500][r]}px">' + ''.join(f'<img src="{R}images/home-worlds/{g}.webp">' for g in (GRID[r * 5:] + GRID[:r * 5])[:8]) + '</div>' for r in range(3))
@@ -205,7 +205,7 @@ async function put(img,u){{if(!img||img.dataset.u===u)return;img.dataset.u=u;img
 const shows=[...document.querySelectorAll('[data-show]')].map(e=>[e,...e.dataset.show.split(',').map(Number)]);
 const seqs=[...document.querySelectorAll('[data-seq]')].map(e=>[e,JSON.parse(e.dataset.seq)]);
 const mqs=[...document.querySelectorAll('[data-mq]')].map(e=>[e,...e.dataset.mq.split(',').map(Number)]);
-for(const h of HER){{h.slot=document.getElementById(h.el);h.fg=h.slot.querySelector('img.fg');h.prod=h.slot.querySelector('.prod');}}
+for(const h of HER){{h.slot=document.getElementById(h.el);h.fg=h.slot.querySelector('img.fg');h.fg2=h.slot.querySelector('img.fg2');h.prod=h.slot.querySelector('.prod');}}
 for(const o of ORB){{o.slot=document.getElementById(o.el);o.items=[...o.slot.querySelectorAll('.oi')];o.back=o.slot.querySelector('.ob');o.front=o.slot.querySelector('.of');o.her=HER.find(h=>h.el===o.el);}}
 function fit(){{for(const w of document.querySelectorAll('.word[data-fit]')){{const b=w.firstElementChild,max=parseFloat(getComputedStyle(w).fontSize);
   const k=Math.min(1,+w.dataset.fit/b.scrollWidth);w.style.fontSize=(max*k)+'px';w.style.top=(+w.dataset.cy-b.offsetHeight/2)+'px';}}}}
@@ -218,6 +218,7 @@ window.seek=async function(t){{
     const k=1+.035*Math.pow(Math.max(0,1-(n-1)/7),2)+.012*(t-h.t[0]), s=h.sc*k, PY=h.y+650*h.sc;
     const tx=h.x-h.cx*s, ty=PY-(PY-h.y)*k-h.top*s; h.tx=tx;h.ty=ty;h.s=s;h.n=n; const u=t-h.t[0];
     h.fg.style.transform=`translate(${{tx}}px,${{ty}}px) scale(${{s}})`;
+    if(h.fg2){{jobs.push(put(h.fg2,`frames/${{h.id}}/f_${{pad(n)}}.webp`));h.fg2.style.transform=`translate(${{1080-tx}}px,${{ty}}px) scale(${{-s}},${{s}})`;}}
     if(h.prod){{const p=h.prod,[hx,hy]=h.hand[n-1],pop=1-.3*Math.pow(Math.max(0,1-(n-1)/8),2);h.px=tx+hx*s;h.py=ty+hy*s;
       p.style.transform=`translate(${{h.px-p.offsetWidth/2}}px,${{h.py+(+p.dataset.lift)-p.offsetHeight}}px) scale(${{pop}})`;p.style.opacity=Math.min(1,n/3);
       if(h.zoom){{const [z0,z1,K0,dy]=h.zoom, x=Math.min(1,Math.max(0,(u-z0)/(z1-z0))), e=x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, K=1+(K0-1)*e, ox=h.px, oy=h.py+dy;
