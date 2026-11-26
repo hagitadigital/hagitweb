@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>SOLUNA typographic edit</title>
+<!--
+  SOLUNA° (World 05) — typographic edit, 26.4s, 1080×1920, 30fps.
+  The words are written into the water as ink and melt in it: the fluid engine is the one from soluna/index.html
+  (stable fluids, ink as absorbance), stepped one fixed step per frame so every render is identical.
+  The shop scene is the real site, recorded frame by frame by record-shop.js into shop/.
+  Render: node render.js reel.html out/SOLUNA-type.mp4      Stills: node render.js reel.html test/r 0,60,150
+  Timeline: 0–2.6 hook · 2.6–4.4 studio window · 4.0–12.4 four moods · 12.4–20.4 shop · 20.4–23.6 promise · 23.6–26.4 outro
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&amp;family=Heebo:wght@300;400;500;600&amp;family=Spline+Sans+Mono:wght@400&amp;family=Cormorant+Garamond:ital,wght@0,400;1,400&amp;family=Plus+Jakarta+Sans:wght@500&amp;display=block" rel="stylesheet">
+<style>
+:root{--s-bg:#FAF8F3;--s-ink:#6B563F;--s-copper:#C4765A;--s-gold:#B8935A;--ink:#16222A;--brass:#8C6A2E;--water:#EEF3F1}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--s-bg);font-family:'Heebo',sans-serif}
+.abs{position:absolute}.stack{position:absolute;inset:0}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
+#world{overflow:hidden;background:var(--water);transform-origin:540px 960px;box-shadow:0 50px 140px rgba(59,46,51,.26)}
+#film,#shop{position:absolute;left:0;width:1080px;display:block}
+#water{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:multiply}
+.pyr{position:absolute;left:0;top:0;filter:drop-shadow(0 26px 30px rgba(22,34,42,.26))}
+.hs{font-family:'Frank Ruhl Libre',serif}.lat{font-family:'Fraunces',serif}
+.mono{font-family:'Spline Sans Mono',monospace;letter-spacing:.2em;text-transform:uppercase}
+.center{left:0;right:0;text-align:center}
+.pill{left:50%;transform:translateX(-50%);padding:16px 40px;border-radius:999px;background:rgba(250,252,251,.9);border:1px solid rgba(140,106,46,.7);
+  font-family:'Frank Ruhl Libre',serif;font-size:50px;font-weight:500;color:var(--ink);white-space:nowrap;box-shadow:0 14px 36px -14px rgba(22,34,42,.5)}
+.tap{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:5px solid #fff;background:rgba(255,255,255,.35);box-shadow:0 0 0 2px rgba(22,34,42,.35),0 8px 26px rgba(22,34,42,.35)}
+.mark{position:absolute;width:44px;height:44px;border:0 solid var(--s-copper)}
+.halo{position:absolute;inset:0;border-radius:50%;background:rgba(246,239,229,.6);border:1.5px solid #D8CCBD;box-shadow:0 10px 28px rgba(62,40,24,.28)}
+.sph{position:absolute;left:13px;top:13px;width:78px;height:78px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 38% 30%,#F2C9A0 0%,#C98552 32%,#8A4F28 68%,#4E2A14 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- STUDIO · intro -->
+<div id="intro" class="stack">
+  <div class="abs center" style="top:120px;display:flex;flex-direction:column;align-items:center;gap:18px">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--s-copper)" dir="ltr">Brand Worlds Studio · Hagit Antebi</div>
+    <div style="font-size:100px;font-weight:500;line-height:1.05;color:var(--s-ink)">עולם מותג <em style="font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--s-gold)">05</em></div>
+  </div>
+  <div class="abs" style="top:1630px;left:70px;right:70px;text-align:center;font-size:46px;line-height:1.45;color:var(--s-ink)">חנות חליטות שבה כל מצב רוח<br>צובע את המים בצבע אחר.</div>
+  <div class="abs" id="line" style="top:1533px;right:0;height:4px;border-radius:2px;background:#C4814F"></div>
+  <div class="abs" id="ball" style="top:1483px;width:104px;height:104px"><div class="halo"></div><div class="sph" id="sph"><div style="position:absolute;left:13px;top:13px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(250,228,200,.65)"></div></div></div>
+</div>
+
+<!-- STUDIO · outro -->
+<div id="outro" class="stack">
+  <div class="abs" style="top:110px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+    <div style="font-size:28px;font-weight:500;letter-spacing:.06em;color:var(--s-copper)"><span dir="ltr">SOLUNA°</span> · עולם מותג 05</div>
+    <div style="font-size:64px;font-weight:600;line-height:1.2;color:var(--s-ink)">היא לא קנתה תה.<br>היא בחרה <span style="color:var(--s-copper)">איך להרגיש</span>.</div>
+  </div>
+  <div class="abs" style="top:1450px;left:70px;right:70px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
+    <div style="font-size:44px;font-weight:500;line-height:1.3;color:var(--s-copper)">הלקוחות שלך בוחרות מוצר.<br>מה הן מרגישות כשהן בוחרות בך?</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 56px;background:var(--s-ink);color:var(--s-bg);border-radius:12px"><span style="font-size:36px;font-weight:500">אבחון פער המותג</span><span style="font-size:22px;opacity:.8">30 דק׳ · בלי עלות</span></div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;letter-spacing:.3em;color:#8B7355" dir="ltr">HAGITANTEBI.CO.IL</div>
+  </div>
+</div>
+
+<div id="marks" class="stack">
+  <div class="mark" style="top:412px;left:240px;border-top-width:2px;border-left-width:2px"></div>
+  <div class="mark" style="top:412px;left:796px;border-top-width:2px;border-right-width:2px"></div>
+  <div class="mark" style="top:1387px;left:240px;border-bottom-width:2px;border-left-width:2px"></div>
+  <div class="mark" style="top:1387px;left:796px;border-bottom-width:2px;border-right-width:2px"></div>
+</div>
+
+<!-- WORLD -->
+<div id="world" class="stack">
+  <img id="film" alt="" style="top:170px">
+  <div id="veil" class="abs" style="left:0;right:0;top:0;height:760px;background:linear-gradient(to bottom,#EEF3F1 44%,rgba(238,243,241,0))"></div>
+  <canvas id="water" width="1080" height="1920"></canvas>
+  <div id="pyrs" class="stack"></div>
+  <img id="shop" alt="" style="top:0">
+
+  <!-- hook -->
+  <div id="hk" class="stack">
+    <div class="abs center" style="top:84px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--s-ink)" dir="ltr">Brand Worlds Studio</div>
+    <div class="abs center hs" style="top:176px;font-size:118px;font-weight:500;line-height:1.1;color:var(--ink)">את לא קונה תה.</div>
+  </div>
+
+  <!-- moods -->
+  <div id="mh" class="stack">
+    <div class="abs lat" style="top:84px;left:70px;font-size:34px;letter-spacing:.34em;color:var(--ink)" dir="ltr">SOLUNA°</div>
+    <div class="abs mono" id="mno" style="top:92px;right:70px;font-size:22px;color:var(--brass)" dir="ltr"></div>
+    <div class="abs center hs" id="mcap" style="top:1640px;font-size:76px;font-weight:400;color:var(--ink)"></div>
+    <div class="abs center mono" id="mblend" style="top:1760px;font-size:26px;color:#4A5A62;letter-spacing:.12em"></div>
+  </div>
+
+  <!-- shop -->
+  <div id="sh" class="stack">
+    <div class="abs pill" id="cap"></div>
+    <div class="tap" id="tap"></div>
+  </div>
+
+  <!-- promise -->
+  <div id="pr" class="stack">
+    <div class="abs center lat" id="logo" style="top:1560px;font-size:92px;font-weight:300;letter-spacing:.36em;padding-left:.36em;color:var(--ink);text-shadow:0 0 26px #EEF3F1,0 0 26px #EEF3F1,0 0 50px #EEF3F1" dir="ltr">SOLUNA°</div>
+    <div class="abs center mono" id="logosub" style="top:1700px;font-size:22px;color:var(--ink);text-shadow:0 0 16px #EEF3F1,0 0 16px #EEF3F1" dir="ltr">Tisanes d'humeur · Maison de la lumière</div>
+  </div>
+</div>
+</div>
+
+<script>
+(() => {
+const FPS = 30, W = 1080, H = 1920, DUR = 26.4;
+const $ = id => document.getElementById(id);
+const cl = x => Math.max(0, Math.min(1, x)), seg = (t, a, b) => cl((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c = 1.4; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const vis = (t, a, b, f = .25) => Math.min(seg(t, a, a + f), 1 - seg(t, b - f, b));
+let seed = 7; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let x = Math.imul(seed ^ seed >>> 15, 1 | seed); x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; };
+
+/* ---------- the line (from the site) ---------- */
+const WATER = [238 / 255, 243 / 255, 241 / 255];
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
+const absorb = (h, k = 1) => hex(h).map((c, i) => -Math.log(Math.max(c, .02) / WATER[i]) * k);
+const enc = A => 'rgb(' + A.map(v => Math.round(cl(v / 4) * 255)).join(',') + ')';
+const MOODS = [
+  { k: 'fresh', latin: 'Fraîcheur', cap: 'ירוק לרעננות.', blend: 'נענע · למון גראס · ורבנה', col: '#9CC76A', A: absorb('#7DB548', 1.15) },
+  { k: 'clarity', latin: 'Clarté', cap: 'זהב לחדות.', blend: 'כורכום · ג׳ינג׳ר · קליפת תפוז', col: '#D98A0E', A: absorb('#D98A0E') },
+  { k: 'joy', latin: 'Joie', cap: 'אדום לשמחה.', blend: 'היביסקוס · עלי ורדים · קינמון', col: '#A3123A', A: absorb('#A3123A') },
+  { k: 'calm', latin: 'Calme', cap: 'כחול לרוגע.', blend: 'אפונת הפרפר · לבנדר · לואיזה', col: '#1B3AA8', A: absorb('#1B3AA8') }
+];
+const BLUE = MOODS[3].A;
+
+/* ---------- timeline ---------- */
+const T = { hookEnd: 2.6, swap: 3.5, open0: 3.8, open1: 4.4, M0: 4.0, DM: 2.1, shop: 12.4, prom: 20.4, out: 23.6 };
+const WIN = .53, WINY = -38;
+
+/* ---------- ink text: drawn into a mask (rgb = absorbance / 4), stamped into the dye while it is held ---------- */
+const mask = document.createElement('canvas'); mask.width = W; mask.height = H; const mc = mask.getContext('2d');
+const scr = document.createElement('canvas'); scr.width = W; scr.height = H; const sc = scr.getContext('2d');
+function fit(font, text, width, max) { sc.font = font.replace('SZ', '100'); const w = sc.measureText(text).width; return Math.min(max, 100 * width / w); }
+// item: {t0, tw, tr, dir, font, text, x, y, fill(ctx)->style, x0, x1}
+const INK = [];
+function addInk(o) { sc.font = o.font; sc.textAlign = 'center'; const w = sc.measureText(o.text).width; o.x0 = o.x - w / 2 - 40; o.x1 = o.x + w / 2 + 40; INK.push(o); return o; }
+function drawInk(o, p) {
+  sc.globalCompositeOperation = 'source-over'; sc.fillStyle = '#000'; sc.fillRect(0, 0, W, H);
+  sc.font = o.font; sc.textAlign = 'center'; sc.textBaseline = 'alphabetic'; sc.direction = o.dir;
+  sc.fillStyle = typeof o.fill === 'function' ? o.fill(sc, o) : o.fill; sc.fillText(o.text, o.x, o.y);
+  if (p < 1) { const E = 90, span = o.x1 - o.x0 + E; let g;
+    if (o.dir === 'ltr') { const f = o.x0 + span * p; g = sc.createLinearGradient(f - E, 0, f, 0); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000'); sc.fillStyle = g; sc.fillRect(f - E, 0, W, H); o.front = f - E / 2; }
+    else { const f = o.x1 - span * p; g = sc.createLinearGradient(f + E, 0, f, 0); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000'); sc.fillStyle = g; sc.fillRect(0, 0, f + E, H); o.front = f + E / 2; } }
+  mc.globalCompositeOperation = 'lighter'; mc.drawImage(scr, 0, 0);
+}
+
+/* ---------- fluid engine (WebGL2 stable fluids, ink as absorbance) ---------- */
+const cv = $('water');
+const gl = cv.getContext('webgl2', { alpha: false, depth: false, stencil: false, antialias: false, preserveDrawingBuffer: true });
+if (!gl || !gl.getExtension('EXT_color_buffer_float')) throw new Error('WebGL2 float buffers are needed');
+const VS = `#version 300 es
+precision highp float;in vec2 aPos;uniform vec2 texel;out vec2 vUv,vL,vR,vT,vB;
+void main(){vUv=aPos*.5+.5;vL=vUv-vec2(texel.x,0.);vR=vUv+vec2(texel.x,0.);vT=vUv+vec2(0.,texel.y);vB=vUv-vec2(0.,texel.y);gl_Position=vec4(aPos,0.,1.);}`;
+const HD = `#version 300 es
+precision highp float;precision highp sampler2D;in vec2 vUv,vL,vR,vT,vB;out vec4 o;
+`;
+const FS = {
+  splatAdd: `uniform sampler2D uT;uniform float aspect,radius;uniform vec2 point;uniform vec3 color;
+    void main(){vec2 p=vUv-point;p.x*=aspect;float g=exp(-dot(p,p)/radius);o=vec4(texture(uT,vUv).xyz+g*color,1.);}`,
+  stamp: `uniform sampler2D uT,uM;uniform float k;
+    void main(){o=vec4(max(texture(uT,vUv).rgb,texture(uM,vUv).rgb*4.*k),1.);}`,
+  advect: `uniform sampler2D uVel,uSrc;uniform vec2 vtexel;uniform float dt,diss;
+    void main(){vec2 c=vUv-dt*texture(uVel,vUv).xy*vtexel;o=texture(uSrc,c)/(1.+diss*dt);}`,
+  divergence: `uniform sampler2D uVel;
+    void main(){float L=texture(uVel,vL).x,R=texture(uVel,vR).x,T=texture(uVel,vT).y,B=texture(uVel,vB).y;vec2 C=texture(uVel,vUv).xy;
+    if(vL.x<0.)L=-C.x;if(vR.x>1.)R=-C.x;if(vT.y>1.)T=-C.y;if(vB.y<0.)B=-C.y;o=vec4(.5*(R-L+T-B),0.,0.,1.);}`,
+  curl: `uniform sampler2D uVel;void main(){o=vec4(.5*(texture(uVel,vR).y-texture(uVel,vL).y-texture(uVel,vT).x+texture(uVel,vB).x),0.,0.,1.);}`,
+  vort: `uniform sampler2D uVel,uCurl;uniform float curl,dt;
+    void main(){float L=texture(uCurl,vL).x,R=texture(uCurl,vR).x,T=texture(uCurl,vT).x,B=texture(uCurl,vB).x,C=texture(uCurl,vUv).x;
+    vec2 f=.5*vec2(abs(T)-abs(B),abs(R)-abs(L));f/=length(f)+1e-4;f*=curl*C;f.y*=-1.;o=vec4(clamp(texture(uVel,vUv).xy+f*dt,-1000.,1000.),0.,1.);}`,
+  sink: `uniform sampler2D uVel,uDye;uniform float g,dt;
+    void main(){vec3 A=texture(uDye,vUv).rgb;float d=min(A.r+A.g+A.b,5.);vec2 v=texture(uVel,vUv).xy;o=vec4(v.x,v.y-g*d*dt,0.,1.);}`,
+  pressure: `uniform sampler2D uP,uDiv;void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4((L+R+B+T-texture(uDiv,vUv).x)*.25,0.,0.,1.);}`,
+  gradSub: `uniform sampler2D uP,uVel;void main(){float L=texture(uP,vL).x,R=texture(uP,vR).x,T=texture(uP,vT).x,B=texture(uP,vB).x;o=vec4(texture(uVel,vUv).xy-vec2(R-L,T-B),0.,1.);}`,
+  scale: `uniform sampler2D uT;uniform float value;void main(){o=value*texture(uT,vUv);}`,
+  display: `uniform sampler2D uDye;
+    void main(){vec3 A=max(texture(uDye,vUv).rgb,0.);vec3 c=exp(-A);
+    float l=dot(texture(uDye,vL).rgb,vec3(1)),r=dot(texture(uDye,vR).rgb,vec3(1)),t=dot(texture(uDye,vT).rgb,vec3(1)),b=dot(texture(uDye,vB).rgb,vec3(1));
+    vec3 n=normalize(vec3(l-r,b-t,.35));c*=min(1.,.916+.1*dot(n,normalize(vec3(-.35,.55,1.)))+.0);o=vec4(c,1.);}`
+};
+const shd = (t, s) => { const x = gl.createShader(t); gl.shaderSource(x, s); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(x); return x; };
+const vs = shd(gl.VERTEX_SHADER, VS), P = {};
+for (const k in FS) { const p = gl.createProgram(); gl.attachShader(p, vs); gl.attachShader(p, shd(gl.FRAGMENT_SHADER, HD + FS[k])); gl.bindAttribLocation(p, 0, 'aPos'); gl.linkProgram(p);
+  const u = {}, n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); for (let i = 0; i < n; i++) { const nm = gl.getActiveUniform(p, i).name; u[nm] = gl.getUniformLocation(p, nm); } P[k] = { p, u }; }
+gl.bindVertexArray(gl.createVertexArray());
+gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), gl.STATIC_DRAW);
+gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), gl.STATIC_DRAW);
+gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(0);
+const texP = () => { for (const [a, b] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, a, b); };
+const fbo = (w, h) => { const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); texP();
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA16F, w, h, 0, gl.RGBA, gl.HALF_FLOAT, null);
+  const f = gl.createFramebuffer(); gl.bindFramebuffer(gl.FRAMEBUFFER, f); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
+  return { f, w, h, clear() { gl.bindFramebuffer(gl.FRAMEBUFFER, f); gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT); }, bind(u) { gl.activeTexture(gl.TEXTURE0 + u); gl.bindTexture(gl.TEXTURE_2D, t); return u; } }; };
+const dfbo = (w, h) => { let a = fbo(w, h), b = fbo(w, h); return { w, h, get read() { return a; }, get write() { return b; }, swap() { const x = a; a = b; b = x; }, clear() { a.clear(); b.clear(); } }; };
+const use = (k, t) => { const q = P[k]; gl.useProgram(q.p); if (t && q.u.texel) gl.uniform2f(q.u.texel, 1 / t.w, 1 / t.h); return q.u; };
+const blit = t => { if (t) { gl.viewport(0, 0, t.w, t.h); gl.bindFramebuffer(gl.FRAMEBUFFER, t.f); } else { gl.viewport(0, 0, cv.width, cv.height); gl.bindFramebuffer(gl.FRAMEBUFFER, null); } gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0); };
+const F = { vel: dfbo(144, 256), dye: dfbo(1080, 1920), div: fbo(144, 256), curl: fbo(144, 256), pr: dfbo(144, 256) };
+const mtex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, mtex); texP();
+function resetFluid() { F.vel.clear(); F.dye.clear(); F.pr.clear(); }
+function splat(kind, x, y, c, rad) {
+  const tgt = kind === 'vel' ? F.vel : F.dye; const u = use('splatAdd', tgt.read);
+  gl.uniform1i(u.uT, tgt.read.bind(0)); gl.uniform1f(u.aspect, W / H); gl.uniform2f(u.point, x / W, 1 - y / H);
+  gl.uniform3f(u.color, c[0], c[1], c[2]); gl.uniform1f(u.radius, rad); blit(tgt.write); tgt.swap();
+}
+function stamp(k) {
+  gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, mtex); gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mask); gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+  const u = use('stamp', F.dye.read); gl.uniform1i(u.uT, F.dye.read.bind(0)); gl.uniform1i(u.uM, 1); gl.uniform1f(u.k, k); blit(F.dye.write); F.dye.swap();
+}
+function simulate(dt, g, diss) {
+  const { vel, dye, div, curl, pr } = F; let u;
+  u = use('curl', vel.read); gl.uniform1i(u.uVel, vel.read.bind(0)); blit(curl);
+  u = use('vort', vel.read); gl.uniform1i(u.uVel, vel.read.bind(0)); gl.uniform1i(u.uCurl, curl.bind(1)); gl.uniform1f(u.curl, 32); gl.uniform1f(u.dt, dt); blit(vel.write); vel.swap();
+  u = use('sink', vel.read); gl.uniform1i(u.uVel, vel.read.bind(0)); gl.uniform1i(u.uDye, dye.read.bind(1)); gl.uniform1f(u.g, g); gl.uniform1f(u.dt, dt); blit(vel.write); vel.swap();
+  u = use('divergence', vel.read); gl.uniform1i(u.uVel, vel.read.bind(0)); blit(div);
+  u = use('scale', pr.read); gl.uniform1i(u.uT, pr.read.bind(0)); gl.uniform1f(u.value, .8); blit(pr.write); pr.swap();
+  u = use('pressure', pr.read); gl.uniform1i(u.uDiv, div.bind(0)); for (let i = 0; i < 20; i++) { gl.uniform1i(u.uP, pr.read.bind(1)); blit(pr.write); pr.swap(); }
+  u = use('gradSub', vel.read); gl.uniform1i(u.uP, pr.read.bind(0)); gl.uniform1i(u.uVel, vel.read.bind(1)); blit(vel.write); vel.swap();
+  u = use('advect', vel.read); gl.uniform2f(u.vtexel, 1 / vel.w, 1 / vel.h); gl.uniform1i(u.uVel, vel.read.bind(0)); gl.uniform1i(u.uSrc, vel.read.bind(0)); gl.uniform1f(u.dt, dt); gl.uniform1f(u.diss, .25); blit(vel.write); vel.swap();
+  u = use('advect', dye.read); gl.uniform2f(u.vtexel, 1 / vel.w, 1 / vel.h); gl.uniform1i(u.uVel, vel.read.bind(0)); gl.uniform1i(u.uSrc, dye.read.bind(1)); gl.uniform1f(u.dt, dt); gl.uniform1f(u.diss, diss); blit(dye.write); dye.swap();
+}
+function show() { const u = use('display', F.dye.read); gl.uniform1i(u.uDye, F.dye.read.bind(0)); blit(null); }
+
+/* ---------- what the water does ---------- */
+const POUR = [];   // {x,y,A,t0,t1,k}
+const HS = "'Frank Ruhl Libre'", LAT = 'Fraunces';
+function build() {
+  // hook: the second line is written in blue and lets go when the studio window arrives
+  addInk({ t0: .25, tw: .95, tr: 2.1, dir: 'rtl', font: `500 106px ${HS}`, text: 'את בוחרת איך להרגיש.', x: 540, y: 424, kick: 70, fill: enc(BLUE), g: 0, still: .5 });
+  // four moods
+  MOODS.forEach((m, i) => { const t = T.M0 + i * T.DM; const sz = fit(`italic 300 SZpx ${LAT}`, m.latin, 960, 470);
+    addInk({ t0: t, tw: .65, tr: t + 1.5, dir: 'ltr', font: `italic 300 ${sz}px ${LAT}`, text: m.latin, x: 540, y: 690, fill: enc(m.A), g: .5 });
+    POUR.push({ x: 540, y: 1330, A: m.A, t0: t + .95, t1: t + 1.95, k: .55 }); });
+  // promise: two lines, the four colours across them
+  const grad = (c, o) => { const g = c.createLinearGradient(o.x1, 0, o.x0, 0); [0, 3, 2, 1].forEach((j, n) => g.addColorStop(.08 + n * .28, enc(MOODS[j].A))); return g; };
+  const p = T.prom;
+  addInk({ t0: p + .1, tw: .55, tr: p + 2.35, dir: 'rtl', font: `500 236px ${HS}`, text: 'הצבע הוא', x: 540, y: 560, fill: grad, g: .3, still: .7 });
+  addInk({ t0: p + .6, tw: .5, tr: p + 2.35, dir: 'rtl', font: `500 300px ${HS}`, text: 'המוצר.', x: 540, y: 850, fill: grad, g: .3, still: .7 });
+  PX.forEach((x, i) => POUR.push({ x, y: 1330, A: MOODS[i].A, t0: p + 1.5 + i * .12, t1: p + 3.1, k: .3 }));
+}
+const PX = [930, 670, 410, 150];
+const RESETS = [0, T.swap, T.prom - .2].map(t => Math.round(t * FPS));
+function stepFluid(f) {
+  const t = f / FPS, dt = 1 / FPS, s = 2.7;
+  if (RESETS.includes(f)) resetFluid();
+  const on = (t < T.shop + .5) || t >= T.prom - .2; if (!on) return;
+  let g = 42, held = false, damp = 1; mc.globalCompositeOperation = 'source-over'; mc.fillStyle = '#000'; mc.fillRect(0, 0, W, H);
+  for (const o of INK) {
+    if (t >= o.t0 && t < o.tr) { const p = seg(t, o.t0, o.t0 + o.tw); drawInk(o, p < 1 ? .04 + .96 * p : 1); if (p < 1) damp = Math.min(damp, .8); held = true; g = Math.min(g, o.g); if (o.still) damp = Math.min(damp, o.still);
+      if (p < 1) { // the pen: a little stir at the writing front
+        if (!o.still) splat('vel', o.front, o.y - 60 + rnd() * 40, [(rnd() - .5) * 90, -40 - rnd() * 60, 0], .0006); } }
+    if (Math.abs(t - o.tr) < dt / 2) for (let j = 0; j < 26; j++) { const a = rnd() * Math.PI * 2;
+      splat('vel', o.x0 + rnd() * (o.x1 - o.x0), o.y - 20 - rnd() * 200, [Math.cos(a) * (o.kick || 170), (-Math.abs(Math.sin(a)) * .9 - .3) * (o.kick || 170), 0], .0016); }
+  }
+  for (const d of POUR) if (t >= d.t0 && t < d.t1) { const jx = (rnd() - .5) * 14;
+    splat('vel', d.x + jx, d.y + 6, [(rnd() - .5) * 150 * s, -230 * s, 0], .0005);
+    splat('add', d.x + jx, d.y + 4, d.A.map(v => v * d.k), .00022); }
+  if (damp < 1) { const u = use('scale', F.vel.read); gl.uniform1i(u.uT, F.vel.read.bind(0)); gl.uniform1f(u.value, damp); blit(F.vel.write); F.vel.swap(); }
+  simulate(dt, g, t < T.swap ? .1 : (t < T.shop ? .55 : .12));
+  if (held) stamp(1);
+  show();
+}
+
+/* ---------- DOM ---------- */
+const pyrs = $('pyrs'), IMG = {};
+const mk = (src, w) => { const i = new Image(); i.src = src; i.className = 'pyr'; i.style.width = w + 'px'; i.style.opacity = 0; pyrs.appendChild(i); return i; };
+MOODS.forEach(m => { IMG[m.k] = { c: mk(`../../soluna/assets/mood/closed-${m.k}.webp`, 600), o: mk(`../../soluna/assets/mood/open-${m.k}.webp`, 720), s: mk(`../../soluna/assets/mood/closed-${m.k}.webp`, 236) }; });
+const place = (im, cx, cy, sc, op, rot = 0) => { const w = parseFloat(im.style.width), h = w * im.naturalHeight / im.naturalWidth;
+  im.style.opacity = op; im.style.transform = `translate(${cx - w / 2}px,${cy - h / 2}px) rotate(${rot}deg) scale(${sc})`; };
+const SHOPMAP = [[0, 0], [22, 15], [70, 60], [96, 112], [100, 115], [150, 160], [158, 172], [160, 173], [186, 197], [188, 198], [240, 245]];
+const TAPS = [[22, 635, 1392], [100, 300, 1782], [160, 540, 1850], [188, 212, 99]];
+const CAPS = [[2, 92, 'בוחרים תחושה.'], [98, 154, 'טיפת לימון, והכחול הופך לסגול.'], [158, 238, 'מוסיפים לשקית.']];
+const setImg = async (el, src) => { if (el.dataset.s !== src) { el.dataset.s = src; el.src = src; try { await el.decode(); } catch (e) {} } };
+const pad3 = n => String(n).padStart(3, '0');
+
+async function draw(f) {
+  const t = f / FPS;
+  // studio window
+  let k = 0; if (t < T.open1) k = eio(seg(t, T.hookEnd, T.hookEnd + .5)) * (1 - eio(seg(t, T.open0, T.open1))); else k = eio(seg(t, T.out, T.out + .6));
+  const s = 1 - (1 - WIN) * k; $('world').style.transform = `translateY(${WINY * k}px) scale(${s})`;
+  $('intro').style.opacity = t < 6 ? seg(t, T.hookEnd + .1, T.hookEnd + .4) * (1 - seg(t, T.open0, T.open0 + .25)) : 0;
+  $('outro').style.opacity = seg(t, T.out + .2, T.out + .6);
+  $('marks').style.opacity = t < 6 ? seg(t, T.hookEnd + .4, T.hookEnd + .6) * (1 - seg(t, T.open0, T.open0 + .15)) : seg(t, T.out + .5, T.out + .8);
+  const bp = eo(seg(t, T.hookEnd + .2, T.hookEnd + 1.1)); $('ball').style.left = (1080 - 52 - bp * (540)) + 'px'; $('ball').style.opacity = t < 6 ? 1 : 0;
+  $('sph').style.transform = `rotate(${-bp * 400}deg)`; $('line').style.width = (bp * 540) + 'px'; $('line').style.opacity = t < 6 ? 1 : 0;
+
+  // hook
+  const hookA = 1 - seg(t, T.swap - .12, T.swap + .12);
+  $('film').style.opacity = hookA; $('veil').style.opacity = hookA; $('hk').style.opacity = hookA;
+  if (t < T.swap + .2) await setImg($('film'), `f/calm_${pad3(Math.min(120, 18 + f))}.jpg`);
+  $('film').style.transform = `scale(${1 + .04 * seg(t, 0, 3.6)})`;
+  $('water').style.opacity = (t < T.shop + .4 ? 1 - seg(t, T.shop, T.shop + .4) : seg(t, T.prom - .1, T.prom + .2)) * (t < T.swap ? 1 - seg(t, T.swap - .12, T.swap) : 1);
+
+  // moods
+  const inM = t >= T.swap && t < T.shop + .4; $('mh').style.opacity = inM ? seg(t, T.M0 - .2, T.M0 + .1) * (1 - seg(t, T.shop - .1, T.shop + .2)) : 0;
+  MOODS.forEach((m, i) => { const u = t - (T.M0 + i * T.DM), im = IMG[m.k];
+    if (u < 0 || u > T.DM + .4) { im.c.style.opacity = 0; im.o.style.opacity = 0; return; }
+    const d = back(seg(u, .12, .78)), y = -520 + (1150 + 520) * d, op = seg(u, .78, 1.02), out = seg(u, T.DM - .25, T.DM + .1);
+    const bob = Math.sin(u * 3.2) * 8;
+    place(im.c, 540, y + bob, 1 - .06 * op, (1 - op) * seg(u, .1, .2) * (1 - out), -4 + 4 * d);
+    place(im.o, 540, 1150 + bob + 90 * eo(out), .86 + .14 * back(op) + .03 * seg(u, 1, T.DM), op * (1 - out));
+    if (u >= 0 && u < T.DM) { $('mno').textContent = `N° 0${i + 1} / 04`; $('mcap').textContent = m.cap; $('mblend').textContent = m.blend;
+      const a = vis(u, .7, T.DM - .05, .2); $('mcap').style.opacity = a; $('mblend').style.opacity = a; $('mcap').style.transform = `translateY(${(1 - eo(seg(u, .7, 1))) * 26}px)`; } });
+
+  // shop (the real site)
+  const fs = Math.round((t - T.shop) * FPS), inS = t >= T.shop - .05 && t < T.prom + .3;
+  $('shop').style.opacity = inS ? seg(t, T.shop, T.shop + .4) * (1 - seg(t, T.prom - .2, T.prom + .15)) : 0; $('sh').style.opacity = inS ? 1 - seg(t, T.prom - .3, T.prom - .1) : 0;
+  if (inS) { const o = Math.max(0, Math.min(240, fs)); let src = 245; for (let j = 1; j < SHOPMAP.length; j++) if (o <= SHOPMAP[j][0]) { const [a, b] = SHOPMAP[j - 1], [c, d] = SHOPMAP[j]; src = Math.round(b + (d - b) * (o - a) / (c - a)); break; }
+    await setImg($('shop'), `shop/s_${pad3(src)}.jpg`);
+    let tp = 0; for (const [tf, x, y] of TAPS) { const r = fs - tf; if (r >= -9 && r <= 7) { const q = r < 0 ? eo((r + 9) / 9) : 1 - r / 7; tp = q; $('tap').style.left = x + 'px'; $('tap').style.top = y + 'px'; $('tap').style.transform = `scale(${r < 0 ? 1.5 - .6 * q : .9 + .5 * (r / 7)})`; } }
+    $('tap').style.opacity = tp;
+    let ca = 0; for (const [a, b, txt] of CAPS) if (fs >= a && fs <= b) { ca = Math.min(seg(fs, a, a + 7), 1 - seg(fs, b - 6, b)); $('cap').textContent = txt; $('cap').style.top = (fs >= 186 ? 560 : 708) + 'px'; }
+    $('cap').style.opacity = ca; }
+
+  // promise
+  const u = t - T.prom; $('pr').style.opacity = u > 0 ? 1 : 0;
+  MOODS.forEach((m, i) => { const a = seg(u, .95 + i * .12, 1.35 + i * .12); place(IMG[m.k].s, PX[i], 1215 + (1 - back(a)) * 120 + Math.sin(u * 2.6 + i) * 5, 1, u > 0 ? cl(a * 2) : 0); });
+  $('logo').style.opacity = seg(u, 2.0, 2.5); $('logosub').style.opacity = seg(u, 2.3, 2.8);
+}
+
+/* ---------- frame driver: the fluid is stepped in order from the last reset, the DOM is set for the frame ---------- */
+let cur = -1;
+window.__frame = async f => {
+  if (f <= cur || cur < 0 || RESETS.some(r => r > cur && r <= f)) { const r = Math.max(...RESETS.filter(r => r <= f)); seed = 7 + r; cur = r - 1; }
+  while (cur < f) stepFluid(++cur);
+  await draw(f); gl.finish();
+};
+window.__dur = DUR;
+(async () => {
+  await Promise.all([`500 100px ${HS}`, `400 100px ${HS}`, `italic 300 100px ${LAT}`, `300 100px ${LAT}`, '400 20px "Spline Sans Mono"', '500 40px Heebo', '600 40px Heebo', 'italic 400 40px "Cormorant Garamond"', '500 20px "Plus Jakarta Sans"'].map(x => document.fonts.load(x, 'אבג Abc')));
+  await document.fonts.ready; await Promise.all([...document.images].filter(i => i.src).map(i => i.decode().catch(() => {})));
+  build(); window.__ready = true;
+  const q = new URLSearchParams(location.search).get('f'); if (q) window.__frame(+q);
+})();
+})();
+</script>
+</body>
+</html>
