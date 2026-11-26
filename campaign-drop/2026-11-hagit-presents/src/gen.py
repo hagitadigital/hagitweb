@@ -97,7 +97,7 @@ slot('n29', T_29, CTA, '#2A201A', word('29', "600 440px/0.9 'Cormorant Garamond'
      box('עולמות מותג חיים', '#FAF8F3', '#2A201A', '#A45839', T_29, 1440, 88), S['n29'][1], S['n29'][0], S['n29'][2])
 cta = f'''<div class="slot" data-show="{CTA},{DUR + 1}" style="background:#FAF8F3">
   <div class="k" style="top:296px">HAGIT ANTEBI · BRAND WORLDS STUDIO</div>
-  <div class="win arch" style="left:320px;top:360px;width:440px;height:640px;background:#EFCDBF;animation-delay:{CTA + .02:.2f}s"><img src="frames/cta/f_001.webp" style="object-fit:cover;object-position:46% 0;transform:scale(1.5);transform-origin:48% 30%"></div>
+  <div class="win arch" style="left:320px;top:360px;width:440px;height:640px;background:#EFCDBF;animation-delay:{CTA + .02:.2f}s"><img src="shots/closing.jpg" style="inset:auto;left:-202px;top:-251px;width:780px;height:1690px;object-fit:fill"></div>
   <div class="ch" style="animation-delay:{CTA + .25:.2f}s">לא בטוחים אם למותג שלכם<br><em>כבר יש עולם?</em></div>
   <div class="btn" style="animation-delay:{CTA + .55:.2f}s"><b>אבחון פער המותג</b><span>30 דקות · בלי עלות</span></div>
   <div class="k" style="top:1560px;color:#8B7355">HAGITANTEBI.CO.IL</div>

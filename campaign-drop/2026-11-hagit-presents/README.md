@@ -19,5 +19,5 @@
   The VELUNE° door is read straight from `velune/assets/porte/d01–d40.webp`.
 - Orbits are flat images on a tilted ring (no 3D models): MIEL° bag, box, seal and toppings around the cake on her palm;
   the ORÉVA° kit around her, passing behind and in front. Reference recording stays out of the repo (`src/ref/`).
-- The closing arch in v2 shows her real frame, not a cut-out: `ffmpeg -ss 2.6 -i src/shots/111724.mp4 -frames:v 60 -q:v 2 src/frames/ctaraw/b_%03d.jpg` (frame 040).
+- The closing arch (both versions) shows the still Hagit chose, `src/shots/closing.jpg` (kept out of the repo).
 - MIEL° and ORÉVA° end on a camera push-in to the product on her palm (`zoom=` in `gen2.py`).
