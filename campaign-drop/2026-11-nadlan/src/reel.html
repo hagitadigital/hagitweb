@@ -9,7 +9,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--nuit)}
 .sc{position:absolute;inset:0;overflow:hidden;visibility:hidden}
 @keyframes rise{from{opacity:0;transform:translateY(30%) scale(.95)}to{opacity:1;transform:none}}
 @keyframes capin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.n14{position:absolute;left:0;right:0;text-align:center;direction:ltr;font:700 820px/0.86 'Bodoni Moda',serif;letter-spacing:-.04em;font-variant-numeric:lining-nums}
+.n14{position:absolute;left:0;right:0;text-align:center;direction:ltr;font:700 820px/0.86 'Bodoni Moda',serif;font-variation-settings:'opsz' 8;letter-spacing:-.02em;font-variant-numeric:lining-nums}
 /* her */
 #her img{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 60%}
 .box{position:absolute;left:50px;right:50px;text-align:center}
@@ -35,10 +35,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--nuit)}
 .door .win img{display:block;width:1000px;height:625px}
 .door .q{position:absolute;left:70px;right:70px;top:1190px;text-align:center;font:500 92px/1.2 'Frank Ruhl Libre',serif;color:var(--stone);animation:capin .45s ease-out both}
 .door .note{position:absolute;left:0;right:0;bottom:130px;text-align:center;font:400 34px/1.3 'Heebo',sans-serif;color:rgba(239,230,216,.6)}
-/* trust */
-#trust img{position:absolute;left:0;top:0;transform-origin:0 0}
-#trust .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,18,42,.92) 0,rgba(20,18,42,.55) 38%,rgba(20,18,42,.1) 62%)}
-#trust p{position:absolute;left:70px;right:70px;bottom:260px;text-align:right;font:500 96px/1.18 'Frank Ruhl Libre',serif;color:var(--stone)}
+/* trust: the fan */
+#trust{background:linear-gradient(to bottom,#14122A 0,#2a2255 28%,#5A4480 41%,#A8718F 44.8%,#1D1942 44.9%,#14122A 100%)}
+#fan .shade{fill:rgba(26,20,52,.58)}
+#trust p{position:absolute;left:70px;right:70px;top:960px;text-align:right;font:500 96px/1.18 'Frank Ruhl Libre',serif;color:var(--stone)}
 #trust p span{display:block;animation:capin .45s ease-out both}#trust p em{font-style:normal;color:var(--apricot);font-size:150px;font-weight:700;line-height:1.1}
 /* cta */
 #cta{background:var(--cream)}
@@ -52,16 +52,16 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--nuit)}
 #grain{position:absolute;inset:0;z-index:31;pointer-events:none;opacity:.09;mix-blend-mode:overlay}
 </style></head><body>
 <div id="stage">
-<div class="sc" id="her" data-show="0,2.0"><img id="hb"><div class="n14" style="top:210px;color:var(--violet)">14</div><img id="hf">
-  <div class="box" style="top:56px"><p>לפרויקט אין שם.<br><em>יש לו כתובת.</em></p></div></div>
-<div class="sc" id="bld" data-show="2.0,8.0"><div id="sky"></div><div class="n14" id="n14" style="top:330px">14</div>
+<div class="sc" id="her" data-show="0,2.0"><img id="hb"><div class="n14" style="top:150px;font-size:540px;color:var(--indigo)">14</div><img id="hf">
+  <div class="box" style="top:44px"><p style="font-size:60px;padding:12px 34px 18px">לפרויקט אין שם. <em>יש לו כתובת.</em></p></div></div>
+<div class="sc" id="bld" data-show="2.0,8.0"><div id="sky"></div><div class="n14" id="n14" style="top:170px">14</div>
   <div id="scene"><img id="i0" src="frames/bld/old.webp"><img id="i1" src="frames/bld/site.webp"><img id="i2" src="frames/bld/new.webp"><div id="wline"></div></div>
   <div id="panel"><div id="year">1961</div><div id="plate">SAME ADDRESS<br><br>SAME CAMERA</div>
     <div class="line" data-show="2.0,6.0"><span style="animation-delay:2.15s">הבניין מתחלף.</span></div>
     <div class="line" data-show="6.0,8.0"><span style="animation-delay:6.10s;color:var(--apricot)">המספר נשאר.</span></div></div></div>
 <div class="sc door" data-show="8.0,9.5"><div class="num" style="animation-delay:8.02s">01</div>
   <div class="k">THE SITE ANSWERS</div><div class="who" style="animation-delay:8.08s">הדיירים</div>
-  <div class="win" style="animation-delay:8.05s"><img src="../../../sites/nadlan/s-steps.webp"></div>
+  <div class="win" style="animation-delay:8.05s"><img id="stairs"></div>
   <div class="q" style="animation-delay:8.20s">״לאן אני חוזר, מתי,<br>ומי מלווה אותי?״</div><div class="note">RUE° הוא פרויקט קונספט של הסטודיו</div></div><div class="sc door" data-show="9.5,11.0"><div class="num" style="animation-delay:9.52s">02</div>
   <div class="k">THE SITE ANSWERS</div><div class="who" style="animation-delay:9.58s">הרוכשים</div>
   <div class="win" style="animation-delay:9.55s"><img src="../../../sites/nadlan/s-address.webp"></div>
@@ -69,7 +69,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--nuit)}
   <div class="k">THE SITE ANSWERS</div><div class="who" style="animation-delay:11.08s;font-size:70px;top:244px">העירייה והשכונה</div>
   <div class="win" style="animation-delay:11.05s"><img src="../../../sites/nadlan/s-annex.webp"></div>
   <div class="q" style="animation-delay:11.20s">״מה הרחוב מקבל מזה?״</div><div class="note">RUE° הוא פרויקט קונספט של הסטודיו</div></div>
-<div class="sc" id="trust" data-show="12.5,15.0"><img id="tr" src="../../../rue/assets/16-flagship.webp"><div class="shade"></div>
+<div class="sc" id="trust" data-show="12.5,15.0"><svg id="fan" viewBox="0 0 1000 512" width="1040" height="532" style="position:absolute;left:20px;top:330px"></svg>
   <p><span style="animation-delay:12.60s">בהתחדשות עירונית,</span><span style="animation-delay:12.85s">לא מוכרים רק דירות.</span><span style="animation-delay:13.50s"><em>בונים אמון.</em></span></p></div>
 <div class="sc" id="cta" data-show="15.0,18.0"><div class="tag" style="top:120px">HAGIT ANTEBI · BRAND WORLDS STUDIO</div>
   <div class="arch" style="animation-delay:15.02s"><img src="../../../sites/a/hagit.webp"></div>
@@ -101,12 +101,31 @@ window.seek=async function(t){
   document.getElementById('n14').style.color=`rgb(${mix(mix([58,56,60],[29,25,66],w1),[29,25,66],w2)})`;
   document.getElementById('scene').style.transform=`scale(${1+.035*cl((t-OLD)/(DOORS-OLD))})`;
   const yq=io(cl((t-SITE)/(NEW+.55-SITE)));document.getElementById('year').textContent=Math.round(1961+68*yq);
-  if(t>=TRUST&&t<CTA){const k=1.6+.07*(t-TRUST)/(CTA-TRUST);document.getElementById('tr').style.transform=`translate(${540-600*k}px,${880-750*k}px) scale(${k})`;}
+  if(t>=DOORS&&t<DOORS+1.5){const n=Math.round((t-DOORS)*FPS), f=n<24?Math.round(n*.7):Math.min(74,17+Math.round((n-24)*2.7));jobs.push(put(document.getElementById('stairs'),`frames/stairs/${pad(f)}.jpg`));}
+  if(t>=TRUST&&t<CTA) fanAt(t-TRUST);
   let fl=0;for(const c of CUTS){const n=Math.round((t-c)*FPS);if(n>=0&&n<3)fl=[.26,.12,.05][n];}
   document.getElementById('flash').style.opacity=fl;
   document.getElementById('turb').setAttribute('seed',1+F%97);
   document.getAnimations().forEach(a=>{a.currentTime=t*1000});
   await Promise.all(jobs);
 };
+// the RUE° site's fan, ported: same geometry and easing, driven by the film's clock (60 steps a second)
+const ROOMS=['16-flagship','22-lobby','20-kitchen','23-living','21-balcony'].map(n=>'../../../rue/assets/'+n+'.webp'), G={cx:500,cy:512,r0:112,r1:500,a0:0,a1:180}, NS='http://www.w3.org/2000/svg';
+const fan=document.getElementById('fan'), mk=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const defs=mk('defs',{},fan), grad=mk('radialGradient',{id:'fanSun',gradientUnits:'userSpaceOnUse',cx:G.cx,cy:G.cy,r:G.r0},defs);
+mk('stop',{offset:'0','stop-color':'#F7C9A3'},grad);mk('stop',{offset:'.7','stop-color':'#F2A977'},grad);mk('stop',{offset:'1','stop-color':'#A8718F'},grad);
+const wedges=ROOMS.map((src,i)=>{const cp=mk('clipPath',{id:'fanW'+i},defs),clip=mk('path',{},cp),g=mk('g',{},fan);
+  const img=mk('image',{href:src,'clip-path':`url(#fanW${i})`,preserveAspectRatio:'xMidYMid slice'},g),shade=mk('path',{class:'shade'},g);return{clip,img,shade};});
+mk('circle',{fill:'url(#fanSun)',cx:G.cx,cy:G.cy,r:G.r0-22},fan);mk('circle',{fill:'none',stroke:'#F7C9A3','stroke-opacity':.5,'stroke-width':1.5,cx:G.cx,cy:G.cy,r:G.r0-10},fan);
+const fpt=(r,a)=>{const q=a*Math.PI/180;return[G.cx+r*Math.cos(q),G.cy-r*Math.sin(q)];};
+function fanAt(d){let span=0,w=ROOMS.map(()=>1);const steps=Math.round(d*60);
+  for(let k=0;k<steps;k++){const sel=Math.min(4,Math.max(0,Math.floor((k/60-.75)/.42)+1));span+=(1-span)*.055;w=w.map((x,i)=>x+((i===sel?3:1)-x)*.11);}
+  const total=w.reduce((x,y)=>x+y,0);let a=G.a0;
+  wedges.forEach((wd,i)=>{const s=a+.7,e=(a+=180*span*w[i]/total)-.7;if(e-s<.3){wd.clip.setAttribute('d','');wd.shade.setAttribute('d','');return;}
+    const P=[fpt(G.r0,s),fpt(G.r1,s),fpt(G.r1,e),fpt(G.r0,e)],p=P.map(q=>q.map(v=>v.toFixed(1)).join(','));
+    const dd=`M${p[0]} L${p[1]} A${G.r1},${G.r1} 0 0 0 ${p[2]} L${p[3]} A${G.r0},${G.r0} 0 0 1 ${p[0]} Z`;wd.clip.setAttribute('d',dd);wd.shade.setAttribute('d',dd);
+    wd.shade.style.opacity=1-Math.min(1,Math.max(0,(w[i]-1)/2*1.4));
+    for(let q=Math.ceil(s/90)*90;q<e;q+=90)P.push(fpt(G.r1,q));const xs=P.map(q=>q[0]),ys=P.map(q=>q[1]),x=Math.min(...xs),y=Math.min(...ys);
+    wd.img.setAttribute('x',x.toFixed(1));wd.img.setAttribute('y',y.toFixed(1));wd.img.setAttribute('width',(Math.max(...xs)-x).toFixed(1));wd.img.setAttribute('height',(Math.max(...ys)-y).toFixed(1));});}
 window.ready=(async()=>{await document.fonts.ready;await Promise.all([...document.images].filter(i=>i.src).map(i=>i.decode().catch(()=>{})));document.getAnimations().forEach(a=>a.pause());await seek(0);})();
 </script></body></html>
