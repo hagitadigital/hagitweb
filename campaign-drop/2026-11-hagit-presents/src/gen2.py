@@ -52,7 +52,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
 .box p{display:inline-block;font:500 76px/1.16 'Frank Ruhl Libre',serif;padding:16px 40px 24px;animation:capin .32s cubic-bezier(.16,.9,.2,1) both}
 .box p em{font-style:normal}
 .front{position:absolute;left:0;right:0;text-align:center;white-space:nowrap}
-.panel{position:absolute;left:0;right:0;top:1424px;bottom:0;animation:fromB .3s cubic-bezier(.16,.9,.2,1) both}
+.panel{position:absolute;left:0;right:0;top:1424px;bottom:0;animation:none!important}
 .panel p{position:absolute;left:30px;right:30px;top:26px;text-align:center;font:500 74px/1.14 'Frank Ruhl Libre',serif}
 .panel p em{font-style:normal}
 .band{position:absolute;top:0;bottom:0;width:132px;background:#9B1B47}
