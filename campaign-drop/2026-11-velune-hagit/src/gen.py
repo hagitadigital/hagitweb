@@ -122,16 +122,16 @@ STUDIO = '<div class="tag" style="color:#1E2A38;animation:none">VELUNE° · Bran
 MAQOM = lambda: word('מקום.', "700 430px/1 'David Libre',serif", LITCHI, -1, 940, 470, 'he')
 DOOR = "position:absolute;left:-1162px;top:0;height:1920px;width:3404px;max-width:none"
 # 0–3.0 hook: the question, and its answer already standing behind her (the door of a place), in frame 0
-slot('hookA', 'hookA', MARBRE, f'<img src="{V}porte/d01.webp" style="{DOOR}">', MAQOM(), STUDIO + HOOK(), 540, 505, .82)
+slot('hookA', 'hookA', MARBRE, f'<img src="{V}porte/d01.webp" style="{DOOR}">', MAQOM(), STUDIO + HOOK(), 296, 505, .82)
 t = T['hookB']
-slot('hookB', 'hookB', MARBRE, f'<div style="position:absolute;inset:0;transform:scale(1.12);transform-origin:50% 42%">{seq(V + "porte", "d", "webp", 1, .3, 40, t, DOOR, 2)}</div>', MAQOM(), STUDIO + HOOK(), 540, 505, .82)
+slot('hookB', 'hookB', MARBRE, f'<div style="position:absolute;inset:0;transform:scale(1.12);transform-origin:50% 42%">{seq(V + "porte", "d", "webp", 1, .3, 40, t, DOOR, 2)}</div>', MAQOM(), STUDIO + HOOK(), 852, 505, .82)
 # 3.0 the door opens; she steps back into it
 t = T['door']
-slot('door', 'back', MARBRE, f'<div style="position:absolute;inset:0;transform-origin:50% 45%;animation:push 1.5s linear both;animation-delay:{t:.2f}s">{seq(V + "porte", "d", "webp", 1, .9, 40, t, DOOR, 2)}</div>',
+slot('door', 'pock', MARBRE, f'<div style="position:absolute;inset:0;transform-origin:50% 45%;animation:push 1.5s linear both;animation-delay:{t:.2f}s">{seq(V + "porte", "d", "webp", 1, .9, 40, t, DOOR, 2)}</div>',
      '', name(t, 150, 300) + panel(t, words('מאחורי הדלת| *יש *גן.', t, .22, .15, CHAIR)), 540, 830, .54)
 # 4.5 the garden
 t = T['garden']
-slot('garden', 'en', MARBRE, cover('05-allee-garden-water.webp', t, -1166, 0, 3412, 1920, 'zoomin'), '', panel(t, words('בגן עץ אחד.| על העץ *פרי *אחד.', t, .17, .1, CHAIR)), 800, 840, .56)
+slot('garden', 'en', MARBRE, cover('05-allee-garden-water.webp', t, -1166, 0, 3412, 1920, 'zoomin'), '', panel(t, words('בגן עץ אחד.| על העץ *פרי *אחד.', t, .17, .1, CHAIR)), 950, 840, .56)
 # 6.0 the fruit opens — she offers her palm under it
 t = T['fruit']
 slot('fruit', 'or', MARBRE, fseq('a', 1, .9, t), '', panel(t, one('הפרי נפתח.', t)), 250, 800, .6)
@@ -148,7 +148,7 @@ slot('one', 'hrs', MARBRE, back, '', panel(t, one('בקבוק אחד.', t, .12))
 # 12.0 three hours — the bottle on her palm, the other two and their notes turning around it, the light moving from morning to evening
 t = T['three']
 HRS = [('AUBE', 'בוקר', MARBRE), ('FLORAISON', 'צהריים', CHAIR), ('CRÉPUSCULE', 'ערב', '#3A4263')]
-back = ''.join(f'<div class="swap" data-show="{t + i * .5},{t + (i + 1) * .5}" style="background:{c}"></div>' for i, (_, _, c) in enumerate(HRS))
+back = ''.join(f'<div class="swap" data-show="{t + i * .5},{t + (i + 1) * .5}" style="inset:-900px;background:{c}"></div>' for i, (_, _, c) in enumerate(HRS))
 CARD = 'width:250px;height:300px;object-fit:cover'
 items = [('bottle-aube.webp', '', 'height:330px'), ('13-notes-aube-bergamot-tea.webp', 'card', CARD), ('bottle-crepuscule.webp', '', 'height:330px'),
          ('15-notes-crepuscule-iris-oud.webp', 'card', CARD), ('14-notes-floraison-rose-peony.webp', 'card', CARD)]
@@ -156,11 +156,11 @@ orbits.append(dict(el='s_three', t=t, R=400, tilt=.3, speed=.42, phase=.1, follo
 camtop = f'<img class="prod" src="{V}bottle-floraison.webp" data-lift="40" style="height:520px">' + ''.join(f'<img class="oi {c}" src="{V}{s}" style="{st}">' for s, c, st in items)
 top = ''.join(f'<div class="tag" data-show="{t + i * .5},{t + (i + 1) * .5}" style="top:1376px;z-index:21;animation:none;font-size:32px"><span style="display:inline-block;background:{NUIT};color:#F4F6F9;padding:14px 30px 16px;border-radius:40px">{n} · <span style="font:500 38px {HE};letter-spacing:0">{h}</span></span></div>' for i, (n, h, _) in enumerate(HRS))
 top += box('שלוש שעות.', LITCHI, '#FDF7F4', CHAIR, t, 1466, 92)
-slot('three', 'mi', MARBRE, back, word('VELUNE°', "400 300px/1 'Marcellus',serif", LITCHI, t, 1010, 495), top, 540, 505, .95, camtop=camtop, zoom=[.7, 1.15, 1.6, -230])
+slot('three', 'mi', MARBRE, back, word('VELUNE°', "400 300px/1 'Marcellus',serif", LITCHI, t, 1010, 495), top, 570, 505, .95, camtop=camtop, zoom=[.7, 1.15, 1.6, -230])
 # 13.5 the door comes back, as a box — she stands on both sides of it
 t = T['coffret']
 back = f'<div class="swap" data-show="{t},{t + .6}">{cover("19-ecrin-box-closed.webp", t, -1166, -60, 3412, 1920)}</div><div class="swap" data-show="{t + .6},{t + BEAT}">{cover("20-ecrin-box-open.webp", t, -1166, -60, 3412, 1920)}</div>'
-slot('coffret', 'ch', MARBRE, back, '', panel(t, words('הדלת חוזרת.| *הפעם *בקופסה.', t, .2, .12, CHAIR)), 190, 830, .56, mirror=True)
+slot('coffret', 'ch', MARBRE, back, '', panel(t, words('הדלת חוזרת.| *הפעם *בקופסה.', t, .2, .12, CHAIR)), 200, 885, .56, mirror=True)
 t = T['cta']
 cta = f'''<div class="slot" data-show="{t},{DUR + 1}" style="background:{MARBRE}">
   <div class="k" style="top:290px;color:{LITCHI}">HAGIT ANTEBI · BRAND WORLDS STUDIO</div>
