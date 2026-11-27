@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>SOLUNA typographic edit</title>
 <!--
-  SOLUNA° (World 05) — typographic edit, 26.4s, 1080×1920, 30fps.
+  SOLUNA° (World 05) — typographic edit, 31.2s, 1080×1920, 30fps.
   The words are written into the water as ink and melt in it: the fluid engine is the one from soluna/index.html
   (stable fluids, ink as absorbance), stepped one fixed step per frame so every render is identical.
   The shop scene is the real site, recorded frame by frame by record-shop.js into shop/.
   Render: node render.js reel.html out/SOLUNA-type.mp4      Stills: node render.js reel.html test/r 0,60,150
-  Timeline: 0–2.6 hook · 2.6–4.4 studio window · 4.0–12.4 four moods · 12.4–20.4 shop · 20.4–23.6 promise · 23.6–26.4 outro
+  Timeline: 0–2.6 hook · 2.6–4.4 studio window · 4.0–12.4 four moods · 12.4–20.9 shop · 20.9–25.2 out of the shop (bag, café) · 25.2–28.4 promise · 28.4–31.2 outro
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&amp;family=Heebo:wght@300;400;500;600&amp;family=Spline+Sans+Mono:wght@400&amp;family=Cormorant+Garamond:ital,wght@0,400;1,400&amp;family=Plus+Jakarta+Sans:wght@500&amp;display=block" rel="stylesheet">
@@ -21,6 +21,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--s-bg);font
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--s-bg)}
 #world{overflow:hidden;background:var(--water);transform-origin:540px 960px;box-shadow:0 50px 140px rgba(59,46,51,.26)}
 #film,#shop{position:absolute;left:0;width:1080px;display:block}
+
+.deh{position:absolute;top:0;left:0;height:1920px;width:1536px;opacity:0;transform-origin:50% 50%}
 #water{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:multiply}
 .pyr{position:absolute;left:0;top:0;filter:drop-shadow(0 26px 30px rgba(22,34,42,.26))}
 .hs{font-family:'Frank Ruhl Libre',serif}.lat{font-family:'Fraunces',serif}
@@ -72,6 +74,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--s-bg);font
 <div id="world" class="stack">
   <img id="film" alt="" style="top:170px">
   <div id="veil" class="abs" style="left:0;right:0;top:0;height:760px;background:linear-gradient(to bottom,#EEF3F1 44%,rgba(238,243,241,0))"></div>
+  <img id="deh1" class="deh" alt="" src="../../soluna/assets/dehors/sac.webp">
+  <img id="deh2" class="deh" alt="" src="../../soluna/assets/dehors/cafe.webp">
+  <div id="dveil" class="abs" style="left:0;right:0;top:0;height:900px;opacity:0;background:linear-gradient(to bottom,rgba(244,247,246,.78) 45%,rgba(244,247,246,0))"></div>
   <canvas id="water" width="1080" height="1920"></canvas>
   <div id="pyrs" class="stack"></div>
   <img id="shop" alt="" style="top:0">
@@ -96,6 +101,12 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--s-bg);font
     <div class="tap" id="tap"></div>
   </div>
 
+  <!-- out of the shop -->
+  <div id="dh" class="stack">
+    <div class="abs mono" id="dlab" style="top:92px;left:0;right:0;text-align:center;font-size:22px;color:var(--ink)" dir="ltr">Hors de la boutique</div>
+    <div class="abs pill" id="dcap" style="top:1640px"></div>
+  </div>
+
   <!-- promise -->
   <div id="pr" class="stack">
     <div class="abs center lat" id="logo" style="top:1560px;font-size:92px;font-weight:300;letter-spacing:.36em;padding-left:.36em;color:var(--ink);text-shadow:0 0 26px #EEF3F1,0 0 26px #EEF3F1,0 0 50px #EEF3F1" dir="ltr">SOLUNA°</div>
@@ -106,7 +117,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--s-bg);font
 
 <script>
 (() => {
-const FPS = 30, W = 1080, H = 1920, DUR = 26.4;
+const FPS = 30, W = 1080, H = 1920, DUR = 31.2;
 const $ = id => document.getElementById(id);
 const cl = x => Math.max(0, Math.min(1, x)), seg = (t, a, b) => cl((t - a) / (b - a));
 const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
@@ -128,7 +139,7 @@ const MOODS = [
 const BLUE = MOODS[3].A;
 
 /* ---------- timeline ---------- */
-const T = { hookEnd: 2.6, swap: 3.5, open0: 3.8, open1: 4.4, M0: 4.0, DM: 2.1, shop: 12.4, prom: 20.4, out: 23.6 };
+const T = { hookEnd: 2.6, swap: 3.5, open0: 3.8, open1: 4.4, M0: 4.0, DM: 2.1, shop: 12.4, deh: 20.9, caf: 23.05, prom: 25.2, out: 28.4 };
 const WIN = .53, WINY = -38;
 
 /* ---------- ink text: drawn into a mask (rgb = absorbance / 4), stamped into the dye while it is held ---------- */
@@ -235,6 +246,10 @@ function build() {
   MOODS.forEach((m, i) => { const t = T.M0 + i * T.DM; const sz = fit(`italic 300 SZpx ${LAT}`, m.latin, 960, 470);
     addInk({ t0: t, tw: .65, tr: t + 1.5, dir: 'ltr', font: `italic 300 ${sz}px ${LAT}`, text: m.latin, x: 540, y: 690, fill: enc(m.A), g: .5 });
     POUR.push({ x: 540, y: 1330, A: m.A, t0: t + .95, t1: t + 1.95, k: .55 }); });
+  // out of the shop: the bag, then the café
+  const lg = (c, o) => { const g = c.createLinearGradient(o.x0, 0, o.x1, 0); [0, 1, 2, 3].forEach((j, n) => g.addColorStop(.1 + n * .27, enc(MOODS[j].A.map(v => v * 1.35)))); return g; };
+  [[T.deh, 'Le Sac', enc(BLUE)], [T.caf, 'Au Café', lg]].forEach(([t, text, fill]) => { const sz = fit(`italic 300 SZpx ${LAT}`, text, 900, 330);
+    addInk({ t0: t + .2, tw: .5, tr: t + 1.75, dir: 'ltr', font: `italic 300 ${sz}px ${LAT}`, text, x: 540, y: 470, fill, g: .4, still: .7, kick: 150 }); });
   // promise: two lines, the four colours across them
   const grad = (c, o) => { const g = c.createLinearGradient(o.x1, 0, o.x0, 0); [0, 3, 2, 1].forEach((j, n) => g.addColorStop(.08 + n * .28, enc(MOODS[j].A))); return g; };
   const p = T.prom;
@@ -243,11 +258,11 @@ function build() {
   PX.forEach((x, i) => POUR.push({ x, y: 1330, A: MOODS[i].A, t0: p + 1.5 + i * .12, t1: p + 3.1, k: .3 }));
 }
 const PX = [930, 670, 410, 150];
-const RESETS = [0, T.swap, T.prom - .2].map(t => Math.round(t * FPS));
+const RESETS = [0, T.swap, T.deh - .2, T.prom - .2].map(t => Math.round(t * FPS));
 function stepFluid(f) {
   const t = f / FPS, dt = 1 / FPS, s = 2.7;
   if (RESETS.includes(f)) resetFluid();
-  const on = (t < T.shop + .5) || t >= T.prom - .2; if (!on) return;
+  const on = (t < T.shop + .5) || t >= T.deh - .2; if (!on) return;
   let g = 42, held = false, damp = 1; mc.globalCompositeOperation = 'source-over'; mc.fillStyle = '#000'; mc.fillRect(0, 0, W, H);
   for (const o of INK) {
     if (t >= o.t0 && t < o.tr) { const p = seg(t, o.t0, o.t0 + o.tw); drawInk(o, p < 1 ? .04 + .96 * p : 1); if (p < 1) damp = Math.min(damp, .8); held = true; g = Math.min(g, o.g); if (o.still) damp = Math.min(damp, o.still);
@@ -260,7 +275,7 @@ function stepFluid(f) {
     splat('vel', d.x + jx, d.y + 6, [(rnd() - .5) * 150 * s, -230 * s, 0], .0005);
     splat('add', d.x + jx, d.y + 4, d.A.map(v => v * d.k), .00022); }
   if (damp < 1) { const u = use('scale', F.vel.read); gl.uniform1i(u.uT, F.vel.read.bind(0)); gl.uniform1f(u.value, damp); blit(F.vel.write); F.vel.swap(); }
-  simulate(dt, g, t < T.swap ? .1 : (t < T.shop ? .55 : .12));
+  simulate(dt, g, t < T.swap ? .1 : (t < T.shop ? .55 : (t < T.prom - .2 ? .9 : .12)));
   if (held) stamp(1);
   show();
 }
@@ -271,9 +286,9 @@ const mk = (src, w) => { const i = new Image(); i.src = src; i.className = 'pyr'
 MOODS.forEach(m => { IMG[m.k] = { c: mk(`../../soluna/assets/mood/closed-${m.k}.webp`, 600), o: mk(`../../soluna/assets/mood/open-${m.k}.webp`, 720), s: mk(`../../soluna/assets/mood/closed-${m.k}.webp`, 236) }; });
 const place = (im, cx, cy, sc, op, rot = 0) => { const w = parseFloat(im.style.width), h = w * im.naturalHeight / im.naturalWidth;
   im.style.opacity = op; im.style.transform = `translate(${cx - w / 2}px,${cy - h / 2}px) rotate(${rot}deg) scale(${sc})`; };
-const SHOPMAP = [[0, 0], [22, 15], [70, 60], [96, 112], [100, 115], [150, 160], [158, 172], [160, 173], [186, 197], [188, 198], [240, 245]];
-const TAPS = [[22, 635, 1392], [100, 300, 1782], [160, 540, 1850], [188, 212, 99]];
-const CAPS = [[2, 92, 'בוחרים תחושה.'], [98, 154, 'טיפת לימון, והכחול הופך לסגול.'], [158, 238, 'מוסיפים לשקית.']];
+const SHOPMAP = [[0, 0], [58, 15], [104, 60], [128, 112], [132, 115], [178, 160], [186, 172], [188, 173], [212, 197], [214, 198], [256, 245]];
+const TAPS = [[58, 635, 1392], [132, 300, 1782], [188, 540, 1850], [214, 212, 99]];
+const CAPS = [[36, 124, 'בוחרים תחושה.'], [130, 182, 'טיפת לימון, והכחול הופך לסגול.'], [186, 254, 'מוסיפים לשקית.']];
 const setImg = async (el, src) => { if (el.dataset.s !== src) { el.dataset.s = src; el.src = src; try { await el.decode(); } catch (e) {} } };
 const pad3 = n => String(n).padStart(3, '0');
 
@@ -293,7 +308,7 @@ async function draw(f) {
   $('film').style.opacity = hookA; $('veil').style.opacity = hookA; $('hk').style.opacity = hookA;
   if (t < T.swap + .2) await setImg($('film'), `f/calm_${pad3(Math.min(120, 18 + f))}.jpg`);
   $('film').style.transform = `scale(${1 + .04 * seg(t, 0, 3.6)})`;
-  $('water').style.opacity = (t < T.shop + .4 ? 1 - seg(t, T.shop, T.shop + .4) : seg(t, T.prom - .1, T.prom + .2)) * (t < T.swap ? 1 - seg(t, T.swap - .12, T.swap) : 1);
+  $('water').style.opacity = (t < T.shop + .4 ? 1 - seg(t, T.shop, T.shop + .4) : seg(t, T.deh - .1, T.deh + .2)) * (t < T.swap ? 1 - seg(t, T.swap - .12, T.swap) : 1);
 
   // moods
   const inM = t >= T.swap && t < T.shop + .4; $('mh').style.opacity = inM ? seg(t, T.M0 - .2, T.M0 + .1) * (1 - seg(t, T.shop - .1, T.shop + .2)) : 0;
@@ -307,14 +322,23 @@ async function draw(f) {
       const a = vis(u, .7, T.DM - .05, .2); $('mcap').style.opacity = a; $('mblend').style.opacity = a; $('mcap').style.transform = `translateY(${(1 - eo(seg(u, .7, 1))) * 26}px)`; } });
 
   // shop (the real site)
-  const fs = Math.round((t - T.shop) * FPS), inS = t >= T.shop - .05 && t < T.prom + .3;
-  $('shop').style.opacity = inS ? seg(t, T.shop, T.shop + .4) * (1 - seg(t, T.prom - .2, T.prom + .15)) : 0; $('sh').style.opacity = inS ? 1 - seg(t, T.prom - .3, T.prom - .1) : 0;
-  if (inS) { const o = Math.max(0, Math.min(240, fs)); let src = 245; for (let j = 1; j < SHOPMAP.length; j++) if (o <= SHOPMAP[j][0]) { const [a, b] = SHOPMAP[j - 1], [c, d] = SHOPMAP[j]; src = Math.round(b + (d - b) * (o - a) / (c - a)); break; }
+  const fs = Math.round((t - T.shop) * FPS), inS = t >= T.shop - .05 && t < T.deh + .3;
+  $('shop').style.opacity = inS ? seg(t, T.shop, T.shop + .4) * (1 - seg(t, T.deh - .2, T.deh + .15)) : 0; $('sh').style.opacity = inS ? 1 - seg(t, T.deh - .3, T.deh - .1) : 0;
+  $('shop').style.transformOrigin = '50% 62%'; $('shop').style.transform = `scale(${1 + .07 * eio(seg(fs, 0, 58)) * (1 - eio(seg(fs, 58, 84)))})`;
+  if (inS) { const o = Math.max(0, Math.min(256, fs)); let src = 245; for (let j = 1; j < SHOPMAP.length; j++) if (o <= SHOPMAP[j][0]) { const [a, b] = SHOPMAP[j - 1], [c, d] = SHOPMAP[j]; src = Math.round(b + (d - b) * (o - a) / (c - a)); break; }
     await setImg($('shop'), `shop/s_${pad3(src)}.jpg`);
     let tp = 0; for (const [tf, x, y] of TAPS) { const r = fs - tf; if (r >= -9 && r <= 7) { const q = r < 0 ? eo((r + 9) / 9) : 1 - r / 7; tp = q; $('tap').style.left = x + 'px'; $('tap').style.top = y + 'px'; $('tap').style.transform = `scale(${r < 0 ? 1.5 - .6 * q : .9 + .5 * (r / 7)})`; } }
     $('tap').style.opacity = tp;
-    let ca = 0; for (const [a, b, txt] of CAPS) if (fs >= a && fs <= b) { ca = Math.min(seg(fs, a, a + 7), 1 - seg(fs, b - 6, b)); $('cap').textContent = txt; $('cap').style.top = (fs >= 186 ? 560 : 708) + 'px'; }
+    let ca = 0; for (const [a, b, txt] of CAPS) if (fs >= a && fs <= b) { ca = Math.min(seg(fs, a, a + 7), 1 - seg(fs, b - 6, b)); $('cap').textContent = txt; $('cap').style.top = (fs >= 212 ? 560 : 708) + 'px'; }
     $('cap').style.opacity = ca; }
+
+  // out of the shop (photos from the site; the ink of the words falls on them)
+  const a1 = t >= T.deh - .3 && t < T.caf + .4 ? 1 - seg(t, T.caf - .15, T.caf + .25) : 0, a2 = t >= T.caf - .2 && t < T.prom + .4 ? seg(t, T.caf - .15, T.caf + .25) * (1 - seg(t, T.prom - .25, T.prom + .15)) : 0;
+  const kb = (el, a, u, x0, x1) => { el.style.opacity = a; el.style.transform = `translateX(${x0 + (x1 - x0) * u}px) scale(${1.08 - .06 * u})`; };
+  kb($('deh1'), a1, seg(t, T.deh - .3, T.caf + .4), -300, -220); $('dveil').style.opacity = a2; kb($('deh2'), a2, seg(t, T.caf - .2, T.prom + .4), -90, -170);
+  const inD = t >= T.deh && t < T.prom; $('dh').style.opacity = inD ? seg(t, T.deh + .1, T.deh + .35) * (1 - seg(t, T.prom - .3, T.prom - .1)) : 0;
+  if (inD) { const c = t < T.caf, b = c ? T.deh : T.caf; $('dcap').textContent = c ? 'הצבע יוצא איתך.' : 'בבית הקפה: איך את רוצה להרגיש?';
+    $('dcap').style.opacity = vis(t, b + .55, b + 2.1, .2); $('dlab').textContent = c ? 'Hors de la boutique · Le Sac' : 'Hors de la boutique · Au Café'; }
 
   // promise
   const u = t - T.prom; $('pr').style.opacity = u > 0 ? 1 : 0;
