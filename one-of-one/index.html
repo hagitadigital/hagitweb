@@ -15,7 +15,7 @@
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://hagitantebi.co.il/one-of-one-og.jpg">
-<meta name="theme-color" content="#F2EEE9">
+<meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 <!-- Meta Pixel Code -->
@@ -76,8 +76,8 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 
 <style>
 :root{
-  --wall:#F2EEE9;        /* the photographed wall, so the top sits in the page */
-  --paper:#F4F1EA;
+  --wall:#F4F1EA;        /* off-white: the base colour of the brand */
+  --paper:#FAF8F3;
   --ink:#14161C;
   --silver:#C9CCD1; --silver-d:#8C9097;
   --butter:#F5E08A; --tomato:#E5412D; --cobalt:#1F47C8; --pink:#F2A7C3;
@@ -101,7 +101,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- topbar ---------- */
-.topbar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px clamp(16px,3vw,32px);font-size:13px;background:rgba(242,238,233,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px clamp(16px,3vw,32px);font-size:13px;background:rgba(244,241,234,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .topbar .label b{font-weight:600}
 .topbar a{text-decoration:none;font-weight:500;white-space:nowrap}
 @media(max-width:640px){.topbar .bws{display:none}}
@@ -109,16 +109,15 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* ---------- studio (hero) ---------- */
 .studio{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(12px,3vw,48px);padding:74px clamp(16px,4vw,56px) 32px;max-width:1360px;margin:0 auto}
 .stage-wrap{position:relative;display:flex;justify-content:center}
-.stage{position:relative;width:min(100%,calc((100svh - 120px)*.8003));aspect-ratio:1122/1402;
-  -webkit-mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 78%,transparent 100%);mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 78%,transparent 100%)}
+.stage{position:relative;width:min(100%,calc((100svh - 120px)*.8003));aspect-ratio:1122/1402;filter:drop-shadow(-14px 26px 26px rgba(60,48,38,.22))}
 .stage img{position:absolute;user-select:none;-webkit-user-drag:none}
 .top{inset:0;width:100%;height:100%;transition:opacity .5s var(--ease)}
 .top.ink{opacity:0}
 .stage[data-top="ink"] .top.ink{opacity:1}
-.hanger{left:30.570%;top:2.853%;width:39.127%;height:23.680%;opacity:0;transition:opacity .45s var(--ease)}
+.hanger{left:29.590%;top:3.281%;width:39.929%;height:23.752%;opacity:0;transition:opacity .45s var(--ease)}
 .hanger.on{opacity:1}
-.piece{left:63.904%;top:38.302%;width:15%;transform:translate(-50%,-50%);filter:drop-shadow(-3px 7px 7px rgba(40,30,24,.30));transition:left .5s var(--ease),top .5s var(--ease),width .5s var(--ease)}
-.stage[data-place="sleeve"] .piece{left:16.845%;top:55.635%;width:9.5%}
+.piece{left:63.993%;top:38.445%;width:15%;transform:translate(-50%,-50%);filter:drop-shadow(-3px 7px 7px rgba(40,30,24,.30));transition:left .5s var(--ease),top .5s var(--ease),width .5s var(--ease)}
+.stage[data-place="sleeve"] .piece{left:15.508%;top:56.277%;width:9.5%}
 .piece.press{animation:press .42s var(--ease)}
 @keyframes press{0%{transform:translate(-50%,-50%) scale(1.5);opacity:0;filter:drop-shadow(-10px 22px 18px rgba(40,30,24,.18))}60%{transform:translate(-50%,-50%) scale(.94);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}
 .edition{position:absolute;inset-inline-start:4%;bottom:5%;font:500 11px/1.5 var(--mono);letter-spacing:.08em;direction:ltr;opacity:.6}
@@ -218,7 +217,7 @@ h2 b{font-weight:600}
 .mani{text-align:center}
 .mani .big{font:700 clamp(30px,6vw,84px)/.98 var(--en);font-stretch:122%;text-transform:uppercase;direction:ltr;margin:0 0 26px;letter-spacing:-.01em}
 .mani .big em{font-style:normal;color:var(--mood);transition:color .5s}
-.mani p{max-width:54ch;margin:0 auto;opacity:.82;font-size:18px}
+.mani p:not(.big){max-width:54ch;margin:0 auto;opacity:.82;font-size:18px}
 
 /* studio note / cta / neighbours */
 .studio-note .inner{max-width:780px}
@@ -543,14 +542,14 @@ document.addEventListener('DOMContentLoaded', function () {
   /* --- the certificate picture: the same layers, drawn on a canvas --- */
   var cache={};
   function load(u){return cache[u]||(cache[u]=new Promise(function(ok,no){var i=new Image();i.onload=function(){ok(i)};i.onerror=no;i.src=u}))}
-  var W=1122,H=1402,POS={chest:[717,537],sleeve:[189,780]},HB=[343,40,439,332],token=0;
+  var W=1122,H=1402,POS={chest:[718,539],sleeve:[174,789]},HB=[332,46,448,333],token=0;
   function paint(ctx,size){
     var t=++token,list=[load('assets/top-'+S.top+'.webp'),load(src(S.mood,S.fin))];
     if(S.fin!=='silver')list.push(load('assets/hanger-'+S.fin+'.webp'));
     return Promise.all(list).then(function(r){
       if(t!==token)return;
       var s=size/1120,ox=(size-W*s)/2,oy=-150*s;   /* square crop: hanger to hip */
-      ctx.fillStyle='#F2EEE9';ctx.fillRect(0,0,size,size);
+      ctx.fillStyle='#F4F1EA';ctx.fillRect(0,0,size,size);
       ctx.drawImage(r[0],ox,oy,W*s,H*s);
       if(r[2])ctx.drawImage(r[2],ox+HB[0]*s,oy+HB[1]*s,HB[2]*s,HB[3]*s);
       var sz=SIZE[S.mood],k=(S.place==='chest'?.15:.095)*W/Math.max(sz[0],sz[1]),w=sz[0]*k*s,h=sz[1]*k*s,p=POS[S.place];
