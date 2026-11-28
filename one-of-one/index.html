@@ -134,7 +134,11 @@ h1 span{display:block}
 .ctl-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 10px}
 .ctl-h .k{font:500 11px/1 var(--mono);letter-spacing:.16em;direction:ltr;opacity:.6}
 .ctl-h .v{font:600 13px/1 var(--en);font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;direction:ltr}
-.moods{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;direction:ltr}
+.moods{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:6px;direction:ltr}
+.mood.cause::after{content:"STAND";position:absolute;bottom:3px;left:0;right:0;text-align:center;font:500 7px/1 var(--mono);letter-spacing:.08em;opacity:.6}
+.mood.cause{padding-bottom:22%}
+.swatch.cause{display:none}
+.has-cause .swatch.cause{display:block}
 .mood{position:relative;aspect-ratio:1;border:1px solid transparent;border-radius:14px;background:rgba(255,255,255,.5);padding:14%;display:grid;place-items:center;transition:border-color .2s,background .2s,transform .2s var(--ease)}
 .mood{overflow:hidden}
 .mood img{width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(40,30,24,.18))}
@@ -298,6 +302,18 @@ figure{margin:0}
 .boxgrid img{width:100%;height:100%;object-fit:cover}
 .b-bag{grid-row:1/3}
 
+/* stand */
+.stand{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,72px);align-items:center}
+.stand .hero{display:grid;place-items:center;aspect-ratio:1;background:var(--paper);border:1px solid var(--line)}
+.stand .hero img{width:38%;height:auto;filter:drop-shadow(-8px 22px 20px rgba(40,30,24,.25))}
+.causes{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+.cause-c{background:var(--wall);padding:22px 18px 24px;display:flex;flex-direction:column;gap:6px;position:relative}
+.cause-c img{width:54px;height:auto;margin-bottom:12px;filter:drop-shadow(-3px 8px 8px rgba(40,30,24,.22))}
+.cause-c .when{font:500 11px/1.4 var(--mono);letter-spacing:.1em;direction:ltr;text-align:right;opacity:.6}
+.cause-c .what{font-size:16px;font-weight:500;line-height:1.4}
+.cause-c .now{position:absolute;top:18px;left:18px;font:500 10px/1 var(--mono);letter-spacing:.14em;background:var(--ink);color:var(--wall);padding:5px 8px;border-radius:999px}
+.fine{font-size:13px;opacity:.6;margin:18px 0 0}
+
 /* manifesto */
 .mani{text-align:center}
 .mani .big{font:700 clamp(30px,6vw,84px)/.98 var(--en);font-stretch:122%;text-transform:uppercase;direction:ltr;margin:0 0 26px;letter-spacing:-.01em}
@@ -333,7 +349,9 @@ footer a{text-decoration:none}
   .stage{width:min(100%,62svh*.8003,420px);width:min(100%,420px)}
   .stage-wrap{margin:-10px 0 -18px}
   h1{font-size:clamp(30px,9.4vw,46px)}
-  .moods{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .moods{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .causes{grid-template-columns:1fr 1fr}
+  .stand{grid-template-columns:1fr}
   .steps,.six{grid-template-columns:1fr}
   .dropbar{grid-template-columns:1fr 1fr}
   .dropbar .intro{grid-column:1/-1}
@@ -407,6 +425,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <img class="hanger on" data-f="tomato" src="assets/hanger-tomato.webp" alt="" aria-hidden="true">
       <img class="hanger" data-f="cobalt" src="assets/hanger-cobalt.webp" alt="" aria-hidden="true" loading="lazy">
       <img class="hanger" data-f="pink" src="assets/hanger-pink.webp" alt="" aria-hidden="true" loading="lazy">
+      <img class="hanger" data-f="orange" src="assets/hanger-orange.webp" alt="" aria-hidden="true" loading="lazy">
       <img class="piece" id="piece" src="assets/el/sweet-tomato.webp" alt="האלמנט שנבחר, לחוץ על התיקתק">
     </div>
   </div>
@@ -508,6 +527,26 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 </div>
+
+<!-- ======================= STAND ======================= -->
+<section class="sec" id="stand">
+  <div class="stand">
+    <div class="hero"><img src="assets/el/stand-orange.webp" width="275" height="420" loading="lazy" alt="סרט מודעות מנופח בכתום, באותה שפה של שאר האלמנטים"></div>
+    <div>
+      <p class="tag">STAND · CAUSE DROPS</p>
+      <h2>יש ימים שזה לא מצב רוח. <b>זו עמדה.</b></h2>
+      <p class="lead">אלמנט אחד נוסף: סרט. הצורה לא משתנה, הצבע כן. כל צבע הוא מטרה, והוא זמין רק בתקופה שלה. חלק מהמחיר של כל <span class="ltr">STAND</span> נתרם לעמותה שפועלת בתחום.</p>
+      <p style="margin:26px 0 0"><button class="btn" type="button" id="standPick"><i aria-hidden="true" style="background:#F28A1E"></i>לשים אותו על החולצה שלי</button></p>
+      <p class="fine"><span class="ltr">ONE OF ONE°</span> הוא מותג קונספט, והתרומה היא חלק מהקונספט ולא התחייבות אמיתית.</p>
+    </div>
+  </div>
+  <div class="causes">
+    <div class="cause-c"><span class="now">NOW</span><img src="assets/el/stand-orange.webp" width="275" height="420" loading="lazy" alt="סרט כתום"><span class="when">25.11 – 10.12</span><span class="what">16 ימי הפעילות נגד אלימות כלפי נשים</span></div>
+    <div class="cause-c"><img src="assets/el/stand-tomato.webp" width="275" height="420" loading="lazy" alt="סרט אדום"><span class="when">1.12</span><span class="what">יום האיידס הבינלאומי</span></div>
+    <div class="cause-c"><img src="assets/el/stand-purple.webp" width="275" height="420" loading="lazy" alt="סרט סגול"><span class="when">8.3</span><span class="what">יום האישה הבינלאומי</span></div>
+    <div class="cause-c"><img src="assets/el/stand-pink.webp" width="275" height="420" loading="lazy" alt="סרט ורוד"><span class="when">OCTOBER</span><span class="what">חודש המודעות לסרטן השד</span></div>
+  </div>
+</section>
 
 <!-- ======================= FINISHES ======================= -->
 <div class="band">
@@ -649,11 +688,13 @@ document.addEventListener('DOMContentLoaded', function () {
     {id:'free', he:['היום בלי תוכנית.','']},
     {id:'still',he:['היום שקט.','']},
     {id:'kiss', he:['היום מנשקת.','לא מסבירה.'],drop:1},
-    {id:'bloom',he:['היום פורחת.',''],drop:1}
+    {id:'bloom',he:['היום פורחת.',''],drop:1},
+    {id:'stand',he:['היום אני לא שותקת.',''],cause:1}
   ];
-  var FINS=[['silver','#D9DBDF'],['butter','#F5E08A'],['tomato','#E5412D'],['cobalt','#1F47C8'],['pink','#F2A7C3']];
+  var FINS=[['silver','#D9DBDF'],['butter','#F5E08A'],['tomato','#E5412D'],['cobalt','#1F47C8'],['pink','#F2A7C3'],['orange','#F28A1E']];
+  var CAUSE='orange';   /* the colour of the cause that is running now: STAND only */
   /* box of each piece in the 1122x1402 photo, as a share of its width */
-  var SIZE={loud:[390,391],soft:[376,323],sharp:[290,389],sweet:[362,367],free:[418,258],still:[353,361],kiss:[418,298],bloom:[389,374]};
+  var SIZE={loud:[390,391],soft:[376,323],sharp:[290,389],sweet:[362,367],free:[418,258],still:[353,361],kiss:[418,298],bloom:[389,374],stand:[275,420]};
   var S={mood:'sweet',fin:'tomato',top:'white',place:'chest',size:'M',who:''};
   var $=function(id){return document.getElementById(id)};
   var stage=$('stage'),piece=$('piece');
@@ -663,10 +704,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* --- build the pickers --- */
   MOODS.forEach(function(m,i){
-    var b=document.createElement('button');b.type='button';b.className='mood'+(m.drop?' drop':'');b.dataset.v=m.id;
+    var b=document.createElement('button');b.type='button';b.className='mood'+(m.drop?' drop':'')+(m.cause?' cause':'');b.dataset.v=m.id;
     b.setAttribute('aria-label',m.id.toUpperCase()+' · '+m.he.join(' '));
     b.innerHTML='<img alt="" width="'+SIZE[m.id][0]+'" height="'+SIZE[m.id][1]+'">';
     $('moods').appendChild(b);
+    if(m.cause)return;                                  /* STAND has its own section */
     var c=document.createElement('button');c.type='button';c.className='card';c.dataset.v=m.id;
     c.innerHTML='<span class="pic"><img alt="" loading="lazy" width="'+SIZE[m.id][0]+'" height="'+SIZE[m.id][1]+'"></span>'+
       '<span class="no">'+(m.drop?'DROP 01':'0'+(i+1)+' / 06')+'</span><span class="nm">'+m.id+'</span><span class="ph">'+m.he.join(' ')+'</span>';
@@ -675,6 +717,7 @@ document.addEventListener('DOMContentLoaded', function () {
   FINS.forEach(function(f){
     var b=document.createElement('button');b.type='button';b.className='swatch';b.dataset.v=f[0];b.style.setProperty('--c',f[1]);
     b.setAttribute('aria-label',f[0]);$('fins').appendChild(b);
+    if(f[0]===CAUSE){b.classList.add('cause');return}    /* a guest colour, not one of the five finishes */
     var g=document.createElement('figure');g.innerHTML='<div class="pic"><img alt="" loading="lazy"></div><figcaption>'+f[0].toUpperCase()+'</figcaption>';
     g.dataset.f=f[0];$('finRow').appendChild(g);
   });
@@ -682,6 +725,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function pressed(root,v){[].forEach.call(root.querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',b.dataset.v===v?'true':'false')})}
 
   function render(snap){
+    if(S.mood!=='stand'&&S.fin===CAUSE)S.fin='tomato';
     var m=mood(S.mood);
     piece.src=src(S.mood,S.fin);
     var sz=SIZE[S.mood],k=sz[0]/Math.max(sz[0],sz[1]);
@@ -694,7 +738,8 @@ document.addEventListener('DOMContentLoaded', function () {
     pressed($('moods'),S.mood);pressed($('fins'),S.fin);pressed($('tops'),S.top);pressed($('places'),S.place);pressed($('sizes'),S.size);
     var c=FINS.filter(function(f){return f[0]===S.fin})[0][1];
     document.documentElement.style.setProperty('--mood',S.fin==='silver'?'#8C9097':c);
-    [].forEach.call(document.querySelectorAll('#moods img'),function(im,i){im.src=src(MOODS[i].id,S.fin)});
+    [].forEach.call(document.querySelectorAll('#moods img'),function(im,i){var id=MOODS[i].id;im.src=src(id,id==='stand'?(S.mood==='stand'?S.fin:CAUSE):(S.fin===CAUSE?'silver':S.fin))});
+    $('fins').classList.toggle('has-cause',S.mood==='stand');
     [].forEach.call(document.querySelectorAll('#sixGrid img,#dropGrid img'),function(im){im.src=src(im.closest('.card').dataset.v,'silver')});
     [].forEach.call(document.querySelectorAll('#finRow figure'),function(g){g.querySelector('img').src=src(S.mood,g.dataset.f)});
     label();draw();
@@ -733,6 +778,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* --- events --- */
   function pick(key,root){root.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!b.dataset.v)return;S[key]=b.dataset.v;render(true)})}
+  $('moods').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.v==='stand')S.fin=CAUSE},true);
   pick('mood',$('moods'));pick('fin',$('fins'));pick('top',$('tops'));pick('place',$('places'));
   $('sizes').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;S.size=b.dataset.v;pressed($('sizes'),S.size)});
   [$('sixGrid'),$('dropGrid')].forEach(function(g){g.addEventListener('click',function(e){
@@ -744,6 +790,7 @@ document.addEventListener('DOMContentLoaded', function () {
     S.mood=b.dataset.mood;S.fin=b.dataset.fin;S.top=b.dataset.top;S.place=b.dataset.place;render(true);
     $('studio').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
   });
+  $('standPick').addEventListener('click',function(){S.mood='stand';S.fin=CAUSE;render(true);$('studio').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
   $('who').addEventListener('input',function(){this.value=this.value.replace(/[^A-Za-z .'-]/g,'');S.who=this.value.trim();label()});
 
   /* --- certificate (4:5) and story (9:16) pictures --- */
