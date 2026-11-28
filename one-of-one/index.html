@@ -72,7 +72,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Heebo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/top-white.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/side-white.webp" fetchpriority="high">
 
 <style>
 :root{
@@ -154,6 +154,69 @@ h1 span{display:block}
 .btn:hover{transform:translateY(-2px)}
 .btn i{width:9px;height:9px;border-radius:50%;background:var(--mood);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
 .count{font:400 12px/1.5 var(--mono);direction:ltr;opacity:.6}
+
+
+/* ---------- the rail (hero) ---------- */
+.rail{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 20px;overflow:hidden;--w:clamp(220px,25vw,360px);--sp:clamp(92px,10.6vw,152px)}
+.rail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;direction:ltr;width:100%;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
+.rail-head h1{margin:0;font-size:clamp(30px,4.3vw,62px)}
+.rail-head .hint{direction:rtl;text-align:right;max-width:26ch;font:300 clamp(16px,1.5vw,20px)/1.45 var(--he);margin:0 0 4px}
+.rail-head .hint b{font-weight:500}
+.rack{position:relative;margin-top:clamp(18px,4vh,46px)}
+.rack-bar{position:absolute;left:-2%;right:-2%;top:calc(var(--w)*.082);height:12px;border-radius:6px;background:linear-gradient(#F6F7F8,#C9CCD1 45%,#8C9097);box-shadow:0 8px 12px rgba(40,30,24,.14)}
+.rack-scroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;direction:ltr;cursor:grab;-webkit-overflow-scrolling:touch}
+.rack-scroll::-webkit-scrollbar{display:none}
+.rack-scroll.drag{cursor:grabbing}
+.rack-track{display:flex;width:max-content;margin:0 auto;padding:0 calc(var(--w)*.42) 34px}
+.rk{flex:none;position:relative;width:var(--sp);height:calc(var(--w)*1.2496);border:0;background:none;padding:0;-webkit-tap-highlight-color:transparent}
+.rk .in{position:absolute;left:50%;top:0;width:var(--w);margin-left:calc(var(--w)/-2);aspect-ratio:1122/1402;transform-origin:50% 4%;transition:transform .55s var(--ease);filter:drop-shadow(-10px 18px 16px rgba(60,48,38,.20));pointer-events:none;animation:sway 5.5s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s)}
+@keyframes sway{0%,100%{rotate:0 0 1 -.9deg}50%{rotate:0 0 1 .9deg}}
+.rk{z-index:calc(20 - var(--i))}
+.rk:hover,.rk:focus-visible,.rk.picked{z-index:30}
+.rk:hover .in,.rk:focus-visible .in{transform:translateY(2.5%) scale(1.07);animation-play-state:paused}
+.rk.picked .in{transform:translateY(7%) scale(1.12)}
+.rk .in img{position:absolute;user-select:none;-webkit-user-drag:none}
+.rk .t{inset:0;width:100%;height:100%}
+.rk .h{left:40.374%;top:1.355%;width:23.708%;height:29.173%}
+.rk .p{left:67.914%;top:36.876%;transform:translate(-50%,7%) scaleX(.86)}
+.rk .nm{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);font:500 10px/1 var(--mono);letter-spacing:.14em;opacity:0;transition:opacity .3s;white-space:nowrap}
+.rk:hover .nm,.rk:focus-visible .nm{opacity:.7}
+.rail-foot{text-align:center;font:500 11px/1 var(--mono);letter-spacing:.16em;direction:ltr;opacity:.5;margin-top:8px}
+.st-h{font:300 clamp(26px,3vw,40px)/1.2 var(--he);margin:0 0 6px}
+.st-h b{font-weight:600}
+
+/* ---------- bag ---------- */
+.price{font:600 20px/1 var(--en);font-stretch:112%;direction:ltr}
+.price small{display:block;font:400 11px/1.6 var(--he);opacity:.6;direction:rtl}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.bagbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:500 13px/1 var(--he);display:none;align-items:center;gap:8px}
+.bagbtn.on{display:inline-flex}
+.bagbtn i{min-width:18px;height:18px;border-radius:9px;background:var(--ink);color:#fff;font:500 11px/18px var(--mono);text-align:center;font-style:normal}
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(20,22,28,.35);opacity:0;pointer-events:none;transition:opacity .35s}
+.drawer{position:fixed;z-index:91;top:0;bottom:0;left:0;width:min(440px,100%);background:var(--paper);box-shadow:20px 0 60px rgba(20,22,28,.18);transform:translateX(-102%);transition:transform .45s var(--ease);display:flex;flex-direction:column;visibility:hidden}
+.bag-open .scrim{opacity:1;pointer-events:auto}
+.bag-open .drawer{transform:none;visibility:visible}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.drawer header b{font:600 15px/1 var(--en);font-stretch:112%;letter-spacing:.08em;direction:ltr}
+.drawer .x{border:0;background:none;font-size:22px;line-height:1;padding:6px}
+.drawer .body{overflow:auto;padding:0 22px 22px;flex:1}
+.bagpic{position:relative;margin:0 -22px;aspect-ratio:1122/1100;overflow:hidden;background:#EFE7DE}
+.bagpic img.b{position:absolute;inset:0;width:100%;height:auto}
+.bagpic img.c{position:absolute;left:50%;top:48.6%;width:19%;transform:translate(-50%,0);filter:drop-shadow(-3px 8px 8px rgba(40,30,24,.28));transform-origin:50% 0}
+.bagpic img.c.press{animation:hang .6s var(--ease)}
+@keyframes hang{0%{transform:translate(-50%,-30%) scale(1.3);opacity:0}60%{transform:translate(-50%,0) rotate(5deg);opacity:1}100%{transform:translate(-50%,0)}}
+.items{list-style:none;margin:0;padding:0}
+.items li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.items .a{font:600 13px/1.4 var(--en);font-stretch:112%;text-transform:uppercase;letter-spacing:.05em;direction:ltr;text-align:right}
+.items .b2{font:400 11px/1.6 var(--mono);letter-spacing:.06em;direction:ltr;text-align:right;opacity:.7;grid-column:1}
+.items .pr{font:500 14px/1.4 var(--mono);direction:ltr}
+.items .rm{border:0;background:none;font-size:12px;text-decoration:underline;opacity:.6;padding:0;justify-self:end}
+.drawer footer{display:block;border-top:1px solid var(--line);padding:16px 22px 20px;opacity:1}
+.drawer .tot{display:flex;justify-content:space-between;font:600 15px/1 var(--he);margin-bottom:14px}
+.drawer .tot span:last-child{font-family:var(--mono);direction:ltr}
+.drawer .demo{font-size:12px;opacity:.6;margin:12px 0 0;text-align:center}
+.drawer .btn{width:100%;justify-content:center}
+.empty{padding:40px 0;text-align:center;opacity:.6}
 
 /* ---------- sections ---------- */
 .sec{padding:clamp(64px,9vw,128px) clamp(18px,5vw,64px);max-width:1240px;margin:0 auto}
@@ -260,6 +323,11 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 footer a{text-decoration:none}
 
 @media(max-width:900px){
+  .rail{--w:clamp(190px,56vw,250px);--sp:clamp(84px,25vw,112px);min-height:0;padding-top:64px}
+  .rail-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .rail-head .hint{max-width:none;width:100%}
+  .rack-track{margin:0}
+  .studio{min-height:0}
   .studio{grid-template-columns:1fr;padding-top:64px;gap:0}
   .stage{width:min(100%,62svh*.8003,420px);width:min(100%,420px)}
   .stage-wrap{margin:-10px 0 -18px}
@@ -310,12 +378,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="topbar">
   <span class="label"><b dir="ltr">1/1° ONE OF ONE</b> · קונספט לדוגמה<span class="bws"> · Brand Worlds Studio · World N°08</span></span>
-  <a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a>
+  <span style="display:inline-flex;align-items:center;gap:12px"><button type="button" class="bagbtn" id="bagBtn" aria-haspopup="dialog">הסל <i id="bagN">0</i></button><a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a></span>
 </div>
 
 <main>
 
-<!-- ======================= THE STUDIO (hero) ======================= -->
+<!-- ======================= THE RAIL (hero) ======================= -->
+<section class="rail" id="rail" aria-label="המוט: בוחרים חולצה">
+  <div class="rail-head">
+    <h1><span>My mood.</span><span>My rules.</span><span>My shirt.</span></h1>
+    <p class="hint"><b>חולצה אחת. שמונה מצבי רוח.</b><br>בחרי אחת מהמוט, ותעשי אותה שלך.</p>
+  </div>
+  <div class="rack">
+    <div class="rack-bar" aria-hidden="true"></div>
+    <div class="rack-scroll" id="rackScroll"><div class="rack-track" id="rack" role="group" aria-label="שמונה חולצות על המוט"></div></div>
+  </div>
+  <p class="rail-foot" aria-hidden="true">← DRAG THE RAIL · PICK ONE →</p>
+</section>
+
+<!-- ======================= THE STUDIO ======================= -->
 <section class="studio" id="studio" aria-label="הסטודיו: מרכיבים את החולצה">
   <div class="stage-wrap">
     <div class="stage" id="stage" data-top="white" data-place="chest">
@@ -331,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <div class="panel">
     <p class="eyebrow">1/1° ONE OF ONE · THE STUDIO</p>
-    <h1><span>My mood.</span><span>My rules.</span><span>My shirt.</span></h1>
+    <h2 class="st-h">עכשיו <b>תעשי אותה שלך.</b></h2>
     <p class="say" id="say" aria-live="polite"><b>היום מתוקה.</b> בתנאים שלי.</p>
 
     <div class="ctl">
@@ -361,9 +442,17 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
+    <div class="ctl">
+      <div class="ctl-h"><span class="k">05 · SIZE</span></div>
+      <div class="seg" id="sizes" role="group" aria-label="מידה">
+        <button type="button" data-v="XS" aria-pressed="false">XS</button><button type="button" data-v="S" aria-pressed="false">S</button><button type="button" data-v="M" aria-pressed="true">M</button><button type="button" data-v="L" aria-pressed="false">L</button><button type="button" data-v="XL" aria-pressed="false">XL</button>
+      </div>
+    </div>
+
     <div class="go">
-      <a class="btn" href="#sign"><i aria-hidden="true"></i>לחתום על החולצה שלי</a>
-      <span class="count">8 moods × 5 finishes × 2 shirts × 2 snaps = 160</span>
+      <span class="price">₪ 460<small>חולצה ואלמנט אחד · מחיר לדוגמה</small></span>
+      <button class="btn" type="button" id="add"><i aria-hidden="true"></i>להוסיף לסל</button>
+      <a class="btn ghost" href="#sign">לחתום עליה</a>
     </div>
   </div>
 </section>
@@ -495,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="tag">STUDIO NOTE · איך העולם הזה נבנה</p>
     <h2>מותג לא מתחיל מלוגו.<br>הוא מתחיל <b>מהבטחה שנגזרים ממנה האלמנטים.</b></h2>
     <p><span class="ltr">ONE OF ONE°</span> הוא עולם מותג קונספט: מותג אופנה בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>חולצה אחת, מצב הרוח מתחלף.</b> ממנה נגזר האלמנט, תיקתק כסוף שהחולצה תוכננה סביבו, ומהתיקתק נגזר כל השאר: האלמנטים שנלחצים עליו, הקולב באותו נפח, השם <span class="ltr">1/1</span> והתעודה שחותמים עליה.</p>
-    <p><b>איך זה עובד:</b> החולצה צולמה פעם אחת, והאלמנטים עוצבו פעם אחת בכסף. הצבעים, החולצה השחורה והקולב המתחלף נוצרים מהם, כך ש-160 שילובים יוצאים מעשר תמונות. <b>למה זה פרימיום ולא הדפסה על חולצות:</b> אין העלאת תמונה ואין טקסט חופשי. הלקוחה מרכיבה מתוך שפה סגורה, והמותג נשאר מזוהה בכל שילוב.</p>
+    <p><b>איך זה עובד:</b> החולצה צולמה פעם אחת, והאלמנטים עוצבו פעם אחת בכסף. הצבעים, החולצה השחורה והקולב המתחלף נוצרים מהם, כך ש-160 שילובים יוצאים מעשר תמונות, והמוט שבראש העמוד נבנה באותה שיטה מתמונת צד אחת. <b>למה זה פרימיום ולא הדפסה על חולצות:</b> אין העלאת תמונה ואין טקסט חופשי. הלקוחה מרכיבה מתוך שפה סגורה, והמותג נשאר מזוהה בכל שילוב.</p>
     <p>ככה נראית עבודה של <b>Brand Worlds Studio</b>: לא עמוד יפה עם טקסטים, אלא עולם שלם שבו כל פרט נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>
@@ -533,6 +622,21 @@ document.addEventListener('DOMContentLoaded', function () {
   <span><a href="https://hagitantebi.co.il/">hagitantebi.co.il</a> · <a href="https://hagitantebi.co.il/brand-worlds/">Brand Worlds</a></span>
 </footer>
 
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="הסל שלך" tabindex="-1">
+  <header><b>YOUR BAG</b><button type="button" class="x" id="bagX" aria-label="לסגור את הסל">×</button></header>
+  <div class="body">
+    <div class="bagpic"><img class="b" src="assets/bag-empty.webp" width="1122" height="1402" alt="שקית נייר בלבן שבור עם תיקתק כסוף בחזית" loading="lazy"><img class="c" id="bagPiece" alt="" hidden></div>
+    <ul class="items" id="bagItems"></ul>
+    <p class="empty" id="bagEmpty">הסל ריק. בחרי חולצה מהמוט.</p>
+  </div>
+  <footer>
+    <div class="tot"><span>סה״כ</span><span id="bagTot">₪ 0</span></div>
+    <a class="btn" href="#sign" id="bagGo"><i aria-hidden="true"></i>לחתום ולסיים</a>
+    <p class="demo">זה עולם מותג קונספט. אין כאן רכישה אמיתית.</p>
+  </footer>
+</aside>
+
 <script>
 (function(){
   var MOODS=[
@@ -548,7 +652,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var FINS=[['silver','#D9DBDF'],['butter','#F5E08A'],['tomato','#E5412D'],['cobalt','#1F47C8'],['pink','#F2A7C3']];
   /* box of each piece in the 1122x1402 photo, as a share of its width */
   var SIZE={loud:[390,391],soft:[376,323],sharp:[290,389],sweet:[362,367],free:[418,258],still:[353,361],kiss:[418,298],bloom:[389,374]};
-  var S={mood:'sweet',fin:'tomato',top:'white',place:'chest',who:''};
+  var S={mood:'sweet',fin:'tomato',top:'white',place:'chest',size:'M',who:''};
   var $=function(id){return document.getElementById(id)};
   var stage=$('stage'),piece=$('piece');
   function src(m,f){return 'assets/el/'+m+'-'+f+'.webp'}
@@ -585,7 +689,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(snap){piece.classList.remove('press');void piece.offsetWidth;piece.classList.add('press')}
     $('say').innerHTML='<b>'+m.he[0]+'</b>'+(m.he[1]?' '+m.he[1]:'');
     $('vMood').textContent=S.mood;$('vFin').textContent=S.fin;
-    pressed($('moods'),S.mood);pressed($('fins'),S.fin);pressed($('tops'),S.top);pressed($('places'),S.place);
+    pressed($('moods'),S.mood);pressed($('fins'),S.fin);pressed($('tops'),S.top);pressed($('places'),S.place);pressed($('sizes'),S.size);
     var c=FINS.filter(function(f){return f[0]===S.fin})[0][1];
     document.documentElement.style.setProperty('--mood',S.fin==='silver'?'#8C9097':c);
     [].forEach.call(document.querySelectorAll('#moods img'),function(im,i){im.src=src(MOODS[i].id,S.fin)});
@@ -625,6 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* --- events --- */
   function pick(key,root){root.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!b.dataset.v)return;S[key]=b.dataset.v;render(true)})}
   pick('mood',$('moods'));pick('fin',$('fins'));pick('top',$('tops'));pick('place',$('places'));
+  $('sizes').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;S.size=b.dataset.v;pressed($('sizes'),S.size)});
   [$('sixGrid'),$('dropGrid')].forEach(function(g){g.addEventListener('click',function(e){
     var b=e.target.closest('.card');if(!b)return;S.mood=b.dataset.v;render(true);
     $('studio').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
@@ -658,6 +763,58 @@ document.addEventListener('DOMContentLoaded', function () {
       if(typeof fbq==='function')fbq('trackCustom','OneOfOneCertSave',{mood:S.mood,finish:S.fin});
     });
   });
+
+  /* --- the rail: eight ready-made tops, seen from the side --- */
+  var RAIL=[['loud','butter','white'],['soft','silver','ink'],['sharp','cobalt','white'],['sweet','tomato','white'],['free','pink','ink'],['still','silver','white'],['kiss','tomato','ink'],['bloom','pink','white']];
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  RAIL.forEach(function(r,i){
+    var b=document.createElement('button');b.type='button';b.className='rk';b.style.setProperty('--i',i);
+    b.dataset.mood=r[0];b.dataset.fin=r[1];b.dataset.top=r[2];
+    b.setAttribute('aria-label',r[0].toUpperCase()+' · '+r[1]+' · '+(r[2]==='ink'?'חולצה שחורה':'חולצה בלבן שבור')+'. לבחור ולהמשיך לסטודיו');
+    var sz=SIZE[r[0]],k=sz[0]/Math.max(sz[0],sz[1]);
+    b.innerHTML='<span class="in"><img class="t" alt="" src="assets/side-'+r[2]+'.webp">'+(r[1]==='silver'?'':'<img class="h" alt="" src="assets/side-hanger-'+r[1]+'.webp">')+
+      '<img class="p" alt="" style="width:'+(12*k)+'%" src="'+src(r[0],r[1])+'"></span><span class="nm">'+r[0].toUpperCase()+'</span>';
+    $('rack').appendChild(b);
+  });
+  var sc=$('rackScroll'),drag=null,moved=0;
+  sc.addEventListener('pointerdown',function(e){if(e.pointerType==='touch')return;drag={x:e.clientX,l:sc.scrollLeft};moved=0});
+  addEventListener('pointermove',function(e){if(!drag)return;var d=e.clientX-drag.x;moved=Math.max(moved,Math.abs(d));if(moved>6){sc.classList.add('drag');sc.scrollLeft=drag.l-d}});
+  addEventListener('pointerup',function(){drag=null;sc.classList.remove('drag')});
+  $('rack').addEventListener('click',function(e){
+    var b=e.target.closest('.rk');if(!b||moved>6)return;
+    [].forEach.call(document.querySelectorAll('.rk.picked'),function(x){x.classList.remove('picked')});b.classList.add('picked');
+    S.mood=b.dataset.mood;S.fin=b.dataset.fin;S.top=b.dataset.top;S.place='chest';
+    setTimeout(function(){render(true);$('studio').scrollIntoView({behavior:reduce?'auto':'smooth'})},reduce?0:420);
+    if(typeof fbq==='function')fbq('trackCustom','OneOfOneRailPick',{mood:S.mood});
+  });
+
+  /* --- the bag (demo only) --- */
+  var BAG=[],PRICE=460,last=null;
+  function bagRender(){
+    $('bagN').textContent=BAG.length;$('bagBtn').classList.toggle('on',BAG.length>0);
+    $('bagEmpty').hidden=BAG.length>0;$('bagTot').textContent='₪ '+(BAG.length*PRICE).toLocaleString('en-US');
+    $('bagItems').innerHTML=BAG.map(function(it,i){
+      return '<li><span class="a">ONE OF ONE° · '+(it.top==='ink'?'Ink':'Off-white')+' · '+it.size+'</span><span class="pr">₪ '+PRICE+'</span>'+
+        '<span class="b2">'+(it.mood+' · '+it.fin+' · '+it.place).toUpperCase()+' · Nº '+it.no+'</span><button type="button" class="rm" data-i="'+i+'">להסיר</button></li>'}).join('');
+    var p=$('bagPiece'),it=BAG[BAG.length-1];
+    if(!it){p.hidden=true;return}
+    var sz=SIZE[it.mood];p.style.width=(19*sz[0]/Math.max(sz[0],sz[1]))+'%';p.src=src(it.mood,it.fin);p.hidden=false;
+    p.classList.remove('press');void p.offsetWidth;p.classList.add('press');
+  }
+  function bagOpen(on){
+    document.body.classList.toggle('bag-open',on);
+    if(on){last=document.activeElement;$('drawer').focus()}else if(last&&last.focus)last.focus();
+  }
+  $('add').addEventListener('click',function(){
+    BAG.push({mood:S.mood,fin:S.fin,top:S.top,place:S.place,size:S.size,no:no()});bagRender();bagOpen(true);
+    if(typeof fbq==='function')fbq('trackCustom','OneOfOneAddToBag',{mood:S.mood,finish:S.fin,size:S.size});
+  });
+  $('bagBtn').addEventListener('click',function(){bagOpen(true)});
+  $('bagX').addEventListener('click',function(){bagOpen(false)});$('scrim').addEventListener('click',function(){bagOpen(false)});
+  $('bagGo').addEventListener('click',function(){bagOpen(false)});
+  addEventListener('keydown',function(e){if(e.key==='Escape')bagOpen(false)});
+  $('bagItems').addEventListener('click',function(e){var b=e.target.closest('.rm');if(!b)return;BAG.splice(+b.dataset.i,1);bagRender()});
+  bagRender();
 
   render(false);
 })();
