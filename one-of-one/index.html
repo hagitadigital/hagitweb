@@ -72,7 +72,7 @@ src="https://www.facebook.com/tr?id=1326960187891724&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Heebo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/top-white.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/side-white.webp" fetchpriority="high">
 
 <style>
 :root{
@@ -157,27 +157,28 @@ h1 span{display:block}
 
 
 /* ---------- the rail (hero) ---------- */
-.rail{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 20px;overflow:hidden;--w:clamp(200px,23vw,330px);--sp:clamp(88px,10.2vw,146px)}
+.rail{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 20px;overflow:hidden;--w:clamp(220px,25vw,360px);--sp:clamp(92px,10.6vw,152px)}
 .rail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;direction:ltr;width:100%;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
 .rail-head h1{margin:0;font-size:clamp(30px,4.3vw,62px)}
 .rail-head .hint{direction:rtl;text-align:right;max-width:26ch;font:300 clamp(16px,1.5vw,20px)/1.45 var(--he);margin:0 0 4px}
 .rail-head .hint b{font-weight:500}
 .rack{position:relative;margin-top:clamp(18px,4vh,46px)}
-.rack-bar{position:absolute;left:-2%;right:-2%;top:calc(var(--w)*.058);height:12px;border-radius:6px;background:linear-gradient(#F6F7F8,#C9CCD1 45%,#8C9097);box-shadow:0 8px 12px rgba(40,30,24,.14)}
+.rack-bar{position:absolute;left:-2%;right:-2%;top:calc(var(--w)*.082);height:12px;border-radius:6px;background:linear-gradient(#F6F7F8,#C9CCD1 45%,#8C9097);box-shadow:0 8px 12px rgba(40,30,24,.14)}
 .rack-scroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;direction:ltr;cursor:grab;-webkit-overflow-scrolling:touch}
 .rack-scroll::-webkit-scrollbar{display:none}
 .rack-scroll.drag{cursor:grabbing}
 .rack-track{display:flex;width:max-content;margin:0 auto;padding:0 calc(var(--w)*.42) 34px}
 .rk{flex:none;position:relative;width:var(--sp);height:calc(var(--w)*1.2496);border:0;background:none;padding:0;-webkit-tap-highlight-color:transparent}
-.rk .in{position:absolute;left:50%;top:0;width:var(--w);margin-left:calc(var(--w)/-2);aspect-ratio:1122/1402;transform-origin:50% 5%;transform:perspective(1500px) rotateY(-58deg);transition:transform .55s var(--ease);filter:drop-shadow(-10px 18px 16px rgba(60,48,38,.20));pointer-events:none;animation:sway 5.5s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s)}
+.rk .in{position:absolute;left:50%;top:0;width:var(--w);margin-left:calc(var(--w)/-2);aspect-ratio:1122/1402;transform-origin:50% 4%;transition:transform .55s var(--ease);filter:drop-shadow(-10px 18px 16px rgba(60,48,38,.20));pointer-events:none;animation:sway 5.5s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s)}
 @keyframes sway{0%,100%{rotate:0 0 1 -.9deg}50%{rotate:0 0 1 .9deg}}
-.rk:hover,.rk:focus-visible{z-index:5}
-.rk:hover .in,.rk:focus-visible .in{transform:perspective(1500px) rotateY(-20deg) translateZ(40px);animation-play-state:paused}
-.rk.picked .in{transform:perspective(1500px) rotateY(0deg) translateZ(70px) translateY(4%)}
+.rk{z-index:calc(20 - var(--i))}
+.rk:hover,.rk:focus-visible,.rk.picked{z-index:30}
+.rk:hover .in,.rk:focus-visible .in{transform:translateY(2.5%) scale(1.07);animation-play-state:paused}
+.rk.picked .in{transform:translateY(7%) scale(1.12)}
 .rk .in img{position:absolute;user-select:none;-webkit-user-drag:none}
 .rk .t{inset:0;width:100%;height:100%}
-.rk .h{left:29.590%;top:3.281%;width:39.929%;height:23.752%}
-.rk .p{left:63.993%;top:38.445%;transform:translate(-50%,6%)}
+.rk .h{left:40.374%;top:1.355%;width:23.708%;height:29.173%}
+.rk .p{left:67.914%;top:36.876%;transform:translate(-50%,7%) scaleX(.86)}
 .rk .nm{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);font:500 10px/1 var(--mono);letter-spacing:.14em;opacity:0;transition:opacity .3s;white-space:nowrap}
 .rk:hover .nm,.rk:focus-visible .nm{opacity:.7}
 .rail-foot{text-align:center;font:500 11px/1 var(--mono);letter-spacing:.16em;direction:ltr;opacity:.5;margin-top:8px}
@@ -583,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="tag">STUDIO NOTE · איך העולם הזה נבנה</p>
     <h2>מותג לא מתחיל מלוגו.<br>הוא מתחיל <b>מהבטחה שנגזרים ממנה האלמנטים.</b></h2>
     <p><span class="ltr">ONE OF ONE°</span> הוא עולם מותג קונספט: מותג אופנה בדיוני שנבנה בסטודיו כהדגמה חיה של השיטה. ההבטחה נוסחה קודם: <b>חולצה אחת, מצב הרוח מתחלף.</b> ממנה נגזר האלמנט, תיקתק כסוף שהחולצה תוכננה סביבו, ומהתיקתק נגזר כל השאר: האלמנטים שנלחצים עליו, הקולב באותו נפח, השם <span class="ltr">1/1</span> והתעודה שחותמים עליה.</p>
-    <p><b>איך זה עובד:</b> החולצה צולמה פעם אחת, והאלמנטים עוצבו פעם אחת בכסף. הצבעים, החולצה השחורה והקולב המתחלף נוצרים מהם, כך ש-160 שילובים יוצאים מעשר תמונות, וגם המוט שבראש העמוד הוא אותה תמונה מסובבת בתלת־ממד. <b>למה זה פרימיום ולא הדפסה על חולצות:</b> אין העלאת תמונה ואין טקסט חופשי. הלקוחה מרכיבה מתוך שפה סגורה, והמותג נשאר מזוהה בכל שילוב.</p>
+    <p><b>איך זה עובד:</b> החולצה צולמה פעם אחת, והאלמנטים עוצבו פעם אחת בכסף. הצבעים, החולצה השחורה והקולב המתחלף נוצרים מהם, כך ש-160 שילובים יוצאים מעשר תמונות, והמוט שבראש העמוד נבנה באותה שיטה מתמונת צד אחת. <b>למה זה פרימיום ולא הדפסה על חולצות:</b> אין העלאת תמונה ואין טקסט חופשי. הלקוחה מרכיבה מתוך שפה סגורה, והמותג נשאר מזוהה בכל שילוב.</p>
     <p>ככה נראית עבודה של <b>Brand Worlds Studio</b>: לא עמוד יפה עם טקסטים, אלא עולם שלם שבו כל פרט נגזר מהבטחה אחת. Built to Strategy. Run by AI.</p>
   </div>
 </section>
@@ -771,8 +772,8 @@ document.addEventListener('DOMContentLoaded', function () {
     b.dataset.mood=r[0];b.dataset.fin=r[1];b.dataset.top=r[2];
     b.setAttribute('aria-label',r[0].toUpperCase()+' · '+r[1]+' · '+(r[2]==='ink'?'חולצה שחורה':'חולצה בלבן שבור')+'. לבחור ולהמשיך לסטודיו');
     var sz=SIZE[r[0]],k=sz[0]/Math.max(sz[0],sz[1]);
-    b.innerHTML='<span class="in"><img class="t" alt="" src="assets/top-'+r[2]+'.webp">'+(r[1]==='silver'?'':'<img class="h" alt="" src="assets/hanger-'+r[1]+'.webp">')+
-      '<img class="p" alt="" style="width:'+(13*k)+'%" src="'+src(r[0],r[1])+'"></span><span class="nm">'+r[0].toUpperCase()+'</span>';
+    b.innerHTML='<span class="in"><img class="t" alt="" src="assets/side-'+r[2]+'.webp">'+(r[1]==='silver'?'':'<img class="h" alt="" src="assets/side-hanger-'+r[1]+'.webp">')+
+      '<img class="p" alt="" style="width:'+(12*k)+'%" src="'+src(r[0],r[1])+'"></span><span class="nm">'+r[0].toUpperCase()+'</span>';
     $('rack').appendChild(b);
   });
   var sc=$('rackScroll'),drag=null,moved=0;
