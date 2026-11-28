@@ -28,6 +28,7 @@ WORLDS = {
     "lumera/index.html": "LUMÉRA",
     "maison/index.html": "Maison de l'Heure",
     "orbe/index.html": "ORBE",
+    "one-of-one/index.html": "ONE OF ONE°",
     "orea/index.html": "ORÉA",
     "oreva/index.html": "ORÉVA°",
     "miel/index.html": "MIEL°",
