@@ -1,0 +1,46 @@
+<!doctype html><meta charset=utf-8>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}
+body.bg{background:#F4F1EA}
+.en{font-family:Archivo,sans-serif;font-stretch:122%;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;color:#14161C;line-height:.98}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.14em;color:#14161C}
+#o{position:absolute;inset:0;display:none}
+#o .big{position:absolute;left:84px;font-size:100px}
+#o .lab{position:absolute;left:84px;top:150px;font-size:44px}
+#o .tag{position:absolute;right:84px;top:158px;font-size:26px;opacity:.6}
+/* scene 4 */
+#s4{position:absolute;inset:0;display:none}
+.t{position:absolute;left:50%;top:330px;width:980px;margin-left:-490px;aspect-ratio:1122/1402;filter:drop-shadow(-22px 40px 36px rgba(60,48,38,.22))}
+.t img{position:absolute}.t .top{inset:0;width:100%;height:100%}
+.t .h{left:29.590%;top:3.281%;width:39.929%;height:23.752%}
+.t .p{left:63.993%;top:38.445%;transform-origin:50% 0;filter:drop-shadow(-4px 9px 9px rgba(40,30,24,.3))}
+#s4 .name{position:absolute;left:84px;top:120px;font-size:150px}
+#s4 .fin{position:absolute;left:90px;top:286px;font-size:30px;opacity:.65}
+#s4 .cnt{position:absolute;right:84px;top:150px;font-size:26px;opacity:.6}
+/* scene 8 */
+#s8{position:absolute;inset:0;display:none;background:#EFE8E0}
+#s8 img{position:absolute;left:50%;top:50%;width:1560px;transform-origin:50% 50%}
+#s8 .logo{position:absolute;left:0;right:0;bottom:250px;text-align:center;font-size:64px}
+#s8 .sub{position:absolute;left:0;right:0;bottom:190px;text-align:center;font-size:24px;opacity:.6}
+</style>
+<div id=o><div class="big en" id=obig></div><div class="lab mono" id=olab></div><div class="tag mono" id=otag></div></div>
+<div id=s4><div class=t><img class=top id=tp><img class=h id=han><img class=p id=pc></div><div class="name en" id=nm></div><div class="fin mono" id=fn></div><div class="cnt mono" id=ct></div></div>
+<div id=s8><img id=bx src=../assets/box-closed.webp><div class="logo en">1/1° One of One</div><div class="sub mono">MY MOOD · MY RULES · MY SHIRT</div></div>
+<script>
+var SIZE={loud:[390,391],soft:[376,323],sharp:[290,389],sweet:[362,367],free:[418,258],still:[353,361],kiss:[418,298],bloom:[389,374]};
+var SEQ=[['sweet','tomato','white'],['loud','butter','white'],['sharp','cobalt','ink'],['bloom','pink','white'],['still','silver','ink'],['kiss','tomato','white'],['free','cobalt','white'],['soft','pink','ink'],['loud','silver','white'],['sweet','pink','ink'],['bloom','butter','white'],['sharp','tomato','white'],['kiss','cobalt','ink'],['still','butter','white'],['sweet','tomato','white']];
+var PER=12; /* frames per state at 30fps */
+function pre(){var a=[];SEQ.forEach(function(s){a.push('../assets/el/'+s[0]+'-'+s[1]+'.webp','../assets/top-'+s[2]+'.webp');if(s[1]!='silver')a.push('../assets/hanger-'+s[1]+'.webp')});
+ return Promise.all(a.map(function(u){return new Promise(function(ok){var i=new Image();i.onload=i.onerror=ok;i.src=u})})).then(function(){return document.fonts.ready})}
+function scene4(f){document.body.className='bg';s4.style.display='block';
+ var i=Math.min(SEQ.length-1,Math.floor(f/PER)),k=f-i*PER,s=SEQ[i],sz=SIZE[s[0]];
+ tp.src='../assets/top-'+s[2]+'.webp';han.style.display=s[1]=='silver'?'none':'block';if(s[1]!='silver')han.src='../assets/hanger-'+s[1]+'.webp';
+ pc.src='../assets/el/'+s[0]+'-'+s[1]+'.webp';pc.style.width=(12.8*sz[0]/Math.max(sz[0],sz[1]))+'%';
+ var e=Math.min(1,k/5),sc=1.28-.28*(1-Math.pow(1-e,3)),rot=(1-e)*7*(i%2?1:-1);
+ pc.style.transform='translate(-50%,6%) rotate('+rot+'deg) scale('+sc+')';
+ nm.textContent=s[0];fn.textContent=s[1].toUpperCase()+' · '+(s[2]=='ink'?'INK':'OFF-WHITE');ct.textContent=('0'+(i+1)).slice(-2)+' / 160';}
+function scene8(f,n){document.body.className='bg';s8.style.display='block';var z=1+.06*(f/n);bx.style.transform='translate(-50%,-58%) scale('+z+')'}
+function overlay(o){document.body.className='';window.o.style.display='block';obig.textContent=o.big||'';obig.style.top=(o.top||150)+'px';obig.style.color=o.color||'#14161C';
+ olab.textContent=o.lab||'';olab.style.top=(o.ltop||150)+'px';otag.textContent=o.tag||'';olab.style.color=otag.style.color=o.color||'#14161C'}
+</script>

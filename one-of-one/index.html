@@ -104,7 +104,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .topbar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px clamp(16px,3vw,32px);font-size:13px;background:rgba(244,241,234,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .topbar .label b{font-weight:600}
 .topbar a{text-decoration:none;font-weight:500;white-space:nowrap}
-@media(max-width:640px){.topbar .bws{display:none}}
+@media(max-width:640px){.topbar .bws,.topbar .cx{display:none}.topbar .label{white-space:nowrap}.topbar{gap:8px}}
 
 /* ---------- studio (hero) ---------- */
 .studio{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(12px,3vw,48px);padding:74px clamp(16px,4vw,56px) 32px;max-width:1360px;margin:0 auto}
@@ -276,14 +276,15 @@ h2 b{font-weight:600}
 .cert .c-by{font:600 clamp(15px,1.7vw,19px)/1.3 var(--en);font-stretch:116%;text-transform:uppercase;letter-spacing:.05em;margin:0 0 14px;overflow-wrap:anywhere}
 .cert canvas{width:100%;height:auto;display:block;background:var(--wall)}
 .cert .c-bot{display:flex;justify-content:space-between;gap:12px;font:500 10px/1.5 var(--mono);letter-spacing:.12em;margin-top:14px;opacity:.7}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
 .wlabel{display:inline-block;background:var(--paper);border:1px solid var(--line);padding:9px 14px;font:500 12px/1 var(--mono);letter-spacing:.1em;direction:ltr;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px rgba(20,22,28,.12)}
 
 
 /* by them */
 .by{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
-.by button{border:0;background:none;padding:0;text-align:right;display:block}
-.by .ph{overflow:hidden;background:#fff;aspect-ratio:1122/1402}
-.by img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.by button{border:0;background:none;padding:0;text-align:right;display:flex;flex-direction:column;width:100%;min-width:0;height:auto}
+.by .ph{display:block;width:100%;overflow:hidden;background:#fff}
+.by img{display:block;width:100%;height:auto;aspect-ratio:1122/1402;object-fit:cover;transition:transform .8s var(--ease)}
 .by button:hover img{transform:scale(1.03)}
 .by .lb{display:block;font:500 11px/1.5 var(--mono);letter-spacing:.08em;direction:ltr;text-align:left;margin-top:12px}
 .by .md{display:block;font:600 13px/1.4 var(--en);font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;direction:ltr;text-align:left;opacity:.6}
@@ -377,8 +378,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
 
 <div class="topbar">
-  <span class="label"><b dir="ltr">1/1° ONE OF ONE</b> · קונספט לדוגמה<span class="bws"> · Brand Worlds Studio · World N°08</span></span>
-  <span style="display:inline-flex;align-items:center;gap:12px"><button type="button" class="bagbtn" id="bagBtn" aria-haspopup="dialog">הסל <i id="bagN">0</i></button><a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות שבנינו <span aria-hidden="true">↗</span></a></span>
+  <span class="label"><b dir="ltr">1/1° ONE OF ONE</b><span class="cx"> · קונספט לדוגמה</span><span class="bws"> · Brand Worlds Studio · World N°08</span></span>
+  <span style="display:inline-flex;align-items:center;gap:12px"><button type="button" class="bagbtn" id="bagBtn" aria-haspopup="dialog">הסל <i id="bagN">0</i></button><a href="https://hagitantebi.co.il/brand-worlds/">כל העולמות<span class="cx"> שבנינו</span> <span aria-hidden="true">↗</span></a></span>
 </div>
 
 <main>
@@ -542,7 +543,8 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <p class="hint">עד 14 תווים. התווית והתעודה מתעדכנות תוך כדי הקלדה.</p>
       <p style="margin:0 0 26px"><span class="wlabel" id="wlabel">1/1 · BY YOU · Nº 0412</span></p>
-      <button class="btn" type="button" id="save"><i aria-hidden="true"></i>לשמור את התעודה כתמונה</button>
+      <div class="acts"><button class="btn" type="button" id="story"><i aria-hidden="true"></i>לשתף בסטורי</button><button class="btn ghost" type="button" id="save">לשמור כתמונה</button></div>
+      <p class="hint" id="shareNote" role="status" style="margin:12px 0 0;min-height:1.4em"></p>
     </div>
     <div class="cert" id="cert" aria-label="תעודת המהדורה">
       <div class="c-top"><span>ONE OF ONE°</span><span id="cNo">Nº 0412</span></div>
@@ -710,19 +712,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var cache={};
   function load(u){return cache[u]||(cache[u]=new Promise(function(ok,no){var i=new Image();i.onload=function(){ok(i)};i.onerror=no;i.src=u}))}
   var W=1122,H=1402,POS={chest:[718,539],sleeve:[174,789]},HB=[332,46,448,333],token=0;
-  function paint(ctx,size){
+  function layers(ctx,ox,oy,s){
     var t=++token,list=[load('assets/top-'+S.top+'.webp'),load(src(S.mood,S.fin))];
     if(S.fin!=='silver')list.push(load('assets/hanger-'+S.fin+'.webp'));
     return Promise.all(list).then(function(r){
       if(t!==token)return;
-      var s=size/1120,ox=(size-W*s)/2,oy=-150*s;   /* square crop: hanger to hip */
-      ctx.fillStyle='#F4F1EA';ctx.fillRect(0,0,size,size);
       ctx.drawImage(r[0],ox,oy,W*s,H*s);
       if(r[2])ctx.drawImage(r[2],ox+HB[0]*s,oy+HB[1]*s,HB[2]*s,HB[3]*s);
       var sz=SIZE[S.mood],k=(S.place==='chest'?.13:.09)*W/Math.max(sz[0],sz[1]),w=sz[0]*k*s,h=sz[1]*k*s,p=POS[S.place];
       ctx.save();ctx.shadowColor='rgba(40,30,24,.32)';ctx.shadowBlur=9*s;ctx.shadowOffsetX=-3*s;ctx.shadowOffsetY=7*s;
       ctx.drawImage(r[1],ox+p[0]*s-w/2,oy+p[1]*s+h*.06,w,h);ctx.restore();
     });
+  }
+  function paint(ctx,size){
+    var s=size/1120;                                   /* square crop: hanger to hip */
+    ctx.fillStyle='#F4F1EA';ctx.fillRect(0,0,size,size);
+    return layers(ctx,(size-W*s)/2,-150*s,s);
   }
   function draw(){var cv=$('cv');paint(cv.getContext('2d'),cv.width).catch(function(){})}
 
@@ -741,11 +746,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   $('who').addEventListener('input',function(){this.value=this.value.replace(/[^A-Za-z .'-]/g,'');S.who=this.value.trim();label()});
 
-  $('save').addEventListener('click',function(){
+  /* --- certificate (4:5) and story (9:16) pictures --- */
+  function fontsReady(){return document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()}
+  function spec(){return (S.mood+' · '+S.fin+' · '+S.place).toUpperCase()}
+  function certCanvas(){
     var c=document.createElement('canvas');c.width=1080;c.height=1350;var x=c.getContext('2d');
     var pic=document.createElement('canvas');pic.width=pic.height=936;
-    var fonts=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
-    Promise.all([paint(pic.getContext('2d'),936),fonts]).then(function(){
+    return Promise.all([paint(pic.getContext('2d'),936),fontsReady()]).then(function(){
       var who=(S.who||'you'),n=no();
       x.fillStyle='#fff';x.fillRect(0,0,1080,1350);
       x.fillStyle='#14161C';x.textBaseline='alphabetic';
@@ -754,14 +761,46 @@ document.addEventListener('DOMContentLoaded', function () {
       x.textAlign='left';x.font='800 150px Archivo,sans-serif';x.fillText('1/1°',64,246);
       x.font='600 30px Archivo,sans-serif';x.fillText(('An original by '+who+'.').toUpperCase(),72,304);
       x.drawImage(pic,72,340,936,936);
-      x.font='500 20px "JetBrains Mono",monospace';x.fillText((S.mood+' · '+S.fin+' · '+S.place).toUpperCase(),72,1314);
+      x.font='500 20px "JetBrains Mono",monospace';x.fillText(spec(),72,1314);
       x.textAlign='right';x.fillText(S.top==='ink'?'INK':'OFF-WHITE',1008,1314);
-      c.toBlob(function(b){
-        var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='one-of-one-'+n+'.png';
-        document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},2000);
-      },'image/png');
-      if(typeof fbq==='function')fbq('trackCustom','OneOfOneCertSave',{mood:S.mood,finish:S.fin});
+      return c;
     });
+  }
+  function storyCanvas(){
+    var c=document.createElement('canvas');c.width=1080;c.height=1920;var x=c.getContext('2d');
+    x.fillStyle='#F4F1EA';x.fillRect(0,0,1080,1920);
+    return Promise.all([layers(x,(1080-W*.8)/2,566,.8),fontsReady()]).then(function(){
+      var who=(S.who||'you'),n=no();
+      x.fillStyle='#14161C';x.textBaseline='alphabetic';x.textAlign='left';
+      x.font='500 26px "JetBrains Mono",monospace';x.fillText('ONE OF ONE°',84,290);
+      x.textAlign='right';x.fillText('Nº '+n,996,290);
+      x.textAlign='left';x.font='800 190px Archivo,sans-serif';x.fillText('1/1°',74,470);
+      x.font='600 40px Archivo,sans-serif';x.fillText(('An original by '+who+'.').toUpperCase(),84,548);
+      x.font='500 26px "JetBrains Mono",monospace';x.fillText(spec()+' · '+(S.top==='ink'?'INK':'OFF-WHITE'),84,1736);
+      x.globalAlpha=.6;x.fillText('MY MOOD. MY RULES. MY SHIRT.',84,1780);x.globalAlpha=1;
+      return c;
+    });
+  }
+  function blobOf(c){return new Promise(function(ok){c.toBlob(ok,'image/png')})}
+  function download(b,name){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},2000)}
+  function note(t){$('shareNote').textContent=t}
+  $('save').addEventListener('click',function(){
+    certCanvas().then(blobOf).then(function(b){download(b,'one-of-one-'+no()+'.png');note('התעודה נשמרה.')});
+    if(typeof fbq==='function')fbq('trackCustom','OneOfOneCertSave',{mood:S.mood,finish:S.fin});
+  });
+  $('story').addEventListener('click',function(){
+    var name='one-of-one-story-'+no()+'.png';
+    storyCanvas().then(blobOf).then(function(b){
+      var f=null;try{f=new File([b],name,{type:'image/png'})}catch(e){}
+      if(f&&navigator.canShare&&navigator.canShare({files:[f]})){
+        return navigator.share({files:[f],title:'ONE OF ONE°'}).then(function(){note('')},function(e){
+          if(e&&e.name==='AbortError')return;             /* she closed the share sheet */
+          download(b,name);note('התמונה נשמרה. העלי אותה לסטורי מהגלריה.');
+        });
+      }
+      download(b,name);note('התמונה נשמרה בגודל של סטורי. העלי אותה לסטורי מהגלריה.');
+    });
+    if(typeof fbq==='function')fbq('trackCustom','OneOfOneStoryShare',{mood:S.mood,finish:S.fin});
   });
 
   /* --- the rail: eight ready-made tops, seen from the side --- */
