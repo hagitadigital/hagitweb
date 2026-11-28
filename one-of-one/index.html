@@ -116,10 +116,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .stage[data-top="ink"] .top.ink{opacity:1}
 .hanger{left:29.590%;top:3.281%;width:39.929%;height:23.752%;opacity:0;transition:opacity .45s var(--ease)}
 .hanger.on{opacity:1}
-.piece{left:63.993%;top:38.445%;width:15%;transform:translate(-50%,-50%);filter:drop-shadow(-3px 7px 7px rgba(40,30,24,.30));transition:left .5s var(--ease),top .5s var(--ease),width .5s var(--ease)}
-.stage[data-place="sleeve"] .piece{left:15.508%;top:56.277%;width:9.5%}
+/* transform-origin at the top: the piece swings in from the snap */
+.piece{transform-origin:50% 0;left:63.993%;top:38.445%;width:15%;transform:translate(-50%,6%);filter:drop-shadow(-3px 7px 7px rgba(40,30,24,.30));transition:left .5s var(--ease),top .5s var(--ease),width .5s var(--ease)}
+.stage[data-place="sleeve"] /* transform-origin at the top: the piece swings in from the snap */
+.piece{transform-origin:50% 0;left:15.508%;top:56.277%;width:9.5%}
 .piece.press{animation:press .42s var(--ease)}
-@keyframes press{0%{transform:translate(-50%,-50%) scale(1.5);opacity:0;filter:drop-shadow(-10px 22px 18px rgba(40,30,24,.18))}60%{transform:translate(-50%,-50%) scale(.94);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}
+@keyframes press{0%{transform:translate(-50%,6%) scale(1.5);opacity:0;filter:drop-shadow(-10px 22px 18px rgba(40,30,24,.18))}60%{transform:translate(-50%,6%) scale(.94);opacity:1}100%{transform:translate(-50%,6%) scale(1)}}
 .edition{position:absolute;inset-inline-start:4%;bottom:5%;font:500 11px/1.5 var(--mono);letter-spacing:.08em;direction:ltr;opacity:.6}
 
 .panel{max-width:520px}
@@ -213,6 +215,22 @@ h2 b{font-weight:600}
 .cert .c-bot{display:flex;justify-content:space-between;gap:12px;font:500 10px/1.5 var(--mono);letter-spacing:.12em;margin-top:14px;opacity:.7}
 .wlabel{display:inline-block;background:var(--paper);border:1px solid var(--line);padding:9px 14px;font:500 12px/1 var(--mono);letter-spacing:.1em;direction:ltr;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px rgba(20,22,28,.12)}
 
+
+/* by them */
+.by{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.by button{border:0;background:none;padding:0;text-align:right;display:block}
+.by .ph{overflow:hidden;background:#fff;aspect-ratio:1122/1402}
+.by img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.by button:hover img{transform:scale(1.03)}
+.by .lb{display:block;font:500 11px/1.5 var(--mono);letter-spacing:.08em;direction:ltr;text-align:left;margin-top:12px}
+.by .md{display:block;font:600 13px/1.4 var(--en);font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;direction:ltr;text-align:left;opacity:.6}
+/* store */
+.store{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,72px);align-items:center}
+.store img{width:100%;height:auto}
+.store ul{margin:24px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.store li{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+.store li b{font-weight:600}
+
 /* manifesto */
 .mani{text-align:center}
 .mani .big{font:700 clamp(30px,6vw,84px)/.98 var(--en);font-stretch:122%;text-transform:uppercase;direction:ltr;margin:0 0 26px;letter-spacing:-.01em}
@@ -247,7 +265,8 @@ footer a{text-decoration:none}
   .steps,.six{grid-template-columns:1fr}
   .dropbar{grid-template-columns:1fr 1fr}
   .dropbar .intro{grid-column:1/-1}
-  .sign{grid-template-columns:1fr}
+  .sign,.store{grid-template-columns:1fr}
+  .by{grid-template-columns:1fr 1fr;gap:10px}
   .voisins-grid{grid-template-columns:1fr}
   .fin{grid-template-columns:repeat(5,1fr);gap:4px}
   .fin figcaption{font-size:9px;letter-spacing:.04em}
@@ -360,6 +379,19 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 </div>
 
+<!-- ======================= BY THEM ======================= -->
+<section class="sec" id="by">
+  <p class="tag">ONE SHIRT · FOUR ORIGINALS</p>
+  <h2>אותה חולצה. <b>ארבע נשים, ארבע יצירות.</b></h2>
+  <p class="lead">אין לנו פרזנטורית אחת, כי החולצה היא לא שלה. לחיצה על תמונה מרכיבה את החולצה שלה בסטודיו.</p>
+  <div class="by" id="byGrid">
+    <button type="button" data-mood="sweet" data-fin="tomato" data-top="white" data-place="chest"><span class="ph"><img src="assets/by-1.webp" width="1122" height="1402" loading="lazy" alt="אישה עם שיער מתולתל קצר בחולצה בלבן שבור, ועל החזה לב אדום שתלוי מהתיקתק"></span><span class="lb">1/1 · BY NOA · Nº 0412</span><span class="md">Sweet · Tomato</span></button>
+    <button type="button" data-mood="loud" data-fin="butter" data-top="ink" data-place="chest"><span class="ph"><img src="assets/by-2.webp" width="1122" height="1402" loading="lazy" alt="אישה עם שיער כסוף יושבת ונשענת קדימה בחולצה שחורה, ועל החזה כוכב צהוב"></span><span class="lb">1/1 · BY DALIA · Nº 1187</span><span class="md">Loud · Butter</span></button>
+    <button type="button" data-mood="sharp" data-fin="cobalt" data-top="white" data-place="sleeve"><span class="ph"><img src="assets/by-3.webp" width="1122" height="1402" loading="lazy" alt="אישה ג׳ינג׳ית צוחקת בתנועה בחולצה בלבן שבור, ועל פס השרוול ברק כחול"></span><span class="lb">1/1 · BY TAMAR · Nº 0763</span><span class="md">Sharp · Cobalt · Sleeve</span></button>
+    <button type="button" data-mood="bloom" data-fin="pink" data-top="ink" data-place="chest"><span class="ph"><img src="assets/by-4.webp" width="1122" height="1402" loading="lazy" alt="תקריב: יד לוחצת פרח ורוד על התיקתק הכסוף שבחזה של חולצה שחורה"></span><span class="lb">1/1 · BY MAYA · Nº 2051</span><span class="md">Bloom · Pink</span></button>
+  </div>
+</section>
+
 <!-- ======================= THE SIX ======================= -->
 <section class="sec" id="six">
   <p class="tag">THE SIX · PERMANENT COLLECTION</p>
@@ -390,6 +422,23 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="fin" id="finRow"></div>
 </section>
 </div>
+
+<!-- ======================= THE STORE ======================= -->
+<section class="sec" id="store">
+  <div class="store">
+    <img src="assets/store-bar.webp" width="1122" height="1402" loading="lazy" alt="בר האלמנטים בחנות: דלפק אבן לבן שעליו אלמנטים מנופחים על פינים כסופים, מסודרים לפי צבע. יד מרימה לב אדום, וברקע חולצה אחת תלויה על הקיר.">
+    <div>
+      <p class="tag">THE STORE</p>
+      <h2>חנות בלי קולבים של מידות. <b>קיר אחד, חולצה אחת, ובר של מצבי רוח.</b></h2>
+      <p class="lead">החולצה תלויה על הקיר כמו יצירה. את הבחירה עושים בדלפק, כמו בחנות תכשיטים: מרימים, מודדים על התיקתק, מחליפים.</p>
+      <ul>
+        <li><b>הקיר.</b> חולצה אחת, מוארת, עם תווית קטנה לצדה.</li>
+        <li><b>הבר.</b> האלמנטים על פינים כסופים, מסודרים לפי צבע.</li>
+        <li><b>הקופה.</b> חותמים על התעודה, והחולצה נארזת בקופסה לבנה.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ======================= SIGN ======================= -->
 <section class="sec" id="sign">
@@ -516,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var m=mood(S.mood);
     piece.src=src(S.mood,S.fin);
     var sz=SIZE[S.mood],k=sz[0]/Math.max(sz[0],sz[1]);
-    piece.style.width=((S.place==='chest'?15:9.5)*k)+'%';
+    piece.style.width=((S.place==='chest'?13:9)*k)+'%';
     stage.dataset.top=S.top;stage.dataset.place=S.place;
     [].forEach.call(stage.querySelectorAll('.hanger'),function(h){h.classList.toggle('on',h.dataset.f===S.fin)});
     if(snap){piece.classList.remove('press');void piece.offsetWidth;piece.classList.add('press')}
@@ -552,9 +601,9 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.fillStyle='#F4F1EA';ctx.fillRect(0,0,size,size);
       ctx.drawImage(r[0],ox,oy,W*s,H*s);
       if(r[2])ctx.drawImage(r[2],ox+HB[0]*s,oy+HB[1]*s,HB[2]*s,HB[3]*s);
-      var sz=SIZE[S.mood],k=(S.place==='chest'?.15:.095)*W/Math.max(sz[0],sz[1]),w=sz[0]*k*s,h=sz[1]*k*s,p=POS[S.place];
+      var sz=SIZE[S.mood],k=(S.place==='chest'?.13:.09)*W/Math.max(sz[0],sz[1]),w=sz[0]*k*s,h=sz[1]*k*s,p=POS[S.place];
       ctx.save();ctx.shadowColor='rgba(40,30,24,.32)';ctx.shadowBlur=9*s;ctx.shadowOffsetX=-3*s;ctx.shadowOffsetY=7*s;
-      ctx.drawImage(r[1],ox+p[0]*s-w/2,oy+p[1]*s-h/2,w,h);ctx.restore();
+      ctx.drawImage(r[1],ox+p[0]*s-w/2,oy+p[1]*s+h*.06,w,h);ctx.restore();
     });
   }
   function draw(){var cv=$('cv');paint(cv.getContext('2d'),cv.width).catch(function(){})}
@@ -566,6 +615,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var b=e.target.closest('.card');if(!b)return;S.mood=b.dataset.v;render(true);
     $('studio').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
   })});
+  $('byGrid').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    S.mood=b.dataset.mood;S.fin=b.dataset.fin;S.top=b.dataset.top;S.place=b.dataset.place;render(true);
+    $('studio').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+  });
   $('who').addEventListener('input',function(){this.value=this.value.replace(/[^A-Za-z .'-]/g,'');S.who=this.value.trim();label()});
 
   $('save').addEventListener('click',function(){
