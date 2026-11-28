@@ -224,12 +224,15 @@ h2 b{font-weight:600}
 .by button:hover img{transform:scale(1.03)}
 .by .lb{display:block;font:500 11px/1.5 var(--mono);letter-spacing:.08em;direction:ltr;text-align:left;margin-top:12px}
 .by .md{display:block;font:600 13px/1.4 var(--en);font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;direction:ltr;text-align:left;opacity:.6}
-/* store */
-.store{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,72px);align-items:center}
-.store img{width:100%;height:auto}
-.store ul{margin:24px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
-.store li{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
-.store li b{font-weight:600}
+/* store + box */
+.pics2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+figure{margin:0}
+.pics2 img{width:100%;height:auto}
+.pics2 figcaption{font-size:15px;margin-top:12px;opacity:.85}
+.pics2 figcaption b{font-weight:600}
+.boxgrid{display:grid;grid-template-columns:1.13fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:44px}
+.boxgrid img{width:100%;height:100%;object-fit:cover}
+.b-bag{grid-row:1/3}
 
 /* manifesto */
 .mani{text-align:center}
@@ -265,7 +268,10 @@ footer a{text-decoration:none}
   .steps,.six{grid-template-columns:1fr}
   .dropbar{grid-template-columns:1fr 1fr}
   .dropbar .intro{grid-column:1/-1}
-  .sign,.store{grid-template-columns:1fr}
+  .sign{grid-template-columns:1fr}
+  .boxgrid{grid-template-columns:1fr}
+  .b-bag{grid-row:auto}
+  .pics2{gap:10px}
   .by{grid-template-columns:1fr 1fr;gap:10px}
   .voisins-grid{grid-template-columns:1fr}
   .fin{grid-template-columns:repeat(5,1fr);gap:4px}
@@ -425,18 +431,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- ======================= THE STORE ======================= -->
 <section class="sec" id="store">
-  <div class="store">
-    <img src="assets/store-bar.webp" width="1122" height="1402" loading="lazy" alt="בר האלמנטים בחנות: דלפק אבן לבן שעליו אלמנטים מנופחים על פינים כסופים, מסודרים לפי צבע. יד מרימה לב אדום, וברקע חולצה אחת תלויה על הקיר.">
-    <div>
-      <p class="tag">THE STORE</p>
-      <h2>חנות בלי קולבים של מידות. <b>קיר אחד, חולצה אחת, ובר של מצבי רוח.</b></h2>
-      <p class="lead">החולצה תלויה על הקיר כמו יצירה. את הבחירה עושים בדלפק, כמו בחנות תכשיטים: מרימים, מודדים על התיקתק, מחליפים.</p>
-      <ul>
-        <li><b>הקיר.</b> חולצה אחת, מוארת, עם תווית קטנה לצדה.</li>
-        <li><b>הבר.</b> האלמנטים על פינים כסופים, מסודרים לפי צבע.</li>
-        <li><b>הקופה.</b> חותמים על התעודה, והחולצה נארזת בקופסה לבנה.</li>
-      </ul>
-    </div>
+  <p class="tag">THE STORE</p>
+  <h2>חנות בלי מתלים של מידות. <b>קיר אחד, חולצה אחת, ובר של מצבי רוח.</b></h2>
+  <p class="lead">החולצה תלויה על הקיר כמו יצירה. את הבחירה עושים בדלפק, כמו בחנות תכשיטים: מרימים, מודדים על התיקתק, מחליפים.</p>
+  <div class="pics2">
+    <figure><img src="assets/store-wall.webp" width="1122" height="1402" loading="lazy" alt="קיר בחנות בגוון לבן שבור, ועליו חולצה אחת תלויה על קולב כסוף מנופח, מוארת כמו יצירה, עם שלט קטן לצדה."><figcaption><b>הקיר.</b> חולצה אחת, מוארת, עם תווית קטנה לצדה.</figcaption></figure>
+    <figure><img src="assets/store-bar.webp" width="1122" height="1402" loading="lazy" alt="בר האלמנטים: דלפק אבן לבן שעליו שמונת האלמנטים על פינים כסופים, מסודרים לפי צבע. יד מרימה לב אדום."><figcaption><b>הבר.</b> שמונת האלמנטים על פינים כסופים, מסודרים לפי צבע.</figcaption></figure>
   </div>
 </section>
 
@@ -465,8 +465,22 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<!-- ======================= MANIFESTO ======================= -->
+<!-- ======================= THE BOX ======================= -->
 <div class="band">
+<section class="sec" id="box">
+  <p class="tag">THE BOX</p>
+  <h2>היא לא נארזת כמו חולצה. <b>היא נארזת כמו עבודה של אמנית.</b></h2>
+  <p class="lead">קופסה לבנה כמו תיק עבודות: החולצה מקופלת, שלושה שקעים לאלמנטים, ותעודת המהדורה שחתמת עליה. גם לשקית יש תיקתק, והאלמנט שבחרת הוא הקישוט היחיד שלה.</p>
+  <div class="boxgrid">
+    <figure class="b-bag"><img src="assets/bag.webp" width="1122" height="1402" loading="lazy" alt="שקית נייר בלבן שבור עם ידיות חבל לבנות. בחזית תיקתק כסוף שממנו תלוי לב אדום, ובתחתית הכיתוב 1/1°."></figure>
+    <figure class="b-closed"><img src="assets/box-closed.webp" width="1536" height="1024" loading="lazy" alt="קופסה לבנה סגורה עם גומייה לבנה ותיקתק כסוף, ועליה הכיתוב An original by you ומתחתיו 1/1°."></figure>
+    <figure class="b-open"><img src="assets/box-open.webp" width="1448" height="1086" loading="lazy" alt="הקופסה פתוחה: החולצה מקופלת על נייר משי, מתחתיה שלושה שקעים עם לב אדום, כוכב כסוף וברק כחול, וכרטיס מהדורה עם הכיתוב 1/1 · by Noa · Nº 0412."></figure>
+  </div>
+</section>
+</div>
+
+<!-- ======================= MANIFESTO ======================= -->
+<div>
 <section class="sec mani" id="manifesto">
   <p class="big">An original<br><em>by you.</em></p>
   <p>ברוב המותגים ההתאמה האישית היא עוד כפתור באתר. כאן היא כל המותג: החולצה, האריזה, החנות והקמפיין מתחילים מאותה שאלה. איך את מרגישה היום?</p>
